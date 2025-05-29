@@ -1,4 +1,6 @@
-import { join } from "node:path";
+import { readdirSync, readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 import type { Chunk } from "../../types/chunk.ts";
 import { renderAbout } from "./chunks/about.ts";
@@ -8,10 +10,23 @@ import { renderTag } from "./chunks/tag.ts";
 import { Renderer } from "./renderer.ts";
 import { getOperationFromId } from "./util.ts";
 
-function getPageMap(
-  docsData: Map<string, Chunk>,
-  basePath: string
-): Map<
+const LOCAL_COMPONENT_PATH = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "..",
+  "..",
+  "assets"
+);
+
+type BaseOptions = {
+  data: Map<string, Chunk>;
+  basePagePath: string;
+};
+
+function getPageMap({
+  data,
+  basePagePath,
+}: BaseOptions): Map<
   string,
   { sidebarLabel: string; sidebarPosition: string; chunks: Chunk[] }
 > {
@@ -22,11 +37,11 @@ function getPageMap(
 
   // let schemaIndex = 0;
   let tagIndex = 0;
-  for (const [, chunk] of docsData) {
+  for (const [, chunk] of data) {
     if (!chunk.slug) {
       continue;
     }
-    const path = `${basePath}/${chunk.slug}.mdx`;
+    const path = `${basePagePath}/${chunk.slug}.mdx`;
     switch (chunk.chunkType) {
       case "about": {
         // TODO: eventually we want to make this more configurable, since
@@ -46,7 +61,7 @@ function getPageMap(
           chunks,
         });
         for (const operationChunkId of chunk.chunkData.operationChunkIds) {
-          const operationChunk = getOperationFromId(operationChunkId, docsData);
+          const operationChunk = getOperationFromId(operationChunkId, data);
           chunks.push(operationChunk);
         }
         break;
@@ -70,16 +85,21 @@ function getPageMap(
   return pageMap;
 }
 
-export function getDocsMDX(
-  docsData: Map<string, Chunk>,
-  basePath: string
-): Record<string, string> {
+type GenerateContentOptions = BaseOptions & {
+  baseComponentPath: string;
+};
+
+export function generateContent({
+  data,
+  basePagePath,
+  baseComponentPath,
+}: GenerateContentOptions): Record<string, string> {
   // First, get a mapping of pages to chunks
-  const pageMap = getPageMap(docsData, basePath);
+  const pageMap = getPageMap({ data, basePagePath });
 
   const renderedChunkMap = new Map<string, string>();
   for (const [pagePath, { chunks, sidebarLabel, sidebarPosition }] of pageMap) {
-    const renderer = new Renderer();
+    const renderer = new Renderer({ baseComponentPath });
     renderer.insertFrontMatter({
       sidebarPosition,
       sidebarLabel,
@@ -102,14 +122,14 @@ export function getDocsMDX(
           renderSchema({
             renderer,
             schema: chunk.chunkData.value,
-            docsData,
+            data,
             baseHeadingLevel: 1,
             topLevelName: "Schema",
           });
           break;
         }
         case "operation": {
-          renderOperation(renderer, chunk, docsData, {
+          renderOperation(renderer, chunk, data, {
             baseHeadingLevel: 2,
           });
           break;
@@ -126,9 +146,27 @@ export function getDocsMDX(
     renderedChunkMap.set(pagePath, renderer.render());
   }
 
-  // TODO: don't hard-code this for Docusaurus
+  // Attach the assets
+  const assetFileList = readdirSync(LOCAL_COMPONENT_PATH, {
+    recursive: true,
+    withFileTypes: true,
+  })
+    .filter((f) => f.isFile())
+    .map((f) =>
+      join(f.parentPath, f.name).replace(LOCAL_COMPONENT_PATH + "/", "")
+    );
+
+  for (const assetFile of assetFileList) {
+    renderedChunkMap.set(
+      join(baseComponentPath, assetFile),
+      readFileSync(join(LOCAL_COMPONENT_PATH, assetFile), "utf-8")
+    );
+  }
+
+  // TODO: don't hard-code this for Docusaurus and make something more flexible
+  // for different scaffolds
   renderedChunkMap.set(
-    join(basePath, "tag", "_category_.json"),
+    join(basePagePath, "tag", "_category_.json"),
     JSON.stringify(
       {
         position: 2,

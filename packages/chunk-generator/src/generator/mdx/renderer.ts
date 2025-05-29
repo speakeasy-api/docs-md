@@ -1,3 +1,5 @@
+import { join } from "node:path";
+
 type AppendOptions = {
   // We almost always want to escape special Markdown characters, so we default
   // to true. However, sometimes content coming in is actually in Markdown, so
@@ -6,7 +8,12 @@ type AppendOptions = {
 };
 
 export class Renderer {
+  #baseComponentPath: string;
   #lines: string[] = [];
+
+  constructor({ baseComponentPath }: { baseComponentPath: string }) {
+    this.#baseComponentPath = baseComponentPath;
+  }
 
   public escapeText(text: string) {
     return (
@@ -44,6 +51,12 @@ export class Renderer {
 sidebar_position: ${sidebarPosition}
 sidebar_label: ${this.escapeText(sidebarLabel)}
 ---`
+    );
+  }
+
+  public insertComponentImport(symbol: string, relativePath: string) {
+    this.#lines.unshift(
+      `import ${symbol} from "${join(this.#baseComponentPath, relativePath)}"`
     );
   }
 

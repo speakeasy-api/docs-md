@@ -53,7 +53,7 @@ export function renderOperation(
       topLevelName: "Request Body",
       renderer,
       schema: requestBodySchema.chunkData.value,
-      docsData,
+      data: docsData,
       baseHeadingLevel: baseHeadingLevel + 1,
     });
   }
@@ -79,7 +79,7 @@ export function renderOperation(
           topLevelName: "Response Body",
           renderer,
           schema: responseSchema.chunkData.value,
-          docsData,
+          data: docsData,
           baseHeadingLevel: baseHeadingLevel + 2,
         });
       }

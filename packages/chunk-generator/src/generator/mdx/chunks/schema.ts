@@ -14,7 +14,7 @@ import { getSchemaFromId } from "../util.ts";
 type RenderSchemaOptions = {
   renderer: Renderer;
   schema: SchemaValue;
-  docsData: Map<string, Chunk>;
+  data: Map<string, Chunk>;
   baseHeadingLevel: number;
   topLevelName: string;
 };
@@ -32,7 +32,7 @@ type DisplayType = {
 
 function getDisplayType(
   value: SchemaValue,
-  docsData: Map<string, Chunk>
+  data: Map<string, Chunk>
 ): DisplayType {
   switch (value.type) {
     case "object": {
@@ -45,28 +45,28 @@ function getDisplayType(
       };
     }
     case "array": {
-      const displayType = getDisplayType(value.items, docsData);
+      const displayType = getDisplayType(value.items, data);
       return {
         ...displayType,
         typeLabel: { label: "array", children: [displayType.typeLabel] },
       };
     }
     case "map": {
-      const displayType = getDisplayType(value.items, docsData);
+      const displayType = getDisplayType(value.items, data);
       return {
         ...displayType,
         typeLabel: { label: "map", children: [displayType.typeLabel] },
       };
     }
     case "set": {
-      const displayType = getDisplayType(value.items, docsData);
+      const displayType = getDisplayType(value.items, data);
       return {
         ...displayType,
         typeLabel: { label: "set", children: [displayType.typeLabel] },
       };
     }
     case "union": {
-      const displayTypes = value.values.map((v) => getDisplayType(v, docsData));
+      const displayTypes = value.values.map((v) => getDisplayType(v, data));
       const hasBreakoutSubType = displayTypes.some(
         (d) => d.breakoutSubTypes.length > 0 || d.linkSubTypes.length > 0
       );
@@ -92,8 +92,8 @@ function getDisplayType(
       };
     }
     case "chunk": {
-      const schemaChunk = getSchemaFromId(value.chunkId, docsData);
-      return getDisplayType(schemaChunk.chunkData.value, docsData);
+      const schemaChunk = getSchemaFromId(value.chunkId, data);
+      return getDisplayType(schemaChunk.chunkData.value, data);
     }
     case "enum": {
       return {
@@ -130,14 +130,14 @@ function renderDisplayType({
   renderer,
   value,
   baseHeadingLevel,
-  docsData,
+  data,
 }: {
   renderer: Renderer;
   value: SchemaValue;
   baseHeadingLevel: number;
-  docsData: Map<string, Chunk>;
+  data: Map<string, Chunk>;
 }) {
-  const displayType = getDisplayType(value, docsData);
+  const displayType = getDisplayType(value, data);
   let computedTypeLabel = "Signature:\n\n```\n";
   function computeTypeLabel(typeLabel: TypeLabel, indentation: number) {
     computedTypeLabel += "  ".repeat(indentation) + typeLabel.label + "\n";
@@ -175,7 +175,7 @@ function renderDisplayType({
     renderSchema({
       renderer,
       schema: breakoutSubType.schema,
-      docsData,
+      data: data,
       baseHeadingLevel,
       topLevelName: breakoutSubType.label,
     });
@@ -185,7 +185,7 @@ function renderDisplayType({
 export function renderSchema({
   renderer,
   schema,
-  docsData,
+  data,
   baseHeadingLevel,
   topLevelName,
 }: RenderSchemaOptions) {
@@ -199,12 +199,12 @@ export function renderSchema({
     for (const [key, value] of Object.entries(objectValue.properties)) {
       if (value.type === "chunk") {
         renderer.appendHeading(5, key);
-        const schemaChunk = getSchemaFromId(value.chunkId, docsData);
+        const schemaChunk = getSchemaFromId(value.chunkId, data);
         renderDisplayType({
           renderer,
           value: schemaChunk.chunkData.value,
           baseHeadingLevel,
-          docsData,
+          data: data,
         });
       } else if (value.type === "enum") {
         renderer.appendHeading(5, key);
@@ -217,7 +217,7 @@ export function renderSchema({
           renderer,
           value,
           baseHeadingLevel,
-          docsData,
+          data: data,
         });
       }
     }
@@ -231,7 +231,7 @@ export function renderSchema({
       renderer,
       value: arrayLikeValue,
       baseHeadingLevel,
-      docsData,
+      data: data,
     });
   }
 
@@ -240,7 +240,7 @@ export function renderSchema({
       renderer,
       value: unionValue,
       baseHeadingLevel,
-      docsData,
+      data: data,
     });
     return;
   }
@@ -250,7 +250,7 @@ export function renderSchema({
       renderer,
       value: primitiveValue,
       baseHeadingLevel,
-      docsData,
+      data: data,
     });
     if (primitiveValue.type === "enum") {
       renderer.appendParagraph(
