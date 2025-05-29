@@ -55,6 +55,7 @@ export function renderOperation(
       schema: requestBodySchema.chunkData.value,
       data: docsData,
       baseHeadingLevel: baseHeadingLevel + 1,
+      depth: 0,
     });
   }
 
@@ -81,6 +82,7 @@ export function renderOperation(
           schema: responseSchema.chunkData.value,
           data: docsData,
           baseHeadingLevel: baseHeadingLevel + 2,
+          depth: 0,
         });
       }
     }

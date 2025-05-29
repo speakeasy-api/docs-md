@@ -1,4 +1,5 @@
-import React, { PropsWithChildren, useCallback, useState } from "react";
+import type { PropsWithChildren } from "react";
+import React, { useCallback, useState } from "react";
 
 import Container from "./container.mdx";
 
@@ -37,7 +38,7 @@ function SideBarContainer({
   );
 }
 
-export function Sidebar({
+export function SideBar({
   cta,
   children,
   title,

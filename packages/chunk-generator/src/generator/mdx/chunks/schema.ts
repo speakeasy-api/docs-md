@@ -11,12 +11,16 @@ import { assertNever } from "../../../util/assertNever.ts";
 import type { Renderer } from "../renderer.ts";
 import { getSchemaFromId } from "../util.ts";
 
+// TODO: make this configurable
+const MAX_DEPTH = 3;
+
 type RenderSchemaOptions = {
   renderer: Renderer;
   schema: SchemaValue;
   data: Map<string, Chunk>;
   baseHeadingLevel: number;
   topLevelName: string;
+  depth: number;
 };
 
 type TypeLabel = {
@@ -131,11 +135,13 @@ function renderDisplayType({
   value,
   baseHeadingLevel,
   data,
+  depth,
 }: {
   renderer: Renderer;
   value: SchemaValue;
   baseHeadingLevel: number;
   data: Map<string, Chunk>;
+  depth: number;
 }) {
   const displayType = getDisplayType(value, data);
   let computedTypeLabel = "Signature:\n\n```\n";
@@ -178,6 +184,7 @@ function renderDisplayType({
       data: data,
       baseHeadingLevel,
       topLevelName: breakoutSubType.label,
+      depth: depth + 1,
     });
   }
 }
@@ -188,6 +195,7 @@ export function renderSchema({
   data,
   baseHeadingLevel,
   topLevelName,
+  depth,
 }: RenderSchemaOptions) {
   function renderObjectProperties(
     objectValue: ObjectValue,
@@ -205,6 +213,7 @@ export function renderSchema({
           value: schemaChunk.chunkData.value,
           baseHeadingLevel,
           data: data,
+          depth,
         });
       } else if (value.type === "enum") {
         renderer.appendHeading(5, key);
@@ -218,6 +227,7 @@ export function renderSchema({
           value,
           baseHeadingLevel,
           data: data,
+          depth,
         });
       }
     }
@@ -232,6 +242,7 @@ export function renderSchema({
       value: arrayLikeValue,
       baseHeadingLevel,
       data: data,
+      depth,
     });
   }
 
@@ -241,6 +252,7 @@ export function renderSchema({
       value: unionValue,
       baseHeadingLevel,
       data: data,
+      depth,
     });
     return;
   }
@@ -251,12 +263,23 @@ export function renderSchema({
       value: primitiveValue,
       baseHeadingLevel,
       data: data,
+      depth,
     });
     if (primitiveValue.type === "enum") {
       renderer.appendParagraph(
         `Values: ${primitiveValue.values.map((v) => `\`${v}\``).join(", ")}`
       );
     }
+  }
+
+  if (depth >= MAX_DEPTH) {
+    renderer.appendSidebarLink({
+      title: "Nested Schema Placeholder",
+      content: `# Nested Schema Placeholder
+
+This is a placeholder for a nested schema. It will be implemented soon.`,
+    });
+    return;
   }
 
   switch (schema.type) {

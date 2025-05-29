@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import type { Chunk } from "../../types/chunk.ts";
@@ -41,7 +41,7 @@ function getPageMap({
     if (!chunk.slug) {
       continue;
     }
-    const path = `${basePagePath}/${chunk.slug}.mdx`;
+    const path = resolve(join(basePagePath, `${chunk.slug}.mdx`));
     switch (chunk.chunkType) {
       case "about": {
         // TODO: eventually we want to make this more configurable, since
@@ -98,8 +98,14 @@ export function generateContent({
   const pageMap = getPageMap({ data, basePagePath });
 
   const renderedChunkMap = new Map<string, string>();
-  for (const [pagePath, { chunks, sidebarLabel, sidebarPosition }] of pageMap) {
-    const renderer = new Renderer({ baseComponentPath });
+  for (const [
+    currentPagePath,
+    { chunks, sidebarLabel, sidebarPosition },
+  ] of pageMap) {
+    const renderer = new Renderer({
+      baseComponentPath,
+      currentPagePath,
+    });
     renderer.insertFrontMatter({
       sidebarPosition,
       sidebarLabel,
@@ -125,6 +131,7 @@ export function generateContent({
             data,
             baseHeadingLevel: 1,
             topLevelName: "Schema",
+            depth: 0,
           });
           break;
         }
@@ -143,7 +150,7 @@ export function generateContent({
         }
       }
     }
-    renderedChunkMap.set(pagePath, renderer.render());
+    renderedChunkMap.set(currentPagePath, renderer.render());
   }
 
   // Attach the assets
