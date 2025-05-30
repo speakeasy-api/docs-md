@@ -20,6 +20,8 @@
         "${workspaceFolder}/../mistral-docs/docs/api",
         "-c",
         "${workspaceFolder}/../mistral-docs/src/components/speakeasy",
+        "-f",
+        "docusaurus"
       ]
     },
     {
@@ -35,9 +37,51 @@
         "--spec",
         "${workspaceFolder}/../redis-docs/content/integrate/redis-data-integration/reference/api-reference/openapi.json",
         "-p",
-        "${workspaceFolder}/../docs-docusaurus-playground/docs/api",
+        "${workspaceFolder}/../redis-demo-docs/src/app/(api)",
         "-c",
-        "${workspaceFolder}/../docs-docusaurus-playground/src/components/speakeasy",
+        "${workspaceFolder}/../redis-demo-docs/src/components/speakeasy",
+        "-f",
+        "nextra"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Speakeasy (Nextra)",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/packages/chunk-generator/src/cli/cli.ts",
+      "runtimeArgs": ["--experimental-strip-types"],
+      "args": [
+        "--spec",
+        "${workspaceFolder}/../speakeasy-registry/openapi_base.yaml",
+        "-p",
+        "${workspaceFolder}/../speakeasy-docs-demo-nextra/src/app/(api)",
+        "-c",
+        "${workspaceFolder}/../speakeasy-docs-demo-nextra/src/components/speakeasy",
+        "-f",
+        "nextra"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Speakeasy (Docusaurus)",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/packages/chunk-generator/src/cli/cli.ts",
+      "runtimeArgs": ["--experimental-strip-types"],
+      "args": [
+        "--spec",
+        "${workspaceFolder}/../speakeasy-registry/openapi_base.yaml",
+        "-p",
+        "${workspaceFolder}/../speakeasy-docs-demo-docusaurus/docs/api",
+        "-c",
+        "${workspaceFolder}/../speakeasy-docs-demo-docusaurus/src/components/speakeasy",
+        "-f",
+        "docusaurus"
       ]
     },
   ]

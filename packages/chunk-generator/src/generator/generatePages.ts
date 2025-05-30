@@ -7,13 +7,13 @@ import { generateContent } from "./mdx/generateContent.ts";
  */
 export async function generatePages({
   specContents,
-  basePagePath,
+  buildPagePath,
   baseComponentPath,
 }: {
   specContents: string;
-  basePagePath: string;
+  buildPagePath: (slug: string) => string;
   baseComponentPath: string;
 }): Promise<Record<string, string>> {
   const data = await getDocsData(specContents);
-  return generateContent({ data, basePagePath, baseComponentPath });
+  return generateContent({ data, buildPagePath, baseComponentPath });
 }

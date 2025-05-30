@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import type { Chunk } from "../../types/chunk.ts";
@@ -19,12 +19,12 @@ const LOCAL_COMPONENT_PATH = join(
 
 type BaseOptions = {
   data: Map<string, Chunk>;
-  basePagePath: string;
+  buildPagePath: (slug: string) => string;
 };
 
 function getPageMap({
   data,
-  basePagePath,
+  buildPagePath,
 }: BaseOptions): Map<
   string,
   { sidebarLabel: string; sidebarPosition: string; chunks: Chunk[] }
@@ -40,12 +40,12 @@ function getPageMap({
     if (!chunk.slug) {
       continue;
     }
-    const path = resolve(join(basePagePath, `${chunk.slug}.mdx`));
+    const pagePath = buildPagePath(chunk.slug);
     switch (chunk.chunkType) {
       case "about": {
         // TODO: eventually we want to make this more configurable, since
         // Docusaurus and Nextra use different formats
-        pageMap.set(path, {
+        pageMap.set(pagePath, {
           sidebarLabel: "About",
           sidebarPosition: "1",
           chunks: [chunk],
@@ -54,7 +54,7 @@ function getPageMap({
       }
       case "tag": {
         const chunks: Chunk[] = [chunk];
-        pageMap.set(path, {
+        pageMap.set(pagePath, {
           sidebarLabel: chunk.chunkData.name,
           sidebarPosition: `2.${tagIndex++}`,
           chunks,
@@ -90,11 +90,11 @@ type GenerateContentOptions = BaseOptions & {
 
 export function generateContent({
   data,
-  basePagePath,
+  buildPagePath,
   baseComponentPath,
 }: GenerateContentOptions): Record<string, string> {
   // First, get a mapping of pages to chunks
-  const pageMap = getPageMap({ data, basePagePath });
+  const pageMap = getPageMap({ data, buildPagePath });
 
   const renderedChunkMap = new Map<string, string>();
   for (const [
@@ -168,35 +168,6 @@ export function generateContent({
       readFileSync(join(LOCAL_COMPONENT_PATH, assetFile), "utf-8")
     );
   }
-
-  // TODO: don't hard-code this for Docusaurus and make something more flexible
-  // for different scaffolds
-  renderedChunkMap.set(
-    join(basePagePath, "tag", "_category_.json"),
-    JSON.stringify(
-      {
-        position: 3,
-        label: "Operations",
-        collapsible: true,
-        collapsed: false,
-      },
-      null,
-      "  "
-    )
-  );
-  renderedChunkMap.set(
-    join(basePagePath, "_category_.json"),
-    JSON.stringify(
-      {
-        position: 2,
-        label: "API Reference",
-        collapsible: true,
-        collapsed: false,
-      },
-      null,
-      "  "
-    )
-  );
 
   return Object.fromEntries(renderedChunkMap);
 }
