@@ -7,7 +7,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch CLI",
+      "name": "Mistral",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -21,6 +21,24 @@
         "-c",
         "${workspaceFolder}/../mistral-docs/src/components/speakeasy",
       ]
-    }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Redis",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/packages/chunk-generator/src/cli/cli.ts",
+      "runtimeArgs": ["--experimental-strip-types"],
+      "args": [
+        "--spec",
+        "${workspaceFolder}/../redis-docs/content/integrate/redis-data-integration/reference/api-reference/openapi.json",
+        "-p",
+        "${workspaceFolder}/../docs-docusaurus-playground/docs/api",
+        "-c",
+        "${workspaceFolder}/../docs-docusaurus-playground/src/components/speakeasy",
+      ]
+    },
   ]
 }
