@@ -175,8 +175,21 @@ export function generateContent({
     join(basePagePath, "tag", "_category_.json"),
     JSON.stringify(
       {
-        position: 2,
+        position: 3,
         label: "Operations",
+        collapsible: true,
+        collapsed: false,
+      },
+      null,
+      "  "
+    )
+  );
+  renderedChunkMap.set(
+    join(basePagePath, "_category_.json"),
+    JSON.stringify(
+      {
+        position: 2,
+        label: "API Reference",
         collapsible: true,
         collapsed: false,
       },
