@@ -94,7 +94,7 @@ const pageContents = await generatePages({
 
 switch (framework) {
   case "docusaurus": {
-    pageContents["tag/_category_.json"] = JSON.stringify(
+    pageContents[join(pageOutDir, "tag", "_category_.json")] = JSON.stringify(
       {
         position: 3,
         label: "Operations",
@@ -104,7 +104,7 @@ switch (framework) {
       null,
       "  "
     );
-    pageContents["_category_.json"] = JSON.stringify(
+    pageContents[join(pageOutDir, "_category_.json")] = JSON.stringify(
       {
         position: 2,
         label: "API Reference",
