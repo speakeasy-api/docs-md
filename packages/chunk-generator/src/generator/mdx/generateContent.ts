@@ -109,6 +109,7 @@ export function generateContent({
           renderer.appendHeading(1, chunk.chunkData.name);
           renderSchema({
             renderer,
+            site,
             schema: chunk.chunkData.value,
             data,
             baseHeadingLevel: 1,
@@ -118,7 +119,11 @@ export function generateContent({
           break;
         }
         case "operation": {
-          renderOperation(renderer, chunk, data, {
+          renderOperation({
+            renderer,
+            site,
+            chunk,
+            docsData: data,
             baseHeadingLevel: 2,
           });
           break;

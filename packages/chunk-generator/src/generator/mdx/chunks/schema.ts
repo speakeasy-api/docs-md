@@ -8,13 +8,14 @@ import type {
   UnionValue,
 } from "../../../types/chunk.ts";
 import { assertNever } from "../../../util/assertNever.ts";
-import type { Renderer } from "../renderer.ts";
+import type { Renderer, Site } from "../renderer.ts";
 import { getSchemaFromId } from "../util.ts";
 
 // TODO: make this configurable
 const MAX_DEPTH = 3;
 
 type RenderSchemaOptions = {
+  site: Site;
   renderer: Renderer;
   schema: SchemaValue;
   data: Map<string, Chunk>;
@@ -31,7 +32,6 @@ type TypeLabel = {
 type DisplayType = {
   typeLabel: TypeLabel;
   breakoutSubTypes: Array<{ label: string; schema: SchemaValue }>;
-  linkSubTypes: Array<{ label: string; link: string }>;
 };
 
 function getDisplayType(
@@ -45,7 +45,6 @@ function getDisplayType(
         breakoutSubTypes: [
           { label: `${value.name} Properties`, schema: value },
         ],
-        linkSubTypes: [],
       };
     }
     case "array": {
@@ -72,7 +71,7 @@ function getDisplayType(
     case "union": {
       const displayTypes = value.values.map((v) => getDisplayType(v, data));
       const hasBreakoutSubType = displayTypes.some(
-        (d) => d.breakoutSubTypes.length > 0 || d.linkSubTypes.length > 0
+        (d) => d.breakoutSubTypes.length > 0
       );
       if (!hasBreakoutSubType) {
         return {
@@ -81,18 +80,15 @@ function getDisplayType(
             children: displayTypes.map((d) => d.typeLabel),
           },
           breakoutSubTypes: [],
-          linkSubTypes: [],
         };
       }
       const breakoutSubTypes = displayTypes.flatMap((d) => d.breakoutSubTypes);
-      const linkSubTypes = displayTypes.flatMap((d) => d.linkSubTypes);
       return {
         typeLabel: {
           label: "union",
           children: displayTypes.map((d) => d.typeLabel),
         },
         breakoutSubTypes,
-        linkSubTypes,
       };
     }
     case "chunk": {
@@ -103,7 +99,6 @@ function getDisplayType(
       return {
         typeLabel: { label: "enum", children: [] },
         breakoutSubTypes: [],
-        linkSubTypes: [],
       };
     }
     case "string":
@@ -121,7 +116,6 @@ function getDisplayType(
       return {
         typeLabel: { label: value.type, children: [] },
         breakoutSubTypes: [],
-        linkSubTypes: [],
       };
     }
     default: {
@@ -132,12 +126,14 @@ function getDisplayType(
 
 function renderDisplayType({
   renderer,
+  site,
   value,
   baseHeadingLevel,
   data,
   depth,
 }: {
   renderer: Renderer;
+  site: Site;
   value: SchemaValue;
   baseHeadingLevel: number;
   data: Map<string, Chunk>;
@@ -153,19 +149,6 @@ function renderDisplayType({
   }
   computeTypeLabel(displayType.typeLabel, 0);
   renderer.appendParagraph(computedTypeLabel + "```");
-  if (displayType.linkSubTypes.length === 1) {
-    renderer.appendParagraph(
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      `See [${displayType.linkSubTypes[0]!.label}](${displayType.linkSubTypes[0]!.link})`
-    );
-  } else if (displayType.linkSubTypes.length > 1) {
-    renderer.appendParagraph("See:");
-    renderer.appendList(
-      displayType.linkSubTypes.map(
-        (linkSubType) => `[${linkSubType.label}](${linkSubType.link})`
-      )
-    );
-  }
   // TODO: this is a quick-n-dirty deduping of breakout types, but if there are
   // two different schemas with the same name they'll be deduped, which is wrong.
   for (let i = 0; i < displayType.breakoutSubTypes.length; i++) {
@@ -180,6 +163,7 @@ function renderDisplayType({
     }
     renderSchema({
       renderer,
+      site,
       schema: breakoutSubType.schema,
       data: data,
       baseHeadingLevel,
@@ -191,6 +175,7 @@ function renderDisplayType({
 
 export function renderSchema({
   renderer,
+  site,
   schema,
   data,
   baseHeadingLevel,
@@ -210,6 +195,7 @@ export function renderSchema({
         const schemaChunk = getSchemaFromId(value.chunkId, data);
         renderDisplayType({
           renderer,
+          site,
           value: schemaChunk.chunkData.value,
           baseHeadingLevel,
           data: data,
@@ -224,6 +210,7 @@ export function renderSchema({
         renderer.appendHeading(5, key);
         renderDisplayType({
           renderer,
+          site,
           value,
           baseHeadingLevel,
           data: data,
@@ -239,6 +226,7 @@ export function renderSchema({
   ) {
     renderDisplayType({
       renderer,
+      site,
       value: arrayLikeValue,
       baseHeadingLevel,
       data: data,
@@ -249,6 +237,7 @@ export function renderSchema({
   function renderUnionItems(unionValue: UnionValue) {
     renderDisplayType({
       renderer,
+      site,
       value: unionValue,
       baseHeadingLevel,
       data: data,
@@ -260,6 +249,7 @@ export function renderSchema({
   function renderBasicItems(primitiveValue: SchemaValue) {
     renderDisplayType({
       renderer,
+      site,
       value: primitiveValue,
       baseHeadingLevel,
       data: data,
@@ -273,11 +263,30 @@ export function renderSchema({
   }
 
   if (depth >= MAX_DEPTH) {
-    renderer.appendSidebarLink({
-      title: "Nested Schema Placeholder",
-      content: `# Nested Schema Placeholder
+    // This shouldn't be possible, since we only recurse on objects
+    if (schema.type !== "object") {
+      throw new Error("Schema must be an object to be embedded");
+    }
+    const embedName = schema.name;
+    const sidebarLinkRenderer = site.createEmbedPage(embedName);
 
-This is a placeholder for a nested schema. It will be implemented soon.`,
+    // If no renderer was returned, that means we've already rendered this embed
+    if (sidebarLinkRenderer) {
+      sidebarLinkRenderer.appendHeading(baseHeadingLevel, embedName);
+      renderSchema({
+        renderer: sidebarLinkRenderer,
+        site,
+        schema,
+        data,
+        baseHeadingLevel,
+        topLevelName,
+        depth: 0,
+      });
+      sidebarLinkRenderer.finalize();
+    }
+    renderer.appendSidebarLink({
+      title: embedName,
+      embedName,
     });
     return;
   }

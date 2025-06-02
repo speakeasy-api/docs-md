@@ -1,14 +1,23 @@
 import type { Chunk, OperationChunk } from "../../../types/chunk.ts";
-import type { Renderer } from "../renderer.ts";
+import type { Renderer, Site } from "../renderer.ts";
 import { getSchemaFromId } from "../util.ts";
 import { renderSchema } from "./schema.ts";
 
-export function renderOperation(
-  renderer: Renderer,
-  chunk: OperationChunk,
-  docsData: Map<string, Chunk>,
-  { baseHeadingLevel }: { baseHeadingLevel: number }
-) {
+type RenderOperationOptions = {
+  renderer: Renderer;
+  site: Site;
+  chunk: OperationChunk;
+  docsData: Map<string, Chunk>;
+  baseHeadingLevel: number;
+};
+
+export function renderOperation({
+  renderer,
+  site,
+  chunk,
+  docsData,
+  baseHeadingLevel,
+}: RenderOperationOptions) {
   renderer.appendHeading(
     baseHeadingLevel,
     `${chunk.chunkData.method.toUpperCase()} ${chunk.chunkData.path}`
@@ -51,6 +60,7 @@ export function renderOperation(
     );
     renderSchema({
       topLevelName: "Request Body",
+      site,
       renderer,
       schema: requestBodySchema.chunkData.value,
       data: docsData,
@@ -78,6 +88,7 @@ export function renderOperation(
         );
         renderSchema({
           topLevelName: "Response Body",
+          site,
           renderer,
           schema: responseSchema.chunkData.value,
           data: docsData,
