@@ -1,4 +1,13 @@
+import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ASSET_PATH = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "..",
+  "assets"
+);
 
 type AppendOptions = {
   // We almost always want to escape special Markdown characters, so we default
@@ -7,7 +16,49 @@ type AppendOptions = {
   escape?: boolean;
 };
 
+const SAVE_PAGE = Symbol();
+
+export class Site {
+  #baseComponentPath: string;
+  #pages = new Map<string, string>();
+
+  constructor({ baseComponentPath }: { baseComponentPath: string }) {
+    this.#baseComponentPath = baseComponentPath;
+
+    // Prepopulate the list of static assets to be saved
+    const assetFileList = readdirSync(ASSET_PATH, {
+      recursive: true,
+      withFileTypes: true,
+    })
+      .filter((f) => f.isFile())
+      .map((f) => join(f.parentPath, f.name).replace(ASSET_PATH + "/", ""));
+    for (const assetFile of assetFileList) {
+      this.#pages.set(
+        join(baseComponentPath, assetFile),
+        readFileSync(join(ASSET_PATH, assetFile), "utf-8")
+      );
+    }
+  }
+
+  public createPage(path: string): Renderer {
+    return new Renderer({
+      site: this,
+      baseComponentPath: this.#baseComponentPath,
+      currentPagePath: path,
+    });
+  }
+
+  public getPages() {
+    return this.#pages;
+  }
+
+  private [SAVE_PAGE](path: string, content: string) {
+    this.#pages.set(path, content);
+  }
+}
+
 export class Renderer {
+  #site: Site;
   #baseComponentPath: string;
   #currentPagePath: string;
   #frontMatter: string | undefined;
@@ -15,37 +66,43 @@ export class Renderer {
   #lines: string[] = [];
 
   constructor({
+    site,
     baseComponentPath,
     currentPagePath,
   }: {
+    site: Site;
     baseComponentPath: string;
     currentPagePath: string;
   }) {
+    this.#site = site;
     this.#baseComponentPath = baseComponentPath;
     this.#currentPagePath = currentPagePath;
   }
 
+  // TODO: need to split this into tiers. For example, paragraphs should escape
+  // {}, since they're MDX-specific extensions, but otherwise shouldn't escape
+  // anything else
   public escapeText(text: string) {
     return (
       text
-        .replace("\\", "\\\\")
-        .replace("`", "\\`")
-        .replace("*", "\\*")
-        .replace("_", "\\_")
-        .replace("{", "\\{")
-        .replace("}", "\\}")
-        .replace("[", "\\[")
-        .replace("]", "\\]")
-        .replace("<", "\\<")
-        .replace(">", "\\>")
-        .replace("(", "\\(")
-        .replace(")", "\\)")
-        .replace("#", "\\#")
-        .replace("+", "\\+")
+        .replaceAll("\\", "\\\\")
+        .replaceAll("`", "\\`")
+        .replaceAll("*", "\\*")
+        .replaceAll("_", "\\_")
+        .replaceAll("{", "\\{")
+        .replaceAll("}", "\\}")
+        .replaceAll("[", "\\[")
+        .replaceAll("]", "\\]")
+        .replaceAll("<", "\\<")
+        .replaceAll(">", "\\>")
+        .replaceAll("(", "\\(")
+        .replaceAll(")", "\\)")
+        .replaceAll("#", "\\#")
+        .replaceAll("+", "\\+")
         // .replace("-", "\\-")
         // .replace(".", "\\.")
-        .replace("!", "\\!")
-        .replace("|", "\\|")
+        .replaceAll("!", "\\!")
+        .replaceAll("|", "\\|")
     );
   }
 
@@ -118,7 +175,7 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
     );
   }
 
-  public render() {
+  public finalize() {
     let imports = "";
     for (const [importPath, symbols] of this.#imports) {
       imports += `import { ${Array.from(symbols).join(", ")} } from "${importPath}";\n`;
@@ -126,7 +183,7 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
     const data =
       this.#frontMatter + "\n\n" + imports + "\n\n" + this.#lines.join("\n\n");
     this.#lines = [];
-    return data;
+    this.#site[SAVE_PAGE](this.#currentPagePath, data);
   }
 
   #insertComponentImport(symbol: string, componentPath: string) {
