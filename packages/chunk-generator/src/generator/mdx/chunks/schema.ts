@@ -124,6 +124,59 @@ function getDisplayType(
   }
 }
 
+function computeSingleLineTypeLabel(typeLabel: TypeLabel): string {
+  switch (typeLabel.label) {
+    case "array":
+    case "map":
+    case "set":
+      return `${typeLabel.label}<${typeLabel.children
+        .map((c) => computeSingleLineTypeLabel(c))
+        .join(", ")}>`;
+    case "union":
+    case "enum":
+      return typeLabel.children
+        .map((c) => computeSingleLineTypeLabel(c))
+        .join(" | ");
+    default:
+      return typeLabel.label;
+  }
+}
+
+function computeMultilineTypeLabel(
+  typeLabel: TypeLabel,
+  indentation: number,
+  computedTypeLabel = ""
+) {
+  switch (typeLabel.label) {
+    case "array":
+    case "map":
+    case "set":
+      computedTypeLabel += "  ".repeat(indentation) + typeLabel.label + "\n";
+      for (const child of typeLabel.children) {
+        computedTypeLabel = computeMultilineTypeLabel(
+          child,
+          indentation + 1,
+          computedTypeLabel
+        );
+      }
+      return computedTypeLabel;
+    case "union":
+    case "enum":
+      computedTypeLabel += "  ".repeat(indentation) + typeLabel.label + "\n";
+      for (const child of typeLabel.children) {
+        computedTypeLabel = computeMultilineTypeLabel(
+          child,
+          indentation + 1,
+          computedTypeLabel
+        );
+      }
+      return computedTypeLabel;
+    default:
+      computedTypeLabel += "  ".repeat(indentation) + typeLabel.label + "\n";
+      return computedTypeLabel;
+  }
+}
+
 function renderDisplayType({
   renderer,
   site,
@@ -140,15 +193,16 @@ function renderDisplayType({
   depth: number;
 }) {
   const displayType = getDisplayType(value, data);
-  let computedTypeLabel = "Signature:\n\n```\n";
-  function computeTypeLabel(typeLabel: TypeLabel, indentation: number) {
-    computedTypeLabel += "  ".repeat(indentation) + typeLabel.label + "\n";
-    for (const child of typeLabel.children) {
-      computeTypeLabel(child, indentation + 1);
-    }
+  if ("description" in value && value.description) {
+    renderer.appendParagraph(value.description);
   }
-  computeTypeLabel(displayType.typeLabel, 0);
-  renderer.appendParagraph(computedTypeLabel + "```");
+
+  let computedTypeLabel = `_Type Signature:_ \`${computeSingleLineTypeLabel(displayType.typeLabel)}\``;
+  if (computedTypeLabel.length > 80) {
+    computedTypeLabel = `_Type Signature:_\n\`\`\`\n${computeMultilineTypeLabel(displayType.typeLabel, 0)}\`\`\``;
+  }
+  renderer.appendParagraph(computedTypeLabel);
+
   // TODO: this is a quick-n-dirty deduping of breakout types, but if there are
   // two different schemas with the same name they'll be deduped, which is wrong.
   for (let i = 0; i < displayType.breakoutSubTypes.length; i++) {
@@ -203,9 +257,11 @@ export function renderSchema({
         });
       } else if (value.type === "enum") {
         renderer.appendHeading(5, key);
-        renderer.appendParagraph(
-          `Signature:\n\`\`\`\nenum${value.values.map((v) => `\n  ${v}`).join("")}\n\`\`\``
-        );
+        let computedTypeLabel = `_Type Signature:_ \`${value.values.map((v) => (typeof v === "string" ? `'${v}'` : v)).join(" | ")}\``;
+        if (computedTypeLabel.length > 80) {
+          computedTypeLabel = `_Type Signature:_\n\`\`\`\nenum${value.values.map((v) => `\n  ${typeof v === "string" ? `'${v}'` : v}`).join("")}\n\`\`\``;
+        }
+        renderer.appendParagraph(computedTypeLabel);
       } else {
         renderer.appendHeading(5, key);
         renderDisplayType({

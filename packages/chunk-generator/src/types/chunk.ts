@@ -74,6 +74,7 @@ type AnyValue = {
 };
 
 type BaseValue = {
+  description: string | null;
   examples: string[];
 };
 
