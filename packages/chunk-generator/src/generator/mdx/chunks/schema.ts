@@ -347,7 +347,7 @@ export function renderSchema({
       sidebarLinkRenderer.finalize();
     }
     renderer.appendSidebarLink({
-      title: embedName,
+      title: `${embedName} Details`,
       embedName,
     });
     return;

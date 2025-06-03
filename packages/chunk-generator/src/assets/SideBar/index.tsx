@@ -5,11 +5,16 @@ import { motion } from "motion/react";
 import type { PropsWithChildren } from "react";
 import React, { useCallback, useEffect, useState } from "react";
 
+import Button from "./button.mdx";
 import Container from "./container.mdx";
 
 // TODO: https://github.com/orgs/mdx-js/discussions/2272 implies there's a more
 // elegant way to do this, but I couldn't get it to work after a bit of fiddling
 const TypedContainer = Container as React.FC<{ children: React.ReactNode }>;
+const TypedButton = Button as React.FC<{
+  children: React.ReactNode;
+  onClick: () => void;
+}>;
 
 type SidebarContent = {
   title: string;
@@ -98,5 +103,5 @@ export function SideBarCta({
     () => setContent({ title, content: children }),
     [title, children]
   );
-  return <button onClick={onClick}>{cta}</button>;
+  return <TypedButton onClick={onClick}>{cta}</TypedButton>;
 }
