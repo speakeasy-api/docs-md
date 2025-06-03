@@ -11,8 +11,9 @@ import { assertNever } from "../../../util/assertNever.ts";
 import type { Renderer, Site } from "../renderer.ts";
 import { getSchemaFromId } from "../util.ts";
 
-// TODO: make this configurable
+// TODO: make these configurable
 const MAX_DEPTH = 3;
+const MAX_TYPE_LABEL_LENGTH = 80;
 
 type RenderSchemaOptions = {
   site: Site;
@@ -198,7 +199,7 @@ function renderDisplayType({
   }
 
   let computedTypeLabel = `_Type Signature:_ \`${computeSingleLineTypeLabel(displayType.typeLabel)}\``;
-  if (computedTypeLabel.length > 80) {
+  if (computedTypeLabel.length > MAX_TYPE_LABEL_LENGTH) {
     computedTypeLabel = `_Type Signature:_\n\`\`\`\n${computeMultilineTypeLabel(displayType.typeLabel, 0)}\`\`\``;
   }
   renderer.appendParagraph(computedTypeLabel);
@@ -258,7 +259,7 @@ export function renderSchema({
       } else if (value.type === "enum") {
         renderer.appendHeading(5, key);
         let computedTypeLabel = `_Type Signature:_ \`${value.values.map((v) => (typeof v === "string" ? `'${v}'` : v)).join(" | ")}\``;
-        if (computedTypeLabel.length > 80) {
+        if (computedTypeLabel.length > MAX_TYPE_LABEL_LENGTH) {
           computedTypeLabel = `_Type Signature:_\n\`\`\`\nenum${value.values.map((v) => `\n  ${typeof v === "string" ? `'${v}'` : v}`).join("")}\n\`\`\``;
         }
         renderer.appendParagraph(computedTypeLabel);
