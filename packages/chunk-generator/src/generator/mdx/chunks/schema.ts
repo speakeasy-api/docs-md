@@ -15,6 +15,8 @@ import { getSchemaFromId } from "../util.ts";
 const MAX_DEPTH = 3;
 const MAX_TYPE_LABEL_LENGTH = 80;
 
+const MIN_HEADING_LEVEL = 5;
+
 type RenderSchemaOptions = {
   site: Site;
   renderer: Renderer;
@@ -221,7 +223,7 @@ function renderDisplayType({
       site,
       schema: breakoutSubType.schema,
       data: data,
-      baseHeadingLevel,
+      baseHeadingLevel: Math.min(baseHeadingLevel + 1, MIN_HEADING_LEVEL),
       topLevelName: breakoutSubType.label,
       depth: depth + 1,
     });
@@ -246,7 +248,7 @@ export function renderSchema({
     });
     for (const [key, value] of Object.entries(objectValue.properties)) {
       if (value.type === "chunk") {
-        renderer.appendHeading(5, key);
+        renderer.appendHeading(baseHeadingLevel, key);
         const schemaChunk = getSchemaFromId(value.chunkId, data);
         renderDisplayType({
           renderer,
@@ -257,14 +259,14 @@ export function renderSchema({
           depth,
         });
       } else if (value.type === "enum") {
-        renderer.appendHeading(5, key);
+        renderer.appendHeading(baseHeadingLevel, key);
         let computedTypeLabel = `_Type Signature:_ \`${value.values.map((v) => (typeof v === "string" ? `'${v}'` : v)).join(" | ")}\``;
         if (computedTypeLabel.length > MAX_TYPE_LABEL_LENGTH) {
           computedTypeLabel = `_Type Signature:_\n\`\`\`\nenum${value.values.map((v) => `\n  ${typeof v === "string" ? `'${v}'` : v}`).join("")}\n\`\`\``;
         }
         renderer.appendParagraph(computedTypeLabel);
       } else {
-        renderer.appendHeading(5, key);
+        renderer.appendHeading(baseHeadingLevel, key);
         renderDisplayType({
           renderer,
           site,
@@ -329,13 +331,15 @@ export function renderSchema({
 
     // If no renderer was returned, that means we've already rendered this embed
     if (sidebarLinkRenderer) {
-      sidebarLinkRenderer.appendHeading(baseHeadingLevel, embedName);
+      // We append a raw heading here to prevent the heading from being added to
+      // the table of contents
+      sidebarLinkRenderer.appendRaw(`<h3>${embedName}</h3>`);
       renderSchema({
         renderer: sidebarLinkRenderer,
         site,
         schema,
         data,
-        baseHeadingLevel,
+        baseHeadingLevel: 4,
         topLevelName,
         depth: 0,
       });

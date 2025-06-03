@@ -126,7 +126,7 @@ export function generateContent({
             site,
             chunk,
             docsData: data,
-            baseHeadingLevel: 2,
+            baseHeadingLevel: 1,
           });
           break;
         }

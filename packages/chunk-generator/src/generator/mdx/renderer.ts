@@ -163,6 +163,10 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
     );
   }
 
+  public appendRaw(text: string) {
+    this.#lines.push(text);
+  }
+
   public beginExpandableSection(
     title: string,
     {

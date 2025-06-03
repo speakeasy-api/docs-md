@@ -64,20 +64,19 @@ export function renderOperation({
       renderer,
       schema: requestBodySchema.chunkData.value,
       data: docsData,
-      baseHeadingLevel: baseHeadingLevel + 1,
+      baseHeadingLevel: baseHeadingLevel + 2,
       depth: 0,
     });
   }
 
   if (chunk.chunkData.responses) {
-    renderer.appendHeading(baseHeadingLevel + 1, "Responses");
     for (const [statusCode, responses] of Object.entries(
       chunk.chunkData.responses
     )) {
       for (const response of responses) {
         renderer.appendHeading(
-          baseHeadingLevel + 2,
-          `${statusCode} (${response.contentType})`
+          baseHeadingLevel + 1,
+          `Response: ${statusCode} (${response.contentType})`
         );
         if (response.description) {
           renderer.appendParagraph(response.description);
