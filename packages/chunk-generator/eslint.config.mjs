@@ -11,7 +11,7 @@ export default getNodeESLintConfig({
   entryPoints: {
     "eslint.config.mjs": ["default"],
     "src/index.ts": ["generateChunks"],
-    "src/assets/SideBar/index.tsx": ["SideBar"],
+    "src/assets/SideBar/index.tsx": ["SideBar", "SideBarCta"],
   },
   ignores: ["src/generator/docsData/wasm_exec.js"],
 });

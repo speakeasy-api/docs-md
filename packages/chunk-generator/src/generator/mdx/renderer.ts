@@ -84,6 +84,7 @@ export class Renderer {
     string,
     { defaultAlias: string | undefined; namedImports: Set<string> }
   >();
+  #includeSidebar = false;
   #lines: string[] = [];
 
   constructor({
@@ -186,13 +187,15 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
     title: string;
     embedName: string;
   }) {
+    this.#includeSidebar = true;
+    this.#insertComponentImport("SideBarCta", "SideBar/index.tsx");
     this.#insertComponentImport("SideBar", "SideBar/index.tsx");
     this.#insertEmbedImport(embedName);
     this.#lines.push(
       `<p>
-  <SideBar cta="${`View ${this.escapeText(title)}`}" title="${this.escapeText(title)}">
+  <SideBarCta cta="${`View ${this.escapeText(title)}`}" title="${this.escapeText(title)}">
     <${getEmbedSymbol(embedName)} />
-  </SideBar>
+  </SideBarCta>
 </p>`
     );
   }
@@ -213,6 +216,7 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
     const data =
       (this.#frontMatter ? this.#frontMatter + "\n\n" : "") +
       (imports ? imports + "\n\n" : "") +
+      (this.#includeSidebar ? "<SideBar />\n\n" : "") +
       this.#lines.join("\n\n");
     this.#lines = [];
     this.#site[SAVE_PAGE](this.#currentPagePath, data);
