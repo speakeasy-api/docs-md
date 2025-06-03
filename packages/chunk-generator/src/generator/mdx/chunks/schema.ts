@@ -331,15 +331,16 @@ export function renderSchema({
 
     // If no renderer was returned, that means we've already rendered this embed
     if (sidebarLinkRenderer) {
-      // We append a raw heading here to prevent the heading from being added to
-      // the table of contents
-      sidebarLinkRenderer.appendRaw(`<h3>${embedName}</h3>`);
+      sidebarLinkRenderer.appendHeading(baseHeadingLevel, embedName);
+      if (schema.description) {
+        sidebarLinkRenderer.appendParagraph(schema.description);
+      }
       renderSchema({
         renderer: sidebarLinkRenderer,
         site,
         schema,
         data,
-        baseHeadingLevel: 4,
+        baseHeadingLevel,
         topLevelName,
         depth: 0,
       });

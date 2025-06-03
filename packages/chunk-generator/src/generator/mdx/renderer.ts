@@ -101,10 +101,13 @@ export class Renderer {
     this.#currentPagePath = currentPagePath;
   }
 
-  // TODO: need to split this into tiers. For example, paragraphs should escape
-  // {}, since they're MDX-specific extensions, but otherwise shouldn't escape
-  // anything else
-  public escapeText(text: string) {
+  public escapeText(
+    text: string,
+    { mdxOnly = false }: { mdxOnly?: boolean } = {}
+  ) {
+    if (mdxOnly) {
+      return text.replaceAll("{", "\\{").replaceAll("}", "\\}");
+    }
     return (
       text
         .replaceAll("\\", "\\\\")
@@ -147,18 +150,18 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
     { escape = true }: AppendOptions = {}
   ) {
     this.#lines.push(
-      `#`.repeat(level) + " " + (escape ? this.escapeText(text) : text)
+      `#`.repeat(level) + " " + this.escapeText(text, { mdxOnly: !escape })
     );
   }
 
   public appendParagraph(text: string, { escape = false }: AppendOptions = {}) {
-    this.#lines.push(escape ? this.escapeText(text) : text);
+    this.#lines.push(this.escapeText(text, { mdxOnly: !escape }));
   }
 
   public appendList(items: string[], { escape = true }: AppendOptions = {}) {
     this.#lines.push(
       items
-        .map((item) => "- " + (escape ? this.escapeText(item) : item))
+        .map((item) => "- " + this.escapeText(item, { mdxOnly: !escape }))
         .join("\n")
     );
   }
@@ -176,7 +179,7 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
   ) {
     this.#lines.push(`<details ${isOpenOnLoad ? "open" : ""}>`);
     this.#lines.push(
-      `<summary>${escape ? this.escapeText(title) : title}</summary>`
+      `<summary>${this.escapeText(title, { mdxOnly: !escape })}</summary>`
     );
   }
 
@@ -197,7 +200,7 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
     this.#insertEmbedImport(embedName);
     this.#lines.push(
       `<p>
-  <SideBarCta cta="${`View ${this.escapeText(title)}`}" title="${this.escapeText(title)}">
+  <SideBarCta cta="${`View ${this.escapeText(title, { mdxOnly: true })}`}" title="${this.escapeText(title)}">
     <${getEmbedSymbol(embedName)} />
   </SideBarCta>
 </p>`
