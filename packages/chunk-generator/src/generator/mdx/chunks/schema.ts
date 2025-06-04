@@ -13,7 +13,7 @@ import { getSchemaFromId } from "../util.ts";
 
 // TODO: make these configurable
 const MAX_DEPTH = 3;
-const MAX_TYPE_LABEL_LENGTH = 120;
+const MAX_TYPE_LABEL_LENGTH = 80;
 
 // We dont' want to create headings less than this level, because they typically
 // have a font size _smaller_ than paragraph font size, which looks weird.
@@ -129,56 +129,94 @@ function getDisplayType(
   }
 }
 
-function computeSingleLineTypeLabel(typeLabel: TypeLabel): string {
-  switch (typeLabel.label) {
-    case "array":
-    case "map":
-    case "set":
-      return `${typeLabel.label}<${typeLabel.children
-        .map((c) => computeSingleLineTypeLabel(c))
-        .join(", ")}>`;
-    case "union":
-    case "enum":
-      return typeLabel.children
-        .map((c) => computeSingleLineTypeLabel(c))
-        .join(" | ");
-    default:
-      return typeLabel.label;
-  }
-}
+type MultilineTypeLabelEntry = {
+  contents: string;
+  multiline: boolean;
+};
 
-function computeMultilineTypeLabel(
+function computeTypeLabel(
   typeLabel: TypeLabel,
-  indentation: number,
-  computedTypeLabel = ""
-) {
+  indentation: number
+): MultilineTypeLabelEntry {
+  function computeChildren(singleLineSeparator: string, indentation: number) {
+    const children: MultilineTypeLabelEntry[] = [];
+    let hasMultiline = false;
+    for (const child of typeLabel.children) {
+      const childLabel = computeTypeLabel(child, indentation + 1);
+      children.push(childLabel);
+      if (childLabel.multiline) {
+        hasMultiline = true;
+      }
+    }
+    const singleLineContents = `${typeLabel.label}<${children
+      .map((c) => c.contents)
+      .join(singleLineSeparator)}>`;
+    return {
+      children,
+      hasMultiline:
+        hasMultiline ||
+        singleLineContents.length > MAX_TYPE_LABEL_LENGTH - indentation + 1,
+      singleLineContents,
+    };
+  }
   switch (typeLabel.label) {
     case "array":
     case "map":
-    case "set":
-      computedTypeLabel += "  ".repeat(indentation) + typeLabel.label + "\n";
-      for (const child of typeLabel.children) {
-        computedTypeLabel = computeMultilineTypeLabel(
-          child,
-          indentation + 1,
-          computedTypeLabel
-        );
+    case "set": {
+      const { children, hasMultiline, singleLineContents } = computeChildren(
+        ",",
+        indentation
+      );
+      if (!hasMultiline) {
+        return {
+          contents: singleLineContents,
+          multiline: false,
+        };
       }
-      return computedTypeLabel;
+
+      let contents = `${typeLabel.label}<\n`;
+      for (let i = 0; i < children.length; i++) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        const child = children[i]!;
+        contents += `${" ".repeat(indentation + 1)}${child.contents}\n`;
+      }
+      contents += `${" ".repeat(indentation)}>\n`;
+      return {
+        contents,
+        multiline: true,
+      };
+    }
     case "union":
-    case "enum":
-      computedTypeLabel += "  ".repeat(indentation) + typeLabel.label + "\n";
-      for (const child of typeLabel.children) {
-        computedTypeLabel = computeMultilineTypeLabel(
-          child,
-          indentation + 1,
-          computedTypeLabel
-        );
+    case "enum": {
+      const { children, hasMultiline, singleLineContents } = computeChildren(
+        " | ",
+        indentation + 2
+      );
+      if (!hasMultiline) {
+        return {
+          contents: singleLineContents,
+          multiline: false,
+        };
       }
-      return computedTypeLabel;
-    default:
-      computedTypeLabel += "  ".repeat(indentation) + typeLabel.label + "\n";
-      return computedTypeLabel;
+
+      let contents = `${typeLabel.label}<\n`;
+      for (let i = 0; i < children.length; i++) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        const child = children[i]!;
+        contents += `${" ".repeat(indentation + 1)}| ${child.contents}\n`;
+      }
+      contents += `${" ".repeat(indentation)}>\n`;
+      return {
+        contents,
+        multiline: true,
+      };
+    }
+    default: {
+      return {
+        contents: typeLabel.label,
+        multiline: false,
+      };
+    }
   }
 }
 
@@ -202,11 +240,16 @@ function renderDisplayType({
     renderer.appendParagraph(value.description);
   }
 
-  let computedTypeLabel = `_Type Signature:_ \`${computeSingleLineTypeLabel(displayType.typeLabel)}\``;
-  if (computedTypeLabel.length > MAX_TYPE_LABEL_LENGTH) {
-    computedTypeLabel = `_Type Signature:_\n\`\`\`\n${computeMultilineTypeLabel(displayType.typeLabel, 0)}\`\`\``;
+  const computedTypeLabel = computeTypeLabel(displayType.typeLabel, 0);
+  if (computedTypeLabel.multiline) {
+    renderer.appendParagraph(
+      `_Type Signature:_\n\`\`\`\n${computedTypeLabel.contents}\`\`\``
+    );
+  } else {
+    renderer.appendParagraph(
+      `_Type Signature:_ \`${computedTypeLabel.contents}\``
+    );
   }
-  renderer.appendParagraph(computedTypeLabel);
 
   // TODO: this is a quick-n-dirty deduping of breakout types, but if there are
   // two different schemas with the same name they'll be deduped, which is wrong.
