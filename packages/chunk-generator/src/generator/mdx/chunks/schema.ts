@@ -13,8 +13,10 @@ import { getSchemaFromId } from "../util.ts";
 
 // TODO: make these configurable
 const MAX_DEPTH = 3;
-const MAX_TYPE_LABEL_LENGTH = 80;
+const MAX_TYPE_LABEL_LENGTH = 120;
 
+// We dont' want to create headings less than this level, because they typically
+// have a font size _smaller_ than paragraph font size, which looks weird.
 const MIN_HEADING_LEVEL = 5;
 
 type RenderSchemaOptions = {
