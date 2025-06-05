@@ -17,7 +17,7 @@ const TYPE_SIGNATURE_PREFIX = "_Type Signature:_ ";
 const MAX_DEPTH = 3;
 const MAX_TYPE_LABEL_LENGTH = 80;
 
-// Derived info
+// Derived info. TODO: this should take indentation level into account
 const MAX_INLINE_TYPE_LABEL_LENGTH =
   MAX_TYPE_LABEL_LENGTH - TYPE_SIGNATURE_PREFIX.length;
 
