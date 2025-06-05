@@ -106,29 +106,25 @@ export class Renderer {
     { mdxOnly = false }: { mdxOnly?: boolean } = {}
   ) {
     if (mdxOnly) {
-      return text.replaceAll("{", "\\{").replaceAll("}", "\\}");
+      return text.replace(/(?<!\\)\{/g, "\\{").replace(/(?<!\\)\}/g, "\\}");
     }
-    return (
-      text
-        .replaceAll("\\", "\\\\")
-        .replaceAll("`", "\\`")
-        .replaceAll("*", "\\*")
-        .replaceAll("_", "\\_")
-        .replaceAll("{", "\\{")
-        .replaceAll("}", "\\}")
-        .replaceAll("[", "\\[")
-        .replaceAll("]", "\\]")
-        .replaceAll("<", "\\<")
-        .replaceAll(">", "\\>")
-        .replaceAll("(", "\\(")
-        .replaceAll(")", "\\)")
-        .replaceAll("#", "\\#")
-        .replaceAll("+", "\\+")
-        // .replace("-", "\\-")
-        // .replace(".", "\\.")
-        .replaceAll("!", "\\!")
-        .replaceAll("|", "\\|")
-    );
+    return text
+      .replace(/(?<!\\)\\/g, "\\\\")
+      .replace(/(?<!\\)`/g, "\\`")
+      .replace(/(?<!\\)\*/g, "\\*")
+      .replace(/(?<!\\)_/g, "\\_")
+      .replace(/(?<!\\)\{/g, "\\{")
+      .replace(/(?<!\\)\}/g, "\\}")
+      .replace(/(?<!\\)\[/g, "\\[")
+      .replace(/(?<!\\)\]/g, "\\]")
+      .replace(/(?<!\\)</g, "\\<")
+      .replace(/(?<!\\)>/g, "\\>")
+      .replace(/(?<!\\)\(/g, "\\(")
+      .replace(/(?<!\\)\)/g, "\\)")
+      .replace(/(?<!\\)#/g, "\\#")
+      .replace(/(?<!\\)\+/g, "\\+")
+      .replace(/(?<!\\)!/g, "\\!")
+      .replace(/(?<!\\)\|/g, "\\|");
   }
 
   public insertFrontMatter({
@@ -156,6 +152,10 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
 
   public appendParagraph(text: string, { escape = false }: AppendOptions = {}) {
     this.#lines.push(this.escapeText(text, { mdxOnly: !escape }));
+  }
+
+  public appendCode(text: string) {
+    this.#lines.push(`\`\`\`\n${text}\n\`\`\``);
   }
 
   public appendList(items: string[], { escape = true }: AppendOptions = {}) {

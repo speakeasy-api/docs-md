@@ -123,6 +123,7 @@ function getDisplayType(
     case "float32":
     case "decimal":
     case "binary":
+    case "null":
     case "any": {
       return {
         typeLabel: { label: value.type, children: [] },
@@ -271,6 +272,14 @@ function renderDisplayType({
   const displayType = getDisplayType(value, data);
   if ("description" in value && value.description) {
     renderer.appendParagraph(value.description);
+  }
+  if ("examples" in value && value.examples.length > 0) {
+    renderer.appendParagraph(
+      `_${value.examples.length > 1 ? "Examples" : "Example"}:_`
+    );
+    for (const example of value.examples) {
+      renderer.appendCode(example);
+    }
   }
 
   const computedDisplayType = computeDisplayType(displayType.typeLabel);
