@@ -11,9 +11,15 @@ import { assertNever } from "../../../util/assertNever.ts";
 import type { Renderer, Site } from "../renderer.ts";
 import { getSchemaFromId } from "../util.ts";
 
+const TYPE_SIGNATURE_PREFIX = "_Type Signature:_ ";
+
 // TODO: make these configurable
 const MAX_DEPTH = 3;
 const MAX_TYPE_LABEL_LENGTH = 80;
+
+// Derived info
+const MAX_INLINE_TYPE_LABEL_LENGTH =
+  MAX_TYPE_LABEL_LENGTH - TYPE_SIGNATURE_PREFIX.length;
 
 // We dont' want to create headings less than this level, because they typically
 // have a font size _smaller_ than paragraph font size, which looks weird.
@@ -129,49 +135,72 @@ function getDisplayType(
   }
 }
 
+function computeDisplayType(typeLabel: TypeLabel) {
+  const singleLineTypeLabel = computeSingleLineDisplayType(typeLabel);
+  if (singleLineTypeLabel.length < MAX_INLINE_TYPE_LABEL_LENGTH) {
+    return {
+      content: singleLineTypeLabel,
+      multiline: false,
+    };
+  }
+  const content = computeMultilineTypeLabel(typeLabel, 0);
+
+  // TODO: sometimes we end up with some blank lines. Ideally the core algorithm
+  // should handle this, but for now we just patch it up after the fact
+  content.contents = content.contents
+    .split("\n")
+    .filter((c) => c.length > 0)
+    .join("\n");
+  return {
+    content: content.contents,
+    multiline: true,
+  };
+}
+
+function computeSingleLineDisplayType(typeLabel: TypeLabel): string {
+  switch (typeLabel.label) {
+    case "array":
+    case "map":
+    case "set": {
+      return `${typeLabel.label}<${typeLabel.children.map(computeSingleLineDisplayType).join(",")}>`;
+    }
+    case "union":
+    case "enum": {
+      return typeLabel.children.map(computeSingleLineDisplayType).join(" | ");
+    }
+    default: {
+      return typeLabel.label;
+    }
+  }
+}
+
 type MultilineTypeLabelEntry = {
   contents: string;
   multiline: boolean;
 };
 
-function computeTypeLabel(
+function computeMultilineTypeLabel(
   typeLabel: TypeLabel,
   indentation: number
 ): MultilineTypeLabelEntry {
-  function computeChildren(singleLineSeparator: string, indentation: number) {
-    const children: MultilineTypeLabelEntry[] = [];
-    let hasMultiline = false;
-    for (const child of typeLabel.children) {
-      const childLabel = computeTypeLabel(child, indentation + 1);
-      children.push(childLabel);
-      if (childLabel.multiline) {
-        hasMultiline = true;
-      }
-    }
-    const singleLineContents = `${typeLabel.label}<${children
-      .map((c) => c.contents)
-      .join(singleLineSeparator)}>`;
-    return {
-      children,
-      hasMultiline:
-        hasMultiline ||
-        singleLineContents.length > MAX_TYPE_LABEL_LENGTH - indentation + 1,
-      singleLineContents,
-    };
-  }
   switch (typeLabel.label) {
     case "array":
     case "map":
     case "set": {
-      const { children, hasMultiline, singleLineContents } = computeChildren(
-        ",",
-        indentation
-      );
-      if (!hasMultiline) {
+      // First, check if we can show this on a single line
+      const singleLineContents = computeSingleLineDisplayType(typeLabel);
+      if (singleLineContents.length < MAX_TYPE_LABEL_LENGTH - indentation) {
         return {
           contents: singleLineContents,
           multiline: false,
         };
+      }
+
+      // If we got here, we know this will be multiline, so compute each child
+      // separately. We'll stitch them together later.
+      const children: MultilineTypeLabelEntry[] = [];
+      for (const child of typeLabel.children) {
+        children.push(computeMultilineTypeLabel(child, indentation + 1));
       }
 
       let contents = `${typeLabel.label}<\n`;
@@ -188,24 +217,28 @@ function computeTypeLabel(
     }
     case "union":
     case "enum": {
-      const { children, hasMultiline, singleLineContents } = computeChildren(
-        " | ",
-        indentation + 2
-      );
-      if (!hasMultiline) {
+      // First, check if we can show this on a single line
+      const singleLineContents = computeSingleLineDisplayType(typeLabel);
+      if (singleLineContents.length < MAX_TYPE_LABEL_LENGTH - indentation) {
         return {
           contents: singleLineContents,
           multiline: false,
         };
       }
 
-      let contents = `${typeLabel.label}<\n`;
+      // If we got here, we know this will be multiline, so compute each child
+      // separately. We'll stitch them together later.
+      const children: MultilineTypeLabelEntry[] = [];
+      for (const child of typeLabel.children) {
+        children.push(computeMultilineTypeLabel(child, 0));
+      }
+
+      let contents = "\n";
       for (let i = 0; i < children.length; i++) {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const child = children[i]!;
-        contents += `${" ".repeat(indentation + 1)}| ${child.contents}\n`;
+        contents += `${" ".repeat(indentation)}| ${child.contents}\n`;
       }
-      contents += `${" ".repeat(indentation)}>\n`;
       return {
         contents,
         multiline: true,
@@ -240,14 +273,14 @@ function renderDisplayType({
     renderer.appendParagraph(value.description);
   }
 
-  const computedTypeLabel = computeTypeLabel(displayType.typeLabel, 0);
-  if (computedTypeLabel.multiline) {
+  const computedDisplayType = computeDisplayType(displayType.typeLabel);
+  if (computedDisplayType.multiline) {
     renderer.appendParagraph(
-      `_Type Signature:_\n\`\`\`\n${computedTypeLabel.contents}\`\`\``
+      `${TYPE_SIGNATURE_PREFIX}\n\`\`\`\n${computedDisplayType.content}\n\`\`\``
     );
   } else {
     renderer.appendParagraph(
-      `_Type Signature:_ \`${computedTypeLabel.contents}\``
+      `${TYPE_SIGNATURE_PREFIX}\`${computedDisplayType.content}\``
     );
   }
 
