@@ -228,6 +228,19 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
     );
   }
 
+  public appendTryItNow(props: TryItNowProps = {}) {
+    this.#insertComponentImport("TryItNow", "TryItNow/index.tsx");
+    const escapedProps = Object.fromEntries(
+      Object.entries(props).map(([key, value]) => [
+        key,
+        typeof value === "string"
+          ? this.escapeText(value, { mdxOnly: true })
+          : JSON.stringify(value),
+      ])
+    );
+    this.#lines.push(`<TryItNow {...${JSON.stringify(escapedProps)}} />`);
+  }
+
   public finalize() {
     let imports = "";
     for (const [importPath, symbols] of this.#imports) {
