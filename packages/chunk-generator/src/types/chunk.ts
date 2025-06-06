@@ -77,6 +77,7 @@ type BaseValue = {
   description: string | null;
   examples: string[];
   isNullable: boolean;
+  defaultValue: string | null;
 };
 
 type NullValue = BaseValue & {
