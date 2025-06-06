@@ -24,6 +24,10 @@ export type AboutChunk = {
 
 // Operation chunks
 
+type Security = {
+  contentChunkId: string;
+};
+
 type Parameter = {
   name: string;
   description: string | null;
@@ -50,6 +54,8 @@ type OperationData = {
   tag: string;
   summary: string | null;
   description: string | null;
+  security: Security | null;
+  globalSecurity: Security | null;
   parameters: Parameter[];
   requestBody: RequestBody | null;
   responses: Record<string, Response[]>;

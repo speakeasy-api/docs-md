@@ -33,6 +33,40 @@ export function renderOperation({
     renderer.appendParagraph(chunk.chunkData.description);
   }
 
+  if (chunk.chunkData.security || chunk.chunkData.globalSecurity) {
+    renderer.appendHeading(baseHeadingLevel + 1, "Security");
+    if (chunk.chunkData.security) {
+      const securityChunk = getSchemaFromId(
+        chunk.chunkData.security.contentChunkId,
+        docsData
+      );
+      renderSchema({
+        topLevelName: "Security",
+        site,
+        renderer,
+        schema: securityChunk.chunkData.value,
+        data: docsData,
+        baseHeadingLevel: baseHeadingLevel + 2,
+        depth: 0,
+      });
+    }
+    if (chunk.chunkData.globalSecurity) {
+      const securityChunk = getSchemaFromId(
+        chunk.chunkData.globalSecurity.contentChunkId,
+        docsData
+      );
+      renderSchema({
+        topLevelName: "Security",
+        site,
+        renderer,
+        schema: securityChunk.chunkData.value,
+        data: docsData,
+        baseHeadingLevel: baseHeadingLevel + 2,
+        depth: 0,
+      });
+    }
+  }
+
   if (chunk.chunkData.parameters.length > 0) {
     renderer.appendHeading(baseHeadingLevel + 1, "Parameters");
     for (const parameter of chunk.chunkData.parameters) {
