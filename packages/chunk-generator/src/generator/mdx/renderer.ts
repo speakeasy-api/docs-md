@@ -2,6 +2,9 @@ import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import type { Settings } from "../../types/settings.ts";
+import { assertNever } from "../../util/assertNever.ts";
+
 const ASSET_PATH = join(
   dirname(fileURLToPath(import.meta.url)),
   "..",
@@ -27,11 +30,11 @@ function getEmbedSymbol(embedName: string) {
 }
 
 export class Site {
-  #baseComponentPath: string;
+  #settings: Settings;
   #pages = new Map<string, string>();
 
-  constructor({ baseComponentPath }: { baseComponentPath: string }) {
-    this.#baseComponentPath = baseComponentPath;
+  constructor(settings: Settings) {
+    this.#settings = settings;
 
     // Prepopulate the list of static assets to be saved
     const assetFileList = readdirSync(ASSET_PATH, {
@@ -42,7 +45,7 @@ export class Site {
       .map((f) => join(f.parentPath, f.name).replace(ASSET_PATH + "/", ""));
     for (const assetFile of assetFileList) {
       this.#pages.set(
-        join(baseComponentPath, assetFile),
+        join(this.#settings.output.componentOutDir, assetFile),
         readFileSync(join(ASSET_PATH, assetFile), "utf-8")
       );
     }
@@ -53,13 +56,16 @@ export class Site {
     this.#pages.set(path, "");
     return new Renderer({
       site: this,
-      baseComponentPath: this.#baseComponentPath,
+      settings: this.#settings,
       currentPagePath: path,
     });
   }
 
   public createEmbedPage(embedName: string): Renderer | undefined {
-    const embedPath = getEmbedPath(this.#baseComponentPath, embedName);
+    const embedPath = getEmbedPath(
+      this.#settings.output.componentOutDir,
+      embedName
+    );
     if (this.#pages.has(embedPath)) {
       return;
     }
@@ -81,7 +87,7 @@ export class Site {
 
 export class Renderer {
   #site: Site;
-  #baseComponentPath: string;
+  #settings: Settings;
   #currentPagePath: string;
   #frontMatter: string | undefined;
   #imports = new Map<
@@ -93,15 +99,15 @@ export class Renderer {
 
   constructor({
     site,
-    baseComponentPath,
+    settings,
     currentPagePath,
   }: {
     site: Site;
-    baseComponentPath: string;
+    settings: Settings;
     currentPagePath: string;
   }) {
     this.#site = site;
-    this.#baseComponentPath = baseComponentPath;
+    this.#settings = settings;
     this.#currentPagePath = currentPagePath;
   }
 
@@ -138,10 +144,24 @@ export class Renderer {
     sidebarPosition: string;
     sidebarLabel: string;
   }) {
-    this.#frontMatter = `---
+    switch (this.#settings.output.framework) {
+      case "docusaurus": {
+        this.#frontMatter = `---
 sidebar_position: ${sidebarPosition}
 sidebar_label: ${this.escapeText(sidebarLabel)}
 ---`;
+        break;
+      }
+      case "nextra": {
+        this.#frontMatter = `---
+sidebarTitle: ${this.escapeText(sidebarLabel)}
+---`;
+        break;
+      }
+      default: {
+        assertNever(this.#settings.output.framework);
+      }
+    }
   }
 
   public appendHeading(
@@ -237,7 +257,10 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
   }
 
   #insertEmbedImport(embedName: string) {
-    const embedPath = getEmbedPath(this.#baseComponentPath, embedName);
+    const embedPath = getEmbedPath(
+      this.#settings.output.componentOutDir,
+      embedName
+    );
 
     // TODO: handle this more gracefully. This happens when we have a direct
     // circular dependency, and the page needs to import itself
@@ -274,7 +297,7 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
   #insertComponentImport(symbol: string, componentPath: string) {
     const importPath = relative(
       dirname(this.#currentPagePath),
-      join(this.#baseComponentPath, componentPath)
+      join(this.#settings.output.componentOutDir, componentPath)
     );
     if (!this.#imports.has(importPath)) {
       this.#imports.set(importPath, {

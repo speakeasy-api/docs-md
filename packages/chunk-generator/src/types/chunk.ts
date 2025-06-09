@@ -188,7 +188,7 @@ export type SchemaValue =
   | AnyValue
   | ChunkValue;
 
-type SchemaChunk = {
+export type SchemaChunk = {
   id: string;
   slug: string;
   chunkData: { name: string; value: SchemaValue };
