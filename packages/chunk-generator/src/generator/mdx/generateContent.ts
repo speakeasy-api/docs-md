@@ -1,8 +1,8 @@
 import { join, resolve } from "node:path";
 
 import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
-import type { Settings } from "../../types/settings.ts";
 import { assertNever } from "../../util/assertNever.ts";
+import { getSettings } from "../settings.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
 import { renderSchema } from "./chunks/schema.ts";
@@ -10,17 +10,16 @@ import { renderTag } from "./chunks/tag.ts";
 import { Site } from "./renderer.ts";
 import { getOperationFromId } from "./util.ts";
 
-type GenerateContentOptions = {
-  data: Map<string, Chunk>;
-  settings: Settings;
-};
+type Data = Map<string, Chunk>;
 
 type PageMap = Map<
   string,
   { sidebarLabel: string; sidebarPosition: string; chunks: Chunk[] }
 >;
 
-function getPageMap({ data, settings }: GenerateContentOptions) {
+function getPageMap(data: Data) {
+  const settings = getSettings();
+
   const pageMap: PageMap = new Map();
 
   let buildPagePath: (slug: string) => string;
@@ -87,7 +86,8 @@ function getPageMap({ data, settings }: GenerateContentOptions) {
       if (
         chunk.chunkType === "schema" &&
         chunk.chunkData.value.type === "object" &&
-        // TODO: investigate why we sometimes we don't have a slug
+        // We make sure there's a slug so that we're not showing an unnamed or
+        // internal schema
         chunk.slug
       ) {
         schemaChunks.push(chunk);
@@ -180,7 +180,8 @@ function renderPages(site: Site, pageMap: PageMap, data: Map<string, Chunk>) {
   }
 }
 
-function renderScaffoldSupport(site: Site, settings: Settings) {
+function renderScaffoldSupport(site: Site) {
+  const settings = getSettings();
   switch (settings.output.framework) {
     case "docusaurus": {
       site.createRawPage(
@@ -239,22 +240,23 @@ function renderScaffoldSupport(site: Site, settings: Settings) {
       // Nextra doesn't need anything (yet)
       break;
     }
+    default: {
+      // We should never get here cause we validate the settings in the CLI
+      assertNever(settings.output.framework);
+    }
   }
 }
 
-export function generateContent({
-  data,
-  settings,
-}: GenerateContentOptions): Record<string, string> {
+export function generateContent(data: Data): Record<string, string> {
   // First, get a mapping of pages to chunks
-  const pageMap = getPageMap({ data, settings });
+  const pageMap = getPageMap(data);
 
   // Then, render each page
-  const site = new Site(settings);
+  const site = new Site();
   renderPages(site, pageMap, data);
 
   // Now do any post-processing needed by the scaffold
-  renderScaffoldSupport(site, settings);
+  renderScaffoldSupport(site);
 
   // Finally, return the pages
   return Object.fromEntries(site.getPages());

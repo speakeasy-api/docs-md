@@ -8,18 +8,19 @@ import type {
   UnionValue,
 } from "../../../types/chunk.ts";
 import { assertNever } from "../../../util/assertNever.ts";
+import { getSettings } from "../../settings.ts";
 import type { Renderer, Site } from "../renderer.ts";
 import { getSchemaFromId } from "../util.ts";
 
 const TYPE_SIGNATURE_PREFIX = "_Type Signature:_ ";
 
-// TODO: make these configurable
-const MAX_DEPTH = 3;
-const MAX_TYPE_LABEL_LENGTH = 80;
-
-// Derived info. TODO: this should take indentation level into account
-const MAX_INLINE_TYPE_LABEL_LENGTH =
-  MAX_TYPE_LABEL_LENGTH - TYPE_SIGNATURE_PREFIX.length;
+function getMaxInlineLength() {
+  // TODO: this should take indentation level into account
+  return (
+    getSettings().display.maxTypeSignatureLineLength -
+    TYPE_SIGNATURE_PREFIX.length
+  );
+}
 
 // We dont' want to create headings less than this level, because they typically
 // have a font size _smaller_ than paragraph font size, which looks weird.
@@ -138,7 +139,7 @@ function getDisplayType(
 
 function computeDisplayType(typeLabel: TypeLabel) {
   const singleLineTypeLabel = computeSingleLineDisplayType(typeLabel);
-  if (singleLineTypeLabel.length < MAX_INLINE_TYPE_LABEL_LENGTH) {
+  if (singleLineTypeLabel.length < getMaxInlineLength()) {
     return {
       content: singleLineTypeLabel,
       multiline: false,
@@ -185,13 +186,17 @@ function computeMultilineTypeLabel(
   typeLabel: TypeLabel,
   indentation: number
 ): MultilineTypeLabelEntry {
+  const { maxTypeSignatureLineLength } = getSettings().display;
   switch (typeLabel.label) {
     case "array":
     case "map":
     case "set": {
       // First, check if we can show this on a single line
       const singleLineContents = computeSingleLineDisplayType(typeLabel);
-      if (singleLineContents.length < MAX_TYPE_LABEL_LENGTH - indentation) {
+      if (
+        singleLineContents.length <
+        maxTypeSignatureLineLength - indentation
+      ) {
         return {
           contents: singleLineContents,
           multiline: false,
@@ -221,7 +226,10 @@ function computeMultilineTypeLabel(
     case "enum": {
       // First, check if we can show this on a single line
       const singleLineContents = computeSingleLineDisplayType(typeLabel);
-      if (singleLineContents.length < MAX_TYPE_LABEL_LENGTH - indentation) {
+      if (
+        singleLineContents.length <
+        maxTypeSignatureLineLength - indentation
+      ) {
         return {
           contents: singleLineContents,
           multiline: false,
@@ -255,7 +263,7 @@ function computeMultilineTypeLabel(
   }
 }
 
-function renderDisplayType({
+function renderSchemaFrontmatter({
   renderer,
   site,
   value,
@@ -270,6 +278,8 @@ function renderDisplayType({
   data: Map<string, Chunk>;
   depth: number;
 }) {
+  const { showTypeSignatures } = getSettings().display;
+
   const displayType = getDisplayType(value, data);
   if ("description" in value && value.description) {
     renderer.appendParagraph(value.description);
@@ -287,15 +297,17 @@ function renderDisplayType({
     renderer.appendParagraph(`_Default Value:_ \`${value.defaultValue}\``);
   }
 
-  const computedDisplayType = computeDisplayType(displayType.typeLabel);
-  if (computedDisplayType.multiline) {
-    renderer.appendParagraph(
-      `${TYPE_SIGNATURE_PREFIX}\n\`\`\`\n${computedDisplayType.content}\n\`\`\``
-    );
-  } else {
-    renderer.appendParagraph(
-      `${TYPE_SIGNATURE_PREFIX}\`${computedDisplayType.content}\``
-    );
+  if (showTypeSignatures) {
+    const computedDisplayType = computeDisplayType(displayType.typeLabel);
+    if (computedDisplayType.multiline) {
+      renderer.appendParagraph(
+        `${TYPE_SIGNATURE_PREFIX}\n\`\`\`\n${computedDisplayType.content}\n\`\`\``
+      );
+    } else {
+      renderer.appendParagraph(
+        `${TYPE_SIGNATURE_PREFIX}\`${computedDisplayType.content}\``
+      );
+    }
   }
 
   // TODO: this is a quick-n-dirty deduping of breakout types, but if there are
@@ -331,6 +343,9 @@ export function renderSchema({
   topLevelName,
   depth,
 }: RenderSchemaOptions) {
+  const { maxTypeSignatureLineLength, maxSchemaNesting } =
+    getSettings().display;
+
   function renderObjectProperties(
     objectValue: ObjectValue,
     { isOpenOnLoad = false }: { isOpenOnLoad?: boolean }
@@ -342,29 +357,29 @@ export function renderSchema({
       if (value.type === "chunk") {
         renderer.appendHeading(baseHeadingLevel, key);
         const schemaChunk = getSchemaFromId(value.chunkId, data);
-        renderDisplayType({
+        renderSchemaFrontmatter({
           renderer,
           site,
           value: schemaChunk.chunkData.value,
           baseHeadingLevel,
-          data: data,
+          data,
           depth,
         });
       } else if (value.type === "enum") {
         renderer.appendHeading(baseHeadingLevel, key);
         let computedTypeLabel = `_Type Signature:_ \`${value.values.map((v) => (typeof v === "string" ? `'${v}'` : v)).join(" | ")}\``;
-        if (computedTypeLabel.length > MAX_TYPE_LABEL_LENGTH) {
+        if (computedTypeLabel.length > maxTypeSignatureLineLength) {
           computedTypeLabel = `_Type Signature:_\n\`\`\`\nenum${value.values.map((v) => `\n  ${typeof v === "string" ? `'${v}'` : v}`).join("")}\n\`\`\``;
         }
         renderer.appendParagraph(computedTypeLabel);
       } else {
         renderer.appendHeading(baseHeadingLevel, key);
-        renderDisplayType({
+        renderSchemaFrontmatter({
           renderer,
           site,
           value,
           baseHeadingLevel,
-          data: data,
+          data,
           depth,
         });
       }
@@ -375,35 +390,35 @@ export function renderSchema({
   function renderArrayLikeItems(
     arrayLikeValue: ArrayValue | MapValue | SetValue
   ) {
-    renderDisplayType({
+    renderSchemaFrontmatter({
       renderer,
       site,
       value: arrayLikeValue,
       baseHeadingLevel,
-      data: data,
+      data,
       depth,
     });
   }
 
   function renderUnionItems(unionValue: UnionValue) {
-    renderDisplayType({
+    renderSchemaFrontmatter({
       renderer,
       site,
       value: unionValue,
       baseHeadingLevel,
-      data: data,
+      data,
       depth,
     });
     return;
   }
 
   function renderBasicItems(primitiveValue: SchemaValue) {
-    renderDisplayType({
+    renderSchemaFrontmatter({
       renderer,
       site,
       value: primitiveValue,
       baseHeadingLevel,
-      data: data,
+      data,
       depth,
     });
     if (primitiveValue.type === "enum") {
@@ -413,7 +428,7 @@ export function renderSchema({
     }
   }
 
-  if (depth >= MAX_DEPTH) {
+  if (depth >= maxSchemaNesting) {
     // This shouldn't be possible, since we only recurse on objects
     if (schema.type !== "object") {
       throw new Error("Schema must be an object to be embedded");

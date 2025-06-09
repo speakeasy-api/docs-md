@@ -10,11 +10,15 @@ export const settingsSchema = z.strictObject({
   display: z
     .strictObject({
       showSchemasInNav: z.boolean().default(true),
-      showInlineTypeSignatures: z.boolean().default(true),
+      showTypeSignatures: z.boolean().default(true),
+      maxTypeSignatureLineLength: z.number().default(80),
+      maxSchemaNesting: z.number().default(3),
     })
     .default({
       showSchemasInNav: true,
-      showInlineTypeSignatures: true,
+      showTypeSignatures: true,
+      maxTypeSignatureLineLength: 80,
+      maxSchemaNesting: 3,
     }),
 });
 
