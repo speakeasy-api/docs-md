@@ -14,6 +14,7 @@ import { load } from "js-yaml";
 import z from "zod/v4";
 
 import { generatePages } from "../generator/generatePages.ts";
+import { type Settings, settingsSchema } from "../types/settings.ts";
 
 const CONFIG_FILE_NAMES = [
   "speakeasy.config.js",
@@ -60,26 +61,6 @@ function reportError(msg: string): never {
   printHelp();
   process.exit(1);
 }
-
-const settingsSchema = z.strictObject({
-  spec: z.string(),
-  output: z.strictObject({
-    pageOutDir: z.string(),
-    componentOutDir: z.string(),
-    framework: z.enum(["docusaurus", "nextra"]),
-  }),
-  display: z
-    .strictObject({
-      showSchemasInNav: z.boolean().default(true),
-      showInlineTypeSignatures: z.boolean().default(true),
-    })
-    .default({
-      showSchemasInNav: true,
-      showInlineTypeSignatures: true,
-    }),
-});
-
-type Settings = z.infer<typeof settingsSchema>;
 
 async function getSettings(): Promise<Settings> {
   // First, determine the config file path
@@ -186,57 +167,10 @@ const settings = await getSettings();
 const specData = readFileSync(settings.spec, "utf-8");
 const specContents = JSON.stringify(load(specData));
 
-let buildPagePath: (slug: string) => string;
-switch (settings.output.framework) {
-  case "docusaurus": {
-    buildPagePath = (slug: string) =>
-      resolve(join(settings.output.pageOutDir, `${slug}.mdx`));
-    break;
-  }
-  case "nextra": {
-    buildPagePath = (slug: string) =>
-      resolve(join(settings.output.pageOutDir, `${slug}/page.mdx`));
-    break;
-  }
-  // We don't need a default check here cause we already did it above via Zod
-}
-
 const pageContents = await generatePages({
   specContents,
-  buildPagePath,
-  baseComponentPath: settings.output.componentOutDir,
+  settings,
 });
-
-switch (settings.output.framework) {
-  case "docusaurus": {
-    pageContents[join(settings.output.pageOutDir, "tag", "_category_.json")] =
-      JSON.stringify(
-        {
-          position: 3,
-          label: "Operations",
-          collapsible: true,
-          collapsed: false,
-        },
-        null,
-        "  "
-      );
-    pageContents[join(settings.output.pageOutDir, "_category_.json")] =
-      JSON.stringify(
-        {
-          position: 2,
-          label: "API Reference",
-          collapsible: true,
-          collapsed: false,
-        },
-        null,
-        "  "
-      );
-    break;
-  }
-  case "nextra": {
-    break;
-  }
-}
 
 for (const [filename, contents] of Object.entries(pageContents)) {
   mkdirSync(dirname(filename), {

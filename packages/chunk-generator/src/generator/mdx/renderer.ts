@@ -66,6 +66,10 @@ export class Site {
     return this.createPage(embedPath);
   }
 
+  public createRawPage(path: string, contents: string) {
+    this.#pages.set(path, contents);
+  }
+
   public getPages() {
     return this.#pages;
   }

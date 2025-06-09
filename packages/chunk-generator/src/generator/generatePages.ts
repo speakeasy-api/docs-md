@@ -1,3 +1,4 @@
+import type { Settings } from "../types/settings.ts";
 import { getDocsData } from "./docsData/getDocsData.ts";
 import { generateContent } from "./mdx/generateContent.ts";
 
@@ -7,13 +8,11 @@ import { generateContent } from "./mdx/generateContent.ts";
  */
 export async function generatePages({
   specContents,
-  buildPagePath,
-  baseComponentPath,
+  settings,
 }: {
   specContents: string;
-  buildPagePath: (slug: string) => string;
-  baseComponentPath: string;
+  settings: Settings;
 }): Promise<Record<string, string>> {
   const data = await getDocsData(specContents);
-  return generateContent({ data, buildPagePath, baseComponentPath });
+  return generateContent({ data, settings });
 }

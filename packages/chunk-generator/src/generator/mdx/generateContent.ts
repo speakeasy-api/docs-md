@@ -1,4 +1,7 @@
+import { join, resolve } from "node:path";
+
 import type { Chunk } from "../../types/chunk.ts";
+import type { Settings } from "../../types/settings.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
 import { renderSchema } from "./chunks/schema.ts";
@@ -6,25 +9,35 @@ import { renderTag } from "./chunks/tag.ts";
 import { Site } from "./renderer.ts";
 import { getOperationFromId } from "./util.ts";
 
-type BaseOptions = {
+type GenerateContentOptions = {
   data: Map<string, Chunk>;
-  buildPagePath: (slug: string) => string;
+  settings: Settings;
 };
 
-function getPageMap({
-  data,
-  buildPagePath,
-}: BaseOptions): Map<
+type PageMap = Map<
   string,
   { sidebarLabel: string; sidebarPosition: string; chunks: Chunk[] }
-> {
-  const pageMap: Map<
-    string,
-    { sidebarLabel: string; sidebarPosition: string; chunks: Chunk[] }
-  > = new Map();
+>;
+
+function getPageMap({ data, settings }: GenerateContentOptions) {
+  const pageMap: PageMap = new Map();
+
+  let buildPagePath: (slug: string) => string;
+  switch (settings.output.framework) {
+    case "docusaurus": {
+      buildPagePath = (slug: string) =>
+        resolve(join(settings.output.pageOutDir, `${slug}.mdx`));
+      break;
+    }
+    case "nextra": {
+      buildPagePath = (slug: string) =>
+        resolve(join(settings.output.pageOutDir, `${slug}/page.mdx`));
+      break;
+    }
+    // We don't need a default check here cause we already did it above via Zod
+  }
 
   // Get the about page
-
   for (const [, chunk] of data) {
     if (chunk.chunkType === "about") {
       pageMap.set(buildPagePath("about"), {
@@ -71,20 +84,7 @@ function getPageMap({
   return pageMap;
 }
 
-type GenerateContentOptions = BaseOptions & {
-  baseComponentPath: string;
-};
-
-export function generateContent({
-  data,
-  buildPagePath,
-  baseComponentPath,
-}: GenerateContentOptions): Record<string, string> {
-  // First, get a mapping of pages to chunks
-  const pageMap = getPageMap({ data, buildPagePath });
-
-  const site = new Site({ baseComponentPath });
-
+function renderPages(site: Site, pageMap: PageMap, data: Map<string, Chunk>) {
   for (const [
     currentPagePath,
     { chunks, sidebarLabel, sidebarPosition },
@@ -141,6 +141,60 @@ export function generateContent({
     }
     renderer.finalize();
   }
+}
 
+function renderScaffoldSupport(site: Site, settings: Settings) {
+  switch (settings.output.framework) {
+    case "docusaurus": {
+      site.createRawPage(
+        join(settings.output.pageOutDir, "_category_.json"),
+        JSON.stringify(
+          {
+            position: 2,
+            label: "API Reference",
+            collapsible: true,
+            collapsed: false,
+          },
+          null,
+          "  "
+        )
+      );
+      site.createRawPage(
+        join(settings.output.pageOutDir, "tag", "_category_.json"),
+        JSON.stringify(
+          {
+            position: 3,
+            label: "Operations",
+            collapsible: true,
+            collapsed: false,
+          },
+          null,
+          "  "
+        )
+      );
+      break;
+    }
+    case "nextra": {
+      // Nextra doesn't need anything (yet)
+      break;
+    }
+  }
+}
+
+export function generateContent({
+  data,
+  settings,
+}: GenerateContentOptions): Record<string, string> {
+  // First, get a mapping of pages to chunks
+  const pageMap = getPageMap({ data, settings });
+
+  // Then, render each page
+  const site = new Site({ baseComponentPath: settings.output.componentOutDir });
+  renderPages(site, pageMap, data);
+
+  // Now do any post-processing needed by the scaffold
+  renderScaffoldSupport(site, settings);
+
+  // Finally, return the pages
   return Object.fromEntries(site.getPages());
 }
