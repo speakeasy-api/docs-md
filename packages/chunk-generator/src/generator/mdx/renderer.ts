@@ -197,7 +197,10 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
     this.#includeSidebar = true;
     this.#insertComponentImport("SideBarCta", "SideBar/index.tsx");
     this.#insertComponentImport("SideBar", "SideBar/index.tsx");
-    this.#insertEmbedImport(embedName);
+    if (!this.#insertEmbedImport(embedName)) {
+      console.error(`Direct circular import detected, skipping sidebar link`);
+      return;
+    }
     this.#lines.push(
       `<p>
   <SideBarCta cta="${`View ${this.escapeText(title, { mdxOnly: true })}`}" title="${this.escapeText(title)}">
@@ -230,10 +233,26 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
   }
 
   #insertEmbedImport(embedName: string) {
-    const importPath = relative(
-      dirname(this.#currentPagePath),
-      getEmbedPath(this.#baseComponentPath, embedName)
-    );
+    const embedPath = getEmbedPath(this.#baseComponentPath, embedName);
+
+    // TODO: handle this more gracefully. This happens when we have a direct
+    // circular dependency, and the page needs to import itself
+    if (this.#currentPagePath === embedPath) {
+      return false;
+    }
+
+    let importPath = relative(dirname(this.#currentPagePath), embedPath);
+    // Check if this is an import to a file in the same directory, which
+    // for some reason relative doesn't include the ./ in
+    if (!importPath.startsWith("./") && !importPath.startsWith("../")) {
+      importPath = `./${importPath}`;
+    }
+    if (!this.#imports.has(importPath)) {
+      this.#imports.set(importPath, {
+        defaultAlias: undefined,
+        namedImports: new Set(),
+      });
+    }
     if (!this.#imports.has(importPath)) {
       this.#imports.set(importPath, {
         defaultAlias: undefined,
@@ -244,6 +263,8 @@ sidebar_label: ${this.escapeText(sidebarLabel)}
     // map/set has calls
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.#imports.get(importPath)!.defaultAlias = getEmbedSymbol(embedName);
+
+    return true;
   }
 
   #insertComponentImport(symbol: string, componentPath: string) {

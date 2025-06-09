@@ -1,22 +1,40 @@
 #!/usr/bin/env node --experimental-strip-types
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
+import { dirname, isAbsolute, join, resolve } from "node:path";
 
 import arg from "arg";
 import { load } from "js-yaml";
+import z from "zod/v4";
 
 import { generatePages } from "../generator/generatePages.ts";
 
+const CONFIG_FILE_NAMES = [
+  "speakeasy.config.js",
+  "speakeasy.config.mjs",
+  "speakeasy.config.cjs",
+  "speakeasy.config.ts",
+  "speakeasy.config.mts",
+  "speakeasy.config.cts",
+];
+
 const args = arg({
   "--help": Boolean,
+  "--config": String,
   "--spec": String,
   "--page-out-dir": String,
   "--component-out-dir": String,
   "--framework": String,
+  "-c": "--config",
   "-s": "--spec",
   "-p": "--page-out-dir",
-  "-c": "--component-out-dir",
+  "-o": "--component-out-dir",
   "-f": "--framework",
 });
 
@@ -25,9 +43,10 @@ function printHelp() {
 
 Options:
   --help, -h     Show this help message
+  --config, -c   Path to config file
   --spec, -s     Path to OpenAPI spec
   --page-out-dir, -p  Output directory for page contents
-  --component-out-dir, -c  Output directory for component contents
+  --component-out-dir, -o  Output directory for component contents
   --framework, -f  Framework to use (docusaurus, nextra)`);
 }
 
@@ -36,84 +55,182 @@ if (args["--help"]) {
   process.exit(0);
 }
 
-const spec = args["--spec"];
-
-if (!spec) {
-  console.error("Missing required argument: --spec\n");
+function reportError(msg: string): never {
+  console.error(msg + "\n");
   printHelp();
   process.exit(1);
 }
 
-if (!existsSync(spec)) {
-  console.error(`Spec file "${spec}" does not exist\n`);
-  process.exit(1);
+const settingsSchema = z.strictObject({
+  spec: z.string(),
+  output: z.strictObject({
+    pageOutDir: z.string(),
+    componentOutDir: z.string(),
+    framework: z.enum(["docusaurus", "nextra"]),
+  }),
+  display: z
+    .strictObject({
+      showSchemasInNav: z.boolean().default(true),
+      showInlineTypeSignatures: z.boolean().default(true),
+    })
+    .default({
+      showSchemasInNav: true,
+      showInlineTypeSignatures: true,
+    }),
+});
+
+type Settings = z.infer<typeof settingsSchema>;
+
+async function getSettings(): Promise<Settings> {
+  // First, determine the config file path
+  let configFilePath = args["--config"];
+  if (!configFilePath) {
+    // If it wasn't supplied, we'll look for a config file in the current directory
+    const dirContents = readdirSync(process.cwd());
+    for (const fileName of dirContents) {
+      if (CONFIG_FILE_NAMES.includes(fileName)) {
+        if (configFilePath) {
+          reportError("Multiple config files found in current directory");
+        }
+        configFilePath = resolve(join(process.cwd(), fileName));
+      }
+    }
+  }
+
+  // Sanity check the config file path
+  if (!configFilePath) {
+    reportError(
+      `No config file found in ${process.cwd()}. Please supply a config file with the --config option`
+    );
+  }
+  if (!existsSync(configFilePath)) {
+    reportError(`Config file "${configFilePath}" does not exist`);
+  }
+
+  // Note: typing below is something of an abomination of casts, but that's ok
+  // since we do runtime validation with Zod after we're done with these casts.
+  // The Zod validation is what ensures the types are correct.
+
+  // Read in the config file. We wrap in a try-catch in case there are syntax
+  // errors in the config file, which we want to report with a more
+  // user-friendly error message than the standard thrown exception
+  let configFileImport: Record<string, unknown>;
+  try {
+    // TODO: this _probably_ doesn't work for CommonJS. Not sure we care though
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    const importedConfig = (await import(configFilePath)).default as unknown;
+    if (typeof importedConfig !== "object" || importedConfig === null) {
+      reportError(`The default export in the config file must be an object`);
+    }
+    configFileImport = importedConfig as Record<string, unknown>;
+  } catch (e) {
+    reportError(
+      `Error importing config file "${configFilePath}": ${(e as Error).message}`
+    );
+  }
+
+  if (!configFileImport.output) {
+    configFileImport.output = {};
+  }
+
+  // Now, override the read config with any supplied CLI args
+  if (args["--spec"]) {
+    configFileImport.spec = args["--spec"];
+  }
+  if (args["--page-out-dir"]) {
+    (configFileImport.output as Record<string, unknown>).pageOutDir =
+      args["--page-out-dir"];
+  }
+  if (args["--component-out-dir"]) {
+    (configFileImport.output as Record<string, unknown>).componentOutDir =
+      args["--component-out-dir"];
+  }
+  if (args["--framework"]) {
+    (configFileImport.output as Record<string, unknown>).framework =
+      args["--framework"];
+  }
+
+  // Parse the settings using Zod to ensure accuracy
+  const configFileContents = settingsSchema.safeParse(configFileImport);
+  if (!configFileContents.success) {
+    reportError(
+      `Error parsing config file "${configFilePath}": ${z.prettifyError(configFileContents.error)}`
+    );
+  }
+
+  // Validate and format various settings, as needed
+  if (!existsSync(configFileContents.data.spec)) {
+    throw new Error(
+      `OpenAPI spec file "${configFileContents.data.spec}" does not exist`
+    );
+  }
+  const configFileDirectory = dirname(configFilePath);
+  if (!isAbsolute(configFileContents.data.output.pageOutDir)) {
+    configFileContents.data.output.pageOutDir = resolve(
+      configFileDirectory,
+      configFileContents.data.output.pageOutDir
+    );
+  }
+  if (!isAbsolute(configFileContents.data.output.componentOutDir)) {
+    configFileContents.data.output.componentOutDir = resolve(
+      configFileDirectory,
+      configFileContents.data.output.componentOutDir
+    );
+  }
+
+  return configFileContents.data;
 }
 
-const pageOutDir = args["--page-out-dir"];
+const settings = await getSettings();
 
-if (!pageOutDir) {
-  console.error("Missing required argument: --page-out-dir\n");
-  printHelp();
-  process.exit(1);
-}
-
-const componentOutDir = args["--component-out-dir"];
-
-if (!componentOutDir) {
-  console.error("Missing required argument: --component-out-dir\n");
-  printHelp();
-  process.exit(1);
-}
-
-const framework = args["--framework"] ?? "docusaurus";
-
-const specData = readFileSync(spec, "utf-8");
+const specData = readFileSync(settings.spec, "utf-8");
 const specContents = JSON.stringify(load(specData));
 
 let buildPagePath: (slug: string) => string;
-switch (framework) {
+switch (settings.output.framework) {
   case "docusaurus": {
-    buildPagePath = (slug: string) => resolve(join(pageOutDir, `${slug}.mdx`));
+    buildPagePath = (slug: string) =>
+      resolve(join(settings.output.pageOutDir, `${slug}.mdx`));
     break;
   }
   case "nextra": {
     buildPagePath = (slug: string) =>
-      resolve(join(pageOutDir, `${slug}/page.mdx`));
+      resolve(join(settings.output.pageOutDir, `${slug}/page.mdx`));
     break;
   }
-  default: {
-    throw new Error(`Unknown framework: ${framework}`);
-  }
+  // We don't need a default check here cause we already did it above via Zod
 }
 
 const pageContents = await generatePages({
   specContents,
   buildPagePath,
-  baseComponentPath: componentOutDir,
+  baseComponentPath: settings.output.componentOutDir,
 });
 
-switch (framework) {
+switch (settings.output.framework) {
   case "docusaurus": {
-    pageContents[join(pageOutDir, "tag", "_category_.json")] = JSON.stringify(
-      {
-        position: 3,
-        label: "Operations",
-        collapsible: true,
-        collapsed: false,
-      },
-      null,
-      "  "
-    );
-    pageContents[join(pageOutDir, "_category_.json")] = JSON.stringify(
-      {
-        position: 2,
-        label: "API Reference",
-        collapsible: true,
-        collapsed: false,
-      },
-      null,
-      "  "
-    );
+    pageContents[join(settings.output.pageOutDir, "tag", "_category_.json")] =
+      JSON.stringify(
+        {
+          position: 3,
+          label: "Operations",
+          collapsible: true,
+          collapsed: false,
+        },
+        null,
+        "  "
+      );
+    pageContents[join(settings.output.pageOutDir, "_category_.json")] =
+      JSON.stringify(
+        {
+          position: 2,
+          label: "API Reference",
+          collapsible: true,
+          collapsed: false,
+        },
+        null,
+        "  "
+      );
     break;
   }
   case "nextra": {
