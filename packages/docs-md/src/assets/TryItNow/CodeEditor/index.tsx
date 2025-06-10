@@ -1,9 +1,10 @@
-import { useActiveCode, SandpackCodeEditor } from "@codesandbox/sandpack-react";
-import { useEffect } from "react";
+import { SandpackCodeEditor, useActiveCode } from "@codesandbox/sandpack-react";
 import { useSetAtom } from "jotai";
-import { useTranspileDependencyMatches } from "@/hooks/useCodeDependencies";
-import { useEvaluatedCode } from "@/hooks/useTranspiledCode";
-import { setDependenciesAtom } from "@/state";
+import { useEffect } from "react";
+
+import { useTranspileDependencyMatches } from "../hooks/useCodeDependencies.ts";
+import { useEvaluatedCode } from "../hooks/useTranspiledCode.ts";
+import { setDependenciesAtom } from "../state/index.ts";
 
 export function CodeEditor() {
   const evaluatedCode = useEvaluatedCode();

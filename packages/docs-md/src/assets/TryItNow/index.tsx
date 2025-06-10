@@ -1,17 +1,19 @@
-import { CodeEditor } from "./components/CodeEditor";
-import {
-  SandpackLayout,
-  SandpackConsole,
-  SandpackProvider,
-  SandpackPreview,
-  SandpackCodeEditor,
+import type {
   SandpackOptions,
-  SandpackSetup,
+  SandpackSetup} from "@codesandbox/sandpack-react";
+import {
+  SandpackCodeEditor,
+  SandpackConsole,
+  SandpackLayout,
+  SandpackPreview,
+  SandpackProvider
 } from "@codesandbox/sandpack-react";
-import { styles } from "./styles";
 import { useAtomValue } from "jotai";
-import { dependenciesAtom, lastEditorValueAtom } from "./state";
 import { Fragment } from "react";
+
+import { CodeEditor } from "./CodeEditor/index.tsx";
+import { dependenciesAtom, lastEditorValueAtom } from "./state/index.ts";
+import { styles } from "./styles.ts";
 
 export type DependencyName = string;
 export type DependencyVersion = string;
@@ -70,7 +72,7 @@ export const TryItNow = ({
           autorun: false,
           activeFile: "index.tsx",
           ...sandpackOptions,
-        }}
+        } as SandpackOptions}
         template="vanilla-ts"
         files={{
           "index.tsx": {

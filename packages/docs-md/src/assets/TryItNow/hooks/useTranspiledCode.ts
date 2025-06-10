@@ -1,9 +1,9 @@
-import { useSandpack } from "@codesandbox/sandpack-react";
 import type {
   BundlerState,
   SandpackClient,
   SandpackMessage,
 } from "@codesandbox/sandpack-client";
+import { useSandpack } from "@codesandbox/sandpack-react";
 import { useEffect, useState } from "react";
 
 const getTranspiledCode = (client: SandpackClient): string | null => {
