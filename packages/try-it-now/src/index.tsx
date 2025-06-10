@@ -1,4 +1,4 @@
-import { CodeEditor } from './components/CodeEditor';
+import { CodeEditor } from "./components/CodeEditor";
 import {
   SandpackLayout,
   SandpackConsole,
@@ -7,11 +7,11 @@ import {
   SandpackCodeEditor,
   SandpackOptions,
   SandpackSetup,
-} from '@codesandbox/sandpack-react';
-import { styles } from './styles';
-import { useAtomValue } from 'jotai';
-import { dependenciesAtom, lastEditorValueAtom } from './state';
-import { Fragment } from 'react';
+} from "@codesandbox/sandpack-react";
+import { styles } from "./styles";
+import { useAtomValue } from "jotai";
+import { dependenciesAtom, lastEditorValueAtom } from "./state";
+import { Fragment } from "react";
 
 export type DependencyName = string;
 export type DependencyVersion = string;
@@ -19,7 +19,7 @@ export type Dependencies = Record<DependencyName, DependencyVersion>;
 
 export type TryItNowProps = {
   /**
-   * These are dependencies that are required by the code snippet, 
+   * These are dependencies that are required by the code snippet,
    * like "zod" or an npm package.
    */
   externalDependencies?: Dependencies;
@@ -32,48 +32,52 @@ export type TryItNowProps = {
    */
   containerProps?: React.HTMLAttributes<HTMLDivElement>;
   /**
-   * Render only the Sandpack provider and components to use in a 
-   * custom container. 
+   * Render only the Sandpack provider and components to use in a
+   * custom container.
    */
   disableContainer?: boolean;
   sandpackOptions?: SandpackOptions;
   sandpackSetupOptions?: SandpackSetup;
   /**
-   * Experimental: When enabled, the editor will automatically 
+   * Experimental: When enabled, the editor will automatically
    * scan for external dependencies from npm as the user adds them
-   * as imports. 
+   * as imports.
    */
   _enableUnsafeAutoImport?: boolean;
-
 };
-
 
 export const TryItNow = ({
   externalDependencies,
-  defaultValue = '',
+  defaultValue = "",
   _enableUnsafeAutoImport,
   containerProps,
   disableContainer,
   sandpackOptions = {},
-  sandpackSetupOptions = {}
+  sandpackSetupOptions = {},
 }: TryItNowProps) => {
   const autoImportDependencies = useAtomValue(dependenciesAtom);
   const previousCodeAtomValue = useAtomValue(lastEditorValueAtom);
-  const OuterContainer = disableContainer ? Fragment : 'div';
-  
+  const OuterContainer = disableContainer ? Fragment : "div";
+
   return (
-    <OuterContainer style={{...styles.container, ...containerProps?.style}} {...containerProps}>
+    <OuterContainer
+      style={{ ...styles.container, ...containerProps?.style }}
+      {...containerProps}
+    >
       <SandpackProvider
         options={{
           autoReload: false,
           autorun: false,
-          activeFile: 'index.tsx',
-          ...sandpackOptions
+          activeFile: "index.tsx",
+          ...sandpackOptions,
         }}
         template="vanilla-ts"
         files={{
-          'index.tsx': {
-            code: _enableUnsafeAutoImport && previousCodeAtomValue? previousCodeAtomValue : defaultValue,
+          "index.tsx": {
+            code:
+              _enableUnsafeAutoImport && previousCodeAtomValue
+                ? previousCodeAtomValue
+                : defaultValue,
             active: true,
           },
         }}
@@ -82,8 +86,8 @@ export const TryItNow = ({
             autoImportDependencies && _enableUnsafeAutoImport
               ? { ...autoImportDependencies, ...externalDependencies }
               : externalDependencies,
-          entry: 'index.tsx',
-          ...sandpackSetupOptions
+          entry: "index.tsx",
+          ...sandpackSetupOptions,
         }}
         theme="auto"
       >
