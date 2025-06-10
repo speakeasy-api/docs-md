@@ -21,5 +21,6 @@ export async function generatePages({
   const data = await getDocsData(specContents);
 
   // Generate the content
+  console.log("Generating Markdown pages");
   return generateContent(data);
 }

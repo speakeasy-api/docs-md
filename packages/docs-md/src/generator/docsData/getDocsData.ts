@@ -23,6 +23,9 @@ const wasmPath = join(dirname(fileURLToPath(import.meta.url)), "lib.wasm.gz");
 export async function getDocsData(
   specContents: string
 ): Promise<Map<string, Chunk>> {
+  console.log(
+    "Parsing OpenAPI spec (you can ignore lock file errors printed below)"
+  );
   const gzippedBuffer = await readFile(wasmPath);
   const wasmBuffer = unzipSync(gzippedBuffer);
   const go = new Go();

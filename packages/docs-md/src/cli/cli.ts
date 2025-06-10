@@ -1,4 +1,4 @@
-#!/usr/bin/env node --experimental-strip-types
+#!/usr/bin/env node
 
 import {
   existsSync,
@@ -140,12 +140,18 @@ async function getSettings(): Promise<Settings> {
   }
 
   // Validate and format various settings, as needed
+  const configFileDirectory = dirname(configFilePath);
+  if (!isAbsolute(configFileContents.data.spec)) {
+    configFileContents.data.spec = resolve(
+      configFileDirectory,
+      configFileContents.data.spec
+    );
+  }
   if (!existsSync(configFileContents.data.spec)) {
     throw new Error(
       `OpenAPI spec file "${configFileContents.data.spec}" does not exist`
     );
   }
-  const configFileDirectory = dirname(configFilePath);
   if (!isAbsolute(configFileContents.data.output.pageOutDir)) {
     configFileContents.data.output.pageOutDir = resolve(
       configFileDirectory,
@@ -180,3 +186,5 @@ for (const [filename, contents] of Object.entries(pageContents)) {
     encoding: "utf-8",
   });
 }
+
+console.log("Success!");
