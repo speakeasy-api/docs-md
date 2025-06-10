@@ -1,4 +1,4 @@
-name: Chunk Generator
+name: Docs MD
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-and-test:
-    name: Chunk Generator Build and Test
+    name: Docs MD Build and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -21,14 +21,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Lint
-        working-directory: ./packages/chunk-generator
+        working-directory: ./packages/docs-md
         run: npm run lint
       - name: Type check
-        working-directory: ./packages/chunk-generator
+        working-directory: ./packages/docs-md
         run: npm run type-check
       - name: Test
-        working-directory: ./packages/chunk-generator
+        working-directory: ./packages/docs-md
         run: npm run test
       - name: Build
-        working-directory: ./packages/chunk-generator
+        working-directory: ./packages/docs-md
         run: npm run build
