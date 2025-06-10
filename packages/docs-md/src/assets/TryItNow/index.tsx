@@ -1,12 +1,13 @@
 import type {
   SandpackOptions,
-  SandpackSetup} from "@codesandbox/sandpack-react";
+  SandpackSetup,
+} from "@codesandbox/sandpack-react";
 import {
   SandpackCodeEditor,
   SandpackConsole,
   SandpackLayout,
   SandpackPreview,
-  SandpackProvider
+  SandpackProvider,
 } from "@codesandbox/sandpack-react";
 import { useAtomValue } from "jotai";
 import { Fragment } from "react";
@@ -15,9 +16,9 @@ import { CodeEditor } from "./CodeEditor/index.tsx";
 import { dependenciesAtom, lastEditorValueAtom } from "./state/index.ts";
 import { styles } from "./styles.ts";
 
-export type DependencyName = string;
-export type DependencyVersion = string;
-export type Dependencies = Record<DependencyName, DependencyVersion>;
+type DependencyName = string;
+type DependencyVersion = string;
+type Dependencies = Record<DependencyName, DependencyVersion>;
 
 export type TryItNowProps = {
   /**
@@ -38,8 +39,8 @@ export type TryItNowProps = {
    * custom container.
    */
   disableContainer?: boolean;
-  sandpackOptions?: SandpackOptions;
-  sandpackSetupOptions?: SandpackSetup;
+  sandpackOptions?: Partial<SandpackOptions>;
+  sandpackSetupOptions?: Partial<SandpackSetup>;
   /**
    * Experimental: When enabled, the editor will automatically
    * scan for external dependencies from npm as the user adds them
@@ -72,7 +73,7 @@ export const TryItNow = ({
           autorun: false,
           activeFile: "index.tsx",
           ...sandpackOptions,
-        } as SandpackOptions}
+        }}
         template="vanilla-ts"
         files={{
           "index.tsx": {

@@ -18,7 +18,7 @@ const getTranspiledCode = (client: SandpackClient): string | null => {
   const tModule = bundlerState.transpiledModules["/index.tsx:"];
 
   return tModule?.source?.compiledCode ?? null;
-}
+};
 
 /**
  * Returns the evaluated and transpiled code from the sandpack client whenever it is evaluating code.

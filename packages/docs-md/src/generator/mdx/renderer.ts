@@ -2,6 +2,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import type { TryItNowProps } from "../../assets/TryItNow/index.tsx";
 import { assertNever } from "../../util/assertNever.ts";
 import { getSettings } from "../settings.ts";
 
