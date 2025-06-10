@@ -6,7 +6,7 @@ import type {
 } from "@codesandbox/sandpack-client";
 import { useEffect, useState } from "react";
 
-function getTranspiledCode(client: SandpackClient): string | null {
+const getTranspiledCode = (client: SandpackClient): string | null => {
   if (!client) return null;
 
   const bundlerState = client[
