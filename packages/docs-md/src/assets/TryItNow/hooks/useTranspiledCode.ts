@@ -32,7 +32,8 @@ export const useEvaluatedCode = (): string | null => {
   useEffect(() => {
     listen((msg: SandpackMessage) => {
       if (msg.type === "status" && msg.status === "evaluating") {
-        const transpiledCode = getTranspiledCode(client!);
+        if (!client) return;
+        const transpiledCode = getTranspiledCode(client);
         if (transpiledCode) {
           setEvaluatedCode(transpiledCode);
         }
