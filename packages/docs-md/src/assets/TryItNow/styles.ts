@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-export const theme = {
+const theme = {
   colors: {
     primary: "rgb(251, 227, 50)",
     primaryHover: "rgb(230, 209, 46)",
