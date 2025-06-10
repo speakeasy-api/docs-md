@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const re = /require\(['"](?<dependency>[\S_-]+)['"]/g;
+const localImportRegex = /^\.{1,2}\/|^\/|^~\//;
 
 /**
  * Detects dependencies from transpiled code that external such as npm packages.
@@ -12,15 +13,14 @@ export function useTranspileDependencyMatches(transpiledCode: string) {
     string,
     string
   > | null>(null);
-  // use match for require
 
   useEffect(() => {
     const dependencies = transpiledCode.matchAll(re);
     const dependenciesArray = Array.from(dependencies).reduce(
       (prev, match) => {
-        const dependency = match.groups?.dependency;
+        const dependency = match.groups?.dependency || '';
         // filter out local dependencies
-        if (dependency?.startsWith('./') || dependency?.startsWith('../')) {
+        if (localImportRegex.test(dependency)) {
           return prev;
         }
     

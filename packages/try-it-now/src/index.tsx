@@ -18,15 +18,33 @@ export type DependencyVersion = string;
 export type Dependencies = Record<DependencyName, DependencyVersion>;
 
 export type TryItNowProps = {
+  /**
+   * These are dependencies that are required by the code snippet, 
+   * like "zod" or an npm package.
+   */
   externalDependencies?: Dependencies;
+  /**
+   * Starting value of the editor
+   */
   defaultValue?: string;
-  _enableUnsafeAutoImport?: boolean;
-  wrapperProps?: React.HTMLAttributes<HTMLDivElement>;
+  /**
+   * Props for the container that wraps the editor and console output.
+   */
   containerProps?: React.HTMLAttributes<HTMLDivElement>;
-  container?: React.ReactNode;
+  /**
+   * Render only the Sandpack provider and components to use in a 
+   * custom container. 
+   */
   disableContainer?: boolean;
   sandpackOptions?: SandpackOptions;
-  setupOptions?: SandpackSetup;
+  sandpackSetupOptions?: SandpackSetup;
+  /**
+   * Experimental: When enabled, the editor will automatically 
+   * scan for external dependencies from npm as the user adds them
+   * as imports. 
+   */
+  _enableUnsafeAutoImport?: boolean;
+
 };
 
 
@@ -37,7 +55,7 @@ export const TryItNow = ({
   containerProps,
   disableContainer,
   sandpackOptions = {},
-  setupOptions = {}
+  sandpackSetupOptions = {}
 }: TryItNowProps) => {
   const autoImportDependencies = useAtomValue(dependenciesAtom);
   const previousCodeAtomValue = useAtomValue(lastEditorValueAtom);
@@ -65,7 +83,7 @@ export const TryItNow = ({
               ? { ...autoImportDependencies, ...externalDependencies }
               : externalDependencies,
           entry: 'index.tsx',
-          ...setupOptions
+          ...sandpackSetupOptions
         }}
         theme="auto"
       >
