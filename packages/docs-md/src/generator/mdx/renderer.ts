@@ -266,6 +266,29 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
     this.#site[SAVE_PAGE](this.#currentPagePath, data);
   }
 
+  public addNamedImport(importPath: string, symbol: string) {
+    if (!this.#imports.has(importPath)) {
+      this.#imports.set(importPath, {
+        defaultAlias: undefined,
+        namedImports: new Set(),
+      });
+    }
+    this.#imports.get(importPath)?.namedImports.add(symbol);
+  }
+
+  public addDefaultImport(importPath: string, symbol: string) {
+    if (!this.#imports.has(importPath)) {
+      this.#imports.set(importPath, {
+        defaultAlias: undefined,
+        namedImports: new Set(),
+      });
+    }
+    // Will never be undefined due to the above. I wish TypeScript could narrow
+    // map/set has calls
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    this.#imports.get(importPath)!.defaultAlias = symbol;
+  }
+
   #insertEmbedImport(embedName: string) {
     const embedPath = getEmbedPath(embedName);
 
@@ -281,22 +304,7 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
     if (!importPath.startsWith("./") && !importPath.startsWith("../")) {
       importPath = `./${importPath}`;
     }
-    if (!this.#imports.has(importPath)) {
-      this.#imports.set(importPath, {
-        defaultAlias: undefined,
-        namedImports: new Set(),
-      });
-    }
-    if (!this.#imports.has(importPath)) {
-      this.#imports.set(importPath, {
-        defaultAlias: undefined,
-        namedImports: new Set(),
-      });
-    }
-    // Will never be undefined due to the above. I wish TypeScript could narrow
-    // map/set has calls
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    this.#imports.get(importPath)!.defaultAlias = getEmbedSymbol(embedName);
+    this.addDefaultImport(importPath, getEmbedSymbol(embedName));
 
     return true;
   }
@@ -306,12 +314,6 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
       dirname(this.#currentPagePath),
       join(getSettings().output.componentOutDir, componentPath)
     );
-    if (!this.#imports.has(importPath)) {
-      this.#imports.set(importPath, {
-        defaultAlias: undefined,
-        namedImports: new Set(),
-      });
-    }
-    this.#imports.get(importPath)?.namedImports.add(symbol);
+    this.addNamedImport(importPath, symbol);
   }
 }

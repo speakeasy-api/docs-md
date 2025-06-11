@@ -6,16 +6,29 @@ import { getSettings } from "../settings.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
 import { renderSchema } from "./chunks/schema.ts";
+import { renderSnippetAI } from "./chunks/snippetai.ts";
 import { renderTag } from "./chunks/tag.ts";
+import type { Renderer } from "./renderer.ts";
 import { Site } from "./renderer.ts";
 import { getOperationFromId } from "./util.ts";
 
 type Data = Map<string, Chunk>;
 
-type PageMap = Map<
-  string,
-  { sidebarLabel: string; sidebarPosition: string; chunks: Chunk[] }
->;
+type PageMapEntry =
+  | {
+      type: "chunk";
+      sidebarLabel: string;
+      sidebarPosition: string;
+      chunks: Chunk[];
+    }
+  | {
+      type: "renderer";
+      sidebarLabel: string;
+      sidebarPosition: string;
+      renderer: (renderer: Renderer) => void;
+    };
+
+type PageMap = Map<string, PageMapEntry>;
 
 function getPageMap(data: Data) {
   const settings = getSettings();
@@ -44,11 +57,21 @@ function getPageMap(data: Data) {
   for (const [, chunk] of data) {
     if (chunk.chunkType === "about") {
       pageMap.set(buildPagePath("about"), {
+        type: "chunk",
         sidebarLabel: "About",
         sidebarPosition: "1",
         chunks: [chunk],
       });
     }
+  }
+
+  if (settings.snippetAI?.apiKey) {
+    pageMap.set(buildPagePath("snippet-ai"), {
+      type: "renderer",
+      sidebarLabel: "Snippet AI",
+      sidebarPosition: "0",
+      renderer: renderSnippetAI,
+    });
   }
 
   // Find the tag pages
@@ -66,10 +89,11 @@ function getPageMap(data: Data) {
   let tagIndex = 0;
   for (const chunk of tagChunks) {
     const pagePath = buildPagePath(chunk.slug);
-    const pageMapEntry = {
+    const pageMapEntry: PageMapEntry = {
+      type: "chunk",
       sidebarLabel: chunk.chunkData.name,
       sidebarPosition: `2.${tagIndex++}`,
-      chunks: [chunk] as Chunk[],
+      chunks: [chunk],
     };
     pageMap.set(pagePath, pageMapEntry);
     for (const operationChunkId of chunk.chunkData.operationChunkIds) {
@@ -107,7 +131,8 @@ function getPageMap(data: Data) {
         );
       }
       const pagePath = buildPagePath(chunk.slug);
-      const pageMapEntry = {
+      const pageMapEntry: PageMapEntry = {
+        type: "chunk",
         sidebarLabel: chunk.chunkData.value.name,
         sidebarPosition: `3.${schemaIndex++}`,
         chunks: [chunk] as Chunk[],
@@ -120,10 +145,18 @@ function getPageMap(data: Data) {
 }
 
 function renderPages(site: Site, pageMap: PageMap, data: Map<string, Chunk>) {
-  for (const [
-    currentPagePath,
-    { chunks, sidebarLabel, sidebarPosition },
-  ] of pageMap) {
+  for (const [currentPagePath, pageMapEntry] of pageMap) {
+    if (pageMapEntry.type === "renderer") {
+      const renderer = site.createPage(currentPagePath);
+      renderer.insertFrontMatter({
+        sidebarPosition: pageMapEntry.sidebarPosition,
+        sidebarLabel: pageMapEntry.sidebarLabel,
+      });
+      pageMapEntry.renderer(renderer);
+      renderer.finalize();
+      continue;
+    }
+    const { chunks, sidebarLabel, sidebarPosition } = pageMapEntry;
     const renderer = site.createPage(currentPagePath);
     renderer.insertFrontMatter({
       sidebarPosition,

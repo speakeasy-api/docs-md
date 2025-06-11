@@ -20,6 +20,12 @@ export const settingsSchema = z.strictObject({
       maxTypeSignatureLineLength: 80,
       maxSchemaNesting: 3,
     }),
+  snippetAI: z
+    .strictObject({
+      apiKey: z.string(),
+      suggestions: z.array(z.string()).optional(),
+    })
+    .optional(),
 });
 
 export type Settings = z.infer<typeof settingsSchema>;
