@@ -1,25 +1,3 @@
-import type { UsageSnippet } from "./usageSnippet";
-
-type DocInfo = {
-  title: string;
-  summary: string;
-  description: string;
-  version: string;
-}
-
-type Operation = {
-  operationID: string;
-  name: string;
-  description: string;
-}
-
-export type AST = {
-  openAPIVersion: string;
-  docInfo: DocInfo;
-  groupTree: GroupTree;
-  operations: Operation[];
-}
-
 declare global {
   const SerializeDocsData: (spec: string) => Promise<string>;
   const GenerateUsageSnippets: ([{
@@ -32,7 +10,7 @@ declare global {
     operationIds: string[];
     target: string;
     config: Record<string, string | number | boolean>;
-  }[]) => Promise<UsageSnippet[]>;
+  }[]) => Promise<string>;
   const SerializeSandboxAST: (spec: [string]) => Promise<string>;
 }
 

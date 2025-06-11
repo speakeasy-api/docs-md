@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import { unzipSync } from "node:zlib";
 
 import type { Chunk } from "../../types/chunk.ts";
-import type { AST } from "../../types/global.js";
+import type { UsageSnippet } from "../../types/usageSnippet.ts";
 
 declare class Go {
   argv: string[];
@@ -34,9 +34,9 @@ export async function getDocsData(
   void go.run(result.instance);
   const serializedDocsData = await SerializeDocsData(specContents);
   
-  const snippets = await getDocsSnippets(specContents, 'typescriptv2');
-
-  console.log(snippets);
+  const snippetsString = await getDocsSnippets(specContents, 'typescriptv2');
+  const snippets = JSON.parse(snippetsString) as UsageSnippet[];
+  console.log("Snippets generated", snippets);
   const docsData = (JSON.parse(serializedDocsData) as string[]).map(
     (chunk) => JSON.parse(chunk) as Chunk
   );
@@ -47,7 +47,7 @@ export async function getDocsData(
 async function getDocsSnippets(
   schema: string,
   target: string,
-): Promise<unknown> {
+): Promise<string> {
   const gzippedBuffer = await readFile(wasmPath);
   const wasmBuffer = unzipSync(gzippedBuffer);
   try {
