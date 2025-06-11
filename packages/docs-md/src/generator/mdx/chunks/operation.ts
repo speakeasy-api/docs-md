@@ -77,6 +77,16 @@ export function renderOperation({
       if (parameter.description) {
         renderer.appendParagraph(parameter.description);
       }
+      const parameterChunk = getSchemaFromId(parameter.fieldChunkId, docsData);
+      renderSchema({
+        topLevelName: "Security",
+        site,
+        renderer,
+        schema: parameterChunk.chunkData.value,
+        data: docsData,
+        baseHeadingLevel: baseHeadingLevel + 2,
+        depth: 0,
+      });
     }
   }
 
