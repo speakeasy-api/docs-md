@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { unzipSync } from "node:zlib";
 
 import type { Chunk } from "../../types/chunk.ts";
+import type { AST } from "../../types/global.js";
 
 declare class Go {
   argv: string[];
@@ -32,8 +33,48 @@ export async function getDocsData(
   const result = await WebAssembly.instantiate(wasmBuffer, go.importObject);
   void go.run(result.instance);
   const serializedDocsData = await SerializeDocsData(specContents);
+  
+  const snippets = await getDocsSnippets(specContents, 'typescriptv2');
+
+  console.log(snippets);
   const docsData = (JSON.parse(serializedDocsData) as string[]).map(
     (chunk) => JSON.parse(chunk) as Chunk
   );
   return new Map(docsData.map((chunk) => [chunk.id, chunk]));
+}
+
+
+async function getDocsSnippets(
+  schema: string,
+  target: string,
+): Promise<unknown> {
+  const gzippedBuffer = await readFile(wasmPath);
+  const wasmBuffer = unzipSync(gzippedBuffer);
+  try {
+  const go = new Go();
+
+  const result = await WebAssembly.instantiate(wasmBuffer, go.importObject);
+  
+    void go.run(result.instance);
+
+    const serializedAstString = await SerializeSandboxAST([schema]);
+    const serializedAst = JSON.parse(serializedAstString) as AST;
+
+    const operationIds = serializedAst.operations.map((operation) => operation.operationID);
+
+    const usageSnippetsData = await GenerateUsageSnippets([{
+      schema,
+      operationIds,
+      target,
+      config: {
+        packageName: serializedAst.docInfo.title,
+        sdkClassName: serializedAst.docInfo.title,
+      },
+    }]);
+    
+    return usageSnippetsData;
+  } catch (e: unknown) {
+    console.log("error", e);
+    return null;
+  }
 }
