@@ -2,12 +2,12 @@ import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import type { TryItNowProps } from "../../assets/TryItNow/index.tsx";
 import { assertNever } from "../../util/assertNever.ts";
 import { getSettings } from "../settings.ts";
 
 const ASSET_PATH = join(
   dirname(fileURLToPath(import.meta.url)),
+  "..",
   "..",
   "..",
   "assets"
@@ -229,7 +229,9 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
     );
   }
 
-  public appendTryItNow(props: TryItNowProps = {}) {
+  // TODO: need to type this properly, but we can't import types from assets
+  // since they can't be built as part of this TS project
+  public appendTryItNow(props: Record<string, unknown> = {}) {
     this.#insertComponentImport("TryItNow", "TryItNow/index.tsx");
     const escapedProps = Object.fromEntries(
       Object.entries(props).map(([key, value]) => [
