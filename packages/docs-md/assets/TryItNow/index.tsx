@@ -20,7 +20,7 @@ type DependencyName = string;
 type DependencyVersion = string;
 type Dependencies = Record<DependencyName, DependencyVersion>;
 
-export type TryItNowProps = {
+type TryItNowProps = {
   /**
    * These are dependencies that are required by the code snippet,
    * like "zod" or an npm package.
