@@ -13,11 +13,13 @@ const ASSET_PATH = join(
   "assets"
 );
 
+type Escape = "all" | "mdx" | "none";
+
 type AppendOptions = {
   // We almost always want to escape special Markdown characters, so we default
   // to true. However, sometimes content coming in is actually in Markdown, so
   // we want to preserve this Markdown formatting by setting this to false
-  escape?: boolean;
+  escape?: Escape;
 };
 
 const SAVE_PAGE = Symbol();
@@ -105,30 +107,36 @@ export class Renderer {
     this.#currentPagePath = currentPagePath;
   }
 
-  public escapeText(
-    text: string,
-    { mdxOnly = false }: { mdxOnly?: boolean } = {}
-  ) {
-    if (mdxOnly) {
-      return text.replace(/(?<!\\)\{/g, "\\{").replace(/(?<!\\)\}/g, "\\}");
+  // TODO: don't escape if they're already escaped
+  public escapeText(text: string, { escape }: { escape: Escape }) {
+    switch (escape) {
+      case "all":
+        return (
+          text
+            .replaceAll("\\", "\\\\")
+            .replaceAll("`", "\\`")
+            .replaceAll("*", "\\*")
+            .replaceAll("_", "\\_")
+            .replaceAll("{", "\\{")
+            .replaceAll("}", "\\}")
+            .replaceAll("[", "\\[")
+            .replaceAll("]", "\\]")
+            .replaceAll("<", "\\<")
+            .replaceAll(">", "\\>")
+            .replaceAll("(", "\\(")
+            .replaceAll(")", "\\)")
+            .replaceAll("#", "\\#")
+            .replaceAll("+", "\\+")
+            // .replace("-", "\\-")
+            // .replace(".", "\\.")
+            .replaceAll("!", "\\!")
+            .replaceAll("|", "\\|")
+        );
+      case "mdx":
+        return text.replaceAll("{", "\\{").replaceAll("}", "\\}");
+      case "none":
+        return text;
     }
-    return text
-      .replace(/(?<!\\)\\/g, "\\\\")
-      .replace(/(?<!\\)`/g, "\\`")
-      .replace(/(?<!\\)\*/g, "\\*")
-      .replace(/(?<!\\)_/g, "\\_")
-      .replace(/(?<!\\)\{/g, "\\{")
-      .replace(/(?<!\\)\}/g, "\\}")
-      .replace(/(?<!\\)\[/g, "\\[")
-      .replace(/(?<!\\)\]/g, "\\]")
-      .replace(/(?<!\\)</g, "\\<")
-      .replace(/(?<!\\)>/g, "\\>")
-      .replace(/(?<!\\)\(/g, "\\(")
-      .replace(/(?<!\\)\)/g, "\\)")
-      .replace(/(?<!\\)#/g, "\\#")
-      .replace(/(?<!\\)\+/g, "\\+")
-      .replace(/(?<!\\)!/g, "\\!")
-      .replace(/(?<!\\)\|/g, "\\|");
   }
 
   public insertFrontMatter({
@@ -143,13 +151,13 @@ export class Renderer {
       case "docusaurus": {
         this.#frontMatter = `---
 sidebar_position: ${sidebarPosition}
-sidebar_label: ${this.escapeText(sidebarLabel)}
+sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 ---`;
         break;
       }
       case "nextra": {
         this.#frontMatter = `---
-sidebarTitle: ${this.escapeText(sidebarLabel)}
+sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 ---`;
         break;
       }
@@ -162,26 +170,24 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
   public appendHeading(
     level: number,
     text: string,
-    { escape = true }: AppendOptions = {}
+    { escape = "all" }: AppendOptions = {}
   ) {
     this.#lines.push(
-      `#`.repeat(level) + " " + this.escapeText(text, { mdxOnly: !escape })
+      `#`.repeat(level) + " " + this.escapeText(text, { escape })
     );
   }
 
-  public appendParagraph(text: string, { escape = false }: AppendOptions = {}) {
-    this.#lines.push(this.escapeText(text, { mdxOnly: !escape }));
+  public appendParagraph(text: string, { escape = "mdx" }: AppendOptions = {}) {
+    this.#lines.push(this.escapeText(text, { escape }));
   }
 
   public appendCode(text: string) {
     this.#lines.push(`\`\`\`\n${text}\n\`\`\``);
   }
 
-  public appendList(items: string[], { escape = true }: AppendOptions = {}) {
+  public appendList(items: string[], { escape = "all" }: AppendOptions = {}) {
     this.#lines.push(
-      items
-        .map((item) => "- " + this.escapeText(item, { mdxOnly: !escape }))
-        .join("\n")
+      items.map((item) => "- " + this.escapeText(item, { escape })).join("\n")
     );
   }
 
@@ -193,12 +199,12 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
     title: string,
     {
       isOpenOnLoad = false,
-      escape = true,
+      escape = "all",
     }: { isOpenOnLoad?: boolean } & AppendOptions
   ) {
     this.#lines.push(`<details ${isOpenOnLoad ? "open" : ""}>`);
     this.#lines.push(
-      `<summary>${this.escapeText(title, { mdxOnly: !escape })}</summary>`
+      `<summary>${this.escapeText(title, { escape })}</summary>`
     );
   }
 
@@ -223,7 +229,7 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
     this.#insertComponentImport("SideBar", "SideBar/index.tsx");
     this.#lines.push(
       `<p>
-  <SideBarCta cta="${`View ${this.escapeText(title, { mdxOnly: true })}`}" title="${this.escapeText(title)}">
+  <SideBarCta cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
     <${getEmbedSymbol(embedName)} />
   </SideBarCta>
 </p>`
@@ -243,7 +249,7 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
       Object.entries(props).map(([key, value]) => [
         key,
         typeof value === "string"
-          ? this.escapeText(value, { mdxOnly: true })
+          ? this.escapeText(value, { escape: "mdx" })
           : JSON.stringify(value),
       ])
     );

@@ -290,8 +290,8 @@ function renderNameAndType({
   } else {
     renderer.appendHeading(
       baseHeadingLevel,
-      `${renderer.escapeText(annotatedPropertyName)}: \`${computedDisplayType.content}\``,
-      { escape: false }
+      `${renderer.escapeText(annotatedPropertyName, { escape: "all" })}: \`${renderer.escapeText(computedDisplayType.content, { escape: "mdx" })}\``,
+      { escape: "none" }
     );
   }
 }
