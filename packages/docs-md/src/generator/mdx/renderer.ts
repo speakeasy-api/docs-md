@@ -214,8 +214,8 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
     embedName: string;
   }) {
     this.#includeSidebar = true;
-    this.#insertComponentImport("SideBarCta", "SideBar/index.tsx");
-    this.#insertComponentImport("SideBar", "SideBar/index.tsx");
+    this.insertComponentImport("SideBarCta", "SideBar/index.tsx");
+    this.insertComponentImport("SideBar", "SideBar/index.tsx");
     if (!this.#insertEmbedImport(embedName)) {
       console.error(`Direct circular import detected, skipping sidebar link`);
       return;
@@ -232,7 +232,7 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
   // TODO: need to type this properly, but we can't import types from assets
   // since they can't be built as part of this TS project
   public appendTryItNow(props: Record<string, unknown> = {}) {
-    this.#insertComponentImport("TryItNow", "TryItNow/index.tsx");
+    this.insertComponentImport("TryItNow", "TryItNow/index.tsx");
     const escapedProps = Object.fromEntries(
       Object.entries(props).map(([key, value]) => [
         key,
@@ -266,17 +266,7 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
     this.#site[SAVE_PAGE](this.#currentPagePath, data);
   }
 
-  public addNamedImport(importPath: string, symbol: string) {
-    if (!this.#imports.has(importPath)) {
-      this.#imports.set(importPath, {
-        defaultAlias: undefined,
-        namedImports: new Set(),
-      });
-    }
-    this.#imports.get(importPath)?.namedImports.add(symbol);
-  }
-
-  public addDefaultImport(importPath: string, symbol: string) {
+  #insertDefaultImport(importPath: string, symbol: string) {
     if (!this.#imports.has(importPath)) {
       this.#imports.set(importPath, {
         defaultAlias: undefined,
@@ -287,6 +277,16 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
     // map/set has calls
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.#imports.get(importPath)!.defaultAlias = symbol;
+  }
+
+  #insertNamedImport(importPath: string, symbol: string) {
+    if (!this.#imports.has(importPath)) {
+      this.#imports.set(importPath, {
+        defaultAlias: undefined,
+        namedImports: new Set(),
+      });
+    }
+    this.#imports.get(importPath)?.namedImports.add(symbol);
   }
 
   #insertEmbedImport(embedName: string) {
@@ -304,16 +304,16 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
     if (!importPath.startsWith("./") && !importPath.startsWith("../")) {
       importPath = `./${importPath}`;
     }
-    this.addDefaultImport(importPath, getEmbedSymbol(embedName));
+    this.#insertDefaultImport(importPath, getEmbedSymbol(embedName));
 
     return true;
   }
 
-  #insertComponentImport(symbol: string, componentPath: string) {
+  public insertComponentImport(symbol: string, componentPath: string) {
     const importPath = relative(
       dirname(this.#currentPagePath),
       join(getSettings().output.componentOutDir, componentPath)
     );
-    this.addNamedImport(importPath, symbol);
+    this.#insertNamedImport(importPath, symbol);
   }
 }

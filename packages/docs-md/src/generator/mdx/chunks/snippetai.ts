@@ -9,15 +9,14 @@ export function renderSnippetAI(renderer: Renderer) {
     );
   }
   const { suggestions, apiKey } = snippetAI;
-  renderer.addNamedImport("@speakeasy-api/snippet-ai-react", "SnippetAI");
+  renderer.insertComponentImport("SnippetAI", "SnippetAI/index.js");
   renderer.appendHeading(1, "Snippet AI");
   renderer.appendRaw(`
 <SnippetAI
   codeLang="typescript"${suggestions ? `\n  suggestions={${JSON.stringify(suggestions)}}` : ""}
   publishingToken="${apiKey}"
->
-  <button>Open SnippetAI</button>
-</SnippetAI>
+></SnippetAI>
+<button id="snippet-ai-trigger">Open SnippetAI</button>
 `);
   renderer.appendParagraph(
     "SnippetAI support is an early work in progress. It will be displayed inline soon, not the dialog form it's currently in."

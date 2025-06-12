@@ -69,7 +69,7 @@ function getPageMap(data: Data) {
     pageMap.set(buildPagePath("snippet-ai"), {
       type: "renderer",
       sidebarLabel: "Snippet AI",
-      sidebarPosition: "0",
+      sidebarPosition: "2",
       renderer: renderSnippetAI,
     });
   }
