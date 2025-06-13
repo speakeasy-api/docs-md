@@ -2,7 +2,6 @@ import { z } from "zod";
 
 export const settingsSchema = z.strictObject({
   spec: z.string(),
-  npmPackageName: z.string(),
   output: z.strictObject({
     pageOutDir: z.string(),
     componentOutDir: z.string(),
@@ -25,6 +24,12 @@ export const settingsSchema = z.strictObject({
     .strictObject({
       apiKey: z.string(),
       suggestions: z.array(z.string()).optional(),
+    })
+    .optional(),
+  tryItNow: z
+    .strictObject({
+      npmPackageName: z.string(),
+      sdkClassName: z.string(),
     })
     .optional(),
 });

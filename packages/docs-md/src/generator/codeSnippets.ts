@@ -10,42 +10,17 @@ import { getSettings } from "./settings.ts";
 
 const CODE_SNIPPETS_API_URL = "http://api.speakeasy.com";
 
-async function fetchCodeSnippets(
-  language: string,
-  schemeFile: {
-    fileName: string;
-    content: string;
-  },
-  packageName: string
-): Promise<CodeSnippet[]> {
-  const formData = new FormData();
-
-  const blob = new Blob([schemeFile.content]);
-  formData.append("language", language);
-  formData.append("schema_file", blob, schemeFile.fileName);
-  formData.append("package_name", packageName);
-
-  const res = await fetch(`${CODE_SNIPPETS_API_URL}/v1/code_sample/preview`, {
-    method: "POST",
-    body: formData,
-  });
-
-  const json = (await res.json()) as unknown;
-
-  if (!res.ok) {
-    const error = json as ErrorResponse;
-    throw new Error(`Failed to generate code sample: ${error.message}`);
-  }
-  return (json as CodeSamplesResponse).snippets;
-}
-
 export type DocsCodeSnippets = Record<OperationChunk["id"], CodeSnippet>;
 
 export const generateDocsCodeSnippets = async (
   docsData: Map<string, Chunk>,
   specContents: string
 ): Promise<DocsCodeSnippets> => {
-  const { spec, npmPackageName } = getSettings();
+  const { spec, tryItNow } = getSettings();
+  if (!tryItNow) {
+    return {};
+  }
+
   const docsCodeSnippets: DocsCodeSnippets = {};
 
   const specFilename = basename(spec);
@@ -57,14 +32,26 @@ export const generateDocsCodeSnippets = async (
     }
   }
   try {
-    const codeSnippets = await fetchCodeSnippets(
-      "typescript",
-      {
-        fileName: specFilename,
-        content: specContents,
-      },
-      npmPackageName
-    );
+    const formData = new FormData();
+
+    const blob = new Blob([specContents]);
+    formData.append("language", "typescript");
+    formData.append("schema_file", blob, specFilename);
+    formData.append("package_name", tryItNow.npmPackageName);
+    formData.append("sdk_class_name", tryItNow.sdkClassName);
+
+    const res = await fetch(`${CODE_SNIPPETS_API_URL}/v1/code_sample/preview`, {
+      method: "POST",
+      body: formData,
+    });
+
+    const json = (await res.json()) as unknown;
+
+    if (!res.ok) {
+      const error = json as ErrorResponse;
+      throw new Error(`Failed to generate code sample: ${error.message}`);
+    }
+    const codeSnippets = (json as CodeSamplesResponse).snippets;
 
     for (const snippet of codeSnippets) {
       const chunk = operationChunksByOperationId.get(snippet.operationId);

@@ -1,4 +1,5 @@
 import type { Settings } from "../types/settings.ts";
+import { generateDocsCodeSnippets } from "./codeSnippets.ts";
 import { getDocsData } from "./docsData/getDocsData.ts";
 import { generateContent } from "./mdx/generateContent.ts";
 import { setSettings } from "./settings.ts";
@@ -18,9 +19,14 @@ export async function generatePages({
   setSettings(settings);
 
   // Get the docs data from the spec
+  console.log("Getting docs data");
   const data = await getDocsData(specContents);
+
+  // Get code snippets
+  console.log("Generating code snippets");
+  const docsCodeSnippets = await generateDocsCodeSnippets(data, specContents);
 
   // Generate the content
   console.log("Generating Markdown pages");
-  return generateContent(data);
+  return generateContent(data, docsCodeSnippets);
 }

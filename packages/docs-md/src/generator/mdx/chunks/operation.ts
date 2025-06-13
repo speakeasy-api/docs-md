@@ -12,7 +12,7 @@ type RenderOperationOptions = {
   docsData: Map<string, Chunk>;
   baseHeadingLevel: number;
   docsCodeSnippets: DocsCodeSnippets;
-}
+};
 
 export function renderOperation({
   renderer,
@@ -94,14 +94,17 @@ export function renderOperation({
     }
   }
 
+  const { tryItNow } = getSettings();
+
   const usageSnippet = docsCodeSnippets[chunk.id];
-  if (usageSnippet) {
+  if (usageSnippet && tryItNow) {
+    renderer.appendHeading(baseHeadingLevel + 1, "Try it Now");
     // TODO: Zod is actually hard coded for now since its always a dependency
     // in our SDKs. Ideally this will come from the SDK package.
     renderer.appendTryItNow({
       externalDependencies: {
         zod: "^3.25.64",
-        [getSettings().npmPackageName]: "latest",
+        [tryItNow.npmPackageName]: "latest",
       },
       defaultValue: usageSnippet.code,
     });
