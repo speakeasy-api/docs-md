@@ -6,7 +6,7 @@ import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { unzipSync } from "node:zlib";
 
-import type { Chunk } from "../../types/chunk.ts";
+import type { Chunk, OperationChunk } from "../../types/chunk.ts";
 import { fetchCodeSnippets as fetchUsageSnippets } from "../generateCodeSnippets.ts";
 import { getSettings } from "../settings.ts";
 import { setUsageSnippet } from "../usageSnippets.ts";
@@ -42,7 +42,7 @@ export async function getDocsData(
   );
 
   // create a by operationId map of the operation chunks
-  const operationChunksByOperationId = new Map<string, Chunk>();
+  const operationChunksByOperationId = new Map<string, OperationChunk>();
   for (const chunk of docsData) {
     if (chunk.chunkType === "operation") {
       operationChunksByOperationId.set(chunk.chunkData.operationId, chunk);
@@ -55,13 +55,13 @@ export async function getDocsData(
       fileName: specFilename,
       content: specContents,
     },
-    Array.from(operationChunksByOperationId.keys()),
     npmPackageName
   );
 
   for (const snippet of usageSnippets) {
     const chunk = operationChunksByOperationId.get(snippet.operationId);
-    if (chunk && chunk.chunkType === "operation") {
+    // only set the usage snippet if the operation id exists in the spec
+    if (chunk) {
       setUsageSnippet(snippet);
     }
   }
