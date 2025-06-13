@@ -9,6 +9,7 @@ import { unzipSync } from "node:zlib";
 import type { Chunk } from "../../types/chunk.ts";
 import { fetchCodeSnippets as fetchUsageSnippets } from "../generateCodeSnippets.ts";
 import { getSettings } from "../settings.ts";
+import { setUsageSnippet } from "../usageSnippets.ts";
 declare class Go {
   argv: string[];
   env: { [envKey: string]: string };
@@ -61,7 +62,7 @@ export async function getDocsData(
   for (const snippet of usageSnippets) {
     const chunk = operationChunksByOperationId.get(snippet.operationId);
     if (chunk && chunk.chunkType === "operation") {
-      chunk.chunkData.usageSnippet = { ...snippet };
+      setUsageSnippet(snippet);
     }
   }
 

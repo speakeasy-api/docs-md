@@ -1,5 +1,6 @@
 import type { Chunk, OperationChunk } from "../../../types/chunk.ts";
 import { getSettings } from "../../settings.ts";
+import { getUsageSnippet } from "../../usageSnippets.ts";
 import type { Renderer, Site } from "../renderer.ts";
 import { getSchemaFromId } from "../util.ts";
 import { renderSchema } from "./schema.ts";
@@ -91,7 +92,8 @@ export function renderOperation({
     }
   }
 
-  if (chunk.chunkData.usageSnippet) {
+  const usageSnippet = getUsageSnippet(chunk.chunkData.operationId);
+  if (usageSnippet) {
     // TODO: Zod is actually hard coded for now since its always a dependency
     // in our SDKs. Ideally this will come from the SDK package.
     renderer.appendTryItNow({
@@ -99,7 +101,7 @@ export function renderOperation({
         zod: "^3.25.64",
         [getSettings().npmPackageName]: "latest",
       },
-      defaultValue: chunk.chunkData.usageSnippet.code,
+      defaultValue: usageSnippet.code,
     });
   }
 

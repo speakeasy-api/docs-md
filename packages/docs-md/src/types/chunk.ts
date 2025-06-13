@@ -2,8 +2,6 @@
 // https://github.com/speakeasy-api/openapi-generation/blob/9360544609e4c3a0320bd0b2a039b49008944197/internal/docsData
 // One day, we'll create an automated mechanism to keep them in sync
 
-import type { UsageSnippet } from "./usageSnippets.ts";
-
 // About chunks
 
 type Server = {
@@ -55,7 +53,6 @@ type OperationData = {
   method: string;
   tag: string;
   summary: string | null;
-  usageSnippet: UsageSnippet | null;
   description: string | null;
   security: Security | null;
   globalSecurity: Security | null;
