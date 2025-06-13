@@ -51,8 +51,7 @@ Options:
   --page-out-dir, -p  Output directory for page contents
   --component-out-dir, -o  Output directory for component contents
   --framework, -f  Framework to use (docusaurus, nextra)
-  --npm-package-name, -n  npm package to use for the SDK code snippets`
-  );
+  --npm-package-name, -n  npm package to use for the SDK code snippets`);
 }
 
 if (args["--help"]) {
@@ -137,7 +136,7 @@ async function getSettings(): Promise<Settings> {
     (configFileImport.output as Record<string, unknown>).framework =
       args["--framework"];
   }
- 
+
   // Parse the settings using Zod to ensure accuracy
   const configFileContents = settingsSchema.safeParse(configFileImport);
   if (!configFileContents.success) {

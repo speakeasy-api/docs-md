@@ -6,10 +6,9 @@ import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { unzipSync } from "node:zlib";
 
-import type { Chunk, OperationChunk } from "../../types/chunk.ts";
-import { fetchCodeSnippets as fetchUsageSnippets } from "../generateCodeSnippets.ts";
+import type { Chunk } from "../../types/chunk.ts";
+import { fetchAndStoreDocsCodeSnippets } from "../codeSnippets.ts";
 import { getSettings } from "../settings.ts";
-import { setUsageSnippet } from "../usageSnippets.ts";
 declare class Go {
   argv: string[];
   env: { [envKey: string]: string };
@@ -41,30 +40,12 @@ export async function getDocsData(
     (chunk) => JSON.parse(chunk) as Chunk
   );
 
-  // create a by operationId map of the operation chunks
-  const operationChunksByOperationId = new Map<string, OperationChunk>();
-  for (const chunk of docsData) {
-    if (chunk.chunkType === "operation") {
-      operationChunksByOperationId.set(chunk.chunkData.operationId, chunk);
-    }
-  }
-
-  const usageSnippets = await fetchUsageSnippets(
-    "typescript",
-    {
-      fileName: specFilename,
-      content: specContents,
-    },
+  await fetchAndStoreDocsCodeSnippets(
+    docsData,
+    specFilename,
+    specContents,
     npmPackageName
   );
-
-  for (const snippet of usageSnippets) {
-    const chunk = operationChunksByOperationId.get(snippet.operationId);
-    // only set the usage snippet if the operation id exists in the spec
-    if (chunk) {
-      setUsageSnippet(snippet);
-    }
-  }
 
   return new Map(docsData.map((chunk) => [chunk.id, chunk]));
 }

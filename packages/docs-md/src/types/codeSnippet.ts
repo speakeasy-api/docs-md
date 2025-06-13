@@ -1,15 +1,14 @@
-export type UsageSnippet = {
+export type CodeSnippet = {
   operationId: string;
   language: string;
   code: string;
 };
 
 export type CodeSamplesResponse = {
-  snippets: UsageSnippet[];
+  snippets: CodeSnippet[];
 };
 
 export type ErrorResponse = {
   message: string;
   statusCode: number;
 };
-
