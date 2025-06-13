@@ -1,5 +1,5 @@
 import type { Chunk, OperationChunk } from "../../../types/chunk.ts";
-import { getCodeSnippet } from "../../codeSnippets.ts";
+import type { DocsCodeSnippets } from "../../codeSnippets.ts";
 import { getSettings } from "../../settings.ts";
 import type { Renderer, Site } from "../renderer.ts";
 import { getSchemaFromId } from "../util.ts";
@@ -11,7 +11,8 @@ type RenderOperationOptions = {
   chunk: OperationChunk;
   docsData: Map<string, Chunk>;
   baseHeadingLevel: number;
-};
+  docsCodeSnippets: DocsCodeSnippets;
+}
 
 export function renderOperation({
   renderer,
@@ -19,6 +20,7 @@ export function renderOperation({
   chunk,
   docsData,
   baseHeadingLevel,
+  docsCodeSnippets,
 }: RenderOperationOptions) {
   renderer.appendHeading(
     baseHeadingLevel,
@@ -92,7 +94,7 @@ export function renderOperation({
     }
   }
 
-  const usageSnippet = getCodeSnippet(chunk.chunkData.operationId);
+  const usageSnippet = docsCodeSnippets[chunk.id];
   if (usageSnippet) {
     // TODO: Zod is actually hard coded for now since its always a dependency
     // in our SDKs. Ideally this will come from the SDK package.

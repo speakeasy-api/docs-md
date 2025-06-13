@@ -1,19 +1,12 @@
+import { basename } from "node:path";
+
 import type { Chunk, OperationChunk } from "../types/chunk.ts";
 import type {
   CodeSamplesResponse,
   CodeSnippet,
   ErrorResponse,
 } from "../types/codeSnippet.ts";
-
-const codeSnippets = new Map<string, CodeSnippet>();
-
-export function setCodeSnippet(snippet: CodeSnippet) {
-  codeSnippets.set(snippet.operationId, snippet);
-}
-
-export function getCodeSnippet(operationId: string) {
-  return codeSnippets.get(operationId);
-}
+import { getSettings } from "./settings.ts";
 
 const CODE_SNIPPETS_API_URL = "http://api.speakeasy.com";
 
@@ -46,35 +39,43 @@ async function fetchCodeSnippets(
   return (json as CodeSamplesResponse).snippets;
 }
 
-export const fetchAndStoreDocsCodeSnippets = async (
-  docsData: Chunk[],
-  specFilename: string,
-  specContents: string,
-  npmPackageName: string
-) => {
+export type DocsCodeSnippets = Record<OperationChunk["id"], CodeSnippet>;
+
+export const generateDocsCodeSnippets = async (
+  docsData: Map<string, Chunk>,
+  specContents: string
+): Promise<DocsCodeSnippets> => {
+  const { spec, npmPackageName } = getSettings();
+  const docsCodeSnippets: DocsCodeSnippets = {};
+
+  const specFilename = basename(spec);
   // create a by operationId map of the operation chunks
   const operationChunksByOperationId = new Map<string, OperationChunk>();
-  for (const chunk of docsData) {
+  for (const chunk of docsData.values()) {
     if (chunk.chunkType === "operation") {
       operationChunksByOperationId.set(chunk.chunkData.operationId, chunk);
     }
   }
+  try {
+    const codeSnippets = await fetchCodeSnippets(
+      "typescript",
+      {
+        fileName: specFilename,
+        content: specContents,
+      },
+      npmPackageName
+    );
 
-  const codeSnippets = await fetchCodeSnippets(
-    "typescript",
-    {
-      fileName: specFilename,
-      content: specContents,
-    },
-    npmPackageName
-  );
-
-  for (const snippet of codeSnippets) {
-    const chunk = operationChunksByOperationId.get(snippet.operationId);
-    // only set the usage snippet if the operation id exists in the spec
-    if (chunk) {
-      setCodeSnippet(snippet);
+    for (const snippet of codeSnippets) {
+      const chunk = operationChunksByOperationId.get(snippet.operationId);
+      // only set the usage snippet if the operation id exists in the spec
+      if (chunk) {
+        docsCodeSnippets[chunk.id] = snippet;
+      }
     }
+  } catch (error) {
+    console.error("There was an error generating code snippets", error);
+    return {};
   }
-  return codeSnippets;
+  return docsCodeSnippets;
 };
