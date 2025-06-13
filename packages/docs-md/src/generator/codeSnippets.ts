@@ -8,7 +8,7 @@ import type {
 } from "../types/codeSnippet.ts";
 import { getSettings } from "./settings.ts";
 
-const CODE_SNIPPETS_API_URL = "http://api.speakeasy.com";
+const CODE_SNIPPETS_API_URL = "http://localhost:35290";
 
 export type DocsCodeSnippets = Record<OperationChunk["id"], CodeSnippet>;
 
