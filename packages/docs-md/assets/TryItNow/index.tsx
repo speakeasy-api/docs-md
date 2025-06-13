@@ -92,7 +92,7 @@ export const TryItNow = ({
           entry: "index.tsx",
           ...sandpackSetupOptions,
         }}
-        theme="auto"
+        theme="dark"
       >
         <SandpackLayout>
           <SandpackPreview style={styles.preview} />
