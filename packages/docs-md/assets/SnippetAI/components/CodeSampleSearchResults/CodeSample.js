@@ -12,14 +12,8 @@ r.registerLanguage("go", i);
 r.registerLanguage("java", s);
 r.registerLanguage("csharp", n);
 r.registerLanguage("php", d);
-const j = ({
-  language: e,
-  code: t,
-  className: o,
-  codeTheme: a
-}) => /* @__PURE__ */ p(
-  r,
-  {
+const j = ({ language: e, code: t, className: o, codeTheme: a }) =>
+  /* @__PURE__ */ p(r, {
     "data-testid": "code-words:code-sample",
     showLineNumbers: !0,
     language: e,
@@ -29,12 +23,9 @@ const j = ({
       margin: "0 8px",
       paddingTop: "1rem",
       paddingBottom: "1rem",
-      maxHeight: "50vh"
+      maxHeight: "50vh",
     },
     className: o,
-    children: t
-  }
-);
-export {
-  j as CodeSample
-};
+    children: t,
+  });
+export { j as CodeSample };
