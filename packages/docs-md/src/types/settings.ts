@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export const settingsSchema = z.strictObject({
   spec: z.string(),
+  specFilename: z.string(),
   output: z.strictObject({
     pageOutDir: z.string(),
     componentOutDir: z.string(),

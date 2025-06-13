@@ -10,17 +10,18 @@ import { setSettings } from "./settings.ts";
 export async function generatePages({
   specContents,
   settings,
+  specFilename,
 }: {
   specContents: string;
   settings: Settings;
+  specFilename: string;
 }): Promise<Record<string, string>> {
   // Save settings to a global location so we can easily access it around the codebase
   setSettings(settings);
 
   // Get the docs data from the spec
-  const data = await getDocsData(specContents);
+  const data = await getDocsData(specContents, specFilename);
 
   // Generate the content
-  console.log("Generating Markdown pages");
   return generateContent(data);
 }

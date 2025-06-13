@@ -7,7 +7,7 @@ import {
   readFileSync,
   writeFileSync,
 } from "node:fs";
-import { dirname, isAbsolute, join, resolve } from "node:path";
+import { basename, dirname, isAbsolute, join, resolve } from "node:path";
 
 import arg from "arg";
 import { load } from "js-yaml";
@@ -131,6 +131,9 @@ async function getSettings(): Promise<Settings> {
       args["--framework"];
   }
 
+  // Add the spec filename to the config file
+  configFileImport.specFilename = basename(configFileImport.spec as string);
+
   // Parse the settings using Zod to ensure accuracy
   const configFileContents = settingsSchema.safeParse(configFileImport);
   if (!configFileContents.success) {
@@ -171,11 +174,13 @@ async function getSettings(): Promise<Settings> {
 const settings = await getSettings();
 
 const specData = readFileSync(settings.spec, "utf-8");
+const specFilename = settings.specFilename;
 const specContents = JSON.stringify(load(specData));
 
 const pageContents = await generatePages({
   specContents,
   settings,
+  specFilename,
 });
 
 for (const [filename, contents] of Object.entries(pageContents)) {

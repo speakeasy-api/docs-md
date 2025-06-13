@@ -241,7 +241,7 @@ sidebarTitle: ${this.escapeText(sidebarLabel)}
           : JSON.stringify(value),
       ])
     );
-    this.#lines.push(`<TryItNow {...${JSON.stringify(escapedProps)}} />`);
+    this.#lines.push(`<TryItNow {...${JSON.stringify(escapedProps)}} externalDependencies={${JSON.stringify(props.externalDependencies)}} defaultValue={\`${props.defaultValue}\`} />`);
   }
 
   public finalize() {
