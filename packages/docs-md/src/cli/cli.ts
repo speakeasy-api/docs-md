@@ -121,9 +121,6 @@ async function getSettings(): Promise<Settings> {
   if (args["--spec"]) {
     configFileImport.spec = args["--spec"];
   }
-  if (args["--npm-package-name"]) {
-    configFileImport.npmPackageName = args["--npm-package-name"];
-  }
   if (args["--page-out-dir"]) {
     (configFileImport.output as Record<string, unknown>).pageOutDir =
       args["--page-out-dir"];
