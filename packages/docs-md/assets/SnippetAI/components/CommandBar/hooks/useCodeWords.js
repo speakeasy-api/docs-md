@@ -1,7 +1,5 @@
 import { useQuery as p } from "@tanstack/react-query";
-const u = async (r, o, t, n, e) => {
-  if (!r)
-    return null;
+const c = async (r, o, t, n, e) => {
   const s = new URLSearchParams(e ? {
     lang: t,
     _specURL: e,
@@ -23,7 +21,8 @@ const u = async (r, o, t, n, e) => {
 }, d = (r, o, t, n, e) => {
   const { data: s, isLoading: a, error: i } = p({
     queryKey: ["snippet-ai", r, e, o, t, n],
-    queryFn: async () => await u(r, o, t, n, e)
+    queryFn: async () => await c(r, o, t, n, e),
+    enabled: !!r
   });
   return {
     queryResults: s ?? null,
