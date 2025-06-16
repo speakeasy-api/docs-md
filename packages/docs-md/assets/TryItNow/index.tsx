@@ -1,18 +1,13 @@
-import type {
-  SandpackOptions,
-  SandpackSetup,
-} from "@codesandbox/sandpack-react";
 import {
   SandpackCodeEditor,
   SandpackConsole,
   SandpackLayout,
   SandpackPreview,
   SandpackProvider,
+  useErrorMessage,
 } from "@codesandbox/sandpack-react";
 import { useAtomValue } from "jotai";
-import { Fragment } from "react";
 
-import { CodeEditor } from "./CodeEditor/index.tsx";
 import { dependenciesAtom, lastEditorValueAtom } from "./state/index.ts";
 import { styles } from "./styles.ts";
 
@@ -31,17 +26,6 @@ type TryItNowProps = {
    */
   defaultValue?: string;
   /**
-   * Props for the container that wraps the editor and console output.
-   */
-  containerProps?: React.HTMLAttributes<HTMLDivElement>;
-  /**
-   * Render only the Sandpack provider and components to use in a
-   * custom container.
-   */
-  disableContainer?: boolean;
-  sandpackOptions?: Partial<SandpackOptions>;
-  sandpackSetupOptions?: Partial<SandpackSetup>;
-  /**
    * Experimental: When enabled, the editor will automatically
    * scan for external dependencies from npm as the user adds them
    * as imports.
@@ -49,30 +33,40 @@ type TryItNowProps = {
   _enableUnsafeAutoImport?: boolean;
 };
 
+const TryItNowContents = () => {
+  const error = useErrorMessage();
+  return (
+    <SandpackLayout>
+      <SandpackCodeEditor />
+      {!error && (
+        <SandpackConsole
+          resetOnPreviewRestart
+          showSetupProgress
+          showRestartButton
+        />
+      )}
+      <SandpackPreview style={error ? undefined : styles.preview}>
+        {error ? <pre>{error}</pre> : null}
+      </SandpackPreview>
+    </SandpackLayout>
+  );
+};
+
 export const TryItNow = ({
   externalDependencies,
   defaultValue = "",
   _enableUnsafeAutoImport,
-  containerProps,
-  disableContainer,
-  sandpackOptions = {},
-  sandpackSetupOptions = {},
 }: TryItNowProps) => {
   const autoImportDependencies = useAtomValue(dependenciesAtom);
   const previousCodeAtomValue = useAtomValue(lastEditorValueAtom);
-  const OuterContainer = disableContainer ? Fragment : "div";
 
   return (
-    <OuterContainer
-      style={{ ...styles.container, ...containerProps?.style }}
-      {...containerProps}
-    >
+    <div style={{ ...styles.container }}>
       <SandpackProvider
         options={{
           autoReload: false,
           autorun: false,
           activeFile: "index.tsx",
-          ...sandpackOptions,
         }}
         template="vanilla-ts"
         files={{
@@ -90,20 +84,11 @@ export const TryItNow = ({
               ? { ...autoImportDependencies, ...externalDependencies }
               : externalDependencies,
           entry: "index.tsx",
-          ...sandpackSetupOptions,
         }}
         theme="dark"
       >
-        <SandpackLayout>
-          <SandpackPreview style={styles.preview} />
-          {_enableUnsafeAutoImport ? <CodeEditor /> : <SandpackCodeEditor />}
-          <SandpackConsole
-            resetOnPreviewRestart
-            showSetupProgress
-            showRestartButton
-          />
-        </SandpackLayout>
+        <TryItNowContents />
       </SandpackProvider>
-    </OuterContainer>
+    </div>
   );
 };

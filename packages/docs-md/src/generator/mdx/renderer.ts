@@ -43,7 +43,7 @@ export class Site {
       recursive: true,
       withFileTypes: true,
     })
-      .filter((f) => f.isFile())
+      .filter((f) => f.isFile() && f.name !== "tsconfig.json")
       .map((f) => join(f.parentPath, f.name).replace(ASSET_PATH + "/", ""));
     for (const assetFile of assetFileList) {
       this.#pages.set(
