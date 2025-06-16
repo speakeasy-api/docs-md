@@ -8,6 +8,7 @@ import {
 } from "@codesandbox/sandpack-react";
 import { useAtomValue } from "jotai";
 
+import { CodeEditor } from "./CodeEditor/index.tsx";
 import { dependenciesAtom, lastEditorValueAtom } from "./state/index.ts";
 import { styles } from "./styles.ts";
 
@@ -33,11 +34,15 @@ type TryItNowProps = {
   _enableUnsafeAutoImport?: boolean;
 };
 
-const TryItNowContents = () => {
+const TryItNowContents = ({
+  _enableUnsafeAutoImport,
+}: {
+  _enableUnsafeAutoImport?: boolean;
+}) => {
   const error = useErrorMessage();
   return (
     <SandpackLayout>
-      <SandpackCodeEditor />
+      {_enableUnsafeAutoImport ? <CodeEditor /> : <SandpackCodeEditor />}
       {!error && (
         <SandpackConsole
           resetOnPreviewRestart
