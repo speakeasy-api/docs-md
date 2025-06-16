@@ -26,7 +26,6 @@ export function renderOperation({
     baseHeadingLevel,
     `${chunk.chunkData.method.toUpperCase()} ${chunk.chunkData.path}`
   );
-  renderer.appendParagraph(`Operation ID: ${chunk.chunkData.operationId}`);
 
   if (chunk.chunkData.summary && chunk.chunkData.description) {
     renderer.appendParagraph(`_${chunk.chunkData.summary}_`);

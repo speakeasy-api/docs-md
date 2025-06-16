@@ -5,6 +5,7 @@ import {
   mkdirSync,
   readdirSync,
   readFileSync,
+  rmSync,
   writeFileSync,
 } from "node:fs";
 import { dirname, isAbsolute, join, resolve } from "node:path";
@@ -26,19 +27,12 @@ const CONFIG_FILE_NAMES = [
 ];
 
 const args = arg({
-  "--npm-package-name": String,
   "--help": Boolean,
   "--config": String,
-  "--spec": String,
-  "--page-out-dir": String,
-  "--component-out-dir": String,
-  "--framework": String,
+  "--clean": Boolean,
+  "-h": "--help",
   "-c": "--config",
-  "-s": "--spec",
-  "-p": "--page-out-dir",
-  "-o": "--component-out-dir",
-  "-f": "--framework",
-  "-n": "--npm-package-name",
+  "-C": "--clean",
 });
 
 function printHelp() {
@@ -47,11 +41,7 @@ function printHelp() {
 Options:
   --help, -h     Show this help message
   --config, -c   Path to config file
-  --spec, -s     Path to OpenAPI spec
-  --page-out-dir, -p  Output directory for page contents
-  --component-out-dir, -o  Output directory for component contents
-  --framework, -f  Framework to use (docusaurus, nextra)
-  --npm-package-name, -n  npm package to use for the SDK code snippets`);
+  --clean, -C    Clean the output directories before generating`);
 }
 
 if (args["--help"]) {
@@ -117,23 +107,6 @@ async function getSettings(): Promise<Settings> {
     configFileImport.output = {};
   }
 
-  // Now, override the read config with any supplied CLI args
-  if (args["--spec"]) {
-    configFileImport.spec = args["--spec"];
-  }
-  if (args["--page-out-dir"]) {
-    (configFileImport.output as Record<string, unknown>).pageOutDir =
-      args["--page-out-dir"];
-  }
-  if (args["--component-out-dir"]) {
-    (configFileImport.output as Record<string, unknown>).componentOutDir =
-      args["--component-out-dir"];
-  }
-  if (args["--framework"]) {
-    (configFileImport.output as Record<string, unknown>).framework =
-      args["--framework"];
-  }
-
   // Parse the settings using Zod to ensure accuracy
   const configFileContents = settingsSchema.safeParse(configFileImport);
   if (!configFileContents.success) {
@@ -180,6 +153,15 @@ const pageContents = await generatePages({
   specContents,
   settings,
 });
+
+if (args["--clean"]) {
+  rmSync(settings.output.pageOutDir, {
+    recursive: true,
+  });
+  rmSync(settings.output.componentOutDir, {
+    recursive: true,
+  });
+}
 
 for (const [filename, contents] of Object.entries(pageContents)) {
   mkdirSync(dirname(filename), {
