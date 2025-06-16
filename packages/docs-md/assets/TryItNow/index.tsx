@@ -66,11 +66,11 @@ export const TryItNow = ({
         options={{
           autoReload: false,
           autorun: false,
-          activeFile: "index.tsx",
+          activeFile: "index.ts",
         }}
         template="vanilla-ts"
         files={{
-          "index.tsx": {
+          "index.ts": {
             code:
               _enableUnsafeAutoImport && previousCodeAtomValue
                 ? previousCodeAtomValue
@@ -83,7 +83,7 @@ export const TryItNow = ({
             autoImportDependencies && _enableUnsafeAutoImport
               ? { ...autoImportDependencies, ...externalDependencies }
               : externalDependencies,
-          entry: "index.tsx",
+          entry: "index.ts",
         }}
         theme="dark"
       >
