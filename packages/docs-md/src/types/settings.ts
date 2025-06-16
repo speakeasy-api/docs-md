@@ -20,12 +20,12 @@ export const settingsSchema = z.strictObject({
       maxTypeSignatureLineLength: 80,
       maxSchemaNesting: 5,
     }),
-  snippetAI: z
-    .strictObject({
-      apiKey: z.string(),
-      suggestions: z.array(z.string()).optional(),
-    })
-    .optional(),
+  // snippetAI: z
+  //   .strictObject({
+  //     apiKey: z.string(),
+  //     suggestions: z.array(z.string()).optional(),
+  //   })
+  //   .optional(),
   tryItNow: z
     .strictObject({
       npmPackageName: z.string(),

@@ -7,7 +7,6 @@ import { getSettings } from "../settings.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
 import { renderSchema } from "./chunks/schema.ts";
-import { renderSnippetAI } from "./chunks/snippetai.ts";
 import { renderTag } from "./chunks/tag.ts";
 import type { Renderer } from "./renderer.ts";
 import { Site } from "./renderer.ts";
@@ -66,14 +65,14 @@ function getPageMap(data: Data) {
     }
   }
 
-  if (settings.snippetAI?.apiKey) {
-    pageMap.set(buildPagePath("snippet-ai"), {
-      type: "renderer",
-      sidebarLabel: "Snippet AI",
-      sidebarPosition: "2",
-      renderer: renderSnippetAI,
-    });
-  }
+  // if (settings.snippetAI?.apiKey) {
+  //   pageMap.set(buildPagePath("snippet-ai"), {
+  //     type: "renderer",
+  //     sidebarLabel: "Snippet AI",
+  //     sidebarPosition: "2",
+  //     renderer: renderSnippetAI,
+  //   });
+  // }
 
   // Find the tag pages
   const tagChunks: TagChunk[] = [];
