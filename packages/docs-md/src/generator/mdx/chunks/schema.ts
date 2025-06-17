@@ -273,24 +273,29 @@ function renderSchemaFrontmatter({
   baseHeadingLevel,
   propertyName,
   displayType,
+  isOptional,
 }: {
   renderer: Renderer;
   schema: SchemaValue;
   baseHeadingLevel: number;
   propertyName: string;
   displayType: DisplayType;
+  isOptional: boolean;
 }) {
   const computedDisplayType = computeDisplayType(
     displayType.typeLabel,
     propertyName
   );
+  const propertyNameWithOptional = isOptional
+    ? `${propertyName} (optional)`
+    : propertyName;
   if (computedDisplayType.multiline) {
-    renderer.appendHeading(baseHeadingLevel, propertyName);
+    renderer.appendHeading(baseHeadingLevel, propertyNameWithOptional);
     renderer.appendParagraph(`\`\`\`\n${computedDisplayType.content}\n\`\`\``);
   } else {
     renderer.appendHeading(
       baseHeadingLevel,
-      `${renderer.escapeText(propertyName)}: \`${computedDisplayType.content}\``,
+      `${renderer.escapeText(propertyNameWithOptional)}: \`${computedDisplayType.content}\``,
       { escape: false }
     );
   }
@@ -372,6 +377,7 @@ export function renderSchema({
       isOpenOnLoad,
     });
     for (const [key, value] of Object.entries(objectValue.properties)) {
+      const isOptional = objectValue.required?.includes(key) === false;
       if (value.type === "chunk") {
         const schemaChunk = getSchemaFromId(value.chunkId, data);
         const schema = schemaChunk.chunkData.value;
@@ -382,6 +388,7 @@ export function renderSchema({
           baseHeadingLevel,
           propertyName: key,
           displayType,
+          isOptional,
         });
         renderSchemaBreakouts({
           renderer,
@@ -399,6 +406,7 @@ export function renderSchema({
           baseHeadingLevel,
           propertyName: key,
           displayType,
+          isOptional,
         });
       } else {
         const displayType = getDisplayType(value, data);
@@ -408,6 +416,7 @@ export function renderSchema({
           baseHeadingLevel,
           propertyName: key,
           displayType,
+          isOptional,
         });
       }
     }
@@ -424,6 +433,7 @@ export function renderSchema({
       baseHeadingLevel,
       propertyName: topLevelName,
       displayType,
+      isOptional: false,
     });
   }
 
@@ -435,6 +445,7 @@ export function renderSchema({
       baseHeadingLevel,
       propertyName: topLevelName,
       displayType,
+      isOptional: false,
     });
     return;
   }
@@ -447,6 +458,7 @@ export function renderSchema({
       baseHeadingLevel,
       propertyName: topLevelName,
       displayType,
+      isOptional: false,
     });
   }
 
