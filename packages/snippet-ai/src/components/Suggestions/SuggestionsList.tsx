@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState, useCallback, cloneElement } from 'react';
-import { useVirtual } from 'react-virtual';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import type { ActionImpl } from 'kbar';
 import { useKBar, KBAR_LISTBOX, getListboxItemId } from 'kbar';
 
@@ -55,9 +55,10 @@ export const SuggestionsList = ({
   const itemsRef = useRef(items);
   itemsRef.current = items;
 
-  const rowVirtualizer = useVirtual({
-    size: itemsRef.current.length,
-    parentRef,
+  const rowVirtualizer = useVirtualizer({
+    count: itemsRef.current.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 44,
   });
 
   const { query, search, currentRootActionId, activeIndex, options } = useKBar(
@@ -166,11 +167,12 @@ export const SuggestionsList = ({
         role="listbox"
         id={KBAR_LISTBOX}
         style={{
-          height: `${rowVirtualizer.totalSize}px`,
+          height: `${rowVirtualizer.getTotalSize()}px`,
           width: '100%',
+          position: 'relative',
         }}
       >
-        {rowVirtualizer.virtualItems.map((virtualRow) => {
+        {rowVirtualizer.getVirtualItems().map((virtualRow) => {
           const item = itemsRef.current[virtualRow.index];
           if (!item) return null;
           const handlers = typeof item !== 'string' && {
@@ -191,12 +193,14 @@ export const SuggestionsList = ({
               id={getListboxItemId(virtualRow.index)}
               role="option"
               aria-selected={active}
-              key={virtualRow.index}
+              data-index={virtualRow.index}
+              key={virtualRow.key}
               style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
                 width: '100%',
+                height: `${virtualRow.size}px`,
                 transform: `translateY(${virtualRow.start}px)`,
               }}
               {...handlers}
@@ -205,10 +209,11 @@ export const SuggestionsList = ({
                 onRender({
                   item,
                   active,
-                }),
-                {
-                  ref: virtualRow.measureRef,
-                }
+                }       
+              ),
+              {
+                ref: rowVirtualizer.measureElement,
+              }
               )}
             </div>
           );
