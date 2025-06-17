@@ -65,15 +65,6 @@ function getPageMap(data: Data) {
     }
   }
 
-  // if (settings.snippetAI?.apiKey) {
-  //   pageMap.set(buildPagePath("snippet-ai"), {
-  //     type: "renderer",
-  //     sidebarLabel: "Snippet AI",
-  //     sidebarPosition: "2",
-  //     renderer: renderSnippetAI,
-  //   });
-  // }
-
   // Find the tag pages
   const tagChunks: TagChunk[] = [];
   for (const [, chunk] of data) {
