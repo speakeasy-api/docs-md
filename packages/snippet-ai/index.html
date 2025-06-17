@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+    <script type="module">
+import React, { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { SnippetAI } from './src/index.tsx';
+
+const root = document.getElementById('root');
+
+if (!root) {
+  throw new Error('Could not get render root');
+}
+
+createRoot(root).render(
+  React.createElement(SnippetAI, {
+    publishingToken: "super-secret-token",
+    baseUrl: "http://localhost:3000/api",
+    codeLang: "typescript",
+    _specSrc: "http://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples",
+    suggestions: ["Create a function that gets all users", "Create a function that gets a user by id", "Create a function that creates a user"]
+  }, null)
+);
+
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

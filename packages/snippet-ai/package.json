@@ -1,0 +1,70 @@
+{
+  "name": "@speakeasy-api/snippet-ai-react",
+  "version": "1.0.0",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "license": "UNLICENSED",
+  "files": [
+    "dist"
+  ],
+  "author": "Speakeasy",
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "prepack": "npm run build",
+    "prepublish": "npm run build",
+    "build": "vite build",
+    "dev": "SNIPPET_AI_SERVER='http://localhost:3000/api' vite --port 3003",
+    "storybook": "SNIPPET_AI_SERVER=http://localhost:3000/api storybook dev -p 6006",
+    "format": "prettier --config ../../prettier.config.mjs --ignore-path ../../.gitignore --write \"**/*.{js,jsx,mjs,ts,tsx,mts}\"",
+    "lint": "eslint \"**/*.{js,jsx,mjs,ts,tsx,mts}\"",
+    "start": "vite preview",
+    "test": "",
+    "type-check": "tsc --noEmit",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.66.9",
+    "clsx": "^2.1.1",
+    "kbar": "^0.1.0-beta.45",
+    "lucide-react": "^0.477.0",
+    "react-markdown": "^10.0.1",
+    "react-shadow": "^20.6.0",
+    "react-syntax-highlighter": "^15.6.1"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.6",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "@storybook/addon-essentials": "^8.6.11",
+    "@storybook/addon-interactions": "^8.6.11",
+    "@storybook/addon-onboarding": "^8.6.11",
+    "@storybook/blocks": "^8.6.11",
+    "@storybook/react": "^8.6.11",
+    "@storybook/react-vite": "^8.6.11",
+    "@storybook/test": "^8.6.11",
+    "@tailwindcss/vite": "^4.0.9",
+    "@types/node": "^22.13.9",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@vitejs/plugin-react": "^4.3.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "semantic-release": "^24.2.3",
+    "storybook": "^8.6.11",
+    "vite": "^6.2.0",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "vite-plugin-dts": "^4.5.3"
+  }
+}
