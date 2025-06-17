@@ -12,13 +12,11 @@ import { getSettings } from "../../settings.ts";
 import type { Renderer, Site } from "../renderer.ts";
 import { getSchemaFromId } from "../util.ts";
 
-const TYPE_SIGNATURE_PREFIX = "_Type Signature:_ ";
-
-function getMaxInlineLength() {
-  // TODO: this should take indentation level into account
+function getMaxInlineLength(propertyName: string, indentationLevel: number) {
   return (
     getSettings().display.maxTypeSignatureLineLength -
-    TYPE_SIGNATURE_PREFIX.length
+    propertyName.length -
+    indentationLevel
   );
 }
 
@@ -32,7 +30,6 @@ type RenderSchemaOptions = {
   schema: SchemaValue;
   data: Map<string, Chunk>;
   baseHeadingLevel: number;
-  topLevelName: string;
   depth: number;
 };
 
@@ -137,9 +134,10 @@ function getDisplayType(
   }
 }
 
-function computeDisplayType(typeLabel: TypeLabel) {
+function computeDisplayType(typeLabel: TypeLabel, propertyName: string) {
   const singleLineTypeLabel = computeSingleLineDisplayType(typeLabel);
-  if (singleLineTypeLabel.length < getMaxInlineLength()) {
+  // TODO: wire up indentation level here
+  if (singleLineTypeLabel.length < getMaxInlineLength(propertyName, 0)) {
     return {
       content: singleLineTypeLabel,
       multiline: false,
@@ -266,48 +264,44 @@ function computeMultilineTypeLabel(
 function renderSchemaFrontmatter({
   renderer,
   site,
-  value,
+  schema,
   baseHeadingLevel,
   data,
   depth,
-}: {
-  renderer: Renderer;
-  site: Site;
-  value: SchemaValue;
-  baseHeadingLevel: number;
-  data: Map<string, Chunk>;
-  depth: number;
-}) {
-  const { showTypeSignatures } = getSettings().display;
-
-  const displayType = getDisplayType(value, data);
-  if ("description" in value && value.description) {
-    renderer.appendParagraph(value.description);
-  }
-  if ("examples" in value && value.examples.length > 0) {
+  propertyName,
+}: RenderSchemaOptions & { propertyName: string }) {
+  const displayType = getDisplayType(schema, data);
+  const computedDisplayType = computeDisplayType(
+    displayType.typeLabel,
+    propertyName
+  );
+  if (computedDisplayType.multiline) {
+    renderer.appendHeading(baseHeadingLevel, propertyName);
     renderer.appendParagraph(
-      `_${value.examples.length > 1 ? "Examples" : "Example"}:_`
+      `\n\`\`\`\n${computedDisplayType.content}\n\`\`\``
     );
-    for (const example of value.examples) {
+  } else {
+    renderer.appendHeading(
+      baseHeadingLevel,
+      `${renderer.escapeText(propertyName)}: \`${computedDisplayType.content}\``,
+      { escape: false }
+    );
+  }
+
+  if ("description" in schema && schema.description) {
+    renderer.appendParagraph(schema.description);
+  }
+  if ("examples" in schema && schema.examples.length > 0) {
+    renderer.appendParagraph(
+      `_${schema.examples.length > 1 ? "Examples" : "Example"}:_`
+    );
+    for (const example of schema.examples) {
       renderer.appendCode(example);
     }
   }
 
-  if ("defaultValue" in value && value.defaultValue) {
-    renderer.appendParagraph(`_Default Value:_ \`${value.defaultValue}\``);
-  }
-
-  if (showTypeSignatures) {
-    const computedDisplayType = computeDisplayType(displayType.typeLabel);
-    if (computedDisplayType.multiline) {
-      renderer.appendParagraph(
-        `${TYPE_SIGNATURE_PREFIX}\n\`\`\`\n${computedDisplayType.content}\n\`\`\``
-      );
-    } else {
-      renderer.appendParagraph(
-        `${TYPE_SIGNATURE_PREFIX}\`${computedDisplayType.content}\``
-      );
-    }
+  if ("defaultValue" in schema && schema.defaultValue) {
+    renderer.appendParagraph(`_Default Value:_ \`${schema.defaultValue}\``);
   }
 
   // TODO: this is a quick-n-dirty deduping of breakout types, but if there are
@@ -342,7 +336,9 @@ export function renderSchema({
   baseHeadingLevel,
   topLevelName,
   depth,
-}: RenderSchemaOptions) {
+}: RenderSchemaOptions & {
+  topLevelName: string;
+}) {
   const { maxTypeSignatureLineLength, maxSchemaNesting } =
     getSettings().display;
 
@@ -355,15 +351,15 @@ export function renderSchema({
     });
     for (const [key, value] of Object.entries(objectValue.properties)) {
       if (value.type === "chunk") {
-        renderer.appendHeading(baseHeadingLevel, key);
         const schemaChunk = getSchemaFromId(value.chunkId, data);
         renderSchemaFrontmatter({
           renderer,
           site,
-          value: schemaChunk.chunkData.value,
+          schema: schemaChunk.chunkData.value,
           baseHeadingLevel,
           data,
           depth,
+          propertyName: key,
         });
       } else if (value.type === "enum") {
         renderer.appendHeading(baseHeadingLevel, key);
@@ -373,14 +369,14 @@ export function renderSchema({
         }
         renderer.appendParagraph(computedTypeLabel);
       } else {
-        renderer.appendHeading(baseHeadingLevel, key);
         renderSchemaFrontmatter({
           renderer,
           site,
-          value,
+          schema: value,
           baseHeadingLevel,
           data,
           depth,
+          propertyName: key,
         });
       }
     }
@@ -393,10 +389,11 @@ export function renderSchema({
     renderSchemaFrontmatter({
       renderer,
       site,
-      value: arrayLikeValue,
+      schema: arrayLikeValue,
       baseHeadingLevel,
       data,
       depth,
+      propertyName: topLevelName,
     });
   }
 
@@ -404,10 +401,11 @@ export function renderSchema({
     renderSchemaFrontmatter({
       renderer,
       site,
-      value: unionValue,
+      schema: unionValue,
       baseHeadingLevel,
       data,
       depth,
+      propertyName: topLevelName,
     });
     return;
   }
@@ -416,10 +414,11 @@ export function renderSchema({
     renderSchemaFrontmatter({
       renderer,
       site,
-      value: primitiveValue,
+      schema: primitiveValue,
       baseHeadingLevel,
       data,
       depth,
+      propertyName: topLevelName,
     });
     if (primitiveValue.type === "enum") {
       renderer.appendParagraph(
