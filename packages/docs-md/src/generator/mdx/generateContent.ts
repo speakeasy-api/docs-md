@@ -76,7 +76,7 @@ function getPageMap(data: Data) {
   // Sort by slug so that the sidebar position is stable
   tagChunks.sort((a, b) => a.slug.localeCompare(b.slug));
 
-  // Render the tag pagse
+  // Render the tag pages
   let tagIndex = 0;
   for (const chunk of tagChunks) {
     const pagePath = buildPagePath(chunk.slug);

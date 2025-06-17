@@ -106,7 +106,13 @@ function getDisplayType(
     }
     case "enum": {
       return {
-        typeLabel: { label: "enum", children: [] },
+        typeLabel: {
+          label: "enum",
+          children: value.values.map((v) => ({
+            label: `${typeof v === "string" ? `"${v}"` : v}`,
+            children: [],
+          })),
+        },
         breakoutSubTypes: [],
       };
     }
@@ -263,23 +269,24 @@ function computeMultilineTypeLabel(
 
 function renderSchemaFrontmatter({
   renderer,
-  site,
   schema,
   baseHeadingLevel,
-  data,
-  depth,
   propertyName,
-}: RenderSchemaOptions & { propertyName: string }) {
-  const displayType = getDisplayType(schema, data);
+  displayType,
+}: {
+  renderer: Renderer;
+  schema: SchemaValue;
+  baseHeadingLevel: number;
+  propertyName: string;
+  displayType: DisplayType;
+}) {
   const computedDisplayType = computeDisplayType(
     displayType.typeLabel,
     propertyName
   );
   if (computedDisplayType.multiline) {
     renderer.appendHeading(baseHeadingLevel, propertyName);
-    renderer.appendParagraph(
-      `\n\`\`\`\n${computedDisplayType.content}\n\`\`\``
-    );
+    renderer.appendParagraph(`\`\`\`\n${computedDisplayType.content}\n\`\`\``);
   } else {
     renderer.appendHeading(
       baseHeadingLevel,
@@ -303,7 +310,23 @@ function renderSchemaFrontmatter({
   if ("defaultValue" in schema && schema.defaultValue) {
     renderer.appendParagraph(`_Default Value:_ \`${schema.defaultValue}\``);
   }
+}
 
+function renderSchemaBreakouts({
+  renderer,
+  site,
+  baseHeadingLevel,
+  data,
+  depth,
+  displayType,
+}: {
+  renderer: Renderer;
+  site: Site;
+  baseHeadingLevel: number;
+  data: Map<string, Chunk>;
+  depth: number;
+  displayType: DisplayType;
+}) {
   // TODO: this is a quick-n-dirty deduping of breakout types, but if there are
   // two different schemas with the same name they'll be deduped, which is wrong.
   for (let i = 0; i < displayType.breakoutSubTypes.length; i++) {
@@ -339,8 +362,7 @@ export function renderSchema({
 }: RenderSchemaOptions & {
   topLevelName: string;
 }) {
-  const { maxTypeSignatureLineLength, maxSchemaNesting } =
-    getSettings().display;
+  const { maxSchemaNesting } = getSettings().display;
 
   function renderObjectProperties(
     objectValue: ObjectValue,
@@ -352,31 +374,40 @@ export function renderSchema({
     for (const [key, value] of Object.entries(objectValue.properties)) {
       if (value.type === "chunk") {
         const schemaChunk = getSchemaFromId(value.chunkId, data);
+        const schema = schemaChunk.chunkData.value;
+        const displayType = getDisplayType(schema, data);
         renderSchemaFrontmatter({
           renderer,
+          schema,
+          baseHeadingLevel,
+          propertyName: key,
+          displayType,
+        });
+        renderSchemaBreakouts({
+          renderer,
           site,
-          schema: schemaChunk.chunkData.value,
           baseHeadingLevel,
           data,
           depth,
-          propertyName: key,
+          displayType,
         });
       } else if (value.type === "enum") {
-        renderer.appendHeading(baseHeadingLevel, key);
-        let computedTypeLabel = `_Type Signature:_ \`${value.values.map((v) => (typeof v === "string" ? `'${v}'` : v)).join(" | ")}\``;
-        if (computedTypeLabel.length > maxTypeSignatureLineLength) {
-          computedTypeLabel = `_Type Signature:_\n\`\`\`\nenum${value.values.map((v) => `\n  ${typeof v === "string" ? `'${v}'` : v}`).join("")}\n\`\`\``;
-        }
-        renderer.appendParagraph(computedTypeLabel);
-      } else {
+        const displayType = getDisplayType(value, data);
         renderSchemaFrontmatter({
           renderer,
-          site,
           schema: value,
           baseHeadingLevel,
-          data,
-          depth,
           propertyName: key,
+          displayType,
+        });
+      } else {
+        const displayType = getDisplayType(value, data);
+        renderSchemaFrontmatter({
+          renderer,
+          schema: value,
+          baseHeadingLevel,
+          propertyName: key,
+          displayType,
         });
       }
     }
@@ -386,45 +417,37 @@ export function renderSchema({
   function renderArrayLikeItems(
     arrayLikeValue: ArrayValue | MapValue | SetValue
   ) {
+    const displayType = getDisplayType(arrayLikeValue, data);
     renderSchemaFrontmatter({
       renderer,
-      site,
       schema: arrayLikeValue,
       baseHeadingLevel,
-      data,
-      depth,
       propertyName: topLevelName,
+      displayType,
     });
   }
 
   function renderUnionItems(unionValue: UnionValue) {
+    const displayType = getDisplayType(unionValue, data);
     renderSchemaFrontmatter({
       renderer,
-      site,
       schema: unionValue,
       baseHeadingLevel,
-      data,
-      depth,
       propertyName: topLevelName,
+      displayType,
     });
     return;
   }
 
   function renderBasicItems(primitiveValue: SchemaValue) {
+    const displayType = getDisplayType(primitiveValue, data);
     renderSchemaFrontmatter({
       renderer,
-      site,
       schema: primitiveValue,
       baseHeadingLevel,
-      data,
-      depth,
       propertyName: topLevelName,
+      displayType,
     });
-    if (primitiveValue.type === "enum") {
-      renderer.appendParagraph(
-        `Values: ${primitiveValue.values.map((v) => `\`${v}\``).join(", ")}`
-      );
-    }
   }
 
   if (depth >= maxSchemaNesting) {
