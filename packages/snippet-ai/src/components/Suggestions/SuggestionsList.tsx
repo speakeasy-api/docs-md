@@ -1,9 +1,9 @@
-import { useRef, useEffect, useState, useCallback, cloneElement } from 'react';
-import { useVirtualizer } from '@tanstack/react-virtual';
-import type { ActionImpl } from 'kbar';
-import { useKBar, KBAR_LISTBOX, getListboxItemId } from 'kbar';
+import { useRef, useEffect, useState, useCallback, cloneElement } from "react";
+import { useVirtualizer } from "@tanstack/react-virtual";
+import type { ActionImpl } from "kbar";
+import { useKBar, KBAR_LISTBOX, getListboxItemId } from "kbar";
 
-import type { ReactElement } from 'react';
+import type { ReactElement } from "react";
 
 const START_INDEX = -1;
 
@@ -22,8 +22,8 @@ function usePointerMovedSinceMount() {
     }
 
     if (!moved) {
-      window.addEventListener('pointermove', handler);
-      return () => window.removeEventListener('pointermove', handler);
+      window.addEventListener("pointermove", handler);
+      return () => window.removeEventListener("pointermove", handler);
     }
 
     return undefined;
@@ -33,7 +33,7 @@ function usePointerMovedSinceMount() {
 }
 
 interface SuggestionsListProps {
-  items: RenderParams['item'][];
+  items: RenderParams["item"][];
   onRender: (params: RenderParams) => ReactElement;
   maxHeight?: number;
   setQuery: (submittedQuery: string) => void;
@@ -75,21 +75,21 @@ export const SuggestionsList = ({
         return;
       }
 
-      if (event.key === 'ArrowUp' || (event.ctrlKey && event.key === 'p')) {
+      if (event.key === "ArrowUp" || (event.ctrlKey && event.key === "p")) {
         event.preventDefault();
         event.stopPropagation();
         query.setActiveIndex((index) => {
           let nextIndex = index > START_INDEX ? index - 1 : index;
           // avoid setting active index on a group
-          if (typeof itemsRef.current[nextIndex] === 'string') {
+          if (typeof itemsRef.current[nextIndex] === "string") {
             if (nextIndex === 0) return index;
             nextIndex -= 1;
           }
           return nextIndex;
         });
       } else if (
-        event.key === 'ArrowDown' ||
-        (event.ctrlKey && event.key === 'n')
+        event.key === "ArrowDown" ||
+        (event.ctrlKey && event.key === "n")
       ) {
         event.preventDefault();
         event.stopPropagation();
@@ -97,13 +97,13 @@ export const SuggestionsList = ({
           let nextIndex =
             index < itemsRef.current.length - 1 ? index + 1 : index;
           // avoid setting active index on a group
-          if (typeof itemsRef.current[nextIndex] === 'string') {
+          if (typeof itemsRef.current[nextIndex] === "string") {
             if (nextIndex === itemsRef.current.length - 1) return index;
             nextIndex += 1;
           }
           return nextIndex;
         });
-      } else if (event.key === 'Enter') {
+      } else if (event.key === "Enter") {
         // storing the active dom element in a ref prevents us from
         // having to calculate the current action to perform based
         // on the `activeIndex`, which we would have needed to add
@@ -111,9 +111,9 @@ export const SuggestionsList = ({
         activeRef.current?.click();
       }
     };
-    window.addEventListener('keydown', handler, { capture: true });
+    window.addEventListener("keydown", handler, { capture: true });
     return () =>
-      window.removeEventListener('keydown', handler, { capture: true });
+      window.removeEventListener("keydown", handler, { capture: true });
   }, [query]);
 
   // destructuring here to prevent linter warning to pass
@@ -124,7 +124,7 @@ export const SuggestionsList = ({
       // ensure that if the first item in the list is a group
       // name and we are focused on the second item, to not
       // scroll past that group, hiding it.
-      align: activeIndex <= 1 ? 'end' : 'auto',
+      align: activeIndex <= 1 ? "end" : "auto",
     });
   }, [activeIndex, scrollToIndex]);
 
@@ -136,13 +136,13 @@ export const SuggestionsList = ({
     // are navigating the list.
     query.setActiveIndex(
       // avoid setting active index on a group
-      typeof items[START_INDEX] === 'string' ? START_INDEX + 1 : START_INDEX
+      typeof items[START_INDEX] === "string" ? START_INDEX + 1 : START_INDEX
     );
   }, [search, currentRootActionId, items, query]);
 
   const execute = useCallback(
-    (item: RenderParams['item']) => {
-      if (typeof item === 'string') return;
+    (item: RenderParams["item"]) => {
+      if (typeof item === "string") return;
       setInputValue(item.name);
       setQuery(item.name);
       query.setCurrentRootAction(item.id);
@@ -158,8 +158,8 @@ export const SuggestionsList = ({
       ref={parentRef}
       style={{
         maxHeight: maxHeight || 400,
-        position: 'relative',
-        overflow: 'auto',
+        position: "relative",
+        overflow: "auto",
       }}
       data-testid="code-words:suggestions-list"
     >
@@ -168,14 +168,14 @@ export const SuggestionsList = ({
         id={KBAR_LISTBOX}
         style={{
           height: `${rowVirtualizer.getTotalSize()}px`,
-          width: '100%',
-          position: 'relative',
+          width: "100%",
+          position: "relative",
         }}
       >
         {rowVirtualizer.getVirtualItems().map((virtualRow) => {
           const item = itemsRef.current[virtualRow.index];
           if (!item) return null;
-          const handlers = typeof item !== 'string' && {
+          const handlers = typeof item !== "string" && {
             onPointerMove: () =>
               pointerMoved &&
               activeIndex !== virtualRow.index &&
@@ -196,25 +196,26 @@ export const SuggestionsList = ({
               data-index={virtualRow.index}
               key={virtualRow.key}
               style={{
-                position: 'absolute',
+                position: "absolute",
                 top: 0,
                 left: 0,
-                width: '100%',
+                width: "100%",
                 height: `${virtualRow.size}px`,
                 transform: `translateY(${virtualRow.start}px)`,
               }}
               {...handlers}
             >
-              {cloneElement(
-                onRender({
-                  item,
-                  active,
-                }       
-              ),
-              {
-                ref: rowVirtualizer.measureElement,
-              }
-              )}
+              <div
+                data-index={virtualRow.index}
+                ref={rowVirtualizer.measureElement}
+              >
+                {cloneElement(
+                  onRender({
+                    item,
+                    active,
+                  })
+                )}
+              </div>
             </div>
           );
         })}
