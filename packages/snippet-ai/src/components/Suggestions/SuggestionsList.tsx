@@ -193,7 +193,6 @@ export const SuggestionsList = ({
               id={getListboxItemId(virtualRow.index)}
               role="option"
               aria-selected={active}
-              data-index={virtualRow.index}
               key={virtualRow.key}
               style={{
                 position: "absolute",
