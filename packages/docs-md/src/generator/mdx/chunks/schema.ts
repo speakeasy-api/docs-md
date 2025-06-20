@@ -447,7 +447,7 @@ export function renderSchema({
 }) {
   function renderObjectProperties(objectValue: ObjectValue) {
     renderer.beginExpandableSection(topLevelName, {
-      isOpenOnLoad: true,
+      isOpenOnLoad: labelStack.length === 0,
     });
     for (const [key, value] of Object.entries(objectValue.properties)) {
       const isOptional = objectValue.required?.includes(key) === false;
