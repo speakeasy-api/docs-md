@@ -50,7 +50,7 @@ export function renderOperation({
         schema: securityChunk.chunkData.value,
         data: docsData,
         baseHeadingLevel: baseHeadingLevel + 2,
-        depth: 0,
+        labelStack: [],
       });
     }
     if (chunk.chunkData.globalSecurity) {
@@ -65,7 +65,7 @@ export function renderOperation({
         schema: securityChunk.chunkData.value,
         data: docsData,
         baseHeadingLevel: baseHeadingLevel + 2,
-        depth: 0,
+        labelStack: [],
       });
     }
   }
@@ -88,7 +88,7 @@ export function renderOperation({
         schema: parameterChunk.chunkData.value,
         data: docsData,
         baseHeadingLevel: baseHeadingLevel + 2,
-        depth: 0,
+        labelStack: [],
       });
     }
   }
@@ -128,7 +128,7 @@ export function renderOperation({
       schema: requestBodySchema.chunkData.value,
       data: docsData,
       baseHeadingLevel: baseHeadingLevel + 2,
-      depth: 0,
+      labelStack: [],
     });
   }
 
@@ -155,7 +155,7 @@ export function renderOperation({
           schema: responseSchema.chunkData.value,
           data: docsData,
           baseHeadingLevel: baseHeadingLevel + 2,
-          depth: 0,
+          labelStack: [],
         });
       }
     }

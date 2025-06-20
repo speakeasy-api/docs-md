@@ -180,7 +180,7 @@ function renderPages(
             data,
             baseHeadingLevel: 1,
             topLevelName: "Schema",
-            depth: 0,
+            labelStack: [],
           });
           break;
         }

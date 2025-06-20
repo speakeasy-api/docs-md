@@ -258,6 +258,44 @@ function computeMultilineTypeLabel(
   }
 }
 
+function renderNameAndType({
+  renderer,
+  propertyName,
+  displayType,
+  isOptional,
+  baseHeadingLevel,
+  isRecursive,
+}: {
+  renderer: Renderer;
+  propertyName: string;
+  displayType: DisplayType;
+  isOptional: boolean;
+  baseHeadingLevel: number;
+  isRecursive: boolean;
+}) {
+  let annotatedPropertyName = propertyName;
+  if (isOptional) {
+    annotatedPropertyName = `${propertyName} (optional)`;
+  }
+  if (isRecursive) {
+    annotatedPropertyName = `${propertyName} (recursive)`;
+  }
+  const computedDisplayType = computeDisplayType(
+    displayType.typeLabel,
+    annotatedPropertyName
+  );
+  if (computedDisplayType.multiline) {
+    renderer.appendHeading(baseHeadingLevel, annotatedPropertyName);
+    renderer.appendParagraph(`\`\`\`\n${computedDisplayType.content}\n\`\`\``);
+  } else {
+    renderer.appendHeading(
+      baseHeadingLevel,
+      `${renderer.escapeText(annotatedPropertyName)}: \`${computedDisplayType.content}\``,
+      { escape: false }
+    );
+  }
+}
+
 function renderSchemaFrontmatter({
   renderer,
   schema,
@@ -273,23 +311,14 @@ function renderSchemaFrontmatter({
   displayType: DisplayType;
   isOptional: boolean;
 }) {
-  const propertyNameWithOptional = isOptional
-    ? `${propertyName} (optional)`
-    : propertyName;
-  const computedDisplayType = computeDisplayType(
-    displayType.typeLabel,
-    propertyNameWithOptional
-  );
-  if (computedDisplayType.multiline) {
-    renderer.appendHeading(baseHeadingLevel, propertyNameWithOptional);
-    renderer.appendParagraph(`\`\`\`\n${computedDisplayType.content}\n\`\`\``);
-  } else {
-    renderer.appendHeading(
-      baseHeadingLevel,
-      `${renderer.escapeText(propertyNameWithOptional)}: \`${computedDisplayType.content}\``,
-      { escape: false }
-    );
-  }
+  renderNameAndType({
+    renderer,
+    propertyName,
+    displayType,
+    isOptional,
+    isRecursive: false,
+    baseHeadingLevel,
+  });
 
   if ("description" in schema && schema.description) {
     renderer.appendParagraph(schema.description);
@@ -313,21 +342,23 @@ function renderSchemaBreakouts({
   site,
   baseHeadingLevel,
   data,
-  depth,
   displayType,
+  labelStack,
 }: {
   renderer: Renderer;
   site: Site;
   baseHeadingLevel: number;
   data: Map<string, Chunk>;
-  depth: number;
   displayType: DisplayType;
+  labelStack: string[];
 }) {
-  // TODO: this is a quick-n-dirty deduping of breakout types, but if there are
-  // two different schemas with the same name they'll be deduped, which is wrong.
+  const { maxSchemaNesting } = getSettings().display;
   for (let i = 0; i < displayType.breakoutSubTypes.length; i++) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const breakoutSubType = displayType.breakoutSubTypes[i]!;
+
+    // TODO: this is a quick-n-dirty deduping of breakout types, but if there are
+    // two different schemas with the same name they'll be deduped, which is wrong.
     if (
       displayType.breakoutSubTypes.findIndex(
         (b) => b.label === breakoutSubType.label
@@ -335,6 +366,56 @@ function renderSchemaBreakouts({
     ) {
       continue;
     }
+
+    // Check if this is a circular reference, add a brief note
+    if (labelStack.includes(breakoutSubType.label)) {
+      if (breakoutSubType.schema.type !== "object") {
+        throw new Error("Schema must be an object to be embedded");
+      }
+      // TODO: add fragment link if we're not in a sidebar
+      renderer.appendParagraph(
+        `\`${breakoutSubType.schema.name}\` is circular. See previous description for details.`
+      );
+      continue;
+    }
+
+    // Check if we've reached our maximum level of nesting, or if there's
+    // indirect type recursion, and if so break it out into an embed
+    if (labelStack.length >= maxSchemaNesting) {
+      // This shouldn't be possible, since we only recurse on objects
+      if (breakoutSubType.schema.type !== "object") {
+        throw new Error("Schema must be an object to be embedded");
+      }
+      const embedName = breakoutSubType.schema.name;
+      const sidebarLinkRenderer = site.createEmbedPage(embedName);
+
+      // If no renderer was returned, that means we've already rendered this embed
+      if (sidebarLinkRenderer) {
+        sidebarLinkRenderer.appendHeading(baseHeadingLevel, embedName);
+        if (breakoutSubType.schema.description) {
+          sidebarLinkRenderer.appendParagraph(
+            breakoutSubType.schema.description
+          );
+        }
+        renderSchema({
+          renderer: sidebarLinkRenderer,
+          site,
+          schema: breakoutSubType.schema,
+          data,
+          baseHeadingLevel,
+          topLevelName: breakoutSubType.label,
+          labelStack: [],
+        });
+        sidebarLinkRenderer.finalize();
+      }
+      renderer.appendSidebarLink({
+        title: `${embedName} Details`,
+        embedName,
+      });
+      continue;
+    }
+
+    // Otherwise, render the schema inline
     renderSchema({
       renderer,
       site,
@@ -342,7 +423,7 @@ function renderSchemaBreakouts({
       data: data,
       baseHeadingLevel: Math.min(baseHeadingLevel + 1, MIN_HEADING_LEVEL),
       topLevelName: breakoutSubType.label,
-      depth: depth + 1,
+      labelStack: [...labelStack, breakoutSubType.label],
     });
   }
 }
@@ -354,24 +435,19 @@ export function renderSchema({
   data,
   baseHeadingLevel,
   topLevelName,
-  depth,
+  labelStack,
 }: {
   site: Site;
   renderer: Renderer;
   schema: SchemaValue;
   data: Map<string, Chunk>;
   baseHeadingLevel: number;
-  depth: number;
   topLevelName: string;
+  labelStack: string[];
 }) {
-  const { maxSchemaNesting } = getSettings().display;
-
-  function renderObjectProperties(
-    objectValue: ObjectValue,
-    { isOpenOnLoad = false }: { isOpenOnLoad?: boolean }
-  ) {
+  function renderObjectProperties(objectValue: ObjectValue) {
     renderer.beginExpandableSection(topLevelName, {
-      isOpenOnLoad,
+      isOpenOnLoad: true,
     });
     for (const [key, value] of Object.entries(objectValue.properties)) {
       const isOptional = objectValue.required?.includes(key) === false;
@@ -392,8 +468,8 @@ export function renderSchema({
           site,
           baseHeadingLevel,
           data,
-          depth,
           displayType,
+          labelStack,
         });
       } else if (value.type === "enum") {
         const displayType = getDisplayType(value, data);
@@ -459,43 +535,9 @@ export function renderSchema({
     });
   }
 
-  if (depth >= maxSchemaNesting) {
-    // This shouldn't be possible, since we only recurse on objects
-    if (schema.type !== "object") {
-      throw new Error("Schema must be an object to be embedded");
-    }
-    const embedName = schema.name;
-    const sidebarLinkRenderer = site.createEmbedPage(embedName);
-
-    // If no renderer was returned, that means we've already rendered this embed
-    if (sidebarLinkRenderer) {
-      sidebarLinkRenderer.appendHeading(baseHeadingLevel, embedName);
-      if (schema.description) {
-        sidebarLinkRenderer.appendParagraph(schema.description);
-      }
-      renderSchema({
-        renderer: sidebarLinkRenderer,
-        site,
-        schema,
-        data,
-        baseHeadingLevel,
-        topLevelName,
-        depth: 0,
-      });
-      sidebarLinkRenderer.finalize();
-    }
-    renderer.appendSidebarLink({
-      title: `${embedName} Details`,
-      embedName,
-    });
-    return;
-  }
-
   switch (schema.type) {
     case "object": {
-      renderObjectProperties(schema, {
-        isOpenOnLoad: true,
-      });
+      renderObjectProperties(schema);
       break;
     }
     case "map":
