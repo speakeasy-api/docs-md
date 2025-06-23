@@ -1,4 +1,5 @@
 import type { Settings } from "../types/settings.ts";
+import type { Site } from "../types/site.ts";
 import { setSettings } from "../util/settings.ts";
 import type { DocsCodeSnippets } from "./codeSnippets.ts";
 import { generateDocsCodeSnippets } from "./codeSnippets.ts";
@@ -10,9 +11,11 @@ import { generateContent } from "./mdx/generateContent.ts";
  * object is a map of page filenames to page contents.
  */
 export async function generatePages({
+  site,
   specContents,
   settings,
 }: {
+  site: Site;
   specContents: string;
   settings: Settings;
 }): Promise<Record<string, string>> {
@@ -31,5 +34,5 @@ export async function generatePages({
 
   // Generate the content
   console.log("Generating Markdown Pages");
-  return generateContent(data, docsCodeSnippets);
+  return generateContent(site, data, docsCodeSnippets);
 }

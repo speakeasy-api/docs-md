@@ -16,7 +16,14 @@ import { load } from "js-yaml";
 import z from "zod/v4";
 
 import { generatePages } from "../generator/generatePages.ts";
+import {
+  DocusaurusRenderer,
+  DocusaurusSite,
+} from "../renderers/docusaurus/renderer.ts";
+import { NextraRenderer, NextraSite } from "../renderers/nextra/renderer.ts";
 import { type Settings, settingsSchema } from "../types/settings.ts";
+import type { Site } from "../types/site.ts";
+import { assertNever } from "../util/assertNever.ts";
 
 const CONFIG_FILE_NAMES = [
   "speakeasy.config.js",
@@ -150,7 +157,24 @@ const settings = await getSettings();
 const specData = readFileSync(settings.spec, "utf-8");
 const specContents = JSON.stringify(load(specData));
 
+let site: Site;
+switch (settings.output.framework) {
+  case "docusaurus": {
+    site = new DocusaurusSite(DocusaurusRenderer);
+    break;
+  }
+  case "nextra": {
+    site = new NextraSite(NextraRenderer);
+    break;
+  }
+  default: {
+    // We should never get here cause we validate the settings in the CLI
+    assertNever(settings.output.framework);
+  }
+}
+
 const pageContents = await generatePages({
+  site,
   specContents,
   settings,
 });

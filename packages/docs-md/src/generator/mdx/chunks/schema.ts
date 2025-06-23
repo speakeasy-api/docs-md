@@ -7,9 +7,10 @@ import type {
   SetValue,
   UnionValue,
 } from "../../../types/chunk.ts";
+import type { Renderer } from "../../../types/renderer.ts";
+import type { Site } from "../../../types/site.ts";
 import { assertNever } from "../../../util/assertNever.ts";
 import { getSettings } from "../../../util/settings.ts";
-import type { Renderer, Site } from "../renderer.ts";
 import { getSchemaFromId } from "../util.ts";
 
 function getMaxInlineLength(propertyName: string, indentationLevel: number) {

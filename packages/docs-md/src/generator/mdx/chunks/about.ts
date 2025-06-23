@@ -1,5 +1,5 @@
 import type { AboutChunk } from "../../../types/chunk.ts";
-import type { Renderer } from "../renderer.ts";
+import type { Renderer } from "../../../types/renderer.ts";
 
 export function renderAbout(renderer: Renderer, chunk: AboutChunk) {
   renderer.appendHeading(1, `About ${chunk.chunkData.title}`);

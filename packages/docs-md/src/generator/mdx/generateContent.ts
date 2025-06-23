@@ -1,6 +1,8 @@
 import { join, resolve } from "node:path";
 
 import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
+import type { Renderer } from "../../types/renderer.ts";
+import type { Site } from "../../types/site.ts";
 import { assertNever } from "../../util/assertNever.ts";
 import { getSettings } from "../../util/settings.ts";
 import type { DocsCodeSnippets } from "../codeSnippets.ts";
@@ -8,8 +10,6 @@ import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
 import { renderSchema } from "./chunks/schema.ts";
 import { renderTag } from "./chunks/tag.ts";
-import type { Renderer } from "./renderer.ts";
-import { Site } from "./renderer.ts";
 import { getOperationFromId } from "./util.ts";
 
 type Data = Map<string, Chunk>;
@@ -278,18 +278,19 @@ function renderScaffoldSupport(site: Site) {
 }
 
 export function generateContent(
+  site: Site,
   data: Data,
   docsCodeSnippets: DocsCodeSnippets
 ): Record<string, string> {
   // First, get a mapping of pages to chunks
   const pageMap = getPageMap(data);
+
   // Then, render each page
-  const site = new Site();
   renderPages(site, pageMap, data, docsCodeSnippets);
 
   // Now do any post-processing needed by the scaffold
   renderScaffoldSupport(site);
 
-  // Finally, return the pages
-  return Object.fromEntries(site.getPages());
+  // Finalize the site and return the content
+  return site.finalize();
 }

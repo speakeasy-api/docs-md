@@ -1,18 +1,13 @@
 import { dirname, join, relative } from "node:path";
 
-import { assertNever } from "../../util/assertNever.ts";
+import type { Renderer } from "../../types/renderer.ts";
+import type { Site } from "../../types/site.ts";
 import { getSettings } from "../../util/settings.ts";
-
-type Escape = "all" | "mdx" | "none";
-
-type AppendOptions = {
-  // We almost always want to escape special Markdown characters, so we default
-  // to true. However, sometimes content coming in is actually in Markdown, so
-  // we want to preserve this Markdown formatting by setting this to false
-  escape?: Escape;
-};
-
-const SAVE_PAGE = Symbol();
+import {
+  MarkdownRenderer,
+  MarkdownSite,
+  rendererLines,
+} from "../markdown/renderer.ts";
 
 function getEmbedPath(embedName: string) {
   return join(
@@ -26,41 +21,14 @@ function getEmbedSymbol(embedName: string) {
   return `Embed${embedName}`;
 }
 
-export class Site {
-  #pages = new Map<string, string>();
-
-  public createPage(path: string): Renderer {
-    // Reserve the name, since we sometimes check to see if pages already exist
-    this.#pages.set(path, "");
-    return new Renderer({
-      site: this,
-      currentPagePath: path,
-    });
-  }
-
-  public createEmbedPage(embedName: string): Renderer | undefined {
-    const embedPath = getEmbedPath(embedName);
-    if (this.#pages.has(embedPath)) {
-      return;
-    }
-    return this.createPage(embedPath);
-  }
-
-  public createRawPage(path: string, contents: string) {
-    this.#pages.set(path, contents);
-  }
-
-  public getPages() {
-    return this.#pages;
-  }
-
-  private [SAVE_PAGE](path: string, content: string) {
-    this.#pages.set(path, content);
+export class DocusaurusSite extends MarkdownSite implements Site {
+  public override finalize() {
+    // TODO: save nav files here
+    return super.finalize();
   }
 }
 
-export class Renderer {
-  #site: Site;
+export class DocusaurusRenderer extends MarkdownRenderer implements Renderer {
   #currentPagePath: string;
   #frontMatter: string | undefined;
   #imports = new Map<
@@ -68,125 +36,26 @@ export class Renderer {
     { defaultAlias: string | undefined; namedImports: Set<string> }
   >();
   #includeSidebar = false;
-  #lines: string[] = [];
 
-  constructor({
-    site,
-    currentPagePath,
-  }: {
-    site: Site;
-    currentPagePath: string;
-  }) {
-    this.#site = site;
+  constructor({ currentPagePath }: { currentPagePath: string }) {
+    super();
     this.#currentPagePath = currentPagePath;
   }
 
-  // TODO: don't escape if they're already escaped
-  public escapeText(text: string, { escape }: { escape: Escape }) {
-    switch (escape) {
-      case "all":
-        return (
-          text
-            .replaceAll("\\", "\\\\")
-            .replaceAll("`", "\\`")
-            .replaceAll("*", "\\*")
-            .replaceAll("_", "\\_")
-            .replaceAll("{", "\\{")
-            .replaceAll("}", "\\}")
-            .replaceAll("[", "\\[")
-            .replaceAll("]", "\\]")
-            .replaceAll("<", "\\<")
-            .replaceAll(">", "\\>")
-            .replaceAll("(", "\\(")
-            .replaceAll(")", "\\)")
-            .replaceAll("#", "\\#")
-            .replaceAll("+", "\\+")
-            // .replace("-", "\\-")
-            // .replace(".", "\\.")
-            .replaceAll("!", "\\!")
-            .replaceAll("|", "\\|")
-        );
-      case "mdx":
-        return text.replaceAll("{", "\\{").replaceAll("}", "\\}");
-      case "none":
-        return text;
-    }
-  }
-
-  public insertFrontMatter({
+  public override insertFrontMatter({
     sidebarPosition,
     sidebarLabel,
   }: {
     sidebarPosition: string;
     sidebarLabel: string;
   }) {
-    const framework = getSettings().output.framework;
-    switch (framework) {
-      case "docusaurus": {
-        this.#frontMatter = `---
+    this.#frontMatter = `---
 sidebar_position: ${sidebarPosition}
 sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 ---`;
-        break;
-      }
-      case "nextra": {
-        this.#frontMatter = `---
-sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
----`;
-        break;
-      }
-      default: {
-        assertNever(framework);
-      }
-    }
   }
 
-  public appendHeading(
-    level: number,
-    text: string,
-    { escape = "all" }: AppendOptions = {}
-  ) {
-    this.#lines.push(
-      `#`.repeat(level) + " " + this.escapeText(text, { escape })
-    );
-  }
-
-  public appendParagraph(text: string, { escape = "mdx" }: AppendOptions = {}) {
-    this.#lines.push(this.escapeText(text, { escape }));
-  }
-
-  public appendCode(text: string) {
-    this.#lines.push(`\`\`\`\n${text}\n\`\`\``);
-  }
-
-  public appendList(items: string[], { escape = "all" }: AppendOptions = {}) {
-    this.#lines.push(
-      items.map((item) => "- " + this.escapeText(item, { escape })).join("\n")
-    );
-  }
-
-  public appendRaw(text: string) {
-    this.#lines.push(text);
-  }
-
-  public beginExpandableSection(
-    title: string,
-    {
-      isOpenOnLoad = false,
-      escape = "all",
-    }: { isOpenOnLoad?: boolean } & AppendOptions
-  ) {
-    this.#lines.push(`<details ${isOpenOnLoad ? "open" : ""}>`);
-    this.#lines.push(
-      `<summary>${this.escapeText(title, { escape })}</summary>`
-    );
-  }
-
-  public endExpandableSection() {
-    this.#lines.push("</details>");
-  }
-
-  public appendSidebarLink({
+  public override appendSidebarLink({
     title,
     embedName,
   }: {
@@ -201,7 +70,7 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
     this.#includeSidebar = true;
     this.#insertComponentImport("SideBarCta", "SideBar/index.tsx");
     this.#insertComponentImport("SideBar", "SideBar/index.tsx");
-    this.#lines.push(
+    this[rendererLines].push(
       `<p>
   <SideBarCta cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
     <${getEmbedSymbol(embedName)} />
@@ -212,7 +81,7 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 
   // TODO: need to type this properly, but we can't import types from assets
   // since they can't be built as part of this TS project
-  public appendTryItNow(
+  public override appendTryItNow(
     props: {
       externalDependencies?: Record<string, string>;
       defaultValue?: string;
@@ -227,12 +96,12 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
           : JSON.stringify(value),
       ])
     );
-    this.#lines.push(
+    this[rendererLines].push(
       `<TryItNow {...${JSON.stringify(escapedProps)}} externalDependencies={${JSON.stringify(props.externalDependencies)}} defaultValue={\`${props.defaultValue}\`} />`
     );
   }
 
-  public finalize() {
+  public override finalize() {
     let imports = "";
     for (const [importPath, symbols] of this.#imports) {
       if (symbols.defaultAlias && symbols.namedImports.size > 0) {
@@ -249,9 +118,8 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
       (this.#frontMatter ? this.#frontMatter + "\n\n" : "") +
       (imports ? imports + "\n\n" : "") +
       (this.#includeSidebar ? "<SideBar />\n\n" : "") +
-      this.#lines.join("\n\n");
-    this.#lines = [];
-    this.#site[SAVE_PAGE](this.#currentPagePath, data);
+      this[rendererLines].join("\n\n");
+    return data;
   }
 
   #insertDefaultImport(importPath: string, symbol: string) {
@@ -262,7 +130,7 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
       });
     }
     // Will never be undefined due to the above. I wish TypeScript could narrow
-    // map/set has calls
+    // map/set .has() calls
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.#imports.get(importPath)!.defaultAlias = symbol;
   }
