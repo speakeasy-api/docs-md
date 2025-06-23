@@ -26,7 +26,8 @@ export class DocusaurusSite extends MdxSite implements Site {
         },
         null,
         "  "
-      )
+      ),
+      { escape: "none" }
     );
     this.createPage(
       join(settings.output.pageOutDir, "tag", "_category_.json")
@@ -40,7 +41,8 @@ export class DocusaurusSite extends MdxSite implements Site {
         },
         null,
         "  "
-      )
+      ),
+      { escape: "none" }
     );
     if (settings.display.showSchemasInNav) {
       this.createPage(
@@ -55,7 +57,8 @@ export class DocusaurusSite extends MdxSite implements Site {
           },
           null,
           "  "
-        )
+        ),
+        { escape: "none" }
       );
     }
     return super.finalize();

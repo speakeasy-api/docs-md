@@ -21,7 +21,8 @@ export class NextraSite extends MdxSite implements Site {
   tag: { title: "Operations", theme: { collapsed: false } },${schemasEntry}
 }`;
     this.createPage(join(settings.output.pageOutDir, "_meta.ts")).appendText(
-      config
+      config,
+      { escape: "none" }
     );
     return super.finalize();
   }

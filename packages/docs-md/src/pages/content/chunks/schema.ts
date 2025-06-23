@@ -405,7 +405,6 @@ function renderSchemaBreakouts({
           topLevelName: breakoutSubType.label,
           labelStack: [],
         });
-        sidebarLinkRenderer.finalize();
       }
       renderer.appendSidebarLink({
         title: `${embedName} Details`,

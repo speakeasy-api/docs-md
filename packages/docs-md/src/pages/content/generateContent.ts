@@ -128,7 +128,6 @@ function renderPages(
         sidebarLabel: pageMapEntry.sidebarLabel,
       });
       pageMapEntry.renderer(renderer);
-      renderer.finalize();
       continue;
     }
     const { chunks, sidebarLabel, sidebarPosition } = pageMapEntry;
