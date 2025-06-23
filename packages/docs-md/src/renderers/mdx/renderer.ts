@@ -17,7 +17,7 @@ function getEmbedPath(embedName: string) {
   );
 }
 
-function getEmbedSymbol(embedName: string) {
+export function getEmbedSymbol(embedName: string) {
   return `Embed${embedName}`;
 }
 
@@ -37,35 +37,10 @@ export class MdxRenderer extends MarkdownRenderer implements Renderer {
     string,
     { defaultAlias: string | undefined; namedImports: Set<string> }
   >();
-  #includeSidebar = false;
 
   constructor({ currentPagePath }: { currentPagePath: string }) {
     super();
     this.#currentPagePath = currentPagePath;
-  }
-
-  public override appendSidebarLink({
-    title,
-    embedName,
-  }: {
-    title: string;
-    embedName: string;
-  }) {
-    // If this is a circular import, skip processing sidebar
-    if (!this.insertEmbedImport(embedName)) {
-      // TODO: add debug logging
-      return;
-    }
-    this.#includeSidebar = true;
-    this.insertThirdPartyImport("SideBarCta", "@speakeasy-api/docs-md");
-    this.insertThirdPartyImport("SideBar", "@speakeasy-api/docs-md");
-    this[rendererLines].push(
-      `<p>
-  <SideBarCta cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
-    <${getEmbedSymbol(embedName)} />
-  </SideBarCta>
-</p>`
-    );
   }
 
   public override appendTryItNow({
@@ -98,10 +73,7 @@ export class MdxRenderer extends MarkdownRenderer implements Renderer {
       }
     }
     const parentData = super.finalize();
-    const data =
-      (imports ? imports + "\n\n" : "") +
-      (this.#includeSidebar ? "<SideBar />\n\n" : "") +
-      parentData;
+    const data = (imports ? imports + "\n\n" : "") + parentData;
     return data;
   }
 

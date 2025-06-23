@@ -12,7 +12,7 @@ type SidebarContent = {
 
 const sidebarContentAtom = atom<SidebarContent | null>(null);
 
-export function SideBar() {
+function DocusaurusSideBar() {
   // We keep separate track of the open state vs content because we want to
   // start animating the closing of the sidebar before the content is cleared,
   // so that we see it slide off screen. This means we can't use content as an
@@ -86,7 +86,11 @@ export function SideBar() {
   );
 }
 
-export function SideBarCta({
+export const SideBar = {
+  Docusaurus: DocusaurusSideBar,
+};
+
+function DocusaurusSideBarCta({
   cta,
   children,
   title,
@@ -112,3 +116,7 @@ export function SideBarCta({
     </button>
   );
 }
+
+export const SideBarCta = {
+  Docusaurus: DocusaurusSideBarCta,
+};

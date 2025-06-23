@@ -3,7 +3,8 @@ import { join, resolve } from "node:path";
 import type { Renderer } from "../../types/renderer.ts";
 import type { Site } from "../../types/site.ts";
 import { getSettings } from "../../util/settings.ts";
-import { MdxRenderer, MdxSite } from "../mdx/renderer.ts";
+import { rendererLines } from "../markdown/renderer.ts";
+import { getEmbedSymbol, MdxRenderer, MdxSite } from "../mdx/renderer.ts";
 
 export class DocusaurusSite extends MdxSite implements Site {
   public override buildPagePath(slug: string): string {
@@ -63,6 +64,7 @@ export class DocusaurusSite extends MdxSite implements Site {
 
 export class DocusaurusRenderer extends MdxRenderer implements Renderer {
   #frontMatter: string | undefined;
+  #includeSidebar = false;
 
   public override insertFrontMatter({
     sidebarPosition,
@@ -110,10 +112,36 @@ ${this.escapeText(text, { escape: "html" })}
     }
   }
 
+  public override appendSidebarLink({
+    title,
+    embedName,
+  }: {
+    title: string;
+    embedName: string;
+  }) {
+    // If this is a circular import, skip processing sidebar
+    if (!this.insertEmbedImport(embedName)) {
+      // TODO: add debug logging
+      return;
+    }
+    this.#includeSidebar = true;
+    this.insertThirdPartyImport("SideBarCta", "@speakeasy-api/docs-md");
+    this.insertThirdPartyImport("SideBar", "@speakeasy-api/docs-md");
+    this[rendererLines].push(
+      `<p>
+    <SideBarCta.Docusaurus cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
+      <${getEmbedSymbol(embedName)} />
+    </SideBarCta.Docusaurus>
+  </p>`
+    );
+  }
+
   public override finalize() {
     const parentData = super.finalize();
     const data =
-      (this.#frontMatter ? this.#frontMatter + "\n\n" : "") + parentData;
+      (this.#frontMatter ? this.#frontMatter + "\n\n" : "") +
+      parentData +
+      (this.#includeSidebar ? "\n<SideBar.Docusaurus />\n" : "");
     return data;
   }
 }
