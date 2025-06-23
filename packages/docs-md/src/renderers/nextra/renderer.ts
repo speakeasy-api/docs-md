@@ -20,7 +20,9 @@ export class NextraSite extends MdxSite implements Site {
   about: { title: "About", theme: { collapsed: false } },
   tag: { title: "Operations", theme: { collapsed: false } },${schemasEntry}
 }`;
-    this.createRawPage(join(settings.output.pageOutDir, "_meta.ts"), config);
+    this.createPage(join(settings.output.pageOutDir, "_meta.ts")).appendText(
+      config
+    );
     return super.finalize();
   }
 }

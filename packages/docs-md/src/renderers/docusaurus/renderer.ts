@@ -13,8 +13,9 @@ export class DocusaurusSite extends MdxSite implements Site {
 
   public override finalize() {
     const settings = getSettings();
-    this.createRawPage(
-      join(settings.output.pageOutDir, "_category_.json"),
+    this.createPage(
+      join(settings.output.pageOutDir, "_category_.json")
+    ).appendText(
       JSON.stringify(
         {
           position: 2,
@@ -26,8 +27,9 @@ export class DocusaurusSite extends MdxSite implements Site {
         "  "
       )
     );
-    this.createRawPage(
-      join(settings.output.pageOutDir, "tag", "_category_.json"),
+    this.createPage(
+      join(settings.output.pageOutDir, "tag", "_category_.json")
+    ).appendText(
       JSON.stringify(
         {
           position: 3,
@@ -40,8 +42,9 @@ export class DocusaurusSite extends MdxSite implements Site {
       )
     );
     if (settings.display.showSchemasInNav) {
-      this.createRawPage(
-        join(settings.output.pageOutDir, "schema", "_category_.json"),
+      this.createPage(
+        join(settings.output.pageOutDir, "schema", "_category_.json")
+      ).appendText(
         JSON.stringify(
           {
             position: 4,
@@ -87,7 +90,7 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
         }
   ) {
     if (options?.variant === "raw") {
-      this.appendParagraph(
+      this.appendText(
         `<pre style={{
   backgroundColor: "var(--ifm-code-background)",
   border: "0.1rem solid rgba(0, 0, 0, 0.1)",

@@ -29,12 +29,12 @@ export function renderOperation({
   );
 
   if (chunk.chunkData.summary && chunk.chunkData.description) {
-    renderer.appendParagraph(`_${chunk.chunkData.summary}_`);
-    renderer.appendParagraph(chunk.chunkData.description);
+    renderer.appendText(`_${chunk.chunkData.summary}_`);
+    renderer.appendText(chunk.chunkData.description);
   } else if (chunk.chunkData.summary) {
-    renderer.appendParagraph(chunk.chunkData.summary);
+    renderer.appendText(chunk.chunkData.summary);
   } else if (chunk.chunkData.description) {
-    renderer.appendParagraph(chunk.chunkData.description);
+    renderer.appendText(chunk.chunkData.description);
   }
 
   if (chunk.chunkData.security || chunk.chunkData.globalSecurity) {
@@ -79,7 +79,7 @@ export function renderOperation({
         `${parameter.name}${parameter.required ? " (required)" : ""}`
       );
       if (parameter.description) {
-        renderer.appendParagraph(parameter.description);
+        renderer.appendText(parameter.description);
       }
       const parameterChunk = getSchemaFromId(parameter.fieldChunkId, docsData);
       renderSchema({
@@ -116,7 +116,7 @@ export function renderOperation({
       `Request Body${chunk.chunkData.requestBody.required ? " (required)" : ""}`
     );
     if (chunk.chunkData.requestBody.description) {
-      renderer.appendParagraph(chunk.chunkData.requestBody.description);
+      renderer.appendText(chunk.chunkData.requestBody.description);
     }
     const requestBodySchema = getSchemaFromId(
       chunk.chunkData.requestBody.contentChunkId,
@@ -143,7 +143,7 @@ export function renderOperation({
           `Response: ${statusCode} (${response.contentType})`
         );
         if (response.description) {
-          renderer.appendParagraph(response.description);
+          renderer.appendText(response.description);
         }
         const responseSchema = getSchemaFromId(
           response.contentChunkId,

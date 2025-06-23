@@ -39,14 +39,6 @@ export class MarkdownSite implements Site {
     throw new Error("Not supported");
   }
 
-  public createRawPage(path: string, contents: string) {
-    const renderer = new this.#Renderer({
-      currentPagePath: path,
-    });
-    renderer.appendRaw(contents);
-    this.#pages.set(path, renderer);
-  }
-
   public finalize() {
     const pages: Record<string, string> = {};
     for (const [path, renderer] of this.#pages) {
@@ -113,7 +105,7 @@ export class MarkdownRenderer implements Renderer {
     );
   }
 
-  public appendParagraph(text: string, { escape = "mdx" }: AppendOptions = {}) {
+  public appendText(text: string, { escape = "mdx" }: AppendOptions = {}) {
     this[rendererLines].push(this.escapeText(text, { escape }));
   }
 

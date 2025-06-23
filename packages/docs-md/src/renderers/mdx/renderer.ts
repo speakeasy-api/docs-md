@@ -52,13 +52,13 @@ export class MdxRenderer extends MarkdownRenderer implements Renderer {
     embedName: string;
   }) {
     // If this is a circular import, skip processing sidebar
-    if (!this.#insertEmbedImport(embedName)) {
+    if (!this.insertEmbedImport(embedName)) {
       // TODO: add debug logging
       return;
     }
     this.#includeSidebar = true;
-    this.#insertThirdPartyImport("SideBarCta", "@speakeasy-api/docs-md");
-    this.#insertThirdPartyImport("SideBar", "@speakeasy-api/docs-md");
+    this.insertThirdPartyImport("SideBarCta", "@speakeasy-api/docs-md");
+    this.insertThirdPartyImport("SideBar", "@speakeasy-api/docs-md");
     this[rendererLines].push(
       `<p>
   <SideBarCta cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
@@ -68,25 +68,19 @@ export class MdxRenderer extends MarkdownRenderer implements Renderer {
     );
   }
 
-  // TODO: need to type this properly, but we can't import types from assets
-  // since they can't be built as part of this TS project
-  public override appendTryItNow(
-    props: {
-      externalDependencies?: Record<string, string>;
-      defaultValue?: string;
-    } & Record<string, unknown>
-  ) {
-    this.#insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md");
-    const escapedProps = Object.fromEntries(
-      Object.entries(props).map(([key, value]) => [
-        key,
-        typeof value === "string"
-          ? this.escapeText(value, { escape: "mdx" })
-          : JSON.stringify(value),
-      ])
-    );
+  public override appendTryItNow({
+    externalDependencies,
+    defaultValue,
+  }: {
+    externalDependencies: Record<string, string>;
+    defaultValue: string;
+  }) {
+    this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md");
     this[rendererLines].push(
-      `<TryItNow {...${JSON.stringify(escapedProps)}} externalDependencies={${JSON.stringify(props.externalDependencies)}} defaultValue={\`${props.defaultValue}\`} />`
+      `<TryItNow
+ externalDependencies={${JSON.stringify(externalDependencies)}}
+ defaultValue={\`${defaultValue}\`}
+/>`
     );
   }
 
@@ -111,7 +105,7 @@ export class MdxRenderer extends MarkdownRenderer implements Renderer {
     return data;
   }
 
-  #insertDefaultImport(importPath: string, symbol: string) {
+  protected insertDefaultImport(importPath: string, symbol: string) {
     if (!this.#imports.has(importPath)) {
       this.#imports.set(importPath, {
         defaultAlias: undefined,
@@ -124,7 +118,7 @@ export class MdxRenderer extends MarkdownRenderer implements Renderer {
     this.#imports.get(importPath)!.defaultAlias = symbol;
   }
 
-  #insertNamedImport(importPath: string, symbol: string) {
+  protected insertNamedImport(importPath: string, symbol: string) {
     if (!this.#imports.has(importPath)) {
       this.#imports.set(importPath, {
         defaultAlias: undefined,
@@ -134,7 +128,7 @@ export class MdxRenderer extends MarkdownRenderer implements Renderer {
     this.#imports.get(importPath)?.namedImports.add(symbol);
   }
 
-  #insertEmbedImport(embedName: string) {
+  protected insertEmbedImport(embedName: string) {
     const embedPath = getEmbedPath(embedName);
 
     // TODO: handle this more gracefully. This happens when we have a direct
@@ -149,12 +143,12 @@ export class MdxRenderer extends MarkdownRenderer implements Renderer {
     if (!importPath.startsWith("./") && !importPath.startsWith("../")) {
       importPath = `./${importPath}`;
     }
-    this.#insertDefaultImport(importPath, getEmbedSymbol(embedName));
+    this.insertDefaultImport(importPath, getEmbedSymbol(embedName));
 
     return true;
   }
 
-  #insertThirdPartyImport(symbol: string, importPath: string) {
-    this.#insertNamedImport(importPath, symbol);
+  protected insertThirdPartyImport(symbol: string, importPath: string) {
+    this.insertNamedImport(importPath, symbol);
   }
 }

@@ -322,10 +322,10 @@ function renderSchemaFrontmatter({
   });
 
   if ("description" in schema && schema.description) {
-    renderer.appendParagraph(schema.description);
+    renderer.appendText(schema.description);
   }
   if ("examples" in schema && schema.examples.length > 0) {
-    renderer.appendParagraph(
+    renderer.appendText(
       `_${schema.examples.length > 1 ? "Examples" : "Example"}:_`
     );
     for (const example of schema.examples) {
@@ -334,7 +334,7 @@ function renderSchemaFrontmatter({
   }
 
   if ("defaultValue" in schema && schema.defaultValue) {
-    renderer.appendParagraph(`_Default Value:_ \`${schema.defaultValue}\``);
+    renderer.appendText(`_Default Value:_ \`${schema.defaultValue}\``);
   }
 }
 
@@ -374,7 +374,7 @@ function renderSchemaBreakouts({
         throw new Error("Schema must be an object to be embedded");
       }
       // TODO: add fragment link if we're not in a sidebar
-      renderer.appendParagraph(
+      renderer.appendText(
         `\`${breakoutSubType.schema.name}\` is circular. See previous description for details.`
       );
       continue;
@@ -394,9 +394,7 @@ function renderSchemaBreakouts({
       if (sidebarLinkRenderer) {
         sidebarLinkRenderer.appendHeading(baseHeadingLevel, embedName);
         if (breakoutSubType.schema.description) {
-          sidebarLinkRenderer.appendParagraph(
-            breakoutSubType.schema.description
-          );
+          sidebarLinkRenderer.appendText(breakoutSubType.schema.description);
         }
         renderSchema({
           renderer: sidebarLinkRenderer,

@@ -18,7 +18,7 @@ export interface Renderer {
 
   appendHeading(level: number, text: string, options?: AppendOptions): void;
 
-  appendParagraph(text: string, options?: AppendOptions): void;
+  appendText(text: string, options?: AppendOptions): void;
 
   appendCodeBlock(
     text: string,
@@ -52,8 +52,6 @@ export interface Renderer {
   ): void;
 
   appendList(items: string[], options?: AppendOptions): void;
-
-  appendRaw(text: string): void;
 
   beginExpandableSection(
     title: string,
