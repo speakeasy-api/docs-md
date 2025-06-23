@@ -6,4 +6,5 @@ export interface Site {
   createRawPage(path: string, contents: string): void;
   finalize(): Record<string, string>;
   buildPagePath(slug: string): string;
+  hasPage(path: string): boolean;
 }

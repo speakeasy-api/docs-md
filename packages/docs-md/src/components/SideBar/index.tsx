@@ -5,17 +5,6 @@ import { motion } from "motion/react";
 import type { PropsWithChildren } from "react";
 import React, { useCallback, useEffect, useState } from "react";
 
-import Button from "./button.mdx";
-import Container from "./container.mdx";
-
-// TODO: https://github.com/orgs/mdx-js/discussions/2272 implies there's a more
-// elegant way to do this, but I couldn't get it to work after a bit of fiddling
-const TypedContainer = Container as React.FC<{ children: React.ReactNode }>;
-const TypedButton = Button as React.FC<{
-  children: React.ReactNode;
-  onClick: () => void;
-}>;
-
 type SidebarContent = {
   title: string;
   content: React.ReactNode;
@@ -71,7 +60,14 @@ export function SideBar() {
       onAnimationComplete={onAnimationComplete}
     >
       {content && (
-        <TypedContainer>
+        <details
+          open
+          style={{
+            border: "1px solid #ccc",
+            padding: "8px",
+            borderRadius: "8px",
+          }}
+        >
           <summary
             style={{
               cursor: "default",
@@ -84,7 +80,7 @@ export function SideBar() {
             <button onClick={closeRequest}>X</button>
           </summary>
           {content?.content}
-        </TypedContainer>
+        </details>
       )}
     </motion.div>
   );
@@ -103,5 +99,16 @@ export function SideBarCta({
     () => setContent({ title, content: children }),
     [title, children]
   );
-  return <TypedButton onClick={onClick}>{cta}</TypedButton>;
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        padding: "8px 16px",
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+      }}
+    >
+      {cta}
+    </button>
+  );
 }

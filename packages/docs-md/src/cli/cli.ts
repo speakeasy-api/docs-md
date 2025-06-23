@@ -9,7 +9,6 @@ import {
   writeFileSync,
 } from "node:fs";
 import { dirname, isAbsolute, join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
 
 import arg from "arg";
 import { load } from "js-yaml";
@@ -178,28 +177,6 @@ const pageContents = await generatePages({
   specContents,
   settings,
 });
-
-// TODO: remove this code. We populate the list of static assets to be saved.
-// This is a temporary solution until we refactor sidebar to be a proper export
-// from this package
-const ASSET_PATH = join(
-  dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "..",
-  "assets"
-);
-const assetFileList = readdirSync(ASSET_PATH, {
-  recursive: true,
-  withFileTypes: true,
-})
-  .filter((f) => f.isFile() && f.name !== "tsconfig.json")
-  .map((f) => join(f.parentPath, f.name).replace(ASSET_PATH + "/", ""));
-for (const assetFile of assetFileList) {
-  pageContents[join(settings.output.componentOutDir, assetFile)] = readFileSync(
-    join(ASSET_PATH, assetFile),
-    "utf-8"
-  );
-}
 
 if (args["--clean"]) {
   rmSync(settings.output.pageOutDir, {

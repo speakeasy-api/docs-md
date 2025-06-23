@@ -26,6 +26,10 @@ export class MarkdownSite implements Site {
     return resolve(join(settings.output.pageOutDir, `${slug}.md`));
   }
 
+  public hasPage(path: string): boolean {
+    return this.#pages.has(path);
+  }
+
   public createPage(path: string): Renderer {
     // Reserve the name, since we sometimes check to see if pages already exist
     const renderer = new this.#Renderer({
@@ -35,7 +39,7 @@ export class MarkdownSite implements Site {
     return renderer;
   }
 
-  public createEmbedPage(): Renderer | undefined {
+  public createEmbedPage(_: string): Renderer | undefined {
     throw new Error("Not supported");
   }
 
