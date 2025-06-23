@@ -287,11 +287,11 @@ function renderNameAndType({
   );
   if (computedDisplayType.multiline) {
     renderer.appendHeading(baseHeadingLevel, annotatedPropertyName);
-    renderer.appendParagraph(`\`\`\`\n${computedDisplayType.content}\n\`\`\``);
+    renderer.appendCode(computedDisplayType.content);
   } else {
     renderer.appendHeading(
       baseHeadingLevel,
-      `${renderer.escapeText(annotatedPropertyName, { escape: "all" })}: \`${renderer.escapeText(computedDisplayType.content, { escape: "mdx" })}\``,
+      `${renderer.escapeText(annotatedPropertyName, { escape: "markdown" })}: \`${renderer.escapeText(computedDisplayType.content, { escape: "mdx" })}\``,
       { escape: "none" }
     );
   }

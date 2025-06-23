@@ -1,6 +1,6 @@
-type Escape = "all" | "mdx" | "none";
+export type Escape = "markdown" | "html" | "mdx" | "none";
 
-type AppendOptions = {
+export type AppendOptions = {
   escape?: Escape;
 };
 

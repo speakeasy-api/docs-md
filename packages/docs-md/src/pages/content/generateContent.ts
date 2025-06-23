@@ -185,7 +185,6 @@ function renderPages(
         }
       }
     }
-    renderer.finalize();
   }
 }
 

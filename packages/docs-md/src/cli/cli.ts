@@ -181,9 +181,11 @@ const pageContents = await generatePages({
 if (args["--clean"]) {
   rmSync(settings.output.pageOutDir, {
     recursive: true,
+    force: true,
   });
   rmSync(settings.output.componentOutDir, {
     recursive: true,
+    force: true,
   });
 }
 

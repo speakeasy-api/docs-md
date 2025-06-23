@@ -1,17 +1,13 @@
 import { join, resolve } from "node:path";
 
-import type { Renderer, RendererConstructor } from "../../types/renderer.ts";
+import type {
+  AppendOptions,
+  Escape,
+  Renderer,
+  RendererConstructor,
+} from "../../types/renderer.ts";
 import type { Site } from "../../types/site.ts";
 import { getSettings } from "../../util/settings.ts";
-
-type Escape = "all" | "mdx" | "none";
-
-type AppendOptions = {
-  // We almost always want to escape special Markdown characters, so we default
-  // to true. However, sometimes content coming in is actually in Markdown, so
-  // we want to preserve this Markdown formatting by setting this to false
-  escape?: Escape;
-};
 
 export class MarkdownSite implements Site {
   #pages = new Map<string, Renderer>();
@@ -69,7 +65,7 @@ export class MarkdownRenderer implements Renderer {
   // TODO: don't escape if they're already escaped
   public escapeText(text: string, { escape }: { escape: Escape }) {
     switch (escape) {
-      case "all":
+      case "markdown":
         return (
           text
             .replaceAll("\\", "\\\\")
@@ -93,6 +89,8 @@ export class MarkdownRenderer implements Renderer {
         );
       case "mdx":
         return text.replaceAll("{", "\\{").replaceAll("}", "\\}");
+      case "html":
+        return text.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
       case "none":
         return text;
     }
@@ -108,33 +106,31 @@ export class MarkdownRenderer implements Renderer {
   public appendHeading(
     level: number,
     text: string,
-    { escape = "all" }: AppendOptions = {}
+    { escape = "markdown" }: AppendOptions = {}
   ) {
-    this.#checkFinalized();
     this[rendererLines].push(
       `#`.repeat(level) + " " + this.escapeText(text, { escape })
     );
   }
 
   public appendParagraph(text: string, { escape = "mdx" }: AppendOptions = {}) {
-    this.#checkFinalized();
     this[rendererLines].push(this.escapeText(text, { escape }));
   }
 
   public appendCode(text: string) {
-    this.#checkFinalized();
     this[rendererLines].push(`\`\`\`\n${text}\n\`\`\``);
   }
 
-  public appendList(items: string[], { escape = "all" }: AppendOptions = {}) {
-    this.#checkFinalized();
+  public appendList(
+    items: string[],
+    { escape = "markdown" }: AppendOptions = {}
+  ) {
     this[rendererLines].push(
       items.map((item) => "- " + this.escapeText(item, { escape })).join("\n")
     );
   }
 
   public appendRaw(text: string) {
-    this.#checkFinalized();
     this[rendererLines].push(text);
   }
 
@@ -142,10 +138,9 @@ export class MarkdownRenderer implements Renderer {
     title: string,
     {
       isOpenOnLoad = false,
-      escape = "all",
+      escape = "markdown",
     }: { isOpenOnLoad?: boolean } & AppendOptions
   ) {
-    this.#checkFinalized();
     this[rendererLines].push(`<details ${isOpenOnLoad ? "open" : ""}>`);
     this[rendererLines].push(
       `<summary>${this.escapeText(title, { escape })}</summary>`
@@ -153,7 +148,6 @@ export class MarkdownRenderer implements Renderer {
   }
 
   public endExpandableSection() {
-    this.#checkFinalized();
     this[rendererLines].push("</details>");
   }
 
@@ -169,14 +163,11 @@ export class MarkdownRenderer implements Renderer {
   }
 
   public finalize() {
-    const data = this[rendererLines].join("\n\n");
-    this.#isFinalized = true;
-    return data;
-  }
-
-  #checkFinalized() {
     if (this.#isFinalized) {
       throw new Error("Renderer has already been finalized");
     }
+    const data = this[rendererLines].join("\n\n");
+    this.#isFinalized = true;
+    return data;
   }
 }
