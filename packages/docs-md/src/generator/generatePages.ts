@@ -3,8 +3,8 @@ import type { Site } from "../types/site.ts";
 import { setSettings } from "../util/settings.ts";
 import type { DocsCodeSnippets } from "./codeSnippets.ts";
 import { generateDocsCodeSnippets } from "./codeSnippets.ts";
-import { getDocsData } from "./docsData/getDocsData.ts";
-import { generateContent } from "./mdx/generateContent.ts";
+import { generateContent } from "./content/generateContent.ts";
+import { getData } from "./data/getDocsData.ts";
 
 /**
  * Given an OpenAPI spec, generate Markdown pages of the spec. The returned
@@ -23,7 +23,7 @@ export async function generatePages({
   setSettings(settings);
 
   // Get the docs data from the spec
-  const data = await getDocsData(specContents);
+  const data = await getData(specContents);
 
   // Get code snippets
   let docsCodeSnippets: DocsCodeSnippets = {};

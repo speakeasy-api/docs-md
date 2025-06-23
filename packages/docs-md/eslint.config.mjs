@@ -14,7 +14,7 @@ export default [
       "src/index.ts": ["Settings", "TryItNow"],
       "assets/SideBar/index.tsx": ["SideBar", "SideBarCta"],
     },
-    ignores: ["src/generator/docsData/wasm_exec.js"],
+    ignores: ["src/generator/data/wasm_exec.js"],
     restrictedImports: [
       {
         type: "third-party",

@@ -28,7 +28,48 @@ export class DocusaurusSite extends MarkdownSite implements Site {
   }
 
   public override finalize() {
-    // TODO: save nav files here
+    const settings = getSettings();
+    this.createRawPage(
+      join(settings.output.pageOutDir, "_category_.json"),
+      JSON.stringify(
+        {
+          position: 2,
+          label: "API Reference",
+          collapsible: true,
+          collapsed: false,
+        },
+        null,
+        "  "
+      )
+    );
+    this.createRawPage(
+      join(settings.output.pageOutDir, "tag", "_category_.json"),
+      JSON.stringify(
+        {
+          position: 3,
+          label: "Operations",
+          collapsible: true,
+          collapsed: false,
+        },
+        null,
+        "  "
+      )
+    );
+    if (settings.display.showSchemasInNav) {
+      this.createRawPage(
+        join(settings.output.pageOutDir, "schema", "_category_.json"),
+        JSON.stringify(
+          {
+            position: 4,
+            label: "Schemas",
+            collapsible: true,
+            collapsed: true,
+          },
+          null,
+          "  "
+        )
+      );
+    }
     return super.finalize();
   }
 }

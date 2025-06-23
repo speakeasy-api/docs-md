@@ -1,9 +1,6 @@
-import { join } from "node:path";
-
 import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
 import type { Renderer } from "../../types/renderer.ts";
 import type { Site } from "../../types/site.ts";
-import { assertNever } from "../../util/assertNever.ts";
 import { getSettings } from "../../util/settings.ts";
 import type { DocsCodeSnippets } from "../codeSnippets.ts";
 import { renderAbout } from "./chunks/about.ts";
@@ -192,87 +189,12 @@ function renderPages(
   }
 }
 
-function renderScaffoldSupport(site: Site) {
-  const settings = getSettings();
-  switch (settings.output.framework) {
-    case "docusaurus": {
-      site.createRawPage(
-        join(settings.output.pageOutDir, "_category_.json"),
-        JSON.stringify(
-          {
-            position: 2,
-            label: "API Reference",
-            collapsible: true,
-            collapsed: false,
-          },
-          null,
-          "  "
-        )
-      );
-      site.createRawPage(
-        join(settings.output.pageOutDir, "tag", "_category_.json"),
-        JSON.stringify(
-          {
-            position: 3,
-            label: "Operations",
-            collapsible: true,
-            collapsed: false,
-          },
-          null,
-          "  "
-        )
-      );
-      if (settings.display.showSchemasInNav) {
-        site.createRawPage(
-          join(settings.output.pageOutDir, "schema", "_category_.json"),
-          JSON.stringify(
-            {
-              position: 4,
-              label: "Schemas",
-              collapsible: true,
-              collapsed: true,
-            },
-            null,
-            "  "
-          )
-        );
-      }
-      break;
-    }
-    case "nextra": {
-      const schemasEntry = settings.display.showSchemasInNav
-        ? `\n  schemas: { title: "Schemas", theme: { collapsed: false } },`
-        : "";
-      const config = `export default {
-  about: { title: "About", theme: { collapsed: false } },
-  tag: { title: "Operations", theme: { collapsed: false } },${schemasEntry}
-}`;
-      site.createRawPage(join(settings.output.pageOutDir, "_meta.ts"), config);
-
-      // Nextra doesn't need anything (yet)
-      break;
-    }
-    default: {
-      // We should never get here cause we validate the settings in the CLI
-      assertNever(settings.output.framework);
-    }
-  }
-}
-
 export function generateContent(
   site: Site,
   data: Data,
   docsCodeSnippets: DocsCodeSnippets
 ): Record<string, string> {
-  // First, get a mapping of pages to chunks
   const pageMap = getPageMap(site, data);
-
-  // Then, render each page
   renderPages(site, pageMap, data, docsCodeSnippets);
-
-  // Now do any post-processing needed by the scaffold
-  renderScaffoldSupport(site);
-
-  // Finalize the site and return the content
   return site.finalize();
 }

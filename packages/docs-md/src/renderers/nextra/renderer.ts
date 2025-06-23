@@ -28,7 +28,15 @@ export class NextraSite extends MarkdownSite implements Site {
   }
 
   public override finalize() {
-    // TODO: save nav files here
+    const settings = getSettings();
+    const schemasEntry = settings.display.showSchemasInNav
+      ? `\n  schemas: { title: "Schemas", theme: { collapsed: false } },`
+      : "";
+    const config = `export default {
+      about: { title: "About", theme: { collapsed: false } },
+      tag: { title: "Operations", theme: { collapsed: false } },${schemasEntry}
+    }`;
+    this.createRawPage(join(settings.output.pageOutDir, "_meta.ts"), config);
     return super.finalize();
   }
 }

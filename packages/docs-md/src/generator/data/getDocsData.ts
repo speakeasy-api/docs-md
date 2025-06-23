@@ -19,7 +19,7 @@ declare class Go {
 
 const wasmPath = join(dirname(fileURLToPath(import.meta.url)), "lib.wasm.gz");
 
-export async function getDocsData(
+export async function getData(
   specContents: string
 ): Promise<Map<string, Chunk>> {
   console.log("Parsing OpenAPI spec (ignore lock file errors printed below)");
