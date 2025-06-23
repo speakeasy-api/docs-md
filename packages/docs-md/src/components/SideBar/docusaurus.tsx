@@ -16,7 +16,7 @@ export function DocusaurusSideBar() {
   // We keep separate track of the open state vs content because we want to
   // start animating the closing of the sidebar before the content is cleared,
   // so that we see it slide off screen. This means we can't use content as an
-  // animation trigger because it would otherwise clear all at
+  // animation trigger because it would otherwise clear all at once
   const [content, setContent] = useAtom(sidebarContentAtom);
   const [open, setOpen] = useState(false);
 
@@ -57,17 +57,31 @@ export function DocusaurusSideBar() {
       {content && (
         <div
           style={{
-            backgroundColor: "var(--ifm-alert-background-color)",
-            border: "1px solid var(--ifm-alert-border-color)",
-            borderRadius: "var(--ifm-alert-border-radius)",
-            boxShadow: "var(--ifm-alert-shadow)",
-            color: "var(--ifm-alert-foreground-color)",
+            backgroundColor: "var(--ifm-hero-background-color)",
+            border:
+              "var(--ifm-global-border-width) solid var(--ifm-table-border-color)",
+            borderRadius: "var(--ifm-global-radius)",
+            boxShadow: "var(--ifm-global-shadow-tl)",
+            color: "var(--ifm-hero-text-color)",
             padding:
               "var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal)",
           }}
         >
-          <div>
-            <h2>{content?.title}</h2>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <div
+              style={{
+                fontWeight: "bold",
+                fontSize: "var(--ifm-h3-font-size)",
+              }}
+            >
+              {content?.title}
+            </div>
             <button onClick={closeRequest}>X</button>
           </div>
           <hr
@@ -101,8 +115,6 @@ export function DocusaurusSideBarCta({
       onClick={onClick}
       style={{
         padding: "8px 16px",
-        border: "1px solid #ccc",
-        borderRadius: "8px",
       }}
     >
       {cta}
