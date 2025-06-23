@@ -287,7 +287,7 @@ function renderNameAndType({
   );
   if (computedDisplayType.multiline) {
     renderer.appendHeading(baseHeadingLevel, annotatedPropertyName);
-    renderer.appendCode(computedDisplayType.content);
+    renderer.appendCode(computedDisplayType.content, { variant: "minimal" });
   } else {
     renderer.appendHeading(
       baseHeadingLevel,

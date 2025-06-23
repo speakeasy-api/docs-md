@@ -74,6 +74,31 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 ---`;
   }
 
+  public override appendCode(
+    text: string,
+    { variant = "default" }: { variant?: "default" | "minimal" } = {}
+  ) {
+    if (variant === "minimal") {
+      this.appendParagraph(
+        `<pre style={{
+  backgroundColor: "var(--ifm-code-background)",
+  border: "0.1rem solid rgba(0, 0, 0, 0.1)",
+  borderRadius: "var(--ifm-code-border-radius)",
+  fontFamily: "var(--ifm-font-family-monospace)",
+  fontSize: "var(--ifm-code-font-size)",
+  verticalAlign: "middle",
+}}>
+<code>
+${this.escapeText(text, { escape: "html" })}
+</code>
+</pre>`,
+        { escape: "none" }
+      );
+    } else {
+      super.appendCode(text);
+    }
+  }
+
   public override finalize() {
     const parentData = super.finalize();
     const data =

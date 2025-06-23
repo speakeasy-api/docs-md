@@ -20,7 +20,7 @@ export interface Renderer {
 
   appendParagraph(text: string, options?: AppendOptions): void;
 
-  appendCode(text: string): void;
+  appendCode(text: string, options?: { variant?: "default" | "minimal" }): void;
 
   appendList(items: string[], options?: AppendOptions): void;
 
