@@ -1,5 +1,8 @@
+import { join, resolve } from "node:path";
+
 import type { Renderer, RendererConstructor } from "../../types/renderer.ts";
 import type { Site } from "../../types/site.ts";
+import { getSettings } from "../../util/settings.ts";
 
 type Escape = "all" | "mdx" | "none";
 
@@ -18,10 +21,14 @@ export class MarkdownSite implements Site {
     this.#Renderer = Renderer;
   }
 
+  public buildPagePath(slug: string): string {
+    const settings = getSettings();
+    return resolve(join(settings.output.pageOutDir, `${slug}.md`));
+  }
+
   public createPage(path: string): Renderer {
     // Reserve the name, since we sometimes check to see if pages already exist
     const renderer = new this.#Renderer({
-      site: this,
       currentPagePath: path,
     });
     this.#pages.set(path, renderer);
@@ -34,7 +41,6 @@ export class MarkdownSite implements Site {
 
   public createRawPage(path: string, contents: string) {
     const renderer = new this.#Renderer({
-      site: this,
       currentPagePath: path,
     });
     renderer.appendRaw(contents);

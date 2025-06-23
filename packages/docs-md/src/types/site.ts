@@ -5,4 +5,5 @@ export interface Site {
   createEmbedPage(embedName: string): Renderer | undefined;
   createRawPage(path: string, contents: string): void;
   finalize(): Record<string, string>;
+  buildPagePath(slug: string): string;
 }

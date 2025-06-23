@@ -1,5 +1,3 @@
-import type { Site } from "./site.ts";
-
 type Escape = "all" | "mdx" | "none";
 
 type AppendOptions = {
@@ -7,7 +5,6 @@ type AppendOptions = {
 };
 
 export type RendererConstructor = new (options: {
-  site: Site;
   currentPagePath: string;
 }) => Renderer;
 

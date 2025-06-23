@@ -1,4 +1,4 @@
-import { join, resolve } from "node:path";
+import { join } from "node:path";
 
 import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
 import type { Renderer } from "../../types/renderer.ts";
@@ -30,33 +30,15 @@ type PageMapEntry =
 
 type PageMap = Map<string, PageMapEntry>;
 
-function getPageMap(data: Data) {
+function getPageMap(site: Site, data: Data) {
   const settings = getSettings();
 
   const pageMap: PageMap = new Map();
 
-  let buildPagePath: (slug: string) => string;
-  switch (settings.output.framework) {
-    case "docusaurus": {
-      buildPagePath = (slug: string) =>
-        resolve(join(settings.output.pageOutDir, `${slug}.mdx`));
-      break;
-    }
-    case "nextra": {
-      buildPagePath = (slug: string) =>
-        resolve(join(settings.output.pageOutDir, `${slug}/page.mdx`));
-      break;
-    }
-    default: {
-      // We should never get here cause we validate the settings in the CLI
-      assertNever(settings.output.framework);
-    }
-  }
-
   // Get the about page
   for (const [, chunk] of data) {
     if (chunk.chunkType === "about") {
-      pageMap.set(buildPagePath("index"), {
+      pageMap.set(site.buildPagePath("index"), {
         type: "chunk",
         sidebarLabel: "About",
         sidebarPosition: "1",
@@ -79,7 +61,7 @@ function getPageMap(data: Data) {
   // Render the tag pages
   let tagIndex = 0;
   for (const chunk of tagChunks) {
-    const pagePath = buildPagePath(chunk.slug);
+    const pagePath = site.buildPagePath(chunk.slug);
     const pageMapEntry: PageMapEntry = {
       type: "chunk",
       sidebarLabel: chunk.chunkData.name,
@@ -121,7 +103,7 @@ function getPageMap(data: Data) {
           `Schema chunk ${chunk.chunkData.value.type} is not an object, but it should be`
         );
       }
-      const pagePath = buildPagePath(chunk.slug);
+      const pagePath = site.buildPagePath(chunk.slug);
       const pageMapEntry: PageMapEntry = {
         type: "chunk",
         sidebarLabel: chunk.chunkData.value.name,
@@ -283,7 +265,7 @@ export function generateContent(
   docsCodeSnippets: DocsCodeSnippets
 ): Record<string, string> {
   // First, get a mapping of pages to chunks
-  const pageMap = getPageMap(data);
+  const pageMap = getPageMap(site, data);
 
   // Then, render each page
   renderPages(site, pageMap, data, docsCodeSnippets);

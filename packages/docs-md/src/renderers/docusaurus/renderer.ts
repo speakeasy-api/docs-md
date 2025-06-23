@@ -1,4 +1,4 @@
-import { dirname, join, relative } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 
 import type { Renderer } from "../../types/renderer.ts";
 import type { Site } from "../../types/site.ts";
@@ -22,6 +22,11 @@ function getEmbedSymbol(embedName: string) {
 }
 
 export class DocusaurusSite extends MarkdownSite implements Site {
+  public override buildPagePath(slug: string): string {
+    const settings = getSettings();
+    return resolve(join(settings.output.pageOutDir, `${slug}.mdx`));
+  }
+
   public override finalize() {
     // TODO: save nav files here
     return super.finalize();
