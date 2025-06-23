@@ -2,8 +2,8 @@ import { join, resolve } from "node:path";
 
 import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
 import { assertNever } from "../../util/assertNever.ts";
+import { getSettings } from "../../util/settings.ts";
 import type { DocsCodeSnippets } from "../codeSnippets.ts";
-import { getSettings } from "../settings.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
 import { renderSchema } from "./chunks/schema.ts";

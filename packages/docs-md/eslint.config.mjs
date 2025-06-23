@@ -21,7 +21,7 @@ export default [
         moduleSpecifier: "node:fs",
         allowed: [/src\/cli\//],
         message:
-          "File system access is only allowed in the CLI wrapper, because other code is used in web environments too",
+          "File system access is only allowed in the CLI wrapper because other code is used in web environments",
       },
     ],
   }),

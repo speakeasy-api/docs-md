@@ -1,17 +1,7 @@
-import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
-import { fileURLToPath } from "node:url";
 
 import { assertNever } from "../../util/assertNever.ts";
-import { getSettings } from "../settings.ts";
-
-const ASSET_PATH = join(
-  dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "..",
-  "..",
-  "assets"
-);
+import { getSettings } from "../../util/settings.ts";
 
 type Escape = "all" | "mdx" | "none";
 
@@ -38,22 +28,6 @@ function getEmbedSymbol(embedName: string) {
 
 export class Site {
   #pages = new Map<string, string>();
-
-  constructor() {
-    // Prepopulate the list of static assets to be saved
-    const assetFileList = readdirSync(ASSET_PATH, {
-      recursive: true,
-      withFileTypes: true,
-    })
-      .filter((f) => f.isFile() && f.name !== "tsconfig.json")
-      .map((f) => join(f.parentPath, f.name).replace(ASSET_PATH + "/", ""));
-    for (const assetFile of assetFileList) {
-      this.#pages.set(
-        join(getSettings().output.componentOutDir, assetFile),
-        readFileSync(join(ASSET_PATH, assetFile), "utf-8")
-      );
-    }
-  }
 
   public createPage(path: string): Renderer {
     // Reserve the name, since we sometimes check to see if pages already exist

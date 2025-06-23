@@ -1,6 +1,6 @@
 import type { Chunk, OperationChunk } from "../../../types/chunk.ts";
+import { getSettings } from "../../../util/settings.ts";
 import type { DocsCodeSnippets } from "../../codeSnippets.ts";
-import { getSettings } from "../../settings.ts";
 import type { Renderer, Site } from "../renderer.ts";
 import { getSchemaFromId } from "../util.ts";
 import { renderSchema } from "./schema.ts";

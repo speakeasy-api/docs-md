@@ -6,7 +6,7 @@ import type {
   CodeSnippet,
   ErrorResponse,
 } from "../types/codeSnippet.ts";
-import { getSettings } from "./settings.ts";
+import { getSettings } from "../util/settings.ts";
 
 const CODE_SNIPPETS_API_URL =
   process.env.SPEAKEASY_CODE_SNIPPETS_API_URL || "https://api.speakeasy.com";

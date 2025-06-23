@@ -1,9 +1,9 @@
 import type { Settings } from "../types/settings.ts";
+import { setSettings } from "../util/settings.ts";
 import type { DocsCodeSnippets } from "./codeSnippets.ts";
 import { generateDocsCodeSnippets } from "./codeSnippets.ts";
 import { getDocsData } from "./docsData/getDocsData.ts";
 import { generateContent } from "./mdx/generateContent.ts";
-import { setSettings } from "./settings.ts";
 
 /**
  * Given an OpenAPI spec, generate Markdown pages of the spec. The returned

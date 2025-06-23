@@ -8,7 +8,7 @@ import type {
   UnionValue,
 } from "../../../types/chunk.ts";
 import { assertNever } from "../../../util/assertNever.ts";
-import { getSettings } from "../../settings.ts";
+import { getSettings } from "../../../util/settings.ts";
 import type { Renderer, Site } from "../renderer.ts";
 import { getSchemaFromId } from "../util.ts";
 
