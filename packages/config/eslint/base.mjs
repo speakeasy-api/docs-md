@@ -12,6 +12,7 @@ export const getBaseESLintConfig = ({
   rootDir,
   entryPoints,
   ignores,
+  restrictedImports,
 }) => {
   if (!Array.isArray(gitignorePaths)) {
     gitignorePaths = [gitignorePaths];
@@ -22,6 +23,21 @@ export const getBaseESLintConfig = ({
     eslintConfigPrettier,
     ...(ignores ? [globalIgnores(ignores)] : []),
     all({ rootDir, entryPoints }),
+    ...(restrictedImports
+      ? [
+          {
+            files: ["**/*.{ts,tsx,mts}"],
+            rules: {
+              "fast-import/no-restricted-imports": [
+                "error",
+                {
+                  rules: restrictedImports,
+                },
+              ],
+            },
+          },
+        ]
+      : undefined),
     ...tseslint.configs.recommendedTypeChecked,
     {
       files: ["**/*.{ts,tsx,mts}"],

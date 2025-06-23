@@ -15,5 +15,14 @@ export default [
       "assets/SideBar/index.tsx": ["SideBar", "SideBarCta"],
     },
     ignores: ["src/generator/docsData/wasm_exec.js"],
+    restrictedImports: [
+      {
+        type: "third-party",
+        moduleSpecifier: "node:fs",
+        allowed: [/src\/cli\//],
+        message:
+          "File system access is only allowed in the CLI wrapper, because other code is used in web environments too",
+      },
+    ],
   }),
 ];
