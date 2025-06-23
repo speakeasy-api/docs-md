@@ -1,8 +1,8 @@
 import type { Settings } from "../types/settings.ts";
 import type { Site } from "../types/site.ts";
 import { setSettings } from "../util/settings.ts";
-import type { DocsCodeSnippets } from "./codeSnippets.ts";
-import { generateDocsCodeSnippets } from "./codeSnippets.ts";
+import type { DocsCodeSnippets } from "./codeSnippets/generateCodeSnippets.ts";
+import { generateCodeSnippets } from "./codeSnippets/generateCodeSnippets.ts";
 import { generateContent } from "./content/generateContent.ts";
 import { getData } from "./data/getDocsData.ts";
 
@@ -29,7 +29,7 @@ export async function generatePages({
   let docsCodeSnippets: DocsCodeSnippets = {};
   if (settings.tryItNow) {
     console.log("Generating Code Snippets");
-    docsCodeSnippets = await generateDocsCodeSnippets(data, specContents);
+    docsCodeSnippets = await generateCodeSnippets(data, specContents);
   }
 
   // Generate the content

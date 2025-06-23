@@ -2,7 +2,7 @@ import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
 import type { Renderer } from "../../types/renderer.ts";
 import type { Site } from "../../types/site.ts";
 import { getSettings } from "../../util/settings.ts";
-import type { DocsCodeSnippets } from "../codeSnippets.ts";
+import type { DocsCodeSnippets } from "../codeSnippets/generateCodeSnippets.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
 import { renderSchema } from "./chunks/schema.ts";

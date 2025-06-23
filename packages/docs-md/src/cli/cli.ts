@@ -15,7 +15,7 @@ import arg from "arg";
 import { load } from "js-yaml";
 import z from "zod/v4";
 
-import { generatePages } from "../generator/generatePages.ts";
+import { generatePages } from "../pages/generatePages.ts";
 import {
   DocusaurusRenderer,
   DocusaurusSite,

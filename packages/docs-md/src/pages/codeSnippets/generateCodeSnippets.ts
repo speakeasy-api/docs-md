@@ -1,19 +1,19 @@
 import { basename } from "node:path";
 
-import type { Chunk, OperationChunk } from "../types/chunk.ts";
+import type { Chunk, OperationChunk } from "../../types/chunk.ts";
 import type {
   CodeSamplesResponse,
   CodeSnippet,
   ErrorResponse,
-} from "../types/codeSnippet.ts";
-import { getSettings } from "../util/settings.ts";
+} from "../../types/codeSnippet.ts";
+import { getSettings } from "../../util/settings.ts";
 
 const CODE_SNIPPETS_API_URL =
   process.env.SPEAKEASY_CODE_SNIPPETS_API_URL || "https://api.speakeasy.com";
 
 export type DocsCodeSnippets = Record<OperationChunk["id"], CodeSnippet>;
 
-export const generateDocsCodeSnippets = async (
+export const generateCodeSnippets = async (
   docsData: Map<string, Chunk>,
   specContents: string
 ): Promise<DocsCodeSnippets> => {
