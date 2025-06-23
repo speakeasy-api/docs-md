@@ -20,7 +20,36 @@ export interface Renderer {
 
   appendParagraph(text: string, options?: AppendOptions): void;
 
-  appendCode(text: string, options?: { variant?: "default" | "minimal" }): void;
+  appendCodeBlock(
+    text: string,
+    options?:
+      | {
+          /**
+           * The variant to use for the code block. If `raw`, the code will be
+           * appended using a raw `<pre><code></code></pre>` block. Otherwise, the
+           * code will be appended using a triple backtick block.
+           */
+          variant: "default";
+          /**
+           * The language to use for the code block. This is only used when the
+           * variant is `default`.
+           */
+          language?: string;
+        }
+      | {
+          /**
+           * The variant to use for the code block. If `raw`, the code will be
+           * appended using a raw `<pre><code></code></pre>` block. Otherwise, the
+           * code will be appended using a triple backtick block.
+           */
+          variant: "raw";
+          /**
+           * The language to use for the code block. This is only used when the
+           * variant is `default`.
+           */
+          language?: never;
+        }
+  ): void;
 
   appendList(items: string[], options?: AppendOptions): void;
 

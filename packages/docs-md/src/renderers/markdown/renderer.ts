@@ -117,8 +117,29 @@ export class MarkdownRenderer implements Renderer {
     this[rendererLines].push(this.escapeText(text, { escape }));
   }
 
-  public appendCode(text: string) {
-    this[rendererLines].push(`\`\`\`\n${text}\n\`\`\``);
+  public appendCodeBlock(
+    text: string,
+    options?:
+      | {
+          variant: "default";
+          language?: string;
+        }
+      | {
+          variant: "raw";
+          language?: never;
+        }
+  ) {
+    if (options?.variant === "raw") {
+      this[rendererLines].push(`<pre>
+<code>
+${text}
+</code>
+</pre>`);
+    } else {
+      this[rendererLines].push(
+        `\`\`\`${options?.language ?? ""}\n${text}\n\`\`\``
+      );
+    }
   }
 
   public appendList(

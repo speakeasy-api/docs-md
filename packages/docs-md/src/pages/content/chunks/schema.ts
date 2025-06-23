@@ -287,7 +287,7 @@ function renderNameAndType({
   );
   if (computedDisplayType.multiline) {
     renderer.appendHeading(baseHeadingLevel, annotatedPropertyName);
-    renderer.appendCode(computedDisplayType.content, { variant: "minimal" });
+    renderer.appendCodeBlock(computedDisplayType.content, { variant: "raw" });
   } else {
     renderer.appendHeading(
       baseHeadingLevel,
@@ -329,7 +329,7 @@ function renderSchemaFrontmatter({
       `_${schema.examples.length > 1 ? "Examples" : "Example"}:_`
     );
     for (const example of schema.examples) {
-      renderer.appendCode(example);
+      renderer.appendCodeBlock(example);
     }
   }
 

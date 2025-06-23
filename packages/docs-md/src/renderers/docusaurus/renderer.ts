@@ -74,11 +74,19 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 ---`;
   }
 
-  public override appendCode(
+  public override appendCodeBlock(
     text: string,
-    { variant = "default" }: { variant?: "default" | "minimal" } = {}
+    options?:
+      | {
+          variant: "default";
+          language?: string;
+        }
+      | {
+          variant: "raw";
+          language?: never;
+        }
   ) {
-    if (variant === "minimal") {
+    if (options?.variant === "raw") {
       this.appendParagraph(
         `<pre style={{
   backgroundColor: "var(--ifm-code-background)",
@@ -95,7 +103,7 @@ ${this.escapeText(text, { escape: "html" })}
         { escape: "none" }
       );
     } else {
-      super.appendCode(text);
+      super.appendCodeBlock(text, options);
     }
   }
 
