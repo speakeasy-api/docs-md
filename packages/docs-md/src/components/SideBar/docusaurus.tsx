@@ -8,7 +8,7 @@ type SidebarContent = {
   content: React.ReactNode;
 };
 
-export function DocusaurusSideBarContainer({
+export function DocusaurusSideBar({
   content,
   closeRequest,
 }: {
@@ -58,7 +58,7 @@ export function DocusaurusSideBarContainer({
   );
 }
 
-export function DocusaurusSideBarCtaButton({
+export function DocusaurusSideBarTrigger({
   onClick,
   children,
 }: PropsWithChildren<{ onClick: () => void }>) {

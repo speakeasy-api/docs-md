@@ -8,7 +8,7 @@ type SidebarContent = {
   content: React.ReactNode;
 };
 
-export function NextraSideBarContainer({
+export function NextraSideBar({
   content,
   closeRequest,
 }: {
@@ -58,7 +58,7 @@ export function NextraSideBarContainer({
   );
 }
 
-export function NextraSideBarCtaButton({
+export function NextraSideBarTrigger({
   onClick,
   children,
 }: PropsWithChildren<{ onClick: () => void }>) {

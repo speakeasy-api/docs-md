@@ -4,11 +4,8 @@ import { atom, useAtom } from "jotai";
 import type { FC, PropsWithChildren } from "react";
 import { useCallback, useEffect, useState } from "react";
 
-import {
-  DocusaurusSideBarContainer,
-  DocusaurusSideBarCtaButton,
-} from "./docusaurus.tsx";
-import { NextraSideBarContainer, NextraSideBarCtaButton } from "./nextra.tsx";
+import { DocusaurusSideBar, DocusaurusSideBarTrigger } from "./docusaurus.tsx";
+import { NextraSideBar, NextraSideBarTrigger } from "./nextra.tsx";
 import type { SidebarContent } from "./types.ts";
 
 const sidebarContentAtom = atom<SidebarContent | null>(null);
@@ -65,17 +62,17 @@ function SideBarContents({
   );
 }
 
-type SideBarCtaContentsProps = PropsWithChildren<{
+type SideBarTriggerProps = PropsWithChildren<{
   cta: string;
   title: string;
 }>;
 
-function SideBarCtaContents({
+function SideBarTriggerContents({
   cta,
   children,
   title,
   Button,
-}: SideBarCtaContentsProps & {
+}: SideBarTriggerProps & {
   Button: FC<PropsWithChildren<{ onClick: () => void }>>;
 }) {
   const [, setContent] = useAtom(sidebarContentAtom);
@@ -87,17 +84,15 @@ function SideBarCtaContents({
 }
 
 export const SideBar = {
-  Docusaurus: () => (
-    <SideBarContents SideBarContainer={DocusaurusSideBarContainer} />
-  ),
-  Nextra: () => <SideBarContents SideBarContainer={NextraSideBarContainer} />,
+  Docusaurus: () => <SideBarContents SideBarContainer={DocusaurusSideBar} />,
+  Nextra: () => <SideBarContents SideBarContainer={NextraSideBar} />,
 };
 
-export const SideBarCta = {
-  Docusaurus: (props: SideBarCtaContentsProps) => (
-    <SideBarCtaContents {...props} Button={DocusaurusSideBarCtaButton} />
+export const SideBarTrigger = {
+  Docusaurus: (props: SideBarTriggerProps) => (
+    <SideBarTriggerContents {...props} Button={DocusaurusSideBarTrigger} />
   ),
-  Nextra: (props: SideBarCtaContentsProps) => (
-    <SideBarCtaContents {...props} Button={NextraSideBarCtaButton} />
+  Nextra: (props: SideBarTriggerProps) => (
+    <SideBarTriggerContents {...props} Button={NextraSideBarTrigger} />
   ),
 };
