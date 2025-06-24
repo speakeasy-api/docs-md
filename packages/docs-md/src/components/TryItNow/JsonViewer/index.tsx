@@ -93,9 +93,15 @@ const JsonNode = ({
   ) => {
     if (value === null) {
       return (
-        <div style={{ whiteSpace: "nowrap" }} key={key}>
+        <div
+          style={{
+            whiteSpace: "nowrap",
+          }}
+          key={key}
+        >
           {getIndentation(level + 1)}
-          {`"${key}": null`}
+          {`"${key}": `}
+          <span style={{ color: "var(--sp-syntax-color-keyword)" }}>null</span>
           {isLastProperty ? "" : ","}
         </div>
       );
