@@ -22,8 +22,8 @@ const LogDataView = ({
   if (Array.isArray(log)) {
     return (
       <div>
-        {log.map((item) => (
-          <LogDataView log={item} />
+        {log.map((item, index) => (
+          <LogDataView key={index} log={item} />
         ))}
       </div>
     );

@@ -1,30 +1,32 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { TryItNow } from './index.tsx';
+import { TryItNow } from "./index.tsx";
 
 const meta: Meta<typeof TryItNow> = {
-  title: 'Components/TryItNow',
+  title: "Components/TryItNow",
   component: TryItNow,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'A code playground component that allows users to write, edit, and execute TypeScript code with external dependencies.',
+        component:
+          "A code playground component that allows users to write, edit, and execute TypeScript code with external dependencies.",
       },
     },
   },
   argTypes: {
     defaultValue: {
-      control: 'text',
-      description: 'Starting value of the code editor',
+      control: "text",
+      description: "Starting value of the code editor",
     },
     externalDependencies: {
-      control: 'object',
-      description: 'External npm dependencies required by the code snippet',
+      control: "object",
+      description: "External npm dependencies required by the code snippet",
     },
     _enableUnsafeAutoImport: {
-      control: 'boolean',
-      description: 'Experimental: Automatically scan for external dependencies from npm as user adds imports',
+      control: "boolean",
+      description:
+        "Experimental: Automatically scan for external dependencies from npm as user adds imports",
     },
   },
 };
@@ -75,6 +77,78 @@ try {
     externalDependencies: {
       zod: "^3.25.56",
     },
+  },
+};
+
+export const PokemonAPIFetch: Story = {
+  args: {
+    defaultValue: `// Fetch Pokemon data from the Pokemon API
+// This demonstrates working with nested objects and API responses
+
+interface Pokemon {
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+  abilities: Array<{
+    ability: {
+      name: string;
+      url: string;
+    };
+    is_hidden: boolean;
+    slot: number;
+  }>;
+  types: Array<{
+    slot: number;
+    type: {
+      name: string;
+      url: string;
+    };
+  }>;
+  stats: Array<{
+    base_stat: number;
+    effort: number;
+    stat: {
+      name: string;
+      url: string;
+    };
+  }>;
+  sprites: {
+    front_default: string | null;
+    back_default: string | null;
+    front_shiny: string | null;
+    back_shiny: string | null;
+  };
+}
+
+async function fetchPokemon(pokemonName: string): Promise<Pokemon> {
+  try {
+    const response = await fetch(\`https://pokeapi.co/api/v2/pokemon/\${pokemonName.toLowerCase()}\`);
+    
+    if (!response.ok) {
+      throw new Error(\`HTTP error! status: \${response.status}\`);
+    }
+    
+    const pokemon: Pokemon = await response.json();
+    return pokemon;
+  } catch (error) {
+    console.error('Error fetching Pokemon:', error);
+    throw error;
+  }
+}
+
+// Fetch and display Pokemon data
+fetchPokemon("pikachu")
+  .then(pokemon => {
+    console.log(pokemon);
+  })
+  .catch(error => {
+    console.error("Failed to fetch Pokemon:", error.message);
+  });
+
+// Try other Pokemon by changing the name:
+// fetchPokemon("charizard").then(pokemon => console.log(pokemon));
+// fetchPokemon("blastoise").then(pokemon => console.log(pokemon));`,
   },
 };
 
@@ -137,4 +211,4 @@ export const Empty: Story = {
   args: {
     defaultValue: "",
   },
-}; 
+};

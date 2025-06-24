@@ -4,6 +4,7 @@ export type JsonViewerProps = {
   json: Record<string, unknown>;
   rootName?: string;
   level?: number;
+  isLastItem?: boolean;
 };
 
 const expandedGroupsAtom = atom<Map<string, boolean>>(
@@ -47,16 +48,33 @@ const CaretIcon = ({ isExpanded }: { isExpanded: boolean }) => (
   </svg>
 );
 
-export const JsonViewer = ({ json, rootName, level = 0 }: JsonViewerProps) => {
+export const JsonViewer = ({
+  json,
+  rootName,
+  level = 0,
+  isLastItem = true,
+}: JsonViewerProps) => {
   const currentLevelKeys = Object.keys(json);
   if (!currentLevelKeys.length) {
     return null;
   }
 
-  return <JsonNode json={json} rootName={rootName} level={level} />;
+  return (
+    <JsonNode
+      json={json}
+      rootName={rootName}
+      level={level}
+      isLastItem={isLastItem}
+    />
+  );
 };
 
-const JsonNode = ({ json, rootName, level = 0 }: JsonViewerProps) => {
+const JsonNode = ({
+  json,
+  rootName,
+  level = 0,
+  isLastItem = true,
+}: JsonViewerProps) => {
   const isRoot = !!rootName;
   const isExpanded = rootName
     ? useAtomValue(getIsExpandedGroupAtom)(rootName)
@@ -68,12 +86,17 @@ const JsonNode = ({ json, rootName, level = 0 }: JsonViewerProps) => {
     return "\u00A0".repeat(currentLevel * 4); // Non-breaking spaces, 4 per level
   };
 
-  const createFormattedObjectNode = (key: string, value: unknown) => {
+  const createFormattedObjectNode = (
+    key: string,
+    value: unknown,
+    isLastProperty: boolean
+  ) => {
     if (value === null) {
       return (
         <div key={key}>
           {getIndentation(level + 1)}
           {`"${key}": null`}
+          {isLastProperty ? "" : ","}
         </div>
       );
     }
@@ -85,6 +108,7 @@ const JsonNode = ({ json, rootName, level = 0 }: JsonViewerProps) => {
           rootName={key}
           json={value as Record<string, unknown>}
           level={level + 1}
+          isLastItem={isLastProperty}
         />
       );
     }
@@ -94,6 +118,7 @@ const JsonNode = ({ json, rootName, level = 0 }: JsonViewerProps) => {
         <div key={key}>
           {getIndentation(level + 1)}
           {`"${key}": undefined`}
+          {isLastProperty ? "" : ","}
         </div>
       );
     }
@@ -103,12 +128,17 @@ const JsonNode = ({ json, rootName, level = 0 }: JsonViewerProps) => {
         ? "var(--sp-syntax-color-static)"
         : "var(--sp-syntax-color-string)";
 
+    const formattedValue =
+      typeof value === "string"
+        ? `"${String(value)}"`
+        : String(value as boolean | number);
+
     return (
       <div key={key}>
         {getIndentation(level + 1)}
         {`"${key}": `}
-        <span style={{ color: syntaxColor }}>{value}</span>
-        {``}
+        <span style={{ color: syntaxColor }}>{formattedValue}</span>
+        {isLastProperty ? "" : ","}
       </div>
     );
   };
@@ -123,6 +153,7 @@ const JsonNode = ({ json, rootName, level = 0 }: JsonViewerProps) => {
         {getIndentation(level)}
         <CaretIcon isExpanded={false} />
         <span style={{ color: "#0066cc" }}>"{rootName}"</span>: {`{ ... }`}
+        {isLastItem ? "" : ","}
       </div>
     );
   }
@@ -140,13 +171,15 @@ const JsonNode = ({ json, rootName, level = 0 }: JsonViewerProps) => {
           <span style={{ color: "#0066cc" }}>"{rootName}"</span>: {`{`}
         </div>
         <div>
-          {currentLevelKeys.map((key) => {
-            return createFormattedObjectNode(key, json[key]);
+          {currentLevelKeys.map((key, index) => {
+            const isLastProperty = index === currentLevelKeys.length - 1;
+            return createFormattedObjectNode(key, json[key], isLastProperty);
           })}
         </div>
         <div>
           {getIndentation(level)}
           {`}`}
+          {isLastItem ? "" : ","}
         </div>
       </div>
     );
@@ -160,8 +193,9 @@ const JsonNode = ({ json, rootName, level = 0 }: JsonViewerProps) => {
         {`{`}
       </div>
       <div>
-        {currentLevelKeys.map((key) => {
-          return createFormattedObjectNode(key, json[key]);
+        {currentLevelKeys.map((key, index) => {
+          const isLastProperty = index === currentLevelKeys.length - 1;
+          return createFormattedObjectNode(key, json[key], isLastProperty);
         })}
       </div>
       <div>
