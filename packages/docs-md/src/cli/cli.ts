@@ -15,11 +15,8 @@ import { load } from "js-yaml";
 import z from "zod/v4";
 
 import { generatePages } from "../pages/generatePages.ts";
-import {
-  DocusaurusRenderer,
-  DocusaurusSite,
-} from "../renderers/docusaurus/renderer.ts";
-import { NextraRenderer, NextraSite } from "../renderers/nextra/renderer.ts";
+import { DocusaurusRenderer, DocusaurusSite } from "../renderers/docusaurus.ts";
+import { NextraRenderer, NextraSite } from "../renderers/nextra.ts";
 import { type Settings, settingsSchema } from "../types/settings.ts";
 import type { Site } from "../types/site.ts";
 import { assertNever } from "../util/assertNever.ts";

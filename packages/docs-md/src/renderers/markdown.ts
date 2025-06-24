@@ -5,9 +5,9 @@ import type {
   Escape,
   Renderer,
   RendererConstructor,
-} from "../../types/renderer.ts";
-import type { Site } from "../../types/site.ts";
-import { getSettings } from "../../util/settings.ts";
+} from "../types/renderer.ts";
+import type { Site } from "../types/site.ts";
+import { getSettings } from "../util/settings.ts";
 
 export class MarkdownSite implements Site {
   #pages = new Map<string, Renderer>();

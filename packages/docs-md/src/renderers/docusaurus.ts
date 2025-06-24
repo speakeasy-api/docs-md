@@ -1,10 +1,10 @@
 import { join, resolve } from "node:path";
 
-import type { Renderer } from "../../types/renderer.ts";
-import type { Site } from "../../types/site.ts";
-import { getSettings } from "../../util/settings.ts";
-import { rendererLines } from "../markdown/renderer.ts";
-import { getEmbedSymbol, MdxRenderer, MdxSite } from "../mdx/renderer.ts";
+import type { Renderer } from "../types/renderer.ts";
+import type { Site } from "../types/site.ts";
+import { getSettings } from "../util/settings.ts";
+import { rendererLines } from "./markdown.ts";
+import { getEmbedSymbol, MdxRenderer, MdxSite } from "./mdx.ts";
 
 export class DocusaurusSite extends MdxSite implements Site {
   public override buildPagePath(slug: string): string {

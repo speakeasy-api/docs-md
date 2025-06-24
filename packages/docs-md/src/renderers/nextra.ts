@@ -1,9 +1,9 @@
 import { join, resolve } from "node:path";
 
-import type { Renderer } from "../../types/renderer.ts";
-import type { Site } from "../../types/site.ts";
-import { getSettings } from "../../util/settings.ts";
-import { MdxRenderer, MdxSite } from "../mdx/renderer.ts";
+import type { Renderer } from "../types/renderer.ts";
+import type { Site } from "../types/site.ts";
+import { getSettings } from "../util/settings.ts";
+import { MdxRenderer, MdxSite } from "./mdx.ts";
 
 export class NextraSite extends MdxSite implements Site {
   public override buildPagePath(slug: string): string {

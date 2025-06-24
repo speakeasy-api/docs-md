@@ -1,13 +1,9 @@
 import { dirname, join, relative } from "node:path";
 
-import type { Renderer } from "../../types/renderer.ts";
-import type { Site } from "../../types/site.ts";
-import { getSettings } from "../../util/settings.ts";
-import {
-  MarkdownRenderer,
-  MarkdownSite,
-  rendererLines,
-} from "../markdown/renderer.ts";
+import type { Renderer } from "../types/renderer.ts";
+import type { Site } from "../types/site.ts";
+import { getSettings } from "../util/settings.ts";
+import { MarkdownRenderer, MarkdownSite, rendererLines } from "./markdown.ts";
 
 function getEmbedPath(embedName: string) {
   return join(
