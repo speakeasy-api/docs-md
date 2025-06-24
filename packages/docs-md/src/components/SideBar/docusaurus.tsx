@@ -58,11 +58,11 @@ export function DocusaurusSideBar() {
         <div
           style={{
             backgroundColor: "var(--ifm-hero-background-color)",
+            color: "var(--ifm-hero-text-color)",
             border:
-              "var(--ifm-global-border-width) solid var(--ifm-table-border-color)",
+              "var(--ifm-global-border-width) solid var(--ifm-blockquote-border-color)",
             borderRadius: "var(--ifm-global-radius)",
             boxShadow: "var(--ifm-global-shadow-tl)",
-            color: "var(--ifm-hero-text-color)",
             padding:
               "var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal)",
           }}
