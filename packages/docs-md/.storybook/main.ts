@@ -1,5 +1,6 @@
-/* eslint-disable fast-import/no-unused-exports */
 import { dirname,join } from "node:path"
+
+import type { StorybookConfig } from '@storybook/react-vite';
 
 /**
 * This function is used to resolve the absolute path of a package.
@@ -8,7 +9,7 @@ import { dirname,join } from "node:path"
 function getAbsolutePath(value: string): string {
   return dirname(require.resolve(join(value, 'package.json')))
 }
-const config = {
+const config: StorybookConfig = {
   "stories": [
     "../src/**/*.mdx",
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
@@ -20,7 +21,7 @@ const config = {
     getAbsolutePath("@storybook/addon-vitest")
   ],
   "framework": {
-    "name": getAbsolutePath('@storybook/react'),
+    "name": getAbsolutePath('@storybook/react-vite'),
     "options": {}
   }
 };
