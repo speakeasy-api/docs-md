@@ -1,7 +1,6 @@
 "use client";
 
 import { atom, useAtom } from "jotai";
-import { motion } from "motion/react";
 import type { PropsWithChildren } from "react";
 import React, { useCallback, useEffect, useState } from "react";
 
@@ -41,23 +40,19 @@ export function NextraSideBar() {
   }, []);
 
   return (
-    <motion.div
+    <div
       style={{
         position: "fixed",
-        right: "-100%",
+        right: "0",
         top: "10%",
         maxHeight: "85%",
         maxWidth: "50%",
         zIndex: 1000,
-        overflowY: "scroll",
+        overflowY: "auto",
+        transform: open ? "translateX(0)" : "translateX(100%)",
+        transition: "transform 0.2s ease-in-out",
       }}
-      animate={{
-        right: open ? "0" : "-100%",
-        transition: {
-          duration: 0.3,
-        },
-      }}
-      onAnimationComplete={onAnimationComplete}
+      onTransitionEnd={onAnimationComplete}
     >
       {content && (
         <details
@@ -82,7 +77,7 @@ export function NextraSideBar() {
           {content?.content}
         </details>
       )}
-    </motion.div>
+    </div>
   );
 }
 
