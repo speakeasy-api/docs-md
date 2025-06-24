@@ -65,8 +65,13 @@ export const JsonViewer = ({
       rootName={rootName}
       level={level}
       isLastItem={isLastItem}
+      parentKey={rootName ?? "root"}
     />
   );
+};
+
+type JsonNodeProps = JsonViewerProps & {
+  parentKey: string;
 };
 
 const JsonNode = ({
@@ -74,10 +79,11 @@ const JsonNode = ({
   rootName,
   level = 0,
   isLastItem = true,
-}: JsonViewerProps) => {
+  parentKey,
+}: JsonNodeProps) => {
   const isRoot = !!rootName;
   const isExpanded = rootName
-    ? useAtomValue(getIsExpandedGroupAtom)(rootName)
+    ? useAtomValue(getIsExpandedGroupAtom)(parentKey + "." + rootName)
     : true;
   const setIsExpanded = useSetAtom(setIsExpandedGroupAtom);
   const currentLevelKeys = Object.keys(json);
@@ -115,6 +121,7 @@ const JsonNode = ({
           json={value as Record<string, unknown>}
           level={level + 1}
           isLastItem={isLastProperty}
+          parentKey={parentKey + "." + key}
         />
       );
     }
@@ -154,7 +161,7 @@ const JsonNode = ({
     return (
       <div
         style={{ cursor: "pointer" }}
-        onClick={() => setIsExpanded(rootName, true)}
+        onClick={() => setIsExpanded(parentKey + "." + rootName, true)}
       >
         {getIndentation(level)}
         <CaretIcon isExpanded={false} />
@@ -170,7 +177,7 @@ const JsonNode = ({
       <div>
         <div
           style={{ cursor: "pointer" }}
-          onClick={() => setIsExpanded(rootName, false)}
+          onClick={() => setIsExpanded(parentKey + "." + rootName, false)}
         >
           {getIndentation(level)}
           <CaretIcon isExpanded={true} />
