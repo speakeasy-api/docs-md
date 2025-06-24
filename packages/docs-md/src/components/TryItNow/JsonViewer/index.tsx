@@ -1,7 +1,9 @@
 import { atom, useAtomValue, useSetAtom } from "jotai";
+
 export type JsonViewerProps = {
   json: Record<string, unknown>;
   rootName?: string;
+  level?: number;
 };
 
 const expandedGroupsAtom = atom<Map<string, boolean>>(
@@ -45,16 +47,16 @@ const CaretIcon = ({ isExpanded }: { isExpanded: boolean }) => (
   </svg>
 );
 
-export const JsonViewer = ({ json, rootName }: JsonViewerProps) => {
+export const JsonViewer = ({ json, rootName, level = 0 }: JsonViewerProps) => {
   const currentLevelKeys = Object.keys(json);
   if (!currentLevelKeys.length) {
     return null;
   }
 
-  return <JsonNode json={json} rootName={rootName} />;
+  return <JsonNode json={json} rootName={rootName} level={level} />;
 };
 
-const JsonNode = ({ json, rootName }: JsonViewerProps) => {
+const JsonNode = ({ json, rootName, level = 0 }: JsonViewerProps) => {
   const isRoot = !!rootName;
   const isExpanded = rootName
     ? useAtomValue(getIsExpandedGroupAtom)(rootName)
@@ -62,39 +64,52 @@ const JsonNode = ({ json, rootName }: JsonViewerProps) => {
   const setIsExpanded = useSetAtom(setIsExpandedGroupAtom);
   const currentLevelKeys = Object.keys(json);
 
+  const getIndentation = (currentLevel: number) => {
+    return "\u00A0".repeat(currentLevel * 4); // Non-breaking spaces, 4 per level
+  };
+
   const createFormattedObjectNode = (key: string, value: unknown) => {
-    if (typeof value === "object" && value !== null) {
+    if (value === null) {
+      return (
+        <div key={key}>
+          {getIndentation(level + 1)}
+          {`"${key}": null`}
+        </div>
+      );
+    }
+
+    if (typeof value === "object") {
       return (
         <JsonNode
           key={key}
           rootName={key}
           json={value as Record<string, unknown>}
+          level={level + 1}
         />
-      );
-    }
-
-    if (value === null) {
-      return (
-        <div key={key} style={{ marginLeft: "20px" }}>{`"${key}": null`}</div>
       );
     }
 
     if (value === undefined) {
       return (
-        <div
-          key={key}
-          style={{ marginLeft: "20px" }}
-        >{`"${key}": undefined`}</div>
+        <div key={key}>
+          {getIndentation(level + 1)}
+          {`"${key}": undefined`}
+        </div>
       );
     }
 
-    const formattedValue =
-      typeof value === "string" ? `"${value}"` : String(value);
+    const syntaxColor =
+      typeof value === "boolean" || typeof value === "number"
+        ? "var(--sp-syntax-color-static)"
+        : "var(--sp-syntax-color-string)";
+
     return (
-      <div
-        key={key}
-        style={{ marginLeft: "20px" }}
-      >{`"${key}": ${formattedValue}`}</div>
+      <div key={key}>
+        {getIndentation(level + 1)}
+        {`"${key}": `}
+        <span style={{ color: syntaxColor }}>{value}</span>
+        {``}
+      </div>
     );
   };
 
@@ -102,9 +117,10 @@ const JsonNode = ({ json, rootName }: JsonViewerProps) => {
   if (!isExpanded && isRoot) {
     return (
       <div
-        style={{ marginLeft: "20px", cursor: "pointer" }}
+        style={{ cursor: "pointer" }}
         onClick={() => setIsExpanded(rootName, true)}
       >
+        {getIndentation(level)}
         <CaretIcon isExpanded={false} />
         <span style={{ color: "#0066cc" }}>"{rootName}"</span>: {`{ ... }`}
       </div>
@@ -114,20 +130,24 @@ const JsonNode = ({ json, rootName }: JsonViewerProps) => {
   // Expanded state for nested objects
   if (isExpanded && isRoot) {
     return (
-      <div style={{ marginLeft: "20px" }}>
+      <div>
         <div
           style={{ cursor: "pointer" }}
           onClick={() => setIsExpanded(rootName, false)}
         >
+          {getIndentation(level)}
           <CaretIcon isExpanded={true} />
           <span style={{ color: "#0066cc" }}>"{rootName}"</span>: {`{`}
         </div>
-        <div style={{ marginLeft: "20px" }}>
+        <div>
           {currentLevelKeys.map((key) => {
             return createFormattedObjectNode(key, json[key]);
           })}
         </div>
-        <div>{`}`}</div>
+        <div>
+          {getIndentation(level)}
+          {`}`}
+        </div>
       </div>
     );
   }
@@ -135,13 +155,19 @@ const JsonNode = ({ json, rootName }: JsonViewerProps) => {
   // Root level rendering
   return (
     <div>
-      <div>{`{`}</div>
-      <div style={{ marginLeft: "20px" }}>
+      <div>
+        {getIndentation(level)}
+        {`{`}
+      </div>
+      <div>
         {currentLevelKeys.map((key) => {
           return createFormattedObjectNode(key, json[key]);
         })}
       </div>
-      <div>{`}`}</div>
+      <div>
+        {getIndentation(level)}
+        {`}`}
+      </div>
     </div>
   );
 };
