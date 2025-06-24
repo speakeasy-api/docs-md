@@ -77,6 +77,8 @@ export function DocusaurusSideBar() {
             <div
               style={{
                 fontWeight: "bold",
+                // Note: the docs at https://docusaurus.community/knowledge/design/css/variables/ say this variable
+                // should be `--ifm-heading-h3-font-size`, but it doesn't exist. It's `--ifm-h3-font-size` instead.
                 fontSize: "var(--ifm-h3-font-size)",
               }}
             >
