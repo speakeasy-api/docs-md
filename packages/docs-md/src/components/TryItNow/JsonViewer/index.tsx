@@ -93,7 +93,7 @@ const JsonNode = ({
   ) => {
     if (value === null) {
       return (
-        <div key={key}>
+        <div style={{ whiteSpace: "nowrap" }} key={key}>
           {getIndentation(level + 1)}
           {`"${key}": null`}
           {isLastProperty ? "" : ","}
@@ -115,7 +115,7 @@ const JsonNode = ({
 
     if (value === undefined) {
       return (
-        <div key={key}>
+        <div style={{ whiteSpace: "nowrap" }} key={key}>
           {getIndentation(level + 1)}
           {`"${key}": undefined`}
           {isLastProperty ? "" : ","}
@@ -134,7 +134,7 @@ const JsonNode = ({
         : String(value as boolean | number);
 
     return (
-      <div key={key}>
+      <div style={{ whiteSpace: "nowrap" }} key={key}>
         {getIndentation(level + 1)}
         {`"${key}": `}
         <span style={{ color: syntaxColor }}>{formattedValue}</span>
