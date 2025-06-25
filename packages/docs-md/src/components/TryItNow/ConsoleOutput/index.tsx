@@ -1,38 +1,45 @@
 import { useSandpackConsole } from "@codesandbox/sandpack-react";
-
-import { JsonViewer } from "../JsonViewer/index.tsx";
-
+import type { Theme } from "react-base16-styling";
+import { JSONTree } from "react-json-tree";
 const LogDataView = ({
   log,
+  theme,
 }: {
-  log:
-    | Array<string | Record<string, string>>
-    | Record<string, string>
-    | undefined
-    | string;
+  log: ReturnType<typeof useSandpackConsole>["logs"][number];
+  theme?: Theme;
 }) => {
-  if (typeof log === "string" || !log) {
-    return (
-      <pre>
-        <code style={{ color: "var(--sp-syntax-color-string)" }}>"{log}"</code>
-      </pre>
-    );
-  }
+  // log is always an object
+  const { data } = log;
 
-  if (Array.isArray(log)) {
-    return (
-      <div>
-        {log.map((item, index) => (
-          <LogDataView key={index} log={item} />
-        ))}
-      </div>
-    );
-  }
+  if (!data) return null;
 
-  return <JsonViewer json={log} />;
+  return (
+    <div>
+      {data.map((item, index) => {
+        console.log("item", item);
+        if (typeof item === "string") {
+          return (
+            <pre key={index}>
+              <code style={{ color: "var(--sp-syntax-color-string)" }}>
+                "{item}"
+              </code>
+            </pre>
+          );
+        }
+        if (Array.isArray(item)) {
+          return <div>[{item.join(", ")}]</div>;
+        }
+        return <JSONTree hideRoot key={index} theme={theme} data={item} />;
+      })}
+    </div>
+  );
 };
 
-export const ConsoleOutput = () => {
+type ConsoleOutputProps = {
+  theme?: Theme;
+};
+
+export const ConsoleOutput = ({ theme }: ConsoleOutputProps) => {
   const { logs } = useSandpackConsole({
     resetOnPreviewRestart: true,
   });
@@ -46,7 +53,7 @@ export const ConsoleOutput = () => {
           padding: "var(--sp-space-3) var(--sp-space-2)",
         }}
       >
-        <LogDataView log={log.data} />
+        <LogDataView log={log} theme={theme} />
       </div>
     );
   });
