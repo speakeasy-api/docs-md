@@ -9,13 +9,13 @@ export const settingsSchema = z.strictObject({
   }),
   display: z
     .strictObject({
-      showSchemasInNav: z.boolean().default(true),
+      showSchemasInNav: z.boolean().default(false),
       showTypeSignatures: z.boolean().default(true),
       maxTypeSignatureLineLength: z.number().default(80),
       maxSchemaNesting: z.number().default(5),
     })
     .default({
-      showSchemasInNav: true,
+      showSchemasInNav: false,
       showTypeSignatures: true,
       maxTypeSignatureLineLength: 80,
       maxSchemaNesting: 5,
