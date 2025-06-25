@@ -1,4 +1,5 @@
 import type { Settings } from "../types/settings.ts";
+import { InternalError } from "./internalError.ts";
 
 let settings: Settings | undefined;
 export function setSettings(newSettings: Settings) {
@@ -7,7 +8,7 @@ export function setSettings(newSettings: Settings) {
 
 export function getSettings() {
   if (!settings) {
-    throw new Error("Settings not initialized");
+    throw new InternalError("Settings not initialized");
   }
   return settings;
 }

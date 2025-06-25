@@ -1,10 +1,11 @@
-import { join, resolve } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 
 import type { Renderer } from "../types/renderer.ts";
 import type { Site } from "../types/site.ts";
 import { getSettings } from "../util/settings.ts";
 import { rendererLines } from "./markdown.ts";
-import { getEmbedSymbol, MdxRenderer, MdxSite } from "./mdx.ts";
+import { MdxRenderer, MdxSite } from "./mdx.ts";
+import { getEmbedPath, getEmbedSymbol } from "./util.ts";
 
 export class DocusaurusSite extends MdxSite implements Site {
   public override buildPagePath(slug: string): string {
@@ -12,7 +13,7 @@ export class DocusaurusSite extends MdxSite implements Site {
     return resolve(join(settings.output.pageOutDir, `${slug}.mdx`));
   }
 
-  public override finalize() {
+  public override render() {
     const settings = getSettings();
     this.createPage(
       join(settings.output.pageOutDir, "_category_.json")
@@ -61,13 +62,30 @@ export class DocusaurusSite extends MdxSite implements Site {
         { escape: "none" }
       );
     }
-    return super.finalize();
+    return super.render();
+  }
+
+  protected override getRenderer(options: {
+    currentPagePath: string;
+  }): Renderer {
+    return new DocusaurusRenderer(options, this);
   }
 }
 
-export class DocusaurusRenderer extends MdxRenderer implements Renderer {
+class DocusaurusRenderer extends MdxRenderer implements Renderer {
   #frontMatter: string | undefined;
   #includeSidebar = false;
+  #currentPagePath: string;
+  #site: DocusaurusSite;
+
+  constructor(
+    { currentPagePath }: { currentPagePath: string },
+    site: DocusaurusSite
+  ) {
+    super();
+    this.#currentPagePath = currentPagePath;
+    this.#site = site;
+  }
 
   public override insertFrontMatter({
     sidebarPosition,
@@ -122,29 +140,62 @@ ${this.escapeText(text, { escape: "html" })}
     title: string;
     embedName: string;
   }) {
-    // If this is a circular import, skip processing sidebar
-    if (!this.insertEmbedImport(embedName)) {
-      // TODO: add debug logging
+    const embedPath = getEmbedPath(embedName);
+
+    // TODO: handle this more gracefully. This happens when we have a direct
+    // circular dependency, and the page needs to import itself, which can't be
+    // done of course
+    if (this.#currentPagePath === embedPath) {
       return;
     }
+
+    let importPath = relative(dirname(this.#currentPagePath), embedPath);
+    // Check if this is an import to a file in the same directory, which
+    // for some reason relative doesn't include the ./ in
+    if (!importPath.startsWith("./") && !importPath.startsWith("../")) {
+      importPath = `./${importPath}`;
+    }
+    this.insertDefaultImport(importPath, getEmbedSymbol(embedName));
+
     this.#includeSidebar = true;
-    this.insertThirdPartyImport("SideBarCta", "@speakeasy-api/docs-md");
+    this.insertThirdPartyImport("SideBarTrigger", "@speakeasy-api/docs-md");
     this.insertThirdPartyImport("SideBar", "@speakeasy-api/docs-md");
     this[rendererLines].push(
       `<p>
-    <SideBarCta.Docusaurus cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
+    <SideBarTrigger.Docusaurus cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
       <${getEmbedSymbol(embedName)} />
-    </SideBarCta.Docusaurus>
+    </SideBarTrigger.Docusaurus>
   </p>`
+    );
+
+    if (this.#site.hasPage(embedPath)) {
+      return;
+    }
+    return this.#site.createPage(embedPath);
+  }
+
+  public override appendTryItNow({
+    externalDependencies,
+    defaultValue,
+  }: {
+    externalDependencies: Record<string, string>;
+    defaultValue: string;
+  }) {
+    this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md");
+    this[rendererLines].push(
+      `<TryItNow
+ externalDependencies={${JSON.stringify(externalDependencies)}}
+ defaultValue={\`${defaultValue}\`}
+/>`
     );
   }
 
-  public override finalize() {
-    const parentData = super.finalize();
+  public override render() {
+    const parentData = super.render();
     const data =
       (this.#frontMatter ? this.#frontMatter + "\n\n" : "") +
       parentData +
-      (this.#includeSidebar ? "\n<SideBar.Docusaurus />\n" : "");
+      (this.#includeSidebar ? "\n\n<SideBar.Docusaurus />\n" : "");
     return data;
   }
 }

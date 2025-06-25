@@ -1,4 +1,5 @@
 import type { Chunk } from "../../types/chunk.ts";
+import { InternalError } from "../../util/internalError.ts";
 
 export function getSchemaFromId(
   schemaId: string,
@@ -6,10 +7,10 @@ export function getSchemaFromId(
 ) {
   const schemaChunk = docsData.get(schemaId);
   if (!schemaChunk) {
-    throw new Error(`Could not find schema chunk: ${schemaId}`);
+    throw new InternalError(`Could not find schema chunk: ${schemaId}`);
   }
   if (schemaChunk.chunkType !== "schema") {
-    throw new Error(`Schema chunk is not of type schema: ${schemaId}`);
+    throw new InternalError(`Schema chunk is not of type schema: ${schemaId}`);
   }
   return schemaChunk;
 }
@@ -20,10 +21,12 @@ export function getOperationFromId(
 ) {
   const operationChunk = docsData.get(operationId);
   if (!operationChunk) {
-    throw new Error(`Could not find operation chunk: ${operationId}`);
+    throw new InternalError(`Could not find operation chunk: ${operationId}`);
   }
   if (operationChunk.chunkType !== "operation") {
-    throw new Error(`Operation chunk is not of type operation: ${operationId}`);
+    throw new InternalError(
+      `Operation chunk is not of type operation: ${operationId}`
+    );
   }
   return operationChunk;
 }

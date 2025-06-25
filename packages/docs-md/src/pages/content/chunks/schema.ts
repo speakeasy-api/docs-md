@@ -10,6 +10,7 @@ import type {
 import type { Renderer } from "../../../types/renderer.ts";
 import type { Site } from "../../../types/site.ts";
 import { assertNever } from "../../../util/assertNever.ts";
+import { InternalError } from "../../../util/internalError.ts";
 import { getSettings } from "../../../util/settings.ts";
 import { getSchemaFromId } from "../util.ts";
 
@@ -371,7 +372,7 @@ function renderSchemaBreakouts({
     // Check if this is a circular reference, add a brief note
     if (labelStack.includes(breakoutSubType.label)) {
       if (breakoutSubType.schema.type !== "object") {
-        throw new Error("Schema must be an object to be embedded");
+        throw new InternalError("Schema must be an object to be embedded");
       }
       // TODO: add fragment link if we're not in a sidebar
       renderer.appendText(
@@ -385,10 +386,13 @@ function renderSchemaBreakouts({
     if (labelStack.length >= maxSchemaNesting) {
       // This shouldn't be possible, since we only recurse on objects
       if (breakoutSubType.schema.type !== "object") {
-        throw new Error("Schema must be an object to be embedded");
+        throw new InternalError("Schema must be an object to be embedded");
       }
       const embedName = breakoutSubType.schema.name;
-      const sidebarLinkRenderer = site.createEmbedPage(embedName);
+      const sidebarLinkRenderer = renderer.appendSidebarLink({
+        title: `${embedName} Details`,
+        embedName,
+      });
 
       // If no renderer was returned, that means we've already rendered this embed
       if (sidebarLinkRenderer) {
@@ -406,10 +410,6 @@ function renderSchemaBreakouts({
           labelStack: [],
         });
       }
-      renderer.appendSidebarLink({
-        title: `${embedName} Details`,
-        embedName,
-      });
       continue;
     }
 

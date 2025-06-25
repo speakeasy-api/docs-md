@@ -1,61 +1,19 @@
-import { dirname, join, relative } from "node:path";
-
 import type { Renderer } from "../types/renderer.ts";
 import type { Site } from "../types/site.ts";
-import { getSettings } from "../util/settings.ts";
-import { MarkdownRenderer, MarkdownSite, rendererLines } from "./markdown.ts";
-
-function getEmbedPath(embedName: string) {
-  return join(
-    getSettings().output.componentOutDir,
-    "embeds",
-    embedName + ".mdx"
-  );
-}
-
-export function getEmbedSymbol(embedName: string) {
-  return `Embed${embedName}`;
-}
+import { MarkdownRenderer, MarkdownSite } from "./markdown.ts";
 
 export class MdxSite extends MarkdownSite implements Site {
-  public override createEmbedPage(embedName: string): Renderer | undefined {
-    const embedPath = getEmbedPath(embedName);
-    if (this.hasPage(embedPath)) {
-      return;
-    }
-    return this.createPage(embedPath);
-  }
+  // There isn't any difference between MdxSite and MarkdownSite at the moment,
+  // but we still want the named class for consistency
 }
 
 export class MdxRenderer extends MarkdownRenderer implements Renderer {
-  #currentPagePath: string;
   #imports = new Map<
     string,
     { defaultAlias: string | undefined; namedImports: Set<string> }
   >();
 
-  constructor({ currentPagePath }: { currentPagePath: string }) {
-    super();
-    this.#currentPagePath = currentPagePath;
-  }
-
-  public override appendTryItNow({
-    externalDependencies,
-    defaultValue,
-  }: {
-    externalDependencies: Record<string, string>;
-    defaultValue: string;
-  }) {
-    this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md");
-    this[rendererLines].push(
-      `<TryItNow
- externalDependencies={${JSON.stringify(externalDependencies)}}
- defaultValue={\`${defaultValue}\`}
-/>`
-    );
-  }
-
-  public override finalize() {
+  public override render() {
     let imports = "";
     for (const [importPath, symbols] of this.#imports) {
       if (symbols.defaultAlias && symbols.namedImports.size > 0) {
@@ -68,7 +26,7 @@ export class MdxRenderer extends MarkdownRenderer implements Renderer {
         imports += `import { ${Array.from(symbols.namedImports).join(", ")} } from "${importPath}";\n`;
       }
     }
-    const parentData = super.finalize();
+    const parentData = super.render();
     const data = (imports ? imports + "\n\n" : "") + parentData;
     return data;
   }
@@ -94,26 +52,6 @@ export class MdxRenderer extends MarkdownRenderer implements Renderer {
       });
     }
     this.#imports.get(importPath)?.namedImports.add(symbol);
-  }
-
-  protected insertEmbedImport(embedName: string) {
-    const embedPath = getEmbedPath(embedName);
-
-    // TODO: handle this more gracefully. This happens when we have a direct
-    // circular dependency, and the page needs to import itself
-    if (this.#currentPagePath === embedPath) {
-      return false;
-    }
-
-    let importPath = relative(dirname(this.#currentPagePath), embedPath);
-    // Check if this is an import to a file in the same directory, which
-    // for some reason relative doesn't include the ./ in
-    if (!importPath.startsWith("./") && !importPath.startsWith("../")) {
-      importPath = `./${importPath}`;
-    }
-    this.insertDefaultImport(importPath, getEmbedSymbol(embedName));
-
-    return true;
   }
 
   protected insertThirdPartyImport(symbol: string, importPath: string) {

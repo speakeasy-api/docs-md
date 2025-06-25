@@ -1,21 +1,12 @@
 import { join, resolve } from "node:path";
 
-import type {
-  AppendOptions,
-  Escape,
-  Renderer,
-  RendererConstructor,
-} from "../types/renderer.ts";
+import type { AppendOptions, Escape, Renderer } from "../types/renderer.ts";
 import type { Site } from "../types/site.ts";
+import { InternalError } from "../util/internalError.ts";
 import { getSettings } from "../util/settings.ts";
 
 export class MarkdownSite implements Site {
   #pages = new Map<string, Renderer>();
-  #Renderer: RendererConstructor;
-
-  constructor(Renderer: RendererConstructor) {
-    this.#Renderer = Renderer;
-  }
 
   public buildPagePath(slug: string): string {
     const settings = getSettings();
@@ -27,24 +18,23 @@ export class MarkdownSite implements Site {
   }
 
   public createPage(path: string): Renderer {
-    // Reserve the name, since we sometimes check to see if pages already exist
-    const renderer = new this.#Renderer({
+    const renderer = this.getRenderer({
       currentPagePath: path,
     });
     this.#pages.set(path, renderer);
     return renderer;
   }
 
-  public createEmbedPage(_: string): Renderer | undefined {
-    throw new Error("Not supported");
-  }
-
-  public finalize() {
+  public render() {
     const pages: Record<string, string> = {};
     for (const [path, renderer] of this.#pages) {
-      pages[path] = renderer.finalize();
+      pages[path] = renderer.render();
     }
     return pages;
+  }
+
+  protected getRenderer(_options: { currentPagePath: string }): Renderer {
+    throw new InternalError("getRenderer was not overridden");
   }
 }
 
@@ -92,7 +82,7 @@ export class MarkdownRenderer implements Renderer {
     sidebarPosition: string;
     sidebarLabel: string;
   }) {
-    throw new Error("Not supported");
+    throw new Error("This renderer does not support front matter");
   }
 
   public appendHeading(
@@ -164,20 +154,23 @@ ${text}
     this[rendererLines].push("</details>");
   }
 
-  public appendSidebarLink(_: { title: string; embedName: string }) {
-    throw new Error("Not supported");
+  public appendSidebarLink(_: {
+    title: string;
+    embedName: string;
+  }): Renderer | undefined {
+    throw new Error("This renderer does not support sidebar links");
   }
 
   public appendTryItNow(_: {
     externalDependencies: Record<string, string>;
     defaultValue: string;
   }) {
-    throw new Error("Not supported");
+    throw new Error("This renderer does not support try it now");
   }
 
-  public finalize() {
+  public render() {
     if (this.#isFinalized) {
-      throw new Error("Renderer has already been finalized");
+      throw new InternalError("Renderer has already been finalized");
     }
     const data = this[rendererLines].join("\n\n");
     this.#isFinalized = true;

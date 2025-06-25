@@ -4,10 +4,6 @@ export type AppendOptions = {
   escape?: Escape;
 };
 
-export type RendererConstructor = new (options: {
-  currentPagePath: string;
-}) => Renderer;
-
 export interface Renderer {
   escapeText(text: string, options: { escape: Escape }): string;
 
@@ -60,12 +56,15 @@ export interface Renderer {
 
   endExpandableSection(): void;
 
-  appendSidebarLink(options: { title: string; embedName: string }): void;
+  appendSidebarLink(options: {
+    title: string;
+    embedName: string;
+  }): Renderer | undefined;
 
   appendTryItNow(options: {
     externalDependencies: Record<string, string>;
     defaultValue: string;
   }): void;
 
-  finalize(): string;
+  render(): string;
 }

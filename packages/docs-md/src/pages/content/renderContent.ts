@@ -1,6 +1,7 @@
 import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
 import type { Renderer } from "../../types/renderer.ts";
 import type { Site } from "../../types/site.ts";
+import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from "../../util/settings.ts";
 import type { DocsCodeSnippets } from "../codeSnippets/generateCodeSnippets.ts";
 import { renderAbout } from "./chunks/about.ts";
@@ -96,8 +97,8 @@ function getPageMap(site: Site, data: Data) {
     for (const chunk of schemaChunks) {
       // This can't happen cause we filter above, but TypeScript doesn't know that
       if (chunk.chunkData.value.type !== "object") {
-        throw new Error(
-          `Schema chunk ${chunk.chunkData.value.type} is not an object, but it should be`
+        throw new InternalError(
+          `Schema chunk ${chunk.chunkData.value.type} is not an object`
         );
       }
       const pagePath = site.buildPagePath(chunk.slug);
@@ -179,20 +180,22 @@ function renderPages(
           // really checking in case the types are wrong (cause they're out of
           // date or something) and we know it's an object with a property
           // called `chunkType`. This is why we don't use `assertNever` here
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
-          throw new Error(`Unknown chunk type: ${(chunk as any).chunkType}`);
+          throw new InternalError(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+            `Unknown chunk type: ${(chunk as any).chunkType}`
+          );
         }
       }
     }
   }
 }
 
-export function generateContent(
+export function renderContent(
   site: Site,
   data: Data,
   docsCodeSnippets: DocsCodeSnippets
 ): Record<string, string> {
   const pageMap = getPageMap(site, data);
   renderPages(site, pageMap, data, docsCodeSnippets);
-  return site.finalize();
+  return site.render();
 }

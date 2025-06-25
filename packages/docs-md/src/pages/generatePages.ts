@@ -3,7 +3,7 @@ import type { Site } from "../types/site.ts";
 import { setSettings } from "../util/settings.ts";
 import type { DocsCodeSnippets } from "./codeSnippets/generateCodeSnippets.ts";
 import { generateCodeSnippets } from "./codeSnippets/generateCodeSnippets.ts";
-import { generateContent } from "./content/generateContent.ts";
+import { renderContent } from "./content/renderContent.ts";
 import { getData } from "./data/getDocsData.ts";
 
 /**
@@ -32,7 +32,7 @@ export async function generatePages({
     docsCodeSnippets = await generateCodeSnippets(data, specContents);
   }
 
-  // Generate the content
-  console.log("Generating Markdown Pages");
-  return generateContent(site, data, docsCodeSnippets);
+  // Render the content
+  console.log("Rendering Markdown");
+  return renderContent(site, data, docsCodeSnippets);
 }
