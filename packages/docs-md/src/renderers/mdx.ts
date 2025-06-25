@@ -1,3 +1,5 @@
+import { dirname, relative } from "node:path";
+
 import type { Renderer } from "../types/renderer.ts";
 import type { Site } from "../types/site.ts";
 import { MarkdownRenderer, MarkdownSite } from "./markdown.ts";
@@ -56,5 +58,15 @@ export class MdxRenderer extends MarkdownRenderer implements Renderer {
 
   protected insertThirdPartyImport(symbol: string, importPath: string) {
     this.insertNamedImport(importPath, symbol);
+  }
+
+  protected getRelativeImportPath(startPath: string, endPath: string) {
+    let importPath = relative(dirname(startPath), endPath);
+    // Check if this is an import to a file in the same directory, which
+    // for some reason relative doesn't include the ./ in
+    if (!importPath.startsWith("./") && !importPath.startsWith("../")) {
+      importPath = `./${importPath}`;
+    }
+    return importPath;
   }
 }

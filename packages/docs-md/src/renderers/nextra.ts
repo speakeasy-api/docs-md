@@ -1,4 +1,4 @@
-import { dirname, join, relative, resolve } from "node:path";
+import { join, resolve } from "node:path";
 
 import type { Renderer } from "../types/renderer.ts";
 import type { Site } from "../types/site.ts";
@@ -108,12 +108,10 @@ ${this.escapeText(text, { escape: "html" })
       return;
     }
 
-    let importPath = relative(dirname(this.#currentPagePath), embedPath);
-    // Check if this is an import to a file in the same directory, which
-    // for some reason relative doesn't include the ./ in
-    if (!importPath.startsWith("./") && !importPath.startsWith("../")) {
-      importPath = `./${importPath}`;
-    }
+    const importPath = this.getRelativeImportPath(
+      this.#currentPagePath,
+      embedPath
+    );
     this.insertDefaultImport(importPath, getEmbedSymbol(embedName));
 
     this.#includeSidebar = true;
@@ -121,10 +119,10 @@ ${this.escapeText(text, { escape: "html" })
     this.insertThirdPartyImport("SideBar", "@speakeasy-api/docs-md");
     this[rendererLines].push(
       `<p>
-      <SideBarTrigger.Docusaurus cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
-        <${getEmbedSymbol(embedName)} />
-      </SideBarTrigger.Docusaurus>
-    </p>`
+    <SideBarTrigger.Nextra cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
+      <${getEmbedSymbol(embedName)} />
+    </SideBarTrigger.Nextra>
+  </p>`
     );
 
     if (this.#site.hasPage(embedPath)) {
@@ -133,30 +131,30 @@ ${this.escapeText(text, { escape: "html" })
     return this.#site.createPage(embedPath);
   }
 
-  public override appendTryItNow({
-    externalDependencies,
-    defaultValue,
-  }: {
-    externalDependencies: Record<string, string>;
-    defaultValue: string;
-  }) {
-    this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md");
-    this[rendererLines].push(
-      `<TryItNow
- externalDependencies={${JSON.stringify(externalDependencies)}}
- defaultValue={\`${defaultValue}\`}
-/>`
-    );
-  }
+  // TODO: we have to update Try It Now to not have a client component at the
+  // root before we can support it in Nextra
+  //   public override appendTryItNow({
+  //     externalDependencies,
+  //     defaultValue,
+  //   }: {
+  //     externalDependencies: Record<string, string>;
+  //     defaultValue: string;
+  //   }) {
+  //     this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md");
+  //     this[rendererLines].push(
+  //       `<TryItNow
+  //  externalDependencies={${JSON.stringify(externalDependencies)}}
+  //  defaultValue={\`${defaultValue}\`}
+  // />`
+  //     );
+  //   }
 
   public override render() {
     const parentData = super.render();
     const data =
       (this.#frontMatter ? this.#frontMatter + "\n\n" : "") +
       parentData +
-      (this.#includeSidebar
-        ? "\n\n<Playground><SideBar.Nextra /></Playground>\n"
-        : "");
+      (this.#includeSidebar ? "\n\n<SideBar.Nextra />\n" : "");
     return data;
   }
 }

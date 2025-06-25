@@ -1,4 +1,4 @@
-import { dirname, join, relative, resolve } from "node:path";
+import { join, resolve } from "node:path";
 
 import type { Renderer } from "../types/renderer.ts";
 import type { Site } from "../types/site.ts";
@@ -149,12 +149,10 @@ ${this.escapeText(text, { escape: "html" })}
       return;
     }
 
-    let importPath = relative(dirname(this.#currentPagePath), embedPath);
-    // Check if this is an import to a file in the same directory, which
-    // for some reason relative doesn't include the ./ in
-    if (!importPath.startsWith("./") && !importPath.startsWith("../")) {
-      importPath = `./${importPath}`;
-    }
+    const importPath = this.getRelativeImportPath(
+      this.#currentPagePath,
+      embedPath
+    );
     this.insertDefaultImport(importPath, getEmbedSymbol(embedName));
 
     this.#includeSidebar = true;
