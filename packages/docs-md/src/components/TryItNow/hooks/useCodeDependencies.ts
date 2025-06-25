@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 const re = /require\(['"](?<dependency>[\S_-]+)['"]/g;

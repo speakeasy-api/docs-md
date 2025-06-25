@@ -1,3 +1,5 @@
+"use client";
+
 import { atom } from "jotai";
 
 export const dependenciesAtom = atom<Record<string, string> | null>(null);

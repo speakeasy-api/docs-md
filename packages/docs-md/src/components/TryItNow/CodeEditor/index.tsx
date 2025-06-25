@@ -1,3 +1,5 @@
+"use client";
+
 import { SandpackCodeEditor, useActiveCode } from "@codesandbox/sandpack-react";
 import { useSetAtom } from "jotai";
 import { useEffect } from "react";
