@@ -131,23 +131,21 @@ ${this.escapeText(text, { escape: "html" })
     return this.#site.createPage(embedPath);
   }
 
-  // TODO: we have to update Try It Now to not have a client component at the
-  // root before we can support it in Nextra
-  //   public override appendTryItNow({
-  //     externalDependencies,
-  //     defaultValue,
-  //   }: {
-  //     externalDependencies: Record<string, string>;
-  //     defaultValue: string;
-  //   }) {
-  //     this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md");
-  //     this[rendererLines].push(
-  //       `<TryItNow
-  //  externalDependencies={${JSON.stringify(externalDependencies)}}
-  //  defaultValue={\`${defaultValue}\`}
-  // />`
-  //     );
-  //   }
+  public override appendTryItNow({
+    externalDependencies,
+    defaultValue,
+  }: {
+    externalDependencies: Record<string, string>;
+    defaultValue: string;
+  }) {
+    this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md");
+    this[rendererLines].push(
+      `<TryItNow.Nextra
+   externalDependencies={${JSON.stringify(externalDependencies)}}
+   defaultValue={\`${defaultValue}\`}
+  />`
+    );
+  }
 
   public override render() {
     const parentData = super.render();

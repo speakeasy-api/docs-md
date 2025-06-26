@@ -181,7 +181,7 @@ ${this.escapeText(text, { escape: "html" })}
   }) {
     this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md");
     this[rendererLines].push(
-      `<TryItNow
+      `<TryItNow.Docusaurus
  externalDependencies={${JSON.stringify(externalDependencies)}}
  defaultValue={\`${defaultValue}\`}
 />`
