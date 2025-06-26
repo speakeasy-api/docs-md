@@ -8,8 +8,14 @@ import { MdxRenderer, MdxSite } from "./mdx.ts";
 import { getEmbedPath, getEmbedSymbol } from "./util.ts";
 
 export class DocusaurusSite extends MdxSite implements Site {
-  public override buildPagePath(slug: string): string {
+  public override buildPagePath(
+    slug: string,
+    { appendIndex = false }: { appendIndex?: boolean } = {}
+  ): string {
     const settings = getSettings();
+    if (appendIndex) {
+      slug += "/index";
+    }
     return resolve(join(settings.output.pageOutDir, `${slug}.mdx`));
   }
 

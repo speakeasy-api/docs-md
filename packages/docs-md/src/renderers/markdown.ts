@@ -8,8 +8,14 @@ import { getSettings } from "../util/settings.ts";
 export class MarkdownSite implements Site {
   #pages = new Map<string, Renderer>();
 
-  public buildPagePath(slug: string): string {
+  public buildPagePath(
+    slug: string,
+    { appendIndex = false }: { appendIndex?: boolean } = {}
+  ): string {
     const settings = getSettings();
+    if (appendIndex) {
+      slug += "/index";
+    }
     return resolve(join(settings.output.pageOutDir, `${slug}.md`));
   }
 

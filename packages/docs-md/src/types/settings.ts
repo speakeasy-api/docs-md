@@ -5,7 +5,7 @@ export const settingsSchema = z.strictObject({
   output: z.strictObject({
     pageOutDir: z.string(),
     componentOutDir: z.string(),
-    framework: z.enum(["docusaurus", "nextra"]),
+    framework: z.enum(["docusaurus", "nextra", "hugo"]),
   }),
   display: z
     .strictObject({
