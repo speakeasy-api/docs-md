@@ -3,7 +3,7 @@ import { join, resolve } from "node:path";
 import type { Renderer } from "../types/renderer.ts";
 import type { Site } from "../types/site.ts";
 import { getSettings } from "../util/settings.ts";
-import { MarkdownRenderer, MarkdownSite } from "./markdown.ts";
+import { MarkdownRenderer, MarkdownSite } from "./base/markdown.ts";
 
 export class HugoSite extends MarkdownSite implements Site {
   public override buildPagePath(

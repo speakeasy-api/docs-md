@@ -1,6 +1,6 @@
 import { join } from "node:path";
 
-import { getSettings } from "../util/settings.ts";
+import { getSettings } from "../../util/settings.ts";
 
 export function getEmbedPath(
   embedName: string,

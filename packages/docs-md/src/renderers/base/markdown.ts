@@ -1,9 +1,9 @@
 import { join, resolve } from "node:path";
 
-import type { AppendOptions, Escape, Renderer } from "../types/renderer.ts";
-import type { Site } from "../types/site.ts";
-import { InternalError } from "../util/internalError.ts";
-import { getSettings } from "../util/settings.ts";
+import type { AppendOptions, Escape, Renderer } from "../../types/renderer.ts";
+import type { Site } from "../../types/site.ts";
+import { InternalError } from "../../util/internalError.ts";
+import { getSettings } from "../../util/settings.ts";
 
 export class MarkdownSite implements Site {
   #pages = new Map<string, Renderer>();

@@ -3,9 +3,9 @@ import { join, resolve } from "node:path";
 import type { Renderer } from "../types/renderer.ts";
 import type { Site } from "../types/site.ts";
 import { getSettings } from "../util/settings.ts";
-import { rendererLines } from "./markdown.ts";
-import { MdxRenderer, MdxSite } from "./mdx.ts";
-import { getEmbedPath, getEmbedSymbol } from "./util.ts";
+import { rendererLines } from "./base/markdown.ts";
+import { MdxRenderer, MdxSite } from "./base/mdx.ts";
+import { getEmbedPath, getEmbedSymbol } from "./base/util.ts";
 
 export class DocusaurusSite extends MdxSite implements Site {
   public override buildPagePath(
