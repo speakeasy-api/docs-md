@@ -1,4 +1,4 @@
-import type { Settings } from "../types/settings.ts";
+import type { ParsedSettings } from "../types/settings.ts";
 import type { Site } from "../types/site.ts";
 import { setSettings } from "../util/settings.ts";
 import type { DocsCodeSnippets } from "./codeSnippets/generateCodeSnippets.ts";
@@ -17,7 +17,7 @@ export async function generatePages({
 }: {
   site: Site;
   specContents: string;
-  settings: Settings;
+  settings: ParsedSettings;
 }): Promise<Record<string, string>> {
   // Save settings to a global location so we can easily access it around the codebase
   setSettings(settings);

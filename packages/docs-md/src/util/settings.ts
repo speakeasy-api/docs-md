@@ -1,8 +1,8 @@
-import type { Settings } from "../types/settings.ts";
+import type { ParsedSettings } from "../types/settings.ts";
 import { InternalError } from "./internalError.ts";
 
-let settings: Settings | undefined;
-export function setSettings(newSettings: Settings) {
+let settings: ParsedSettings | undefined;
+export function setSettings(newSettings: ParsedSettings) {
   settings = newSettings;
 }
 

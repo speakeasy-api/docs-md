@@ -9,15 +9,18 @@ import {
   writeFileSync,
 } from "node:fs";
 import { dirname, isAbsolute, join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 import arg from "arg";
+import { transform } from "esbuild";
 import { load } from "js-yaml";
 import z from "zod/v4";
 
 import { generatePages } from "../pages/generatePages.ts";
 import { DocusaurusSite } from "../renderers/docusaurus.ts";
 import { NextraSite } from "../renderers/nextra.ts";
-import { type Settings, settingsSchema } from "../types/settings.ts";
+import type { ParsedSettings } from "../types/settings.ts";
+import { settingsSchema } from "../types/settings.ts";
 import type { Site } from "../types/site.ts";
 import { assertNever } from "../util/assertNever.ts";
 
@@ -53,13 +56,45 @@ if (args["--help"]) {
   process.exit(0);
 }
 
-function reportError(msg: string): never {
-  console.error(msg + "\n");
+function reportError(message: string): never {
+  console.error(message + "\n");
   printHelp();
   process.exit(1);
 }
 
-async function getSettings(): Promise<Settings> {
+/**
+ * Import a configuration file, with support for TypeScript files.
+ * TypeScript files are transpiled in-memory using esbuild.
+ */
+async function importConfigFile(configFilePath: string): Promise<unknown> {
+  const isTypeScript = /\.(ts|mts|cts)$/.test(configFilePath);
+
+  if (!isTypeScript) {
+    // For JavaScript files, use direct import
+    return (
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      (await import(pathToFileURL(configFilePath).href)).default as unknown
+    );
+  }
+
+  // For TypeScript files, transpile in memory using esbuild
+  const sourceCode = readFileSync(configFilePath, "utf-8");
+  const result = await transform(sourceCode, {
+    loader: "ts",
+    format: "esm",
+    target: "node18",
+  });
+
+  // Create a data URL and import it
+  const dataUrl = `data:text/javascript;base64,${Buffer.from(result.code).toString("base64")}`;
+
+  return (
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    (await import(dataUrl)).default as unknown
+  );
+}
+
+async function getSettings(): Promise<ParsedSettings> {
   // First, determine the config file path
   let configFilePath = args["--config"];
   if (!configFilePath) {
@@ -94,9 +129,7 @@ async function getSettings(): Promise<Settings> {
   // user-friendly error message than the standard thrown exception
   let configFileImport: Record<string, unknown>;
   try {
-    // TODO: this _probably_ doesn't work for CommonJS. Not sure we care though
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    const importedConfig = (await import(configFilePath)).default as unknown;
+    const importedConfig = await importConfigFile(configFilePath);
     if (typeof importedConfig !== "object" || importedConfig === null) {
       reportError(`The default export in the config file must be an object`);
     }
@@ -145,7 +178,7 @@ async function getSettings(): Promise<Settings> {
     );
   }
 
-  return configFileContents.data;
+  return configFileContents.data as ParsedSettings;
 }
 
 const settings = await getSettings();
