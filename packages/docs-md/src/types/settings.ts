@@ -19,8 +19,7 @@ export const settingsSchema = z.strictObject({
       showTypeSignatures: true,
       maxTypeSignatureLineLength: 80,
       maxSchemaNesting: 5,
-    })
-    .optional(),
+    }),
   tryItNow: z
     .strictObject({
       npmPackageName: z.string(),
@@ -29,6 +28,6 @@ export const settingsSchema = z.strictObject({
     .optional(),
 });
 
-export type Settings = z.infer<typeof settingsSchema>;
-export type ParsedSettings = Pick<Settings, "spec" | "output"> &
-  Required<Pick<Settings, "display" | "tryItNow">>;
+export type ParsedSettings = z.infer<typeof settingsSchema>;
+export type Settings = Pick<ParsedSettings, "spec" | "output"> &
+  Partial<Pick<ParsedSettings, "display" | "tryItNow">>;
