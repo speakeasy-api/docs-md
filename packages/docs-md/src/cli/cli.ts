@@ -16,7 +16,6 @@ import z from "zod/v4";
 
 import { generatePages } from "../pages/generatePages.ts";
 import { DocusaurusSite } from "../renderers/docusaurus.ts";
-import { HugoSite } from "../renderers/hugo.ts";
 import { NextraSite } from "../renderers/nextra.ts";
 import { type Settings, settingsSchema } from "../types/settings.ts";
 import type { Site } from "../types/site.ts";
@@ -162,10 +161,6 @@ switch (settings.output.framework) {
   }
   case "nextra": {
     site = new NextraSite();
-    break;
-  }
-  case "hugo": {
-    site = new HugoSite();
     break;
   }
   default: {
