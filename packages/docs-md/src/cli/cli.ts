@@ -12,7 +12,6 @@ import { dirname, isAbsolute, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
 import arg from "arg";
-import { transform } from "esbuild";
 import { load } from "js-yaml";
 import z from "zod/v4";
 
@@ -62,35 +61,11 @@ function reportError(message: string): never {
   process.exit(1);
 }
 
-/**
- * Import a configuration file, with support for TypeScript files.
- * TypeScript files are transpiled in-memory using esbuild.
- */
+// TODO: add TypeScript support here
 async function importConfigFile(configFilePath: string): Promise<unknown> {
-  const isTypeScript = /\.(ts|mts|cts)$/.test(configFilePath);
-
-  if (!isTypeScript) {
-    // For JavaScript files, use direct import
-    return (
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      (await import(pathToFileURL(configFilePath).href)).default as unknown
-    );
-  }
-
-  // For TypeScript files, transpile in memory using esbuild
-  const sourceCode = readFileSync(configFilePath, "utf-8");
-  const result = await transform(sourceCode, {
-    loader: "ts",
-    format: "esm",
-    target: "node18",
-  });
-
-  // Create a data URL and import it
-  const dataUrl = `data:text/javascript;base64,${Buffer.from(result.code).toString("base64")}`;
-
   return (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    (await import(dataUrl)).default as unknown
+    (await import(pathToFileURL(configFilePath).href)).default as unknown
   );
 }
 
@@ -178,7 +153,7 @@ async function getSettings(): Promise<ParsedSettings> {
     );
   }
 
-  return configFileContents.data as ParsedSettings;
+  return configFileContents.data;
 }
 
 const settings = await getSettings();
@@ -194,6 +169,15 @@ switch (settings.output.framework) {
   }
   case "nextra": {
     site = new NextraSite();
+    break;
+  }
+  case "custom": {
+    if (!settings.output.createSite) {
+      throw new Error(
+        "output.createSite must be specified when using a custom framework"
+      );
+    }
+    site = settings.output.createSite();
     break;
   }
   default: {

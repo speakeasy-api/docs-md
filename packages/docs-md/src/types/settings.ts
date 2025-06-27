@@ -1,11 +1,16 @@
 import { z } from "zod";
 
+import type { Site } from "./site.ts";
+
 export const settingsSchema = z.strictObject({
   spec: z.string(),
   output: z.strictObject({
     pageOutDir: z.string(),
     componentOutDir: z.string(),
-    framework: z.enum(["docusaurus", "nextra"]),
+    framework: z.enum(["docusaurus", "nextra", "custom"]),
+    createSite: z.function().optional() as z.ZodOptional<
+      z.ZodType<(() => Site) | undefined>
+    >,
   }),
   display: z
     .strictObject({
