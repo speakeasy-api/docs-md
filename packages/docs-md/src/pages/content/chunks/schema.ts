@@ -14,6 +14,14 @@ import { InternalError } from "../../../util/internalError.ts";
 import { getSettings } from "../../../util/settings.ts";
 import { getSchemaFromId } from "../util.ts";
 
+type SchemaRenderContext = {
+  site: Site;
+  renderer: Renderer;
+  baseHeadingLevel: number;
+  schemaStack: string[];
+  schema: SchemaValue;
+};
+
 function getMaxInlineLength(propertyName: string, indentationLevel: number) {
   return (
     getSettings().display.maxTypeSignatureLineLength -
@@ -257,18 +265,16 @@ function computeMultilineTypeLabel(
 }
 
 function renderNameAndType({
-  renderer,
+  context,
   propertyName,
   displayType,
   isRequired,
-  baseHeadingLevel,
   isRecursive,
 }: {
-  renderer: Renderer;
+  context: SchemaRenderContext;
   propertyName: string;
   displayType: DisplayType;
   isRequired: boolean;
-  baseHeadingLevel: number;
   isRecursive: boolean;
 }) {
   let annotatedPropertyName = propertyName;
@@ -283,72 +289,68 @@ function renderNameAndType({
     annotatedPropertyName
   );
   if (computedDisplayType.multiline) {
-    renderer.appendHeading(baseHeadingLevel, annotatedPropertyName);
-    renderer.appendCodeBlock(computedDisplayType.content, { variant: "raw" });
+    context.renderer.appendHeading(
+      context.baseHeadingLevel,
+      annotatedPropertyName
+    );
+    context.renderer.appendCodeBlock(computedDisplayType.content, {
+      variant: "raw",
+    });
   } else {
-    renderer.appendHeading(
-      baseHeadingLevel,
-      `${renderer.escapeText(annotatedPropertyName, { escape: "markdown" })}: \`${renderer.escapeText(computedDisplayType.content, { escape: "mdx" })}\``,
+    context.renderer.appendHeading(
+      context.baseHeadingLevel,
+      `${context.renderer.escapeText(annotatedPropertyName, { escape: "markdown" })}: \`${context.renderer.escapeText(computedDisplayType.content, { escape: "mdx" })}\``,
       { escape: "none" }
     );
   }
 }
 
 function renderSchemaFrontmatter({
-  renderer,
-  schema,
-  baseHeadingLevel,
+  context,
   propertyName,
   displayType,
   isRequired,
 }: {
-  renderer: Renderer;
-  schema: SchemaValue;
-  baseHeadingLevel: number;
+  context: SchemaRenderContext;
   propertyName: string;
   displayType: DisplayType;
   isRequired: boolean;
 }) {
   renderNameAndType({
-    renderer,
+    context,
     propertyName,
     displayType,
     isRequired,
     isRecursive: false,
-    baseHeadingLevel,
   });
 
-  if ("description" in schema && schema.description) {
-    renderer.appendText(schema.description);
+  if ("description" in context.schema && context.schema.description) {
+    context.renderer.appendText(context.schema.description);
   }
-  if ("examples" in schema && schema.examples.length > 0) {
-    renderer.appendText(
-      `_${schema.examples.length > 1 ? "Examples" : "Example"}:_`
+  if ("examples" in context.schema && context.schema.examples.length > 0) {
+    context.renderer.appendText(
+      `_${context.schema.examples.length > 1 ? "Examples" : "Example"}:_`
     );
-    for (const example of schema.examples) {
-      renderer.appendCodeBlock(example);
+    for (const example of context.schema.examples) {
+      context.renderer.appendCodeBlock(example);
     }
   }
 
-  if ("defaultValue" in schema && schema.defaultValue) {
-    renderer.appendText(`_Default Value:_ \`${schema.defaultValue}\``);
+  if ("defaultValue" in context.schema && context.schema.defaultValue) {
+    context.renderer.appendText(
+      `_Default Value:_ \`${context.schema.defaultValue}\``
+    );
   }
 }
 
 function renderSchemaBreakouts({
-  renderer,
-  site,
-  baseHeadingLevel,
+  context,
   data,
   displayType,
-  labelStack,
 }: {
-  renderer: Renderer;
-  site: Site;
-  baseHeadingLevel: number;
+  context: SchemaRenderContext;
   data: Map<string, Chunk>;
   displayType: DisplayType;
-  labelStack: string[];
 }) {
   const { maxSchemaNesting } = getSettings().display;
   for (let i = 0; i < displayType.breakoutSubTypes.length; i++) {
@@ -366,12 +368,12 @@ function renderSchemaBreakouts({
     }
 
     // Check if this is a circular reference, add a brief note
-    if (labelStack.includes(breakoutSubType.label)) {
+    if (context.schemaStack.includes(breakoutSubType.label)) {
       if (breakoutSubType.schema.type !== "object") {
         throw new InternalError("Schema must be an object to be embedded");
       }
       // TODO: add fragment link if we're not in a sidebar
-      renderer.appendText(
+      context.renderer.appendText(
         `\`${breakoutSubType.schema.name}\` is circular. See previous description for details.`
       );
       continue;
@@ -379,31 +381,32 @@ function renderSchemaBreakouts({
 
     // Check if we've reached our maximum level of nesting, or if there's
     // indirect type recursion, and if so break it out into an embed
-    if (labelStack.length >= maxSchemaNesting) {
+    if (context.schemaStack.length >= maxSchemaNesting) {
       // This shouldn't be possible, since we only recurse on objects
       if (breakoutSubType.schema.type !== "object") {
         throw new InternalError("Schema must be an object to be embedded");
       }
       const embedName = breakoutSubType.schema.name;
-      const sidebarLinkRenderer = renderer.appendSidebarLink({
+      const sidebarLinkRenderer = context.renderer.appendSidebarLink({
         title: `${embedName} Details`,
         embedName,
       });
 
       // If no renderer was returned, that means we've already rendered this embed
       if (sidebarLinkRenderer) {
-        sidebarLinkRenderer.appendHeading(baseHeadingLevel, embedName);
+        sidebarLinkRenderer.appendHeading(context.baseHeadingLevel, embedName);
         if (breakoutSubType.schema.description) {
           sidebarLinkRenderer.appendText(breakoutSubType.schema.description);
         }
         renderSchema({
-          renderer: sidebarLinkRenderer,
-          site,
-          schema: breakoutSubType.schema,
+          context: {
+            ...context,
+            schema: breakoutSubType.schema,
+            renderer: sidebarLinkRenderer,
+            schemaStack: [],
+          },
           data,
-          baseHeadingLevel,
           topLevelName: breakoutSubType.label,
-          labelStack: [],
         });
       }
       continue;
@@ -411,37 +414,33 @@ function renderSchemaBreakouts({
 
     // Otherwise, render the schema inline
     renderSchema({
-      renderer,
-      site,
-      schema: breakoutSubType.schema,
-      data: data,
-      baseHeadingLevel: Math.min(baseHeadingLevel + 1, MIN_HEADING_LEVEL),
+      context: {
+        ...context,
+        schema: breakoutSubType.schema,
+        baseHeadingLevel: Math.min(
+          context.baseHeadingLevel + 1,
+          MIN_HEADING_LEVEL
+        ),
+        schemaStack: [...context.schemaStack, breakoutSubType.label],
+      },
+      data,
       topLevelName: breakoutSubType.label,
-      labelStack: [...labelStack, breakoutSubType.label],
     });
   }
 }
 
 export function renderSchema({
-  renderer,
-  site,
-  schema,
+  context,
   data,
-  baseHeadingLevel,
   topLevelName,
-  labelStack,
 }: {
-  site: Site;
-  renderer: Renderer;
-  schema: SchemaValue;
+  context: SchemaRenderContext;
   data: Map<string, Chunk>;
-  baseHeadingLevel: number;
   topLevelName: string;
-  labelStack: string[];
 }) {
   function renderObjectProperties(objectValue: ObjectValue) {
-    renderer.beginExpandableSection(topLevelName, {
-      isOpenOnLoad: labelStack.length === 0,
+    context.renderer.beginExpandableSection(topLevelName, {
+      isOpenOnLoad: context.schemaStack.length === 0,
     });
     for (const [key, value] of Object.entries(objectValue.properties)) {
       const isRequired = objectValue.required?.includes(key) ?? false;
@@ -450,27 +449,20 @@ export function renderSchema({
         const schema = schemaChunk.chunkData.value;
         const displayType = getDisplayType(schema, data);
         renderSchemaFrontmatter({
-          renderer,
-          schema,
-          baseHeadingLevel,
+          context: { ...context, schema },
           propertyName: key,
           displayType,
           isRequired,
         });
         renderSchemaBreakouts({
-          renderer,
-          site,
-          baseHeadingLevel,
+          context,
           data,
           displayType,
-          labelStack,
         });
       } else if (value.type === "enum") {
         const displayType = getDisplayType(value, data);
         renderSchemaFrontmatter({
-          renderer,
-          schema: value,
-          baseHeadingLevel,
+          context: { ...context, schema: value },
           propertyName: key,
           displayType,
           isRequired,
@@ -478,16 +470,14 @@ export function renderSchema({
       } else {
         const displayType = getDisplayType(value, data);
         renderSchemaFrontmatter({
-          renderer,
-          schema: value,
-          baseHeadingLevel,
+          context: { ...context, schema: value },
           propertyName: key,
           displayType,
           isRequired,
         });
       }
     }
-    renderer.endExpandableSection();
+    context.renderer.endExpandableSection();
   }
 
   function renderArrayLikeItems(
@@ -495,9 +485,7 @@ export function renderSchema({
   ) {
     const displayType = getDisplayType(arrayLikeValue, data);
     renderSchemaFrontmatter({
-      renderer,
-      schema: arrayLikeValue,
-      baseHeadingLevel,
+      context: { ...context, schema: arrayLikeValue },
       propertyName: topLevelName,
       displayType,
       isRequired: true,
@@ -507,9 +495,7 @@ export function renderSchema({
   function renderUnionItems(unionValue: UnionValue) {
     const displayType = getDisplayType(unionValue, data);
     renderSchemaFrontmatter({
-      renderer,
-      schema: unionValue,
-      baseHeadingLevel,
+      context: { ...context, schema: unionValue },
       propertyName: topLevelName,
       displayType,
       isRequired: true,
@@ -520,32 +506,30 @@ export function renderSchema({
   function renderBasicItems(primitiveValue: SchemaValue) {
     const displayType = getDisplayType(primitiveValue, data);
     renderSchemaFrontmatter({
-      renderer,
-      schema: primitiveValue,
-      baseHeadingLevel,
+      context: { ...context, schema: primitiveValue },
       propertyName: topLevelName,
       displayType,
       isRequired: true,
     });
   }
 
-  switch (schema.type) {
+  switch (context.schema.type) {
     case "object": {
-      renderObjectProperties(schema);
+      renderObjectProperties(context.schema);
       break;
     }
     case "map":
     case "set":
     case "array": {
-      renderArrayLikeItems(schema);
+      renderArrayLikeItems(context.schema);
       break;
     }
     case "union": {
-      renderUnionItems(schema);
+      renderUnionItems(context.schema);
       break;
     }
     default: {
-      renderBasicItems(schema);
+      renderBasicItems(context.schema);
       break;
     }
   }

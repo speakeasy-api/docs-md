@@ -153,13 +153,15 @@ function renderPages(
           // so we add one by hand
           renderer.appendHeading(1, chunk.chunkData.name);
           renderSchema({
-            renderer,
-            site,
-            schema: chunk.chunkData.value,
+            context: {
+              site,
+              renderer,
+              baseHeadingLevel: 1,
+              schemaStack: [],
+              schema: chunk.chunkData.value,
+            },
             data,
-            baseHeadingLevel: 1,
             topLevelName: "Schema",
-            labelStack: [],
           });
           break;
         }

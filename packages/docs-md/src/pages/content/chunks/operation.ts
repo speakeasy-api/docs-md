@@ -45,13 +45,15 @@ export function renderOperation({
         docsData
       );
       renderSchema({
+        context: {
+          site,
+          renderer,
+          schema: securityChunk.chunkData.value,
+          baseHeadingLevel: baseHeadingLevel + 2,
+          schemaStack: [],
+        },
         topLevelName: "Security",
-        site,
-        renderer,
-        schema: securityChunk.chunkData.value,
         data: docsData,
-        baseHeadingLevel: baseHeadingLevel + 2,
-        labelStack: [],
       });
     }
     if (chunk.chunkData.globalSecurity) {
@@ -60,13 +62,15 @@ export function renderOperation({
         docsData
       );
       renderSchema({
+        context: {
+          site,
+          renderer,
+          schema: securityChunk.chunkData.value,
+          baseHeadingLevel: baseHeadingLevel + 2,
+          schemaStack: [],
+        },
         topLevelName: "Security",
-        site,
-        renderer,
-        schema: securityChunk.chunkData.value,
         data: docsData,
-        baseHeadingLevel: baseHeadingLevel + 2,
-        labelStack: [],
       });
     }
   }
@@ -83,13 +87,15 @@ export function renderOperation({
       }
       const parameterChunk = getSchemaFromId(parameter.fieldChunkId, docsData);
       renderSchema({
+        context: {
+          site,
+          renderer,
+          schema: parameterChunk.chunkData.value,
+          baseHeadingLevel: baseHeadingLevel + 2,
+          schemaStack: [],
+        },
         topLevelName: "Security",
-        site,
-        renderer,
-        schema: parameterChunk.chunkData.value,
         data: docsData,
-        baseHeadingLevel: baseHeadingLevel + 2,
-        labelStack: [],
       });
     }
   }
@@ -123,13 +129,15 @@ export function renderOperation({
       docsData
     );
     renderSchema({
+      context: {
+        site,
+        renderer,
+        schema: requestBodySchema.chunkData.value,
+        baseHeadingLevel: baseHeadingLevel + 2,
+        schemaStack: [],
+      },
       topLevelName: "Request Body",
-      site,
-      renderer,
-      schema: requestBodySchema.chunkData.value,
       data: docsData,
-      baseHeadingLevel: baseHeadingLevel + 2,
-      labelStack: [],
     });
   }
 
@@ -150,13 +158,15 @@ export function renderOperation({
           docsData
         );
         renderSchema({
+          context: {
+            site,
+            renderer,
+            schema: responseSchema.chunkData.value,
+            baseHeadingLevel: baseHeadingLevel + 2,
+            schemaStack: [],
+          },
           topLevelName: "Response Body",
-          site,
-          renderer,
-          schema: responseSchema.chunkData.value,
           data: docsData,
-          baseHeadingLevel: baseHeadingLevel + 2,
-          labelStack: [],
         });
       }
     }
