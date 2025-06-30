@@ -1,9 +1,9 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import "./styles.css";
 
-interface PropertiesModalProps {
+type PropertiesModalProps = {
   children: React.ReactNode;
-}
+};
 
 export const PropertiesModal = ({ children }: PropertiesModalProps) => (
   <Dialog.Root>

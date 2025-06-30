@@ -115,9 +115,7 @@ async function getSettings(): Promise<ParsedSettings> {
     );
   }
 
-  if (!configFileImport.output) {
-    configFileImport.output = {};
-  }
+  configFileImport.output ??= {};
 
   // Parse the settings using Zod to ensure accuracy
   const configFileContents = settingsSchema.safeParse(configFileImport);
