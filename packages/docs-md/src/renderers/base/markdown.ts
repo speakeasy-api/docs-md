@@ -94,11 +94,13 @@ export class MarkdownRenderer implements Renderer {
   public appendHeading(
     level: number,
     text: string,
-    { escape = "markdown" }: AppendOptions = {}
+    { escape = "markdown", id }: AppendOptions & { id?: string } = {}
   ) {
-    this[rendererLines].push(
-      `#`.repeat(level) + " " + this.escapeText(text, { escape })
-    );
+    let line = `${`#`.repeat(level)} ${this.escapeText(text, { escape })}`;
+    if (id) {
+      line += ` \\{#${id}\\}`;
+    }
+    this[rendererLines].push(line);
   }
 
   public appendText(text: string, { escape = "mdx" }: AppendOptions = {}) {

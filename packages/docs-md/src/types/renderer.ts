@@ -12,7 +12,11 @@ export type Renderer = {
     sidebarLabel: string;
   }): void;
 
-  appendHeading(level: number, text: string, options?: AppendOptions): void;
+  appendHeading(
+    level: number,
+    text: string,
+    options?: AppendOptions & { id?: string }
+  ): void;
 
   appendText(text: string, options?: AppendOptions): void;
 

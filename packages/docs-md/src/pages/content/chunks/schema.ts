@@ -20,6 +20,7 @@ type SchemaRenderContext = {
   baseHeadingLevel: number;
   schemaStack: string[];
   schema: SchemaValue;
+  idPrefix: string;
 };
 
 function getMaxInlineLength(propertyName: string, indentationLevel: number) {
@@ -52,9 +53,7 @@ function getDisplayType(
     case "object": {
       return {
         typeLabel: { label: value.name, children: [] },
-        breakoutSubTypes: [
-          { label: `${value.name} Properties`, schema: value },
-        ],
+        breakoutSubTypes: [{ label: value.name, schema: value }],
       };
     }
     case "array": {
@@ -291,7 +290,10 @@ function renderNameAndType({
   if (computedDisplayType.multiline) {
     context.renderer.appendHeading(
       context.baseHeadingLevel,
-      annotatedPropertyName
+      annotatedPropertyName,
+      {
+        id: context.idPrefix + `+${propertyName}`,
+      }
     );
     context.renderer.appendCodeBlock(computedDisplayType.content, {
       variant: "raw",
@@ -300,7 +302,7 @@ function renderNameAndType({
     context.renderer.appendHeading(
       context.baseHeadingLevel,
       `${context.renderer.escapeText(annotatedPropertyName, { escape: "markdown" })}: \`${context.renderer.escapeText(computedDisplayType.content, { escape: "mdx" })}\``,
-      { escape: "none" }
+      { escape: "none", id: context.idPrefix + `+${propertyName}` }
     );
   }
 }
@@ -404,6 +406,7 @@ function renderSchemaBreakouts({
             schema: breakoutSubType.schema,
             renderer: sidebarLinkRenderer,
             schemaStack: [],
+            idPrefix: `${context.idPrefix}+${embedName}`,
           },
           data,
           topLevelName: breakoutSubType.label,
@@ -422,6 +425,7 @@ function renderSchemaBreakouts({
           MIN_HEADING_LEVEL
         ),
         schemaStack: [...context.schemaStack, breakoutSubType.label],
+        idPrefix: `${context.idPrefix}+${breakoutSubType.label}`,
       },
       data,
       topLevelName: breakoutSubType.label,

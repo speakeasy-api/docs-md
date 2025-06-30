@@ -1,3 +1,5 @@
+import { snakeCase } from "change-case";
+
 import type { Chunk, OperationChunk } from "../../../types/chunk.ts";
 import type { Renderer } from "../../../types/renderer.ts";
 import type { Site } from "../../../types/site.ts";
@@ -23,9 +25,11 @@ export function renderOperation({
   baseHeadingLevel,
   docsCodeSnippets,
 }: RenderOperationOptions) {
+  const id = `operation-${snakeCase(chunk.chunkData.operationId)}`;
   renderer.appendHeading(
     baseHeadingLevel,
-    `${chunk.chunkData.method.toUpperCase()} ${chunk.chunkData.path}`
+    `${chunk.chunkData.method.toUpperCase()} ${chunk.chunkData.path}`,
+    { id }
   );
 
   if (chunk.chunkData.summary && chunk.chunkData.description) {
@@ -38,7 +42,10 @@ export function renderOperation({
   }
 
   if (chunk.chunkData.security || chunk.chunkData.globalSecurity) {
-    renderer.appendHeading(baseHeadingLevel + 1, "Security");
+    const securityId = id + "+security";
+    renderer.appendHeading(baseHeadingLevel + 1, "Security", {
+      id: securityId,
+    });
     if (chunk.chunkData.security) {
       const securityChunk = getSchemaFromId(
         chunk.chunkData.security.contentChunkId,
@@ -51,6 +58,7 @@ export function renderOperation({
           schema: securityChunk.chunkData.value,
           baseHeadingLevel: baseHeadingLevel + 2,
           schemaStack: [],
+          idPrefix: securityId,
         },
         topLevelName: "Security",
         data: docsData,
@@ -68,6 +76,7 @@ export function renderOperation({
           schema: securityChunk.chunkData.value,
           baseHeadingLevel: baseHeadingLevel + 2,
           schemaStack: [],
+          idPrefix: securityId,
         },
         topLevelName: "Security",
         data: docsData,
@@ -76,11 +85,17 @@ export function renderOperation({
   }
 
   if (chunk.chunkData.parameters.length > 0) {
-    renderer.appendHeading(baseHeadingLevel + 1, "Parameters");
+    const parametersId = id + "+parameters";
+    renderer.appendHeading(baseHeadingLevel + 1, "Parameters", {
+      id: parametersId,
+    });
     for (const parameter of chunk.chunkData.parameters) {
       renderer.appendHeading(
         baseHeadingLevel + 2,
-        `${parameter.name}${parameter.required ? " (required)" : ""}`
+        `${parameter.name}${parameter.required ? " (required)" : ""}`,
+        {
+          id: parametersId + `+${parameter.name}`,
+        }
       );
       if (parameter.description) {
         renderer.appendText(parameter.description);
@@ -93,6 +108,7 @@ export function renderOperation({
           schema: parameterChunk.chunkData.value,
           baseHeadingLevel: baseHeadingLevel + 2,
           schemaStack: [],
+          idPrefix: parametersId,
         },
         topLevelName: "Security",
         data: docsData,
@@ -104,7 +120,9 @@ export function renderOperation({
 
   const usageSnippet = docsCodeSnippets[chunk.id];
   if (usageSnippet && tryItNow) {
-    renderer.appendHeading(baseHeadingLevel + 1, "Try it Now");
+    renderer.appendHeading(baseHeadingLevel + 1, "Try it Now", {
+      id: id + "+try-it-now",
+    });
     // TODO: Zod is actually hard coded for now since its always a dependency
     // in our SDKs. Ideally this will come from the SDK package.
     renderer.appendTryItNow({
@@ -117,9 +135,11 @@ export function renderOperation({
   }
 
   if (chunk.chunkData.requestBody) {
+    const requestBodyId = id + "+request";
     renderer.appendHeading(
       baseHeadingLevel + 1,
-      `Request Body${chunk.chunkData.requestBody.required ? " (required)" : ""}`
+      `Request Body${chunk.chunkData.requestBody.required ? " (required)" : ""}`,
+      { id: requestBodyId }
     );
     if (chunk.chunkData.requestBody.description) {
       renderer.appendText(chunk.chunkData.requestBody.description);
@@ -135,6 +155,7 @@ export function renderOperation({
         schema: requestBodySchema.chunkData.value,
         baseHeadingLevel: baseHeadingLevel + 2,
         schemaStack: [],
+        idPrefix: requestBodyId,
       },
       topLevelName: "Request Body",
       data: docsData,
@@ -146,9 +167,12 @@ export function renderOperation({
       chunk.chunkData.responses
     )) {
       for (const response of responses) {
+        const responseId =
+          id + `+${statusCode}+${response.contentType.replace("/", "-")}`;
         renderer.appendHeading(
           baseHeadingLevel + 1,
-          `Response: ${statusCode} (${response.contentType})`
+          `Response: ${statusCode} (${response.contentType})`,
+          { id: responseId }
         );
         if (response.description) {
           renderer.appendText(response.description);
@@ -164,6 +188,7 @@ export function renderOperation({
             schema: responseSchema.chunkData.value,
             baseHeadingLevel: baseHeadingLevel + 2,
             schemaStack: [],
+            idPrefix: responseId,
           },
           topLevelName: "Response Body",
           data: docsData,
