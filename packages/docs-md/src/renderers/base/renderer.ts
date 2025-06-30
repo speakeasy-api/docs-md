@@ -71,21 +71,39 @@ export type RendererAppendTryItNowArgs = [
 ];
 
 export abstract class Renderer {
-  abstract escapeText(...args: RendererEscapeTextArgs): string;
-  abstract insertFrontMatter(...args: RendererInsertFrontMatterArgs): void;
+  // The following methods are used to create basic content on the page. They
+  // have "create" variants that create the content and "append"/"insert"
+  // variants that append/insert the content into the current page.
+  abstract createHeading(...args: RendererAppendHeadingArgs): void;
   abstract appendHeading(...args: RendererAppendHeadingArgs): void;
+  abstract createText(...args: RendererAppendTextArgs): void;
   abstract appendText(...args: RendererAppendTextArgs): void;
+  abstract createCodeBlock(...args: RendererAppendCodeBlockArgs): void;
   abstract appendCodeBlock(...args: RendererAppendCodeBlockArgs): void;
+  abstract createList(...args: RendererAppendListArgs): void;
   abstract appendList(...args: RendererAppendListArgs): void;
+  abstract createExpandableSectionStart(
+    ...args: RendererBeginExpandableSectionArgs
+  ): void;
   abstract appendExpandableSectionStart(
     ...args: RendererBeginExpandableSectionArgs
+  ): void;
+  abstract createExpandableSectionEnd(
+    ...args: RendererEndExpandableSectionArgs
   ): void;
   abstract appendExpandableSectionEnd(
     ...args: RendererEndExpandableSectionArgs
   ): void;
+
+  // The following methods are used to insert complex content onto the page,
+  // and so they don't have "create" variants.
+  abstract insertFrontMatter(...args: RendererInsertFrontMatterArgs): void;
   abstract appendSidebarLink(
     ...args: RendererAppendSidebarLinkArgs
   ): Renderer | undefined;
   abstract appendTryItNow(...args: RendererAppendTryItNowArgs): void;
+
+  // Helper methods
+  abstract escapeText(...args: RendererEscapeTextArgs): string;
   abstract render(): string;
 }

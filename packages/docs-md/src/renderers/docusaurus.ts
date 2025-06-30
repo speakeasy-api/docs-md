@@ -1,5 +1,8 @@
 import { join, resolve } from "node:path";
 
+import { getSettings } from "../util/settings.ts";
+import { rendererLines } from "./base/markdown.ts";
+import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import type {
   RendererAppendCodeBlockArgs,
   RendererAppendSidebarLinkArgs,
@@ -10,9 +13,6 @@ import type {
   SiteBuildPagePathArgs,
   SiteGetRendererArgs,
 } from "./base/site.ts";
-import { getSettings } from "../util/settings.ts";
-import { rendererLines } from "./base/markdown.ts";
-import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import { getEmbedPath, getEmbedSymbol } from "./base/util.ts";
 
 export class DocusaurusSite extends MdxSite {
@@ -107,12 +107,11 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 ---`;
   }
 
-  public override appendCodeBlock(
+  public override createCodeBlock(
     ...[text, options]: RendererAppendCodeBlockArgs
   ) {
     if (options?.variant === "raw") {
-      this.appendText(
-        `<pre style={{
+      return `<pre style={{
   backgroundColor: "var(--ifm-code-background)",
   border: "0.1rem solid rgba(0, 0, 0, 0.1)",
   borderRadius: "var(--ifm-code-border-radius)",
@@ -123,12 +122,14 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 <code>
 ${this.escapeText(text, { escape: "html" })}
 </code>
-</pre>`,
-        { escape: "none" }
-      );
+</pre>`;
     } else {
-      super.appendCodeBlock(text, options);
+      return super.createCodeBlock(text, options);
     }
+  }
+
+  public override appendCodeBlock(...args: RendererAppendCodeBlockArgs) {
+    this.appendText(this.createCodeBlock(...args), { escape: "none" });
   }
 
   public override appendSidebarLink(

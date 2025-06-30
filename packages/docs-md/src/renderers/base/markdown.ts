@@ -6,9 +6,7 @@ import type {
   RendererAppendCodeBlockArgs,
   RendererAppendHeadingArgs,
   RendererAppendListArgs,
-  RendererAppendSidebarLinkArgs,
   RendererAppendTextArgs,
-  RendererAppendTryItNowArgs,
   RendererBeginExpandableSectionArgs,
   RendererEscapeTextArgs,
 } from "./renderer.ts";
@@ -33,7 +31,7 @@ export abstract class MarkdownSite extends Site {
     return resolve(join(settings.output.pageOutDir, `${slug}.md`));
   }
 
-  public hasPage(...[path]: SiteHasPageArgs): boolean {
+  public hasPage(...[path]: SiteHasPageArgs) {
     return this.#pages.has(path);
   }
 
@@ -93,7 +91,7 @@ export abstract class MarkdownRenderer extends Renderer {
     }
   }
 
-  public appendHeading(
+  public createHeading(
     ...[
       level,
       text,
@@ -104,61 +102,72 @@ export abstract class MarkdownRenderer extends Renderer {
     if (id) {
       line += ` \\{#${id}\\}`;
     }
-    this[rendererLines].push(line);
+    return line;
   }
 
-  public appendText(
+  public appendHeading(...args: RendererAppendHeadingArgs) {
+    this[rendererLines].push(this.createHeading(...args));
+  }
+
+  public createText(
     ...[text, { escape = "mdx" } = {}]: RendererAppendTextArgs
   ) {
-    this[rendererLines].push(this.escapeText(text, { escape }));
+    return this.escapeText(text, { escape });
   }
 
-  public appendCodeBlock(...[text, options]: RendererAppendCodeBlockArgs) {
+  public appendText(...args: RendererAppendTextArgs) {
+    this[rendererLines].push(this.createText(...args));
+  }
+
+  public createCodeBlock(...[text, options]: RendererAppendCodeBlockArgs) {
     if (options?.variant === "raw") {
-      this[rendererLines].push(`<pre>
+      return `<pre>
 <code>
 ${text}
 </code>
-</pre>`);
+</pre>`;
     } else {
-      this[rendererLines].push(
-        `\`\`\`${options?.language ?? ""}\n${text}\n\`\`\``
-      );
+      return `\`\`\`${options?.language ?? ""}\n${text}\n\`\`\``;
     }
   }
 
-  public appendList(
-    ...[items, { escape = "markdown" } = {}]: RendererAppendListArgs
-  ) {
-    this[rendererLines].push(
-      items.map((item) => "- " + this.escapeText(item, { escape })).join("\n")
-    );
+  public appendCodeBlock(...args: RendererAppendCodeBlockArgs) {
+    this[rendererLines].push(this.createCodeBlock(...args));
   }
 
-  public appendExpandableSectionStart(
+  public createList(
+    ...[items, { escape = "markdown" } = {}]: RendererAppendListArgs
+  ) {
+    return items
+      .map((item) => "- " + this.escapeText(item, { escape }))
+      .join("\n");
+  }
+
+  public appendList(...args: RendererAppendListArgs) {
+    this[rendererLines].push(this.createList(...args));
+  }
+
+  public createExpandableSectionStart(
     ...[
       title,
       { isOpenOnLoad = false, escape = "markdown" } = {},
     ]: RendererBeginExpandableSectionArgs
   ) {
-    this[rendererLines].push(`<details ${isOpenOnLoad ? "open" : ""}>`);
-    this[rendererLines].push(
-      `<summary>${this.escapeText(title, { escape })}</summary>`
-    );
+    return `<details ${isOpenOnLoad ? "open" : ""}>\n\n<summary>${this.escapeText(title, { escape })}</summary>`;
+  }
+
+  public appendExpandableSectionStart(
+    ...args: RendererBeginExpandableSectionArgs
+  ) {
+    this[rendererLines].push(this.createExpandableSectionStart(...args));
+  }
+
+  public createExpandableSectionEnd() {
+    return "</details>";
   }
 
   public appendExpandableSectionEnd() {
-    this[rendererLines].push("</details>");
-  }
-
-  public appendSidebarLink(
-    ..._: RendererAppendSidebarLinkArgs
-  ): Renderer | undefined {
-    throw new Error("This renderer does not support sidebar links");
-  }
-
-  public appendTryItNow(..._: RendererAppendTryItNowArgs): void {
-    throw new Error("This renderer does not support try it now");
+    this[rendererLines].push(this.createExpandableSectionEnd());
   }
 
   public render() {

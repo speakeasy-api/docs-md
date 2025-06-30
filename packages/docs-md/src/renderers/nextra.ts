@@ -1,5 +1,8 @@
 import { join, resolve } from "node:path";
 
+import { getSettings } from "../util/settings.ts";
+import { rendererLines } from "./base/markdown.ts";
+import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import type {
   RendererAppendCodeBlockArgs,
   RendererAppendSidebarLinkArgs,
@@ -7,9 +10,6 @@ import type {
 } from "./base/renderer.ts";
 import type { SiteGetRendererArgs } from "./base/site.ts";
 import { type SiteBuildPagePathArgs } from "./base/site.ts";
-import { getSettings } from "../util/settings.ts";
-import { rendererLines } from "./base/markdown.ts";
-import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import { getEmbedPath, getEmbedSymbol } from "./base/util.ts";
 
 export class NextraSite extends MdxSite {
@@ -67,12 +67,11 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 ---`;
   }
 
-  public override appendCodeBlock(
+  public override createCodeBlock(
     ...[text, options]: RendererAppendCodeBlockArgs
   ) {
     if (options?.variant === "raw") {
-      this.appendText(
-        `<pre className="x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose">
+      return `<pre className="x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose">
 <code className="nextra-code">
 ${this.escapeText(text, { escape: "html" })
   .split("\n")
@@ -81,12 +80,14 @@ ${this.escapeText(text, { escape: "html" })
   .map((line) => `<span><span>${line}</span></span>`)
   .join("\n")}
 </code>
-</pre>`,
-        { escape: "none" }
-      );
+</pre>`;
     } else {
-      super.appendCodeBlock(text, options);
+      return super.createCodeBlock(text, options);
     }
+  }
+
+  public override appendCodeBlock(...args: RendererAppendCodeBlockArgs) {
+    this.appendText(this.createCodeBlock(...args), { escape: "none" });
   }
 
   public override appendSidebarLink(
