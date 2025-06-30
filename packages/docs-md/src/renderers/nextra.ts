@@ -1,16 +1,20 @@
 import { join, resolve } from "node:path";
 
-import type { Renderer } from "../types/renderer.ts";
-import type { Site } from "../types/site.ts";
+import type {
+  RendererAppendCodeBlockArgs,
+  RendererAppendSidebarLinkArgs,
+  RendererInsertFrontMatterArgs,
+} from "./base/renderer.ts";
+import type { SiteGetRendererArgs } from "./base/site.ts";
+import { type SiteBuildPagePathArgs } from "./base/site.ts";
 import { getSettings } from "../util/settings.ts";
 import { rendererLines } from "./base/markdown.ts";
 import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import { getEmbedPath, getEmbedSymbol } from "./base/util.ts";
 
-export class NextraSite extends MdxSite implements Site {
+export class NextraSite extends MdxSite {
   public override buildPagePath(
-    slug: string,
-    { appendIndex = false }: { appendIndex?: boolean } = {}
+    ...[slug, { appendIndex = false } = {}]: SiteBuildPagePathArgs
   ): string {
     const settings = getSettings();
     if (appendIndex) {
@@ -35,14 +39,12 @@ export class NextraSite extends MdxSite implements Site {
     return super.render();
   }
 
-  protected override getRenderer(options: {
-    currentPagePath: string;
-  }): Renderer {
+  protected override getRenderer(...[options]: SiteGetRendererArgs) {
     return new NextraRenderer(options, this);
   }
 }
 
-class NextraRenderer extends MdxRenderer implements Renderer {
+class NextraRenderer extends MdxRenderer {
   #frontMatter: string | undefined;
   #includeSidebar = false;
   #currentPagePath: string;
@@ -57,27 +59,16 @@ class NextraRenderer extends MdxRenderer implements Renderer {
     this.#site = site;
   }
 
-  public override insertFrontMatter({
-    sidebarLabel,
-  }: {
-    sidebarLabel: string;
-  }) {
+  public override insertFrontMatter(
+    ...[{ sidebarLabel }]: RendererInsertFrontMatterArgs
+  ) {
     this.#frontMatter = `---
 sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 ---`;
   }
 
   public override appendCodeBlock(
-    text: string,
-    options?:
-      | {
-          variant: "default";
-          language?: string;
-        }
-      | {
-          variant: "raw";
-          language?: never;
-        }
+    ...[text, options]: RendererAppendCodeBlockArgs
   ) {
     if (options?.variant === "raw") {
       this.appendText(
@@ -98,13 +89,9 @@ ${this.escapeText(text, { escape: "html" })
     }
   }
 
-  public override appendSidebarLink({
-    title,
-    embedName,
-  }: {
-    title: string;
-    embedName: string;
-  }) {
+  public override appendSidebarLink(
+    ...[{ title, embedName }]: RendererAppendSidebarLinkArgs
+  ) {
     const embedPath = getEmbedPath(embedName);
 
     // TODO: handle this more gracefully. This happens when we have a direct

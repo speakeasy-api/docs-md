@@ -20,7 +20,7 @@ import { DocusaurusSite } from "../renderers/docusaurus.ts";
 import { NextraSite } from "../renderers/nextra.ts";
 import type { ParsedSettings } from "../types/settings.ts";
 import { settingsSchema } from "../types/settings.ts";
-import type { Site } from "../types/site.ts";
+import type { Site } from "../renderers/base/site.ts";
 import { assertNever } from "../util/assertNever.ts";
 
 const CONFIG_FILE_NAMES = [

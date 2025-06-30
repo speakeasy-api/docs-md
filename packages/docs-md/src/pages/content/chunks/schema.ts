@@ -7,8 +7,8 @@ import type {
   SetValue,
   UnionValue,
 } from "../../../types/chunk.ts";
-import type { Renderer } from "../../../types/renderer.ts";
-import type { Site } from "../../../types/site.ts";
+import type { Renderer } from "../../../renderers/base/renderer.ts";
+import type { Site } from "../../../renderers/base/site.ts";
 import { assertNever } from "../../../util/assertNever.ts";
 import { InternalError } from "../../../util/internalError.ts";
 import { getSettings } from "../../../util/settings.ts";
@@ -443,7 +443,7 @@ export function renderSchema({
   topLevelName: string;
 }) {
   function renderObjectProperties(objectValue: ObjectValue) {
-    context.renderer.beginExpandableSection(topLevelName, {
+    context.renderer.appendExpandableSectionStart(topLevelName, {
       isOpenOnLoad: context.schemaStack.length === 0,
     });
     for (const [key, value] of Object.entries(objectValue.properties)) {
@@ -481,7 +481,7 @@ export function renderSchema({
         });
       }
     }
-    context.renderer.endExpandableSection();
+    context.renderer.appendExpandableSectionEnd();
   }
 
   function renderArrayLikeItems(

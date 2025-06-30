@@ -1,15 +1,13 @@
 import { dirname, relative } from "node:path";
 
-import type { Renderer } from "../../types/renderer.ts";
-import type { Site } from "../../types/site.ts";
 import { MarkdownRenderer, MarkdownSite } from "./markdown.ts";
 
-export class MdxSite extends MarkdownSite implements Site {
+export abstract class MdxSite extends MarkdownSite {
   // There isn't any difference between MdxSite and MarkdownSite at the moment,
   // but we still want the named class for consistency
 }
 
-export class MdxRenderer extends MarkdownRenderer implements Renderer {
+export abstract class MdxRenderer extends MarkdownRenderer {
   #imports = new Map<
     string,
     { defaultAlias: string | undefined; namedImports: Set<string> }

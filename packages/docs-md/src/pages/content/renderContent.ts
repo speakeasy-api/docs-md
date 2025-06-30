@@ -1,8 +1,8 @@
 import { snakeCase } from "change-case";
 
 import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
-import type { Renderer } from "../../types/renderer.ts";
-import type { Site } from "../../types/site.ts";
+import type { Renderer } from "../../renderers/base/renderer.ts";
+import type { Site } from "../../renderers/base/site.ts";
 import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from "../../util/settings.ts";
 import type { DocsCodeSnippets } from "../codeSnippets/generateCodeSnippets.ts";

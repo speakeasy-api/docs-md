@@ -1,16 +1,23 @@
 import { join, resolve } from "node:path";
 
-import type { Renderer } from "../types/renderer.ts";
-import type { Site } from "../types/site.ts";
+import type {
+  RendererAppendCodeBlockArgs,
+  RendererAppendSidebarLinkArgs,
+  RendererAppendTryItNowArgs,
+  RendererInsertFrontMatterArgs,
+} from "./base/renderer.ts";
+import type {
+  SiteBuildPagePathArgs,
+  SiteGetRendererArgs,
+} from "./base/site.ts";
 import { getSettings } from "../util/settings.ts";
 import { rendererLines } from "./base/markdown.ts";
 import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import { getEmbedPath, getEmbedSymbol } from "./base/util.ts";
 
-export class DocusaurusSite extends MdxSite implements Site {
+export class DocusaurusSite extends MdxSite {
   public override buildPagePath(
-    slug: string,
-    { appendIndex = false }: { appendIndex?: boolean } = {}
+    ...[slug, { appendIndex = false } = {}]: SiteBuildPagePathArgs
   ): string {
     const settings = getSettings();
     if (appendIndex) {
@@ -71,14 +78,12 @@ export class DocusaurusSite extends MdxSite implements Site {
     return super.render();
   }
 
-  protected override getRenderer(options: {
-    currentPagePath: string;
-  }): Renderer {
+  protected override getRenderer(...[options]: SiteGetRendererArgs) {
     return new DocusaurusRenderer(options, this);
   }
 }
 
-class DocusaurusRenderer extends MdxRenderer implements Renderer {
+class DocusaurusRenderer extends MdxRenderer {
   #frontMatter: string | undefined;
   #includeSidebar = false;
   #currentPagePath: string;
@@ -93,13 +98,9 @@ class DocusaurusRenderer extends MdxRenderer implements Renderer {
     this.#site = site;
   }
 
-  public override insertFrontMatter({
-    sidebarPosition,
-    sidebarLabel,
-  }: {
-    sidebarPosition: string;
-    sidebarLabel: string;
-  }) {
+  public override insertFrontMatter(
+    ...[{ sidebarPosition, sidebarLabel }]: RendererInsertFrontMatterArgs
+  ) {
     this.#frontMatter = `---
 sidebar_position: ${sidebarPosition}
 sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
@@ -107,16 +108,7 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
   }
 
   public override appendCodeBlock(
-    text: string,
-    options?:
-      | {
-          variant: "default";
-          language?: string;
-        }
-      | {
-          variant: "raw";
-          language?: never;
-        }
+    ...[text, options]: RendererAppendCodeBlockArgs
   ) {
     if (options?.variant === "raw") {
       this.appendText(
@@ -139,13 +131,9 @@ ${this.escapeText(text, { escape: "html" })}
     }
   }
 
-  public override appendSidebarLink({
-    title,
-    embedName,
-  }: {
-    title: string;
-    embedName: string;
-  }) {
+  public override appendSidebarLink(
+    ...[{ title, embedName }]: RendererAppendSidebarLinkArgs
+  ) {
     const embedPath = getEmbedPath(embedName);
 
     // TODO: handle this more gracefully. This happens when we have a direct
@@ -178,13 +166,9 @@ ${this.escapeText(text, { escape: "html" })}
     return this.#site.createPage(embedPath);
   }
 
-  public override appendTryItNow({
-    externalDependencies,
-    defaultValue,
-  }: {
-    externalDependencies: Record<string, string>;
-    defaultValue: string;
-  }) {
+  public override appendTryItNow(
+    ...[{ externalDependencies, defaultValue }]: RendererAppendTryItNowArgs
+  ) {
     this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md");
     this[rendererLines].push(
       `<TryItNow.Docusaurus

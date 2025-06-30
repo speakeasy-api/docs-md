@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import type { Site } from "./site.ts";
+import type { Site } from "../renderers/base/site.ts";
 
 export const settingsSchema = z.strictObject({
   spec: z.string(),
