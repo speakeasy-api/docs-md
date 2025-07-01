@@ -1,6 +1,5 @@
 "use client";
 
-import type { SandpackPreviewRef } from "@codesandbox/sandpack-react";
 import {
   SandpackCodeEditor,
   SandpackLayout,
@@ -9,7 +8,6 @@ import {
   useErrorMessage,
 } from "@codesandbox/sandpack-react";
 import { useAtomValue } from "jotai";
-import { useRef } from "react";
 
 import { CodeEditor } from "../CodeEditor/index.tsx";
 import { ConsoleOutput } from "../ConsoleOutput/index.tsx";
@@ -44,13 +42,12 @@ const TryItNowContents = ({
   _enableUnsafeAutoImport?: boolean;
 }) => {
   const error = useErrorMessage();
-  const ref = useRef<SandpackPreviewRef>(null);
 
   return (
     <SandpackLayout>
       {_enableUnsafeAutoImport ? <CodeEditor /> : <SandpackCodeEditor />}
       {!error && <ConsoleOutput />}
-      <SandpackPreview ref={ref} style={error ? undefined : styles.preview}>
+      <SandpackPreview style={error ? undefined : styles.preview}>
         {error ? <pre>{error}</pre> : null}
       </SandpackPreview>
     </SandpackLayout>
