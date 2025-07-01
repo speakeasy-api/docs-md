@@ -24,7 +24,7 @@ export default [
         "MdxRenderer",
       ],
     },
-    ignores: ["src/pages/data/wasm_exec.js"],
+    ignores: ["src/pages/data/wasm_exec.js", ".storybook/**/*"],
     restrictedImports: [
       {
         type: "third-party",
