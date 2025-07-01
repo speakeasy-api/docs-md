@@ -1,5 +1,6 @@
 "use client";
 
+import type { SandpackPreviewRef } from "@codesandbox/sandpack-react";
 import {
   SandpackCodeEditor,
   SandpackConsole,
@@ -9,8 +10,10 @@ import {
   useErrorMessage,
 } from "@codesandbox/sandpack-react";
 import { useAtomValue } from "jotai";
+import { useRef } from "react";
 
 import { CodeEditor } from "../CodeEditor/index.tsx";
+import { ConsoleOutput } from "../ConsoleOutput/index.tsx";
 import { dependenciesAtom, lastEditorValueAtom } from "../state/index.ts";
 import { styles } from "../styles.ts";
 
@@ -42,9 +45,12 @@ const TryItNowContents = ({
   _enableUnsafeAutoImport?: boolean;
 }) => {
   const error = useErrorMessage();
+  const ref = useRef<SandpackPreviewRef>(null);
+
   return (
     <SandpackLayout>
       {_enableUnsafeAutoImport ? <CodeEditor /> : <SandpackCodeEditor />}
+      <ConsoleOutput />
       {!error && (
         <SandpackConsole
           resetOnPreviewRestart
@@ -52,7 +58,7 @@ const TryItNowContents = ({
           showRestartButton
         />
       )}
-      <SandpackPreview style={error ? undefined : styles.preview}>
+      <SandpackPreview ref={ref} style={error ? undefined : styles.preview}>
         {error ? <pre>{error}</pre> : null}
       </SandpackPreview>
     </SandpackLayout>
@@ -92,7 +98,7 @@ export const Content = ({
               : externalDependencies,
           entry: "index.ts",
         }}
-        theme="dark"
+        theme="auto"
       >
         <TryItNowContents />
       </SandpackProvider>

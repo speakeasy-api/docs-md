@@ -1,62 +1,70 @@
 import { useSandpackConsole } from "@codesandbox/sandpack-react";
-import type { Theme } from "react-base16-styling";
-import { JSONTree } from "react-json-tree";
-const LogDataView = ({
-  log,
-  theme,
-}: {
-  log: ReturnType<typeof useSandpackConsole>["logs"][number];
-  theme?: Theme;
-}) => {
-  // log is always an object
-  const { data } = log;
+import { Console, Decode } from "console-feed";
+import type { Methods } from "console-feed/lib/definitions/Methods.js";
+import { useEffect, useState } from "react";
 
-  if (!data) return null;
+type SandpackConsoleData = ReturnType<
+  typeof useSandpackConsole
+>["logs"][number];
 
-  return (
-    <div>
-      {data.map((item, index) => {
-        console.log("item", item);
-        if (typeof item === "string") {
-          return (
-            <pre key={index}>
-              <code style={{ color: "var(--sp-syntax-color-string)" }}>
-                "{item}"
-              </code>
-            </pre>
-          );
-        }
-        if (Array.isArray(item)) {
-          return <div>[{item.join(", ")}]</div>;
-        }
-        return <JSONTree hideRoot key={index} theme={theme} data={item} />;
-      })}
-    </div>
-  );
+type SandpackEncodedLog = {
+  "@t"?: string;
+  data?: unknown;
 };
 
-type ConsoleOutputProps = {
-  theme?: Theme;
+type Message = {
+  id: string;
+  data: unknown[];
+  method: Methods;
 };
 
-export const ConsoleOutput = ({ theme }: ConsoleOutputProps) => {
-  const { logs } = useSandpackConsole({
+const encodeLog = (log: SandpackConsoleData): Message => {
+  // deep copy the log.data array
+  if (!log.data) {
+    return Decode([]) as Message;
+  }
+  const modifiedDataArray = log.data as [Message, string];
+  if (Array.isArray(modifiedDataArray)) {
+    // Due to formatting changes with console-feed's encode function in v3.4
+    // we need to manually add in the remainder key to note that there
+    // are no more items remaining
+    modifiedDataArray.push("__console_feed_remaining__0");
+    // Objects all need to have a constructor property now too
+    modifiedDataArray.forEach((dataItem) => {
+      if (
+        typeof dataItem !== "string" &&
+        (dataItem as unknown as SandpackEncodedLog)?.["@t"]
+      ) {
+        const sandpackEncodedLog = dataItem as unknown as SandpackEncodedLog;
+        if (sandpackEncodedLog["@t"] === "[[undefined]]") {
+          return;
+        }
+
+        // Hey keep going and actually write this as a function to note
+        // that we are essentially an adapter for v3.3 and the newest version of console-feed
+        const constructorType = sandpackEncodedLog?.["@t"]?.slice(2, -2);
+        Object.assign(dataItem, {
+          constructor: {
+            name: constructorType,
+          },
+        });
+        delete sandpackEncodedLog["@t"];
+      }
+    });
+  }
+  return Decode([{ ...log, data: modifiedDataArray }]) as Message;
+};
+
+export const ConsoleOutput = () => {
+  const [logs, setLogs] = useState<Message[]>([]);
+  const { logs: sandpackLogs } = useSandpackConsole({
     resetOnPreviewRestart: true,
   });
 
-  const renderedLogs = logs.map((log) => {
-    return (
-      <div
-        key={log.id}
-        style={{
-          width: "100%",
-          padding: "var(--sp-space-3) var(--sp-space-2)",
-        }}
-      >
-        <LogDataView log={log} theme={theme} />
-      </div>
-    );
-  });
+  useEffect(() => {
+    const encodedLogArr = sandpackLogs.map(encodeLog);
+    setLogs(encodedLogArr);
+  }, [sandpackLogs]);
 
   return (
     <div
@@ -77,7 +85,14 @@ export const ConsoleOutput = ({ theme }: ConsoleOutputProps) => {
           fontSize: "1em",
         }}
       >
-        {renderedLogs}
+        <div
+          style={{
+            width: "100%",
+            padding: "var(--sp-space-3) var(--sp-space-2)",
+          }}
+        >
+          <Console logs={logs} />
+        </div>
       </div>
     </div>
   );
