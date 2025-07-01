@@ -110,7 +110,7 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
   public override createCode(...[text, options]: RendererAppendCodeArgs) {
     if (options?.variant === "raw") {
       if (options.style === "inline") {
-        return `<code>${this.escapeText(text, { escape: "html" })}</code>`;
+        return `<code>${this.escapeText(text, { escape: options?.escape ?? "html" })}</code>`;
       }
       return `<pre style={{
   backgroundColor: "var(--ifm-code-background)",
@@ -121,7 +121,7 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
   verticalAlign: "middle",
 }}>
 <code>
-${this.escapeText(text, { escape: "html" })}
+${this.escapeText(text, { escape: options?.escape ?? "html" })}
 </code>
 </pre>`;
     } else {

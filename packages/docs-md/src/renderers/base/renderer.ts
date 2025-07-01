@@ -44,6 +44,7 @@ export type RendererAppendCodeArgs = [
          * raw variants, and a single backtick for default variants.
          */
         style?: "block" | "inline";
+        escape?: Escape;
       }
     | {
         /**
@@ -65,6 +66,7 @@ export type RendererAppendCodeArgs = [
          * raw variants, and a single backtick for default variants.
          */
         style?: "block" | "inline";
+        escape?: Escape;
       },
 ];
 export type RendererAppendListArgs = [items: string[], options?: AppendOptions];

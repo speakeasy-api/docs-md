@@ -86,11 +86,11 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
   public override createCode(...[text, options]: RendererAppendCodeArgs) {
     if (options?.variant === "raw") {
       if (options.style === "inline") {
-        return `<code className="nextra-code">${this.escapeText(text, { escape: "html" })}</code>`;
+        return `<code className="nextra-code">${this.escapeText(text, { escape: options?.escape ?? "html" })}</code>`;
       }
       return `<pre className="x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose">
 <code className="nextra-code">
-${this.escapeText(text, { escape: "html" })
+${this.escapeText(text, { escape: options?.escape ?? "html" })
   .split("\n")
   // Nextra does this weird thing where it wraps each line in _two_ spans with
   // it's code blocks, so we mimic that behavior here

@@ -37,21 +37,27 @@ const MIN_HEADING_LEVEL = 5;
 
 type TypeInfo = {
   label: string;
+  linkedLabel: string;
   children: TypeInfo[];
   breakoutSubTypes: { label: string; schema: SchemaValue }[];
 };
 
-function getTypeInfo(value: SchemaValue, data: Map<string, Chunk>): TypeInfo {
+function getTypeInfo(
+  value: SchemaValue,
+  data: Map<string, Chunk>,
+  context: SchemaRenderContext
+): TypeInfo {
   switch (value.type) {
     case "object": {
       return {
         label: value.name,
+        linkedLabel: `<a href="#${context.idPrefix}+${value.name}">${value.name}</a>`,
         children: [],
         breakoutSubTypes: [{ label: value.name, schema: value }],
       };
     }
     case "array": {
-      const typeInfo = getTypeInfo(value.items, data);
+      const typeInfo = getTypeInfo(value.items, data, context);
       return {
         ...typeInfo,
         label: "array",
@@ -59,7 +65,7 @@ function getTypeInfo(value: SchemaValue, data: Map<string, Chunk>): TypeInfo {
       };
     }
     case "map": {
-      const typeInfo = getTypeInfo(value.items, data);
+      const typeInfo = getTypeInfo(value.items, data, context);
       return {
         ...typeInfo,
         label: "map",
@@ -67,7 +73,7 @@ function getTypeInfo(value: SchemaValue, data: Map<string, Chunk>): TypeInfo {
       };
     }
     case "set": {
-      const typeInfo = getTypeInfo(value.items, data);
+      const typeInfo = getTypeInfo(value.items, data, context);
       return {
         ...typeInfo,
         label: "set",
@@ -75,13 +81,16 @@ function getTypeInfo(value: SchemaValue, data: Map<string, Chunk>): TypeInfo {
       };
     }
     case "union": {
-      const displayTypes = value.values.map((v) => getTypeInfo(v, data));
+      const displayTypes = value.values.map((v) =>
+        getTypeInfo(v, data, context)
+      );
       const hasBreakoutSubType = displayTypes.some(
         (d) => d.breakoutSubTypes.length > 0
       );
       if (!hasBreakoutSubType) {
         return {
           label: "union",
+          linkedLabel: "union",
           children: displayTypes,
           breakoutSubTypes: [],
         };
@@ -89,22 +98,28 @@ function getTypeInfo(value: SchemaValue, data: Map<string, Chunk>): TypeInfo {
       const breakoutSubTypes = displayTypes.flatMap((d) => d.breakoutSubTypes);
       return {
         label: "union",
+        linkedLabel: "union",
         children: displayTypes,
         breakoutSubTypes,
       };
     }
     case "chunk": {
       const schemaChunk = getSchemaFromId(value.chunkId, data);
-      return getTypeInfo(schemaChunk.chunkData.value, data);
+      return getTypeInfo(schemaChunk.chunkData.value, data, context);
     }
     case "enum": {
       return {
         label: "enum",
-        children: value.values.map((v) => ({
-          label: `${typeof v === "string" ? `"${v}"` : v}`,
-          children: [],
-          breakoutSubTypes: [],
-        })),
+        linkedLabel: "enum",
+        children: value.values.map((v) => {
+          const label = `${typeof v === "string" ? `"${v}"` : v}`;
+          return {
+            label,
+            linkedLabel: label,
+            children: [],
+            breakoutSubTypes: [],
+          };
+        }),
         breakoutSubTypes: [],
       };
     }
@@ -123,6 +138,7 @@ function getTypeInfo(value: SchemaValue, data: Map<string, Chunk>): TypeInfo {
     case "any": {
       return {
         label: value.type,
+        linkedLabel: value.type,
         children: [],
         breakoutSubTypes: [],
       };
@@ -136,9 +152,11 @@ function getTypeInfo(value: SchemaValue, data: Map<string, Chunk>): TypeInfo {
 function computeDisplayType(typeInfo: TypeInfo, propertyName: string) {
   const singleLineTypeLabel = computeSingleLineDisplayType(typeInfo);
   // TODO: wire up indentation level here
-  if (singleLineTypeLabel.length < getMaxInlineLength(propertyName, 0)) {
+  if (
+    singleLineTypeLabel.unlinked.length < getMaxInlineLength(propertyName, 0)
+  ) {
     return {
-      content: singleLineTypeLabel,
+      content: singleLineTypeLabel.linked,
       multiline: false,
     };
   }
@@ -149,7 +167,7 @@ function computeDisplayType(typeInfo: TypeInfo, propertyName: string) {
   // patch it up after the fact
   content.contents = content.contents
     .split("\n")
-    .filter((c) => c.length > 0)
+    .filter((c) => c.trim().length > 0)
     .join("\n");
   return {
     content: content.contents,
@@ -158,19 +176,33 @@ function computeDisplayType(typeInfo: TypeInfo, propertyName: string) {
   };
 }
 
-function computeSingleLineDisplayType(typeInfo: TypeInfo): string {
+function computeSingleLineDisplayType(typeInfo: TypeInfo): {
+  unlinked: string;
+  linked: string;
+} {
   switch (typeInfo.label) {
     case "array":
     case "map":
     case "set": {
-      return `${typeInfo.label}<${typeInfo.children.map(computeSingleLineDisplayType).join(",")}>`;
+      const children = typeInfo.children.map(computeSingleLineDisplayType);
+      return {
+        unlinked: `${typeInfo.label}&lt;${children.map((c) => c.unlinked).join(",")}&gt;`,
+        linked: `${typeInfo.label}&lt;${children.map((c) => c.linked).join(",")}&gt;`,
+      };
     }
     case "union":
     case "enum": {
-      return typeInfo.children.map(computeSingleLineDisplayType).join(" | ");
+      const children = typeInfo.children.map(computeSingleLineDisplayType);
+      return {
+        unlinked: children.map((c) => c.unlinked).join(" | "),
+        linked: children.map((c) => c.linked).join(" | "),
+      };
     }
     default: {
-      return typeInfo.label;
+      return {
+        unlinked: typeInfo.label,
+        linked: typeInfo.linkedLabel,
+      };
     }
   }
 }
@@ -192,11 +224,11 @@ function computeMultilineTypeLabel(
       // First, check if we can show this on a single line
       const singleLineContents = computeSingleLineDisplayType(typeInfo);
       if (
-        singleLineContents.length <
+        singleLineContents.unlinked.length <
         maxTypeSignatureLineLength - indentation
       ) {
         return {
-          contents: singleLineContents,
+          contents: singleLineContents.linked,
           multiline: false,
         };
       }
@@ -208,11 +240,11 @@ function computeMultilineTypeLabel(
         children.push(computeMultilineTypeLabel(child, indentation + 1));
       }
 
-      let contents = `${typeInfo.label}<\n`;
+      let contents = `${typeInfo.label}&lt;\n`;
       for (const child of children) {
         contents += `${" ".repeat(indentation + 1)}${child.contents}\n`;
       }
-      contents += `${" ".repeat(indentation)}>\n`;
+      contents += `${" ".repeat(indentation)}&gt;\n`;
       return {
         contents,
         multiline: true,
@@ -223,11 +255,11 @@ function computeMultilineTypeLabel(
       // First, check if we can show this on a single line
       const singleLineContents = computeSingleLineDisplayType(typeInfo);
       if (
-        singleLineContents.length <
+        singleLineContents.unlinked.length <
         maxTypeSignatureLineLength - indentation
       ) {
         return {
-          contents: singleLineContents,
+          contents: singleLineContents.linked,
           multiline: false,
         };
       }
@@ -291,6 +323,7 @@ function renderNameAndType({
     );
     context.renderer.appendCode(computedDisplayType.content, {
       variant: "raw",
+      escape: "mdx",
     });
   } else {
     const name = context.renderer.escapeText(annotatedPropertyName, {
@@ -300,7 +333,7 @@ function renderNameAndType({
       context.renderer.escapeText(computedDisplayType.content, {
         escape: "mdx",
       }),
-      { variant: "raw", style: "inline" }
+      { variant: "raw", style: "inline", escape: "mdx" }
     );
     context.renderer.appendHeading(
       context.baseHeadingLevel,
@@ -454,7 +487,7 @@ export function renderSchema({
       if (value.type === "chunk") {
         const schemaChunk = getSchemaFromId(value.chunkId, data);
         const schema = schemaChunk.chunkData.value;
-        const typeInfo = getTypeInfo(schema, data);
+        const typeInfo = getTypeInfo(schema, data, context);
         renderSchemaFrontmatter({
           context: { ...context, schema },
           propertyName: key,
@@ -467,7 +500,7 @@ export function renderSchema({
           typeInfo,
         });
       } else if (value.type === "enum") {
-        const typeInfo = getTypeInfo(value, data);
+        const typeInfo = getTypeInfo(value, data, context);
         renderSchemaFrontmatter({
           context: { ...context, schema: value },
           propertyName: key,
@@ -475,7 +508,7 @@ export function renderSchema({
           isRequired,
         });
       } else {
-        const typeInfo = getTypeInfo(value, data);
+        const typeInfo = getTypeInfo(value, data, context);
         renderSchemaFrontmatter({
           context: { ...context, schema: value },
           propertyName: key,
@@ -490,7 +523,7 @@ export function renderSchema({
   function renderArrayLikeItems(
     arrayLikeValue: ArrayValue | MapValue | SetValue
   ) {
-    const typeInfo = getTypeInfo(arrayLikeValue, data);
+    const typeInfo = getTypeInfo(arrayLikeValue, data, context);
     renderSchemaFrontmatter({
       context: { ...context, schema: arrayLikeValue },
       propertyName: topLevelName,
@@ -500,7 +533,7 @@ export function renderSchema({
   }
 
   function renderUnionItems(unionValue: UnionValue) {
-    const typeInfo = getTypeInfo(unionValue, data);
+    const typeInfo = getTypeInfo(unionValue, data, context);
     renderSchemaFrontmatter({
       context: { ...context, schema: unionValue },
       propertyName: topLevelName,
@@ -511,7 +544,7 @@ export function renderSchema({
   }
 
   function renderBasicItems(primitiveValue: SchemaValue) {
-    const typeInfo = getTypeInfo(primitiveValue, data);
+    const typeInfo = getTypeInfo(primitiveValue, data, context);
     renderSchemaFrontmatter({
       context: { ...context, schema: primitiveValue },
       propertyName: topLevelName,
