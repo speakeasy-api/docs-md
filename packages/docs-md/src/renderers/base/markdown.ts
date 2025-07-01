@@ -3,7 +3,7 @@ import { join, resolve } from "node:path";
 import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from "../../util/settings.ts";
 import type {
-  RendererAppendCodeBlockArgs,
+  RendererAppendCodeArgs,
   RendererAppendHeadingArgs,
   RendererAppendListArgs,
   RendererAppendTextArgs,
@@ -119,20 +119,24 @@ export abstract class MarkdownRenderer extends Renderer {
     this[rendererLines].push(this.createText(...args));
   }
 
-  public createCodeBlock(...[text, options]: RendererAppendCodeBlockArgs) {
+  public createCode(...[text, options]: RendererAppendCodeArgs) {
     if (options?.variant === "raw") {
+      if (options.style === "inline") {
+        return `<code>${text}</code>`;
+      }
       return `<pre>
 <code>
-${text}
-</code>
-</pre>`;
+${text}\n</code>\n</pre>`;
     } else {
+      if (options?.style === "inline") {
+        return `\`${text}\``;
+      }
       return `\`\`\`${options?.language ?? ""}\n${text}\n\`\`\``;
     }
   }
 
-  public appendCodeBlock(...args: RendererAppendCodeBlockArgs) {
-    this[rendererLines].push(this.createCodeBlock(...args));
+  public appendCode(...args: RendererAppendCodeArgs) {
+    this[rendererLines].push(this.createCode(...args));
   }
 
   public createList(

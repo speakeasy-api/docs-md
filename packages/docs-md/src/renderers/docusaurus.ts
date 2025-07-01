@@ -4,7 +4,7 @@ import { getSettings } from "../util/settings.ts";
 import { rendererLines } from "./base/markdown.ts";
 import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import type {
-  RendererAppendCodeBlockArgs,
+  RendererAppendCodeArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
   RendererInsertFrontMatterArgs,
@@ -107,10 +107,11 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 ---`;
   }
 
-  public override createCodeBlock(
-    ...[text, options]: RendererAppendCodeBlockArgs
-  ) {
+  public override createCode(...[text, options]: RendererAppendCodeArgs) {
     if (options?.variant === "raw") {
+      if (options.style === "inline") {
+        return `<code>${this.escapeText(text, { escape: "html" })}</code>`;
+      }
       return `<pre style={{
   backgroundColor: "var(--ifm-code-background)",
   border: "0.1rem solid rgba(0, 0, 0, 0.1)",
@@ -124,12 +125,12 @@ ${this.escapeText(text, { escape: "html" })}
 </code>
 </pre>`;
     } else {
-      return super.createCodeBlock(text, options);
+      return super.createCode(text, options);
     }
   }
 
-  public override appendCodeBlock(...args: RendererAppendCodeBlockArgs) {
-    this.appendText(this.createCodeBlock(...args), { escape: "none" });
+  public override appendCode(...args: RendererAppendCodeArgs) {
+    this.appendText(this.createCode(...args), { escape: "none" });
   }
 
   public override appendSidebarLink(

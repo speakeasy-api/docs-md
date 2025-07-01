@@ -21,7 +21,7 @@ export type RendererAppendHeadingArgs = [
   options?: AppendOptions & { id?: string },
 ];
 export type RendererAppendTextArgs = [text: string, options?: AppendOptions];
-export type RendererAppendCodeBlockArgs = [
+export type RendererAppendCodeArgs = [
   text: string,
   options?:
     | {
@@ -36,6 +36,14 @@ export type RendererAppendCodeBlockArgs = [
          * variant is `default`.
          */
         language?: string;
+        /**
+         * The style to use for the code block. If the style is "block", then
+         * the code will be rendered using <pre> + <code> tags for raw variants,
+         * and triple backtick blocks for default variants. If the style is
+         * "inline", then the code will be rendered using just a <code> tag for
+         * raw variants, and a single backtick for default variants.
+         */
+        style?: "block" | "inline";
       }
     | {
         /**
@@ -49,6 +57,14 @@ export type RendererAppendCodeBlockArgs = [
          * variant is `default`.
          */
         language?: never;
+        /**
+         * The style to use for the code block. If the style is "block", then
+         * the code will be rendered using <pre> + <code> tags for raw variants,
+         * and triple backtick blocks for default variants. If the style is
+         * "inline", then the code will be rendered using just a <code> tag for
+         * raw variants, and a single backtick for default variants.
+         */
+        style?: "block" | "inline";
       },
 ];
 export type RendererAppendListArgs = [items: string[], options?: AppendOptions];
@@ -76,21 +92,21 @@ export abstract class Renderer {
   // variants that append/insert the content into the current page.
   abstract createHeading(...args: RendererAppendHeadingArgs): void;
   abstract appendHeading(...args: RendererAppendHeadingArgs): void;
-  abstract createText(...args: RendererAppendTextArgs): void;
+  abstract createText(...args: RendererAppendTextArgs): string;
   abstract appendText(...args: RendererAppendTextArgs): void;
-  abstract createCodeBlock(...args: RendererAppendCodeBlockArgs): void;
-  abstract appendCodeBlock(...args: RendererAppendCodeBlockArgs): void;
-  abstract createList(...args: RendererAppendListArgs): void;
+  abstract createCode(...args: RendererAppendCodeArgs): string;
+  abstract appendCode(...args: RendererAppendCodeArgs): void;
+  abstract createList(...args: RendererAppendListArgs): string;
   abstract appendList(...args: RendererAppendListArgs): void;
   abstract createExpandableSectionStart(
     ...args: RendererBeginExpandableSectionArgs
-  ): void;
+  ): string;
   abstract appendExpandableSectionStart(
     ...args: RendererBeginExpandableSectionArgs
   ): void;
   abstract createExpandableSectionEnd(
     ...args: RendererEndExpandableSectionArgs
-  ): void;
+  ): string;
   abstract appendExpandableSectionEnd(
     ...args: RendererEndExpandableSectionArgs
   ): void;

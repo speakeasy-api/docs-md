@@ -1,5 +1,5 @@
-import type { ParsedSettings } from "../types/settings.ts";
 import type { Site } from "../renderers/base/site.ts";
+import type { ParsedSettings } from "../types/settings.ts";
 import { setSettings } from "../util/settings.ts";
 import type { DocsCodeSnippets } from "./codeSnippets/generateCodeSnippets.ts";
 import { generateCodeSnippets } from "./codeSnippets/generateCodeSnippets.ts";

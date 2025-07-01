@@ -1,8 +1,8 @@
 import { snakeCase } from "change-case";
 
-import type { Chunk, OperationChunk } from "../../../types/chunk.ts";
 import type { Renderer } from "../../../renderers/base/renderer.ts";
 import type { Site } from "../../../renderers/base/site.ts";
+import type { Chunk, OperationChunk } from "../../../types/chunk.ts";
 import { getSettings } from "../../../util/settings.ts";
 import type { DocsCodeSnippets } from "../../codeSnippets/generateCodeSnippets.ts";
 import { getSchemaFromId } from "../util.ts";
@@ -16,6 +16,9 @@ type RenderOperationOptions = {
   baseHeadingLevel: number;
   docsCodeSnippets: DocsCodeSnippets;
 };
+
+// TODO: should make heading ID separator configurable, since different
+// implementations seem to strip out different characters
 
 export function renderOperation({
   renderer,

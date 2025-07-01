@@ -1,3 +1,5 @@
+import type { Renderer } from "../../../renderers/base/renderer.ts";
+import type { Site } from "../../../renderers/base/site.ts";
 import type {
   ArrayValue,
   Chunk,
@@ -7,8 +9,6 @@ import type {
   SetValue,
   UnionValue,
 } from "../../../types/chunk.ts";
-import type { Renderer } from "../../../renderers/base/renderer.ts";
-import type { Site } from "../../../renderers/base/site.ts";
 import { assertNever } from "../../../util/assertNever.ts";
 import { InternalError } from "../../../util/internalError.ts";
 import { getSettings } from "../../../util/settings.ts";
@@ -295,13 +295,22 @@ function renderNameAndType({
         id: context.idPrefix + `+${propertyName}`,
       }
     );
-    context.renderer.appendCodeBlock(computedDisplayType.content, {
+    context.renderer.appendCode(computedDisplayType.content, {
       variant: "raw",
     });
   } else {
+    const name = context.renderer.escapeText(annotatedPropertyName, {
+      escape: "markdown",
+    });
+    const type = context.renderer.createCode(
+      context.renderer.escapeText(computedDisplayType.content, {
+        escape: "mdx",
+      }),
+      { variant: "raw", style: "inline" }
+    );
     context.renderer.appendHeading(
       context.baseHeadingLevel,
-      `${context.renderer.escapeText(annotatedPropertyName, { escape: "markdown" })}: \`${context.renderer.escapeText(computedDisplayType.content, { escape: "mdx" })}\``,
+      `${name}: ${type}`,
       { escape: "none", id: context.idPrefix + `+${propertyName}` }
     );
   }
@@ -334,7 +343,7 @@ function renderSchemaFrontmatter({
       `_${context.schema.examples.length > 1 ? "Examples" : "Example"}:_`
     );
     for (const example of context.schema.examples) {
-      context.renderer.appendCodeBlock(example);
+      context.renderer.appendCode(example);
     }
   }
 

@@ -4,7 +4,8 @@ import { getSettings } from "../util/settings.ts";
 import { rendererLines } from "./base/markdown.ts";
 import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import type {
-  RendererAppendCodeBlockArgs,
+  RendererAppendCodeArgs,
+  RendererAppendHeadingArgs,
   RendererAppendSidebarLinkArgs,
   RendererInsertFrontMatterArgs,
 } from "./base/renderer.ts";
@@ -67,10 +68,26 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 ---`;
   }
 
-  public override createCodeBlock(
-    ...[text, options]: RendererAppendCodeBlockArgs
+  public override createHeading(
+    ...[
+      level,
+      text,
+      { escape = "markdown", id } = {},
+    ]: RendererAppendHeadingArgs
   ) {
+    let line = `${`#`.repeat(level)} ${this.escapeText(text, { escape })}`;
+    if (id) {
+      // Oddly enough, Nextra uses a different syntax for heading IDs
+      line += ` [#${id}]`;
+    }
+    return line;
+  }
+
+  public override createCode(...[text, options]: RendererAppendCodeArgs) {
     if (options?.variant === "raw") {
+      if (options.style === "inline") {
+        return `<code className="nextra-code">${this.escapeText(text, { escape: "html" })}</code>`;
+      }
       return `<pre className="x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose">
 <code className="nextra-code">
 ${this.escapeText(text, { escape: "html" })
@@ -82,12 +99,12 @@ ${this.escapeText(text, { escape: "html" })
 </code>
 </pre>`;
     } else {
-      return super.createCodeBlock(text, options);
+      return super.createCode(text, options);
     }
   }
 
-  public override appendCodeBlock(...args: RendererAppendCodeBlockArgs) {
-    this.appendText(this.createCodeBlock(...args), { escape: "none" });
+  public override appendCode(...args: RendererAppendCodeArgs) {
+    this.appendText(this.createCode(...args), { escape: "none" });
   }
 
   public override appendSidebarLink(
