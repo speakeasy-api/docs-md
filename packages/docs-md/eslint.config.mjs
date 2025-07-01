@@ -33,6 +33,13 @@ export default [
         message:
           "File system access is only allowed in the CLI wrapper because other code is used in web environments",
       },
+      {
+        type: "third-party",
+        moduleSpecifier: /^node:/,
+        denied: [/src\/components\//],
+        message:
+          "Components run in an environment that doesn't have access to Node.js modules",
+      },
     ],
   }),
   // Disable unused exports rule for Storybook files
