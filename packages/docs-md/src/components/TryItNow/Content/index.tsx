@@ -3,7 +3,6 @@
 import type { SandpackPreviewRef } from "@codesandbox/sandpack-react";
 import {
   SandpackCodeEditor,
-  SandpackConsole,
   SandpackLayout,
   SandpackPreview,
   SandpackProvider,
@@ -50,14 +49,7 @@ const TryItNowContents = ({
   return (
     <SandpackLayout>
       {_enableUnsafeAutoImport ? <CodeEditor /> : <SandpackCodeEditor />}
-      <ConsoleOutput />
-      {!error && (
-        <SandpackConsole
-          resetOnPreviewRestart
-          showSetupProgress
-          showRestartButton
-        />
-      )}
+      {!error && <ConsoleOutput />}
       <SandpackPreview ref={ref} style={error ? undefined : styles.preview}>
         {error ? <pre>{error}</pre> : null}
       </SandpackPreview>
