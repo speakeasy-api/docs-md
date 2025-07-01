@@ -35,84 +35,76 @@ function getMaxInlineLength(propertyName: string, indentationLevel: number) {
 // have a font size _smaller_ than paragraph font size, which looks weird.
 const MIN_HEADING_LEVEL = 5;
 
-type TypeLabel = {
+type TypeInfo = {
   label: string;
-  children: TypeLabel[];
-};
-
-type DisplayType = {
-  typeLabel: TypeLabel;
+  children: TypeInfo[];
   breakoutSubTypes: { label: string; schema: SchemaValue }[];
 };
 
-function getDisplayType(
-  value: SchemaValue,
-  data: Map<string, Chunk>
-): DisplayType {
+function getTypeInfo(value: SchemaValue, data: Map<string, Chunk>): TypeInfo {
   switch (value.type) {
     case "object": {
       return {
-        typeLabel: { label: value.name, children: [] },
+        label: value.name,
+        children: [],
         breakoutSubTypes: [{ label: value.name, schema: value }],
       };
     }
     case "array": {
-      const displayType = getDisplayType(value.items, data);
+      const typeInfo = getTypeInfo(value.items, data);
       return {
-        ...displayType,
-        typeLabel: { label: "array", children: [displayType.typeLabel] },
+        ...typeInfo,
+        label: "array",
+        children: [typeInfo],
       };
     }
     case "map": {
-      const displayType = getDisplayType(value.items, data);
+      const typeInfo = getTypeInfo(value.items, data);
       return {
-        ...displayType,
-        typeLabel: { label: "map", children: [displayType.typeLabel] },
+        ...typeInfo,
+        label: "map",
+        children: [typeInfo],
       };
     }
     case "set": {
-      const displayType = getDisplayType(value.items, data);
+      const typeInfo = getTypeInfo(value.items, data);
       return {
-        ...displayType,
-        typeLabel: { label: "set", children: [displayType.typeLabel] },
+        ...typeInfo,
+        label: "set",
+        children: [typeInfo],
       };
     }
     case "union": {
-      const displayTypes = value.values.map((v) => getDisplayType(v, data));
+      const displayTypes = value.values.map((v) => getTypeInfo(v, data));
       const hasBreakoutSubType = displayTypes.some(
         (d) => d.breakoutSubTypes.length > 0
       );
       if (!hasBreakoutSubType) {
         return {
-          typeLabel: {
-            label: "union",
-            children: displayTypes.map((d) => d.typeLabel),
-          },
+          label: "union",
+          children: displayTypes,
           breakoutSubTypes: [],
         };
       }
       const breakoutSubTypes = displayTypes.flatMap((d) => d.breakoutSubTypes);
       return {
-        typeLabel: {
-          label: "union",
-          children: displayTypes.map((d) => d.typeLabel),
-        },
+        label: "union",
+        children: displayTypes,
         breakoutSubTypes,
       };
     }
     case "chunk": {
       const schemaChunk = getSchemaFromId(value.chunkId, data);
-      return getDisplayType(schemaChunk.chunkData.value, data);
+      return getTypeInfo(schemaChunk.chunkData.value, data);
     }
     case "enum": {
       return {
-        typeLabel: {
-          label: "enum",
-          children: value.values.map((v) => ({
-            label: `${typeof v === "string" ? `"${v}"` : v}`,
-            children: [],
-          })),
-        },
+        label: "enum",
+        children: value.values.map((v) => ({
+          label: `${typeof v === "string" ? `"${v}"` : v}`,
+          children: [],
+          breakoutSubTypes: [],
+        })),
         breakoutSubTypes: [],
       };
     }
@@ -130,7 +122,8 @@ function getDisplayType(
     case "null":
     case "any": {
       return {
-        typeLabel: { label: value.type, children: [] },
+        label: value.type,
+        children: [],
         breakoutSubTypes: [],
       };
     }
@@ -140,8 +133,8 @@ function getDisplayType(
   }
 }
 
-function computeDisplayType(typeLabel: TypeLabel, propertyName: string) {
-  const singleLineTypeLabel = computeSingleLineDisplayType(typeLabel);
+function computeDisplayType(typeInfo: TypeInfo, propertyName: string) {
+  const singleLineTypeLabel = computeSingleLineDisplayType(typeInfo);
   // TODO: wire up indentation level here
   if (singleLineTypeLabel.length < getMaxInlineLength(propertyName, 0)) {
     return {
@@ -149,7 +142,7 @@ function computeDisplayType(typeLabel: TypeLabel, propertyName: string) {
       multiline: false,
     };
   }
-  const content = computeMultilineTypeLabel(typeLabel, 0);
+  const content = computeMultilineTypeLabel(typeInfo, 0);
 
   // TODO: sometimes we end up with some blank lines. Ideally the
   // computeMultilineTypeLabel function should handle this, but for now we just
@@ -161,22 +154,23 @@ function computeDisplayType(typeLabel: TypeLabel, propertyName: string) {
   return {
     content: content.contents,
     multiline: true,
+    length: 0,
   };
 }
 
-function computeSingleLineDisplayType(typeLabel: TypeLabel): string {
-  switch (typeLabel.label) {
+function computeSingleLineDisplayType(typeInfo: TypeInfo): string {
+  switch (typeInfo.label) {
     case "array":
     case "map":
     case "set": {
-      return `${typeLabel.label}<${typeLabel.children.map(computeSingleLineDisplayType).join(",")}>`;
+      return `${typeInfo.label}<${typeInfo.children.map(computeSingleLineDisplayType).join(",")}>`;
     }
     case "union":
     case "enum": {
-      return typeLabel.children.map(computeSingleLineDisplayType).join(" | ");
+      return typeInfo.children.map(computeSingleLineDisplayType).join(" | ");
     }
     default: {
-      return typeLabel.label;
+      return typeInfo.label;
     }
   }
 }
@@ -187,16 +181,16 @@ type MultilineTypeLabelEntry = {
 };
 
 function computeMultilineTypeLabel(
-  typeLabel: TypeLabel,
+  typeInfo: TypeInfo,
   indentation: number
 ): MultilineTypeLabelEntry {
   const { maxTypeSignatureLineLength } = getSettings().display;
-  switch (typeLabel.label) {
+  switch (typeInfo.label) {
     case "array":
     case "map":
     case "set": {
       // First, check if we can show this on a single line
-      const singleLineContents = computeSingleLineDisplayType(typeLabel);
+      const singleLineContents = computeSingleLineDisplayType(typeInfo);
       if (
         singleLineContents.length <
         maxTypeSignatureLineLength - indentation
@@ -210,11 +204,11 @@ function computeMultilineTypeLabel(
       // If we got here, we know this will be multiline, so compute each child
       // separately. We'll stitch them together later.
       const children: MultilineTypeLabelEntry[] = [];
-      for (const child of typeLabel.children) {
+      for (const child of typeInfo.children) {
         children.push(computeMultilineTypeLabel(child, indentation + 1));
       }
 
-      let contents = `${typeLabel.label}<\n`;
+      let contents = `${typeInfo.label}<\n`;
       for (const child of children) {
         contents += `${" ".repeat(indentation + 1)}${child.contents}\n`;
       }
@@ -227,7 +221,7 @@ function computeMultilineTypeLabel(
     case "union":
     case "enum": {
       // First, check if we can show this on a single line
-      const singleLineContents = computeSingleLineDisplayType(typeLabel);
+      const singleLineContents = computeSingleLineDisplayType(typeInfo);
       if (
         singleLineContents.length <
         maxTypeSignatureLineLength - indentation
@@ -241,7 +235,7 @@ function computeMultilineTypeLabel(
       // If we got here, we know this will be multiline, so compute each child
       // separately. We'll stitch them together later.
       const children: MultilineTypeLabelEntry[] = [];
-      for (const child of typeLabel.children) {
+      for (const child of typeInfo.children) {
         children.push(computeMultilineTypeLabel(child, 0));
       }
 
@@ -256,7 +250,7 @@ function computeMultilineTypeLabel(
     }
     default: {
       return {
-        contents: typeLabel.label,
+        contents: typeInfo.label,
         multiline: false,
       };
     }
@@ -266,13 +260,13 @@ function computeMultilineTypeLabel(
 function renderNameAndType({
   context,
   propertyName,
-  displayType,
+  typeInfo,
   isRequired,
   isRecursive,
 }: {
   context: SchemaRenderContext;
   propertyName: string;
-  displayType: DisplayType;
+  typeInfo: TypeInfo;
   isRequired: boolean;
   isRecursive: boolean;
 }) {
@@ -284,7 +278,7 @@ function renderNameAndType({
     annotatedPropertyName = `${propertyName} (recursive)`;
   }
   const computedDisplayType = computeDisplayType(
-    displayType.typeLabel,
+    typeInfo,
     annotatedPropertyName
   );
   if (computedDisplayType.multiline) {
@@ -319,18 +313,18 @@ function renderNameAndType({
 function renderSchemaFrontmatter({
   context,
   propertyName,
-  displayType,
+  typeInfo,
   isRequired,
 }: {
   context: SchemaRenderContext;
   propertyName: string;
-  displayType: DisplayType;
+  typeInfo: TypeInfo;
   isRequired: boolean;
 }) {
   renderNameAndType({
     context,
     propertyName,
-    displayType,
+    typeInfo: typeInfo,
     isRequired,
     isRecursive: false,
   });
@@ -357,21 +351,21 @@ function renderSchemaFrontmatter({
 function renderSchemaBreakouts({
   context,
   data,
-  displayType,
+  typeInfo,
 }: {
   context: SchemaRenderContext;
   data: Map<string, Chunk>;
-  displayType: DisplayType;
+  typeInfo: TypeInfo;
 }) {
   const { maxSchemaNesting } = getSettings().display;
-  for (let i = 0; i < displayType.breakoutSubTypes.length; i++) {
+  for (let i = 0; i < typeInfo.breakoutSubTypes.length; i++) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const breakoutSubType = displayType.breakoutSubTypes[i]!;
+    const breakoutSubType = typeInfo.breakoutSubTypes[i]!;
 
     // TODO: this is a quick-n-dirty deduping of breakout types, but if there are
     // two different schemas with the same name they'll be deduped, which is wrong.
     if (
-      displayType.breakoutSubTypes.findIndex(
+      typeInfo.breakoutSubTypes.findIndex(
         (b) => b.label === breakoutSubType.label
       ) !== i
     ) {
@@ -460,32 +454,32 @@ export function renderSchema({
       if (value.type === "chunk") {
         const schemaChunk = getSchemaFromId(value.chunkId, data);
         const schema = schemaChunk.chunkData.value;
-        const displayType = getDisplayType(schema, data);
+        const typeInfo = getTypeInfo(schema, data);
         renderSchemaFrontmatter({
           context: { ...context, schema },
           propertyName: key,
-          displayType,
+          typeInfo: typeInfo,
           isRequired,
         });
         renderSchemaBreakouts({
           context,
           data,
-          displayType,
+          typeInfo,
         });
       } else if (value.type === "enum") {
-        const displayType = getDisplayType(value, data);
+        const typeInfo = getTypeInfo(value, data);
         renderSchemaFrontmatter({
           context: { ...context, schema: value },
           propertyName: key,
-          displayType,
+          typeInfo: typeInfo,
           isRequired,
         });
       } else {
-        const displayType = getDisplayType(value, data);
+        const typeInfo = getTypeInfo(value, data);
         renderSchemaFrontmatter({
           context: { ...context, schema: value },
           propertyName: key,
-          displayType,
+          typeInfo: typeInfo,
           isRequired,
         });
       }
@@ -496,32 +490,32 @@ export function renderSchema({
   function renderArrayLikeItems(
     arrayLikeValue: ArrayValue | MapValue | SetValue
   ) {
-    const displayType = getDisplayType(arrayLikeValue, data);
+    const typeInfo = getTypeInfo(arrayLikeValue, data);
     renderSchemaFrontmatter({
       context: { ...context, schema: arrayLikeValue },
       propertyName: topLevelName,
-      displayType,
+      typeInfo: typeInfo,
       isRequired: true,
     });
   }
 
   function renderUnionItems(unionValue: UnionValue) {
-    const displayType = getDisplayType(unionValue, data);
+    const typeInfo = getTypeInfo(unionValue, data);
     renderSchemaFrontmatter({
       context: { ...context, schema: unionValue },
       propertyName: topLevelName,
-      displayType,
+      typeInfo: typeInfo,
       isRequired: true,
     });
     return;
   }
 
   function renderBasicItems(primitiveValue: SchemaValue) {
-    const displayType = getDisplayType(primitiveValue, data);
+    const typeInfo = getTypeInfo(primitiveValue, data);
     renderSchemaFrontmatter({
       context: { ...context, schema: primitiveValue },
       propertyName: topLevelName,
-      displayType,
+      typeInfo: typeInfo,
       isRequired: true,
     });
   }
