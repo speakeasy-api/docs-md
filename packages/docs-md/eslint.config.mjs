@@ -35,4 +35,11 @@ export default [
       },
     ],
   }),
+  // Disable unused exports rule for Storybook files
+  {
+    files: ["**/*.stories.{ts,tsx}", ".storybook/*.{ts,tsx}"],
+    rules: {
+      "fast-import/no-unused-exports": "off",
+    },
+  },
 ];
