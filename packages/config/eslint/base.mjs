@@ -39,6 +39,7 @@ export const getBaseESLintConfig = ({
         ]
       : undefined),
     ...tseslint.configs.recommendedTypeChecked,
+    ...tseslint.configs.stylisticTypeChecked,
     {
       files: ["**/*.{ts,tsx,mts}"],
       languageOptions: {
@@ -78,6 +79,7 @@ export const getBaseESLintConfig = ({
         "no-return-assign": "error",
         "@typescript-eslint/consistent-type-imports": "error",
         "@typescript-eslint/no-non-null-assertion": "error",
+        "@typescript-eslint/consistent-type-definitions": ["error", "type"],
 
         // TODO: Currently this crashes and so we have to turn it off. It was fixed previously at
         // https://github.com/typescript-eslint/typescript-eslint/issues/10338, but seems to have regressed

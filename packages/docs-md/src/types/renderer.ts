@@ -4,7 +4,7 @@ export type AppendOptions = {
   escape?: Escape;
 };
 
-export interface Renderer {
+export type Renderer = {
   escapeText(text: string, options: { escape: Escape }): string;
 
   insertFrontMatter(options: {
@@ -67,4 +67,4 @@ export interface Renderer {
   }): void;
 
   render(): string;
-}
+};

@@ -1,7 +1,7 @@
 import { dirname, relative } from "node:path";
 
-import type { Renderer } from "../types/renderer.ts";
-import type { Site } from "../types/site.ts";
+import type { Renderer } from "../../types/renderer.ts";
+import type { Site } from "../../types/site.ts";
 import { MarkdownRenderer, MarkdownSite } from "./markdown.ts";
 
 export class MdxSite extends MarkdownSite implements Site {

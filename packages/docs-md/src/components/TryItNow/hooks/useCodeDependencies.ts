@@ -20,7 +20,7 @@ export function useTranspileDependencyMatches(transpiledCode: string) {
     const dependencies = transpiledCode.matchAll(re);
     const dependenciesArray = Array.from(dependencies).reduce(
       (prev, match) => {
-        const dependency = match.groups?.dependency || "";
+        const dependency = match.groups?.dependency ?? "";
         // filter out local dependencies
         if (localImportRegex.test(dependency)) {
           return prev;

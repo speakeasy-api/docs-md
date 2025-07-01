@@ -33,7 +33,7 @@ type TypeLabel = {
 
 type DisplayType = {
   typeLabel: TypeLabel;
-  breakoutSubTypes: Array<{ label: string; schema: SchemaValue }>;
+  breakoutSubTypes: { label: string; schema: SchemaValue }[];
 };
 
 function getDisplayType(
@@ -208,9 +208,7 @@ function computeMultilineTypeLabel(
       }
 
       let contents = `${typeLabel.label}<\n`;
-      for (let i = 0; i < children.length; i++) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        const child = children[i]!;
+      for (const child of children) {
         contents += `${" ".repeat(indentation + 1)}${child.contents}\n`;
       }
       contents += `${" ".repeat(indentation)}>\n`;
@@ -241,9 +239,7 @@ function computeMultilineTypeLabel(
       }
 
       let contents = "\n";
-      for (let i = 0; i < children.length; i++) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        const child = children[i]!;
+      for (const child of children) {
         contents += `${" ".repeat(indentation)}| ${child.contents}\n`;
       }
       return {

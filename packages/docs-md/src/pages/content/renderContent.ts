@@ -36,7 +36,7 @@ function getPageMap(site: Site, data: Data) {
   // Get the about page
   for (const [, chunk] of data) {
     if (chunk.chunkType === "about") {
-      pageMap.set(site.buildPagePath("index"), {
+      pageMap.set(site.buildPagePath("", { appendIndex: true }), {
         type: "chunk",
         sidebarLabel: "About",
         sidebarPosition: "1",
@@ -194,7 +194,7 @@ export function renderContent(
   site: Site,
   data: Data,
   docsCodeSnippets: DocsCodeSnippets
-): Record<string, string> {
+) {
   const pageMap = getPageMap(site, data);
   renderPages(site, pageMap, data, docsCodeSnippets);
   return site.render();

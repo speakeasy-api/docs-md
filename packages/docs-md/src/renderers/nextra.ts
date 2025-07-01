@@ -3,13 +3,19 @@ import { join, resolve } from "node:path";
 import type { Renderer } from "../types/renderer.ts";
 import type { Site } from "../types/site.ts";
 import { getSettings } from "../util/settings.ts";
-import { rendererLines } from "./markdown.ts";
-import { MdxRenderer, MdxSite } from "./mdx.ts";
-import { getEmbedPath, getEmbedSymbol } from "./util.ts";
+import { rendererLines } from "./base/markdown.ts";
+import { MdxRenderer, MdxSite } from "./base/mdx.ts";
+import { getEmbedPath, getEmbedSymbol } from "./base/util.ts";
 
 export class NextraSite extends MdxSite implements Site {
-  public override buildPagePath(slug: string): string {
+  public override buildPagePath(
+    slug: string,
+    { appendIndex = false }: { appendIndex?: boolean } = {}
+  ): string {
     const settings = getSettings();
+    if (appendIndex) {
+      slug += "/index";
+    }
     return resolve(join(settings.output.pageOutDir, `${slug}/page.mdx`));
   }
 

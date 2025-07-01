@@ -9,7 +9,7 @@ import { unzipSync } from "node:zlib";
 import type { Chunk } from "../../types/chunk.ts";
 declare class Go {
   argv: string[];
-  env: { [envKey: string]: string };
+  env: Record<string, string>;
   exit: (code: number) => void;
   importObject: WebAssembly.Imports;
   exited: boolean;

@@ -1,11 +1,16 @@
 import { z } from "zod";
 
+import type { Site } from "./site.ts";
+
 export const settingsSchema = z.strictObject({
   spec: z.string(),
   output: z.strictObject({
     pageOutDir: z.string(),
     componentOutDir: z.string(),
-    framework: z.enum(["docusaurus", "nextra"]),
+    framework: z.enum(["docusaurus", "nextra", "custom"]),
+    createSite: z.function().optional() as z.ZodOptional<
+      z.ZodType<(() => Site) | undefined>
+    >,
   }),
   display: z
     .strictObject({
@@ -28,4 +33,6 @@ export const settingsSchema = z.strictObject({
     .optional(),
 });
 
-export type Settings = z.infer<typeof settingsSchema>;
+export type ParsedSettings = z.infer<typeof settingsSchema>;
+export type Settings = Pick<ParsedSettings, "spec" | "output"> &
+  Partial<Pick<ParsedSettings, "display" | "tryItNow">>;

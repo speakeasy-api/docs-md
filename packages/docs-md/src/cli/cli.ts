@@ -9,6 +9,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { dirname, isAbsolute, join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 import arg from "arg";
 import { load } from "js-yaml";
@@ -17,7 +18,8 @@ import z from "zod/v4";
 import { generatePages } from "../pages/generatePages.ts";
 import { DocusaurusSite } from "../renderers/docusaurus.ts";
 import { NextraSite } from "../renderers/nextra.ts";
-import { type Settings, settingsSchema } from "../types/settings.ts";
+import type { ParsedSettings } from "../types/settings.ts";
+import { settingsSchema } from "../types/settings.ts";
 import type { Site } from "../types/site.ts";
 import { assertNever } from "../util/assertNever.ts";
 
@@ -53,13 +55,21 @@ if (args["--help"]) {
   process.exit(0);
 }
 
-function reportError(msg: string): never {
-  console.error(msg + "\n");
+function reportError(message: string): never {
+  console.error(message + "\n");
   printHelp();
   process.exit(1);
 }
 
-async function getSettings(): Promise<Settings> {
+// TODO: add TypeScript support here
+async function importConfigFile(configFilePath: string): Promise<unknown> {
+  return (
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    (await import(pathToFileURL(configFilePath).href)).default as unknown
+  );
+}
+
+async function getSettings(): Promise<ParsedSettings> {
   // First, determine the config file path
   let configFilePath = args["--config"];
   if (!configFilePath) {
@@ -94,9 +104,7 @@ async function getSettings(): Promise<Settings> {
   // user-friendly error message than the standard thrown exception
   let configFileImport: Record<string, unknown>;
   try {
-    // TODO: this _probably_ doesn't work for CommonJS. Not sure we care though
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    const importedConfig = (await import(configFilePath)).default as unknown;
+    const importedConfig = await importConfigFile(configFilePath);
     if (typeof importedConfig !== "object" || importedConfig === null) {
       reportError(`The default export in the config file must be an object`);
     }
@@ -107,9 +115,7 @@ async function getSettings(): Promise<Settings> {
     );
   }
 
-  if (!configFileImport.output) {
-    configFileImport.output = {};
-  }
+  configFileImport.output ??= {};
 
   // Parse the settings using Zod to ensure accuracy
   const configFileContents = settingsSchema.safeParse(configFileImport);
@@ -161,6 +167,15 @@ switch (settings.output.framework) {
   }
   case "nextra": {
     site = new NextraSite();
+    break;
+  }
+  case "custom": {
+    if (!settings.output.createSite) {
+      throw new Error(
+        "output.createSite must be specified when using a custom framework"
+      );
+    }
+    site = settings.output.createSite();
     break;
   }
   default: {
