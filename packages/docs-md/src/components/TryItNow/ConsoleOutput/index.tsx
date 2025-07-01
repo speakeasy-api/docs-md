@@ -23,7 +23,7 @@ const encodeLog = (log: SandpackConsoleData): Message => {
   if (!log.data) {
     return Decode([]) as Message;
   }
-  const modifiedDataArray = log.data as [Message, string];
+  const modifiedDataArray = log.data;
   if (Array.isArray(modifiedDataArray)) {
     // Due to formatting changes with console-feed's encode function in v3.4
     // we need to manually add in the remainder key to note that there
