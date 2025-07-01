@@ -51,7 +51,13 @@ function getTypeInfo(
     case "object": {
       return {
         label: value.name,
-        linkedLabel: `<a href="#${context.idPrefix}+${value.name}">${value.name}</a>`,
+        // TODO: add the link back in. Turns out there are focus issues when
+        // the details tab is collapsed. We're going to need a custom React
+        // component to auto-expand the details tab when the link is clicked.
+        // Fortunately, we're about to introduce a custom component as part of
+        // a larger styling refactor, so I'm punting on this for now.
+        linkedLabel: value.name,
+        // linkedLabel: `<a href="#${context.idPrefix}+${value.name}">${value.name}</a>`,
         children: [],
         breakoutSubTypes: [{ label: value.name, schema: value }],
       };
