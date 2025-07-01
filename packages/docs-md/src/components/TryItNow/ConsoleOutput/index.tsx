@@ -30,6 +30,7 @@ const encodeLog = (log: SandpackConsoleData): Message => {
     // are no more items remaining
     modifiedDataArray.push("__console_feed_remaining__0");
     // Objects all need to have a constructor property now too
+    // unless it is null
     modifiedDataArray.forEach((dataItem) => {
       if (
         typeof dataItem !== "string" &&
