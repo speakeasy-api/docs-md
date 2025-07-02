@@ -110,7 +110,8 @@ export type RendererAppendCodeArgs = [
 export type RendererAppendListArgs = [items: string[], options?: AppendOptions];
 export type RendererBeginExpandableSectionArgs = [
   title: string,
-  options?: { isOpenOnLoad?: boolean } & AppendOptions,
+  id: string,
+  options?: AppendOptions,
 ];
 export type RendererAppendSidebarLinkArgs = [
   options: {

@@ -135,11 +135,12 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })}
   public override createExpandableSectionStart(
     ...[
       title,
-      { isOpenOnLoad = false, escape = "markdown" } = {},
+      id,
+      { escape = "markdown" } = {},
     ]: RendererBeginExpandableSectionArgs
   ) {
     this.insertThirdPartyImport("ExpandableSection", "@speakeasy-api/docs-md");
-    return `<ExpandableSection.Docusaurus isOpenOnLoad={${isOpenOnLoad}} title="${this.escapeText(title, { escape })}">`;
+    return `<ExpandableSection.Docusaurus title="${this.escapeText(title, { escape })}" id="${id}">`;
   }
 
   public override createExpandableSectionEnd() {

@@ -152,10 +152,11 @@ ${text}\n</code>\n</pre>`;
   public createExpandableSectionStart(
     ...[
       title,
-      { isOpenOnLoad = false, escape = "markdown" } = {},
+      id,
+      { escape = "markdown" } = {},
     ]: RendererBeginExpandableSectionArgs
   ) {
-    return `<details ${isOpenOnLoad ? "open" : ""}>\n\n<summary>${this.escapeText(title, { escape })}</summary>`;
+    return `<details id="${id}">\n\n<summary>${this.escapeText(title, { escape })}</summary>`;
   }
 
   public appendExpandableSectionStart(

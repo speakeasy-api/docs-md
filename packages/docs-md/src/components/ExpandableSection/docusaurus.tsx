@@ -4,6 +4,7 @@ import type { ExpandableSectionProps } from "./types.ts";
 
 export function DocusaurusExpandableSection({
   title,
+  id,
   children,
 }: ExpandableSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +39,7 @@ export function DocusaurusExpandableSection({
           alignItems: "center",
           gap: "0.25rem 0.5rem",
         }}
+        id={id}
       >
         <div
           style={{
