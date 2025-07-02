@@ -112,7 +112,6 @@ export type RendererBeginExpandableSectionArgs = [
   title: string,
   options?: { isOpenOnLoad?: boolean } & AppendOptions,
 ];
-type RendererEndExpandableSectionArgs = [];
 export type RendererAppendSidebarLinkArgs = [
   options: {
     title: string;
@@ -144,12 +143,8 @@ export abstract class Renderer {
   abstract appendExpandableSectionStart(
     ...args: RendererBeginExpandableSectionArgs
   ): void;
-  abstract createExpandableSectionEnd(
-    ...args: RendererEndExpandableSectionArgs
-  ): string;
-  abstract appendExpandableSectionEnd(
-    ...args: RendererEndExpandableSectionArgs
-  ): void;
+  abstract createExpandableSectionEnd(): string;
+  abstract appendExpandableSectionEnd(): void;
 
   // The following methods are used to insert complex content onto the page,
   // and so they don't have "create" variants.

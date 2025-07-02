@@ -5,6 +5,7 @@ import type {
   RendererAppendCodeArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
+  RendererBeginExpandableSectionArgs,
   RendererInsertFrontMatterArgs,
   SiteBuildPagePathArgs,
   SiteGetRendererArgs,
@@ -129,6 +130,20 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })}
 
   public override appendCode(...args: RendererAppendCodeArgs) {
     this.appendText(this.createCode(...args), { escape: "none" });
+  }
+
+  public override createExpandableSectionStart(
+    ...[
+      title,
+      { isOpenOnLoad = false, escape = "markdown" } = {},
+    ]: RendererBeginExpandableSectionArgs
+  ) {
+    this.insertThirdPartyImport("ExpandableSection", "@speakeasy-api/docs-md");
+    return `<ExpandableSection.Docusaurus isOpenOnLoad={${isOpenOnLoad}} title="${this.escapeText(title, { escape })}">`;
+  }
+
+  public override createExpandableSectionEnd() {
+    return "</ExpandableSection.Docusaurus>";
   }
 
   public override appendSidebarLink(

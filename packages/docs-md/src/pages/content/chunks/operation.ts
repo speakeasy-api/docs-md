@@ -119,7 +119,6 @@ export function renderOperation({
   }
 
   const { tryItNow } = getSettings();
-
   const usageSnippet = docsCodeSnippets[chunk.id];
   if (usageSnippet && tryItNow) {
     renderer.appendHeading(baseHeadingLevel + 1, "Try it Now", {

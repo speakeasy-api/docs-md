@@ -457,6 +457,9 @@ function renderSchemaBreakouts({
     }
 
     // Otherwise, render the schema inline
+    context.renderer.appendExpandableSectionStart(breakoutSubType.label, {
+      isOpenOnLoad: context.schemaStack.length === 0,
+    });
     renderSchema({
       context: {
         ...context,
@@ -471,6 +474,7 @@ function renderSchemaBreakouts({
       data,
       topLevelName: breakoutSubType.label,
     });
+    context.renderer.appendExpandableSectionEnd();
   }
 }
 
@@ -484,9 +488,6 @@ export function renderSchema({
   topLevelName: string;
 }) {
   function renderObjectProperties(objectValue: ObjectValue) {
-    context.renderer.appendExpandableSectionStart(topLevelName, {
-      isOpenOnLoad: context.schemaStack.length === 0,
-    });
     for (const [key, value] of Object.entries(objectValue.properties)) {
       const isRequired = objectValue.required?.includes(key) ?? false;
       if (value.type === "chunk") {
@@ -522,7 +523,6 @@ export function renderSchema({
         });
       }
     }
-    context.renderer.appendExpandableSectionEnd();
   }
 
   function renderArrayLikeItems(
