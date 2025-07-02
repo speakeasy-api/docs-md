@@ -44,7 +44,13 @@ export function DocusaurusExpandableSection({
         margin: "2rem 0 1rem 0",
 
         transition: "height 0.2s ease-in-out",
+
+        // TODO: this is a magic number I found by trial and error. I don't know
+        // why it's needed, but without it we don't scroll to the right place.
+        // This may not be consistent across different Docusaurus instances
+        scrollMarginTop: "6rem",
       }}
+      id={id}
     >
       <button
         onClick={onClick}
@@ -66,7 +72,6 @@ export function DocusaurusExpandableSection({
           // should be `--ifm-heading-h5-font-size`, but it doesn't exist. It's `--ifm-h5-font-size` instead.
           fontSize: "var(--ifm-h5-font-size)",
         }}
-        id={id}
       >
         <div
           style={{
