@@ -1,3 +1,41 @@
+// We use a fairly unusual way of defining argument types for methods. We do
+// this to work around some conflicting challenges:
+//
+// 1. In a derived TypeScript class, we can't inherit the argument types from
+//    the base class, so we have to define them again. This gets cumbersome and
+//    error prone when dealing with complicated arguments, such as to createCode
+// 2. We want to reuse the implementation of a parent class's method in a child
+//    implementation by way of super.method().
+//
+// Normally we'd do `class Foo { prop: SomeTime = () => {} }` to get a complex,
+// named type assigned to a method. Unfortunately, super.method() doesn't work
+// in a class property though, so we have to get creative.
+//
+// The approach we use is to define a type _just_ for the function arguments,
+// defined as a tuple. We can then use the spread operator to assign that type
+// to all arguments. It's a bit verbose and convoluted, but solves both 1 and 2
+
+// Argument types for Site interface methods
+export type SiteCreatePageArgs = [path: string];
+export type SiteBuildPagePathArgs = [
+  slug: string,
+  options?: { appendIndex?: boolean },
+];
+export type SiteHasPageArgs = [path: string];
+export type SiteGetRendererArgs = [
+  {
+    currentPagePath: string;
+  },
+];
+
+export abstract class Site {
+  abstract createPage(...args: SiteCreatePageArgs): Renderer;
+  abstract render(): Record<string, string>;
+  abstract buildPagePath(...args: SiteBuildPagePathArgs): string;
+  abstract hasPage(...args: SiteHasPageArgs): boolean;
+  protected abstract getRenderer(...args: SiteGetRendererArgs): Renderer;
+}
+
 type Escape = "markdown" | "html" | "mdx" | "none";
 
 type AppendOptions = {

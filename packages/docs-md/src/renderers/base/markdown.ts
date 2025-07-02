@@ -9,14 +9,12 @@ import type {
   RendererAppendTextArgs,
   RendererBeginExpandableSectionArgs,
   RendererEscapeTextArgs,
-} from "./renderer.ts";
-import { Renderer } from "./renderer.ts";
-import {
-  Site,
-  type SiteBuildPagePathArgs,
-  type SiteCreatePageArgs,
-  type SiteHasPageArgs,
-} from "./site.ts";
+  SiteBuildPagePathArgs,
+  SiteCreatePageArgs,
+  SiteHasPageArgs,
+} from "./base.ts";
+import { Renderer } from "./base.ts";
+import { Site } from "./base.ts";
 
 export abstract class MarkdownSite extends Site {
   #pages = new Map<string, Renderer>();

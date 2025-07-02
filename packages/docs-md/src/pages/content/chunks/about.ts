@@ -1,4 +1,4 @@
-import type { Renderer } from "../../../renderers/base/renderer.ts";
+import type { Renderer } from "../../../renderers/base/base.ts";
 import type { AboutChunk } from "../../../types/chunk.ts";
 
 export function renderAbout(renderer: Renderer, chunk: AboutChunk) {

@@ -1,18 +1,16 @@
 import { join, resolve } from "node:path";
 
 import { getSettings } from "../util/settings.ts";
-import { rendererLines } from "./base/markdown.ts";
-import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import type {
   RendererAppendCodeArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
   RendererInsertFrontMatterArgs,
-} from "./base/renderer.ts";
-import type {
   SiteBuildPagePathArgs,
   SiteGetRendererArgs,
-} from "./base/site.ts";
+} from "./base/base.ts";
+import { rendererLines } from "./base/markdown.ts";
+import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import { getEmbedPath, getEmbedSymbol } from "./base/util.ts";
 
 export class DocusaurusSite extends MdxSite {

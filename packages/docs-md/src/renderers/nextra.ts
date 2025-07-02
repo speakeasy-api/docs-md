@@ -1,16 +1,16 @@
 import { join, resolve } from "node:path";
 
 import { getSettings } from "../util/settings.ts";
-import { rendererLines } from "./base/markdown.ts";
-import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import type {
   RendererAppendCodeArgs,
   RendererAppendHeadingArgs,
   RendererAppendSidebarLinkArgs,
   RendererInsertFrontMatterArgs,
-} from "./base/renderer.ts";
-import type { SiteGetRendererArgs } from "./base/site.ts";
-import { type SiteBuildPagePathArgs } from "./base/site.ts";
+  SiteBuildPagePathArgs,
+  SiteGetRendererArgs,
+} from "./base/base.ts";
+import { rendererLines } from "./base/markdown.ts";
+import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import { getEmbedPath, getEmbedSymbol } from "./base/util.ts";
 
 export class NextraSite extends MdxSite {
