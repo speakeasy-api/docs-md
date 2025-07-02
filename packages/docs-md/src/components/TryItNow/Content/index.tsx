@@ -9,6 +9,7 @@ import {
   useErrorMessage,
 } from "@codesandbox/sandpack-react";
 import { useAtomValue } from "jotai";
+import type { PartialDeep } from "type-fest";
 
 import { CodeEditor } from "../CodeEditor/index.tsx";
 import { ConsoleOutput } from "../ConsoleOutput/index.tsx";
@@ -18,10 +19,6 @@ import { styles } from "../styles.ts";
 type DependencyName = string;
 type DependencyVersion = string;
 type Dependencies = Record<DependencyName, DependencyVersion>;
-
-type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
-};
 
 export type TryItNowProps = {
   /**
@@ -39,7 +36,7 @@ export type TryItNowProps = {
    * as imports.
    */
   _enableUnsafeAutoImport?: boolean;
-  theme?: DeepPartial<SandpackTheme> | "auto" | "dark" | "light";
+  theme?: PartialDeep<SandpackTheme> | "auto" | "dark" | "light";
   layoutStyle?: React.CSSProperties;
 };
 
