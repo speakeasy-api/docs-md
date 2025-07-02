@@ -1,60 +1,41 @@
 import { usePrismTheme } from "@docusaurus/theme-common";
+import { useCallback, useMemo } from "react";
 
 import type { TryItNowProps } from "./Content/index.tsx";
 import { Content } from "./Content/index.tsx";
 
 type PrismThemeEntry = {
   color?: string;
-  cursor?: string;
   background?: string;
-  backgroundImage?: string;
   backgroundColor?: string;
-  textShadow?: string;
   fontStyle?: "normal" | "italic";
-  fontWeight?:
-    | "normal"
-    | "bold"
-    | "100"
-    | "200"
-    | "300"
-    | "400"
-    | "500"
-    | "600"
-    | "700"
-    | "800"
-    | "900";
-  textDecorationLine?:
-    | "none"
-    | "underline"
-    | "line-through"
-    | "underline line-through";
-  opacity?: number;
 };
 
 export const TryItNowDocusaurus = (props: TryItNowProps) => {
   const prismTheme = usePrismTheme();
 
-  const parsedPrismTheme = (theme: ReturnType<typeof usePrismTheme>) => {
-    const colorThemeMap = new Map<string, PrismThemeEntry>();
-    const styles = theme.styles;
-    const plain = theme.plain;
-    colorThemeMap.set("plain", {
-      color: plain.color,
-      backgroundColor: plain.backgroundColor,
-    });
-
-    styles.forEach(({ types, style }) => {
-      types.forEach((type) => {
-        colorThemeMap.set(type, style);
+  const parsePrismTheme = useCallback(
+    (theme: ReturnType<typeof usePrismTheme>) => {
+      const colorThemeMap = new Map<string, PrismThemeEntry>();
+      const styles = theme.styles;
+      const plain = theme.plain;
+      colorThemeMap.set("plain", {
+        color: plain.color,
+        backgroundColor: plain.backgroundColor,
       });
-    });
-    return colorThemeMap;
-  };
 
-  const generateSandpackTheme = (
-    theme: ReturnType<typeof usePrismTheme>
-  ): TryItNowProps["theme"] => {
-    const colorThemeMap = parsedPrismTheme(theme);
+      styles.forEach(({ types, style }) => {
+        types.forEach((type) => {
+          colorThemeMap.set(type, style);
+        });
+      });
+      return colorThemeMap;
+    },
+    []
+  );
+
+  const sandpackTheme = useMemo((): TryItNowProps["theme"] => {
+    const colorThemeMap = parsePrismTheme(prismTheme);
     return {
       colors: {
         base: colorThemeMap.get("plain")?.color,
@@ -71,14 +52,11 @@ export const TryItNowDocusaurus = (props: TryItNowProps) => {
         punctuation: colorThemeMap.get("punctuation")?.color,
       },
     };
-  };
-
-  const sandpackTheme = generateSandpackTheme(prismTheme);
+  }, [prismTheme, parsePrismTheme]);
 
   return (
     <Content
       layoutStyle={{
-        backgroundColor: `var(--ifm-background-surface-color)`,
         borderRadius: `var(--ifm-global-radius)`,
         boxShadow: `var(--ifm-global-shadow-lw)`,
       }}

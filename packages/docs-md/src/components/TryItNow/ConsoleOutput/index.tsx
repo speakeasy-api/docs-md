@@ -1,4 +1,7 @@
-import { useSandpackConsole } from "@codesandbox/sandpack-react";
+import {
+  useSandpackConsole,
+  useSandpackTheme,
+} from "@codesandbox/sandpack-react";
 import { Console, Decode } from "console-feed";
 import type { Methods } from "console-feed/lib/definitions/Methods.js";
 import { useEffect, useState } from "react";
@@ -58,6 +61,7 @@ const encodeLog = (log: SandpackConsoleData): Message => {
 
 export const ConsoleOutput = () => {
   const [logs, setLogs] = useState<Message[]>([]);
+  const { theme, themeMode } = useSandpackTheme();
   const { logs: sandpackLogs } = useSandpackConsole({
     resetOnPreviewRestart: true,
   });
@@ -75,8 +79,7 @@ export const ConsoleOutput = () => {
         flexDirection: "column",
         gap: "1px",
         overflow: "hidden",
-        background: "var(--sp-colors-surface1)",
-        lineHeight: "var(--sp-font-lineHeight)",
+        backgroundColor: theme.colors.surface1,
       }}
     >
       <div
@@ -92,7 +95,26 @@ export const ConsoleOutput = () => {
             padding: "var(--sp-space-3) var(--sp-space-2)",
           }}
         >
-          <Console logs={logs} />
+          <Console
+            variant={themeMode === "dark" ? "dark" : "light"}
+            styles={{
+              BASE_COLOR: theme.syntax.plain,
+              BASE_FONT_FAMILY: theme.font.mono,
+              BASE_BACKGROUND_COLOR: theme.colors.surface1,
+              BASE_FONT_SIZE: theme.font.size,
+              LOG_COLOR: theme.colors.base,
+
+              OBJECT_VALUE_NULL_COLOR: theme.syntax.property,
+              OBJECT_KEY_COLOR: theme.syntax.property,
+              OBJECT_NAME_COLOR: theme.syntax.property,
+              OBJECT_VALUE_UNDEFINED_COLOR: theme.syntax.plain,
+              OBJECT_VALUE_STRING_COLOR: theme.syntax.string,
+              OBJECT_VALUE_BOOLEAN_COLOR: theme.syntax.static,
+              OBJECT_VALUE_NUMBER_COLOR: theme.syntax.static,
+              OBJECT_VALUE_FUNCTION_KEYWORD_COLOR: theme.syntax.keyword,
+            }}
+            logs={logs}
+          />
         </div>
       </div>
     </div>
