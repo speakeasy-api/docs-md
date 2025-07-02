@@ -120,7 +120,7 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
   verticalAlign: "middle",
 }}>
 <code>
-${this.escapeText(text, { escape: options?.escape ?? "html" })}
+<p style={{ margin: "0" }}>${this.escapeText(text, { escape: options?.escape ?? "html" })}</p>
 </code>
 </pre>`;
     } else {
