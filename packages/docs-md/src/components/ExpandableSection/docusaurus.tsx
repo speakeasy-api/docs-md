@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import type { ExpandableSectionProps } from "./types.ts";
 
@@ -8,6 +8,29 @@ export function DocusaurusExpandableSection({
   children,
 }: ExpandableSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const onClick = useCallback(() => setIsOpen((prev) => !prev), []);
+
+  // Open section when targeted by URL fragment, which happens when the user
+  // clicks on a link in an inline type signature
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1); // Remove the '#'
+      if (hash === id) {
+        setIsOpen(true);
+      }
+    };
+
+    // Check initial hash on mount
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, [id]);
+
   return (
     <div
       style={{
@@ -24,7 +47,7 @@ export function DocusaurusExpandableSection({
       }}
     >
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={onClick}
         style={{
           top: "calc(-1 * var(--ifm-alert-padding-vertical))",
           left: "calc(0.5 * var(--ifm-alert-padding-horizontal))",
@@ -38,12 +61,15 @@ export function DocusaurusExpandableSection({
           display: "flex",
           alignItems: "center",
           gap: "0.25rem 0.5rem",
+          fontWeight: "bold",
+          // Note: the docs at https://docusaurus.community/knowledge/design/css/variables/ say this variable
+          // should be `--ifm-heading-h5-font-size`, but it doesn't exist. It's `--ifm-h5-font-size` instead.
+          fontSize: "var(--ifm-h5-font-size)",
         }}
         id={id}
       >
         <div
           style={{
-            fontWeight: "bold",
             transform: isOpen ? "rotate(180deg)" : "rotate(90deg)",
             transition: "transform 0.2s ease-in-out",
           }}
@@ -56,6 +82,8 @@ export function DocusaurusExpandableSection({
         style={{
           padding: "0 calc(0.5 * var(--ifm-alert-padding-horizontal))",
           display: isOpen ? "block" : "none",
+          // TODO: animate height when expanding closing. Requires knowing the
+          // height up front though it seems.
         }}
       >
         {children}
