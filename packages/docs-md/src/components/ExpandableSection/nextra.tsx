@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useEffect, useState } from "react";
 
 import type { ExpandableSectionProps } from "./types.ts";
@@ -31,24 +33,15 @@ export function ExpandableSection({
     };
   }, [id]);
 
+  /*
+  class="x:not-first:mt-4 x:rounded x:border x:border-gray-200 x:bg-white x:p-2 x:shadow-sm x:dark:border-neutral-800 x:dark:bg-neutral-900 x:overflow-hidden"
+  */
   return (
     <div
+      className="x:not-first:mt-4 x:rounded x:border x:border-gray-200 x:bg-white x:p-2 x:shadow-sm x:dark:border-neutral-800 x:dark:bg-neutral-900 x:overflow-hidden"
       style={{
         position: "relative",
-        backgroundColor: "var(--ifm-hero-background-color)",
-        color: "var(--ifm-hero-text-color)",
-        border:
-          "var(--ifm-global-border-width) solid var(--ifm-blockquote-border-color)",
-        borderRadius: "var(--ifm-global-radius)",
-        boxShadow: "var(--ifm-global-shadow-tl)",
         margin: "2rem 0 1rem 0",
-
-        transition: "height 0.2s ease-in-out",
-
-        // TODO: this is a magic number I found by trial and error. I don't know
-        // why it's needed, but without it we don't scroll to the right place.
-        // This may not be consistent across different Docusaurus instances
-        scrollMarginTop: "6rem",
       }}
       id={id}
     >

@@ -12,7 +12,14 @@ export default [
     rootDir: getDirname(),
     entryPoints: {
       "eslint.config.mjs": ["default"],
-      "src/index.ts": [
+      "src/nextra.ts": [
+        "Settings",
+        "TryItNow",
+        "SideBar",
+        "SideBarTrigger",
+        "ExpandableSection",
+      ],
+      "src/docusaurus.ts": [
         "Settings",
         "TryItNow",
         "SideBar",

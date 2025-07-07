@@ -1,75 +1,23 @@
-"use client";
+// IMPORTANT! This file MUST NOT be marked as "use client", otherwise it will
+// cause Nextra to error when trying to render. This is because MDX files cannot
+// import files marked with "use client", for some reason, but it's perfectly
+// happy to import a server component (this file) that then imports a client
+// component.
 
-import type { PropsWithChildren } from "react";
-import React from "react";
+import type { SideBarTriggerProps } from "./common/containers.tsx";
+import {
+  SideBarContents,
+  SideBarTriggerContents,
+} from "./common/containers.tsx";
+import { DocusaurusSideBar } from "./docusaurus/sidebar.tsx";
+import { DocusaurusSideBarTrigger } from "./docusaurus/sidebarTrigger.tsx";
 
-type SidebarContent = {
-  title: string;
-  content: React.ReactNode;
-};
-
-export function DocusaurusSideBar({
-  content,
-  closeRequest,
-}: {
-  content: SidebarContent;
-  closeRequest: () => void;
-}) {
-  return (
-    <div
-      style={{
-        backgroundColor: "var(--ifm-hero-background-color)",
-        color: "var(--ifm-hero-text-color)",
-        border:
-          "var(--ifm-global-border-width) solid var(--ifm-blockquote-border-color)",
-        borderRadius: "var(--ifm-global-radius)",
-        boxShadow: "var(--ifm-global-shadow-tl)",
-        padding:
-          "var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal)",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <div
-          style={{
-            fontWeight: "bold",
-            // Note: the docs at https://docusaurus.community/knowledge/design/css/variables/ say this variable
-            // should be `--ifm-heading-h3-font-size`, but it doesn't exist. It's `--ifm-h3-font-size` instead.
-            fontSize: "var(--ifm-h3-font-size)",
-          }}
-        >
-          {content?.title}
-        </div>
-        <button onClick={closeRequest}>X</button>
-      </div>
-      <hr
-        style={{
-          height: "1px",
-          backgroundColor: "var(--ifm-breadcrumb-color-active)",
-        }}
-      />
-      {content?.content}
-    </div>
-  );
+export function SideBar() {
+  return <SideBarContents SideBarContainer={DocusaurusSideBar} />;
 }
 
-export function DocusaurusSideBarTrigger({
-  onClick,
-  children,
-}: PropsWithChildren<{ onClick: () => void }>) {
+export function SideBarTrigger(props: SideBarTriggerProps) {
   return (
-    <button
-      onClick={onClick}
-      style={{
-        padding: "8px 16px",
-      }}
-    >
-      {children}
-    </button>
+    <SideBarTriggerContents {...props} Button={DocusaurusSideBarTrigger} />
   );
 }

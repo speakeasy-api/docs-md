@@ -150,11 +150,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   public createExpandableSectionStart(
-    ...[
-      title,
-      id,
-      { escape = "markdown" } = {},
-    ]: RendererBeginExpandableSectionArgs
+    ...[title, id, { escape = "mdx" } = {}]: RendererBeginExpandableSectionArgs
   ) {
     return `<details id="${id}">\n\n<summary>${this.escapeText(title, { escape })}</summary>`;
   }

@@ -128,23 +128,15 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
     }
   }
 
-  public override appendCode(...args: RendererAppendCodeArgs) {
-    this.appendText(this.createCode(...args), { escape: "none" });
-  }
-
   public override createExpandableSectionStart(
-    ...[
-      title,
-      id,
-      { escape = "markdown" } = {},
-    ]: RendererBeginExpandableSectionArgs
+    ...[title, id, { escape = "mdx" } = {}]: RendererBeginExpandableSectionArgs
   ) {
     this.insertThirdPartyImport("ExpandableSection", "@speakeasy-api/docs-md");
-    return `<ExpandableSection.Docusaurus title="${this.escapeText(title, { escape })}" id="${id}">`;
+    return `<ExpandableSection title="${this.escapeText(title, { escape })}" id="${id}">`;
   }
 
   public override createExpandableSectionEnd() {
-    return "</ExpandableSection.Docusaurus>";
+    return "</ExpandableSection>";
   }
 
   public override appendSidebarLink(

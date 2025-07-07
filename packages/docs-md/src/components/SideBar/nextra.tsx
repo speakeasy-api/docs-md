@@ -1,60 +1,21 @@
-"use client";
+// IMPORTANT! This file MUST NOT be marked as "use client", otherwise it will
+// cause Nextra to error when trying to render. This is because MDX files cannot
+// import files marked with "use client", for some reason, but it's perfectly
+// happy to import a server component (this file) that then imports a client
+// component.
 
-import type { PropsWithChildren } from "react";
-import React from "react";
+import type { SideBarTriggerProps } from "./common/containers.tsx";
+import {
+  SideBarContents,
+  SideBarTriggerContents,
+} from "./common/containers.tsx";
+import { NextraSideBar } from "./nextra/sidebar.tsx";
+import { NextraSideBarTrigger } from "./nextra/sidebarTrigger.tsx";
 
-type SidebarContent = {
-  title: string;
-  content: React.ReactNode;
-};
-
-const BASE_BUTTON_CLASS =
-  "x:focus-visible:nextra-focus x:cursor-pointer x:transition-colors x:border x:border-gray-200 x:hover:bg-gray-100 x:dark:hover:bg-neutral-800 x:select-none x:rounded x:flex x:items-center";
-
-export function NextraSideBar({
-  content,
-  closeRequest,
-}: {
-  content: SidebarContent;
-  closeRequest: () => void;
-}) {
-  return (
-    <div className="x:not-first:mt-4 x:rounded x:border x:border-gray-200 x:bg-white x:p-2 x:m-2 x:shadow-sm x:dark:border-neutral-800 x:dark:bg-neutral-900 x:overflow-hidden">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <h4 className="x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:text-lg">
-          {content?.title}
-        </h4>
-        <button
-          onClick={closeRequest}
-          className={BASE_BUTTON_CLASS}
-          // For some bizarre reason, setting the class `x:px-1` on this button
-          // doesn't work, even though it does below and other classes work here
-          style={{ padding: "0 8px" }}
-        >
-          X
-        </button>
-      </div>
-      {content?.content}
-    </div>
-  );
+export function SideBar() {
+  return <SideBarContents SideBarContainer={NextraSideBar} />;
 }
 
-export function NextraSideBarTrigger({
-  onClick,
-  children,
-}: PropsWithChildren<{ onClick: () => void }>) {
-  return (
-    <button
-      onClick={onClick}
-      className={`${BASE_BUTTON_CLASS} x:px-2 x:py-1 x:my-3`}
-    >
-      {children}
-    </button>
-  );
+export function SideBarTrigger(props: SideBarTriggerProps) {
+  return <SideBarTriggerContents {...props} Button={NextraSideBarTrigger} />;
 }

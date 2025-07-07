@@ -5,6 +5,7 @@ import type {
   RendererAppendCodeArgs,
   RendererAppendHeadingArgs,
   RendererAppendSidebarLinkArgs,
+  RendererBeginExpandableSectionArgs,
   RendererInsertFrontMatterArgs,
   SiteBuildPagePathArgs,
   SiteGetRendererArgs,
@@ -103,8 +104,18 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
     }
   }
 
-  public override appendCode(...args: RendererAppendCodeArgs) {
-    this.appendText(this.createCode(...args), { escape: "none" });
+  public override createExpandableSectionStart(
+    ...[title, id, { escape = "mdx" } = {}]: RendererBeginExpandableSectionArgs
+  ) {
+    this.insertThirdPartyImport(
+      "ExpandableSection",
+      "@speakeasy-api/docs-md/nextra"
+    );
+    return `<ExpandableSection title="${this.escapeText(title, { escape })}" id="${id}">`;
+  }
+
+  public override createExpandableSectionEnd() {
+    return "</ExpandableSection>";
   }
 
   public override appendSidebarLink(
