@@ -43,6 +43,11 @@ export function ExpandableSection({
       style={{
         position: "relative",
         margin: "2rem 0 1rem 0",
+
+        // TODO: this is a magic number I found by trial and error. I don't know
+        // why it's needed, but without it we don't scroll to the right place.
+        // This may not be consistent across different Docusaurus instances
+        scrollMarginTop: "5rem",
       }}
       id={id}
     >
