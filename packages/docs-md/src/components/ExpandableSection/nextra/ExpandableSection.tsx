@@ -34,12 +34,9 @@ export function NextraExpandableSection({
     };
   }, [id]);
 
-  /*
-  class="x:not-first:mt-4 x:rounded x:border x:border-gray-200 x:bg-white x:p-2 x:shadow-sm x:dark:border-neutral-800 x:dark:bg-neutral-900 x:overflow-hidden"
-  */
   return (
     <div
-      className="x:not-first:mt-4 x:rounded x:border x:border-gray-200 x:bg-white x:p-2 x:shadow-sm x:dark:border-neutral-800 x:dark:bg-neutral-900 x:overflow-hidden"
+      className="x:rounded x:border x:border-gray-200 x:bg-white x:shadow-sm x:dark:border-neutral-800 x:dark:bg-neutral-900"
       style={{
         position: "relative",
         margin: "2rem 0 1rem 0",
@@ -53,23 +50,13 @@ export function NextraExpandableSection({
     >
       <Button
         onClick={onClick}
+        className="x:rounded x:border x:border-gray-200 x:bg-white x:py-1 x:px-2 x:shadow-sm x:dark:border-neutral-800 x:dark:bg-neutral-900 x:relative x:w-fit x:flex x:items-center x:font-bold"
         style={{
-          top: "calc(-1 * var(--ifm-alert-padding-vertical))",
-          left: "calc(0.5 * var(--ifm-alert-padding-horizontal))",
-          position: "relative",
-          border:
-            "var(--ifm-global-border-width) solid var(--ifm-blockquote-border-color)",
-          backgroundColor: "var(--ifm-hero-background-color)",
-          borderRadius: "var(--ifm-global-radius)",
-          padding: "0.5rem",
-          width: "fit-content",
-          display: "flex",
-          alignItems: "center",
+          // TODO: For some reason, these styles just _refuse_ to stick when
+          // using Tailwind classes, so for now I just hard-code the style
+          top: "-1rem",
+          left: "0.5rem",
           gap: "0.25rem 0.5rem",
-          fontWeight: "bold",
-          // Note: the docs at https://docusaurus.community/knowledge/design/css/variables/ say this variable
-          // should be `--ifm-heading-h5-font-size`, but it doesn't exist. It's `--ifm-h5-font-size` instead.
-          fontSize: "var(--ifm-h5-font-size)",
         }}
       >
         <div
@@ -83,11 +70,17 @@ export function NextraExpandableSection({
         {title}
       </Button>
       <div
+        className="x:px-3 x:pb-2"
         style={{
-          padding: "0 calc(0.5 * var(--ifm-alert-padding-horizontal))",
           display: isOpen ? "block" : "none",
           // TODO: animate height when expanding closing. Requires knowing the
           // height up front though it seems.
+
+          // TODO: this margin also refuses to stick when using Tailwind
+          // classes. This margin exists to counteract the margin-top on the
+          // first element inside the expandable section, which causes an ugly
+          // gap when the section is expanded.
+          marginTop: "-2rem",
         }}
       >
         {children}
