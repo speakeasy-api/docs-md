@@ -1,5 +1,5 @@
 import { usePrismTheme } from "@docusaurus/theme-common";
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 
 import type { TryItNowProps } from "./Content/index.tsx";
 import { Content } from "./Content/index.tsx";
@@ -14,28 +14,21 @@ type PrismThemeEntry = {
 export const TryItNowDocusaurus = (props: TryItNowProps) => {
   const prismTheme = usePrismTheme();
 
-  const parsePrismTheme = useCallback(
-    (theme: ReturnType<typeof usePrismTheme>) => {
-      const colorThemeMap = new Map<string, PrismThemeEntry>();
-      const styles = theme.styles;
-      const plain = theme.plain;
-      colorThemeMap.set("plain", {
-        color: plain.color,
-        backgroundColor: plain.backgroundColor,
-      });
-
-      styles.forEach(({ types, style }) => {
-        types.forEach((type) => {
-          colorThemeMap.set(type, style);
-        });
-      });
-      return colorThemeMap;
-    },
-    []
-  );
-
   const sandpackTheme = useMemo((): TryItNowProps["theme"] => {
-    const colorThemeMap = parsePrismTheme(prismTheme);
+    const colorThemeMap = new Map<string, PrismThemeEntry>();
+    const { styles, plain } = prismTheme;
+
+    colorThemeMap.set("plain", {
+      color: plain.color,
+      backgroundColor: plain.backgroundColor,
+    });
+
+    styles.forEach(({ types, style }) => {
+      types.forEach((type) => {
+        colorThemeMap.set(type, style);
+      });
+    });
+
     return {
       colors: {
         base: colorThemeMap.get("plain")?.color,
@@ -52,7 +45,7 @@ export const TryItNowDocusaurus = (props: TryItNowProps) => {
         punctuation: colorThemeMap.get("punctuation")?.color,
       },
     };
-  }, [prismTheme, parsePrismTheme]);
+  }, [prismTheme]);
 
   return (
     <Content
