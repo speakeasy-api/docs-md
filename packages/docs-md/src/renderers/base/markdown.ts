@@ -8,6 +8,7 @@ import type {
   RendererAppendListArgs,
   RendererAppendTextArgs,
   RendererBeginExpandableSectionArgs,
+  RendererBeginTabbedSectionArgs,
   RendererEscapeTextArgs,
   SiteBuildPagePathArgs,
   SiteCreatePageArgs,
@@ -167,6 +168,27 @@ ${text}\n</code>\n</pre>`;
 
   public appendExpandableSectionEnd() {
     this[rendererLines].push(this.createExpandableSectionEnd());
+  }
+
+  public createTabbedSectionStart(
+    ...[
+      title,
+      { baseHeadingLevel = 3, ...args } = {},
+    ]: RendererBeginTabbedSectionArgs
+  ) {
+    return this.createHeading(baseHeadingLevel, title, args);
+  }
+
+  public appendTabbedSectionStart(...args: RendererBeginTabbedSectionArgs) {
+    this[rendererLines].push(this.createTabbedSectionStart(...args));
+  }
+
+  public createTabbedSectionEnd() {
+    return "";
+  }
+
+  public appendTabbedSectionEnd() {
+    this[rendererLines].push(this.createTabbedSectionEnd());
   }
 
   public render() {

@@ -113,6 +113,10 @@ export type RendererBeginExpandableSectionArgs = [
   id: string,
   options?: AppendOptions,
 ];
+export type RendererBeginTabbedSectionArgs = [
+  title: string,
+  options?: AppendOptions & { baseHeadingLevel?: number; id?: string },
+];
 export type RendererAppendSidebarLinkArgs = [
   options: {
     title: string;
@@ -146,6 +150,14 @@ export abstract class Renderer {
   ): void;
   abstract createExpandableSectionEnd(): string;
   abstract appendExpandableSectionEnd(): void;
+  abstract createTabbedSectionStart(
+    ...args: RendererBeginTabbedSectionArgs
+  ): void;
+  abstract appendTabbedSectionStart(
+    ...args: RendererBeginTabbedSectionArgs
+  ): void;
+  abstract createTabbedSectionEnd(): void;
+  abstract appendTabbedSectionEnd(): void;
 
   // The following methods are used to insert complex content onto the page,
   // and so they don't have "create" variants.

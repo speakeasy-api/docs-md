@@ -164,10 +164,22 @@ export function renderOperation({
   }
 
   if (chunk.chunkData.responses) {
+    const responsesId = id + "+responses";
+    renderer.appendTabbedSectionStart("Responses", {
+      id: responsesId,
+      baseHeadingLevel: baseHeadingLevel + 1,
+    });
     for (const [statusCode, responses] of Object.entries(
       chunk.chunkData.responses
     )) {
       for (const response of responses) {
+        if (responses.length > 1) {
+          renderer.appendText(
+            `<div title="${statusCode} (${response.contentType})">`
+          );
+        } else {
+          renderer.appendText(`<div title="${statusCode}">`);
+        }
         const responseId =
           id + `+${statusCode}+${response.contentType.replace("/", "-")}`;
         renderer.appendHeading(
@@ -194,7 +206,9 @@ export function renderOperation({
           topLevelName: "Response Body",
           data: docsData,
         });
+        renderer.appendText("</div>");
       }
     }
+    renderer.appendTabbedSectionEnd();
   }
 }

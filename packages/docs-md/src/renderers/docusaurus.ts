@@ -6,6 +6,7 @@ import type {
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
   RendererBeginExpandableSectionArgs,
+  RendererBeginTabbedSectionArgs,
   RendererInsertFrontMatterArgs,
   SiteBuildPagePathArgs,
   SiteGetRendererArgs,
@@ -140,6 +141,23 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 
   public override createExpandableSectionEnd() {
     return "</ExpandableSection>";
+  }
+
+  public override createTabbedSectionStart(
+    ...[
+      title,
+      { escape = "mdx", id, baseHeadingLevel = 3 } = {},
+    ]: RendererBeginTabbedSectionArgs
+  ) {
+    this.insertThirdPartyImport(
+      "TabbedSection",
+      "@speakeasy-api/docs-md/docusaurus"
+    );
+    return `<TabbedSection title="${this.escapeText(title, { escape })}" id="${id}" baseHeadingLevel="${baseHeadingLevel}">`;
+  }
+
+  public override createTabbedSectionEnd() {
+    return "</TabbedSection>";
   }
 
   public override appendSidebarLink(
