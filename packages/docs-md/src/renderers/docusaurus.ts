@@ -168,9 +168,9 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
     this.insertThirdPartyImport("SideBar", "@speakeasy-api/docs-md/docusaurus");
     this[rendererLines].push(
       `<p>
-    <SideBarTrigger.Docusaurus cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
+    <SideBarTrigger cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
       <${getEmbedSymbol(embedName)} />
-    </SideBarTrigger.Docusaurus>
+    </SideBarTrigger>
   </p>`
     );
 
@@ -188,7 +188,7 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
       "@speakeasy-api/docs-md/docusaurus"
     );
     this[rendererLines].push(
-      `<TryItNow.Docusaurus
+      `<TryItNow
  externalDependencies={${JSON.stringify(externalDependencies)}}
  defaultValue={\`${defaultValue}\`}
 />`
@@ -200,7 +200,7 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
     const data =
       (this.#frontMatter ? this.#frontMatter + "\n\n" : "") +
       parentData +
-      (this.#includeSidebar ? "\n\n<SideBar.Docusaurus />\n" : "");
+      (this.#includeSidebar ? "\n\n<SideBar />\n" : "");
     return data;
   }
 }

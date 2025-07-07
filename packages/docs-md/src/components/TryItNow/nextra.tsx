@@ -1,6 +1,6 @@
-import type { TryItNowProps } from "./Content/index.tsx";
-import { Content } from "./Content/index.tsx";
+import type { TryItNowProps } from "./common/types.ts";
+import { TryItNowNextra } from "./nextra/TryItNow.tsx";
 
-export const TryItNowNextra = (props: TryItNowProps) => {
-  return <Content {...props} />;
-};
+export function TryItNow(props: TryItNowProps) {
+  return <TryItNowNextra {...props} />;
+}

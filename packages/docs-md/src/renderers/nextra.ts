@@ -144,9 +144,9 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
     this.insertThirdPartyImport("SideBar", "@speakeasy-api/docs-md/nextra");
     this[rendererLines].push(
       `<p>
-    <SideBarTrigger.Nextra cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
+    <SideBarTrigger cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
       <${getEmbedSymbol(embedName)} />
-    </SideBarTrigger.Nextra>
+    </SideBarTrigger>
   </p>`
     );
 
@@ -165,7 +165,7 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
   }) {
     this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md/nextra");
     this[rendererLines].push(
-      `<TryItNow.Nextra
+      `<TryItNow
    externalDependencies={${JSON.stringify(externalDependencies)}}
    defaultValue={\`${defaultValue}\`}
   />`
@@ -177,7 +177,7 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
     const data =
       (this.#frontMatter ? this.#frontMatter + "\n\n" : "") +
       parentData +
-      (this.#includeSidebar ? "\n\n<SideBar.Nextra />\n" : "");
+      (this.#includeSidebar ? "\n\n<SideBar />\n" : "");
     return data;
   }
 }

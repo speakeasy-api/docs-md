@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Content as TryItNow } from "./Content/index.tsx";
+import { Content as TryItNow } from "./common/components/Content.tsx";
 
 const meta: Meta<typeof TryItNow> = {
   title: "Components/TryItNow",

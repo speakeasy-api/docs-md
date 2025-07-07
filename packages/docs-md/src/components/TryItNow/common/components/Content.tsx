@@ -1,6 +1,5 @@
 "use client";
 
-import type { SandpackTheme } from "@codesandbox/sandpack-react";
 import {
   SandpackCodeEditor,
   SandpackLayout,
@@ -9,36 +8,12 @@ import {
   useErrorMessage,
 } from "@codesandbox/sandpack-react";
 import { useAtomValue } from "jotai";
-import type { PartialDeep } from "type-fest";
 
-import { CodeEditor } from "../CodeEditor/index.tsx";
-import { ConsoleOutput } from "../ConsoleOutput/index.tsx";
-import { dependenciesAtom, lastEditorValueAtom } from "../state/index.ts";
+import { dependenciesAtom, lastEditorValueAtom } from "../state.ts";
 import { styles } from "../styles.ts";
-
-type DependencyName = string;
-type DependencyVersion = string;
-type Dependencies = Record<DependencyName, DependencyVersion>;
-
-export type TryItNowProps = {
-  /**
-   * These are dependencies that are required by the code snippet,
-   * like "zod" or an npm package.
-   */
-  externalDependencies?: Dependencies;
-  /**
-   * Starting value of the editor
-   */
-  defaultValue?: string;
-  /**
-   * Experimental: When enabled, the editor will automatically
-   * scan for external dependencies from npm as the user adds them
-   * as imports.
-   */
-  _enableUnsafeAutoImport?: boolean;
-  theme?: PartialDeep<SandpackTheme> | "auto" | "dark" | "light";
-  layoutStyle?: React.CSSProperties;
-};
+import type { TryItNowProps } from "../types.ts";
+import { CodeEditor } from "./CodeEditor.tsx";
+import { ConsoleOutput } from "./ConsoleOutput.tsx";
 
 const TryItNowContents = ({
   _enableUnsafeAutoImport,
