@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
+import { Button } from "../Button/docusaurus.tsx";
 import type { ExpandableSectionProps } from "./types.ts";
 
 export function ExpandableSection({
@@ -52,7 +53,7 @@ export function ExpandableSection({
       }}
       id={id}
     >
-      <button
+      <Button
         onClick={onClick}
         style={{
           top: "calc(-1 * var(--ifm-alert-padding-vertical))",
@@ -82,7 +83,7 @@ export function ExpandableSection({
           ▲
         </div>
         {title}
-      </button>
+      </Button>
       <div
         style={{
           padding: "0 calc(0.5 * var(--ifm-alert-padding-horizontal))",

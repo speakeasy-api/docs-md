@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Button } from "../../Button/docusaurus.tsx";
+
 type SidebarContent = {
   title: string;
   content: React.ReactNode;
@@ -42,7 +44,7 @@ export function DocusaurusSideBar({
         >
           {content?.title}
         </div>
-        <button onClick={closeRequest}>X</button>
+        <Button onClick={closeRequest}>X</Button>
       </div>
       <hr
         style={{

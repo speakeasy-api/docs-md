@@ -137,8 +137,11 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
     this.insertDefaultImport(importPath, getEmbedSymbol(embedName));
 
     this.#includeSidebar = true;
-    this.insertThirdPartyImport("SideBarTrigger", "@speakeasy-api/docs-md");
-    this.insertThirdPartyImport("SideBar", "@speakeasy-api/docs-md");
+    this.insertThirdPartyImport(
+      "SideBarTrigger",
+      "@speakeasy-api/docs-md/nextra"
+    );
+    this.insertThirdPartyImport("SideBar", "@speakeasy-api/docs-md/nextra");
     this[rendererLines].push(
       `<p>
     <SideBarTrigger.Nextra cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
@@ -160,7 +163,7 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
     externalDependencies: Record<string, string>;
     defaultValue: string;
   }) {
-    this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md");
+    this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md/nextra");
     this[rendererLines].push(
       `<TryItNow.Nextra
    externalDependencies={${JSON.stringify(externalDependencies)}}

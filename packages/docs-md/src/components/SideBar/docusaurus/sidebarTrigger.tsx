@@ -2,18 +2,20 @@
 
 import type { PropsWithChildren } from "react";
 
+import { Button } from "../../Button/docusaurus.tsx";
+
 export function DocusaurusSideBarTrigger({
   onClick,
   children,
 }: PropsWithChildren<{ onClick: () => void }>) {
   return (
-    <button
+    <Button
       onClick={onClick}
       style={{
         padding: "8px 16px",
       }}
     >
       {children}
-    </button>
+    </Button>
   );
 }
