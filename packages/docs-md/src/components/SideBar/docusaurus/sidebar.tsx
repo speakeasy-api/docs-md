@@ -1,6 +1,7 @@
 import React from "react";
 
-import { Button } from "../../Button/docusaurus.tsx";
+import { Button } from "../../primitives/docusaurus/Button.tsx";
+import { Card } from "../../primitives/docusaurus/Card.tsx";
 
 type SidebarContent = {
   title: string;
@@ -15,18 +16,7 @@ export function DocusaurusSideBar({
   closeRequest: () => void;
 }) {
   return (
-    <div
-      style={{
-        backgroundColor: "var(--ifm-hero-background-color)",
-        color: "var(--ifm-hero-text-color)",
-        border:
-          "var(--ifm-global-border-width) solid var(--ifm-blockquote-border-color)",
-        borderRadius: "var(--ifm-global-radius)",
-        boxShadow: "var(--ifm-global-shadow-tl)",
-        padding:
-          "var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal)",
-      }}
-    >
+    <Card>
       <div
         style={{
           display: "flex",
@@ -53,6 +43,6 @@ export function DocusaurusSideBar({
         }}
       />
       {content?.content}
-    </div>
+    </Card>
   );
 }

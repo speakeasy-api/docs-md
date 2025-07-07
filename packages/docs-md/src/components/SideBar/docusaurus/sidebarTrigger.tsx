@@ -2,7 +2,7 @@
 
 import type { PropsWithChildren } from "react";
 
-import { Button } from "../../Button/docusaurus.tsx";
+import { Button } from "../../primitives/docusaurus/Button.tsx";
 
 export function DocusaurusSideBarTrigger({
   onClick,

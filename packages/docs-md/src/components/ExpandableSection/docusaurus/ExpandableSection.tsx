@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { Button } from "../../Button/docusaurus.tsx";
+import { Button } from "../../primitives/docusaurus/Button.tsx";
 import type { ExpandableSectionProps } from "../common/types.ts";
 
 export function DocusaurusExpandableSection({

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-import { Button } from "../../Button/nextra.tsx";
+import { Button } from "../../primitives/nextra/Button.tsx";
 import type { ExpandableSectionProps } from "../common/types.ts";
 
 export function NextraExpandableSection({
