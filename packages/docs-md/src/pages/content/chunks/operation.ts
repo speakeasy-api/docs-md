@@ -182,11 +182,9 @@ export function renderOperation({
         }
         const responseId =
           id + `+${statusCode}+${response.contentType.replace("/", "-")}`;
-        renderer.appendHeading(
-          baseHeadingLevel + 1,
-          `Response: ${statusCode} (${response.contentType})`,
-          { id: responseId }
-        );
+        renderer.appendHeading(baseHeadingLevel + 2, response.contentType, {
+          id: responseId,
+        });
         if (response.description) {
           renderer.appendText(response.description);
         }

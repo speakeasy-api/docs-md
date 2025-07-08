@@ -44,7 +44,7 @@ export function DocusaurusTabbedSection({
   }, [children, activeTitle]);
   return (
     <Card>
-      <div style={{ display: "flex" }}>
+      <div className={styles.header}>
         <div
           style={{
             flex: 1,
