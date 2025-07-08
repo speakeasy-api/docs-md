@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo, useState } from "react";
 
 import { InternalError } from "../../../util/internalError.ts";

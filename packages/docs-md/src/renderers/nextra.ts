@@ -7,6 +7,8 @@ import type {
   RendererAppendSectionStartArgs,
   RendererAppendSidebarLinkArgs,
   RendererBeginExpandableSectionArgs,
+  RendererBeginTabbedSectionArgs,
+  RendererBeginTabContentsArgs,
   RendererInsertFrontMatterArgs,
   SiteBuildPagePathArgs,
   SiteGetRendererArgs,
@@ -138,6 +140,29 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
 
   public override createExpandableSectionEnd() {
     return "</ExpandableSection>";
+  }
+  public override createTabbedSectionStart(
+    ...[
+      title,
+      { escape = "mdx", id, baseHeadingLevel = 3 },
+    ]: RendererBeginTabbedSectionArgs
+  ) {
+    this.insertComponentImport("TabbedSection");
+    return `<TabbedSection title="${this.escapeText(title, { escape })}" id="${id}" baseHeadingLevel="${baseHeadingLevel}">`;
+  }
+
+  public override createTabbedSectionEnd() {
+    return "</TabbedSection>";
+  }
+
+  public override createTabContentsStart(
+    ...[title, tooltip]: RendererBeginTabContentsArgs
+  ) {
+    return `<div title="${title}" tooltip="${tooltip}">`;
+  }
+
+  public override createTabContentsEnd() {
+    return "</div>";
   }
 
   public override appendSidebarLink(

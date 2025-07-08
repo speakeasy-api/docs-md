@@ -5,7 +5,10 @@ export type TabbedSectionProps = {
   id?: string;
   children: React.ReactElement<{ title: string; tooltip?: string }>[];
 };
-export type HeaderContainerProps = PropsWithChildren<{ title: string }>;
+export type HeaderContainerProps = PropsWithChildren<{
+  title: string;
+  id?: string;
+}>;
 export type TabButtonProps = {
   title: string;
   tooltip?: string;
