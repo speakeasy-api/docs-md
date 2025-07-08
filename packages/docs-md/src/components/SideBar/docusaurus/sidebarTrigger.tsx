@@ -3,18 +3,14 @@
 import type { PropsWithChildren } from "react";
 
 import { Button } from "../../primitives/docusaurus/Button.tsx";
+import styles from "./styles.module.css";
 
 export function DocusaurusSideBarTrigger({
   onClick,
   children,
 }: PropsWithChildren<{ onClick: () => void }>) {
   return (
-    <Button
-      onClick={onClick}
-      style={{
-        padding: "8px 16px",
-      }}
-    >
+    <Button onClick={onClick} className={styles.sidebarTrigger}>
       {children}
     </Button>
   );
