@@ -3,6 +3,7 @@ import { join, resolve } from "node:path";
 import { getSettings } from "../util/settings.ts";
 import type {
   RendererAppendCodeArgs,
+  RendererAppendSectionStartArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
   RendererBeginExpandableSectionArgs,
@@ -130,8 +131,19 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
     }
   }
 
+  public override createSectionStart(
+    ...[title, { id, escape = "mdx" }]: RendererAppendSectionStartArgs
+  ) {
+    this.insertThirdPartyImport("Section", "@speakeasy-api/docs-md/docusaurus");
+    return `<Section title="${this.escapeText(title, { escape })}" id="${id}">`;
+  }
+
+  public override createSectionEnd() {
+    return "</Section>";
+  }
+
   public override createExpandableSectionStart(
-    ...[title, id, { escape = "mdx" } = {}]: RendererBeginExpandableSectionArgs
+    ...[title, { id, escape = "mdx" }]: RendererBeginExpandableSectionArgs
   ) {
     this.insertThirdPartyImport(
       "ExpandableSection",
@@ -147,7 +159,7 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
   public override createTabbedSectionStart(
     ...[
       title,
-      { escape = "mdx", id, baseHeadingLevel = 3 } = {},
+      { escape = "mdx", id, baseHeadingLevel = 3 },
     ]: RendererBeginTabbedSectionArgs
   ) {
     this.insertThirdPartyImport(

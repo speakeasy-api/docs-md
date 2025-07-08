@@ -19,6 +19,7 @@ export default [
         "SideBarTrigger",
         "ExpandableSection",
         "TabbedSection",
+        "Section",
       ],
       "src/docusaurus.ts": [
         "Settings",
@@ -27,6 +28,7 @@ export default [
         "SideBarTrigger",
         "ExpandableSection",
         "TabbedSection",
+        "Section",
       ],
     },
     ignores: ["src/pages/data/wasm_exec.js", ".storybook/**/*"],

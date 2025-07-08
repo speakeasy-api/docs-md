@@ -105,7 +105,7 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
   }
 
   public override createExpandableSectionStart(
-    ...[title, id, { escape = "mdx" } = {}]: RendererBeginExpandableSectionArgs
+    ...[title, { id, escape = "mdx" }]: RendererBeginExpandableSectionArgs
   ) {
     this.insertThirdPartyImport(
       "ExpandableSection",

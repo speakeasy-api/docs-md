@@ -108,14 +108,17 @@ export type RendererAppendCodeArgs = [
       },
 ];
 export type RendererAppendListArgs = [items: string[], options?: AppendOptions];
+export type RendererAppendSectionStartArgs = [
+  title: string,
+  options: AppendOptions & { id: string },
+];
 export type RendererBeginExpandableSectionArgs = [
   title: string,
-  id: string,
-  options?: AppendOptions,
+  options: AppendOptions & { id: string },
 ];
 export type RendererBeginTabbedSectionArgs = [
   title: string,
-  options?: AppendOptions & { baseHeadingLevel?: number; id?: string },
+  options: AppendOptions & { baseHeadingLevel?: number; id: string },
 ];
 export type RendererBeginTabContentsArgs = [title: string, tooltip: string];
 export type RendererAppendSidebarLinkArgs = [
@@ -146,6 +149,11 @@ export abstract class Renderer {
 
   abstract createList(...args: RendererAppendListArgs): string;
   abstract appendList(...args: RendererAppendListArgs): void;
+
+  abstract createSectionStart(...args: RendererAppendSectionStartArgs): string;
+  abstract appendSectionStart(...args: RendererAppendSectionStartArgs): void;
+  abstract createSectionEnd(): string;
+  abstract appendSectionEnd(): void;
 
   // Expandable sections are used to show schema value breakouts, which are
   // collapsed by default

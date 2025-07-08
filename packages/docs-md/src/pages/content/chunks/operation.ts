@@ -45,7 +45,7 @@ export function renderOperation({
 
   if (chunk.chunkData.security || chunk.chunkData.globalSecurity) {
     const securityId = id + "+security";
-    renderer.appendHeading(baseHeadingLevel + 1, "Security", {
+    renderer.appendSectionStart("Security", {
       id: securityId,
     });
     if (chunk.chunkData.security) {
@@ -84,11 +84,12 @@ export function renderOperation({
         data: docsData,
       });
     }
+    renderer.appendSectionEnd();
   }
 
   if (chunk.chunkData.parameters.length > 0) {
     const parametersId = id + "+parameters";
-    renderer.appendHeading(baseHeadingLevel + 1, "Parameters", {
+    renderer.appendSectionStart("Parameters", {
       id: parametersId,
     });
     for (const parameter of chunk.chunkData.parameters) {
@@ -116,12 +117,13 @@ export function renderOperation({
         data: docsData,
       });
     }
+    renderer.appendSectionEnd();
   }
 
   const { tryItNow } = getSettings();
   const usageSnippet = docsCodeSnippets[chunk.id];
   if (usageSnippet && tryItNow) {
-    renderer.appendHeading(baseHeadingLevel + 1, "Try it Now", {
+    renderer.appendSectionStart("Try it Now", {
       id: id + "+try-it-now",
     });
     // TODO: Zod is actually hard coded for now since its always a dependency
@@ -133,13 +135,13 @@ export function renderOperation({
       },
       defaultValue: usageSnippet.code,
     });
+    renderer.appendSectionEnd();
   }
 
   if (chunk.chunkData.requestBody) {
     const requestBodyId = id + "+request";
-    renderer.appendHeading(
-      baseHeadingLevel + 1,
-      `Request Body${chunk.chunkData.requestBody.required ? " (required)" : ""}`,
+    renderer.appendSectionStart(
+      `Request Body${!chunk.chunkData.requestBody.required ? " (optional)" : ""}`,
       { id: requestBodyId }
     );
     if (chunk.chunkData.requestBody.description) {
@@ -161,13 +163,13 @@ export function renderOperation({
       topLevelName: "Request Body",
       data: docsData,
     });
+    renderer.appendSectionEnd();
   }
 
   if (chunk.chunkData.responses) {
     const responsesId = id + "+responses";
     renderer.appendTabbedSectionStart("Response", {
       id: responsesId,
-      baseHeadingLevel: baseHeadingLevel + 1,
     });
     for (const [statusCode, responses] of Object.entries(
       chunk.chunkData.responses

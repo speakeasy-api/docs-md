@@ -451,10 +451,9 @@ function renderSchemaBreakouts({
     }
 
     // Otherwise, render the schema inline
-    context.renderer.appendExpandableSectionStart(
-      breakoutSubType.label,
-      `${context.idPrefix}+${breakoutSubType.label}`
-    );
+    context.renderer.appendExpandableSectionStart(breakoutSubType.label, {
+      id: `${context.idPrefix}+${breakoutSubType.label}`,
+    });
     renderSchema({
       context: {
         ...context,

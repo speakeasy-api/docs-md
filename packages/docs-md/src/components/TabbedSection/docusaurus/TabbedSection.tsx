@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 
 import { InternalError } from "../../../util/internalError.ts";
 import { Card } from "../../primitives/docusaurus/Card.tsx";
+import sectionStyles from "../../Section/docusaurus/styles.module.css";
 import type { TabbedSectionProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
@@ -37,7 +38,6 @@ function TabButton({
 export function DocusaurusTabbedSection({
   title,
   children,
-  baseHeadingLevel,
 }: TabbedSectionProps) {
   if (children.length === 0) {
     throw new InternalError("TabbedSection must have at least one child");
@@ -61,18 +61,8 @@ export function DocusaurusTabbedSection({
 
   return (
     <Card>
-      <div className={styles.header}>
-        <div
-          style={{
-            flex: 1,
-            fontWeight: "bold",
-            // Note: the docs at https://docusaurus.community/knowledge/design/css/variables/ say this variable
-            // should be `--ifm-heading-h3-font-size`, but it doesn't exist. It's `--ifm-h3-font-size` instead.
-            fontSize: `var(--ifm-h${baseHeadingLevel}-font-size)`,
-          }}
-        >
-          {title}
-        </div>
+      <div className={sectionStyles.header}>
+        <div className={sectionStyles.title}>{title}</div>
         <div style={{ display: "flex", gap: "0.5rem" }}>
           {tabInfo.map(({ title, tooltip }) => (
             <TabButton
