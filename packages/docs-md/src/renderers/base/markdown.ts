@@ -9,6 +9,7 @@ import type {
   RendererAppendTextArgs,
   RendererBeginExpandableSectionArgs,
   RendererBeginTabbedSectionArgs,
+  RendererBeginTabContentsArgs,
   RendererEscapeTextArgs,
   SiteBuildPagePathArgs,
   SiteCreatePageArgs,
@@ -189,6 +190,22 @@ ${text}\n</code>\n</pre>`;
 
   public appendTabbedSectionEnd() {
     this[rendererLines].push(this.createTabbedSectionEnd());
+  }
+
+  public createTabContentsStart(..._args: RendererBeginTabContentsArgs) {
+    return "";
+  }
+
+  public appendTabContentsStart(...args: RendererBeginTabContentsArgs) {
+    this[rendererLines].push(this.createTabContentsStart(...args));
+  }
+
+  public createTabContentsEnd() {
+    return "";
+  }
+
+  public appendTabContentsEnd() {
+    this[rendererLines].push(this.createTabContentsEnd());
   }
 
   public render() {

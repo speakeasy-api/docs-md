@@ -7,6 +7,7 @@ import type {
   RendererAppendTryItNowArgs,
   RendererBeginExpandableSectionArgs,
   RendererBeginTabbedSectionArgs,
+  RendererBeginTabContentsArgs,
   RendererInsertFrontMatterArgs,
   SiteBuildPagePathArgs,
   SiteGetRendererArgs,
@@ -158,6 +159,16 @@ sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 
   public override createTabbedSectionEnd() {
     return "</TabbedSection>";
+  }
+
+  public override createTabContentsStart(
+    ...[title, tooltip]: RendererBeginTabContentsArgs
+  ) {
+    return `<div title="${title}" tooltip="${tooltip}">`;
+  }
+
+  public override createTabContentsEnd() {
+    return "</div>";
   }
 
   public override appendSidebarLink(

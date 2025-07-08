@@ -173,18 +173,14 @@ export function renderOperation({
       chunk.chunkData.responses
     )) {
       for (const response of responses) {
+        const tooltip = `${statusCode} (${response.contentType})`;
         if (responses.length > 1) {
-          renderer.appendText(
-            `<div title="${statusCode} (${response.contentType})">`
-          );
+          renderer.appendTabContentsStart(tooltip, tooltip);
         } else {
-          renderer.appendText(`<div title="${statusCode}">`);
+          renderer.appendTabContentsStart(statusCode, tooltip);
         }
         const responseId =
           id + `+${statusCode}+${response.contentType.replace("/", "-")}`;
-        renderer.appendHeading(baseHeadingLevel + 2, response.contentType, {
-          id: responseId,
-        });
         if (response.description) {
           renderer.appendText(response.description);
         }
@@ -204,7 +200,7 @@ export function renderOperation({
           topLevelName: "Response Body",
           data: docsData,
         });
-        renderer.appendText("</div>");
+        renderer.appendTabContentsEnd();
       }
     }
     renderer.appendTabbedSectionEnd();

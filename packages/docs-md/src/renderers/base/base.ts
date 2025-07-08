@@ -117,6 +117,7 @@ export type RendererBeginTabbedSectionArgs = [
   title: string,
   options?: AppendOptions & { baseHeadingLevel?: number; id?: string },
 ];
+export type RendererBeginTabContentsArgs = [title: string, tooltip: string];
 export type RendererAppendSidebarLinkArgs = [
   options: {
     title: string;
@@ -136,12 +137,18 @@ export abstract class Renderer {
   // variants that append/insert the content into the current page.
   abstract createHeading(...args: RendererAppendHeadingArgs): void;
   abstract appendHeading(...args: RendererAppendHeadingArgs): void;
+
   abstract createText(...args: RendererAppendTextArgs): string;
   abstract appendText(...args: RendererAppendTextArgs): void;
+
   abstract createCode(...args: RendererAppendCodeArgs): string;
   abstract appendCode(...args: RendererAppendCodeArgs): void;
+
   abstract createList(...args: RendererAppendListArgs): string;
   abstract appendList(...args: RendererAppendListArgs): void;
+
+  // Expandable sections are used to show schema value breakouts, which are
+  // collapsed by default
   abstract createExpandableSectionStart(
     ...args: RendererBeginExpandableSectionArgs
   ): string;
@@ -150,6 +157,11 @@ export abstract class Renderer {
   ): void;
   abstract createExpandableSectionEnd(): string;
   abstract appendExpandableSectionEnd(): void;
+
+  // Tabbed sections show a title in the left, and a series of tabs on the right
+  // with a separator for content. Tab contents are markdown content linked
+  // to a tab. The tab contents insert a wrapper div with specific attributes
+  // used to populate the contents of the tab section.
   abstract createTabbedSectionStart(
     ...args: RendererBeginTabbedSectionArgs
   ): void;
@@ -158,13 +170,19 @@ export abstract class Renderer {
   ): void;
   abstract createTabbedSectionEnd(): void;
   abstract appendTabbedSectionEnd(): void;
+  abstract createTabContentsStart(...args: RendererBeginTabContentsArgs): void;
+  abstract appendTabContentsStart(...args: RendererBeginTabContentsArgs): void;
+  abstract createTabContentsEnd(): void;
+  abstract appendTabContentsEnd(): void;
 
   // The following methods are used to insert complex content onto the page,
   // and so they don't have "create" variants.
   abstract insertFrontMatter(...args: RendererInsertFrontMatterArgs): void;
+
   abstract appendSidebarLink(
     ...args: RendererAppendSidebarLinkArgs
   ): Renderer | undefined;
+
   abstract appendTryItNow(...args: RendererAppendTryItNowArgs): void;
 
   // Helper methods
