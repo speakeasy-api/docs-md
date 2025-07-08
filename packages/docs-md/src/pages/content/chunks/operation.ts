@@ -165,7 +165,7 @@ export function renderOperation({
 
   if (chunk.chunkData.responses) {
     const responsesId = id + "+responses";
-    renderer.appendTabbedSectionStart("Responses", {
+    renderer.appendTabbedSectionStart("Response", {
       id: responsesId,
       baseHeadingLevel: baseHeadingLevel + 1,
     });
