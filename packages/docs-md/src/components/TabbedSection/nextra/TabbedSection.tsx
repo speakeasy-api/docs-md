@@ -2,8 +2,7 @@ import clsx from "clsx";
 import { useMemo, useState } from "react";
 
 import { InternalError } from "../../../util/internalError.ts";
-import { Card } from "../../primitives/docusaurus/Card.tsx";
-import sectionStyles from "../../Section/docusaurus/styles.module.css";
+import { Card } from "../../primitives/nextra/Card.tsx";
 import type { TabbedSectionProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
@@ -35,10 +34,7 @@ function TabButton({
   );
 }
 
-export function DocusaurusTabbedSection({
-  title,
-  children,
-}: TabbedSectionProps) {
+export function NextraTabbedSection({ title, children }: TabbedSectionProps) {
   // If there is only one child, then React collapsed children down into a
   // single object instead of an array
   if (!Array.isArray(children)) {
@@ -71,8 +67,8 @@ export function DocusaurusTabbedSection({
 
   return (
     <Card>
-      <div className={sectionStyles.header}>
-        <div className={sectionStyles.title}>{title}</div>
+      <div>
+        <div>{title}</div>
         <div style={{ display: "flex", gap: "0.5rem" }}>
           {tabInfo.map(({ title, tooltip }) => (
             <TabButton
