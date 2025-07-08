@@ -4,6 +4,7 @@ import { getSettings } from "../util/settings.ts";
 import type {
   RendererAppendCodeArgs,
   RendererAppendHeadingArgs,
+  RendererAppendSectionStartArgs,
   RendererAppendSidebarLinkArgs,
   RendererBeginExpandableSectionArgs,
   RendererInsertFrontMatterArgs,
@@ -61,6 +62,19 @@ class NextraRenderer extends MdxRenderer {
     this.#site = site;
   }
 
+  public override render() {
+    const parentData = super.render();
+    const data =
+      (this.#frontMatter ? this.#frontMatter + "\n\n" : "") +
+      parentData +
+      (this.#includeSidebar ? "\n\n<SideBar />\n" : "");
+    return data;
+  }
+
+  private insertComponentImport(symbol: string) {
+    this.insertNamedImport("@speakeasy-api/docs-md/nextra", symbol);
+  }
+
   public override insertFrontMatter(
     ...[{ sidebarLabel }]: RendererInsertFrontMatterArgs
   ) {
@@ -104,13 +118,21 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
     }
   }
 
+  public override createSectionStart(
+    ...[title, { id, escape = "mdx" }]: RendererAppendSectionStartArgs
+  ) {
+    this.insertComponentImport("Section");
+    return `<Section title="${this.escapeText(title, { escape })}" id="${id}">`;
+  }
+
+  public override createSectionEnd() {
+    return "</Section>";
+  }
+
   public override createExpandableSectionStart(
     ...[title, { id, escape = "mdx" }]: RendererBeginExpandableSectionArgs
   ) {
-    this.insertThirdPartyImport(
-      "ExpandableSection",
-      "@speakeasy-api/docs-md/nextra"
-    );
+    this.insertComponentImport("ExpandableSection");
     return `<ExpandableSection title="${this.escapeText(title, { escape })}" id="${id}">`;
   }
 
@@ -137,11 +159,8 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
     this.insertDefaultImport(importPath, getEmbedSymbol(embedName));
 
     this.#includeSidebar = true;
-    this.insertThirdPartyImport(
-      "SideBarTrigger",
-      "@speakeasy-api/docs-md/nextra"
-    );
-    this.insertThirdPartyImport("SideBar", "@speakeasy-api/docs-md/nextra");
+    this.insertComponentImport("SideBarTrigger");
+    this.insertComponentImport("SideBar");
     this[rendererLines].push(
       `<p>
     <SideBarTrigger cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
@@ -163,21 +182,12 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
     externalDependencies: Record<string, string>;
     defaultValue: string;
   }) {
-    this.insertThirdPartyImport("TryItNow", "@speakeasy-api/docs-md/nextra");
+    this.insertComponentImport("TryItNow");
     this[rendererLines].push(
       `<TryItNow
    externalDependencies={${JSON.stringify(externalDependencies)}}
    defaultValue={\`${defaultValue}\`}
   />`
     );
-  }
-
-  public override render() {
-    const parentData = super.render();
-    const data =
-      (this.#frontMatter ? this.#frontMatter + "\n\n" : "") +
-      parentData +
-      (this.#includeSidebar ? "\n\n<SideBar />\n" : "");
-    return data;
   }
 }

@@ -54,10 +54,6 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.#imports.get(importPath)?.namedImports.add(symbol);
   }
 
-  protected insertThirdPartyImport(symbol: string, importPath: string) {
-    this.insertNamedImport(importPath, symbol);
-  }
-
   protected getRelativeImportPath(startPath: string, endPath: string) {
     let importPath = relative(dirname(startPath), endPath);
     // Check if this is an import to a file in the same directory, which
