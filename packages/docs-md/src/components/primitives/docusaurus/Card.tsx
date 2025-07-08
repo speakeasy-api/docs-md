@@ -5,7 +5,12 @@ import styles from "./styles.module.css";
 
 export function Card({
   className,
+  id,
   children,
-}: PropsWithChildren<{ className?: string }>) {
-  return <div className={clsx(styles.card, className)}>{children}</div>;
+}: PropsWithChildren<{ className?: string; id?: string }>) {
+  return (
+    <div className={clsx(styles.card, className)} id={id}>
+      {children}
+    </div>
+  );
 }
