@@ -39,9 +39,19 @@ export function DocusaurusTabbedSection({
   title,
   children,
 }: TabbedSectionProps) {
+  // If there is only one child, then React collapsed children down into a
+  // single object instead of an array
+  if (!Array.isArray(children)) {
+    if (typeof children === "object") {
+      children = [children];
+    } else {
+      throw new InternalError("TabbedSection children must be an array");
+    }
+  }
   if (children.length === 0) {
     throw new InternalError("TabbedSection must have at least one child");
   }
+
   const tabInfo = useMemo(() => {
     return children.map(({ props: { title, tooltip } }) => {
       if (!title) {
