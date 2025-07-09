@@ -1,6 +1,7 @@
 import type { SandpackTheme } from "@codesandbox/sandpack-react";
 import type { PartialDeep } from "type-fest";
 
+
 export type TryItNowProps = {
   /**
    * These are dependencies that are required by the code snippet,
@@ -19,4 +20,13 @@ export type TryItNowProps = {
   _enableUnsafeAutoImport?: boolean;
   theme?: PartialDeep<SandpackTheme> | "auto" | "dark" | "light";
   layoutStyle?: React.CSSProperties;
+};
+
+
+
+export type NextraTryItNowProps = TryItNowProps & {
+  themes: {
+    dark: PartialDeep<SandpackTheme> | "dark";
+    light: PartialDeep<SandpackTheme> | "light";
+  };
 };

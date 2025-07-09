@@ -1,7 +1,8 @@
 import { join, resolve } from "node:path";
 
+import type { DeepPartial, SandpackTheme } from "@codesandbox/sandpack-react";
 import type { Theme } from "rehype-pretty-code";
-import type { ThemeRegistrationAny } from "shiki";
+import type { ThemeRegistrationAny, ThemeRegistrationResolved } from "shiki";
 import { normalizeTheme } from "shiki";
 
 import type { NextraTheme, ShikiTheme } from "../types/nextra.ts";
@@ -22,7 +23,9 @@ import { getEmbedPath, getEmbedSymbol } from "./base/util.ts";
 export class NextraSite extends MdxSite {
   #rehypeTheme: ShikiTheme;
 
-  constructor(options: { rehypeTheme?: Theme | Record<string, Theme> | undefined | null }) {
+  constructor(options: {
+    rehypeTheme?: Theme | Record<string, Theme> | undefined | null;
+  }) {
     super();
     this.#rehypeTheme = processNextraTheme(options.rehypeTheme);
   }
@@ -54,7 +57,10 @@ export class NextraSite extends MdxSite {
   }
 
   protected override getRenderer(...[options]: SiteGetRendererArgs) {
-    return new NextraRenderer({...options, rehypeTheme: this.#rehypeTheme}, this);
+    return new NextraRenderer(
+      { ...options, rehypeTheme: this.#rehypeTheme },
+      this
+    );
   }
 }
 
@@ -63,17 +69,19 @@ class NextraRenderer extends MdxRenderer {
   #includeSidebar = false;
   #currentPagePath: string;
   #site: NextraSite;
-  // TODO: Consume this normalized theme to style TryItNow
-  #rehypeTheme: ShikiTheme;
+  #sandpackTheme: { dark: DeepPartial<SandpackTheme> | "dark"; light: DeepPartial<SandpackTheme> | "light" };
 
   constructor(
-    { currentPagePath, rehypeTheme }: { currentPagePath: string, rehypeTheme: ShikiTheme },
+    {
+      currentPagePath,
+      rehypeTheme,
+    }: { currentPagePath: string; rehypeTheme: ShikiTheme },
     site: NextraSite
   ) {
     super();
     this.#currentPagePath = currentPagePath;
     this.#site = site;
-    this.#rehypeTheme = rehypeTheme;
+    this.#sandpackTheme = convertShikiToSandpackTheme(rehypeTheme);
   }
 
   public override insertFrontMatter(
@@ -183,6 +191,7 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
       `<TryItNow
    externalDependencies={${JSON.stringify(externalDependencies)}}
    defaultValue={\`${defaultValue}\`}
+   themes={${JSON.stringify(this.#sandpackTheme)}}
   />`
     );
   }
@@ -197,16 +206,15 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
   }
 }
 
-
 function processNextraTheme(theme?: NextraTheme | null): ShikiTheme {
   const defaultShikiTheme = {
-    light: 'github-light',
-    dark: 'github-dark'
-  }
+    light: "github-light",
+    dark: "github-dark",
+  };
 
- if (!theme) {
+  if (!theme) {
     return defaultShikiTheme;
- }
+  }
 
   // if the theme is a string, return it
   if (typeof theme === "string") {
@@ -249,4 +257,54 @@ function processNextraTheme(theme?: NextraTheme | null): ShikiTheme {
     return themeResult;
   }
   return defaultShikiTheme;
+}
+
+function convertShikiToSandpackTheme(
+  shikiTheme: ShikiTheme
+): { dark: DeepPartial<SandpackTheme> | "dark"; light: DeepPartial<SandpackTheme> | "light" } {
+  const darkTheme = shikiTheme?.dark;
+  const lightTheme = shikiTheme?.light;
+
+  const convertTheme = (theme: string | ThemeRegistrationResolved | undefined) => {
+
+  // TODO: when it is a string, we have to load the theme
+  // from the shiki npm package
+    if (!theme || typeof theme !== "object") return null;
+    const { settings } = theme;
+    const colorThemeMap = new Map<string, string>();
+    const scopeKeyWords = [
+      "comment",
+      "punctuation.definition.tag",
+      "keyword",
+      "variable.language",
+    ];
+    settings.forEach((setting) => {
+      const scope = setting.scope;
+      if (typeof scope === "string" && scopeKeyWords.includes(scope)) {
+        colorThemeMap.set(scope, setting.settings.foreground ?? "");
+      }
+    });
+
+    return {
+      colors: {
+        base: theme?.fg,
+        surface1: theme?.bg,
+      },
+      syntax: {
+        string: theme?.semanticTokenColors?.stringLiteral,
+        comment: colorThemeMap.get("comment"),
+        keyword: colorThemeMap.get("keyword"),
+        property: theme?.semanticTokenColors?.stringLiteral,
+        tag: colorThemeMap.get("punctuation.definition.tag"),
+        plain: theme?.fg,
+        definition: colorThemeMap.get("variable.language"),
+        punctuation: theme?.fg,
+      },
+    };
+  };
+
+  return {
+    dark: convertTheme(darkTheme) ?? "dark",
+    light: convertTheme(lightTheme) ?? "light",
+  };
 }
