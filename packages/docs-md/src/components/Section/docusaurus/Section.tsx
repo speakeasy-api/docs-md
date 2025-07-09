@@ -6,7 +6,7 @@ export function DocusaurusSection({ title, children, id }: SectionProps) {
   return (
     <Card className={styles.card}>
       <div className={styles.header} id={id}>
-        <div className={styles.title}>{title}</div>
+        <h3 className={styles.title}>{title}</h3>
       </div>
       <div>{children}</div>
     </Card>

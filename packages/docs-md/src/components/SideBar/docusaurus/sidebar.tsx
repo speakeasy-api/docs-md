@@ -19,7 +19,7 @@ export function DocusaurusSideBar({
   return (
     <Card>
       <div className={styles.sidebarContainer}>
-        <div className={styles.sidebarTitle}>{content?.title ?? "Details"}</div>
+        <h4 className={styles.sidebarTitle}>{content?.title ?? "Details"}</h4>
         <Button onClick={closeRequest}>X</Button>
       </div>
       {content?.content}
