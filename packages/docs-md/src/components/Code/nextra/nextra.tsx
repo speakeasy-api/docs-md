@@ -2,7 +2,6 @@ import type { CodeProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
 export function NextraCode({ text }: CodeProps) {
-  console.log(text.split("\\n"));
   return (
     <pre className={styles.pre}>
       <code
