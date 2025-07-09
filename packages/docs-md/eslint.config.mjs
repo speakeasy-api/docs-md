@@ -20,6 +20,7 @@ export default [
         "ExpandableSection",
         "TabbedSection",
         "Section",
+        "Code",
       ],
       "src/docusaurus.ts": [
         "Settings",
@@ -29,6 +30,7 @@ export default [
         "ExpandableSection",
         "TabbedSection",
         "Section",
+        "Code",
       ],
     },
     ignores: ["src/pages/data/wasm_exec.js", ".storybook/**/*"],

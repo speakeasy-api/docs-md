@@ -7,3 +7,4 @@ export { SideBar, SideBarTrigger } from "./components/SideBar/docusaurus.tsx";
 export { ExpandableSection } from "./components/ExpandableSection/docusaurus.tsx";
 export { TabbedSection } from "./components/TabbedSection/docusaurus.tsx";
 export { Section } from "./components/Section/docusaurus.tsx";
+export { Code } from "./components/Code/docusaurus.tsx";

@@ -7,3 +7,4 @@ export { SideBar, SideBarTrigger } from "./components/SideBar/nextra.tsx";
 export { ExpandableSection } from "./components/ExpandableSection/nextra.tsx";
 export { TabbedSection } from "./components/TabbedSection/nextra.tsx";
 export { Section } from "./components/Section/nextra.tsx";
+export { Code } from "./components/Code/nextra.tsx";
