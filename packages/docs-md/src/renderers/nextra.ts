@@ -1,5 +1,10 @@
 import { join, resolve } from "node:path";
 
+import type { Theme } from "rehype-pretty-code";
+import type { ThemeRegistrationAny } from "shiki";
+import { normalizeTheme } from "shiki";
+
+import type { NextraTheme, ShikiTheme } from "../types/nextra.ts";
 import { getSettings } from "../util/settings.ts";
 import type {
   RendererAppendCodeArgs,
@@ -15,6 +20,13 @@ import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import { getEmbedPath, getEmbedSymbol } from "./base/util.ts";
 
 export class NextraSite extends MdxSite {
+  #rehypeTheme: ShikiTheme;
+
+  constructor(options: { rehypeTheme?: Theme | Record<string, Theme> | undefined | null }) {
+    super();
+    this.#rehypeTheme = processNextraTheme(options.rehypeTheme);
+  }
+
   public override buildPagePath(
     ...[slug, { appendIndex = false } = {}]: SiteBuildPagePathArgs
   ): string {
@@ -42,7 +54,7 @@ export class NextraSite extends MdxSite {
   }
 
   protected override getRenderer(...[options]: SiteGetRendererArgs) {
-    return new NextraRenderer(options, this);
+    return new NextraRenderer({...options, rehypeTheme: this.#rehypeTheme}, this);
   }
 }
 
@@ -51,14 +63,17 @@ class NextraRenderer extends MdxRenderer {
   #includeSidebar = false;
   #currentPagePath: string;
   #site: NextraSite;
+  // TODO: Consume this normalized theme to style TryItNow
+  #rehypeTheme: ShikiTheme;
 
   constructor(
-    { currentPagePath }: { currentPagePath: string },
+    { currentPagePath, rehypeTheme }: { currentPagePath: string, rehypeTheme: ShikiTheme },
     site: NextraSite
   ) {
     super();
     this.#currentPagePath = currentPagePath;
     this.#site = site;
+    this.#rehypeTheme = rehypeTheme;
   }
 
   public override insertFrontMatter(
@@ -180,4 +195,58 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
       (this.#includeSidebar ? "\n\n<SideBar />\n" : "");
     return data;
   }
+}
+
+
+function processNextraTheme(theme?: NextraTheme | null): ShikiTheme {
+  const defaultShikiTheme = {
+    light: 'github-light',
+    dark: 'github-dark'
+  }
+
+ if (!theme) {
+    return defaultShikiTheme;
+ }
+
+  // if the theme is a string, return it
+  if (typeof theme === "string") {
+    return {
+      dark: theme,
+      light: theme,
+    };
+  }
+
+  if (
+    typeof theme === "object" &&
+    theme !== null &&
+    ("dark" in theme || "light" in theme)
+  ) {
+    const dark = theme?.dark ?? undefined;
+    const light = theme?.light ?? undefined;
+    if (typeof dark === "string" && typeof light === "string") {
+      return {
+        dark,
+        light,
+      };
+    } else {
+      console.error(theme);
+      throw new Error(
+        "Invalid theme object. Please use a string or an object with dark and light properties."
+      );
+    }
+  }
+
+  if (theme) {
+    // theme is an object, but doesn't have dark or light properties so we have to manually parse this in
+    const normalizedTheme = normalizeTheme(theme as ThemeRegistrationAny);
+    const themeResult: ShikiTheme = {};
+    if (normalizedTheme.type === "dark") {
+      themeResult.dark = normalizedTheme;
+    }
+    if (normalizedTheme.type === "light") {
+      themeResult.light = normalizedTheme;
+    }
+    return themeResult;
+  }
+  return defaultShikiTheme;
 }

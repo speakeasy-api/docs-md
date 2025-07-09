@@ -37,10 +37,6 @@ export const styles: Record<string, CSSProperties> = {
     border: `1px solid ${theme.colors.borderPrimary}`,
     borderRadius: "1rem",
     overflow: "hidden",
-    boxShadow: `
-      0 1.25rem 1.5625rem -0.3125rem rgba(0, 0, 0, 0.1),
-      0 0.625rem 0.625rem -0.3125rem rgba(0, 0, 0, 0.04)
-    `,
     fontFamily:
       "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
   },
