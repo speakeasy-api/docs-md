@@ -12,7 +12,6 @@ type RenderOperationOptions = {
   site: Site;
   chunk: OperationChunk;
   docsData: Map<string, Chunk>;
-  baseHeadingLevel: number;
   docsCodeSnippets: DocsCodeSnippets;
 };
 
@@ -24,12 +23,11 @@ export function renderOperation({
   site,
   chunk,
   docsData,
-  baseHeadingLevel,
   docsCodeSnippets,
 }: RenderOperationOptions) {
   const id = `operation-${snakeCase(chunk.chunkData.operationId)}`;
   renderer.appendHeading(
-    baseHeadingLevel,
+    2,
     `${chunk.chunkData.method.toUpperCase()} ${chunk.chunkData.path}`,
     { id }
   );
@@ -58,7 +56,6 @@ export function renderOperation({
           site,
           renderer,
           schema: securityChunk.chunkData.value,
-          baseHeadingLevel: baseHeadingLevel + 2,
           schemaStack: [],
           idPrefix: securityId,
         },
@@ -76,7 +73,6 @@ export function renderOperation({
           site,
           renderer,
           schema: securityChunk.chunkData.value,
-          baseHeadingLevel: baseHeadingLevel + 2,
           schemaStack: [],
           idPrefix: securityId,
         },
@@ -94,7 +90,7 @@ export function renderOperation({
     });
     for (const parameter of chunk.chunkData.parameters) {
       renderer.appendHeading(
-        baseHeadingLevel + 2,
+        4,
         `${parameter.name}${parameter.required ? " (required)" : ""}`,
         {
           id: parametersId + `+${parameter.name}`,
@@ -109,7 +105,6 @@ export function renderOperation({
           site,
           renderer,
           schema: parameterChunk.chunkData.value,
-          baseHeadingLevel: baseHeadingLevel + 2,
           schemaStack: [],
           idPrefix: parametersId,
         },
@@ -156,7 +151,6 @@ export function renderOperation({
         site,
         renderer,
         schema: requestBodySchema.chunkData.value,
-        baseHeadingLevel: baseHeadingLevel + 2,
         schemaStack: [],
         idPrefix: requestBodyId,
       },
@@ -195,7 +189,6 @@ export function renderOperation({
             site,
             renderer,
             schema: responseSchema.chunkData.value,
-            baseHeadingLevel: baseHeadingLevel + 2,
             schemaStack: [],
             idPrefix: responseId,
           },

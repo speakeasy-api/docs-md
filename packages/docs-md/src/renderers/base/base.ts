@@ -118,7 +118,7 @@ export type RendererBeginExpandableSectionArgs = [
 ];
 export type RendererBeginTabbedSectionArgs = [
   title: string,
-  options: AppendOptions & { baseHeadingLevel?: number; id: string },
+  options: AppendOptions & { id: string },
 ];
 export type RendererBeginTabContentsArgs = [title: string, tooltip: string];
 export type RendererAppendSidebarLinkArgs = [

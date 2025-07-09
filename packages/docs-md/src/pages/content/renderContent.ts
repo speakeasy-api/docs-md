@@ -160,7 +160,6 @@ function renderPages(
             context: {
               site,
               renderer,
-              baseHeadingLevel: 1,
               schemaStack: [],
               schema: chunk.chunkData.value,
               idPrefix: id,
@@ -176,7 +175,6 @@ function renderPages(
             site,
             chunk,
             docsData: data,
-            baseHeadingLevel: 2,
             docsCodeSnippets,
           });
           break;

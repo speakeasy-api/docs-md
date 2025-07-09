@@ -191,12 +191,9 @@ ${text}\n</code>\n</pre>`;
   }
 
   public createTabbedSectionStart(
-    ...[
-      title,
-      { baseHeadingLevel = 3, ...args },
-    ]: RendererBeginTabbedSectionArgs
+    ...[title, args]: RendererBeginTabbedSectionArgs
   ) {
-    return this.createHeading(baseHeadingLevel, title, args);
+    return this.createHeading(3, title, args);
   }
 
   public appendTabbedSectionStart(...args: RendererBeginTabbedSectionArgs) {

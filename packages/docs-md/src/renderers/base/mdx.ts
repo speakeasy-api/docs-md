@@ -130,13 +130,10 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createTabbedSectionStart(
-    ...[
-      title,
-      { escape = "mdx", id, baseHeadingLevel = 3 },
-    ]: RendererBeginTabbedSectionArgs
+    ...[title, { escape = "mdx", id }]: RendererBeginTabbedSectionArgs
   ) {
     this.insertComponentImport("TabbedSection");
-    return `<TabbedSection title="${this.escapeText(title, { escape })}" id="${id}" baseHeadingLevel="${baseHeadingLevel}">`;
+    return `<TabbedSection title="${this.escapeText(title, { escape })}" id="${id}">`;
   }
 
   public override createTabbedSectionEnd() {

@@ -16,7 +16,6 @@ import { getSchemaFromId } from "../util.ts";
 type SchemaRenderContext = {
   site: Site;
   renderer: Renderer;
-  baseHeadingLevel: number;
   schemaStack: string[];
   schema: SchemaValue;
   idPrefix: string;
@@ -29,10 +28,6 @@ function getMaxInlineLength(propertyName: string, indentationLevel: number) {
     indentationLevel
   );
 }
-
-// We dont' want to create headings less than this level, because they typically
-// have a font size _smaller_ than paragraph font size, which looks weird.
-const MIN_HEADING_LEVEL = 5;
 
 type TypeInfo = {
   label: string;
@@ -313,13 +308,9 @@ function renderNameAndType({
     annotatedPropertyName
   );
   if (computedDisplayType.multiline) {
-    context.renderer.appendHeading(
-      context.baseHeadingLevel,
-      annotatedPropertyName,
-      {
-        id: context.idPrefix + `+${propertyName}`,
-      }
-    );
+    context.renderer.appendHeading(4, annotatedPropertyName, {
+      id: context.idPrefix + `+${propertyName}`,
+    });
     context.renderer.appendCode(computedDisplayType.content, {
       variant: "raw",
       escape: "mdx",
@@ -334,11 +325,10 @@ function renderNameAndType({
       }),
       { variant: "raw", style: "inline", escape: "mdx" }
     );
-    context.renderer.appendHeading(
-      context.baseHeadingLevel,
-      `${name}: ${type}`,
-      { escape: "none", id: context.idPrefix + `+${propertyName}` }
-    );
+    context.renderer.appendHeading(4, `${name}: ${type}`, {
+      escape: "none",
+      id: context.idPrefix + `+${propertyName}`,
+    });
   }
 }
 
@@ -431,7 +421,7 @@ function renderSchemaBreakouts({
 
       // If no renderer was returned, that means we've already rendered this embed
       if (sidebarLinkRenderer) {
-        sidebarLinkRenderer.appendHeading(context.baseHeadingLevel, embedName);
+        sidebarLinkRenderer.appendHeading(3, embedName);
         if (breakoutSubType.schema.description) {
           sidebarLinkRenderer.appendText(breakoutSubType.schema.description);
         }
@@ -458,10 +448,6 @@ function renderSchemaBreakouts({
       context: {
         ...context,
         schema: breakoutSubType.schema,
-        baseHeadingLevel: Math.min(
-          context.baseHeadingLevel + 1,
-          MIN_HEADING_LEVEL
-        ),
         schemaStack: [...context.schemaStack, breakoutSubType.label],
         idPrefix: `${context.idPrefix}+${breakoutSubType.label}`,
       },
