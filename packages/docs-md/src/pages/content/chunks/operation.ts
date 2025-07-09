@@ -161,43 +161,47 @@ export function renderOperation({
   }
 
   if (chunk.chunkData.responses) {
-    const responsesId = id + "+responses";
-    renderer.appendTabbedSectionStart("Response", {
-      id: responsesId,
-    });
-    for (const [statusCode, responses] of Object.entries(
-      chunk.chunkData.responses
-    )) {
-      for (const response of responses) {
-        const tooltip = `${statusCode} (${response.contentType})`;
-        if (responses.length > 1) {
-          renderer.appendTabContentsStart(tooltip, tooltip);
-        } else {
-          renderer.appendTabContentsStart(statusCode, tooltip);
+    const responseList = Object.entries(chunk.chunkData.responses);
+    const hasResponses = responseList.some(
+      ([_, responses]) => responses.length > 0
+    );
+    if (hasResponses) {
+      const responsesId = id + "+responses";
+      renderer.appendTabbedSectionStart("Response", {
+        id: responsesId,
+      });
+      for (const [statusCode, responses] of responseList) {
+        for (const response of responses) {
+          const tooltip = `${statusCode} (${response.contentType})`;
+          if (responses.length > 1) {
+            renderer.appendTabContentsStart(tooltip, tooltip);
+          } else {
+            renderer.appendTabContentsStart(statusCode, tooltip);
+          }
+          const responseId =
+            id + `+${statusCode}+${response.contentType.replace("/", "-")}`;
+          if (response.description) {
+            renderer.appendText(response.description);
+          }
+          const responseSchema = getSchemaFromId(
+            response.contentChunkId,
+            docsData
+          );
+          renderSchema({
+            context: {
+              site,
+              renderer,
+              schema: responseSchema.chunkData.value,
+              schemaStack: [],
+              idPrefix: responseId,
+            },
+            topLevelName: "Response Body",
+            data: docsData,
+          });
+          renderer.appendTabContentsEnd();
         }
-        const responseId =
-          id + `+${statusCode}+${response.contentType.replace("/", "-")}`;
-        if (response.description) {
-          renderer.appendText(response.description);
-        }
-        const responseSchema = getSchemaFromId(
-          response.contentChunkId,
-          docsData
-        );
-        renderSchema({
-          context: {
-            site,
-            renderer,
-            schema: responseSchema.chunkData.value,
-            schemaStack: [],
-            idPrefix: responseId,
-          },
-          topLevelName: "Response Body",
-          data: docsData,
-        });
-        renderer.appendTabContentsEnd();
       }
+      renderer.appendTabbedSectionEnd();
     }
-    renderer.appendTabbedSectionEnd();
   }
 }
