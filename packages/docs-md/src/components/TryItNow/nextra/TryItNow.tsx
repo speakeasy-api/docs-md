@@ -1,55 +1,9 @@
 "use client";
+import { useTheme } from "next-themes";
 import { useMounted } from "nextra/hooks";
-import { useEffect, useState } from "react";
 
 import { Content } from "../common/components/Content.tsx";
 import type { NextraTryItNowProps } from "../common/types.ts";
-
-function useNextraThemeMode() {
-  const [theme, setTheme] = useState<"dark" | "light">(() => {
-    if (document?.documentElement?.classList?.contains("dark")) {
-      return "dark";
-    } else if (document?.documentElement?.classList?.contains("light")) {
-      return "light";
-    }
-    return "light";
-  });
-
-  useEffect(() => {
-    const targetNode = document?.documentElement;
-    const callback = (mutationsList: MutationRecord[]) => {
-      for (const mutation of mutationsList) {
-        if (
-          mutation.type === "attributes" &&
-          mutation.attributeName === "class"
-        ) {
-          const classList = targetNode?.classList;
-
-          if (classList.contains("dark")) {
-            setTheme("dark");
-          } else if (classList.contains("light")) {
-            setTheme("light");
-          } else {
-            setTheme("light");
-          }
-        }
-      }
-    };
-
-    const observer = new MutationObserver(callback);
-
-    observer.observe(targetNode, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  return theme;
-}
 
 const TryItNowContents = ({
   nextraCodeThemes = {
@@ -58,8 +12,8 @@ const TryItNowContents = ({
   },
   ...props
 }: NextraTryItNowProps) => {
-  const themeMode = useNextraThemeMode();
-  const sandpackTheme = nextraCodeThemes[themeMode];
+  const { resolvedTheme } = useTheme();
+  const sandpackTheme = nextraCodeThemes[resolvedTheme as "dark" | "light"];
 
   return <Content theme={sandpackTheme} {...props} />;
 };
