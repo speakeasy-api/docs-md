@@ -1,7 +1,7 @@
 import type { SandpackTheme } from "@codesandbox/sandpack-react";
 import type { DeepPartial } from "@codesandbox/sandpack-react";
 import type { Theme } from "rehype-pretty-code";
-import type { BundledTheme, ThemeRegistration } from "shiki";
+import type { BundledTheme, ThemeRegistration, ThemeRegistrationAny } from "shiki";
 import { bundledThemes, normalizeTheme } from "shiki";
 
 import type { RehypeTheme } from "../types/nextra.ts";
@@ -23,19 +23,19 @@ export async function loadRehypeThemes(
 
   const defaultDarkTheme = normalizeTheme(githubDark);
   const defaultLightTheme = normalizeTheme(githubLight);
+
+  // Handle the case where a user set the site theme to single Shiki theme
   if (typeof themes === "string") {
     const shikiTheme = await loadBundledShikiTheme(themes);
-    return shikiTheme.type === "dark"
-      ? {
-          dark: shikiTheme,
-          light: defaultLightTheme,
-        }
-      : {
-          light: shikiTheme,
-          dark: defaultDarkTheme,
-        };
+    // In this case, we are gonna set both dark and light mode to the same theme
+    return {
+      dark: shikiTheme,
+      light: shikiTheme,
+    };
   }
 
+  // We are handling the case where the user imported via JSON and set just one theme
+  // for dark and light mode.
   if (
     themes &&
     "name" in themes &&
@@ -53,21 +53,26 @@ export async function loadRehypeThemes(
         };
   }
 
-  if (typeof themes === "object") {
-    const processedThemes: Record<string, ThemeRegistration> = {};
+
+  // Handle the case where the user did a mix of the two, a JSON theme 
+  // and a bundled theme name
+  if (typeof themes === "object" && themes !== null) {
+    const processedThemes: Record<'dark' | 'light', ThemeRegistration> = {
+      dark: defaultDarkTheme,
+      light: defaultLightTheme,
+    };
+
     for (const [themeName, shikiTheme] of Object.entries(
-      themes as Record<string, Theme>
+      themes
     )) {
       if (typeof shikiTheme === "string") {
-        const loadedTheme = await loadBundledShikiTheme(shikiTheme);
-        processedThemes[themeName] = loadedTheme;
+        // Load the bundled theme
+        const loadedTheme = await loadBundledShikiTheme(shikiTheme as BundledTheme);
+        processedThemes[themeName as "dark" | "light"] = loadedTheme;
       } else {
-        processedThemes[themeName] = normalizeTheme(shikiTheme);
+        // normalize the imported theme
+        processedThemes[themeName as "dark" | "light"] = normalizeTheme(shikiTheme as ThemeRegistrationAny);
       }
-    }
-
-    if (!processedThemes.dark || !processedThemes.light) {
-      throw new Error("Missing dark or light theme");
     }
 
     return {
@@ -82,80 +87,76 @@ export async function loadRehypeThemes(
   };
 }
 
-
 export function convertRehypeThemeToSandpackTheme(rehypeTheme: RehypeTheme): {
-    dark: DeepPartial<SandpackTheme>;
-    light: DeepPartial<SandpackTheme>;
-  } {
-    const darkTheme = rehypeTheme.dark;
-    const lightTheme = rehypeTheme.light;
-  
-    const convertTheme = (
-      theme: ThemeRegistration
-    ) => {
-      const { settings } = theme;
-      const scopeKeyWords = [
-        "comment",
-        "punctuation.definition.tag",
-        "keyword",
-        "variable.language",
-        "constant",
-        "entity.name",
-        "string",
-        "meta.property-name",
-        "variable.parameter.function",
-      ];
-  
-      const colorThemeMap = new Map<string, string>();
-  
-      settings?.forEach((setting) => {
-        const scope = setting.scope;
-  
-        if (typeof scope === "string" && scopeKeyWords.includes(scope)) {
-          colorThemeMap.set(scope, setting.settings.foreground ?? "");
-        } 
-        
-        if (Array.isArray(scope) ) {
-          // check if scope has a value from scopeKeyWords
-          const hasScopeKeyWord = scope.some((s) => scopeKeyWords.includes(s));
-          if (hasScopeKeyWord) {
-            scope.forEach((s) => {
-              colorThemeMap.set(s, setting.settings.foreground ?? "");
-            });
-          }
+  dark: DeepPartial<SandpackTheme>;
+  light: DeepPartial<SandpackTheme>;
+} {
+  const darkTheme = rehypeTheme.dark;
+  const lightTheme = rehypeTheme.light;
+
+  const convertTheme = (theme: ThemeRegistration) => {
+    const { settings } = theme;
+    const scopeKeyWords = [
+      "comment",
+      "punctuation.definition.tag",
+      "keyword",
+      "variable.language",
+      "constant",
+      "entity.name",
+      "string",
+      "meta.property-name",
+      "variable.parameter.function",
+    ];
+
+    const colorThemeMap = new Map<string, string>();
+
+    settings?.forEach((setting) => {
+      const scope = setting.scope;
+
+      if (typeof scope === "string" && scopeKeyWords.includes(scope)) {
+        colorThemeMap.set(scope, setting.settings.foreground ?? "");
+      }
+
+      if (Array.isArray(scope)) {
+        // check if scope has a value from scopeKeyWords
+        const hasScopeKeyWord = scope.some((s) => scopeKeyWords.includes(s));
+        if (hasScopeKeyWord) {
+          scope.forEach((s) => {
+            colorThemeMap.set(s, setting.settings.foreground ?? "");
+          });
         }
-      });
-  
-      return {
-        colors: {
-          base: theme?.colors?.["editor.foreground"],
-          surface1: theme?.colors?.["editor.background"],
-          surface2: theme?.colors?.["panel.border"],
-          surface3: theme?.colors?.["editor.lineHighlightBackground"],
-        },
-        font: {
-          mono: 'var(--x-font-mono)'
-        },
-        syntax: {
-          string: colorThemeMap.get("string"),
-          comment: colorThemeMap.get("comment"),
-          keyword: colorThemeMap.get("keyword"),
-          // Color for object properties, variable properties, etc.
-          property:  theme?.colors?.["editor.foreground"],
-          tag: colorThemeMap.get("punctuation.definition.tag"),
-          // The color for variable names, import names, etc.
-          plain: colorThemeMap.get("meta.property-name"),
-          definition: colorThemeMap.get("entity.name"),
-          punctuation: theme?.colors?.["editor.foreground"],
-          // literal variable values like a number or boolean
-          static: colorThemeMap.get("constant"),
-        },
-      } as DeepPartial<SandpackTheme>;
-    };
-  
+      }
+    });
+
     return {
-      dark: convertTheme(darkTheme),
-      light: convertTheme(lightTheme),
-    };
-  }
-  
+      colors: {
+        base: theme?.colors?.["editor.foreground"],
+        surface1: theme?.colors?.["editor.background"],
+        surface2: theme?.colors?.["panel.border"],
+        surface3: theme?.colors?.["editor.lineHighlightBackground"],
+      },
+      font: {
+        mono: "var(--x-font-mono)",
+      },
+      syntax: {
+        string: colorThemeMap.get("string"),
+        comment: colorThemeMap.get("comment"),
+        keyword: colorThemeMap.get("keyword"),
+        // Color for object properties, variable properties, etc.
+        property: theme?.colors?.["editor.foreground"],
+        tag: colorThemeMap.get("punctuation.definition.tag"),
+        // The color for variable names, import names, etc.
+        plain: colorThemeMap.get("meta.property-name"),
+        definition: colorThemeMap.get("entity.name"),
+        punctuation: theme?.colors?.["editor.foreground"],
+        // literal variable values like a number or boolean
+        static: colorThemeMap.get("constant"),
+      },
+    } as DeepPartial<SandpackTheme>;
+  };
+
+  return {
+    dark: convertTheme(darkTheme),
+    light: convertTheme(lightTheme),
+  };
+}
