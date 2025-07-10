@@ -1,24 +1,28 @@
 "use client";
 
+import type { PropsWithChildren } from "react";
 import { useMemo, useState } from "react";
 
 import { InternalError } from "../../../util/internalError.ts";
 import type {
+  ContentProps,
   HeaderContainerProps,
   TabbedSectionProps,
   TabButtonProps,
+  TabProps,
+  TitleProps,
 } from "./types.ts";
 
 type ContainerProps = {
-  title: string;
   HeaderContainer: React.FC<HeaderContainerProps>;
+  ChildrenContainer: React.FC<PropsWithChildren>;
   TabButton: React.FC<TabButtonProps>;
   children: TabbedSectionProps["children"];
 };
 
 export function Container({
-  title,
   HeaderContainer,
+  ChildrenContainer,
   TabButton,
   children,
 }: ContainerProps) {
@@ -31,41 +35,88 @@ export function Container({
       throw new InternalError("TabbedSection children must be an array");
     }
   }
-  if (children.length === 0) {
-    throw new InternalError("TabbedSection must have at least one child");
+
+  // Get the title child
+  const titleChildren = useMemo(
+    () =>
+      children.filter(
+        ({ props: { slot } }) => slot === "title"
+        // TypeScript doesn't narrow on filter, so we have to cast explicitly
+      ) as React.ReactElement<TitleProps>[],
+    [children]
+  );
+  if (titleChildren.length !== 1) {
+    throw new InternalError("TabbedSection must have exactly one title child");
+  }
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const titleChild = titleChildren[0]!;
+
+  // Get the tab children
+  const tabChildren = useMemo(
+    () =>
+      children.filter(
+        ({ props: { slot } }) => slot === "tab"
+        // TypeScript doesn't narrow on filter, so we have to cast explicitly
+      ) as React.ReactElement<TabProps>[],
+    [children]
+  );
+  if (tabChildren.length === 0) {
+    throw new InternalError("TabbedSection must have at least one tab child");
   }
 
-  const tabInfo = useMemo(() => {
-    return children.map(({ props: { title, tooltip } }) => {
-      if (!title) {
-        throw new InternalError("TabbedSection child title is missing");
-      }
-      return { title, tooltip };
-    });
-  }, [children]);
+  // Get the content children
+  const contentChildren = useMemo(
+    () =>
+      children.filter(
+        ({ props: { slot } }) => slot === "content"
+        // TypeScript doesn't narrow on filter, so we have to cast explicitly
+      ) as React.ReactElement<ContentProps>[],
+    [children]
+  );
+  if (contentChildren.length === 0) {
+    throw new InternalError(
+      "TabbedSection must have at least one content child"
+    );
+  }
 
-  // Guaranteed to always have at least one due to the check above
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const [activeTitle, setActiveTitle] = useState(tabInfo[0]!.title);
+  const [activeTabId, setActiveTabId] = useState(
+    // Guaranteed to always have at least one due to the checks above
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    tabChildren[0]!.props["data-tab-id"]
+  );
 
   const activeChild = useMemo(() => {
-    return children.find((child) => child.props.title === activeTitle);
-  }, [children, activeTitle]);
+    return contentChildren.find(
+      (child) => child.props["data-tab-content-id"] === activeTabId
+    );
+  }, [contentChildren, activeTabId]);
+
+  const tabChildrenWithButtons = useMemo(
+    () =>
+      tabChildren.map((tabChild) => {
+        const id = tabChild.props["data-tab-id"];
+        console.log(id, activeTabId);
+        return (
+          <TabButton
+            key={id}
+            title={tabChild.props.title}
+            isActive={id === activeTabId}
+            onClick={() => setActiveTabId(id)}
+          >
+            {tabChild}
+          </TabButton>
+        );
+      }),
+    [TabButton, activeTabId, tabChildren]
+  );
 
   return (
     <>
-      <HeaderContainer title={title}>
-        {tabInfo.map(({ title, tooltip }) => (
-          <TabButton
-            key={title}
-            title={title}
-            tooltip={tooltip}
-            isActive={title === activeTitle}
-            onClick={() => setActiveTitle(title)}
-          />
-        ))}
-      </HeaderContainer>
-      <div>{activeChild}</div>
+      {/* Since children needs to be very specifically ordered, we have to
+          pass it in as a prop to make TypeScript happy */}
+      {/* eslint-disable-next-line react/no-children-prop */}
+      <HeaderContainer children={[titleChild, ...tabChildrenWithButtons]} />
+      <ChildrenContainer>{activeChild}</ChildrenContainer>
     </>
   );
 }

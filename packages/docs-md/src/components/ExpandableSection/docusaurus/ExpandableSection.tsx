@@ -1,6 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
+import clsx from "clsx";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Button } from "../../primitives/docusaurus/Button.tsx";
+import { Section } from "../../Section/docusaurus.tsx";
 import type { ExpandableSectionProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
@@ -33,9 +35,12 @@ export function DocusaurusExpandableSection({
     };
   }, [id]);
 
-  return (
-    <div className={styles.container} id={id}>
-      <Button onClick={onClick} className={styles.heading}>
+  const titleElement = useMemo(
+    () => (
+      <Button
+        onClick={onClick}
+        className={clsx(styles.heading, isOpen && styles.headingOpen)}
+      >
         <div
           style={{
             transform: isOpen ? "rotate(180deg)" : "rotate(90deg)",
@@ -46,9 +51,15 @@ export function DocusaurusExpandableSection({
         </div>
         {title}
       </Button>
+    ),
+    [onClick, isOpen, title]
+  );
+
+  return (
+    <Section className={styles.container} variant="fields">
+      {titleElement}
       <div
         style={{
-          padding: "0 calc(0.5 * var(--ifm-alert-padding-horizontal))",
           display: isOpen ? "block" : "none",
           // TODO: animate height when expanding closing. Requires knowing the
           // height up front though it seems.
@@ -56,6 +67,6 @@ export function DocusaurusExpandableSection({
       >
         {children}
       </div>
-    </div>
+    </Section>
   );
 }

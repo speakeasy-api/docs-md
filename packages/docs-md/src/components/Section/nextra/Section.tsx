@@ -1,14 +1,31 @@
-import { Card } from "../../primitives/nextra/Card.tsx";
+import clsx from "clsx";
+
 import type { SectionProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
-export function NextraSection({ title, children, id }: SectionProps) {
+export function NextraSection({
+  children: [title, content],
+  variant,
+  className,
+}: SectionProps) {
   return (
-    <Card>
-      <div className={styles.header} id={id}>
-        <h3 className={styles.title}>{title}</h3>
+    <>
+      <div
+        className={clsx(
+          styles.header,
+          variant !== "fields" && styles.linedHeader,
+          className
+        )}
+      >
+        {title}
       </div>
-      <div>{children}</div>
-    </Card>
+      <div
+        className={
+          variant === "fields" ? styles.linedContainer : styles.container
+        }
+      >
+        {content}
+      </div>
+    </>
   );
 }

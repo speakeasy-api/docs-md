@@ -1,8 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import clsx from "clsx";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Button } from "../../primitives/nextra/Button.tsx";
+import { Section } from "../../Section/nextra.tsx";
 import type { ExpandableSectionProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
@@ -35,9 +37,12 @@ export function NextraExpandableSection({
     };
   }, [id]);
 
-  return (
-    <div className={styles.container} id={id}>
-      <Button onClick={onClick} className={styles.heading}>
+  const titleElement = useMemo(
+    () => (
+      <Button
+        onClick={onClick}
+        className={clsx(styles.heading, isOpen && styles.headingOpen)}
+      >
         <div
           style={{
             transform: isOpen ? "rotate(180deg)" : "rotate(90deg)",
@@ -48,8 +53,14 @@ export function NextraExpandableSection({
         </div>
         {title}
       </Button>
+    ),
+    [onClick, isOpen, title]
+  );
+
+  return (
+    <Section className={styles.container} variant="fields">
+      {titleElement}
       <div
-        className={styles.contents}
         style={{
           display: isOpen ? "block" : "none",
           // TODO: animate height when expanding closing. Requires knowing the
@@ -58,6 +69,6 @@ export function NextraExpandableSection({
       >
         {children}
       </div>
-    </div>
+    </Section>
   );
 }

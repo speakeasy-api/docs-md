@@ -4,14 +4,14 @@ import type { TabButtonProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
 export function TabButton({
+  children,
   title,
-  tooltip,
   isActive,
   onClick,
 }: TabButtonProps) {
   return (
     <button
-      title={tooltip}
+      title={title}
       onClick={onClick}
       className={clsx(
         styles.button,
@@ -21,7 +21,7 @@ export function TabButton({
         fontWeight: isActive ? "bold" : "normal",
       }}
     >
-      {title}
+      {children}
     </button>
   );
 }

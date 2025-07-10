@@ -16,7 +16,6 @@ import { getSchemaFromId } from "../util.ts";
 type SchemaRenderContext = {
   site: Site;
   renderer: Renderer;
-  baseHeadingLevel: number;
   schemaStack: string[];
   schema: SchemaValue;
   idPrefix: string;
@@ -29,10 +28,6 @@ function getMaxInlineLength(propertyName: string, indentationLevel: number) {
     indentationLevel
   );
 }
-
-// We dont' want to create headings less than this level, because they typically
-// have a font size _smaller_ than paragraph font size, which looks weird.
-const MIN_HEADING_LEVEL = 5;
 
 type TypeInfo = {
   label: string;
@@ -313,13 +308,9 @@ function renderNameAndType({
     annotatedPropertyName
   );
   if (computedDisplayType.multiline) {
-    context.renderer.appendHeading(
-      context.baseHeadingLevel,
-      annotatedPropertyName,
-      {
-        id: context.idPrefix + `+${propertyName}`,
-      }
-    );
+    context.renderer.appendHeading(4, annotatedPropertyName, {
+      id: context.idPrefix + `+${propertyName}`,
+    });
     context.renderer.appendCode(computedDisplayType.content, {
       variant: "raw",
       escape: "mdx",
@@ -334,11 +325,10 @@ function renderNameAndType({
       }),
       { variant: "raw", style: "inline", escape: "mdx" }
     );
-    context.renderer.appendHeading(
-      context.baseHeadingLevel,
-      `${name}: ${type}`,
-      { escape: "none", id: context.idPrefix + `+${propertyName}` }
-    );
+    context.renderer.appendHeading(4, `${name}: ${type}`, {
+      escape: "none",
+      id: context.idPrefix + `+${propertyName}`,
+    });
   }
 }
 
@@ -431,7 +421,7 @@ function renderSchemaBreakouts({
 
       // If no renderer was returned, that means we've already rendered this embed
       if (sidebarLinkRenderer) {
-        sidebarLinkRenderer.appendHeading(context.baseHeadingLevel, embedName);
+        sidebarLinkRenderer.appendHeading(3, embedName);
         if (breakoutSubType.schema.description) {
           sidebarLinkRenderer.appendText(breakoutSubType.schema.description);
         }
@@ -451,24 +441,17 @@ function renderSchemaBreakouts({
     }
 
     // Otherwise, render the schema inline
-    context.renderer.appendExpandableSectionStart(breakoutSubType.label, {
-      id: `${context.idPrefix}+${breakoutSubType.label}`,
-    });
     renderSchema({
       context: {
         ...context,
         schema: breakoutSubType.schema,
-        baseHeadingLevel: Math.min(
-          context.baseHeadingLevel + 1,
-          MIN_HEADING_LEVEL
-        ),
         schemaStack: [...context.schemaStack, breakoutSubType.label],
         idPrefix: `${context.idPrefix}+${breakoutSubType.label}`,
       },
       data,
       topLevelName: breakoutSubType.label,
+      isExpandable: true,
     });
-    context.renderer.appendExpandableSectionEnd();
   }
 }
 
@@ -476,13 +459,20 @@ export function renderSchema({
   context,
   data,
   topLevelName,
+  isExpandable,
 }: {
   context: SchemaRenderContext;
   data: Map<string, Chunk>;
   topLevelName: string;
+  isExpandable?: boolean;
 }) {
   function renderObjectProperties(objectValue: ObjectValue) {
-    for (const [key, value] of Object.entries(objectValue.properties)) {
+    const properties = Object.entries(objectValue.properties);
+    if (!properties.length) {
+      return;
+    }
+    for (const [key, value] of properties) {
+      context.renderer.appendSectionContentStart({ variant: "fields" });
       const isRequired = objectValue.required?.includes(key) ?? false;
       if (value.type === "chunk") {
         const schemaChunk = getSchemaFromId(value.chunkId, data);
@@ -516,6 +506,7 @@ export function renderSchema({
           isRequired,
         });
       }
+      context.renderer.appendSectionContentEnd();
     }
   }
 
@@ -552,6 +543,18 @@ export function renderSchema({
     });
   }
 
+  if (isExpandable) {
+    context.renderer.appendExpandableSectionStart(topLevelName, {
+      id: context.idPrefix,
+    });
+  } else {
+    context.renderer.appendSectionStart({ variant: "fields" });
+    context.renderer.appendSectionTitleStart({ variant: "fields" });
+    context.renderer.appendHeading(4, "Fields", {
+      id: context.idPrefix + "+fields",
+    });
+    context.renderer.appendSectionTitleEnd();
+  }
   switch (context.schema.type) {
     case "object": {
       renderObjectProperties(context.schema);
@@ -560,16 +563,27 @@ export function renderSchema({
     case "map":
     case "set":
     case "array": {
+      context.renderer.appendSectionContentStart({ variant: "fields" });
       renderArrayLikeItems(context.schema);
+      context.renderer.appendSectionContentEnd();
       break;
     }
     case "union": {
+      context.renderer.appendSectionContentStart({ variant: "fields" });
       renderUnionItems(context.schema);
+      context.renderer.appendSectionContentEnd();
       break;
     }
     default: {
+      context.renderer.appendSectionContentStart({ variant: "fields" });
       renderBasicItems(context.schema);
+      context.renderer.appendSectionContentEnd();
       break;
     }
+  }
+  if (isExpandable) {
+    context.renderer.appendExpandableSectionEnd();
+  } else {
+    context.renderer.appendSectionEnd();
   }
 }

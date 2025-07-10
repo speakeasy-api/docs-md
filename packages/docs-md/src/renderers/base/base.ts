@@ -15,6 +15,9 @@
 // defined as a tuple. We can then use the spread operator to assign that type
 // to all arguments. It's a bit verbose and convoluted, but solves both 1 and 2
 
+// Helper types
+
+export type SectionVariant = "section" | "fields" | "operation";
 
 // Argument types for Site interface methods
 export type SiteCreatePageArgs = [path: string];
@@ -59,8 +62,11 @@ export type RendererAppendHeadingArgs = [
   text: string,
   options?: AppendOptions & { id?: string },
 ];
-export type RendererAppendTextArgs = [text: string, options?: AppendOptions];
-export type RendererAppendCodeArgs = [
+export type RendererCreateAppendTextArgs = [
+  text: string,
+  options?: AppendOptions,
+];
+export type RendererCreateAppendCodeArgs = [
   text: string,
   options?:
     | {
@@ -108,20 +114,16 @@ export type RendererAppendCodeArgs = [
         escape?: Escape;
       },
 ];
-export type RendererAppendListArgs = [items: string[], options?: AppendOptions];
-export type RendererAppendSectionStartArgs = [
+export type RendererCreateListArgs = [items: string[], options?: AppendOptions];
+export type RendererCreateSectionArgs = [
+  options?: { variant?: SectionVariant },
+];
+export type RendererCreateExpandableSectionArgs = [
   title: string,
   options: AppendOptions & { id: string },
 ];
-export type RendererBeginExpandableSectionArgs = [
-  title: string,
-  options: AppendOptions & { id: string },
-];
-export type RendererBeginTabbedSectionArgs = [
-  title: string,
-  options: AppendOptions & { baseHeadingLevel?: number; id: string },
-];
-export type RendererBeginTabContentsArgs = [title: string, tooltip: string];
+export type RendererCreateTabArgs = [id: string];
+export type RendererCreateTabbedSectionTabArgs = [id: string, title: string];
 export type RendererAppendSidebarLinkArgs = [
   options: {
     title: string;
@@ -142,27 +144,37 @@ export abstract class Renderer {
   abstract createHeading(...args: RendererAppendHeadingArgs): void;
   abstract appendHeading(...args: RendererAppendHeadingArgs): void;
 
-  abstract createText(...args: RendererAppendTextArgs): string;
-  abstract appendText(...args: RendererAppendTextArgs): void;
+  abstract createText(...args: RendererCreateAppendTextArgs): string;
+  abstract appendText(...args: RendererCreateAppendTextArgs): void;
 
-  abstract createCode(...args: RendererAppendCodeArgs): string;
-  abstract appendCode(...args: RendererAppendCodeArgs): void;
+  abstract createCode(...args: RendererCreateAppendCodeArgs): string;
+  abstract appendCode(...args: RendererCreateAppendCodeArgs): void;
 
-  abstract createList(...args: RendererAppendListArgs): string;
-  abstract appendList(...args: RendererAppendListArgs): void;
+  abstract createList(...args: RendererCreateListArgs): string;
+  abstract appendList(...args: RendererCreateListArgs): void;
 
-  abstract createSectionStart(...args: RendererAppendSectionStartArgs): string;
-  abstract appendSectionStart(...args: RendererAppendSectionStartArgs): void;
+  abstract createSectionStart(...args: RendererCreateSectionArgs): string;
+  abstract appendSectionStart(...args: RendererCreateSectionArgs): void;
   abstract createSectionEnd(): string;
   abstract appendSectionEnd(): void;
+  abstract createSectionTitleStart(...args: RendererCreateSectionArgs): string;
+  abstract appendSectionTitleStart(...args: RendererCreateSectionArgs): void;
+  abstract createSectionTitleEnd(): string;
+  abstract appendSectionTitleEnd(): void;
+  abstract createSectionContentStart(
+    ...args: RendererCreateSectionArgs
+  ): string;
+  abstract appendSectionContentStart(...args: RendererCreateSectionArgs): void;
+  abstract createSectionContentEnd(): string;
+  abstract appendSectionContentEnd(): void;
 
   // Expandable sections are used to show schema value breakouts, which are
   // collapsed by default
   abstract createExpandableSectionStart(
-    ...args: RendererBeginExpandableSectionArgs
+    ...args: RendererCreateExpandableSectionArgs
   ): string;
   abstract appendExpandableSectionStart(
-    ...args: RendererBeginExpandableSectionArgs
+    ...args: RendererCreateExpandableSectionArgs
   ): void;
   abstract createExpandableSectionEnd(): string;
   abstract appendExpandableSectionEnd(): void;
@@ -171,18 +183,30 @@ export abstract class Renderer {
   // with a separator for content. Tab contents are markdown content linked
   // to a tab. The tab contents insert a wrapper div with specific attributes
   // used to populate the contents of the tab section.
-  abstract createTabbedSectionStart(
-    ...args: RendererBeginTabbedSectionArgs
-  ): void;
-  abstract appendTabbedSectionStart(
-    ...args: RendererBeginTabbedSectionArgs
-  ): void;
+  abstract createTabbedSectionStart(): void;
+  abstract appendTabbedSectionStart(): void;
   abstract createTabbedSectionEnd(): void;
   abstract appendTabbedSectionEnd(): void;
-  abstract createTabContentsStart(...args: RendererBeginTabContentsArgs): void;
-  abstract appendTabContentsStart(...args: RendererBeginTabContentsArgs): void;
-  abstract createTabContentsEnd(): void;
-  abstract appendTabContentsEnd(): void;
+  abstract createTabbedSectionTitleStart(): void;
+  abstract appendTabbedSectionTitleStart(): void;
+  abstract createTabbedSectionTitleEnd(): void;
+  abstract appendTabbedSectionTitleEnd(): void;
+  abstract createTabbedSectionTabStart(
+    ...args: RendererCreateTabbedSectionTabArgs
+  ): void;
+  abstract appendTabbedSectionTabStart(
+    ...args: RendererCreateTabbedSectionTabArgs
+  ): void;
+  abstract createTabbedSectionTabEnd(): void;
+  abstract appendTabbedSectionTabEnd(): void;
+  abstract createTabbedSectionContentsStart(
+    ...args: RendererCreateTabArgs
+  ): void;
+  abstract appendTabbedSectionContentsStart(
+    ...args: RendererCreateTabArgs
+  ): void;
+  abstract createTabbedSectionContentsEnd(): void;
+  abstract appendTabbedSectionContentsEnd(): void;
 
   // The following methods are used to insert complex content onto the page,
   // and so they don't have "create" variants.

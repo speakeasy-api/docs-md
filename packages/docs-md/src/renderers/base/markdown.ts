@@ -3,14 +3,14 @@ import { join, resolve } from "node:path";
 import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from "../../util/settings.ts";
 import type {
-  RendererAppendCodeArgs,
   RendererAppendHeadingArgs,
-  RendererAppendListArgs,
-  RendererAppendSectionStartArgs,
-  RendererAppendTextArgs,
-  RendererBeginExpandableSectionArgs,
-  RendererBeginTabbedSectionArgs,
-  RendererBeginTabContentsArgs,
+  RendererCreateAppendCodeArgs,
+  RendererCreateAppendTextArgs,
+  RendererCreateExpandableSectionArgs,
+  RendererCreateListArgs,
+  RendererCreateSectionArgs,
+  RendererCreateTabArgs,
+  RendererCreateTabbedSectionTabArgs,
   RendererEscapeTextArgs,
   SiteBuildPagePathArgs,
   SiteCreatePageArgs,
@@ -59,7 +59,7 @@ export abstract class MarkdownRenderer extends Renderer {
   #isFinalized = false;
   [rendererLines]: string[] = [];
 
-  public escapeText(...[text, { escape }]: RendererEscapeTextArgs) {
+  public override escapeText(...[text, { escape }]: RendererEscapeTextArgs) {
     switch (escape) {
       case "markdown":
         return (
@@ -92,7 +92,7 @@ export abstract class MarkdownRenderer extends Renderer {
     }
   }
 
-  public createHeading(
+  public override createHeading(
     ...[
       level,
       text,
@@ -106,21 +106,21 @@ export abstract class MarkdownRenderer extends Renderer {
     return line;
   }
 
-  public appendHeading(...args: RendererAppendHeadingArgs) {
+  public override appendHeading(...args: RendererAppendHeadingArgs) {
     this[rendererLines].push(this.createHeading(...args));
   }
 
-  public createText(
-    ...[text, { escape = "mdx" } = {}]: RendererAppendTextArgs
+  public override createText(
+    ...[text, { escape = "mdx" } = {}]: RendererCreateAppendTextArgs
   ) {
     return this.escapeText(text, { escape });
   }
 
-  public appendText(...args: RendererAppendTextArgs) {
+  public override appendText(...args: RendererCreateAppendTextArgs) {
     this[rendererLines].push(this.createText(...args));
   }
 
-  public createCode(...[text, options]: RendererAppendCodeArgs) {
+  public override createCode(...[text, options]: RendererCreateAppendCodeArgs) {
     if (options?.variant === "raw") {
       if (options.style === "inline") {
         return `<code>${text}</code>`;
@@ -136,98 +136,173 @@ ${text}\n</code>\n</pre>`;
     }
   }
 
-  public appendCode(...args: RendererAppendCodeArgs) {
+  public override appendCode(...args: RendererCreateAppendCodeArgs) {
     this[rendererLines].push(this.createCode(...args));
   }
 
-  public createList(
-    ...[items, { escape = "markdown" } = {}]: RendererAppendListArgs
+  public override createList(
+    ...[items, { escape = "markdown" } = {}]: RendererCreateListArgs
   ) {
     return items
       .map((item) => "- " + this.escapeText(item, { escape }))
       .join("\n");
   }
 
-  public appendList(...args: RendererAppendListArgs) {
+  public override appendList(...args: RendererCreateListArgs) {
     this[rendererLines].push(this.createList(...args));
   }
 
-  public createSectionStart(
-    ...[title, { id }]: RendererAppendSectionStartArgs
+  public override createSectionStart(
+    ..._args: RendererCreateSectionArgs
   ): string {
-    return this.createHeading(3, title, { id });
-  }
-
-  public appendSectionStart(...args: RendererAppendSectionStartArgs): void {
-    this[rendererLines].push(this.createSectionStart(...args));
-  }
-
-  public createSectionEnd(): string {
     return "";
   }
 
-  public appendSectionEnd(): void {
+  public override appendSectionStart(...args: RendererCreateSectionArgs): void {
+    this[rendererLines].push(this.createSectionStart(...args));
+  }
+
+  public override createSectionEnd(): string {
+    return "";
+  }
+
+  public override appendSectionEnd(): void {
     this[rendererLines].push(this.createSectionEnd());
   }
 
-  public createExpandableSectionStart(
-    ...[title, { id, escape = "mdx" }]: RendererBeginExpandableSectionArgs
+  public override createSectionTitleStart(
+    ..._args: RendererCreateSectionArgs
+  ): string {
+    return "";
+  }
+
+  public override appendSectionTitleStart(
+    ...args: RendererCreateSectionArgs
+  ): void {
+    this[rendererLines].push(this.createSectionTitleStart(...args));
+  }
+
+  public override createSectionTitleEnd(): string {
+    return "";
+  }
+
+  public override appendSectionTitleEnd(): void {
+    this[rendererLines].push(this.createSectionTitleEnd());
+  }
+
+  public override createSectionContentStart(
+    ..._args: RendererCreateSectionArgs
+  ): string {
+    return "";
+  }
+
+  public override appendSectionContentStart(
+    ...args: RendererCreateSectionArgs
+  ): void {
+    this[rendererLines].push(this.createSectionContentStart(...args));
+  }
+
+  public override createSectionContentEnd(): string {
+    return "";
+  }
+
+  public override appendSectionContentEnd(): void {
+    this[rendererLines].push(this.createSectionContentEnd());
+  }
+
+  public override createExpandableSectionStart(
+    ...[title, { id, escape = "mdx" }]: RendererCreateExpandableSectionArgs
   ) {
     return `<details id="${id}">\n\n<summary>${this.escapeText(title, { escape })}</summary>`;
   }
 
-  public appendExpandableSectionStart(
-    ...args: RendererBeginExpandableSectionArgs
+  public override appendExpandableSectionStart(
+    ...args: RendererCreateExpandableSectionArgs
   ) {
     this[rendererLines].push(this.createExpandableSectionStart(...args));
   }
 
-  public createExpandableSectionEnd() {
+  public override createExpandableSectionEnd(): string {
     return "</details>";
   }
 
-  public appendExpandableSectionEnd() {
+  public override appendExpandableSectionEnd(): void {
     this[rendererLines].push(this.createExpandableSectionEnd());
   }
 
-  public createTabbedSectionStart(
-    ...[
-      title,
-      { baseHeadingLevel = 3, ...args },
-    ]: RendererBeginTabbedSectionArgs
-  ) {
-    return this.createHeading(baseHeadingLevel, title, args);
-  }
-
-  public appendTabbedSectionStart(...args: RendererBeginTabbedSectionArgs) {
-    this[rendererLines].push(this.createTabbedSectionStart(...args));
-  }
-
-  public createTabbedSectionEnd() {
+  public override createTabbedSectionStart(): string {
     return "";
   }
 
-  public appendTabbedSectionEnd() {
+  public override appendTabbedSectionStart(): void {
+    this[rendererLines].push(this.createTabbedSectionStart());
+  }
+
+  public override createTabbedSectionEnd(): string {
+    return "";
+  }
+
+  public override appendTabbedSectionEnd(): void {
     this[rendererLines].push(this.createTabbedSectionEnd());
   }
 
-  public createTabContentsStart(..._args: RendererBeginTabContentsArgs) {
+  public override createTabbedSectionTitleStart(): string {
     return "";
   }
 
-  public appendTabContentsStart(...args: RendererBeginTabContentsArgs) {
-    this[rendererLines].push(this.createTabContentsStart(...args));
+  public override appendTabbedSectionTitleStart(): void {
+    this[rendererLines].push(this.createTabbedSectionTitleStart());
   }
 
-  public createTabContentsEnd() {
+  public override createTabbedSectionTitleEnd(): string {
     return "";
   }
 
-  public appendTabContentsEnd() {
-    this[rendererLines].push(this.createTabContentsEnd());
+  public override appendTabbedSectionTitleEnd(): void {
+    this[rendererLines].push(this.createTabbedSectionTitleEnd());
   }
 
-  public render() {
+  public override createTabbedSectionTabStart(
+    ..._args: RendererCreateTabbedSectionTabArgs
+  ): string {
+    return "";
+  }
+
+  public override appendTabbedSectionTabStart(
+    ...args: RendererCreateTabbedSectionTabArgs
+  ): void {
+    this[rendererLines].push(this.createTabbedSectionTabStart(...args));
+  }
+
+  public override createTabbedSectionTabEnd(): string {
+    return "";
+  }
+
+  public override appendTabbedSectionTabEnd(): void {
+    this[rendererLines].push(this.createTabbedSectionTabEnd());
+  }
+
+  public override createTabbedSectionContentsStart(
+    ..._args: RendererCreateTabArgs
+  ) {
+    return "";
+  }
+
+  public override appendTabbedSectionContentsStart(
+    ...args: RendererCreateTabArgs
+  ) {
+    this[rendererLines].push(this.createTabbedSectionContentsStart(...args));
+  }
+
+  public override createTabbedSectionContentsEnd(): string {
+    return "";
+  }
+
+  public override appendTabbedSectionContentsEnd(): void {
+    this[rendererLines].push(this.createTabbedSectionContentsEnd());
+  }
+
+  public override render() {
     if (this.#isFinalized) {
       throw new InternalError("Renderer has already been finalized");
     }

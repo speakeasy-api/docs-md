@@ -1,17 +1,29 @@
 import type { PropsWithChildren } from "react";
 
-export type TabbedSectionProps = {
-  title: string;
-  id?: string;
-  children: React.ReactElement<{ title: string; tooltip?: string }>[];
+export type TitleProps = {
+  slot: "title";
 };
-export type HeaderContainerProps = PropsWithChildren<{
+
+export type TabProps = {
+  slot: "tab";
   title: string;
-  id?: string;
-}>;
-export type TabButtonProps = {
+  "data-tab-id": string;
+};
+
+export type ContentProps = {
+  slot: "content";
+  "data-tab-content-id": string;
+};
+
+export type TabbedSectionProps = {
+  children: React.ReactElement<TitleProps | TabProps | ContentProps>[];
+};
+
+export type HeaderContainerProps = {
+  children: [React.ReactElement<TitleProps>, ...React.ReactElement[]];
+};
+export type TabButtonProps = PropsWithChildren<{
   title: string;
-  tooltip?: string;
   isActive: boolean;
   onClick: () => void;
-};
+}>;

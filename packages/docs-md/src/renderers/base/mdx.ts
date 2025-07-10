@@ -2,13 +2,13 @@ import { dirname, relative } from "node:path";
 
 import type { TryItNowProps } from "../../components/TryItNow/common/types.ts";
 import type {
-  RendererAppendCodeArgs,
-  RendererAppendSectionStartArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
-  RendererBeginExpandableSectionArgs,
-  RendererBeginTabbedSectionArgs,
-  RendererBeginTabContentsArgs,
+  RendererCreateAppendCodeArgs,
+  RendererCreateExpandableSectionArgs,
+  RendererCreateSectionArgs,
+  RendererCreateTabArgs,
+  RendererCreateTabbedSectionTabArgs,
 } from "./base.ts";
 import { MarkdownRenderer, MarkdownSite, rendererLines } from "./markdown.ts";
 import { getEmbedPath, getEmbedSymbol } from "./util.ts";
@@ -63,7 +63,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return data;
   }
 
-  public override createCode(...[text, options]: RendererAppendCodeArgs) {
+  public override createCode(...[text, options]: RendererCreateAppendCodeArgs) {
     if (options?.variant === "raw") {
       if (options.style === "inline") {
         return `<code>${this.escapeText(text, { escape: options?.escape ?? "html" })}</code>`;
@@ -114,18 +114,38 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   protected abstract insertComponentImport(symbol: string): void;
 
   public override createSectionStart(
-    ...[title, { id, escape = "mdx" }]: RendererAppendSectionStartArgs
-  ) {
+    ...[{ variant = "section" } = {}]: RendererCreateSectionArgs
+  ): string {
     this.insertComponentImport("Section");
-    return `<Section title="${this.escapeText(title, { escape })}" id="${id}">`;
+    return `<Section variant="${variant}">`;
   }
 
-  public override createSectionEnd() {
+  public override createSectionEnd(): string {
     return "</Section>";
   }
 
+  public override createSectionTitleStart() {
+    this.insertComponentImport("Section");
+    return `<div>`;
+  }
+
+  public override createSectionTitleEnd() {
+    return `</div>`;
+  }
+
+  public override createSectionContentStart(
+    ...[{ variant = "section" } = {}]: RendererCreateSectionArgs
+  ): string {
+    this.insertComponentImport("SectionEntry");
+    return `<SectionEntry variant="${variant}">`;
+  }
+
+  public override createSectionContentEnd(): string {
+    return `</SectionEntry>`;
+  }
+
   public override createExpandableSectionStart(
-    ...[title, { id, escape = "mdx" }]: RendererBeginExpandableSectionArgs
+    ...[title, { id, escape = "mdx" }]: RendererCreateExpandableSectionArgs
   ) {
     this.insertComponentImport("ExpandableSection");
     return `<ExpandableSection title="${this.escapeText(title, { escape })}" id="${id}">`;
@@ -135,27 +155,40 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return "</ExpandableSection>";
   }
 
-  public override createTabbedSectionStart(
-    ...[
-      title,
-      { escape = "mdx", id, baseHeadingLevel = 3 },
-    ]: RendererBeginTabbedSectionArgs
-  ) {
+  public override createTabbedSectionStart() {
     this.insertComponentImport("TabbedSection");
-    return `<TabbedSection title="${this.escapeText(title, { escape })}" id="${id}" baseHeadingLevel="${baseHeadingLevel}">`;
+    return `<TabbedSection>`;
   }
 
   public override createTabbedSectionEnd() {
     return "</TabbedSection>";
   }
 
-  public override createTabContentsStart(
-    ...[title, tooltip]: RendererBeginTabContentsArgs
-  ) {
-    return `<div title="${title}" tooltip="${tooltip}">`;
+  public override createTabbedSectionTitleStart() {
+    return `<div slot="title">`;
   }
 
-  public override createTabContentsEnd() {
+  public override createTabbedSectionTitleEnd() {
+    return `</div>`;
+  }
+
+  public override createTabbedSectionTabStart(
+    ...[id, title]: RendererCreateTabbedSectionTabArgs
+  ) {
+    return `<div slot="tab" title="${title}" data-tab-id="${id}">`;
+  }
+
+  public override createTabbedSectionTabEnd() {
+    return "</div>";
+  }
+
+  public override createTabbedSectionContentsStart(
+    ...[id]: RendererCreateTabArgs
+  ) {
+    return `<div slot="content" data-tab-content-id="${id}">`;
+  }
+
+  public override createTabbedSectionContentsEnd() {
     return "</div>";
   }
 
