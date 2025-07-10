@@ -53,7 +53,11 @@ export const Content = ({
         autorun: false,
         activeFile: "index.ts",
       }}
-      theme={themes ? themes[theme as "dark" | "light"] : theme}
+      theme={
+        themes && typeof theme === "string"
+          ? themes[theme as "dark" | "light"]
+          : theme
+      }
       template="vanilla-ts"
       files={{
         "index.ts": {

@@ -1,7 +1,6 @@
 import { join, resolve } from "node:path";
 
-import { convertRehypeThemeToSandpackTheme } from "../cli/nextraUtils.ts";
-import type { RehypeTheme } from "../types/nextra.ts";
+import type { TryItNowProps } from "../components/TryItNow/common/types.ts";
 import { getSettings } from "../util/settings.ts";
 import type {
   RendererAppendHeadingArgs,
@@ -11,11 +10,11 @@ import type {
 } from "./base/base.ts";
 import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 export class NextraSite extends MdxSite {
-  #rehypeTheme: RehypeTheme;
+  #codeThemes: TryItNowProps["themes"];
 
-  constructor(options: { rehypeTheme: RehypeTheme }) {
+  constructor(options: { codeThemes: TryItNowProps["themes"] }) {
     super();
-    this.#rehypeTheme = options.rehypeTheme;
+    this.#codeThemes = options.codeThemes;
   }
 
   public override buildPagePath(
@@ -46,7 +45,7 @@ export class NextraSite extends MdxSite {
 
   protected override getRenderer(...[options]: SiteGetRendererArgs) {
     return new NextraRenderer(
-      { ...options, rehypeTheme: this.#rehypeTheme },
+      { ...options, codeThemes: this.#codeThemes },
       this
     );
   }
@@ -58,11 +57,11 @@ class NextraRenderer extends MdxRenderer {
   constructor(
     {
       currentPagePath,
-      rehypeTheme,
-    }: { currentPagePath: string; rehypeTheme: RehypeTheme },
+      codeThemes,
+    }: { currentPagePath: string; codeThemes: TryItNowProps["themes"] },
     site: NextraSite
   ) {
-    super({ currentPagePath, codeThemes: convertRehypeThemeToSandpackTheme(rehypeTheme) }, site);
+    super({ currentPagePath, codeThemes }, site);
   }
 
   public override render() {

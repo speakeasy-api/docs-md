@@ -22,7 +22,7 @@ import { NextraSite } from "../renderers/nextra.ts";
 import type { ParsedSettings } from "../types/settings.ts";
 import { settingsSchema } from "../types/settings.ts";
 import { assertNever } from "../util/assertNever.ts";
-import { getNextraShikiTheme, loadRehypeThemes } from "./nextraUtils.ts";
+import { getCodeThemesFromThemeConfig, getNextraThemeConfig } from "./nextraUtils.ts";
 
 const CONFIG_FILE_NAMES = [
   "speakeasy.config.js",
@@ -167,10 +167,10 @@ switch (settings.output.framework) {
     break;
   }
   case "nextra": {
-    const shikiTheme = await getNextraShikiTheme();
-    const rehypeTheme = await loadRehypeThemes(shikiTheme);
+    const themeConfig = await getNextraThemeConfig();
+    const codeThemes = await getCodeThemesFromThemeConfig(themeConfig);
     site = new NextraSite({
-      rehypeTheme: rehypeTheme,
+      codeThemes,
     });
     break;
   }
