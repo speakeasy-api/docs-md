@@ -43,10 +43,13 @@ export function renderOperation({
 
   if (chunk.chunkData.security || chunk.chunkData.globalSecurity) {
     const securityId = id + "+security";
-    renderer.appendSectionStart("Security", {
+    renderer.appendSectionStart();
+    renderer.appendSectionTitleStart();
+    renderer.appendHeading(3, "Security", {
       id: securityId,
-      variant: "section",
     });
+    renderer.appendSectionTitleEnd();
+    renderer.appendSectionContentStart();
     if (chunk.chunkData.security) {
       const securityChunk = getSchemaFromId(
         chunk.chunkData.security.contentChunkId,
@@ -81,21 +84,20 @@ export function renderOperation({
         data: docsData,
       });
     }
+    renderer.appendSectionContentEnd();
     renderer.appendSectionEnd();
   }
 
   if (chunk.chunkData.parameters.length > 0) {
     const parametersId = id + "+parameters";
-    renderer.appendSectionStart("Parameters", {
+    renderer.appendSectionStart({ variant: "fields" });
+    renderer.appendSectionTitleStart({ variant: "fields" });
+    renderer.appendHeading(3, "Parameters", {
       id: parametersId,
-      variant: "section",
     });
-    renderer.appendSectionStart("Fields", {
-      id: `${parametersId}+fields`,
-      variant: "fields",
-    });
+    renderer.appendSectionTitleEnd();
     for (const parameter of chunk.chunkData.parameters) {
-      renderer.appendSectionEntryStart({ variant: "fields" });
+      renderer.appendSectionContentStart({ variant: "fields" });
       renderer.appendHeading(
         4,
         `${parameter.name}${parameter.required ? " (required)" : ""}`,
@@ -118,19 +120,21 @@ export function renderOperation({
         topLevelName: "Security",
         data: docsData,
       });
-      renderer.appendSectionEntryEnd();
+      renderer.appendSectionContentEnd();
     }
-    renderer.appendSectionEnd();
     renderer.appendSectionEnd();
   }
 
   const { tryItNow } = getSettings();
   const usageSnippet = docsCodeSnippets[chunk.id];
   if (usageSnippet && tryItNow) {
-    renderer.appendSectionStart("Try it Now", {
+    renderer.appendSectionStart();
+    renderer.appendSectionTitleStart();
+    renderer.appendHeading(2, "Try it Now", {
       id: id + "+try-it-now",
-      variant: "section",
     });
+    renderer.appendSectionTitleEnd();
+    renderer.appendSectionContentStart();
     // TODO: Zod is actually hard coded for now since its always a dependency
     // in our SDKs. Ideally this will come from the SDK package.
     renderer.appendTryItNow({
@@ -140,15 +144,21 @@ export function renderOperation({
       },
       defaultValue: usageSnippet.code,
     });
+    renderer.appendSectionContentEnd();
     renderer.appendSectionEnd();
   }
 
   if (chunk.chunkData.requestBody) {
     const requestBodyId = id + "+request";
-    renderer.appendSectionStart(
+    renderer.appendSectionStart();
+    renderer.appendSectionTitleStart();
+    renderer.appendHeading(
+      2,
       `Request Body${!chunk.chunkData.requestBody.required ? " (optional)" : ""}`,
-      { id: requestBodyId, variant: "section" }
+      { id: requestBodyId }
     );
+    renderer.appendSectionTitleEnd();
+    renderer.appendSectionContentStart();
     if (chunk.chunkData.requestBody.description) {
       renderer.appendText(chunk.chunkData.requestBody.description);
     }
@@ -167,6 +177,7 @@ export function renderOperation({
       topLevelName: "Request Body",
       data: docsData,
     });
+    renderer.appendSectionContentEnd();
     renderer.appendSectionEnd();
   }
 

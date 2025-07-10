@@ -4,35 +4,10 @@ import type { SectionProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
 export function DocusaurusSection({
-  title,
-  children,
-  id,
+  children: [title, content],
   variant,
   className,
 }: SectionProps) {
-  let heading: React.ReactNode;
-  if (typeof title === "string") {
-    switch (variant) {
-      case "fields": {
-        heading = (
-          <h4 className={clsx(styles.title, styles.titleSmall)}>{title}</h4>
-        );
-        break;
-      }
-      case "operation": {
-        heading = (
-          <h2 className={clsx(styles.title, styles.titleLarge)}>{title}</h2>
-        );
-        break;
-      }
-      default: {
-        heading = <h3 className={styles.title}>{title}</h3>;
-        break;
-      }
-    }
-  } else {
-    heading = title;
-  }
   return (
     <>
       <div
@@ -41,16 +16,15 @@ export function DocusaurusSection({
           variant !== "fields" && styles.linedHeader,
           className
         )}
-        id={id}
       >
-        {heading}
+        {title}
       </div>
       <div
         className={
           variant === "fields" ? styles.linedContainer : styles.container
         }
       >
-        {children}
+        {content}
       </div>
     </>
   );

@@ -1,14 +1,13 @@
 import { dirname, relative } from "node:path";
 
 import type {
-  RendererAppendCodeArgs,
-  RendererAppendSectionEntryArgs,
-  RendererAppendSectionStartArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
-  RendererBeginExpandableSectionArgs,
-  RendererBeginTabbedSectionArgs,
-  RendererBeginTabContentsArgs,
+  RendererCreateAppendCodeArgs,
+  RendererCreateExpandableSectionArgs,
+  RendererCreateSectionArgs,
+  RendererCreateTabbedSectionArgs,
+  RendererCreateTabContentsArgs,
 } from "./base.ts";
 import { MarkdownRenderer, MarkdownSite, rendererLines } from "./markdown.ts";
 import { getEmbedPath, getEmbedSymbol } from "./util.ts";
@@ -58,7 +57,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return data;
   }
 
-  public override createCode(...[text, options]: RendererAppendCodeArgs) {
+  public override createCode(...[text, options]: RendererCreateAppendCodeArgs) {
     if (options?.variant === "raw") {
       if (options.style === "inline") {
         return `<code>${this.escapeText(text, { escape: options?.escape ?? "html" })}</code>`;
@@ -109,29 +108,38 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   protected abstract insertComponentImport(symbol: string): void;
 
   public override createSectionStart(
-    ...[title, { id, escape = "mdx", variant }]: RendererAppendSectionStartArgs
-  ) {
+    ...[{ variant = "section" } = {}]: RendererCreateSectionArgs
+  ): string {
     this.insertComponentImport("Section");
-    return `<Section title="${this.escapeText(title, { escape })}" id="${id}" variant="${variant}">`;
+    return `<Section variant="${variant}">`;
   }
 
-  public override createSectionEnd() {
+  public override createSectionEnd(): string {
     return "</Section>";
   }
 
-  public override createSectionEntryStart(
-    ...[{ variant }]: RendererAppendSectionEntryArgs
+  public override createSectionTitleStart() {
+    this.insertComponentImport("Section");
+    return `<div>`;
+  }
+
+  public override createSectionTitleEnd() {
+    return `</div>`;
+  }
+
+  public override createSectionContentStart(
+    ...[{ variant = "section" } = {}]: RendererCreateSectionArgs
   ): string {
     this.insertComponentImport("SectionEntry");
     return `<SectionEntry variant="${variant}">`;
   }
 
-  public override createSectionEntryEnd(): string {
-    return "</SectionEntry>";
+  public override createSectionContentEnd(): string {
+    return `</SectionEntry>`;
   }
 
   public override createExpandableSectionStart(
-    ...[title, { id, escape = "mdx" }]: RendererBeginExpandableSectionArgs
+    ...[title, { id, escape = "mdx" }]: RendererCreateExpandableSectionArgs
   ) {
     this.insertComponentImport("ExpandableSection");
     return `<ExpandableSection title="${this.escapeText(title, { escape })}" id="${id}">`;
@@ -142,7 +150,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createTabbedSectionStart(
-    ...[title, { escape = "mdx", id }]: RendererBeginTabbedSectionArgs
+    ...[title, { escape = "mdx", id }]: RendererCreateTabbedSectionArgs
   ) {
     this.insertComponentImport("TabbedSection");
     return `<TabbedSection title="${this.escapeText(title, { escape })}" id="${id}">`;
@@ -153,7 +161,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createTabContentsStart(
-    ...[title, tooltip]: RendererBeginTabContentsArgs
+    ...[title, tooltip]: RendererCreateTabContentsArgs
   ) {
     return `<div title="${title}" tooltip="${tooltip}">`;
   }

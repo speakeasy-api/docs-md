@@ -62,8 +62,11 @@ export type RendererAppendHeadingArgs = [
   text: string,
   options?: AppendOptions & { id?: string },
 ];
-export type RendererAppendTextArgs = [text: string, options?: AppendOptions];
-export type RendererAppendCodeArgs = [
+export type RendererCreateAppendTextArgs = [
+  text: string,
+  options?: AppendOptions,
+];
+export type RendererCreateAppendCodeArgs = [
   text: string,
   options?:
     | {
@@ -111,24 +114,19 @@ export type RendererAppendCodeArgs = [
         escape?: Escape;
       },
 ];
-export type RendererAppendListArgs = [items: string[], options?: AppendOptions];
-export type RendererAppendSectionStartArgs = [
-  title: string,
-  options: AppendOptions & {
-    id: string;
-    variant: SectionVariant;
-  },
+export type RendererCreateListArgs = [items: string[], options?: AppendOptions];
+export type RendererCreateSectionArgs = [
+  options?: { variant?: SectionVariant },
 ];
-export type RendererAppendSectionEntryArgs = [{ variant: SectionVariant }];
-export type RendererBeginExpandableSectionArgs = [
+export type RendererCreateExpandableSectionArgs = [
   title: string,
   options: AppendOptions & { id: string },
 ];
-export type RendererBeginTabbedSectionArgs = [
+export type RendererCreateTabbedSectionArgs = [
   title: string,
   options: AppendOptions & { id: string },
 ];
-export type RendererBeginTabContentsArgs = [title: string, tooltip: string];
+export type RendererCreateTabContentsArgs = [title: string, tooltip: string];
 export type RendererAppendSidebarLinkArgs = [
   options: {
     title: string;
@@ -149,35 +147,37 @@ export abstract class Renderer {
   abstract createHeading(...args: RendererAppendHeadingArgs): void;
   abstract appendHeading(...args: RendererAppendHeadingArgs): void;
 
-  abstract createText(...args: RendererAppendTextArgs): string;
-  abstract appendText(...args: RendererAppendTextArgs): void;
+  abstract createText(...args: RendererCreateAppendTextArgs): string;
+  abstract appendText(...args: RendererCreateAppendTextArgs): void;
 
-  abstract createCode(...args: RendererAppendCodeArgs): string;
-  abstract appendCode(...args: RendererAppendCodeArgs): void;
+  abstract createCode(...args: RendererCreateAppendCodeArgs): string;
+  abstract appendCode(...args: RendererCreateAppendCodeArgs): void;
 
-  abstract createList(...args: RendererAppendListArgs): string;
-  abstract appendList(...args: RendererAppendListArgs): void;
+  abstract createList(...args: RendererCreateListArgs): string;
+  abstract appendList(...args: RendererCreateListArgs): void;
 
-  abstract createSectionStart(...args: RendererAppendSectionStartArgs): string;
-  abstract appendSectionStart(...args: RendererAppendSectionStartArgs): void;
+  abstract createSectionStart(...args: RendererCreateSectionArgs): string;
+  abstract appendSectionStart(...args: RendererCreateSectionArgs): void;
   abstract createSectionEnd(): string;
   abstract appendSectionEnd(): void;
-  abstract createSectionEntryStart(
-    ...args: RendererAppendSectionEntryArgs
+  abstract createSectionTitleStart(...args: RendererCreateSectionArgs): string;
+  abstract appendSectionTitleStart(...args: RendererCreateSectionArgs): void;
+  abstract createSectionTitleEnd(): string;
+  abstract appendSectionTitleEnd(): void;
+  abstract createSectionContentStart(
+    ...args: RendererCreateSectionArgs
   ): string;
-  abstract appendSectionEntryStart(
-    ...args: RendererAppendSectionEntryArgs
-  ): void;
-  abstract createSectionEntryEnd(): string;
-  abstract appendSectionEntryEnd(): void;
+  abstract appendSectionContentStart(...args: RendererCreateSectionArgs): void;
+  abstract createSectionContentEnd(): string;
+  abstract appendSectionContentEnd(): void;
 
   // Expandable sections are used to show schema value breakouts, which are
   // collapsed by default
   abstract createExpandableSectionStart(
-    ...args: RendererBeginExpandableSectionArgs
+    ...args: RendererCreateExpandableSectionArgs
   ): string;
   abstract appendExpandableSectionStart(
-    ...args: RendererBeginExpandableSectionArgs
+    ...args: RendererCreateExpandableSectionArgs
   ): void;
   abstract createExpandableSectionEnd(): string;
   abstract appendExpandableSectionEnd(): void;
@@ -187,15 +187,15 @@ export abstract class Renderer {
   // to a tab. The tab contents insert a wrapper div with specific attributes
   // used to populate the contents of the tab section.
   abstract createTabbedSectionStart(
-    ...args: RendererBeginTabbedSectionArgs
+    ...args: RendererCreateTabbedSectionArgs
   ): void;
   abstract appendTabbedSectionStart(
-    ...args: RendererBeginTabbedSectionArgs
+    ...args: RendererCreateTabbedSectionArgs
   ): void;
   abstract createTabbedSectionEnd(): void;
   abstract appendTabbedSectionEnd(): void;
-  abstract createTabContentsStart(...args: RendererBeginTabContentsArgs): void;
-  abstract appendTabContentsStart(...args: RendererBeginTabContentsArgs): void;
+  abstract createTabContentsStart(...args: RendererCreateTabContentsArgs): void;
+  abstract appendTabContentsStart(...args: RendererCreateTabContentsArgs): void;
   abstract createTabContentsEnd(): void;
   abstract appendTabContentsEnd(): void;
 

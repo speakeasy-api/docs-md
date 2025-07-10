@@ -56,12 +56,8 @@ export function DocusaurusExpandableSection({
   );
 
   return (
-    <Section
-      className={styles.container}
-      title={titleElement}
-      variant="fields"
-      id={id}
-    >
+    <Section className={styles.container} variant="fields">
+      {titleElement}
       <div
         style={{
           display: isOpen ? "block" : "none",

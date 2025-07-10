@@ -472,7 +472,7 @@ export function renderSchema({
       return;
     }
     for (const [key, value] of properties) {
-      context.renderer.appendSectionEntryStart({ variant: "fields" });
+      context.renderer.appendSectionContentStart({ variant: "fields" });
       const isRequired = objectValue.required?.includes(key) ?? false;
       if (value.type === "chunk") {
         const schemaChunk = getSchemaFromId(value.chunkId, data);
@@ -506,7 +506,7 @@ export function renderSchema({
           isRequired,
         });
       }
-      context.renderer.appendSectionEntryEnd();
+      context.renderer.appendSectionContentEnd();
     }
   }
 
@@ -548,10 +548,12 @@ export function renderSchema({
       id: context.idPrefix,
     });
   } else {
-    context.renderer.appendSectionStart("Fields", {
-      variant: "fields",
+    context.renderer.appendSectionStart({ variant: "fields" });
+    context.renderer.appendSectionTitleStart({ variant: "fields" });
+    context.renderer.appendHeading(4, "Fields", {
       id: context.idPrefix + "+fields",
     });
+    context.renderer.appendSectionTitleEnd();
   }
   switch (context.schema.type) {
     case "object": {
@@ -561,21 +563,21 @@ export function renderSchema({
     case "map":
     case "set":
     case "array": {
-      context.renderer.appendSectionEntryStart({ variant: "fields" });
+      context.renderer.appendSectionContentStart({ variant: "fields" });
       renderArrayLikeItems(context.schema);
-      context.renderer.appendSectionEntryEnd();
+      context.renderer.appendSectionContentEnd();
       break;
     }
     case "union": {
-      context.renderer.appendSectionEntryStart({ variant: "fields" });
+      context.renderer.appendSectionContentStart({ variant: "fields" });
       renderUnionItems(context.schema);
-      context.renderer.appendSectionEntryEnd();
+      context.renderer.appendSectionContentEnd();
       break;
     }
     default: {
-      context.renderer.appendSectionEntryStart({ variant: "fields" });
+      context.renderer.appendSectionContentStart({ variant: "fields" });
       renderBasicItems(context.schema);
-      context.renderer.appendSectionEntryEnd();
+      context.renderer.appendSectionContentEnd();
       break;
     }
   }
