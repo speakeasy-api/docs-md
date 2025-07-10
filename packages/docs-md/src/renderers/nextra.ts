@@ -1,22 +1,24 @@
 import { join, resolve } from "node:path";
 
+import type { SandpackTheme } from "@codesandbox/sandpack-react";
+import type { PartialDeep } from "type-fest";
+
 import type { RehypeTheme } from "../types/nextra.ts";
+import { convertRehypeThemeToSandpackTheme } from "../util/nextra.ts";
 import { getSettings } from "../util/settings.ts";
 import type {
   RendererAppendHeadingArgs,
+  RendererAppendTryItNowArgs,
   RendererInsertFrontMatterArgs,
   SiteBuildPagePathArgs,
   SiteGetRendererArgs,
 } from "./base/base.ts";
+import { rendererLines } from "./base/markdown.ts";
 import { MdxRenderer, MdxSite } from "./base/mdx.ts";
-
 export class NextraSite extends MdxSite {
-  // eslint-disable-next-line no-unused-private-class-members
   #rehypeTheme: RehypeTheme;
 
-  constructor(options: {
-    rehypeTheme: RehypeTheme;
-  }) {
+  constructor(options: { rehypeTheme: RehypeTheme }) {
     super();
     this.#rehypeTheme = options.rehypeTheme;
   }
@@ -49,7 +51,7 @@ export class NextraSite extends MdxSite {
 
   protected override getRenderer(...[options]: SiteGetRendererArgs) {
     return new NextraRenderer(
-      options,
+      { ...options, rehypeTheme: this.#rehypeTheme },
       this
     );
   }
@@ -57,6 +59,21 @@ export class NextraSite extends MdxSite {
 
 class NextraRenderer extends MdxRenderer {
   #frontMatter: string | undefined;
+  #sandpackTheme: {
+    dark: PartialDeep<SandpackTheme> | "dark";
+    light: PartialDeep<SandpackTheme> | "light";
+  };
+
+  constructor(
+    {
+      currentPagePath,
+      rehypeTheme,
+    }: { currentPagePath: string; rehypeTheme: RehypeTheme },
+    site: NextraSite
+  ) {
+    super({ currentPagePath }, site);
+    this.#sandpackTheme = convertRehypeThemeToSandpackTheme(rehypeTheme);
+  }
 
   public override render() {
     const parentData = super.render();
@@ -90,5 +107,18 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
       line += ` [#${id}]`;
     }
     return line;
+  }
+
+  public override appendTryItNow(
+    ...[{ externalDependencies, defaultValue }]: RendererAppendTryItNowArgs
+  ) {
+    this.insertComponentImport("TryItNow");
+    this[rendererLines].push(
+      `<TryItNow
+ externalDependencies={${JSON.stringify(externalDependencies)}}
+ defaultValue={\`${defaultValue}\`}
+ themes={${JSON.stringify(this.#sandpackTheme)}}
+/>`
+    );
   }
 }
