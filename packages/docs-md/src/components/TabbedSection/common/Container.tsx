@@ -91,11 +91,6 @@ export function Container({
     );
   }, [contentChildren, activeTabId]);
 
-  console.log(
-    activeChild,
-    contentChildren.map((child) => child.props["data-tab-content-id"])
-  );
-
   const tabChildrenWithButtons = useMemo(
     () =>
       tabChildren.map((tabChild) => {
