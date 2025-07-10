@@ -117,7 +117,7 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
       `<TryItNow
  externalDependencies={${JSON.stringify(externalDependencies)}}
  defaultValue={\`${defaultValue}\`}
- themes={${JSON.stringify(this.#sandpackTheme)}}
+ nextraCodeThemes={${JSON.stringify(this.#sandpackTheme)}}
 />`
     );
   }

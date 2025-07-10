@@ -51,9 +51,15 @@ function useNextraThemeMode() {
   return theme;
 }
 
-const TryItNowContents = ({ themes, ...props }: NextraTryItNowProps) => {
+const TryItNowContents = ({
+  nextraCodeThemes = {
+    dark: "dark",
+    light: "light",
+  },
+  ...props
+}: NextraTryItNowProps) => {
   const themeMode = useNextraThemeMode();
-  const sandpackTheme = themes[themeMode];
+  const sandpackTheme = nextraCodeThemes[themeMode];
 
   return <Content theme={sandpackTheme} {...props} />;
 };

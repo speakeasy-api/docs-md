@@ -25,7 +25,11 @@ export type TryItNowProps = {
 
 
 export type NextraTryItNowProps = TryItNowProps & {
-  themes: {
+  /**
+   * Adds the ability to specify a different theme for dark and light mode 
+   * in Nextra.
+   */
+  nextraCodeThemes: {
     dark: PartialDeep<SandpackTheme> | "dark";
     light: PartialDeep<SandpackTheme> | "light";
   };
