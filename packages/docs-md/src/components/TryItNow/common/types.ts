@@ -1,7 +1,6 @@
 import type { SandpackTheme } from "@codesandbox/sandpack-react";
 import type { PartialDeep } from "type-fest";
 
-
 export type TryItNowProps = {
   /**
    * These are dependencies that are required by the code snippet,

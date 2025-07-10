@@ -22,7 +22,10 @@ import { NextraSite } from "../renderers/nextra.ts";
 import type { ParsedSettings } from "../types/settings.ts";
 import { settingsSchema } from "../types/settings.ts";
 import { assertNever } from "../util/assertNever.ts";
-import { getCodeThemesFromThemeConfig, getNextraThemeConfig } from "./nextraUtils.ts";
+import {
+  getCodeThemesFromThemeConfig,
+  getNextraThemeConfig,
+} from "./nextraUtils.ts";
 
 const CONFIG_FILE_NAMES = [
   "speakeasy.config.js",
@@ -188,8 +191,6 @@ switch (settings.output.framework) {
     assertNever(settings.output.framework);
   }
 }
-
-
 
 const pageContents = await generatePages({
   site,

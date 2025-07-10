@@ -97,5 +97,4 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
     }
     return line;
   }
-
 }

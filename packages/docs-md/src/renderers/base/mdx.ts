@@ -29,7 +29,10 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   #codeThemes: TryItNowProps["themes"] | undefined;
 
   constructor(
-    { currentPagePath, codeThemes }: { currentPagePath: string, codeThemes?: TryItNowProps["themes"] },
+    {
+      currentPagePath,
+      codeThemes,
+    }: { currentPagePath: string; codeThemes?: TryItNowProps["themes"] },
     site: MdxSite
   ) {
     super();
