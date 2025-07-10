@@ -171,12 +171,16 @@ ${text}\n</code>\n</pre>`;
     this[rendererLines].push(this.createSectionEnd());
   }
 
-  public createSectionEntry(..._args: RendererAppendSectionEntryArgs): string {
+  public createSectionEntryStart(
+    ..._args: RendererAppendSectionEntryArgs
+  ): string {
     return "";
   }
 
-  public appendSectionEntry(...args: RendererAppendSectionEntryArgs): void {
-    this[rendererLines].push(this.createSectionEntry(...args));
+  public appendSectionEntryStart(
+    ...args: RendererAppendSectionEntryArgs
+  ): void {
+    this[rendererLines].push(this.createSectionEntryStart(...args));
   }
 
   public createSectionEntryEnd(): string {

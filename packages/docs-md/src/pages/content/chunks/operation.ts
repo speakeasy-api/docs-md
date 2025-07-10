@@ -90,12 +90,17 @@ export function renderOperation({
       id: parametersId,
       variant: "section",
     });
+    renderer.appendSectionStart("Fields", {
+      id: `${parametersId}+fields`,
+      variant: "fields",
+    });
     for (const parameter of chunk.chunkData.parameters) {
+      renderer.appendSectionEntryStart({ variant: "fields" });
       renderer.appendHeading(
         4,
         `${parameter.name}${parameter.required ? " (required)" : ""}`,
         {
-          id: parametersId + `+${parameter.name}`,
+          id: `parametersId+${parameter.name}`,
         }
       );
       if (parameter.description) {
@@ -113,7 +118,9 @@ export function renderOperation({
         topLevelName: "Security",
         data: docsData,
       });
+      renderer.appendSectionEntryEnd();
     }
+    renderer.appendSectionEnd();
     renderer.appendSectionEnd();
   }
 

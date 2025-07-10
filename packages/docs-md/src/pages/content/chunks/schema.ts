@@ -473,7 +473,7 @@ export function renderSchema({
       return;
     }
     for (const [key, value] of properties) {
-      context.renderer.appendSectionEntry("fields");
+      context.renderer.appendSectionEntryStart({ variant: "fields" });
       const isRequired = objectValue.required?.includes(key) ?? false;
       if (value.type === "chunk") {
         const schemaChunk = getSchemaFromId(value.chunkId, data);
@@ -556,15 +556,21 @@ export function renderSchema({
     case "map":
     case "set":
     case "array": {
+      context.renderer.appendSectionEntryStart({ variant: "fields" });
       renderArrayLikeItems(context.schema);
+      context.renderer.appendSectionEntryEnd();
       break;
     }
     case "union": {
+      context.renderer.appendSectionEntryStart({ variant: "fields" });
       renderUnionItems(context.schema);
+      context.renderer.appendSectionEntryEnd();
       break;
     }
     default: {
+      context.renderer.appendSectionEntryStart({ variant: "fields" });
       renderBasicItems(context.schema);
+      context.renderer.appendSectionEntryEnd();
       break;
     }
   }

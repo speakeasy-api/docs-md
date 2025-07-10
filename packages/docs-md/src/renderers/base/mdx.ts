@@ -119,7 +119,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return "</Section>";
   }
 
-  public override createSectionEntry(
+  public override createSectionEntryStart(
     ...[variant]: RendererAppendSectionEntryArgs
   ): string {
     this.insertComponentImport("SectionEntry");

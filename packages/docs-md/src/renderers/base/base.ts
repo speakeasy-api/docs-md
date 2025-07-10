@@ -119,7 +119,7 @@ export type RendererAppendSectionStartArgs = [
     variant: SectionVariant;
   },
 ];
-export type RendererAppendSectionEntryArgs = [variant: SectionVariant];
+export type RendererAppendSectionEntryArgs = [{ variant: SectionVariant }];
 export type RendererBeginExpandableSectionArgs = [
   title: string,
   options: AppendOptions & { id: string },
@@ -162,8 +162,12 @@ export abstract class Renderer {
   abstract appendSectionStart(...args: RendererAppendSectionStartArgs): void;
   abstract createSectionEnd(): string;
   abstract appendSectionEnd(): void;
-  abstract createSectionEntry(...args: RendererAppendSectionEntryArgs): string;
-  abstract appendSectionEntry(...args: RendererAppendSectionEntryArgs): void;
+  abstract createSectionEntryStart(
+    ...args: RendererAppendSectionEntryArgs
+  ): string;
+  abstract appendSectionEntryStart(
+    ...args: RendererAppendSectionEntryArgs
+  ): void;
   abstract createSectionEntryEnd(): string;
   abstract appendSectionEntryEnd(): void;
 
