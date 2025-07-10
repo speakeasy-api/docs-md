@@ -441,9 +441,6 @@ function renderSchemaBreakouts({
     }
 
     // Otherwise, render the schema inline
-    context.renderer.appendExpandableSectionStart(breakoutSubType.label, {
-      id: `${context.idPrefix}+${breakoutSubType.label}`,
-    });
     renderSchema({
       context: {
         ...context,
@@ -453,8 +450,8 @@ function renderSchemaBreakouts({
       },
       data,
       topLevelName: breakoutSubType.label,
+      isExpandable: true,
     });
-    context.renderer.appendExpandableSectionEnd();
   }
 }
 
@@ -462,10 +459,12 @@ export function renderSchema({
   context,
   data,
   topLevelName,
+  isExpandable,
 }: {
   context: SchemaRenderContext;
   data: Map<string, Chunk>;
   topLevelName: string;
+  isExpandable?: boolean;
 }) {
   function renderObjectProperties(objectValue: ObjectValue) {
     const properties = Object.entries(objectValue.properties);
@@ -544,10 +543,16 @@ export function renderSchema({
     });
   }
 
-  context.renderer.appendSectionStart("Fields", {
-    variant: "fields",
-    id: context.idPrefix + "+fields",
-  });
+  if (isExpandable) {
+    context.renderer.appendExpandableSectionStart(topLevelName, {
+      id: context.idPrefix,
+    });
+  } else {
+    context.renderer.appendSectionStart("Fields", {
+      variant: "fields",
+      id: context.idPrefix + "+fields",
+    });
+  }
   switch (context.schema.type) {
     case "object": {
       renderObjectProperties(context.schema);
@@ -574,5 +579,9 @@ export function renderSchema({
       break;
     }
   }
-  context.renderer.appendSectionEnd();
+  if (isExpandable) {
+    context.renderer.appendExpandableSectionEnd();
+  } else {
+    context.renderer.appendSectionEnd();
+  }
 }

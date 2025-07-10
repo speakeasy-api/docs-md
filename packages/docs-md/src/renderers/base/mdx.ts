@@ -120,7 +120,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createSectionEntryStart(
-    ...[variant]: RendererAppendSectionEntryArgs
+    ...[{ variant }]: RendererAppendSectionEntryArgs
   ): string {
     this.insertComponentImport("SectionEntry");
     return `<SectionEntry variant="${variant}">`;
