@@ -2,7 +2,9 @@
 
 import React from "react";
 
-import { Button } from "../../Button/nextra.tsx";
+import { Button } from "../../primitives/nextra/Button.tsx";
+import { Card } from "../../primitives/nextra/Card.tsx";
+import styles from "./styles.module.css";
 
 type SidebarContent = {
   title: string;
@@ -16,27 +18,14 @@ export function NextraSideBar({
   closeRequest: () => void;
 }) {
   return (
-    <div className="x:not-first:mt-4 x:rounded x:border x:border-gray-200 x:bg-white x:p-2 x:m-2 x:shadow-sm x:dark:border-neutral-800 x:dark:bg-neutral-900 x:overflow-hidden">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <h4 className="x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:text-lg">
-          {content?.title}
-        </h4>
-        <Button
-          onClick={closeRequest}
-          // For some bizarre reason, setting the class `x:px-1` on this button
-          // doesn't work, even though it does below and other classes work here
-          style={{ padding: "0 8px" }}
-        >
+    <Card>
+      <div className={styles.sidebarContainer}>
+        <h4 className={styles.sidebarTitle}>{content?.title ?? "Details"}</h4>
+        <Button onClick={closeRequest} className={styles.close}>
           X
         </Button>
       </div>
       {content?.content}
-    </div>
+    </Card>
   );
 }

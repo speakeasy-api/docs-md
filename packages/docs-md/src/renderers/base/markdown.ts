@@ -6,8 +6,11 @@ import type {
   RendererAppendCodeArgs,
   RendererAppendHeadingArgs,
   RendererAppendListArgs,
+  RendererAppendSectionStartArgs,
   RendererAppendTextArgs,
   RendererBeginExpandableSectionArgs,
+  RendererBeginTabbedSectionArgs,
+  RendererBeginTabContentsArgs,
   RendererEscapeTextArgs,
   SiteBuildPagePathArgs,
   SiteCreatePageArgs,
@@ -149,8 +152,26 @@ ${text}\n</code>\n</pre>`;
     this[rendererLines].push(this.createList(...args));
   }
 
+  public createSectionStart(
+    ...[title, { id }]: RendererAppendSectionStartArgs
+  ): string {
+    return this.createHeading(3, title, { id });
+  }
+
+  public appendSectionStart(...args: RendererAppendSectionStartArgs): void {
+    this[rendererLines].push(this.createSectionStart(...args));
+  }
+
+  public createSectionEnd(): string {
+    return "";
+  }
+
+  public appendSectionEnd(): void {
+    this[rendererLines].push(this.createSectionEnd());
+  }
+
   public createExpandableSectionStart(
-    ...[title, id, { escape = "mdx" } = {}]: RendererBeginExpandableSectionArgs
+    ...[title, { id, escape = "mdx" }]: RendererBeginExpandableSectionArgs
   ) {
     return `<details id="${id}">\n\n<summary>${this.escapeText(title, { escape })}</summary>`;
   }
@@ -167,6 +188,43 @@ ${text}\n</code>\n</pre>`;
 
   public appendExpandableSectionEnd() {
     this[rendererLines].push(this.createExpandableSectionEnd());
+  }
+
+  public createTabbedSectionStart(
+    ...[
+      title,
+      { baseHeadingLevel = 3, ...args },
+    ]: RendererBeginTabbedSectionArgs
+  ) {
+    return this.createHeading(baseHeadingLevel, title, args);
+  }
+
+  public appendTabbedSectionStart(...args: RendererBeginTabbedSectionArgs) {
+    this[rendererLines].push(this.createTabbedSectionStart(...args));
+  }
+
+  public createTabbedSectionEnd() {
+    return "";
+  }
+
+  public appendTabbedSectionEnd() {
+    this[rendererLines].push(this.createTabbedSectionEnd());
+  }
+
+  public createTabContentsStart(..._args: RendererBeginTabContentsArgs) {
+    return "";
+  }
+
+  public appendTabContentsStart(...args: RendererBeginTabContentsArgs) {
+    this[rendererLines].push(this.createTabContentsStart(...args));
+  }
+
+  public createTabContentsEnd() {
+    return "";
+  }
+
+  public appendTabContentsEnd() {
+    this[rendererLines].push(this.createTabContentsEnd());
   }
 
   public render() {

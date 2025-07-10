@@ -2,7 +2,7 @@
 
 import type { PropsWithChildren } from "react";
 
-import { Button } from "../../Button/nextra.tsx";
+import { Button } from "../../primitives/nextra/Button.tsx";
 
 export function NextraSideBarTrigger({
   onClick,

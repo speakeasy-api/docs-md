@@ -1,7 +1,7 @@
 {
   "name": "@speakeasy-api/docs-md",
   "private": false,
-  "version": "0.1.8",
+  "version": "0.1.10",
   "type": "module",
   "bin": {
     "docs-md": "dist/cli/cli.js"
@@ -19,7 +19,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "",
-    "build": "tsc && cp ./src/pages/data/*.gz ./dist/pages/data/ && chmod a+x dist/cli/cli.js",
+    "build": "tsc && cp ./src/pages/data/*.gz ./dist/pages/data/ && chmod a+x dist/cli/cli.js && cpx \"src/**/*.module.css\" dist/",
     "dev": "",
     "format": "prettier --config ../../prettier.config.mjs --ignore-path ../../.gitignore --write \"**/*.{js,jsx,mjs,ts,tsx,mts}\"",
     "lint": "eslint \"**/*.{js,jsx,mjs,ts,tsx,mts}\"",
@@ -37,6 +37,7 @@
     "change-case": "^5.4.4",
     "clsx": "^2.1.1",
     "console-feed": "^3.8.0",
+    "cpx": "^1.5.0",
     "jotai": "^2.12.5",
     "js-yaml": "^4.1.0",
     "zod": "^3.25.56"

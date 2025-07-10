@@ -1,16 +1,14 @@
 export function Button({
-  style,
-  onClick,
   className,
+  onClick,
   children,
 }: {
-  style?: React.CSSProperties;
-  onClick: () => void;
   className?: string;
+  onClick: () => void;
   children: React.ReactNode;
 }) {
   return (
-    <button onClick={onClick} className={className} style={style}>
+    <button onClick={onClick} className={className}>
       {children}
     </button>
   );

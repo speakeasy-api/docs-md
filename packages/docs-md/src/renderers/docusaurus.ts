@@ -2,17 +2,11 @@ import { join, resolve } from "node:path";
 
 import { getSettings } from "../util/settings.ts";
 import type {
-  RendererAppendCodeArgs,
-  RendererAppendSidebarLinkArgs,
-  RendererAppendTryItNowArgs,
-  RendererBeginExpandableSectionArgs,
   RendererInsertFrontMatterArgs,
   SiteBuildPagePathArgs,
   SiteGetRendererArgs,
 } from "./base/base.ts";
-import { rendererLines } from "./base/markdown.ts";
 import { MdxRenderer, MdxSite } from "./base/mdx.ts";
-import { getEmbedPath, getEmbedSymbol } from "./base/util.ts";
 
 export class DocusaurusSite extends MdxSite {
   public override buildPagePath(
@@ -84,17 +78,16 @@ export class DocusaurusSite extends MdxSite {
 
 class DocusaurusRenderer extends MdxRenderer {
   #frontMatter: string | undefined;
-  #includeSidebar = false;
-  #currentPagePath: string;
-  #site: DocusaurusSite;
 
-  constructor(
-    { currentPagePath }: { currentPagePath: string },
-    site: DocusaurusSite
-  ) {
-    super();
-    this.#currentPagePath = currentPagePath;
-    this.#site = site;
+  public override render() {
+    const parentData = super.render();
+    const data =
+      (this.#frontMatter ? this.#frontMatter + "\n\n" : "") + parentData;
+    return data;
+  }
+
+  protected override insertComponentImport(symbol: string) {
+    this.insertNamedImport("@speakeasy-api/docs-md/docusaurus", symbol);
   }
 
   public override insertFrontMatter(
@@ -104,103 +97,5 @@ class DocusaurusRenderer extends MdxRenderer {
 sidebar_position: ${sidebarPosition}
 sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 ---`;
-  }
-
-  public override createCode(...[text, options]: RendererAppendCodeArgs) {
-    if (options?.variant === "raw") {
-      if (options.style === "inline") {
-        return `<code>${this.escapeText(text, { escape: options?.escape ?? "html" })}</code>`;
-      }
-      return `<pre style={{
-  backgroundColor: "var(--ifm-code-background)",
-  border: "0.1rem solid rgba(0, 0, 0, 0.1)",
-  borderRadius: "var(--ifm-code-border-radius)",
-  fontFamily: "var(--ifm-font-family-monospace)",
-  fontSize: "var(--ifm-code-font-size)",
-  verticalAlign: "middle",
-}}>
-<code>
-<p style={{ margin: "0" }}>${this.escapeText(text, { escape: options?.escape ?? "html" })}</p>
-</code>
-</pre>`;
-    } else {
-      return super.createCode(text, options);
-    }
-  }
-
-  public override createExpandableSectionStart(
-    ...[title, id, { escape = "mdx" } = {}]: RendererBeginExpandableSectionArgs
-  ) {
-    this.insertThirdPartyImport(
-      "ExpandableSection",
-      "@speakeasy-api/docs-md/docusaurus"
-    );
-    return `<ExpandableSection title="${this.escapeText(title, { escape })}" id="${id}">`;
-  }
-
-  public override createExpandableSectionEnd() {
-    return "</ExpandableSection>";
-  }
-
-  public override appendSidebarLink(
-    ...[{ title, embedName }]: RendererAppendSidebarLinkArgs
-  ) {
-    const embedPath = getEmbedPath(embedName);
-
-    // TODO: handle this more gracefully. This happens when we have a direct
-    // circular dependency, and the page needs to import itself, which can't be
-    // done of course
-    if (this.#currentPagePath === embedPath) {
-      return;
-    }
-
-    const importPath = this.getRelativeImportPath(
-      this.#currentPagePath,
-      embedPath
-    );
-    this.insertDefaultImport(importPath, getEmbedSymbol(embedName));
-
-    this.#includeSidebar = true;
-    this.insertThirdPartyImport(
-      "SideBarTrigger",
-      "@speakeasy-api/docs-md/docusaurus"
-    );
-    this.insertThirdPartyImport("SideBar", "@speakeasy-api/docs-md/docusaurus");
-    this[rendererLines].push(
-      `<p>
-    <SideBarTrigger cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
-      <${getEmbedSymbol(embedName)} />
-    </SideBarTrigger>
-  </p>`
-    );
-
-    if (this.#site.hasPage(embedPath)) {
-      return;
-    }
-    return this.#site.createPage(embedPath);
-  }
-
-  public override appendTryItNow(
-    ...[{ externalDependencies, defaultValue }]: RendererAppendTryItNowArgs
-  ) {
-    this.insertThirdPartyImport(
-      "TryItNow",
-      "@speakeasy-api/docs-md/docusaurus"
-    );
-    this[rendererLines].push(
-      `<TryItNow
- externalDependencies={${JSON.stringify(externalDependencies)}}
- defaultValue={\`${defaultValue}\`}
-/>`
-    );
-  }
-
-  public override render() {
-    const parentData = super.render();
-    const data =
-      (this.#frontMatter ? this.#frontMatter + "\n\n" : "") +
-      parentData +
-      (this.#includeSidebar ? "\n\n<SideBar />\n" : "");
-    return data;
   }
 }

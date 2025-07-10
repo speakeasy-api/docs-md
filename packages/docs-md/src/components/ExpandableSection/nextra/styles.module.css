@@ -1,0 +1,48 @@
+.container {
+  position: relative;
+  background-color: var(--x-color-white);
+  border: 1px solid var(--x-color-gray-200);
+  border-radius: var(--x-radius-sm);
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  margin: 2rem 0 1rem 0;
+
+  transition: height 0.2s ease-in-out;
+
+  /*
+   * TODO: this is a magic number I found by trial and error. I don't know
+   * why it's needed, but without it we don't scroll to the right place.
+   * This may not be consistent across different Docusaurus instances
+   */
+  scroll-margin-top: 5rem;
+}
+
+.container:where(:global(.dark) *) {
+  background-color: var(--x-color-neutral-900);
+  border-color: var(--x-color-neutral-800);
+}
+
+.heading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-weight: var(--x-font-weight-bold);
+  background-color: var(--x-color-white);
+  border: 1px solid var(--x-color-gray-200);
+  border-radius: var(--x-radius-sm);
+  padding-block: calc(var(--x-spacing) * 1);
+  padding-inline: calc(var(--x-spacing) * 2);
+  top: -1rem;
+  left: 0.5rem;
+  gap: 0.25rem 0.5rem;
+}
+
+.heading:where(:global(.dark) *) {
+  background-color: var(--x-color-neutral-900);
+  border-color: var(--x-color-neutral-800);
+}
+
+.contents {
+  padding-inline: calc(var(--x-spacing) * 3);
+  padding-block: calc(var(--x-spacing) * 2);
+  margin-top: -2rem;
+}

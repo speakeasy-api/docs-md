@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { Button } from "../../Button/docusaurus.tsx";
+import { Button } from "../../primitives/docusaurus/Button.tsx";
 import type { ExpandableSectionProps } from "../common/types.ts";
+import styles from "./styles.module.css";
 
 export function DocusaurusExpandableSection({
   title,
@@ -33,47 +34,8 @@ export function DocusaurusExpandableSection({
   }, [id]);
 
   return (
-    <div
-      style={{
-        position: "relative",
-        backgroundColor: "var(--ifm-hero-background-color)",
-        color: "var(--ifm-hero-text-color)",
-        border:
-          "var(--ifm-global-border-width) solid var(--ifm-blockquote-border-color)",
-        borderRadius: "var(--ifm-global-radius)",
-        boxShadow: "var(--ifm-global-shadow-tl)",
-        margin: "2rem 0 1rem 0",
-
-        transition: "height 0.2s ease-in-out",
-
-        // TODO: this is a magic number I found by trial and error. I don't know
-        // why it's needed, but without it we don't scroll to the right place.
-        // This may not be consistent across different Docusaurus instances
-        scrollMarginTop: "6rem",
-      }}
-      id={id}
-    >
-      <Button
-        onClick={onClick}
-        style={{
-          top: "calc(-1 * var(--ifm-alert-padding-vertical))",
-          left: "calc(0.5 * var(--ifm-alert-padding-horizontal))",
-          position: "relative",
-          border:
-            "var(--ifm-global-border-width) solid var(--ifm-blockquote-border-color)",
-          backgroundColor: "var(--ifm-hero-background-color)",
-          borderRadius: "var(--ifm-global-radius)",
-          padding: "0.5rem",
-          width: "fit-content",
-          display: "flex",
-          alignItems: "center",
-          gap: "0.25rem 0.5rem",
-          fontWeight: "bold",
-          // Note: the docs at https://docusaurus.community/knowledge/design/css/variables/ say this variable
-          // should be `--ifm-heading-h5-font-size`, but it doesn't exist. It's `--ifm-h5-font-size` instead.
-          fontSize: "var(--ifm-h5-font-size)",
-        }}
-      >
+    <div className={styles.container} id={id}>
+      <Button onClick={onClick} className={styles.heading}>
         <div
           style={{
             transform: isOpen ? "rotate(180deg)" : "rotate(90deg)",
