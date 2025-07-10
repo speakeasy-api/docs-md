@@ -209,20 +209,16 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
 
 
 function convertShikiToSandpackTheme(rehypeTheme: RehypeTheme): {
-  dark: DeepPartial<SandpackTheme> | "dark";
-  light: DeepPartial<SandpackTheme> | "light";
+  dark: DeepPartial<SandpackTheme>;
+  light: DeepPartial<SandpackTheme>;
 } {
-  const darkTheme = rehypeTheme?.dark;
-  const lightTheme = rehypeTheme?.light;
+  const darkTheme = rehypeTheme.dark;
+  const lightTheme = rehypeTheme.light;
 
   const convertTheme = (
-    theme: ThemeRegistration | undefined
+    theme: ThemeRegistration
   ) => {
-    // TODO: when it is a string, we have to load the theme
-    // from the shiki npm package
-    if (!theme) return null;
-
-    const { settings, tokens } = theme;
+    const { settings } = theme;
     const colorThemeMap = new Map<string, string>();
     const scopeKeyWords = [
       "comment",
@@ -238,17 +234,12 @@ function convertShikiToSandpackTheme(rehypeTheme: RehypeTheme): {
       }
     });
 
-    tokens?.forEach((token) => {
-      const scope = setting.scope;
-      if (typeof scope === "string" && scopeKeyWords.includes(scope)) {
-        colorThemeMap.set(scope, setting.settings.foreground ?? "");
-      }
-    });
-
     return {
       colors: {
-        base: theme?.fg,
-        surface1: theme?.bg,
+        base: theme?.colors?.["editor.foreground"],
+        surface1: theme?.colors?.["editor.background"],
+        surface2: theme?.colors?.["panel.border"],
+        surface3: theme?.colors?.["editor.lineHighlightBackground"],
       },
       syntax: {
         string: theme?.semanticTokenColors?.stringLiteral,
@@ -256,16 +247,15 @@ function convertShikiToSandpackTheme(rehypeTheme: RehypeTheme): {
         keyword: colorThemeMap.get("keyword"),
         property: theme?.semanticTokenColors?.stringLiteral,
         tag: colorThemeMap.get("punctuation.definition.tag"),
-        plain: theme?.fg,
+        plain: theme?.colors?.["editor.foreground"],
         definition: colorThemeMap.get("variable.language"),
-        punctuation: theme?.fg,
+        punctuation: theme?.colors?.["editor.foreground"],
       },
     };
   };
-  console.log("theme", darkTheme, lightTheme);
 
   return {
-    dark: convertTheme(darkTheme) ?? "dark",
-    light: convertTheme(lightTheme) ?? "light",
+    dark: convertTheme(darkTheme),
+    light: convertTheme(lightTheme),
   };
 }

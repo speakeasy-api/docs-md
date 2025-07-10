@@ -250,16 +250,18 @@ async function loadBundledTheme(theme: BundledTheme) {
   if (!shikiTheme) {
     throw new Error(`Shiki theme ${theme} not found`);
   }
-  return shikiTheme.default;
+  return normalizeTheme(shikiTheme.default);
 }
 
 async function loadShikiThemes(
   themes: Theme | Record<string, Theme> | null | undefined
 ): Promise<RehypeTheme> {
   // fallthrough case, return the default shiki theme
-  const defaultDarkTheme = await loadBundledTheme("github-dark");
-  const defaultLightTheme = await loadBundledTheme("github-light");
+  const githubDark = await loadBundledTheme("github-dark");
+  const githubLight = await loadBundledTheme("github-light");
 
+  const defaultDarkTheme = normalizeTheme(githubDark);
+  const defaultLightTheme = normalizeTheme(githubLight);
   if (typeof themes === "string") {
     const shikiTheme = await loadBundledTheme(themes);
     return shikiTheme.type === "dark"
