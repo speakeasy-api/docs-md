@@ -1,9 +1,9 @@
 import { join, resolve } from "node:path";
 
 import type { DeepPartial, SandpackTheme } from "@codesandbox/sandpack-react";
-import type { ThemeRegistration } from "shiki";
 
 import type { RehypeTheme } from "../types/nextra.ts";
+import { convertRehypeThemeToSandpackTheme } from "../util/nextra.ts";
 import { getSettings } from "../util/settings.ts";
 import type {
   RendererAppendCodeArgs,
@@ -82,7 +82,7 @@ class NextraRenderer extends MdxRenderer {
     super();
     this.#currentPagePath = currentPagePath;
     this.#site = site;
-    this.#sandpackTheme = convertShikiToSandpackTheme(rehypeTheme);
+    this.#sandpackTheme = convertRehypeThemeToSandpackTheme(rehypeTheme);
   }
 
   public override insertFrontMatter(
@@ -205,78 +205,4 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
       (this.#includeSidebar ? "\n\n<SideBar />\n" : "");
     return data;
   }
-}
-
-
-function convertShikiToSandpackTheme(rehypeTheme: RehypeTheme): {
-  dark: DeepPartial<SandpackTheme>;
-  light: DeepPartial<SandpackTheme>;
-} {
-  const darkTheme = rehypeTheme.dark;
-  const lightTheme = rehypeTheme.light;
-
-  const convertTheme = (
-    theme: ThemeRegistration
-  ) => {
-    const { settings } = theme;
-    const scopeKeyWords = [
-      "comment",
-      "punctuation.definition.tag",
-      "keyword",
-      "variable.language",
-      "constant",
-      "entity.name",
-      "string",
-      "meta.property-name",
-      "variable.parameter.function",
-    ];
-
-    const colorThemeMap = new Map<string, string>();
-
-    settings?.forEach((setting) => {
-      const scope = setting.scope;
-
-      if (typeof scope === "string" && scopeKeyWords.includes(scope)) {
-        colorThemeMap.set(scope, setting.settings.foreground ?? "");
-      } 
-      
-      if (Array.isArray(scope) ) {
-        // check if scope has a value from scopeKeyWords
-        const hasScopeKeyWord = scope.some((s) => scopeKeyWords.includes(s));
-        if (hasScopeKeyWord) {
-          scope.forEach((s) => {
-            colorThemeMap.set(s, setting.settings.foreground ?? "");
-          });
-        }
-      }
-    });
-
-    return {
-      colors: {
-        base: theme?.colors?.["editor.foreground"],
-        surface1: theme?.colors?.["editor.background"],
-        surface2: theme?.colors?.["panel.border"],
-        surface3: theme?.colors?.["editor.lineHighlightBackground"],
-      },
-      syntax: {
-        string: colorThemeMap.get("string"),
-        comment: colorThemeMap.get("comment"),
-        keyword: colorThemeMap.get("keyword"),
-        // Color for object properties, variable properties, etc.
-        property:  theme?.colors?.["editor.foreground"],
-        tag: colorThemeMap.get("punctuation.definition.tag"),
-        // The color for variable names, import names, etc.
-        plain: colorThemeMap.get("meta.property-name"),
-        definition: colorThemeMap.get("entity.name"),
-        punctuation: theme?.colors?.["editor.foreground"],
-        // literal variable values like a number or boolean
-        static: colorThemeMap.get("constant"),
-      },
-    } as DeepPartial<SandpackTheme>;
-  };
-
-  return {
-    dark: convertTheme(darkTheme),
-    light: convertTheme(lightTheme),
-  };
 }

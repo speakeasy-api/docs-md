@@ -16,19 +16,16 @@ import { load } from "js-yaml";
 import type { NextConfig } from "next";
 import type { NextraConfig } from "nextra";
 import type { Theme } from "rehype-pretty-code";
-import { normalizeTheme, type ThemeRegistration } from "shiki";
-import type { BundledTheme } from "shiki/themes";
-import { bundledThemes } from "shiki/themes";
 import z from "zod/v4";
 
 import { generatePages } from "../pages/generatePages.ts";
 import type { Site } from "../renderers/base/base.ts";
 import { DocusaurusSite } from "../renderers/docusaurus.ts";
 import { NextraSite } from "../renderers/nextra.ts";
-import type { RehypeTheme } from "../types/nextra.ts";
 import type { ParsedSettings } from "../types/settings.ts";
 import { settingsSchema } from "../types/settings.ts";
 import { assertNever } from "../util/assertNever.ts";
+import { loadRehypeThemes } from "../util/nextra.ts";
 
 const CONFIG_FILE_NAMES = [
   "speakeasy.config.js",
@@ -174,7 +171,7 @@ switch (settings.output.framework) {
   }
   case "nextra": {
     const shikiTheme = await getNextraShikiTheme();
-    const rehypeTheme = await loadShikiThemes(shikiTheme);
+    const rehypeTheme = await loadRehypeThemes(shikiTheme);
     site = new NextraSite({
       rehypeTheme: rehypeTheme,
     });
@@ -243,82 +240,6 @@ async function getNextraShikiTheme(): Promise<
   }
 
   return null;
-}
-
-async function loadBundledTheme(theme: BundledTheme) {
-  const shikiTheme = await bundledThemes[theme]();
-  if (!shikiTheme) {
-    throw new Error(`Shiki theme ${theme} not found`);
-  }
-  return normalizeTheme(shikiTheme.default);
-}
-
-async function loadShikiThemes(
-  themes: Theme | Record<string, Theme> | null | undefined
-): Promise<RehypeTheme> {
-  // fallthrough case, return the default shiki theme
-  const githubDark = await loadBundledTheme("github-dark");
-  const githubLight = await loadBundledTheme("github-light");
-
-  const defaultDarkTheme = normalizeTheme(githubDark);
-  const defaultLightTheme = normalizeTheme(githubLight);
-  if (typeof themes === "string") {
-    const shikiTheme = await loadBundledTheme(themes);
-    return shikiTheme.type === "dark"
-      ? {
-          dark: shikiTheme,
-          light: defaultLightTheme,
-        }
-      : {
-          light: shikiTheme,
-          dark: defaultDarkTheme,
-        };
-  }
-
-  if (
-    themes &&
-    "name" in themes &&
-    "displayName" in themes &&
-    "type" in themes
-  ) {
-    return themes.type === "dark"
-      ? {
-          dark: themes,
-          light: defaultLightTheme,
-        }
-      : {
-          light: themes,
-          dark: defaultDarkTheme,
-        };
-  }
-
-  if (typeof themes === "object") {
-    const processedThemes: Record<string, ThemeRegistration> = {};
-    for (const [themeName, shikiTheme] of Object.entries(
-      themes as Record<string, Theme>
-    )) {
-      if (typeof shikiTheme === "string") {
-        const loadedTheme = await loadBundledTheme(shikiTheme);
-        processedThemes[themeName] = loadedTheme;
-      } else {
-        processedThemes[themeName] = normalizeTheme(shikiTheme);
-      }
-    }
-
-    if (!processedThemes.dark || !processedThemes.light) {
-      throw new Error("Missing dark or light theme");
-    }
-
-    return {
-      dark: processedThemes.dark,
-      light: processedThemes.light,
-    };
-  }
-
-  return {
-    dark: defaultDarkTheme,
-    light: defaultLightTheme,
-  };
 }
 
 const pageContents = await generatePages({

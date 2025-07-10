@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { Content } from "../common/components/Content.tsx";
 import type { NextraTryItNowProps } from "../common/types.ts";
-// Custom hook to listen for theme class changes
+
 function useNextraThemeMode() {
   const [theme, setTheme] = useState<"dark" | "light">(() => {
     if (document?.documentElement?.classList?.contains("dark")) {
@@ -55,15 +55,7 @@ const TryItNowContents = ({ themes, ...props }: NextraTryItNowProps) => {
   const themeMode = useNextraThemeMode();
   const sandpackTheme = themes[themeMode];
 
-  return (
-    <Content
-      theme={sandpackTheme}
-      layoutStyle={{
-        transition: "color 0.3s ease, background-color 0.3s ease",
-      }}
-      {...props}
-    />
-  );
+  return <Content theme={sandpackTheme} {...props} />;
 };
 
 export const TryItNowNextra = (props: NextraTryItNowProps) => {
@@ -71,7 +63,11 @@ export const TryItNowNextra = (props: NextraTryItNowProps) => {
   if (!isMounted) return null;
 
   return (
-    <div style={{ marginTop: "calc(var(--x-spacing)* 4)" }}>
+    <div
+      style={{
+        marginTop: "calc(var(--x-spacing)* 4)",
+      }}
+    >
       <TryItNowContents {...props} />
     </div>
   );
