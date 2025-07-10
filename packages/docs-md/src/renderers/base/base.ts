@@ -15,6 +15,7 @@
 // defined as a tuple. We can then use the spread operator to assign that type
 // to all arguments. It's a bit verbose and convoluted, but solves both 1 and 2
 
+
 // Argument types for Site interface methods
 export type SiteCreatePageArgs = [path: string];
 export type SiteBuildPagePathArgs = [

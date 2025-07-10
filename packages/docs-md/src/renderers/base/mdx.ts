@@ -1,5 +1,6 @@
 import { dirname, relative } from "node:path";
 
+import type { TryItNowProps } from "../../components/TryItNow/common/types.ts";
 import type {
   RendererAppendCodeArgs,
   RendererAppendSectionStartArgs,
@@ -25,11 +26,16 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   #includeSidebar = false;
   #currentPagePath: string;
   #site: MdxSite;
+  #codeThemes: TryItNowProps["themes"] | undefined;
 
-  constructor({ currentPagePath }: { currentPagePath: string }, site: MdxSite) {
+  constructor(
+    { currentPagePath, codeThemes }: { currentPagePath: string, codeThemes?: TryItNowProps["themes"] },
+    site: MdxSite
+  ) {
     super();
     this.#currentPagePath = currentPagePath;
     this.#site = site;
+    this.#codeThemes = codeThemes;
   }
 
   public override render() {
@@ -196,6 +202,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
       `<TryItNow
  externalDependencies={${JSON.stringify(externalDependencies)}}
  defaultValue={\`${defaultValue}\`}
+ ${this.#codeThemes ? `themes={${JSON.stringify(this.#codeThemes)}}` : ""}
 />`
     );
   }

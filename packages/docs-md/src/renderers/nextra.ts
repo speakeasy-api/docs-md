@@ -1,19 +1,14 @@
 import { join, resolve } from "node:path";
 
-import type { SandpackTheme } from "@codesandbox/sandpack-react";
-import type { PartialDeep } from "type-fest";
-
 import { convertRehypeThemeToSandpackTheme } from "../cli/nextraUtils.ts";
 import type { RehypeTheme } from "../types/nextra.ts";
 import { getSettings } from "../util/settings.ts";
 import type {
   RendererAppendHeadingArgs,
-  RendererAppendTryItNowArgs,
   RendererInsertFrontMatterArgs,
   SiteBuildPagePathArgs,
   SiteGetRendererArgs,
 } from "./base/base.ts";
-import { rendererLines } from "./base/markdown.ts";
 import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 export class NextraSite extends MdxSite {
   #rehypeTheme: RehypeTheme;
@@ -59,10 +54,6 @@ export class NextraSite extends MdxSite {
 
 class NextraRenderer extends MdxRenderer {
   #frontMatter: string | undefined;
-  #sandpackTheme: {
-    dark: PartialDeep<SandpackTheme> | "dark";
-    light: PartialDeep<SandpackTheme> | "light";
-  };
 
   constructor(
     {
@@ -71,8 +62,7 @@ class NextraRenderer extends MdxRenderer {
     }: { currentPagePath: string; rehypeTheme: RehypeTheme },
     site: NextraSite
   ) {
-    super({ currentPagePath }, site);
-    this.#sandpackTheme = convertRehypeThemeToSandpackTheme(rehypeTheme);
+    super({ currentPagePath, codeThemes: convertRehypeThemeToSandpackTheme(rehypeTheme) }, site);
   }
 
   public override render() {
@@ -109,16 +99,4 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
     return line;
   }
 
-  public override appendTryItNow(
-    ...[{ externalDependencies, defaultValue }]: RendererAppendTryItNowArgs
-  ) {
-    this.insertComponentImport("TryItNow");
-    this[rendererLines].push(
-      `<TryItNow
- externalDependencies={${JSON.stringify(externalDependencies)}}
- defaultValue={\`${defaultValue}\`}
- themes={${JSON.stringify(this.#sandpackTheme)}}
-/>`
-    );
-  }
 }
