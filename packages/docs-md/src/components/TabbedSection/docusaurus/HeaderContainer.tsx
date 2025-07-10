@@ -7,7 +7,11 @@ import styles from "./styles.module.css";
 export function HeaderContainer({ title, children, id }: HeaderContainerProps) {
   return (
     <div
-      className={clsx(sectionStyles.header, sectionStyles.linedHeader)}
+      className={clsx(
+        sectionStyles.header,
+        sectionStyles.linedHeader,
+        styles.header
+      )}
       id={id}
     >
       <h3 className={sectionStyles.title}>{title}</h3>
