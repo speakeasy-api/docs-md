@@ -219,18 +219,35 @@ function convertShikiToSandpackTheme(rehypeTheme: RehypeTheme): {
     theme: ThemeRegistration
   ) => {
     const { settings } = theme;
-    const colorThemeMap = new Map<string, string>();
     const scopeKeyWords = [
       "comment",
       "punctuation.definition.tag",
       "keyword",
       "variable.language",
+      "constant",
+      "entity.name",
+      "string",
+      "meta.property-name",
+      "variable.parameter.function",
     ];
+
+    const colorThemeMap = new Map<string, string>();
 
     settings?.forEach((setting) => {
       const scope = setting.scope;
+
       if (typeof scope === "string" && scopeKeyWords.includes(scope)) {
         colorThemeMap.set(scope, setting.settings.foreground ?? "");
+      } 
+      
+      if (Array.isArray(scope) ) {
+        // check if scope has a value from scopeKeyWords
+        const hasScopeKeyWord = scope.some((s) => scopeKeyWords.includes(s));
+        if (hasScopeKeyWord) {
+          scope.forEach((s) => {
+            colorThemeMap.set(s, setting.settings.foreground ?? "");
+          });
+        }
       }
     });
 
@@ -242,16 +259,20 @@ function convertShikiToSandpackTheme(rehypeTheme: RehypeTheme): {
         surface3: theme?.colors?.["editor.lineHighlightBackground"],
       },
       syntax: {
-        string: theme?.semanticTokenColors?.stringLiteral,
+        string: colorThemeMap.get("string"),
         comment: colorThemeMap.get("comment"),
         keyword: colorThemeMap.get("keyword"),
-        property: theme?.semanticTokenColors?.stringLiteral,
+        // Color for object properties, variable properties, etc.
+        property:  theme?.colors?.["editor.foreground"],
         tag: colorThemeMap.get("punctuation.definition.tag"),
-        plain: theme?.colors?.["editor.foreground"],
-        definition: colorThemeMap.get("variable.language"),
+        // The color for variable names, import names, etc.
+        plain: colorThemeMap.get("meta.property-name"),
+        definition: colorThemeMap.get("entity.name"),
         punctuation: theme?.colors?.["editor.foreground"],
+        // literal variable values like a number or boolean
+        static: colorThemeMap.get("constant"),
       },
-    };
+    } as DeepPartial<SandpackTheme>;
   };
 
   return {
