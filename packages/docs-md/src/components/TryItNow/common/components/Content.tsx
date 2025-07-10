@@ -41,6 +41,7 @@ export const Content = ({
   theme = "dark",
   _enableUnsafeAutoImport,
   layoutStyle,
+  themes,
 }: TryItNowProps) => {
   const autoImportDependencies = useAtomValue(dependenciesAtom);
   const previousCodeAtomValue = useAtomValue(lastEditorValueAtom);
@@ -52,7 +53,7 @@ export const Content = ({
         autorun: false,
         activeFile: "index.ts",
       }}
-      theme={theme}
+      theme={themes ? themes[theme as "dark" | "light"] : theme}
       template="vanilla-ts"
       files={{
         "index.ts": {

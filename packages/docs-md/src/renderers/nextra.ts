@@ -3,8 +3,8 @@ import { join, resolve } from "node:path";
 import type { SandpackTheme } from "@codesandbox/sandpack-react";
 import type { PartialDeep } from "type-fest";
 
+import { convertRehypeThemeToSandpackTheme } from "../cli/nextraUtils.ts";
 import type { RehypeTheme } from "../types/nextra.ts";
-import { convertRehypeThemeToSandpackTheme } from "../util/nextra.ts";
 import { getSettings } from "../util/settings.ts";
 import type {
   RendererAppendHeadingArgs,
@@ -117,7 +117,7 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
       `<TryItNow
  externalDependencies={${JSON.stringify(externalDependencies)}}
  defaultValue={\`${defaultValue}\`}
- nextraCodeThemes={${JSON.stringify(this.#sandpackTheme)}}
+ themes={${JSON.stringify(this.#sandpackTheme)}}
 />`
     );
   }

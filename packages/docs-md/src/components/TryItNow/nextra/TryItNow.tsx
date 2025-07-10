@@ -3,22 +3,15 @@ import { useTheme } from "next-themes";
 import { useMounted } from "nextra/hooks";
 
 import { Content } from "../common/components/Content.tsx";
-import type { NextraTryItNowProps } from "../common/types.ts";
+import type { TryItNowProps } from "../common/types.ts";
 
-const TryItNowContents = ({
-  nextraCodeThemes = {
-    dark: "dark",
-    light: "light",
-  },
-  ...props
-}: NextraTryItNowProps) => {
+const TryItNowContents = (props: TryItNowProps) => {
   const { resolvedTheme } = useTheme();
-  const sandpackTheme = nextraCodeThemes[resolvedTheme as "dark" | "light"];
 
-  return <Content theme={sandpackTheme} {...props} />;
+  return <Content theme={resolvedTheme as "dark" | "light"} {...props} />;
 };
 
-export const TryItNowNextra = (props: NextraTryItNowProps) => {
+export const TryItNowNextra = (props: TryItNowProps) => {
   const isMounted = useMounted();
   if (!isMounted) return null;
 

@@ -4,9 +4,9 @@
 // happy to import a server component (this file) that then imports a client
 // component.
 
-import type { NextraTryItNowProps } from "./common/types.ts";
+import type { TryItNowProps } from "./common/types.ts";
 import { TryItNowNextra } from "./nextra/TryItNow.tsx";
 
-export function TryItNow(props: NextraTryItNowProps) {
+export function TryItNow(props: TryItNowProps) {
   return <TryItNowNextra {...props} />;
 }

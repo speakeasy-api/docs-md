@@ -13,9 +13,6 @@ import { pathToFileURL } from "node:url";
 
 import arg from "arg";
 import { load } from "js-yaml";
-import type { NextConfig } from "next";
-import type { NextraConfig } from "nextra";
-import type { Theme } from "rehype-pretty-code";
 import z from "zod/v4";
 
 import { generatePages } from "../pages/generatePages.ts";
@@ -25,7 +22,7 @@ import { NextraSite } from "../renderers/nextra.ts";
 import type { ParsedSettings } from "../types/settings.ts";
 import { settingsSchema } from "../types/settings.ts";
 import { assertNever } from "../util/assertNever.ts";
-import { loadRehypeThemes } from "../util/nextra.ts";
+import { getNextraShikiTheme, loadRehypeThemes } from "./nextraUtils.ts";
 
 const CONFIG_FILE_NAMES = [
   "speakeasy.config.js",
@@ -192,55 +189,7 @@ switch (settings.output.framework) {
   }
 }
 
-async function getNextraShikiTheme(): Promise<
-  Theme | Record<string, Theme> | undefined | null
-> {
-  // this will be exported an object from next.config.js or next.config.mjs
-  // import it and return the object
 
-  let nextraConfig: NextConfig | null = null;
-
-  // first check if next.config.js exists
-  let nextConfigPath = join(process.cwd(), "next.config.js");
-  if (existsSync(nextConfigPath)) {
-    const config = (await import(nextConfigPath)) as { default: NextConfig };
-    nextraConfig = config.default;
-  }
-
-  // if not, check if next.config.mjs exists
-  nextConfigPath = join(process.cwd(), "next.config.mjs");
-  if (existsSync(nextConfigPath)) {
-    const config = (await import(nextConfigPath)) as { default: NextConfig };
-    nextraConfig = config.default;
-  }
-
-  if (nextraConfig) {
-    // check the experimental.turbo.rules
-    if (nextraConfig.experimental?.turbo?.rules?.["*.{md,mdx}"]) {
-      // check the loaders
-      const rules = nextraConfig.experimental.turbo.rules["*.{md,mdx}"];
-      if (typeof rules === "object" && "loaders" in rules) {
-        const loaders = rules.loaders;
-        if (Array.isArray(loaders)) {
-          for (const loader of loaders) {
-            if (typeof loader === "string") {
-              // we can't process a string loader.
-              continue;
-            }
-            const options = loader.options;
-            const mdxOptions =
-              options?.mdxOptions as NextraConfig["mdxOptions"];
-
-            const theme = mdxOptions?.rehypePrettyCodeOptions?.theme;
-            return theme;
-          }
-        }
-      }
-    }
-  }
-
-  return null;
-}
 
 const pageContents = await generatePages({
   site,

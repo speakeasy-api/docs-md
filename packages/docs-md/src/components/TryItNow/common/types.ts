@@ -20,16 +20,7 @@ export type TryItNowProps = {
   _enableUnsafeAutoImport?: boolean;
   theme?: PartialDeep<SandpackTheme> | "auto" | "dark" | "light";
   layoutStyle?: React.CSSProperties;
-};
-
-
-
-export type NextraTryItNowProps = TryItNowProps & {
-  /**
-   * Adds the ability to specify a different theme for dark and light mode 
-   * in Nextra.
-   */
-  nextraCodeThemes: {
+  themes?: {
     dark: PartialDeep<SandpackTheme> | "dark";
     light: PartialDeep<SandpackTheme> | "light";
   };
