@@ -45,6 +45,7 @@ export function renderOperation({
     const securityId = id + "+security";
     renderer.appendSectionStart("Security", {
       id: securityId,
+      variant: "section",
     });
     if (chunk.chunkData.security) {
       const securityChunk = getSchemaFromId(
@@ -87,6 +88,7 @@ export function renderOperation({
     const parametersId = id + "+parameters";
     renderer.appendSectionStart("Parameters", {
       id: parametersId,
+      variant: "section",
     });
     for (const parameter of chunk.chunkData.parameters) {
       renderer.appendHeading(
@@ -120,6 +122,7 @@ export function renderOperation({
   if (usageSnippet && tryItNow) {
     renderer.appendSectionStart("Try it Now", {
       id: id + "+try-it-now",
+      variant: "section",
     });
     // TODO: Zod is actually hard coded for now since its always a dependency
     // in our SDKs. Ideally this will come from the SDK package.
@@ -137,7 +140,7 @@ export function renderOperation({
     const requestBodyId = id + "+request";
     renderer.appendSectionStart(
       `Request Body${!chunk.chunkData.requestBody.required ? " (optional)" : ""}`,
-      { id: requestBodyId }
+      { id: requestBodyId, variant: "section" }
     );
     if (chunk.chunkData.requestBody.description) {
       renderer.appendText(chunk.chunkData.requestBody.description);

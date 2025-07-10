@@ -20,6 +20,7 @@ export default [
         "ExpandableSection",
         "TabbedSection",
         "Section",
+        "SectionEntry",
         "Code",
       ],
       "src/docusaurus.ts": [
@@ -30,6 +31,7 @@ export default [
         "ExpandableSection",
         "TabbedSection",
         "Section",
+        "SectionEntry",
         "Code",
       ],
     },

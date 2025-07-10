@@ -15,6 +15,10 @@
 // defined as a tuple. We can then use the spread operator to assign that type
 // to all arguments. It's a bit verbose and convoluted, but solves both 1 and 2
 
+// Helper types
+
+export type SectionVariant = "section" | "fields" | "operation";
+
 // Argument types for Site interface methods
 export type SiteCreatePageArgs = [path: string];
 export type SiteBuildPagePathArgs = [
@@ -110,8 +114,12 @@ export type RendererAppendCodeArgs = [
 export type RendererAppendListArgs = [items: string[], options?: AppendOptions];
 export type RendererAppendSectionStartArgs = [
   title: string,
-  options: AppendOptions & { id: string },
+  options: AppendOptions & {
+    id: string;
+    variant: SectionVariant;
+  },
 ];
+export type RendererAppendSectionEntryArgs = [variant: SectionVariant];
 export type RendererBeginExpandableSectionArgs = [
   title: string,
   options: AppendOptions & { id: string },
@@ -154,6 +162,10 @@ export abstract class Renderer {
   abstract appendSectionStart(...args: RendererAppendSectionStartArgs): void;
   abstract createSectionEnd(): string;
   abstract appendSectionEnd(): void;
+  abstract createSectionEntry(...args: RendererAppendSectionEntryArgs): string;
+  abstract appendSectionEntry(...args: RendererAppendSectionEntryArgs): void;
+  abstract createSectionEntryEnd(): string;
+  abstract appendSectionEntryEnd(): void;
 
   // Expandable sections are used to show schema value breakouts, which are
   // collapsed by default

@@ -468,7 +468,12 @@ export function renderSchema({
   topLevelName: string;
 }) {
   function renderObjectProperties(objectValue: ObjectValue) {
-    for (const [key, value] of Object.entries(objectValue.properties)) {
+    const properties = Object.entries(objectValue.properties);
+    if (!properties.length) {
+      return;
+    }
+    for (const [key, value] of properties) {
+      context.renderer.appendSectionEntry("fields");
       const isRequired = objectValue.required?.includes(key) ?? false;
       if (value.type === "chunk") {
         const schemaChunk = getSchemaFromId(value.chunkId, data);
@@ -502,6 +507,7 @@ export function renderSchema({
           isRequired,
         });
       }
+      context.renderer.appendSectionEntryEnd();
     }
   }
 
@@ -538,6 +544,10 @@ export function renderSchema({
     });
   }
 
+  context.renderer.appendSectionStart("Fields", {
+    variant: "fields",
+    id: context.idPrefix + "+fields",
+  });
   switch (context.schema.type) {
     case "object": {
       renderObjectProperties(context.schema);
@@ -558,4 +568,5 @@ export function renderSchema({
       break;
     }
   }
+  context.renderer.appendSectionEnd();
 }

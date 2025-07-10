@@ -1,5 +1,6 @@
 "use client";
 
+import type { PropsWithChildren } from "react";
 import { useMemo, useState } from "react";
 
 import { InternalError } from "../../../util/internalError.ts";
@@ -12,6 +13,7 @@ import type {
 type ContainerProps = {
   title: string;
   HeaderContainer: React.FC<HeaderContainerProps>;
+  ChildrenContainer: React.FC<PropsWithChildren>;
   TabButton: React.FC<TabButtonProps>;
   children: TabbedSectionProps["children"];
 };
@@ -19,6 +21,7 @@ type ContainerProps = {
 export function Container({
   title,
   HeaderContainer,
+  ChildrenContainer,
   TabButton,
   children,
 }: ContainerProps) {
@@ -65,7 +68,7 @@ export function Container({
           />
         ))}
       </HeaderContainer>
-      <div>{activeChild}</div>
+      <ChildrenContainer>{activeChild}</ChildrenContainer>
     </>
   );
 }

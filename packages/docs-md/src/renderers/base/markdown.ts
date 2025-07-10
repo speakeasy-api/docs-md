@@ -6,6 +6,7 @@ import type {
   RendererAppendCodeArgs,
   RendererAppendHeadingArgs,
   RendererAppendListArgs,
+  RendererAppendSectionEntryArgs,
   RendererAppendSectionStartArgs,
   RendererAppendTextArgs,
   RendererBeginExpandableSectionArgs,
@@ -168,6 +169,22 @@ ${text}\n</code>\n</pre>`;
 
   public appendSectionEnd(): void {
     this[rendererLines].push(this.createSectionEnd());
+  }
+
+  public createSectionEntry(..._args: RendererAppendSectionEntryArgs): string {
+    return "";
+  }
+
+  public appendSectionEntry(...args: RendererAppendSectionEntryArgs): void {
+    this[rendererLines].push(this.createSectionEntry(...args));
+  }
+
+  public createSectionEntryEnd(): string {
+    return "";
+  }
+
+  public appendSectionEntryEnd(): void {
+    this[rendererLines].push(this.createSectionEntryEnd());
   }
 
   public createExpandableSectionStart(

@@ -5,7 +5,7 @@ export function DocusaurusCode({ text }: CodeProps) {
   return (
     <pre className={styles.pre}>
       <code>
-        <p className={styles.text}>{text}</p>
+        <p className={styles.text} dangerouslySetInnerHTML={{ __html: text }} />
       </code>
     </pre>
   );

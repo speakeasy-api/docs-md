@@ -2,6 +2,7 @@ import { dirname, relative } from "node:path";
 
 import type {
   RendererAppendCodeArgs,
+  RendererAppendSectionEntryArgs,
   RendererAppendSectionStartArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
@@ -108,14 +109,25 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   protected abstract insertComponentImport(symbol: string): void;
 
   public override createSectionStart(
-    ...[title, { id, escape = "mdx" }]: RendererAppendSectionStartArgs
+    ...[title, { id, escape = "mdx", variant }]: RendererAppendSectionStartArgs
   ) {
     this.insertComponentImport("Section");
-    return `<Section title="${this.escapeText(title, { escape })}" id="${id}">`;
+    return `<Section title="${this.escapeText(title, { escape })}" id="${id}" variant="${variant}">`;
   }
 
   public override createSectionEnd() {
     return "</Section>";
+  }
+
+  public override createSectionEntry(
+    ...[variant]: RendererAppendSectionEntryArgs
+  ): string {
+    this.insertComponentImport("SectionEntry");
+    return `<SectionEntry variant="${variant}">`;
+  }
+
+  public override createSectionEntryEnd(): string {
+    return "</SectionEntry>";
   }
 
   public override createExpandableSectionStart(
