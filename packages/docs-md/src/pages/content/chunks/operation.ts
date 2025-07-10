@@ -187,20 +187,24 @@ export function renderOperation({
       ([_, responses]) => responses.length > 0
     );
     if (hasResponses) {
+      renderer.appendTabbedSectionStart();
       const responsesId = id + "+responses";
-      renderer.appendTabbedSectionStart("Response", {
-        id: responsesId,
-      });
+      renderer.appendTabbedSectionTitleStart();
+      renderer.appendHeading(2, "Responses", { id: responsesId });
+      renderer.appendTabbedSectionTitleEnd();
       for (const [statusCode, responses] of responseList) {
         for (const response of responses) {
-          const tooltip = `${statusCode} (${response.contentType})`;
-          if (responses.length > 1) {
-            renderer.appendTabContentsStart(tooltip, tooltip);
-          } else {
-            renderer.appendTabContentsStart(statusCode, tooltip);
-          }
           const responseId =
             id + `+${statusCode}+${response.contentType.replace("/", "-")}`;
+          const tooltip = `${statusCode} (${response.contentType})`;
+          renderer.appendTabbedSectionTabStart(responseId, tooltip);
+          if (responses.length > 1) {
+            renderer.appendText(tooltip);
+          } else {
+            renderer.appendText(statusCode);
+          }
+          renderer.appendTabbedSectionTabEnd();
+          renderer.appendTabbedSectionContentsStart(responseId);
           if (response.description) {
             renderer.appendText(response.description);
           }
@@ -219,7 +223,7 @@ export function renderOperation({
             topLevelName: "Response Body",
             data: docsData,
           });
-          renderer.appendTabContentsEnd();
+          renderer.appendTabbedSectionContentsEnd();
         }
       }
       renderer.appendTabbedSectionEnd();

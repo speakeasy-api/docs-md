@@ -122,11 +122,8 @@ export type RendererCreateExpandableSectionArgs = [
   title: string,
   options: AppendOptions & { id: string },
 ];
-export type RendererCreateTabbedSectionArgs = [
-  title: string,
-  options: AppendOptions & { id: string },
-];
-export type RendererCreateTabContentsArgs = [title: string, tooltip: string];
+export type RendererCreateTabArgs = [id: string];
+export type RendererCreateTabbedSectionTabArgs = [id: string, title: string];
 export type RendererAppendSidebarLinkArgs = [
   options: {
     title: string;
@@ -186,18 +183,30 @@ export abstract class Renderer {
   // with a separator for content. Tab contents are markdown content linked
   // to a tab. The tab contents insert a wrapper div with specific attributes
   // used to populate the contents of the tab section.
-  abstract createTabbedSectionStart(
-    ...args: RendererCreateTabbedSectionArgs
-  ): void;
-  abstract appendTabbedSectionStart(
-    ...args: RendererCreateTabbedSectionArgs
-  ): void;
+  abstract createTabbedSectionStart(): void;
+  abstract appendTabbedSectionStart(): void;
   abstract createTabbedSectionEnd(): void;
   abstract appendTabbedSectionEnd(): void;
-  abstract createTabContentsStart(...args: RendererCreateTabContentsArgs): void;
-  abstract appendTabContentsStart(...args: RendererCreateTabContentsArgs): void;
-  abstract createTabContentsEnd(): void;
-  abstract appendTabContentsEnd(): void;
+  abstract createTabbedSectionTitleStart(): void;
+  abstract appendTabbedSectionTitleStart(): void;
+  abstract createTabbedSectionTitleEnd(): void;
+  abstract appendTabbedSectionTitleEnd(): void;
+  abstract createTabbedSectionTabStart(
+    ...args: RendererCreateTabbedSectionTabArgs
+  ): void;
+  abstract appendTabbedSectionTabStart(
+    ...args: RendererCreateTabbedSectionTabArgs
+  ): void;
+  abstract createTabbedSectionTabEnd(): void;
+  abstract appendTabbedSectionTabEnd(): void;
+  abstract createTabbedSectionContentsStart(
+    ...args: RendererCreateTabArgs
+  ): void;
+  abstract appendTabbedSectionContentsStart(
+    ...args: RendererCreateTabArgs
+  ): void;
+  abstract createTabbedSectionContentsEnd(): void;
+  abstract appendTabbedSectionContentsEnd(): void;
 
   // The following methods are used to insert complex content onto the page,
   // and so they don't have "create" variants.

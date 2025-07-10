@@ -7,14 +7,13 @@ import { ChildrenContainer } from "./ChildrenContainer.tsx";
 import { HeaderContainer } from "./HeaderContainer.tsx";
 import { TabButton } from "./TabButton.tsx";
 
-export function NextraTabbedSection({ title, children }: TabbedSectionProps) {
+export function NextraTabbedSection({ children }: TabbedSectionProps) {
   return (
     <Card>
       <Container
         HeaderContainer={HeaderContainer}
         ChildrenContainer={ChildrenContainer}
         TabButton={TabButton}
-        title={title}
       >
         {children}
       </Container>

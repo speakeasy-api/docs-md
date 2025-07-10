@@ -4,7 +4,9 @@ import sectionStyles from "../../Section/docusaurus/styles.module.css";
 import type { HeaderContainerProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
-export function HeaderContainer({ title, children, id }: HeaderContainerProps) {
+export function HeaderContainer({
+  children: [titleChild, ...tabs],
+}: HeaderContainerProps) {
   return (
     <div
       className={clsx(
@@ -12,10 +14,9 @@ export function HeaderContainer({ title, children, id }: HeaderContainerProps) {
         sectionStyles.linedHeader,
         styles.header
       )}
-      id={id}
     >
-      <h3 className={sectionStyles.title}>{title}</h3>
-      <div className={styles.contents}>{children}</div>
+      {titleChild}
+      <div className={styles.contents}>{tabs}</div>
     </div>
   );
 }
