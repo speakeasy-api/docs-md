@@ -28,9 +28,12 @@ export function renderOperation({
   const id = `operation-${snakeCase(chunk.chunkData.operationId)}`;
   const methodStart = renderer.createPillStart("primary");
   const methodEnd = renderer.createPillEnd();
+  const path = renderer.escapeText(chunk.chunkData.path, {
+    escape: "markdown",
+  });
   renderer.appendHeading(
     2,
-    `${methodStart}<b>${chunk.chunkData.method.toUpperCase()}</b>${methodEnd} ${chunk.chunkData.path}`,
+    `${methodStart}<b>${chunk.chunkData.method.toUpperCase()}</b>${methodEnd} ${path}`,
     { id, escape: "none" }
   );
 
@@ -106,7 +109,7 @@ export function renderOperation({
         4,
         `${parameter.name}${parameter.required ? ` ${start}required${end}` : ""}`,
         {
-          id: `parametersId+${parameter.name}`,
+          id: `${parametersId}+${parameter.name}`,
         }
       );
       if (parameter.description) {
