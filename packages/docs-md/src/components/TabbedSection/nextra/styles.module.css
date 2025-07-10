@@ -1,26 +1,52 @@
 .button {
-  color: var(--ifm-tabs-color);
-  border: var(--ifm-global-border-width) solid var(--ifm-blockquote-border-color);
-  border-radius: var(--ifm-breadcrumb-border-radius);
+  color: var(--x-color-gray-500);
+  border-radius: var(--x-radius-lg);
   font-weight: bold;
   min-width: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
 
-.buttonInactive {
-  background-color: var(--ifm-menu-color-background);
+.button div[slot="tab"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button div[slot="tab"] > p {
+  margin: 0;
 }
 
 .buttonInactive:hover {
-  background-color: var(--ifm-menu-color-background-hover);
+  color: var(--x-color-gray-900);
+  background-color: var(--x-color-gray-100);
+}
+
+.buttonInactive:hover:where(:global(.dark) *) {
+  color: var(--x-color-gray-50);
+  background-color: color-mix(in oklab, var(--x-color-primary-100) 5%, transparent);
 }
 
 .buttonActive {
-  color: var(--ifm-tabs-color-active);
-  background-color: var(--ifm-menu-color-background-active);
-  border-color: var(--ifm-tabs-color-active-border);
+  background-color: var(--x-color-primary-100);
+}
+
+.buttonActive:where(:global(.dark) *) {
+  color: var(--x-color-primary-600);
+  background-color: color-mix(in oklab, var(--x-color-primary-400) 10%, transparent);
 }
 
 .contents {
   display: flex;
   gap: 0.5rem;
+}
+
+.header {
+  padding-bottom: 0.5rem;
+}
+
+.header div[slot="title"] {
+  flex-grow: 1;
 }
