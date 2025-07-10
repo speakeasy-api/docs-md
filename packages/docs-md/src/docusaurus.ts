@@ -9,3 +9,4 @@ export { TabbedSection } from "./components/TabbedSection/docusaurus.tsx";
 export { Section } from "./components/Section/docusaurus.tsx";
 export { SectionEntry } from "./components/SectionEntry/docusaurus.tsx";
 export { Code } from "./components/Code/docusaurus.tsx";
+export { Pill } from "./components/Pill/docusaurus.tsx";

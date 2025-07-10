@@ -22,6 +22,7 @@ export default [
         "Section",
         "SectionEntry",
         "Code",
+        "Pill",
       ],
       "src/docusaurus.ts": [
         "Settings",
@@ -33,6 +34,7 @@ export default [
         "Section",
         "SectionEntry",
         "Code",
+        "Pill",
       ],
     },
     ignores: ["src/pages/data/wasm_exec.js", ".storybook/**/*"],

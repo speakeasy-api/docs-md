@@ -26,10 +26,12 @@ export function renderOperation({
   docsCodeSnippets,
 }: RenderOperationOptions) {
   const id = `operation-${snakeCase(chunk.chunkData.operationId)}`;
+  const methodStart = renderer.createPillStart("primary");
+  const methodEnd = renderer.createPillEnd();
   renderer.appendHeading(
     2,
-    `${chunk.chunkData.method.toUpperCase()} ${chunk.chunkData.path}`,
-    { id }
+    `${methodStart}<b>${chunk.chunkData.method.toUpperCase()}</b>${methodEnd} ${chunk.chunkData.path}`,
+    { id, escape: "none" }
   );
 
   if (chunk.chunkData.summary && chunk.chunkData.description) {
@@ -98,9 +100,11 @@ export function renderOperation({
     renderer.appendSectionTitleEnd();
     for (const parameter of chunk.chunkData.parameters) {
       renderer.appendSectionContentStart({ variant: "fields" });
+      const start = renderer.createPillStart("warning");
+      const end = renderer.createPillEnd();
       renderer.appendHeading(
         4,
-        `${parameter.name}${parameter.required ? " (required)" : ""}`,
+        `${parameter.name}${parameter.required ? ` ${start}required${end}` : ""}`,
         {
           id: `parametersId+${parameter.name}`,
         }

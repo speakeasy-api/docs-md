@@ -17,6 +17,13 @@
 
 // Helper types
 
+export type PillVariant =
+  | "error"
+  | "warning"
+  | "info"
+  | "success"
+  | "primary"
+  | "secondary";
 export type SectionVariant = "section" | "fields" | "operation";
 
 // Argument types for Site interface methods
@@ -114,6 +121,7 @@ export type RendererCreateAppendCodeArgs = [
         escape?: Escape;
       },
 ];
+export type RendererCreatePillArgs = [variant: PillVariant];
 export type RendererCreateListArgs = [items: string[], options?: AppendOptions];
 export type RendererCreateSectionArgs = [
   options?: { variant?: SectionVariant },
@@ -153,6 +161,12 @@ export abstract class Renderer {
   abstract createList(...args: RendererCreateListArgs): string;
   abstract appendList(...args: RendererCreateListArgs): void;
 
+  abstract createPillStart(...args: RendererCreatePillArgs): string;
+  abstract appendPillStart(...args: RendererCreatePillArgs): void;
+  abstract createPillEnd(): string;
+  abstract appendPillEnd(): void;
+
+  // Sections show a title followed by content
   abstract createSectionStart(...args: RendererCreateSectionArgs): string;
   abstract appendSectionStart(...args: RendererCreateSectionArgs): void;
   abstract createSectionEnd(): string;

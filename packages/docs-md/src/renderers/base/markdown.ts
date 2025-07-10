@@ -8,6 +8,7 @@ import type {
   RendererCreateAppendTextArgs,
   RendererCreateExpandableSectionArgs,
   RendererCreateListArgs,
+  RendererCreatePillArgs,
   RendererCreateSectionArgs,
   RendererCreateTabArgs,
   RendererCreateTabbedSectionTabArgs,
@@ -150,6 +151,22 @@ ${text}\n</code>\n</pre>`;
 
   public override appendList(...args: RendererCreateListArgs) {
     this[rendererLines].push(this.createList(...args));
+  }
+
+  public override createPillStart(..._args: RendererCreatePillArgs) {
+    return "(";
+  }
+
+  public override appendPillStart(...args: RendererCreatePillArgs) {
+    this[rendererLines].push(this.createPillStart(...args));
+  }
+
+  public override createPillEnd() {
+    return ")";
+  }
+
+  public override appendPillEnd() {
+    this[rendererLines].push(this.createPillEnd());
   }
 
   public override createSectionStart(

@@ -5,6 +5,7 @@ import type {
   RendererAppendTryItNowArgs,
   RendererCreateAppendCodeArgs,
   RendererCreateExpandableSectionArgs,
+  RendererCreatePillArgs,
   RendererCreateSectionArgs,
   RendererCreateTabArgs,
   RendererCreateTabbedSectionTabArgs,
@@ -106,6 +107,15 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   }
 
   protected abstract insertComponentImport(symbol: string): void;
+
+  public override createPillStart(...[variant]: RendererCreatePillArgs) {
+    this.insertComponentImport("Pill");
+    return `<Pill variant="${variant}">`;
+  }
+
+  public override createPillEnd() {
+    return "</Pill>";
+  }
 
   public override createSectionStart(
     ...[{ variant = "section" } = {}]: RendererCreateSectionArgs

@@ -9,3 +9,4 @@ export { TabbedSection } from "./components/TabbedSection/nextra.tsx";
 export { Section } from "./components/Section/nextra.tsx";
 export { SectionEntry } from "./components/SectionEntry/nextra.tsx";
 export { Code } from "./components/Code/nextra.tsx";
+export { Pill } from "./components/Pill/nextra.tsx";

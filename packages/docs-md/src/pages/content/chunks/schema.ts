@@ -296,6 +296,8 @@ function renderNameAndType({
   isRequired: boolean;
   isRecursive: boolean;
 }) {
+  // Annotated name is used for measuring the string, so we use a pure text
+  // representation of what the pill will contain
   let annotatedPropertyName = propertyName;
   if (isRequired) {
     annotatedPropertyName = `${propertyName} (required)`;
@@ -307,28 +309,45 @@ function renderNameAndType({
     typeInfo,
     annotatedPropertyName
   );
+
+  // Formatted name contains the same info, but uses actual pills
+  let formattedPropertyName = context.renderer.escapeText(propertyName, {
+    escape: "markdown",
+  });
+  if (isRequired) {
+    const start = context.renderer.createPillStart("warning");
+    const end = context.renderer.createPillEnd();
+    formattedPropertyName = `${propertyName} ${start}required${end}`;
+  }
+  if (isRecursive) {
+    const start = context.renderer.createPillStart("info");
+    const end = context.renderer.createPillEnd();
+    formattedPropertyName = `${propertyName} ${start}recursive${end}`;
+  }
+
   if (computedDisplayType.multiline) {
-    context.renderer.appendHeading(4, annotatedPropertyName, {
+    context.renderer.appendHeading(4, formattedPropertyName, {
       id: context.idPrefix + `+${propertyName}`,
+      escape: "mdx",
     });
     context.renderer.appendCode(computedDisplayType.content, {
       variant: "raw",
       escape: "mdx",
     });
   } else {
-    const name = context.renderer.escapeText(annotatedPropertyName, {
-      escape: "markdown",
+    const type = context.renderer.escapeText(computedDisplayType.content, {
+      escape: "mdx",
     });
-    const type = context.renderer.createCode(
-      context.renderer.escapeText(computedDisplayType.content, {
-        escape: "mdx",
-      }),
-      { variant: "raw", style: "inline", escape: "mdx" }
+    const start = context.renderer.createPillStart("info");
+    const end = context.renderer.createPillEnd();
+    context.renderer.appendHeading(
+      4,
+      `${formattedPropertyName} ${start}${type}${end}`,
+      {
+        escape: "none",
+        id: context.idPrefix + `+${propertyName}`,
+      }
     );
-    context.renderer.appendHeading(4, `${name}: ${type}`, {
-      escape: "none",
-      id: context.idPrefix + `+${propertyName}`,
-    });
   }
 }
 
