@@ -16,12 +16,16 @@ import { load } from "js-yaml";
 import type { NextConfig } from "next";
 import type { NextraConfig } from "nextra";
 import type { Theme } from "rehype-pretty-code";
+import { normalizeTheme, type ThemeRegistration } from "shiki";
+import type { BundledTheme } from "shiki/themes";
+import { bundledThemes } from "shiki/themes";
 import z from "zod/v4";
 
 import { generatePages } from "../pages/generatePages.ts";
 import type { Site } from "../renderers/base/base.ts";
 import { DocusaurusSite } from "../renderers/docusaurus.ts";
 import { NextraSite } from "../renderers/nextra.ts";
+import type { RehypeTheme } from "../types/nextra.ts";
 import type { ParsedSettings } from "../types/settings.ts";
 import { settingsSchema } from "../types/settings.ts";
 import { assertNever } from "../util/assertNever.ts";
@@ -170,9 +174,9 @@ switch (settings.output.framework) {
   }
   case "nextra": {
     const shikiTheme = await getNextraShikiTheme();
-
+    const rehypeTheme = await loadShikiThemes(shikiTheme);
     site = new NextraSite({
-      rehypeTheme: shikiTheme,
+      rehypeTheme: rehypeTheme,
     });
     break;
   }
@@ -191,7 +195,9 @@ switch (settings.output.framework) {
   }
 }
 
-async function getNextraShikiTheme(): Promise<Theme | Record<string, Theme> | undefined | null> {
+async function getNextraShikiTheme(): Promise<
+  Theme | Record<string, Theme> | undefined | null
+> {
   // this will be exported an object from next.config.js or next.config.mjs
   // import it and return the object
 
@@ -210,7 +216,6 @@ async function getNextraShikiTheme(): Promise<Theme | Record<string, Theme> | un
     const config = (await import(nextConfigPath)) as { default: NextConfig };
     nextraConfig = config.default;
   }
-  
 
   if (nextraConfig) {
     // check the experimental.turbo.rules
@@ -222,7 +227,7 @@ async function getNextraShikiTheme(): Promise<Theme | Record<string, Theme> | un
         if (Array.isArray(loaders)) {
           for (const loader of loaders) {
             if (typeof loader === "string") {
-              // we can't process a string loader. 
+              // we can't process a string loader.
               continue;
             }
             const options = loader.options;
@@ -238,6 +243,80 @@ async function getNextraShikiTheme(): Promise<Theme | Record<string, Theme> | un
   }
 
   return null;
+}
+
+async function loadBundledTheme(theme: BundledTheme) {
+  const shikiTheme = await bundledThemes[theme]();
+  if (!shikiTheme) {
+    throw new Error(`Shiki theme ${theme} not found`);
+  }
+  return shikiTheme.default;
+}
+
+async function loadShikiThemes(
+  themes: Theme | Record<string, Theme> | null | undefined
+): Promise<RehypeTheme> {
+  // fallthrough case, return the default shiki theme
+  const defaultDarkTheme = await loadBundledTheme("github-dark");
+  const defaultLightTheme = await loadBundledTheme("github-light");
+
+  if (typeof themes === "string") {
+    const shikiTheme = await loadBundledTheme(themes);
+    return shikiTheme.type === "dark"
+      ? {
+          dark: shikiTheme,
+          light: defaultLightTheme,
+        }
+      : {
+          light: shikiTheme,
+          dark: defaultDarkTheme,
+        };
+  }
+
+  if (
+    themes &&
+    "name" in themes &&
+    "displayName" in themes &&
+    "type" in themes
+  ) {
+    return themes.type === "dark"
+      ? {
+          dark: themes,
+          light: defaultLightTheme,
+        }
+      : {
+          light: themes,
+          dark: defaultDarkTheme,
+        };
+  }
+
+  if (typeof themes === "object") {
+    const processedThemes: Record<string, ThemeRegistration> = {};
+    for (const [themeName, shikiTheme] of Object.entries(
+      themes as Record<string, Theme>
+    )) {
+      if (typeof shikiTheme === "string") {
+        const loadedTheme = await loadBundledTheme(shikiTheme);
+        processedThemes[themeName] = loadedTheme;
+      } else {
+        processedThemes[themeName] = normalizeTheme(shikiTheme);
+      }
+    }
+
+    if (!processedThemes.dark || !processedThemes.light) {
+      throw new Error("Missing dark or light theme");
+    }
+
+    return {
+      dark: processedThemes.dark,
+      light: processedThemes.light,
+    };
+  }
+
+  return {
+    dark: defaultDarkTheme,
+    light: defaultLightTheme,
+  };
 }
 
 const pageContents = await generatePages({

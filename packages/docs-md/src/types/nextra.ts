@@ -1,15 +1,7 @@
-import type { Theme as RehypeTheme } from "rehype-pretty-code";
-import type { ThemeRegistrationResolved } from "shiki";
+import type { ThemeRegistration } from "shiki";
 
-export type ShikiTheme = {
-  dark?: string | ThemeRegistrationResolved;
-  light?: string | ThemeRegistrationResolved;
-};
 
-export type NextraTheme =
-  | {
-      dark?: string;
-      light?: string;
-    }
-  | RehypeTheme
-  | undefined;
+export type RehypeTheme = {
+    dark: ThemeRegistration;
+    light: ThemeRegistration;
+  };

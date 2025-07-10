@@ -1,11 +1,9 @@
 import { join, resolve } from "node:path";
 
 import type { DeepPartial, SandpackTheme } from "@codesandbox/sandpack-react";
-import type { Theme } from "rehype-pretty-code";
-import type { ThemeRegistrationAny, ThemeRegistrationResolved } from "shiki";
-import { normalizeTheme } from "shiki";
+import type { ThemeRegistration } from "shiki";
 
-import type { NextraTheme, ShikiTheme } from "../types/nextra.ts";
+import type { RehypeTheme } from "../types/nextra.ts";
 import { getSettings } from "../util/settings.ts";
 import type {
   RendererAppendCodeArgs,
@@ -21,13 +19,13 @@ import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 import { getEmbedPath, getEmbedSymbol } from "./base/util.ts";
 
 export class NextraSite extends MdxSite {
-  #rehypeTheme: ShikiTheme;
+  #rehypeTheme: RehypeTheme;
 
   constructor(options: {
-    rehypeTheme?: Theme | Record<string, Theme> | undefined | null;
+    rehypeTheme: RehypeTheme;
   }) {
     super();
-    this.#rehypeTheme = processNextraTheme(options.rehypeTheme);
+    this.#rehypeTheme = options.rehypeTheme;
   }
 
   public override buildPagePath(
@@ -69,13 +67,16 @@ class NextraRenderer extends MdxRenderer {
   #includeSidebar = false;
   #currentPagePath: string;
   #site: NextraSite;
-  #sandpackTheme: { dark: DeepPartial<SandpackTheme> | "dark"; light: DeepPartial<SandpackTheme> | "light" };
+  #sandpackTheme: {
+    dark: DeepPartial<SandpackTheme> | "dark";
+    light: DeepPartial<SandpackTheme> | "light";
+  };
 
   constructor(
     {
       currentPagePath,
       rehypeTheme,
-    }: { currentPagePath: string; rehypeTheme: ShikiTheme },
+    }: { currentPagePath: string; rehypeTheme: RehypeTheme },
     site: NextraSite
   ) {
     super();
@@ -206,71 +207,22 @@ ${this.escapeText(text, { escape: options?.escape ?? "html" })
   }
 }
 
-function processNextraTheme(theme?: NextraTheme | null): ShikiTheme {
-  const defaultShikiTheme = {
-    light: "github-light",
-    dark: "github-dark",
-  };
 
-  if (!theme) {
-    return defaultShikiTheme;
-  }
+function convertShikiToSandpackTheme(rehypeTheme: RehypeTheme): {
+  dark: DeepPartial<SandpackTheme> | "dark";
+  light: DeepPartial<SandpackTheme> | "light";
+} {
+  const darkTheme = rehypeTheme?.dark;
+  const lightTheme = rehypeTheme?.light;
 
-  // if the theme is a string, return it
-  if (typeof theme === "string") {
-    return {
-      dark: theme,
-      light: theme,
-    };
-  }
+  const convertTheme = (
+    theme: ThemeRegistration | undefined
+  ) => {
+    // TODO: when it is a string, we have to load the theme
+    // from the shiki npm package
+    if (!theme) return null;
 
-  if (
-    typeof theme === "object" &&
-    theme !== null &&
-    ("dark" in theme || "light" in theme)
-  ) {
-    const dark = theme?.dark ?? undefined;
-    const light = theme?.light ?? undefined;
-    if (typeof dark === "string" && typeof light === "string") {
-      return {
-        dark,
-        light,
-      };
-    } else {
-      console.error(theme);
-      throw new Error(
-        "Invalid theme object. Please use a string or an object with dark and light properties."
-      );
-    }
-  }
-
-  if (theme) {
-    // theme is an object, but doesn't have dark or light properties so we have to manually parse this in
-    const normalizedTheme = normalizeTheme(theme as ThemeRegistrationAny);
-    const themeResult: ShikiTheme = {};
-    if (normalizedTheme.type === "dark") {
-      themeResult.dark = normalizedTheme;
-    }
-    if (normalizedTheme.type === "light") {
-      themeResult.light = normalizedTheme;
-    }
-    return themeResult;
-  }
-  return defaultShikiTheme;
-}
-
-function convertShikiToSandpackTheme(
-  shikiTheme: ShikiTheme
-): { dark: DeepPartial<SandpackTheme> | "dark"; light: DeepPartial<SandpackTheme> | "light" } {
-  const darkTheme = shikiTheme?.dark;
-  const lightTheme = shikiTheme?.light;
-
-  const convertTheme = (theme: string | ThemeRegistrationResolved | undefined) => {
-
-  // TODO: when it is a string, we have to load the theme
-  // from the shiki npm package
-    if (!theme || typeof theme !== "object") return null;
-    const { settings } = theme;
+    const { settings, tokens } = theme;
     const colorThemeMap = new Map<string, string>();
     const scopeKeyWords = [
       "comment",
@@ -278,7 +230,15 @@ function convertShikiToSandpackTheme(
       "keyword",
       "variable.language",
     ];
-    settings.forEach((setting) => {
+
+    settings?.forEach((setting) => {
+      const scope = setting.scope;
+      if (typeof scope === "string" && scopeKeyWords.includes(scope)) {
+        colorThemeMap.set(scope, setting.settings.foreground ?? "");
+      }
+    });
+
+    tokens?.forEach((token) => {
       const scope = setting.scope;
       if (typeof scope === "string" && scopeKeyWords.includes(scope)) {
         colorThemeMap.set(scope, setting.settings.foreground ?? "");
@@ -302,6 +262,7 @@ function convertShikiToSandpackTheme(
       },
     };
   };
+  console.log("theme", darkTheme, lightTheme);
 
   return {
     dark: convertTheme(darkTheme) ?? "dark",
