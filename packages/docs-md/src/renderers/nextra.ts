@@ -44,10 +44,7 @@ export class NextraSite extends MdxSite {
   }
 
   protected override getRenderer(...[options]: SiteGetRendererArgs) {
-    return new NextraRenderer(
-      { ...options, codeThemes: this.#codeThemes },
-      this
-    );
+    return new NextraRenderer({ ...options }, this, this.#codeThemes);
   }
 }
 
@@ -55,11 +52,9 @@ class NextraRenderer extends MdxRenderer {
   #frontMatter: string | undefined;
 
   constructor(
-    {
-      currentPagePath,
-      codeThemes,
-    }: { currentPagePath: string; codeThemes: TryItNowProps["themes"] },
-    site: NextraSite
+    { currentPagePath }: { currentPagePath: string },
+    site: NextraSite,
+    codeThemes: TryItNowProps["themes"]
   ) {
     super({ currentPagePath, codeThemes }, site);
   }

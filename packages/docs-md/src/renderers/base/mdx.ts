@@ -31,9 +31,9 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   constructor(
     {
       currentPagePath,
-      codeThemes,
     }: { currentPagePath: string; codeThemes?: TryItNowProps["themes"] },
-    site: MdxSite
+    site: MdxSite,
+    codeThemes?: TryItNowProps["themes"]
   ) {
     super();
     this.#currentPagePath = currentPagePath;
