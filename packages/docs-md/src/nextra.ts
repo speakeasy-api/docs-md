@@ -7,6 +7,7 @@ export { SideBar, SideBarTrigger } from "./components/SideBar/nextra.tsx";
 export { ExpandableSection } from "./components/ExpandableSection/nextra.tsx";
 export { TabbedSection } from "./components/TabbedSection/nextra.tsx";
 export { Section } from "./components/Section/nextra.tsx";
-export { SectionEntry } from "./components/SectionEntry/nextra.tsx";
+export { SectionContent } from "./components/SectionContent/nextra.tsx";
+export { SectionTitle } from "./components/SectionTitle/nextra.tsx";
 export { Code } from "./components/Code/nextra.tsx";
 export { Pill } from "./components/Pill/nextra.tsx";

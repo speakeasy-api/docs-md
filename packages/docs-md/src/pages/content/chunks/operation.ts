@@ -4,6 +4,7 @@ import type { Renderer, Site } from "../../../renderers/base/base.ts";
 import type { Chunk, OperationChunk } from "../../../types/chunk.ts";
 import { getSettings } from "../../../util/settings.ts";
 import type { DocsCodeSnippets } from "../../codeSnippets/generateCodeSnippets.ts";
+import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
 import { renderSchema } from "./schema.ts";
 
@@ -32,7 +33,7 @@ export function renderOperation({
     escape: "markdown",
   });
   renderer.appendHeading(
-    2,
+    HEADINGS.SECTION_TITLE_HEADING_LEVEL,
     `${methodStart}<b>${chunk.chunkData.method.toUpperCase()}</b>${methodEnd} ${path}`,
     { id, escape: "none" }
   );
@@ -50,7 +51,7 @@ export function renderOperation({
     const securityId = id + "+security";
     renderer.appendSectionStart();
     renderer.appendSectionTitleStart();
-    renderer.appendHeading(3, "Security", {
+    renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Security", {
       id: securityId,
     });
     renderer.appendSectionTitleEnd();
@@ -97,7 +98,7 @@ export function renderOperation({
     const parametersId = id + "+parameters";
     renderer.appendSectionStart({ variant: "fields" });
     renderer.appendSectionTitleStart({ variant: "fields" });
-    renderer.appendHeading(3, "Parameters", {
+    renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Parameters", {
       id: parametersId,
     });
     renderer.appendSectionTitleEnd();
@@ -106,10 +107,11 @@ export function renderOperation({
       const start = renderer.createPillStart("warning");
       const end = renderer.createPillEnd();
       renderer.appendHeading(
-        4,
-        `${parameter.name}${parameter.required ? ` ${start}required${end}` : ""}`,
+        HEADINGS.PROPERTY_HEADING_LEVEL,
+        `${renderer.escapeText(parameter.name, { escape: "markdown" })}${parameter.required ? ` ${start}required${end}` : ""}`,
         {
           id: `${parametersId}+${parameter.name}`,
+          escape: "none",
         }
       );
       if (parameter.description) {
@@ -137,7 +139,7 @@ export function renderOperation({
   if (usageSnippet && tryItNow) {
     renderer.appendSectionStart();
     renderer.appendSectionTitleStart();
-    renderer.appendHeading(2, "Try it Now", {
+    renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Try it Now", {
       id: id + "+try-it-now",
     });
     renderer.appendSectionTitleEnd();
@@ -159,9 +161,11 @@ export function renderOperation({
     const requestBodyId = id + "+request";
     renderer.appendSectionStart();
     renderer.appendSectionTitleStart();
+    const start = renderer.createPillStart("info");
+    const end = renderer.createPillEnd();
     renderer.appendHeading(
-      2,
-      `Request Body${!chunk.chunkData.requestBody.required ? " (optional)" : ""}`,
+      HEADINGS.SECTION_HEADING_LEVEL,
+      `Request Body${!chunk.chunkData.requestBody.required ? `${start}(optional)${end}` : ""}`,
       { id: requestBodyId }
     );
     renderer.appendSectionTitleEnd();
@@ -197,7 +201,9 @@ export function renderOperation({
       renderer.appendTabbedSectionStart();
       const responsesId = id + "+responses";
       renderer.appendTabbedSectionTitleStart();
-      renderer.appendHeading(2, "Responses", { id: responsesId });
+      renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Responses", {
+        id: responsesId,
+      });
       renderer.appendTabbedSectionTitleEnd();
       for (const [statusCode, responses] of responseList) {
         for (const response of responses) {

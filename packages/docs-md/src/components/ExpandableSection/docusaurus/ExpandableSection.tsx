@@ -3,6 +3,8 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Button } from "../../primitives/docusaurus/Button.tsx";
 import { Section } from "../../Section/docusaurus.tsx";
+import { SectionContent } from "../../SectionContent/docusaurus.tsx";
+import { SectionTitle } from "../../SectionTitle/docusaurus.tsx";
 import type { ExpandableSectionProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
@@ -57,16 +59,18 @@ export function DocusaurusExpandableSection({
 
   return (
     <Section className={styles.container} variant="fields">
-      {titleElement}
-      <div
-        style={{
-          display: isOpen ? "block" : "none",
-          // TODO: animate height when expanding closing. Requires knowing the
-          // height up front though it seems.
-        }}
-      >
-        {children}
-      </div>
+      <SectionTitle variant="fields">{titleElement}</SectionTitle>
+      <SectionContent variant={isOpen ? "fields" : "section"}>
+        <div
+          style={{
+            display: isOpen ? "block" : "none",
+            // TODO: animate height when expanding closing. Requires knowing the
+            // height up front though it seems.
+          }}
+        >
+          {children}
+        </div>
+      </SectionContent>
     </Section>
   );
 }

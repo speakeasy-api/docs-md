@@ -2,7 +2,6 @@ import type { PropsWithChildren } from "react";
 
 import type { SectionVariant } from "../../../renderers/base/base.ts";
 
-export type SectionProps = PropsWithChildren<{
+export type SectionContentProps = PropsWithChildren<{
   variant: SectionVariant;
-  className?: string;
 }>;

@@ -1,8 +1,12 @@
 import type { Renderer } from "../../../renderers/base/base.ts";
 import type { AboutChunk } from "../../../types/chunk.ts";
+import { HEADINGS } from "../constants.ts";
 
 export function renderAbout(renderer: Renderer, chunk: AboutChunk) {
-  renderer.appendHeading(1, `About ${chunk.chunkData.title}`);
+  renderer.appendHeading(
+    HEADINGS.PAGE_TITLE_HEADING_LEVEL,
+    `About ${chunk.chunkData.title}`
+  );
   if (chunk.chunkData.version) {
     renderer.appendText(`_Version: ${chunk.chunkData.version}_`);
   }

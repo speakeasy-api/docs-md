@@ -199,6 +199,7 @@ const pageContents = await generatePages({
 });
 
 if (args["--clean"]) {
+  console.log("Cleaning output directories");
   rmSync(settings.output.pageOutDir, {
     recursive: true,
     force: true,

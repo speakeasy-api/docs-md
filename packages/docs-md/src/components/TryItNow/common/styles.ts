@@ -27,6 +27,7 @@ const theme = {
   },
 };
 
+// TODO: convert this to a CSS module
 export const styles: Record<string, CSSProperties> = {
   container: {
     display: "flex",

@@ -1,4 +1,4 @@
-import { snakeCase } from "change-case";
+import { capitalCase, snakeCase } from "change-case";
 
 import type { Renderer, Site } from "../../renderers/base/base.ts";
 import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
@@ -9,6 +9,7 @@ import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
 import { renderSchema } from "./chunks/schema.ts";
 import { renderTag } from "./chunks/tag.ts";
+import { HEADINGS } from "./constants.ts";
 import { getOperationFromId } from "./util.ts";
 
 type Data = Map<string, Chunk>;
@@ -63,7 +64,7 @@ function getPageMap(site: Site, data: Data) {
     const pagePath = site.buildPagePath(chunk.slug);
     const pageMapEntry: PageMapEntry = {
       type: "chunk",
-      sidebarLabel: chunk.chunkData.name,
+      sidebarLabel: capitalCase(chunk.chunkData.name),
       sidebarPosition: `2.${tagIndex++}`,
       chunks: [chunk],
     };
@@ -105,7 +106,7 @@ function getPageMap(site: Site, data: Data) {
       const pagePath = site.buildPagePath(chunk.slug);
       const pageMapEntry: PageMapEntry = {
         type: "chunk",
-        sidebarLabel: chunk.chunkData.value.name,
+        sidebarLabel: capitalCase(chunk.chunkData.value.name),
         sidebarPosition: `3.${schemaIndex++}`,
         chunks: [chunk] as Chunk[],
       };
@@ -153,9 +154,13 @@ function renderPages(
           // normally embedded in a separate page. It's not in this case though,
           // so we add one by hand
           const id = `schema-${snakeCase(chunk.chunkData.name)}`;
-          renderer.appendHeading(1, chunk.chunkData.name, {
-            id,
-          });
+          renderer.appendHeading(
+            HEADINGS.SECTION_TITLE_HEADING_LEVEL,
+            chunk.chunkData.name,
+            {
+              id,
+            }
+          );
           renderSchema({
             context: {
               site,

@@ -11,6 +11,7 @@ import type {
 import { assertNever } from "../../../util/assertNever.ts";
 import { InternalError } from "../../../util/internalError.ts";
 import { getSettings } from "../../../util/settings.ts";
+import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
 
 type SchemaRenderContext = {
@@ -326,10 +327,14 @@ function renderNameAndType({
   }
 
   if (computedDisplayType.multiline) {
-    context.renderer.appendHeading(4, formattedPropertyName, {
-      id: context.idPrefix + `+${propertyName}`,
-      escape: "mdx",
-    });
+    context.renderer.appendHeading(
+      HEADINGS.PROPERTY_HEADING_LEVEL,
+      formattedPropertyName,
+      {
+        id: context.idPrefix + `+${propertyName}`,
+        escape: "mdx",
+      }
+    );
     context.renderer.appendCode(computedDisplayType.content, {
       variant: "raw",
       escape: "mdx",
@@ -341,7 +346,7 @@ function renderNameAndType({
     const start = context.renderer.createPillStart("info");
     const end = context.renderer.createPillEnd();
     context.renderer.appendHeading(
-      4,
+      HEADINGS.PROPERTY_HEADING_LEVEL,
       `${formattedPropertyName} ${start}${type}${end}`,
       {
         escape: "none",
@@ -440,7 +445,10 @@ function renderSchemaBreakouts({
 
       // If no renderer was returned, that means we've already rendered this embed
       if (sidebarLinkRenderer) {
-        sidebarLinkRenderer.appendHeading(3, embedName);
+        sidebarLinkRenderer.appendHeading(
+          HEADINGS.SECTION_HEADING_LEVEL,
+          embedName
+        );
         if (breakoutSubType.schema.description) {
           sidebarLinkRenderer.appendText(breakoutSubType.schema.description);
         }
@@ -562,6 +570,18 @@ export function renderSchema({
     });
   }
 
+  // TODO: this code is pretty clunky. We should move where sections are
+  // started and ended deeper in schema rendering.
+
+  // If we have an object, we need to check if there are any properties to
+  // render, otherwise we end up with a blank Fields section.
+  if (
+    context.schema.type === "object" &&
+    Object.keys(context.schema.properties).length === 0
+  ) {
+    return;
+  }
+
   if (isExpandable) {
     context.renderer.appendExpandableSectionStart(topLevelName, {
       id: context.idPrefix,
@@ -569,9 +589,13 @@ export function renderSchema({
   } else {
     context.renderer.appendSectionStart({ variant: "fields" });
     context.renderer.appendSectionTitleStart({ variant: "fields" });
-    context.renderer.appendHeading(4, "Fields", {
-      id: context.idPrefix + "+fields",
-    });
+    context.renderer.appendHeading(
+      HEADINGS.SUB_SECTION_HEADING_LEVEL,
+      "Fields",
+      {
+        id: context.idPrefix + "+fields",
+      }
+    );
     context.renderer.appendSectionTitleEnd();
   }
   switch (context.schema.type) {

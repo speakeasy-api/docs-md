@@ -54,7 +54,7 @@ export const TryItNowDocusaurus = (
   return (
     <Content
       layoutStyle={{
-        borderRadius: `var(--ifm-global-radius)`,
+        borderRadius: `var(--ifm-code-border-radius)`,
         boxShadow: `var(--ifm-global-shadow-lw)`,
       }}
       currentTheme="dark"

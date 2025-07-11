@@ -1,13 +1,14 @@
 import clsx from "clsx";
 
+import { SectionContent } from "../../SectionContent/nextra.tsx";
+import { SectionTitle } from "../../SectionTitle/nextra.tsx";
 import type { SectionProps } from "../common/types.ts";
+import { useContentChildren, useTitleChild } from "../hooks.ts";
 import styles from "./styles.module.css";
 
-export function NextraSection({
-  children: [title, content],
-  variant,
-  className,
-}: SectionProps) {
+export function NextraSection({ children, variant, className }: SectionProps) {
+  const titleChild = useTitleChild(children, SectionTitle);
+  const contentChildren = useContentChildren(children, SectionContent);
   return (
     <>
       <div
@@ -17,14 +18,14 @@ export function NextraSection({
           className
         )}
       >
-        {title}
+        {titleChild}
       </div>
       <div
         className={
           variant === "fields" ? styles.linedContainer : styles.container
         }
       >
-        {content}
+        {contentChildren}
       </div>
     </>
   );
