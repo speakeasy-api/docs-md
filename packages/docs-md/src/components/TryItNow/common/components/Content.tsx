@@ -41,13 +41,13 @@ export const Content = ({
   currentTheme = "dark",
   _enableUnsafeAutoImport,
   layoutStyle,
-  codeThemes,
+  themes,
 }: TryItNowProps) => {
   const autoImportDependencies = useAtomValue(dependenciesAtom);
   const previousCodeAtomValue = useAtomValue(lastEditorValueAtom);
   const activeTheme =
-    codeThemes && typeof codeThemes === "object"
-      ? codeThemes?.[currentTheme as "dark" | "light"]
+    themes && typeof themes === "object"
+      ? themes?.[currentTheme]
       : currentTheme;
 
   return (

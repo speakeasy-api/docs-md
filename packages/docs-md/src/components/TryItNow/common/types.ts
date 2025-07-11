@@ -1,7 +1,7 @@
 import type { SandpackTheme } from "@codesandbox/sandpack-react";
 import type { PartialDeep } from "type-fest";
 
-type TryItNowPropsBase = {
+export type TryItNowProps = {
   /**
    * These are dependencies that are required by the code snippet,
    * like "zod" or an npm package.
@@ -18,17 +18,7 @@ type TryItNowPropsBase = {
    */
   _enableUnsafeAutoImport?: boolean;
   layoutStyle?: React.CSSProperties;
+  currentTheme?: "dark" | "light";
+  themes?: Record<"dark" | "light", PartialDeep<SandpackTheme>>;
+
 };
-
-
-type TryItNowPropsWithAutoTheme = TryItNowPropsBase & {
-  currentTheme?: "auto" | "dark" | "light";
-  codeThemes?: undefined;
-};
-
-type TryItNowPropsWithCustomThemes = TryItNowPropsBase & {
-  currentTheme: "dark" | "light";
-  codeThemes: Record<"dark" | "light", PartialDeep<SandpackTheme>>;
-};
-
-export type TryItNowProps = TryItNowPropsWithAutoTheme | TryItNowPropsWithCustomThemes;

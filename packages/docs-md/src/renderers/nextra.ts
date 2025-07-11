@@ -10,9 +10,9 @@ import type {
 } from "./base/base.ts";
 import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 export class NextraSite extends MdxSite {
-  #codeThemes: TryItNowProps["codeThemes"];
+  #codeThemes: TryItNowProps["themes"];
 
-  constructor(options: { codeThemes: TryItNowProps["codeThemes"] }) {
+  constructor(options: { codeThemes: TryItNowProps["themes"] }) {
     super();
     this.#codeThemes = options.codeThemes;
   }
@@ -54,9 +54,9 @@ class NextraRenderer extends MdxRenderer {
   constructor(
     { currentPagePath }: { currentPagePath: string },
     site: NextraSite,
-    codeThemes: TryItNowProps["codeThemes"]
+    codeThemes: TryItNowProps["themes"]
   ) {
-    super({ currentPagePath, codeThemes }, site);
+    super({ currentPagePath }, site, codeThemes);
   }
 
   public override render() {

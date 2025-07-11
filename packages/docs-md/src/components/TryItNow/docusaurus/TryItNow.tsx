@@ -58,7 +58,7 @@ export const TryItNowDocusaurus = (
         boxShadow: `var(--ifm-global-shadow-lw)`,
       }}
       currentTheme="dark"
-      codeThemes={{
+      themes={{
         dark: sandpackTheme,
         light: sandpackTheme,
       }}

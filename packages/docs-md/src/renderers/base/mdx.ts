@@ -26,14 +26,14 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   #includeSidebar = false;
   #currentPagePath: string;
   #site: MdxSite;
-  #codeThemes: TryItNowProps["codeThemes"];
+  #codeThemes: TryItNowProps["themes"];
 
   constructor(
     {
       currentPagePath,
-    }: { currentPagePath: string; codeThemes?: TryItNowProps["codeThemes"] },
+    }: { currentPagePath: string; },
     site: MdxSite,
-    codeThemes?: TryItNowProps["codeThemes"]
+    codeThemes?: TryItNowProps["themes"]
   ) {
     super();
     this.#currentPagePath = currentPagePath;
@@ -238,7 +238,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
       `<TryItNow
  externalDependencies={${JSON.stringify(externalDependencies)}}
  defaultValue={\`${defaultValue}\`}
- ${this.#codeThemes ? `codeThemes={${JSON.stringify(this.#codeThemes)}}` : ""}
+ ${this.#codeThemes ? `themes={${JSON.stringify(this.#codeThemes)}}` : ""}
 />`
     );
   }
