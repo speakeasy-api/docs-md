@@ -8,7 +8,9 @@ import type { TryItNowProps } from "../common/types.ts";
 const TryItNowContents = (props: TryItNowProps) => {
   const { resolvedTheme } = useTheme();
 
-  return <Content theme={resolvedTheme as "dark" | "light"} {...props} />;
+  return (
+    <Content currentTheme={resolvedTheme as "dark" | "light"} {...props} />
+  );
 };
 
 export const TryItNowNextra = (props: TryItNowProps) => {

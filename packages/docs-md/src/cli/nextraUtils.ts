@@ -227,7 +227,7 @@ function convertRehypeThemeToSandpackTheme(rehypeTheme: RehypeTheme): {
 
 export async function getCodeThemesFromThemeConfig(
   themeConfig: Awaited<ReturnType<typeof getNextraThemeConfig>>
-): Promise<TryItNowProps["themes"]> {
+): Promise<TryItNowProps["codeThemes"]> {
   const rehypeTheme = await loadRehypeThemes(themeConfig);
   return convertRehypeThemeToSandpackTheme(rehypeTheme);
 }

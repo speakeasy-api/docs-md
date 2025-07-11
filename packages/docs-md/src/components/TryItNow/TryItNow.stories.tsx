@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Content as TryItNow } from "./common/components/Content.tsx";
-
-const meta: Meta<typeof TryItNow> = {
+import type { TryItNowProps } from "./common/types.ts";
+const meta: Meta<Required<TryItNowProps>> = {
   title: "Components/TryItNow",
   component: TryItNow,
   parameters: {
@@ -23,6 +23,11 @@ const meta: Meta<typeof TryItNow> = {
       control: "object",
       description: "External npm dependencies required by the code snippet",
     },
+    currentTheme: {
+      control: "select",
+      options: ["dark", "light", "auto"],
+      description: "The theme to use for the code editor",
+    },
     _enableUnsafeAutoImport: {
       control: "boolean",
       description:
@@ -33,7 +38,6 @@ const meta: Meta<typeof TryItNow> = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
 export const Basic: Story = {
   args: {
     defaultValue: `// Welcome to the TryItNow playground!

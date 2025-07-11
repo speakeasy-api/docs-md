@@ -1,5 +1,7 @@
+import type { SandpackTheme } from "@codesandbox/sandpack-react";
 import { usePrismTheme } from "@docusaurus/theme-common";
 import { useMemo } from "react";
+import type { PartialDeep } from "type-fest";
 
 import { Content } from "../common/components/Content.tsx";
 import type { TryItNowProps } from "../common/types.ts";
@@ -11,10 +13,12 @@ type PrismThemeEntry = {
   fontStyle?: "normal" | "italic";
 };
 
-export const TryItNowDocusaurus = (props: TryItNowProps) => {
+export const TryItNowDocusaurus = (
+  props: Omit<TryItNowProps, "themes" | "currentTheme">
+) => {
   const prismTheme = usePrismTheme();
 
-  const sandpackTheme = useMemo((): TryItNowProps["theme"] => {
+  const sandpackTheme = useMemo((): PartialDeep<SandpackTheme> => {
     const colorThemeMap = new Map<string, PrismThemeEntry>();
     const { styles, plain } = prismTheme;
 
@@ -53,7 +57,11 @@ export const TryItNowDocusaurus = (props: TryItNowProps) => {
         borderRadius: `var(--ifm-global-radius)`,
         boxShadow: `var(--ifm-global-shadow-lw)`,
       }}
-      theme={sandpackTheme}
+      currentTheme="dark"
+      codeThemes={{
+        dark: sandpackTheme,
+        light: sandpackTheme,
+      }}
       {...props}
     />
   );
