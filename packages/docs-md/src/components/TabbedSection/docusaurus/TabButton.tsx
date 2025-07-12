@@ -3,15 +3,9 @@ import clsx from "clsx";
 import type { TabButtonProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
-export function TabButton({
-  children,
-  title,
-  isActive,
-  onClick,
-}: TabButtonProps) {
+export function TabButton({ children, isActive, onClick }: TabButtonProps) {
   return (
     <button
-      title={title}
       onClick={onClick}
       className={clsx(
         styles.button,

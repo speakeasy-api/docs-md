@@ -135,6 +135,7 @@ export type RendererCreateSectionTitleArgs = [
 ];
 export type RendererCreateSectionContentArgs = [
   options?: {
+    id?: string;
     borderVariant?: SectionContentBorderVariant;
     paddingVariant?: SectionContentPaddingVariant;
   },
@@ -143,8 +144,7 @@ export type RendererCreateExpandableSectionArgs = [
   title: string,
   options: AppendOptions & { id: string },
 ];
-export type RendererCreateTabArgs = [id: string];
-export type RendererCreateTabbedSectionTabArgs = [id: string, title: string];
+export type RendererCreateTabbedSectionTabArgs = [id: string];
 export type RendererAppendSidebarLinkArgs = [
   options: {
     title: string;
@@ -220,10 +220,6 @@ export abstract class Renderer {
   abstract appendTabbedSectionStart(): void;
   abstract createTabbedSectionEnd(): void;
   abstract appendTabbedSectionEnd(): void;
-  abstract createTabbedSectionTitleStart(): void;
-  abstract appendTabbedSectionTitleStart(): void;
-  abstract createTabbedSectionTitleEnd(): void;
-  abstract appendTabbedSectionTitleEnd(): void;
   abstract createTabbedSectionTabStart(
     ...args: RendererCreateTabbedSectionTabArgs
   ): void;
@@ -232,14 +228,6 @@ export abstract class Renderer {
   ): void;
   abstract createTabbedSectionTabEnd(): void;
   abstract appendTabbedSectionTabEnd(): void;
-  abstract createTabbedSectionContentsStart(
-    ...args: RendererCreateTabArgs
-  ): void;
-  abstract appendTabbedSectionContentsStart(
-    ...args: RendererCreateTabArgs
-  ): void;
-  abstract createTabbedSectionContentsEnd(): void;
-  abstract appendTabbedSectionContentsEnd(): void;
 
   // The following methods are used to insert complex content onto the page,
   // and so they don't have "create" variants.

@@ -6,6 +6,7 @@ import type {
 } from "../../../renderers/base/base.ts";
 
 export type SectionContentProps = PropsWithChildren<{
+  id?: string;
   borderVariant: SectionContentBorderVariant;
   paddingVariant: SectionContentPaddingVariant;
 

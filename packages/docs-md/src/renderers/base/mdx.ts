@@ -9,7 +9,6 @@ import type {
   RendererCreatePillArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
-  RendererCreateTabArgs,
   RendererCreateTabbedSectionTabArgs,
 } from "./base.ts";
 import { MarkdownRenderer, MarkdownSite, rendererLines } from "./markdown.ts";
@@ -31,9 +30,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   #codeThemes: TryItNowProps["themes"];
 
   constructor(
-    {
-      currentPagePath,
-    }: { currentPagePath: string; },
+    { currentPagePath }: { currentPagePath: string },
     site: MdxSite,
     codeThemes?: TryItNowProps["themes"]
   ) {
@@ -151,11 +148,11 @@ export abstract class MdxRenderer extends MarkdownRenderer {
 
   public override createSectionContentStart(
     ...[
-      { borderVariant = "default", paddingVariant = "default" } = {},
+      { borderVariant = "default", paddingVariant = "default", id } = {},
     ]: RendererCreateSectionContentArgs
   ): string {
     this.insertComponentImport("SectionContent");
-    return `<SectionContent borderVariant="${borderVariant}" paddingVariant="${paddingVariant}">`;
+    return `<SectionContent borderVariant="${borderVariant}" paddingVariant="${paddingVariant}" id="${id}">`;
   }
 
   public override createSectionContentEnd(): string {
@@ -182,32 +179,15 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return "</TabbedSection>";
   }
 
-  public override createTabbedSectionTitleStart() {
-    return `<div slot="title">`;
-  }
-
-  public override createTabbedSectionTitleEnd() {
-    return `</div>`;
-  }
-
   public override createTabbedSectionTabStart(
-    ...[id, title]: RendererCreateTabbedSectionTabArgs
+    ...[id]: RendererCreateTabbedSectionTabArgs
   ) {
-    return `<div slot="tab" title="${title}" data-tab-id="${id}">`;
+    this.insertComponentImport("SectionTab");
+    return `<SectionTab id="${id}">`;
   }
 
   public override createTabbedSectionTabEnd() {
-    return "</div>";
-  }
-
-  public override createTabbedSectionContentsStart(
-    ...[id]: RendererCreateTabArgs
-  ) {
-    return `<div slot="content" data-tab-content-id="${id}">`;
-  }
-
-  public override createTabbedSectionContentsEnd() {
-    return "</div>";
+    return "</SectionTab>";
   }
 
   public override appendSidebarLink(

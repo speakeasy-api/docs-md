@@ -1,29 +1,12 @@
 import type { PropsWithChildren } from "react";
 
-export type TitleProps = {
-  slot: "title";
-};
-
-export type TabProps = {
-  slot: "tab";
-  title: string;
-  "data-tab-id": string;
-};
-
-export type ContentProps = {
-  slot: "content";
-  "data-tab-content-id": string;
-};
+import type { SectionTabProps } from "../../SectionTab/common/types.tsx";
 
 export type TabbedSectionProps = {
-  children: React.ReactElement<TitleProps | TabProps | ContentProps>[];
+  children: React.ReactElement<SectionTabProps>[];
 };
 
-export type HeaderContainerProps = {
-  children: [React.ReactElement<TitleProps>, ...React.ReactElement[]];
-};
 export type TabButtonProps = PropsWithChildren<{
-  title: string;
   isActive: boolean;
   onClick: () => void;
 }>;

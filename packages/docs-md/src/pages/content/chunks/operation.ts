@@ -200,24 +200,27 @@ export function renderOperation({
     if (hasResponses) {
       renderer.appendTabbedSectionStart();
       const responsesId = id + "+responses";
-      renderer.appendTabbedSectionTitleStart();
+      renderer.appendSectionTitleStart({
+        borderVariant: "none",
+        paddingVariant: "none",
+      });
       renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Responses", {
         id: responsesId,
       });
-      renderer.appendTabbedSectionTitleEnd();
+      renderer.appendSectionTitleEnd();
       for (const [statusCode, responses] of responseList) {
         for (const response of responses) {
           const responseId =
             id + `+${statusCode}+${response.contentType.replace("/", "-")}`;
           const tooltip = `${statusCode} (${response.contentType})`;
-          renderer.appendTabbedSectionTabStart(responseId, tooltip);
+          renderer.appendTabbedSectionTabStart(responseId);
           if (responses.length > 1) {
             renderer.appendText(tooltip);
           } else {
             renderer.appendText(statusCode);
           }
           renderer.appendTabbedSectionTabEnd();
-          renderer.appendTabbedSectionContentsStart(responseId);
+          renderer.appendSectionContentStart({ id: responseId });
           if (response.description) {
             renderer.appendText(response.description);
           }
@@ -236,7 +239,7 @@ export function renderOperation({
             topLevelName: "Response Body",
             data: docsData,
           });
-          renderer.appendTabbedSectionContentsEnd();
+          renderer.appendSectionContentEnd();
         }
       }
       renderer.appendTabbedSectionEnd();

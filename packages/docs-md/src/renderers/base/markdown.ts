@@ -11,7 +11,6 @@ import type {
   RendererCreatePillArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
-  RendererCreateTabArgs,
   RendererCreateTabbedSectionTabArgs,
   RendererEscapeTextArgs,
   SiteBuildPagePathArgs,
@@ -262,22 +261,6 @@ ${text}\n</code>\n</pre>`;
     this[rendererLines].push(this.createTabbedSectionEnd());
   }
 
-  public override createTabbedSectionTitleStart(): string {
-    return "";
-  }
-
-  public override appendTabbedSectionTitleStart(): void {
-    this[rendererLines].push(this.createTabbedSectionTitleStart());
-  }
-
-  public override createTabbedSectionTitleEnd(): string {
-    return "";
-  }
-
-  public override appendTabbedSectionTitleEnd(): void {
-    this[rendererLines].push(this.createTabbedSectionTitleEnd());
-  }
-
   public override createTabbedSectionTabStart(
     ..._args: RendererCreateTabbedSectionTabArgs
   ): string {
@@ -296,26 +279,6 @@ ${text}\n</code>\n</pre>`;
 
   public override appendTabbedSectionTabEnd(): void {
     this[rendererLines].push(this.createTabbedSectionTabEnd());
-  }
-
-  public override createTabbedSectionContentsStart(
-    ..._args: RendererCreateTabArgs
-  ) {
-    return "";
-  }
-
-  public override appendTabbedSectionContentsStart(
-    ...args: RendererCreateTabArgs
-  ) {
-    this[rendererLines].push(this.createTabbedSectionContentsStart(...args));
-  }
-
-  public override createTabbedSectionContentsEnd(): string {
-    return "";
-  }
-
-  public override appendTabbedSectionContentsEnd(): void {
-    this[rendererLines].push(this.createTabbedSectionContentsEnd());
   }
 
   public override render() {

@@ -2,8 +2,6 @@ import type { FC, ReactElement, ReactNode } from "react";
 import { isValidElement, useMemo } from "react";
 
 import { InternalError } from "../../util/internalError.ts";
-import type { SectionContentProps } from "../SectionContent/common/types.tsx";
-import type { SectionTitleProps } from "../SectionTitle/common/types.tsx";
 
 function assertChildrenIsElementArray(
   children: ReactNode
@@ -19,16 +17,14 @@ function assertChildrenIsElementArray(
   }
 }
 
-export function useTitleChild(
+export function useUniqueChild<ComponentProps>(
   children: ReactNode,
-  SectionTitle: FC<SectionTitleProps>
-) {
+  Component: FC<ComponentProps>
+): ReactElement<ComponentProps> {
   return useMemo(() => {
     assertChildrenIsElementArray(children);
 
-    const titleChildren = children.filter(
-      (child) => child.type === SectionTitle
-    );
+    const titleChildren = children.filter((child) => child.type === Component);
 
     if (titleChildren.length !== 1) {
       throw new InternalError(
@@ -37,17 +33,19 @@ export function useTitleChild(
     }
 
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    return titleChildren[0]!;
-  }, [children, SectionTitle]);
+    return titleChildren[0]! as ReactElement<ComponentProps>;
+  }, [children, Component]);
 }
 
-export function useContentChildren(
+export function useChildren<ComponentProps>(
   children: ReactNode,
-  SectionContent: FC<SectionContentProps>
-) {
+  Component: FC<ComponentProps>
+): ReactElement<ComponentProps>[] {
   return useMemo(() => {
     assertChildrenIsElementArray(children);
 
-    return children.filter((child) => child.type === SectionContent);
-  }, [children, SectionContent]);
+    return children.filter(
+      (child) => child.type === Component
+    ) as ReactElement<ComponentProps>[];
+  }, [children, Component]);
 }
