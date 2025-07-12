@@ -57,19 +57,31 @@ export function DocusaurusExpandableSection({
     [onClick, isOpen, title]
   );
 
+  // TODO: animate height when expanding closing. Requires knowing the height up
+  // front though it seems.
+
+  if (!isOpen) {
+    return (
+      <Section>
+        <SectionTitle borderVariant="none" paddingVariant="none">
+          {titleElement}
+        </SectionTitle>
+        <SectionContent borderVariant="default" paddingVariant="none" />
+      </Section>
+    );
+  }
+
   return (
-    <Section className={styles.container} variant="fields">
-      <SectionTitle variant="fields">{titleElement}</SectionTitle>
-      <SectionContent variant={isOpen ? "fields" : "section"}>
-        <div
-          style={{
-            display: isOpen ? "block" : "none",
-            // TODO: animate height when expanding closing. Requires knowing the
-            // height up front though it seems.
-          }}
-        >
-          {children}
-        </div>
+    <Section>
+      <SectionTitle borderVariant="none" paddingVariant="none">
+        {titleElement}
+      </SectionTitle>
+      <SectionContent
+        borderVariant="all"
+        paddingVariant="default"
+        noBorderRadiusOnFirstElement
+      >
+        {children}
       </SectionContent>
     </Section>
   );

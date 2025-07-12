@@ -23,37 +23,31 @@ export function useTitleChild(
   children: ReactNode,
   SectionTitle: FC<SectionTitleProps>
 ) {
-  assertChildrenIsElementArray(children);
+  return useMemo(() => {
+    assertChildrenIsElementArray(children);
 
-  // Get the title child
-  const titleChildren = useMemo(
-    () => children.filter((child) => child.type === SectionTitle),
-    [children, SectionTitle]
-  );
-  if (titleChildren.length !== 1) {
-    throw new InternalError(
-      `Section must have exactly one title child, not ${titleChildren.length}`
+    const titleChildren = children.filter(
+      (child) => child.type === SectionTitle
     );
-  }
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  return titleChildren[0]!;
+    if (titleChildren.length !== 1) {
+      throw new InternalError(
+        `Section must have exactly one title child, not ${titleChildren.length}`
+      );
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return titleChildren[0]!;
+  }, [children, SectionTitle]);
 }
 
 export function useContentChildren(
   children: ReactNode,
   SectionContent: FC<SectionContentProps>
 ) {
-  assertChildrenIsElementArray(children);
+  return useMemo(() => {
+    assertChildrenIsElementArray(children);
 
-  // Get the content children
-  const contentChildren = useMemo(
-    () => children.filter((child) => child.type === SectionContent),
-    [children, SectionContent]
-  );
-  if (!contentChildren.length) {
-    throw new InternalError("No section content children found");
-  }
-
-  return contentChildren;
+    return children.filter((child) => child.type === SectionContent);
+  }, [children, SectionContent]);
 }

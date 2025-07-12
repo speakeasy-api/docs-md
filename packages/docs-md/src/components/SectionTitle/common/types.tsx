@@ -1,7 +1,11 @@
 import type { PropsWithChildren } from "react";
 
-import type { SectionVariant } from "../../../renderers/base/base.ts";
+import type {
+  SectionTitleBorderVariant,
+  SectionTitlePaddingVariant,
+} from "../../../renderers/base/base.ts";
 
 export type SectionTitleProps = PropsWithChildren<{
-  variant: SectionVariant;
+  borderVariant: SectionTitleBorderVariant;
+  paddingVariant: SectionTitlePaddingVariant;
 }>;

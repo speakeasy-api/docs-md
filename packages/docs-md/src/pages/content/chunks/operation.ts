@@ -96,14 +96,14 @@ export function renderOperation({
 
   if (chunk.chunkData.parameters.length > 0) {
     const parametersId = id + "+parameters";
-    renderer.appendSectionStart({ variant: "fields" });
-    renderer.appendSectionTitleStart({ variant: "fields" });
+    renderer.appendSectionStart();
+    renderer.appendSectionTitleStart();
     renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Parameters", {
       id: parametersId,
     });
     renderer.appendSectionTitleEnd();
     for (const parameter of chunk.chunkData.parameters) {
-      renderer.appendSectionContentStart({ variant: "fields" });
+      renderer.appendSectionContentStart({ borderVariant: "all" });
       const start = renderer.createPillStart("warning");
       const end = renderer.createPillEnd();
       renderer.appendHeading(

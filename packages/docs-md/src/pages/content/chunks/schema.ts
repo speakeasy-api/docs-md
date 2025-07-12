@@ -499,7 +499,7 @@ export function renderSchema({
       return;
     }
     for (const [key, value] of properties) {
-      context.renderer.appendSectionContentStart({ variant: "fields" });
+      context.renderer.appendSectionContentStart({ borderVariant: "all" });
       const isRequired = objectValue.required?.includes(key) ?? false;
       if (value.type === "chunk") {
         const schemaChunk = getSchemaFromId(value.chunkId, data);
@@ -587,8 +587,8 @@ export function renderSchema({
       id: context.idPrefix,
     });
   } else {
-    context.renderer.appendSectionStart({ variant: "fields" });
-    context.renderer.appendSectionTitleStart({ variant: "fields" });
+    context.renderer.appendSectionStart();
+    context.renderer.appendSectionTitleStart({ borderVariant: "none" });
     context.renderer.appendHeading(
       HEADINGS.SUB_SECTION_HEADING_LEVEL,
       "Fields",
@@ -606,19 +606,19 @@ export function renderSchema({
     case "map":
     case "set":
     case "array": {
-      context.renderer.appendSectionContentStart({ variant: "fields" });
+      context.renderer.appendSectionContentStart({ borderVariant: "all" });
       renderArrayLikeItems(context.schema);
       context.renderer.appendSectionContentEnd();
       break;
     }
     case "union": {
-      context.renderer.appendSectionContentStart({ variant: "fields" });
+      context.renderer.appendSectionContentStart({ borderVariant: "all" });
       renderUnionItems(context.schema);
       context.renderer.appendSectionContentEnd();
       break;
     }
     default: {
-      context.renderer.appendSectionContentStart({ variant: "fields" });
+      context.renderer.appendSectionContentStart({ borderVariant: "all" });
       renderBasicItems(context.schema);
       context.renderer.appendSectionContentEnd();
       break;

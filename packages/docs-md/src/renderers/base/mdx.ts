@@ -7,7 +7,8 @@ import type {
   RendererCreateAppendCodeArgs,
   RendererCreateExpandableSectionArgs,
   RendererCreatePillArgs,
-  RendererCreateSectionArgs,
+  RendererCreateSectionContentArgs,
+  RendererCreateSectionTitleArgs,
   RendererCreateTabArgs,
   RendererCreateTabbedSectionTabArgs,
 } from "./base.ts";
@@ -126,20 +127,22 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return "</Pill>";
   }
 
-  public override createSectionStart(
-    ...[{ variant = "section" } = {}]: RendererCreateSectionArgs
-  ): string {
+  public override createSectionStart(): string {
     this.insertComponentImport("Section");
-    return `<Section variant="${variant}">`;
+    return `<Section>`;
   }
 
   public override createSectionEnd(): string {
     return "</Section>";
   }
 
-  public override createSectionTitleStart() {
+  public override createSectionTitleStart(
+    ...[
+      { borderVariant = "default", paddingVariant = "default" } = {},
+    ]: RendererCreateSectionTitleArgs
+  ) {
     this.insertComponentImport("SectionTitle");
-    return `<SectionTitle>`;
+    return `<SectionTitle borderVariant="${borderVariant}" paddingVariant="${paddingVariant}">`;
   }
 
   public override createSectionTitleEnd() {
@@ -147,10 +150,12 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createSectionContentStart(
-    ...[{ variant = "section" } = {}]: RendererCreateSectionArgs
+    ...[
+      { borderVariant = "default", paddingVariant = "default" } = {},
+    ]: RendererCreateSectionContentArgs
   ): string {
     this.insertComponentImport("SectionContent");
-    return `<SectionContent variant="${variant}">`;
+    return `<SectionContent borderVariant="${borderVariant}" paddingVariant="${paddingVariant}">`;
   }
 
   public override createSectionContentEnd(): string {

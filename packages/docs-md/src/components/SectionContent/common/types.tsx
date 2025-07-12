@@ -1,7 +1,14 @@
 import type { PropsWithChildren } from "react";
 
-import type { SectionVariant } from "../../../renderers/base/base.ts";
+import type {
+  SectionContentBorderVariant,
+  SectionContentPaddingVariant,
+} from "../../../renderers/base/base.ts";
 
 export type SectionContentProps = PropsWithChildren<{
-  variant: SectionVariant;
+  borderVariant: SectionContentBorderVariant;
+  paddingVariant: SectionContentPaddingVariant;
+
+  // Internal property used by ExpandableSection
+  noBorderRadiusOnFirstElement?: boolean;
 }>;

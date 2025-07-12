@@ -24,7 +24,11 @@ export type PillVariant =
   | "success"
   | "primary"
   | "secondary";
-export type SectionVariant = "section" | "fields" | "operation";
+
+export type SectionTitleBorderVariant = "default" | "none";
+export type SectionTitlePaddingVariant = "default" | "none";
+export type SectionContentBorderVariant = "default" | "all";
+export type SectionContentPaddingVariant = "default" | "none";
 
 // Argument types for Site interface methods
 export type SiteCreatePageArgs = [path: string];
@@ -123,8 +127,17 @@ export type RendererCreateAppendCodeArgs = [
 ];
 export type RendererCreatePillArgs = [variant: PillVariant];
 export type RendererCreateListArgs = [items: string[], options?: AppendOptions];
-export type RendererCreateSectionArgs = [
-  options?: { variant?: SectionVariant },
+export type RendererCreateSectionTitleArgs = [
+  options?: {
+    borderVariant?: SectionTitleBorderVariant;
+    paddingVariant?: SectionTitlePaddingVariant;
+  },
+];
+export type RendererCreateSectionContentArgs = [
+  options?: {
+    borderVariant?: SectionContentBorderVariant;
+    paddingVariant?: SectionContentPaddingVariant;
+  },
 ];
 export type RendererCreateExpandableSectionArgs = [
   title: string,
@@ -167,18 +180,24 @@ export abstract class Renderer {
   abstract appendPillEnd(): void;
 
   // Sections show a title followed by content
-  abstract createSectionStart(...args: RendererCreateSectionArgs): string;
-  abstract appendSectionStart(...args: RendererCreateSectionArgs): void;
+  abstract createSectionStart(): string;
+  abstract appendSectionStart(): void;
   abstract createSectionEnd(): string;
   abstract appendSectionEnd(): void;
-  abstract createSectionTitleStart(...args: RendererCreateSectionArgs): string;
-  abstract appendSectionTitleStart(...args: RendererCreateSectionArgs): void;
+  abstract createSectionTitleStart(
+    ...args: RendererCreateSectionTitleArgs
+  ): string;
+  abstract appendSectionTitleStart(
+    ...args: RendererCreateSectionTitleArgs
+  ): void;
   abstract createSectionTitleEnd(): string;
   abstract appendSectionTitleEnd(): void;
   abstract createSectionContentStart(
-    ...args: RendererCreateSectionArgs
+    ...args: RendererCreateSectionContentArgs
   ): string;
-  abstract appendSectionContentStart(...args: RendererCreateSectionArgs): void;
+  abstract appendSectionContentStart(
+    ...args: RendererCreateSectionContentArgs
+  ): void;
   abstract createSectionContentEnd(): string;
   abstract appendSectionContentEnd(): void;
 

@@ -1,12 +1,24 @@
+import clsx from "clsx";
+
 import type { SectionContentProps } from "../common/types.tsx";
 import styles from "./styles.module.css";
 
 export function DocusaurusSectionContent({
-  variant,
+  borderVariant,
+  paddingVariant,
+  noBorderRadiusOnFirstElement,
   children,
 }: SectionContentProps) {
-  if (variant === "fields") {
-    return <div className={styles.contents}>{children}</div>;
-  }
-  return <div>{children}</div>;
+  return (
+    <div
+      className={clsx(
+        styles.content,
+        borderVariant === "all" && styles.borderAll,
+        paddingVariant === "default" && styles.paddingDefault,
+        noBorderRadiusOnFirstElement && styles.noBorderRadiusOnFirstElement
+      )}
+    >
+      {children}
+    </div>
+  );
 }

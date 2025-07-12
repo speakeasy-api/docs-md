@@ -5,6 +5,8 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Button } from "../../primitives/nextra/Button.tsx";
 import { Section } from "../../Section/nextra.tsx";
+import { SectionContent } from "../../SectionContent/nextra.tsx";
+import { SectionTitle } from "../../SectionTitle/nextra.tsx";
 import type { ExpandableSectionProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
@@ -57,18 +59,29 @@ export function NextraExpandableSection({
     [onClick, isOpen, title]
   );
 
+  if (!isOpen) {
+    return (
+      <Section>
+        <SectionTitle borderVariant="none" paddingVariant="none">
+          {titleElement}
+        </SectionTitle>
+        <SectionContent borderVariant="default" paddingVariant="none" />
+      </Section>
+    );
+  }
+
   return (
-    <Section className={styles.container} variant="fields">
-      {titleElement}
-      <div
-        style={{
-          display: isOpen ? "block" : "none",
-          // TODO: animate height when expanding closing. Requires knowing the
-          // height up front though it seems.
-        }}
+    <Section>
+      <SectionTitle borderVariant="none" paddingVariant="none">
+        {titleElement}
+      </SectionTitle>
+      <SectionContent
+        borderVariant="all"
+        paddingVariant="default"
+        noBorderRadiusOnFirstElement
       >
         {children}
-      </div>
+      </SectionContent>
     </Section>
   );
 }

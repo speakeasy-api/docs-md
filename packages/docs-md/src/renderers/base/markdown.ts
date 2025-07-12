@@ -9,7 +9,8 @@ import type {
   RendererCreateExpandableSectionArgs,
   RendererCreateListArgs,
   RendererCreatePillArgs,
-  RendererCreateSectionArgs,
+  RendererCreateSectionContentArgs,
+  RendererCreateSectionTitleArgs,
   RendererCreateTabArgs,
   RendererCreateTabbedSectionTabArgs,
   RendererEscapeTextArgs,
@@ -169,14 +170,12 @@ ${text}\n</code>\n</pre>`;
     this[rendererLines].push(this.createPillEnd());
   }
 
-  public override createSectionStart(
-    ..._args: RendererCreateSectionArgs
-  ): string {
+  public override createSectionStart(): string {
     return "";
   }
 
-  public override appendSectionStart(...args: RendererCreateSectionArgs): void {
-    this[rendererLines].push(this.createSectionStart(...args));
+  public override appendSectionStart(): void {
+    this[rendererLines].push(this.createSectionStart());
   }
 
   public override createSectionEnd(): string {
@@ -188,13 +187,13 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override createSectionTitleStart(
-    ..._args: RendererCreateSectionArgs
+    ..._args: RendererCreateSectionTitleArgs
   ): string {
     return "";
   }
 
   public override appendSectionTitleStart(
-    ...args: RendererCreateSectionArgs
+    ...args: RendererCreateSectionTitleArgs
   ): void {
     this[rendererLines].push(this.createSectionTitleStart(...args));
   }
@@ -208,13 +207,13 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override createSectionContentStart(
-    ..._args: RendererCreateSectionArgs
+    ..._args: RendererCreateSectionContentArgs
   ): string {
     return "";
   }
 
   public override appendSectionContentStart(
-    ...args: RendererCreateSectionArgs
+    ...args: RendererCreateSectionContentArgs
   ): void {
     this[rendererLines].push(this.createSectionContentStart(...args));
   }

@@ -1,12 +1,15 @@
+import clsx from "clsx";
+
 import type { SectionContentProps } from "../common/types.tsx";
 import styles from "./styles.module.css";
 
 export function NextraSectionContent({
-  variant,
+  borderVariant,
   children,
 }: SectionContentProps) {
-  if (variant === "fields") {
-    return <div className={styles.contents}>{children}</div>;
-  }
-  return <div>{children}</div>;
+  const className = clsx(
+    styles.contents,
+    borderVariant === "all" && styles.all
+  );
+  return <div className={className}>{children}</div>;
 }
