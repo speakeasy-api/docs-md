@@ -63,20 +63,25 @@ export function DocusaurusExpandableSection({
   if (!isOpen) {
     return (
       <Section>
-        <SectionTitle borderVariant="none" paddingVariant="none">
+        <SectionTitle slot="title" borderVariant="none" paddingVariant="none">
           {titleElement}
         </SectionTitle>
-        <SectionContent borderVariant="default" paddingVariant="none" />
+        <SectionContent
+          slot="content"
+          borderVariant="default"
+          paddingVariant="none"
+        />
       </Section>
     );
   }
 
   return (
     <Section>
-      <SectionTitle borderVariant="none" paddingVariant="none">
+      <SectionTitle slot="title" borderVariant="none" paddingVariant="none">
         {titleElement}
       </SectionTitle>
       <SectionContent
+        slot="content"
         borderVariant="all"
         paddingVariant="default"
         noBorderRadiusOnFirstElement

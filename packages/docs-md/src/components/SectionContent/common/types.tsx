@@ -7,6 +7,7 @@ import type {
 
 export type SectionContentProps = PropsWithChildren<{
   id?: string;
+  slot: "content";
   borderVariant: SectionContentBorderVariant;
   paddingVariant: SectionContentPaddingVariant;
 

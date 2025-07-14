@@ -4,6 +4,7 @@ import type { SectionContentProps } from "../common/types.tsx";
 import styles from "./styles.module.css";
 
 export function DocusaurusSectionContent({
+  slot,
   borderVariant,
   paddingVariant,
   noBorderRadiusOnFirstElement,
@@ -17,6 +18,7 @@ export function DocusaurusSectionContent({
         paddingVariant === "default" && styles.paddingDefault,
         noBorderRadiusOnFirstElement && styles.noBorderRadiusOnFirstElement
       )}
+      slot={slot}
     >
       {children}
     </div>

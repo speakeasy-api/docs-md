@@ -59,23 +59,31 @@ export function NextraExpandableSection({
     [onClick, isOpen, title]
   );
 
+  // TODO: animate height when expanding closing. Requires knowing the height up
+  // front though it seems.
+
   if (!isOpen) {
     return (
       <Section>
-        <SectionTitle borderVariant="none" paddingVariant="none">
+        <SectionTitle slot="title" borderVariant="none" paddingVariant="none">
           {titleElement}
         </SectionTitle>
-        <SectionContent borderVariant="default" paddingVariant="none" />
+        <SectionContent
+          slot="content"
+          borderVariant="default"
+          paddingVariant="none"
+        />
       </Section>
     );
   }
 
   return (
     <Section>
-      <SectionTitle borderVariant="none" paddingVariant="none">
+      <SectionTitle slot="title" borderVariant="none" paddingVariant="none">
         {titleElement}
       </SectionTitle>
       <SectionContent
+        slot="content"
         borderVariant="all"
         paddingVariant="default"
         noBorderRadiusOnFirstElement

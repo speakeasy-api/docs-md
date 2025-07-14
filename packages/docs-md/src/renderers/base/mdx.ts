@@ -139,7 +139,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     ]: RendererCreateSectionTitleArgs
   ) {
     this.insertComponentImport("SectionTitle");
-    return `<SectionTitle borderVariant="${borderVariant}" paddingVariant="${paddingVariant}">`;
+    return `<SectionTitle slot="title" borderVariant="${borderVariant}" paddingVariant="${paddingVariant}">`;
   }
 
   public override createSectionTitleEnd() {
@@ -152,7 +152,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     ]: RendererCreateSectionContentArgs
   ): string {
     this.insertComponentImport("SectionContent");
-    return `<SectionContent borderVariant="${borderVariant}" paddingVariant="${paddingVariant}" id="${id}">`;
+    return `<SectionContent slot="content" borderVariant="${borderVariant}" paddingVariant="${paddingVariant}" id="${id}">`;
   }
 
   public override createSectionContentEnd(): string {
@@ -183,7 +183,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     ...[id]: RendererCreateTabbedSectionTabArgs
   ) {
     this.insertComponentImport("SectionTab");
-    return `<SectionTab id="${id}">`;
+    return `<SectionTab slot="tab" id="${id}">`;
   }
 
   public override createTabbedSectionTabEnd() {

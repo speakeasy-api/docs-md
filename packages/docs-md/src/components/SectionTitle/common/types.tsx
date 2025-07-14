@@ -8,4 +8,5 @@ import type {
 export type SectionTitleProps = PropsWithChildren<{
   borderVariant: SectionTitleBorderVariant;
   paddingVariant: SectionTitlePaddingVariant;
+  slot: "title";
 }>;

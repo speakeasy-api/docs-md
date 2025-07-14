@@ -4,12 +4,23 @@ import type { SectionContentProps } from "../common/types.tsx";
 import styles from "./styles.module.css";
 
 export function NextraSectionContent({
+  slot,
   borderVariant,
+  paddingVariant,
+  noBorderRadiusOnFirstElement,
   children,
 }: SectionContentProps) {
-  const className = clsx(
-    styles.contents,
-    borderVariant === "all" && styles.all
+  return (
+    <div
+      className={clsx(
+        styles.content,
+        borderVariant === "all" && styles.borderAll,
+        paddingVariant === "default" && styles.paddingDefault,
+        noBorderRadiusOnFirstElement && styles.noBorderRadiusOnFirstElement
+      )}
+      slot={slot}
+    >
+      {children}
+    </div>
   );
-  return <div className={className}>{children}</div>;
 }

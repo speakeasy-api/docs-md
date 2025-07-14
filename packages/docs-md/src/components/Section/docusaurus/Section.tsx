@@ -1,12 +1,10 @@
-import { SectionContent } from "../../SectionContent/docusaurus.tsx";
-import { SectionTitle } from "../../SectionTitle/docusaurus.tsx";
 import type { SectionProps } from "../common/types.ts";
 import { useChildren, useUniqueChild } from "../hooks.ts";
 import styles from "./styles.module.css";
 
 export function DocusaurusSection({ children }: SectionProps) {
-  const titleChild = useUniqueChild(children, SectionTitle);
-  const contentChildren = useChildren(children, SectionContent);
+  const titleChild = useUniqueChild(children, "title");
+  const contentChildren = useChildren(children, "content");
 
   return (
     <div className={styles.section}>

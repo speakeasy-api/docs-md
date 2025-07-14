@@ -13,25 +13,13 @@ import type { TabButtonProps } from "./types.ts";
 
 type ContainerProps = {
   TabButton: FC<TabButtonProps>;
-  SectionTitle: FC<SectionTitleProps>;
-  SectionContent: FC<SectionContentProps>;
-  SectionTab: FC<SectionTabProps>;
   children: ReactNode;
 };
 
-export function useTabbedChildren({
-  SectionTitle,
-  SectionContent,
-  SectionTab,
-  TabButton,
-  children,
-}: ContainerProps) {
-  const titleChild = useUniqueChild<SectionTitleProps>(children, SectionTitle);
-  const contentChildren = useChildren<SectionContentProps>(
-    children,
-    SectionContent
-  );
-  const tabChildren = useChildren<SectionTabProps>(children, SectionTab);
+export function useTabbedChildren({ TabButton, children }: ContainerProps) {
+  const titleChild = useUniqueChild<SectionTitleProps>(children, "title");
+  const contentChildren = useChildren<SectionContentProps>(children, "content");
+  const tabChildren = useChildren<SectionTabProps>(children, "tab");
 
   if (!tabChildren.length) {
     throw new InternalError("TabbedSection must have at least one tab");

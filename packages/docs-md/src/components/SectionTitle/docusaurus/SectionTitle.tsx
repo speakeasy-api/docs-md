@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 
 export function DocusaurusSectionTitle({
   children,
+  slot,
   borderVariant,
   paddingVariant,
 }: SectionTitleProps) {
@@ -15,6 +16,7 @@ export function DocusaurusSectionTitle({
         borderVariant === "default" && styles.borderDefault,
         paddingVariant === "default" && styles.paddingDefault
       )}
+      slot={slot}
     >
       {children}
     </div>

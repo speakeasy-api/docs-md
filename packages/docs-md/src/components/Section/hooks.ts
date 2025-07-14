@@ -1,4 +1,4 @@
-import type { FC, ReactElement, ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 import { isValidElement, useMemo } from "react";
 
 import { InternalError } from "../../util/internalError.ts";
@@ -19,12 +19,12 @@ function assertChildrenIsElementArray(
 
 export function useUniqueChild<ComponentProps>(
   children: ReactNode,
-  Component: FC<ComponentProps>
+  slot: string
 ): ReactElement<ComponentProps> {
   return useMemo(() => {
     assertChildrenIsElementArray(children);
 
-    const titleChildren = children.filter((child) => child.type === Component);
+    const titleChildren = children.filter((child) => child.props.slot === slot);
 
     if (titleChildren.length !== 1) {
       throw new InternalError(
@@ -34,18 +34,18 @@ export function useUniqueChild<ComponentProps>(
 
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return titleChildren[0]! as ReactElement<ComponentProps>;
-  }, [children, Component]);
+  }, [children, slot]);
 }
 
 export function useChildren<ComponentProps>(
   children: ReactNode,
-  Component: FC<ComponentProps>
+  slot: string
 ): ReactElement<ComponentProps>[] {
   return useMemo(() => {
     assertChildrenIsElementArray(children);
 
     return children.filter(
-      (child) => child.type === Component
+      (child) => child.props.slot === slot
     ) as ReactElement<ComponentProps>[];
-  }, [children, Component]);
+  }, [children, slot]);
 }
