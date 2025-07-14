@@ -152,7 +152,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     ]: RendererCreateSectionContentArgs
   ): string {
     this.insertComponentImport("SectionContent");
-    return `<SectionContent slot="content" borderVariant="${borderVariant}" paddingVariant="${paddingVariant}" id="${id}">`;
+    return `<SectionContent slot="content" borderVariant="${borderVariant}" paddingVariant="${paddingVariant}"${id ? ` id="${id}"` : ""}>`;
   }
 
   public override createSectionContentEnd(): string {

@@ -9,6 +9,7 @@ export function DocusaurusSectionContent({
   paddingVariant,
   noBorderRadiusOnFirstElement,
   children,
+  id,
 }: SectionContentProps) {
   return (
     <div
@@ -18,6 +19,7 @@ export function DocusaurusSectionContent({
         paddingVariant === "default" && styles.paddingDefault,
         noBorderRadiusOnFirstElement && styles.noBorderRadiusOnFirstElement
       )}
+      id={id}
       slot={slot}
     >
       {children}

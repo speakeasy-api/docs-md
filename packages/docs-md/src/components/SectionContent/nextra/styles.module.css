@@ -1,25 +1,46 @@
-.contents {
-  padding-block: 1rem;
-  padding-inline: 0.75rem;
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  /* Nextra doesn't add any margin in the bottom, which we want for content */
+  margin-bottom: 1rem;
+}
+
+.content > :last-child {
+  margin-bottom: 0;
+}
+
+.paddingDefault {
+  padding: 0.75rem;
+}
+
+.borderAll {
+  border-inline: 1px solid var(--x-color-gray-200);
   border-top: 1px solid var(--x-color-gray-200);
 }
 
-.contents > h2:first-child,
-.contents > h3:first-child,
-.contents > h4:first-child,
-.contents > h5:first-child,
-.contents > h6:first-child {
-  margin-top: 0;
-}
-
-.contents:where(:global(.dark) *) {
+.borderAll:where(:global(.dark) *) {
+  border-inline: 1px solid var(--x-color-neutral-800);
   border-top: 1px solid var(--x-color-neutral-800);
 }
 
-.contents:last-child {
-  border-bottom: 1px solid var(--x-color-gray-200);
+.borderAll:first-child {
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
 }
 
-.contents:last-child:where(:global(.dark) *) {
+.borderAll:last-child {
+  border-bottom: 1px solid var(--x-color-gray-200);
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.borderAll:last-child:where(:global(.dark) *) {
   border-bottom: 1px solid var(--x-color-neutral-800);
+}
+
+.borderAll .noBorderRadiusOnFirstElement:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
