@@ -8,9 +8,11 @@ export function NextraSectionTitle({
   slot,
   borderVariant,
   paddingVariant,
+  id,
 }: SectionTitleProps) {
   return (
     <div
+      id={id}
       className={clsx(
         styles.title,
         borderVariant === "default" && styles.borderDefault,

@@ -65,7 +65,12 @@ export function NextraExpandableSection({
   if (!isOpen) {
     return (
       <Section>
-        <SectionTitle slot="title" borderVariant="none" paddingVariant="none">
+        <SectionTitle
+          id={id}
+          slot="title"
+          borderVariant="none"
+          paddingVariant="none"
+        >
           {titleElement}
         </SectionTitle>
         <SectionContent
@@ -79,7 +84,12 @@ export function NextraExpandableSection({
 
   return (
     <Section>
-      <SectionTitle slot="title" borderVariant="none" paddingVariant="none">
+      <SectionTitle
+        id={id}
+        slot="title"
+        borderVariant="none"
+        paddingVariant="none"
+      >
         {titleElement}
       </SectionTitle>
       <SectionContent

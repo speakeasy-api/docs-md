@@ -6,6 +6,7 @@ import type {
 } from "../../../renderers/base/base.ts";
 
 export type SectionTitleProps = PropsWithChildren<{
+  id?: string;
   borderVariant: SectionTitleBorderVariant;
   paddingVariant: SectionTitlePaddingVariant;
   slot: "title";
