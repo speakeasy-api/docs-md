@@ -1,12 +1,14 @@
 import { dirname, relative } from "node:path";
 
 import type { TryItNowProps } from "../../components/TryItNow/common/types.ts";
+import { HEADINGS } from "../../pages/content/constants.ts";
 import type {
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
   RendererCreateAppendCodeArgs,
   RendererCreateExpandableSectionArgs,
   RendererCreatePillArgs,
+  RendererCreatePropertyArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
   RendererCreateTabbedSectionTabArgs,
@@ -188,6 +190,17 @@ export abstract class MdxRenderer extends MarkdownRenderer {
 
   public override createTabbedSectionTabEnd() {
     return "</SectionTab>";
+  }
+
+  public override createProperty(
+    ...[typeInfo, id, cb]: RendererCreatePropertyArgs
+  ) {
+    this.insertComponentImport("Property");
+    return `<Property typeInfo={${JSON.stringify(typeInfo)}}>
+
+${this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, cb(), { escape: "mdx", id })}
+
+</Property>`;
   }
 
   public override appendSidebarLink(
