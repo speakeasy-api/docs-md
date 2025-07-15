@@ -1,33 +1,32 @@
 type-check:
-	npm run type-check --workspaces
+	pnpm run type-check --recursive
 
 lint:
-	npm run lint --workspaces
+	pnpm run lint --recursive
 
 test: type-check lint
-	npm test --workspaces
+	pnpm test --recursive
 
 format:
-	npm run format --workspaces
+	pnpm run format --recursive
 
 install:
-	npm install
-	npm install --workspaces
+	pnpm install
 
 build: install
-	npm run build --workspaces
+	pnpm run build --recursive
 
 start:
-	npx concurrently \
-	"npm run dev --workspace=server" \
-	"npm run dev --workspace=client/web" \
-	"npm run dev --workspace=demos" \
-	"npm run dev --workspace=asset-proxy"
+	pnpm dlx concurrently \
+	"pnpm run dev --filter=server" \
+	"pnpm run dev --filter=client/web" \
+	"pnpm run dev --filter=demos" \
+	"pnpm run dev --filter=asset-proxy"
 
 add-demo:
-	npm run add-demo --workspace="@speakeasy-api/codewords-demos"
+	pnpm run add-demo --filter="@speakeasy-api/codewords-demos"
 
 .PHONY: interactive
 
 interactive:
-	npm run interactive --workspace=server -- --spec=$(spec) --lang=$(lang) --token=$(token) --command=$(command)
+	pnpm run interactive --filter=server -- --spec=$(spec) --lang=$(lang) --token=$(token) --command=$(command)
