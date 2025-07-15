@@ -12,3 +12,4 @@ export { SectionTitle } from "./components/SectionTitle/docusaurus.tsx";
 export { SectionTab } from "./components/SectionTab/docusaurus.tsx";
 export { Code } from "./components/Code/docusaurus.tsx";
 export { Pill } from "./components/Pill/docusaurus.tsx";
+export { Property } from "./components/Property/docusaurus.tsx";

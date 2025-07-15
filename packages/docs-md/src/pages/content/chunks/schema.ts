@@ -1,4 +1,4 @@
-import type { Renderer, Site } from "../../../renderers/base/base.ts";
+import type { Renderer, Site, TypeInfo } from "../../../renderers/base/base.ts";
 import type {
   ArrayValue,
   Chunk,
@@ -29,13 +29,6 @@ function getMaxInlineLength(propertyName: string, indentationLevel: number) {
     indentationLevel
   );
 }
-
-type TypeInfo = {
-  label: string;
-  linkedLabel: string;
-  children: TypeInfo[];
-  breakoutSubTypes: { label: string; schema: SchemaValue }[];
-};
 
 function getTypeInfo(
   value: SchemaValue,

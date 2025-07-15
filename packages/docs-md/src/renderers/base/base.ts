@@ -15,7 +15,9 @@
 // defined as a tuple. We can then use the spread operator to assign that type
 // to all arguments. It's a bit verbose and convoluted, but solves both 1 and 2
 
-// Helper types
+import type { SchemaValue } from "../../types/chunk.ts";
+
+// Types shared with components
 
 export type PillVariant =
   | "error"
@@ -29,6 +31,13 @@ export type SectionTitleBorderVariant = "default" | "none";
 export type SectionTitlePaddingVariant = "default" | "none";
 export type SectionContentBorderVariant = "default" | "all";
 export type SectionContentPaddingVariant = "default" | "none";
+
+export type TypeInfo = {
+  label: string;
+  linkedLabel: string;
+  children: TypeInfo[];
+  breakoutSubTypes: { label: string; schema: SchemaValue }[];
+};
 
 // Argument types for Site interface methods
 export type SiteCreatePageArgs = [path: string];
