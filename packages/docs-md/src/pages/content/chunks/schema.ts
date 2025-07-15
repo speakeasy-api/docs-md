@@ -22,14 +22,6 @@ type SchemaRenderContext = {
   idPrefix: string;
 };
 
-function getMaxInlineLength(propertyName: string, indentationLevel: number) {
-  return (
-    getSettings().display.maxTypeSignatureLineLength -
-    propertyName.length -
-    indentationLevel
-  );
-}
-
 function getTypeInfo(
   value: SchemaValue,
   data: Map<string, Chunk>,
@@ -137,146 +129,6 @@ function getTypeInfo(
   }
 }
 
-function computeDisplayType(typeInfo: TypeInfo, propertyName: string) {
-  const singleLineTypeLabel = computeSingleLineDisplayType(typeInfo);
-  // TODO: wire up indentation level here
-  if (
-    singleLineTypeLabel.unlinked.length < getMaxInlineLength(propertyName, 0)
-  ) {
-    return {
-      content: singleLineTypeLabel.linked,
-      multiline: false,
-    };
-  }
-  const content = computeMultilineTypeLabel(typeInfo, 0);
-
-  // TODO: sometimes we end up with some blank lines. Ideally the
-  // computeMultilineTypeLabel function should handle this, but for now we just
-  // patch it up after the fact
-  content.contents = content.contents
-    .split("\n")
-    .filter((c) => c.trim().length > 0)
-    .join("\n");
-  return {
-    content: content.contents,
-    multiline: true,
-    length: 0,
-  };
-}
-
-function computeSingleLineDisplayType(typeInfo: TypeInfo): {
-  unlinked: string;
-  linked: string;
-} {
-  switch (typeInfo.label) {
-    case "array":
-    case "map":
-    case "set": {
-      const children = typeInfo.children.map(computeSingleLineDisplayType);
-      return {
-        unlinked: `${typeInfo.label}&lt;${children.map((c) => c.unlinked).join(",")}&gt;`,
-        linked: `${typeInfo.label}&lt;${children.map((c) => c.linked).join(",")}&gt;`,
-      };
-    }
-    case "union":
-    case "enum": {
-      const children = typeInfo.children.map(computeSingleLineDisplayType);
-      return {
-        unlinked: children.map((c) => c.unlinked).join(" | "),
-        linked: children.map((c) => c.linked).join(" | "),
-      };
-    }
-    default: {
-      return {
-        unlinked: typeInfo.label,
-        linked: typeInfo.linkedLabel,
-      };
-    }
-  }
-}
-
-type MultilineTypeLabelEntry = {
-  contents: string;
-  multiline: boolean;
-};
-
-function computeMultilineTypeLabel(
-  typeInfo: TypeInfo,
-  indentation: number
-): MultilineTypeLabelEntry {
-  const { maxTypeSignatureLineLength } = getSettings().display;
-  switch (typeInfo.label) {
-    case "array":
-    case "map":
-    case "set": {
-      // First, check if we can show this on a single line
-      const singleLineContents = computeSingleLineDisplayType(typeInfo);
-      if (
-        singleLineContents.unlinked.length <
-        maxTypeSignatureLineLength - indentation
-      ) {
-        return {
-          contents: singleLineContents.linked,
-          multiline: false,
-        };
-      }
-
-      // If we got here, we know this will be multiline, so compute each child
-      // separately. We'll stitch them together later.
-      const children: MultilineTypeLabelEntry[] = [];
-      for (const child of typeInfo.children) {
-        children.push(computeMultilineTypeLabel(child, indentation + 1));
-      }
-
-      let contents = `${typeInfo.label}&lt;\n`;
-      for (const child of children) {
-        contents += `${" ".repeat(indentation + 1)}${child.contents}\n`;
-      }
-      contents += `${" ".repeat(indentation)}&gt;\n`;
-      return {
-        contents,
-        multiline: true,
-      };
-    }
-    case "union":
-    case "enum": {
-      // First, check if we can show this on a single line
-      const singleLineContents = computeSingleLineDisplayType(typeInfo);
-      if (
-        singleLineContents.unlinked.length <
-        maxTypeSignatureLineLength - indentation
-      ) {
-        return {
-          contents: singleLineContents.linked,
-          multiline: false,
-        };
-      }
-
-      // If we got here, we know this will be multiline, so compute each child
-      // separately. We'll stitch them together later.
-      const children: MultilineTypeLabelEntry[] = [];
-      for (const child of typeInfo.children) {
-        children.push(computeMultilineTypeLabel(child, 0));
-      }
-
-      let contents = "\n";
-      for (const child of children) {
-        contents += `${" ".repeat(indentation)}| ${child.contents}\n`;
-      }
-      return {
-        contents,
-        multiline: true,
-      };
-    }
-    default: {
-      return {
-        contents: typeInfo.label,
-        multiline: false,
-      };
-    }
-  }
-}
-
 function renderNameAndType({
   context,
   propertyName,
@@ -290,63 +142,28 @@ function renderNameAndType({
   isRequired: boolean;
   isRecursive: boolean;
 }) {
-  // Annotated name is used for measuring the string, so we use a pure text
-  // representation of what the pill will contain
-  let annotatedPropertyName = propertyName;
-  if (isRequired) {
-    annotatedPropertyName = `${propertyName} (required)`;
-  }
-  if (isRecursive) {
-    annotatedPropertyName = `${propertyName} (recursive)`;
-  }
-  const computedDisplayType = computeDisplayType(
+  context.renderer.appendProperty(
     typeInfo,
-    annotatedPropertyName
+    context.idPrefix + `+${propertyName}`,
+    () => {
+      let formattedPropertyName = context.renderer.escapeText(propertyName, {
+        escape: "markdown",
+      });
+
+      if (isRequired) {
+        const start = context.renderer.createPillStart("warning");
+        const end = context.renderer.createPillEnd();
+        formattedPropertyName += ` ${start}required${end}`;
+      }
+      if (isRecursive) {
+        const start = context.renderer.createPillStart("info");
+        const end = context.renderer.createPillEnd();
+        formattedPropertyName += ` ${start}recursive${end}`;
+      }
+
+      return formattedPropertyName;
+    }
   );
-
-  // Formatted name contains the same info, but uses actual pills
-  let formattedPropertyName = context.renderer.escapeText(propertyName, {
-    escape: "markdown",
-  });
-  if (isRequired) {
-    const start = context.renderer.createPillStart("warning");
-    const end = context.renderer.createPillEnd();
-    formattedPropertyName = `${propertyName} ${start}required${end}`;
-  }
-  if (isRecursive) {
-    const start = context.renderer.createPillStart("info");
-    const end = context.renderer.createPillEnd();
-    formattedPropertyName = `${propertyName} ${start}recursive${end}`;
-  }
-
-  if (computedDisplayType.multiline) {
-    context.renderer.appendHeading(
-      HEADINGS.PROPERTY_HEADING_LEVEL,
-      formattedPropertyName,
-      {
-        id: context.idPrefix + `+${propertyName}`,
-        escape: "mdx",
-      }
-    );
-    context.renderer.appendCode(computedDisplayType.content, {
-      variant: "raw",
-      escape: "mdx",
-    });
-  } else {
-    const type = context.renderer.escapeText(computedDisplayType.content, {
-      escape: "mdx",
-    });
-    const start = context.renderer.createPillStart("info");
-    const end = context.renderer.createPillEnd();
-    context.renderer.appendHeading(
-      HEADINGS.PROPERTY_HEADING_LEVEL,
-      `${formattedPropertyName} ${start}${type}${end}`,
-      {
-        escape: "none",
-        id: context.idPrefix + `+${propertyName}`,
-      }
-    );
-  }
 }
 
 function renderSchemaFrontmatter({

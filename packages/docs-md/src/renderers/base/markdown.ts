@@ -1,5 +1,6 @@
 import { join, resolve } from "node:path";
 
+import { HEADINGS } from "../../pages/content/constants.ts";
 import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from "../../util/settings.ts";
 import type {
@@ -9,6 +10,7 @@ import type {
   RendererCreateExpandableSectionArgs,
   RendererCreateListArgs,
   RendererCreatePillArgs,
+  RendererCreatePropertyArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
   RendererCreateTabbedSectionTabArgs,
@@ -16,6 +18,7 @@ import type {
   SiteBuildPagePathArgs,
   SiteCreatePageArgs,
   SiteHasPageArgs,
+  TypeInfo,
 } from "./base.ts";
 import { Renderer } from "./base.ts";
 import { Site } from "./base.ts";
@@ -279,6 +282,49 @@ ${text}\n</code>\n</pre>`;
 
   public override appendTabbedSectionTabEnd(): void {
     this[rendererLines].push(this.createTabbedSectionTabEnd());
+  }
+
+  #computeSingleLineDisplayType = (typeInfo: TypeInfo): string => {
+    switch (typeInfo.label) {
+      case "array":
+      case "map":
+      case "set": {
+        const children = typeInfo.children.map(
+          this.#computeSingleLineDisplayType
+        );
+        return `${typeInfo.label}&lt;${children.join(",")}&gt;`;
+      }
+      case "union":
+      case "enum": {
+        const children = typeInfo.children.map(
+          this.#computeSingleLineDisplayType
+        );
+        return children.join(" | ");
+      }
+      default: {
+        return typeInfo.linkedLabel;
+      }
+    }
+  };
+
+  public override createProperty(
+    ...[typeInfo, id, cb]: RendererCreatePropertyArgs
+  ) {
+    const type = this.createCode(this.#computeSingleLineDisplayType(typeInfo), {
+      variant: "raw",
+      style: "inline",
+      escape: "mdx",
+    });
+    const content = cb();
+    return this.createHeading(
+      HEADINGS.PROPERTY_HEADING_LEVEL,
+      `${content} ${type}`,
+      { id, escape: "mdx" }
+    );
+  }
+
+  public override appendProperty(...args: RendererCreatePropertyArgs): void {
+    this[rendererLines].push(this.createProperty(...args));
   }
 
   public override render() {

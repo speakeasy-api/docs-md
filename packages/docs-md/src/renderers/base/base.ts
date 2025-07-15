@@ -160,6 +160,11 @@ export type RendererAppendSidebarLinkArgs = [
     embedName: string;
   },
 ];
+export type RendererCreatePropertyArgs = [
+  typeInfo: TypeInfo,
+  id: string,
+  cb: () => string,
+];
 export type RendererAppendTryItNowArgs = [
   options: {
     externalDependencies: Record<string, string>;
@@ -237,6 +242,10 @@ export abstract class Renderer {
   ): void;
   abstract createTabbedSectionTabEnd(): void;
   abstract appendTabbedSectionTabEnd(): void;
+
+  // Property's show a property in an object schema, including it's type info
+  abstract createProperty(...args: RendererCreatePropertyArgs): string;
+  abstract appendProperty(...args: RendererCreatePropertyArgs): void;
 
   // The following methods are used to insert complex content onto the page,
   // and so they don't have "create" variants.
