@@ -1,8 +1,15 @@
 .container {
   display: flex;
-  align-items: center;
   row-gap: 0.5rem;
-  flex-wrap: wrap;
+}
+
+.containerSingleLine {
+  flex-direction: row;
+  align-items: center;
+}
+
+.containerMutliline {
+  flex-direction: column;
 }
 
 .container h1,
@@ -14,12 +21,23 @@
   margin: 0;
 }
 
-.typeSegment {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+.characterMeasure {
+  display: none;
+  position: absolute;
+  left: -1000px;
+  top: -1000px;
 }
 
-.unionSegment:not(:first-child)::before {
-  content: "\00a0|\00a0";
+.containerSingleLine .typeContainer {
+  flex-grow: 1;
+}
+
+.containerMutliline .typeContainer {
+  width: 100%
+}
+
+.typeContainer {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 80%;
+  text-wrap: nowrap;
 }

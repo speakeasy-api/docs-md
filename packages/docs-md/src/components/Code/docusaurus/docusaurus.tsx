@@ -4,9 +4,10 @@ import styles from "./styles.module.css";
 export function DocusaurusCode({ text }: CodeProps) {
   return (
     <pre className={styles.pre}>
-      <code>
-        <p className={styles.text} dangerouslySetInnerHTML={{ __html: text }} />
-      </code>
+      <code
+        className={styles.text}
+        dangerouslySetInnerHTML={{ __html: text }}
+      />
     </pre>
   );
 }

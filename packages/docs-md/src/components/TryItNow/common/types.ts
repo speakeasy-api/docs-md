@@ -20,5 +20,4 @@ export type TryItNowProps = {
   layoutStyle?: React.CSSProperties;
   currentTheme?: "dark" | "light";
   themes?: Record<"dark" | "light", PartialDeep<SandpackTheme>>;
-
 };
