@@ -1,0 +1,2543 @@
+---
+sidebar_position: 2.5
+sidebar_label: Classifiers
+---
+
+import { Pill, Section, SectionTitle, SectionContent, Property, TabbedSection, SectionTab, ExpandableSection } from "@speakeasy-api/docs-md/docusaurus";
+
+
+# Classifiers Operations \{#classifiers\}
+
+## <Pill variant="primary"><b>POST</b></Pill> /v1/moderations \{#operation-moderations_v1_moderations_post\}
+
+Moderations
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="default" paddingVariant="default">
+
+### Security \{#operation-moderations_v1_moderations_post+security\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default">
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-moderations_v1_moderations_post+security+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### ApiKey <Pill variant="warning">required</Pill> \{#operation-moderations_v1_moderations_post+security+ApiKey\}
+
+</Property>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+</Section>
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="default" paddingVariant="default">
+
+### Request Body \{#operation-moderations_v1_moderations_post+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default">
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-moderations_v1_moderations_post+request+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### inputs <Pill variant="warning">required</Pill> \{#operation-moderations_v1_moderations_post+request+inputs\}
+
+</Property>
+
+Text to classify.
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### model <Pill variant="warning">required</Pill> \{#operation-moderations_v1_moderations_post+request+model\}
+
+</Property>
+
+ID of the model to use.
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+</Section>
+
+<TabbedSection>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="none">
+
+### Responses \{#operation-moderations_v1_moderations_post+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-moderations_v1_moderations_post+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default" id="operation-moderations_v1_moderations_post+200+application-json">
+
+Successful Response
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-moderations_v1_moderations_post+200+application-json+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### id <Pill variant="warning">required</Pill> \{#operation-moderations_v1_moderations_post+200+application-json+id\}
+
+</Property>
+
+_Example:_
+
+```
+mod-e5cc70bb28c444948073e77776eb30ef
+```
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### model <Pill variant="warning">required</Pill> \{#operation-moderations_v1_moderations_post+200+application-json+model\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-moderations_v1_moderations_post+200+application-json+ModerationObject\">ModerationObject</a>","children":[{"label":"ModerationObject","linkedLabel":"<a href=\"#operation-moderations_v1_moderations_post+200+application-json+ModerationObject\">ModerationObject</a>","children":[],"breakoutSubTypes":[{"label":"ModerationObject","schema":{"type":"object","description":null,"examples":[],"properties":{"categories":{"type":"chunk","chunkId":"$300"},"category_scores":{"type":"chunk","chunkId":"$301"}},"required":[],"name":"ModerationObject","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"ModerationObject","schema":{"type":"object","description":null,"examples":[],"properties":{"categories":{"type":"chunk","chunkId":"$300"},"category_scores":{"type":"chunk","chunkId":"$301"}},"required":[],"name":"ModerationObject","defaultValue":null}}]}}>
+
+##### results <Pill variant="warning">required</Pill> \{#operation-moderations_v1_moderations_post+200+application-json+results\}
+
+</Property>
+
+<ExpandableSection title="ModerationObject" id="operation-moderations_v1_moderations_post+200+application-json+ModerationObject">
+
+#### Properties \{#operation-moderations_v1_moderations_post+200+application-json+ModerationObject+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"map","linkedLabel":"boolean","children":[{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### categories \{#operation-moderations_v1_moderations_post+200+application-json+ModerationObject+categories\}
+
+</Property>
+
+Moderation result thresholds
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"map","linkedLabel":"number","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### category\_scores \{#operation-moderations_v1_moderations_post+200+application-json+ModerationObject+category_scores\}
+
+</Property>
+
+Moderation result
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-moderations_v1_moderations_post+422+application-json">
+
+422
+
+</SectionTab>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default" id="operation-moderations_v1_moderations_post+422+application-json">
+
+Validation Error
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-moderations_v1_moderations_post+422+application-json+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"Security","linkedLabel":"<a href=\"#operation-moderations_v1_moderations_post+422+application-json+Security\">Security</a>","children":[],"breakoutSubTypes":[{"label":"Security","schema":{"type":"object","description":null,"examples":[],"properties":{"ApiKey":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["ApiKey"],"name":"Security","defaultValue":null}}]}}>
+
+##### HttpMeta <Pill variant="warning">required</Pill> \{#operation-moderations_v1_moderations_post+422+application-json+HttpMeta\}
+
+</Property>
+
+<ExpandableSection title="Security" id="operation-moderations_v1_moderations_post+422+application-json+Security">
+
+#### Properties \{#operation-moderations_v1_moderations_post+422+application-json+Security+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### ApiKey <Pill variant="warning">required</Pill> \{#operation-moderations_v1_moderations_post+422+application-json+Security+ApiKey\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-moderations_v1_moderations_post+422+application-json+ValidationError\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-moderations_v1_moderations_post+422+application-json+ValidationError\">ValidationError</a>","children":[],"breakoutSubTypes":[{"label":"ValidationError","schema":{"type":"object","description":null,"examples":[],"properties":{"loc":{"type":"chunk","chunkId":"$15"},"msg":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["loc","msg","type"],"name":"ValidationError","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"ValidationError","schema":{"type":"object","description":null,"examples":[],"properties":{"loc":{"type":"chunk","chunkId":"$15"},"msg":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["loc","msg","type"],"name":"ValidationError","defaultValue":null}}]}}>
+
+##### detail \{#operation-moderations_v1_moderations_post+422+application-json+detail\}
+
+</Property>
+
+<ExpandableSection title="ValidationError" id="operation-moderations_v1_moderations_post+422+application-json+ValidationError">
+
+#### Properties \{#operation-moderations_v1_moderations_post+422+application-json+ValidationError+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### loc <Pill variant="warning">required</Pill> \{#operation-moderations_v1_moderations_post+422+application-json+ValidationError+loc\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### msg <Pill variant="warning">required</Pill> \{#operation-moderations_v1_moderations_post+422+application-json+ValidationError+msg\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### type <Pill variant="warning">required</Pill> \{#operation-moderations_v1_moderations_post+422+application-json+ValidationError+type\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+</TabbedSection>
+
+## <Pill variant="primary"><b>POST</b></Pill> /v1/chat/moderations \{#operation-chat_moderations_v1_chat_moderations_post\}
+
+Chat Moderations
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="default" paddingVariant="default">
+
+### Security \{#operation-chat_moderations_v1_chat_moderations_post+security\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default">
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+security+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### ApiKey <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+security+ApiKey\}
+
+</Property>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+</Section>
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="default" paddingVariant="default">
+
+### Request Body \{#operation-chat_moderations_v1_chat_moderations_post+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default">
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"SystemMessage","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+SystemMessage\">SystemMessage</a>","children":[],"breakoutSubTypes":[{"label":"SystemMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$247"},"role":{"type":"enum","description":null,"examples":[],"values":["system"],"defaultValue":"\"system\""}},"required":["content"],"name":"SystemMessage","defaultValue":null}}]},{"label":"UserMessage","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage\">UserMessage</a>","children":[],"breakoutSubTypes":[{"label":"UserMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$250"},"role":{"type":"enum","description":null,"examples":[],"values":["user"],"defaultValue":"\"user\""}},"required":["content"],"name":"UserMessage","defaultValue":null}}]},{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":[{"label":"AssistantMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$256"},"prefix":{"type":"boolean","description":"Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.","examples":[],"defaultValue":"false"},"role":{"type":"enum","description":null,"examples":[],"values":["assistant"],"defaultValue":"\"assistant\""},"tool_calls":{"type":"chunk","chunkId":"$257"}},"required":[],"name":"AssistantMessage","defaultValue":null}}]},{"label":"ToolMessage","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage\">ToolMessage</a>","children":[],"breakoutSubTypes":[{"label":"ToolMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$263"},"name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"role":{"type":"enum","description":null,"examples":[],"values":["tool"],"defaultValue":"\"tool\""},"tool_call_id":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null}},"required":["content"],"name":"ToolMessage","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"SystemMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$247"},"role":{"type":"enum","description":null,"examples":[],"values":["system"],"defaultValue":"\"system\""}},"required":["content"],"name":"SystemMessage","defaultValue":null}},{"label":"UserMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$250"},"role":{"type":"enum","description":null,"examples":[],"values":["user"],"defaultValue":"\"user\""}},"required":["content"],"name":"UserMessage","defaultValue":null}},{"label":"AssistantMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$256"},"prefix":{"type":"boolean","description":"Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.","examples":[],"defaultValue":"false"},"role":{"type":"enum","description":null,"examples":[],"values":["assistant"],"defaultValue":"\"assistant\""},"tool_calls":{"type":"chunk","chunkId":"$257"}},"required":[],"name":"AssistantMessage","defaultValue":null}},{"label":"ToolMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$263"},"name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"role":{"type":"enum","description":null,"examples":[],"values":["tool"],"defaultValue":"\"tool\""},"tool_call_id":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null}},"required":["content"],"name":"ToolMessage","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"SystemMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$247"},"role":{"type":"enum","description":null,"examples":[],"values":["system"],"defaultValue":"\"system\""}},"required":["content"],"name":"SystemMessage","defaultValue":null}},{"label":"UserMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$250"},"role":{"type":"enum","description":null,"examples":[],"values":["user"],"defaultValue":"\"user\""}},"required":["content"],"name":"UserMessage","defaultValue":null}},{"label":"AssistantMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$256"},"prefix":{"type":"boolean","description":"Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.","examples":[],"defaultValue":"false"},"role":{"type":"enum","description":null,"examples":[],"values":["assistant"],"defaultValue":"\"assistant\""},"tool_calls":{"type":"chunk","chunkId":"$257"}},"required":[],"name":"AssistantMessage","defaultValue":null}},{"label":"ToolMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$263"},"name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"role":{"type":"enum","description":null,"examples":[],"values":["tool"],"defaultValue":"\"tool\""},"tool_call_id":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null}},"required":["content"],"name":"ToolMessage","defaultValue":null}}]},{"label":"array","linkedLabel":"union","children":[{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"SystemMessage","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+SystemMessage\">SystemMessage</a>","children":[],"breakoutSubTypes":[{"label":"SystemMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$247"},"role":{"type":"enum","description":null,"examples":[],"values":["system"],"defaultValue":"\"system\""}},"required":["content"],"name":"SystemMessage","defaultValue":null}}]},{"label":"UserMessage","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage\">UserMessage</a>","children":[],"breakoutSubTypes":[{"label":"UserMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$250"},"role":{"type":"enum","description":null,"examples":[],"values":["user"],"defaultValue":"\"user\""}},"required":["content"],"name":"UserMessage","defaultValue":null}}]},{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":[{"label":"AssistantMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$256"},"prefix":{"type":"boolean","description":"Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.","examples":[],"defaultValue":"false"},"role":{"type":"enum","description":null,"examples":[],"values":["assistant"],"defaultValue":"\"assistant\""},"tool_calls":{"type":"chunk","chunkId":"$257"}},"required":[],"name":"AssistantMessage","defaultValue":null}}]},{"label":"ToolMessage","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage\">ToolMessage</a>","children":[],"breakoutSubTypes":[{"label":"ToolMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$263"},"name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"role":{"type":"enum","description":null,"examples":[],"values":["tool"],"defaultValue":"\"tool\""},"tool_call_id":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null}},"required":["content"],"name":"ToolMessage","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"SystemMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$247"},"role":{"type":"enum","description":null,"examples":[],"values":["system"],"defaultValue":"\"system\""}},"required":["content"],"name":"SystemMessage","defaultValue":null}},{"label":"UserMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$250"},"role":{"type":"enum","description":null,"examples":[],"values":["user"],"defaultValue":"\"user\""}},"required":["content"],"name":"UserMessage","defaultValue":null}},{"label":"AssistantMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$256"},"prefix":{"type":"boolean","description":"Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.","examples":[],"defaultValue":"false"},"role":{"type":"enum","description":null,"examples":[],"values":["assistant"],"defaultValue":"\"assistant\""},"tool_calls":{"type":"chunk","chunkId":"$257"}},"required":[],"name":"AssistantMessage","defaultValue":null}},{"label":"ToolMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$263"},"name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"role":{"type":"enum","description":null,"examples":[],"values":["tool"],"defaultValue":"\"tool\""},"tool_call_id":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null}},"required":["content"],"name":"ToolMessage","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"SystemMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$247"},"role":{"type":"enum","description":null,"examples":[],"values":["system"],"defaultValue":"\"system\""}},"required":["content"],"name":"SystemMessage","defaultValue":null}},{"label":"UserMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$250"},"role":{"type":"enum","description":null,"examples":[],"values":["user"],"defaultValue":"\"user\""}},"required":["content"],"name":"UserMessage","defaultValue":null}},{"label":"AssistantMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$256"},"prefix":{"type":"boolean","description":"Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.","examples":[],"defaultValue":"false"},"role":{"type":"enum","description":null,"examples":[],"values":["assistant"],"defaultValue":"\"assistant\""},"tool_calls":{"type":"chunk","chunkId":"$257"}},"required":[],"name":"AssistantMessage","defaultValue":null}},{"label":"ToolMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$263"},"name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"role":{"type":"enum","description":null,"examples":[],"values":["tool"],"defaultValue":"\"tool\""},"tool_call_id":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null}},"required":["content"],"name":"ToolMessage","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"SystemMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$247"},"role":{"type":"enum","description":null,"examples":[],"values":["system"],"defaultValue":"\"system\""}},"required":["content"],"name":"SystemMessage","defaultValue":null}},{"label":"UserMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$250"},"role":{"type":"enum","description":null,"examples":[],"values":["user"],"defaultValue":"\"user\""}},"required":["content"],"name":"UserMessage","defaultValue":null}},{"label":"AssistantMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$256"},"prefix":{"type":"boolean","description":"Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.","examples":[],"defaultValue":"false"},"role":{"type":"enum","description":null,"examples":[],"values":["assistant"],"defaultValue":"\"assistant\""},"tool_calls":{"type":"chunk","chunkId":"$257"}},"required":[],"name":"AssistantMessage","defaultValue":null}},{"label":"ToolMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$263"},"name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"role":{"type":"enum","description":null,"examples":[],"values":["tool"],"defaultValue":"\"tool\""},"tool_call_id":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null}},"required":["content"],"name":"ToolMessage","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"SystemMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$247"},"role":{"type":"enum","description":null,"examples":[],"values":["system"],"defaultValue":"\"system\""}},"required":["content"],"name":"SystemMessage","defaultValue":null}},{"label":"UserMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$250"},"role":{"type":"enum","description":null,"examples":[],"values":["user"],"defaultValue":"\"user\""}},"required":["content"],"name":"UserMessage","defaultValue":null}},{"label":"AssistantMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$256"},"prefix":{"type":"boolean","description":"Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.","examples":[],"defaultValue":"false"},"role":{"type":"enum","description":null,"examples":[],"values":["assistant"],"defaultValue":"\"assistant\""},"tool_calls":{"type":"chunk","chunkId":"$257"}},"required":[],"name":"AssistantMessage","defaultValue":null}},{"label":"ToolMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$263"},"name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"role":{"type":"enum","description":null,"examples":[],"values":["tool"],"defaultValue":"\"tool\""},"tool_call_id":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null}},"required":["content"],"name":"ToolMessage","defaultValue":null}},{"label":"SystemMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$247"},"role":{"type":"enum","description":null,"examples":[],"values":["system"],"defaultValue":"\"system\""}},"required":["content"],"name":"SystemMessage","defaultValue":null}},{"label":"UserMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$250"},"role":{"type":"enum","description":null,"examples":[],"values":["user"],"defaultValue":"\"user\""}},"required":["content"],"name":"UserMessage","defaultValue":null}},{"label":"AssistantMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$256"},"prefix":{"type":"boolean","description":"Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.","examples":[],"defaultValue":"false"},"role":{"type":"enum","description":null,"examples":[],"values":["assistant"],"defaultValue":"\"assistant\""},"tool_calls":{"type":"chunk","chunkId":"$257"}},"required":[],"name":"AssistantMessage","defaultValue":null}},{"label":"ToolMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$263"},"name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"role":{"type":"enum","description":null,"examples":[],"values":["tool"],"defaultValue":"\"tool\""},"tool_call_id":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null}},"required":["content"],"name":"ToolMessage","defaultValue":null}}]}}>
+
+##### inputs <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+inputs\}
+
+</Property>
+
+Chat to classify
+
+<ExpandableSection title="SystemMessage" id="operation-chat_moderations_v1_chat_moderations_post+request+SystemMessage">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+SystemMessage+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"array","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+SystemMessage+TextChunk\">TextChunk</a>","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+SystemMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}}]}}>
+
+##### content <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+SystemMessage+content\}
+
+</Property>
+
+<ExpandableSection title="TextChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+SystemMessage+TextChunk">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+SystemMessage+TextChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### text <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+SystemMessage+TextChunk+text\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+SystemMessage+TextChunk+type\}
+
+</Property>
+
+_Default Value:_ `"text"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"system\"","linkedLabel":"\"system\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### role \{#operation-chat_moderations_v1_chat_moderations_post+request+SystemMessage+role\}
+
+</Property>
+
+_Default Value:_ `"system"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="UserMessage" id="operation-chat_moderations_v1_chat_moderations_post+request+UserMessage">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}}]},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":[{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}}]},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":[{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}}]},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":[{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}}>
+
+##### content <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+content\}
+
+</Property>
+
+<ExpandableSection title="TextChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+TextChunk">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+TextChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### text <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+TextChunk+text\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+TextChunk+type\}
+
+</Property>
+
+_Default Value:_ `"text"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ImageURLChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ImageURLChunk">
+
+An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ImageURLChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ImageURLChunk+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":[{"label":"ImageURL","schema":{"type":"object","description":null,"examples":[],"properties":{"detail":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"url":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["url"],"name":"ImageURL","defaultValue":null}}]},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"ImageURL","schema":{"type":"object","description":null,"examples":[],"properties":{"detail":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"url":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["url"],"name":"ImageURL","defaultValue":null}}]}}>
+
+##### image\_url <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ImageURLChunk+image_url\}
+
+</Property>
+
+<ExpandableSection title="ImageURL" id="operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ImageURLChunk+ImageURL">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ImageURLChunk+ImageURL+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### detail \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ImageURLChunk+ImageURL+detail\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### url <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ImageURLChunk+ImageURL+url\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ImageURLChunk+type\}
+
+</Property>
+
+_Default Value:_ `"image_url"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="DocumentURLChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+DocumentURLChunk">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+DocumentURLChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### document\_name \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+DocumentURLChunk+document_name\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### document\_url <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+DocumentURLChunk+document_url\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+DocumentURLChunk+type\}
+
+</Property>
+
+_Default Value:_ `"document_url"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ReferenceChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ReferenceChunk">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ReferenceChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### reference\_ids <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ReferenceChunk+reference_ids\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+ReferenceChunk+type\}
+
+</Property>
+
+_Default Value:_ `"reference"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"user\"","linkedLabel":"\"user\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### role \{#operation-chat_moderations_v1_chat_moderations_post+request+UserMessage+role\}
+
+</Property>
+
+_Default Value:_ `"user"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="AssistantMessage" id="operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}}]},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":[{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}}]},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":[{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}}]},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":[{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}}>
+
+##### content \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+content\}
+
+</Property>
+
+<ExpandableSection title="TextChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+TextChunk">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+TextChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### text <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+TextChunk+text\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+TextChunk+type\}
+
+</Property>
+
+_Default Value:_ `"text"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ImageURLChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ImageURLChunk">
+
+An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ImageURLChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ImageURLChunk+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":[{"label":"ImageURL","schema":{"type":"object","description":null,"examples":[],"properties":{"detail":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"url":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["url"],"name":"ImageURL","defaultValue":null}}]},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"ImageURL","schema":{"type":"object","description":null,"examples":[],"properties":{"detail":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"url":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["url"],"name":"ImageURL","defaultValue":null}}]}}>
+
+##### image\_url <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ImageURLChunk+image_url\}
+
+</Property>
+
+<ExpandableSection title="ImageURL" id="operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ImageURLChunk+ImageURL">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ImageURLChunk+ImageURL+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### detail \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ImageURLChunk+ImageURL+detail\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### url <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ImageURLChunk+ImageURL+url\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ImageURLChunk+type\}
+
+</Property>
+
+_Default Value:_ `"image_url"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="DocumentURLChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+DocumentURLChunk">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+DocumentURLChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### document\_name \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+DocumentURLChunk+document_name\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### document\_url <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+DocumentURLChunk+document_url\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+DocumentURLChunk+type\}
+
+</Property>
+
+_Default Value:_ `"document_url"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ReferenceChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ReferenceChunk">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ReferenceChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### reference\_ids <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ReferenceChunk+reference_ids\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ReferenceChunk+type\}
+
+</Property>
+
+_Default Value:_ `"reference"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":[]}}>
+
+##### prefix \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+prefix\}
+
+</Property>
+
+Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.
+
+_Default Value:_ `false`
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"assistant\"","linkedLabel":"\"assistant\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### role \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+role\}
+
+</Property>
+
+_Default Value:_ `"assistant"`
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall\">ToolCall</a>","children":[],"breakoutSubTypes":[{"label":"ToolCall","schema":{"type":"object","description":null,"examples":[],"properties":{"function":{"type":"chunk","chunkId":"$259"},"id":{"type":"string","description":null,"examples":[],"defaultValue":"\"null\""},"index":{"type":"integer","description":null,"examples":[],"defaultValue":"0"},"type":{"type":"enum","description":null,"examples":[],"values":["function"],"defaultValue":null}},"required":["function"],"name":"ToolCall","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"ToolCall","schema":{"type":"object","description":null,"examples":[],"properties":{"function":{"type":"chunk","chunkId":"$259"},"id":{"type":"string","description":null,"examples":[],"defaultValue":"\"null\""},"index":{"type":"integer","description":null,"examples":[],"defaultValue":"0"},"type":{"type":"enum","description":null,"examples":[],"values":["function"],"defaultValue":null}},"required":["function"],"name":"ToolCall","defaultValue":null}}]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"ToolCall","schema":{"type":"object","description":null,"examples":[],"properties":{"function":{"type":"chunk","chunkId":"$259"},"id":{"type":"string","description":null,"examples":[],"defaultValue":"\"null\""},"index":{"type":"integer","description":null,"examples":[],"defaultValue":"0"},"type":{"type":"enum","description":null,"examples":[],"values":["function"],"defaultValue":null}},"required":["function"],"name":"ToolCall","defaultValue":null}}]}}>
+
+##### tool\_calls \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+tool_calls\}
+
+</Property>
+
+<ExpandableSection title="ToolCall" id="operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall+FunctionCall\">FunctionCall</a>","children":[],"breakoutSubTypes":[{"label":"FunctionCall","schema":{"type":"object","description":null,"examples":[],"properties":{"arguments":{"type":"chunk","chunkId":"$260"},"name":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["name","arguments"],"name":"FunctionCall","defaultValue":null}}]}}>
+
+##### function <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall+function\}
+
+</Property>
+
+<ExpandableSection title="FunctionCall" id="operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall+FunctionCall">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall+FunctionCall+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### arguments <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall+FunctionCall+arguments\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### name <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall+FunctionCall+name\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### id \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall+id\}
+
+</Property>
+
+_Default Value:_ `"null"`
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":[]}}>
+
+##### index \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall+index\}
+
+</Property>
+
+_Default Value:_ `0`
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+AssistantMessage+ToolCall+type\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ToolMessage" id="operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}}]},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":[{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}}]},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":[{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}}]},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":[{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}}>
+
+##### content <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+content\}
+
+</Property>
+
+<ExpandableSection title="TextChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+TextChunk">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+TextChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### text <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+TextChunk+text\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+TextChunk+type\}
+
+</Property>
+
+_Default Value:_ `"text"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ImageURLChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ImageURLChunk">
+
+An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ImageURLChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ImageURLChunk+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":[{"label":"ImageURL","schema":{"type":"object","description":null,"examples":[],"properties":{"detail":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"url":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["url"],"name":"ImageURL","defaultValue":null}}]},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"ImageURL","schema":{"type":"object","description":null,"examples":[],"properties":{"detail":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"url":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["url"],"name":"ImageURL","defaultValue":null}}]}}>
+
+##### image\_url <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ImageURLChunk+image_url\}
+
+</Property>
+
+<ExpandableSection title="ImageURL" id="operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ImageURLChunk+ImageURL">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ImageURLChunk+ImageURL+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### detail \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ImageURLChunk+ImageURL+detail\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### url <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ImageURLChunk+ImageURL+url\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ImageURLChunk+type\}
+
+</Property>
+
+_Default Value:_ `"image_url"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="DocumentURLChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+DocumentURLChunk">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+DocumentURLChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### document\_name \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+DocumentURLChunk+document_name\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### document\_url <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+DocumentURLChunk+document_url\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+DocumentURLChunk+type\}
+
+</Property>
+
+_Default Value:_ `"document_url"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ReferenceChunk" id="operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ReferenceChunk">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ReferenceChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### reference\_ids <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ReferenceChunk+reference_ids\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+ReferenceChunk+type\}
+
+</Property>
+
+_Default Value:_ `"reference"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### name \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+name\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"tool\"","linkedLabel":"\"tool\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### role \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+role\}
+
+</Property>
+
+_Default Value:_ `"tool"`
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### tool\_call\_id \{#operation-chat_moderations_v1_chat_moderations_post+request+ToolMessage+tool_call_id\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### model <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+request+model\}
+
+</Property>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+</Section>
+
+<TabbedSection>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="none">
+
+### Responses \{#operation-chat_moderations_v1_chat_moderations_post+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-chat_moderations_v1_chat_moderations_post+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default" id="operation-chat_moderations_v1_chat_moderations_post+200+application-json">
+
+Successful Response
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+200+application-json+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### id <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+200+application-json+id\}
+
+</Property>
+
+_Example:_
+
+```
+mod-e5cc70bb28c444948073e77776eb30ef
+```
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### model <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+200+application-json+model\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+200+application-json+ModerationObject\">ModerationObject</a>","children":[{"label":"ModerationObject","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+200+application-json+ModerationObject\">ModerationObject</a>","children":[],"breakoutSubTypes":[{"label":"ModerationObject","schema":{"type":"object","description":null,"examples":[],"properties":{"categories":{"type":"chunk","chunkId":"$300"},"category_scores":{"type":"chunk","chunkId":"$301"}},"required":[],"name":"ModerationObject","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"ModerationObject","schema":{"type":"object","description":null,"examples":[],"properties":{"categories":{"type":"chunk","chunkId":"$300"},"category_scores":{"type":"chunk","chunkId":"$301"}},"required":[],"name":"ModerationObject","defaultValue":null}}]}}>
+
+##### results <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+200+application-json+results\}
+
+</Property>
+
+<ExpandableSection title="ModerationObject" id="operation-chat_moderations_v1_chat_moderations_post+200+application-json+ModerationObject">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+200+application-json+ModerationObject+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"map","linkedLabel":"boolean","children":[{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### categories \{#operation-chat_moderations_v1_chat_moderations_post+200+application-json+ModerationObject+categories\}
+
+</Property>
+
+Moderation result thresholds
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"map","linkedLabel":"number","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### category\_scores \{#operation-chat_moderations_v1_chat_moderations_post+200+application-json+ModerationObject+category_scores\}
+
+</Property>
+
+Moderation result
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-chat_moderations_v1_chat_moderations_post+422+application-json">
+
+422
+
+</SectionTab>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default" id="operation-chat_moderations_v1_chat_moderations_post+422+application-json">
+
+Validation Error
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+422+application-json+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"Security","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+422+application-json+Security\">Security</a>","children":[],"breakoutSubTypes":[{"label":"Security","schema":{"type":"object","description":null,"examples":[],"properties":{"ApiKey":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["ApiKey"],"name":"Security","defaultValue":null}}]}}>
+
+##### HttpMeta <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+422+application-json+HttpMeta\}
+
+</Property>
+
+<ExpandableSection title="Security" id="operation-chat_moderations_v1_chat_moderations_post+422+application-json+Security">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+422+application-json+Security+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### ApiKey <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+422+application-json+Security+ApiKey\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+422+application-json+ValidationError\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post+422+application-json+ValidationError\">ValidationError</a>","children":[],"breakoutSubTypes":[{"label":"ValidationError","schema":{"type":"object","description":null,"examples":[],"properties":{"loc":{"type":"chunk","chunkId":"$15"},"msg":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["loc","msg","type"],"name":"ValidationError","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"ValidationError","schema":{"type":"object","description":null,"examples":[],"properties":{"loc":{"type":"chunk","chunkId":"$15"},"msg":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["loc","msg","type"],"name":"ValidationError","defaultValue":null}}]}}>
+
+##### detail \{#operation-chat_moderations_v1_chat_moderations_post+422+application-json+detail\}
+
+</Property>
+
+<ExpandableSection title="ValidationError" id="operation-chat_moderations_v1_chat_moderations_post+422+application-json+ValidationError">
+
+#### Properties \{#operation-chat_moderations_v1_chat_moderations_post+422+application-json+ValidationError+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### loc <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+422+application-json+ValidationError+loc\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### msg <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+422+application-json+ValidationError+msg\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### type <Pill variant="warning">required</Pill> \{#operation-chat_moderations_v1_chat_moderations_post+422+application-json+ValidationError+type\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+</TabbedSection>
+
+## <Pill variant="primary"><b>POST</b></Pill> /v1/classifications \{#operation-classifications_v1_classifications_post\}
+
+Classifications
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="default" paddingVariant="default">
+
+### Security \{#operation-classifications_v1_classifications_post+security\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default">
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-classifications_v1_classifications_post+security+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### ApiKey <Pill variant="warning">required</Pill> \{#operation-classifications_v1_classifications_post+security+ApiKey\}
+
+</Property>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+</Section>
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="default" paddingVariant="default">
+
+### Request Body \{#operation-classifications_v1_classifications_post+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default">
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-classifications_v1_classifications_post+request+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### inputs <Pill variant="warning">required</Pill> \{#operation-classifications_v1_classifications_post+request+inputs\}
+
+</Property>
+
+Text to classify.
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### model <Pill variant="warning">required</Pill> \{#operation-classifications_v1_classifications_post+request+model\}
+
+</Property>
+
+ID of the model to use.
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+</Section>
+
+<TabbedSection>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="none">
+
+### Responses \{#operation-classifications_v1_classifications_post+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-classifications_v1_classifications_post+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default" id="operation-classifications_v1_classifications_post+200+application-json">
+
+Successful Response
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-classifications_v1_classifications_post+200+application-json+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### id <Pill variant="warning">required</Pill> \{#operation-classifications_v1_classifications_post+200+application-json+id\}
+
+</Property>
+
+_Example:_
+
+```
+mod-e5cc70bb28c444948073e77776eb30ef
+```
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### model <Pill variant="warning">required</Pill> \{#operation-classifications_v1_classifications_post+200+application-json+model\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-classifications_v1_classifications_post+200+application-json+ClassificationTargetResult\">ClassificationTargetResult</a>","children":[{"label":"map","linkedLabel":"<a href=\"#operation-classifications_v1_classifications_post+200+application-json+ClassificationTargetResult\">ClassificationTargetResult</a>","children":[{"label":"ClassificationTargetResult","linkedLabel":"<a href=\"#operation-classifications_v1_classifications_post+200+application-json+ClassificationTargetResult\">ClassificationTargetResult</a>","children":[],"breakoutSubTypes":[{"label":"ClassificationTargetResult","schema":{"type":"object","description":null,"examples":[],"properties":{"scores":{"type":"chunk","chunkId":"$315"}},"required":["scores"],"name":"ClassificationTargetResult","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"ClassificationTargetResult","schema":{"type":"object","description":null,"examples":[],"properties":{"scores":{"type":"chunk","chunkId":"$315"}},"required":["scores"],"name":"ClassificationTargetResult","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"ClassificationTargetResult","schema":{"type":"object","description":null,"examples":[],"properties":{"scores":{"type":"chunk","chunkId":"$315"}},"required":["scores"],"name":"ClassificationTargetResult","defaultValue":null}}]}}>
+
+##### results <Pill variant="warning">required</Pill> \{#operation-classifications_v1_classifications_post+200+application-json+results\}
+
+</Property>
+
+<ExpandableSection title="ClassificationTargetResult" id="operation-classifications_v1_classifications_post+200+application-json+ClassificationTargetResult">
+
+#### Properties \{#operation-classifications_v1_classifications_post+200+application-json+ClassificationTargetResult+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"map","linkedLabel":"number","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### scores <Pill variant="warning">required</Pill> \{#operation-classifications_v1_classifications_post+200+application-json+ClassificationTargetResult+scores\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-classifications_v1_classifications_post+422+application-json">
+
+422
+
+</SectionTab>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default" id="operation-classifications_v1_classifications_post+422+application-json">
+
+Validation Error
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-classifications_v1_classifications_post+422+application-json+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"Security","linkedLabel":"<a href=\"#operation-classifications_v1_classifications_post+422+application-json+Security\">Security</a>","children":[],"breakoutSubTypes":[{"label":"Security","schema":{"type":"object","description":null,"examples":[],"properties":{"ApiKey":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["ApiKey"],"name":"Security","defaultValue":null}}]}}>
+
+##### HttpMeta <Pill variant="warning">required</Pill> \{#operation-classifications_v1_classifications_post+422+application-json+HttpMeta\}
+
+</Property>
+
+<ExpandableSection title="Security" id="operation-classifications_v1_classifications_post+422+application-json+Security">
+
+#### Properties \{#operation-classifications_v1_classifications_post+422+application-json+Security+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### ApiKey <Pill variant="warning">required</Pill> \{#operation-classifications_v1_classifications_post+422+application-json+Security+ApiKey\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-classifications_v1_classifications_post+422+application-json+ValidationError\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-classifications_v1_classifications_post+422+application-json+ValidationError\">ValidationError</a>","children":[],"breakoutSubTypes":[{"label":"ValidationError","schema":{"type":"object","description":null,"examples":[],"properties":{"loc":{"type":"chunk","chunkId":"$15"},"msg":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["loc","msg","type"],"name":"ValidationError","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"ValidationError","schema":{"type":"object","description":null,"examples":[],"properties":{"loc":{"type":"chunk","chunkId":"$15"},"msg":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["loc","msg","type"],"name":"ValidationError","defaultValue":null}}]}}>
+
+##### detail \{#operation-classifications_v1_classifications_post+422+application-json+detail\}
+
+</Property>
+
+<ExpandableSection title="ValidationError" id="operation-classifications_v1_classifications_post+422+application-json+ValidationError">
+
+#### Properties \{#operation-classifications_v1_classifications_post+422+application-json+ValidationError+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### loc <Pill variant="warning">required</Pill> \{#operation-classifications_v1_classifications_post+422+application-json+ValidationError+loc\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### msg <Pill variant="warning">required</Pill> \{#operation-classifications_v1_classifications_post+422+application-json+ValidationError+msg\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### type <Pill variant="warning">required</Pill> \{#operation-classifications_v1_classifications_post+422+application-json+ValidationError+type\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+</TabbedSection>
+
+## <Pill variant="primary"><b>POST</b></Pill> /v1/chat/classifications \{#operation-chat_classifications_v1_chat_classifications_post\}
+
+Chat Classifications
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="default" paddingVariant="default">
+
+### Security \{#operation-chat_classifications_v1_chat_classifications_post+security\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default">
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+security+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### ApiKey <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+security+ApiKey\}
+
+</Property>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+</Section>
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="default" paddingVariant="default">
+
+### Request Body \{#operation-chat_classifications_v1_chat_classifications_post+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default">
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"inputs","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+inputs\">inputs</a>","children":[],"breakoutSubTypes":[{"label":"inputs","schema":{"type":"object","description":null,"examples":[],"properties":{"messages":{"type":"chunk","chunkId":"$320"}},"required":["messages"],"name":"inputs","defaultValue":null}}]},{"label":"array","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest\">InstructRequest</a>","children":[{"label":"InstructRequest","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest\">InstructRequest</a>","children":[],"breakoutSubTypes":[{"label":"InstructRequest","schema":{"type":"object","description":null,"examples":[],"properties":{"messages":{"type":"chunk","chunkId":"$323"}},"required":["messages"],"name":"InstructRequest","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"InstructRequest","schema":{"type":"object","description":null,"examples":[],"properties":{"messages":{"type":"chunk","chunkId":"$323"}},"required":["messages"],"name":"InstructRequest","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"inputs","schema":{"type":"object","description":null,"examples":[],"properties":{"messages":{"type":"chunk","chunkId":"$320"}},"required":["messages"],"name":"inputs","defaultValue":null}},{"label":"InstructRequest","schema":{"type":"object","description":null,"examples":[],"properties":{"messages":{"type":"chunk","chunkId":"$323"}},"required":["messages"],"name":"InstructRequest","defaultValue":null}}]}}>
+
+##### inputs <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+inputs\}
+
+</Property>
+
+Chat to classify
+
+<ExpandableSection title="inputs" id="operation-chat_classifications_v1_chat_classifications_post+request+inputs">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+inputs+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+inputs+inputs\">inputs</a>","children":[{"label":"inputs","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+inputs+inputs\">inputs</a>","children":[],"breakoutSubTypes":[{"label":"inputs","schema":{"type":"object","description":null,"examples":[],"properties":{"messages":{"type":"chunk","chunkId":"$320"}},"required":["messages"],"name":"inputs","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"inputs","schema":{"type":"object","description":null,"examples":[],"properties":{"messages":{"type":"chunk","chunkId":"$320"}},"required":["messages"],"name":"inputs","defaultValue":null}}]}}>
+
+##### messages <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+inputs+messages\}
+
+</Property>
+
+`inputs` is circular. See previous description for details.
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="InstructRequest" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"SystemMessage","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+SystemMessage\">SystemMessage</a>","children":[],"breakoutSubTypes":[{"label":"SystemMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$247"},"role":{"type":"enum","description":null,"examples":[],"values":["system"],"defaultValue":"\"system\""}},"required":["content"],"name":"SystemMessage","defaultValue":null}}]},{"label":"UserMessage","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage\">UserMessage</a>","children":[],"breakoutSubTypes":[{"label":"UserMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$250"},"role":{"type":"enum","description":null,"examples":[],"values":["user"],"defaultValue":"\"user\""}},"required":["content"],"name":"UserMessage","defaultValue":null}}]},{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":[{"label":"AssistantMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$256"},"prefix":{"type":"boolean","description":"Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.","examples":[],"defaultValue":"false"},"role":{"type":"enum","description":null,"examples":[],"values":["assistant"],"defaultValue":"\"assistant\""},"tool_calls":{"type":"chunk","chunkId":"$257"}},"required":[],"name":"AssistantMessage","defaultValue":null}}]},{"label":"ToolMessage","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage\">ToolMessage</a>","children":[],"breakoutSubTypes":[{"label":"ToolMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$263"},"name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"role":{"type":"enum","description":null,"examples":[],"values":["tool"],"defaultValue":"\"tool\""},"tool_call_id":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null}},"required":["content"],"name":"ToolMessage","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"SystemMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$247"},"role":{"type":"enum","description":null,"examples":[],"values":["system"],"defaultValue":"\"system\""}},"required":["content"],"name":"SystemMessage","defaultValue":null}},{"label":"UserMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$250"},"role":{"type":"enum","description":null,"examples":[],"values":["user"],"defaultValue":"\"user\""}},"required":["content"],"name":"UserMessage","defaultValue":null}},{"label":"AssistantMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$256"},"prefix":{"type":"boolean","description":"Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.","examples":[],"defaultValue":"false"},"role":{"type":"enum","description":null,"examples":[],"values":["assistant"],"defaultValue":"\"assistant\""},"tool_calls":{"type":"chunk","chunkId":"$257"}},"required":[],"name":"AssistantMessage","defaultValue":null}},{"label":"ToolMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$263"},"name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"role":{"type":"enum","description":null,"examples":[],"values":["tool"],"defaultValue":"\"tool\""},"tool_call_id":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null}},"required":["content"],"name":"ToolMessage","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"SystemMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$247"},"role":{"type":"enum","description":null,"examples":[],"values":["system"],"defaultValue":"\"system\""}},"required":["content"],"name":"SystemMessage","defaultValue":null}},{"label":"UserMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$250"},"role":{"type":"enum","description":null,"examples":[],"values":["user"],"defaultValue":"\"user\""}},"required":["content"],"name":"UserMessage","defaultValue":null}},{"label":"AssistantMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$256"},"prefix":{"type":"boolean","description":"Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.","examples":[],"defaultValue":"false"},"role":{"type":"enum","description":null,"examples":[],"values":["assistant"],"defaultValue":"\"assistant\""},"tool_calls":{"type":"chunk","chunkId":"$257"}},"required":[],"name":"AssistantMessage","defaultValue":null}},{"label":"ToolMessage","schema":{"type":"object","description":null,"examples":[],"properties":{"content":{"type":"chunk","chunkId":"$263"},"name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"role":{"type":"enum","description":null,"examples":[],"values":["tool"],"defaultValue":"\"tool\""},"tool_call_id":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null}},"required":["content"],"name":"ToolMessage","defaultValue":null}}]}}>
+
+##### messages <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+messages\}
+
+</Property>
+
+<ExpandableSection title="SystemMessage" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+SystemMessage">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+SystemMessage+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"array","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+SystemMessage+TextChunk\">TextChunk</a>","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+SystemMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}}]}}>
+
+##### content <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+SystemMessage+content\}
+
+</Property>
+
+<ExpandableSection title="TextChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+SystemMessage+TextChunk">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+SystemMessage+TextChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### text <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+SystemMessage+TextChunk+text\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+SystemMessage+TextChunk+type\}
+
+</Property>
+
+_Default Value:_ `"text"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"system\"","linkedLabel":"\"system\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### role \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+SystemMessage+role\}
+
+</Property>
+
+_Default Value:_ `"system"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="UserMessage" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}}]},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":[{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}}]},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":[{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}}]},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":[{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}}>
+
+##### content <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+content\}
+
+</Property>
+
+<ExpandableSection title="TextChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+TextChunk">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+TextChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### text <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+TextChunk+text\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+TextChunk+type\}
+
+</Property>
+
+_Default Value:_ `"text"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ImageURLChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ImageURLChunk">
+
+An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ImageURLChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ImageURLChunk+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":[{"label":"ImageURL","schema":{"type":"object","description":null,"examples":[],"properties":{"detail":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"url":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["url"],"name":"ImageURL","defaultValue":null}}]},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"ImageURL","schema":{"type":"object","description":null,"examples":[],"properties":{"detail":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"url":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["url"],"name":"ImageURL","defaultValue":null}}]}}>
+
+##### image\_url <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ImageURLChunk+image_url\}
+
+</Property>
+
+<ExpandableSection title="ImageURL" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ImageURLChunk+ImageURL">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ImageURLChunk+ImageURL+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### detail \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ImageURLChunk+ImageURL+detail\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### url <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ImageURLChunk+ImageURL+url\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ImageURLChunk+type\}
+
+</Property>
+
+_Default Value:_ `"image_url"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="DocumentURLChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+DocumentURLChunk">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+DocumentURLChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### document\_name \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+DocumentURLChunk+document_name\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### document\_url <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+DocumentURLChunk+document_url\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+DocumentURLChunk+type\}
+
+</Property>
+
+_Default Value:_ `"document_url"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ReferenceChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ReferenceChunk">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ReferenceChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### reference\_ids <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ReferenceChunk+reference_ids\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+ReferenceChunk+type\}
+
+</Property>
+
+_Default Value:_ `"reference"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"user\"","linkedLabel":"\"user\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### role \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+UserMessage+role\}
+
+</Property>
+
+_Default Value:_ `"user"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="AssistantMessage" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}}]},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":[{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}}]},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":[{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}}]},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":[{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}}>
+
+##### content \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+content\}
+
+</Property>
+
+<ExpandableSection title="TextChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+TextChunk">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+TextChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### text <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+TextChunk+text\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+TextChunk+type\}
+
+</Property>
+
+_Default Value:_ `"text"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ImageURLChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ImageURLChunk">
+
+An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ImageURLChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ImageURLChunk+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":[{"label":"ImageURL","schema":{"type":"object","description":null,"examples":[],"properties":{"detail":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"url":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["url"],"name":"ImageURL","defaultValue":null}}]},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"ImageURL","schema":{"type":"object","description":null,"examples":[],"properties":{"detail":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"url":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["url"],"name":"ImageURL","defaultValue":null}}]}}>
+
+##### image\_url <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ImageURLChunk+image_url\}
+
+</Property>
+
+<ExpandableSection title="ImageURL" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ImageURLChunk+ImageURL">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ImageURLChunk+ImageURL+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### detail \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ImageURLChunk+ImageURL+detail\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### url <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ImageURLChunk+ImageURL+url\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ImageURLChunk+type\}
+
+</Property>
+
+_Default Value:_ `"image_url"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="DocumentURLChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+DocumentURLChunk">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+DocumentURLChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### document\_name \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+DocumentURLChunk+document_name\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### document\_url <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+DocumentURLChunk+document_url\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+DocumentURLChunk+type\}
+
+</Property>
+
+_Default Value:_ `"document_url"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ReferenceChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ReferenceChunk">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ReferenceChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### reference\_ids <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ReferenceChunk+reference_ids\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ReferenceChunk+type\}
+
+</Property>
+
+_Default Value:_ `"reference"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":[]}}>
+
+##### prefix \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+prefix\}
+
+</Property>
+
+Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.
+
+_Default Value:_ `false`
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"assistant\"","linkedLabel":"\"assistant\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### role \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+role\}
+
+</Property>
+
+_Default Value:_ `"assistant"`
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall\">ToolCall</a>","children":[],"breakoutSubTypes":[{"label":"ToolCall","schema":{"type":"object","description":null,"examples":[],"properties":{"function":{"type":"chunk","chunkId":"$259"},"id":{"type":"string","description":null,"examples":[],"defaultValue":"\"null\""},"index":{"type":"integer","description":null,"examples":[],"defaultValue":"0"},"type":{"type":"enum","description":null,"examples":[],"values":["function"],"defaultValue":null}},"required":["function"],"name":"ToolCall","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"ToolCall","schema":{"type":"object","description":null,"examples":[],"properties":{"function":{"type":"chunk","chunkId":"$259"},"id":{"type":"string","description":null,"examples":[],"defaultValue":"\"null\""},"index":{"type":"integer","description":null,"examples":[],"defaultValue":"0"},"type":{"type":"enum","description":null,"examples":[],"values":["function"],"defaultValue":null}},"required":["function"],"name":"ToolCall","defaultValue":null}}]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"ToolCall","schema":{"type":"object","description":null,"examples":[],"properties":{"function":{"type":"chunk","chunkId":"$259"},"id":{"type":"string","description":null,"examples":[],"defaultValue":"\"null\""},"index":{"type":"integer","description":null,"examples":[],"defaultValue":"0"},"type":{"type":"enum","description":null,"examples":[],"values":["function"],"defaultValue":null}},"required":["function"],"name":"ToolCall","defaultValue":null}}]}}>
+
+##### tool\_calls \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+tool_calls\}
+
+</Property>
+
+<ExpandableSection title="ToolCall" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall+FunctionCall\">FunctionCall</a>","children":[],"breakoutSubTypes":[{"label":"FunctionCall","schema":{"type":"object","description":null,"examples":[],"properties":{"arguments":{"type":"chunk","chunkId":"$260"},"name":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["name","arguments"],"name":"FunctionCall","defaultValue":null}}]}}>
+
+##### function <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall+function\}
+
+</Property>
+
+<ExpandableSection title="FunctionCall" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall+FunctionCall">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall+FunctionCall+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### arguments <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall+FunctionCall+arguments\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### name <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall+FunctionCall+name\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### id \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall+id\}
+
+</Property>
+
+_Default Value:_ `"null"`
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":[]}}>
+
+##### index \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall+index\}
+
+</Property>
+
+_Default Value:_ `0`
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+AssistantMessage+ToolCall+type\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ToolMessage" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}}]},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":[{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}}]},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":[{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}}]},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":[{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"TextChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"text":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["text"],"defaultValue":"\"text\""}},"required":["text"],"name":"TextChunk","defaultValue":null}},{"label":"ImageURLChunk","schema":{"type":"object","description":"An object that looks like `{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/png;base64,iVBORw0`","examples":[],"properties":{"image_url":{"type":"chunk","chunkId":"$77"},"type":{"type":"enum","description":null,"examples":[],"values":["image_url"],"defaultValue":"\"image_url\""}},"required":["image_url"],"name":"ImageURLChunk","defaultValue":null}},{"label":"DocumentURLChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"document_name":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":"The filename of the document","examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"document_url":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"enum","description":null,"examples":[],"values":["document_url"],"defaultValue":"\"document_url\""}},"required":["document_url"],"name":"DocumentURLChunk","defaultValue":null}},{"label":"ReferenceChunk","schema":{"type":"object","description":null,"examples":[],"properties":{"reference_ids":{"type":"chunk","chunkId":"$254"},"type":{"type":"enum","description":null,"examples":[],"values":["reference"],"defaultValue":"\"reference\""}},"required":["reference_ids"],"name":"ReferenceChunk","defaultValue":null}}]}}>
+
+##### content <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+content\}
+
+</Property>
+
+<ExpandableSection title="TextChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+TextChunk">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+TextChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### text <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+TextChunk+text\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+TextChunk+type\}
+
+</Property>
+
+_Default Value:_ `"text"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ImageURLChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ImageURLChunk">
+
+An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ImageURLChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ImageURLChunk+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":[{"label":"ImageURL","schema":{"type":"object","description":null,"examples":[],"properties":{"detail":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"url":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["url"],"name":"ImageURL","defaultValue":null}}]},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[{"label":"ImageURL","schema":{"type":"object","description":null,"examples":[],"properties":{"detail":{"type":"union","description":null,"examples":[],"values":[{"type":"string","description":null,"examples":[],"defaultValue":null},{"type":"null","description":null,"examples":[],"defaultValue":null}],"defaultValue":null},"url":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["url"],"name":"ImageURL","defaultValue":null}}]}}>
+
+##### image\_url <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ImageURLChunk+image_url\}
+
+</Property>
+
+<ExpandableSection title="ImageURL" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ImageURLChunk+ImageURL">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ImageURLChunk+ImageURL+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### detail \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ImageURLChunk+ImageURL+detail\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### url <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ImageURLChunk+ImageURL+url\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ImageURLChunk+type\}
+
+</Property>
+
+_Default Value:_ `"image_url"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="DocumentURLChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+DocumentURLChunk">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+DocumentURLChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### document\_name \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+DocumentURLChunk+document_name\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### document\_url <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+DocumentURLChunk+document_url\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+DocumentURLChunk+type\}
+
+</Property>
+
+_Default Value:_ `"document_url"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+<ExpandableSection title="ReferenceChunk" id="operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ReferenceChunk">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ReferenceChunk+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### reference\_ids <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ReferenceChunk+reference_ids\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+ReferenceChunk+type\}
+
+</Property>
+
+_Default Value:_ `"reference"`
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### name \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+name\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"tool\"","linkedLabel":"\"tool\"","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### role \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+role\}
+
+</Property>
+
+_Default Value:_ `"tool"`
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### tool\_call\_id \{#operation-chat_classifications_v1_chat_classifications_post+request+InstructRequest+ToolMessage+tool_call_id\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### model <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+request+model\}
+
+</Property>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+</Section>
+
+<TabbedSection>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="none">
+
+### Responses \{#operation-chat_classifications_v1_chat_classifications_post+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-chat_classifications_v1_chat_classifications_post+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default" id="operation-chat_classifications_v1_chat_classifications_post+200+application-json">
+
+Successful Response
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+200+application-json+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### id <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+200+application-json+id\}
+
+</Property>
+
+_Example:_
+
+```
+mod-e5cc70bb28c444948073e77776eb30ef
+```
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### model <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+200+application-json+model\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+200+application-json+ClassificationTargetResult\">ClassificationTargetResult</a>","children":[{"label":"map","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+200+application-json+ClassificationTargetResult\">ClassificationTargetResult</a>","children":[{"label":"ClassificationTargetResult","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+200+application-json+ClassificationTargetResult\">ClassificationTargetResult</a>","children":[],"breakoutSubTypes":[{"label":"ClassificationTargetResult","schema":{"type":"object","description":null,"examples":[],"properties":{"scores":{"type":"chunk","chunkId":"$315"}},"required":["scores"],"name":"ClassificationTargetResult","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"ClassificationTargetResult","schema":{"type":"object","description":null,"examples":[],"properties":{"scores":{"type":"chunk","chunkId":"$315"}},"required":["scores"],"name":"ClassificationTargetResult","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"ClassificationTargetResult","schema":{"type":"object","description":null,"examples":[],"properties":{"scores":{"type":"chunk","chunkId":"$315"}},"required":["scores"],"name":"ClassificationTargetResult","defaultValue":null}}]}}>
+
+##### results <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+200+application-json+results\}
+
+</Property>
+
+<ExpandableSection title="ClassificationTargetResult" id="operation-chat_classifications_v1_chat_classifications_post+200+application-json+ClassificationTargetResult">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+200+application-json+ClassificationTargetResult+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"map","linkedLabel":"number","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### scores <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+200+application-json+ClassificationTargetResult+scores\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-chat_classifications_v1_chat_classifications_post+422+application-json">
+
+422
+
+</SectionTab>
+
+<SectionContent slot="content" borderVariant="default" paddingVariant="default" id="operation-chat_classifications_v1_chat_classifications_post+422+application-json">
+
+Validation Error
+
+<Section>
+
+<SectionTitle slot="title" borderVariant="none" paddingVariant="default">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+422+application-json+properties\}
+
+</SectionTitle>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"Security","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+422+application-json+Security\">Security</a>","children":[],"breakoutSubTypes":[{"label":"Security","schema":{"type":"object","description":null,"examples":[],"properties":{"ApiKey":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["ApiKey"],"name":"Security","defaultValue":null}}]}}>
+
+##### HttpMeta <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+422+application-json+HttpMeta\}
+
+</Property>
+
+<ExpandableSection title="Security" id="operation-chat_classifications_v1_chat_classifications_post+422+application-json+Security">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+422+application-json+Security+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### ApiKey <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+422+application-json+Security+ApiKey\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+422+application-json+ValidationError\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post+422+application-json+ValidationError\">ValidationError</a>","children":[],"breakoutSubTypes":[{"label":"ValidationError","schema":{"type":"object","description":null,"examples":[],"properties":{"loc":{"type":"chunk","chunkId":"$15"},"msg":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["loc","msg","type"],"name":"ValidationError","defaultValue":null}}]}],"breakoutSubTypes":[{"label":"ValidationError","schema":{"type":"object","description":null,"examples":[],"properties":{"loc":{"type":"chunk","chunkId":"$15"},"msg":{"type":"string","description":null,"examples":[],"defaultValue":null},"type":{"type":"string","description":null,"examples":[],"defaultValue":null}},"required":["loc","msg","type"],"name":"ValidationError","defaultValue":null}}]}}>
+
+##### detail \{#operation-chat_classifications_v1_chat_classifications_post+422+application-json+detail\}
+
+</Property>
+
+<ExpandableSection title="ValidationError" id="operation-chat_classifications_v1_chat_classifications_post+422+application-json+ValidationError">
+
+#### Properties \{#operation-chat_classifications_v1_chat_classifications_post+422+application-json+ValidationError+properties\}
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}],"breakoutSubTypes":[]}}>
+
+##### loc <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+422+application-json+ValidationError+loc\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### msg <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+422+application-json+ValidationError+msg\}
+
+</Property>
+
+</SectionContent>
+
+<SectionContent slot="content" borderVariant="all" paddingVariant="default">
+
+<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":[]}}>
+
+##### type <Pill variant="warning">required</Pill> \{#operation-chat_classifications_v1_chat_classifications_post+422+application-json+ValidationError+type\}
+
+</Property>
+
+</SectionContent>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</SectionContent>
+
+</TabbedSection>
