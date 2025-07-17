@@ -22,10 +22,6 @@ import { NextraSite } from "../renderers/nextra.ts";
 import type { ParsedSettings } from "../types/settings.ts";
 import { settingsSchema } from "../types/settings.ts";
 import { assertNever } from "../util/assertNever.ts";
-import {
-  getCodeThemesFromThemeConfig,
-  getNextraThemeConfig,
-} from "./nextraUtils.ts";
 
 const CONFIG_FILE_NAMES = [
   "speakeasy.config.js",
@@ -170,6 +166,12 @@ switch (settings.output.framework) {
     break;
   }
   case "nextra": {
+    // TODO: I'm dynamically importing this to temporarily get around an issue
+    // where we depend on Next.js dependencies, which don't exist in docusaurus
+    // builds and cause a crash
+    const { getCodeThemesFromThemeConfig, getNextraThemeConfig } = await import(
+      "./nextraUtils.ts"
+    );
     const themeConfig = await getNextraThemeConfig();
     const codeThemes = await getCodeThemesFromThemeConfig(themeConfig);
     site = new NextraSite({

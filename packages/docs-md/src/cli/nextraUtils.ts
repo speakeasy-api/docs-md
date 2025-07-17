@@ -15,6 +15,9 @@ import { bundledThemes, normalizeTheme } from "shiki";
 import type { TryItNowProps } from "../components/TryItNow/common/types.ts";
 import type { RehypeTheme } from "../types/nextra.ts";
 
+// TODO: This import is dynamically imported in the CLI. fast-import is
+// supposed to support this case, and it should be fixed.
+// eslint-disable-next-line fast-import/no-unused-exports
 export async function getNextraThemeConfig(): Promise<
   Theme | Record<string, Theme> | undefined | null
 > {
@@ -225,6 +228,9 @@ function convertRehypeThemeToSandpackTheme(rehypeTheme: RehypeTheme): {
   };
 }
 
+// TODO: This import is dynamically imported in the CLI. fast-import is
+// supposed to support this case, and it should be fixed.
+// eslint-disable-next-line fast-import/no-unused-exports
 export async function getCodeThemesFromThemeConfig(
   themeConfig: Awaited<ReturnType<typeof getNextraThemeConfig>>
 ): Promise<TryItNowProps["themes"]> {
