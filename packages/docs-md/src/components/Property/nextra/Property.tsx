@@ -1,16 +1,24 @@
 "use client";
 
-import useMeasure from "react-use-measure";
-
+import { Pill } from "../../Pill/nextra.tsx";
+import { PropertyContents } from "../common/PropertyContents.tsx";
 import type { PropertyProps } from "../common/types.ts";
+import {
+  OffscreenMeasureContainer,
+  OuterContainer,
+  TitleContainer,
+  TypeContainer,
+} from "./Containers.tsx";
 
-export function NextraProperty({ children, typeInfo }: PropertyProps) {
-  const [ref, bounds] = useMeasure();
-  console.log(Math.floor(bounds.width / 6));
+export function NextraProperty(props: PropertyProps) {
   return (
-    <div ref={ref}>
-      {typeInfo.label}
-      {children}
-    </div>
+    <PropertyContents
+      {...props}
+      OuterContainer={OuterContainer}
+      TitleContainer={TitleContainer}
+      TypeContainer={TypeContainer}
+      OffscreenMeasureContainer={OffscreenMeasureContainer}
+      Pill={Pill}
+    />
   );
 }

@@ -1,3 +1,4 @@
+import { Pill } from "../Pill/docusaurus.tsx";
 import { PropertyContents } from "./common/PropertyContents.tsx";
 import type { PropertyProps } from "./common/types.ts";
 import {
@@ -15,6 +16,7 @@ export function Property(props: PropertyProps) {
       TitleContainer={TitleContainer}
       TypeContainer={TypeContainer}
       OffscreenMeasureContainer={OffscreenMeasureContainer}
+      Pill={Pill}
     />
   );
 }

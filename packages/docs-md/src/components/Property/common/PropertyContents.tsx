@@ -1,4 +1,7 @@
+"use client";
+
 import type {
+  FC,
   ForwardRefExoticComponent,
   PropsWithChildren,
   RefAttributes,
@@ -7,7 +10,7 @@ import { useMemo } from "react";
 import useMeasure from "react-use-measure";
 
 import type { TypeInfo } from "../../../renderers/base/base.ts";
-import { Pill } from "../../Pill/docusaurus.tsx";
+import type { PillProps } from "../../Pill/common/types.ts";
 import type { PropertyProps } from "./types.ts";
 
 function computeSingleLineDisplayType(typeInfo: TypeInfo): {
@@ -147,6 +150,7 @@ type PropertyContentsProps = PropertyProps & {
   OffscreenMeasureContainer: ForwardRefExoticComponent<
     RefAttributes<HTMLDivElement>
   >;
+  Pill: FC<PillProps>;
 };
 
 export function PropertyContents({
@@ -157,6 +161,7 @@ export function PropertyContents({
   TitleContainer,
   TypeContainer,
   OffscreenMeasureContainer,
+  Pill,
 }: PropertyContentsProps) {
   // We measure the outer container, the title, and the type container so that
   // we can determine if and how to split the type display into multiple lines
@@ -171,7 +176,6 @@ export function PropertyContents({
   const [offscreenMeasureContainerRef, offscreenMeasureContainerBounds] =
     useMeasure();
   const offscreenMeasureContainerWidth = offscreenMeasureContainerBounds.width;
-  console.log("offscreenMeasureContainerWidth", offscreenMeasureContainerWidth);
 
   const { multiline, contents } = useMemo(() => {
     const { display, measure } = computeSingleLineDisplayType(typeInfo);
