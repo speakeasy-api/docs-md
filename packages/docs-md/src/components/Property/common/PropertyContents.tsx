@@ -1,11 +1,14 @@
-import clsx from "clsx";
+import type {
+  ForwardRefExoticComponent,
+  PropsWithChildren,
+  RefAttributes,
+} from "react";
 import { useMemo } from "react";
 import useMeasure from "react-use-measure";
 
 import type { TypeInfo } from "../../../renderers/base/base.ts";
 import { Pill } from "../../Pill/docusaurus.tsx";
-import type { PropertyProps } from "../common/types.ts";
-import styles from "./styles.module.css";
+import type { PropertyProps } from "./types.ts";
 
 // TODO: measure this dynamically
 const DEFAULT_CHARACTER_WIDTH = 7.7;
@@ -131,11 +134,29 @@ function computeMultilineTypeLabel(
   }
 }
 
-export function DocusaurusProperty({
+type PropertyContentsProps = PropertyProps & {
+  OuterContainer: ForwardRefExoticComponent<
+    PropsWithChildren<{ multiline: boolean }> & RefAttributes<HTMLDivElement>
+  >;
+  TitleContainer: ForwardRefExoticComponent<
+    PropsWithChildren & RefAttributes<HTMLSpanElement>
+  >;
+  TypeContainer: ForwardRefExoticComponent<
+    {
+      multiline: boolean;
+      contents: string;
+    } & RefAttributes<HTMLDivElement>
+  >;
+};
+
+export function PropertyContents({
   children,
   typeInfo,
   typeAnnotations,
-}: PropertyProps) {
+  OuterContainer,
+  TitleContainer,
+  TypeContainer,
+}: PropertyContentsProps) {
   // We measure the outer container, the title, and the type container so that
   // we can determine if and how to split the type display into multiple lines
   // We alias the bounds so the useMemo isn't affected by non-width bounds
@@ -175,32 +196,22 @@ export function DocusaurusProperty({
   }, [typeInfo, titleContainerWidth, typeContainerWidth, outerContainerWidth]);
 
   return (
-    <div
-      ref={outerContainerRef}
-      className={clsx(
-        styles.container,
-        multiline ? styles.containerMutliline : styles.containerSingleLine
-      )}
-    >
-      <span ref={titleContainerRef} className={styles.titleContainer}>
+    <OuterContainer ref={outerContainerRef} multiline={multiline}>
+      <TitleContainer ref={titleContainerRef}>
         {children}
         {typeAnnotations.map((annotation) => (
           <Pill key={annotation.title} variant={annotation.variant}>
             {annotation.title}
           </Pill>
         ))}
-      </span>
+      </TitleContainer>
       <div ref={typeContainerRef}>
-        <div
-          className={clsx(
-            styles.typeInnerContainer,
-            multiline
-              ? styles.typeInnerContainerMultiline
-              : styles.typeInnerContainerInline
-          )}
-          dangerouslySetInnerHTML={{ __html: contents }}
+        <TypeContainer
+          multiline={multiline}
+          ref={typeContainerRef}
+          contents={contents}
         />
       </div>
-    </div>
+    </OuterContainer>
   );
 }
