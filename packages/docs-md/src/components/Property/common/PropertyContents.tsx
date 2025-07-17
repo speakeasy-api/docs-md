@@ -10,9 +10,6 @@ import type { TypeInfo } from "../../../renderers/base/base.ts";
 import { Pill } from "../../Pill/docusaurus.tsx";
 import type { PropertyProps } from "./types.ts";
 
-// TODO: measure this dynamically
-const DEFAULT_CHARACTER_WIDTH = 7.7;
-
 function computeSingleLineDisplayType(typeInfo: TypeInfo): {
   measure: string;
   display: string;
@@ -147,6 +144,9 @@ type PropertyContentsProps = PropertyProps & {
       contents: string;
     } & RefAttributes<HTMLDivElement>
   >;
+  OffscreenMeasureContainer: ForwardRefExoticComponent<
+    RefAttributes<HTMLDivElement>
+  >;
 };
 
 export function PropertyContents({
@@ -156,6 +156,7 @@ export function PropertyContents({
   OuterContainer,
   TitleContainer,
   TypeContainer,
+  OffscreenMeasureContainer,
 }: PropertyContentsProps) {
   // We measure the outer container, the title, and the type container so that
   // we can determine if and how to split the type display into multiple lines
@@ -167,13 +168,27 @@ export function PropertyContents({
   const typeContainerWidth = typeContainerBounds.width;
   const [outerContainerRef, outerContainerBounds] = useMeasure();
   const outerContainerWidth = outerContainerBounds.width;
+  const [offscreenMeasureContainerRef, offscreenMeasureContainerBounds] =
+    useMeasure();
+  const offscreenMeasureContainerWidth = offscreenMeasureContainerBounds.width;
+  console.log("offscreenMeasureContainerWidth", offscreenMeasureContainerWidth);
 
   const { multiline, contents } = useMemo(() => {
+    const { display, measure } = computeSingleLineDisplayType(typeInfo);
+
+    // If the value is 0, that means we haven't rendered yet and don't know the
+    // width. In this case, we just don't render the type at all.
+    if (offscreenMeasureContainerWidth === 0) {
+      return {
+        multiline: false,
+        contents: "",
+      };
+    }
+
     // Compute the width take by the type on a single line, and whether or not
     // we need to split the type into a separate line from the title
-    const { display, measure } = computeSingleLineDisplayType(typeInfo);
     const singleLineWidth =
-      measure.length * DEFAULT_CHARACTER_WIDTH + titleContainerWidth;
+      measure.length * offscreenMeasureContainerWidth + titleContainerWidth;
     const multiline = singleLineWidth > outerContainerWidth;
 
     // If the measured width is 0, that means we're running on the server in which
@@ -181,7 +196,8 @@ export function PropertyContents({
     // in the multiline case, so we don't need to consider the title width when
     // computing max characters.
     const maxCharacters =
-      Math.floor(typeContainerWidth / DEFAULT_CHARACTER_WIDTH) || Infinity;
+      Math.floor(typeContainerWidth / offscreenMeasureContainerWidth) ||
+      Infinity;
 
     // Finally, if we are multiline, compute the multiline type label, otherwise
     // we can reuse the single line version we already computed
@@ -193,7 +209,13 @@ export function PropertyContents({
       multiline,
       contents,
     };
-  }, [typeInfo, titleContainerWidth, typeContainerWidth, outerContainerWidth]);
+  }, [
+    typeInfo,
+    titleContainerWidth,
+    typeContainerWidth,
+    outerContainerWidth,
+    offscreenMeasureContainerWidth,
+  ]);
 
   return (
     <OuterContainer ref={outerContainerRef} multiline={multiline}>
@@ -212,6 +234,7 @@ export function PropertyContents({
           contents={contents}
         />
       </div>
+      <OffscreenMeasureContainer ref={offscreenMeasureContainerRef} />
     </OuterContainer>
   );
 }

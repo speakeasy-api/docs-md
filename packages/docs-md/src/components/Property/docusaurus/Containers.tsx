@@ -49,3 +49,13 @@ export const TypeContainer = forwardRef<
     </div>
   );
 });
+
+export const OffscreenMeasureContainer = forwardRef<HTMLDivElement>(
+  function OffscreenMeasureContainer(_, ref) {
+    return (
+      <div className={styles.offscreenMeasureContainer} ref={ref}>
+        A
+      </div>
+    );
+  }
+);
