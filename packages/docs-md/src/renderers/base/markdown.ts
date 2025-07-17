@@ -308,17 +308,21 @@ ${text}\n</code>\n</pre>`;
   };
 
   public override createProperty(
-    ...[typeInfo, id, cb]: RendererCreatePropertyArgs
+    ...[{ typeInfo, id, annotations, title }]: RendererCreatePropertyArgs
   ) {
     const type = this.createCode(this.#computeSingleLineDisplayType(typeInfo), {
       variant: "raw",
       style: "inline",
       escape: "mdx",
     });
-    const content = cb();
+    const renderedAnnotations = annotations.map((annotation) => {
+      const start = this.createPillStart(annotation.variant);
+      const end = this.createPillEnd();
+      return `${start}${annotation.title}${end}`;
+    });
     return this.createHeading(
       HEADINGS.PROPERTY_HEADING_LEVEL,
-      `${content} ${type}`,
+      `${title} ${renderedAnnotations.join(" ")} ${type}`,
       { id, escape: "mdx" }
     );
   }

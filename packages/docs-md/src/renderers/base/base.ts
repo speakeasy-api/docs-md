@@ -39,6 +39,11 @@ export type TypeInfo = {
   breakoutSubTypes: { label: string; schema: SchemaValue }[];
 };
 
+export type PropertyAnnotations = {
+  title: string;
+  variant: PillVariant;
+};
+
 // Argument types for Site interface methods
 export type SiteCreatePageArgs = [path: string];
 export type SiteBuildPagePathArgs = [
@@ -161,9 +166,12 @@ export type RendererAppendSidebarLinkArgs = [
   },
 ];
 export type RendererCreatePropertyArgs = [
-  typeInfo: TypeInfo,
-  id: string,
-  cb: () => string,
+  options: {
+    typeInfo: TypeInfo;
+    id: string;
+    annotations: PropertyAnnotations[];
+    title: string;
+  },
 ];
 export type RendererAppendTryItNowArgs = [
   options: {

@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import useMeasure from "react-use-measure";
 
 import type { TypeInfo } from "../../../renderers/base/base.ts";
+import { Pill } from "../../Pill/docusaurus.tsx";
 import type { PropertyProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
@@ -130,7 +131,11 @@ function computeMultilineTypeLabel(
   }
 }
 
-export function DocusaurusProperty({ children, typeInfo }: PropertyProps) {
+export function DocusaurusProperty({
+  children,
+  typeInfo,
+  typeAnnotations,
+}: PropertyProps) {
   // We measure the outer container, the title, and the type container so that
   // we can determine if and how to split the type display into multiple lines
   // We alias the bounds so the useMemo isn't affected by non-width bounds
@@ -179,12 +184,19 @@ export function DocusaurusProperty({ children, typeInfo }: PropertyProps) {
     >
       <span ref={titleContainerRef} className={styles.titleContainer}>
         {children}
+        {typeAnnotations.map((annotation) => (
+          <Pill key={annotation.title} variant={annotation.variant}>
+            {annotation.title}
+          </Pill>
+        ))}
       </span>
-      <div ref={typeContainerRef} className={styles.typeOuterContainer}>
+      <div ref={typeContainerRef}>
         <div
           className={clsx(
             styles.typeInnerContainer,
-            !multiline && styles.typeInnerContainerInline
+            multiline
+              ? styles.typeInnerContainerMultiline
+              : styles.typeInnerContainerInline
           )}
           dangerouslySetInnerHTML={{ __html: contents }}
         />

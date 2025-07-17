@@ -193,12 +193,14 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createProperty(
-    ...[typeInfo, id, cb]: RendererCreatePropertyArgs
+    ...[{ typeInfo, id, annotations, title }]: RendererCreatePropertyArgs
   ) {
     this.insertComponentImport("Property");
-    return `<Property typeInfo={${JSON.stringify(typeInfo)}}>
+    return `<Property typeInfo={${JSON.stringify(typeInfo)}} typeAnnotations={${JSON.stringify(
+      annotations
+    )}}>
 
-${this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, cb(), { escape: "mdx", id })}
+${this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, { escape: "mdx", id })}
 
 </Property>`;
   }

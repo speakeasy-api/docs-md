@@ -1,4 +1,9 @@
-import type { Renderer, Site, TypeInfo } from "../../../renderers/base/base.ts";
+import type {
+  PropertyAnnotations,
+  Renderer,
+  Site,
+  TypeInfo,
+} from "../../../renderers/base/base.ts";
 import type {
   ArrayValue,
   Chunk,
@@ -142,28 +147,19 @@ function renderNameAndType({
   isRequired: boolean;
   isRecursive: boolean;
 }) {
-  context.renderer.appendProperty(
+  const annotations: PropertyAnnotations[] = [];
+  if (isRequired) {
+    annotations.push({ title: "required", variant: "warning" });
+  }
+  if (isRecursive) {
+    annotations.push({ title: "recursive", variant: "info" });
+  }
+  context.renderer.appendProperty({
     typeInfo,
-    context.idPrefix + `+${propertyName}`,
-    () => {
-      let formattedPropertyName = context.renderer.escapeText(propertyName, {
-        escape: "markdown",
-      });
-
-      if (isRequired) {
-        const start = context.renderer.createPillStart("warning");
-        const end = context.renderer.createPillEnd();
-        formattedPropertyName += ` ${start}required${end}`;
-      }
-      if (isRecursive) {
-        const start = context.renderer.createPillStart("info");
-        const end = context.renderer.createPillEnd();
-        formattedPropertyName += ` ${start}recursive${end}`;
-      }
-
-      return formattedPropertyName;
-    }
-  );
+    id: context.idPrefix + `+${propertyName}`,
+    annotations,
+    title: propertyName,
+  });
 }
 
 function renderSchemaFrontmatter({
