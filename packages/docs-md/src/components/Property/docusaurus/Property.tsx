@@ -1,10 +1,12 @@
 import clsx from "clsx";
+import { useMemo } from "react";
 import useMeasure from "react-use-measure";
 
 import type { TypeInfo } from "../../../renderers/base/base.ts";
 import type { PropertyProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
+// TODO: measure this dynamically
 const DEFAULT_CHARACTER_WIDTH = 7.7;
 
 function computeSingleLineDisplayType(typeInfo: TypeInfo): {
@@ -129,32 +131,60 @@ function computeMultilineTypeLabel(
 }
 
 export function DocusaurusProperty({ children, typeInfo }: PropertyProps) {
+  // We measure the outer container, the title, and the type container so that
+  // we can determine if and how to split the type display into multiple lines
+  // We alias the bounds so the useMemo isn't affected by non-width bounds
+  // changing (or reference instability)
+  const [titleContainerRef, titleContainerBounds] = useMeasure();
+  const titleContainerWidth = titleContainerBounds.width;
   const [typeContainerRef, typeContainerBounds] = useMeasure();
+  const typeContainerWidth = typeContainerBounds.width;
+  const [outerContainerRef, outerContainerBounds] = useMeasure();
+  const outerContainerWidth = outerContainerBounds.width;
 
-  // If the measured width is 0, that means we're running on the server
-  // in which case we want to render content on a single line
-  const maxCharacters =
-    Math.floor(typeContainerBounds.width / DEFAULT_CHARACTER_WIDTH) || Infinity;
+  const { multiline, contents } = useMemo(() => {
+    // Compute the width take by the type on a single line, and whether or not
+    // we need to split the type into a separate line from the title
+    const { display, measure } = computeSingleLineDisplayType(typeInfo);
+    const singleLineWidth =
+      measure.length * DEFAULT_CHARACTER_WIDTH + titleContainerWidth;
+    const multiline = singleLineWidth > outerContainerWidth;
 
-  // TODO: measure to determine this
-  const multiline = true;
+    // If the measured width is 0, that means we're running on the server in which
+    // case we want to render content on a single line. We only need maxCharacters
+    // in the multiline case, so we don't need to consider the title width when
+    // computing max characters.
+    const maxCharacters =
+      Math.floor(typeContainerWidth / DEFAULT_CHARACTER_WIDTH) || Infinity;
 
-  const { contents } = computeMultilineTypeLabel(typeInfo, 0, maxCharacters);
+    // Finally, if we are multiline, compute the multiline type label, otherwise
+    // we can reuse the single line version we already computed
+    const contents = multiline
+      ? computeMultilineTypeLabel(typeInfo, 0, maxCharacters).contents
+      : display;
+
+    return {
+      multiline,
+      contents,
+    };
+  }, [typeInfo, titleContainerWidth, typeContainerWidth, outerContainerWidth]);
 
   return (
     <div
+      ref={outerContainerRef}
       className={clsx(
         styles.container,
         multiline ? styles.containerMutliline : styles.containerSingleLine
       )}
     >
-      <div>{children}</div>
-      <div ref={typeContainerRef}>
-        <span
-          className={styles.typeContainer}
-          dangerouslySetInnerHTML={{ __html: contents }}
-        />
-      </div>
+      <span ref={titleContainerRef} className={styles.titleContainer}>
+        {children}
+      </span>
+      <div
+        ref={typeContainerRef}
+        className={styles.typeContainer}
+        dangerouslySetInnerHTML={{ __html: contents }}
+      />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 .container {
   display: flex;
   row-gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .containerSingleLine {
@@ -21,13 +22,6 @@
   margin: 0;
 }
 
-.characterMeasure {
-  display: none;
-  position: absolute;
-  left: -1000px;
-  top: -1000px;
-}
-
 .containerSingleLine .typeContainer {
   flex-grow: 1;
 }
@@ -40,4 +34,22 @@
   font-family: var(--ifm-font-family-monospace);
   font-size: 80%;
   text-wrap: nowrap;
+  background-color: color-mix(in oklab, var(--ifm-color-info) 5%, transparent);
+  color: color-mix(in oklab, var(--ifm-color-info) 80%, transparent);
+  border-radius: var(--ifm-badge-border-radius);
+  padding: 2px 4px;
+}
+
+.titleContainer {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+
+  /*
+   * We set a minimum height for the title container to ensure that the title
+   * doesn't jank when switching between inline types and multiline types. We
+   * need the title to be taller than the type container so the height of the
+   * first row in the flexbox doesn't change on layout shift.
+   */
+  min-height: 2rem;
 }
