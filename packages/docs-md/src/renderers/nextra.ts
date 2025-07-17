@@ -73,6 +73,7 @@ class NextraRenderer extends MdxRenderer {
   public override insertFrontMatter(
     ...[{ sidebarLabel }]: RendererInsertFrontMatterArgs
   ) {
+    this.insertPackageImport("@speakeasy-api/docs-md/nextra.css");
     this.#frontMatter = `---
 sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
 ---`;

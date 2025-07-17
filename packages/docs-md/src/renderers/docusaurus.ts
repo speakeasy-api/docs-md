@@ -93,6 +93,7 @@ class DocusaurusRenderer extends MdxRenderer {
   public override insertFrontMatter(
     ...[{ sidebarPosition, sidebarLabel }]: RendererInsertFrontMatterArgs
   ) {
+    this.insertPackageImport("@speakeasy-api/docs-md/docusaurus.css");
     this.#frontMatter = `---
 sidebar_position: ${sidebarPosition}
 sidebar_label: ${this.escapeText(sidebarLabel, { escape: "mdx" })}

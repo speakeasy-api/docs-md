@@ -51,8 +51,10 @@ export abstract class MdxRenderer extends MarkdownRenderer {
         ).join(", ")} } from "${importPath}";\n`;
       } else if (symbols.defaultAlias) {
         imports += `import ${symbols.defaultAlias} from "${importPath}";\n`;
-      } else {
+      } else if (symbols.namedImports.size > 0) {
         imports += `import { ${Array.from(symbols.namedImports).join(", ")} } from "${importPath}";\n`;
+      } else {
+        imports += `import "${importPath}";\n`;
       }
     }
     const parentData = super.render();
@@ -79,6 +81,15 @@ export abstract class MdxRenderer extends MarkdownRenderer {
       return `<Code text={\`${escapedText}\`} />`;
     } else {
       return super.createCode(text, options);
+    }
+  }
+
+  protected insertPackageImport(importPath: string) {
+    if (!this.#imports.has(importPath)) {
+      this.#imports.set(importPath, {
+        defaultAlias: undefined,
+        namedImports: new Set(),
+      });
     }
   }
 
