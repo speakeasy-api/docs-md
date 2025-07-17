@@ -180,11 +180,15 @@ export function DocusaurusProperty({ children, typeInfo }: PropertyProps) {
       <span ref={titleContainerRef} className={styles.titleContainer}>
         {children}
       </span>
-      <div
-        ref={typeContainerRef}
-        className={styles.typeContainer}
-        dangerouslySetInnerHTML={{ __html: contents }}
-      />
+      <div ref={typeContainerRef} className={styles.typeOuterContainer}>
+        <div
+          className={clsx(
+            styles.typeInnerContainer,
+            !multiline && styles.typeInnerContainerInline
+          )}
+          dangerouslySetInnerHTML={{ __html: contents }}
+        />
+      </div>
     </div>
   );
 }

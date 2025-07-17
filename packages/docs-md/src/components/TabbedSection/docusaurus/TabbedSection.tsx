@@ -22,7 +22,7 @@ export function DocusaurusTabbedSection({ children }: TabbedSectionProps) {
         paddingVariant="default"
       >
         <div className={styles.titleContainer}>
-          <div className={styles.title}>{titleChild}</div>
+          <div>{titleChild}</div>
           <div className={styles.tabs}>{tabChildren}</div>
         </div>
       </SectionTitle>
