@@ -70,7 +70,7 @@ export function NextraExpandableSection({
 
   if (!isOpen) {
     return (
-      <Section>
+      <Section contentBorderVariant="default">
         <SectionTitle
           id={id}
           slot="title"
@@ -89,7 +89,7 @@ export function NextraExpandableSection({
   }
 
   return (
-    <Section>
+    <Section contentBorderVariant="all" noTopBorderRadius>
       <SectionTitle
         id={id}
         slot="title"
@@ -102,7 +102,6 @@ export function NextraExpandableSection({
         slot="content"
         borderVariant="all"
         paddingVariant="default"
-        noBorderRadiusOnFirstElement
       >
         {contentChildren}
       </SectionContent>

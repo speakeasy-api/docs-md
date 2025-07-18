@@ -78,7 +78,7 @@ export function renderOperation({
 
   if (chunk.chunkData.parameters.length > 0) {
     const parametersId = id + "+parameters";
-    renderer.appendSectionStart();
+    renderer.appendSectionStart({ contentBorderVariant: "all" });
     renderer.appendSectionTitleStart();
     renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Parameters", {
       id: parametersId,

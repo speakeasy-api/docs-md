@@ -444,7 +444,7 @@ export function renderSchema({
         context,
       });
     }
-    context.renderer.appendSectionStart();
+    context.renderer.appendSectionStart({ contentBorderVariant: "all" });
     context.renderer.appendSectionTitleStart({ borderVariant: "none" });
     context.renderer.appendHeading(
       HEADINGS.SUB_SECTION_HEADING_LEVEL,

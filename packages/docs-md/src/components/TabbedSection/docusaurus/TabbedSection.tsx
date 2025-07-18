@@ -15,7 +15,7 @@ export function DocusaurusTabbedSection({ children }: TabbedSectionProps) {
   });
 
   return (
-    <Section>
+    <Section contentBorderVariant="default">
       <SectionTitle
         slot="title"
         borderVariant="default"

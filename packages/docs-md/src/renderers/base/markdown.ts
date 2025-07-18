@@ -10,6 +10,7 @@ import type {
   RendererCreateListArgs,
   RendererCreatePillArgs,
   RendererCreatePropertyArgs,
+  RendererCreateSectionArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
   RendererCreateTabbedSectionTabArgs,
@@ -171,12 +172,14 @@ ${text}\n</code>\n</pre>`;
     this[rendererLines].push(this.createPillEnd());
   }
 
-  public override createSectionStart(): string {
+  public override createSectionStart(
+    ..._args: RendererCreateSectionArgs
+  ): string {
     return "";
   }
 
-  public override appendSectionStart(): void {
-    this[rendererLines].push(this.createSectionStart());
+  public override appendSectionStart(...args: RendererCreateSectionArgs): void {
+    this[rendererLines].push(this.createSectionStart(...args));
   }
 
   public override createSectionEnd(): string {

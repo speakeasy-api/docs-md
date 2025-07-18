@@ -10,7 +10,4 @@ export type SectionContentProps = PropsWithChildren<{
   slot: "content";
   borderVariant: SectionContentBorderVariant;
   paddingVariant: SectionContentPaddingVariant;
-
-  // Internal property used by ExpandableSection
-  noBorderRadiusOnFirstElement?: boolean;
 }>;

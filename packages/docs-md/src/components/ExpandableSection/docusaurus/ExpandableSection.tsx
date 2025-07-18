@@ -68,7 +68,7 @@ export function DocusaurusExpandableSection({
 
   if (!isOpen) {
     return (
-      <Section>
+      <Section contentBorderVariant="default">
         <SectionTitle
           id={id}
           slot="title"
@@ -87,7 +87,7 @@ export function DocusaurusExpandableSection({
   }
 
   return (
-    <Section>
+    <Section contentBorderVariant="all" noTopBorderRadius>
       <SectionTitle
         id={id}
         slot="title"
@@ -100,7 +100,6 @@ export function DocusaurusExpandableSection({
         slot="content"
         borderVariant="all"
         paddingVariant="default"
-        noBorderRadiusOnFirstElement
       >
         {contentChildren}
       </SectionContent>

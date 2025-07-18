@@ -7,7 +7,6 @@ export function DocusaurusSectionContent({
   slot,
   borderVariant,
   paddingVariant,
-  noBorderRadiusOnFirstElement,
   children,
   id,
 }: SectionContentProps) {
@@ -16,8 +15,7 @@ export function DocusaurusSectionContent({
       className={clsx(
         styles.content,
         borderVariant === "all" && styles.borderAll,
-        paddingVariant === "default" && styles.paddingDefault,
-        noBorderRadiusOnFirstElement && styles.noBorderRadiusOnFirstElement
+        paddingVariant === "default" && styles.paddingDefault
       )}
       id={id}
       slot={slot}
