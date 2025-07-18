@@ -411,9 +411,21 @@ export function renderSchema({
 
   // TODO: refactor starting sections here to not be brittle and awkward
   if (isExpandable) {
-    context.renderer.appendExpandableSectionStart(topLevelName, {
-      id: context.idPrefix,
+    context.renderer.appendExpandableSectionStart();
+    context.renderer.appendSectionTitleStart({
+      borderVariant: "none",
+      paddingVariant: "none",
     });
+    context.renderer.appendHeading(
+      HEADINGS.SUB_SECTION_HEADING_LEVEL,
+      topLevelName,
+      {
+        id: context.idPrefix,
+      }
+    );
+    context.renderer.appendSectionTitleEnd();
+    context.renderer.appendSectionContentStart();
+
     if (renderFrontmatter) {
       renderSchemaFrontmatter({
         context,
@@ -471,6 +483,7 @@ export function renderSchema({
     }
   }
   if (isExpandable) {
+    context.renderer.appendSectionContentEnd();
     context.renderer.appendExpandableSectionEnd();
   } else {
     context.renderer.appendSectionEnd();

@@ -6,7 +6,6 @@ import type {
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
   RendererCreateAppendCodeArgs,
-  RendererCreateExpandableSectionArgs,
   RendererCreatePillArgs,
   RendererCreatePropertyArgs,
   RendererCreateSectionContentArgs,
@@ -172,11 +171,9 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return `</SectionContent>`;
   }
 
-  public override createExpandableSectionStart(
-    ...[title, { id, escape = "mdx" }]: RendererCreateExpandableSectionArgs
-  ) {
+  public override createExpandableSectionStart() {
     this.insertComponentImport("ExpandableSection");
-    return `<ExpandableSection title="${this.escapeText(title, { escape })}" id="${id}">`;
+    return `<ExpandableSection>`;
   }
 
   public override createExpandableSectionEnd() {

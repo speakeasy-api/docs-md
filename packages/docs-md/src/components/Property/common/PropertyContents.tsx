@@ -200,8 +200,10 @@ export function PropertyContents({
     // in the multiline case, so we don't need to consider the title width when
     // computing max characters.
     const maxCharacters =
-      Math.floor(typeContainerWidth / offscreenMeasureContainerWidth) ||
-      Infinity;
+      typeContainerWidth === 0 || offscreenMeasureContainerWidth === 0
+        ? Infinity
+        : // We subtract 4 here to account for the padding on the left and right
+          Math.floor(typeContainerWidth / offscreenMeasureContainerWidth) - 4;
 
     // Finally, if we are multiline, compute the multiline type label, otherwise
     // we can reuse the single line version we already computed

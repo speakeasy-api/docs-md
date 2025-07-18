@@ -154,10 +154,6 @@ export type RendererCreateSectionContentArgs = [
     paddingVariant?: SectionContentPaddingVariant;
   },
 ];
-export type RendererCreateExpandableSectionArgs = [
-  title: string,
-  options: AppendOptions & { id: string },
-];
 export type RendererCreateTabbedSectionTabArgs = [id: string];
 export type RendererAppendSidebarLinkArgs = [
   options: {
@@ -225,12 +221,8 @@ export abstract class Renderer {
 
   // Expandable sections are used to show schema value breakouts, which are
   // collapsed by default
-  abstract createExpandableSectionStart(
-    ...args: RendererCreateExpandableSectionArgs
-  ): string;
-  abstract appendExpandableSectionStart(
-    ...args: RendererCreateExpandableSectionArgs
-  ): void;
+  abstract createExpandableSectionStart(): string;
+  abstract appendExpandableSectionStart(): void;
   abstract createExpandableSectionEnd(): string;
   abstract appendExpandableSectionEnd(): void;
 
