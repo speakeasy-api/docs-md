@@ -2,6 +2,7 @@ import { snakeCase } from "change-case";
 
 import type { Renderer, Site } from "../../../renderers/base/base.ts";
 import type { Chunk, OperationChunk } from "../../../types/chunk.ts";
+import { assertNever } from "../../../util/assertNever.ts";
 import { getSettings } from "../../../util/settings.ts";
 import type { DocsCodeSnippets } from "../../codeSnippets/generateCodeSnippets.ts";
 import { HEADINGS } from "../constants.ts";
@@ -47,7 +48,7 @@ export function renderOperation({
     renderer.appendText(chunk.chunkData.description);
   }
 
-  if (chunk.chunkData.security || chunk.chunkData.globalSecurity) {
+  if (chunk.chunkData.security) {
     const securityId = id + "+security";
     renderer.appendSectionStart();
     renderer.appendSectionTitleStart();
@@ -56,40 +57,21 @@ export function renderOperation({
     });
     renderer.appendSectionTitleEnd();
     renderer.appendSectionContentStart();
-    if (chunk.chunkData.security) {
-      const securityChunk = getSchemaFromId(
-        chunk.chunkData.security.contentChunkId,
-        docsData
-      );
-      renderSchema({
-        context: {
-          site,
-          renderer,
-          schema: securityChunk.chunkData.value,
-          schemaStack: [],
-          idPrefix: securityId,
-        },
-        topLevelName: "Security",
-        data: docsData,
-      });
-    }
-    if (chunk.chunkData.globalSecurity) {
-      const securityChunk = getSchemaFromId(
-        chunk.chunkData.globalSecurity.contentChunkId,
-        docsData
-      );
-      renderSchema({
-        context: {
-          site,
-          renderer,
-          schema: securityChunk.chunkData.value,
-          schemaStack: [],
-          idPrefix: securityId,
-        },
-        topLevelName: "Security",
-        data: docsData,
-      });
-    }
+    const securityChunk = getSchemaFromId(
+      chunk.chunkData.security.contentChunkId,
+      docsData
+    );
+    renderSchema({
+      context: {
+        site,
+        renderer,
+        schema: securityChunk.chunkData.value,
+        schemaStack: [],
+        idPrefix: securityId,
+      },
+      topLevelName: "Security",
+      data: docsData,
+    });
     renderer.appendSectionContentEnd();
     renderer.appendSectionEnd();
   }
@@ -193,22 +175,40 @@ export function renderOperation({
   }
 
   if (chunk.chunkData.responses) {
+    const { visibleResponses } = getSettings().display;
     const responseList = Object.entries(chunk.chunkData.responses);
-    const hasResponses = responseList.some(
-      ([_, responses]) => responses.length > 0
+    const filteredResponseList = responseList.filter(([statusCode]) => {
+      switch (visibleResponses) {
+        case "all":
+          return true;
+        case "explicit":
+          return !statusCode.endsWith("XX");
+        case "success":
+          return statusCode.startsWith("2");
+        default:
+          assertNever(visibleResponses);
+      }
+    });
+    const numResponses = filteredResponseList.reduce(
+      (acc, [_, responses]) => acc + responses.length,
+      0
     );
-    if (hasResponses) {
+    if (numResponses > 0) {
       renderer.appendTabbedSectionStart();
       const responsesId = id + "+responses";
       renderer.appendSectionTitleStart({
         borderVariant: "none",
         paddingVariant: "none",
       });
-      renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Responses", {
-        id: responsesId,
-      });
+      renderer.appendHeading(
+        HEADINGS.SECTION_HEADING_LEVEL,
+        numResponses === 1 ? "Response" : "Responses",
+        {
+          id: responsesId,
+        }
+      );
       renderer.appendSectionTitleEnd();
-      for (const [statusCode, responses] of responseList) {
+      for (const [statusCode, responses] of filteredResponseList) {
         for (const response of responses) {
           const responseId =
             id + `+${statusCode}+${response.contentType.replace("/", "-")}`;

@@ -5,6 +5,9 @@ export default {
     componentOutDir: "./src/components/speakeasy",
     framework: "nextra",
   },
+  display: {
+    visibleResponses: "success",
+  },
   // The monorepo is causing some issues with multiple instances of...something
   // that causes Try It Now to crash
   // tryItNow: {

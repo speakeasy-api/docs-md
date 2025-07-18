@@ -18,12 +18,16 @@ export const settingsSchema = z.strictObject({
       showTypeSignatures: z.boolean().default(true),
       maxTypeSignatureLineLength: z.number().default(80),
       maxSchemaNesting: z.number().default(5),
+      visibleResponses: z
+        .enum(["success", "explicit", "all"])
+        .default("explicit"),
     })
     .default({
       showSchemasInNav: false,
       showTypeSignatures: true,
       maxTypeSignatureLineLength: 80,
       maxSchemaNesting: 5,
+      visibleResponses: "explicit",
     }),
   tryItNow: z
     .strictObject({
