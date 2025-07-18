@@ -167,8 +167,13 @@ function renderSchemaFrontmatter({
 }: {
   context: SchemaRenderContext;
 }) {
+  const { showDebugPlaceholders } = getSettings().display;
   if ("description" in context.schema && context.schema.description) {
     context.renderer.appendText(context.schema.description);
+  } else if (showDebugPlaceholders) {
+    context.renderer.appendDebugPlaceholderStart();
+    context.renderer.appendText("No description provided");
+    context.renderer.appendDebugPlaceholderEnd();
   }
   if ("examples" in context.schema && context.schema.examples.length > 0) {
     context.renderer.appendText(
@@ -177,12 +182,20 @@ function renderSchemaFrontmatter({
     for (const example of context.schema.examples) {
       context.renderer.appendCode(example);
     }
+  } else if (showDebugPlaceholders) {
+    context.renderer.appendDebugPlaceholderStart();
+    context.renderer.appendText("No examples provided");
+    context.renderer.appendDebugPlaceholderEnd();
   }
 
   if ("defaultValue" in context.schema && context.schema.defaultValue) {
     context.renderer.appendText(
       `_Default Value:_ \`${context.schema.defaultValue}\``
     );
+  } else if (showDebugPlaceholders) {
+    context.renderer.appendDebugPlaceholderStart();
+    context.renderer.appendText("No default value provided");
+    context.renderer.appendDebugPlaceholderEnd();
   }
 }
 

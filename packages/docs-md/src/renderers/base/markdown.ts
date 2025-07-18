@@ -329,6 +329,22 @@ ${text}\n</code>\n</pre>`;
     this[rendererLines].push(this.createProperty(...args));
   }
 
+  public override createDebugPlaceholderStart(): string {
+    return "";
+  }
+
+  public override appendDebugPlaceholderStart(): void {
+    this[rendererLines].push(this.createDebugPlaceholderStart());
+  }
+
+  public override createDebugPlaceholderEnd(): string {
+    return "";
+  }
+
+  public override appendDebugPlaceholderEnd(): void {
+    this[rendererLines].push(this.createDebugPlaceholderEnd());
+  }
+
   public override render() {
     if (this.#isFinalized) {
       throw new InternalError("Renderer has already been finalized");

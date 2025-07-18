@@ -252,6 +252,11 @@ export abstract class Renderer {
   abstract createProperty(...args: RendererCreatePropertyArgs): string;
   abstract appendProperty(...args: RendererCreatePropertyArgs): void;
 
+  abstract createDebugPlaceholderStart(): string;
+  abstract appendDebugPlaceholderStart(): void;
+  abstract createDebugPlaceholderEnd(): string;
+  abstract appendDebugPlaceholderEnd(): void;
+
   // The following methods are used to insert complex content onto the page,
   // and so they don't have "create" variants.
   abstract insertFrontMatter(...args: RendererInsertFrontMatterArgs): void;

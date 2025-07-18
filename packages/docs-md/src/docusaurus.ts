@@ -13,3 +13,4 @@ export { SectionTab } from "./components/SectionTab/docusaurus.tsx";
 export { Code } from "./components/Code/docusaurus.tsx";
 export { Pill } from "./components/Pill/docusaurus.tsx";
 export { Property } from "./components/Property/docusaurus.tsx";
+export { DebugPlaceholder } from "./components/DebugPlaceholder/docusaurus.tsx";

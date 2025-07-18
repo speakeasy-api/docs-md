@@ -13,3 +13,4 @@ export { SectionTab } from "./components/SectionTab/nextra.tsx";
 export { Code } from "./components/Code/nextra.tsx";
 export { Pill } from "./components/Pill/nextra.tsx";
 export { Property } from "./components/Property/nextra.tsx";
+export { DebugPlaceholder } from "./components/DebugPlaceholder/nextra.tsx";

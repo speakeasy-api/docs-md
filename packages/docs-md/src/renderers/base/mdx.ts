@@ -216,6 +216,15 @@ ${this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, { escape: "mdx", id
 </Property>`;
   }
 
+  public override createDebugPlaceholderStart(): string {
+    this.insertComponentImport("DebugPlaceholder");
+    return `<DebugPlaceholder>`;
+  }
+
+  public override createDebugPlaceholderEnd(): string {
+    return "</DebugPlaceholder>";
+  }
+
   public override appendSidebarLink(
     ...[{ title, embedName }]: RendererAppendSidebarLinkArgs
   ) {

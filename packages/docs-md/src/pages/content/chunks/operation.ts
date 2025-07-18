@@ -27,6 +27,7 @@ export function renderOperation({
   docsData,
   docsCodeSnippets,
 }: RenderOperationOptions) {
+  const { showDebugPlaceholders } = getSettings().display;
   const id = `operation-${snakeCase(chunk.chunkData.operationId)}`;
   const methodStart = renderer.createPillStart("primary");
   const methodEnd = renderer.createPillEnd();
@@ -44,8 +45,25 @@ export function renderOperation({
     renderer.appendText(chunk.chunkData.description);
   } else if (chunk.chunkData.summary) {
     renderer.appendText(chunk.chunkData.summary);
+    if (showDebugPlaceholders) {
+      renderer.appendDebugPlaceholderStart();
+      renderer.appendText("No description provided");
+      renderer.appendDebugPlaceholderEnd();
+    }
   } else if (chunk.chunkData.description) {
     renderer.appendText(chunk.chunkData.description);
+    if (showDebugPlaceholders) {
+      renderer.appendDebugPlaceholderStart();
+      renderer.appendText("No summary provided");
+      renderer.appendDebugPlaceholderEnd();
+    }
+  } else if (showDebugPlaceholders) {
+    renderer.appendDebugPlaceholderStart();
+    renderer.appendText("No summary provided");
+    renderer.appendDebugPlaceholderEnd();
+    renderer.appendDebugPlaceholderStart();
+    renderer.appendText("No description provided");
+    renderer.appendDebugPlaceholderEnd();
   }
 
   if (chunk.chunkData.security) {
@@ -98,6 +116,10 @@ export function renderOperation({
       );
       if (parameter.description) {
         renderer.appendText(parameter.description);
+      } else if (showDebugPlaceholders) {
+        renderer.appendDebugPlaceholderStart();
+        renderer.appendText("No description provided");
+        renderer.appendDebugPlaceholderEnd();
       }
       const parameterChunk = getSchemaFromId(parameter.fieldChunkId, docsData);
       renderSchema({
@@ -154,6 +176,10 @@ export function renderOperation({
     renderer.appendSectionContentStart();
     if (chunk.chunkData.requestBody.description) {
       renderer.appendText(chunk.chunkData.requestBody.description);
+    } else if (showDebugPlaceholders) {
+      renderer.appendDebugPlaceholderStart();
+      renderer.appendText("No description provided");
+      renderer.appendDebugPlaceholderEnd();
     }
     const requestBodySchema = getSchemaFromId(
       chunk.chunkData.requestBody.contentChunkId,

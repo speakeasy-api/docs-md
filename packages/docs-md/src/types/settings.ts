@@ -21,6 +21,7 @@ export const settingsSchema = z.strictObject({
       visibleResponses: z
         .enum(["success", "explicit", "all"])
         .default("explicit"),
+      showDebugPlaceholders: z.boolean().default(false),
     })
     .default({
       showSchemasInNav: false,
@@ -28,6 +29,7 @@ export const settingsSchema = z.strictObject({
       maxTypeSignatureLineLength: 80,
       maxSchemaNesting: 5,
       visibleResponses: "explicit",
+      showDebugPlaceholders: false,
     }),
   tryItNow: z
     .strictObject({
