@@ -29,7 +29,7 @@ export function DocusaurusTabbedSection({ children }: TabbedSectionProps) {
       <SectionContent
         slot="content"
         borderVariant="default"
-        paddingVariant="default"
+        paddingVariant="none"
       >
         {activeChild}
       </SectionContent>

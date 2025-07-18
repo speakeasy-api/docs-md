@@ -21,7 +21,6 @@ export function DocusaurusSection({
       <div>{titleChild}</div>
       <div
         className={clsx(
-          styles.content,
           contentBorderVariant === "all" && styles.contentBorderAll,
           noTopBorderRadius && styles.noTopBorderRadius
         )}
