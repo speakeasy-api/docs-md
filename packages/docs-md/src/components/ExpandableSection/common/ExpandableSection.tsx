@@ -1,20 +1,30 @@
+"use client";
+
 import clsx from "clsx";
+import type { FC } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { Button } from "../../primitives/docusaurus/Button.tsx";
-import { Section } from "../../Section/docusaurus.tsx";
+import type { ButtonProps } from "../../primitives/types.ts";
+import type { SectionProps } from "../../Section/common/types.ts";
 import { useChildren, useUniqueChild } from "../../Section/hooks.ts";
 import type { SectionContentProps } from "../../SectionContent/common/types.tsx";
 import { SectionContent } from "../../SectionContent/docusaurus.tsx";
 import type { SectionTitleProps } from "../../SectionTitle/common/types.tsx";
 import { SectionTitle } from "../../SectionTitle/docusaurus.tsx";
-import type { ExpandableSectionProps } from "../common/types.ts";
 import styles from "./styles.module.css";
+import type { ExpandableSectionProps } from "./types.ts";
 
-export function DocusaurusExpandableSection({
+type ExpandableSectionContentProps = ExpandableSectionProps & {
+  Button: FC<ButtonProps>;
+  Section: FC<SectionProps>;
+};
+
+export function ExpandableSectionContents({
   id,
   children,
-}: ExpandableSectionProps) {
+  Button,
+  Section,
+}: ExpandableSectionContentProps) {
   const [isOpen, setIsOpen] = useState(false);
   const onClick = useCallback(() => setIsOpen((prev) => !prev), []);
 
@@ -60,7 +70,7 @@ export function DocusaurusExpandableSection({
         </div>
       </Button>
     ),
-    [onClick, isOpen, titleChild]
+    [Button, onClick, isOpen, titleChild]
   );
 
   // TODO: animate height when expanding closing. Requires knowing the height up
