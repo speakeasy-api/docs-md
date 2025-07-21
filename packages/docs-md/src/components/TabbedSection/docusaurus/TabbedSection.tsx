@@ -1,7 +1,7 @@
 "use client";
 
 import { Section } from "../../Section/docusaurus.tsx";
-import { SectionContent } from "../../SectionContent/docusaurus.tsx";
+import { SectionContent } from "../../SectionContent/SectionContent.tsx";
 import { SectionTitle } from "../../SectionTitle/docusaurus.tsx";
 import { useTabbedChildren } from "../common/hooks.tsx";
 import type { TabbedSectionProps } from "../common/types.ts";

@@ -1,9 +1,9 @@
 import clsx from "clsx";
 
-import type { SectionContentProps } from "../common/types.tsx";
 import styles from "./styles.module.css";
+import type { SectionContentProps } from "./types.tsx";
 
-export function NextraSectionContent({
+export function SectionContent({
   slot,
   borderVariant,
   paddingVariant,

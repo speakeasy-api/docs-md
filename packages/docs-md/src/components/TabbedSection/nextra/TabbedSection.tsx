@@ -1,7 +1,7 @@
 "use client";
 
 import { Section } from "../../Section/nextra.tsx";
-import { SectionContent } from "../../SectionContent/nextra.tsx";
+import { SectionContent } from "../../SectionContent/SectionContent.tsx";
 import { SectionTitle } from "../../SectionTitle/nextra.tsx";
 import { useTabbedChildren } from "../common/hooks.tsx";
 import type { TabbedSectionProps } from "../common/types.ts";

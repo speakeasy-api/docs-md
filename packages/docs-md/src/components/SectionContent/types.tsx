@@ -3,7 +3,7 @@ import type { PropsWithChildren } from "react";
 import type {
   SectionContentBorderVariant,
   SectionContentPaddingVariant,
-} from "../../../renderers/base/base.ts";
+} from "../../renderers/base/base.ts";
 
 export type SectionContentProps = PropsWithChildren<{
   id?: string;
