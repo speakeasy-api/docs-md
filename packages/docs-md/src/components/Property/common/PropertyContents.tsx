@@ -10,7 +10,7 @@ import { useMemo } from "react";
 import useMeasure from "react-use-measure";
 
 import type { DisplayTypeInfo } from "../../../renderers/base/base.ts";
-import type { PillProps } from "../../Pill/common/types.ts";
+import type { PillProps } from "../../Pill/types.ts";
 import type { PropertyProps } from "./types.ts";
 
 function computeSingleLineDisplayType(typeInfo: DisplayTypeInfo): {

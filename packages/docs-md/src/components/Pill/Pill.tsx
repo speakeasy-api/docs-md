@@ -1,8 +1,8 @@
 import clsx from "clsx";
 
-import type { PillProps } from "../common/types.ts";
 import styles from "./styles.module.css";
+import type { PillProps } from "./types.ts";
 
-export function NextraPill({ variant, children }: PillProps) {
+export function Pill({ variant, children }: PillProps) {
   return <span className={clsx(styles.pill, styles[variant])}>{children}</span>;
 }

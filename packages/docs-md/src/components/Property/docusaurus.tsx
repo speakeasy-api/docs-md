@@ -1,4 +1,4 @@
-import { Pill } from "../Pill/docusaurus.tsx";
+import { Pill } from "../Pill/Pill.tsx";
 import { PropertyContents } from "./common/PropertyContents.tsx";
 import type { PropertyProps } from "./common/types.ts";
 import {
