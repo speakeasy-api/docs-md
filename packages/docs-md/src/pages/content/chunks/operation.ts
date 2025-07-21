@@ -169,8 +169,8 @@ export function renderOperation({
     const end = renderer.createPillEnd();
     renderer.appendHeading(
       HEADINGS.SECTION_HEADING_LEVEL,
-      `Request Body${!chunk.chunkData.requestBody.required ? `${start}(optional)${end}` : ""}`,
-      { id: requestBodyId }
+      `Request Body${!chunk.chunkData.requestBody.required ? ` ${start}optional${end}` : ""}`,
+      { id: requestBodyId, escape: "none" }
     );
     renderer.appendSectionTitleEnd();
     renderer.appendSectionContentStart();
