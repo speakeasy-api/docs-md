@@ -23,7 +23,6 @@ type SchemaRenderContext = {
   site: Site;
   renderer: Renderer;
   schemaStack: string[];
-  schema: SchemaValue;
   idPrefix: string;
   data: Map<string, Chunk>;
 };
@@ -35,20 +34,20 @@ type FrontMatter = {
 };
 
 function getTypeInfo(
-  value: SchemaValue,
+  schema: SchemaValue,
   context: SchemaRenderContext
 ): TypeInfo {
-  switch (value.type) {
+  switch (schema.type) {
     case "object": {
       return {
-        label: value.name,
-        linkedLabel: `<a href="#${context.idPrefix}+${value.name}">${value.name}</a>`,
+        label: schema.name,
+        linkedLabel: `<a href="#${context.idPrefix}+${schema.name}">${schema.name}</a>`,
         children: [],
-        breakoutSubTypes: [{ label: value.name, schema: value }],
+        breakoutSubTypes: [{ label: schema.name, schema: schema }],
       };
     }
     case "array": {
-      const typeInfo = getTypeInfo(value.items, context);
+      const typeInfo = getTypeInfo(schema.items, context);
       return {
         ...typeInfo,
         label: "array",
@@ -56,7 +55,7 @@ function getTypeInfo(
       };
     }
     case "map": {
-      const typeInfo = getTypeInfo(value.items, context);
+      const typeInfo = getTypeInfo(schema.items, context);
       return {
         ...typeInfo,
         label: "map",
@@ -64,7 +63,7 @@ function getTypeInfo(
       };
     }
     case "set": {
-      const typeInfo = getTypeInfo(value.items, context);
+      const typeInfo = getTypeInfo(schema.items, context);
       return {
         ...typeInfo,
         label: "set",
@@ -72,7 +71,7 @@ function getTypeInfo(
       };
     }
     case "union": {
-      const displayTypes = value.values.map((v) => getTypeInfo(v, context));
+      const displayTypes = schema.values.map((v) => getTypeInfo(v, context));
       const hasBreakoutSubType = displayTypes.some(
         (d) => d.breakoutSubTypes.length > 0
       );
@@ -93,14 +92,14 @@ function getTypeInfo(
       };
     }
     case "chunk": {
-      const schemaChunk = getSchemaFromId(value.chunkId, context.data);
+      const schemaChunk = getSchemaFromId(schema.chunkId, context.data);
       return getTypeInfo(schemaChunk.chunkData.value, context);
     }
     case "enum": {
       return {
         label: "enum",
         linkedLabel: "enum",
-        children: value.values.map((v) => {
+        children: schema.values.map((v) => {
           const label = `${typeof v === "string" ? `"${v}"` : v}`;
           return {
             label,
@@ -126,14 +125,14 @@ function getTypeInfo(
     case "null":
     case "any": {
       return {
-        label: value.type,
-        linkedLabel: value.type,
+        label: schema.type,
+        linkedLabel: schema.type,
         children: [],
         breakoutSubTypes: [],
       };
     }
     default: {
-      assertNever(value);
+      assertNever(schema);
     }
   }
 }
@@ -259,9 +258,9 @@ function renderSchemaBreakouts({
           embedName
         );
         renderSchema({
+          schema: breakoutSubType.schema,
           context: {
             ...context,
-            schema: breakoutSubType.schema,
             renderer: sidebarLinkRenderer,
             schemaStack: [],
             idPrefix: `${context.idPrefix}+${embedName}`,
@@ -279,9 +278,9 @@ function renderSchemaBreakouts({
 
     // Otherwise, render the schema inline
     renderSchema({
+      schema: breakoutSubType.schema,
       context: {
         ...context,
-        schema: breakoutSubType.schema,
         schemaStack: [...context.schemaStack, breakoutSubType.label],
         idPrefix: `${context.idPrefix}+${breakoutSubType.label}`,
       },
@@ -300,11 +299,13 @@ function renderSchemaBreakouts({
 }
 
 export function renderSchema({
+  schema,
   context,
   frontMatter,
   topLevelName,
   isExpandable,
 }: {
+  schema: SchemaValue;
   context: SchemaRenderContext;
   frontMatter: FrontMatter;
   topLevelName: string;
@@ -453,10 +454,7 @@ export function renderSchema({
 
   // If we have an object, we need to check if there are any properties to
   // render, otherwise we end up with a blank Properties section.
-  if (
-    context.schema.type === "object" &&
-    Object.keys(context.schema.properties).length === 0
-  ) {
+  if (schema.type === "object" && Object.keys(schema.properties).length === 0) {
     return;
   }
 
@@ -489,28 +487,28 @@ export function renderSchema({
     context.renderer.appendSectionContentStart();
   }
 
-  switch (context.schema.type) {
+  switch (schema.type) {
     case "object": {
-      renderObjectProperties(context.schema);
+      renderObjectProperties(schema);
       break;
     }
     case "map":
     case "set":
     case "array": {
       context.renderer.appendSectionContentStart({ borderVariant: "all" });
-      renderArrayLikeItems(context.schema);
+      renderArrayLikeItems(schema);
       context.renderer.appendSectionContentEnd();
       break;
     }
     case "union": {
       context.renderer.appendSectionContentStart({ borderVariant: "all" });
-      renderUnionItems(context.schema);
+      renderUnionItems(schema);
       context.renderer.appendSectionContentEnd();
       break;
     }
     default: {
       context.renderer.appendSectionContentStart({ borderVariant: "all" });
-      renderBasicItems(context.schema);
+      renderBasicItems(schema);
       context.renderer.appendSectionContentEnd();
       break;
     }

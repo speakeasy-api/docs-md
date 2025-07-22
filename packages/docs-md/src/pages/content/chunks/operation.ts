@@ -80,10 +80,10 @@ export function renderOperation({
       docsData
     );
     renderSchema({
+      schema: securityChunk.chunkData.value,
       context: {
         site,
         renderer,
-        schema: securityChunk.chunkData.value,
         schemaStack: [],
         idPrefix: securityId,
         data: docsData,
@@ -121,10 +121,10 @@ export function renderOperation({
       );
       const parameterChunk = getSchemaFromId(parameter.fieldChunkId, docsData);
       renderSchema({
+        schema: parameterChunk.chunkData.value,
         context: {
           site,
           renderer,
-          schema: parameterChunk.chunkData.value,
           schemaStack: [],
           idPrefix: parametersId,
           data: docsData,
@@ -182,10 +182,10 @@ export function renderOperation({
       docsData
     );
     renderSchema({
+      schema: requestBodySchema.chunkData.value,
       context: {
         site,
         renderer,
-        schema: requestBodySchema.chunkData.value,
         schemaStack: [],
         idPrefix: requestBodyId,
         data: docsData,
@@ -256,10 +256,10 @@ export function renderOperation({
             docsData
           );
           renderSchema({
+            schema: responseSchema.chunkData.value,
             context: {
               site,
               renderer,
-              schema: responseSchema.chunkData.value,
               schemaStack: [],
               idPrefix: responseId,
               data: docsData,
