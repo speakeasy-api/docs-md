@@ -444,13 +444,6 @@ export function renderSchema({
         context,
       });
     }
-    context.renderer.appendHeading(
-      HEADINGS.SUB_SECTION_HEADING_LEVEL,
-      "Properties",
-      {
-        id: context.idPrefix + "+properties",
-      }
-    );
   } else {
     if (renderFrontmatter) {
       renderSchemaFrontmatter({
@@ -458,15 +451,7 @@ export function renderSchema({
       });
     }
     context.renderer.appendSectionStart({ contentBorderVariant: "all" });
-    context.renderer.appendSectionTitleStart({ borderVariant: "none" });
-    context.renderer.appendHeading(
-      HEADINGS.SUB_SECTION_HEADING_LEVEL,
-      "Properties",
-      {
-        id: context.idPrefix + "+properties",
-      }
-    );
-    context.renderer.appendSectionTitleEnd();
+    context.renderer.appendSectionContentStart();
   }
 
   switch (context.schema.type) {
@@ -499,6 +484,7 @@ export function renderSchema({
     context.renderer.appendSectionContentEnd();
     context.renderer.appendExpandableSectionEnd();
   } else {
+    context.renderer.appendSectionContentEnd();
     context.renderer.appendSectionEnd();
   }
 }

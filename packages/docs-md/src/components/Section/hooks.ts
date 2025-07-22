@@ -3,9 +3,12 @@ import { isValidElement, useMemo } from "react";
 
 import { InternalError } from "../../util/internalError.ts";
 
-function assertChildrenIsElementArray(
+function normalizeChildren(
   children: ReactNode
-): asserts children is ReactElement<Record<string, unknown>>[] {
+): ReactElement<Record<string, unknown>>[] {
+  if (!Array.isArray(children) && typeof children === "object") {
+    children = [children];
+  }
   if (
     !Array.isArray(children) ||
     !children.every((child: unknown) => isValidElement(child)) ||
@@ -13,27 +16,32 @@ function assertChildrenIsElementArray(
       (child) => typeof child.props === "object" && child.props !== null
     )
   ) {
-    throw new InternalError("Children must be an array of React Elements");
+    throw new InternalError(
+      "Children must be an array of React Elements, not " + typeof children
+    );
   }
+
+  return children as ReactElement<Record<string, unknown>>[];
 }
 
 export function useUniqueChild<ComponentProps>(
   children: ReactNode,
   slot: string
-): ReactElement<ComponentProps> {
+): ReactElement<ComponentProps> | undefined {
   return useMemo(() => {
-    assertChildrenIsElementArray(children);
+    const normalizedChildren = normalizeChildren(children);
 
-    const titleChildren = children.filter((child) => child.props.slot === slot);
+    const titleChildren = normalizedChildren.filter(
+      (child) => child.props.slot === slot
+    );
 
-    if (titleChildren.length !== 1) {
+    if (titleChildren.length > 1) {
       throw new InternalError(
-        `Section must have exactly one title child, not ${titleChildren.length}`
+        `Section must have at most one title child, not ${titleChildren.length}`
       );
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    return titleChildren[0]! as ReactElement<ComponentProps>;
+    return titleChildren[0] as ReactElement<ComponentProps>;
   }, [children, slot]);
 }
 
@@ -42,9 +50,9 @@ export function useChildren<ComponentProps>(
   slot: string
 ): ReactElement<ComponentProps>[] {
   return useMemo(() => {
-    assertChildrenIsElementArray(children);
+    const normalizedChildren = normalizeChildren(children);
 
-    return children.filter(
+    return normalizedChildren.filter(
       (child) => child.props.slot === slot
     ) as ReactElement<ComponentProps>[];
   }, [children, slot]);
