@@ -168,8 +168,22 @@ function renderPages(
               schemaStack: [],
               schema: chunk.chunkData.value,
               idPrefix: id,
+              data,
             },
-            data,
+            frontMatter: {
+              description:
+                "description" in chunk.chunkData.value
+                  ? chunk.chunkData.value.description
+                  : null,
+              examples:
+                "examples" in chunk.chunkData.value
+                  ? chunk.chunkData.value.examples
+                  : [],
+              defaultValue:
+                "defaultValue" in chunk.chunkData.value
+                  ? chunk.chunkData.value.defaultValue
+                  : null,
+            },
             topLevelName: "Schema",
           });
           break;

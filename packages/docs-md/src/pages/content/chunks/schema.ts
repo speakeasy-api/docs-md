@@ -25,11 +25,17 @@ type SchemaRenderContext = {
   schemaStack: string[];
   schema: SchemaValue;
   idPrefix: string;
+  data: Map<string, Chunk>;
+};
+
+type FrontMatter = {
+  description: string | null;
+  examples: string[];
+  defaultValue: string | null;
 };
 
 function getTypeInfo(
   value: SchemaValue,
-  data: Map<string, Chunk>,
   context: SchemaRenderContext
 ): TypeInfo {
   switch (value.type) {
@@ -42,7 +48,7 @@ function getTypeInfo(
       };
     }
     case "array": {
-      const typeInfo = getTypeInfo(value.items, data, context);
+      const typeInfo = getTypeInfo(value.items, context);
       return {
         ...typeInfo,
         label: "array",
@@ -50,7 +56,7 @@ function getTypeInfo(
       };
     }
     case "map": {
-      const typeInfo = getTypeInfo(value.items, data, context);
+      const typeInfo = getTypeInfo(value.items, context);
       return {
         ...typeInfo,
         label: "map",
@@ -58,7 +64,7 @@ function getTypeInfo(
       };
     }
     case "set": {
-      const typeInfo = getTypeInfo(value.items, data, context);
+      const typeInfo = getTypeInfo(value.items, context);
       return {
         ...typeInfo,
         label: "set",
@@ -66,9 +72,7 @@ function getTypeInfo(
       };
     }
     case "union": {
-      const displayTypes = value.values.map((v) =>
-        getTypeInfo(v, data, context)
-      );
+      const displayTypes = value.values.map((v) => getTypeInfo(v, context));
       const hasBreakoutSubType = displayTypes.some(
         (d) => d.breakoutSubTypes.length > 0
       );
@@ -89,8 +93,8 @@ function getTypeInfo(
       };
     }
     case "chunk": {
-      const schemaChunk = getSchemaFromId(value.chunkId, data);
-      return getTypeInfo(schemaChunk.chunkData.value, data, context);
+      const schemaChunk = getSchemaFromId(value.chunkId, context.data);
+      return getTypeInfo(schemaChunk.chunkData.value, context);
     }
     case "enum": {
       return {
@@ -163,23 +167,25 @@ function renderNameAndType({
 }
 
 function renderSchemaFrontmatter({
+  frontMatter,
   context,
 }: {
+  frontMatter: FrontMatter;
   context: SchemaRenderContext;
 }) {
   const { showDebugPlaceholders } = getSettings().display;
-  if ("description" in context.schema && context.schema.description) {
-    context.renderer.appendText(context.schema.description);
+  if (frontMatter.description) {
+    context.renderer.appendText(frontMatter.description);
   } else if (showDebugPlaceholders) {
     context.renderer.appendDebugPlaceholderStart();
     context.renderer.appendText("No description provided");
     context.renderer.appendDebugPlaceholderEnd();
   }
-  if ("examples" in context.schema && context.schema.examples.length > 0) {
+  if (frontMatter.examples.length > 0) {
     context.renderer.appendText(
-      `_${context.schema.examples.length > 1 ? "Examples" : "Example"}:_`
+      `_${frontMatter.examples.length > 1 ? "Examples" : "Example"}:_`
     );
-    for (const example of context.schema.examples) {
+    for (const example of frontMatter.examples) {
       context.renderer.appendCode(example);
     }
   } else if (showDebugPlaceholders) {
@@ -188,9 +194,9 @@ function renderSchemaFrontmatter({
     context.renderer.appendDebugPlaceholderEnd();
   }
 
-  if ("defaultValue" in context.schema && context.schema.defaultValue) {
+  if (frontMatter.defaultValue) {
     context.renderer.appendText(
-      `_Default Value:_ \`${context.schema.defaultValue}\``
+      `_Default Value:_ \`${frontMatter.defaultValue}\``
     );
   } else if (showDebugPlaceholders) {
     context.renderer.appendDebugPlaceholderStart();
@@ -201,11 +207,9 @@ function renderSchemaFrontmatter({
 
 function renderSchemaBreakouts({
   context,
-  data,
   typeInfo,
 }: {
   context: SchemaRenderContext;
-  data: Map<string, Chunk>;
   typeInfo: TypeInfo;
 }) {
   const { maxSchemaNesting } = getSettings().display;
@@ -235,8 +239,8 @@ function renderSchemaBreakouts({
       continue;
     }
 
-    // Check if we've reached our maximum level of nesting, or if there's
-    // indirect type recursion, and if so break it out into an embed
+    // Check if we've reached our maximum level of nesting, and if so break it
+    // out into an embed
     if (context.schemaStack.length >= maxSchemaNesting) {
       // This shouldn't be possible, since we only recurse on objects
       if (breakoutSubType.schema.type !== "object") {
@@ -254,9 +258,6 @@ function renderSchemaBreakouts({
           HEADINGS.SECTION_HEADING_LEVEL,
           embedName
         );
-        if (breakoutSubType.schema.description) {
-          sidebarLinkRenderer.appendText(breakoutSubType.schema.description);
-        }
         renderSchema({
           context: {
             ...context,
@@ -265,9 +266,12 @@ function renderSchemaBreakouts({
             schemaStack: [],
             idPrefix: `${context.idPrefix}+${embedName}`,
           },
-          data,
+          frontMatter: {
+            description: breakoutSubType.schema.description,
+            examples: [],
+            defaultValue: null,
+          },
           topLevelName: breakoutSubType.label,
-          renderFrontmatter: true,
         });
       }
       continue;
@@ -281,26 +285,30 @@ function renderSchemaBreakouts({
         schemaStack: [...context.schemaStack, breakoutSubType.label],
         idPrefix: `${context.idPrefix}+${breakoutSubType.label}`,
       },
-      data,
+      frontMatter: {
+        description:
+          "description" in breakoutSubType.schema
+            ? breakoutSubType.schema.description
+            : null,
+        examples: [],
+        defaultValue: null,
+      },
       topLevelName: breakoutSubType.label,
       isExpandable: true,
-      renderFrontmatter: true,
     });
   }
 }
 
 export function renderSchema({
   context,
-  data,
+  frontMatter,
   topLevelName,
   isExpandable,
-  renderFrontmatter,
 }: {
   context: SchemaRenderContext;
-  data: Map<string, Chunk>;
+  frontMatter: FrontMatter;
   topLevelName: string;
   isExpandable?: boolean;
-  renderFrontmatter?: boolean;
 }) {
   function renderObjectProperties(objectValue: ObjectValue) {
     const properties = Object.entries(objectValue.properties);
@@ -312,9 +320,9 @@ export function renderSchema({
       const isRequired = objectValue.required?.includes(key) ?? false;
 
       if (value.type === "chunk") {
-        const schemaChunk = getSchemaFromId(value.chunkId, data);
+        const schemaChunk = getSchemaFromId(value.chunkId, context.data);
         const schema = schemaChunk.chunkData.value;
-        const typeInfo = getTypeInfo(schema, data, context);
+        const typeInfo = getTypeInfo(schema, context);
         const nestedContext = {
           ...context,
           schema,
@@ -329,14 +337,18 @@ export function renderSchema({
         });
         renderSchemaFrontmatter({
           context: nestedContext,
+          frontMatter: {
+            description: "description" in schema ? schema.description : null,
+            examples: "examples" in schema ? schema.examples : [],
+            defaultValue: "defaultValue" in schema ? schema.defaultValue : null,
+          },
         });
         renderSchemaBreakouts({
           context,
-          data,
           typeInfo,
         });
       } else {
-        const typeInfo = getTypeInfo(value, data, context);
+        const typeInfo = getTypeInfo(value, context);
         const nestedContext = {
           ...context,
           schema: value,
@@ -350,6 +362,11 @@ export function renderSchema({
         });
         renderSchemaFrontmatter({
           context: nestedContext,
+          frontMatter: {
+            description: "description" in value ? value.description : null,
+            examples: "examples" in value ? value.examples : [],
+            defaultValue: "defaultValue" in value ? value.defaultValue : null,
+          },
         });
       }
       context.renderer.appendSectionContentEnd();
@@ -359,7 +376,7 @@ export function renderSchema({
   function renderArrayLikeItems(
     arrayLikeValue: ArrayValue | MapValue | SetValue
   ) {
-    const typeInfo = getTypeInfo(arrayLikeValue, data, context);
+    const typeInfo = getTypeInfo(arrayLikeValue, context);
     const nestedContext = {
       ...context,
       schema: arrayLikeValue,
@@ -373,11 +390,18 @@ export function renderSchema({
     });
     renderSchemaFrontmatter({
       context: nestedContext,
+      frontMatter: {
+        description:
+          "description" in arrayLikeValue ? arrayLikeValue.description : null,
+        examples: "examples" in arrayLikeValue ? arrayLikeValue.examples : [],
+        defaultValue:
+          "defaultValue" in arrayLikeValue ? arrayLikeValue.defaultValue : null,
+      },
     });
   }
 
   function renderUnionItems(unionValue: UnionValue) {
-    const typeInfo = getTypeInfo(unionValue, data, context);
+    const typeInfo = getTypeInfo(unionValue, context);
     const nestedContext = {
       ...context,
       schema: unionValue,
@@ -391,12 +415,19 @@ export function renderSchema({
     });
     renderSchemaFrontmatter({
       context: nestedContext,
+      frontMatter: {
+        description:
+          "description" in unionValue ? unionValue.description : null,
+        examples: "examples" in unionValue ? unionValue.examples : [],
+        defaultValue:
+          "defaultValue" in unionValue ? unionValue.defaultValue : null,
+      },
     });
     return;
   }
 
   function renderBasicItems(primitiveValue: SchemaValue) {
-    const typeInfo = getTypeInfo(primitiveValue, data, context);
+    const typeInfo = getTypeInfo(primitiveValue, context);
     const nestedContext = {
       ...context,
       schema: primitiveValue,
@@ -410,6 +441,13 @@ export function renderSchema({
     });
     renderSchemaFrontmatter({
       context: nestedContext,
+      frontMatter: {
+        description:
+          "description" in primitiveValue ? primitiveValue.description : null,
+        examples: "examples" in primitiveValue ? primitiveValue.examples : [],
+        defaultValue:
+          "defaultValue" in primitiveValue ? primitiveValue.defaultValue : null,
+      },
     });
   }
 
@@ -422,7 +460,6 @@ export function renderSchema({
     return;
   }
 
-  // TODO: refactor starting sections here to not be brittle and awkward
   if (isExpandable) {
     context.renderer.appendExpandableSectionStart();
     context.renderer.appendSectionTitleStart({
@@ -439,17 +476,15 @@ export function renderSchema({
     context.renderer.appendSectionTitleEnd();
     context.renderer.appendSectionContentStart();
 
-    if (renderFrontmatter) {
-      renderSchemaFrontmatter({
-        context,
-      });
-    }
+    renderSchemaFrontmatter({
+      context,
+      frontMatter,
+    });
   } else {
-    if (renderFrontmatter) {
-      renderSchemaFrontmatter({
-        context,
-      });
-    }
+    renderSchemaFrontmatter({
+      context,
+      frontMatter,
+    });
     context.renderer.appendSectionStart({ contentBorderVariant: "all" });
     context.renderer.appendSectionContentStart();
   }

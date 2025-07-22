@@ -86,9 +86,14 @@ export function renderOperation({
         schema: securityChunk.chunkData.value,
         schemaStack: [],
         idPrefix: securityId,
+        data: docsData,
+      },
+      frontMatter: {
+        description: "",
+        examples: [],
+        defaultValue: null,
       },
       topLevelName: "Security",
-      data: docsData,
     });
     renderer.appendSectionContentEnd();
     renderer.appendSectionEnd();
@@ -114,13 +119,6 @@ export function renderOperation({
           escape: "none",
         }
       );
-      if (parameter.description) {
-        renderer.appendText(parameter.description);
-      } else if (showDebugPlaceholders) {
-        renderer.appendDebugPlaceholderStart();
-        renderer.appendText("No description provided");
-        renderer.appendDebugPlaceholderEnd();
-      }
       const parameterChunk = getSchemaFromId(parameter.fieldChunkId, docsData);
       renderSchema({
         context: {
@@ -129,9 +127,14 @@ export function renderOperation({
           schema: parameterChunk.chunkData.value,
           schemaStack: [],
           idPrefix: parametersId,
+          data: docsData,
+        },
+        frontMatter: {
+          description: parameter.description,
+          examples: [],
+          defaultValue: null,
         },
         topLevelName: "Security",
-        data: docsData,
       });
       renderer.appendSectionContentEnd();
     }
@@ -174,13 +177,6 @@ export function renderOperation({
     );
     renderer.appendSectionTitleEnd();
     renderer.appendSectionContentStart();
-    if (chunk.chunkData.requestBody.description) {
-      renderer.appendText(chunk.chunkData.requestBody.description);
-    } else if (showDebugPlaceholders) {
-      renderer.appendDebugPlaceholderStart();
-      renderer.appendText("No description provided");
-      renderer.appendDebugPlaceholderEnd();
-    }
     const requestBodySchema = getSchemaFromId(
       chunk.chunkData.requestBody.contentChunkId,
       docsData
@@ -192,9 +188,17 @@ export function renderOperation({
         schema: requestBodySchema.chunkData.value,
         schemaStack: [],
         idPrefix: requestBodyId,
+        data: docsData,
+      },
+      frontMatter: {
+        description: chunk.chunkData.requestBody.description,
+
+        // TODO: technically it's possible to have these, they're just not
+        // wired up yet.
+        examples: [],
+        defaultValue: null,
       },
       topLevelName: "Request Body",
-      data: docsData,
     });
     renderer.appendSectionContentEnd();
     renderer.appendSectionEnd();
@@ -247,9 +251,6 @@ export function renderOperation({
           }
           renderer.appendTabbedSectionTabEnd();
           renderer.appendSectionContentStart({ id: responseId });
-          if (response.description) {
-            renderer.appendText(response.description);
-          }
           const responseSchema = getSchemaFromId(
             response.contentChunkId,
             docsData
@@ -261,9 +262,14 @@ export function renderOperation({
               schema: responseSchema.chunkData.value,
               schemaStack: [],
               idPrefix: responseId,
+              data: docsData,
+            },
+            frontMatter: {
+              description: response.description,
+              examples: [],
+              defaultValue: null,
             },
             topLevelName: "Response Body",
-            data: docsData,
           });
           renderer.appendSectionContentEnd();
         }
