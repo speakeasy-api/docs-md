@@ -41,7 +41,7 @@ type Response = {
   contentChunkId: string;
 };
 
-export type RequestBody = {
+type RequestBody = {
   description: string | null;
   required: boolean;
   contentChunkId: string;
