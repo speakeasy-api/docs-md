@@ -1,28 +1,28 @@
 "use client";
 
 import clsx from "clsx";
-import type { FC } from "react";
+import type { FC, PropsWithChildren } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import type { ButtonProps } from "../../primitives/types.ts";
-import { useChildren, useUniqueChild } from "../../Section/hooks.ts";
-import type { SectionProps } from "../../Section/Section.tsx";
-import { SectionContent } from "../../SectionContent/SectionContent.tsx";
-import type { SectionContentProps } from "../../SectionContent/types.tsx";
-import type { SectionTitleProps } from "../../SectionTitle/SectionTitle.tsx";
-import { SectionTitle } from "../../SectionTitle/SectionTitle.tsx";
+import { useChildren, useUniqueChild } from "../Section/hooks.ts";
+import type { SectionProps } from "../Section/Section.tsx";
+import { SectionContent } from "../SectionContent/SectionContent.tsx";
+import type { SectionContentProps } from "../SectionContent/types.tsx";
+import type { SectionTitleProps } from "../SectionTitle/SectionTitle.tsx";
+import { SectionTitle } from "../SectionTitle/SectionTitle.tsx";
 import styles from "./styles.module.css";
-import type { ExpandableSectionProps } from "./types.ts";
+
+export type ExpandableSectionProps = PropsWithChildren<{
+  id?: string;
+}>;
 
 type ExpandableSectionContentProps = ExpandableSectionProps & {
-  Button: FC<ButtonProps>;
   Section: FC<SectionProps>;
 };
 
 export function ExpandableSectionContents({
   id,
   children,
-  Button,
   Section,
 }: ExpandableSectionContentProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,7 +54,7 @@ export function ExpandableSectionContents({
 
   const titleElement = useMemo(
     () => (
-      <Button
+      <button
         onClick={onClick}
         className={clsx(styles.button, isOpen && styles.buttonOpen)}
       >
@@ -68,9 +68,9 @@ export function ExpandableSectionContents({
         >
           △
         </div>
-      </Button>
+      </button>
     ),
-    [Button, onClick, isOpen, titleChild]
+    [onClick, isOpen, titleChild]
   );
 
   // TODO: animate height when expanding closing. Requires knowing the height up

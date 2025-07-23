@@ -3,7 +3,6 @@
 import React from "react";
 
 import { Button } from "../../primitives/nextra/Button.tsx";
-import { Card } from "../../primitives/nextra/Card.tsx";
 import styles from "./styles.module.css";
 
 type SidebarContent = {
@@ -18,7 +17,7 @@ export function NextraSideBar({
   closeRequest: () => void;
 }) {
   return (
-    <Card>
+    <>
       <div className={styles.sidebarContainer}>
         <h4 className={styles.sidebarTitle}>{content?.title ?? "Details"}</h4>
         <Button onClick={closeRequest} className={styles.close}>
@@ -26,6 +25,6 @@ export function NextraSideBar({
         </Button>
       </div>
       {content?.content}
-    </Card>
+    </>
   );
 }

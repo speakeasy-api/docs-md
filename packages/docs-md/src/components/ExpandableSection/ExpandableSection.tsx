@@ -6,8 +6,8 @@
 // server component, so we create a wrapper client component that only exists to
 // pass function components to the real component.
 
-import type { ExpandableSectionProps } from "./common/types.ts";
-import { ExpandableSectionWrapper } from "./nextra/ExapndableSectionWrapper.tsx";
+import type { ExpandableSectionProps } from "./ExpandableSectionContents.tsx";
+import { ExpandableSectionWrapper } from "./ExpandableSectionWrapper.tsx";
 
 export function ExpandableSection(props: ExpandableSectionProps) {
   return <ExpandableSectionWrapper {...props} />;
