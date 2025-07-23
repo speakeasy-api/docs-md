@@ -11,7 +11,6 @@ import {
   renderSchemaDetails,
   renderSchemaFrontmatter,
 } from "./chunks/schema.ts";
-// import { renderSchema } from "./chunks/schema.ts";
 import { renderTag } from "./chunks/tag.ts";
 import { HEADINGS } from "./constants.ts";
 import { getOperationFromId } from "./util.ts";
