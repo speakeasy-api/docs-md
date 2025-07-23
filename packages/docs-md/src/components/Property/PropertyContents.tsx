@@ -1,17 +1,77 @@
 "use client";
 
-import type {
-  FC,
-  ForwardRefExoticComponent,
-  PropsWithChildren,
-  RefAttributes,
-} from "react";
-import { useMemo } from "react";
+import clsx from "clsx";
+import type { PropsWithChildren } from "react";
+import { forwardRef, useMemo } from "react";
 import useMeasure from "react-use-measure";
 
-import type { DisplayTypeInfo } from "../../../renderers/base/base.ts";
-import type { PillProps } from "../../Pill/types.ts";
-import type { PropertyProps } from "./types.ts";
+import type {
+  DisplayTypeInfo,
+  PropertyAnnotations,
+} from "../../renderers/base/base.ts";
+import { Pill } from "../Pill/Pill.tsx";
+import styles from "./styles.module.css";
+
+export type PropertyProps = PropsWithChildren<{
+  typeInfo: DisplayTypeInfo;
+  typeAnnotations: PropertyAnnotations[];
+}>;
+
+const OuterContainer = forwardRef<
+  HTMLDivElement,
+  PropsWithChildren<{ multiline: boolean }>
+>(function OuterContainer({ children, multiline }, ref) {
+  return (
+    <div
+      ref={ref}
+      className={clsx(
+        styles.container,
+        multiline ? styles.containerMutliline : styles.containerSingleLine
+      )}
+    >
+      {children}
+    </div>
+  );
+});
+
+const TitleContainer = forwardRef<HTMLSpanElement, PropsWithChildren>(
+  function TitleContainer({ children }, ref) {
+    return (
+      <span ref={ref} className={styles.titleContainer}>
+        {children}
+      </span>
+    );
+  }
+);
+
+const TypeContainer = forwardRef<
+  HTMLDivElement,
+  PropsWithChildren<{ multiline: boolean; contents: string }>
+>(function TypeContainer({ multiline, contents }, ref) {
+  return (
+    <div ref={ref}>
+      <div
+        className={clsx(
+          styles.typeInnerContainer,
+          multiline
+            ? styles.typeInnerContainerMultiline
+            : styles.typeInnerContainerInline
+        )}
+        dangerouslySetInnerHTML={{ __html: contents }}
+      />
+    </div>
+  );
+});
+
+const OffscreenMeasureContainer = forwardRef<HTMLDivElement>(
+  function OffscreenMeasureContainer(_, ref) {
+    return (
+      <div className={styles.offscreenMeasureContainer} ref={ref}>
+        A
+      </div>
+    );
+  }
+);
 
 function computeSingleLineDisplayType(typeInfo: DisplayTypeInfo): {
   measure: string;
@@ -134,35 +194,11 @@ function computeMultilineTypeLabel(
   }
 }
 
-type PropertyContentsProps = PropertyProps & {
-  OuterContainer: ForwardRefExoticComponent<
-    PropsWithChildren<{ multiline: boolean }> & RefAttributes<HTMLDivElement>
-  >;
-  TitleContainer: ForwardRefExoticComponent<
-    PropsWithChildren & RefAttributes<HTMLSpanElement>
-  >;
-  TypeContainer: ForwardRefExoticComponent<
-    {
-      multiline: boolean;
-      contents: string;
-    } & RefAttributes<HTMLDivElement>
-  >;
-  OffscreenMeasureContainer: ForwardRefExoticComponent<
-    RefAttributes<HTMLDivElement>
-  >;
-  Pill: FC<PillProps>;
-};
-
 export function PropertyContents({
   children,
   typeInfo,
   typeAnnotations,
-  OuterContainer,
-  TitleContainer,
-  TypeContainer,
-  OffscreenMeasureContainer,
-  Pill,
-}: PropertyContentsProps) {
+}: PropertyProps) {
   // We measure the outer container, the title, and the type container so that
   // we can determine if and how to split the type display into multiple lines
   // We alias the bounds so the useMemo isn't affected by non-width bounds

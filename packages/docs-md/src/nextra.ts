@@ -12,5 +12,5 @@ export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
 export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
 export { Code } from "./components/Code/nextra.tsx";
 export { Pill } from "./components/Pill/Pill.tsx";
-export { Property } from "./components/Property/nextra.tsx";
+export { Property } from "./components/Property/Property.tsx";
 export { DebugPlaceholder } from "./components/DebugPlaceholder/DebugPlaceholder.tsx";
