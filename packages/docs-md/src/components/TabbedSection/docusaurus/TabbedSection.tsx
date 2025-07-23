@@ -2,7 +2,7 @@
 
 import { Section } from "../../Section/docusaurus.tsx";
 import { SectionContent } from "../../SectionContent/SectionContent.tsx";
-import { SectionTitle } from "../../SectionTitle/docusaurus.tsx";
+import { SectionTitle } from "../../SectionTitle/SectionTitle.tsx";
 import { useTabbedChildren } from "../common/hooks.tsx";
 import type { TabbedSectionProps } from "../common/types.ts";
 import styles from "./styles.module.css";

@@ -6,7 +6,7 @@ export default {
     framework: "nextra",
   },
   display: {
-    visibleResponses: "success",
+    // visibleResponses: "success",
   },
   // The monorepo is causing some issues with multiple instances of...something
   // that causes Try It Now to crash

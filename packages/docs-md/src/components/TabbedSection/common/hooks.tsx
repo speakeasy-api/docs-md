@@ -8,7 +8,7 @@ import { InternalError } from "../../../util/internalError.ts";
 import { useChildren, useUniqueChild } from "../../Section/hooks.ts";
 import type { SectionContentProps } from "../../SectionContent/types.tsx";
 import type { SectionTabProps } from "../../SectionTab/common/types.tsx";
-import type { SectionTitleProps } from "../../SectionTitle/common/types.tsx";
+import type { SectionTitleProps } from "../../SectionTitle/SectionTitle.tsx";
 import type { TabButtonProps } from "./types.ts";
 
 type ContainerProps = {

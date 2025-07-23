@@ -9,8 +9,8 @@ import type { SectionProps } from "../../Section/common/types.ts";
 import { useChildren, useUniqueChild } from "../../Section/hooks.ts";
 import { SectionContent } from "../../SectionContent/SectionContent.tsx";
 import type { SectionContentProps } from "../../SectionContent/types.tsx";
-import type { SectionTitleProps } from "../../SectionTitle/common/types.tsx";
-import { SectionTitle } from "../../SectionTitle/docusaurus.tsx";
+import type { SectionTitleProps } from "../../SectionTitle/SectionTitle.tsx";
+import { SectionTitle } from "../../SectionTitle/SectionTitle.tsx";
 import styles from "./styles.module.css";
 import type { ExpandableSectionProps } from "./types.ts";
 

@@ -1,9 +1,20 @@
 import clsx from "clsx";
+import type { PropsWithChildren } from "react";
 
-import type { SectionTitleProps } from "../common/types.tsx";
+import type {
+  SectionTitleBorderVariant,
+  SectionTitlePaddingVariant,
+} from "../../renderers/base/base.ts";
 import styles from "./styles.module.css";
 
-export function NextraSectionTitle({
+export type SectionTitleProps = PropsWithChildren<{
+  id?: string;
+  borderVariant: SectionTitleBorderVariant;
+  paddingVariant: SectionTitlePaddingVariant;
+  slot: "title";
+}>;
+
+export function SectionTitle({
   children,
   slot,
   borderVariant,

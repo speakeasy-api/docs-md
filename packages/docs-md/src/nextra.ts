@@ -8,7 +8,7 @@ export { ExpandableSection } from "./components/ExpandableSection/nextra.tsx";
 export { TabbedSection } from "./components/TabbedSection/nextra.tsx";
 export { Section } from "./components/Section/nextra.tsx";
 export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
-export { SectionTitle } from "./components/SectionTitle/nextra.tsx";
+export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
 export { SectionTab } from "./components/SectionTab/nextra.tsx";
 export { Code } from "./components/Code/nextra.tsx";
 export { Pill } from "./components/Pill/Pill.tsx";
