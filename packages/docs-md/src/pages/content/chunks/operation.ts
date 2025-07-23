@@ -7,7 +7,7 @@ import { getSettings } from "../../../util/settings.ts";
 import type { DocsCodeSnippets } from "../../codeSnippets/generateCodeSnippets.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
-import { renderSchema } from "./schema.ts";
+import { renderSchemaDetails, renderSchemaFrontmatter } from "./schema.ts";
 
 type RenderOperationOptions = {
   renderer: Renderer;
@@ -75,26 +75,26 @@ export function renderOperation({
     });
     renderer.appendSectionTitleEnd();
     renderer.appendSectionContentStart();
-    const securityChunk = getSchemaFromId(
-      chunk.chunkData.security.contentChunkId,
-      docsData
-    );
-    renderSchema({
-      schema: securityChunk.chunkData.value,
-      context: {
-        site,
-        renderer,
-        schemaStack: [],
-        idPrefix: securityId,
-        data: docsData,
-      },
-      frontMatter: {
-        description: "",
-        examples: [],
-        defaultValue: null,
-      },
-      topLevelName: "Security",
-    });
+    // const securityChunk = getSchemaFromId(
+    //   chunk.chunkData.security.contentChunkId,
+    //   docsData
+    // );
+    // renderSchema({
+    //   schema: securityChunk.chunkData.value,
+    //   context: {
+    //     site,
+    //     renderer,
+    //     schemaStack: [],
+    //     idPrefix: securityId,
+    //     data: docsData,
+    //   },
+    //   frontMatter: {
+    //     description: "",
+    //     examples: [],
+    //     defaultValue: null,
+    //   },
+    //   topLevelName: "Security",
+    // });
     renderer.appendSectionContentEnd();
     renderer.appendSectionEnd();
   }
@@ -119,23 +119,23 @@ export function renderOperation({
           escape: "none",
         }
       );
-      const parameterChunk = getSchemaFromId(parameter.fieldChunkId, docsData);
-      renderSchema({
-        schema: parameterChunk.chunkData.value,
-        context: {
-          site,
-          renderer,
-          schemaStack: [],
-          idPrefix: parametersId,
-          data: docsData,
-        },
-        frontMatter: {
-          description: parameter.description,
-          examples: [],
-          defaultValue: null,
-        },
-        topLevelName: "Security",
-      });
+      // const parameterChunk = getSchemaFromId(parameter.fieldChunkId, docsData);
+      // renderSchema({
+      //   schema: parameterChunk.chunkData.value,
+      //   context: {
+      //     site,
+      //     renderer,
+      //     schemaStack: [],
+      //     idPrefix: parametersId,
+      //     data: docsData,
+      //   },
+      //   frontMatter: {
+      //     description: parameter.description,
+      //     examples: [],
+      //     defaultValue: null,
+      //   },
+      //   topLevelName: "Security",
+      // });
       renderer.appendSectionContentEnd();
     }
     renderer.appendSectionEnd();
@@ -177,29 +177,27 @@ export function renderOperation({
     );
     renderer.appendSectionTitleEnd();
     renderer.appendSectionContentStart();
+
     const requestBodySchema = getSchemaFromId(
       chunk.chunkData.requestBody.contentChunkId,
       docsData
     );
-    renderSchema({
+    const context = {
+      site,
+      renderer,
+      schemaStack: [],
+      idPrefix: requestBodyId,
+      data: docsData,
+    };
+    renderSchemaFrontmatter({
+      context,
       schema: requestBodySchema.chunkData.value,
-      context: {
-        site,
-        renderer,
-        schemaStack: [],
-        idPrefix: requestBodyId,
-        data: docsData,
-      },
-      frontMatter: {
-        description: chunk.chunkData.requestBody.description,
-
-        // TODO: technically it's possible to have these, they're just not
-        // wired up yet.
-        examples: [],
-        defaultValue: null,
-      },
-      topLevelName: "Request Body",
     });
+    renderSchemaDetails({
+      context,
+      schema: requestBodySchema.chunkData.value,
+    });
+
     renderer.appendSectionContentEnd();
     renderer.appendSectionEnd();
   }
@@ -251,26 +249,27 @@ export function renderOperation({
           }
           renderer.appendTabbedSectionTabEnd();
           renderer.appendSectionContentStart({ id: responseId });
+
           const responseSchema = getSchemaFromId(
             response.contentChunkId,
             docsData
           );
-          renderSchema({
+          const context = {
+            site,
+            renderer,
+            schemaStack: [],
+            idPrefix: responseId,
+            data: docsData,
+          };
+          renderSchemaFrontmatter({
+            context,
             schema: responseSchema.chunkData.value,
-            context: {
-              site,
-              renderer,
-              schemaStack: [],
-              idPrefix: responseId,
-              data: docsData,
-            },
-            frontMatter: {
-              description: response.description,
-              examples: [],
-              defaultValue: null,
-            },
-            topLevelName: "Response Body",
           });
+          renderSchemaDetails({
+            context,
+            schema: responseSchema.chunkData.value,
+          });
+
           renderer.appendSectionContentEnd();
         }
       }

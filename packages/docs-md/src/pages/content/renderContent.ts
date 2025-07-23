@@ -7,7 +7,7 @@ import { getSettings } from "../../util/settings.ts";
 import type { DocsCodeSnippets } from "../codeSnippets/generateCodeSnippets.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
-import { renderSchema } from "./chunks/schema.ts";
+// import { renderSchema } from "./chunks/schema.ts";
 import { renderTag } from "./chunks/tag.ts";
 import { HEADINGS } from "./constants.ts";
 import { getOperationFromId } from "./util.ts";
@@ -161,31 +161,31 @@ function renderPages(
               id,
             }
           );
-          renderSchema({
-            context: {
-              site,
-              renderer,
-              schemaStack: [],
-              schema: chunk.chunkData.value,
-              idPrefix: id,
-              data,
-            },
-            frontMatter: {
-              description:
-                "description" in chunk.chunkData.value
-                  ? chunk.chunkData.value.description
-                  : null,
-              examples:
-                "examples" in chunk.chunkData.value
-                  ? chunk.chunkData.value.examples
-                  : [],
-              defaultValue:
-                "defaultValue" in chunk.chunkData.value
-                  ? chunk.chunkData.value.defaultValue
-                  : null,
-            },
-            topLevelName: "Schema",
-          });
+          // renderSchema({
+          //   context: {
+          //     site,
+          //     renderer,
+          //     schemaStack: [],
+          //     schema: chunk.chunkData.value,
+          //     idPrefix: id,
+          //     data,
+          //   },
+          //   frontMatter: {
+          //     description:
+          //       "description" in chunk.chunkData.value
+          //         ? chunk.chunkData.value.description
+          //         : null,
+          //     examples:
+          //       "examples" in chunk.chunkData.value
+          //         ? chunk.chunkData.value.examples
+          //         : [],
+          //     defaultValue:
+          //       "defaultValue" in chunk.chunkData.value
+          //         ? chunk.chunkData.value.defaultValue
+          //         : null,
+          //   },
+          //   topLevelName: "Schema",
+          // });
           break;
         }
         case "operation": {
