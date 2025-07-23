@@ -66,6 +66,8 @@ export function renderOperation({
     renderer.appendDebugPlaceholderEnd();
   }
 
+  // TODO: Security is being rewritten anyways, so I'm not refactoring it as
+  // part of the schema refactor
   if (chunk.chunkData.security) {
     const securityId = id + "+security";
     renderer.appendSectionStart();
@@ -101,14 +103,14 @@ export function renderOperation({
 
   if (chunk.chunkData.parameters.length > 0) {
     const parametersId = id + "+parameters";
-    renderer.appendSectionStart({ contentBorderVariant: "all" });
+    renderer.appendSectionStart();
     renderer.appendSectionTitleStart();
     renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Parameters", {
       id: parametersId,
     });
     renderer.appendSectionTitleEnd();
     for (const parameter of chunk.chunkData.parameters) {
-      renderer.appendSectionContentStart({ borderVariant: "all" });
+      renderer.appendSectionContentStart();
       const start = renderer.createPillStart("warning");
       const end = renderer.createPillEnd();
       renderer.appendHeading(
@@ -119,23 +121,24 @@ export function renderOperation({
           escape: "none",
         }
       );
-      // const parameterChunk = getSchemaFromId(parameter.fieldChunkId, docsData);
-      // renderSchema({
-      //   schema: parameterChunk.chunkData.value,
-      //   context: {
-      //     site,
-      //     renderer,
-      //     schemaStack: [],
-      //     idPrefix: parametersId,
-      //     data: docsData,
-      //   },
-      //   frontMatter: {
-      //     description: parameter.description,
-      //     examples: [],
-      //     defaultValue: null,
-      //   },
-      //   topLevelName: "Security",
-      // });
+
+      const parameterChunk = getSchemaFromId(parameter.fieldChunkId, docsData);
+      const parameterContext = {
+        site,
+        renderer,
+        schemaStack: [],
+        idPrefix: parametersId,
+        data: docsData,
+      };
+      renderSchemaFrontmatter({
+        context: parameterContext,
+        schema: parameterChunk.chunkData.value,
+      });
+      renderSchemaDetails({
+        context: parameterContext,
+        schema: parameterChunk.chunkData.value,
+      });
+
       renderer.appendSectionContentEnd();
     }
     renderer.appendSectionEnd();
