@@ -5,8 +5,8 @@ import type { FC } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import type { ButtonProps } from "../../primitives/types.ts";
-import type { SectionProps } from "../../Section/common/types.ts";
 import { useChildren, useUniqueChild } from "../../Section/hooks.ts";
+import type { SectionProps } from "../../Section/Section.tsx";
 import { SectionContent } from "../../SectionContent/SectionContent.tsx";
 import type { SectionContentProps } from "../../SectionContent/types.tsx";
 import type { SectionTitleProps } from "../../SectionTitle/SectionTitle.tsx";

@@ -1,10 +1,18 @@
 import clsx from "clsx";
+import type { PropsWithChildren } from "react";
 
-import type { SectionProps } from "../common/types.ts";
-import { useChildren, useUniqueChild } from "../hooks.ts";
+import type { SectionContentBorderVariant } from "../../renderers/base/base.ts";
+import { useChildren, useUniqueChild } from "./hooks.ts";
 import styles from "./styles.module.css";
 
-export function SectionContents({
+export type SectionProps = PropsWithChildren<{
+  contentBorderVariant: SectionContentBorderVariant;
+
+  // Internal property used by ExpandableSection
+  noTopBorderRadius?: boolean;
+}>;
+
+export function Section({
   children,
   contentBorderVariant,
   noTopBorderRadius,

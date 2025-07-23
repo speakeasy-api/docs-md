@@ -1,15 +1,19 @@
 "use client";
 
-import type { FC } from "react";
+import type { FC, PropsWithChildren } from "react";
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 
-import { InternalError } from "../../../util/internalError.ts";
-import { useChildren, useUniqueChild } from "../../Section/hooks.ts";
-import type { SectionContentProps } from "../../SectionContent/types.tsx";
-import type { SectionTabProps } from "../../SectionTab/SectionTab.tsx";
-import type { SectionTitleProps } from "../../SectionTitle/SectionTitle.tsx";
-import type { TabButtonProps } from "./types.ts";
+import { InternalError } from "../../util/internalError.ts";
+import { useChildren, useUniqueChild } from "../Section/hooks.ts";
+import type { SectionContentProps } from "../SectionContent/types.tsx";
+import type { SectionTabProps } from "../SectionTab/SectionTab.tsx";
+import type { SectionTitleProps } from "../SectionTitle/SectionTitle.tsx";
+
+export type TabButtonProps = PropsWithChildren<{
+  isActive: boolean;
+  onClick: () => void;
+}>;
 
 type ContainerProps = {
   TabButton: FC<TabButtonProps>;

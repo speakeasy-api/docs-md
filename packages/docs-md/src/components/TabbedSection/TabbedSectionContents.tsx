@@ -1,14 +1,18 @@
 "use client";
 
-import { Section } from "../../Section/docusaurus.tsx";
-import { SectionContent } from "../../SectionContent/SectionContent.tsx";
-import { SectionTitle } from "../../SectionTitle/SectionTitle.tsx";
-import { useTabbedChildren } from "../common/hooks.tsx";
-import type { TabbedSectionProps } from "../common/types.ts";
+import { Section } from "../Section/Section.tsx";
+import { SectionContent } from "../SectionContent/SectionContent.tsx";
+import type { SectionTabProps } from "../SectionTab/SectionTab.tsx";
+import { SectionTitle } from "../SectionTitle/SectionTitle.tsx";
+import { useTabbedChildren } from "./hooks.tsx";
 import styles from "./styles.module.css";
 import { TabButton } from "./TabButton.tsx";
 
-export function DocusaurusTabbedSection({ children }: TabbedSectionProps) {
+export type TabbedSectionProps = {
+  children: React.ReactElement<SectionTabProps>[];
+};
+
+export function TabbedSectionContents({ children }: TabbedSectionProps) {
   const { titleChild, tabChildren, activeChild } = useTabbedChildren({
     children,
     TabButton,
@@ -29,7 +33,7 @@ export function DocusaurusTabbedSection({ children }: TabbedSectionProps) {
       <SectionContent
         slot="content"
         borderVariant="default"
-        paddingVariant="none"
+        paddingVariant="default"
       >
         {activeChild}
       </SectionContent>

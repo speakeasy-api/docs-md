@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "../../primitives/nextra/Button.tsx";
-import { Section } from "../../Section/nextra.tsx";
+import { Section } from "../../Section/Section.tsx";
 import { ExpandableSectionContents } from "../common/ExpandableSection.tsx";
 import type { ExpandableSectionProps } from "../common/types.ts";
 

@@ -1,5 +1,5 @@
 import { Button } from "../primitives/docusaurus/Button.tsx";
-import { Section } from "../Section/docusaurus.tsx";
+import { Section } from "../Section/Section.tsx";
 import { ExpandableSectionContents } from "./common/ExpandableSection.tsx";
 import type { ExpandableSectionProps } from "./common/types.ts";
 

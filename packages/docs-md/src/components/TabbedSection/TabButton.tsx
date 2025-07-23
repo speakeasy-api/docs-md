@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import type { TabButtonProps } from "../common/types.ts";
+import type { TabButtonProps } from "./hooks.tsx";
 import styles from "./styles.module.css";
 
 export function TabButton({ children, isActive, onClick }: TabButtonProps) {
