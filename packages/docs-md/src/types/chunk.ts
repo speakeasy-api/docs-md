@@ -75,15 +75,15 @@ type ChunkValue = {
   chunkId: string;
 };
 
-type AnyValue = {
-  type: "any";
-};
-
 type BaseValue = {
   description: string | null;
   examples: string[];
   isNullable: boolean;
   defaultValue: string | null;
+};
+
+type AnyValue = BaseValue & {
+  type: "any";
 };
 
 type NullValue = BaseValue & {
@@ -142,17 +142,17 @@ export type ObjectValue = BaseValue & {
   name: string;
 };
 
-export type ArrayValue = BaseValue & {
+type ArrayValue = BaseValue & {
   type: "array";
   items: SchemaValue;
 };
 
-export type SetValue = BaseValue & {
+type SetValue = BaseValue & {
   type: "set";
   items: SchemaValue;
 };
 
-export type MapValue = BaseValue & {
+type MapValue = BaseValue & {
   type: "map";
   items: SchemaValue;
 };
@@ -161,7 +161,7 @@ type BinaryValue = BaseValue & {
   type: "binary";
 };
 
-export type UnionValue = BaseValue & {
+type UnionValue = BaseValue & {
   type: "union";
   values: SchemaValue[];
 };

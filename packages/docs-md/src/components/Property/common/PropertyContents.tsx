@@ -9,11 +9,11 @@ import type {
 import { useMemo } from "react";
 import useMeasure from "react-use-measure";
 
-import type { TypeInfo } from "../../../renderers/base/base.ts";
+import type { DisplayTypeInfo } from "../../../renderers/base/base.ts";
 import type { PillProps } from "../../Pill/common/types.ts";
 import type { PropertyProps } from "./types.ts";
 
-function computeSingleLineDisplayType(typeInfo: TypeInfo): {
+function computeSingleLineDisplayType(typeInfo: DisplayTypeInfo): {
   measure: string;
   display: string;
 } {
@@ -50,7 +50,7 @@ type MultilineTypeLabelEntry = {
 };
 
 function computeMultilineTypeLabel(
-  typeInfo: TypeInfo,
+  typeInfo: DisplayTypeInfo,
   indentation: number,
   maxCharacters: number
 ): MultilineTypeLabelEntry {

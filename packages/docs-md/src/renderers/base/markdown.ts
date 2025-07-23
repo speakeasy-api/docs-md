@@ -4,6 +4,7 @@ import { HEADINGS } from "../../pages/content/constants.ts";
 import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from "../../util/settings.ts";
 import type {
+  DisplayTypeInfo,
   RendererAppendHeadingArgs,
   RendererCreateAppendCodeArgs,
   RendererCreateAppendTextArgs,
@@ -18,7 +19,6 @@ import type {
   SiteBuildPagePathArgs,
   SiteCreatePageArgs,
   SiteHasPageArgs,
-  TypeInfo,
 } from "./base.ts";
 import { Renderer } from "./base.ts";
 import { Site } from "./base.ts";
@@ -282,7 +282,7 @@ ${text}\n</code>\n</pre>`;
     this[rendererLines].push(this.createTabbedSectionTabEnd());
   }
 
-  #computeSingleLineDisplayType = (typeInfo: TypeInfo): string => {
+  #computeSingleLineDisplayType = (typeInfo: DisplayTypeInfo): string => {
     switch (typeInfo.label) {
       case "array":
       case "map":

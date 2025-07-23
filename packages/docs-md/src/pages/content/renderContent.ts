@@ -7,7 +7,10 @@ import { getSettings } from "../../util/settings.ts";
 import type { DocsCodeSnippets } from "../codeSnippets/generateCodeSnippets.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
-import { renderSchema } from "./chunks/schema.ts";
+import {
+  renderSchemaDetails,
+  renderSchemaFrontmatter,
+} from "./chunks/schema.ts";
 import { renderTag } from "./chunks/tag.ts";
 import { HEADINGS } from "./constants.ts";
 import { getOperationFromId } from "./util.ts";
@@ -161,16 +164,20 @@ function renderPages(
               id,
             }
           );
-          renderSchema({
-            context: {
-              site,
-              renderer,
-              schemaStack: [],
-              schema: chunk.chunkData.value,
-              idPrefix: id,
-            },
+          const schemaContext = {
+            site,
+            renderer,
+            schemaStack: [],
+            idPrefix: id,
             data,
-            topLevelName: "Schema",
+          };
+          renderSchemaFrontmatter({
+            context: schemaContext,
+            schema: chunk.chunkData.value,
+          });
+          renderSchemaDetails({
+            context: schemaContext,
+            schema: chunk.chunkData.value,
           });
           break;
         }

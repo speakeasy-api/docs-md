@@ -7,7 +7,7 @@ import { getSettings } from "../../../util/settings.ts";
 import type { DocsCodeSnippets } from "../../codeSnippets/generateCodeSnippets.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
-import { renderSchema } from "./schema.ts";
+import { renderSchemaDetails, renderSchemaFrontmatter } from "./schema.ts";
 
 type RenderOperationOptions = {
   renderer: Renderer;
@@ -66,6 +66,8 @@ export function renderOperation({
     renderer.appendDebugPlaceholderEnd();
   }
 
+  // TODO: Security is being rewritten anyways, so I'm not refactoring it as
+  // part of the schema refactor
   if (chunk.chunkData.security) {
     const securityId = id + "+security";
     renderer.appendSectionStart();
@@ -75,35 +77,40 @@ export function renderOperation({
     });
     renderer.appendSectionTitleEnd();
     renderer.appendSectionContentStart();
-    const securityChunk = getSchemaFromId(
-      chunk.chunkData.security.contentChunkId,
-      docsData
-    );
-    renderSchema({
-      context: {
-        site,
-        renderer,
-        schema: securityChunk.chunkData.value,
-        schemaStack: [],
-        idPrefix: securityId,
-      },
-      topLevelName: "Security",
-      data: docsData,
-    });
+    // const securityChunk = getSchemaFromId(
+    //   chunk.chunkData.security.contentChunkId,
+    //   docsData
+    // );
+    // renderSchema({
+    //   schema: securityChunk.chunkData.value,
+    //   context: {
+    //     site,
+    //     renderer,
+    //     schemaStack: [],
+    //     idPrefix: securityId,
+    //     data: docsData,
+    //   },
+    //   frontMatter: {
+    //     description: "",
+    //     examples: [],
+    //     defaultValue: null,
+    //   },
+    //   topLevelName: "Security",
+    // });
     renderer.appendSectionContentEnd();
     renderer.appendSectionEnd();
   }
 
   if (chunk.chunkData.parameters.length > 0) {
     const parametersId = id + "+parameters";
-    renderer.appendSectionStart({ contentBorderVariant: "all" });
+    renderer.appendSectionStart();
     renderer.appendSectionTitleStart();
     renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Parameters", {
       id: parametersId,
     });
     renderer.appendSectionTitleEnd();
     for (const parameter of chunk.chunkData.parameters) {
-      renderer.appendSectionContentStart({ borderVariant: "all" });
+      renderer.appendSectionContentStart();
       const start = renderer.createPillStart("warning");
       const end = renderer.createPillEnd();
       renderer.appendHeading(
@@ -114,25 +121,24 @@ export function renderOperation({
           escape: "none",
         }
       );
-      if (parameter.description) {
-        renderer.appendText(parameter.description);
-      } else if (showDebugPlaceholders) {
-        renderer.appendDebugPlaceholderStart();
-        renderer.appendText("No description provided");
-        renderer.appendDebugPlaceholderEnd();
-      }
+
       const parameterChunk = getSchemaFromId(parameter.fieldChunkId, docsData);
-      renderSchema({
-        context: {
-          site,
-          renderer,
-          schema: parameterChunk.chunkData.value,
-          schemaStack: [],
-          idPrefix: parametersId,
-        },
-        topLevelName: "Security",
+      const parameterContext = {
+        site,
+        renderer,
+        schemaStack: [],
+        idPrefix: parametersId,
         data: docsData,
+      };
+      renderSchemaFrontmatter({
+        context: parameterContext,
+        schema: parameterChunk.chunkData.value,
       });
+      renderSchemaDetails({
+        context: parameterContext,
+        schema: parameterChunk.chunkData.value,
+      });
+
       renderer.appendSectionContentEnd();
     }
     renderer.appendSectionEnd();
@@ -174,28 +180,27 @@ export function renderOperation({
     );
     renderer.appendSectionTitleEnd();
     renderer.appendSectionContentStart();
-    if (chunk.chunkData.requestBody.description) {
-      renderer.appendText(chunk.chunkData.requestBody.description);
-    } else if (showDebugPlaceholders) {
-      renderer.appendDebugPlaceholderStart();
-      renderer.appendText("No description provided");
-      renderer.appendDebugPlaceholderEnd();
-    }
+
     const requestBodySchema = getSchemaFromId(
       chunk.chunkData.requestBody.contentChunkId,
       docsData
     );
-    renderSchema({
-      context: {
-        site,
-        renderer,
-        schema: requestBodySchema.chunkData.value,
-        schemaStack: [],
-        idPrefix: requestBodyId,
-      },
-      topLevelName: "Request Body",
+    const context = {
+      site,
+      renderer,
+      schemaStack: [],
+      idPrefix: requestBodyId,
       data: docsData,
+    };
+    renderSchemaFrontmatter({
+      context,
+      schema: requestBodySchema.chunkData.value,
     });
+    renderSchemaDetails({
+      context,
+      schema: requestBodySchema.chunkData.value,
+    });
+
     renderer.appendSectionContentEnd();
     renderer.appendSectionEnd();
   }
@@ -247,24 +252,27 @@ export function renderOperation({
           }
           renderer.appendTabbedSectionTabEnd();
           renderer.appendSectionContentStart({ id: responseId });
-          if (response.description) {
-            renderer.appendText(response.description);
-          }
+
           const responseSchema = getSchemaFromId(
             response.contentChunkId,
             docsData
           );
-          renderSchema({
-            context: {
-              site,
-              renderer,
-              schema: responseSchema.chunkData.value,
-              schemaStack: [],
-              idPrefix: responseId,
-            },
-            topLevelName: "Response Body",
+          const context = {
+            site,
+            renderer,
+            schemaStack: [],
+            idPrefix: responseId,
             data: docsData,
+          };
+          renderSchemaFrontmatter({
+            context,
+            schema: responseSchema.chunkData.value,
           });
+          renderSchemaDetails({
+            context,
+            schema: responseSchema.chunkData.value,
+          });
+
           renderer.appendSectionContentEnd();
         }
       }

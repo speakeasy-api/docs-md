@@ -32,11 +32,11 @@ export type SectionTitlePaddingVariant = "default" | "none";
 export type SectionContentBorderVariant = "default" | "all";
 export type SectionContentPaddingVariant = "default" | "none";
 
-export type TypeInfo = {
+export type DisplayTypeInfo = {
   label: string;
   linkedLabel: string;
-  children: TypeInfo[];
-  breakoutSubTypes: { label: string; schema: SchemaValue }[];
+  children: DisplayTypeInfo[];
+  breakoutSubTypes: Map<string, SchemaValue>;
 };
 
 export type PropertyAnnotations = {
@@ -168,7 +168,7 @@ export type RendererAppendSidebarLinkArgs = [
 ];
 export type RendererCreatePropertyArgs = [
   options: {
-    typeInfo: TypeInfo;
+    typeInfo: DisplayTypeInfo;
     id: string;
     annotations: PropertyAnnotations[];
     title: string;
