@@ -9,7 +9,7 @@ export { TabbedSection } from "./components/TabbedSection/nextra.tsx";
 export { Section } from "./components/Section/nextra.tsx";
 export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
 export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
-export { SectionTab } from "./components/SectionTab/nextra.tsx";
+export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
 export { Code } from "./components/Code/nextra.tsx";
 export { Pill } from "./components/Pill/Pill.tsx";
 export { Property } from "./components/Property/nextra.tsx";
