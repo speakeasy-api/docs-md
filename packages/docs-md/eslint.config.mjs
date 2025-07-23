@@ -14,6 +14,7 @@ export default [
       "eslint.config.mjs": ["default"],
       "src/nextra.ts": /.*/,
       "src/docusaurus.ts": /.*/,
+      "src/react.ts": /.*/,
     },
     ignores: ["src/pages/data/wasm_exec.js", ".storybook/**/*"],
     restrictedImports: [
