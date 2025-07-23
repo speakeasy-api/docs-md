@@ -7,6 +7,7 @@ export default {
   },
   display: {
     visibleResponses: "success",
+    showDebugPlaceholders: false,
   },
   // The monorepo is causing some issues with multiple instances of...something
   // that causes Try It Now to crash

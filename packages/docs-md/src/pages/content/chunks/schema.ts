@@ -281,7 +281,7 @@ function renderProperty({
   const typeInfo = getDisplayTypeInfo(property.schema, context);
   const annotations: PropertyAnnotations[] = [];
   if (property.isRequired) {
-    annotations.push({ title: "required", variant: "success" });
+    annotations.push({ title: "required", variant: "warning" });
   }
   if (property.isDeprecated) {
     annotations.push({ title: "deprecated", variant: "warning" });
