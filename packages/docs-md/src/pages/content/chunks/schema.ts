@@ -1,23 +1,14 @@
 import type {
   DisplayTypeInfo,
   PropertyAnnotations,
-  Renderer,
-  Site,
+  SchemaRenderContext,
 } from "../../../renderers/base/base.ts";
-import type { Chunk, ObjectValue, SchemaValue } from "../../../types/chunk.ts";
+import type { ObjectValue, SchemaValue } from "../../../types/chunk.ts";
 import { assertNever } from "../../../util/assertNever.ts";
 import { InternalError } from "../../../util/internalError.ts";
 import { getSettings } from "../../../util/settings.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
-
-type SchemaRenderContext = {
-  site: Site;
-  renderer: Renderer;
-  schemaStack: string[];
-  idPrefix: string;
-  data: Map<string, Chunk>;
-};
 
 type ContainerEntry = {
   label: string;

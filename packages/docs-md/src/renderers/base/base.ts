@@ -15,7 +15,7 @@
 // defined as a tuple. We can then use the spread operator to assign that type
 // to all arguments. It's a bit verbose and convoluted, but solves both 1 and 2
 
-import type { SchemaValue } from "../../types/chunk.ts";
+import type { Chunk, SchemaValue } from "../../types/chunk.ts";
 
 // Types shared with components
 
@@ -176,9 +176,13 @@ export type RendererAppendTryItNowArgs = [
   },
 ];
 
-type RenderSchemaCallback = (
-  callback: (schemaRenderer: Renderer) => void
-) => void;
+export type SchemaRenderContext = {
+  site: Site;
+  renderer: Renderer;
+  schemaStack: string[];
+  idPrefix: string;
+  data: Map<string, Chunk>;
+};
 
 // Section args
 export type RendererAddOperationArgs = [
@@ -215,20 +219,21 @@ export type RendererAddParametersSectionArgs = [
 export type RendererAddRequestSectionArgs = [
   options: {
     isOptional: boolean;
+    site: Site;
+    data: Map<string, Chunk>;
   },
-  cb: (createSchema: RenderSchemaCallback) => void,
+  cb: (context: SchemaRenderContext) => void,
 ];
 export type RendererAddResponsesArgs = [
-  options: {
-    title: string;
-    annotations?: PropertyAnnotations[];
-  },
   cb: (
     createTab: (
-      callback: (options: {
-        titleRenderer: Renderer;
-        contentRenderer: Renderer;
-      }) => void
+      options: {
+        statusCode: string;
+        contentType: string;
+        site: Site;
+        data: Map<string, Chunk>;
+      },
+      callback: (context: SchemaRenderContext) => void
     ) => void
   ) => void,
 ];

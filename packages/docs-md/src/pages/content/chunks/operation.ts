@@ -114,28 +114,20 @@ export function renderOperation({
 
       if (chunk.chunkData.requestBody) {
         const { requestBody } = chunk.chunkData;
-        operationRenderer.addRequestSection({ isOptional: false }, (cb) => {
-          cb((schemaRenderer) => {
-            // TODO: internalize this id
-            const requestBodyId = id + "+request";
+        operationRenderer.addRequestSection(
+          { isOptional: false, site, data: docsData },
+          (context) => {
             const requestBodySchema = getSchemaFromId(
               requestBody.contentChunkId,
               docsData
             );
-            const context = {
-              site,
-              renderer: schemaRenderer,
-              schemaStack: [],
-              idPrefix: requestBodyId,
-              data: docsData,
-            };
             if (requestBodySchema.chunkData.value.type !== "object") {
-              schemaRenderer.appendProperty({
+              context.renderer.appendProperty({
                 typeInfo: getDisplayTypeInfo(
                   requestBodySchema.chunkData.value,
                   context
                 ),
-                id: requestBodyId,
+                id: context.idPrefix,
                 annotations: [],
                 title: "",
               });
@@ -148,8 +140,8 @@ export function renderOperation({
               context,
               schema: requestBodySchema.chunkData.value,
             });
-          });
-        });
+          }
+        );
       }
 
       if (chunk.chunkData.responses) {
@@ -172,69 +164,42 @@ export function renderOperation({
           0
         );
         if (numResponses > 0) {
-          operationRenderer.appendTabbedSectionStart();
-          const responsesId = id + "+responses";
-          operationRenderer.appendSectionTitleStart({ variant: "top-level" });
-          operationRenderer.appendHeading(
-            HEADINGS.SECTION_HEADING_LEVEL,
-            numResponses === 1 ? "Response" : "Responses",
-            {
-              id: responsesId,
-            }
-          );
-          operationRenderer.appendSectionTitleEnd();
-          for (const [statusCode, responses] of filteredResponseList) {
-            for (const response of responses) {
-              const responseId =
-                id + `+${statusCode}+${response.contentType.replace("/", "-")}`;
-              const tooltip = `${statusCode} (${response.contentType})`;
-              operationRenderer.appendTabbedSectionTabStart(responseId);
-              if (responses.length > 1) {
-                operationRenderer.appendText(tooltip);
-              } else {
-                operationRenderer.appendText(statusCode);
+          operationRenderer.addResponsesSection((createTab) => {
+            for (const [statusCode, responses] of filteredResponseList) {
+              for (const response of responses) {
+                createTab(
+                  {
+                    statusCode,
+                    contentType: response.contentType,
+                    site,
+                    data: docsData,
+                  },
+                  (context) => {
+                    const schema = getSchemaFromId(
+                      response.contentChunkId,
+                      docsData
+                    ).chunkData.value;
+                    if (schema.type !== "object") {
+                      context.renderer.appendProperty({
+                        typeInfo: getDisplayTypeInfo(schema, context),
+                        id: context.idPrefix,
+                        annotations: [],
+                        title: "",
+                      });
+                    }
+                    renderSchemaFrontmatter({
+                      context,
+                      schema,
+                    });
+                    renderSchemaDetails({
+                      context,
+                      schema,
+                    });
+                  }
+                );
               }
-              operationRenderer.appendTabbedSectionTabEnd();
-              operationRenderer.appendSectionContentStart({
-                id: responseId,
-                variant: "top-level",
-              });
-
-              const responseSchema = getSchemaFromId(
-                response.contentChunkId,
-                docsData
-              );
-              const context = {
-                site,
-                renderer: operationRenderer,
-                schemaStack: [],
-                idPrefix: responseId,
-                data: docsData,
-              };
-              if (responseSchema.chunkData.value.type !== "object") {
-                operationRenderer.appendProperty({
-                  typeInfo: getDisplayTypeInfo(
-                    responseSchema.chunkData.value,
-                    context
-                  ),
-                  id: responseId,
-                  annotations: [],
-                  title: "",
-                });
-              }
-              renderSchemaFrontmatter({
-                context,
-                schema: responseSchema.chunkData.value,
-              });
-              renderSchemaDetails({
-                context,
-                schema: responseSchema.chunkData.value,
-              });
-
-              operationRenderer.appendSectionContentEnd();
             }
-          }
-          operationRenderer.appendTabbedSectionEnd();
+          });
         }
       }
     }

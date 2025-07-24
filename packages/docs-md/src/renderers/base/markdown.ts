@@ -207,7 +207,7 @@ export abstract class MarkdownRenderer extends Renderer {
   }
 
   public override addRequestSection(
-    ...[{ isOptional }, cb]: RendererAddRequestSectionArgs
+    ...[{ isOptional, site, data }, cb]: RendererAddRequestSectionArgs
   ): void {
     this.#idStack.push("request");
     const annotations: PropertyAnnotations[] = [];
@@ -222,29 +222,48 @@ export abstract class MarkdownRenderer extends Renderer {
         title: "Request Body",
         annotations,
       },
-      (contentRenderer) => {
-        cb((cb) => {
-          cb(contentRenderer);
+      (schemaRenderer) => {
+        cb({
+          site,
+          renderer: schemaRenderer,
+          schemaStack: [],
+          idPrefix: this.getIdPrefix(),
+          data,
         });
       }
     );
     this.#idStack.pop();
   }
 
-  public override addResponsesSection(
-    ...[{ title, annotations = [] }, cb]: RendererAddResponsesArgs
-  ): void {
+  public override addResponsesSection(...[cb]: RendererAddResponsesArgs): void {
     this.#idStack.push("responses");
-    for (const annotation of annotations) {
-      title += ` ${this.createPillStart(annotation.variant)}${annotation.title}${this.createPillEnd()}`;
-    }
-    this.appendHeading(HEADINGS.SECTION_TITLE_HEADING_LEVEL, title);
-    cb((cb) => {
-      cb({
-        titleRenderer: this,
-        contentRenderer: this,
-      });
+    this.appendTabbedSectionStart();
+    this.appendSectionTitleStart({ variant: "top-level" });
+    this.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Responses", {
+      id: this.getIdPrefix(),
     });
+    this.appendSectionTitleEnd();
+    cb(({ statusCode, contentType, site, data }, cb) => {
+      this.#idStack.push(statusCode, contentType.replace("/", "-"));
+      this.appendTabbedSectionTabStart(this.getIdPrefix());
+      this.appendText(statusCode);
+      this.appendTabbedSectionTabEnd();
+      this.appendSectionContentStart({
+        id: this.getIdPrefix(),
+        variant: "top-level",
+      });
+      const context = {
+        site,
+        renderer: this,
+        schemaStack: [],
+        idPrefix: this.getIdPrefix(),
+        data,
+      };
+      cb(context);
+      this.appendSectionContentEnd();
+      this.#idStack.pop();
+    });
+    this.appendTabbedSectionEnd();
     this.#idStack.pop();
   }
 
