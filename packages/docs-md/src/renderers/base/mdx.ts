@@ -138,10 +138,10 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createSectionStart(
-    ...[{ contentBorderVariant = "default" } = {}]: RendererCreateSectionArgs
+    ...[{ variant = "default" } = {}]: RendererCreateSectionArgs
   ): string {
     this.insertComponentImport("Section");
-    return `<Section contentBorderVariant="${contentBorderVariant}">`;
+    return `<Section variant="${variant}">`;
   }
 
   public override createSectionEnd(): string {
@@ -149,12 +149,10 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createSectionTitleStart(
-    ...[
-      { borderVariant = "default", paddingVariant = "default" } = {},
-    ]: RendererCreateSectionTitleArgs
+    ...[{ variant = "default" } = {}]: RendererCreateSectionTitleArgs
   ) {
     this.insertComponentImport("SectionTitle");
-    return `<SectionTitle slot="title" borderVariant="${borderVariant}" paddingVariant="${paddingVariant}">`;
+    return `<SectionTitle slot="title" variant="${variant}">`;
   }
 
   public override createSectionTitleEnd() {
@@ -162,12 +160,10 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createSectionContentStart(
-    ...[
-      { borderVariant = "default", paddingVariant = "default", id } = {},
-    ]: RendererCreateSectionContentArgs
+    ...[{ variant = "default", id } = {}]: RendererCreateSectionContentArgs
   ): string {
     this.insertComponentImport("SectionContent");
-    return `<SectionContent slot="content" borderVariant="${borderVariant}" paddingVariant="${paddingVariant}"${id ? ` id="${id}"` : ""}>`;
+    return `<SectionContent slot="content" variant="${variant}"${id ? ` id="${id}"` : ""}>`;
   }
 
   public override createSectionContentEnd(): string {

@@ -1,7 +1,10 @@
 import clsx from "clsx";
+import type { PropsWithChildren } from "react";
 
+import type { PillVariant } from "../../renderers/base/base.ts";
 import styles from "./styles.module.css";
-import type { PillProps } from "./types.ts";
+
+type PillProps = PropsWithChildren<{ variant: PillVariant }>;
 
 export function Pill({ variant, children }: PillProps) {
   return <span className={clsx(styles.pill, styles[variant])}>{children}</span>;

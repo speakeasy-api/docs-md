@@ -26,7 +26,7 @@ const OuterContainer = forwardRef<
       ref={ref}
       className={clsx(
         styles.container,
-        multiline ? styles.containerMutliline : styles.containerSingleLine
+        multiline ? styles.containerMultiline : styles.containerSingleLine
       )}
     >
       {children}

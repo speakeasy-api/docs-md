@@ -19,22 +19,14 @@ export function TabbedSectionContents({ children }: TabbedSectionProps) {
   });
 
   return (
-    <Section contentBorderVariant="default">
-      <SectionTitle
-        slot="title"
-        borderVariant="default"
-        paddingVariant="default"
-      >
+    <Section variant="top-level">
+      <SectionTitle slot="title" variant="top-level">
         <div className={styles.titleContainer}>
           <div>{titleChild}</div>
           <div className={styles.tabs}>{tabChildren}</div>
         </div>
       </SectionTitle>
-      <SectionContent
-        slot="content"
-        borderVariant="default"
-        paddingVariant="default"
-      >
+      <SectionContent slot="content" variant="top-level">
         {activeChild}
       </SectionContent>
     </Section>

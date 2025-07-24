@@ -1,24 +1,19 @@
 import clsx from "clsx";
 import type { PropsWithChildren } from "react";
 
-import type {
-  SectionTitleBorderVariant,
-  SectionTitlePaddingVariant,
-} from "../../renderers/base/base.ts";
+import type { SectionVariant } from "../../renderers/base/base.ts";
 import styles from "./styles.module.css";
 
 export type SectionTitleProps = PropsWithChildren<{
   id?: string;
-  borderVariant: SectionTitleBorderVariant;
-  paddingVariant: SectionTitlePaddingVariant;
+  variant: SectionVariant;
   slot: "title";
 }>;
 
 export function SectionTitle({
   children,
   slot,
-  borderVariant,
-  paddingVariant,
+  variant,
   id,
 }: SectionTitleProps) {
   return (
@@ -26,8 +21,8 @@ export function SectionTitle({
       id={id}
       className={clsx(
         styles.title,
-        borderVariant === "default" && styles.borderDefault,
-        paddingVariant === "default" && styles.paddingDefault
+        variant === "breakout" && styles.breakout,
+        variant === "top-level" && styles.topLevel
       )}
       slot={slot}
     >

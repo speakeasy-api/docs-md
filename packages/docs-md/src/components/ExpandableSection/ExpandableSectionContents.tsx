@@ -6,8 +6,8 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { useChildren, useUniqueChild } from "../Section/hooks.ts";
 import type { SectionProps } from "../Section/Section.tsx";
+import type { SectionContentProps } from "../SectionContent/SectionContent.tsx";
 import { SectionContent } from "../SectionContent/SectionContent.tsx";
-import type { SectionContentProps } from "../SectionContent/types.tsx";
 import type { SectionTitleProps } from "../SectionTitle/SectionTitle.tsx";
 import { SectionTitle } from "../SectionTitle/SectionTitle.tsx";
 import styles from "./styles.module.css";
@@ -78,39 +78,21 @@ export function ExpandableSectionContents({
 
   if (!isOpen) {
     return (
-      <Section contentBorderVariant="default">
-        <SectionTitle
-          id={id}
-          slot="title"
-          borderVariant="none"
-          paddingVariant="none"
-        >
+      <Section variant="default">
+        <SectionTitle id={id} slot="title" variant="default">
           {titleElement}
         </SectionTitle>
-        <SectionContent
-          slot="content"
-          borderVariant="default"
-          paddingVariant="none"
-        />
+        <SectionContent slot="content" variant="default" />
       </Section>
     );
   }
 
   return (
-    <Section contentBorderVariant="all" noTopBorderRadius>
-      <SectionTitle
-        id={id}
-        slot="title"
-        borderVariant="none"
-        paddingVariant="none"
-      >
+    <Section variant="breakout">
+      <SectionTitle id={id} slot="title" variant="breakout">
         {titleElement}
       </SectionTitle>
-      <SectionContent
-        slot="content"
-        borderVariant="all"
-        paddingVariant="default"
-      >
+      <SectionContent slot="content" variant="breakout">
         {contentChildren}
       </SectionContent>
     </Section>

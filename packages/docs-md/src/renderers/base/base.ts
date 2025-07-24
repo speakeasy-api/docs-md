@@ -27,10 +27,7 @@ export type PillVariant =
   | "primary"
   | "secondary";
 
-export type SectionTitleBorderVariant = "default" | "none";
-export type SectionTitlePaddingVariant = "default" | "none";
-export type SectionContentBorderVariant = "default" | "all";
-export type SectionContentPaddingVariant = "default" | "none";
+export type SectionVariant = "default" | "top-level" | "breakout";
 
 export type DisplayTypeInfo = {
   label: string;
@@ -143,20 +140,18 @@ export type RendererCreatePillArgs = [variant: PillVariant];
 export type RendererCreateListArgs = [items: string[], options?: AppendOptions];
 export type RendererCreateSectionArgs = [
   options?: {
-    contentBorderVariant?: SectionContentBorderVariant;
+    variant?: SectionVariant;
   },
 ];
 export type RendererCreateSectionTitleArgs = [
   options?: {
-    borderVariant?: SectionTitleBorderVariant;
-    paddingVariant?: SectionTitlePaddingVariant;
+    variant?: SectionVariant;
   },
 ];
 export type RendererCreateSectionContentArgs = [
   options?: {
     id?: string;
-    borderVariant?: SectionContentBorderVariant;
-    paddingVariant?: SectionContentPaddingVariant;
+    variant?: SectionVariant;
   },
 ];
 export type RendererCreateTabbedSectionTabArgs = [id: string];

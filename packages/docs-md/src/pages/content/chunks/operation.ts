@@ -70,13 +70,13 @@ export function renderOperation({
   // part of the schema refactor
   if (chunk.chunkData.security) {
     const securityId = id + "+security";
-    renderer.appendSectionStart();
-    renderer.appendSectionTitleStart();
+    renderer.appendSectionStart({ variant: "top-level" });
+    renderer.appendSectionTitleStart({ variant: "top-level" });
     renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Security", {
       id: securityId,
     });
     renderer.appendSectionTitleEnd();
-    renderer.appendSectionContentStart();
+    renderer.appendSectionContentStart({ variant: "top-level" });
     // const securityChunk = getSchemaFromId(
     //   chunk.chunkData.security.contentChunkId,
     //   docsData
@@ -103,14 +103,14 @@ export function renderOperation({
 
   if (chunk.chunkData.parameters.length > 0) {
     const parametersId = id + "+parameters";
-    renderer.appendSectionStart();
-    renderer.appendSectionTitleStart();
+    renderer.appendSectionStart({ variant: "top-level" });
+    renderer.appendSectionTitleStart({ variant: "top-level" });
     renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Parameters", {
       id: parametersId,
     });
     renderer.appendSectionTitleEnd();
     for (const parameter of chunk.chunkData.parameters) {
-      renderer.appendSectionContentStart();
+      renderer.appendSectionContentStart({ variant: "top-level" });
       const start = renderer.createPillStart("warning");
       const end = renderer.createPillEnd();
       renderer.appendHeading(
@@ -147,13 +147,13 @@ export function renderOperation({
   const { tryItNow } = getSettings();
   const usageSnippet = docsCodeSnippets[chunk.id];
   if (usageSnippet && tryItNow) {
-    renderer.appendSectionStart();
-    renderer.appendSectionTitleStart();
+    renderer.appendSectionStart({ variant: "top-level" });
+    renderer.appendSectionTitleStart({ variant: "top-level" });
     renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Try it Now", {
       id: id + "+try-it-now",
     });
     renderer.appendSectionTitleEnd();
-    renderer.appendSectionContentStart();
+    renderer.appendSectionContentStart({ variant: "top-level" });
     // TODO: Zod is actually hard coded for now since its always a dependency
     // in our SDKs. Ideally this will come from the SDK package.
     renderer.appendTryItNow({
@@ -169,8 +169,8 @@ export function renderOperation({
 
   if (chunk.chunkData.requestBody) {
     const requestBodyId = id + "+request";
-    renderer.appendSectionStart();
-    renderer.appendSectionTitleStart();
+    renderer.appendSectionStart({ variant: "top-level" });
+    renderer.appendSectionTitleStart({ variant: "top-level" });
     const start = renderer.createPillStart("info");
     const end = renderer.createPillEnd();
     renderer.appendHeading(
@@ -179,7 +179,7 @@ export function renderOperation({
       { id: requestBodyId, escape: "none" }
     );
     renderer.appendSectionTitleEnd();
-    renderer.appendSectionContentStart();
+    renderer.appendSectionContentStart({ variant: "top-level" });
 
     const requestBodySchema = getSchemaFromId(
       chunk.chunkData.requestBody.contentChunkId,
@@ -227,10 +227,7 @@ export function renderOperation({
     if (numResponses > 0) {
       renderer.appendTabbedSectionStart();
       const responsesId = id + "+responses";
-      renderer.appendSectionTitleStart({
-        borderVariant: "none",
-        paddingVariant: "none",
-      });
+      renderer.appendSectionTitleStart({ variant: "top-level" });
       renderer.appendHeading(
         HEADINGS.SECTION_HEADING_LEVEL,
         numResponses === 1 ? "Response" : "Responses",
@@ -251,7 +248,10 @@ export function renderOperation({
             renderer.appendText(statusCode);
           }
           renderer.appendTabbedSectionTabEnd();
-          renderer.appendSectionContentStart({ id: responseId });
+          renderer.appendSectionContentStart({
+            id: responseId,
+            variant: "top-level",
+          });
 
           const responseSchema = getSchemaFromId(
             response.contentChunkId,

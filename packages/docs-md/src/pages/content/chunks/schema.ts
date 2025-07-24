@@ -195,10 +195,7 @@ function renderBreakout({
   breakout: ContainerEntry;
 }) {
   context.renderer.appendExpandableSectionStart();
-  context.renderer.appendSectionTitleStart({
-    borderVariant: "none",
-    paddingVariant: "none",
-  });
+  context.renderer.appendSectionTitleStart();
   context.renderer.appendHeading(
     HEADINGS.SUB_SECTION_HEADING_LEVEL,
     breakout.label,

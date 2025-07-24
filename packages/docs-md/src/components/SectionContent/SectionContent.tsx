@@ -1,12 +1,18 @@
 import clsx from "clsx";
+import type { PropsWithChildren } from "react";
 
+import type { SectionVariant } from "../../renderers/base/base.ts";
 import styles from "./styles.module.css";
-import type { SectionContentProps } from "./types.tsx";
+
+export type SectionContentProps = PropsWithChildren<{
+  id?: string;
+  slot: "content";
+  variant: SectionVariant;
+}>;
 
 export function SectionContent({
   slot,
-  borderVariant,
-  paddingVariant,
+  variant,
   children,
   id,
 }: SectionContentProps) {
@@ -14,8 +20,8 @@ export function SectionContent({
     <div
       className={clsx(
         styles.content,
-        borderVariant === "all" && styles.borderAll,
-        paddingVariant === "default" && styles.paddingDefault
+        variant === "breakout" && styles.breakout,
+        variant === "top-level" && styles.topLevel
       )}
       id={id}
       slot={slot}
