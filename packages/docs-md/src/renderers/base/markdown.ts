@@ -7,8 +7,10 @@ import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from "../../util/settings.ts";
 import type {
   DisplayTypeInfo,
+  PropertyAnnotations,
   RendererAddOperationArgs,
   RendererAddParametersSectionArgs,
+  RendererAddRequestSectionArgs,
   RendererAddResponsesArgs,
   RendererAddSecuritySectionArgs,
   RendererAddTopLevelSectionArgs,
@@ -204,11 +206,28 @@ export abstract class MarkdownRenderer extends Renderer {
     this.#idStack.pop();
   }
 
-  public override addRequestBodySection(
-    ...[{ title, annotations = [] }, cb]: RendererAddTopLevelSectionArgs
+  public override addRequestSection(
+    ...[{ isOptional }, cb]: RendererAddRequestSectionArgs
   ): void {
-    this.#idStack.push("request-body");
-    this.#addTopLevelSection({ title, annotations }, cb);
+    this.#idStack.push("request");
+    const annotations: PropertyAnnotations[] = [];
+    if (isOptional) {
+      annotations.push({
+        title: "Optional",
+        variant: "info",
+      });
+    }
+    this.#addTopLevelSection(
+      {
+        title: "Request Body",
+        annotations,
+      },
+      (contentRenderer) => {
+        cb((cb) => {
+          cb(contentRenderer);
+        });
+      }
+    );
     this.#idStack.pop();
   }
 

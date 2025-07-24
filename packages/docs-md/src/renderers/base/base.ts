@@ -176,6 +176,10 @@ export type RendererAppendTryItNowArgs = [
   },
 ];
 
+type RenderSchemaCallback = (
+  callback: (schemaRenderer: Renderer) => void
+) => void;
+
 // Section args
 export type RendererAddOperationArgs = [
   options: {
@@ -208,6 +212,12 @@ export type RendererAddParametersSectionArgs = [
     ) => void
   ) => void,
 ];
+export type RendererAddRequestSectionArgs = [
+  options: {
+    isOptional: boolean;
+  },
+  cb: (createSchema: RenderSchemaCallback) => void,
+];
 export type RendererAddResponsesArgs = [
   options: {
     title: string;
@@ -230,7 +240,7 @@ export abstract class Renderer {
   abstract addParametersSection(
     ...args: RendererAddParametersSectionArgs
   ): void;
-  abstract addRequestBodySection(...args: RendererAddTopLevelSectionArgs): void;
+  abstract addRequestSection(...args: RendererAddRequestSectionArgs): void;
   abstract addResponsesSection(...args: RendererAddResponsesArgs): void;
 
   // Low level operations

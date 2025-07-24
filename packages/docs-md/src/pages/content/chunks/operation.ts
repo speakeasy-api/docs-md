@@ -84,6 +84,7 @@ export function renderOperation({
         });
       }
 
+      // TODO: refactor to match other new high-level renderer methods
       const { tryItNow } = getSettings();
       const usageSnippet = docsCodeSnippets[chunk.id];
       if (usageSnippet && tryItNow) {
@@ -112,52 +113,43 @@ export function renderOperation({
       }
 
       if (chunk.chunkData.requestBody) {
-        const requestBodyId = id + "+request";
-        operationRenderer.appendSectionStart({ variant: "top-level" });
-        operationRenderer.appendSectionTitleStart({ variant: "top-level" });
-        const start = operationRenderer.createPillStart("info");
-        const end = operationRenderer.createPillEnd();
-        operationRenderer.appendHeading(
-          HEADINGS.SECTION_HEADING_LEVEL,
-          `Request Body${!chunk.chunkData.requestBody.required ? ` ${start}optional${end}` : ""}`,
-          { id: requestBodyId, escape: "none" }
-        );
-        operationRenderer.appendSectionTitleEnd();
-        operationRenderer.appendSectionContentStart({ variant: "top-level" });
-
-        const requestBodySchema = getSchemaFromId(
-          chunk.chunkData.requestBody.contentChunkId,
-          docsData
-        );
-        const context = {
-          site,
-          renderer: operationRenderer,
-          schemaStack: [],
-          idPrefix: requestBodyId,
-          data: docsData,
-        };
-        if (requestBodySchema.chunkData.value.type !== "object") {
-          operationRenderer.appendProperty({
-            typeInfo: getDisplayTypeInfo(
-              requestBodySchema.chunkData.value,
-              context
-            ),
-            id: requestBodyId,
-            annotations: [],
-            title: "",
+        const { requestBody } = chunk.chunkData;
+        operationRenderer.addRequestSection({ isOptional: false }, (cb) => {
+          cb((schemaRenderer) => {
+            // TODO: internalize this id
+            const requestBodyId = id + "+request";
+            const requestBodySchema = getSchemaFromId(
+              requestBody.contentChunkId,
+              docsData
+            );
+            const context = {
+              site,
+              renderer: schemaRenderer,
+              schemaStack: [],
+              idPrefix: requestBodyId,
+              data: docsData,
+            };
+            if (requestBodySchema.chunkData.value.type !== "object") {
+              schemaRenderer.appendProperty({
+                typeInfo: getDisplayTypeInfo(
+                  requestBodySchema.chunkData.value,
+                  context
+                ),
+                id: requestBodyId,
+                annotations: [],
+                title: "",
+              });
+            }
+            renderSchemaFrontmatter({
+              context,
+              schema: requestBodySchema.chunkData.value,
+            });
+            renderSchemaDetails({
+              context,
+              schema: requestBodySchema.chunkData.value,
+            });
           });
-        }
-        renderSchemaFrontmatter({
-          context,
-          schema: requestBodySchema.chunkData.value,
         });
-        renderSchemaDetails({
-          context,
-          schema: requestBodySchema.chunkData.value,
-        });
-
-        operationRenderer.appendSectionContentEnd();
-        operationRenderer.appendSectionEnd();
       }
 
       if (chunk.chunkData.responses) {
