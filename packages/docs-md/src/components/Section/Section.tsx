@@ -13,7 +13,7 @@ export function Section({ children, variant }: SectionProps) {
   const titleChild = useUniqueChild(children, "title");
   const contentChildren = useChildren(children, "content");
   return (
-    <div className={styles.section}>
+    <div className={clsx(variant !== "breakout" && styles.section)}>
       <div>{titleChild}</div>
       <div
         className={clsx(

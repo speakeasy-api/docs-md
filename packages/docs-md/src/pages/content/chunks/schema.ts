@@ -315,9 +315,11 @@ function renderProperty({
 function renderObject({
   context,
   schema,
+  showDivider,
 }: {
   context: SchemaRenderContext;
   schema: ObjectValue;
+  showDivider?: boolean;
 }) {
   const properties = Object.entries(schema.properties).map(
     ([name, propertySchema]) => {
@@ -330,7 +332,13 @@ function renderObject({
       };
     }
   );
-  for (const property of properties) {
+  for (let i = 0; i < properties.length; i++) {
+    // Our arrays aren't sparse, so this will always be defined
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const property = properties[i]!;
+    if (showDivider && i > 0) {
+      context.renderer.appendText("<hr />");
+    }
     renderProperty({
       context,
       property,
@@ -341,9 +349,11 @@ function renderObject({
 function renderContainer({
   context,
   typeInfo,
+  showDivider,
 }: {
   context: SchemaRenderContext;
   typeInfo: DisplayTypeInfo;
+  showDivider?: boolean;
 }) {
   const entries = Array.from(typeInfo.breakoutSubTypes.entries()).map(
     ([label, schema]) => {
@@ -359,7 +369,13 @@ function renderContainer({
   );
   const isSidebar =
     context.schemaStack.length >= getSettings().display.maxSchemaNesting;
-  for (const entry of entries) {
+  for (let i = 0; i < entries.length; i++) {
+    // Our arrays aren't sparse, so this will always be defined
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const entry = entries[i]!;
+    if (showDivider && i > 0) {
+      context.renderer.appendText("<hr /> ");
+    }
     if (isSidebar) {
       renderSidebar({
         context,
@@ -394,9 +410,11 @@ export function renderSchemaFrontmatter({
 export function renderSchemaDetails({
   context,
   schema,
+  showDivider,
 }: {
   context: SchemaRenderContext;
   schema: SchemaValue;
+  showDivider?: boolean;
 }) {
   const typeInfo = getDisplayTypeInfo(schema, context);
 
@@ -405,6 +423,7 @@ export function renderSchemaDetails({
     renderObject({
       context,
       schema,
+      showDivider,
     });
     return;
   }
@@ -413,6 +432,7 @@ export function renderSchemaDetails({
     renderContainer({
       context,
       typeInfo,
+      showDivider,
     });
     return;
   }

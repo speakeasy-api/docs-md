@@ -26,6 +26,7 @@ export function SectionTitle({
       )}
       slot={slot}
     >
+      {variant === "breakout" && <div className={styles.breakoutLine} />}
       {children}
     </div>
   );

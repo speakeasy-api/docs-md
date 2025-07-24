@@ -137,6 +137,7 @@ export function renderOperation({
       renderSchemaDetails({
         context: parameterContext,
         schema: parameterChunk.chunkData.value,
+        showDivider: true,
       });
 
       renderer.appendSectionContentEnd();
@@ -199,6 +200,7 @@ export function renderOperation({
     renderSchemaDetails({
       context,
       schema: requestBodySchema.chunkData.value,
+      showDivider: true,
     });
 
     renderer.appendSectionContentEnd();
@@ -271,6 +273,7 @@ export function renderOperation({
           renderSchemaDetails({
             context,
             schema: responseSchema.chunkData.value,
+            showDivider: true,
           });
 
           renderer.appendSectionContentEnd();
