@@ -7,7 +7,11 @@ import { getSettings } from "../../../util/settings.ts";
 import type { DocsCodeSnippets } from "../../codeSnippets/generateCodeSnippets.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
-import { renderSchemaDetails, renderSchemaFrontmatter } from "./schema.ts";
+import {
+  getDisplayTypeInfo,
+  renderSchemaDetails,
+  renderSchemaFrontmatter,
+} from "./schema.ts";
 
 type RenderOperationOptions = {
   renderer: Renderer;
@@ -137,7 +141,6 @@ export function renderOperation({
       renderSchemaDetails({
         context: parameterContext,
         schema: parameterChunk.chunkData.value,
-        showDivider: true,
       });
 
       renderer.appendSectionContentEnd();
@@ -193,6 +196,17 @@ export function renderOperation({
       idPrefix: requestBodyId,
       data: docsData,
     };
+    if (requestBodySchema.chunkData.value.type !== "object") {
+      renderer.appendProperty({
+        typeInfo: getDisplayTypeInfo(
+          requestBodySchema.chunkData.value,
+          context
+        ),
+        id: requestBodyId,
+        annotations: [],
+        title: "",
+      });
+    }
     renderSchemaFrontmatter({
       context,
       schema: requestBodySchema.chunkData.value,
@@ -200,7 +214,6 @@ export function renderOperation({
     renderSchemaDetails({
       context,
       schema: requestBodySchema.chunkData.value,
-      showDivider: true,
     });
 
     renderer.appendSectionContentEnd();
@@ -266,6 +279,17 @@ export function renderOperation({
             idPrefix: responseId,
             data: docsData,
           };
+          if (responseSchema.chunkData.value.type !== "object") {
+            renderer.appendProperty({
+              typeInfo: getDisplayTypeInfo(
+                responseSchema.chunkData.value,
+                context
+              ),
+              id: responseId,
+              annotations: [],
+              title: "",
+            });
+          }
           renderSchemaFrontmatter({
             context,
             schema: responseSchema.chunkData.value,
@@ -273,7 +297,6 @@ export function renderOperation({
           renderSchemaDetails({
             context,
             schema: responseSchema.chunkData.value,
-            showDivider: true,
           });
 
           renderer.appendSectionContentEnd();

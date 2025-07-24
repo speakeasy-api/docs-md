@@ -207,7 +207,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
       annotations
     )}}>
 
-${this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, { escape: "mdx", id })}
+${title ? this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, { escape: "mdx", id }) : ""}
 
 </Property>`;
   }
