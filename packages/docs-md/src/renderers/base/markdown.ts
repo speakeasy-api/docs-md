@@ -1,10 +1,17 @@
 import { join, resolve } from "node:path";
 
+import { snakeCase } from "change-case";
+
 import { HEADINGS } from "../../pages/content/constants.ts";
 import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from "../../util/settings.ts";
 import type {
   DisplayTypeInfo,
+  RendererAddOperationArgs,
+  RendererAddParametersSectionArgs,
+  RendererAddResponsesArgs,
+  RendererAddSecuritySectionArgs,
+  RendererAddTopLevelSectionArgs,
   RendererAppendHeadingArgs,
   RendererCreateAppendCodeArgs,
   RendererCreateAppendTextArgs,
@@ -61,6 +68,8 @@ export const rendererLines = Symbol();
 
 export abstract class MarkdownRenderer extends Renderer {
   #isFinalized = false;
+  #idStack: string[] = [];
+
   [rendererLines]: string[] = [];
 
   public override escapeText(...[text, { escape }]: RendererEscapeTextArgs) {
@@ -94,6 +103,135 @@ export abstract class MarkdownRenderer extends Renderer {
       case "none":
         return text;
     }
+  }
+
+  public override addOperationSection(
+    ...[
+      { method, path, operationId, summary, description },
+      cb,
+    ]: RendererAddOperationArgs
+  ): void {
+    const { showDebugPlaceholders } = getSettings().display;
+    const id = `operation-${snakeCase(operationId)}`;
+    this.#idStack.push(id);
+    const methodStart = this.createPillStart("primary");
+    const methodEnd = this.createPillEnd();
+    path = this.escapeText(path, {
+      escape: "markdown",
+    });
+    this.appendHeading(
+      HEADINGS.SECTION_TITLE_HEADING_LEVEL,
+      `${methodStart}<b>${method.toUpperCase()}</b>${methodEnd} ${path}`,
+      { id, escape: "none" }
+    );
+    if (summary && description) {
+      this.appendText(`_${summary}_`);
+      this.appendText(description);
+    } else if (summary) {
+      this.appendText(summary);
+      if (showDebugPlaceholders) {
+        this.appendDebugPlaceholderStart();
+        this.appendText("No description provided");
+        this.appendDebugPlaceholderEnd();
+      }
+    } else if (description) {
+      this.appendText(description);
+      if (showDebugPlaceholders) {
+        this.appendDebugPlaceholderStart();
+        this.appendText("No summary provided");
+        this.appendDebugPlaceholderEnd();
+      }
+    } else if (showDebugPlaceholders) {
+      this.appendDebugPlaceholderStart();
+      this.appendText("No summary provided");
+      this.appendDebugPlaceholderEnd();
+      this.appendDebugPlaceholderStart();
+      this.appendText("No description provided");
+      this.appendDebugPlaceholderEnd();
+    }
+    cb(this);
+    this.#idStack.pop();
+  }
+
+  #addTopLevelSection(
+    ...[{ title, annotations = [] }, cb]: RendererAddTopLevelSectionArgs
+  ): void {
+    for (const annotation of annotations) {
+      title += ` ${this.createPillStart(annotation.variant)}${annotation.title}${this.createPillEnd()}`;
+    }
+    this.appendSectionStart({ variant: "top-level" });
+    this.appendSectionTitleStart({ variant: "top-level" });
+    this.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
+      id: this.getIdPrefix(),
+    });
+    this.appendSectionTitleEnd();
+    this.appendSectionContentStart({ variant: "top-level" });
+    cb(this);
+    this.appendSectionContentEnd();
+    this.appendSectionEnd();
+  }
+
+  public override addSecuritySection(
+    ...[cb]: RendererAddSecuritySectionArgs
+  ): void {
+    this.#idStack.push("security");
+    this.#addTopLevelSection({ title: "Security" }, cb);
+    this.#idStack.pop();
+  }
+
+  public override addParametersSection(
+    ...[cb]: RendererAddParametersSectionArgs
+  ): void {
+    this.#idStack.push("parameters");
+    this.#addTopLevelSection({ title: "Parameters" }, (parameterRenderer) => {
+      cb(({ name, isRequired }, cb) => {
+        const start = parameterRenderer.createPillStart("warning");
+        const end = parameterRenderer.createPillEnd();
+        parameterRenderer.appendHeading(
+          HEADINGS.PROPERTY_HEADING_LEVEL,
+          `${parameterRenderer.escapeText(name, { escape: "markdown" })}${isRequired ? ` ${start}required${end}` : ""}`,
+          {
+            id: this.getIdPrefix(),
+            escape: "none",
+          }
+        );
+
+        // TODO: return a parmeter specific callback, not a generic renderer,
+        // so that we get proper heading IDs
+        cb({ parameterRenderer });
+      });
+    });
+    this.#idStack.pop();
+  }
+
+  public override addRequestBodySection(
+    ...[{ title, annotations = [] }, cb]: RendererAddTopLevelSectionArgs
+  ): void {
+    this.#idStack.push("request-body");
+    this.#addTopLevelSection({ title, annotations }, cb);
+    this.#idStack.pop();
+  }
+
+  public override addResponsesSection(
+    ...[{ title, annotations = [] }, cb]: RendererAddResponsesArgs
+  ): void {
+    this.#idStack.push("responses");
+    for (const annotation of annotations) {
+      title += ` ${this.createPillStart(annotation.variant)}${annotation.title}${this.createPillEnd()}`;
+    }
+    this.appendHeading(HEADINGS.SECTION_TITLE_HEADING_LEVEL, title);
+    cb((cb) => {
+      cb({
+        titleRenderer: this,
+        contentRenderer: this,
+      });
+    });
+    this.#idStack.pop();
+  }
+
+  protected getIdPrefix(): string {
+    // TODO: make this per-renderer configurable
+    return this.#idStack.join("+");
   }
 
   public override createHeading(

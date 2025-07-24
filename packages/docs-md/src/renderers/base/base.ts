@@ -176,7 +176,65 @@ export type RendererAppendTryItNowArgs = [
   },
 ];
 
+// Section args
+export type RendererAddOperationArgs = [
+  options: {
+    method: string;
+    path: string;
+    operationId: string;
+    summary: string | null;
+    description: string | null;
+  },
+  cb: (operationRenderer: Renderer) => void,
+];
+export type RendererAddTopLevelSectionArgs = [
+  options: {
+    title: string;
+    annotations?: PropertyAnnotations[];
+  },
+  cb: (contentRenderer: Renderer) => void,
+];
+export type RendererAddSecuritySectionArgs = [
+  cb: (contentRenderer: Renderer) => void,
+];
+export type RendererAddParametersSectionArgs = [
+  cb: (
+    createParameter: (
+      options: {
+        name: string;
+        isRequired: boolean;
+      },
+      callback: (options: { parameterRenderer: Renderer }) => void
+    ) => void
+  ) => void,
+];
+export type RendererAddResponsesArgs = [
+  options: {
+    title: string;
+    annotations?: PropertyAnnotations[];
+  },
+  cb: (
+    createTab: (
+      callback: (options: {
+        titleRenderer: Renderer;
+        contentRenderer: Renderer;
+      }) => void
+    ) => void
+  ) => void,
+];
+
 export abstract class Renderer {
+  // High level operations
+  abstract addOperationSection(...args: RendererAddOperationArgs): void;
+  abstract addSecuritySection(...args: RendererAddSecuritySectionArgs): void;
+  abstract addParametersSection(
+    ...args: RendererAddParametersSectionArgs
+  ): void;
+  abstract addRequestBodySection(...args: RendererAddTopLevelSectionArgs): void;
+  abstract addResponsesSection(...args: RendererAddResponsesArgs): void;
+
+  // Low level operations
+
   // The following methods are used to create basic content on the page. They
   // have "create" variants that create the content and "append"/"insert"
   // variants that append/insert the content into the current page.

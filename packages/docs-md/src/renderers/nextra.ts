@@ -48,15 +48,23 @@ export class NextraSite extends MdxSite {
   }
 }
 
+type ConstructorArgs = [
+  options: { currentPagePath: string },
+  site: NextraSite,
+  codeThemes: TryItNowProps["themes"],
+];
+
 class NextraRenderer extends MdxRenderer {
   #frontMatter: string | undefined;
+  #constructorArgs: ConstructorArgs;
 
-  constructor(
-    { currentPagePath }: { currentPagePath: string },
-    site: NextraSite,
-    codeThemes: TryItNowProps["themes"]
-  ) {
-    super({ currentPagePath }, site, codeThemes);
+  constructor(...args: ConstructorArgs) {
+    super(...args);
+    this.#constructorArgs = args;
+  }
+
+  public override scope() {
+    return new NextraRenderer(...this.#constructorArgs);
   }
 
   public override render() {

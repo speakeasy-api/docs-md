@@ -3,6 +3,7 @@ import { dirname, relative } from "node:path";
 import type { TryItNowProps } from "../../components/TryItNow/common/types.ts";
 import { HEADINGS } from "../../pages/content/constants.ts";
 import type {
+  RendererAddOperationArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
   RendererCreateAppendCodeArgs,
@@ -30,6 +31,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   #currentPagePath: string;
   #site: MdxSite;
   #codeThemes: TryItNowProps["themes"];
+  #idStack: string[] = [];
 
   constructor(
     { currentPagePath }: { currentPagePath: string },
@@ -68,6 +70,8 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     data += parentData;
     return data;
   }
+
+  public abstract scope(): MdxRenderer;
 
   public override createCode(...[text, options]: RendererCreateAppendCodeArgs) {
     if (options?.variant === "raw") {
@@ -136,6 +140,43 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   public override createPillEnd() {
     return "</Pill>";
   }
+
+  public override addOperationSection(...args: RendererAddOperationArgs): void {
+    this.#idStack.push(args[0].operationId);
+    super.addOperationSection(...args);
+    this.#idStack.pop();
+  }
+
+  // public override addTopLevelSection(
+  //   ...[{ title, annotations = [] }, cb]: RendererAddTopLevelSectionArgs
+  // ): void {
+  //   for (const annotation of annotations) {
+  //     title += ` ${this.createPillStart(annotation.variant)}${annotation.title}${this.createPillEnd()}`;
+  //   }
+  //   this.appendHeading(HEADINGS.SECTION_TITLE_HEADING_LEVEL, title);
+  //   const contentRenderer = this.scope();
+  //   cb(contentRenderer);
+  //   this[rendererLines].push(contentRenderer.render());
+  // }
+
+  // public override addResponsesSection(
+  //   ...[{ title, annotations = [] }, cb]: RendererAddResponsesArgs
+  // ): void {
+  //   for (const annotation of annotations) {
+  //     title += ` ${this.createPillStart(annotation.variant)}${annotation.title}${this.createPillEnd()}`;
+  //   }
+  //   this.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, title);
+  //   const titleRenderer = this.scope();
+  //   const contentRenderer = this.scope();
+  //   cb((cb) => {
+  //     cb({
+  //       titleRenderer,
+  //       contentRenderer,
+  //     });
+  //   });
+  //   this[rendererLines].push(titleRenderer.render());
+  //   this[rendererLines].push(contentRenderer.render());
+  // }
 
   public override createSectionStart(
     ...[{ variant = "default" } = {}]: RendererCreateSectionArgs

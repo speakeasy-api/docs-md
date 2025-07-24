@@ -31,278 +31,220 @@ export function renderOperation({
   docsData,
   docsCodeSnippets,
 }: RenderOperationOptions) {
-  const { showDebugPlaceholders } = getSettings().display;
-  const id = `operation-${snakeCase(chunk.chunkData.operationId)}`;
-  const methodStart = renderer.createPillStart("primary");
-  const methodEnd = renderer.createPillEnd();
-  const path = renderer.escapeText(chunk.chunkData.path, {
-    escape: "markdown",
-  });
-  renderer.appendHeading(
-    HEADINGS.SECTION_TITLE_HEADING_LEVEL,
-    `${methodStart}<b>${chunk.chunkData.method.toUpperCase()}</b>${methodEnd} ${path}`,
-    { id, escape: "none" }
-  );
+  renderer.addOperationSection(
+    {
+      method: chunk.chunkData.method,
+      path: chunk.chunkData.path,
+      operationId: chunk.chunkData.operationId,
+      summary: chunk.chunkData.summary,
+      description: chunk.chunkData.description,
+    },
+    (operationRenderer) => {
+      // TODO: Remove explicit references to id and handle in renderers
+      const id = `operation-${snakeCase(chunk.chunkData.operationId)}`;
 
-  if (chunk.chunkData.summary && chunk.chunkData.description) {
-    renderer.appendText(`_${chunk.chunkData.summary}_`);
-    renderer.appendText(chunk.chunkData.description);
-  } else if (chunk.chunkData.summary) {
-    renderer.appendText(chunk.chunkData.summary);
-    if (showDebugPlaceholders) {
-      renderer.appendDebugPlaceholderStart();
-      renderer.appendText("No description provided");
-      renderer.appendDebugPlaceholderEnd();
-    }
-  } else if (chunk.chunkData.description) {
-    renderer.appendText(chunk.chunkData.description);
-    if (showDebugPlaceholders) {
-      renderer.appendDebugPlaceholderStart();
-      renderer.appendText("No summary provided");
-      renderer.appendDebugPlaceholderEnd();
-    }
-  } else if (showDebugPlaceholders) {
-    renderer.appendDebugPlaceholderStart();
-    renderer.appendText("No summary provided");
-    renderer.appendDebugPlaceholderEnd();
-    renderer.appendDebugPlaceholderStart();
-    renderer.appendText("No description provided");
-    renderer.appendDebugPlaceholderEnd();
-  }
-
-  // TODO: Security is being rewritten anyways, so I'm not refactoring it as
-  // part of the schema refactor
-  if (chunk.chunkData.security) {
-    const securityId = id + "+security";
-    renderer.appendSectionStart({ variant: "top-level" });
-    renderer.appendSectionTitleStart({ variant: "top-level" });
-    renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Security", {
-      id: securityId,
-    });
-    renderer.appendSectionTitleEnd();
-    renderer.appendSectionContentStart({ variant: "top-level" });
-    // const securityChunk = getSchemaFromId(
-    //   chunk.chunkData.security.contentChunkId,
-    //   docsData
-    // );
-    // renderSchema({
-    //   schema: securityChunk.chunkData.value,
-    //   context: {
-    //     site,
-    //     renderer,
-    //     schemaStack: [],
-    //     idPrefix: securityId,
-    //     data: docsData,
-    //   },
-    //   frontMatter: {
-    //     description: "",
-    //     examples: [],
-    //     defaultValue: null,
-    //   },
-    //   topLevelName: "Security",
-    // });
-    renderer.appendSectionContentEnd();
-    renderer.appendSectionEnd();
-  }
-
-  if (chunk.chunkData.parameters.length > 0) {
-    const parametersId = id + "+parameters";
-    renderer.appendSectionStart({ variant: "top-level" });
-    renderer.appendSectionTitleStart({ variant: "top-level" });
-    renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Parameters", {
-      id: parametersId,
-    });
-    renderer.appendSectionTitleEnd();
-    for (const parameter of chunk.chunkData.parameters) {
-      renderer.appendSectionContentStart({ variant: "top-level" });
-      const start = renderer.createPillStart("warning");
-      const end = renderer.createPillEnd();
-      renderer.appendHeading(
-        HEADINGS.PROPERTY_HEADING_LEVEL,
-        `${renderer.escapeText(parameter.name, { escape: "markdown" })}${parameter.required ? ` ${start}required${end}` : ""}`,
-        {
-          id: `${parametersId}+${parameter.name}`,
-          escape: "none",
-        }
-      );
-
-      const parameterChunk = getSchemaFromId(parameter.fieldChunkId, docsData);
-      const parameterContext = {
-        site,
-        renderer,
-        schemaStack: [],
-        idPrefix: parametersId,
-        data: docsData,
-      };
-      renderSchemaFrontmatter({
-        context: parameterContext,
-        schema: parameterChunk.chunkData.value,
-      });
-      renderSchemaDetails({
-        context: parameterContext,
-        schema: parameterChunk.chunkData.value,
-      });
-
-      renderer.appendSectionContentEnd();
-    }
-    renderer.appendSectionEnd();
-  }
-
-  const { tryItNow } = getSettings();
-  const usageSnippet = docsCodeSnippets[chunk.id];
-  if (usageSnippet && tryItNow) {
-    renderer.appendSectionStart({ variant: "top-level" });
-    renderer.appendSectionTitleStart({ variant: "top-level" });
-    renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Try it Now", {
-      id: id + "+try-it-now",
-    });
-    renderer.appendSectionTitleEnd();
-    renderer.appendSectionContentStart({ variant: "top-level" });
-    // TODO: Zod is actually hard coded for now since its always a dependency
-    // in our SDKs. Ideally this will come from the SDK package.
-    renderer.appendTryItNow({
-      externalDependencies: {
-        zod: "^3.25.64",
-        [tryItNow.npmPackageName]: "latest",
-      },
-      defaultValue: usageSnippet.code,
-    });
-    renderer.appendSectionContentEnd();
-    renderer.appendSectionEnd();
-  }
-
-  if (chunk.chunkData.requestBody) {
-    const requestBodyId = id + "+request";
-    renderer.appendSectionStart({ variant: "top-level" });
-    renderer.appendSectionTitleStart({ variant: "top-level" });
-    const start = renderer.createPillStart("info");
-    const end = renderer.createPillEnd();
-    renderer.appendHeading(
-      HEADINGS.SECTION_HEADING_LEVEL,
-      `Request Body${!chunk.chunkData.requestBody.required ? ` ${start}optional${end}` : ""}`,
-      { id: requestBodyId, escape: "none" }
-    );
-    renderer.appendSectionTitleEnd();
-    renderer.appendSectionContentStart({ variant: "top-level" });
-
-    const requestBodySchema = getSchemaFromId(
-      chunk.chunkData.requestBody.contentChunkId,
-      docsData
-    );
-    const context = {
-      site,
-      renderer,
-      schemaStack: [],
-      idPrefix: requestBodyId,
-      data: docsData,
-    };
-    if (requestBodySchema.chunkData.value.type !== "object") {
-      renderer.appendProperty({
-        typeInfo: getDisplayTypeInfo(
-          requestBodySchema.chunkData.value,
-          context
-        ),
-        id: requestBodyId,
-        annotations: [],
-        title: "",
-      });
-    }
-    renderSchemaFrontmatter({
-      context,
-      schema: requestBodySchema.chunkData.value,
-    });
-    renderSchemaDetails({
-      context,
-      schema: requestBodySchema.chunkData.value,
-    });
-
-    renderer.appendSectionContentEnd();
-    renderer.appendSectionEnd();
-  }
-
-  if (chunk.chunkData.responses) {
-    const { visibleResponses } = getSettings().display;
-    const responseList = Object.entries(chunk.chunkData.responses);
-    const filteredResponseList = responseList.filter(([statusCode]) => {
-      switch (visibleResponses) {
-        case "all":
-          return true;
-        case "explicit":
-          return !statusCode.endsWith("XX");
-        case "success":
-          return statusCode.startsWith("2");
-        default:
-          assertNever(visibleResponses);
+      // TODO: Security is being rewritten anyways, so I'm not refactoring it as
+      // part of the schema refactor
+      if (chunk.chunkData.security) {
+        operationRenderer.addSecuritySection((securityRenderer) => {
+          // TODO: Security is being rewritten at the generator level, so I'm
+          // not refactoring this code as part of the schema refactor
+          securityRenderer.appendText("Coming Soon");
+        });
       }
-    });
-    const numResponses = filteredResponseList.reduce(
-      (acc, [_, responses]) => acc + responses.length,
-      0
-    );
-    if (numResponses > 0) {
-      renderer.appendTabbedSectionStart();
-      const responsesId = id + "+responses";
-      renderer.appendSectionTitleStart({ variant: "top-level" });
-      renderer.appendHeading(
-        HEADINGS.SECTION_HEADING_LEVEL,
-        numResponses === 1 ? "Response" : "Responses",
-        {
-          id: responsesId,
-        }
-      );
-      renderer.appendSectionTitleEnd();
-      for (const [statusCode, responses] of filteredResponseList) {
-        for (const response of responses) {
-          const responseId =
-            id + `+${statusCode}+${response.contentType.replace("/", "-")}`;
-          const tooltip = `${statusCode} (${response.contentType})`;
-          renderer.appendTabbedSectionTabStart(responseId);
-          if (responses.length > 1) {
-            renderer.appendText(tooltip);
-          } else {
-            renderer.appendText(statusCode);
-          }
-          renderer.appendTabbedSectionTabEnd();
-          renderer.appendSectionContentStart({
-            id: responseId,
-            variant: "top-level",
-          });
 
-          const responseSchema = getSchemaFromId(
-            response.contentChunkId,
-            docsData
+      if (chunk.chunkData.parameters.length > 0) {
+        operationRenderer.addParametersSection((createParameter) => {
+          for (const parameter of chunk.chunkData.parameters) {
+            createParameter(
+              { name: parameter.name, isRequired: parameter.required },
+              ({ parameterRenderer }) => {
+                const parameterChunk = getSchemaFromId(
+                  parameter.fieldChunkId,
+                  docsData
+                );
+                const parameterContext = {
+                  site,
+                  renderer: parameterRenderer,
+                  schemaStack: [],
+                  idPrefix: id,
+                  data: docsData,
+                };
+                renderSchemaFrontmatter({
+                  context: parameterContext,
+                  schema: parameterChunk.chunkData.value,
+                });
+                renderSchemaDetails({
+                  context: parameterContext,
+                  schema: parameterChunk.chunkData.value,
+                });
+              }
+            );
+          }
+        });
+      }
+
+      const { tryItNow } = getSettings();
+      const usageSnippet = docsCodeSnippets[chunk.id];
+      if (usageSnippet && tryItNow) {
+        operationRenderer.appendSectionStart({ variant: "top-level" });
+        operationRenderer.appendSectionTitleStart({ variant: "top-level" });
+        operationRenderer.appendHeading(
+          HEADINGS.SECTION_HEADING_LEVEL,
+          "Try it Now",
+          {
+            id: id + "+try-it-now",
+          }
+        );
+        operationRenderer.appendSectionTitleEnd();
+        operationRenderer.appendSectionContentStart({ variant: "top-level" });
+        // TODO: Zod is actually hard coded for now since its always a dependency
+        // in our SDKs. Ideally this will come from the SDK package.
+        operationRenderer.appendTryItNow({
+          externalDependencies: {
+            zod: "^3.25.64",
+            [tryItNow.npmPackageName]: "latest",
+          },
+          defaultValue: usageSnippet.code,
+        });
+        operationRenderer.appendSectionContentEnd();
+        operationRenderer.appendSectionEnd();
+      }
+
+      if (chunk.chunkData.requestBody) {
+        const requestBodyId = id + "+request";
+        operationRenderer.appendSectionStart({ variant: "top-level" });
+        operationRenderer.appendSectionTitleStart({ variant: "top-level" });
+        const start = operationRenderer.createPillStart("info");
+        const end = operationRenderer.createPillEnd();
+        operationRenderer.appendHeading(
+          HEADINGS.SECTION_HEADING_LEVEL,
+          `Request Body${!chunk.chunkData.requestBody.required ? ` ${start}optional${end}` : ""}`,
+          { id: requestBodyId, escape: "none" }
+        );
+        operationRenderer.appendSectionTitleEnd();
+        operationRenderer.appendSectionContentStart({ variant: "top-level" });
+
+        const requestBodySchema = getSchemaFromId(
+          chunk.chunkData.requestBody.contentChunkId,
+          docsData
+        );
+        const context = {
+          site,
+          renderer: operationRenderer,
+          schemaStack: [],
+          idPrefix: requestBodyId,
+          data: docsData,
+        };
+        if (requestBodySchema.chunkData.value.type !== "object") {
+          operationRenderer.appendProperty({
+            typeInfo: getDisplayTypeInfo(
+              requestBodySchema.chunkData.value,
+              context
+            ),
+            id: requestBodyId,
+            annotations: [],
+            title: "",
+          });
+        }
+        renderSchemaFrontmatter({
+          context,
+          schema: requestBodySchema.chunkData.value,
+        });
+        renderSchemaDetails({
+          context,
+          schema: requestBodySchema.chunkData.value,
+        });
+
+        operationRenderer.appendSectionContentEnd();
+        operationRenderer.appendSectionEnd();
+      }
+
+      if (chunk.chunkData.responses) {
+        const { visibleResponses } = getSettings().display;
+        const responseList = Object.entries(chunk.chunkData.responses);
+        const filteredResponseList = responseList.filter(([statusCode]) => {
+          switch (visibleResponses) {
+            case "all":
+              return true;
+            case "explicit":
+              return !statusCode.endsWith("XX");
+            case "success":
+              return statusCode.startsWith("2");
+            default:
+              assertNever(visibleResponses);
+          }
+        });
+        const numResponses = filteredResponseList.reduce(
+          (acc, [_, responses]) => acc + responses.length,
+          0
+        );
+        if (numResponses > 0) {
+          operationRenderer.appendTabbedSectionStart();
+          const responsesId = id + "+responses";
+          operationRenderer.appendSectionTitleStart({ variant: "top-level" });
+          operationRenderer.appendHeading(
+            HEADINGS.SECTION_HEADING_LEVEL,
+            numResponses === 1 ? "Response" : "Responses",
+            {
+              id: responsesId,
+            }
           );
-          const context = {
-            site,
-            renderer,
-            schemaStack: [],
-            idPrefix: responseId,
-            data: docsData,
-          };
-          if (responseSchema.chunkData.value.type !== "object") {
-            renderer.appendProperty({
-              typeInfo: getDisplayTypeInfo(
-                responseSchema.chunkData.value,
-                context
-              ),
-              id: responseId,
-              annotations: [],
-              title: "",
-            });
-          }
-          renderSchemaFrontmatter({
-            context,
-            schema: responseSchema.chunkData.value,
-          });
-          renderSchemaDetails({
-            context,
-            schema: responseSchema.chunkData.value,
-          });
+          operationRenderer.appendSectionTitleEnd();
+          for (const [statusCode, responses] of filteredResponseList) {
+            for (const response of responses) {
+              const responseId =
+                id + `+${statusCode}+${response.contentType.replace("/", "-")}`;
+              const tooltip = `${statusCode} (${response.contentType})`;
+              operationRenderer.appendTabbedSectionTabStart(responseId);
+              if (responses.length > 1) {
+                operationRenderer.appendText(tooltip);
+              } else {
+                operationRenderer.appendText(statusCode);
+              }
+              operationRenderer.appendTabbedSectionTabEnd();
+              operationRenderer.appendSectionContentStart({
+                id: responseId,
+                variant: "top-level",
+              });
 
-          renderer.appendSectionContentEnd();
+              const responseSchema = getSchemaFromId(
+                response.contentChunkId,
+                docsData
+              );
+              const context = {
+                site,
+                renderer: operationRenderer,
+                schemaStack: [],
+                idPrefix: responseId,
+                data: docsData,
+              };
+              if (responseSchema.chunkData.value.type !== "object") {
+                operationRenderer.appendProperty({
+                  typeInfo: getDisplayTypeInfo(
+                    responseSchema.chunkData.value,
+                    context
+                  ),
+                  id: responseId,
+                  annotations: [],
+                  title: "",
+                });
+              }
+              renderSchemaFrontmatter({
+                context,
+                schema: responseSchema.chunkData.value,
+              });
+              renderSchemaDetails({
+                context,
+                schema: responseSchema.chunkData.value,
+              });
+
+              operationRenderer.appendSectionContentEnd();
+            }
+          }
+          operationRenderer.appendTabbedSectionEnd();
         }
       }
-      renderer.appendTabbedSectionEnd();
     }
-  }
+  );
 }
