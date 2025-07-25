@@ -399,7 +399,7 @@ export function renderSchemaDetails({
     });
     return;
   }
-  // Check if this is a container, and if so render breakouts
+  // Otherwise check if we have any breakouts to render
   else if (typeInfo.breakoutSubTypes.size > 0) {
     renderContainer({
       context,
@@ -407,5 +407,4 @@ export function renderSchemaDetails({
     });
     return;
   }
-  // Otherwise this is a primitive and we don't need to do anything
 }
