@@ -1,6 +1,7 @@
 import { capitalCase, snakeCase } from "change-case";
 
 import type { Renderer, Site } from "../../renderers/base/base.ts";
+import { getEmbedPath } from "../../renderers/base/util.ts";
 import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
 import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from "../../util/settings.ts";
@@ -214,5 +215,16 @@ export function renderContent(
 ) {
   const pageMap = getPageMap(site, data);
   renderPages(site, pageMap, data, docsCodeSnippets);
+
+  for (const codeSnippet of Object.values(docsCodeSnippets)) {
+    const renderer = site.createPage(
+      getEmbedPath(`code-snippets/${codeSnippet.operationId}`)
+    );
+    renderer.appendCode(codeSnippet.code, {
+      variant: "default",
+      language: "typescript",
+    });
+  }
+
   return site.render();
 }
