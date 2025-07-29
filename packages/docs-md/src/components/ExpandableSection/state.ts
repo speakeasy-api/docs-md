@@ -3,17 +3,25 @@ import { createContext, useContext } from "react";
 import { InternalError } from "../../util/internalError.ts";
 import type { Connection, TreeData } from "./types.ts";
 
-export const TreeDataContext = createContext<TreeData | null>(null);
+export const TreeDataContext = createContext<{
+  data: TreeData;
+
+  // TODO: storing this at the root of the context means we re-render the entire
+  // tree when it changes. If performance becomes an issue, we should consider
+  // distributing open state via, I dunno maybe a Jotai atom family?
+  openNodes: Set<string>;
+  setIsOpen: (id: string, isOpen: boolean) => void;
+} | null>(null);
 
 export function useConnectingCellData(id: string) {
-  const data = useContext(TreeDataContext);
-  if (data === null) {
+  const context = useContext(TreeDataContext);
+  if (context === null) {
     throw new InternalError("TreeData context is not initialized");
   }
 
   const connections: Pick<Connection, "bottom" | "top" | "right">[] = [];
 
-  let node = data.nodeMap.get(id);
+  let node = context.data.nodeMap.get(id);
   if (!node) {
     throw new InternalError(`Node with id ${id} not found in tree data`);
   }
@@ -40,4 +48,49 @@ export function useConnectingCellData(id: string) {
   }
 
   return { connections, hasChildren };
+}
+
+export function useIsOpen(id: string) {
+  const context = useContext(TreeDataContext);
+  if (context === null) {
+    throw new InternalError("TreeData context is not initialized");
+  }
+
+  const node = context.data.nodeMap.get(id);
+  if (!node) {
+    throw new InternalError(`Node with id ${id} not found in tree data`);
+  }
+
+  return [
+    context.openNodes.has(id),
+    (isOpen: boolean) => context.setIsOpen(id, isOpen),
+  ] as const;
+}
+
+export function useAreAllParentsOpen(id: string) {
+  const context = useContext(TreeDataContext);
+  if (context === null) {
+    throw new InternalError("TreeData context is not initialized");
+  }
+
+  const node = context.data.nodeMap.get(id);
+  if (!node) {
+    throw new InternalError(`Node with id ${id} not found in tree data`);
+  }
+
+  let currentParent = node.parent;
+
+  // Root nodes are always open
+  if (!currentParent) {
+    return true;
+  }
+
+  while (currentParent) {
+    if (!context.openNodes.has(currentParent.id)) {
+      return false;
+    }
+    currentParent = currentParent.parent;
+  }
+
+  return true;
 }

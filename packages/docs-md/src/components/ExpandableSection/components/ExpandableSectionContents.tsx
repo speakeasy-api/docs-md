@@ -1,6 +1,6 @@
 "use client";
 
-import { type PropsWithChildren, useMemo } from "react";
+import { type PropsWithChildren, useMemo, useState } from "react";
 
 import { useChildren } from "../../Section/hooks.ts";
 import { TreeDataContext } from "../state.ts";
@@ -13,6 +13,8 @@ export function ExpandableSectionContents({
   children,
 }: ExpandableSectionProps) {
   const entries = useChildren<ExpandableEntryProps>(children, "entry");
+
+  const [openNodes, setOpenNodes] = useState(new Set<string>());
 
   const treeData = useMemo(() => {
     const treeData: TreeData = {
@@ -99,7 +101,23 @@ export function ExpandableSectionContents({
   }, [entries]);
 
   return (
-    <TreeDataContext.Provider value={treeData}>
+    <TreeDataContext.Provider
+      value={{
+        data: treeData,
+        openNodes,
+        setIsOpen: (id: string, isOpen: boolean) => {
+          setOpenNodes((openNodes) => {
+            const newOpenNodes = new Set(openNodes);
+            if (isOpen) {
+              newOpenNodes.add(id);
+            } else {
+              newOpenNodes.delete(id);
+            }
+            return newOpenNodes;
+          });
+        },
+      }}
+    >
       {entries}
     </TreeDataContext.Provider>
   );

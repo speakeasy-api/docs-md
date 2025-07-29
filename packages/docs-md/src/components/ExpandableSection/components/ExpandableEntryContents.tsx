@@ -1,8 +1,12 @@
 "use client";
 
-import { type PropsWithChildren, useState } from "react";
+import { type PropsWithChildren } from "react";
 
-import { useConnectingCellData } from "../state.ts";
+import {
+  useAreAllParentsOpen,
+  useConnectingCellData,
+  useIsOpen,
+} from "../state.ts";
 import styles from "../styles.module.css";
 import { ConnectingCell } from "./ConnectingCell.tsx";
 import { ContentCell } from "./ContentCell.tsx";
@@ -21,8 +25,13 @@ export function ExpandableEntryContents({
   slot,
   children,
 }: ExpandableEntryProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useIsOpen(id);
+  const isParentOpen = useAreAllParentsOpen(id);
   const { connections, hasChildren } = useConnectingCellData(id);
+
+  if (!isParentOpen) {
+    return null;
+  }
 
   return (
     <div slot={slot} className={styles.expandableEntry}>
