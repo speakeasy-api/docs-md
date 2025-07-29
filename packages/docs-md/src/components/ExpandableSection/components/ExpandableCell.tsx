@@ -1,17 +1,19 @@
+"use client";
+
 import clsx from "clsx";
 
-import styles from "./styles.module.css";
-import type { ConnectionCellProps } from "./types.ts";
+import styles from "../styles.module.css";
+import type { Connection } from "../types.ts";
 
-type ExpandableCellProps = Pick<ConnectionCellProps, "bottom" | "left"> & {
+type ExpandableCellProps = Pick<Connection, "bottom" | "left"> & {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 };
 
 export function ExpandableCell({
   isOpen,
-  bottom: bottomConnection,
-  left: leftConnection,
+  bottom,
+  left,
   setIsOpen,
 }: ExpandableCellProps) {
   const handleClick = () => {
@@ -33,8 +35,8 @@ export function ExpandableCell({
       <div
         className={clsx(
           styles.expandableLeft,
-          leftConnection === "connected" && styles.horizontalConnected,
-          leftConnection === "highlighted" && styles.horizontalHighlighted
+          left === "connected" && styles.horizontalConnected,
+          left === "highlighted" && styles.horizontalHighlighted
         )}
         style={{
           gridRow: "2 / span 2",
@@ -81,8 +83,8 @@ export function ExpandableCell({
       <div
         className={clsx(
           styles.expandableBottom,
-          bottomConnection === "connected" && styles.verticalConnected,
-          bottomConnection === "highlighted" && styles.verticalHighlighted
+          bottom === "connected" && styles.verticalConnected,
+          bottom === "highlighted" && styles.verticalHighlighted
         )}
         style={{
           gridRow: "6",

@@ -1,24 +1,21 @@
 import clsx from "clsx";
 
-import styles from "./styles.module.css";
-import type { ConnectionCellProps } from "./types.ts";
+import styles from "../styles.module.css";
+import type { Connection } from "../types.ts";
 
 export function ConnectingCell({
   bottom: bottomConnection,
   top: topConnection,
-  left: leftConnection,
   right: rightConnection,
-}: ConnectionCellProps) {
+}: Pick<Connection, "bottom" | "top" | "right">) {
   return (
     <div className={styles.connectingCellContainer}>
-      {/* Upper left cell, responsible for the top and left connection */}
+      {/* Upper left cell, responsible for the top connection */}
       <div
         className={clsx(
           styles.connectingCell,
           topConnection === "connected" && styles.verticalConnected,
-          topConnection === "highlighted" && styles.verticalHighlighted,
-          leftConnection === "connected" && styles.horizontalConnected,
-          leftConnection === "highlighted" && styles.horizontalHighlighted
+          topConnection === "highlighted" && styles.verticalHighlighted
         )}
       />
       {/* Upper right cell, responsible for the right connection */}

@@ -5,6 +5,7 @@ export type { Settings } from "./types/settings.ts";
 export { TryItNow } from "./components/TryItNow/docusaurus.tsx";
 export { SideBar, SideBarTrigger } from "./components/SideBar/docusaurus.tsx";
 export { ExpandableSection } from "./components/ExpandableSection/ExpandableSection.tsx";
+export { ExpandableEntry } from "./components/ExpandableSection/ExpandableEntry.tsx";
 export { TabbedSection } from "./components/TabbedSection/TabbedSection.tsx";
 export { Section } from "./components/Section/Section.tsx";
 export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
