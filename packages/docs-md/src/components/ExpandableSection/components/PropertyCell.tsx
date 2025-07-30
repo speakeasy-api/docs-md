@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import type { JSX, PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import { forwardRef, useMemo } from "react";
 import useMeasure from "react-use-measure";
 
@@ -289,65 +289,35 @@ export function PropertyCell({
     singleLineDisplay,
   ]);
 
-  let compositeTitle: JSX.Element;
-  let compositeContent: JSX.Element;
-  if (multiline) {
-    compositeTitle = (
-      <>
-        {titleChild}
-        {typeAnnotations.map((annotation) => (
-          <Pill key={annotation.title} variant={annotation.variant}>
-            {annotation.title}
-          </Pill>
-        ))}
-        {/* TODO: placeholder */}
-      </>
-    );
-    compositeContent = (
-      <>
-        <div ref={typeContainerRef}>
-          <TypeContainer
-            multiline={multiline}
-            ref={typeContainerRef}
-            contents={contents}
-          />
-        </div>
-        {contentChildren}
-      </>
-    );
-  } else {
-    compositeTitle = (
-      <>
-        <>
+  const typeContents = (
+    <div ref={typeContainerRef}>
+      <TypeContainer
+        multiline={multiline}
+        ref={typeContainerRef}
+        contents={contents}
+      />
+    </div>
+  );
+
+  return (
+    <div className={styles.propertyCell}>
+      <TitleContainer ref={titleContainerRef} multiline={multiline}>
+        <TitlePrefixContainer ref={titlePrefixContainerRef}>
           {titleChild}
           {typeAnnotations.map((annotation) => (
             <Pill key={annotation.title} variant={annotation.variant}>
               {annotation.title}
             </Pill>
           ))}
-          <div ref={typeContainerRef}>
-            <TypeContainer
-              multiline={multiline}
-              ref={typeContainerRef}
-              contents={contents}
-            />
-          </div>
-        </>
-      </>
-    );
-    compositeContent = <>{contentChildren}</>;
-  }
-
-  return (
-    <div className={styles.propertyCell}>
-      <TitleContainer ref={titleContainerRef} multiline={multiline}>
-        <TitlePrefixContainer ref={titlePrefixContainerRef}>
-          {compositeTitle}
         </TitlePrefixContainer>
+        {!multiline && typeContents}
       </TitleContainer>
 
       {isOpen && (
-        <div className={styles.propertyCellContent}>{compositeContent}</div>
+        <div className={styles.propertyCellContent}>
+          {multiline && typeContents}
+          {contentChildren}
+        </div>
       )}
 
       {/* This offscreen measure is used to determine the width of a character,
