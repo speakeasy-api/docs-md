@@ -311,7 +311,7 @@ export abstract class MarkdownRenderer extends Renderer {
     ...[{ createTitle, createContent }]: RendererAddExpandableBreakoutArgs
   ) {
     createTitle();
-    createContent();
+    createContent?.();
   }
 
   public override addExpandableProperty(
@@ -334,7 +334,7 @@ export abstract class MarkdownRenderer extends Renderer {
       `${title} ${renderedAnnotations.join(" ")} ${type}`,
       { id: this.getCurrentId(), escape: "mdx" }
     );
-    createContent();
+    createContent?.();
   }
 
   public override createHeading(

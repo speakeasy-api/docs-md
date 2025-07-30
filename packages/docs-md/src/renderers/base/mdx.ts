@@ -175,12 +175,17 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.appendText(
       `<ExpandableBreakout slot="entry" id="${id}"${parentId ? ` parentId="${parentId}"` : ""}>`
     );
+
     this.appendText(`<div slot="title">`);
     createTitle();
     this.appendText("</div>");
-    this.appendText(`<div slot="content">`);
-    createContent();
-    this.appendText("</div>");
+
+    if (createContent) {
+      this.appendText(`<div slot="content">`);
+      createContent();
+      this.appendText("</div>");
+    }
+
     this.appendText("</ExpandableBreakout>");
   }
 
@@ -205,9 +210,11 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     });
     this.appendText("</div>");
 
-    this.appendText(`<div slot="content">`);
-    createContent();
-    this.appendText("</div>");
+    if (createContent) {
+      this.appendText(`<div slot="content">`);
+      createContent();
+      this.appendText("</div>");
+    }
 
     this.appendText(`</ExpandableProperty>`);
   }

@@ -214,7 +214,7 @@ export type RendererCreateContextArgs = [id: string];
 export type RendererAddExpandableBreakoutArgs = [
   options: {
     createTitle: () => void;
-    createContent: () => void;
+    createContent?: () => void;
   },
 ];
 export type RendererAddExpandablePropertyArgs = [
@@ -222,7 +222,7 @@ export type RendererAddExpandablePropertyArgs = [
     typeInfo: DisplayTypeInfo;
     annotations: PropertyAnnotations[];
     title: string;
-    createContent: () => void;
+    createContent?: () => void;
   },
 ];
 

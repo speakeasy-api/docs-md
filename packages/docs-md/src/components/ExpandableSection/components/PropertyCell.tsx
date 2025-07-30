@@ -313,7 +313,7 @@ export function PropertyCell({
         {!multiline && typeContents}
       </TitleContainer>
 
-      {isOpen && (
+      {isOpen && (multiline || contentChildren.length > 0) && (
         <div className={styles.propertyCellContent}>
           {multiline && typeContents}
           {contentChildren}
