@@ -27,7 +27,7 @@ export function ExpandableEntryContents({
 }: ExpandableEntryProps) {
   const [isOpen, setIsOpen] = useIsOpen(id);
   const isParentOpen = useAreAllParentsOpen(id);
-  const { connections, hasChildren } = useConnectingCellData(id);
+  const connections = useConnectingCellData(id);
 
   if (!isParentOpen) {
     return null;
@@ -43,12 +43,7 @@ export function ExpandableEntryContents({
           right={cellData.right}
         />
       ))}
-      <ExpandableCell
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        bottom={hasChildren && isOpen ? "connected" : "none"}
-        left="connected"
-      />
+      <ExpandableCell isOpen={isOpen} setIsOpen={setIsOpen} />
       <ContentCell isOpen={isOpen}>{children}</ContentCell>
     </div>
   );

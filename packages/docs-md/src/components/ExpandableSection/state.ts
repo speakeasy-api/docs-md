@@ -25,7 +25,6 @@ export function useConnectingCellData(id: string) {
   if (!node) {
     throw new InternalError(`Node with id ${id} not found in tree data`);
   }
-  const hasChildren = node.children.length > 0;
 
   // The right-most connection is unique, because it connects to the expandable
   // node and so always has a top and right connection. It's also always
@@ -47,7 +46,7 @@ export function useConnectingCellData(id: string) {
     node = node.parent;
   }
 
-  return { connections, hasChildren };
+  return connections;
 }
 
 export function useIsOpen(id: string) {
