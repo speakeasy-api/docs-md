@@ -160,13 +160,17 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.#expandableIdStack = undefined;
   }
 
+  #getBreakoutIdInfo() {
+    const stack = this.getContextStack().map((c) => c.id);
+    const id = stack.join("_");
+    const parentId = stack.slice(0, -1).join("_") || undefined;
+    return { id, parentId };
+  }
+
   public override addExpandableBreakout(
     ...[{ createTitle, createContent }]: RendererAddExpandableBreakoutArgs
   ) {
-    const stack = this.getContextStack();
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const id = stack.at(-1)!.id;
-    const parentId = stack.at(-2)?.id;
+    const { id, parentId } = this.#getBreakoutIdInfo();
     this.insertComponentImport("ExpandableBreakout");
     this.appendText(
       `<ExpandableBreakout slot="entry" id="${id}"${parentId ? ` parentId="${parentId}"` : ""}>`
@@ -185,10 +189,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
       { typeInfo, annotations, title, createContent },
     ]: RendererAddExpandablePropertyArgs
   ) {
-    const stack = this.getContextStack();
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const id = stack.at(-1)!.id;
-    const parentId = stack.at(-2)?.id;
+    const { id, parentId } = this.#getBreakoutIdInfo();
     this.insertComponentImport("ExpandableProperty");
     this.appendText(
       `<ExpandableProperty slot="entry" id="${id}"${parentId ? ` parentId="${parentId}"` : ""} typeInfo={${JSON.stringify(typeInfo)}} typeAnnotations={${JSON.stringify(
