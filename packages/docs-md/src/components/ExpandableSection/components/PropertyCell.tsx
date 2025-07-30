@@ -19,22 +19,15 @@ type PropertyCellProps = PropsWithChildren<{
   isOpen: boolean;
 }>;
 
-const TitleContainer = forwardRef<
-  HTMLDivElement,
-  PropsWithChildren<{ multiline: boolean }>
->(function TitleContainer({ children, multiline }, ref) {
-  return (
-    <div
-      ref={ref}
-      className={clsx(
-        styles.propertyTitleContainer,
-        multiline ? styles.containerMultiline : styles.containerSingleLine
-      )}
-    >
-      {children}
-    </div>
-  );
-});
+const TitleContainer = forwardRef<HTMLDivElement, PropsWithChildren>(
+  function TitleContainer({ children }, ref) {
+    return (
+      <div ref={ref} className={styles.propertyTitleContainer}>
+        {children}
+      </div>
+    );
+  }
+);
 
 const TitlePrefixContainer = forwardRef<HTMLSpanElement, PropsWithChildren>(
   function TitlePrefixContainer({ children }, ref) {
@@ -301,7 +294,7 @@ export function PropertyCell({
 
   return (
     <div className={styles.propertyCell}>
-      <TitleContainer ref={titleContainerRef} multiline={multiline}>
+      <TitleContainer ref={titleContainerRef}>
         <TitlePrefixContainer ref={titlePrefixContainerRef}>
           {titleChild}
           {typeAnnotations.map((annotation) => (
@@ -310,7 +303,20 @@ export function PropertyCell({
             </Pill>
           ))}
         </TitlePrefixContainer>
-        {!multiline && typeContents}
+        {multiline ? (
+          <div>
+            <div
+              className={clsx(
+                styles.typeInnerContainer,
+                styles.typeInnerContainerInline
+              )}
+            >
+              {typeInfo.label}
+            </div>
+          </div>
+        ) : (
+          typeContents
+        )}
       </TitleContainer>
 
       {isOpen && (multiline || contentChildren.length > 0) && (
