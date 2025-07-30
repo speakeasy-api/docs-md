@@ -40,5 +40,3 @@ export const settingsSchema = z.strictObject({
 });
 
 export type ParsedSettings = z.infer<typeof settingsSchema>;
-export type Settings = Pick<ParsedSettings, "spec" | "output"> &
-  Partial<Pick<ParsedSettings, "display" | "tryItNow">>;

@@ -12,8 +12,8 @@ import type {
 } from "shiki";
 import { bundledThemes, normalizeTheme } from "shiki";
 
-import type { TryItNowProps } from "../runtime/components/TryItNow/common/types.ts";
-import type { RehypeTheme } from "../types/nextra.ts";
+import type { TryItNowProps } from "../../runtime/components/TryItNow/common/types.ts";
+import type { RehypeTheme } from "../../types/nextra.ts";
 
 // TODO: This import is dynamically imported in the CLI. fast-import is
 // supposed to support this case, and it should be fixed.

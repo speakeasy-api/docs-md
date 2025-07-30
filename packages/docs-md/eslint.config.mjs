@@ -12,16 +12,16 @@ export default [
     rootDir: getDirname(),
     entryPoints: {
       "eslint.config.mjs": ["default"],
-      "src/nextra.ts": /.*/,
-      "src/docusaurus.ts": /.*/,
-      "src/react.ts": /.*/,
+      "src/runtime/nextra.ts": /.*/,
+      "src/runtime/docusaurus.ts": /.*/,
+      "src/runtime/react.ts": /.*/,
     },
     ignores: ["src/pages/data/wasm_exec.js", ".storybook/**/*"],
     restrictedImports: [
       {
         type: "third-party",
         moduleSpecifier: "node:fs",
-        allowed: [/src\/cli\//],
+        allowed: [/src\/compiler\/cli\//],
         message:
           "File system access is only allowed in the CLI wrapper because other code is used in web environments",
       },
