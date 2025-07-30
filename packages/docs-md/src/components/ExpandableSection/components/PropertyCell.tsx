@@ -39,12 +39,15 @@ const TitlePrefixContainer = forwardRef<HTMLSpanElement, PropsWithChildren>(
   }
 );
 
-const TypeContainer = forwardRef<
-  HTMLDivElement,
-  PropsWithChildren<{ multiline: boolean; contents: string }>
->(function TypeContainer({ multiline, contents }, ref) {
+function TypeContainer({
+  multiline,
+  contents,
+}: {
+  multiline: boolean;
+  contents: string;
+}) {
   return (
-    <div ref={ref}>
+    <div>
       <div
         className={clsx(
           styles.typeInnerContainer,
@@ -56,7 +59,7 @@ const TypeContainer = forwardRef<
       />
     </div>
   );
-});
+}
 
 const OffscreenMeasureContainer = forwardRef<HTMLDivElement, PropsWithChildren>(
   function OffscreenMeasureContainer({ children }, ref) {
@@ -205,8 +208,6 @@ export function PropertyCell({
   const titleContainerWidth = titleContainerBounds.width;
   const [titlePrefixContainerRef, titlePrefixContainerBounds] = useMeasure();
   const titlePrefixContainerWidth = titlePrefixContainerBounds.width;
-  const [typeContainerRef, typeContainerBounds] = useMeasure();
-  const typeContainerWidth = typeContainerBounds.width;
   const [
     offscreenTextSizeMeasureContainerRef,
     offscreenTextSizeMeasureContainerBounds,
@@ -254,18 +255,18 @@ export function PropertyCell({
     // case we want to render content on a single line. We only need maxCharacters
     // in the multiline case, so we don't need to consider the title width when
     // computing max characters.
-    const maxCharacters =
-      typeContainerWidth === 0 || offscreenTextSizeMeasureContainerWidth === 0
+    const maxMultilineCharacters =
+      titleContainerWidth === 0 || offscreenTextSizeMeasureContainerWidth === 0
         ? Infinity
         : // We subtract 4 here to account for the padding on the left and right
           Math.floor(
-            typeContainerWidth / offscreenTextSizeMeasureContainerWidth
+            titleContainerWidth / offscreenTextSizeMeasureContainerWidth
           ) - 4;
 
     // Finally, if we are multiline, compute the multiline type label, otherwise
     // we can reuse the single line version we already computed
     const contents = multiline
-      ? computeMultilineTypeLabel(typeInfo, 0, maxCharacters).contents
+      ? computeMultilineTypeLabel(typeInfo, 0, maxMultilineCharacters).contents
       : singleLineDisplay;
 
     return {
@@ -277,20 +278,9 @@ export function PropertyCell({
     offscreenTypeMeasureContainerWidth,
     titleContainerWidth,
     titlePrefixContainerWidth,
-    typeContainerWidth,
     typeInfo,
     singleLineDisplay,
   ]);
-
-  const typeContents = (
-    <div ref={typeContainerRef}>
-      <TypeContainer
-        multiline={multiline}
-        ref={typeContainerRef}
-        contents={contents}
-      />
-    </div>
-  );
 
   return (
     <div className={styles.propertyCell}>
@@ -315,13 +305,15 @@ export function PropertyCell({
             </div>
           </div>
         ) : (
-          typeContents
+          <TypeContainer multiline={multiline} contents={contents} />
         )}
       </TitleContainer>
 
       {isOpen && (multiline || contentChildren.length > 0) && (
         <div className={styles.propertyCellContent}>
-          {multiline && typeContents}
+          {multiline && (
+            <TypeContainer multiline={multiline} contents={contents} />
+          )}
           {contentChildren}
         </div>
       )}
