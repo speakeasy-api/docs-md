@@ -3,7 +3,7 @@ sidebarTitle: Agents
 ---
 
 import "@speakeasy-api/docs-md/nextra.css";
-import { Pill, Section, SectionTitle, SectionContent, Property, ExpandableSection, TabbedSection, SectionTab } from "@speakeasy-api/docs-md/nextra";
+import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableEntry, Property, TabbedSection, SectionTab } from "@speakeasy-api/docs-md/nextra";
 
 
 # Agents Operations [#agents]
@@ -22,13 +22,31 @@ Agents Completion
 
 <SectionContent slot="content" variant="top-level">
 
+<ExpandableSection>
+
+<ExpandableEntry slot="entry" id="agent_id">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### agent_id [#operation-agents_completion_v1_agents_completions_post+request+agent_id]
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 The ID of the agent to use for this completion.
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="frequency_penalty">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -36,7 +54,19 @@ The ID of the agent to use for this completion.
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 frequency_penalty penalizes the repetition of words based on their frequency in the generated text. A higher frequency penalty discourages the model from repeating words that have already appeared frequently in the output, promoting diversity and reducing repetition.
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="max_tokens">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -44,37 +74,81 @@ frequency_penalty penalizes the repetition of words based on their frequency in 
 
 </Property>
 
-<Property typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"SystemMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+SystemMessage\">SystemMessage</a>","children":[],"breakoutSubTypes":{}},{"label":"UserMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+UserMessage\">UserMessage</a>","children":[],"breakoutSubTypes":{}},{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+AssistantMessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":{}},{"label":"ToolMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+ToolMessage\">ToolMessage</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="messages">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"SystemMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+SystemMessage\">SystemMessage</a>","children":[],"breakoutSubTypes":{}},{"label":"UserMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage\">UserMessage</a>","children":[],"breakoutSubTypes":{}},{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":{}},{"label":"ToolMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage\">ToolMessage</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### messages [#operation-agents_completion_v1_agents_completions_post+request+messages]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### SystemMessage [#operation-agents_completion_v1_agents_completions_post+request+messages]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="SystemMessage" parentId="messages">
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+SystemMessage+TextChunk\">TextChunk</a>","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+SystemMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
+
+#### SystemMessage [#operation-agents_completion_v1_agents_completions_post+request+messages+SystemMessage]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="content" parentId="SystemMessage">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+SystemMessage+content+TextChunk\">TextChunk</a>","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+SystemMessage+content+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### content [#operation-agents_completion_v1_agents_completions_post+request+messages+SystemMessage+content]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### TextChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+SystemMessage+content]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="TextChunk" parentId="content">
+
+<div slot="title">
+
+#### TextChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+SystemMessage+content+TextChunk]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="text" parentId="TextChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -82,17 +156,37 @@ frequency_penalty penalizes the repetition of words based on their frequency in 
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="TextChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### type [#operation-agents_completion_v1_agents_completions_post+request+messages+SystemMessage+content+TextChunk+type]
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"text"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="role" parentId="SystemMessage">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"system\"","linkedLabel":"\"system\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -100,37 +194,65 @@ _Default Value:_ `"text"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"system"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="UserMessage" parentId="messages">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### UserMessage [#operation-agents_completion_v1_agents_completions_post+request+messages]
+#### UserMessage [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="content" parentId="UserMessage">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### content [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### TextChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="TextChunk" parentId="content">
+
+<div slot="title">
+
+#### TextChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+TextChunk]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="text" parentId="TextChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -138,45 +260,85 @@ _Default Value:_ `"system"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="TextChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### type [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+TextChunk+type]
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"text"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="ImageURLChunk" parentId="content">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### ImageURLChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content]
+#### ImageURLChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+ImageURLChunk]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
 
 An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+ImageURLChunk+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="image_url" parentId="ImageURLChunk">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+ImageURLChunk+image_url+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### image_url [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+ImageURLChunk+image_url]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### ImageURL [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+ImageURLChunk+image_url]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="ImageURL" parentId="image_url">
+
+<div slot="title">
+
+#### ImageURL [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+ImageURLChunk+image_url+ImageURL]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="detail" parentId="ImageURL">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -184,15 +346,35 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="url" parentId="ImageURL">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### url [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+ImageURLChunk+image_url+ImageURL+url]
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ImageURLChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -200,21 +382,33 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"image_url"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="DocumentURLChunk" parentId="content">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### DocumentURLChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content]
+#### DocumentURLChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+DocumentURLChunk]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="document_name" parentId="DocumentURLChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -222,11 +416,35 @@ _Default Value:_ `"image_url"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="document_url" parentId="DocumentURLChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### document_url [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+DocumentURLChunk+document_url]
 
 </Property>
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="DocumentURLChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -234,21 +452,33 @@ _Default Value:_ `"image_url"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"document_url"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="ReferenceChunk" parentId="content">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### ReferenceChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content]
+#### ReferenceChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+ReferenceChunk]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="reference_ids" parentId="ReferenceChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -256,17 +486,37 @@ _Default Value:_ `"document_url"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ReferenceChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### type [#operation-agents_completion_v1_agents_completions_post+request+messages+UserMessage+content+ReferenceChunk+type]
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"reference"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="role" parentId="UserMessage">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"user\"","linkedLabel":"\"user\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -274,37 +524,65 @@ _Default Value:_ `"reference"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"user"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="AssistantMessage" parentId="messages">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### AssistantMessage [#operation-agents_completion_v1_agents_completions_post+request+messages]
+#### AssistantMessage [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="content" parentId="AssistantMessage">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### content [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### TextChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="TextChunk" parentId="content">
+
+<div slot="title">
+
+#### TextChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+TextChunk]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="text" parentId="TextChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -312,45 +590,85 @@ _Default Value:_ `"user"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="TextChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### type [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+TextChunk+type]
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"text"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="ImageURLChunk" parentId="content">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### ImageURLChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content]
+#### ImageURLChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+ImageURLChunk]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
 
 An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+ImageURLChunk+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="image_url" parentId="ImageURLChunk">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+ImageURLChunk+image_url+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### image_url [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+ImageURLChunk+image_url]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### ImageURL [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+ImageURLChunk+image_url]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="ImageURL" parentId="image_url">
+
+<div slot="title">
+
+#### ImageURL [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+ImageURLChunk+image_url+ImageURL]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="detail" parentId="ImageURL">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -358,15 +676,35 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="url" parentId="ImageURL">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### url [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+ImageURLChunk+image_url+ImageURL+url]
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ImageURLChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -374,21 +712,33 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"image_url"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="DocumentURLChunk" parentId="content">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### DocumentURLChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content]
+#### DocumentURLChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+DocumentURLChunk]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="document_name" parentId="DocumentURLChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -396,11 +746,35 @@ _Default Value:_ `"image_url"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="document_url" parentId="DocumentURLChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### document_url [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+DocumentURLChunk+document_url]
 
 </Property>
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="DocumentURLChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -408,21 +782,33 @@ _Default Value:_ `"image_url"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"document_url"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="ReferenceChunk" parentId="content">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### ReferenceChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content]
+#### ReferenceChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+ReferenceChunk]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="reference_ids" parentId="ReferenceChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -430,17 +816,37 @@ _Default Value:_ `"document_url"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ReferenceChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### type [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+content+ReferenceChunk+type]
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"reference"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="prefix" parentId="AssistantMessage">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -448,9 +854,21 @@ _Default Value:_ `"reference"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.
 
 _Default Value:_ `false`
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="role" parentId="AssistantMessage">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"assistant\"","linkedLabel":"\"assistant\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -458,39 +876,83 @@ _Default Value:_ `false`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"assistant"`
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+ToolCall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+ToolCall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="tool_calls" parentId="AssistantMessage">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+tool_calls+ToolCall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+tool_calls+ToolCall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### tool_calls [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+tool_calls]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### ToolCall [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+tool_calls]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="ToolCall" parentId="tool_calls">
 
-<Property typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+tool_calls+ToolCall+FunctionCall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
+
+#### ToolCall [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+tool_calls+ToolCall]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="function" parentId="ToolCall">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+tool_calls+ToolCall+function+FunctionCall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### function [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+tool_calls+ToolCall+function]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### FunctionCall [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+tool_calls+ToolCall+function]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="FunctionCall" parentId="function">
+
+<div slot="title">
+
+#### FunctionCall [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+tool_calls+ToolCall+function+FunctionCall]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="arguments" parentId="FunctionCall">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -498,15 +960,35 @@ _Default Value:_ `"assistant"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="name" parentId="FunctionCall">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### name [#operation-agents_completion_v1_agents_completions_post+request+messages+AssistantMessage+tool_calls+ToolCall+function+FunctionCall+name]
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="id" parentId="ToolCall">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -514,7 +996,19 @@ _Default Value:_ `"assistant"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"null"`
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="index" parentId="ToolCall">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -522,7 +1016,19 @@ _Default Value:_ `"null"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `0`
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ToolCall">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -530,39 +1036,63 @@ _Default Value:_ `0`
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="ToolMessage" parentId="messages">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### ToolMessage [#operation-agents_completion_v1_agents_completions_post+request+messages]
+#### ToolMessage [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="content" parentId="ToolMessage">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### content [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### TextChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="TextChunk" parentId="content">
+
+<div slot="title">
+
+#### TextChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+TextChunk]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="text" parentId="TextChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -570,45 +1100,85 @@ _Default Value:_ `0`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="TextChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### type [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+TextChunk+type]
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"text"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="ImageURLChunk" parentId="content">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### ImageURLChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content]
+#### ImageURLChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+ImageURLChunk]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
 
 An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+ImageURLChunk+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="image_url" parentId="ImageURLChunk">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+ImageURLChunk+image_url+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### image_url [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+ImageURLChunk+image_url]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### ImageURL [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+ImageURLChunk+image_url]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="ImageURL" parentId="image_url">
+
+<div slot="title">
+
+#### ImageURL [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+ImageURLChunk+image_url+ImageURL]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="detail" parentId="ImageURL">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -616,15 +1186,35 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="url" parentId="ImageURL">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### url [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+ImageURLChunk+image_url+ImageURL+url]
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ImageURLChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -632,21 +1222,33 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"image_url"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="DocumentURLChunk" parentId="content">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### DocumentURLChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content]
+#### DocumentURLChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+DocumentURLChunk]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="document_name" parentId="DocumentURLChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -654,11 +1256,35 @@ _Default Value:_ `"image_url"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="document_url" parentId="DocumentURLChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### document_url [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+DocumentURLChunk+document_url]
 
 </Property>
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="DocumentURLChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -666,21 +1292,33 @@ _Default Value:_ `"image_url"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"document_url"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="ReferenceChunk" parentId="content">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### ReferenceChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content]
+#### ReferenceChunk [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+ReferenceChunk]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="reference_ids" parentId="ReferenceChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -688,17 +1326,37 @@ _Default Value:_ `"document_url"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ReferenceChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### type [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+content+ReferenceChunk+type]
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"reference"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="name" parentId="ToolMessage">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -706,13 +1364,37 @@ _Default Value:_ `"reference"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="role" parentId="ToolMessage">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"tool\"","linkedLabel":"\"tool\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### role [#operation-agents_completion_v1_agents_completions_post+request+messages+ToolMessage+role]
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"tool"`
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="tool_call_id" parentId="ToolMessage">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -720,9 +1402,17 @@ _Default Value:_ `"tool"`
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="n">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -730,27 +1420,67 @@ _Default Value:_ `"tool"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="parallel_tool_calls">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### parallel_tool_calls [#operation-agents_completion_v1_agents_completions_post+request+parallel_tool_calls]
 
 </Property>
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"Prediction","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+Prediction\">Prediction</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="prediction">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"Prediction","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+prediction+Prediction\">Prediction</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### prediction [#operation-agents_completion_v1_agents_completions_post+request+prediction]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### Prediction [#operation-agents_completion_v1_agents_completions_post+request+prediction]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="Prediction" parentId="prediction">
+
+<div slot="title">
+
+#### Prediction [#operation-agents_completion_v1_agents_completions_post+request+prediction+Prediction]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="content" parentId="Prediction">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -758,7 +1488,19 @@ _Default Value:_ `"tool"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `""`
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="Prediction">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -766,11 +1508,19 @@ _Default Value:_ `""`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"content"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="presence_penalty">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -778,7 +1528,19 @@ _Default Value:_ `"content"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 presence_penalty determines how much the model penalizes the repetition of words or phrases. A higher presence penalty encourages the model to use a wider variety of words and phrases, making the output more diverse and creative.
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="prompt_mode">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reasoning\"","linkedLabel":"\"reasoning\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -786,43 +1548,99 @@ presence_penalty determines how much the model penalizes the repetition of words
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="random_seed">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### random_seed [#operation-agents_completion_v1_agents_completions_post+request+random_seed]
 
 </Property>
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ResponseFormat","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+ResponseFormat\">ResponseFormat</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="response_format">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ResponseFormat","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+response_format+ResponseFormat\">ResponseFormat</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### response_format [#operation-agents_completion_v1_agents_completions_post+request+response_format]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### ResponseFormat [#operation-agents_completion_v1_agents_completions_post+request+response_format]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="ResponseFormat" parentId="response_format">
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"JsonSchema","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+response_format+ResponseFormat+JsonSchema\">JsonSchema</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+<div slot="title">
+
+#### ResponseFormat [#operation-agents_completion_v1_agents_completions_post+request+response_format+ResponseFormat]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="json_schema" parentId="ResponseFormat">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"JsonSchema","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+response_format+ResponseFormat+json_schema+JsonSchema\">JsonSchema</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### json_schema [#operation-agents_completion_v1_agents_completions_post+request+response_format+ResponseFormat+json_schema]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### JsonSchema [#operation-agents_completion_v1_agents_completions_post+request+response_format+ResponseFormat+json_schema]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="JsonSchema" parentId="json_schema">
+
+<div slot="title">
+
+#### JsonSchema [#operation-agents_completion_v1_agents_completions_post+request+response_format+ResponseFormat+json_schema+JsonSchema]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="description" parentId="JsonSchema">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -830,11 +1648,35 @@ presence_penalty determines how much the model penalizes the repetition of words
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="name" parentId="JsonSchema">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### name [#operation-agents_completion_v1_agents_completions_post+request+response_format+ResponseFormat+json_schema+JsonSchema+name]
 
 </Property>
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="schema_definition" parentId="JsonSchema">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -842,15 +1684,35 @@ presence_penalty determines how much the model penalizes the repetition of words
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="strict" parentId="JsonSchema">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### strict [#operation-agents_completion_v1_agents_completions_post+request+response_format+ResponseFormat+json_schema+JsonSchema+strict]
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ResponseFormat">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}},{"label":"\"json_object\"","linkedLabel":"\"json_object\"","children":[],"breakoutSubTypes":{}},{"label":"\"json_schema\"","linkedLabel":"\"json_schema\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -858,11 +1720,19 @@ presence_penalty determines how much the model penalizes the repetition of words
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 An object specifying the format that the model must output. Setting to `\{ "type": "json_object" \}` enables JSON mode, which guarantees the message the model generates is in JSON. When using JSON mode you MUST also instruct the model to produce JSON yourself with a system or a user message.
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="stop">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -870,51 +1740,107 @@ An object specifying the format that the model must output. Setting to `\{ "type
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="stream">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### stream [#operation-agents_completion_v1_agents_completions_post+request+stream]
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 Whether to stream back partial progress. If set, tokens will be sent as data-only server-side events as they become available, with the stream terminated by a data: [DONE] message. Otherwise, the server will hold the request open until the timeout or until completion, with the response containing the full result as JSON.
 
 _Default Value:_ `false`
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ToolChoice","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+ToolChoice\">ToolChoice</a>","children":[],"breakoutSubTypes":{}},{"label":"enum","linkedLabel":"enum","children":[{"label":"\"auto\"","linkedLabel":"\"auto\"","children":[],"breakoutSubTypes":{}},{"label":"\"none\"","linkedLabel":"\"none\"","children":[],"breakoutSubTypes":{}},{"label":"\"any\"","linkedLabel":"\"any\"","children":[],"breakoutSubTypes":{}},{"label":"\"required\"","linkedLabel":"\"required\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="tool_choice">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ToolChoice","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+tool_choice+ToolChoice\">ToolChoice</a>","children":[],"breakoutSubTypes":{}},{"label":"enum","linkedLabel":"enum","children":[{"label":"\"auto\"","linkedLabel":"\"auto\"","children":[],"breakoutSubTypes":{}},{"label":"\"none\"","linkedLabel":"\"none\"","children":[],"breakoutSubTypes":{}},{"label":"\"any\"","linkedLabel":"\"any\"","children":[],"breakoutSubTypes":{}},{"label":"\"required\"","linkedLabel":"\"required\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### tool_choice [#operation-agents_completion_v1_agents_completions_post+request+tool_choice]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### ToolChoice [#operation-agents_completion_v1_agents_completions_post+request+tool_choice]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="ToolChoice" parentId="tool_choice">
+
+<div slot="title">
+
+#### ToolChoice [#operation-agents_completion_v1_agents_completions_post+request+tool_choice+ToolChoice]
+
+</div>
+
+<div slot="content">
 
 ToolChoice is either a ToolChoiceEnum or a ToolChoice
 
-<Property typeInfo={{"label":"FunctionName","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+tool_choice+ToolChoice+FunctionName\">FunctionName</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="function" parentId="ToolChoice">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"FunctionName","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+tool_choice+ToolChoice+function+FunctionName\">FunctionName</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### function [#operation-agents_completion_v1_agents_completions_post+request+tool_choice+ToolChoice+function]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### FunctionName [#operation-agents_completion_v1_agents_completions_post+request+tool_choice+ToolChoice+function]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="FunctionName" parentId="function">
+
+<div slot="title">
+
+#### FunctionName [#operation-agents_completion_v1_agents_completions_post+request+tool_choice+ToolChoice+function+FunctionName]
+
+</div>
+
+<div slot="content">
 
 this restriction of `Function` is used to select a specific function to call
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="name" parentId="FunctionName">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -922,9 +1848,17 @@ this restriction of `Function` is used to select a specific function to call
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ToolChoice">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -932,41 +1866,81 @@ this restriction of `Function` is used to select a specific function to call
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+Tool\">Tool</a>","children":[{"label":"Tool","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+Tool\">Tool</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="tools">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+tools+Tool\">Tool</a>","children":[{"label":"Tool","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+tools+Tool\">Tool</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### tools [#operation-agents_completion_v1_agents_completions_post+request+tools]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### Tool [#operation-agents_completion_v1_agents_completions_post+request+tools]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="Tool" parentId="tools">
 
-<Property typeInfo={{"label":"Function","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+tools+Tool+Function\">Function</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
+
+#### Tool [#operation-agents_completion_v1_agents_completions_post+request+tools+Tool]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="function" parentId="Tool">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"Function","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+request+tools+Tool+function+Function\">Function</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### function [#operation-agents_completion_v1_agents_completions_post+request+tools+Tool+function]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### Function [#operation-agents_completion_v1_agents_completions_post+request+tools+Tool+function]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="Function" parentId="function">
+
+<div slot="title">
+
+#### Function [#operation-agents_completion_v1_agents_completions_post+request+tools+Tool+function+Function]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="description" parentId="Function">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -974,11 +1948,35 @@ this restriction of `Function` is used to select a specific function to call
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="name" parentId="Function">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### name [#operation-agents_completion_v1_agents_completions_post+request+tools+Tool+function+Function+name]
 
 </Property>
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="parameters" parentId="Function">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -986,15 +1984,35 @@ this restriction of `Function` is used to select a specific function to call
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="strict" parentId="Function">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### strict [#operation-agents_completion_v1_agents_completions_post+request+tools+Tool+function+Function+strict]
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="Tool">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -1002,7 +2020,13 @@ this restriction of `Function` is used to select a specific function to call
 
 </Property>
 
-</SectionContent>
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
 
 </ExpandableSection>
 
@@ -1026,21 +2050,45 @@ this restriction of `Function` is used to select a specific function to call
 
 <SectionContent slot="content" variant="top-level" id="operation-agents_completion_v1_agents_completions_post+responses+200+application-json">
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+ChatCompletionChoice\">ChatCompletionChoice</a>","children":[{"label":"ChatCompletionChoice","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+ChatCompletionChoice\">ChatCompletionChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+Successful Response
+
+<ExpandableSection>
+
+<ExpandableEntry slot="entry" id="choices">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice\">ChatCompletionChoice</a>","children":[{"label":"ChatCompletionChoice","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice\">ChatCompletionChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### choices [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### ChatCompletionChoice [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="ChatCompletionChoice" parentId="choices">
+
+<div slot="title">
+
+#### ChatCompletionChoice [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="finish_reason" parentId="ChatCompletionChoice">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"stop\"","linkedLabel":"\"stop\"","children":[],"breakoutSubTypes":{}},{"label":"\"length\"","linkedLabel":"\"length\"","children":[],"breakoutSubTypes":{}},{"label":"\"model_length\"","linkedLabel":"\"model_length\"","children":[],"breakoutSubTypes":{}},{"label":"\"error\"","linkedLabel":"\"error\"","children":[],"breakoutSubTypes":{}},{"label":"\"tool_calls\"","linkedLabel":"\"tool_calls\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1048,11 +2096,23 @@ this restriction of `Function` is used to select a specific function to call
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Example:_
 
 ```
 stop
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="index" parentId="ChatCompletionChoice">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1060,43 +2120,87 @@ stop
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Example:_
 
 ```
 0
 ```
 
-<Property typeInfo={{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+AssistantMessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="message" parentId="ChatCompletionChoice">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### message [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### AssistantMessage [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="AssistantMessage" parentId="message">
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+<div slot="title">
+
+#### AssistantMessage [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="content" parentId="AssistantMessage">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### content [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### TextChunk [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="TextChunk" parentId="content">
+
+<div slot="title">
+
+#### TextChunk [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+TextChunk]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="text" parentId="TextChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1104,45 +2208,85 @@ _Example:_
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="TextChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### type [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+TextChunk+type]
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"text"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="ImageURLChunk" parentId="content">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### ImageURLChunk [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content]
+#### ImageURLChunk [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
 
 An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="image_url" parentId="ImageURLChunk">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk+image_url+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### image_url [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk+image_url]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### ImageURL [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk+image_url]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="ImageURL" parentId="image_url">
+
+<div slot="title">
+
+#### ImageURL [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk+image_url+ImageURL]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="detail" parentId="ImageURL">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -1150,15 +2294,35 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="url" parentId="ImageURL">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### url [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk+image_url+ImageURL+url]
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ImageURLChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -1166,21 +2330,33 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"image_url"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="DocumentURLChunk" parentId="content">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### DocumentURLChunk [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content]
+#### DocumentURLChunk [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+DocumentURLChunk]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="document_name" parentId="DocumentURLChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -1188,11 +2364,35 @@ _Default Value:_ `"image_url"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="document_url" parentId="DocumentURLChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### document_url [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+DocumentURLChunk+document_url]
 
 </Property>
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="DocumentURLChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -1200,21 +2400,33 @@ _Default Value:_ `"image_url"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"document_url"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry slot="entry" id="ReferenceChunk" parentId="content">
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### ReferenceChunk [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content]
+#### ReferenceChunk [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ReferenceChunk]
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="reference_ids" parentId="ReferenceChunk">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1222,17 +2434,37 @@ _Default Value:_ `"document_url"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ReferenceChunk">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### type [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ReferenceChunk+type]
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"reference"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="prefix" parentId="AssistantMessage">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -1240,9 +2472,21 @@ _Default Value:_ `"reference"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.
 
 _Default Value:_ `false`
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="role" parentId="AssistantMessage">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"assistant\"","linkedLabel":"\"assistant\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -1250,39 +2494,83 @@ _Default Value:_ `false`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"assistant"`
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+ToolCall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+ToolCall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="tool_calls" parentId="AssistantMessage">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### tool_calls [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### ToolCall [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="ToolCall" parentId="tool_calls">
 
-<Property typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall+FunctionCall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
+
+#### ToolCall [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="function" parentId="ToolCall">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall+function+FunctionCall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### function [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall+function]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### FunctionCall [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall+function]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="FunctionCall" parentId="function">
+
+<div slot="title">
+
+#### FunctionCall [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall+function+FunctionCall]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="arguments" parentId="FunctionCall">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1290,15 +2578,35 @@ _Default Value:_ `"assistant"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="name" parentId="FunctionCall">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### name [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall+function+FunctionCall+name]
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="id" parentId="ToolCall">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -1306,7 +2614,19 @@ _Default Value:_ `"assistant"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `"null"`
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="index" parentId="ToolCall">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -1314,7 +2634,19 @@ _Default Value:_ `"null"`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Default Value:_ `0`
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ToolCall">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -1322,17 +2654,17 @@ _Default Value:_ `0`
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-</SectionContent>
+<ExpandableEntry slot="entry" id="created">
 
-</ExpandableSection>
+<div slot="title">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1340,11 +2672,23 @@ _Default Value:_ `0`
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Example:_
 
 ```
 1702256327
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="id">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1352,11 +2696,23 @@ _Example:_
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Example:_
 
 ```
 cmpl-e5cc70bb28c444948073e77776eb30ef
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="model">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1364,11 +2720,23 @@ cmpl-e5cc70bb28c444948073e77776eb30ef
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Example:_
 
 ```
 mistral-small-latest
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="object">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1376,27 +2744,55 @@ mistral-small-latest
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Example:_
 
 ```
 chat.completion
 ```
 
-<Property typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+UsageInfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="usage">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+usage+UsageInfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### usage [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+usage]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### UsageInfo [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+usage]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="UsageInfo" parentId="usage">
+
+<div slot="title">
+
+#### UsageInfo [#operation-agents_completion_v1_agents_completions_post+responses+200+application-json+usage+UsageInfo]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="completion_tokens" parentId="UsageInfo">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1404,11 +2800,23 @@ chat.completion
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Example:_
 
 ```
 34
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="prompt_tokens" parentId="UsageInfo">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1416,11 +2824,23 @@ _Example:_
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Example:_
 
 ```
 16
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="total_tokens" parentId="UsageInfo">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1428,13 +2848,19 @@ _Example:_
 
 </Property>
 
+</div>
+
+<div slot="content">
+
 _Example:_
 
 ```
 50
 ```
 
-</SectionContent>
+</div>
+
+</ExpandableEntry>
 
 </ExpandableSection>
 
@@ -1448,21 +2874,45 @@ _Example:_
 
 <SectionContent slot="content" variant="top-level" id="operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json">
 
-<Property typeInfo={{"label":"Security","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+Security\">Security</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+Validation Error
+
+<ExpandableSection>
+
+<ExpandableEntry slot="entry" id="HttpMeta">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"Security","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+HttpMeta+Security\">Security</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### HttpMeta [#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+HttpMeta]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### Security [#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+HttpMeta]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="Security" parentId="HttpMeta">
+
+<div slot="title">
+
+#### Security [#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+HttpMeta+Security]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="ApiKey" parentId="Security">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1470,25 +2920,49 @@ _Example:_
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content">
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+ValidationError\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+ValidationError\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="detail">
+
+<div slot="title">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+detail+ValidationError\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+detail+ValidationError\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### detail [#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+detail]
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content">
 
-#### ValidationError [#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+detail]
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry slot="entry" id="ValidationError" parentId="detail">
+
+<div slot="title">
+
+#### ValidationError [#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+detail+ValidationError]
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="loc" parentId="ValidationError">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1496,11 +2970,35 @@ _Example:_
 
 </Property>
 
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="msg" parentId="ValidationError">
+
+<div slot="title">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### msg [#operation-agents_completion_v1_agents_completions_post+responses+200+422+application-json+detail+ValidationError+msg]
 
 </Property>
+
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry slot="entry" id="type" parentId="ValidationError">
+
+<div slot="title">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -1508,7 +3006,13 @@ _Example:_
 
 </Property>
 
-</SectionContent>
+</div>
+
+<div slot="content">
+
+</div>
+
+</ExpandableEntry>
 
 </ExpandableSection>
 

@@ -4,7 +4,7 @@ sidebar_label: Fim
 ---
 
 import "@speakeasy-api/docs-md/docusaurus.css";
-import { Pill, Section, SectionTitle, SectionContent, Property, TabbedSection, SectionTab, ExpandableSection } from "@speakeasy-api/docs-md/docusaurus";
+import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableEntry, Property, TabbedSection, SectionTab } from "@speakeasy-api/docs-md/docusaurus";
 
 
 # Fim Operations \{#fim\}
@@ -25,11 +25,29 @@ FIM completion.
 
 <SectionContent slot="content" variant="top-level">
 
+<ExpandableSection>
+
+<ExpandableEntry>
+
+<div slot="title" id="max_tokens">
+
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### max_tokens \{#operation-fim_completion_v1_fim_completions_post+request+max_tokens\}
 
 </Property>
+
+</div>
+
+<div slot="content" id="max_tokens">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="min_tokens">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -37,11 +55,27 @@ FIM completion.
 
 </Property>
 
+</div>
+
+<div slot="content" id="min_tokens">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="model">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### model \{#operation-fim_completion_v1_fim_completions_post+request+model\}
 
 </Property>
+
+</div>
+
+<div slot="content" id="model">
 
 ID of the model to use. Only compatible for now with:
   - `codestral-2405`
@@ -53,11 +87,23 @@ _Example:_
 codestral-2405
 ```
 
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="prompt">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### prompt \{#operation-fim_completion_v1_fim_completions_post+request+prompt\}
 
 </Property>
+
+</div>
+
+<div slot="content" id="prompt">
 
 The text/code to complete.
 
@@ -67,11 +113,31 @@ _Example:_
 def
 ```
 
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="random_seed">
+
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### random_seed \{#operation-fim_completion_v1_fim_completions_post+request+random_seed\}
 
 </Property>
+
+</div>
+
+<div slot="content" id="random_seed">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="stop">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -79,15 +145,39 @@ def
 
 </Property>
 
+</div>
+
+<div slot="content" id="stop">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="stream">
+
 <Property typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### stream \{#operation-fim_completion_v1_fim_completions_post+request+stream\}
 
 </Property>
 
+</div>
+
+<div slot="content" id="stream">
+
 Whether to stream back partial progress. If set, tokens will be sent as data-only server-side events as they become available, with the stream terminated by a data: [DONE] message. Otherwise, the server will hold the request open until the timeout or until completion, with the response containing the full result as JSON.
 
 _Default Value:_ `false`
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="suffix">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -95,11 +185,23 @@ _Default Value:_ `false`
 
 </Property>
 
+</div>
+
+<div slot="content" id="suffix">
+
 _Example:_
 
 ```
 return a+b
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="temperature">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -107,15 +209,37 @@ return a+b
 
 </Property>
 
+</div>
+
+<div slot="content" id="temperature">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="top_p">
+
 <Property typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### top_p \{#operation-fim_completion_v1_fim_completions_post+request+top_p\}
 
 </Property>
 
+</div>
+
+<div slot="content" id="top_p">
+
 Nucleus sampling, where the model considers the results of the tokens with `top_p` probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or `temperature` but not both.
 
 _Default Value:_ `1`
+
+</div>
+
+</ExpandableEntry>
+
+</ExpandableSection>
 
 </SectionContent>
 
@@ -137,21 +261,45 @@ _Default Value:_ `1`
 
 <SectionContent slot="content" variant="top-level" id="operation-fim_completion_v1_fim_completions_post+responses+200+application-json">
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+ChatCompletionChoice\">ChatCompletionChoice</a>","children":[{"label":"ChatCompletionChoice","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+ChatCompletionChoice\">ChatCompletionChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+Successful Response
+
+<ExpandableSection>
+
+<ExpandableEntry>
+
+<div slot="title" id="choices">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice\">ChatCompletionChoice</a>","children":[{"label":"ChatCompletionChoice","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice\">ChatCompletionChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### choices \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices\}
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content" id="choices">
 
-#### ChatCompletionChoice \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices\}
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry>
+
+<div slot="title" id="ChatCompletionChoice" parentId="choices">
+
+#### ChatCompletionChoice \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice\}
+
+</div>
+
+<div slot="content" id="ChatCompletionChoice" parentId="choices">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="finish_reason" parentId="ChatCompletionChoice">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"stop\"","linkedLabel":"\"stop\"","children":[],"breakoutSubTypes":{}},{"label":"\"length\"","linkedLabel":"\"length\"","children":[],"breakoutSubTypes":{}},{"label":"\"model_length\"","linkedLabel":"\"model_length\"","children":[],"breakoutSubTypes":{}},{"label":"\"error\"","linkedLabel":"\"error\"","children":[],"breakoutSubTypes":{}},{"label":"\"tool_calls\"","linkedLabel":"\"tool_calls\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -159,11 +307,23 @@ _Default Value:_ `1`
 
 </Property>
 
+</div>
+
+<div slot="content" id="finish_reason" parentId="ChatCompletionChoice">
+
 _Example:_
 
 ```
 stop
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="index" parentId="ChatCompletionChoice">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -171,43 +331,87 @@ stop
 
 </Property>
 
+</div>
+
+<div slot="content" id="index" parentId="ChatCompletionChoice">
+
 _Example:_
 
 ```
 0
 ```
 
-<Property typeInfo={{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+AssistantMessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="message" parentId="ChatCompletionChoice">
+
+<Property typeInfo={{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### message \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message\}
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content" id="message" parentId="ChatCompletionChoice">
 
-#### AssistantMessage \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message\}
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry>
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+<div slot="title" id="AssistantMessage" parentId="message">
+
+#### AssistantMessage \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage\}
+
+</div>
+
+<div slot="content" id="AssistantMessage" parentId="message">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="content" parentId="AssistantMessage">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+TextChunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+DocumentURLChunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ReferenceChunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### content \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content\}
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content" id="content" parentId="AssistantMessage">
 
-#### TextChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content\}
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry>
+
+<div slot="title" id="TextChunk" parentId="content">
+
+#### TextChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+TextChunk\}
+
+</div>
+
+<div slot="content" id="TextChunk" parentId="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="text" parentId="TextChunk">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -215,45 +419,85 @@ _Example:_
 
 </Property>
 
+</div>
+
+<div slot="content" id="text" parentId="TextChunk">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="type" parentId="TextChunk">
+
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+TextChunk+type\}
 
 </Property>
 
+</div>
+
+<div slot="content" id="type" parentId="TextChunk">
+
 _Default Value:_ `"text"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry>
 
-<SectionTitle slot="title" variant="default">
+<div slot="title" id="ImageURLChunk" parentId="content">
 
-#### ImageURLChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content\}
+#### ImageURLChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk\}
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content" id="ImageURLChunk" parentId="content">
 
 An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="image_url" parentId="ImageURLChunk">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk+image_url+ImageURL\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### image_url \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk+image_url\}
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content" id="image_url" parentId="ImageURLChunk">
 
-#### ImageURL \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk+image_url\}
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry>
+
+<div slot="title" id="ImageURL" parentId="image_url">
+
+#### ImageURL \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk+image_url+ImageURL\}
+
+</div>
+
+<div slot="content" id="ImageURL" parentId="image_url">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="detail" parentId="ImageURL">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -261,15 +505,35 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 </Property>
 
+</div>
+
+<div slot="content" id="detail" parentId="ImageURL">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="url" parentId="ImageURL">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### url \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ImageURLChunk+image_url+ImageURL+url\}
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content" id="url" parentId="ImageURL">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="type" parentId="ImageURLChunk">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -277,21 +541,33 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 </Property>
 
+</div>
+
+<div slot="content" id="type" parentId="ImageURLChunk">
+
 _Default Value:_ `"image_url"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry>
 
-<SectionTitle slot="title" variant="default">
+<div slot="title" id="DocumentURLChunk" parentId="content">
 
-#### DocumentURLChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content\}
+#### DocumentURLChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+DocumentURLChunk\}
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content" id="DocumentURLChunk" parentId="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="document_name" parentId="DocumentURLChunk">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -299,11 +575,35 @@ _Default Value:_ `"image_url"`
 
 </Property>
 
+</div>
+
+<div slot="content" id="document_name" parentId="DocumentURLChunk">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="document_url" parentId="DocumentURLChunk">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### document_url \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+DocumentURLChunk+document_url\}
 
 </Property>
+
+</div>
+
+<div slot="content" id="document_url" parentId="DocumentURLChunk">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="type" parentId="DocumentURLChunk">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -311,21 +611,33 @@ _Default Value:_ `"image_url"`
 
 </Property>
 
+</div>
+
+<div slot="content" id="type" parentId="DocumentURLChunk">
+
 _Default Value:_ `"document_url"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-<ExpandableSection>
+<ExpandableEntry>
 
-<SectionTitle slot="title" variant="default">
+<div slot="title" id="ReferenceChunk" parentId="content">
 
-#### ReferenceChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content\}
+#### ReferenceChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ReferenceChunk\}
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+<div slot="content" id="ReferenceChunk" parentId="content">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="reference_ids" parentId="ReferenceChunk">
 
 <Property typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -333,17 +645,37 @@ _Default Value:_ `"document_url"`
 
 </Property>
 
+</div>
+
+<div slot="content" id="reference_ids" parentId="ReferenceChunk">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="type" parentId="ReferenceChunk">
+
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+content+ReferenceChunk+type\}
 
 </Property>
 
+</div>
+
+<div slot="content" id="type" parentId="ReferenceChunk">
+
 _Default Value:_ `"reference"`
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="prefix" parentId="AssistantMessage">
 
 <Property typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -351,9 +683,21 @@ _Default Value:_ `"reference"`
 
 </Property>
 
+</div>
+
+<div slot="content" id="prefix" parentId="AssistantMessage">
+
 Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.
 
 _Default Value:_ `false`
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="role" parentId="AssistantMessage">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"assistant\"","linkedLabel":"\"assistant\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -361,39 +705,83 @@ _Default Value:_ `false`
 
 </Property>
 
+</div>
+
+<div slot="content" id="role" parentId="AssistantMessage">
+
 _Default Value:_ `"assistant"`
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+ToolCall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+ToolCall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="tool_calls" parentId="AssistantMessage">
+
+<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### tool_calls \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls\}
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content" id="tool_calls" parentId="AssistantMessage">
 
-#### ToolCall \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls\}
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry>
 
-<Property typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall+FunctionCall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title" id="ToolCall" parentId="tool_calls">
+
+#### ToolCall \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall\}
+
+</div>
+
+<div slot="content" id="ToolCall" parentId="tool_calls">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="function" parentId="ToolCall">
+
+<Property typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall+function+FunctionCall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### function \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall+function\}
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content" id="function" parentId="ToolCall">
 
-#### FunctionCall \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall+function\}
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry>
+
+<div slot="title" id="FunctionCall" parentId="function">
+
+#### FunctionCall \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall+function+FunctionCall\}
+
+</div>
+
+<div slot="content" id="FunctionCall" parentId="function">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="arguments" parentId="FunctionCall">
 
 <Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -401,15 +789,35 @@ _Default Value:_ `"assistant"`
 
 </Property>
 
+</div>
+
+<div slot="content" id="arguments" parentId="FunctionCall">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="name" parentId="FunctionCall">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### name \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+ChatCompletionChoice+message+AssistantMessage+tool_calls+ToolCall+function+FunctionCall+name\}
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content" id="name" parentId="FunctionCall">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="id" parentId="ToolCall">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -417,7 +825,19 @@ _Default Value:_ `"assistant"`
 
 </Property>
 
+</div>
+
+<div slot="content" id="id" parentId="ToolCall">
+
 _Default Value:_ `"null"`
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="index" parentId="ToolCall">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -425,7 +845,19 @@ _Default Value:_ `"null"`
 
 </Property>
 
+</div>
+
+<div slot="content" id="index" parentId="ToolCall">
+
 _Default Value:_ `0`
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="type" parentId="ToolCall">
 
 <Property typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
@@ -433,17 +865,17 @@ _Default Value:_ `0`
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content" id="type" parentId="ToolCall">
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableEntry>
 
-</SectionContent>
+<ExpandableEntry>
 
-</ExpandableSection>
+<div slot="title" id="created">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -451,11 +883,23 @@ _Default Value:_ `0`
 
 </Property>
 
+</div>
+
+<div slot="content" id="created">
+
 _Example:_
 
 ```
 1702256327
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="id">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -463,11 +907,23 @@ _Example:_
 
 </Property>
 
+</div>
+
+<div slot="content" id="id">
+
 _Example:_
 
 ```
 cmpl-e5cc70bb28c444948073e77776eb30ef
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="model">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -475,11 +931,23 @@ cmpl-e5cc70bb28c444948073e77776eb30ef
 
 </Property>
 
+</div>
+
+<div slot="content" id="model">
+
 _Example:_
 
 ```
 codestral-latest
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="object">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -487,27 +955,55 @@ codestral-latest
 
 </Property>
 
+</div>
+
+<div slot="content" id="object">
+
 _Example:_
 
 ```
 chat.completion
 ```
 
-<Property typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+UsageInfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="usage">
+
+<Property typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+usage+UsageInfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### usage \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+usage\}
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content" id="usage">
 
-#### UsageInfo \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+usage\}
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry>
+
+<div slot="title" id="UsageInfo" parentId="usage">
+
+#### UsageInfo \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+usage+UsageInfo\}
+
+</div>
+
+<div slot="content" id="UsageInfo" parentId="usage">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="completion_tokens" parentId="UsageInfo">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -515,11 +1011,23 @@ chat.completion
 
 </Property>
 
+</div>
+
+<div slot="content" id="completion_tokens" parentId="UsageInfo">
+
 _Example:_
 
 ```
 34
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="prompt_tokens" parentId="UsageInfo">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -527,11 +1035,23 @@ _Example:_
 
 </Property>
 
+</div>
+
+<div slot="content" id="prompt_tokens" parentId="UsageInfo">
+
 _Example:_
 
 ```
 16
 ```
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="total_tokens" parentId="UsageInfo">
 
 <Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -539,13 +1059,19 @@ _Example:_
 
 </Property>
 
+</div>
+
+<div slot="content" id="total_tokens" parentId="UsageInfo">
+
 _Example:_
 
 ```
 50
 ```
 
-</SectionContent>
+</div>
+
+</ExpandableEntry>
 
 </ExpandableSection>
 
@@ -559,21 +1085,45 @@ _Example:_
 
 <SectionContent slot="content" variant="top-level" id="operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json">
 
-<Property typeInfo={{"label":"Security","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+Security\">Security</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+Validation Error
+
+<ExpandableSection>
+
+<ExpandableEntry>
+
+<div slot="title" id="HttpMeta">
+
+<Property typeInfo={{"label":"Security","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+HttpMeta+Security\">Security</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### HttpMeta \{#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+HttpMeta\}
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content" id="HttpMeta">
 
-#### Security \{#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+HttpMeta\}
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry>
+
+<div slot="title" id="Security" parentId="HttpMeta">
+
+#### Security \{#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+HttpMeta+Security\}
+
+</div>
+
+<div slot="content" id="Security" parentId="HttpMeta">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="ApiKey" parentId="Security">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -581,25 +1131,49 @@ _Example:_
 
 </Property>
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+<div slot="content" id="ApiKey" parentId="Security">
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+ValidationError\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+ValidationError\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="detail">
+
+<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+detail+ValidationError\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+detail+ValidationError\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
 ##### detail \{#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+detail\}
 
 </Property>
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+<div slot="content" id="detail">
 
-#### ValidationError \{#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+detail\}
+</div>
 
-</SectionTitle>
+</ExpandableEntry>
 
-<SectionContent slot="content" variant="default">
+<ExpandableEntry>
+
+<div slot="title" id="ValidationError" parentId="detail">
+
+#### ValidationError \{#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+detail+ValidationError\}
+
+</div>
+
+<div slot="content" id="ValidationError" parentId="detail">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="loc" parentId="ValidationError">
 
 <Property typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -607,11 +1181,35 @@ _Example:_
 
 </Property>
 
+</div>
+
+<div slot="content" id="loc" parentId="ValidationError">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="msg" parentId="ValidationError">
+
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
 ##### msg \{#operation-fim_completion_v1_fim_completions_post+responses+200+422+application-json+detail+ValidationError+msg\}
 
 </Property>
+
+</div>
+
+<div slot="content" id="msg" parentId="ValidationError">
+
+</div>
+
+</ExpandableEntry>
+
+<ExpandableEntry>
+
+<div slot="title" id="type" parentId="ValidationError">
 
 <Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
@@ -619,7 +1217,13 @@ _Example:_
 
 </Property>
 
-</SectionContent>
+</div>
+
+<div slot="content" id="type" parentId="ValidationError">
+
+</div>
+
+</ExpandableEntry>
 
 </ExpandableSection>
 
