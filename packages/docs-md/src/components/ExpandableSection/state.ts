@@ -93,3 +93,17 @@ export function useAreAllParentsOpen(id: string) {
 
   return true;
 }
+
+export function useHasChildren(id: string) {
+  const context = useContext(TreeDataContext);
+  if (context === null) {
+    throw new InternalError("TreeData context is not initialized");
+  }
+
+  const node = context.data.nodeMap.get(id);
+  if (!node) {
+    throw new InternalError(`Node with id ${id} not found in tree data`);
+  }
+
+  return node.children.length > 0;
+}

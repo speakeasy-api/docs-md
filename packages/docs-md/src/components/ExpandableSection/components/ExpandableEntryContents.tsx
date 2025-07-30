@@ -5,12 +5,14 @@ import { type PropsWithChildren } from "react";
 import {
   useAreAllParentsOpen,
   useConnectingCellData,
+  useHasChildren,
   useIsOpen,
 } from "../state.ts";
 import styles from "../styles.module.css";
 import { ConnectingCell } from "./ConnectingCell.tsx";
 import { ContentCell } from "./ContentCell.tsx";
 import { ExpandableCell } from "./ExpandableCell.tsx";
+import { NonExpandableCell } from "./NonExpandableCell.tsx";
 
 export type ExpandableEntryProps = PropsWithChildren<{
   id: string;
@@ -25,9 +27,12 @@ export function ExpandableEntryContents({
   slot,
   children,
 }: ExpandableEntryProps) {
+  // TODO: these need to use id paths, not just id
   const [isOpen, setIsOpen] = useIsOpen(id);
   const isParentOpen = useAreAllParentsOpen(id);
   const connections = useConnectingCellData(id);
+  const hasChildren = useHasChildren(id);
+  const isExpandable = hasChildren && children;
 
   if (!isParentOpen) {
     return null;
@@ -43,7 +48,11 @@ export function ExpandableEntryContents({
           right={cellData.right}
         />
       ))}
-      <ExpandableCell isOpen={isOpen} setIsOpen={setIsOpen} />
+      {isExpandable ? (
+        <ExpandableCell isOpen={isOpen} setIsOpen={setIsOpen} />
+      ) : (
+        <NonExpandableCell />
+      )}
       <ContentCell isOpen={isOpen}>{children}</ContentCell>
     </div>
   );
