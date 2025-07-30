@@ -1,11 +1,11 @@
 import { capitalCase, snakeCase } from "change-case";
 
-import type { Renderer, Site } from "../../renderers/base/base.ts";
-import { getEmbedPath } from "../../renderers/base/util.ts";
+import type { Renderer, Site } from "../../compiler/renderers//base/base.ts";
+import { getEmbedPath } from "../../compiler/renderers//base/util.ts";
 import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
 import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from "../../util/settings.ts";
-import type { DocsCodeSnippets } from "../codeSnippets/generateCodeSnippets.ts";
+import type { DocsCodeSnippets } from "../data/generateCodeSnippets.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
 import { renderBreakouts, renderSchemaFrontmatter } from "./chunks/schema.ts";

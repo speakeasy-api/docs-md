@@ -8,7 +8,7 @@ import useMeasure from "react-use-measure";
 import type {
   DisplayTypeInfo,
   PropertyAnnotations,
-} from "../../../../renderers/base/base.ts";
+} from "../../../../compiler/renderers//base/base.ts";
 import { Pill } from "../../Pill/Pill.tsx";
 import { useChildren, useUniqueChild } from "../../Section/hooks.ts";
 import styles from "../styles.module.css";

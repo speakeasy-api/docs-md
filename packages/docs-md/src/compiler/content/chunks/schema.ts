@@ -2,7 +2,7 @@ import type {
   DisplayTypeInfo,
   PropertyAnnotations,
   Renderer,
-} from "../../../renderers/base/base.ts";
+} from "../../../compiler/renderers//base/base.ts";
 import type { ObjectValue, SchemaValue } from "../../../types/chunk.ts";
 import { assertNever } from "../../../util/assertNever.ts";
 import { InternalError } from "../../../util/internalError.ts";

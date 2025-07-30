@@ -1,4 +1,4 @@
-import type { Renderer } from "../../../renderers/base/base.ts";
+import type { Renderer } from "../../../compiler/renderers//base/base.ts";
 import type { AboutChunk } from "../../../types/chunk.ts";
 import { getSettings } from "../../../util/settings.ts";
 import { HEADINGS } from "../constants.ts";

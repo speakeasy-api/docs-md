@@ -1,6 +1,6 @@
 import { capitalCase } from "change-case";
 
-import type { Renderer } from "../../../renderers/base/base.ts";
+import type { Renderer } from "../../../compiler/renderers//base/base.ts";
 import type { TagChunk } from "../../../types/chunk.ts";
 import { HEADINGS } from "../constants.ts";
 

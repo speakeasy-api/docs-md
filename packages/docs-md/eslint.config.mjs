@@ -16,7 +16,7 @@ export default [
       "src/runtime/docusaurus.ts": /.*/,
       "src/runtime/react.ts": /.*/,
     },
-    ignores: ["src/pages/data/wasm_exec.js", ".storybook/**/*"],
+    ignores: ["src/compiler/data/wasm_exec.js", ".storybook/**/*"],
     restrictedImports: [
       {
         type: "third-party",

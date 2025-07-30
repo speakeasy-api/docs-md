@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import type { PropsWithChildren } from "react";
 
-import type { PillVariant } from "../../../renderers/base/base.ts";
+import type { PillVariant } from "../../../compiler/renderers//base/base.ts";
 import styles from "./styles.module.css";
 
 type PillProps = PropsWithChildren<{ variant: PillVariant }>;
