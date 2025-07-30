@@ -2,8 +2,8 @@
 import { useTheme } from "next-themes";
 import { useMounted } from "nextra/hooks";
 
+import type { TryItNowProps } from "../../../../types/shared.ts";
 import { Content } from "../common/components/Content.tsx";
-import type { TryItNowProps } from "../common/types.ts";
 
 const TryItNowContents = (props: TryItNowProps) => {
   const { resolvedTheme } = useTheme();

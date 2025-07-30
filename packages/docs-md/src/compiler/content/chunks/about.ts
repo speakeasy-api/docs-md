@@ -1,6 +1,6 @@
-import type { Renderer } from "../..//renderers/base/base.ts";
 import type { AboutChunk } from "../../../types/chunk.ts";
 import { getSettings } from "../.././settings.ts";
+import type { Renderer } from "../..//renderers/base/base.ts";
 import { HEADINGS } from "../constants.ts";
 
 export function renderAbout(renderer: Renderer, chunk: AboutChunk) {

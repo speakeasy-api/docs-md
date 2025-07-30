@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import type { TryItNowProps } from "../../../types/shared.ts";
 import { Content as TryItNow } from "./common/components/Content.tsx";
-import type { TryItNowProps } from "./common/types.ts";
 const meta: Meta<Required<TryItNowProps>> = {
   title: "Components/TryItNow",
   component: TryItNow,

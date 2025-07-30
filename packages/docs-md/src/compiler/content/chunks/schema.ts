@@ -1,12 +1,12 @@
+import type { ObjectValue, SchemaValue } from "../../../types/chunk.ts";
 import type {
   DisplayTypeInfo,
   PropertyAnnotations,
-  Renderer,
-} from "../..//renderers/base/base.ts";
-import type { ObjectValue, SchemaValue } from "../../../types/chunk.ts";
+} from "../../../types/shared.ts";
 import { assertNever } from "../../../util/assertNever.ts";
 import { InternalError } from "../../../util/internalError.ts";
 import { getSettings } from "../.././settings.ts";
+import type { Renderer } from "../..//renderers/base/base.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
 

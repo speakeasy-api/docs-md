@@ -1,6 +1,30 @@
 import type { SandpackTheme } from "@codesandbox/sandpack-react";
 import type { PartialDeep } from "type-fest";
 
+import type { SchemaValue } from "./chunk.ts";
+
+export type PillVariant =
+  | "error"
+  | "warning"
+  | "info"
+  | "success"
+  | "primary"
+  | "secondary";
+
+export type SectionVariant = "default" | "top-level" | "breakout";
+
+export type DisplayTypeInfo = {
+  label: string;
+  linkedLabel: string;
+  children: DisplayTypeInfo[];
+  breakoutSubTypes: Map<string, SchemaValue>;
+};
+
+export type PropertyAnnotations = {
+  title: string;
+  variant: PillVariant;
+};
+
 export type TryItNowProps = {
   /**
    * These are dependencies that are required by the code snippet,

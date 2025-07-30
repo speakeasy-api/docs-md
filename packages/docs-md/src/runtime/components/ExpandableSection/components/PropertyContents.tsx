@@ -3,7 +3,7 @@
 import type {
   DisplayTypeInfo,
   PropertyAnnotations,
-} from "../../../../compiler/renderers/base/base.ts";
+} from "../../../../types/shared.ts";
 import { useIsOpen } from "../state.ts";
 import type { PrefixCellProps } from "./PrefixCells.tsx";
 import { PrefixCells } from "./PrefixCells.tsx";

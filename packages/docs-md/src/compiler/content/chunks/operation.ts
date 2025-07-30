@@ -1,9 +1,9 @@
 import { snakeCase } from "change-case";
 
-import type { Renderer } from "../..//renderers/base/base.ts";
 import type { OperationChunk } from "../../../types/chunk.ts";
 import { assertNever } from "../../../util/assertNever.ts";
 import { getSettings } from "../.././settings.ts";
+import type { Renderer } from "../..//renderers/base/base.ts";
 import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";

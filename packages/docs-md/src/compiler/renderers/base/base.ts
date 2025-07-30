@@ -15,34 +15,16 @@
 // defined as a tuple. We can then use the spread operator to assign that type
 // to all arguments. It's a bit verbose and convoluted, but solves both 1 and 2
 
-import type { Chunk, SchemaValue } from "../../../types/chunk.ts";
+import type { Chunk } from "../../../types/chunk.ts";
+import type {
+  DisplayTypeInfo,
+  PillVariant,
+  PropertyAnnotations,
+  SectionVariant,
+} from "../../../types/shared.ts";
 
 export type Context = {
   id: string;
-};
-
-// Types shared with components
-
-export type PillVariant =
-  | "error"
-  | "warning"
-  | "info"
-  | "success"
-  | "primary"
-  | "secondary";
-
-export type SectionVariant = "default" | "top-level" | "breakout";
-
-export type DisplayTypeInfo = {
-  label: string;
-  linkedLabel: string;
-  children: DisplayTypeInfo[];
-  breakoutSubTypes: Map<string, SchemaValue>;
-};
-
-export type PropertyAnnotations = {
-  title: string;
-  variant: PillVariant;
 };
 
 // Argument types for Site interface methods

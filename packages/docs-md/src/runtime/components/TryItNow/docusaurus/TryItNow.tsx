@@ -3,8 +3,8 @@ import { usePrismTheme } from "@docusaurus/theme-common";
 import { useMemo } from "react";
 import type { PartialDeep } from "type-fest";
 
+import type { TryItNowProps } from "../../../../types/shared.ts";
 import { Content } from "../common/components/Content.tsx";
-import type { TryItNowProps } from "../common/types.ts";
 
 type PrismThemeEntry = {
   color?: string;

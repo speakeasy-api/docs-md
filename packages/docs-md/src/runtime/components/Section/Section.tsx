@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import type { PropsWithChildren } from "react";
 
-import type { SectionVariant } from "../../../compiler/renderers/base/base.ts";
+import type { SectionVariant } from "../../../types/shared.ts";
 import { useChildren, useUniqueChild } from "./hooks.ts";
 import styles from "./styles.module.css";
 

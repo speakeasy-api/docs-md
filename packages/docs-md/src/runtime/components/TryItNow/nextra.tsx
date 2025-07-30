@@ -4,7 +4,7 @@
 // happy to import a server component (this file) that then imports a client
 // component.
 
-import type { TryItNowProps } from "./common/types.ts";
+import type { TryItNowProps } from "../../../types/shared.ts";
 import { TryItNowNextra } from "./nextra/TryItNow.tsx";
 
 export function TryItNow(props: TryItNowProps) {

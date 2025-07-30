@@ -3,13 +3,15 @@ import { join, resolve } from "node:path";
 import { snakeCase } from "change-case";
 
 import type { Chunk } from "../../../types/chunk.ts";
+import type {
+  DisplayTypeInfo,
+  PropertyAnnotations,
+} from "../../../types/shared.ts";
 import { InternalError } from "../../../util/internalError.ts";
 import { getSettings } from "../.././settings.ts";
 import { HEADINGS } from "../../content/constants.ts";
 import type {
   Context,
-  DisplayTypeInfo,
-  PropertyAnnotations,
   RendererAddExpandableBreakoutArgs,
   RendererAddExpandablePropertyArgs,
   RendererAddOperationArgs,

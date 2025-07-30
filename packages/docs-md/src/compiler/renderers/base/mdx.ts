@@ -1,6 +1,6 @@
 import { dirname, relative } from "node:path";
 
-import type { TryItNowProps } from "../../../runtime/components/TryItNow/common/types.ts";
+import type { TryItNowProps } from "../../../types/shared.ts";
 import { InternalError } from "../../../util/internalError.ts";
 import { HEADINGS } from "../../content/constants.ts";
 import type {

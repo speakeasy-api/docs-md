@@ -1,4 +1,4 @@
-import type { TryItNowProps } from "./common/types.ts";
+import type { TryItNowProps } from "../../../types/shared.ts";
 import { TryItNowDocusaurus } from "./docusaurus/TryItNow.tsx";
 
 export function TryItNow(props: TryItNowProps) {

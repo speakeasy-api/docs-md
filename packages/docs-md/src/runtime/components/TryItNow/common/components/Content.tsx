@@ -9,9 +9,9 @@ import {
 } from "@codesandbox/sandpack-react";
 import { useAtomValue } from "jotai";
 
+import type { TryItNowProps } from "../../../../../types/shared.ts";
 import { dependenciesAtom, lastEditorValueAtom } from "../state.ts";
 import { styles } from "../styles.ts";
-import type { TryItNowProps } from "../types.ts";
 import { CodeEditor } from "./CodeEditor.tsx";
 import { ConsoleOutput } from "./ConsoleOutput.tsx";
 
