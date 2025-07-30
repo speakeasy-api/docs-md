@@ -1,7 +1,7 @@
 import { join, resolve } from "node:path";
 
 import type { TryItNowProps } from "../../runtime/components/TryItNow/common/types.ts";
-import { getSettings } from "../../util/settings.ts";
+import { getSettings } from "../settings.ts";
 import type {
   RendererAppendHeadingArgs,
   RendererInsertFrontMatterArgs,

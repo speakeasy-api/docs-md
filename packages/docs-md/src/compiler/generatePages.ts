@@ -1,10 +1,10 @@
-import type { ParsedSettings } from "../types/settings.ts";
-import { setSettings } from "../util/settings.ts";
 import { renderContent } from "./content/renderContent.ts";
 import type { DocsCodeSnippets } from "./data/generateCodeSnippets.ts";
 import { generateCodeSnippets } from "./data/generateCodeSnippets.ts";
 import { getData } from "./data/getDocsData.ts";
 import type { Site } from "./renderers/base/base.ts";
+import type { ParsedSettings } from "./settings.ts";
+import { setSettings } from "./settings.ts";
 
 /**
  * Given an OpenAPI spec, generate Markdown pages of the spec. The returned

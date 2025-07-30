@@ -1,6 +1,6 @@
 import { join, resolve } from "node:path";
 
-import { getSettings } from "../../util/settings.ts";
+import { getSettings } from "../settings.ts";
 import type {
   RendererInsertFrontMatterArgs,
   SiteBuildPagePathArgs,

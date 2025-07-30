@@ -4,7 +4,7 @@ import { snakeCase } from "change-case";
 
 import type { Chunk } from "../../../types/chunk.ts";
 import { InternalError } from "../../../util/internalError.ts";
-import { getSettings } from "../../../util/settings.ts";
+import { getSettings } from "../.././settings.ts";
 import { HEADINGS } from "../../content/constants.ts";
 import type {
   Context,

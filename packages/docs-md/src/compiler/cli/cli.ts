@@ -15,13 +15,12 @@ import arg from "arg";
 import { load } from "js-yaml";
 import z from "zod/v4";
 
-import { DocusaurusSite } from "../../compiler/renderers//docusaurus.ts";
-import { NextraSite } from "../../compiler/renderers//nextra.ts";
-import type { Site } from "../../compiler/renderers/base/base.ts";
-import type { ParsedSettings } from "../../types/settings.ts";
-import { settingsSchema } from "../../types/settings.ts";
 import { assertNever } from "../../util/assertNever.ts";
 import { generatePages } from "../generatePages.ts";
+import type { Site } from "../renderers/base/base.ts";
+import { DocusaurusSite } from "../renderers/docusaurus.ts";
+import { NextraSite } from "../renderers/nextra.ts";
+import { type ParsedSettings, settingsSchema } from "../settings.ts";
 
 const CONFIG_FILE_NAMES = [
   "speakeasy.config.js",

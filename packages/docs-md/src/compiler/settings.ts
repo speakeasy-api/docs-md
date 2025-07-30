@@ -1,6 +1,20 @@
 import { z } from "zod";
 
-import type { Site } from "../compiler/renderers/base/base.ts";
+import { InternalError } from "../util/internalError.ts";
+import type { Site } from "./renderers/base/base.ts";
+
+let settings: ParsedSettings | undefined;
+
+export function setSettings(newSettings: ParsedSettings) {
+  settings = newSettings;
+}
+
+export function getSettings() {
+  if (!settings) {
+    throw new InternalError("Settings not initialized");
+  }
+  return settings;
+}
 
 export const settingsSchema = z.strictObject({
   spec: z.string(),
