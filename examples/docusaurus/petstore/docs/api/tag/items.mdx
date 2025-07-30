@@ -4,7 +4,7 @@ sidebar_label: Items
 ---
 
 import "@speakeasy-api/docs-md/docusaurus.css";
-import { Pill, Section, SectionTitle, SectionContent, TabbedSection, SectionTab, Property, ExpandableSection } from "@speakeasy-api/docs-md/docusaurus";
+import { Pill, Section, SectionTitle, SectionContent, TabbedSection, SectionTab, ExpandableSection, ExpandableProperty, ExpandableBreakout } from "@speakeasy-api/docs-md/docusaurus";
 
 
 # Items Operations \{#items\}
@@ -19,7 +19,7 @@ An item is an object in the games which the player can pick up, keep in their ba
 
 <SectionTitle slot="title" variant="top-level">
 
-### Security \{#operation-api_v2_item_list-security\}
+### Security \{#operation-api_v2_item_list+security\}
 
 </SectionTitle>
 
@@ -35,27 +35,21 @@ Coming Soon
 
 <SectionTitle slot="title" variant="top-level">
 
-### Parameters \{#operation-api_v2_item_list-parameters\}
+### Parameters \{#operation-api_v2_item_list+parameters\}
 
 </SectionTitle>
 
 <SectionContent slot="content" variant="top-level">
 
-<SectionContent slot="content" variant="top-level">
-
-##### limit \{#operation-api_v2_item_list-parameters\}
+##### limit \{#operation-api_v2_item_list+parameters+limit\}
 
 Number of results to return per page.
 
-<SectionContent slot="content" variant="top-level">
-
-##### offset \{#operation-api_v2_item_list-parameters\}
+##### offset \{#operation-api_v2_item_list+parameters+offset\}
 
 The initial index from which to return the results.
 
-<SectionContent slot="content" variant="top-level">
-
-##### q \{#operation-api_v2_item_list-parameters\}
+##### q \{#operation-api_v2_item_list+parameters+q\}
 
 > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
@@ -66,25 +60,31 @@ Case-insensitive query applied on the `name` property.
 
 <TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Response \{#operation-api_v2_item_list+responses\}
+### Responses \{#operation-api_v2_item_list+responses\}
 
 </SectionTitle>
 
-<SectionTab slot="tab" id="operation-api_v2_item_list+200+application-json">
+<SectionTab slot="tab" id="operation-api_v2_item_list+responses+200+application-json">
 
 200
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_list+200+application-json">
+<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_list+responses+200+application-json">
 
-<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+<ExpandableSection>
 
-##### count \{#operation-api_v2_item_list+200+application-json+count\}
+<ExpandableProperty slot="entry" id="count" typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-</Property>
+<div slot="title">
+
+##### count \{#operation-api_v2_item_list+responses+200+application-json+count\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -92,11 +92,19 @@ _Example:_
 123
 ```
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### next \{#operation-api_v2_item_list+200+application-json+next\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="next" typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+
+<div slot="title">
+
+##### next \{#operation-api_v2_item_list+responses+200+application-json+next\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -104,11 +112,19 @@ _Example:_
 http://api.example.org/accounts/?offset=400&limit=100
 ```
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### previous \{#operation-api_v2_item_list+200+application-json+previous\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="previous" typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+
+<div slot="title">
+
+##### previous \{#operation-api_v2_item_list+responses+200+application-json+previous\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -116,35 +132,49 @@ _Example:_
 http://api.example.org/accounts/?offset=200&limit=100
 ```
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+200+application-json+ItemSummary\">ItemSummary</a>","children":[{"label":"ItemSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+200+application-json+ItemSummary\">ItemSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### results \{#operation-api_v2_item_list+200+application-json+results\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="results" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+responses+200+application-json+results+ItemSummary\">ItemSummary</a>","children":[{"label":"ItemSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+responses+200+application-json+results+ItemSummary\">ItemSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-<ExpandableSection>
+<div slot="title">
 
-<SectionTitle slot="title" variant="default">
+##### results \{#operation-api_v2_item_list+responses+200+application-json+results\}
 
-#### ItemSummary \{#operation-api_v2_item_list+200+application-json+results\}
+</div>
 
-</SectionTitle>
+</ExpandableProperty>
 
-<SectionContent slot="content" variant="default">
+<ExpandableBreakout slot="entry" id="results_ItemSummary" parentId="results">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### name \{#operation-api_v2_item_list+200+application-json+results+ItemSummary+name\}
+#### ItemSummary \{#operation-api_v2_item_list+responses+200+application-json+results+ItemSummary\}
 
-</Property>
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableBreakout>
 
-##### url \{#operation-api_v2_item_list+200+application-json+results+ItemSummary+url\}
+<ExpandableProperty slot="entry" id="results_ItemSummary_name" parentId="results_ItemSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</Property>
+<div slot="title">
 
-</SectionContent>
+##### name \{#operation-api_v2_item_list+responses+200+application-json+results+ItemSummary+name\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="results_ItemSummary_url" parentId="results_ItemSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+responses+200+application-json+results+ItemSummary+url\}
+
+</div>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 
@@ -162,7 +192,7 @@ An item is an object in the games which the player can pick up, keep in their ba
 
 <SectionTitle slot="title" variant="top-level">
 
-### Security \{#operation-api_v2_item_retrieve-security\}
+### Security \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+security\}
 
 </SectionTitle>
 
@@ -178,15 +208,13 @@ Coming Soon
 
 <SectionTitle slot="title" variant="top-level">
 
-### Parameters \{#operation-api_v2_item_retrieve-parameters\}
+### Parameters \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+parameters\}
 
 </SectionTitle>
 
 <SectionContent slot="content" variant="top-level">
 
-<SectionContent slot="content" variant="top-level">
-
-##### id <Pill variant="warning">required</Pill> \{#operation-api_v2_item_retrieve-parameters\}
+##### id <Pill variant="warning">required</Pill> \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+parameters+id\}
 
 This parameter can be a string or an integer.
 
@@ -196,41 +224,51 @@ This parameter can be a string or an integer.
 
 <TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Response \{#operation-api_v2_item_retrieve+responses\}
+### Responses \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses\}
 
 </SectionTitle>
 
-<SectionTab slot="tab" id="operation-api_v2_item_retrieve+200+application-json">
+<SectionTab slot="tab" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json">
 
 200
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_retrieve+200+application-json">
-
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+attribute\">attribute</a>","children":[{"label":"attribute","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+attribute\">attribute</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
-
-##### attributes \{#operation-api_v2_item_retrieve+200+application-json+attributes\}
-
-</Property>
+<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json">
 
 <ExpandableSection>
 
-<SectionTitle slot="title" variant="default">
+<ExpandableProperty slot="entry" id="attributes" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+attributes+attribute\">attribute</a>","children":[{"label":"attribute","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+attributes+attribute\">attribute</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-#### attribute \{#operation-api_v2_item_retrieve+200+application-json+attributes\}
+<div slot="title">
 
-</SectionTitle>
+##### attributes \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+attributes\}
 
-<SectionContent slot="content" variant="default">
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+attributes+attribute+name\}
+<ExpandableBreakout slot="entry" id="attributes_attribute" parentId="attributes">
 
-</Property>
+<div slot="title">
+
+#### attribute \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+attributes+attribute\}
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty slot="entry" id="attributes_attribute_name" parentId="attributes_attribute" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+attributes+attribute+name\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -238,11 +276,19 @@ _Example:_
 countable
 ```
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### url \{#operation-api_v2_item_retrieve+200+application-json+attributes+attribute+url\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="attributes_attribute_url" parentId="attributes_attribute" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+attributes+attribute+url\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -250,31 +296,39 @@ _Example:_
 https://pokeapi.co/api/v2/item-attribute/1/
 ```
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"attribute","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+attribute\">attribute</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="baby_trigger_for" typeInfo={{"label":"attribute","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+baby_trigger_for+attribute\">attribute</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### baby_trigger_for \{#operation-api_v2_item_retrieve+200+application-json+baby_trigger_for\}
+<div slot="title">
 
-</Property>
+##### baby_trigger_for \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+baby_trigger_for\}
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+</ExpandableProperty>
 
-#### attribute \{#operation-api_v2_item_retrieve+200+application-json+baby_trigger_for\}
+<ExpandableBreakout slot="entry" id="baby_trigger_for_attribute" parentId="baby_trigger_for">
 
-</SectionTitle>
+<div slot="title">
 
-<SectionContent slot="content" variant="default">
+#### attribute \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+baby_trigger_for+attribute\}
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+baby_trigger_for+attribute+name\}
+</ExpandableBreakout>
 
-</Property>
+<ExpandableProperty slot="entry" id="baby_trigger_for_attribute_name" parentId="baby_trigger_for_attribute" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+baby_trigger_for+attribute+name\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -282,11 +336,19 @@ _Example:_
 countable
 ```
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### url \{#operation-api_v2_item_retrieve+200+application-json+baby_trigger_for+attribute+url\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="baby_trigger_for_attribute_url" parentId="baby_trigger_for_attribute" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+baby_trigger_for+attribute+url\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -294,319 +356,399 @@ _Example:_
 https://pokeapi.co/api/v2/item-attribute/1/
 ```
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"ItemCategorySummary","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+ItemCategorySummary\">ItemCategorySummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="category" typeInfo={{"label":"ItemCategorySummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+category+ItemCategorySummary\">ItemCategorySummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### category \{#operation-api_v2_item_retrieve+200+application-json+category\}
+<div slot="title">
 
-</Property>
+##### category \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+category\}
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+</ExpandableProperty>
 
-#### ItemCategorySummary \{#operation-api_v2_item_retrieve+200+application-json+category\}
+<ExpandableBreakout slot="entry" id="category_ItemCategorySummary" parentId="category">
 
-</SectionTitle>
+<div slot="title">
 
-<SectionContent slot="content" variant="default">
+#### ItemCategorySummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+category+ItemCategorySummary\}
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+category+ItemCategorySummary+name\}
+</ExpandableBreakout>
 
-</Property>
+<ExpandableProperty slot="entry" id="category_ItemCategorySummary_name" parentId="category_ItemCategorySummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### url \{#operation-api_v2_item_retrieve+200+application-json+category+ItemCategorySummary+url\}
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+category+ItemCategorySummary+name\}
 
-</Property>
+</div>
 
-</SectionContent>
+</ExpandableProperty>
 
-</ExpandableSection>
+<ExpandableProperty slot="entry" id="category_ItemCategorySummary_url" parentId="category_ItemCategorySummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+<div slot="title">
 
-##### cost \{#operation-api_v2_item_retrieve+200+application-json+cost\}
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+category+ItemCategorySummary+url\}
 
-</Property>
+</div>
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+ItemEffectText\">ItemEffectText</a>","children":[{"label":"ItemEffectText","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+ItemEffectText\">ItemEffectText</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### effect_entries \{#operation-api_v2_item_retrieve+200+application-json+effect_entries\}
+<ExpandableProperty slot="entry" id="cost" typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-</Property>
+<div slot="title">
 
-<ExpandableSection>
+##### cost \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+cost\}
 
-<SectionTitle slot="title" variant="default">
+</div>
 
-#### ItemEffectText \{#operation-api_v2_item_retrieve+200+application-json+effect_entries\}
+</ExpandableProperty>
 
-</SectionTitle>
+<ExpandableProperty slot="entry" id="effect_entries" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+effect_entries+ItemEffectText\">ItemEffectText</a>","children":[{"label":"ItemEffectText","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+effect_entries+ItemEffectText\">ItemEffectText</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<SectionContent slot="content" variant="default">
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+##### effect_entries \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+effect_entries\}
 
-##### effect \{#operation-api_v2_item_retrieve+200+application-json+effect_entries+ItemEffectText+effect\}
+</div>
 
-</Property>
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+effect_entries+ItemEffectText+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableBreakout slot="entry" id="effect_entries_ItemEffectText" parentId="effect_entries">
 
-##### language \{#operation-api_v2_item_retrieve+200+application-json+effect_entries+ItemEffectText+language\}
+<div slot="title">
 
-</Property>
+#### ItemEffectText \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+effect_entries+ItemEffectText\}
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+</ExpandableBreakout>
 
-#### LanguageSummary \{#operation-api_v2_item_retrieve+200+application-json+effect_entries+ItemEffectText+language\}
+<ExpandableProperty slot="entry" id="effect_entries_ItemEffectText_effect" parentId="effect_entries_ItemEffectText" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</SectionTitle>
+<div slot="title">
 
-<SectionContent slot="content" variant="default">
+##### effect \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+effect_entries+ItemEffectText+effect\}
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+effect_entries+ItemEffectText+language+LanguageSummary+name\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="effect_entries_ItemEffectText_language" parentId="effect_entries_ItemEffectText" typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+effect_entries+ItemEffectText+language+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### url \{#operation-api_v2_item_retrieve+200+application-json+effect_entries+ItemEffectText+language+LanguageSummary+url\}
+##### language \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+effect_entries+ItemEffectText+language\}
 
-</Property>
+</div>
 
-</SectionContent>
+</ExpandableProperty>
 
-</ExpandableSection>
+<ExpandableBreakout slot="entry" id="effect_entries_ItemEffectText_language_LanguageSummary" parentId="effect_entries_ItemEffectText_language">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### short_effect \{#operation-api_v2_item_retrieve+200+application-json+effect_entries+ItemEffectText+short_effect\}
+#### LanguageSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+effect_entries+ItemEffectText+language+LanguageSummary\}
 
-</Property>
+</div>
 
-</SectionContent>
+</ExpandableBreakout>
 
-</ExpandableSection>
+<ExpandableProperty slot="entry" id="effect_entries_ItemEffectText_language_LanguageSummary_name" parentId="effect_entries_ItemEffectText_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+ItemFlavorText\">ItemFlavorText</a>","children":[{"label":"ItemFlavorText","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+ItemFlavorText\">ItemFlavorText</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### flavor_text_entries \{#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries\}
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+effect_entries+ItemEffectText+language+LanguageSummary+name\}
 
-</Property>
+</div>
 
-<ExpandableSection>
+</ExpandableProperty>
 
-<SectionTitle slot="title" variant="default">
+<ExpandableProperty slot="entry" id="effect_entries_ItemEffectText_language_LanguageSummary_url" parentId="effect_entries_ItemEffectText_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-#### ItemFlavorText \{#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries\}
+<div slot="title">
 
-</SectionTitle>
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+effect_entries+ItemEffectText+language+LanguageSummary+url\}
 
-<SectionContent slot="content" variant="default">
+</div>
 
-<Property typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries+ItemFlavorText+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### language \{#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries+ItemFlavorText+language\}
+<ExpandableProperty slot="entry" id="effect_entries_ItemEffectText_short_effect" parentId="effect_entries_ItemEffectText" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</Property>
+<div slot="title">
 
-<ExpandableSection>
+##### short_effect \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+effect_entries+ItemEffectText+short_effect\}
 
-<SectionTitle slot="title" variant="default">
+</div>
 
-#### LanguageSummary \{#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries+ItemFlavorText+language\}
+</ExpandableProperty>
 
-</SectionTitle>
+<ExpandableProperty slot="entry" id="flavor_text_entries" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText\">ItemFlavorText</a>","children":[{"label":"ItemFlavorText","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText\">ItemFlavorText</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<SectionContent slot="content" variant="default">
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+##### flavor_text_entries \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries\}
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries+ItemFlavorText+language+LanguageSummary+name\}
+</div>
 
-</Property>
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableBreakout slot="entry" id="flavor_text_entries_ItemFlavorText" parentId="flavor_text_entries">
 
-##### url \{#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries+ItemFlavorText+language+LanguageSummary+url\}
+<div slot="title">
 
-</Property>
+#### ItemFlavorText \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText\}
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableBreakout>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="flavor_text_entries_ItemFlavorText_language" parentId="flavor_text_entries_ItemFlavorText" typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText+language+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### text \{#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries+ItemFlavorText+text\}
+<div slot="title">
 
-</Property>
+##### language \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText+language\}
 
-<Property typeInfo={{"label":"VersionGroupSummary","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries+ItemFlavorText+VersionGroupSummary\">VersionGroupSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### version_group \{#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries+ItemFlavorText+version_group\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableBreakout slot="entry" id="flavor_text_entries_ItemFlavorText_language_LanguageSummary" parentId="flavor_text_entries_ItemFlavorText_language">
 
-<ExpandableSection>
+<div slot="title">
 
-<SectionTitle slot="title" variant="default">
+#### LanguageSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText+language+LanguageSummary\}
 
-#### VersionGroupSummary \{#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries+ItemFlavorText+version_group\}
+</div>
 
-</SectionTitle>
+</ExpandableBreakout>
 
-<SectionContent slot="content" variant="default">
+<ExpandableProperty slot="entry" id="flavor_text_entries_ItemFlavorText_language_LanguageSummary_name" parentId="flavor_text_entries_ItemFlavorText_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries+ItemFlavorText+version_group+VersionGroupSummary+name\}
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText+language+LanguageSummary+name\}
 
-</Property>
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### url \{#operation-api_v2_item_retrieve+200+application-json+flavor_text_entries+ItemFlavorText+version_group+VersionGroupSummary+url\}
+<ExpandableProperty slot="entry" id="flavor_text_entries_ItemFlavorText_language_LanguageSummary_url" parentId="flavor_text_entries_ItemFlavorText_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</Property>
+<div slot="title">
 
-</SectionContent>
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText+language+LanguageSummary+url\}
 
-</ExpandableSection>
+</div>
 
-</SectionContent>
+</ExpandableProperty>
 
-</ExpandableSection>
+<ExpandableProperty slot="entry" id="flavor_text_entries_ItemFlavorText_text" parentId="flavor_text_entries_ItemFlavorText" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<Property typeInfo={{"label":"ItemFlingEffectSummary","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+ItemFlingEffectSummary\">ItemFlingEffectSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### fling_effect \{#operation-api_v2_item_retrieve+200+application-json+fling_effect\}
+##### text \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText+text\}
 
-</Property>
+</div>
 
-<ExpandableSection>
+</ExpandableProperty>
 
-<SectionTitle slot="title" variant="default">
+<ExpandableProperty slot="entry" id="flavor_text_entries_ItemFlavorText_version_group" parentId="flavor_text_entries_ItemFlavorText" typeInfo={{"label":"VersionGroupSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText+version_group+VersionGroupSummary\">VersionGroupSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-#### ItemFlingEffectSummary \{#operation-api_v2_item_retrieve+200+application-json+fling_effect\}
+<div slot="title">
 
-</SectionTitle>
+##### version_group \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText+version_group\}
 
-<SectionContent slot="content" variant="default">
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+fling_effect+ItemFlingEffectSummary+name\}
+<ExpandableBreakout slot="entry" id="flavor_text_entries_ItemFlavorText_version_group_VersionGroupSummary" parentId="flavor_text_entries_ItemFlavorText_version_group">
 
-</Property>
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+#### VersionGroupSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText+version_group+VersionGroupSummary\}
 
-##### url \{#operation-api_v2_item_retrieve+200+application-json+fling_effect+ItemFlingEffectSummary+url\}
+</div>
 
-</Property>
+</ExpandableBreakout>
 
-</SectionContent>
+<ExpandableProperty slot="entry" id="flavor_text_entries_ItemFlavorText_version_group_VersionGroupSummary_name" parentId="flavor_text_entries_ItemFlavorText_version_group_VersionGroupSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</ExpandableSection>
+<div slot="title">
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText+version_group+VersionGroupSummary+name\}
 
-##### fling_power \{#operation-api_v2_item_retrieve+200+application-json+fling_power\}
+</div>
 
-</Property>
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+ItemGameIndex\">ItemGameIndex</a>","children":[{"label":"ItemGameIndex","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+ItemGameIndex\">ItemGameIndex</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="flavor_text_entries_ItemFlavorText_version_group_VersionGroupSummary_url" parentId="flavor_text_entries_ItemFlavorText_version_group_VersionGroupSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### game_indices \{#operation-api_v2_item_retrieve+200+application-json+game_indices\}
+<div slot="title">
 
-</Property>
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+flavor_text_entries+ItemFlavorText+version_group+VersionGroupSummary+url\}
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+</ExpandableProperty>
 
-#### ItemGameIndex \{#operation-api_v2_item_retrieve+200+application-json+game_indices\}
+<ExpandableProperty slot="entry" id="fling_effect" typeInfo={{"label":"ItemFlingEffectSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+fling_effect+ItemFlingEffectSummary\">ItemFlingEffectSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</SectionTitle>
+<div slot="title">
 
-<SectionContent slot="content" variant="default">
+##### fling_effect \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+fling_effect\}
 
-<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### game_index \{#operation-api_v2_item_retrieve+200+application-json+game_indices+ItemGameIndex+game_index\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableBreakout slot="entry" id="fling_effect_ItemFlingEffectSummary" parentId="fling_effect">
 
-<Property typeInfo={{"label":"GenerationSummary","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+game_indices+ItemGameIndex+GenerationSummary\">GenerationSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### generation \{#operation-api_v2_item_retrieve+200+application-json+game_indices+ItemGameIndex+generation\}
+#### ItemFlingEffectSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+fling_effect+ItemFlingEffectSummary\}
 
-</Property>
+</div>
 
-<ExpandableSection>
+</ExpandableBreakout>
 
-<SectionTitle slot="title" variant="default">
+<ExpandableProperty slot="entry" id="fling_effect_ItemFlingEffectSummary_name" parentId="fling_effect_ItemFlingEffectSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-#### GenerationSummary \{#operation-api_v2_item_retrieve+200+application-json+game_indices+ItemGameIndex+generation\}
+<div slot="title">
 
-</SectionTitle>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+fling_effect+ItemFlingEffectSummary+name\}
 
-<SectionContent slot="content" variant="default">
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+game_indices+ItemGameIndex+generation+GenerationSummary+name\}
+<ExpandableProperty slot="entry" id="fling_effect_ItemFlingEffectSummary_url" parentId="fling_effect_ItemFlingEffectSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</Property>
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+fling_effect+ItemFlingEffectSummary+url\}
 
-##### url \{#operation-api_v2_item_retrieve+200+application-json+game_indices+ItemGameIndex+generation+GenerationSummary+url\}
+</div>
 
-</Property>
+</ExpandableProperty>
 
-</SectionContent>
+<ExpandableProperty slot="entry" id="fling_power" typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-</ExpandableSection>
+<div slot="title">
 
-</SectionContent>
+##### fling_power \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+fling_power\}
 
-</ExpandableSection>
+</div>
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+attribute\">attribute</a>","children":[{"label":"attribute","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+attribute\">attribute</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### held_by_pokemon \{#operation-api_v2_item_retrieve+200+application-json+held_by_pokemon\}
+<ExpandableProperty slot="entry" id="game_indices" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+game_indices+ItemGameIndex\">ItemGameIndex</a>","children":[{"label":"ItemGameIndex","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+game_indices+ItemGameIndex\">ItemGameIndex</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</Property>
+<div slot="title">
 
-<ExpandableSection>
+##### game_indices \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+game_indices\}
 
-<SectionTitle slot="title" variant="default">
+</div>
 
-#### attribute \{#operation-api_v2_item_retrieve+200+application-json+held_by_pokemon\}
+</ExpandableProperty>
 
-</SectionTitle>
+<ExpandableBreakout slot="entry" id="game_indices_ItemGameIndex" parentId="game_indices">
 
-<SectionContent slot="content" variant="default">
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+#### ItemGameIndex \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+game_indices+ItemGameIndex\}
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+held_by_pokemon+attribute+name\}
+</div>
 
-</Property>
+</ExpandableBreakout>
+
+<ExpandableProperty slot="entry" id="game_indices_ItemGameIndex_game_index" parentId="game_indices_ItemGameIndex" typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### game_index \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+game_indices+ItemGameIndex+game_index\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="game_indices_ItemGameIndex_generation" parentId="game_indices_ItemGameIndex" typeInfo={{"label":"GenerationSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+game_indices+ItemGameIndex+generation+GenerationSummary\">GenerationSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### generation \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+game_indices+ItemGameIndex+generation\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout slot="entry" id="game_indices_ItemGameIndex_generation_GenerationSummary" parentId="game_indices_ItemGameIndex_generation">
+
+<div slot="title">
+
+#### GenerationSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+game_indices+ItemGameIndex+generation+GenerationSummary\}
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty slot="entry" id="game_indices_ItemGameIndex_generation_GenerationSummary_name" parentId="game_indices_ItemGameIndex_generation_GenerationSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+game_indices+ItemGameIndex+generation+GenerationSummary+name\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="game_indices_ItemGameIndex_generation_GenerationSummary_url" parentId="game_indices_ItemGameIndex_generation_GenerationSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+game_indices+ItemGameIndex+generation+GenerationSummary+url\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="held_by_pokemon" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+held_by_pokemon+attribute\">attribute</a>","children":[{"label":"attribute","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+held_by_pokemon+attribute\">attribute</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### held_by_pokemon \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+held_by_pokemon\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout slot="entry" id="held_by_pokemon_attribute" parentId="held_by_pokemon">
+
+<div slot="title">
+
+#### attribute \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+held_by_pokemon+attribute\}
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty slot="entry" id="held_by_pokemon_attribute_name" parentId="held_by_pokemon_attribute" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+held_by_pokemon+attribute+name\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -614,11 +756,19 @@ _Example:_
 countable
 ```
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### url \{#operation-api_v2_item_retrieve+200+application-json+held_by_pokemon+attribute+url\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="held_by_pokemon_attribute_url" parentId="held_by_pokemon_attribute" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+held_by_pokemon+attribute+url\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -626,37 +776,49 @@ _Example:_
 https://pokeapi.co/api/v2/item-attribute/1/
 ```
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="id" typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### id \{#operation-api_v2_item_retrieve+200+application-json+id\}
+<div slot="title">
 
-</Property>
+##### id \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+id\}
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+attribute\">attribute</a>","children":[{"label":"attribute","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+attribute\">attribute</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### machines \{#operation-api_v2_item_retrieve+200+application-json+machines\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="machines" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+machines+attribute\">attribute</a>","children":[{"label":"attribute","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+machines+attribute\">attribute</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<ExpandableSection>
+<div slot="title">
 
-<SectionTitle slot="title" variant="default">
+##### machines \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+machines\}
 
-#### attribute \{#operation-api_v2_item_retrieve+200+application-json+machines\}
+</div>
 
-</SectionTitle>
+</ExpandableProperty>
 
-<SectionContent slot="content" variant="default">
+<ExpandableBreakout slot="entry" id="machines_attribute" parentId="machines">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+machines+attribute+name\}
+#### attribute \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+machines+attribute\}
 
-</Property>
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty slot="entry" id="machines_attribute_name" parentId="machines_attribute" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+machines+attribute+name\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -664,11 +826,19 @@ _Example:_
 countable
 ```
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### url \{#operation-api_v2_item_retrieve+200+application-json+machines+attribute+url\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="machines_attribute_url" parentId="machines_attribute" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+machines+attribute+url\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -676,95 +846,119 @@ _Example:_
 https://pokeapi.co/api/v2/item-attribute/1/
 ```
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="name" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+name\}
+<div slot="title">
 
-</Property>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+name\}
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+ItemName\">ItemName</a>","children":[{"label":"ItemName","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+ItemName\">ItemName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### names \{#operation-api_v2_item_retrieve+200+application-json+names\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="names" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+names+ItemName\">ItemName</a>","children":[{"label":"ItemName","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+names+ItemName\">ItemName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<ExpandableSection>
+<div slot="title">
 
-<SectionTitle slot="title" variant="default">
+##### names \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+names\}
 
-#### ItemName \{#operation-api_v2_item_retrieve+200+application-json+names\}
+</div>
 
-</SectionTitle>
+</ExpandableProperty>
 
-<SectionContent slot="content" variant="default">
+<ExpandableBreakout slot="entry" id="names_ItemName" parentId="names">
 
-<Property typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+names+ItemName+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### language \{#operation-api_v2_item_retrieve+200+application-json+names+ItemName+language\}
+#### ItemName \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+names+ItemName\}
 
-</Property>
+</div>
 
-<ExpandableSection>
+</ExpandableBreakout>
 
-<SectionTitle slot="title" variant="default">
+<ExpandableProperty slot="entry" id="names_ItemName_language" parentId="names_ItemName" typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+names+ItemName+language+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-#### LanguageSummary \{#operation-api_v2_item_retrieve+200+application-json+names+ItemName+language\}
+<div slot="title">
 
-</SectionTitle>
+##### language \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+names+ItemName+language\}
 
-<SectionContent slot="content" variant="default">
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+names+ItemName+language+LanguageSummary+name\}
+<ExpandableBreakout slot="entry" id="names_ItemName_language_LanguageSummary" parentId="names_ItemName_language">
 
-</Property>
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+#### LanguageSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+names+ItemName+language+LanguageSummary\}
 
-##### url \{#operation-api_v2_item_retrieve+200+application-json+names+ItemName+language+LanguageSummary+url\}
+</div>
 
-</Property>
+</ExpandableBreakout>
 
-</SectionContent>
+<ExpandableProperty slot="entry" id="names_ItemName_language_LanguageSummary_name" parentId="names_ItemName_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</ExpandableSection>
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+names+ItemName+language+LanguageSummary+name\}
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+names+ItemName+name\}
+</div>
 
-</Property>
+</ExpandableProperty>
 
-</SectionContent>
+<ExpandableProperty slot="entry" id="names_ItemName_language_LanguageSummary_url" parentId="names_ItemName_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</ExpandableSection>
+<div slot="title">
 
-<Property typeInfo={{"label":"attribute","linkedLabel":"<a href=\"#operation-api_v2_item_retrieve+200+application-json+attribute\">attribute</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+names+ItemName+language+LanguageSummary+url\}
 
-##### sprites \{#operation-api_v2_item_retrieve+200+application-json+sprites\}
+</div>
 
-</Property>
+</ExpandableProperty>
 
-<ExpandableSection>
+<ExpandableProperty slot="entry" id="names_ItemName_name" parentId="names_ItemName" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### attribute \{#operation-api_v2_item_retrieve+200+application-json+sprites\}
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+names+ItemName+name\}
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="sprites" typeInfo={{"label":"attribute","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+sprites+attribute\">attribute</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### name \{#operation-api_v2_item_retrieve+200+application-json+sprites+attribute+name\}
+<div slot="title">
 
-</Property>
+##### sprites \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+sprites\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout slot="entry" id="sprites_attribute" parentId="sprites">
+
+<div slot="title">
+
+#### attribute \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+sprites+attribute\}
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty slot="entry" id="sprites_attribute_name" parentId="sprites_attribute" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+sprites+attribute+name\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -772,11 +966,19 @@ _Example:_
 countable
 ```
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### url \{#operation-api_v2_item_retrieve+200+application-json+sprites+attribute+url\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="sprites_attribute_url" parentId="sprites_attribute" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+responses+200+application-json+sprites+attribute+url\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -784,7 +986,9 @@ _Example:_
 https://pokeapi.co/api/v2/item-attribute/1/
 ```
 
-</SectionContent>
+</div>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 
@@ -802,7 +1006,7 @@ Item categories determine where items will be placed in the players bag.
 
 <SectionTitle slot="title" variant="top-level">
 
-### Security \{#operation-api_v2_item_category_list-security\}
+### Security \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+security\}
 
 </SectionTitle>
 
@@ -818,27 +1022,21 @@ Coming Soon
 
 <SectionTitle slot="title" variant="top-level">
 
-### Parameters \{#operation-api_v2_item_category_list-parameters\}
+### Parameters \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+parameters\}
 
 </SectionTitle>
 
 <SectionContent slot="content" variant="top-level">
 
-<SectionContent slot="content" variant="top-level">
-
-##### limit \{#operation-api_v2_item_category_list-parameters\}
+##### limit \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+parameters+limit\}
 
 Number of results to return per page.
 
-<SectionContent slot="content" variant="top-level">
-
-##### offset \{#operation-api_v2_item_category_list-parameters\}
+##### offset \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+parameters+offset\}
 
 The initial index from which to return the results.
 
-<SectionContent slot="content" variant="top-level">
-
-##### q \{#operation-api_v2_item_category_list-parameters\}
+##### q \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+parameters+q\}
 
 > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
@@ -849,25 +1047,31 @@ Case-insensitive query applied on the `name` property.
 
 <TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Response \{#operation-api_v2_item_category_list+responses\}
+### Responses \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+responses\}
 
 </SectionTitle>
 
-<SectionTab slot="tab" id="operation-api_v2_item_category_list+200+application-json">
+<SectionTab slot="tab" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+responses+200+application-json">
 
 200
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_category_list+200+application-json">
+<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+responses+200+application-json">
 
-<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+<ExpandableSection>
 
-##### count \{#operation-api_v2_item_category_list+200+application-json+count\}
+<ExpandableProperty slot="entry" id="count" typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-</Property>
+<div slot="title">
+
+##### count \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+responses+200+application-json+count\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -875,11 +1079,19 @@ _Example:_
 123
 ```
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### next \{#operation-api_v2_item_category_list+200+application-json+next\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="next" typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+
+<div slot="title">
+
+##### next \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+responses+200+application-json+next\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -887,11 +1099,19 @@ _Example:_
 http://api.example.org/accounts/?offset=400&limit=100
 ```
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### previous \{#operation-api_v2_item_category_list+200+application-json+previous\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="previous" typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+
+<div slot="title">
+
+##### previous \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+responses+200+application-json+previous\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -899,35 +1119,49 @@ _Example:_
 http://api.example.org/accounts/?offset=200&limit=100
 ```
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_category_list+200+application-json+ItemCategorySummary\">ItemCategorySummary</a>","children":[{"label":"ItemCategorySummary","linkedLabel":"<a href=\"#operation-api_v2_item_category_list+200+application-json+ItemCategorySummary\">ItemCategorySummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### results \{#operation-api_v2_item_category_list+200+application-json+results\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="results" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+responses+200+application-json+results+ItemCategorySummary\">ItemCategorySummary</a>","children":[{"label":"ItemCategorySummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+responses+200+application-json+results+ItemCategorySummary\">ItemCategorySummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-<ExpandableSection>
+<div slot="title">
 
-<SectionTitle slot="title" variant="default">
+##### results \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+responses+200+application-json+results\}
 
-#### ItemCategorySummary \{#operation-api_v2_item_category_list+200+application-json+results\}
+</div>
 
-</SectionTitle>
+</ExpandableProperty>
 
-<SectionContent slot="content" variant="default">
+<ExpandableBreakout slot="entry" id="results_ItemCategorySummary" parentId="results">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### name \{#operation-api_v2_item_category_list+200+application-json+results+ItemCategorySummary+name\}
+#### ItemCategorySummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+responses+200+application-json+results+ItemCategorySummary\}
 
-</Property>
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableBreakout>
 
-##### url \{#operation-api_v2_item_category_list+200+application-json+results+ItemCategorySummary+url\}
+<ExpandableProperty slot="entry" id="results_ItemCategorySummary_name" parentId="results_ItemCategorySummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</Property>
+<div slot="title">
 
-</SectionContent>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+responses+200+application-json+results+ItemCategorySummary+name\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="results_ItemCategorySummary_url" parentId="results_ItemCategorySummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+responses+200+application-json+results+ItemCategorySummary+url\}
+
+</div>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 
@@ -945,7 +1179,7 @@ Item categories determine where items will be placed in the players bag.
 
 <SectionTitle slot="title" variant="top-level">
 
-### Security \{#operation-api_v2_item_category_retrieve-security\}
+### Security \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+security\}
 
 </SectionTitle>
 
@@ -961,15 +1195,13 @@ Coming Soon
 
 <SectionTitle slot="title" variant="top-level">
 
-### Parameters \{#operation-api_v2_item_category_retrieve-parameters\}
+### Parameters \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+parameters\}
 
 </SectionTitle>
 
 <SectionContent slot="content" variant="top-level">
 
-<SectionContent slot="content" variant="top-level">
-
-##### id <Pill variant="warning">required</Pill> \{#operation-api_v2_item_category_retrieve-parameters\}
+##### id <Pill variant="warning">required</Pill> \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+parameters+id\}
 
 This parameter can be a string or an integer.
 
@@ -979,151 +1211,191 @@ This parameter can be a string or an integer.
 
 <TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Response \{#operation-api_v2_item_category_retrieve+responses\}
+### Responses \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses\}
 
 </SectionTitle>
 
-<SectionTab slot="tab" id="operation-api_v2_item_category_retrieve+200+application-json">
+<SectionTab slot="tab" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json">
 
 200
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_category_retrieve+200+application-json">
-
-<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
-
-##### id \{#operation-api_v2_item_category_retrieve+200+application-json+id\}
-
-</Property>
-
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_category_retrieve+200+application-json+ItemSummary\">ItemSummary</a>","children":[{"label":"ItemSummary","linkedLabel":"<a href=\"#operation-api_v2_item_category_retrieve+200+application-json+ItemSummary\">ItemSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
-
-##### items \{#operation-api_v2_item_category_retrieve+200+application-json+items\}
-
-</Property>
+<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json">
 
 <ExpandableSection>
 
-<SectionTitle slot="title" variant="default">
+<ExpandableProperty slot="entry" id="id" typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-#### ItemSummary \{#operation-api_v2_item_category_retrieve+200+application-json+items\}
+<div slot="title">
 
-</SectionTitle>
+##### id \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+id\}
 
-<SectionContent slot="content" variant="default">
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### name \{#operation-api_v2_item_category_retrieve+200+application-json+items+ItemSummary+name\}
+<ExpandableProperty slot="entry" id="items" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+items+ItemSummary\">ItemSummary</a>","children":[{"label":"ItemSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+items+ItemSummary\">ItemSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</Property>
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+##### items \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+items\}
 
-##### url \{#operation-api_v2_item_category_retrieve+200+application-json+items+ItemSummary+url\}
+</div>
 
-</Property>
+</ExpandableProperty>
 
-</SectionContent>
+<ExpandableBreakout slot="entry" id="items_ItemSummary" parentId="items">
 
-</ExpandableSection>
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+#### ItemSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+items+ItemSummary\}
 
-##### name \{#operation-api_v2_item_category_retrieve+200+application-json+name\}
+</div>
 
-</Property>
+</ExpandableBreakout>
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_category_retrieve+200+application-json+ItemCategoryName\">ItemCategoryName</a>","children":[{"label":"ItemCategoryName","linkedLabel":"<a href=\"#operation-api_v2_item_category_retrieve+200+application-json+ItemCategoryName\">ItemCategoryName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="items_ItemSummary_name" parentId="items_ItemSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### names \{#operation-api_v2_item_category_retrieve+200+application-json+names\}
+<div slot="title">
 
-</Property>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+items+ItemSummary+name\}
 
-<ExpandableSection>
+</div>
 
-<SectionTitle slot="title" variant="default">
+</ExpandableProperty>
 
-#### ItemCategoryName \{#operation-api_v2_item_category_retrieve+200+application-json+names\}
+<ExpandableProperty slot="entry" id="items_ItemSummary_url" parentId="items_ItemSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</SectionTitle>
+<div slot="title">
 
-<SectionContent slot="content" variant="default">
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+items+ItemSummary+url\}
 
-<Property typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_category_retrieve+200+application-json+names+ItemCategoryName+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### language \{#operation-api_v2_item_category_retrieve+200+application-json+names+ItemCategoryName+language\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="name" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<ExpandableSection>
+<div slot="title">
 
-<SectionTitle slot="title" variant="default">
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+name\}
 
-#### LanguageSummary \{#operation-api_v2_item_category_retrieve+200+application-json+names+ItemCategoryName+language\}
+</div>
 
-</SectionTitle>
+</ExpandableProperty>
 
-<SectionContent slot="content" variant="default">
+<ExpandableProperty slot="entry" id="names" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+names+ItemCategoryName\">ItemCategoryName</a>","children":[{"label":"ItemCategoryName","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+names+ItemCategoryName\">ItemCategoryName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### name \{#operation-api_v2_item_category_retrieve+200+application-json+names+ItemCategoryName+language+LanguageSummary+name\}
+##### names \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+names\}
 
-</Property>
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### url \{#operation-api_v2_item_category_retrieve+200+application-json+names+ItemCategoryName+language+LanguageSummary+url\}
+<ExpandableBreakout slot="entry" id="names_ItemCategoryName" parentId="names">
 
-</Property>
+<div slot="title">
 
-</SectionContent>
+#### ItemCategoryName \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+names+ItemCategoryName\}
 
-</ExpandableSection>
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableBreakout>
 
-##### name \{#operation-api_v2_item_category_retrieve+200+application-json+names+ItemCategoryName+name\}
+<ExpandableProperty slot="entry" id="names_ItemCategoryName_language" parentId="names_ItemCategoryName" typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+names+ItemCategoryName+language+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</Property>
+<div slot="title">
 
-</SectionContent>
+##### language \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+names+ItemCategoryName+language\}
 
-</ExpandableSection>
+</div>
 
-<Property typeInfo={{"label":"ItemPocketSummary","linkedLabel":"<a href=\"#operation-api_v2_item_category_retrieve+200+application-json+ItemPocketSummary\">ItemPocketSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### pocket \{#operation-api_v2_item_category_retrieve+200+application-json+pocket\}
+<ExpandableBreakout slot="entry" id="names_ItemCategoryName_language_LanguageSummary" parentId="names_ItemCategoryName_language">
 
-</Property>
+<div slot="title">
 
-<ExpandableSection>
+#### LanguageSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+names+ItemCategoryName+language+LanguageSummary\}
 
-<SectionTitle slot="title" variant="default">
+</div>
 
-#### ItemPocketSummary \{#operation-api_v2_item_category_retrieve+200+application-json+pocket\}
+</ExpandableBreakout>
 
-</SectionTitle>
+<ExpandableProperty slot="entry" id="names_ItemCategoryName_language_LanguageSummary_name" parentId="names_ItemCategoryName_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<SectionContent slot="content" variant="default">
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+names+ItemCategoryName+language+LanguageSummary+name\}
 
-##### name \{#operation-api_v2_item_category_retrieve+200+application-json+pocket+ItemPocketSummary+name\}
+</div>
 
-</Property>
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="names_ItemCategoryName_language_LanguageSummary_url" parentId="names_ItemCategoryName_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### url \{#operation-api_v2_item_category_retrieve+200+application-json+pocket+ItemPocketSummary+url\}
+<div slot="title">
 
-</Property>
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+names+ItemCategoryName+language+LanguageSummary+url\}
 
-</SectionContent>
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="names_ItemCategoryName_name" parentId="names_ItemCategoryName" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+names+ItemCategoryName+name\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="pocket" typeInfo={{"label":"ItemPocketSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+pocket+ItemPocketSummary\">ItemPocketSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### pocket \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+pocket\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout slot="entry" id="pocket_ItemPocketSummary" parentId="pocket">
+
+<div slot="title">
+
+#### ItemPocketSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+pocket+ItemPocketSummary\}
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty slot="entry" id="pocket_ItemPocketSummary_name" parentId="pocket_ItemPocketSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+pocket+ItemPocketSummary+name\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="pocket_ItemPocketSummary_url" parentId="pocket_ItemPocketSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+responses+200+application-json+pocket+ItemPocketSummary+url\}
+
+</div>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 
@@ -1141,7 +1413,7 @@ Item attributes define particular aspects of items, e.g."usable in battle" or "c
 
 <SectionTitle slot="title" variant="top-level">
 
-### Security \{#operation-api_v2_item_attribute_list-security\}
+### Security \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+security\}
 
 </SectionTitle>
 
@@ -1157,27 +1429,21 @@ Coming Soon
 
 <SectionTitle slot="title" variant="top-level">
 
-### Parameters \{#operation-api_v2_item_attribute_list-parameters\}
+### Parameters \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+parameters\}
 
 </SectionTitle>
 
 <SectionContent slot="content" variant="top-level">
 
-<SectionContent slot="content" variant="top-level">
-
-##### limit \{#operation-api_v2_item_attribute_list-parameters\}
+##### limit \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+parameters+limit\}
 
 Number of results to return per page.
 
-<SectionContent slot="content" variant="top-level">
-
-##### offset \{#operation-api_v2_item_attribute_list-parameters\}
+##### offset \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+parameters+offset\}
 
 The initial index from which to return the results.
 
-<SectionContent slot="content" variant="top-level">
-
-##### q \{#operation-api_v2_item_attribute_list-parameters\}
+##### q \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+parameters+q\}
 
 > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
@@ -1188,25 +1454,31 @@ Case-insensitive query applied on the `name` property.
 
 <TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Response \{#operation-api_v2_item_attribute_list+responses\}
+### Responses \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+responses\}
 
 </SectionTitle>
 
-<SectionTab slot="tab" id="operation-api_v2_item_attribute_list+200+application-json">
+<SectionTab slot="tab" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+responses+200+application-json">
 
 200
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_attribute_list+200+application-json">
+<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+responses+200+application-json">
 
-<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+<ExpandableSection>
 
-##### count \{#operation-api_v2_item_attribute_list+200+application-json+count\}
+<ExpandableProperty slot="entry" id="count" typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-</Property>
+<div slot="title">
+
+##### count \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+responses+200+application-json+count\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -1214,11 +1486,19 @@ _Example:_
 123
 ```
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### next \{#operation-api_v2_item_attribute_list+200+application-json+next\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="next" typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+
+<div slot="title">
+
+##### next \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+responses+200+application-json+next\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -1226,11 +1506,19 @@ _Example:_
 http://api.example.org/accounts/?offset=400&limit=100
 ```
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### previous \{#operation-api_v2_item_attribute_list+200+application-json+previous\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="previous" typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+
+<div slot="title">
+
+##### previous \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+responses+200+application-json+previous\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -1238,35 +1526,49 @@ _Example:_
 http://api.example.org/accounts/?offset=200&limit=100
 ```
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_attribute_list+200+application-json+ItemAttributeSummary\">ItemAttributeSummary</a>","children":[{"label":"ItemAttributeSummary","linkedLabel":"<a href=\"#operation-api_v2_item_attribute_list+200+application-json+ItemAttributeSummary\">ItemAttributeSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### results \{#operation-api_v2_item_attribute_list+200+application-json+results\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="results" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+responses+200+application-json+results+ItemAttributeSummary\">ItemAttributeSummary</a>","children":[{"label":"ItemAttributeSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+responses+200+application-json+results+ItemAttributeSummary\">ItemAttributeSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-<ExpandableSection>
+<div slot="title">
 
-<SectionTitle slot="title" variant="default">
+##### results \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+responses+200+application-json+results\}
 
-#### ItemAttributeSummary \{#operation-api_v2_item_attribute_list+200+application-json+results\}
+</div>
 
-</SectionTitle>
+</ExpandableProperty>
 
-<SectionContent slot="content" variant="default">
+<ExpandableBreakout slot="entry" id="results_ItemAttributeSummary" parentId="results">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### name \{#operation-api_v2_item_attribute_list+200+application-json+results+ItemAttributeSummary+name\}
+#### ItemAttributeSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+responses+200+application-json+results+ItemAttributeSummary\}
 
-</Property>
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableBreakout>
 
-##### url \{#operation-api_v2_item_attribute_list+200+application-json+results+ItemAttributeSummary+url\}
+<ExpandableProperty slot="entry" id="results_ItemAttributeSummary_name" parentId="results_ItemAttributeSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</Property>
+<div slot="title">
 
-</SectionContent>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+responses+200+application-json+results+ItemAttributeSummary+name\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="results_ItemAttributeSummary_url" parentId="results_ItemAttributeSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+responses+200+application-json+results+ItemAttributeSummary+url\}
+
+</div>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 
@@ -1284,7 +1586,7 @@ Item attributes define particular aspects of items, e.g."usable in battle" or "c
 
 <SectionTitle slot="title" variant="top-level">
 
-### Security \{#operation-api_v2_item_attribute_retrieve-security\}
+### Security \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+security\}
 
 </SectionTitle>
 
@@ -1300,15 +1602,13 @@ Coming Soon
 
 <SectionTitle slot="title" variant="top-level">
 
-### Parameters \{#operation-api_v2_item_attribute_retrieve-parameters\}
+### Parameters \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+parameters\}
 
 </SectionTitle>
 
 <SectionContent slot="content" variant="top-level">
 
-<SectionContent slot="content" variant="top-level">
-
-##### id <Pill variant="warning">required</Pill> \{#operation-api_v2_item_attribute_retrieve-parameters\}
+##### id <Pill variant="warning">required</Pill> \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+parameters+id\}
 
 This parameter can be a string or an integer.
 
@@ -1318,105 +1618,131 @@ This parameter can be a string or an integer.
 
 <TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Response \{#operation-api_v2_item_attribute_retrieve+responses\}
+### Responses \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses\}
 
 </SectionTitle>
 
-<SectionTab slot="tab" id="operation-api_v2_item_attribute_retrieve+200+application-json">
+<SectionTab slot="tab" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json">
 
 200
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_attribute_retrieve+200+application-json">
-
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_attribute_retrieve+200+application-json+ItemAttributeDescription\">ItemAttributeDescription</a>","children":[{"label":"ItemAttributeDescription","linkedLabel":"<a href=\"#operation-api_v2_item_attribute_retrieve+200+application-json+ItemAttributeDescription\">ItemAttributeDescription</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
-
-##### descriptions \{#operation-api_v2_item_attribute_retrieve+200+application-json+descriptions\}
-
-</Property>
+<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json">
 
 <ExpandableSection>
 
-<SectionTitle slot="title" variant="default">
+<ExpandableProperty slot="entry" id="descriptions" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+descriptions+ItemAttributeDescription\">ItemAttributeDescription</a>","children":[{"label":"ItemAttributeDescription","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+descriptions+ItemAttributeDescription\">ItemAttributeDescription</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-#### ItemAttributeDescription \{#operation-api_v2_item_attribute_retrieve+200+application-json+descriptions\}
+<div slot="title">
 
-</SectionTitle>
+##### descriptions \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+descriptions\}
 
-<SectionContent slot="content" variant="default">
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</ExpandableProperty>
 
-##### description \{#operation-api_v2_item_attribute_retrieve+200+application-json+descriptions+ItemAttributeDescription+description\}
+<ExpandableBreakout slot="entry" id="descriptions_ItemAttributeDescription" parentId="descriptions">
 
-</Property>
+<div slot="title">
 
-<Property typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_attribute_retrieve+200+application-json+descriptions+ItemAttributeDescription+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+#### ItemAttributeDescription \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+descriptions+ItemAttributeDescription\}
 
-##### language \{#operation-api_v2_item_attribute_retrieve+200+application-json+descriptions+ItemAttributeDescription+language\}
+</div>
 
-</Property>
+</ExpandableBreakout>
 
-<ExpandableSection>
+<ExpandableProperty slot="entry" id="descriptions_ItemAttributeDescription_description" parentId="descriptions_ItemAttributeDescription" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### LanguageSummary \{#operation-api_v2_item_attribute_retrieve+200+application-json+descriptions+ItemAttributeDescription+language\}
+##### description \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+descriptions+ItemAttributeDescription+description\}
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="descriptions_ItemAttributeDescription_language" parentId="descriptions_ItemAttributeDescription" typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+descriptions+ItemAttributeDescription+language+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### name \{#operation-api_v2_item_attribute_retrieve+200+application-json+descriptions+ItemAttributeDescription+language+LanguageSummary+name\}
+<div slot="title">
 
-</Property>
+##### language \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+descriptions+ItemAttributeDescription+language\}
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### url \{#operation-api_v2_item_attribute_retrieve+200+application-json+descriptions+ItemAttributeDescription+language+LanguageSummary+url\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableBreakout slot="entry" id="descriptions_ItemAttributeDescription_language_LanguageSummary" parentId="descriptions_ItemAttributeDescription_language">
 
-</SectionContent>
+<div slot="title">
 
-</ExpandableSection>
+#### LanguageSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+descriptions+ItemAttributeDescription+language+LanguageSummary\}
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableBreakout>
 
-<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="descriptions_ItemAttributeDescription_language_LanguageSummary_name" parentId="descriptions_ItemAttributeDescription_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### id \{#operation-api_v2_item_attribute_retrieve+200+application-json+id\}
+<div slot="title">
 
-</Property>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+descriptions+ItemAttributeDescription+language+LanguageSummary+name\}
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_attribute_retrieve+200+application-json+item\">item</a>","children":[{"label":"item","linkedLabel":"<a href=\"#operation-api_v2_item_attribute_retrieve+200+application-json+item\">item</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### items \{#operation-api_v2_item_attribute_retrieve+200+application-json+items\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="descriptions_ItemAttributeDescription_language_LanguageSummary_url" parentId="descriptions_ItemAttributeDescription_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<ExpandableSection>
+<div slot="title">
 
-<SectionTitle slot="title" variant="default">
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+descriptions+ItemAttributeDescription+language+LanguageSummary+url\}
 
-#### item \{#operation-api_v2_item_attribute_retrieve+200+application-json+items\}
+</div>
 
-</SectionTitle>
+</ExpandableProperty>
 
-<SectionContent slot="content" variant="default">
+<ExpandableProperty slot="entry" id="id" typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### name \{#operation-api_v2_item_attribute_retrieve+200+application-json+items+item+name\}
+##### id \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+id\}
 
-</Property>
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="items" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+items+item\">item</a>","children":[{"label":"item","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+items+item\">item</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### items \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+items\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout slot="entry" id="items_item" parentId="items">
+
+<div slot="title">
+
+#### item \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+items+item\}
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty slot="entry" id="items_item_name" parentId="items_item" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+items+item+name\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -1424,11 +1750,19 @@ _Example:_
 master-ball
 ```
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### url \{#operation-api_v2_item_attribute_retrieve+200+application-json+items+item+url\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="items_item_url" parentId="items_item" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+items+item+url\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -1436,71 +1770,89 @@ _Example:_
 https://pokeapi.co/api/v2/item/1/
 ```
 
-</SectionContent>
+</div>
 
-</ExpandableSection>
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="name" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### name \{#operation-api_v2_item_attribute_retrieve+200+application-json+name\}
+<div slot="title">
 
-</Property>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+name\}
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_attribute_retrieve+200+application-json+ItemAttributeName\">ItemAttributeName</a>","children":[{"label":"ItemAttributeName","linkedLabel":"<a href=\"#operation-api_v2_item_attribute_retrieve+200+application-json+ItemAttributeName\">ItemAttributeName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### names \{#operation-api_v2_item_attribute_retrieve+200+application-json+names\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="names" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+names+ItemAttributeName\">ItemAttributeName</a>","children":[{"label":"ItemAttributeName","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+names+ItemAttributeName\">ItemAttributeName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<ExpandableSection>
+<div slot="title">
 
-<SectionTitle slot="title" variant="default">
+##### names \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+names\}
 
-#### ItemAttributeName \{#operation-api_v2_item_attribute_retrieve+200+application-json+names\}
+</div>
 
-</SectionTitle>
+</ExpandableProperty>
 
-<SectionContent slot="content" variant="default">
+<ExpandableBreakout slot="entry" id="names_ItemAttributeName" parentId="names">
 
-<Property typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_attribute_retrieve+200+application-json+names+ItemAttributeName+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### language \{#operation-api_v2_item_attribute_retrieve+200+application-json+names+ItemAttributeName+language\}
+#### ItemAttributeName \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+names+ItemAttributeName\}
 
-</Property>
+</div>
 
-<ExpandableSection>
+</ExpandableBreakout>
 
-<SectionTitle slot="title" variant="default">
+<ExpandableProperty slot="entry" id="names_ItemAttributeName_language" parentId="names_ItemAttributeName" typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+names+ItemAttributeName+language+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-#### LanguageSummary \{#operation-api_v2_item_attribute_retrieve+200+application-json+names+ItemAttributeName+language\}
+<div slot="title">
 
-</SectionTitle>
+##### language \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+names+ItemAttributeName+language\}
 
-<SectionContent slot="content" variant="default">
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### name \{#operation-api_v2_item_attribute_retrieve+200+application-json+names+ItemAttributeName+language+LanguageSummary+name\}
+<ExpandableBreakout slot="entry" id="names_ItemAttributeName_language_LanguageSummary" parentId="names_ItemAttributeName_language">
 
-</Property>
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+#### LanguageSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+names+ItemAttributeName+language+LanguageSummary\}
 
-##### url \{#operation-api_v2_item_attribute_retrieve+200+application-json+names+ItemAttributeName+language+LanguageSummary+url\}
+</div>
 
-</Property>
+</ExpandableBreakout>
 
-</SectionContent>
+<ExpandableProperty slot="entry" id="names_ItemAttributeName_language_LanguageSummary_name" parentId="names_ItemAttributeName_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</ExpandableSection>
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+names+ItemAttributeName+language+LanguageSummary+name\}
 
-##### name \{#operation-api_v2_item_attribute_retrieve+200+application-json+names+ItemAttributeName+name\}
+</div>
 
-</Property>
+</ExpandableProperty>
 
-</SectionContent>
+<ExpandableProperty slot="entry" id="names_ItemAttributeName_language_LanguageSummary_url" parentId="names_ItemAttributeName_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+names+ItemAttributeName+language+LanguageSummary+url\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="names_ItemAttributeName_name" parentId="names_ItemAttributeName" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+responses+200+application-json+names+ItemAttributeName+name\}
+
+</div>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 
@@ -1518,7 +1870,7 @@ The various effects of the move"Fling" when used with different items.
 
 <SectionTitle slot="title" variant="top-level">
 
-### Security \{#operation-api_v2_item_fling_effect_list-security\}
+### Security \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+security\}
 
 </SectionTitle>
 
@@ -1534,27 +1886,21 @@ Coming Soon
 
 <SectionTitle slot="title" variant="top-level">
 
-### Parameters \{#operation-api_v2_item_fling_effect_list-parameters\}
+### Parameters \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+parameters\}
 
 </SectionTitle>
 
 <SectionContent slot="content" variant="top-level">
 
-<SectionContent slot="content" variant="top-level">
-
-##### limit \{#operation-api_v2_item_fling_effect_list-parameters\}
+##### limit \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+parameters+limit\}
 
 Number of results to return per page.
 
-<SectionContent slot="content" variant="top-level">
-
-##### offset \{#operation-api_v2_item_fling_effect_list-parameters\}
+##### offset \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+parameters+offset\}
 
 The initial index from which to return the results.
 
-<SectionContent slot="content" variant="top-level">
-
-##### q \{#operation-api_v2_item_fling_effect_list-parameters\}
+##### q \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+parameters+q\}
 
 > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
@@ -1565,25 +1911,31 @@ Case-insensitive query applied on the `name` property.
 
 <TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Response \{#operation-api_v2_item_fling_effect_list+responses\}
+### Responses \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+responses\}
 
 </SectionTitle>
 
-<SectionTab slot="tab" id="operation-api_v2_item_fling_effect_list+200+application-json">
+<SectionTab slot="tab" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+responses+200+application-json">
 
 200
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_fling_effect_list+200+application-json">
+<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+responses+200+application-json">
 
-<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+<ExpandableSection>
 
-##### count \{#operation-api_v2_item_fling_effect_list+200+application-json+count\}
+<ExpandableProperty slot="entry" id="count" typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-</Property>
+<div slot="title">
+
+##### count \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+responses+200+application-json+count\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -1591,11 +1943,19 @@ _Example:_
 123
 ```
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### next \{#operation-api_v2_item_fling_effect_list+200+application-json+next\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="next" typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+
+<div slot="title">
+
+##### next \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+responses+200+application-json+next\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -1603,11 +1963,19 @@ _Example:_
 http://api.example.org/accounts/?offset=400&limit=100
 ```
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### previous \{#operation-api_v2_item_fling_effect_list+200+application-json+previous\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="previous" typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+
+<div slot="title">
+
+##### previous \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+responses+200+application-json+previous\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -1615,35 +1983,49 @@ _Example:_
 http://api.example.org/accounts/?offset=200&limit=100
 ```
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_fling_effect_list+200+application-json+ItemFlingEffectSummary\">ItemFlingEffectSummary</a>","children":[{"label":"ItemFlingEffectSummary","linkedLabel":"<a href=\"#operation-api_v2_item_fling_effect_list+200+application-json+ItemFlingEffectSummary\">ItemFlingEffectSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### results \{#operation-api_v2_item_fling_effect_list+200+application-json+results\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="results" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+responses+200+application-json+results+ItemFlingEffectSummary\">ItemFlingEffectSummary</a>","children":[{"label":"ItemFlingEffectSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+responses+200+application-json+results+ItemFlingEffectSummary\">ItemFlingEffectSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-<ExpandableSection>
+<div slot="title">
 
-<SectionTitle slot="title" variant="default">
+##### results \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+responses+200+application-json+results\}
 
-#### ItemFlingEffectSummary \{#operation-api_v2_item_fling_effect_list+200+application-json+results\}
+</div>
 
-</SectionTitle>
+</ExpandableProperty>
 
-<SectionContent slot="content" variant="default">
+<ExpandableBreakout slot="entry" id="results_ItemFlingEffectSummary" parentId="results">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### name \{#operation-api_v2_item_fling_effect_list+200+application-json+results+ItemFlingEffectSummary+name\}
+#### ItemFlingEffectSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+responses+200+application-json+results+ItemFlingEffectSummary\}
 
-</Property>
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableBreakout>
 
-##### url \{#operation-api_v2_item_fling_effect_list+200+application-json+results+ItemFlingEffectSummary+url\}
+<ExpandableProperty slot="entry" id="results_ItemFlingEffectSummary_name" parentId="results_ItemFlingEffectSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</Property>
+<div slot="title">
 
-</SectionContent>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+responses+200+application-json+results+ItemFlingEffectSummary+name\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="results_ItemFlingEffectSummary_url" parentId="results_ItemFlingEffectSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+responses+200+application-json+results+ItemFlingEffectSummary+url\}
+
+</div>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 
@@ -1661,7 +2043,7 @@ The various effects of the move"Fling" when used with different items.
 
 <SectionTitle slot="title" variant="top-level">
 
-### Security \{#operation-api_v2_item_fling_effect_retrieve-security\}
+### Security \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+security\}
 
 </SectionTitle>
 
@@ -1677,15 +2059,13 @@ Coming Soon
 
 <SectionTitle slot="title" variant="top-level">
 
-### Parameters \{#operation-api_v2_item_fling_effect_retrieve-parameters\}
+### Parameters \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+parameters\}
 
 </SectionTitle>
 
 <SectionContent slot="content" variant="top-level">
 
-<SectionContent slot="content" variant="top-level">
-
-##### id <Pill variant="warning">required</Pill> \{#operation-api_v2_item_fling_effect_retrieve-parameters\}
+##### id <Pill variant="warning">required</Pill> \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+parameters+id\}
 
 This parameter can be a string or an integer.
 
@@ -1695,121 +2075,153 @@ This parameter can be a string or an integer.
 
 <TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Response \{#operation-api_v2_item_fling_effect_retrieve+responses\}
+### Responses \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses\}
 
 </SectionTitle>
 
-<SectionTab slot="tab" id="operation-api_v2_item_fling_effect_retrieve+200+application-json">
+<SectionTab slot="tab" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json">
 
 200
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_fling_effect_retrieve+200+application-json">
-
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_fling_effect_retrieve+200+application-json+ItemFlingEffectEffectText\">ItemFlingEffectEffectText</a>","children":[{"label":"ItemFlingEffectEffectText","linkedLabel":"<a href=\"#operation-api_v2_item_fling_effect_retrieve+200+application-json+ItemFlingEffectEffectText\">ItemFlingEffectEffectText</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
-
-##### effect_entries \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+effect_entries\}
-
-</Property>
+<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json">
 
 <ExpandableSection>
 
-<SectionTitle slot="title" variant="default">
+<ExpandableProperty slot="entry" id="effect_entries" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+effect_entries+ItemFlingEffectEffectText\">ItemFlingEffectEffectText</a>","children":[{"label":"ItemFlingEffectEffectText","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+effect_entries+ItemFlingEffectEffectText\">ItemFlingEffectEffectText</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-#### ItemFlingEffectEffectText \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+effect_entries\}
+<div slot="title">
 
-</SectionTitle>
+##### effect_entries \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+effect_entries\}
 
-<SectionContent slot="content" variant="default">
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### effect \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+effect_entries+ItemFlingEffectEffectText+effect\}
+<ExpandableBreakout slot="entry" id="effect_entries_ItemFlingEffectEffectText" parentId="effect_entries">
 
-</Property>
+<div slot="title">
 
-<Property typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_fling_effect_retrieve+200+application-json+effect_entries+ItemFlingEffectEffectText+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+#### ItemFlingEffectEffectText \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+effect_entries+ItemFlingEffectEffectText\}
 
-##### language \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+effect_entries+ItemFlingEffectEffectText+language\}
+</div>
 
-</Property>
+</ExpandableBreakout>
 
-<ExpandableSection>
+<ExpandableProperty slot="entry" id="effect_entries_ItemFlingEffectEffectText_effect" parentId="effect_entries_ItemFlingEffectEffectText" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<SectionTitle slot="title" variant="default">
+<div slot="title">
 
-#### LanguageSummary \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+effect_entries+ItemFlingEffectEffectText+language\}
+##### effect \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+effect_entries+ItemFlingEffectEffectText+effect\}
 
-</SectionTitle>
+</div>
 
-<SectionContent slot="content" variant="default">
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="effect_entries_ItemFlingEffectEffectText_language" parentId="effect_entries_ItemFlingEffectEffectText" typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+effect_entries+ItemFlingEffectEffectText+language+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### name \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+effect_entries+ItemFlingEffectEffectText+language+LanguageSummary+name\}
+<div slot="title">
 
-</Property>
+##### language \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+effect_entries+ItemFlingEffectEffectText+language\}
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### url \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+effect_entries+ItemFlingEffectEffectText+language+LanguageSummary+url\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableBreakout slot="entry" id="effect_entries_ItemFlingEffectEffectText_language_LanguageSummary" parentId="effect_entries_ItemFlingEffectEffectText_language">
 
-</SectionContent>
+<div slot="title">
+
+#### LanguageSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+effect_entries+ItemFlingEffectEffectText+language+LanguageSummary\}
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty slot="entry" id="effect_entries_ItemFlingEffectEffectText_language_LanguageSummary_name" parentId="effect_entries_ItemFlingEffectEffectText_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+effect_entries+ItemFlingEffectEffectText+language+LanguageSummary+name\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="effect_entries_ItemFlingEffectEffectText_language_LanguageSummary_url" parentId="effect_entries_ItemFlingEffectEffectText_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+effect_entries+ItemFlingEffectEffectText+language+LanguageSummary+url\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="id" typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### id \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+id\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="items" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+items+ItemSummary\">ItemSummary</a>","children":[{"label":"ItemSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+items+ItemSummary\">ItemSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### items \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+items\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout slot="entry" id="items_ItemSummary" parentId="items">
+
+<div slot="title">
+
+#### ItemSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+items+ItemSummary\}
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty slot="entry" id="items_ItemSummary_name" parentId="items_ItemSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+items+ItemSummary+name\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="items_ItemSummary_url" parentId="items_ItemSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+items+ItemSummary+url\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="name" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+responses+200+application-json+name\}
+
+</div>
+
+</ExpandableProperty>
 
 </ExpandableSection>
-
-</SectionContent>
-
-</ExpandableSection>
-
-<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
-
-##### id \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+id\}
-
-</Property>
-
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_fling_effect_retrieve+200+application-json+ItemSummary\">ItemSummary</a>","children":[{"label":"ItemSummary","linkedLabel":"<a href=\"#operation-api_v2_item_fling_effect_retrieve+200+application-json+ItemSummary\">ItemSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
-
-##### items \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+items\}
-
-</Property>
-
-<ExpandableSection>
-
-<SectionTitle slot="title" variant="default">
-
-#### ItemSummary \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+items\}
-
-</SectionTitle>
-
-<SectionContent slot="content" variant="default">
-
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
-
-##### name \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+items+ItemSummary+name\}
-
-</Property>
-
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
-
-##### url \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+items+ItemSummary+url\}
-
-</Property>
-
-</SectionContent>
-
-</ExpandableSection>
-
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
-
-##### name \{#operation-api_v2_item_fling_effect_retrieve+200+application-json+name\}
-
-</Property>
 
 </SectionContent>
 
@@ -1825,7 +2237,7 @@ Pockets within the players bag used for storing items by category.
 
 <SectionTitle slot="title" variant="top-level">
 
-### Security \{#operation-api_v2_item_pocket_list-security\}
+### Security \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+security\}
 
 </SectionTitle>
 
@@ -1841,27 +2253,21 @@ Coming Soon
 
 <SectionTitle slot="title" variant="top-level">
 
-### Parameters \{#operation-api_v2_item_pocket_list-parameters\}
+### Parameters \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+parameters\}
 
 </SectionTitle>
 
 <SectionContent slot="content" variant="top-level">
 
-<SectionContent slot="content" variant="top-level">
-
-##### limit \{#operation-api_v2_item_pocket_list-parameters\}
+##### limit \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+parameters+limit\}
 
 Number of results to return per page.
 
-<SectionContent slot="content" variant="top-level">
-
-##### offset \{#operation-api_v2_item_pocket_list-parameters\}
+##### offset \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+parameters+offset\}
 
 The initial index from which to return the results.
 
-<SectionContent slot="content" variant="top-level">
-
-##### q \{#operation-api_v2_item_pocket_list-parameters\}
+##### q \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+parameters+q\}
 
 > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
@@ -1872,25 +2278,31 @@ Case-insensitive query applied on the `name` property.
 
 <TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Response \{#operation-api_v2_item_pocket_list+responses\}
+### Responses \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+responses\}
 
 </SectionTitle>
 
-<SectionTab slot="tab" id="operation-api_v2_item_pocket_list+200+application-json">
+<SectionTab slot="tab" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+responses+200+application-json">
 
 200
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_pocket_list+200+application-json">
+<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+responses+200+application-json">
 
-<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+<ExpandableSection>
 
-##### count \{#operation-api_v2_item_pocket_list+200+application-json+count\}
+<ExpandableProperty slot="entry" id="count" typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-</Property>
+<div slot="title">
+
+##### count \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+responses+200+application-json+count\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -1898,11 +2310,19 @@ _Example:_
 123
 ```
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### next \{#operation-api_v2_item_pocket_list+200+application-json+next\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="next" typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+
+<div slot="title">
+
+##### next \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+responses+200+application-json+next\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -1910,11 +2330,19 @@ _Example:_
 http://api.example.org/accounts/?offset=400&limit=100
 ```
 
-<Property typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### previous \{#operation-api_v2_item_pocket_list+200+application-json+previous\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="previous" typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+
+<div slot="title">
+
+##### previous \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+responses+200+application-json+previous\}
+
+</div>
+
+<div slot="content">
 
 _Example:_
 
@@ -1922,35 +2350,49 @@ _Example:_
 http://api.example.org/accounts/?offset=200&limit=100
 ```
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_pocket_list+200+application-json+ItemPocketSummary\">ItemPocketSummary</a>","children":[{"label":"ItemPocketSummary","linkedLabel":"<a href=\"#operation-api_v2_item_pocket_list+200+application-json+ItemPocketSummary\">ItemPocketSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
+</div>
 
-##### results \{#operation-api_v2_item_pocket_list+200+application-json+results\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="results" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+responses+200+application-json+results+ItemPocketSummary\">ItemPocketSummary</a>","children":[{"label":"ItemPocketSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+responses+200+application-json+results+ItemPocketSummary\">ItemPocketSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[]}>
 
-<ExpandableSection>
+<div slot="title">
 
-<SectionTitle slot="title" variant="default">
+##### results \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+responses+200+application-json+results\}
 
-#### ItemPocketSummary \{#operation-api_v2_item_pocket_list+200+application-json+results\}
+</div>
 
-</SectionTitle>
+</ExpandableProperty>
 
-<SectionContent slot="content" variant="default">
+<ExpandableBreakout slot="entry" id="results_ItemPocketSummary" parentId="results">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### name \{#operation-api_v2_item_pocket_list+200+application-json+results+ItemPocketSummary+name\}
+#### ItemPocketSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+responses+200+application-json+results+ItemPocketSummary\}
 
-</Property>
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableBreakout>
 
-##### url \{#operation-api_v2_item_pocket_list+200+application-json+results+ItemPocketSummary+url\}
+<ExpandableProperty slot="entry" id="results_ItemPocketSummary_name" parentId="results_ItemPocketSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</Property>
+<div slot="title">
 
-</SectionContent>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+responses+200+application-json+results+ItemPocketSummary+name\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="results_ItemPocketSummary_url" parentId="results_ItemPocketSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+responses+200+application-json+results+ItemPocketSummary+url\}
+
+</div>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 
@@ -1968,7 +2410,7 @@ Pockets within the players bag used for storing items by category.
 
 <SectionTitle slot="title" variant="top-level">
 
-### Security \{#operation-api_v2_item_pocket_retrieve-security\}
+### Security \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+security\}
 
 </SectionTitle>
 
@@ -1984,15 +2426,13 @@ Coming Soon
 
 <SectionTitle slot="title" variant="top-level">
 
-### Parameters \{#operation-api_v2_item_pocket_retrieve-parameters\}
+### Parameters \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+parameters\}
 
 </SectionTitle>
 
 <SectionContent slot="content" variant="top-level">
 
-<SectionContent slot="content" variant="top-level">
-
-##### id <Pill variant="warning">required</Pill> \{#operation-api_v2_item_pocket_retrieve-parameters\}
+##### id <Pill variant="warning">required</Pill> \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+parameters+id\}
 
 This parameter can be a string or an integer.
 
@@ -2002,119 +2442,151 @@ This parameter can be a string or an integer.
 
 <TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Response \{#operation-api_v2_item_pocket_retrieve+responses\}
+### Responses \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses\}
 
 </SectionTitle>
 
-<SectionTab slot="tab" id="operation-api_v2_item_pocket_retrieve+200+application-json">
+<SectionTab slot="tab" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json">
 
 200
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_pocket_retrieve+200+application-json">
-
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_pocket_retrieve+200+application-json+ItemCategorySummary\">ItemCategorySummary</a>","children":[{"label":"ItemCategorySummary","linkedLabel":"<a href=\"#operation-api_v2_item_pocket_retrieve+200+application-json+ItemCategorySummary\">ItemCategorySummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
-
-##### categories \{#operation-api_v2_item_pocket_retrieve+200+application-json+categories\}
-
-</Property>
+<SectionContent slot="content" variant="top-level" id="operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json">
 
 <ExpandableSection>
 
-<SectionTitle slot="title" variant="default">
+<ExpandableProperty slot="entry" id="categories" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+categories+ItemCategorySummary\">ItemCategorySummary</a>","children":[{"label":"ItemCategorySummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+categories+ItemCategorySummary\">ItemCategorySummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-#### ItemCategorySummary \{#operation-api_v2_item_pocket_retrieve+200+application-json+categories\}
+<div slot="title">
 
-</SectionTitle>
+##### categories \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+categories\}
 
-<SectionContent slot="content" variant="default">
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### name \{#operation-api_v2_item_pocket_retrieve+200+application-json+categories+ItemCategorySummary+name\}
+<ExpandableBreakout slot="entry" id="categories_ItemCategorySummary" parentId="categories">
 
-</Property>
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+#### ItemCategorySummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+categories+ItemCategorySummary\}
 
-##### url \{#operation-api_v2_item_pocket_retrieve+200+application-json+categories+ItemCategorySummary+url\}
+</div>
 
-</Property>
+</ExpandableBreakout>
 
-</SectionContent>
+<ExpandableProperty slot="entry" id="categories_ItemCategorySummary_name" parentId="categories_ItemCategorySummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</ExpandableSection>
+<div slot="title">
 
-<Property typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+categories+ItemCategorySummary+name\}
 
-##### id \{#operation-api_v2_item_pocket_retrieve+200+application-json+id\}
+</div>
 
-</Property>
+</ExpandableProperty>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<ExpandableProperty slot="entry" id="categories_ItemCategorySummary_url" parentId="categories_ItemCategorySummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-##### name \{#operation-api_v2_item_pocket_retrieve+200+application-json+name\}
+<div slot="title">
 
-</Property>
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+categories+ItemCategorySummary+url\}
 
-<Property typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_pocket_retrieve+200+application-json+ItemPocketName\">ItemPocketName</a>","children":[{"label":"ItemPocketName","linkedLabel":"<a href=\"#operation-api_v2_item_pocket_retrieve+200+application-json+ItemPocketName\">ItemPocketName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</div>
 
-##### names \{#operation-api_v2_item_pocket_retrieve+200+application-json+names\}
+</ExpandableProperty>
 
-</Property>
+<ExpandableProperty slot="entry" id="id" typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<ExpandableSection>
+<div slot="title">
 
-<SectionTitle slot="title" variant="default">
+##### id \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+id\}
 
-#### ItemPocketName \{#operation-api_v2_item_pocket_retrieve+200+application-json+names\}
+</div>
 
-</SectionTitle>
+</ExpandableProperty>
 
-<SectionContent slot="content" variant="default">
+<ExpandableProperty slot="entry" id="name" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-<Property typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_pocket_retrieve+200+application-json+names+ItemPocketName+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+<div slot="title">
 
-##### language \{#operation-api_v2_item_pocket_retrieve+200+application-json+names+ItemPocketName+language\}
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+name\}
 
-</Property>
+</div>
 
-<ExpandableSection>
+</ExpandableProperty>
 
-<SectionTitle slot="title" variant="default">
+<ExpandableProperty slot="entry" id="names" typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+names+ItemPocketName\">ItemPocketName</a>","children":[{"label":"ItemPocketName","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+names+ItemPocketName\">ItemPocketName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-#### LanguageSummary \{#operation-api_v2_item_pocket_retrieve+200+application-json+names+ItemPocketName+language\}
+<div slot="title">
 
-</SectionTitle>
+##### names \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+names\}
 
-<SectionContent slot="content" variant="default">
+</div>
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+</ExpandableProperty>
 
-##### name \{#operation-api_v2_item_pocket_retrieve+200+application-json+names+ItemPocketName+language+LanguageSummary+name\}
+<ExpandableBreakout slot="entry" id="names_ItemPocketName" parentId="names">
 
-</Property>
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+#### ItemPocketName \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+names+ItemPocketName\}
 
-##### url \{#operation-api_v2_item_pocket_retrieve+200+application-json+names+ItemPocketName+language+LanguageSummary+url\}
+</div>
 
-</Property>
+</ExpandableBreakout>
 
-</SectionContent>
+<ExpandableProperty slot="entry" id="names_ItemPocketName_language" parentId="names_ItemPocketName" typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+names+ItemPocketName+language+LanguageSummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
 
-</ExpandableSection>
+<div slot="title">
 
-<Property typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+##### language \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+names+ItemPocketName+language\}
 
-##### name \{#operation-api_v2_item_pocket_retrieve+200+application-json+names+ItemPocketName+name\}
+</div>
 
-</Property>
+</ExpandableProperty>
 
-</SectionContent>
+<ExpandableBreakout slot="entry" id="names_ItemPocketName_language_LanguageSummary" parentId="names_ItemPocketName_language">
+
+<div slot="title">
+
+#### LanguageSummary \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+names+ItemPocketName+language+LanguageSummary\}
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty slot="entry" id="names_ItemPocketName_language_LanguageSummary_name" parentId="names_ItemPocketName_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+names+ItemPocketName+language+LanguageSummary+name\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="names_ItemPocketName_language_LanguageSummary_url" parentId="names_ItemPocketName_language_LanguageSummary" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### url \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+names+ItemPocketName+language+LanguageSummary+url\}
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty slot="entry" id="names_ItemPocketName_name" parentId="names_ItemPocketName" typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}} typeAnnotations={[{"title":"required","variant":"warning"}]}>
+
+<div slot="title">
+
+##### name \{#operation-api_v2_item_list+operation-api_v2_item_retrieve+operation-api_v2_item_category_list+operation-api_v2_item_category_retrieve+operation-api_v2_item_attribute_list+operation-api_v2_item_attribute_retrieve+operation-api_v2_item_fling_effect_list+operation-api_v2_item_fling_effect_retrieve+operation-api_v2_item_pocket_list+operation-api_v2_item_pocket_retrieve+responses+200+application-json+names+ItemPocketName+name\}
+
+</div>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 

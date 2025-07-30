@@ -6,6 +6,9 @@ import { InternalError } from "../../util/internalError.ts";
 function normalizeChildren(
   children: ReactNode
 ): ReactElement<Record<string, unknown>>[] {
+  if (children === null || children === undefined) {
+    return [];
+  }
   if (!Array.isArray(children) && typeof children === "object") {
     children = [children];
   }
