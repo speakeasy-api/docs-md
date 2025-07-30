@@ -19,15 +19,15 @@ type PropertyCellProps = PropsWithChildren<{
   isOpen: boolean;
 }>;
 
-const OuterContainer = forwardRef<
+const TitleContainer = forwardRef<
   HTMLDivElement,
   PropsWithChildren<{ multiline: boolean }>
->(function OuterContainer({ children, multiline }, ref) {
+>(function TitleContainer({ children, multiline }, ref) {
   return (
     <div
       ref={ref}
       className={clsx(
-        styles.container,
+        styles.propertyTitleContainer,
         multiline ? styles.containerMultiline : styles.containerSingleLine
       )}
     >
@@ -36,10 +36,10 @@ const OuterContainer = forwardRef<
   );
 });
 
-const TitleContainer = forwardRef<HTMLSpanElement, PropsWithChildren>(
-  function TitleContainer({ children }, ref) {
+const TitlePrefixContainer = forwardRef<HTMLSpanElement, PropsWithChildren>(
+  function TitlePrefixContainer({ children }, ref) {
     return (
-      <span ref={ref} className={styles.titleContainer}>
+      <span ref={ref} className={styles.propertyTitlePrefixContainer}>
         {children}
       </span>
     );
@@ -65,11 +65,11 @@ const TypeContainer = forwardRef<
   );
 });
 
-const OffscreenMeasureContainer = forwardRef<HTMLDivElement>(
-  function OffscreenMeasureContainer(_, ref) {
+const OffscreenMeasureContainer = forwardRef<HTMLDivElement, PropsWithChildren>(
+  function OffscreenMeasureContainer({ children }, ref) {
     return (
       <div className={styles.offscreenMeasureContainer} ref={ref}>
-        A
+        {children}
       </div>
     );
   }
@@ -202,19 +202,30 @@ export function PropertyCell({
   typeAnnotations,
   isOpen,
 }: PropertyCellProps) {
-  // We measure the outer container, the title, and the type container so that
-  // we can determine if and how to split the type display into multiple lines
-  // We alias the bounds so the useMemo isn't affected by non-width bounds
-  // changing (or reference instability)
+  // We measure the title container (which includes available space for the
+  // inline type), the title prefix (which is only the property name and
+  // annotations), and the type container so that we can determine if and how to
+  // split the type display into multiple lines. We alias the bounds so the
+  // useMemo isn't affected by non-width bounds changing (or reference
+  // instability)
   const [titleContainerRef, titleContainerBounds] = useMeasure();
   const titleContainerWidth = titleContainerBounds.width;
+  const [titlePrefixContainerRef, titlePrefixContainerBounds] = useMeasure();
+  const titlePrefixContainerWidth = titlePrefixContainerBounds.width;
   const [typeContainerRef, typeContainerBounds] = useMeasure();
   const typeContainerWidth = typeContainerBounds.width;
-  const [outerContainerRef, outerContainerBounds] = useMeasure();
-  const outerContainerWidth = outerContainerBounds.width;
-  const [offscreenMeasureContainerRef, offscreenMeasureContainerBounds] =
-    useMeasure();
-  const offscreenMeasureContainerWidth = offscreenMeasureContainerBounds.width;
+  const [
+    offscreenTextSizeMeasureContainerRef,
+    offscreenTextSizeMeasureContainerBounds,
+  ] = useMeasure();
+  const [
+    offscreenTypeMeasureContainerRef,
+    offscreenTypeMeasureContainerBounds,
+  ] = useMeasure();
+  const offscreenTextSizeMeasureContainerWidth =
+    offscreenTextSizeMeasureContainerBounds.width;
+  const offscreenTypeMeasureContainerWidth =
+    offscreenTypeMeasureContainerBounds.width;
 
   // In this case, the title child is only the property name, but not the type
   // or annotations. We'll dynamically append the annotations here. We'll also
@@ -225,78 +236,61 @@ export function PropertyCell({
   // type as a prefix to the content children
   const contentChildren = useChildren(children, "content");
 
-  const { multiline, contents } = useMemo(() => {
-    const { display, measure } = computeSingleLineDisplayType(typeInfo);
+  const { display: singleLineDisplay, measure: singleLineMeasure } = useMemo(
+    () => computeSingleLineDisplayType(typeInfo),
+    [typeInfo]
+  );
 
+  const { multiline, contents } = useMemo(() => {
     // If the value is 0, that means we haven't rendered yet and don't know the
     // width. In this case, we just don't render the type at all.
-    if (offscreenMeasureContainerWidth === 0) {
+    if (offscreenTextSizeMeasureContainerWidth === 0) {
       return {
         multiline: false,
         contents: "",
       };
     }
 
-    // Compute the width take by the type on a single line, and whether or not
-    // we need to split the type into a separate line from the title
-    const singleLineWidth =
-      measure.length * offscreenMeasureContainerWidth + titleContainerWidth;
-    const multiline = singleLineWidth > outerContainerWidth;
+    // Determine if we need to show this in two lines, based on the width of the
+    // the measured single line type
+    const multiline =
+      offscreenTypeMeasureContainerWidth >
+      titleContainerWidth - titlePrefixContainerWidth;
 
     // If the measured width is 0, that means we're running on the server in which
     // case we want to render content on a single line. We only need maxCharacters
     // in the multiline case, so we don't need to consider the title width when
     // computing max characters.
     const maxCharacters =
-      typeContainerWidth === 0 || offscreenMeasureContainerWidth === 0
+      typeContainerWidth === 0 || offscreenTextSizeMeasureContainerWidth === 0
         ? Infinity
         : // We subtract 4 here to account for the padding on the left and right
-          Math.floor(typeContainerWidth / offscreenMeasureContainerWidth) - 4;
+          Math.floor(
+            typeContainerWidth / offscreenTextSizeMeasureContainerWidth
+          ) - 4;
 
     // Finally, if we are multiline, compute the multiline type label, otherwise
     // we can reuse the single line version we already computed
     const contents = multiline
       ? computeMultilineTypeLabel(typeInfo, 0, maxCharacters).contents
-      : display;
+      : singleLineDisplay;
 
     return {
       multiline,
       contents,
     };
   }, [
-    typeInfo,
+    offscreenTextSizeMeasureContainerWidth,
+    offscreenTypeMeasureContainerWidth,
     titleContainerWidth,
+    titlePrefixContainerWidth,
     typeContainerWidth,
-    outerContainerWidth,
-    offscreenMeasureContainerWidth,
+    typeInfo,
+    singleLineDisplay,
   ]);
 
   let compositeTitle: JSX.Element;
   let compositeContent: JSX.Element;
-
-  /*
-  return (
-    <OuterContainer ref={outerContainerRef} multiline={multiline}>
-      <TitleContainer ref={titleContainerRef}>
-        {titleChild}
-        {typeAnnotations.map((annotation) => (
-          <Pill key={annotation.title} variant={annotation.variant}>
-            {annotation.title}
-          </Pill>
-        ))}
-      </TitleContainer>
-      <div ref={typeContainerRef}>
-        <TypeContainer
-          multiline={multiline}
-          ref={typeContainerRef}
-          contents={contents}
-        />
-      </div>
-      <OffscreenMeasureContainer ref={offscreenMeasureContainerRef} />
-    </OuterContainer>
-  );
-  */
-
   if (multiline) {
     compositeTitle = (
       <>
@@ -346,17 +340,28 @@ export function PropertyCell({
 
   return (
     <div className={styles.propertyCell}>
-      <OuterContainer ref={outerContainerRef} multiline={multiline}>
-        <TitleContainer ref={titleContainerRef}>
+      <TitleContainer ref={titleContainerRef} multiline={multiline}>
+        <TitlePrefixContainer ref={titlePrefixContainerRef}>
           {compositeTitle}
-        </TitleContainer>
-      </OuterContainer>
+        </TitlePrefixContainer>
+      </TitleContainer>
 
       {isOpen && (
         <div className={styles.propertyCellContent}>{compositeContent}</div>
       )}
 
-      <OffscreenMeasureContainer ref={offscreenMeasureContainerRef} />
+      {/* This offscreen measure is used to determine the width of a character,
+          for use in multiline type computation */}
+      <OffscreenMeasureContainer ref={offscreenTextSizeMeasureContainerRef}>
+        A
+      </OffscreenMeasureContainer>
+
+      {/* This offscreen measure is used to determine the width of the single
+          line type, for use in determining if we need to split the type into
+          multiple lines */}
+      <OffscreenMeasureContainer ref={offscreenTypeMeasureContainerRef}>
+        {singleLineMeasure}
+      </OffscreenMeasureContainer>
     </div>
   );
 }
