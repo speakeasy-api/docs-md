@@ -17,7 +17,7 @@ type ContainerEntry = {
 
 /* ---- Helpers ---- */
 
-export function getDisplayTypeInfo(
+function getDisplayTypeInfo(
   schema: SchemaValue,
   renderer: Renderer
 ): DisplayTypeInfo {
@@ -238,24 +238,18 @@ function renderObjectProperties({
     renderer.enterContext(property.name);
 
     // Render the expandable entry
-    renderer.addExpandableEntry({
-      createTitle: () => {
-        // Render type signature
-        const typeInfo = getDisplayTypeInfo(property.schema, renderer);
-        const annotations: PropertyAnnotations[] = [];
-        if (property.isRequired) {
-          annotations.push({ title: "required", variant: "warning" });
-        }
-        if (property.isDeprecated) {
-          annotations.push({ title: "deprecated", variant: "warning" });
-        }
-
-        renderer.appendProperty({
-          typeInfo,
-          annotations,
-          title: property.name,
-        });
-      },
+    const typeInfo = getDisplayTypeInfo(property.schema, renderer);
+    const annotations: PropertyAnnotations[] = [];
+    if (property.isRequired) {
+      annotations.push({ title: "required", variant: "warning" });
+    }
+    if (property.isDeprecated) {
+      annotations.push({ title: "deprecated", variant: "warning" });
+    }
+    renderer.addExpandableProperty({
+      typeInfo,
+      annotations,
+      title: property.name,
       createContent: () => {
         renderSchemaFrontmatter({
           renderer,
@@ -293,11 +287,13 @@ function renderContainerTypes({
       };
     }
   );
-  const isSidebar =
-    renderer.getContextStack().length >= getSettings().display.maxSchemaNesting;
+
+  // TODO: reenable this once we implement a new sidebar
+  // const isSidebar =
+  //   renderer.getContextStack().length >= getSettings().display.maxSchemaNesting;
+  const isSidebar = false;
   for (const breakout of entries) {
     if (isSidebar) {
-      console.log(renderer.getContextStack());
       renderSidebar({
         renderer,
         sidebar: breakout,
@@ -311,7 +307,7 @@ function renderContainerTypes({
     }
     renderer.enterContext(breakout.label);
 
-    renderer.addExpandableEntry({
+    renderer.addExpandableBreakout({
       createTitle: () => {
         renderer.appendHeading(
           HEADINGS.SUB_SECTION_HEADING_LEVEL,

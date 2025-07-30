@@ -1,20 +1,22 @@
 "use client";
 
 import clsx from "clsx";
-import type { PropsWithChildren } from "react";
+import type { JSX, PropsWithChildren } from "react";
 import { forwardRef, useMemo } from "react";
 import useMeasure from "react-use-measure";
 
 import type {
   DisplayTypeInfo,
   PropertyAnnotations,
-} from "../../renderers/base/base.ts";
-import { Pill } from "../Pill/Pill.tsx";
-import styles from "./styles.module.css";
+} from "../../../renderers/base/base.ts";
+import { Pill } from "../../Pill/Pill.tsx";
+import { useChildren, useUniqueChild } from "../../Section/hooks.ts";
+import styles from "../styles.module.css";
 
-export type PropertyProps = PropsWithChildren<{
+type PropertyCellProps = PropsWithChildren<{
   typeInfo: DisplayTypeInfo;
   typeAnnotations: PropertyAnnotations[];
+  isOpen: boolean;
 }>;
 
 const OuterContainer = forwardRef<
@@ -194,11 +196,12 @@ function computeMultilineTypeLabel(
   }
 }
 
-export function PropertyContents({
+export function PropertyCell({
   children,
   typeInfo,
   typeAnnotations,
-}: PropertyProps) {
+  isOpen,
+}: PropertyCellProps) {
   // We measure the outer container, the title, and the type container so that
   // we can determine if and how to split the type display into multiple lines
   // We alias the bounds so the useMemo isn't affected by non-width bounds
@@ -212,6 +215,15 @@ export function PropertyContents({
   const [offscreenMeasureContainerRef, offscreenMeasureContainerBounds] =
     useMeasure();
   const offscreenMeasureContainerWidth = offscreenMeasureContainerBounds.width;
+
+  // In this case, the title child is only the property name, but not the type
+  // or annotations. We'll dynamically append the annotations here. We'll also
+  // dynamically append the type, or a placeholder, depending on screen size
+  const titleChild = useUniqueChild(children, "title");
+
+  // In cases where we append a placeholder to the title, we'll add the full
+  // type as a prefix to the content children
+  const contentChildren = useChildren(children, "content");
 
   const { multiline, contents } = useMemo(() => {
     const { display, measure } = computeSingleLineDisplayType(typeInfo);
@@ -259,10 +271,14 @@ export function PropertyContents({
     offscreenMeasureContainerWidth,
   ]);
 
+  let compositeTitle: JSX.Element;
+  let compositeContent: JSX.Element;
+
+  /*
   return (
     <OuterContainer ref={outerContainerRef} multiline={multiline}>
       <TitleContainer ref={titleContainerRef}>
-        {children}
+        {titleChild}
         {typeAnnotations.map((annotation) => (
           <Pill key={annotation.title} variant={annotation.variant}>
             {annotation.title}
@@ -278,5 +294,69 @@ export function PropertyContents({
       </div>
       <OffscreenMeasureContainer ref={offscreenMeasureContainerRef} />
     </OuterContainer>
+  );
+  */
+
+  if (multiline) {
+    compositeTitle = (
+      <>
+        {titleChild}
+        {typeAnnotations.map((annotation) => (
+          <Pill key={annotation.title} variant={annotation.variant}>
+            {annotation.title}
+          </Pill>
+        ))}
+        {/* TODO: placeholder */}
+      </>
+    );
+    compositeContent = (
+      <>
+        <div ref={typeContainerRef}>
+          <TypeContainer
+            multiline={multiline}
+            ref={typeContainerRef}
+            contents={contents}
+          />
+        </div>
+        {contentChildren}
+      </>
+    );
+  } else {
+    compositeTitle = (
+      <>
+        <>
+          {titleChild}
+          {typeAnnotations.map((annotation) => (
+            <Pill key={annotation.title} variant={annotation.variant}>
+              {annotation.title}
+            </Pill>
+          ))}
+          <div ref={typeContainerRef}>
+            <TypeContainer
+              multiline={multiline}
+              ref={typeContainerRef}
+              contents={contents}
+            />
+          </div>
+        </>
+      </>
+    );
+    compositeContent = <>{contentChildren}</>;
+  }
+
+  return (
+    <div className={styles.propertyCell}>
+      <OuterContainer ref={outerContainerRef} multiline={multiline}>
+        <TitleContainer ref={titleContainerRef}>
+          {compositeTitle}
+        </TitleContainer>
+      </OuterContainer>
+
+      {isOpen && (
+        <div className={styles.propertyCellContent}>{compositeContent}</div>
+      )}
+
+      <OffscreenMeasureContainer ref={offscreenMeasureContainerRef} />
+    </div>
   );
 }

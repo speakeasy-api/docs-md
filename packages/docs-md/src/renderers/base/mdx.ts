@@ -4,14 +4,14 @@ import type { TryItNowProps } from "../../components/TryItNow/common/types.ts";
 import { HEADINGS } from "../../pages/content/constants.ts";
 import { InternalError } from "../../util/internalError.ts";
 import type {
-  RendererAddExpandableEntryArgs,
+  RendererAddExpandableBreakoutArgs,
+  RendererAddExpandablePropertyArgs,
   RendererAddOperationArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
   RendererConstructorArgs,
   RendererCreateAppendCodeArgs,
   RendererCreatePillArgs,
-  RendererCreatePropertyArgs,
   RendererCreateSectionArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
@@ -160,16 +160,16 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.#expandableIdStack = undefined;
   }
 
-  public override addExpandableEntry(
-    ...[{ createTitle, createContent }]: RendererAddExpandableEntryArgs
+  public override addExpandableBreakout(
+    ...[{ createTitle, createContent }]: RendererAddExpandableBreakoutArgs
   ) {
     const stack = this.getContextStack();
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const id = stack.at(-1)!.id;
     const parentId = stack.at(-2)?.id;
-    this.insertComponentImport("ExpandableEntry");
+    this.insertComponentImport("ExpandableBreakout");
     this.appendText(
-      `<ExpandableEntry slot="entry" id="${id}"${parentId ? ` parentId="${parentId}"` : ""}>`
+      `<ExpandableBreakout slot="entry" id="${id}"${parentId ? ` parentId="${parentId}"` : ""}>`
     );
     this.appendText(`<div slot="title">`);
     createTitle();
@@ -177,7 +177,38 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.appendText(`<div slot="content">`);
     createContent();
     this.appendText("</div>");
-    this.appendText("</ExpandableEntry>");
+    this.appendText("</ExpandableBreakout>");
+  }
+
+  public override addExpandableProperty(
+    ...[
+      { typeInfo, annotations, title, createContent },
+    ]: RendererAddExpandablePropertyArgs
+  ) {
+    const stack = this.getContextStack();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const id = stack.at(-1)!.id;
+    const parentId = stack.at(-2)?.id;
+    this.insertComponentImport("ExpandableProperty");
+    this.appendText(
+      `<ExpandableProperty slot="entry" id="${id}"${parentId ? ` parentId="${parentId}"` : ""} typeInfo={${JSON.stringify(typeInfo)}} typeAnnotations={${JSON.stringify(
+        annotations
+      )}}>`,
+      { escape: "none" }
+    );
+
+    this.appendText(`<div slot="title">`);
+    this.appendHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, {
+      escape: "mdx",
+      id: this.getCurrentId(),
+    });
+    this.appendText("</div>");
+
+    this.appendText(`<div slot="content">`);
+    createContent();
+    this.appendText("</div>");
+
+    this.appendText(`</ExpandableProperty>`);
   }
 
   public override createSectionStart(
@@ -231,19 +262,6 @@ export abstract class MdxRenderer extends MarkdownRenderer {
 
   protected override createTabbedSectionTabEnd() {
     return "</SectionTab>";
-  }
-
-  public override createProperty(
-    ...[{ typeInfo, annotations, title }]: RendererCreatePropertyArgs
-  ) {
-    this.insertComponentImport("Property");
-    return `<Property typeInfo={${JSON.stringify(typeInfo)}} typeAnnotations={${JSON.stringify(
-      annotations
-    )}}>
-
-${title ? this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, { escape: "mdx", id: this.getCurrentId() }) : ""}
-
-</Property>`;
   }
 
   public override createDebugPlaceholderStart() {

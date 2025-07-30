@@ -7,11 +7,7 @@ import { getSettings } from "../../../util/settings.ts";
 import type { DocsCodeSnippets } from "../../codeSnippets/generateCodeSnippets.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
-import {
-  getDisplayTypeInfo,
-  renderBreakouts,
-  renderSchemaFrontmatter,
-} from "./schema.ts";
+import { renderBreakouts, renderSchemaFrontmatter } from "./schema.ts";
 
 type RenderOperationOptions = {
   renderer: Renderer;
@@ -106,16 +102,17 @@ export function renderOperation({
         renderer.addRequestSection({
           isOptional: false,
           createFrontMatter() {
-            if (requestBodySchema.chunkData.value.type !== "object") {
-              renderer.appendProperty({
-                typeInfo: getDisplayTypeInfo(
-                  requestBodySchema.chunkData.value,
-                  renderer
-                ),
-                annotations: [],
-                title: "",
-              });
-            }
+            // TODO: readd
+            // if (requestBodySchema.chunkData.value.type !== "object") {
+            //   renderer.appendProperty({
+            //     typeInfo: getDisplayTypeInfo(
+            //       requestBodySchema.chunkData.value,
+            //       renderer
+            //     ),
+            //     annotations: [],
+            //     title: "",
+            //   });
+            // }
             // TODO: we can have two descriptions here. Need to figure
             // out something to do with them
             if (requestBody.description) {
@@ -166,13 +163,14 @@ export function renderOperation({
                   statusCode,
                   contentType: response.contentType,
                   createFrontMatter() {
-                    if (schema.type !== "object") {
-                      renderer.appendProperty({
-                        typeInfo: getDisplayTypeInfo(schema, renderer),
-                        annotations: [],
-                        title: "",
-                      });
-                    }
+                    // TODO: readd
+                    // if (schema.type !== "object") {
+                    //   renderer.appendProperty({
+                    //     typeInfo: getDisplayTypeInfo(schema, renderer),
+                    //     annotations: [],
+                    //     title: "",
+                    //   });
+                    // }
                     // TODO: we can have two descriptions here. Need to figure
                     // out something to do with them
                     if (response.description) {

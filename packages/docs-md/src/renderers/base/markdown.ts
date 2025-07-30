@@ -10,7 +10,8 @@ import type {
   Context,
   DisplayTypeInfo,
   PropertyAnnotations,
-  RendererAddExpandableEntryArgs,
+  RendererAddExpandableBreakoutArgs,
+  RendererAddExpandablePropertyArgs,
   RendererAddOperationArgs,
   RendererAddParametersSectionArgs,
   RendererAddRequestSectionArgs,
@@ -24,7 +25,6 @@ import type {
   RendererCreateContextArgs,
   RendererCreateListArgs,
   RendererCreatePillArgs,
-  RendererCreatePropertyArgs,
   RendererCreateSectionArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
@@ -307,10 +307,33 @@ export abstract class MarkdownRenderer extends Renderer {
     cb();
   }
 
-  public override addExpandableEntry(
-    ...[{ createTitle, createContent }]: RendererAddExpandableEntryArgs
+  public override addExpandableBreakout(
+    ...[{ createTitle, createContent }]: RendererAddExpandableBreakoutArgs
   ) {
     createTitle();
+    createContent();
+  }
+
+  public override addExpandableProperty(
+    ...[
+      { typeInfo, annotations, title, createContent },
+    ]: RendererAddExpandablePropertyArgs
+  ) {
+    const type = this.createCode(this.#computeSingleLineDisplayType(typeInfo), {
+      variant: "raw",
+      style: "inline",
+      escape: "mdx",
+    });
+    const renderedAnnotations = annotations.map((annotation) => {
+      const start = this.createPillStart(annotation.variant);
+      const end = this.createPillEnd();
+      return `${start}${annotation.title}${end}`;
+    });
+    this.createHeading(
+      HEADINGS.PROPERTY_HEADING_LEVEL,
+      `${title} ${renderedAnnotations.join(" ")} ${type}`,
+      { id: this.getCurrentId(), escape: "mdx" }
+    );
     createContent();
   }
 
@@ -506,30 +529,6 @@ ${text}\n</code>\n</pre>`;
       }
     }
   };
-
-  public override createProperty(
-    ...[{ typeInfo, annotations, title }]: RendererCreatePropertyArgs
-  ) {
-    const type = this.createCode(this.#computeSingleLineDisplayType(typeInfo), {
-      variant: "raw",
-      style: "inline",
-      escape: "mdx",
-    });
-    const renderedAnnotations = annotations.map((annotation) => {
-      const start = this.createPillStart(annotation.variant);
-      const end = this.createPillEnd();
-      return `${start}${annotation.title}${end}`;
-    });
-    return this.createHeading(
-      HEADINGS.PROPERTY_HEADING_LEVEL,
-      `${title} ${renderedAnnotations.join(" ")} ${type}`,
-      { id: this.getCurrentId(), escape: "mdx" }
-    );
-  }
-
-  public override appendProperty(...args: RendererCreatePropertyArgs) {
-    this[rendererLines].push(this.createProperty(...args));
-  }
 
   public override createDebugPlaceholderStart() {
     return "";

@@ -10,11 +10,10 @@ import {
 } from "../state.ts";
 import styles from "../styles.module.css";
 import { ConnectingCell } from "./ConnectingCell.tsx";
-import { ContentCell } from "./ContentCell.tsx";
 import { ExpandableCell } from "./ExpandableCell.tsx";
 import { NonExpandableCell } from "./NonExpandableCell.tsx";
 
-export type ExpandableEntryProps = PropsWithChildren<{
+export type PrefixCellProps = PropsWithChildren<{
   id: string;
 
   // Used by ExpandableSectionContents to build the tree
@@ -22,11 +21,7 @@ export type ExpandableEntryProps = PropsWithChildren<{
   slot: "entry";
 }>;
 
-export function ExpandableEntryContents({
-  id,
-  slot,
-  children,
-}: ExpandableEntryProps) {
+export function PrefixCells({ id, slot, children }: PrefixCellProps) {
   // TODO: these need to use id paths, not just id
   const [isOpen, setIsOpen] = useIsOpen(id);
   const isParentOpen = useAreAllParentsOpen(id);
@@ -53,7 +48,7 @@ export function ExpandableEntryContents({
       ) : (
         <NonExpandableCell />
       )}
-      <ContentCell isOpen={isOpen}>{children}</ContentCell>
+      {children}
     </div>
   );
 }

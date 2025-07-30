@@ -162,13 +162,6 @@ export type RendererAppendSidebarLinkArgs = [
     embedName: string;
   },
 ];
-export type RendererCreatePropertyArgs = [
-  options: {
-    typeInfo: DisplayTypeInfo;
-    annotations: PropertyAnnotations[];
-    title: string;
-  },
-];
 export type RendererAppendTryItNowArgs = [
   options: {
     externalDependencies: Record<string, string>;
@@ -218,9 +211,17 @@ export type RendererAddResponsesArgs = [
 ];
 export type RendererCreateContextArgs = [id: string];
 
-export type RendererAddExpandableEntryArgs = [
+export type RendererAddExpandableBreakoutArgs = [
   options: {
     createTitle: () => void;
+    createContent: () => void;
+  },
+];
+export type RendererAddExpandablePropertyArgs = [
+  options: {
+    typeInfo: DisplayTypeInfo;
+    annotations: PropertyAnnotations[];
+    title: string;
     createContent: () => void;
   },
 ];
@@ -242,7 +243,14 @@ export abstract class Renderer {
   ): void;
   abstract addRequestSection(...args: RendererAddRequestSectionArgs): void;
   abstract addResponsesSection(...args: RendererAddResponsesArgs): void;
-  abstract addExpandableEntry(...args: RendererAddExpandableEntryArgs): void;
+  abstract addExpandableBreakout(
+    ...args: RendererAddExpandableBreakoutArgs
+  ): void;
+
+  // Property's show a property in an object schema, including it's type info
+  abstract addExpandableProperty(
+    ...args: RendererAddExpandablePropertyArgs
+  ): void;
 
   // Low level operations
 
@@ -287,10 +295,6 @@ export abstract class Renderer {
   ): void;
   abstract createSectionContentEnd(): string;
   abstract appendSectionContentEnd(): void;
-
-  // Property's show a property in an object schema, including it's type info
-  abstract createProperty(...args: RendererCreatePropertyArgs): string;
-  abstract appendProperty(...args: RendererCreatePropertyArgs): void;
 
   abstract createDebugPlaceholderStart(): string;
   abstract appendDebugPlaceholderStart(): void;

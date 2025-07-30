@@ -5,14 +5,14 @@ import { type PropsWithChildren, useMemo, useState } from "react";
 import { useChildren } from "../../Section/hooks.ts";
 import { TreeDataContext } from "../state.ts";
 import type { TreeData, TreeNode } from "../types.ts";
-import type { ExpandableEntryProps } from "./ExpandableEntryContents.tsx";
+import type { PrefixCellProps } from "./PrefixCells.tsx";
 
 export type ExpandableSectionProps = PropsWithChildren;
 
 export function ExpandableSectionContents({
   children,
 }: ExpandableSectionProps) {
-  const entries = useChildren<ExpandableEntryProps>(children, "entry");
+  const entries = useChildren<PrefixCellProps>(children, "entry");
 
   const [openNodes, setOpenNodes] = useState(new Set<string>());
 
