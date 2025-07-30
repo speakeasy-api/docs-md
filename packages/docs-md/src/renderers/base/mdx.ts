@@ -1,7 +1,7 @@
 import { dirname, relative } from "node:path";
 
-import type { TryItNowProps } from "../../components/TryItNow/common/types.ts";
 import { HEADINGS } from "../../pages/content/constants.ts";
+import type { TryItNowProps } from "../../runtime/components/TryItNow/common/types.ts";
 import { InternalError } from "../../util/internalError.ts";
 import type {
   RendererAddExpandableBreakoutArgs,

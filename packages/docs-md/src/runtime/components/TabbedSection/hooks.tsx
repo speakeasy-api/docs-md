@@ -4,7 +4,7 @@ import type { FC, PropsWithChildren } from "react";
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 
-import { InternalError } from "../../util/internalError.ts";
+import { InternalError } from "../../../util/internalError.ts";
 import { useChildren, useUniqueChild } from "../Section/hooks.ts";
 import type { SectionContentProps } from "../SectionContent/SectionContent.tsx";
 import type { SectionTabProps } from "../SectionTab/SectionTab.tsx";

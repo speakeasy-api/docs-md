@@ -1,32 +1,31 @@
 import clsx from "clsx";
 import type { PropsWithChildren } from "react";
 
-import type { SectionVariant } from "../../renderers/base/base.ts";
+import type { SectionVariant } from "../../../renderers/base/base.ts";
 import styles from "./styles.module.css";
 
-export type SectionTitleProps = PropsWithChildren<{
+export type SectionContentProps = PropsWithChildren<{
   id?: string;
+  slot: "content";
   variant: SectionVariant;
-  slot: "title";
 }>;
 
-export function SectionTitle({
-  children,
+export function SectionContent({
   slot,
   variant,
+  children,
   id,
-}: SectionTitleProps) {
+}: SectionContentProps) {
   return (
     <div
-      id={id}
       className={clsx(
-        styles.title,
+        styles.content,
         variant === "breakout" && styles.breakout,
         variant === "top-level" && styles.topLevel
       )}
+      id={id}
       slot={slot}
     >
-      {variant === "breakout" && <div className={styles.breakoutLine} />}
       {children}
     </div>
   );

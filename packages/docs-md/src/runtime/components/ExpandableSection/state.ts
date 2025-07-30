@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-import { InternalError } from "../../util/internalError.ts";
+import { InternalError } from "../../../util/internalError.ts";
 import type { Connection, TreeData } from "./types.ts";
 
 export const TreeDataContext = createContext<{
