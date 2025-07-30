@@ -135,8 +135,11 @@ function hasSchemaFrontmatter(schema: SchemaValue) {
   const description = "description" in schema ? schema.description : null;
   const examples = "examples" in schema ? schema.examples : [];
   const defaultValue = "defaultValue" in schema ? schema.defaultValue : null;
-  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-  return description || examples.length > 0 || defaultValue;
+  const { showDebugPlaceholders } = getSettings().display;
+  return (
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+    description || examples.length > 0 || defaultValue || showDebugPlaceholders
+  );
 }
 
 /* ---- Intermediary Rendering ---- */
