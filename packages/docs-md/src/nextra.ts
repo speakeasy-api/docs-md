@@ -5,6 +5,7 @@ export type { Settings } from "./types/settings.ts";
 export { TryItNow } from "./components/TryItNow/nextra.tsx";
 export { SideBar, SideBarTrigger } from "./components/SideBar/nextra.tsx";
 export { ExpandableSection } from "./components/ExpandableSection/ExpandableSection.tsx";
+export { ExpandableEntry } from "./components/ExpandableSection/ExpandableEntry.tsx";
 export { TabbedSection } from "./components/TabbedSection/TabbedSection.tsx";
 export { Section } from "./components/Section/Section.tsx";
 export { SectionContent } from "./components/SectionContent/SectionContent.tsx";

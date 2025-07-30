@@ -168,15 +168,13 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     const id = stack.at(-1)!.id;
     const parentId = stack.at(-2)?.id;
     this.insertComponentImport("ExpandableEntry");
-    this.appendText("<ExpandableEntry>");
     this.appendText(
-      `<div slot="title" id="${id}"${parentId ? ` parentId="${parentId}"` : ""}>`
+      `<ExpandableEntry slot="entry" id="${id}"${parentId ? ` parentId="${parentId}"` : ""}>`
     );
+    this.appendText(`<div slot="title">`);
     createTitle();
     this.appendText("</div>");
-    this.appendText(
-      `<div slot="content" id="${id}"${parentId ? ` parentId="${parentId}"` : ""}>`
-    );
+    this.appendText(`<div slot="content">`);
     createContent();
     this.appendText("</div>");
     this.appendText("</ExpandableEntry>");
