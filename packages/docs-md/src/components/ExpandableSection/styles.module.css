@@ -6,12 +6,17 @@
 
 .connectingCell {
   min-width: var(--speakeasy-expandable-cell-size);
-  min-height: var(--speakeasy-expandable-cell-size);
+  min-height: calc(var(--speakeasy-expandable-cell-height-multiplier) * var(--speakeasy-expandable-cell-size));
+}
+
+.expandableCellContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(var(--speakeasy-expandable-cell-height-multiplier) * var(--speakeasy-expandable-cell-size));
 }
 
 .expandableButtonContainer {
   min-width: calc(2 * var(--speakeasy-expandable-cell-size));
-  min-height: calc(2 * var(--speakeasy-expandable-cell-size));
   padding: 3px;
 }
 
@@ -28,11 +33,29 @@
   background-color: transparent;
   width: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
   height: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
+  margin-top: calc(var(--speakeasy-expandable-cell-height-multiplier) / 3 * var(--speakeasy-expandable-cell-size));
+}
+
+.expandableConnectionContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.expandableConnection {
+  min-width: var(--speakeasy-expandable-cell-size);
 }
 
 .nonExpandableCell {
-  width: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
-  height: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nonExpandableCellContent {
+  min-width: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
+  min-height: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
   margin: 3px;
   border: var(--speakeasy-border-width) solid var(--speakeasy-expandable-line-color);
   border-radius: var(--speakeasy-expandable-button-radius);
@@ -61,8 +84,9 @@
 .breakoutCell {
   display: flex;
   flex-direction: column;
-  padding-left: 1rem;
+  padding-left: 0.5rem;
   flex-grow: 1;
+  margin-top: calc(0.5 * var(--speakeasy-expandable-cell-size));
 }
 
 .breakoutCellTitle {
@@ -76,7 +100,8 @@
 
 .propertyCell {
   width: 100%;
-  padding-left: 1rem;
+  padding-left: 0.5rem;
+  margin-top: calc(0.5 * var(--speakeasy-expandable-cell-size));
 }
 
 .propertyCellContent {

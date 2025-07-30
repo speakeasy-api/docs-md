@@ -44,7 +44,12 @@ export function PrefixCells({ id, slot, children }: PrefixCellProps) {
         />
       ))}
       {isExpandable ? (
-        <ExpandableCell isOpen={isOpen} setIsOpen={setIsOpen} />
+        <ExpandableCell
+          // TODO: add support for higlighted connections
+          bottomConnection={hasChildren ? "connected" : "none"}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        />
       ) : (
         <NonExpandableCell />
       )}
