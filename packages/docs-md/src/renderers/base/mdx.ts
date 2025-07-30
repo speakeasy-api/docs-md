@@ -2,10 +2,13 @@ import { dirname, relative } from "node:path";
 
 import type { TryItNowProps } from "../../components/TryItNow/common/types.ts";
 import { HEADINGS } from "../../pages/content/constants.ts";
+import { InternalError } from "../../util/internalError.ts";
 import type {
+  RendererAddExpandableEntryArgs,
   RendererAddOperationArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
+  RendererConstructorArgs,
   RendererCreateAppendCodeArgs,
   RendererCreatePillArgs,
   RendererCreatePropertyArgs,
@@ -29,18 +32,16 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   >();
   #includeSidebar = false;
   #currentPagePath: string;
-  #site: MdxSite;
   #codeThemes: TryItNowProps["themes"];
   #idStack: string[] = [];
+  #expandableIdStack: string[] | undefined;
 
   constructor(
-    { currentPagePath }: { currentPagePath: string },
-    site: MdxSite,
+    args: RendererConstructorArgs,
     codeThemes?: TryItNowProps["themes"]
   ) {
-    super();
-    this.#currentPagePath = currentPagePath;
-    this.#site = site;
+    super(args);
+    this.#currentPagePath = args.currentPagePath;
     this.#codeThemes = codeThemes;
   }
 
@@ -70,8 +71,6 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     data += parentData;
     return data;
   }
-
-  public abstract scope(): MdxRenderer;
 
   public override createCode(...[text, options]: RendererCreateAppendCodeArgs) {
     if (options?.variant === "raw") {
@@ -141,51 +140,56 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return "</Pill>";
   }
 
-  public override addOperationSection(...args: RendererAddOperationArgs): void {
+  public override addOperationSection(...args: RendererAddOperationArgs) {
     this.#idStack.push(args[0].operationId);
     super.addOperationSection(...args);
     this.#idStack.pop();
   }
 
-  // public override addTopLevelSection(
-  //   ...[{ title, annotations = [] }, cb]: RendererAddTopLevelSectionArgs
-  // ): void {
-  //   for (const annotation of annotations) {
-  //     title += ` ${this.createPillStart(annotation.variant)}${annotation.title}${this.createPillEnd()}`;
-  //   }
-  //   this.appendHeading(HEADINGS.SECTION_TITLE_HEADING_LEVEL, title);
-  //   const contentRenderer = this.scope();
-  //   cb(contentRenderer);
-  //   this[rendererLines].push(contentRenderer.render());
-  // }
+  protected override handleCreateBreakouts(cb: () => void) {
+    if (this.#expandableIdStack) {
+      throw new InternalError(
+        "handleCreateBreakouts called while inside an expandable section"
+      );
+    }
+    this.#expandableIdStack = [...this.#idStack];
+    this.insertComponentImport("ExpandableSection");
+    this.appendText("<ExpandableSection>");
+    cb();
+    this.appendText("</ExpandableSection>");
+    this.#expandableIdStack = undefined;
+  }
 
-  // public override addResponsesSection(
-  //   ...[{ title, annotations = [] }, cb]: RendererAddResponsesArgs
-  // ): void {
-  //   for (const annotation of annotations) {
-  //     title += ` ${this.createPillStart(annotation.variant)}${annotation.title}${this.createPillEnd()}`;
-  //   }
-  //   this.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, title);
-  //   const titleRenderer = this.scope();
-  //   const contentRenderer = this.scope();
-  //   cb((cb) => {
-  //     cb({
-  //       titleRenderer,
-  //       contentRenderer,
-  //     });
-  //   });
-  //   this[rendererLines].push(titleRenderer.render());
-  //   this[rendererLines].push(contentRenderer.render());
-  // }
+  public override addExpandableEntry(
+    ...[{ createTitle, createContent }]: RendererAddExpandableEntryArgs
+  ) {
+    const stack = this.getContextStack();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const id = stack.at(-1)!.id;
+    const parentId = stack.at(-2)?.id;
+    this.insertComponentImport("ExpandableEntry");
+    this.appendText("<ExpandableEntry>");
+    this.appendText(
+      `<div slot="title" id="${id}"${parentId ? ` parentId="${parentId}"` : ""}>`
+    );
+    createTitle();
+    this.appendText("</div>");
+    this.appendText(
+      `<div slot="content" id="${id}"${parentId ? ` parentId="${parentId}"` : ""}>`
+    );
+    createContent();
+    this.appendText("</div>");
+    this.appendText("</ExpandableEntry>");
+  }
 
   public override createSectionStart(
     ...[{ variant = "default" } = {}]: RendererCreateSectionArgs
-  ): string {
+  ) {
     this.insertComponentImport("Section");
     return `<Section variant="${variant}">`;
   }
 
-  public override createSectionEnd(): string {
+  public override createSectionEnd() {
     return "</Section>";
   }
 
@@ -202,63 +206,54 @@ export abstract class MdxRenderer extends MarkdownRenderer {
 
   public override createSectionContentStart(
     ...[{ variant = "default", id } = {}]: RendererCreateSectionContentArgs
-  ): string {
+  ) {
     this.insertComponentImport("SectionContent");
     return `<SectionContent slot="content" variant="${variant}"${id ? ` id="${id}"` : ""}>`;
   }
 
-  public override createSectionContentEnd(): string {
+  public override createSectionContentEnd() {
     return `</SectionContent>`;
   }
 
-  public override createExpandableSectionStart() {
-    this.insertComponentImport("ExpandableSection");
-    return `<ExpandableSection>`;
-  }
-
-  public override createExpandableSectionEnd() {
-    return "</ExpandableSection>";
-  }
-
-  public override createTabbedSectionStart() {
+  protected override createTabbedSectionStart() {
     this.insertComponentImport("TabbedSection");
     return `<TabbedSection>`;
   }
 
-  public override createTabbedSectionEnd() {
+  protected override createTabbedSectionEnd() {
     return "</TabbedSection>";
   }
 
-  public override createTabbedSectionTabStart(
+  protected override createTabbedSectionTabStart(
     ...[id]: RendererCreateTabbedSectionTabArgs
   ) {
     this.insertComponentImport("SectionTab");
     return `<SectionTab slot="tab" id="${id}">`;
   }
 
-  public override createTabbedSectionTabEnd() {
+  protected override createTabbedSectionTabEnd() {
     return "</SectionTab>";
   }
 
   public override createProperty(
-    ...[{ typeInfo, id, annotations, title }]: RendererCreatePropertyArgs
+    ...[{ typeInfo, annotations, title }]: RendererCreatePropertyArgs
   ) {
     this.insertComponentImport("Property");
     return `<Property typeInfo={${JSON.stringify(typeInfo)}} typeAnnotations={${JSON.stringify(
       annotations
     )}}>
 
-${title ? this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, { escape: "mdx", id }) : ""}
+${title ? this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, { escape: "mdx", id: this.getCurrentId() }) : ""}
 
 </Property>`;
   }
 
-  public override createDebugPlaceholderStart(): string {
+  public override createDebugPlaceholderStart() {
     this.insertComponentImport("DebugPlaceholder");
     return `<DebugPlaceholder>`;
   }
 
-  public override createDebugPlaceholderEnd(): string {
+  public override createDebugPlaceholderEnd() {
     return "</DebugPlaceholder>";
   }
 
@@ -291,10 +286,10 @@ ${title ? this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, { escape: "
   </p>`
     );
 
-    if (this.#site.hasPage(embedPath)) {
+    if (this.getSite().hasPage(embedPath)) {
       return;
     }
-    return this.#site.createPage(embedPath);
+    return this.getSite().createPage(embedPath);
   }
 
   public override appendTryItNow(

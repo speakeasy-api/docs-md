@@ -72,27 +72,12 @@ export class DocusaurusSite extends MdxSite {
   }
 
   protected override getRenderer(...[options]: SiteGetRendererArgs) {
-    return new DocusaurusRenderer(options, this);
+    return new DocusaurusRenderer(options);
   }
 }
 
-type ConstructorArgs = [
-  options: { currentPagePath: string },
-  site: DocusaurusSite,
-];
-
 class DocusaurusRenderer extends MdxRenderer {
   #frontMatter: string | undefined;
-  #constructorArgs: ConstructorArgs;
-
-  constructor(...args: ConstructorArgs) {
-    super(...args);
-    this.#constructorArgs = args;
-  }
-
-  public override scope() {
-    return new DocusaurusRenderer(...this.#constructorArgs);
-  }
 
   public override render() {
     const parentData = super.render();

@@ -1,7 +1,7 @@
 import { snakeCase } from "change-case";
 
-import type { Renderer, Site } from "../../../renderers/base/base.ts";
-import type { Chunk, OperationChunk } from "../../../types/chunk.ts";
+import type { Renderer } from "../../../renderers/base/base.ts";
+import type { OperationChunk } from "../../../types/chunk.ts";
 import { assertNever } from "../../../util/assertNever.ts";
 import { getSettings } from "../../../util/settings.ts";
 import type { DocsCodeSnippets } from "../../codeSnippets/generateCodeSnippets.ts";
@@ -9,26 +9,19 @@ import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
 import {
   getDisplayTypeInfo,
-  renderSchemaDetails,
+  renderBreakouts,
   renderSchemaFrontmatter,
 } from "./schema.ts";
 
 type RenderOperationOptions = {
   renderer: Renderer;
-  site: Site;
   chunk: OperationChunk;
-  docsData: Map<string, Chunk>;
   docsCodeSnippets: DocsCodeSnippets;
 };
 
-// TODO: should make heading ID separator configurable, since different
-// implementations seem to strip out different characters
-
 export function renderOperation({
   renderer,
-  site,
   chunk,
-  docsData,
   docsCodeSnippets,
 }: RenderOperationOptions) {
   renderer.addOperationSection(
@@ -39,43 +32,39 @@ export function renderOperation({
       summary: chunk.chunkData.summary,
       description: chunk.chunkData.description,
     },
-    (operationRenderer) => {
+    () => {
       // TODO: Remove explicit references to id and handle in renderers
       const id = `operation-${snakeCase(chunk.chunkData.operationId)}`;
 
       // TODO: Security is being rewritten anyways, so I'm not refactoring it as
       // part of the schema refactor
       if (chunk.chunkData.security) {
-        operationRenderer.addSecuritySection((securityRenderer) => {
+        renderer.addSecuritySection(() => {
           // TODO: Security is being rewritten at the generator level, so I'm
           // not refactoring this code as part of the schema refactor
-          securityRenderer.appendText("Coming Soon");
+          renderer.appendText("Coming Soon");
         });
       }
 
       if (chunk.chunkData.parameters.length > 0) {
-        operationRenderer.addParametersSection((createParameter) => {
+        renderer.addParametersSection((createParameter) => {
           for (const parameter of chunk.chunkData.parameters) {
             createParameter(
-              { name: parameter.name, isRequired: parameter.required },
-              ({ parameterRenderer }) => {
+              {
+                name: parameter.name,
+                isRequired: parameter.required,
+              },
+              () => {
                 const parameterChunk = getSchemaFromId(
                   parameter.fieldChunkId,
-                  docsData
+                  renderer.getDocsData()
                 );
-                const parameterContext = {
-                  site,
-                  renderer: parameterRenderer,
-                  schemaStack: [],
-                  idPrefix: id,
-                  data: docsData,
-                };
                 renderSchemaFrontmatter({
-                  context: parameterContext,
+                  renderer,
                   schema: parameterChunk.chunkData.value,
                 });
-                renderSchemaDetails({
-                  context: parameterContext,
+                renderBreakouts({
+                  renderer,
                   schema: parameterChunk.chunkData.value,
                 });
               }
@@ -88,60 +77,62 @@ export function renderOperation({
       const { tryItNow } = getSettings();
       const usageSnippet = docsCodeSnippets[chunk.id];
       if (usageSnippet && tryItNow) {
-        operationRenderer.appendSectionStart({ variant: "top-level" });
-        operationRenderer.appendSectionTitleStart({ variant: "top-level" });
-        operationRenderer.appendHeading(
-          HEADINGS.SECTION_HEADING_LEVEL,
-          "Try it Now",
-          {
-            id: id + "+try-it-now",
-          }
-        );
-        operationRenderer.appendSectionTitleEnd();
-        operationRenderer.appendSectionContentStart({ variant: "top-level" });
+        renderer.appendSectionStart({ variant: "top-level" });
+        renderer.appendSectionTitleStart({ variant: "top-level" });
+        renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Try it Now", {
+          id: id + "+try-it-now",
+        });
+        renderer.appendSectionTitleEnd();
+        renderer.appendSectionContentStart({ variant: "top-level" });
         // TODO: Zod is actually hard coded for now since its always a dependency
         // in our SDKs. Ideally this will come from the SDK package.
-        operationRenderer.appendTryItNow({
+        renderer.appendTryItNow({
           externalDependencies: {
             zod: "^3.25.64",
             [tryItNow.npmPackageName]: "latest",
           },
           defaultValue: usageSnippet.code,
         });
-        operationRenderer.appendSectionContentEnd();
-        operationRenderer.appendSectionEnd();
+        renderer.appendSectionContentEnd();
+        renderer.appendSectionEnd();
       }
 
       if (chunk.chunkData.requestBody) {
         const { requestBody } = chunk.chunkData;
-        operationRenderer.addRequestSection(
-          { isOptional: false, site, data: docsData },
-          (context) => {
-            const requestBodySchema = getSchemaFromId(
-              requestBody.contentChunkId,
-              docsData
-            );
+        const requestBodySchema = getSchemaFromId(
+          requestBody.contentChunkId,
+          renderer.getDocsData()
+        );
+        renderer.addRequestSection({
+          isOptional: false,
+          createFrontMatter() {
             if (requestBodySchema.chunkData.value.type !== "object") {
-              context.renderer.appendProperty({
+              renderer.appendProperty({
                 typeInfo: getDisplayTypeInfo(
                   requestBodySchema.chunkData.value,
-                  context
+                  renderer
                 ),
-                id: context.idPrefix,
                 annotations: [],
                 title: "",
               });
             }
+            // TODO: we can have two descriptions here. Need to figure
+            // out something to do with them
+            if (requestBody.description) {
+              renderer.appendText(requestBody.description);
+            }
             renderSchemaFrontmatter({
-              context,
+              renderer,
               schema: requestBodySchema.chunkData.value,
             });
-            renderSchemaDetails({
-              context,
+          },
+          createBreakouts() {
+            renderBreakouts({
+              renderer,
               schema: requestBodySchema.chunkData.value,
             });
-          }
-        );
+          },
+        });
       }
 
       if (chunk.chunkData.responses) {
@@ -164,39 +155,41 @@ export function renderOperation({
           0
         );
         if (numResponses > 0) {
-          operationRenderer.addResponsesSection((createTab) => {
+          renderer.addResponsesSection((createTab) => {
             for (const [statusCode, responses] of filteredResponseList) {
               for (const response of responses) {
-                createTab(
-                  {
-                    statusCode,
-                    contentType: response.contentType,
-                    site,
-                    data: docsData,
-                  },
-                  (context) => {
-                    const schema = getSchemaFromId(
-                      response.contentChunkId,
-                      docsData
-                    ).chunkData.value;
+                const schema = getSchemaFromId(
+                  response.contentChunkId,
+                  renderer.getDocsData()
+                ).chunkData.value;
+                createTab({
+                  statusCode,
+                  contentType: response.contentType,
+                  createFrontMatter() {
                     if (schema.type !== "object") {
-                      context.renderer.appendProperty({
-                        typeInfo: getDisplayTypeInfo(schema, context),
-                        id: context.idPrefix,
+                      renderer.appendProperty({
+                        typeInfo: getDisplayTypeInfo(schema, renderer),
                         annotations: [],
                         title: "",
                       });
                     }
+                    // TODO: we can have two descriptions here. Need to figure
+                    // out something to do with them
+                    if (response.description) {
+                      renderer.appendText(response.description);
+                    }
                     renderSchemaFrontmatter({
-                      context,
+                      renderer,
                       schema,
                     });
-                    renderSchemaDetails({
-                      context,
+                  },
+                  createBreakouts() {
+                    renderBreakouts({
+                      renderer,
                       schema,
                     });
-                  }
-                );
+                  },
+                });
               }
             }
           });

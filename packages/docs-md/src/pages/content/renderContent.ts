@@ -8,10 +8,7 @@ import { getSettings } from "../../util/settings.ts";
 import type { DocsCodeSnippets } from "../codeSnippets/generateCodeSnippets.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
-import {
-  renderSchemaDetails,
-  renderSchemaFrontmatter,
-} from "./chunks/schema.ts";
+import { renderBreakouts, renderSchemaFrontmatter } from "./chunks/schema.ts";
 import { renderTag } from "./chunks/tag.ts";
 import { HEADINGS } from "./constants.ts";
 import { getOperationFromId } from "./util.ts";
@@ -124,7 +121,6 @@ function getPageMap(site: Site, data: Data) {
 function renderPages(
   site: Site,
   pageMap: PageMap,
-  data: Map<string, Chunk>,
   docsCodeSnippets: DocsCodeSnippets
 ) {
   for (const [currentPagePath, pageMapEntry] of pageMap) {
@@ -165,19 +161,12 @@ function renderPages(
               id,
             }
           );
-          const schemaContext = {
-            site,
-            renderer,
-            schemaStack: [],
-            idPrefix: id,
-            data,
-          };
           renderSchemaFrontmatter({
-            context: schemaContext,
+            renderer,
             schema: chunk.chunkData.value,
           });
-          renderSchemaDetails({
-            context: schemaContext,
+          renderBreakouts({
+            renderer,
             schema: chunk.chunkData.value,
           });
           break;
@@ -185,9 +174,7 @@ function renderPages(
         case "operation": {
           renderOperation({
             renderer,
-            site,
             chunk,
-            docsData: data,
             docsCodeSnippets,
           });
           break;
@@ -214,7 +201,7 @@ export function renderContent(
   docsCodeSnippets: DocsCodeSnippets
 ) {
   const pageMap = getPageMap(site, data);
-  renderPages(site, pageMap, data, docsCodeSnippets);
+  renderPages(site, pageMap, docsCodeSnippets);
 
   for (const codeSnippet of Object.values(docsCodeSnippets)) {
     const renderer = site.createPage(

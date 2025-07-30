@@ -1,7 +1,7 @@
 import type {
   DisplayTypeInfo,
   PropertyAnnotations,
-  SchemaRenderContext,
+  Renderer,
 } from "../../../renderers/base/base.ts";
 import type { ObjectValue, SchemaValue } from "../../../types/chunk.ts";
 import { assertNever } from "../../../util/assertNever.ts";
@@ -15,30 +15,23 @@ type ContainerEntry = {
   schema: ObjectValue;
 };
 
-type Property = {
-  name: string;
-  isRequired: boolean;
-  isDeprecated: boolean;
-  schema: SchemaValue;
-};
-
 /* ---- Helpers ---- */
 
 export function getDisplayTypeInfo(
   schema: SchemaValue,
-  context: SchemaRenderContext
+  renderer: Renderer
 ): DisplayTypeInfo {
   switch (schema.type) {
     case "object": {
       return {
         label: schema.name,
-        linkedLabel: `<a href="#${context.idPrefix}+${schema.name}">${schema.name}</a>`,
+        linkedLabel: `<a href="#${renderer.getCurrentId()}+${schema.name}">${schema.name}</a>`,
         children: [],
         breakoutSubTypes: new Map([[schema.name, schema]]),
       };
     }
     case "array": {
-      const typeInfo = getDisplayTypeInfo(schema.items, context);
+      const typeInfo = getDisplayTypeInfo(schema.items, renderer);
       return {
         ...typeInfo,
         label: "array",
@@ -46,7 +39,7 @@ export function getDisplayTypeInfo(
       };
     }
     case "map": {
-      const typeInfo = getDisplayTypeInfo(schema.items, context);
+      const typeInfo = getDisplayTypeInfo(schema.items, renderer);
       return {
         ...typeInfo,
         label: "map",
@@ -54,7 +47,7 @@ export function getDisplayTypeInfo(
       };
     }
     case "set": {
-      const typeInfo = getDisplayTypeInfo(schema.items, context);
+      const typeInfo = getDisplayTypeInfo(schema.items, renderer);
       return {
         ...typeInfo,
         label: "set",
@@ -63,7 +56,7 @@ export function getDisplayTypeInfo(
     }
     case "union": {
       const displayTypes = schema.values.map((v) =>
-        getDisplayTypeInfo(v, context)
+        getDisplayTypeInfo(v, renderer)
       );
       const hasBreakoutSubType = displayTypes.some(
         (d) => d.breakoutSubTypes.size > 0
@@ -90,8 +83,11 @@ export function getDisplayTypeInfo(
       };
     }
     case "chunk": {
-      const schemaChunk = getSchemaFromId(schema.chunkId, context.data);
-      return getDisplayTypeInfo(schemaChunk.chunkData.value, context);
+      const schemaChunk = getSchemaFromId(
+        schema.chunkId,
+        renderer.getDocsData()
+      );
+      return getDisplayTypeInfo(schemaChunk.chunkData.value, renderer);
     }
     case "enum": {
       return {
@@ -136,95 +132,54 @@ export function getDisplayTypeInfo(
 }
 
 function renderFrontmatter({
-  context,
+  renderer,
   description,
   examples,
   defaultValue,
 }: {
-  context: SchemaRenderContext;
+  renderer: Renderer;
   description: string | null;
   examples: string[];
   defaultValue: string | null;
 }) {
   const { showDebugPlaceholders } = getSettings().display;
   if (description) {
-    context.renderer.appendText(description);
+    renderer.appendText(description);
   } else if (showDebugPlaceholders) {
-    context.renderer.appendDebugPlaceholderStart();
-    context.renderer.appendText("No description provided");
-    context.renderer.appendDebugPlaceholderEnd();
+    renderer.appendDebugPlaceholderStart();
+    renderer.appendText("No description provided");
+    renderer.appendDebugPlaceholderEnd();
   }
   if (examples.length > 0) {
-    context.renderer.appendText(
-      `_${examples.length > 1 ? "Examples" : "Example"}:_`
-    );
+    renderer.appendText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
     for (const example of examples) {
-      context.renderer.appendCode(example);
+      renderer.appendCode(example);
     }
   } else if (showDebugPlaceholders) {
-    context.renderer.appendDebugPlaceholderStart();
-    context.renderer.appendText("No examples provided");
-    context.renderer.appendDebugPlaceholderEnd();
+    renderer.appendDebugPlaceholderStart();
+    renderer.appendText("No examples provided");
+    renderer.appendDebugPlaceholderEnd();
   }
 
   if (defaultValue) {
-    context.renderer.appendText(`_Default Value:_ \`${defaultValue}\``);
+    renderer.appendText(`_Default Value:_ \`${defaultValue}\``);
   } else if (showDebugPlaceholders) {
-    context.renderer.appendDebugPlaceholderStart();
-    context.renderer.appendText("No default value provided");
-    context.renderer.appendDebugPlaceholderEnd();
+    renderer.appendDebugPlaceholderStart();
+    renderer.appendText("No default value provided");
+    renderer.appendDebugPlaceholderEnd();
   }
 }
 
 /* ---- Intermediary Rendering ---- */
 
-function renderBreakout({
-  context,
-  breakout,
-}: {
-  context: SchemaRenderContext;
-  breakout: ContainerEntry;
-}) {
-  context.renderer.appendExpandableSectionStart();
-  context.renderer.appendSectionTitleStart();
-  context.renderer.appendHeading(
-    HEADINGS.SUB_SECTION_HEADING_LEVEL,
-    breakout.label,
-    {
-      id: context.idPrefix,
-    }
-  );
-  context.renderer.appendSectionTitleEnd();
-  context.renderer.appendSectionContentStart();
-
-  const breakoutContext = {
-    ...context,
-    schemaStack: [...context.schemaStack, breakout.label],
-    idPrefix: `${context.idPrefix}+${breakout.label}`,
-  };
-
-  renderSchemaFrontmatter({
-    context: breakoutContext,
-    schema: breakout.schema,
-  });
-
-  renderObject({
-    context: breakoutContext,
-    schema: breakout.schema,
-  });
-
-  context.renderer.appendSectionContentEnd();
-  context.renderer.appendExpandableSectionEnd();
-}
-
 function renderSidebar({
-  context,
+  renderer,
   sidebar,
 }: {
-  context: SchemaRenderContext;
+  renderer: Renderer;
   sidebar: ContainerEntry;
 }) {
-  const sidebarLinkRenderer = context.renderer.appendSidebarLink({
+  const sidebarLinkRenderer = renderer.appendSidebarLink({
     title: sidebar.label,
     embedName: sidebar.label,
   });
@@ -234,13 +189,8 @@ function renderSidebar({
     return;
   }
 
-  const sidebarContext = {
-    ...context,
-    renderer: sidebarLinkRenderer,
-    // Reset the schema stack since we're in a sidebar
-    schemaStack: [],
-    idPrefix: `${context.idPrefix}+${sidebar.label}`,
-  };
+  // TODO: this needs a fresh context stack
+  renderer.enterContext(sidebar.label);
 
   sidebarLinkRenderer.appendHeading(
     HEADINGS.SECTION_HEADING_LEVEL,
@@ -248,66 +198,25 @@ function renderSidebar({
   );
 
   renderSchemaFrontmatter({
-    context: sidebarContext,
+    renderer,
     schema: sidebar.schema,
   });
 
-  renderObject({
-    context: sidebarContext,
+  renderObjectProperties({
+    renderer,
     schema: sidebar.schema,
   });
-}
 
-function renderProperty({
-  context,
-  property,
-}: {
-  context: SchemaRenderContext;
-  property: Property;
-}) {
-  // Render type signature
-  const typeInfo = getDisplayTypeInfo(property.schema, context);
-  const annotations: PropertyAnnotations[] = [];
-  if (property.isRequired) {
-    annotations.push({ title: "required", variant: "warning" });
-  }
-  if (property.isDeprecated) {
-    annotations.push({ title: "deprecated", variant: "warning" });
-  }
-
-  const id = `${context.idPrefix}+${property.name}`;
-
-  context.renderer.appendProperty({
-    typeInfo,
-    id,
-    annotations,
-    title: property.name,
-  });
-
-  const propertyContext = {
-    ...context,
-    idPrefix: id,
-  };
-
-  // Render front matter
-  renderSchemaFrontmatter({
-    context: propertyContext,
-    schema: property.schema,
-  });
-
-  renderSchemaDetails({
-    context: propertyContext,
-    schema: property.schema,
-  });
+  renderer.exitContext();
 }
 
 /* ---- Section Rendering ---- */
 
-function renderObject({
-  context,
+function renderObjectProperties({
+  renderer,
   schema,
 }: {
-  context: SchemaRenderContext;
+  renderer: Renderer;
   schema: ObjectValue;
 }) {
   const properties = Object.entries(schema.properties).map(
@@ -322,18 +231,54 @@ function renderObject({
     }
   );
   for (const property of properties) {
-    renderProperty({
-      context,
-      property,
+    if (renderer.alreadyInContext(property.name)) {
+      // TODO: handle this better
+      continue;
+    }
+    renderer.enterContext(property.name);
+
+    // Render the expandable entry
+    renderer.addExpandableEntry({
+      createTitle: () => {
+        // Render type signature
+        const typeInfo = getDisplayTypeInfo(property.schema, renderer);
+        const annotations: PropertyAnnotations[] = [];
+        if (property.isRequired) {
+          annotations.push({ title: "required", variant: "warning" });
+        }
+        if (property.isDeprecated) {
+          annotations.push({ title: "deprecated", variant: "warning" });
+        }
+
+        renderer.appendProperty({
+          typeInfo,
+          annotations,
+          title: property.name,
+        });
+      },
+      createContent: () => {
+        renderSchemaFrontmatter({
+          renderer,
+          schema: property.schema,
+        });
+      },
     });
+
+    // Render breakouts, which will be separate expandable entries
+    renderBreakouts({
+      renderer,
+      schema: property.schema,
+    });
+
+    renderer.exitContext();
   }
 }
 
-function renderContainer({
-  context,
+function renderContainerTypes({
+  renderer,
   typeInfo,
 }: {
-  context: SchemaRenderContext;
+  renderer: Renderer;
   typeInfo: DisplayTypeInfo;
 }) {
   const entries = Array.from(typeInfo.breakoutSubTypes.entries()).map(
@@ -349,19 +294,47 @@ function renderContainer({
     }
   );
   const isSidebar =
-    context.schemaStack.length >= getSettings().display.maxSchemaNesting;
-  for (const entry of entries) {
+    renderer.getContextStack().length >= getSettings().display.maxSchemaNesting;
+  for (const breakout of entries) {
     if (isSidebar) {
+      console.log(renderer.getContextStack());
       renderSidebar({
-        context,
-        sidebar: entry,
+        renderer,
+        sidebar: breakout,
       });
-    } else {
-      renderBreakout({
-        context,
-        breakout: entry,
-      });
+      return;
     }
+
+    if (renderer.alreadyInContext(breakout.label)) {
+      // TODO: handle this better
+      continue;
+    }
+    renderer.enterContext(breakout.label);
+
+    renderer.addExpandableEntry({
+      createTitle: () => {
+        renderer.appendHeading(
+          HEADINGS.SUB_SECTION_HEADING_LEVEL,
+          breakout.label,
+          {
+            id: renderer.getCurrentId(),
+          }
+        );
+      },
+      createContent: () => {
+        renderSchemaFrontmatter({
+          renderer,
+          schema: breakout.schema,
+        });
+      },
+    });
+
+    renderObjectProperties({
+      renderer,
+      schema: breakout.schema,
+    });
+
+    renderer.exitContext();
   }
 }
 
@@ -369,40 +342,40 @@ function renderContainer({
 
 export function renderSchemaFrontmatter({
   schema,
-  context,
+  renderer,
 }: {
-  context: SchemaRenderContext;
+  renderer: Renderer;
   schema: SchemaValue;
 }) {
   renderFrontmatter({
     description: "description" in schema ? schema.description : null,
     examples: "examples" in schema ? schema.examples : [],
     defaultValue: "defaultValue" in schema ? schema.defaultValue : null,
-    context,
+    renderer,
   });
 }
 
-export function renderSchemaDetails({
-  context,
+export function renderBreakouts({
+  renderer,
   schema,
 }: {
-  context: SchemaRenderContext;
+  renderer: Renderer;
   schema: SchemaValue;
 }) {
-  const typeInfo = getDisplayTypeInfo(schema, context);
+  const typeInfo = getDisplayTypeInfo(schema, renderer);
 
   // Check if this is an object, and if so render its properties
   if (schema.type === "object") {
-    renderObject({
-      context,
+    renderObjectProperties({
+      renderer,
       schema,
     });
     return;
   }
   // Otherwise check if we have any breakouts to render
   else if (typeInfo.breakoutSubTypes.size > 0) {
-    renderContainer({
-      context,
+    renderContainerTypes({
+      renderer,
       typeInfo,
     });
     return;

@@ -44,28 +44,12 @@ export class NextraSite extends MdxSite {
   }
 
   protected override getRenderer(...[options]: SiteGetRendererArgs) {
-    return new NextraRenderer({ ...options }, this, this.#codeThemes);
+    return new NextraRenderer({ ...options }, this.#codeThemes);
   }
 }
 
-type ConstructorArgs = [
-  options: { currentPagePath: string },
-  site: NextraSite,
-  codeThemes: TryItNowProps["themes"],
-];
-
 class NextraRenderer extends MdxRenderer {
   #frontMatter: string | undefined;
-  #constructorArgs: ConstructorArgs;
-
-  constructor(...args: ConstructorArgs) {
-    super(...args);
-    this.#constructorArgs = args;
-  }
-
-  public override scope() {
-    return new NextraRenderer(...this.#constructorArgs);
-  }
 
   public override render() {
     const parentData = super.render();

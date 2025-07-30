@@ -3,20 +3,25 @@ import { join, resolve } from "node:path";
 import { snakeCase } from "change-case";
 
 import { HEADINGS } from "../../pages/content/constants.ts";
+import type { Chunk } from "../../types/chunk.ts";
 import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from "../../util/settings.ts";
 import type {
+  Context,
   DisplayTypeInfo,
   PropertyAnnotations,
+  RendererAddExpandableEntryArgs,
   RendererAddOperationArgs,
   RendererAddParametersSectionArgs,
   RendererAddRequestSectionArgs,
   RendererAddResponsesArgs,
   RendererAddSecuritySectionArgs,
-  RendererAddTopLevelSectionArgs,
+  RendererAlreadyInContextArgs,
   RendererAppendHeadingArgs,
+  RendererConstructorArgs,
   RendererCreateAppendCodeArgs,
   RendererCreateAppendTextArgs,
+  RendererCreateContextArgs,
   RendererCreateListArgs,
   RendererCreatePillArgs,
   RendererCreatePropertyArgs,
@@ -34,6 +39,11 @@ import { Site } from "./base.ts";
 
 export abstract class MarkdownSite extends Site {
   #pages = new Map<string, Renderer>();
+  #docsData: Map<string, Chunk> | undefined;
+
+  public setDocsData(docsData: Map<string, Chunk>): void {
+    this.#docsData = docsData;
+  }
 
   public buildPagePath(
     ...[slug, { appendIndex = false } = {}]: SiteBuildPagePathArgs
@@ -50,8 +60,13 @@ export abstract class MarkdownSite extends Site {
   }
 
   public createPage(...[path]: SiteCreatePageArgs) {
+    if (!this.#docsData) {
+      throw new InternalError("Docs data not set");
+    }
     const renderer = this.getRenderer({
       currentPagePath: path,
+      site: this,
+      docsData: this.#docsData,
     });
     this.#pages.set(path, renderer);
     return renderer;
@@ -70,9 +85,22 @@ export const rendererLines = Symbol();
 
 export abstract class MarkdownRenderer extends Renderer {
   #isFinalized = false;
-  #idStack: string[] = [];
+  #operationIdContext: string[] = [];
+  #contextStack: Context[] = [];
+  #docsData: Map<string, Chunk>;
+  #site: Site;
 
   [rendererLines]: string[] = [];
+
+  constructor({ docsData, site }: RendererConstructorArgs) {
+    super();
+    this.#docsData = docsData;
+    this.#site = site;
+  }
+
+  protected getSite() {
+    return this.#site;
+  }
 
   public override escapeText(...[text, { escape }]: RendererEscapeTextArgs) {
     switch (escape) {
@@ -115,7 +143,7 @@ export abstract class MarkdownRenderer extends Renderer {
   ): void {
     const { showDebugPlaceholders } = getSettings().display;
     const id = `operation-${snakeCase(operationId)}`;
-    this.#idStack.push(id);
+    this.#operationIdContext.push(id);
     const methodStart = this.createPillStart("primary");
     const methodEnd = this.createPillEnd();
     path = this.escapeText(path, {
@@ -151,12 +179,19 @@ export abstract class MarkdownRenderer extends Renderer {
       this.appendText("No description provided");
       this.appendDebugPlaceholderEnd();
     }
-    cb(this);
-    this.#idStack.pop();
+    cb();
+    this.#operationIdContext.pop();
   }
 
   #addTopLevelSection(
-    ...[{ title, annotations = [] }, cb]: RendererAddTopLevelSectionArgs
+    {
+      title,
+      annotations = [],
+    }: {
+      title: string;
+      annotations?: PropertyAnnotations[];
+    },
+    cb: () => void
   ): void {
     for (const annotation of annotations) {
       title += ` ${this.createPillStart(annotation.variant)}${annotation.title}${this.createPillEnd()}`;
@@ -164,11 +199,11 @@ export abstract class MarkdownRenderer extends Renderer {
     this.appendSectionStart({ variant: "top-level" });
     this.appendSectionTitleStart({ variant: "top-level" });
     this.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
-      id: this.getIdPrefix(),
+      id: this.getCurrentId(),
     });
     this.appendSectionTitleEnd();
     this.appendSectionContentStart({ variant: "top-level" });
-    cb(this);
+    cb();
     this.appendSectionContentEnd();
     this.appendSectionEnd();
   }
@@ -176,40 +211,46 @@ export abstract class MarkdownRenderer extends Renderer {
   public override addSecuritySection(
     ...[cb]: RendererAddSecuritySectionArgs
   ): void {
-    this.#idStack.push("security");
-    this.#addTopLevelSection({ title: "Security" }, cb);
-    this.#idStack.pop();
+    this.#operationIdContext.push("security");
+    this.#addTopLevelSection({ title: "Security" }, () => cb());
+    this.#operationIdContext.pop();
   }
 
   public override addParametersSection(
     ...[cb]: RendererAddParametersSectionArgs
   ): void {
-    this.#idStack.push("parameters");
-    this.#addTopLevelSection({ title: "Parameters" }, (parameterRenderer) => {
+    this.#operationIdContext.push("parameters");
+    this.#addTopLevelSection({ title: "Parameters" }, () => {
       cb(({ name, isRequired }, cb) => {
-        const start = parameterRenderer.createPillStart("warning");
-        const end = parameterRenderer.createPillEnd();
-        parameterRenderer.appendHeading(
+        this.enterContext(name);
+
+        // Create the heading
+        const start = this.createPillStart("warning");
+        const end = this.createPillEnd();
+        this.appendHeading(
           HEADINGS.PROPERTY_HEADING_LEVEL,
-          `${parameterRenderer.escapeText(name, { escape: "markdown" })}${isRequired ? ` ${start}required${end}` : ""}`,
+          `${this.escapeText(name, { escape: "markdown" })}${isRequired ? ` ${start}required${end}` : ""}`,
           {
-            id: this.getIdPrefix(),
+            id: this.getCurrentId(),
             escape: "none",
           }
         );
 
-        // TODO: return a parmeter specific callback, not a generic renderer,
-        // so that we get proper heading IDs
-        cb({ parameterRenderer });
+        // Create the content
+        cb();
+
+        this.exitContext();
       });
     });
-    this.#idStack.pop();
+    this.#operationIdContext.pop();
   }
 
   public override addRequestSection(
-    ...[{ isOptional, site, data }, cb]: RendererAddRequestSectionArgs
+    ...[
+      { isOptional, createFrontMatter, createBreakouts },
+    ]: RendererAddRequestSectionArgs
   ): void {
-    this.#idStack.push("request");
+    this.#operationIdContext.push("request");
     const annotations: PropertyAnnotations[] = [];
     if (isOptional) {
       annotations.push({
@@ -222,54 +263,55 @@ export abstract class MarkdownRenderer extends Renderer {
         title: "Request Body",
         annotations,
       },
-      (schemaRenderer) => {
-        cb({
-          site,
-          renderer: schemaRenderer,
-          schemaStack: [],
-          idPrefix: this.getIdPrefix(),
-          data,
-        });
+      () => {
+        this.handleCreateFrontMatter(createFrontMatter);
+        this.handleCreateBreakouts(createBreakouts);
       }
     );
-    this.#idStack.pop();
+    this.#operationIdContext.pop();
   }
 
   public override addResponsesSection(...[cb]: RendererAddResponsesArgs): void {
-    this.#idStack.push("responses");
+    this.#operationIdContext.push("responses");
     this.appendTabbedSectionStart();
     this.appendSectionTitleStart({ variant: "default" });
     this.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Responses", {
-      id: this.getIdPrefix(),
+      id: this.getCurrentId(),
     });
     this.appendSectionTitleEnd();
-    cb(({ statusCode, contentType, site, data }, cb) => {
-      this.#idStack.push(statusCode, contentType.replace("/", "-"));
-      this.appendTabbedSectionTabStart(this.getIdPrefix());
+    cb(({ statusCode, contentType, createFrontMatter, createBreakouts }) => {
+      this.#operationIdContext.push(statusCode, contentType.replace("/", "-"));
+      this.appendTabbedSectionTabStart(this.getCurrentId());
       this.appendText(statusCode);
       this.appendTabbedSectionTabEnd();
       this.appendSectionContentStart({
-        id: this.getIdPrefix(),
+        id: this.getCurrentId(),
         variant: "top-level",
       });
-      const context = {
-        site,
-        renderer: this,
-        schemaStack: [],
-        idPrefix: this.getIdPrefix(),
-        data,
-      };
-      cb(context);
+      this.handleCreateFrontMatter(createFrontMatter);
+      this.handleCreateBreakouts(createBreakouts);
       this.appendSectionContentEnd();
-      this.#idStack.pop();
+      this.#operationIdContext.pop();
+
+      this.exitContext();
     });
     this.appendTabbedSectionEnd();
-    this.#idStack.pop();
+    this.#operationIdContext.pop();
   }
 
-  protected getIdPrefix(): string {
-    // TODO: make this per-renderer configurable
-    return this.#idStack.join("+");
+  protected handleCreateFrontMatter(cb: () => void) {
+    cb();
+  }
+
+  protected handleCreateBreakouts(cb: () => void) {
+    cb();
+  }
+
+  public override addExpandableEntry(
+    ...[{ createTitle, createContent }]: RendererAddExpandableEntryArgs
+  ) {
+    createTitle();
+    createContent();
   }
 
   public override createHeading(
@@ -368,93 +410,77 @@ ${text}\n</code>\n</pre>`;
 
   public override createSectionTitleStart(
     ..._args: RendererCreateSectionTitleArgs
-  ): string {
+  ) {
     return "";
   }
 
   public override appendSectionTitleStart(
     ...args: RendererCreateSectionTitleArgs
-  ): void {
+  ) {
     this[rendererLines].push(this.createSectionTitleStart(...args));
   }
 
-  public override createSectionTitleEnd(): string {
+  public override createSectionTitleEnd() {
     return "";
   }
 
-  public override appendSectionTitleEnd(): void {
+  public override appendSectionTitleEnd() {
     this[rendererLines].push(this.createSectionTitleEnd());
   }
 
   public override createSectionContentStart(
     ..._args: RendererCreateSectionContentArgs
-  ): string {
+  ) {
     return "";
   }
 
   public override appendSectionContentStart(
     ...args: RendererCreateSectionContentArgs
-  ): void {
+  ) {
     this[rendererLines].push(this.createSectionContentStart(...args));
   }
 
-  public override createSectionContentEnd(): string {
+  public override createSectionContentEnd() {
     return "";
   }
 
-  public override appendSectionContentEnd(): void {
+  public override appendSectionContentEnd() {
     this[rendererLines].push(this.createSectionContentEnd());
   }
 
-  public override createExpandableSectionStart() {
+  protected createTabbedSectionStart() {
     return "";
   }
 
-  public override appendExpandableSectionStart() {
-    this[rendererLines].push(this.createExpandableSectionStart());
-  }
-
-  public override createExpandableSectionEnd(): string {
-    return "";
-  }
-
-  public override appendExpandableSectionEnd(): void {
-    this[rendererLines].push(this.createExpandableSectionEnd());
-  }
-
-  public override createTabbedSectionStart(): string {
-    return "";
-  }
-
-  public override appendTabbedSectionStart(): void {
+  protected appendTabbedSectionStart() {
     this[rendererLines].push(this.createTabbedSectionStart());
   }
 
-  public override createTabbedSectionEnd(): string {
+  protected createTabbedSectionEnd() {
     return "";
   }
 
-  public override appendTabbedSectionEnd(): void {
+  protected appendTabbedSectionEnd() {
     this[rendererLines].push(this.createTabbedSectionEnd());
   }
 
-  public override createTabbedSectionTabStart(
+  protected createTabbedSectionTabStart(
     ..._args: RendererCreateTabbedSectionTabArgs
-  ): string {
+  ) {
     return "";
   }
 
-  public override appendTabbedSectionTabStart(
+  protected appendTabbedSectionTabStart(
     ...args: RendererCreateTabbedSectionTabArgs
-  ): void {
+  ) {
     this[rendererLines].push(this.createTabbedSectionTabStart(...args));
   }
 
-  public override createTabbedSectionTabEnd(): string {
+  protected createTabbedSectionTabEnd() {
     return "";
   }
 
-  public override appendTabbedSectionTabEnd(): void {
+  protected appendTabbedSectionTabEnd() {
     this[rendererLines].push(this.createTabbedSectionTabEnd());
   }
 
@@ -482,7 +508,7 @@ ${text}\n</code>\n</pre>`;
   };
 
   public override createProperty(
-    ...[{ typeInfo, id, annotations, title }]: RendererCreatePropertyArgs
+    ...[{ typeInfo, annotations, title }]: RendererCreatePropertyArgs
   ) {
     const type = this.createCode(this.#computeSingleLineDisplayType(typeInfo), {
       variant: "raw",
@@ -497,28 +523,66 @@ ${text}\n</code>\n</pre>`;
     return this.createHeading(
       HEADINGS.PROPERTY_HEADING_LEVEL,
       `${title} ${renderedAnnotations.join(" ")} ${type}`,
-      { id, escape: "mdx" }
+      { id: this.getCurrentId(), escape: "mdx" }
     );
   }
 
-  public override appendProperty(...args: RendererCreatePropertyArgs): void {
+  public override appendProperty(...args: RendererCreatePropertyArgs) {
     this[rendererLines].push(this.createProperty(...args));
   }
 
-  public override createDebugPlaceholderStart(): string {
+  public override createDebugPlaceholderStart() {
     return "";
   }
 
-  public override appendDebugPlaceholderStart(): void {
+  public override appendDebugPlaceholderStart() {
     this[rendererLines].push(this.createDebugPlaceholderStart());
   }
 
-  public override createDebugPlaceholderEnd(): string {
+  public override createDebugPlaceholderEnd() {
     return "";
   }
 
-  public override appendDebugPlaceholderEnd(): void {
+  public override appendDebugPlaceholderEnd() {
     this[rendererLines].push(this.createDebugPlaceholderEnd());
+  }
+
+  public override enterContext(...[id]: RendererCreateContextArgs) {
+    const parentContext = this.#contextStack.at(-1);
+    if (parentContext) {
+      this.#contextStack.push({
+        ...parentContext,
+        id,
+      });
+    } else {
+      this.#contextStack.push({
+        id,
+      });
+    }
+  }
+
+  public override exitContext() {
+    this.#contextStack.pop();
+  }
+
+  public override getCurrentId() {
+    const ids = [...this.#operationIdContext];
+    for (const context of this.#contextStack) {
+      ids.push(context.id);
+    }
+    return ids.join("+");
+  }
+
+  public override getContextStack() {
+    return this.#contextStack;
+  }
+
+  public override alreadyInContext(...[id]: RendererAlreadyInContextArgs) {
+    return this.#contextStack.some((context) => context.id === id);
+  }
+
+  public override getDocsData() {
+    return this.#docsData;
   }
 
   public override render() {

@@ -24,6 +24,7 @@ export async function generatePages({
 
   // Get the docs data from the spec
   const data = await getData(specContents);
+  site.setDocsData(data);
 
   // Get code snippets
   let docsCodeSnippets: DocsCodeSnippets = {};

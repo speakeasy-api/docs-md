@@ -94,7 +94,7 @@ export function ExpandableSectionContents({
         stack.push(child);
       }
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      stack.push(currentParent.children[currentParent.children.length - 1]!);
+      stack.push(currentParent.children.at(-1)!);
     }
 
     return treeData;

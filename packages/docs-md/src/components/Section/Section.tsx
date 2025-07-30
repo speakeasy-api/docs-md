@@ -5,7 +5,7 @@ import type { SectionVariant } from "../../renderers/base/base.ts";
 import { useChildren, useUniqueChild } from "./hooks.ts";
 import styles from "./styles.module.css";
 
-export type SectionProps = PropsWithChildren<{
+type SectionProps = PropsWithChildren<{
   variant: SectionVariant;
 }>;
 
