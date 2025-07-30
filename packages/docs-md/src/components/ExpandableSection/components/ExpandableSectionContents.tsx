@@ -1,9 +1,11 @@
 "use client";
 
+import clsx from "clsx";
 import { type PropsWithChildren, useMemo, useState } from "react";
 
 import { useChildren } from "../../Section/hooks.ts";
 import { TreeDataContext } from "../state.ts";
+import styles from "../styles.module.css";
 import type { TreeData, TreeNode } from "../types.ts";
 import type { PrefixCellProps } from "./PrefixCells.tsx";
 
@@ -118,6 +120,21 @@ export function ExpandableSectionContents({
         },
       }}
     >
+      <div className={styles.treeTopper}>
+        <div className={styles.treeTopperFirstRowCell} />
+        <div
+          className={clsx(
+            styles.treeTopperDotContainer,
+            styles.treeTopperFirstRowCell
+          )}
+        >
+          <div className={styles.treeTopperDot}></div>
+        </div>
+        <div className={styles.treeTopperFirstRowCell} />
+        <div className={styles.treeTopperSecondRowCell} />
+        <div className={styles.treeTopperSecondRowCell} />
+        <div className={styles.treeTopperSecondRowCell} />
+      </div>
       {entries}
     </TreeDataContext.Provider>
   );

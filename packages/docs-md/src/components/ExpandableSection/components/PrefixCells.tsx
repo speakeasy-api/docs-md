@@ -43,17 +43,19 @@ export function PrefixCells({ id, slot, children }: PrefixCellProps) {
           right={cellData.right}
         />
       ))}
-      {isExpandable ? (
-        <ExpandableCell
-          // TODO: add support for higlighted connections
-          bottomConnection={hasChildren ? "connected" : "none"}
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-        />
-      ) : (
-        <NonExpandableCell />
-      )}
-      {children}
+      <div className={styles.contentAligner}>
+        {isExpandable ? (
+          <ExpandableCell
+            // TODO: add support for higlighted connections
+            bottomConnection={hasChildren ? "connected" : "none"}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
+        ) : (
+          <NonExpandableCell />
+        )}
+        {children}
+      </div>
     </div>
   );
 }

@@ -1,3 +1,36 @@
+.treeTopper {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto;
+  width: fit-content;
+}
+
+.treeTopperFirstRowCell {
+  min-width: calc(var(--speakeasy-expandable-cell-size) / 2);
+  min-height: calc(3 * var(--speakeasy-expandable-cell-size) / 4);
+}
+
+.treeTopperSecondRowCell {
+  min-width: calc(var(--speakeasy-expandable-cell-size) / 2);
+  min-height: calc(var(--speakeasy-expandable-cell-size));
+}
+
+.treeTopper div:nth-child(5) {
+  border-right: var(--speakeasy-border-width) solid var(--speakeasy-expandable-line-color);
+}
+
+.treeTopperDotContainer {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+}
+
+.treeTopperDot {
+  border: var(--speakeasy-border-width) solid var(--speakeasy-expandable-line-color);
+  border-radius: 50%;
+  width: 75%;
+}
+
 .connectingCellContainer {
   display: grid;
   grid-template-columns: auto auto;
@@ -7,6 +40,13 @@
 .connectingCell {
   min-width: var(--speakeasy-expandable-cell-size);
   min-height: calc(var(--speakeasy-expandable-cell-height-multiplier) * var(--speakeasy-expandable-cell-size));
+}
+
+.contentAligner {
+  display: flex;
+  flex-direction: row;
+  margin-top: calc(var(--speakeasy-expandable-cell-height-multiplier) / 4 * var(--speakeasy-expandable-cell-size));
+  width: 100%;
 }
 
 .expandableCellContainer {
@@ -33,7 +73,6 @@
   background-color: transparent;
   width: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
   height: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
-  margin-top: calc(var(--speakeasy-expandable-cell-height-multiplier) / 3 * var(--speakeasy-expandable-cell-size));
 }
 
 .expandableConnectionContainer {
@@ -48,17 +87,12 @@
 }
 
 .nonExpandableCell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nonExpandableCellContent {
   min-width: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
   min-height: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
+  max-height: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
   margin: 3px;
   border: var(--speakeasy-border-width) solid var(--speakeasy-expandable-line-color);
-  border-radius: var(--speakeasy-expandable-button-radius);
+  border-radius: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,11 +120,12 @@
   flex-direction: column;
   padding-left: 0.5rem;
   flex-grow: 1;
-  margin-top: calc(0.5 * var(--speakeasy-expandable-cell-size));
 }
 
 .breakoutCellTitle {
   height: calc(2 * var(--speakeasy-expandable-cell-size));
+  display: flex;
+  align-items: center;
 }
 
 .expandableEntry {
@@ -101,11 +136,11 @@
 .propertyCell {
   width: 100%;
   padding-left: 0.5rem;
-  margin-top: calc(0.5 * var(--speakeasy-expandable-cell-size));
 }
 
 .propertyCellContent {
   width: 100%;
+  margin-block: 1rem;
 }
 
 .propertyTitleContainer {
