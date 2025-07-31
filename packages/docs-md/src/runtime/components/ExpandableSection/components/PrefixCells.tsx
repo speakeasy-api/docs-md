@@ -15,13 +15,14 @@ import { NonExpandableCell } from "./NonExpandableCell.tsx";
 
 export type PrefixCellProps = PropsWithChildren<{
   id: string;
+  variant: "circle" | "square";
 
   // Used by ExpandableSectionContents to build the tree
   parentId?: string;
   slot: "entry";
 }>;
 
-export function PrefixCells({ id, slot, children }: PrefixCellProps) {
+export function PrefixCells({ id, slot, children, variant }: PrefixCellProps) {
   // TODO: these need to use id paths, not just id
   const [isOpen, setIsOpen] = useIsOpen(id);
   const isParentOpen = useAreAllParentsOpen(id);
@@ -50,6 +51,7 @@ export function PrefixCells({ id, slot, children }: PrefixCellProps) {
             bottomConnection={hasChildren ? "connected" : "none"}
             isOpen={isOpen}
             setIsOpen={setIsOpen}
+            variant={variant}
           />
         ) : (
           <NonExpandableCell />

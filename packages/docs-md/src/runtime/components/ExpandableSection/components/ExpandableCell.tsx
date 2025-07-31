@@ -8,12 +8,14 @@ type ExpandableCellProps = {
   isOpen: boolean;
   bottomConnection: "connected" | "highlighted" | "none";
   setIsOpen: (isOpen: boolean) => void;
+  variant: "circle" | "square";
 };
 
 export function ExpandableCell({
   isOpen,
   setIsOpen,
   bottomConnection,
+  variant,
 }: ExpandableCellProps) {
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -22,7 +24,13 @@ export function ExpandableCell({
   return (
     <div className={styles.expandableCellContainer}>
       <div className={styles.expandableButtonContainer}>
-        <button className={styles.expandableButton} onClick={handleClick}>
+        <button
+          className={clsx(
+            styles.expandableButton,
+            variant === "circle" && styles.expandableButtonCircle
+          )}
+          onClick={handleClick}
+        >
           <div
             style={{
               transform: isOpen ? "rotate(0deg)" : "rotate(180deg)",

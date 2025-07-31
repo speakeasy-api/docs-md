@@ -23,7 +23,7 @@ export function PropertyContents({
 }: PropertyContentsProps) {
   const [isOpen] = useIsOpen(id);
   return (
-    <PrefixCells id={id} slot={slot}>
+    <PrefixCells id={id} slot={slot} variant="circle">
       <PropertyCell
         typeInfo={typeInfo}
         typeAnnotations={typeAnnotations}

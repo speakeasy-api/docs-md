@@ -14,7 +14,7 @@ export function BreakoutContents({
 }: BreakoutContentsProps) {
   const [isOpen] = useIsOpen(id);
   return (
-    <PrefixCells id={id} slot={slot}>
+    <PrefixCells id={id} slot={slot} variant="square">
       <BreakoutCell isOpen={isOpen}>{children}</BreakoutCell>
     </PrefixCells>
   );
