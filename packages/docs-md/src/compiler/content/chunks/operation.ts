@@ -25,6 +25,7 @@ export function renderOperation({
   chunk,
   docsCodeSnippets,
 }: RenderOperationOptions) {
+  const { showDebugPlaceholders } = getSettings().display;
   renderer.addOperationSection(
     {
       method: chunk.chunkData.method,
@@ -42,7 +43,7 @@ export function renderOperation({
             renderer.getDocsData()
           );
           for (const entry of securityChunk.chunkData.entries) {
-            const hasFrontmatter = !!entry.description;
+            const hasFrontmatter = !!entry.description || showDebugPlaceholders;
             renderer.enterContext(entry.name);
             renderer.addExpandableProperty({
               annotations: [
@@ -58,7 +59,14 @@ export function renderOperation({
               title: entry.name,
               createContent: hasFrontmatter
                 ? () => {
-                    renderer.appendText(entry.description);
+                    if (entry.description) {
+                      renderer.appendText(entry.description);
+                    }
+                    if (showDebugPlaceholders) {
+                      renderer.appendDebugPlaceholderStart();
+                      renderer.appendText("No description provided");
+                      renderer.appendDebugPlaceholderEnd();
+                    }
                   }
                 : undefined,
             });
@@ -102,8 +110,14 @@ export function renderOperation({
               title: parameter.name,
               createContent: hasFrontmatter
                 ? () => {
-                    // Will always be defined in practice due to the hasFrontmatter check
-                    renderer.appendText(parameter.description ?? "");
+                    if (parameter.description) {
+                      renderer.appendText(parameter.description);
+                    }
+                    if (showDebugPlaceholders) {
+                      renderer.appendDebugPlaceholderStart();
+                      renderer.appendText("No description provided");
+                      renderer.appendDebugPlaceholderEnd();
+                    }
                   }
                 : undefined,
             });
