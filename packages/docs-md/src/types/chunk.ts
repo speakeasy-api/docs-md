@@ -36,7 +36,7 @@ type SecurityData = {
   entries: SecurityEntryData[];
 };
 
-export type SecurityChunk = {
+type SecurityChunk = {
   id: string;
   slug: string;
   chunkData: SecurityData;
