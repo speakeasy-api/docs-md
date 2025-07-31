@@ -3,6 +3,7 @@
 import clsx from "clsx";
 
 import styles from "../styles.module.css";
+import { ChevronIcon } from "./ChevronIcon.tsx";
 
 type ExpandableCellProps = {
   isOpen: boolean;
@@ -31,15 +32,12 @@ export function ExpandableCell({
           )}
           onClick={handleClick}
         >
-          <div
+          <ChevronIcon
+            className={styles.expandableChevron}
             style={{
               transform: isOpen ? "rotate(0deg)" : "rotate(180deg)",
-              transition: "transform 0.2s ease-in-out",
-              transformOrigin: "center",
             }}
-          >
-            △
-          </div>
+          />
         </button>
       </div>
       <div className={styles.expandableConnectionContainer}>
