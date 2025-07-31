@@ -228,29 +228,14 @@ export abstract class MarkdownRenderer extends Renderer {
     ...[cb]: RendererAddParametersSectionArgs
   ): void {
     this.#operationIdContext.push("parameters");
-    this.#addTopLevelSection({ title: "Parameters" }, () => {
-      cb(({ name, isRequired }, cb) => {
-        this.enterContext(name);
-
-        // Create the heading
-        const start = this.createPillStart("warning");
-        const end = this.createPillEnd();
-        this.appendHeading(
-          HEADINGS.PROPERTY_HEADING_LEVEL,
-          `${this.escapeText(name, { escape: "markdown" })}${isRequired ? ` ${start}required${end}` : ""}`,
-          {
-            id: this.getCurrentId(),
-            escape: "none",
-          }
-        );
-
-        // Create the content
-        cb();
-
-        this.exitContext();
-      });
-    });
+    this.#addTopLevelSection({ title: "Parameters" }, () =>
+      this.handleCreateParameters(cb)
+    );
     this.#operationIdContext.pop();
+  }
+
+  protected handleCreateParameters(cb: () => void) {
+    cb();
   }
 
   public override addRequestSection(

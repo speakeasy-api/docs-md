@@ -34,6 +34,7 @@ export class NextraSite extends MdxSite {
       : "";
     const config = `export default {
   index: { title: "About", theme: { collapsed: false } },
+  "global-security": { title: "Global Security", theme: { collapsed: false } },
   tag: { title: "Operations", theme: { collapsed: false } },${schemasEntry}
 }`;
     this.createPage(join(settings.output.pageOutDir, "_meta.ts")).appendText(

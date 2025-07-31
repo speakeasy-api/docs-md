@@ -61,7 +61,7 @@ function getDisplayTypeLabel(schema: SchemaValue) {
   }
 }
 
-function getDisplayTypeInfo(
+export function getDisplayTypeInfo(
   schema: SchemaValue,
   renderer: Renderer,
   chunkIdStack: string[]

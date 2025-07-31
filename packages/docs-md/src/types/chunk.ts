@@ -60,6 +60,8 @@ type Parameter = {
   name: string;
   description: string | null;
   required: boolean;
+  deprecated: boolean;
+  in: string;
   fieldChunkId: string;
 };
 

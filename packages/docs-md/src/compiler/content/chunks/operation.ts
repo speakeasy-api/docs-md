@@ -1,13 +1,18 @@
 import { snakeCase } from "change-case";
 
 import type { OperationChunk } from "../../../types/chunk.ts";
+import type { PropertyAnnotations } from "../../../types/shared.ts";
 import { assertNever } from "../../../util/assertNever.ts";
 import { getSettings } from "../.././settings.ts";
 import type { Renderer } from "../..//renderers/base/base.ts";
 import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId, getSecurityFromId } from "../util.ts";
-import { renderBreakouts, renderSchemaFrontmatter } from "./schema.ts";
+import {
+  getDisplayTypeInfo,
+  renderBreakouts,
+  renderSchemaFrontmatter,
+} from "./schema.ts";
 
 type RenderOperationOptions = {
   renderer: Renderer;
@@ -63,28 +68,53 @@ export function renderOperation({
       }
 
       if (chunk.chunkData.parameters.length > 0) {
-        renderer.addParametersSection((createParameter) => {
+        renderer.addParametersSection(() => {
           for (const parameter of chunk.chunkData.parameters) {
-            createParameter(
+            renderer.enterContext(parameter.name);
+            const annotations: PropertyAnnotations[] = [
               {
-                name: parameter.name,
-                isRequired: parameter.required,
+                title: parameter.in,
+                variant: "info",
               },
-              () => {
-                const parameterChunk = getSchemaFromId(
-                  parameter.fieldChunkId,
-                  renderer.getDocsData()
-                );
-                renderSchemaFrontmatter({
-                  renderer,
-                  schema: parameterChunk.chunkData.value,
-                });
-                renderBreakouts({
-                  renderer,
-                  schema: parameterChunk.chunkData.value,
-                });
-              }
+            ];
+            if (parameter.required) {
+              annotations.push({ title: "required", variant: "warning" });
+            }
+            if (parameter.deprecated) {
+              annotations.push({ title: "deprecated", variant: "warning" });
+            }
+            const parameterChunk = getSchemaFromId(
+              parameter.fieldChunkId,
+              renderer.getDocsData()
             );
+
+            // Render front-matter. This logic is really similar to rendering
+            // an object property in a schema, but with a few differences
+            const typeInfo = getDisplayTypeInfo(
+              parameterChunk.chunkData.value,
+              renderer,
+              []
+            );
+            const hasFrontmatter = !!parameter.description;
+            renderer.addExpandableProperty({
+              typeInfo,
+              annotations,
+              title: parameter.name,
+              createContent: hasFrontmatter
+                ? () => {
+                    // Will always be defined in practice due to the hasFrontmatter check
+                    renderer.appendText(parameter.description ?? "");
+                  }
+                : undefined,
+            });
+
+            // Render breakouts, which will be separate expandable entries
+            renderBreakouts({
+              renderer,
+              schema: parameterChunk.chunkData.value,
+            });
+
+            renderer.exitContext();
           }
         });
       }

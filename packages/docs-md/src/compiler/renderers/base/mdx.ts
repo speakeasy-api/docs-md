@@ -160,6 +160,20 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.#expandableIdStack = undefined;
   }
 
+  protected override handleCreateParameters(cb: () => void) {
+    if (this.#expandableIdStack) {
+      throw new InternalError(
+        "handleCreateParameters called while inside an expandable section"
+      );
+    }
+    this.#expandableIdStack = [...this.#idStack];
+    this.insertComponentImport("ExpandableSection");
+    this.appendText("<ExpandableSection>");
+    cb();
+    this.appendText("</ExpandableSection>");
+    this.#expandableIdStack = undefined;
+  }
+
   protected override handleCreateBreakouts(cb: () => void) {
     if (this.#expandableIdStack) {
       throw new InternalError(
