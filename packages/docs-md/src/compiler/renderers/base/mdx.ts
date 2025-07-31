@@ -146,6 +146,20 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.#idStack.pop();
   }
 
+  protected override handleCreateSecurity(cb: () => void) {
+    if (this.#expandableIdStack) {
+      throw new InternalError(
+        "handleCreateBreakouts called while inside an expandable section"
+      );
+    }
+    this.#expandableIdStack = [...this.#idStack];
+    this.insertComponentImport("ExpandableSection");
+    this.appendText("<ExpandableSection>");
+    cb();
+    this.appendText("</ExpandableSection>");
+    this.#expandableIdStack = undefined;
+  }
+
   protected override handleCreateBreakouts(cb: () => void) {
     if (this.#expandableIdStack) {
       throw new InternalError(
@@ -197,9 +211,24 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     const { id, parentId } = this.#getBreakoutIdInfo();
     this.insertComponentImport("ExpandableProperty");
     this.appendText(
-      `<ExpandableProperty slot="entry" id="${id}"${parentId ? ` parentId="${parentId}"` : ""} typeInfo={${JSON.stringify(typeInfo)}} typeAnnotations={${JSON.stringify(
-        annotations
-      )}}>`,
+      `<ExpandableProperty
+  slot="entry"
+  id="${id}"${
+    parentId
+      ? `
+  parentId="${parentId}"`
+      : ""
+  }${
+    typeInfo
+      ? `
+  typeInfo={${JSON.stringify(typeInfo)}}`
+      : ""
+  }${
+    annotations.length > 0
+      ? `
+  typeAnnotations={${JSON.stringify(annotations)}}`
+      : ""
+  }>`,
       { escape: "none" }
     );
 

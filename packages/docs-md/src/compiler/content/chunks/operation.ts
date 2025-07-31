@@ -8,7 +8,6 @@ import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId, getSecurityFromId } from "../util.ts";
 import { renderBreakouts, renderSchemaFrontmatter } from "./schema.ts";
-import { renderSecurity } from "./security.ts";
 
 type RenderOperationOptions = {
   renderer: Renderer;
@@ -37,11 +36,29 @@ export function renderOperation({
             contentChunkId,
             renderer.getDocsData()
           );
-          renderSecurity(
-            renderer,
-            securityChunk,
-            HEADINGS.PROPERTY_HEADING_LEVEL
-          );
+          for (const entry of securityChunk.chunkData.entries) {
+            const hasFrontmatter = !!entry.description;
+            renderer.enterContext(entry.name);
+            renderer.addExpandableProperty({
+              annotations: [
+                {
+                  title: entry.in,
+                  variant: "info",
+                },
+                {
+                  title: entry.type,
+                  variant: "info",
+                },
+              ],
+              title: entry.name,
+              createContent: hasFrontmatter
+                ? () => {
+                    renderer.appendText(entry.description);
+                  }
+                : undefined,
+            });
+            renderer.exitContext();
+          }
         });
       }
 

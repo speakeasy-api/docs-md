@@ -214,8 +214,14 @@ export abstract class MarkdownRenderer extends Renderer {
     ...[cb]: RendererAddSecuritySectionArgs
   ): void {
     this.#operationIdContext.push("security");
-    this.#addTopLevelSection({ title: "Security" }, () => cb());
+    this.#addTopLevelSection({ title: "Security" }, () =>
+      this.handleCreateSecurity(cb)
+    );
     this.#operationIdContext.pop();
+  }
+
+  protected handleCreateSecurity(cb: () => void) {
+    cb();
   }
 
   public override addParametersSection(
@@ -321,11 +327,16 @@ export abstract class MarkdownRenderer extends Renderer {
       { typeInfo, annotations, title, createContent },
     ]: RendererAddExpandablePropertyArgs
   ) {
-    const type = this.createCode(this.#computeSingleLineDisplayType(typeInfo), {
-      variant: "raw",
-      style: "inline",
-      escape: "mdx",
-    });
+    let type;
+    if (typeInfo) {
+      type =
+        " " +
+        this.createCode(this.#computeSingleLineDisplayType(typeInfo), {
+          variant: "raw",
+          style: "inline",
+          escape: "mdx",
+        });
+    }
     const renderedAnnotations = annotations.map((annotation) => {
       const start = this.createPillStart(annotation.variant);
       const end = this.createPillEnd();
@@ -333,7 +344,7 @@ export abstract class MarkdownRenderer extends Renderer {
     });
     this.createHeading(
       HEADINGS.PROPERTY_HEADING_LEVEL,
-      `${title} ${renderedAnnotations.join(" ")} ${type}`,
+      `${title} ${renderedAnnotations.join(" ")}${type}`,
       { id: this.getCurrentId(), escape: "mdx" }
     );
     createContent?.();

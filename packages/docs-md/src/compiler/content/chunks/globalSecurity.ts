@@ -1,13 +1,10 @@
-import type {
-  GlobalSecurityChunk,
-  SecurityChunk,
-} from "../../../types/chunk.ts";
+import type { GlobalSecurityChunk } from "../../../types/chunk.ts";
 import type { Renderer } from "../../renderers/base/base.ts";
 import { getSettings } from "../../settings.ts";
 
-export function renderSecurity(
+export function renderGlobalSecurity(
   renderer: Renderer,
-  chunk: SecurityChunk | GlobalSecurityChunk,
+  chunk: GlobalSecurityChunk,
   headingLevel: number
 ) {
   const { showDebugPlaceholders } = getSettings().display;

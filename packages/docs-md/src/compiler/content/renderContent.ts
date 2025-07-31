@@ -7,9 +7,9 @@ import type { Renderer, Site } from "..//renderers/base/base.ts";
 import { getEmbedPath } from "..//renderers/base/util.ts";
 import type { DocsCodeSnippets } from "../data/generateCodeSnippets.ts";
 import { renderAbout } from "./chunks/about.ts";
+import { renderGlobalSecurity } from "./chunks/globalSecurity.ts";
 import { renderOperation } from "./chunks/operation.ts";
 import { renderBreakouts, renderSchemaFrontmatter } from "./chunks/schema.ts";
-import { renderSecurity } from "./chunks/security.ts";
 import { renderTag } from "./chunks/tag.ts";
 import { HEADINGS } from "./constants.ts";
 import { getOperationFromId } from "./util.ts";
@@ -164,7 +164,7 @@ function renderPages(
             HEADINGS.PAGE_TITLE_HEADING_LEVEL,
             "Global Security"
           );
-          renderSecurity(renderer, chunk, HEADINGS.SECTION_HEADING_LEVEL);
+          renderGlobalSecurity(renderer, chunk, HEADINGS.SECTION_HEADING_LEVEL);
           break;
         }
         case "tag": {

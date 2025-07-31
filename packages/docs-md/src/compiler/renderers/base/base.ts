@@ -201,7 +201,7 @@ export type RendererAddExpandableBreakoutArgs = [
 ];
 export type RendererAddExpandablePropertyArgs = [
   options: {
-    typeInfo: DisplayTypeInfo;
+    typeInfo?: DisplayTypeInfo;
     annotations: PropertyAnnotations[];
     title: string;
     createContent?: () => void;

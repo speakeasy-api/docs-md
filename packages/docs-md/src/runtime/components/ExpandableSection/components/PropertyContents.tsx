@@ -10,7 +10,7 @@ import { PrefixCells } from "./PrefixCells.tsx";
 import { PropertyCell } from "./PropertyCell.tsx";
 
 export type PropertyContentsProps = PrefixCellProps & {
-  typeInfo: DisplayTypeInfo;
+  typeInfo?: DisplayTypeInfo;
   typeAnnotations: PropertyAnnotations[];
 };
 

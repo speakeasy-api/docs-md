@@ -14,8 +14,8 @@ import { useChildren, useUniqueChild } from "../../Section/hooks.ts";
 import styles from "../styles.module.css";
 
 type PropertyCellProps = PropsWithChildren<{
-  typeInfo: DisplayTypeInfo;
-  typeAnnotations: PropertyAnnotations[];
+  typeInfo?: DisplayTypeInfo;
+  typeAnnotations?: PropertyAnnotations[];
   isOpen: boolean;
 }>;
 
@@ -230,12 +230,13 @@ export function PropertyCell({
   // type as a prefix to the content children
   const contentChildren = useChildren(children, "content");
 
-  const { display: singleLineDisplay, measure: singleLineMeasure } = useMemo(
-    () => computeSingleLineDisplayType(typeInfo),
-    [typeInfo]
-  );
+  const displayInfo = useMemo(() => {
+    if (!typeInfo) {
+      return;
+    }
 
-  const { multiline, contents } = useMemo(() => {
+    const { display: singleLineDisplay, measure: singleLineMeasure } =
+      computeSingleLineDisplayType(typeInfo);
     // If the value is 0, that means we haven't rendered yet and don't know the
     // width. In this case, we just don't render the type at all.
     if (offscreenTextSizeMeasureContainerWidth === 0) {
@@ -272,6 +273,8 @@ export function PropertyCell({
     return {
       multiline,
       contents,
+      singleLineDisplay,
+      singleLineMeasure,
     };
   }, [
     offscreenTextSizeMeasureContainerWidth,
@@ -279,15 +282,37 @@ export function PropertyCell({
     titleContainerWidth,
     titlePrefixContainerWidth,
     typeInfo,
-    singleLineDisplay,
   ]);
+
+  if (!displayInfo || !typeInfo) {
+    return (
+      <div className={styles.propertyCell}>
+        <TitleContainer ref={titleContainerRef}>
+          <TitlePrefixContainer ref={titlePrefixContainerRef}>
+            {titleChild}
+            {typeAnnotations?.map((annotation) => (
+              <Pill key={annotation.title} variant={annotation.variant}>
+                {annotation.title}
+              </Pill>
+            ))}
+          </TitlePrefixContainer>
+        </TitleContainer>
+
+        {isOpen && (
+          <div className={styles.propertyCellContent}>{contentChildren}</div>
+        )}
+      </div>
+    );
+  }
+
+  const { multiline, contents, singleLineMeasure } = displayInfo;
 
   return (
     <div className={styles.propertyCell}>
       <TitleContainer ref={titleContainerRef}>
         <TitlePrefixContainer ref={titlePrefixContainerRef}>
           {titleChild}
-          {typeAnnotations.map((annotation) => (
+          {typeAnnotations?.map((annotation) => (
             <Pill key={annotation.title} variant={annotation.variant}>
               {annotation.title}
             </Pill>
