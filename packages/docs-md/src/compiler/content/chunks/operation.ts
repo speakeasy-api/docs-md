@@ -6,8 +6,9 @@ import { getSettings } from "../.././settings.ts";
 import type { Renderer } from "../..//renderers/base/base.ts";
 import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
 import { HEADINGS } from "../constants.ts";
-import { getSchemaFromId } from "../util.ts";
+import { getSchemaFromId, getSecurityFromId } from "../util.ts";
 import { renderBreakouts, renderSchemaFrontmatter } from "./schema.ts";
+import { renderSecurity } from "./security.ts";
 
 type RenderOperationOptions = {
   renderer: Renderer;
@@ -29,16 +30,18 @@ export function renderOperation({
       description: chunk.chunkData.description,
     },
     () => {
-      // TODO: Remove explicit references to id and handle in renderers
-      const id = `operation-${snakeCase(chunk.chunkData.operationId)}`;
-
-      // TODO: Security is being rewritten anyways, so I'm not refactoring it as
-      // part of the schema refactor
       if (chunk.chunkData.security) {
+        const { contentChunkId } = chunk.chunkData.security;
         renderer.addSecuritySection(() => {
-          // TODO: Security is being rewritten at the generator level, so I'm
-          // not refactoring this code as part of the schema refactor
-          renderer.appendText("Coming Soon");
+          const securityChunk = getSecurityFromId(
+            contentChunkId,
+            renderer.getDocsData()
+          );
+          renderSecurity(
+            renderer,
+            securityChunk,
+            HEADINGS.PROPERTY_HEADING_LEVEL
+          );
         });
       }
 
@@ -76,7 +79,8 @@ export function renderOperation({
         renderer.appendSectionStart({ variant: "top-level" });
         renderer.appendSectionTitleStart({ variant: "top-level" });
         renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Try it Now", {
-          id: id + "+try-it-now",
+          // TODO: Remove explicit references to id and handle in renderers
+          id: `operation-${snakeCase(chunk.chunkData.operationId)}+try-it-now`,
         });
         renderer.appendSectionTitleEnd();
         renderer.appendSectionContentStart({ variant: "top-level" });
