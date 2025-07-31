@@ -1,5 +1,5 @@
 export default {
-  spec: "./openapi_with_overlays.yaml",
+  spec: "../../specs/mistral.yaml",
   output: {
     pageOutDir: "./src/app/api",
     componentOutDir: "./src/components/speakeasy",

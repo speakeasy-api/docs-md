@@ -1,5 +1,5 @@
 export default {
-  spec: "./pokeapi.yml",
+  spec: "../../specs/pokeapi.yml",
   output: {
     pageOutDir: "./src/app/api",
     componentOutDir: "./src/components/speakeasy",
