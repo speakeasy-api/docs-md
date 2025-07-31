@@ -9,6 +9,7 @@ import type { DocsCodeSnippets } from "../data/generateCodeSnippets.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderOperation } from "./chunks/operation.ts";
 import { renderBreakouts, renderSchemaFrontmatter } from "./chunks/schema.ts";
+import { renderSecurity } from "./chunks/security.ts";
 import { renderTag } from "./chunks/tag.ts";
 import { HEADINGS } from "./constants.ts";
 import { getOperationFromId } from "./util.ts";
@@ -48,6 +49,18 @@ function getPageMap(site: Site, data: Data) {
     }
   }
 
+  // Get the global security page
+  for (const [, chunk] of data) {
+    if (chunk.chunkType === "globalSecurity") {
+      pageMap.set(site.buildPagePath("global-security"), {
+        type: "chunk",
+        sidebarLabel: "Global Security",
+        sidebarPosition: "2",
+        chunks: [chunk],
+      });
+    }
+  }
+
   // Find the tag pages
   const tagChunks: TagChunk[] = [];
   for (const [, chunk] of data) {
@@ -66,7 +79,7 @@ function getPageMap(site: Site, data: Data) {
     const pageMapEntry: PageMapEntry = {
       type: "chunk",
       sidebarLabel: capitalCase(chunk.chunkData.name),
-      sidebarPosition: `2.${tagIndex++}`,
+      sidebarPosition: `3.${tagIndex++}`,
       chunks: [chunk],
     };
     pageMap.set(pagePath, pageMapEntry);
@@ -108,7 +121,7 @@ function getPageMap(site: Site, data: Data) {
       const pageMapEntry: PageMapEntry = {
         type: "chunk",
         sidebarLabel: capitalCase(chunk.chunkData.value.name),
-        sidebarPosition: `3.${schemaIndex++}`,
+        sidebarPosition: `4.${schemaIndex++}`,
         chunks: [chunk] as Chunk[],
       };
       pageMap.set(pagePath, pageMapEntry);
@@ -123,6 +136,7 @@ function renderPages(
   pageMap: PageMap,
   docsCodeSnippets: DocsCodeSnippets
 ) {
+  const settings = getSettings();
   for (const [currentPagePath, pageMapEntry] of pageMap) {
     if (pageMapEntry.type === "renderer") {
       const renderer = site.createPage(currentPagePath);
@@ -145,11 +159,22 @@ function renderPages(
           renderAbout(renderer, chunk);
           break;
         }
+        case "globalSecurity": {
+          renderer.appendHeading(
+            HEADINGS.PAGE_TITLE_HEADING_LEVEL,
+            "Global Security"
+          );
+          renderSecurity(renderer, chunk, HEADINGS.SECTION_HEADING_LEVEL);
+          break;
+        }
         case "tag": {
           renderTag(renderer, chunk);
           break;
         }
         case "schema": {
+          if (!settings.display.showSchemasInNav) {
+            break;
+          }
           // The normal schema renderer doesn't render a heading, since it's
           // normally embedded in a separate page. It's not in this case though,
           // so we add one by hand

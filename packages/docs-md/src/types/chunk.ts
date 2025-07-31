@@ -22,6 +22,34 @@ export type AboutChunk = {
   chunkType: "about";
 };
 
+// Security chunks
+
+type SecurityEntryData = {
+  type: string;
+  description: string;
+  name: string;
+  in: string;
+};
+
+type SecurityData = {
+  id: string;
+  entries: SecurityEntryData[];
+};
+
+export type SecurityChunk = {
+  id: string;
+  slug: string;
+  chunkData: SecurityData;
+  chunkType: "security";
+};
+
+export type GlobalSecurityChunk = {
+  id: string;
+  slug: string;
+  chunkData: SecurityData;
+  chunkType: "globalSecurity";
+};
+
 // Operation chunks
 
 type Security = {
@@ -211,4 +239,10 @@ export type TagChunk = {
 
 // All chunks
 
-export type Chunk = AboutChunk | OperationChunk | SchemaChunk | TagChunk;
+export type Chunk =
+  | AboutChunk
+  | GlobalSecurityChunk
+  | SecurityChunk
+  | OperationChunk
+  | SchemaChunk
+  | TagChunk;
