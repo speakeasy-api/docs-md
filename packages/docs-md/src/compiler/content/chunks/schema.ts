@@ -17,54 +17,99 @@ type ContainerEntry = {
 
 /* ---- Helpers ---- */
 
+function getDisplayTypeLabel(schema: SchemaValue) {
+  switch (schema.type) {
+    case "object": {
+      return schema.name;
+    }
+    case "array": {
+      return "array";
+    }
+    case "map": {
+      return "map";
+    }
+    case "set": {
+      return "set";
+    }
+    case "union": {
+      return "union";
+    }
+    case "chunk": {
+      return schema.chunkId;
+    }
+    case "enum": {
+      return "enum";
+    }
+    case "string":
+    case "number":
+    case "boolean":
+    case "bigint":
+    case "date":
+    case "date-time":
+    case "integer":
+    case "int32":
+    case "float32":
+    case "decimal":
+    case "binary":
+    case "null":
+    case "any": {
+      return schema.type;
+    }
+    default: {
+      assertNever(schema);
+    }
+  }
+}
+
 function getDisplayTypeInfo(
   schema: SchemaValue,
-  renderer: Renderer
+  renderer: Renderer,
+  chunkIdStack: string[]
 ): DisplayTypeInfo {
   switch (schema.type) {
     case "object": {
       return {
-        label: schema.name,
+        label: getDisplayTypeLabel(schema),
         linkedLabel: `<a href="#${renderer.getCurrentId()}+${schema.name}">${schema.name}</a>`,
         children: [],
         breakoutSubTypes: new Map([[schema.name, schema]]),
       };
     }
     case "array": {
-      const typeInfo = getDisplayTypeInfo(schema.items, renderer);
+      const typeInfo = getDisplayTypeInfo(schema.items, renderer, chunkIdStack);
       return {
         ...typeInfo,
-        label: "array",
+        label: getDisplayTypeLabel(schema),
         children: [typeInfo],
       };
     }
     case "map": {
-      const typeInfo = getDisplayTypeInfo(schema.items, renderer);
+      const typeInfo = getDisplayTypeInfo(schema.items, renderer, chunkIdStack);
       return {
         ...typeInfo,
-        label: "map",
+        label: getDisplayTypeLabel(schema),
         children: [typeInfo],
       };
     }
     case "set": {
-      const typeInfo = getDisplayTypeInfo(schema.items, renderer);
+      const typeInfo = getDisplayTypeInfo(schema.items, renderer, chunkIdStack);
       return {
         ...typeInfo,
-        label: "set",
+        label: getDisplayTypeLabel(schema),
         children: [typeInfo],
       };
     }
     case "union": {
       const displayTypes = schema.values.map((v) =>
-        getDisplayTypeInfo(v, renderer)
+        getDisplayTypeInfo(v, renderer, chunkIdStack)
       );
       const hasBreakoutSubType = displayTypes.some(
         (d) => d.breakoutSubTypes.size > 0
       );
       if (!hasBreakoutSubType) {
         return {
-          label: "union",
-          linkedLabel: "union",
+          label: getDisplayTypeLabel(schema),
+          linkedLabel: getDisplayTypeLabel(schema),
           children: displayTypes,
           breakoutSubTypes: new Map(),
         };
@@ -76,8 +121,8 @@ function getDisplayTypeInfo(
         }
       }
       return {
-        label: "union",
-        linkedLabel: "union",
+        label: getDisplayTypeLabel(schema),
+        linkedLabel: getDisplayTypeLabel(schema),
         children: displayTypes,
         breakoutSubTypes,
       };
@@ -86,13 +131,26 @@ function getDisplayTypeInfo(
       const schemaChunk = getSchemaFromId(
         schema.chunkId,
         renderer.getDocsData()
-      );
-      return getDisplayTypeInfo(schemaChunk.chunkData.value, renderer);
+      ).chunkData.value;
+      if (chunkIdStack.includes(schema.chunkId)) {
+        // Return childless type info to prevent infinite recursion
+        return {
+          // TODO: come up with better visual treatment for recursive types
+          label: `${getDisplayTypeLabel(schemaChunk)} (recursive)`,
+          linkedLabel: `${getDisplayTypeLabel(schemaChunk)} (recursive)`,
+          children: [],
+          breakoutSubTypes: new Map(),
+        };
+      }
+      return getDisplayTypeInfo(schemaChunk, renderer, [
+        ...chunkIdStack,
+        schema.chunkId,
+      ]);
     }
     case "enum": {
       return {
-        label: "enum",
-        linkedLabel: "enum",
+        label: getDisplayTypeLabel(schema),
+        linkedLabel: getDisplayTypeLabel(schema),
         children: schema.values.map((v) => {
           const label = `${typeof v === "string" ? `"${v}"` : v}`;
           return {
@@ -210,7 +268,7 @@ function renderObjectProperties({
     renderer.enterContext(property.name);
 
     // Render the expandable entry
-    const typeInfo = getDisplayTypeInfo(property.schema, renderer);
+    const typeInfo = getDisplayTypeInfo(property.schema, renderer, []);
     const annotations: PropertyAnnotations[] = [];
     if (property.isRequired) {
       annotations.push({ title: "required", variant: "warning" });
@@ -359,7 +417,7 @@ export function renderBreakouts({
   renderer: Renderer;
   schema: SchemaValue;
 }) {
-  const typeInfo = getDisplayTypeInfo(schema, renderer);
+  const typeInfo = getDisplayTypeInfo(schema, renderer, []);
 
   // Check if this is an object, and if so render its properties
   if (schema.type === "object") {
