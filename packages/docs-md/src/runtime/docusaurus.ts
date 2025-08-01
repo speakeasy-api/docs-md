@@ -11,3 +11,4 @@ export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
 export { Code } from "./components/Code/docusaurus.tsx";
 export { Pill } from "./components/Pill/Pill.tsx";
 export { DebugPlaceholder } from "./components/DebugPlaceholder/DebugPlaceholder.tsx";
+export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/FrontMatterDisplayType.tsx";

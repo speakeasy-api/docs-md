@@ -167,17 +167,15 @@ export function renderOperation({
         renderer.addRequestSection({
           isOptional: false,
           createFrontMatter() {
-            // TODO: readd
-            // if (requestBodySchema.chunkData.value.type !== "object") {
-            //   renderer.appendProperty({
-            //     typeInfo: getDisplayTypeInfo(
-            //       requestBodySchema.chunkData.value,
-            //       renderer
-            //     ),
-            //     annotations: [],
-            //     title: "",
-            //   });
-            // }
+            if (requestBodySchema.chunkData.value.type !== "object") {
+              renderer.addFrontMatterDisplayType({
+                typeInfo: getDisplayTypeInfo(
+                  requestBodySchema.chunkData.value,
+                  renderer,
+                  []
+                ),
+              });
+            }
             // TODO: we can have two descriptions here. Need to figure
             // out something to do with them
             if (requestBody.description) {
@@ -228,16 +226,11 @@ export function renderOperation({
                   statusCode,
                   contentType: response.contentType,
                   createFrontMatter() {
-                    // TODO: readd
-                    // if (schema.type !== "object") {
-                    //   renderer.appendProperty({
-                    //     typeInfo: getDisplayTypeInfo(schema, renderer),
-                    //     annotations: [],
-                    //     title: "",
-                    //   });
-                    // }
-                    // TODO: we can have two descriptions here. Need to figure
-                    // out something to do with them
+                    if (schema.type !== "object") {
+                      renderer.addFrontMatterDisplayType({
+                        typeInfo: getDisplayTypeInfo(schema, renderer, []),
+                      });
+                    }
                     if (response.description) {
                       renderer.appendText(response.description);
                     }

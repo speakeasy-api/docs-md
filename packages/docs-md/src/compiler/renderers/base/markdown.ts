@@ -14,6 +14,7 @@ import type {
   Context,
   RendererAddExpandableBreakoutArgs,
   RendererAddExpandablePropertyArgs,
+  RendererAddFrontMatterDisplayTypeArgs,
   RendererAddOperationArgs,
   RendererAddParametersSectionArgs,
   RendererAddRequestSectionArgs,
@@ -333,6 +334,16 @@ export abstract class MarkdownRenderer extends Renderer {
       { id: this.getCurrentId(), escape: "mdx" }
     );
     createContent?.();
+  }
+
+  public override addFrontMatterDisplayType(
+    ...[{ typeInfo }]: RendererAddFrontMatterDisplayTypeArgs
+  ) {
+    this.appendCode(this.#computeSingleLineDisplayType(typeInfo), {
+      variant: "raw",
+      style: "inline",
+      escape: "mdx",
+    });
   }
 
   public override createHeading(

@@ -6,6 +6,7 @@ import { HEADINGS } from "../../content/constants.ts";
 import type {
   RendererAddExpandableBreakoutArgs,
   RendererAddExpandablePropertyArgs,
+  RendererAddFrontMatterDisplayTypeArgs,
   RendererAddOperationArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
@@ -260,6 +261,16 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     }
 
     this.appendText(`</ExpandableProperty>`);
+  }
+
+  public override addFrontMatterDisplayType(
+    ...[{ typeInfo }]: RendererAddFrontMatterDisplayTypeArgs
+  ) {
+    this.insertComponentImport("FrontMatterDisplayType");
+    this.appendText(
+      `<FrontMatterDisplayType typeInfo={${JSON.stringify(typeInfo)}} />`,
+      { escape: "none" }
+    );
   }
 
   public override createSectionStart(

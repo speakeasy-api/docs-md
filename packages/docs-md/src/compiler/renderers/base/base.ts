@@ -198,6 +198,12 @@ export type RendererAddExpandablePropertyArgs = [
   },
 ];
 
+export type RendererAddFrontMatterDisplayTypeArgs = [
+  options: {
+    typeInfo: DisplayTypeInfo;
+  },
+];
+
 export type RendererAlreadyInContextArgs = [id: string];
 
 export type RendererConstructorArgs = {
@@ -219,9 +225,12 @@ export abstract class Renderer {
     ...args: RendererAddExpandableBreakoutArgs
   ): void;
 
-  // Property's show a property in an object schema, including it's type info
+  // Show a property in an object schema, including it's type info
   abstract addExpandableProperty(
     ...args: RendererAddExpandablePropertyArgs
+  ): void;
+  abstract addFrontMatterDisplayType(
+    ...args: RendererAddFrontMatterDisplayTypeArgs
   ): void;
 
   // Low level operations
