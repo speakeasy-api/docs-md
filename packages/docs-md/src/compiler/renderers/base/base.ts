@@ -197,7 +197,6 @@ export type RendererAddExpandablePropertyArgs = [
     createContent?: () => void;
   },
 ];
-
 export type RendererAddFrontMatterDisplayTypeArgs = [
   options: {
     typeInfo: DisplayTypeInfo;
@@ -205,6 +204,7 @@ export type RendererAddFrontMatterDisplayTypeArgs = [
 ];
 
 export type RendererAlreadyInContextArgs = [id: string];
+export type RendererGetCurrentIdArgs = [postFixId?: string];
 
 export type RendererConstructorArgs = {
   site: Site;
@@ -298,7 +298,7 @@ export abstract class Renderer {
   abstract exitContext(): void;
   abstract getContextStack(): Context[];
   abstract alreadyInContext(...args: RendererAlreadyInContextArgs): boolean;
-  abstract getCurrentId(): string;
+  abstract getCurrentId(...args: RendererGetCurrentIdArgs): string;
   abstract getDocsData(): Map<string, Chunk>;
   abstract render(): string;
 }

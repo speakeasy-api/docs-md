@@ -1,11 +1,11 @@
 "use client";
 
 import { useIsOpen } from "../state.ts";
+import type { RowProps } from "../types.ts";
 import { BreakoutCell } from "./BreakoutCell.tsx";
-import type { PrefixCellProps } from "./PrefixCells.tsx";
 import { PrefixCells } from "./PrefixCells.tsx";
 
-export type BreakoutContentsProps = PrefixCellProps;
+export type BreakoutContentsProps = RowProps;
 
 export function BreakoutContents({
   id,

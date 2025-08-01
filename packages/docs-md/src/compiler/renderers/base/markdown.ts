@@ -33,6 +33,7 @@ import type {
   RendererCreateSectionTitleArgs,
   RendererCreateTabbedSectionTabArgs,
   RendererEscapeTextArgs,
+  RendererGetCurrentIdArgs,
   SiteBuildPagePathArgs,
   SiteCreatePageArgs,
   SiteHasPageArgs,
@@ -573,12 +574,19 @@ ${text}\n</code>\n</pre>`;
     this.#contextStack.pop();
   }
 
-  public override getCurrentId() {
+  public override getCurrentId(...[postFixId]: RendererGetCurrentIdArgs) {
     const ids = [...this.#operationIdContext];
     for (const context of this.#contextStack) {
       ids.push(context.id);
     }
-    return ids.join("+");
+    if (postFixId) {
+      ids.push(postFixId);
+    }
+    return ids.join(this.getIdSeparator()).toLowerCase();
+  }
+
+  protected getIdSeparator() {
+    return "+";
   }
 
   public override getContextStack() {

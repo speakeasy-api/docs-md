@@ -5,11 +5,11 @@ import type {
   PropertyAnnotations,
 } from "../../../../types/shared.ts";
 import { useIsOpen } from "../state.ts";
-import type { PrefixCellProps } from "./PrefixCells.tsx";
+import type { RowProps } from "../types.ts";
 import { PrefixCells } from "./PrefixCells.tsx";
 import { PropertyCell } from "./PropertyCell.tsx";
 
-export type PropertyContentsProps = PrefixCellProps & {
+export type PropertyContentsProps = RowProps & {
   typeInfo?: DisplayTypeInfo;
   typeAnnotations: PropertyAnnotations[];
 };

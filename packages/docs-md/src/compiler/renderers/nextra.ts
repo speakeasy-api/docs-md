@@ -86,4 +86,8 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
     }
     return line;
   }
+
+  protected override getIdSeparator() {
+    return "_";
+  }
 }

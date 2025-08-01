@@ -70,7 +70,7 @@ export function getDisplayTypeInfo(
     case "object": {
       return {
         label: getDisplayTypeLabel(schema),
-        linkedLabel: `<a href="#${renderer.getCurrentId()}+${schema.name}">${schema.name}</a>`,
+        linkedLabel: `<a href="#${renderer.getCurrentId(schema.name)}">${schema.name}</a>`,
         children: [],
         breakoutSubTypes: new Map([[schema.name, schema]]),
       };

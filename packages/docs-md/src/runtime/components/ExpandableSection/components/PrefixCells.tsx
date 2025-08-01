@@ -13,12 +13,9 @@ import { ConnectingCell } from "./ConnectingCell.tsx";
 import { ExpandableCell } from "./ExpandableCell.tsx";
 import { NonExpandableCell } from "./NonExpandableCell.tsx";
 
-export type PrefixCellProps = PropsWithChildren<{
+type PrefixCellProps = PropsWithChildren<{
   id: string;
   variant: "circle" | "square";
-
-  // Used by ExpandableSectionContents to build the tree
-  parentId?: string;
   slot: "entry";
 }>;
 
