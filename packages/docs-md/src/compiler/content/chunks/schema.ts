@@ -251,6 +251,12 @@ function renderObjectProperties({
 }) {
   const properties = Object.entries(schema.properties).map(
     ([name, propertySchema]) => {
+      if (propertySchema.type === "chunk") {
+        propertySchema = getSchemaFromId(
+          propertySchema.chunkId,
+          renderer.getDocsData()
+        ).chunkData.value;
+      }
       return {
         name,
         isRequired: schema.required.includes(name),

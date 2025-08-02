@@ -17,15 +17,22 @@ type PrefixCellProps = PropsWithChildren<{
   id: string;
   variant: "circle" | "square";
   slot: "entry";
+  hasFrontMatter: boolean;
 }>;
 
-export function PrefixCells({ id, slot, children, variant }: PrefixCellProps) {
+export function PrefixCells({
+  id,
+  slot,
+  children,
+  variant,
+  hasFrontMatter,
+}: PrefixCellProps) {
   // TODO: these need to use id paths, not just id
   const [isOpen, setIsOpen] = useIsOpen(id);
   const isParentOpen = useAreAllParentsOpen(id);
   const connections = useConnectingCellData(id);
   const hasChildren = useHasChildren(id);
-  const isExpandable = hasChildren && children;
+  const isExpandable = hasChildren || hasFrontMatter;
 
   if (!isParentOpen) {
     return null;

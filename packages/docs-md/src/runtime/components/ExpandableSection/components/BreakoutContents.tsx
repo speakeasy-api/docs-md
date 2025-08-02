@@ -10,11 +10,17 @@ export type BreakoutContentsProps = RowProps;
 export function BreakoutContents({
   id,
   slot,
+  hasFrontMatter,
   children,
 }: BreakoutContentsProps) {
   const [isOpen] = useIsOpen(id);
   return (
-    <PrefixCells id={id} slot={slot} variant="square">
+    <PrefixCells
+      id={id}
+      slot={slot}
+      variant="square"
+      hasFrontMatter={hasFrontMatter}
+    >
       <BreakoutCell isOpen={isOpen}>{children}</BreakoutCell>
     </PrefixCells>
   );

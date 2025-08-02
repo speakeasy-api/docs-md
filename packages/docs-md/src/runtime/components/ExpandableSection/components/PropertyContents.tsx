@@ -20,10 +20,16 @@ export function PropertyContents({
   children,
   typeInfo,
   typeAnnotations,
+  hasFrontMatter,
 }: PropertyContentsProps) {
   const [isOpen] = useIsOpen(id);
   return (
-    <PrefixCells id={id} slot={slot} variant="circle">
+    <PrefixCells
+      id={id}
+      slot={slot}
+      variant="circle"
+      hasFrontMatter={hasFrontMatter}
+    >
       <PropertyCell
         typeInfo={typeInfo}
         typeAnnotations={typeAnnotations}

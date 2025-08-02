@@ -202,7 +202,13 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     const { id, parentId } = this.#getBreakoutIdInfo();
     this.insertComponentImport("ExpandableBreakout");
     this.appendText(
-      `<ExpandableBreakout slot="entry" id="${id}" headingId="${this.getCurrentId()}"${parentId ? ` parentId="${parentId}"` : ""}>`
+      `<ExpandableBreakout
+  slot="entry"
+  id="${id}"
+  headingId="${this.getCurrentId()}"${parentId ? ` parentId="${parentId}"` : ""}
+  hasFrontMatter={${createContent ? "true" : "false"}}
+>`,
+      { escape: "none" }
     );
 
     this.appendText(`<div slot="title">`);
@@ -244,7 +250,9 @@ export abstract class MdxRenderer extends MarkdownRenderer {
       ? `
   typeAnnotations={${JSON.stringify(annotations)}}`
       : ""
-  }>`,
+  }
+  hasFrontMatter={${createContent ? "true" : "false"}}
+>`,
       { escape: "none" }
     );
 

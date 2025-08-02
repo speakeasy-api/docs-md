@@ -28,4 +28,5 @@ export type RowProps = PropsWithChildren<{
   slot: "entry";
   headingId: string;
   parentId?: string;
+  hasFrontMatter: boolean;
 }>;
