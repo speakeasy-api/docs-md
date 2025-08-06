@@ -1,9 +1,11 @@
 import type { AboutChunk } from "../../../types/chunk.ts";
 import { getSettings } from "../.././settings.ts";
 import type { Renderer } from "../..//renderers/base/base.ts";
+import { debug } from "../../logging.ts";
 import { HEADINGS } from "../constants.ts";
 
 export function renderAbout(renderer: Renderer, chunk: AboutChunk) {
+  debug(`Rendering about chunk`);
   const { showDebugPlaceholders } = getSettings().display;
   renderer.appendHeading(
     HEADINGS.PAGE_TITLE_HEADING_LEVEL,

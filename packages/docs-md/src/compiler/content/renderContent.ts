@@ -5,6 +5,7 @@ import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from ".././settings.ts";
 import type { Renderer, Site } from "..//renderers/base/base.ts";
 import type { DocsCodeSnippets } from "../data/generateCodeSnippets.ts";
+import { debug } from "../logging.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderGlobalSecurity } from "./chunks/globalSecurity.ts";
 import { renderOperation } from "./chunks/operation.ts";
@@ -137,6 +138,7 @@ function renderPages(
 ) {
   const settings = getSettings();
   for (const [currentPagePath, pageMapEntry] of pageMap) {
+    debug(`Rendering page ${currentPagePath}`);
     if (pageMapEntry.type === "renderer") {
       const renderer = site.createPage(currentPagePath);
       renderer.insertFrontMatter({

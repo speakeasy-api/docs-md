@@ -15,6 +15,7 @@ export default [
       "src/runtime/nextra.ts": /.*/,
       "src/runtime/docusaurus.ts": /.*/,
       "src/runtime/react.ts": /.*/,
+      "src/compiler/compiler.ts": /.*/,
     },
     ignores: ["src/compiler/data/wasm_exec.js", ".storybook/**/*"],
     restrictedImports: [
@@ -58,6 +59,14 @@ export default [
     files: ["**/*.stories.{ts,tsx}", ".storybook/*.{ts,tsx}"],
     rules: {
       "fast-import/no-unused-exports": "off",
+    },
+  },
+  // Disallow console calls in compiler code (use logging.ts functions instead)
+  {
+    files: ["packages/docs-md/src/compiler/**/*.{ts,js,mts,mjs}"],
+    ignores: ["packages/docs-md/src/compiler/logging.ts"],
+    rules: {
+      "no-console": "error",
     },
   },
 ];

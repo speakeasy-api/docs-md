@@ -17,6 +17,7 @@ import z from "zod/v4";
 
 import { assertNever } from "../../util/assertNever.ts";
 import { generatePages } from "../generatePages.ts";
+import { error, info, setLevel } from "../logging.js";
 import type { Site } from "../renderers/base/base.ts";
 import { DocusaurusSite } from "../renderers/docusaurus.ts";
 import { NextraSite } from "../renderers/nextra.ts";
@@ -35,18 +36,21 @@ const args = arg({
   "--help": Boolean,
   "--config": String,
   "--clean": Boolean,
+  "--verbose": Boolean,
   "-h": "--help",
   "-c": "--config",
   "-C": "--clean",
+  "-v": "--verbose",
 });
 
 function printHelp() {
-  console.log(`Usage: docsmd [options]
+  info(`Usage: docsmd [options]
 
 Options:
   --help, -h     Show this help message
   --config, -c   Path to config file
-  --clean, -C    Clean the output directories before generating`);
+  --clean, -C    Clean the output directories before generating
+  --verbose, -v  Show debug output`);
 }
 
 if (args["--help"]) {
@@ -54,8 +58,12 @@ if (args["--help"]) {
   process.exit(0);
 }
 
+if (args["--verbose"]) {
+  setLevel("debug");
+}
+
 function reportError(message: string): never {
-  console.error(message + "\n");
+  error(message + "\n");
   printHelp();
   process.exit(1);
 }
@@ -200,7 +208,7 @@ const pageContents = await generatePages({
 });
 
 if (args["--clean"]) {
-  console.log("Cleaning output directories");
+  info("Cleaning output directories");
   rmSync(settings.output.pageOutDir, {
     recursive: true,
     force: true,
@@ -220,4 +228,4 @@ for (const [filename, contents] of Object.entries(pageContents)) {
   });
 }
 
-console.log("Success!");
+info("Success!");

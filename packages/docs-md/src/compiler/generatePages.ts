@@ -2,6 +2,7 @@ import { renderContent } from "./content/renderContent.ts";
 import type { DocsCodeSnippets } from "./data/generateCodeSnippets.ts";
 import { generateCodeSnippets } from "./data/generateCodeSnippets.ts";
 import { getData } from "./data/getDocsData.ts";
+import { info } from "./logging.js";
 import type { Site } from "./renderers/base/base.ts";
 import type { ParsedSettings } from "./settings.ts";
 import { setSettings } from "./settings.ts";
@@ -29,11 +30,11 @@ export async function generatePages({
   // Get code snippets
   let docsCodeSnippets: DocsCodeSnippets = {};
   if (settings.tryItNow) {
-    console.log("Generating Code Snippets");
+    info("Generating Code Snippets");
     docsCodeSnippets = await generateCodeSnippets(data, specContents);
   }
 
   // Render the content
-  console.log("Rendering Markdown");
+  info("Rendering Markdown");
   return renderContent(site, data, docsCodeSnippets);
 }

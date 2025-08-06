@@ -6,6 +6,7 @@ import { assertNever } from "../../../util/assertNever.ts";
 import { getSettings } from "../.././settings.ts";
 import type { Renderer } from "../..//renderers/base/base.ts";
 import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
+import { debug } from "../../logging.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId, getSecurityFromId } from "../util.ts";
 import {
@@ -25,6 +26,9 @@ export function renderOperation({
   chunk,
   docsCodeSnippets,
 }: RenderOperationOptions) {
+  debug(
+    `Rendering operation chunk: method=${chunk.chunkData.method} path=${chunk.chunkData.path} operationId=${chunk.chunkData.operationId}`
+  );
   const { showDebugPlaceholders } = getSettings().display;
   renderer.addOperationSection(
     {
@@ -43,6 +47,7 @@ export function renderOperation({
             renderer.getDocsData()
           );
           for (const entry of securityChunk.chunkData.entries) {
+            debug(`Rendering security chunk: name=${entry.name}`);
             const hasFrontmatter = !!entry.description || showDebugPlaceholders;
             renderer.enterContext(entry.name);
             renderer.addExpandableProperty({
@@ -78,6 +83,7 @@ export function renderOperation({
       if (chunk.chunkData.parameters.length > 0) {
         renderer.addParametersSection(() => {
           for (const parameter of chunk.chunkData.parameters) {
+            debug(`Rendering parameter: name=${parameter.name}`);
             renderer.enterContext(parameter.name);
             const annotations: PropertyAnnotations[] = [
               {
@@ -137,6 +143,7 @@ export function renderOperation({
       const { tryItNow } = getSettings();
       const usageSnippet = docsCodeSnippets[chunk.id];
       if (usageSnippet && tryItNow) {
+        debug(`Rendering try it now`);
         renderer.appendSectionStart({ variant: "top-level" });
         renderer.appendSectionTitleStart({ variant: "top-level" });
         renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Try it Now", {
@@ -159,6 +166,7 @@ export function renderOperation({
       }
 
       if (chunk.chunkData.requestBody) {
+        debug(`Rendering request body`);
         const { requestBody } = chunk.chunkData;
         const requestBodySchema = getSchemaFromId(
           requestBody.contentChunkId,
@@ -222,6 +230,9 @@ export function renderOperation({
                   response.contentChunkId,
                   renderer.getDocsData()
                 ).chunkData.value;
+                debug(
+                  `Rendering response: statusCode=${statusCode}, contentType=${response.contentType}`
+                );
                 createTab({
                   statusCode,
                   contentType: response.contentType,

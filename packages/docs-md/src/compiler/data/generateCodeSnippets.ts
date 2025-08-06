@@ -7,6 +7,7 @@ import type {
   ErrorResponse,
 } from "../../types/codeSnippet.ts";
 import { getSettings } from ".././settings.ts";
+import { error } from "../logging.js";
 
 const CODE_SNIPPETS_API_URL =
   process.env.SPEAKEASY_CODE_SNIPPETS_API_URL ?? "https://api.speakeasy.com";
@@ -61,8 +62,8 @@ export const generateCodeSnippets = async (
         docsCodeSnippets[chunk.id] = snippet;
       }
     }
-  } catch (error) {
-    console.error("There was an error generating code snippets", error);
+  } catch (err) {
+    error(`There was an error generating code snippets`, err);
     return {};
   }
   return docsCodeSnippets;
