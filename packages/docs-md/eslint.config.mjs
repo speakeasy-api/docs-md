@@ -63,8 +63,8 @@ export default [
   },
   // Disallow console calls in compiler code (use logging.ts functions instead)
   {
-    files: ["packages/docs-md/src/compiler/**/*.{ts,js,mts,mjs}"],
-    ignores: ["packages/docs-md/src/compiler/logging.ts"],
+    files: ["src/compiler/**/*.{ts,js,mts,mjs}"],
+    ignores: ["src/compiler/logging.ts"],
     rules: {
       "no-console": "error",
     },
