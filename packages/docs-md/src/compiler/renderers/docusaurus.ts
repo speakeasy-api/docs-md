@@ -42,7 +42,7 @@ export class DocusaurusSite extends MdxSite {
       JSON.stringify(
         {
           position: 3,
-          label: "Operations",
+          label: "Endpoints",
           collapsible: true,
           collapsed: false,
         },

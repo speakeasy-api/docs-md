@@ -67,3 +67,35 @@ export function useChildren<ComponentProps>(
     ) as ReactElement<ComponentProps>[];
   }, [children, slot]);
 }
+
+export function useChildrenErrorDescription(children: ReactNode) {
+  return useMemo(() => {
+    if (children === null || children === undefined) {
+      return children + "";
+    }
+
+    function describeChild(child: unknown) {
+      if (child === null || child === undefined) {
+        return child + "";
+      }
+      let description = `type=${typeof child}`;
+      if (typeof child === "object") {
+        const { props } = child as Record<string, unknown>;
+        if (!props) {
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          return description + ` props=${props}`;
+        }
+        if (typeof props === "object") {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          description += `, slot=${(props as Record<string, any>).slot}`;
+        }
+      }
+      return description;
+    }
+
+    if (Array.isArray(children)) {
+      return children.map((child) => describeChild(child)).join("\n");
+    }
+    return describeChild(children);
+  }, [children]);
+}

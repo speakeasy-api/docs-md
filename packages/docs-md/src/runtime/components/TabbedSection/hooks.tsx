@@ -5,7 +5,11 @@ import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 
 import { InternalError } from "../../../util/internalError.ts";
-import { useChildren, useUniqueChild } from "../Section/hooks.ts";
+import {
+  useChildren,
+  useChildrenErrorDescription,
+  useUniqueChild,
+} from "../Section/hooks.ts";
 import type { SectionContentProps } from "../SectionContent/SectionContent.tsx";
 import type { SectionTabProps } from "../SectionTab/SectionTab.tsx";
 import type { SectionTitleProps } from "../SectionTitle/SectionTitle.tsx";
@@ -24,9 +28,13 @@ export function useTabbedChildren({ TabButton, children }: ContainerProps) {
   const titleChild = useUniqueChild<SectionTitleProps>(children, "title");
   const contentChildren = useChildren<SectionContentProps>(children, "content");
   const tabChildren = useChildren<SectionTabProps>(children, "tab");
+  const errorDescription = useChildrenErrorDescription(children);
 
   if (!tabChildren.length) {
-    throw new InternalError("TabbedSection must have at least one tab");
+    throw new InternalError(
+      "TabbedSection must have at least one tab. Found children:\n" +
+        errorDescription
+    );
   }
 
   const firstTabId = tabChildren[0]?.props.id;
@@ -37,7 +45,7 @@ export function useTabbedChildren({ TabButton, children }: ContainerProps) {
   const [activeTabId, setActiveTabId] = useState(firstTabId);
 
   const activeChild = useMemo(() => {
-    return contentChildren.find((child) => child.props.id === activeTabId);
+    return contentChildren.find((child) => child.props?.id === activeTabId);
   }, [contentChildren, activeTabId]);
 
   const tabChildrenWithButtons = useMemo(

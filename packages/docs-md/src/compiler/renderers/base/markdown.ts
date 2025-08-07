@@ -358,7 +358,7 @@ export abstract class MarkdownRenderer extends Renderer {
   ) {
     let line = `${`#`.repeat(level)} ${this.escapeText(text, { escape })}`;
     if (id) {
-      line += ` \\{#${id}\\}`;
+      line += ` {#${id}}`;
     }
     return line;
   }

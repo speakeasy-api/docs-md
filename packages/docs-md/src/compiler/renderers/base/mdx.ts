@@ -8,6 +8,7 @@ import type {
   RendererAddExpandablePropertyArgs,
   RendererAddFrontMatterDisplayTypeArgs,
   RendererAddOperationArgs,
+  RendererAppendHeadingArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
   RendererConstructorArgs,
@@ -86,6 +87,16 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     } else {
       return super.createCode(text, options);
     }
+  }
+
+  public override createHeading(
+    ...[level, text, { escape = "mdx", id } = {}]: RendererAppendHeadingArgs
+  ) {
+    let line = `${`#`.repeat(level)} ${this.escapeText(text, { escape })}`;
+    if (id) {
+      line += ` \\{#${id}\\}`;
+    }
+    return line;
   }
 
   protected insertPackageImport(importPath: string) {
