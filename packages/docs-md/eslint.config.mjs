@@ -12,9 +12,9 @@ export default [
     rootDir: getDirname(),
     entryPoints: {
       "eslint.config.mjs": ["default"],
-      "src/runtime/nextra.ts": /.*/,
-      "src/runtime/docusaurus.ts": /.*/,
-      "src/runtime/react.ts": /.*/,
+      "src/react/nextra.ts": /.*/,
+      "src/react/docusaurus.ts": /.*/,
+      "src/react/react.ts": /.*/,
       "src/compiler/compiler.ts": /.*/,
     },
     ignores: ["src/compiler/data/wasm_exec.js", ".storybook/**/*"],
@@ -35,8 +35,8 @@ export default [
       },
       {
         type: "first-party",
-        filepath: /src\/runtime/,
-        allowed: [/src\/runtime\//],
+        filepath: /src\/react/,
+        allowed: [/src\/react\//],
         message: "Only runtime code is allowed to import runtime code",
       },
       {
