@@ -15,6 +15,7 @@ export default [
       "src/react/nextra.ts": /.*/,
       "src/react/docusaurus.ts": /.*/,
       "src/react/react.ts": /.*/,
+      "src/lit/index.ts": /.*/,
       "src/compiler/compiler.ts": /.*/,
     },
     ignores: ["src/compiler/data/wasm_exec.js", ".storybook/**/*"],
