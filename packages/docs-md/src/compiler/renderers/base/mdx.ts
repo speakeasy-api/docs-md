@@ -1,13 +1,11 @@
 import { dirname, relative } from "node:path";
 
 import type { TryItNowProps } from "../../../types/shared.ts";
-import { InternalError } from "../../../util/internalError.ts";
 import { HEADINGS } from "../../content/constants.ts";
 import type {
   RendererAddExpandableBreakoutArgs,
   RendererAddExpandablePropertyArgs,
   RendererAddFrontMatterDisplayTypeArgs,
-  RendererAddOperationArgs,
   RendererAppendHeadingArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
@@ -35,8 +33,6 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   #includeSidebar = false;
   #currentPagePath: string;
   #codeThemes: TryItNowProps["themes"];
-  #idStack: string[] = [];
-  #expandableIdStack: string[] | undefined;
 
   constructor(
     args: RendererConstructorArgs,
@@ -152,52 +148,25 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return "</Pill>";
   }
 
-  public override addOperationSection(...args: RendererAddOperationArgs) {
-    this.#idStack.push(args[0].operationId);
-    super.addOperationSection(...args);
-    this.#idStack.pop();
-  }
-
   protected override handleCreateSecurity(cb: () => void) {
-    if (this.#expandableIdStack) {
-      throw new InternalError(
-        "handleCreateBreakouts called while inside an expandable section"
-      );
-    }
-    this.#expandableIdStack = [...this.#idStack];
     this.insertComponentImport("ExpandableSection");
     this.appendText("<ExpandableSection>");
     cb();
     this.appendText("</ExpandableSection>");
-    this.#expandableIdStack = undefined;
   }
 
   protected override handleCreateParameters(cb: () => void) {
-    if (this.#expandableIdStack) {
-      throw new InternalError(
-        "handleCreateParameters called while inside an expandable section"
-      );
-    }
-    this.#expandableIdStack = [...this.#idStack];
     this.insertComponentImport("ExpandableSection");
     this.appendText("<ExpandableSection>");
     cb();
     this.appendText("</ExpandableSection>");
-    this.#expandableIdStack = undefined;
   }
 
   protected override handleCreateBreakouts(cb: () => void) {
-    if (this.#expandableIdStack) {
-      throw new InternalError(
-        "handleCreateBreakouts called while inside an expandable section"
-      );
-    }
-    this.#expandableIdStack = [...this.#idStack];
     this.insertComponentImport("ExpandableSection");
     this.appendText("<ExpandableSection>");
     cb();
     this.appendText("</ExpandableSection>");
-    this.#expandableIdStack = undefined;
   }
 
   #getBreakoutIdInfo() {
