@@ -180,6 +180,9 @@ export type RendererAddResponsesArgs = [
       createBreakouts: () => void;
     }) => void
   ) => void,
+  options?: {
+    title?: string;
+  },
 ];
 export type RendererCreateContextArgs = [id: string];
 

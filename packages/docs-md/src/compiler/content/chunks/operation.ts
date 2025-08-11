@@ -223,43 +223,59 @@ export function renderOperation({
           0
         );
         if (numResponses > 0) {
-          renderer.addResponsesSection((createTab) => {
-            for (const [statusCode, responses] of filteredResponseList) {
-              for (const response of responses) {
-                const schema = getSchemaFromId(
-                  response.contentChunkId,
-                  renderer.getDocsData()
-                ).chunkData.value;
-                debug(
-                  `Rendering response: statusCode=${statusCode}, contentType=${response.contentType}`
-                );
-                createTab({
-                  statusCode,
-                  contentType: response.contentType,
-                  createFrontMatter() {
-                    if (schema.type !== "object") {
-                      renderer.addFrontMatterDisplayType({
-                        typeInfo: getDisplayTypeInfo(schema, renderer, []),
+          // This is a quick-n-dirty hack to check if we're displaying Server
+          // Side Events or not. It's somewhat brittle since it doesn't support
+          // endpoints that can return both SSEs and standard responses, but works
+          // in the typical case where it only returns SSEs
+          const isSSE = filteredResponseList.every(([statusCode, responses]) =>
+            statusCode === "200"
+              ? responses.every(
+                  (response) => response.contentType === "text/event-stream"
+                )
+              : true
+          );
+          renderer.addResponsesSection(
+            (createTab) => {
+              for (const [statusCode, responses] of filteredResponseList) {
+                for (const response of responses) {
+                  const schema = getSchemaFromId(
+                    response.contentChunkId,
+                    renderer.getDocsData()
+                  ).chunkData.value;
+                  debug(
+                    `Rendering response: statusCode=${statusCode}, contentType=${response.contentType}`
+                  );
+                  createTab({
+                    statusCode,
+                    contentType: response.contentType,
+                    createFrontMatter() {
+                      if (schema.type !== "object") {
+                        renderer.addFrontMatterDisplayType({
+                          typeInfo: getDisplayTypeInfo(schema, renderer, []),
+                        });
+                      }
+                      if (response.description) {
+                        renderer.appendText(response.description);
+                      }
+                      renderSchemaFrontmatter({
+                        renderer,
+                        schema,
                       });
-                    }
-                    if (response.description) {
-                      renderer.appendText(response.description);
-                    }
-                    renderSchemaFrontmatter({
-                      renderer,
-                      schema,
-                    });
-                  },
-                  createBreakouts() {
-                    renderBreakouts({
-                      renderer,
-                      schema,
-                    });
-                  },
-                });
+                    },
+                    createBreakouts() {
+                      renderBreakouts({
+                        renderer,
+                        schema,
+                      });
+                    },
+                  });
+                }
               }
+            },
+            {
+              title: isSSE ? "Server-Side Events" : "Responses",
             }
-          });
+          );
         }
       }
     }

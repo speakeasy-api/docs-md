@@ -266,11 +266,13 @@ export abstract class MarkdownRenderer extends Renderer {
     this.#operationIdContext.pop();
   }
 
-  public override addResponsesSection(...[cb]: RendererAddResponsesArgs): void {
+  public override addResponsesSection(
+    ...[cb, { title = "Responses" } = {}]: RendererAddResponsesArgs
+  ): void {
     this.#operationIdContext.push("responses");
     this.appendTabbedSectionStart();
     this.appendSectionTitleStart({ variant: "default" });
-    this.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Responses", {
+    this.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
       id: this.getCurrentId(),
     });
     this.appendSectionTitleEnd();
