@@ -1,31 +1,9 @@
-import { css, html, LitElement } from "lit";
+import clsx from "clsx";
+import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { classMap } from "lit/directives/class-map.js";
-
-const styles = css`
-  .content h2,
-  .content h3,
-  .content h4,
-  .content h5,
-  .content h6 {
-    /* Normalize padding on headings across scaffolds */
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
-
-  .content > :last-child {
-    margin-bottom: 0;
-  }
-
-  .breakout {
-    padding-left: 3rem;
-  }
-`;
 
 @customElement("speakeasy-section-content")
 export class SectionContent extends LitElement {
-  static override styles = styles;
-
   // Disable lit's default shadow DOM
   override createRenderRoot() {
     return this;
@@ -44,11 +22,11 @@ export class SectionContent extends LitElement {
   // Render the UI as a function of component state
   public override render() {
     return html`<div
-      class=${classMap({
-        content: true,
-        breakout: this.variant === "breakout",
-        topLevel: this.variant === "top-level",
-      })}
+      class=${clsx(
+        "speakeasy-section-content--content",
+        this.variant === "breakout" && "speakeasy-section-content--breakout",
+        this.variant === "top-level" && "speakeasy-section-content--topLevel"
+      )}
       id="${this.id}"
       slot="${this.slot}"
     >
