@@ -27,7 +27,7 @@ export class SectionContent extends ExtendedLitElement {
       id="${this.id}"
       slot="${this.slot}"
     >
-      ${this.children}
+      ${this.getAllChildren()}
     </div>`;
   }
 }

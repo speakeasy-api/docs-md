@@ -12,7 +12,9 @@ export class ExtendedLitElement extends LitElement {
 
   public override render() {
     if (!this.#initialChildren) {
+      // Prevent normal children from being shown
       this.#initialChildren = Array.from(this.children);
+      this.innerHTML = "";
     }
     return html``;
   }
@@ -38,5 +40,12 @@ export class ExtendedLitElement extends LitElement {
       throw new InternalError("No initial children");
     }
     return this.#initialChildren.filter((child) => child.slot === slot);
+  }
+
+  protected getAllChildren() {
+    if (!this.#initialChildren) {
+      throw new InternalError("No initial children");
+    }
+    return this.#initialChildren;
   }
 }

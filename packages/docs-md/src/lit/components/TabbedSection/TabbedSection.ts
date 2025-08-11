@@ -73,19 +73,15 @@ export class TabbedSection extends ExtendedLitElement {
       </speakeasy-tabbed-section-button>`;
     });
 
-    return html`<speakeasy-section variant="top-level">
-      <speakeasy-section-title slot="title" variant="top-level">
-        <div class=${clsx("speakeasy-tabbed-section--titleContainer")}>
-          <div>${titleChild}</div>
-          <div class=${clsx("speakeasy-tabbed-section--tabs")}>
-            ${tabChildrenWithButtons}
-          </div>
+    return html`<div class=${clsx("speakeasy-section--section")}>
+      <div class=${clsx("speakeasy-tabbed-section--titleContainer")}>
+        <div>${titleChild}</div>
+        <div class=${clsx("speakeasy-tabbed-section--tabs")}>
+          ${tabChildrenWithButtons}
         </div>
-      </speakeasy-section-title>
-      <speakeasy-section-content slot="content" variant="top-level">
-        ${activeChild}
-      </speakeasy-section-content>
-    </speakeasy-section>`;
+      </div>
+      <div class=${clsx("speakeasy-section--topLevel")}>${activeChild}</div>
+    </div>`;
   }
 
   #setActiveTabId(id: string) {
@@ -94,3 +90,19 @@ export class TabbedSection extends ExtendedLitElement {
     this.requestUpdate();
   }
 }
+
+/*
+<div
+      class=${clsx(this.variant !== "breakout" && "speakeasy-section--section")}
+    >
+      <div>${titleChild}</div>
+      <div
+        class=${clsx(
+          this.variant === "breakout" && "speakeasy-section--breakout",
+          this.variant === "top-level" && "speakeasy-section--topLevel"
+        )}
+      >
+        ${contentChildren}
+      </div>
+    </div>
+*/

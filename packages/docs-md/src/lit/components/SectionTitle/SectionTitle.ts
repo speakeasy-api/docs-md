@@ -30,7 +30,7 @@ export class SectionTitle extends ExtendedLitElement {
       ${this.variant === "breakout"
         ? html`<div class=${clsx("speakeasy-section-title--breakoutLine")} />`
         : ""}
-      ${this.children}
+      ${this.getAllChildren()}
     </div>`;
   }
 }

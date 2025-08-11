@@ -15,7 +15,7 @@ export class SectionTab extends ExtendedLitElement {
     super.render();
 
     return html`<div id="${this.id}" slot="${this.slot}">
-      ${this.children}
+      ${this.getAllChildren()}
     </div>`;
   }
 }
