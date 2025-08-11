@@ -57,6 +57,11 @@ const styles = css`
 export class Pill extends LitElement {
   static override styles = styles;
 
+  // Disable lit's default shadow DOM
+  override createRenderRoot() {
+    return this;
+  }
+
   // Declare reactive properties
   @property()
   variant = "primary";

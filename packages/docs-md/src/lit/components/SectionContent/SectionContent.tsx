@@ -1,4 +1,3 @@
-import type { CSSResultGroup } from "lit";
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
@@ -25,8 +24,12 @@ const styles = css`
 
 @customElement("speakeasy-section-content")
 export class SectionContent extends LitElement {
-  // TODO: figure out a better way to type this
-  static override styles = styles as unknown as CSSResultGroup;
+  static override styles = styles;
+
+  // Disable lit's default shadow DOM
+  override createRenderRoot() {
+    return this;
+  }
 
   // Declare reactive properties
   @property()
