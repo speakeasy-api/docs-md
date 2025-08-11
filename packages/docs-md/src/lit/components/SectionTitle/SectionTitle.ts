@@ -1,15 +1,11 @@
 import clsx from "clsx";
-import { html, LitElement } from "lit";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-@customElement("speakeasy-section-title")
-export class SectionTitle extends LitElement {
-  // Disable lit's default shadow DOM
-  override createRenderRoot() {
-    return this;
-  }
+import { ExtendedLitElement } from "../util.ts";
 
-  // Declare reactive properties
+@customElement("speakeasy-section-title")
+export class SectionTitle extends ExtendedLitElement {
   @property()
   variant = "primary";
 
@@ -19,8 +15,9 @@ export class SectionTitle extends LitElement {
   @property()
   override slot = "";
 
-  // Render the UI as a function of component state
   public override render() {
+    super.render();
+
     return html`<div
       id=${this.id}
       class=${clsx(
@@ -33,7 +30,7 @@ export class SectionTitle extends LitElement {
       ${this.variant === "breakout"
         ? html`<div class=${clsx("speakeasy-section-title--breakoutLine")} />`
         : ""}
-      <slot />
+      ${this.children}
     </div>`;
   }
 }

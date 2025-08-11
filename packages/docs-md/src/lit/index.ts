@@ -1,6 +1,9 @@
-export { Pill } from "./components/Pill/Pill.tsx";
-export { Section } from "./components/Section/Section.tsx";
-export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
-export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
-export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
-export { TabbedSection } from "./components/TabbedSection/TabbedSection.tsx";
+export { Pill } from "./components/Pill/Pill.ts";
+export { Section } from "./components/Section/Section.ts";
+export { SectionContent } from "./components/SectionContent/SectionContent.ts";
+export { SectionTitle } from "./components/SectionTitle/SectionTitle.ts";
+export { SectionTab } from "./components/SectionTab/SectionTab.ts";
+export {
+  TabbedSection,
+  TabButton,
+} from "./components/TabbedSection/TabbedSection.ts";

@@ -1,20 +1,17 @@
 import clsx from "clsx";
-import { html, LitElement } from "lit";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-@customElement("speakeasy-pill")
-export class Pill extends LitElement {
-  // Disable lit's default shadow DOM
-  override createRenderRoot() {
-    return this;
-  }
+import { ExtendedLitElement } from "../util.ts";
 
-  // Declare reactive properties
+@customElement("speakeasy-pill")
+export class Pill extends ExtendedLitElement {
   @property()
   variant = "primary";
 
-  // Render the UI as a function of component state
   public override render() {
+    super.render();
+
     return html`<span
       class=${clsx("speakeasy-pill--common", "speakeasy-pill--" + this.variant)}
     >
