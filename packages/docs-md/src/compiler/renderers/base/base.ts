@@ -129,12 +129,14 @@ export type RendererCreateSectionArgs = [
 export type RendererCreateSectionTitleArgs = [
   options?: {
     variant?: SectionVariant;
+    slot?: string;
   },
 ];
 export type RendererCreateSectionContentArgs = [
   options?: {
     id?: string;
     variant?: SectionVariant;
+    slot?: string;
   },
 ];
 export type RendererCreateTabbedSectionTabArgs = [id: string];

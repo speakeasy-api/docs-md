@@ -271,7 +271,7 @@ export abstract class MarkdownRenderer extends Renderer {
   ): void {
     this.#operationIdContext.push("responses");
     this.appendTabbedSectionStart();
-    this.appendSectionTitleStart({ variant: "default" });
+    this.appendSectionTitleStart({ variant: "default", slot: "tab-title" });
     this.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
       id: this.getCurrentId(),
     });
@@ -284,6 +284,7 @@ export abstract class MarkdownRenderer extends Renderer {
       this.appendSectionContentStart({
         id: this.getCurrentId(),
         variant: "top-level",
+        slot: "tab-content",
       });
       this.handleCreateFrontMatter(createFrontMatter);
       this.handleCreateBreakouts(createBreakouts);
