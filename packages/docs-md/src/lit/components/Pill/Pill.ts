@@ -14,8 +14,7 @@ export class Pill extends ExtendedLitElement {
 
     return html`<span
       class=${clsx("speakeasy-pill--common", "speakeasy-pill--" + this.variant)}
-    >
-      ${this.getAllChildren()}
-    </span>`;
+      >${this.getAllChildren()}</span
+    >`;
   }
 }
