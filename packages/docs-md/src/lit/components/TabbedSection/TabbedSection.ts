@@ -1,42 +1,9 @@
 import clsx from "clsx";
-import { html, LitElement } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { html } from "lit";
+import { customElement } from "lit/decorators.js";
 
 import { InternalError } from "../../../util/internalError.ts";
 import { ExtendedLitElement } from "../util.ts";
-
-@customElement("speakeasy-tabbed-section-button")
-export class TabButton extends LitElement {
-  // Disable lit's default shadow DOM
-  override createRenderRoot() {
-    return this;
-  }
-
-  // Declare reactive properties
-  @property()
-  isActive = false;
-
-  @property()
-  onClick: () => void;
-
-  // Render the UI as a function of component state
-  public override render() {
-    return html` <button
-      onClick=${this.onClick}
-      className=${clsx(
-        "speakeasy-tabbed-section--button",
-        this.isActive
-          ? "speakeasy-tabbed-section--buttonActive"
-          : "speakeasy-tabbed-section--buttonInactive"
-      )}
-      style=${{
-        fontWeight: this.isActive ? "bold" : "normal",
-      }}
-    >
-      ${this.children}
-    </button>`;
-  }
-}
 
 @customElement("speakeasy-tabbed-section")
 export class TabbedSection extends ExtendedLitElement {
@@ -57,20 +24,27 @@ export class TabbedSection extends ExtendedLitElement {
     const activeChild = contentChildren.find(
       (child) => child.id === this.#activeTabId
     );
-    console.log("activeChild", this.#activeTabId, activeChild);
 
     const tabChildrenWithButtons = tabChildren.map((tabChild) => {
       const id = tabChild.attributes.getNamedItem("id")?.value;
       if (!id) {
         throw new InternalError("Could not get id from tab");
       }
-      return html`<speakeasy-tabbed-section-button
-        key=${id}
-        isActive=${id === this.#activeTabId}
+      const isActive = id === this.#activeTabId;
+      return html` <button
         @click=${() => this.#setActiveTabId(id)}
+        class=${clsx(
+          "speakeasy-tabbed-section--button",
+          isActive
+            ? "speakeasy-tabbed-section--buttonActive"
+            : "speakeasy-tabbed-section--buttonInactive"
+        )}
+        style=${{
+          fontWeight: isActive ? "bold" : "normal",
+        }}
       >
         ${tabChild}
-      </speakeasy-tabbed-section-button>`;
+      </button>`;
     });
 
     return html`<div class=${clsx("speakeasy-section--section")}>
@@ -90,19 +64,3 @@ export class TabbedSection extends ExtendedLitElement {
     this.requestUpdate();
   }
 }
-
-/*
-<div
-      class=${clsx(this.variant !== "breakout" && "speakeasy-section--section")}
-    >
-      <div>${titleChild}</div>
-      <div
-        class=${clsx(
-          this.variant === "breakout" && "speakeasy-section--breakout",
-          this.variant === "top-level" && "speakeasy-section--topLevel"
-        )}
-      >
-        ${contentChildren}
-      </div>
-    </div>
-*/
