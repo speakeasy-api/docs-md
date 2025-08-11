@@ -7,6 +7,8 @@ export function computeSingleLineDisplayType(typeInfo: DisplayTypeInfo): {
   switch (typeInfo.label) {
     case "array":
     case "map":
+    case "event-stream":
+    case "jsonl":
     case "set": {
       const children = typeInfo.children.map(computeSingleLineDisplayType);
       return {
@@ -44,6 +46,8 @@ export function computeMultilineTypeLabel(
   switch (typeInfo.label) {
     case "array":
     case "map":
+    case "event-stream":
+    case "jsonl":
     case "set": {
       // First, check if we can show this on a single line
       const singleLineContents = computeSingleLineDisplayType(typeInfo);

@@ -187,6 +187,16 @@ type MapValue = BaseValue & {
   items: SchemaValue;
 };
 
+type JSONLValue = BaseValue & {
+  type: "jsonl";
+  items: SchemaValue;
+};
+
+type EventStreamValue = BaseValue & {
+  type: "event-stream";
+  items: SchemaValue;
+};
+
 type BinaryValue = BaseValue & {
   type: "binary";
 };
@@ -212,6 +222,8 @@ export type SchemaValue =
   | ArrayValue
   | SetValue
   | MapValue
+  | JSONLValue
+  | EventStreamValue
   | UnionValue
   | EnumValue
   | BinaryValue

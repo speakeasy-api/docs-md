@@ -40,6 +40,12 @@ function getDisplayTypeLabel(schema: SchemaValue) {
     case "enum": {
       return "enum";
     }
+    case "jsonl": {
+      return "jsonl";
+    }
+    case "event-stream": {
+      return "event-stream";
+    }
     case "string":
     case "number":
     case "boolean":
@@ -92,6 +98,22 @@ export function getDisplayTypeInfo(
       };
     }
     case "set": {
+      const typeInfo = getDisplayTypeInfo(schema.items, renderer, chunkIdStack);
+      return {
+        ...typeInfo,
+        label: getDisplayTypeLabel(schema),
+        children: [typeInfo],
+      };
+    }
+    case "jsonl": {
+      const typeInfo = getDisplayTypeInfo(schema.items, renderer, chunkIdStack);
+      return {
+        ...typeInfo,
+        label: getDisplayTypeLabel(schema),
+        children: [typeInfo],
+      };
+    }
+    case "event-stream": {
       const typeInfo = getDisplayTypeInfo(schema.items, renderer, chunkIdStack);
       return {
         ...typeInfo,
