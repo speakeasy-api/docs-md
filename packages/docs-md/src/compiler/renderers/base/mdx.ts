@@ -302,15 +302,13 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.createText("</Section>");
   }
 
-  public override createSectionTitleStart(
-    ...[{ variant = "default" } = {}]: RendererCreateSectionTitleArgs
+  public override createSectionTitle(
+    ...[cb, { variant = "default" } = {}]: RendererCreateSectionTitleArgs
   ) {
     this.insertComponentImport("SectionTitle");
-    return `<SectionTitle slot="title" variant="${variant}">`;
-  }
-
-  public override createSectionTitleEnd() {
-    return `</SectionTitle>`;
+    this.createText(`<SectionTitle slot="title" variant="${variant}">`);
+    cb();
+    this.createText("</SectionTitle>");
   }
 
   public override createSectionContentStart(

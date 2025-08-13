@@ -142,6 +142,7 @@ export type RendererCreateSectionArgs = [
   },
 ];
 export type RendererCreateSectionTitleArgs = [
+  cb: () => void,
   options?: {
     variant?: SectionVariant;
   },
@@ -261,6 +262,7 @@ export abstract class Renderer {
   ): void;
 
   abstract createSection(...args: RendererCreateSectionArgs): void;
+  abstract createSectionTitle(...args: RendererCreateSectionTitleArgs): void;
 
   // Low level operations
 
@@ -277,14 +279,6 @@ export abstract class Renderer {
   // variants that append/insert the content into the current page.
 
   // Sections show a title followed by content
-  abstract createSectionTitleStart(
-    ...args: RendererCreateSectionTitleArgs
-  ): string;
-  abstract appendSectionTitleStart(
-    ...args: RendererCreateSectionTitleArgs
-  ): void;
-  abstract createSectionTitleEnd(): string;
-  abstract appendSectionTitleEnd(): void;
   abstract createSectionContentStart(
     ...args: RendererCreateSectionContentArgs
   ): string;

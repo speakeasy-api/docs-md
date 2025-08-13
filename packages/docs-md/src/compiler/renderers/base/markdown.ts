@@ -197,11 +197,13 @@ export abstract class MarkdownRenderer extends Renderer {
     }
     this.createSection(
       () => {
-        this.appendSectionTitleStart({ variant: "top-level" });
-        this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
-          id: this.getCurrentId(),
-        });
-        this.appendSectionTitleEnd();
+        this.createSectionTitle(
+          () =>
+            this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
+              id: this.getCurrentId(),
+            }),
+          { variant: "top-level" }
+        );
         this.appendSectionContentStart({ variant: "top-level" });
         cb();
         this.appendSectionContentEnd();
@@ -269,11 +271,13 @@ export abstract class MarkdownRenderer extends Renderer {
   ): void {
     this.enterContext({ id: "responses", type: "section" });
     this.appendTabbedSectionStart();
-    this.appendSectionTitleStart({ variant: "default" });
-    this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
-      id: this.getCurrentId(),
-    });
-    this.appendSectionTitleEnd();
+    this.createSectionTitle(
+      () =>
+        this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
+          id: this.getCurrentId(),
+        }),
+      { variant: "default" }
+    );
     cb(({ statusCode, contentType, createFrontMatter, createBreakouts }) => {
       this.enterContext({ id: statusCode, type: "section" });
       this.enterContext({ id: contentType.replace("/", "-"), type: "section" });
@@ -428,24 +432,8 @@ ${text}\n</code>\n</pre>`;
     cb();
   }
 
-  public override createSectionTitleStart(
-    ..._args: RendererCreateSectionTitleArgs
-  ) {
-    return "";
-  }
-
-  public override appendSectionTitleStart(
-    ...args: RendererCreateSectionTitleArgs
-  ) {
-    this.appendLine(this.createSectionTitleStart(...args));
-  }
-
-  public override createSectionTitleEnd() {
-    return "";
-  }
-
-  public override appendSectionTitleEnd() {
-    this.appendLine(this.createSectionTitleEnd());
+  public override createSectionTitle(...[cb]: RendererCreateSectionTitleArgs) {
+    cb();
   }
 
   public override createSectionContentStart(

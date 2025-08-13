@@ -149,16 +149,18 @@ export function renderOperation({
         debug(`Rendering try it now`);
         renderer.createSection(
           () => {
-            renderer.appendSectionTitleStart({ variant: "top-level" });
-            renderer.createHeading(
-              HEADINGS.SECTION_HEADING_LEVEL,
-              "Try it Now",
-              {
-                // TODO: Remove explicit references to id and handle in renderers
-                id: `operation-${snakeCase(chunk.chunkData.operationId)}+try-it-now`,
-              }
+            renderer.createSectionTitle(
+              () =>
+                renderer.createHeading(
+                  HEADINGS.SECTION_HEADING_LEVEL,
+                  "Try it Now",
+                  {
+                    // TODO: Remove explicit references to id and handle in renderers
+                    id: `operation-${snakeCase(chunk.chunkData.operationId)}+try-it-now`,
+                  }
+                ),
+              { variant: "top-level" }
             );
-            renderer.appendSectionTitleEnd();
             renderer.appendSectionContentStart({ variant: "top-level" });
             // TODO: Zod is actually hard coded for now since its always a dependency
             // in our SDKs. Ideally this will come from the SDK package.
