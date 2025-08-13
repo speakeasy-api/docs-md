@@ -13,8 +13,8 @@ import {
   computeMultilineTypeLabel,
   computeSingleLineDisplayType,
 } from "../../../util/displayType.ts";
-import { Pill } from "../../Pill/Pill.tsx";
 import { useChildren, useUniqueChild } from "../../../util/hooks.ts";
+import { Pill } from "../../Pill/Pill.tsx";
 import styles from "../styles.module.css";
 
 type PropertyCellProps = PropsWithChildren<{
