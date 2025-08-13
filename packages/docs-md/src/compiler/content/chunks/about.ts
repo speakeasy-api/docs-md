@@ -14,23 +14,17 @@ export function renderAbout(renderer: Renderer, chunk: AboutChunk) {
   if (chunk.chunkData.version) {
     renderer.createText(`_Version: ${chunk.chunkData.version}_`);
   } else if (showDebugPlaceholders) {
-    renderer.createDebugPlaceholderStart();
-    renderer.createText("No version provided");
-    renderer.createDebugPlaceholderEnd();
+    renderer.createDebugPlaceholder(() => "No version provided");
   }
   if (chunk.chunkData.description) {
     renderer.createText(chunk.chunkData.description);
   } else if (showDebugPlaceholders) {
-    renderer.createDebugPlaceholderStart();
-    renderer.createText("No description provided");
-    renderer.createDebugPlaceholderEnd();
+    renderer.createDebugPlaceholder(() => "No description provided");
   }
   if (chunk.chunkData.servers.length > 0) {
     renderer.createText("Servers");
     renderer.createList(chunk.chunkData.servers.map((server) => server.url));
   } else if (showDebugPlaceholders) {
-    renderer.appendDebugPlaceholderStart();
-    renderer.createText("No servers provided");
-    renderer.appendDebugPlaceholderEnd();
+    renderer.createDebugPlaceholder(() => "No servers provided");
   }
 }

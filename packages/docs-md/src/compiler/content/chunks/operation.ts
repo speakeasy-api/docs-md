@@ -70,9 +70,9 @@ export function renderOperation({
                       renderer.createText(entry.description);
                     }
                     if (showDebugPlaceholders) {
-                      renderer.appendDebugPlaceholderStart();
-                      renderer.createText("No description provided");
-                      renderer.appendDebugPlaceholderEnd();
+                      renderer.createDebugPlaceholder(
+                        () => "No description provided"
+                      );
                     }
                   }
                 : undefined,
@@ -123,9 +123,9 @@ export function renderOperation({
                       renderer.createText(parameter.description);
                     }
                     if (showDebugPlaceholders) {
-                      renderer.appendDebugPlaceholderStart();
-                      renderer.createText("No description provided");
-                      renderer.appendDebugPlaceholderEnd();
+                      renderer.createDebugPlaceholder(
+                        () => "No description provided"
+                      );
                     }
                   }
                 : undefined,

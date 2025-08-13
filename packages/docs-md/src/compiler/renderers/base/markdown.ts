@@ -16,6 +16,7 @@ import type {
   RendererConstructorArgs,
   RendererCreateCodeArgs,
   RendererCreateContextArgs,
+  RendererCreateDebugPlaceholderArgs,
   RendererCreateExpandableBreakoutArgs,
   RendererCreateExpandablePropertyArgs,
   RendererCreateFrontMatterDisplayTypeArgs,
@@ -159,24 +160,16 @@ export abstract class MarkdownRenderer extends Renderer {
     } else if (summary) {
       this.createText(summary);
       if (showDebugPlaceholders) {
-        this.appendDebugPlaceholderStart();
-        this.createText("No description provided");
-        this.appendDebugPlaceholderEnd();
+        this.createDebugPlaceholder(() => "No description provided");
       }
     } else if (description) {
       this.createText(description);
       if (showDebugPlaceholders) {
-        this.appendDebugPlaceholderStart();
-        this.createText("No summary provided");
-        this.appendDebugPlaceholderEnd();
+        this.createDebugPlaceholder(() => "No summary provided");
       }
     } else if (showDebugPlaceholders) {
-      this.appendDebugPlaceholderStart();
-      this.createText("No summary provided");
-      this.appendDebugPlaceholderEnd();
-      this.appendDebugPlaceholderStart();
-      this.createText("No description provided");
-      this.appendDebugPlaceholderEnd();
+      this.createDebugPlaceholder(() => "No summary provided");
+      this.createDebugPlaceholder(() => "No description provided");
     }
     cb();
     this.exitContext();
@@ -502,20 +495,10 @@ ${text}\n</code>\n</pre>`;
     }
   };
 
-  public override createDebugPlaceholderStart() {
-    return "";
-  }
-
-  public override appendDebugPlaceholderStart() {
-    this.appendLine(this.createDebugPlaceholderStart());
-  }
-
-  public override createDebugPlaceholderEnd() {
-    return "";
-  }
-
-  public override appendDebugPlaceholderEnd() {
-    this.appendLine(this.createDebugPlaceholderEnd());
+  public override createDebugPlaceholder(
+    ...[cb]: RendererCreateDebugPlaceholderArgs
+  ) {
+    this.appendLine(cb());
   }
 
   public override enterContext(...[context]: RendererCreateContextArgs) {

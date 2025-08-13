@@ -234,6 +234,8 @@ export type RendererConstructorArgs = {
   currentPagePath: string;
 };
 
+export type RendererCreateDebugPlaceholderArgs = [cb: () => string];
+
 export abstract class Renderer {
   abstract render(): string;
 
@@ -251,19 +253,24 @@ export abstract class Renderer {
   ): void;
   abstract createResponsesSection(...args: RendererCreateResponsesArgs): void;
 
+  abstract createSection(...args: RendererCreateSectionArgs): void;
+  abstract createSectionTitle(...args: RendererCreateSectionTitleArgs): void;
+  abstract createSectionContent(
+    ...args: RendererCreateSectionContentArgs
+  ): void;
+
   abstract createExpandableBreakout(
     ...args: RendererCreateExpandableBreakoutArgs
   ): void;
   abstract createExpandableProperty(
     ...args: RendererCreateExpandablePropertyArgs
   ): void;
+
   abstract createFrontMatterDisplayType(
     ...args: RendererCreateFrontMatterDisplayTypeArgs
   ): void;
-  abstract createSection(...args: RendererCreateSectionArgs): void;
-  abstract createSectionTitle(...args: RendererCreateSectionTitleArgs): void;
-  abstract createSectionContent(
-    ...args: RendererCreateSectionContentArgs
+  abstract createDebugPlaceholder(
+    ...args: RendererCreateDebugPlaceholderArgs
   ): void;
 
   // Low level operations
@@ -275,15 +282,6 @@ export abstract class Renderer {
   abstract createPill(...args: RendererCreatePillArgs): string;
 
   // Outdated operations
-
-  // The following methods are used to create basic content on the page. They
-  // have "create" variants that create the content and "append"/"insert"
-  // variants that append/insert the content into the current page.
-
-  abstract createDebugPlaceholderStart(): string;
-  abstract appendDebugPlaceholderStart(): void;
-  abstract createDebugPlaceholderEnd(): string;
-  abstract appendDebugPlaceholderEnd(): void;
 
   // The following methods are used to insert complex content onto the page,
   // and so they don't have "create" variants.

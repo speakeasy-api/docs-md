@@ -7,6 +7,7 @@ import type {
   RendererAppendTryItNowArgs,
   RendererConstructorArgs,
   RendererCreateCodeArgs,
+  RendererCreateDebugPlaceholderArgs,
   RendererCreateExpandableBreakoutArgs,
   RendererCreateExpandablePropertyArgs,
   RendererCreateFrontMatterDisplayTypeArgs,
@@ -342,13 +343,11 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return "</SectionTab>";
   }
 
-  public override createDebugPlaceholderStart() {
+  public override createDebugPlaceholder(
+    ...[cb]: RendererCreateDebugPlaceholderArgs
+  ) {
     this.insertComponentImport("DebugPlaceholder");
-    return `<DebugPlaceholder>`;
-  }
-
-  public override createDebugPlaceholderEnd() {
-    return "</DebugPlaceholder>";
+    this.appendLine(`<DebugPlaceholder>${cb()}</DebugPlaceholder>`);
   }
 
   public override appendSidebarLink(

@@ -424,9 +424,7 @@ export function renderSchemaFrontmatter({
   if (description) {
     renderer.createText(description);
   } else if (showDebugPlaceholders) {
-    renderer.appendDebugPlaceholderStart();
-    renderer.createText("No description provided");
-    renderer.appendDebugPlaceholderEnd();
+    renderer.createDebugPlaceholder(() => "No description provided");
   }
   if (examples.length > 0) {
     renderer.createText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
@@ -434,17 +432,13 @@ export function renderSchemaFrontmatter({
       renderer.createCode(example);
     }
   } else if (showDebugPlaceholders) {
-    renderer.appendDebugPlaceholderStart();
-    renderer.createText("No examples provided");
-    renderer.appendDebugPlaceholderEnd();
+    renderer.createDebugPlaceholder(() => "No examples provided");
   }
 
   if (defaultValue) {
     renderer.createText(`_Default Value:_ \`${defaultValue}\``);
   } else if (showDebugPlaceholders) {
-    renderer.appendDebugPlaceholderStart();
-    renderer.createText("No default value provided");
-    renderer.appendDebugPlaceholderEnd();
+    renderer.createDebugPlaceholder(() => "No default value provided");
   }
 }
 

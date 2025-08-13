@@ -29,9 +29,7 @@ export function renderGlobalSecurity(
     if (entry.description) {
       renderer.createText(entry.description);
     } else if (showDebugPlaceholders) {
-      renderer.appendDebugPlaceholderStart();
-      renderer.createText("No description provided");
-      renderer.appendDebugPlaceholderEnd();
+      renderer.createDebugPlaceholder(() => "No description provided");
     }
   }
 }
