@@ -68,13 +68,16 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
     ...[
       level,
       text,
-      { escape = "markdown", id } = {},
+      { escape = "markdown", id, append = true } = {},
     ]: RendererCreateHeadingArgs
   ) {
     let line = `${`#`.repeat(level)} ${this.escapeText(text, { escape })}`;
     if (id) {
       // Oddly enough, Nextra uses a different syntax for heading IDs
       line += ` [#${id}]`;
+    }
+    if (append) {
+      this.appendLine(line);
     }
     return line;
   }
