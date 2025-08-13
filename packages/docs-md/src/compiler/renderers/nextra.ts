@@ -52,7 +52,7 @@ class NextraRenderer extends MdxRenderer {
   }
 
   protected override insertComponentImport(symbol: string) {
-    this.insertNamedImport("@speakeasy-api/docs-md/nextra", symbol);
+    this.insertNamedImport("@speakeasy-api/docs-md/react", symbol);
   }
 
   public override insertFrontMatter(

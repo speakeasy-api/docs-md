@@ -87,7 +87,7 @@ class DocusaurusRenderer extends MdxRenderer {
   }
 
   protected override insertComponentImport(symbol: string) {
-    this.insertNamedImport("@speakeasy-api/docs-md/docusaurus", symbol);
+    this.insertNamedImport("@speakeasy-api/docs-md/react", symbol);
   }
 
   public override insertFrontMatter(
