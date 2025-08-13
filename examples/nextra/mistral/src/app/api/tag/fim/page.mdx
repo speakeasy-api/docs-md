@@ -3,7 +3,7 @@ sidebarTitle: Fim
 ---
 
 import "@speakeasy-api/docs-md/nextra.css";
-import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableProperty, TabbedSection, SectionTab, ExpandableBreakout } from "@speakeasy-api/docs-md/nextra";
+import { Pill, Section, SectionTitle, SectionContent, TryItNow, ExpandableSection, ExpandableProperty, TabbedSection, SectionTab, ExpandableBreakout, FrontMatterDisplayType } from "@speakeasy-api/docs-md/react";
 
 
 # Fim Operations [#fim]
@@ -13,6 +13,42 @@ import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, Expanda
 _Fim Completion_
 
 FIM completion.
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now [#operation-fim_completion_v1_fim_completions_post+try-it-now]
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.fim.complete({
+    model: "codestral-2405",
+    prompt: "def",
+    suffix: "return a+b",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <Section variant="top-level">
 
@@ -32,6 +68,7 @@ FIM completion.
   headingId="operation-fim_completion_v1_fim_completions_post_request_max_tokens"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -48,6 +85,7 @@ FIM completion.
   headingId="operation-fim_completion_v1_fim_completions_post_request_min_tokens"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -65,6 +103,7 @@ FIM completion.
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -96,6 +135,7 @@ codestral-2405
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -124,6 +164,7 @@ def
   headingId="operation-fim_completion_v1_fim_completions_post_request_random_seed"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -140,6 +181,7 @@ def
   headingId="operation-fim_completion_v1_fim_completions_post_request_stop"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -162,6 +204,7 @@ Stop generation if this token is detected. Or if one of these tokens is detected
   headingId="operation-fim_completion_v1_fim_completions_post_request_stream"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -186,6 +229,7 @@ _Default Value:_ `false`
   headingId="operation-fim_completion_v1_fim_completions_post_request_suffix"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -212,6 +256,7 @@ return a+b
   headingId="operation-fim_completion_v1_fim_completions_post_request_temperature"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -228,6 +273,7 @@ return a+b
   headingId="operation-fim_completion_v1_fim_completions_post_request_top_p"
   typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -279,6 +325,7 @@ Successful Response
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice\">ChatCompletionChoice</a>","children":[{"label":"ChatCompletionChoice","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice\">ChatCompletionChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -294,6 +341,7 @@ Successful Response
   id="choices_ChatCompletionChoice"
   headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice" parentId="choices"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -312,6 +360,7 @@ Successful Response
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"stop\"","linkedLabel":"\"stop\"","children":[],"breakoutSubTypes":{}},{"label":"\"length\"","linkedLabel":"\"length\"","children":[],"breakoutSubTypes":{}},{"label":"\"model_length\"","linkedLabel":"\"model_length\"","children":[],"breakoutSubTypes":{}},{"label":"\"error\"","linkedLabel":"\"error\"","children":[],"breakoutSubTypes":{}},{"label":"\"tool_calls\"","linkedLabel":"\"tool_calls\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -340,6 +389,7 @@ stop
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -368,6 +418,7 @@ _Example:_
   typeInfo={{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -385,6 +436,7 @@ _Example:_
   parentId="choices_ChatCompletionChoice_message"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -400,6 +452,7 @@ _Example:_
   id="choices_ChatCompletionChoice_message_content_TextChunk"
   headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_textchunk" parentId="choices_ChatCompletionChoice_message_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -418,6 +471,7 @@ _Example:_
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -435,6 +489,7 @@ _Example:_
   parentId="choices_ChatCompletionChoice_message_content_TextChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -456,6 +511,7 @@ _Default Value:_ `"text"`
   id="choices_ChatCompletionChoice_message_content_ImageURLChunk"
   headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_imageurlchunk" parentId="choices_ChatCompletionChoice_message_content"
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -480,6 +536,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -495,6 +552,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   id="choices_ChatCompletionChoice_message_content_ImageURLChunk_image_url_ImageURL"
   headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_imageurlchunk_image_url_imageurl" parentId="choices_ChatCompletionChoice_message_content_ImageURLChunk_image_url"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -512,6 +570,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   parentId="choices_ChatCompletionChoice_message_content_ImageURLChunk_image_url_ImageURL"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -530,6 +589,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -547,6 +607,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   parentId="choices_ChatCompletionChoice_message_content_ImageURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -568,6 +629,7 @@ _Default Value:_ `"image_url"`
   id="choices_ChatCompletionChoice_message_content_DocumentURLChunk"
   headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_documenturlchunk" parentId="choices_ChatCompletionChoice_message_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -585,6 +647,7 @@ _Default Value:_ `"image_url"`
   parentId="choices_ChatCompletionChoice_message_content_DocumentURLChunk"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -603,6 +666,7 @@ _Default Value:_ `"image_url"`
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -620,6 +684,7 @@ _Default Value:_ `"image_url"`
   parentId="choices_ChatCompletionChoice_message_content_DocumentURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -641,6 +706,7 @@ _Default Value:_ `"document_url"`
   id="choices_ChatCompletionChoice_message_content_ReferenceChunk"
   headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_referencechunk" parentId="choices_ChatCompletionChoice_message_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -659,6 +725,7 @@ _Default Value:_ `"document_url"`
   typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -676,6 +743,7 @@ _Default Value:_ `"document_url"`
   parentId="choices_ChatCompletionChoice_message_content_ReferenceChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -699,6 +767,7 @@ _Default Value:_ `"reference"`
   parentId="choices_ChatCompletionChoice_message"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -724,6 +793,7 @@ _Default Value:_ `false`
   parentId="choices_ChatCompletionChoice_message"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"assistant\"","linkedLabel":"\"assistant\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -747,6 +817,7 @@ _Default Value:_ `"assistant"`
   parentId="choices_ChatCompletionChoice_message"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_tool_calls_toolcall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_tool_calls_toolcall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -762,6 +833,7 @@ _Default Value:_ `"assistant"`
   id="choices_ChatCompletionChoice_message_tool_calls_ToolCall"
   headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_tool_calls_toolcall" parentId="choices_ChatCompletionChoice_message_tool_calls"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -780,6 +852,7 @@ _Default Value:_ `"assistant"`
   typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_tool_calls_toolcall_function_functioncall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -798,6 +871,7 @@ _Default Value:_ `"assistant"`
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -816,6 +890,7 @@ _Default Value:_ `"assistant"`
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -833,6 +908,7 @@ _Default Value:_ `"assistant"`
   parentId="choices_ChatCompletionChoice_message_tool_calls_ToolCall"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -856,6 +932,7 @@ _Default Value:_ `"null"`
   parentId="choices_ChatCompletionChoice_message_tool_calls_ToolCall"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -879,6 +956,7 @@ _Default Value:_ `0`
   parentId="choices_ChatCompletionChoice_message_tool_calls_ToolCall"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -896,6 +974,7 @@ _Default Value:_ `0`
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -923,6 +1002,7 @@ _Example:_
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -950,6 +1030,7 @@ cmpl-e5cc70bb28c444948073e77776eb30ef
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -977,6 +1058,7 @@ codestral-latest
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1004,6 +1086,7 @@ chat.completion
   typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1022,6 +1105,7 @@ chat.completion
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1050,6 +1134,7 @@ _Example:_
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1078,6 +1163,7 @@ _Example:_
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1102,13 +1188,13 @@ _Example:_
 
 </SectionContent>
 
-<SectionTab slot="tab" id="operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json">
+<SectionTab slot="tab" id="operation-fim_completion_v1_fim_completions_post_responses_422_application-json">
 
 422
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json">
+<SectionContent slot="content" variant="top-level" id="operation-fim_completion_v1_fim_completions_post_responses_422_application-json">
 
 Validation Error
 
@@ -1117,15 +1203,16 @@ Validation Error
 <ExpandableProperty
   slot="entry"
   id="HttpMeta"
-  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_httpmeta"
-  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### HttpMeta [#operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_httpmeta]
+##### HttpMeta [#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta]
 
 </div>
 
@@ -1134,16 +1221,17 @@ Validation Error
 <ExpandableProperty
   slot="entry"
   id="HttpMeta_Request"
-  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_httpmeta_request"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta_request"
   parentId="HttpMeta"
   typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### Request [#operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_httpmeta_request]
+##### Request [#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta_request]
 
 </div>
 
@@ -1158,16 +1246,17 @@ Raw HTTP request; suitable for debugging
 <ExpandableProperty
   slot="entry"
   id="HttpMeta_Response"
-  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_httpmeta_response"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta_response"
   parentId="HttpMeta"
   typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### Response [#operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_httpmeta_response]
+##### Response [#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta_response]
 
 </div>
 
@@ -1182,14 +1271,15 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail"
-  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_detail"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### detail [#operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_detail]
+##### detail [#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail]
 
 </div>
 
@@ -1198,13 +1288,14 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableBreakout
   slot="entry"
   id="detail_ValidationError"
-  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_detail_validationerror" parentId="detail"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror" parentId="detail"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-#### ValidationError [#operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_detail_validationerror]
+#### ValidationError [#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror]
 
 </div>
 
@@ -1213,16 +1304,17 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail_ValidationError_loc"
-  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_detail_validationerror_loc"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror_loc"
   parentId="detail_ValidationError"
   typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### loc [#operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_detail_validationerror_loc]
+##### loc [#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror_loc]
 
 </div>
 
@@ -1231,16 +1323,17 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail_ValidationError_msg"
-  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_detail_validationerror_msg"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror_msg"
   parentId="detail_ValidationError"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### msg [#operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_detail_validationerror_msg]
+##### msg [#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror_msg]
 
 </div>
 
@@ -1249,16 +1342,1321 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail_ValidationError_type"
-  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_detail_validationerror_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror_type"
   parentId="detail_ValidationError"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_422_application-json_detail_validationerror_type]
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror_type]
+
+</div>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</TabbedSection>
+
+## <Pill variant="primary"><b>POST</b></Pill> /v1/fim/completions\#stream [#operation-stream_fim]
+
+_Stream fim completion_
+
+Mistral AI provides the ability to stream responses back to a client in order to allow partial results for certain requests. Tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a data: [DONE] message. Otherwise, the server will hold the request open until the timeout or until completion, with the response containing the full result as JSON.
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now [#operation-stream_fim+try-it-now]
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.fim.stream({
+    model: "codestral-2405",
+    prompt: "def",
+    suffix: "return a+b",
+  });
+
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Request Body [#operation-stream_fim_request]
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="max_tokens"
+  headingId="operation-stream_fim_request_max_tokens"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### max_tokens [#operation-stream_fim_request_max_tokens]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="min_tokens"
+  headingId="operation-stream_fim_request_min_tokens"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### min_tokens [#operation-stream_fim_request_min_tokens]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="model"
+  headingId="operation-stream_fim_request_model"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### model [#operation-stream_fim_request_model]
+
+</div>
+
+<div slot="content">
+
+ID of the model to use. Only compatible for now with:
+  - `codestral-2405`
+  - `codestral-latest`
+
+_Example:_
+
+```
+codestral-2405
+```
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="prompt"
+  headingId="operation-stream_fim_request_prompt"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### prompt [#operation-stream_fim_request_prompt]
+
+</div>
+
+<div slot="content">
+
+The text/code to complete.
+
+_Example:_
+
+```
+def
+```
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="random_seed"
+  headingId="operation-stream_fim_request_random_seed"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### random_seed [#operation-stream_fim_request_random_seed]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="stop"
+  headingId="operation-stream_fim_request_stop"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### stop [#operation-stream_fim_request_stop]
+
+</div>
+
+<div slot="content">
+
+Stop generation if this token is detected. Or if one of these tokens is detected when providing an array
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="stream"
+  headingId="operation-stream_fim_request_stream"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### stream [#operation-stream_fim_request_stream]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `true`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="suffix"
+  headingId="operation-stream_fim_request_suffix"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### suffix [#operation-stream_fim_request_suffix]
+
+</div>
+
+<div slot="content">
+
+_Example:_
+
+```
+return a+b
+```
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="temperature"
+  headingId="operation-stream_fim_request_temperature"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### temperature [#operation-stream_fim_request_temperature]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="top_p"
+  headingId="operation-stream_fim_request_top_p"
+  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### top_p [#operation-stream_fim_request_top_p]
+
+</div>
+
+<div slot="content">
+
+Nucleus sampling, where the model considers the results of the tokens with `top_p` probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or `temperature` but not both.
+
+_Default Value:_ `1`
+
+</div>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+<TabbedSection>
+
+<SectionTitle slot="title" variant="default">
+
+### Server-Side Events [#operation-stream_fim_responses]
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-stream_fim_responses_200_text-event-stream">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-stream_fim_responses_200_text-event-stream">
+
+<FrontMatterDisplayType typeInfo={{"label":"event-stream","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent\">CompletionEvent</a>","children":[{"label":"CompletionEvent","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent\">CompletionEvent</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} />
+
+A stream of FIM completion events
+
+<ExpandableSection>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### CompletionEvent [#operation-stream_fim_responses_200_text-event-stream_completionevent]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data"
+  parentId="CompletionEvent"
+  typeInfo={{"label":"CompletionChunk","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk\">CompletionChunk</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### data [#operation-stream_fim_responses_200_text-event-stream_completionevent_data]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices"
+  parentId="CompletionEvent_data"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice\">CompletionResponseStreamChoice</a>","children":[{"label":"CompletionResponseStreamChoice","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice\">CompletionResponseStreamChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### choices [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice" parentId="CompletionEvent_data_choices"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### CompletionResponseStreamChoice [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice"
+  typeInfo={{"label":"DeltaMessage","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_deltamessage\">DeltaMessage</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### delta [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### content [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_TextChunk"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk" parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### TextChunk [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_TextChunk_text"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk_text"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_TextChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### text [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk_text]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_TextChunk_type"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk_type"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_TextChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"text"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk" parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content"
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ImageURLChunk [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk]
+
+</div>
+
+<div slot="content">
+
+An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### image_url [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url_ImageURL"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl" parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ImageURL [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url_ImageURL_detail"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl_detail"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url_ImageURL"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### detail [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl_detail]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url_ImageURL_url"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl_url"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url_ImageURL"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### url [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_type"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_type"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"image_url"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk" parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### DocumentURLChunk [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk_document_name"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk_document_name"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### document_name [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk_document_name]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk_document_url"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk_document_url"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### document_url [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk_document_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk_type"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk_type"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"document_url"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ReferenceChunk"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk" parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ReferenceChunk [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ReferenceChunk_reference_ids"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk_reference_ids"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ReferenceChunk"
+  typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### reference_ids [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk_reference_ids]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ReferenceChunk_type"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk_type"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ReferenceChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"reference"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_role"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_role"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### role [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_role]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### tool_calls [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall" parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ToolCall [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_function"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall"
+  typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function_functioncall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### function [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_function_arguments"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function_arguments"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_function"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### arguments [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function_arguments]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_function_name"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function_name"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_function"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### name [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function_name]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_id"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_id"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### id [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_id]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"null"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_index"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_index"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### index [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_index]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `0`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_type"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_type"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_type]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_finish_reason"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_finish_reason"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"stop\"","linkedLabel":"\"stop\"","children":[],"breakoutSubTypes":{}},{"label":"\"length\"","linkedLabel":"\"length\"","children":[],"breakoutSubTypes":{}},{"label":"\"error\"","linkedLabel":"\"error\"","children":[],"breakoutSubTypes":{}},{"label":"\"tool_calls\"","linkedLabel":"\"tool_calls\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### finish_reason [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_finish_reason]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_index"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_index"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### index [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_index]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_created"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_created"
+  parentId="CompletionEvent_data"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### created [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_created]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_id"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_id"
+  parentId="CompletionEvent_data"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### id [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_id]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_model"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_model"
+  parentId="CompletionEvent_data"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### model [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_model]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_object"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_object"
+  parentId="CompletionEvent_data"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### object [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_object]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_usage"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_usage"
+  parentId="CompletionEvent_data"
+  typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_usage_usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### usage [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_usage]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_usage_completion_tokens"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_usage_completion_tokens"
+  parentId="CompletionEvent_data_usage"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### completion_tokens [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_usage_completion_tokens]
+
+</div>
+
+<div slot="content">
+
+_Example:_
+
+```
+34
+```
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_usage_prompt_tokens"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_usage_prompt_tokens"
+  parentId="CompletionEvent_data_usage"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### prompt_tokens [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_usage_prompt_tokens]
+
+</div>
+
+<div slot="content">
+
+_Example:_
+
+```
+16
+```
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_usage_total_tokens"
+  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_usage_total_tokens"
+  parentId="CompletionEvent_data_usage"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### total_tokens [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_usage_total_tokens]
+
+</div>
+
+<div slot="content">
+
+_Example:_
+
+```
+50
+```
+
+</div>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-stream_fim_responses_422_application-json">
+
+422
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-stream_fim_responses_422_application-json">
+
+Validation Error
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-stream_fim_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-stream_fim_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### HttpMeta [#operation-stream_fim_responses_422_application-json_httpmeta]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_Request"
+  headingId="operation-stream_fim_responses_422_application-json_httpmeta_request"
+  parentId="HttpMeta"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### Request [#operation-stream_fim_responses_422_application-json_httpmeta_request]
+
+</div>
+
+<div slot="content">
+
+Raw HTTP request; suitable for debugging
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_Response"
+  headingId="operation-stream_fim_responses_422_application-json_httpmeta_response"
+  parentId="HttpMeta"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### Response [#operation-stream_fim_responses_422_application-json_httpmeta_response]
+
+</div>
+
+<div slot="content">
+
+Raw HTTP response; suitable for custom response parsing
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-stream_fim_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-stream_fim_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-stream_fim_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### detail [#operation-stream_fim_responses_422_application-json_detail]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-stream_fim_responses_422_application-json_detail_validationerror" parentId="detail"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ValidationError [#operation-stream_fim_responses_422_application-json_detail_validationerror]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-stream_fim_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### loc [#operation-stream_fim_responses_422_application-json_detail_validationerror_loc]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-stream_fim_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### msg [#operation-stream_fim_responses_422_application-json_detail_validationerror_msg]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-stream_fim_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_fim_responses_422_application-json_detail_validationerror_type]
 
 </div>
 

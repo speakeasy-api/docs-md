@@ -3,7 +3,7 @@ sidebarTitle: Ocr
 ---
 
 import "@speakeasy-api/docs-md/nextra.css";
-import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableProperty, ExpandableBreakout, TabbedSection, SectionTab } from "@speakeasy-api/docs-md/nextra";
+import { Pill, Section, SectionTitle, SectionContent, TryItNow, ExpandableSection, ExpandableProperty, ExpandableBreakout, TabbedSection, SectionTab } from "@speakeasy-api/docs-md/react";
 
 
 # Ocr Operations [#ocr]
@@ -11,6 +11,46 @@ import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, Expanda
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/ocr [#operation-ocr_v1_ocr_post]
 
 OCR
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now [#operation-ocr_v1_ocr_post+try-it-now]
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.ocr.process({
+    model: "CX-9",
+    document: {
+      imageUrl: {
+        url: "https://measly-scrap.com",
+      },
+      type: "image_url",
+    },
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <Section variant="top-level">
 
@@ -30,6 +70,7 @@ OCR
   headingId="operation-ocr_v1_ocr_post_request_bbox_annotation_format"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ResponseFormat","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_request_bbox_annotation_format_responseformat\">ResponseFormat</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -45,6 +86,7 @@ OCR
   id="bbox_annotation_format_ResponseFormat"
   headingId="operation-ocr_v1_ocr_post_request_bbox_annotation_format_responseformat" parentId="bbox_annotation_format"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -62,6 +104,7 @@ OCR
   parentId="bbox_annotation_format_ResponseFormat"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"JsonSchema","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_request_bbox_annotation_format_responseformat_json_schema_jsonschema\">JsonSchema</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -77,6 +120,7 @@ OCR
   id="bbox_annotation_format_ResponseFormat_json_schema_JsonSchema"
   headingId="operation-ocr_v1_ocr_post_request_bbox_annotation_format_responseformat_json_schema_jsonschema" parentId="bbox_annotation_format_ResponseFormat_json_schema"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -94,6 +138,7 @@ OCR
   parentId="bbox_annotation_format_ResponseFormat_json_schema_JsonSchema"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -112,6 +157,7 @@ OCR
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -130,6 +176,7 @@ OCR
   typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -147,6 +194,7 @@ OCR
   parentId="bbox_annotation_format_ResponseFormat_json_schema_JsonSchema"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -164,6 +212,7 @@ OCR
   parentId="bbox_annotation_format_ResponseFormat"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}},{"label":"\"json_object\"","linkedLabel":"\"json_object\"","children":[],"breakoutSubTypes":{}},{"label":"\"json_schema\"","linkedLabel":"\"json_schema\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -187,6 +236,7 @@ An object specifying the format that the model must output. Setting to `\{ "type
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_request_document_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_request_document_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -208,6 +258,7 @@ Document to run OCR on
   id="document_DocumentURLChunk"
   headingId="operation-ocr_v1_ocr_post_request_document_documenturlchunk" parentId="document"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -225,6 +276,7 @@ Document to run OCR on
   parentId="document_DocumentURLChunk"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -243,6 +295,7 @@ Document to run OCR on
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -260,6 +313,7 @@ Document to run OCR on
   parentId="document_DocumentURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -281,6 +335,7 @@ _Default Value:_ `"document_url"`
   id="document_ImageURLChunk"
   headingId="operation-ocr_v1_ocr_post_request_document_imageurlchunk" parentId="document"
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -305,6 +360,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_request_document_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -320,6 +376,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   id="document_ImageURLChunk_image_url_ImageURL"
   headingId="operation-ocr_v1_ocr_post_request_document_imageurlchunk_image_url_imageurl" parentId="document_ImageURLChunk_image_url"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -337,6 +394,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   parentId="document_ImageURLChunk_image_url_ImageURL"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -355,6 +413,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -372,6 +431,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   parentId="document_ImageURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -394,6 +454,7 @@ _Default Value:_ `"image_url"`
   headingId="operation-ocr_v1_ocr_post_request_document_annotation_format"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ResponseFormat","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_request_document_annotation_format_responseformat\">ResponseFormat</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -409,6 +470,7 @@ _Default Value:_ `"image_url"`
   id="document_annotation_format_ResponseFormat"
   headingId="operation-ocr_v1_ocr_post_request_document_annotation_format_responseformat" parentId="document_annotation_format"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -426,6 +488,7 @@ _Default Value:_ `"image_url"`
   parentId="document_annotation_format_ResponseFormat"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"JsonSchema","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_request_document_annotation_format_responseformat_json_schema_jsonschema\">JsonSchema</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -441,6 +504,7 @@ _Default Value:_ `"image_url"`
   id="document_annotation_format_ResponseFormat_json_schema_JsonSchema"
   headingId="operation-ocr_v1_ocr_post_request_document_annotation_format_responseformat_json_schema_jsonschema" parentId="document_annotation_format_ResponseFormat_json_schema"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -458,6 +522,7 @@ _Default Value:_ `"image_url"`
   parentId="document_annotation_format_ResponseFormat_json_schema_JsonSchema"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -476,6 +541,7 @@ _Default Value:_ `"image_url"`
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -494,6 +560,7 @@ _Default Value:_ `"image_url"`
   typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -511,6 +578,7 @@ _Default Value:_ `"image_url"`
   parentId="document_annotation_format_ResponseFormat_json_schema_JsonSchema"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -528,6 +596,7 @@ _Default Value:_ `"image_url"`
   parentId="document_annotation_format_ResponseFormat"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}},{"label":"\"json_object\"","linkedLabel":"\"json_object\"","children":[],"breakoutSubTypes":{}},{"label":"\"json_schema\"","linkedLabel":"\"json_schema\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -550,6 +619,7 @@ An object specifying the format that the model must output. Setting to `\{ "type
   headingId="operation-ocr_v1_ocr_post_request_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -566,6 +636,7 @@ An object specifying the format that the model must output. Setting to `\{ "type
   headingId="operation-ocr_v1_ocr_post_request_image_limit"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -582,6 +653,7 @@ An object specifying the format that the model must output. Setting to `\{ "type
   headingId="operation-ocr_v1_ocr_post_request_image_min_size"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -598,6 +670,7 @@ An object specifying the format that the model must output. Setting to `\{ "type
   headingId="operation-ocr_v1_ocr_post_request_include_image_base64"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -615,6 +688,7 @@ An object specifying the format that the model must output. Setting to `\{ "type
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -631,6 +705,7 @@ An object specifying the format that the model must output. Setting to `\{ "type
   headingId="operation-ocr_v1_ocr_post_request_pages"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -673,6 +748,7 @@ Successful Response
   headingId="operation-ocr_v1_ocr_post_responses_200_application-json_document_annotation"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -690,6 +766,7 @@ Successful Response
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -713,6 +790,7 @@ The model used to generate the OCR.
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_responses_200_application-json_pages_ocrpageobject\">OCRPageObject</a>","children":[{"label":"OCRPageObject","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_responses_200_application-json_pages_ocrpageobject\">OCRPageObject</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -734,6 +812,7 @@ List of OCR info for pages.
   id="pages_OCRPageObject"
   headingId="operation-ocr_v1_ocr_post_responses_200_application-json_pages_ocrpageobject" parentId="pages"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -752,6 +831,7 @@ List of OCR info for pages.
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"OCRPageDimensions","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_responses_200_application-json_pages_ocrpageobject_dimensions_ocrpagedimensions\">OCRPageDimensions</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -767,6 +847,7 @@ List of OCR info for pages.
   id="pages_OCRPageObject_dimensions_OCRPageDimensions"
   headingId="operation-ocr_v1_ocr_post_responses_200_application-json_pages_ocrpageobject_dimensions_ocrpagedimensions" parentId="pages_OCRPageObject_dimensions"
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -791,6 +872,7 @@ The dimensions of the PDF Page's screenshot image
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -815,6 +897,7 @@ Dots per inch of the page-image
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -839,6 +922,7 @@ Height of the image in pixels
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -863,6 +947,7 @@ Width of the image in pixels
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_responses_200_application-json_pages_ocrpageobject_images_ocrimageobject\">OCRImageObject</a>","children":[{"label":"OCRImageObject","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_responses_200_application-json_pages_ocrpageobject_images_ocrimageobject\">OCRImageObject</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -884,6 +969,7 @@ List of all extracted images in the page
   id="pages_OCRPageObject_images_OCRImageObject"
   headingId="operation-ocr_v1_ocr_post_responses_200_application-json_pages_ocrpageobject_images_ocrimageobject" parentId="pages_OCRPageObject_images"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -902,6 +988,7 @@ List of all extracted images in the page
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -920,6 +1007,7 @@ List of all extracted images in the page
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -938,6 +1026,7 @@ List of all extracted images in the page
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -961,6 +1050,7 @@ Image ID for extracted image in a page
   parentId="pages_OCRPageObject_images_OCRImageObject"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -978,6 +1068,7 @@ Image ID for extracted image in a page
   parentId="pages_OCRPageObject_images_OCRImageObject"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -996,6 +1087,7 @@ Image ID for extracted image in a page
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1014,6 +1106,7 @@ Image ID for extracted image in a page
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1032,6 +1125,7 @@ Image ID for extracted image in a page
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1056,6 +1150,7 @@ The page index in a pdf document starting from 0
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1079,6 +1174,7 @@ The markdown string response of the page
   typeInfo={{"label":"OCRUsageInfo","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_responses_200_application-json_usage_info_ocrusageinfo\">OCRUsageInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1096,6 +1192,7 @@ The markdown string response of the page
   parentId="usage_info"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1114,6 +1211,7 @@ The markdown string response of the page
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1134,13 +1232,13 @@ Number of pages processed
 
 </SectionContent>
 
-<SectionTab slot="tab" id="operation-ocr_v1_ocr_post_responses_200_422_application-json">
+<SectionTab slot="tab" id="operation-ocr_v1_ocr_post_responses_422_application-json">
 
 422
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-ocr_v1_ocr_post_responses_200_422_application-json">
+<SectionContent slot="content" variant="top-level" id="operation-ocr_v1_ocr_post_responses_422_application-json">
 
 Validation Error
 
@@ -1149,15 +1247,16 @@ Validation Error
 <ExpandableProperty
   slot="entry"
   id="HttpMeta"
-  headingId="operation-ocr_v1_ocr_post_responses_200_422_application-json_httpmeta"
-  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_responses_200_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  headingId="operation-ocr_v1_ocr_post_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### HttpMeta [#operation-ocr_v1_ocr_post_responses_200_422_application-json_httpmeta]
+##### HttpMeta [#operation-ocr_v1_ocr_post_responses_422_application-json_httpmeta]
 
 </div>
 
@@ -1166,16 +1265,17 @@ Validation Error
 <ExpandableProperty
   slot="entry"
   id="HttpMeta_Request"
-  headingId="operation-ocr_v1_ocr_post_responses_200_422_application-json_httpmeta_request"
+  headingId="operation-ocr_v1_ocr_post_responses_422_application-json_httpmeta_request"
   parentId="HttpMeta"
   typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### Request [#operation-ocr_v1_ocr_post_responses_200_422_application-json_httpmeta_request]
+##### Request [#operation-ocr_v1_ocr_post_responses_422_application-json_httpmeta_request]
 
 </div>
 
@@ -1190,16 +1290,17 @@ Raw HTTP request; suitable for debugging
 <ExpandableProperty
   slot="entry"
   id="HttpMeta_Response"
-  headingId="operation-ocr_v1_ocr_post_responses_200_422_application-json_httpmeta_response"
+  headingId="operation-ocr_v1_ocr_post_responses_422_application-json_httpmeta_response"
   parentId="HttpMeta"
   typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### Response [#operation-ocr_v1_ocr_post_responses_200_422_application-json_httpmeta_response]
+##### Response [#operation-ocr_v1_ocr_post_responses_422_application-json_httpmeta_response]
 
 </div>
 
@@ -1214,14 +1315,15 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail"
-  headingId="operation-ocr_v1_ocr_post_responses_200_422_application-json_detail"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_responses_200_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_responses_200_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  headingId="operation-ocr_v1_ocr_post_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### detail [#operation-ocr_v1_ocr_post_responses_200_422_application-json_detail]
+##### detail [#operation-ocr_v1_ocr_post_responses_422_application-json_detail]
 
 </div>
 
@@ -1230,13 +1332,14 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableBreakout
   slot="entry"
   id="detail_ValidationError"
-  headingId="operation-ocr_v1_ocr_post_responses_200_422_application-json_detail_validationerror" parentId="detail"
+  headingId="operation-ocr_v1_ocr_post_responses_422_application-json_detail_validationerror" parentId="detail"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-#### ValidationError [#operation-ocr_v1_ocr_post_responses_200_422_application-json_detail_validationerror]
+#### ValidationError [#operation-ocr_v1_ocr_post_responses_422_application-json_detail_validationerror]
 
 </div>
 
@@ -1245,16 +1348,17 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail_ValidationError_loc"
-  headingId="operation-ocr_v1_ocr_post_responses_200_422_application-json_detail_validationerror_loc"
+  headingId="operation-ocr_v1_ocr_post_responses_422_application-json_detail_validationerror_loc"
   parentId="detail_ValidationError"
   typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### loc [#operation-ocr_v1_ocr_post_responses_200_422_application-json_detail_validationerror_loc]
+##### loc [#operation-ocr_v1_ocr_post_responses_422_application-json_detail_validationerror_loc]
 
 </div>
 
@@ -1263,16 +1367,17 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail_ValidationError_msg"
-  headingId="operation-ocr_v1_ocr_post_responses_200_422_application-json_detail_validationerror_msg"
+  headingId="operation-ocr_v1_ocr_post_responses_422_application-json_detail_validationerror_msg"
   parentId="detail_ValidationError"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### msg [#operation-ocr_v1_ocr_post_responses_200_422_application-json_detail_validationerror_msg]
+##### msg [#operation-ocr_v1_ocr_post_responses_422_application-json_detail_validationerror_msg]
 
 </div>
 
@@ -1281,16 +1386,17 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail_ValidationError_type"
-  headingId="operation-ocr_v1_ocr_post_responses_200_422_application-json_detail_validationerror_type"
+  headingId="operation-ocr_v1_ocr_post_responses_422_application-json_detail_validationerror_type"
   parentId="detail_ValidationError"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### type [#operation-ocr_v1_ocr_post_responses_200_422_application-json_detail_validationerror_type]
+##### type [#operation-ocr_v1_ocr_post_responses_422_application-json_detail_validationerror_type]
 
 </div>
 

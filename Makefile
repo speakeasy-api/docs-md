@@ -14,6 +14,9 @@ install:
 	npm install
 	npm install --workspaces
 
+build-api-docs:
+	npm run build-api-docs --workspaces -- --clean
+
 build: install
 	npm run build --workspaces
 

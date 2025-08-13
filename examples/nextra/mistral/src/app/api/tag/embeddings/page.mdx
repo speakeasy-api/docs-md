@@ -3,7 +3,7 @@ sidebarTitle: Embeddings
 ---
 
 import "@speakeasy-api/docs-md/nextra.css";
-import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableProperty, TabbedSection, SectionTab, ExpandableBreakout } from "@speakeasy-api/docs-md/nextra";
+import { Pill, Section, SectionTitle, SectionContent, TryItNow, ExpandableSection, ExpandableProperty, TabbedSection, SectionTab, ExpandableBreakout } from "@speakeasy-api/docs-md/react";
 
 
 # Embeddings Operations [#embeddings]
@@ -13,6 +13,44 @@ import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, Expanda
 _Embeddings_
 
 Embeddings
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now [#operation-embeddings_v1_embeddings_post+try-it-now]
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.embeddings.create({
+    model: "mistral-embed",
+    inputs: [
+      "Embed this sentence.",
+      "As well as this one.",
+    ],
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <Section variant="top-level">
 
@@ -33,6 +71,7 @@ Embeddings
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -56,6 +95,7 @@ Text to embed.
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -84,6 +124,7 @@ mistral-embed
   headingId="operation-embeddings_v1_embeddings_post_request_output_dimension"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -100,6 +141,7 @@ mistral-embed
   headingId="operation-embeddings_v1_embeddings_post_request_output_dtype"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"float\"","linkedLabel":"\"float\"","children":[],"breakoutSubTypes":{}},{"label":"\"int8\"","linkedLabel":"\"int8\"","children":[],"breakoutSubTypes":{}},{"label":"\"uint8\"","linkedLabel":"\"uint8\"","children":[],"breakoutSubTypes":{}},{"label":"\"binary\"","linkedLabel":"\"binary\"","children":[],"breakoutSubTypes":{}},{"label":"\"ubinary\"","linkedLabel":"\"ubinary\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -143,6 +185,7 @@ Successful Response
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata\">EmbeddingResponseData</a>","children":[{"label":"EmbeddingResponseData","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata\">EmbeddingResponseData</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -158,6 +201,7 @@ Successful Response
   id="data_EmbeddingResponseData"
   headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata" parentId="data"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -175,6 +219,7 @@ Successful Response
   parentId="data_EmbeddingResponseData"
   typeInfo={{"label":"array","linkedLabel":"number","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -192,6 +237,7 @@ Successful Response
   parentId="data_EmbeddingResponseData"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -219,6 +265,7 @@ _Example:_
   parentId="data_EmbeddingResponseData"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -246,6 +293,7 @@ embedding
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -273,6 +321,7 @@ cmpl-e5cc70bb28c444948073e77776eb30ef
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -300,6 +349,7 @@ mistral-small-latest
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -327,6 +377,7 @@ chat.completion
   typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -345,6 +396,7 @@ chat.completion
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -373,6 +425,7 @@ _Example:_
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -401,6 +454,7 @@ _Example:_
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -425,13 +479,13 @@ _Example:_
 
 </SectionContent>
 
-<SectionTab slot="tab" id="operation-embeddings_v1_embeddings_post_responses_200_422_application-json">
+<SectionTab slot="tab" id="operation-embeddings_v1_embeddings_post_responses_422_application-json">
 
 422
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-embeddings_v1_embeddings_post_responses_200_422_application-json">
+<SectionContent slot="content" variant="top-level" id="operation-embeddings_v1_embeddings_post_responses_422_application-json">
 
 Validation Error
 
@@ -440,15 +494,16 @@ Validation Error
 <ExpandableProperty
   slot="entry"
   id="HttpMeta"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_422_application-json_httpmeta"
-  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_200_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### HttpMeta [#operation-embeddings_v1_embeddings_post_responses_200_422_application-json_httpmeta]
+##### HttpMeta [#operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta]
 
 </div>
 
@@ -457,16 +512,17 @@ Validation Error
 <ExpandableProperty
   slot="entry"
   id="HttpMeta_Request"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_422_application-json_httpmeta_request"
+  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_request"
   parentId="HttpMeta"
   typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### Request [#operation-embeddings_v1_embeddings_post_responses_200_422_application-json_httpmeta_request]
+##### Request [#operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_request]
 
 </div>
 
@@ -481,16 +537,17 @@ Raw HTTP request; suitable for debugging
 <ExpandableProperty
   slot="entry"
   id="HttpMeta_Response"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_422_application-json_httpmeta_response"
+  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_response"
   parentId="HttpMeta"
   typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### Response [#operation-embeddings_v1_embeddings_post_responses_200_422_application-json_httpmeta_response]
+##### Response [#operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_response]
 
 </div>
 
@@ -505,14 +562,15 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_422_application-json_detail"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_200_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_200_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### detail [#operation-embeddings_v1_embeddings_post_responses_200_422_application-json_detail]
+##### detail [#operation-embeddings_v1_embeddings_post_responses_422_application-json_detail]
 
 </div>
 
@@ -521,13 +579,14 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableBreakout
   slot="entry"
   id="detail_ValidationError"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_422_application-json_detail_validationerror" parentId="detail"
+  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror" parentId="detail"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-#### ValidationError [#operation-embeddings_v1_embeddings_post_responses_200_422_application-json_detail_validationerror]
+#### ValidationError [#operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror]
 
 </div>
 
@@ -536,16 +595,17 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail_ValidationError_loc"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_422_application-json_detail_validationerror_loc"
+  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror_loc"
   parentId="detail_ValidationError"
   typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### loc [#operation-embeddings_v1_embeddings_post_responses_200_422_application-json_detail_validationerror_loc]
+##### loc [#operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror_loc]
 
 </div>
 
@@ -554,16 +614,17 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail_ValidationError_msg"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_422_application-json_detail_validationerror_msg"
+  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror_msg"
   parentId="detail_ValidationError"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### msg [#operation-embeddings_v1_embeddings_post_responses_200_422_application-json_detail_validationerror_msg]
+##### msg [#operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror_msg]
 
 </div>
 
@@ -572,16 +633,17 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail_ValidationError_type"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_422_application-json_detail_validationerror_type"
+  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror_type"
   parentId="detail_ValidationError"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### type [#operation-embeddings_v1_embeddings_post_responses_200_422_application-json_detail_validationerror_type]
+##### type [#operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror_type]
 
 </div>
 

@@ -3,7 +3,7 @@ sidebarTitle: Agents
 ---
 
 import "@speakeasy-api/docs-md/nextra.css";
-import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableProperty, ExpandableBreakout, TabbedSection, SectionTab } from "@speakeasy-api/docs-md/nextra";
+import { Pill, Section, SectionTitle, SectionContent, TryItNow, ExpandableSection, ExpandableProperty, ExpandableBreakout, TabbedSection, SectionTab, FrontMatterDisplayType } from "@speakeasy-api/docs-md/react";
 
 
 # Agents Operations [#agents]
@@ -11,6 +11,46 @@ import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, Expanda
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/agents/completions [#operation-agents_completion_v1_agents_completions_post]
 
 Agents Completion
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now [#operation-agents_completion_v1_agents_completions_post+try-it-now]
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.agents.complete({
+    messages: [
+      {
+        content: "Who is the best French painter? Answer in one short sentence.",
+        role: "user",
+      },
+    ],
+    agentId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <Section variant="top-level">
 
@@ -31,6 +71,7 @@ Agents Completion
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -53,6 +94,7 @@ The ID of the agent to use for this completion.
   headingId="operation-agents_completion_v1_agents_completions_post_request_frequency_penalty"
   typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -75,6 +117,7 @@ frequency_penalty penalizes the repetition of words based on their frequency in 
   headingId="operation-agents_completion_v1_agents_completions_post_request_max_tokens"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -92,6 +135,7 @@ frequency_penalty penalizes the repetition of words based on their frequency in 
   typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"SystemMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_systemmessage\">SystemMessage</a>","children":[],"breakoutSubTypes":{}},{"label":"UserMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_usermessage\">UserMessage</a>","children":[],"breakoutSubTypes":{}},{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":{}},{"label":"ToolMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_toolmessage\">ToolMessage</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -113,6 +157,7 @@ The prompt(s) to generate completions for, encoded as a list of dict with role a
   id="messages_SystemMessage"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_systemmessage" parentId="messages"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -131,6 +176,7 @@ The prompt(s) to generate completions for, encoded as a list of dict with role a
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_systemmessage_content_textchunk\">TextChunk</a>","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_systemmessage_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -146,6 +192,7 @@ The prompt(s) to generate completions for, encoded as a list of dict with role a
   id="messages_SystemMessage_content_TextChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_systemmessage_content_textchunk" parentId="messages_SystemMessage_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -164,6 +211,7 @@ The prompt(s) to generate completions for, encoded as a list of dict with role a
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -181,6 +229,7 @@ The prompt(s) to generate completions for, encoded as a list of dict with role a
   parentId="messages_SystemMessage_content_TextChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -204,6 +253,7 @@ _Default Value:_ `"text"`
   parentId="messages_SystemMessage"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"system\"","linkedLabel":"\"system\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -225,6 +275,7 @@ _Default Value:_ `"system"`
   id="messages_UserMessage"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_usermessage" parentId="messages"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -243,6 +294,7 @@ _Default Value:_ `"system"`
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_usermessage_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_usermessage_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_usermessage_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_usermessage_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -258,6 +310,7 @@ _Default Value:_ `"system"`
   id="messages_UserMessage_content_TextChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_usermessage_content_textchunk" parentId="messages_UserMessage_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -276,6 +329,7 @@ _Default Value:_ `"system"`
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -293,6 +347,7 @@ _Default Value:_ `"system"`
   parentId="messages_UserMessage_content_TextChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -314,6 +369,7 @@ _Default Value:_ `"text"`
   id="messages_UserMessage_content_ImageURLChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_usermessage_content_imageurlchunk" parentId="messages_UserMessage_content"
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -338,6 +394,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_usermessage_content_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -353,6 +410,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   id="messages_UserMessage_content_ImageURLChunk_image_url_ImageURL"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_usermessage_content_imageurlchunk_image_url_imageurl" parentId="messages_UserMessage_content_ImageURLChunk_image_url"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -370,6 +428,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   parentId="messages_UserMessage_content_ImageURLChunk_image_url_ImageURL"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -388,6 +447,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -405,6 +465,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   parentId="messages_UserMessage_content_ImageURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -426,6 +487,7 @@ _Default Value:_ `"image_url"`
   id="messages_UserMessage_content_DocumentURLChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_usermessage_content_documenturlchunk" parentId="messages_UserMessage_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -443,6 +505,7 @@ _Default Value:_ `"image_url"`
   parentId="messages_UserMessage_content_DocumentURLChunk"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -461,6 +524,7 @@ _Default Value:_ `"image_url"`
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -478,6 +542,7 @@ _Default Value:_ `"image_url"`
   parentId="messages_UserMessage_content_DocumentURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -499,6 +564,7 @@ _Default Value:_ `"document_url"`
   id="messages_UserMessage_content_ReferenceChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_usermessage_content_referencechunk" parentId="messages_UserMessage_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -517,6 +583,7 @@ _Default Value:_ `"document_url"`
   typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -534,6 +601,7 @@ _Default Value:_ `"document_url"`
   parentId="messages_UserMessage_content_ReferenceChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -557,6 +625,7 @@ _Default Value:_ `"reference"`
   parentId="messages_UserMessage"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"user\"","linkedLabel":"\"user\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -578,6 +647,7 @@ _Default Value:_ `"user"`
   id="messages_AssistantMessage"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage" parentId="messages"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -595,6 +665,7 @@ _Default Value:_ `"user"`
   parentId="messages_AssistantMessage"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -610,6 +681,7 @@ _Default Value:_ `"user"`
   id="messages_AssistantMessage_content_TextChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_content_textchunk" parentId="messages_AssistantMessage_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -628,6 +700,7 @@ _Default Value:_ `"user"`
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -645,6 +718,7 @@ _Default Value:_ `"user"`
   parentId="messages_AssistantMessage_content_TextChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -666,6 +740,7 @@ _Default Value:_ `"text"`
   id="messages_AssistantMessage_content_ImageURLChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_content_imageurlchunk" parentId="messages_AssistantMessage_content"
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -690,6 +765,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_content_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -705,6 +781,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   id="messages_AssistantMessage_content_ImageURLChunk_image_url_ImageURL"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_content_imageurlchunk_image_url_imageurl" parentId="messages_AssistantMessage_content_ImageURLChunk_image_url"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -722,6 +799,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   parentId="messages_AssistantMessage_content_ImageURLChunk_image_url_ImageURL"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -740,6 +818,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -757,6 +836,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   parentId="messages_AssistantMessage_content_ImageURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -778,6 +858,7 @@ _Default Value:_ `"image_url"`
   id="messages_AssistantMessage_content_DocumentURLChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_content_documenturlchunk" parentId="messages_AssistantMessage_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -795,6 +876,7 @@ _Default Value:_ `"image_url"`
   parentId="messages_AssistantMessage_content_DocumentURLChunk"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -813,6 +895,7 @@ _Default Value:_ `"image_url"`
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -830,6 +913,7 @@ _Default Value:_ `"image_url"`
   parentId="messages_AssistantMessage_content_DocumentURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -851,6 +935,7 @@ _Default Value:_ `"document_url"`
   id="messages_AssistantMessage_content_ReferenceChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_content_referencechunk" parentId="messages_AssistantMessage_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -869,6 +954,7 @@ _Default Value:_ `"document_url"`
   typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -886,6 +972,7 @@ _Default Value:_ `"document_url"`
   parentId="messages_AssistantMessage_content_ReferenceChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -909,6 +996,7 @@ _Default Value:_ `"reference"`
   parentId="messages_AssistantMessage"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -934,6 +1022,7 @@ _Default Value:_ `false`
   parentId="messages_AssistantMessage"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"assistant\"","linkedLabel":"\"assistant\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -957,6 +1046,7 @@ _Default Value:_ `"assistant"`
   parentId="messages_AssistantMessage"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_tool_calls_toolcall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_tool_calls_toolcall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -972,6 +1062,7 @@ _Default Value:_ `"assistant"`
   id="messages_AssistantMessage_tool_calls_ToolCall"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_tool_calls_toolcall" parentId="messages_AssistantMessage_tool_calls"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -990,6 +1081,7 @@ _Default Value:_ `"assistant"`
   typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_assistantmessage_tool_calls_toolcall_function_functioncall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1008,6 +1100,7 @@ _Default Value:_ `"assistant"`
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1026,6 +1119,7 @@ _Default Value:_ `"assistant"`
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1043,6 +1137,7 @@ _Default Value:_ `"assistant"`
   parentId="messages_AssistantMessage_tool_calls_ToolCall"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1066,6 +1161,7 @@ _Default Value:_ `"null"`
   parentId="messages_AssistantMessage_tool_calls_ToolCall"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1089,6 +1185,7 @@ _Default Value:_ `0`
   parentId="messages_AssistantMessage_tool_calls_ToolCall"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1104,6 +1201,7 @@ _Default Value:_ `0`
   id="messages_ToolMessage"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_toolmessage" parentId="messages"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1122,6 +1220,7 @@ _Default Value:_ `0`
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_toolmessage_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_toolmessage_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_toolmessage_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_toolmessage_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1137,6 +1236,7 @@ _Default Value:_ `0`
   id="messages_ToolMessage_content_TextChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_toolmessage_content_textchunk" parentId="messages_ToolMessage_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1155,6 +1255,7 @@ _Default Value:_ `0`
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1172,6 +1273,7 @@ _Default Value:_ `0`
   parentId="messages_ToolMessage_content_TextChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1193,6 +1295,7 @@ _Default Value:_ `"text"`
   id="messages_ToolMessage_content_ImageURLChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_toolmessage_content_imageurlchunk" parentId="messages_ToolMessage_content"
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1217,6 +1320,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_messages_toolmessage_content_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1232,6 +1336,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   id="messages_ToolMessage_content_ImageURLChunk_image_url_ImageURL"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_toolmessage_content_imageurlchunk_image_url_imageurl" parentId="messages_ToolMessage_content_ImageURLChunk_image_url"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1249,6 +1354,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   parentId="messages_ToolMessage_content_ImageURLChunk_image_url_ImageURL"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1267,6 +1373,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1284,6 +1391,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   parentId="messages_ToolMessage_content_ImageURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1305,6 +1413,7 @@ _Default Value:_ `"image_url"`
   id="messages_ToolMessage_content_DocumentURLChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_toolmessage_content_documenturlchunk" parentId="messages_ToolMessage_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1322,6 +1431,7 @@ _Default Value:_ `"image_url"`
   parentId="messages_ToolMessage_content_DocumentURLChunk"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1340,6 +1450,7 @@ _Default Value:_ `"image_url"`
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1357,6 +1468,7 @@ _Default Value:_ `"image_url"`
   parentId="messages_ToolMessage_content_DocumentURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1378,6 +1490,7 @@ _Default Value:_ `"document_url"`
   id="messages_ToolMessage_content_ReferenceChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_request_messages_toolmessage_content_referencechunk" parentId="messages_ToolMessage_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1396,6 +1509,7 @@ _Default Value:_ `"document_url"`
   typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1413,6 +1527,7 @@ _Default Value:_ `"document_url"`
   parentId="messages_ToolMessage_content_ReferenceChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1436,6 +1551,7 @@ _Default Value:_ `"reference"`
   parentId="messages_ToolMessage"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1453,6 +1569,7 @@ _Default Value:_ `"reference"`
   parentId="messages_ToolMessage"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"tool\"","linkedLabel":"\"tool\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1476,6 +1593,7 @@ _Default Value:_ `"tool"`
   parentId="messages_ToolMessage"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1492,6 +1610,7 @@ _Default Value:_ `"tool"`
   headingId="operation-agents_completion_v1_agents_completions_post_request_n"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1508,6 +1627,7 @@ _Default Value:_ `"tool"`
   headingId="operation-agents_completion_v1_agents_completions_post_request_parallel_tool_calls"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1524,6 +1644,7 @@ _Default Value:_ `"tool"`
   headingId="operation-agents_completion_v1_agents_completions_post_request_prediction"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"Prediction","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_prediction_prediction\">Prediction</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1539,6 +1660,7 @@ _Default Value:_ `"tool"`
   id="prediction_Prediction"
   headingId="operation-agents_completion_v1_agents_completions_post_request_prediction_prediction" parentId="prediction"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1556,6 +1678,7 @@ _Default Value:_ `"tool"`
   parentId="prediction_Prediction"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1579,6 +1702,7 @@ _Default Value:_ `""`
   parentId="prediction_Prediction"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1601,6 +1725,7 @@ _Default Value:_ `"content"`
   headingId="operation-agents_completion_v1_agents_completions_post_request_presence_penalty"
   typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1623,6 +1748,7 @@ presence_penalty determines how much the model penalizes the repetition of words
   headingId="operation-agents_completion_v1_agents_completions_post_request_prompt_mode"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reasoning\"","linkedLabel":"\"reasoning\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1639,6 +1765,7 @@ presence_penalty determines how much the model penalizes the repetition of words
   headingId="operation-agents_completion_v1_agents_completions_post_request_random_seed"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1655,6 +1782,7 @@ presence_penalty determines how much the model penalizes the repetition of words
   headingId="operation-agents_completion_v1_agents_completions_post_request_response_format"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ResponseFormat","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_response_format_responseformat\">ResponseFormat</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1670,6 +1798,7 @@ presence_penalty determines how much the model penalizes the repetition of words
   id="response_format_ResponseFormat"
   headingId="operation-agents_completion_v1_agents_completions_post_request_response_format_responseformat" parentId="response_format"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1687,6 +1816,7 @@ presence_penalty determines how much the model penalizes the repetition of words
   parentId="response_format_ResponseFormat"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"JsonSchema","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_response_format_responseformat_json_schema_jsonschema\">JsonSchema</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1702,6 +1832,7 @@ presence_penalty determines how much the model penalizes the repetition of words
   id="response_format_ResponseFormat_json_schema_JsonSchema"
   headingId="operation-agents_completion_v1_agents_completions_post_request_response_format_responseformat_json_schema_jsonschema" parentId="response_format_ResponseFormat_json_schema"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1719,6 +1850,7 @@ presence_penalty determines how much the model penalizes the repetition of words
   parentId="response_format_ResponseFormat_json_schema_JsonSchema"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1737,6 +1869,7 @@ presence_penalty determines how much the model penalizes the repetition of words
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1755,6 +1888,7 @@ presence_penalty determines how much the model penalizes the repetition of words
   typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1772,6 +1906,7 @@ presence_penalty determines how much the model penalizes the repetition of words
   parentId="response_format_ResponseFormat_json_schema_JsonSchema"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1789,6 +1924,7 @@ presence_penalty determines how much the model penalizes the repetition of words
   parentId="response_format_ResponseFormat"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}},{"label":"\"json_object\"","linkedLabel":"\"json_object\"","children":[],"breakoutSubTypes":{}},{"label":"\"json_schema\"","linkedLabel":"\"json_schema\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1811,6 +1947,7 @@ An object specifying the format that the model must output. Setting to `\{ "type
   headingId="operation-agents_completion_v1_agents_completions_post_request_stop"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1833,6 +1970,7 @@ Stop generation if this token is detected. Or if one of these tokens is detected
   headingId="operation-agents_completion_v1_agents_completions_post_request_stream"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1857,6 +1995,7 @@ _Default Value:_ `false`
   headingId="operation-agents_completion_v1_agents_completions_post_request_tool_choice"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ToolChoice","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_tool_choice_toolchoice\">ToolChoice</a>","children":[],"breakoutSubTypes":{}},{"label":"enum","linkedLabel":"enum","children":[{"label":"\"auto\"","linkedLabel":"\"auto\"","children":[],"breakoutSubTypes":{}},{"label":"\"none\"","linkedLabel":"\"none\"","children":[],"breakoutSubTypes":{}},{"label":"\"any\"","linkedLabel":"\"any\"","children":[],"breakoutSubTypes":{}},{"label":"\"required\"","linkedLabel":"\"required\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1872,6 +2011,7 @@ _Default Value:_ `false`
   id="tool_choice_ToolChoice"
   headingId="operation-agents_completion_v1_agents_completions_post_request_tool_choice_toolchoice" parentId="tool_choice"
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1896,6 +2036,7 @@ ToolChoice is either a ToolChoiceEnum or a ToolChoice
   typeInfo={{"label":"FunctionName","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_tool_choice_toolchoice_function_functionname\">FunctionName</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1920,6 +2061,7 @@ this restriction of `Function` is used to select a specific function to call
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1937,6 +2079,7 @@ this restriction of `Function` is used to select a specific function to call
   parentId="tool_choice_ToolChoice"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1953,6 +2096,7 @@ this restriction of `Function` is used to select a specific function to call
   headingId="operation-agents_completion_v1_agents_completions_post_request_tools"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_tools_tool\">Tool</a>","children":[{"label":"Tool","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_tools_tool\">Tool</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1968,6 +2112,7 @@ this restriction of `Function` is used to select a specific function to call
   id="tools_Tool"
   headingId="operation-agents_completion_v1_agents_completions_post_request_tools_tool" parentId="tools"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -1986,6 +2131,7 @@ this restriction of `Function` is used to select a specific function to call
   typeInfo={{"label":"Function","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_request_tools_tool_function_function\">Function</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2003,6 +2149,7 @@ this restriction of `Function` is used to select a specific function to call
   parentId="tools_Tool_function"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2021,6 +2168,7 @@ this restriction of `Function` is used to select a specific function to call
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2039,6 +2187,7 @@ this restriction of `Function` is used to select a specific function to call
   typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2056,6 +2205,7 @@ this restriction of `Function` is used to select a specific function to call
   parentId="tools_Tool_function"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2073,6 +2223,7 @@ this restriction of `Function` is used to select a specific function to call
   parentId="tools_Tool"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2116,6 +2267,7 @@ Successful Response
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice\">ChatCompletionChoice</a>","children":[{"label":"ChatCompletionChoice","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice\">ChatCompletionChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2131,6 +2283,7 @@ Successful Response
   id="choices_ChatCompletionChoice"
   headingId="operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice" parentId="choices"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2149,6 +2302,7 @@ Successful Response
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"stop\"","linkedLabel":"\"stop\"","children":[],"breakoutSubTypes":{}},{"label":"\"length\"","linkedLabel":"\"length\"","children":[],"breakoutSubTypes":{}},{"label":"\"model_length\"","linkedLabel":"\"model_length\"","children":[],"breakoutSubTypes":{}},{"label":"\"error\"","linkedLabel":"\"error\"","children":[],"breakoutSubTypes":{}},{"label":"\"tool_calls\"","linkedLabel":"\"tool_calls\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2177,6 +2331,7 @@ stop
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2205,6 +2360,7 @@ _Example:_
   typeInfo={{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2222,6 +2378,7 @@ _Example:_
   parentId="choices_ChatCompletionChoice_message"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2237,6 +2394,7 @@ _Example:_
   id="choices_ChatCompletionChoice_message_content_TextChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_textchunk" parentId="choices_ChatCompletionChoice_message_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2255,6 +2413,7 @@ _Example:_
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2272,6 +2431,7 @@ _Example:_
   parentId="choices_ChatCompletionChoice_message_content_TextChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2293,6 +2453,7 @@ _Default Value:_ `"text"`
   id="choices_ChatCompletionChoice_message_content_ImageURLChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_imageurlchunk" parentId="choices_ChatCompletionChoice_message_content"
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2317,6 +2478,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2332,6 +2494,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   id="choices_ChatCompletionChoice_message_content_ImageURLChunk_image_url_ImageURL"
   headingId="operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_imageurlchunk_image_url_imageurl" parentId="choices_ChatCompletionChoice_message_content_ImageURLChunk_image_url"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2349,6 +2512,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   parentId="choices_ChatCompletionChoice_message_content_ImageURLChunk_image_url_ImageURL"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2367,6 +2531,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2384,6 +2549,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
   parentId="choices_ChatCompletionChoice_message_content_ImageURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2405,6 +2571,7 @@ _Default Value:_ `"image_url"`
   id="choices_ChatCompletionChoice_message_content_DocumentURLChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_documenturlchunk" parentId="choices_ChatCompletionChoice_message_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2422,6 +2589,7 @@ _Default Value:_ `"image_url"`
   parentId="choices_ChatCompletionChoice_message_content_DocumentURLChunk"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2440,6 +2608,7 @@ _Default Value:_ `"image_url"`
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2457,6 +2626,7 @@ _Default Value:_ `"image_url"`
   parentId="choices_ChatCompletionChoice_message_content_DocumentURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2478,6 +2648,7 @@ _Default Value:_ `"document_url"`
   id="choices_ChatCompletionChoice_message_content_ReferenceChunk"
   headingId="operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_content_referencechunk" parentId="choices_ChatCompletionChoice_message_content"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2496,6 +2667,7 @@ _Default Value:_ `"document_url"`
   typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2513,6 +2685,7 @@ _Default Value:_ `"document_url"`
   parentId="choices_ChatCompletionChoice_message_content_ReferenceChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2536,6 +2709,7 @@ _Default Value:_ `"reference"`
   parentId="choices_ChatCompletionChoice_message"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2561,6 +2735,7 @@ _Default Value:_ `false`
   parentId="choices_ChatCompletionChoice_message"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"assistant\"","linkedLabel":"\"assistant\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2584,6 +2759,7 @@ _Default Value:_ `"assistant"`
   parentId="choices_ChatCompletionChoice_message"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_tool_calls_toolcall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_tool_calls_toolcall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2599,6 +2775,7 @@ _Default Value:_ `"assistant"`
   id="choices_ChatCompletionChoice_message_tool_calls_ToolCall"
   headingId="operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_tool_calls_toolcall" parentId="choices_ChatCompletionChoice_message_tool_calls"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2617,6 +2794,7 @@ _Default Value:_ `"assistant"`
   typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_tool_calls_toolcall_function_functioncall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2635,6 +2813,7 @@ _Default Value:_ `"assistant"`
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2653,6 +2832,7 @@ _Default Value:_ `"assistant"`
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2670,6 +2850,7 @@ _Default Value:_ `"assistant"`
   parentId="choices_ChatCompletionChoice_message_tool_calls_ToolCall"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2693,6 +2874,7 @@ _Default Value:_ `"null"`
   parentId="choices_ChatCompletionChoice_message_tool_calls_ToolCall"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2716,6 +2898,7 @@ _Default Value:_ `0`
   parentId="choices_ChatCompletionChoice_message_tool_calls_ToolCall"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2733,6 +2916,7 @@ _Default Value:_ `0`
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2760,6 +2944,7 @@ _Example:_
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2787,6 +2972,7 @@ cmpl-e5cc70bb28c444948073e77776eb30ef
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2814,6 +3000,7 @@ mistral-small-latest
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2841,6 +3028,7 @@ chat.completion
   typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_application-json_usage_usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2859,6 +3047,7 @@ chat.completion
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2887,6 +3076,7 @@ _Example:_
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2915,6 +3105,7 @@ _Example:_
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
@@ -2939,13 +3130,13 @@ _Example:_
 
 </SectionContent>
 
-<SectionTab slot="tab" id="operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json">
+<SectionTab slot="tab" id="operation-agents_completion_v1_agents_completions_post_responses_422_application-json">
 
 422
 
 </SectionTab>
 
-<SectionContent slot="content" variant="top-level" id="operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json">
+<SectionContent slot="content" variant="top-level" id="operation-agents_completion_v1_agents_completions_post_responses_422_application-json">
 
 Validation Error
 
@@ -2954,15 +3145,16 @@ Validation Error
 <ExpandableProperty
   slot="entry"
   id="HttpMeta"
-  headingId="operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_httpmeta"
-  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  headingId="operation-agents_completion_v1_agents_completions_post_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### HttpMeta [#operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_httpmeta]
+##### HttpMeta [#operation-agents_completion_v1_agents_completions_post_responses_422_application-json_httpmeta]
 
 </div>
 
@@ -2971,16 +3163,17 @@ Validation Error
 <ExpandableProperty
   slot="entry"
   id="HttpMeta_Request"
-  headingId="operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_httpmeta_request"
+  headingId="operation-agents_completion_v1_agents_completions_post_responses_422_application-json_httpmeta_request"
   parentId="HttpMeta"
   typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### Request [#operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_httpmeta_request]
+##### Request [#operation-agents_completion_v1_agents_completions_post_responses_422_application-json_httpmeta_request]
 
 </div>
 
@@ -2995,16 +3188,17 @@ Raw HTTP request; suitable for debugging
 <ExpandableProperty
   slot="entry"
   id="HttpMeta_Response"
-  headingId="operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_httpmeta_response"
+  headingId="operation-agents_completion_v1_agents_completions_post_responses_422_application-json_httpmeta_response"
   parentId="HttpMeta"
   typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### Response [#operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_httpmeta_response]
+##### Response [#operation-agents_completion_v1_agents_completions_post_responses_422_application-json_httpmeta_response]
 
 </div>
 
@@ -3019,14 +3213,15 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail"
-  headingId="operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_detail"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  headingId="operation-agents_completion_v1_agents_completions_post_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-agents_completion_v1_agents_completions_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### detail [#operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_detail]
+##### detail [#operation-agents_completion_v1_agents_completions_post_responses_422_application-json_detail]
 
 </div>
 
@@ -3035,13 +3230,14 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableBreakout
   slot="entry"
   id="detail_ValidationError"
-  headingId="operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_detail_validationerror" parentId="detail"
+  headingId="operation-agents_completion_v1_agents_completions_post_responses_422_application-json_detail_validationerror" parentId="detail"
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-#### ValidationError [#operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_detail_validationerror]
+#### ValidationError [#operation-agents_completion_v1_agents_completions_post_responses_422_application-json_detail_validationerror]
 
 </div>
 
@@ -3050,16 +3246,17 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail_ValidationError_loc"
-  headingId="operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_detail_validationerror_loc"
+  headingId="operation-agents_completion_v1_agents_completions_post_responses_422_application-json_detail_validationerror_loc"
   parentId="detail_ValidationError"
   typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### loc [#operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_detail_validationerror_loc]
+##### loc [#operation-agents_completion_v1_agents_completions_post_responses_422_application-json_detail_validationerror_loc]
 
 </div>
 
@@ -3068,16 +3265,17 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail_ValidationError_msg"
-  headingId="operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_detail_validationerror_msg"
+  headingId="operation-agents_completion_v1_agents_completions_post_responses_422_application-json_detail_validationerror_msg"
   parentId="detail_ValidationError"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### msg [#operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_detail_validationerror_msg]
+##### msg [#operation-agents_completion_v1_agents_completions_post_responses_422_application-json_detail_validationerror_msg]
 
 </div>
 
@@ -3086,16 +3284,3265 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   slot="entry"
   id="detail_ValidationError_type"
-  headingId="operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_detail_validationerror_type"
+  headingId="operation-agents_completion_v1_agents_completions_post_responses_422_application-json_detail_validationerror_type"
   parentId="detail_ValidationError"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
+  expandByDefault={false}
 >
 
 <div slot="title">
 
-##### type [#operation-agents_completion_v1_agents_completions_post_responses_200_422_application-json_detail_validationerror_type]
+##### type [#operation-agents_completion_v1_agents_completions_post_responses_422_application-json_detail_validationerror_type]
+
+</div>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</TabbedSection>
+
+## <Pill variant="primary"><b>POST</b></Pill> /v1/agents/completions\#stream [#operation-stream_agents]
+
+_Stream Agents completion_
+
+Mistral AI provides the ability to stream responses back to a client in order to allow partial results for certain requests. Tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a data: [DONE] message. Otherwise, the server will hold the request open until the timeout or until completion, with the response containing the full result as JSON.
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now [#operation-stream_agents+try-it-now]
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.agents.stream({
+    messages: [
+      {
+        content: "Who is the best French painter? Answer in one short sentence.",
+        role: "user",
+      },
+    ],
+    agentId: "<id>",
+  });
+
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Request Body [#operation-stream_agents_request]
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="agent_id"
+  headingId="operation-stream_agents_request_agent_id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### agent_id [#operation-stream_agents_request_agent_id]
+
+</div>
+
+<div slot="content">
+
+The ID of the agent to use for this completion.
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="frequency_penalty"
+  headingId="operation-stream_agents_request_frequency_penalty"
+  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### frequency_penalty [#operation-stream_agents_request_frequency_penalty]
+
+</div>
+
+<div slot="content">
+
+frequency_penalty penalizes the repetition of words based on their frequency in the generated text. A higher frequency penalty discourages the model from repeating words that have already appeared frequently in the output, promoting diversity and reducing repetition.
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="max_tokens"
+  headingId="operation-stream_agents_request_max_tokens"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### max_tokens [#operation-stream_agents_request_max_tokens]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages"
+  headingId="operation-stream_agents_request_messages"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"SystemMessage","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_systemmessage\">SystemMessage</a>","children":[],"breakoutSubTypes":{}},{"label":"UserMessage","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_usermessage\">UserMessage</a>","children":[],"breakoutSubTypes":{}},{"label":"AssistantMessage","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_assistantmessage\">AssistantMessage</a>","children":[],"breakoutSubTypes":{}},{"label":"ToolMessage","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_toolmessage\">ToolMessage</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### messages [#operation-stream_agents_request_messages]
+
+</div>
+
+<div slot="content">
+
+The prompt(s) to generate completions for, encoded as a list of dict with role and content.
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_SystemMessage"
+  headingId="operation-stream_agents_request_messages_systemmessage" parentId="messages"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### SystemMessage [#operation-stream_agents_request_messages_systemmessage]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_SystemMessage_content"
+  headingId="operation-stream_agents_request_messages_systemmessage_content"
+  parentId="messages_SystemMessage"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_systemmessage_content_textchunk\">TextChunk</a>","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_systemmessage_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### content [#operation-stream_agents_request_messages_systemmessage_content]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_SystemMessage_content_TextChunk"
+  headingId="operation-stream_agents_request_messages_systemmessage_content_textchunk" parentId="messages_SystemMessage_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### TextChunk [#operation-stream_agents_request_messages_systemmessage_content_textchunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_SystemMessage_content_TextChunk_text"
+  headingId="operation-stream_agents_request_messages_systemmessage_content_textchunk_text"
+  parentId="messages_SystemMessage_content_TextChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### text [#operation-stream_agents_request_messages_systemmessage_content_textchunk_text]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_SystemMessage_content_TextChunk_type"
+  headingId="operation-stream_agents_request_messages_systemmessage_content_textchunk_type"
+  parentId="messages_SystemMessage_content_TextChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_systemmessage_content_textchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"text"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_SystemMessage_role"
+  headingId="operation-stream_agents_request_messages_systemmessage_role"
+  parentId="messages_SystemMessage"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"system\"","linkedLabel":"\"system\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### role [#operation-stream_agents_request_messages_systemmessage_role]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"system"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_UserMessage"
+  headingId="operation-stream_agents_request_messages_usermessage" parentId="messages"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### UserMessage [#operation-stream_agents_request_messages_usermessage]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_content"
+  headingId="operation-stream_agents_request_messages_usermessage_content"
+  parentId="messages_UserMessage"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_usermessage_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_usermessage_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_usermessage_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_usermessage_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### content [#operation-stream_agents_request_messages_usermessage_content]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_UserMessage_content_TextChunk"
+  headingId="operation-stream_agents_request_messages_usermessage_content_textchunk" parentId="messages_UserMessage_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### TextChunk [#operation-stream_agents_request_messages_usermessage_content_textchunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_content_TextChunk_text"
+  headingId="operation-stream_agents_request_messages_usermessage_content_textchunk_text"
+  parentId="messages_UserMessage_content_TextChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### text [#operation-stream_agents_request_messages_usermessage_content_textchunk_text]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_content_TextChunk_type"
+  headingId="operation-stream_agents_request_messages_usermessage_content_textchunk_type"
+  parentId="messages_UserMessage_content_TextChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_usermessage_content_textchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"text"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_UserMessage_content_ImageURLChunk"
+  headingId="operation-stream_agents_request_messages_usermessage_content_imageurlchunk" parentId="messages_UserMessage_content"
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ImageURLChunk [#operation-stream_agents_request_messages_usermessage_content_imageurlchunk]
+
+</div>
+
+<div slot="content">
+
+An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_content_ImageURLChunk_image_url"
+  headingId="operation-stream_agents_request_messages_usermessage_content_imageurlchunk_image_url"
+  parentId="messages_UserMessage_content_ImageURLChunk"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_usermessage_content_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### image_url [#operation-stream_agents_request_messages_usermessage_content_imageurlchunk_image_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_UserMessage_content_ImageURLChunk_image_url_ImageURL"
+  headingId="operation-stream_agents_request_messages_usermessage_content_imageurlchunk_image_url_imageurl" parentId="messages_UserMessage_content_ImageURLChunk_image_url"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ImageURL [#operation-stream_agents_request_messages_usermessage_content_imageurlchunk_image_url_imageurl]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_content_ImageURLChunk_image_url_ImageURL_detail"
+  headingId="operation-stream_agents_request_messages_usermessage_content_imageurlchunk_image_url_imageurl_detail"
+  parentId="messages_UserMessage_content_ImageURLChunk_image_url_ImageURL"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### detail [#operation-stream_agents_request_messages_usermessage_content_imageurlchunk_image_url_imageurl_detail]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_content_ImageURLChunk_image_url_ImageURL_url"
+  headingId="operation-stream_agents_request_messages_usermessage_content_imageurlchunk_image_url_imageurl_url"
+  parentId="messages_UserMessage_content_ImageURLChunk_image_url_ImageURL"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### url [#operation-stream_agents_request_messages_usermessage_content_imageurlchunk_image_url_imageurl_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_content_ImageURLChunk_type"
+  headingId="operation-stream_agents_request_messages_usermessage_content_imageurlchunk_type"
+  parentId="messages_UserMessage_content_ImageURLChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_usermessage_content_imageurlchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"image_url"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_UserMessage_content_DocumentURLChunk"
+  headingId="operation-stream_agents_request_messages_usermessage_content_documenturlchunk" parentId="messages_UserMessage_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### DocumentURLChunk [#operation-stream_agents_request_messages_usermessage_content_documenturlchunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_content_DocumentURLChunk_document_name"
+  headingId="operation-stream_agents_request_messages_usermessage_content_documenturlchunk_document_name"
+  parentId="messages_UserMessage_content_DocumentURLChunk"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### document_name [#operation-stream_agents_request_messages_usermessage_content_documenturlchunk_document_name]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_content_DocumentURLChunk_document_url"
+  headingId="operation-stream_agents_request_messages_usermessage_content_documenturlchunk_document_url"
+  parentId="messages_UserMessage_content_DocumentURLChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### document_url [#operation-stream_agents_request_messages_usermessage_content_documenturlchunk_document_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_content_DocumentURLChunk_type"
+  headingId="operation-stream_agents_request_messages_usermessage_content_documenturlchunk_type"
+  parentId="messages_UserMessage_content_DocumentURLChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_usermessage_content_documenturlchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"document_url"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_UserMessage_content_ReferenceChunk"
+  headingId="operation-stream_agents_request_messages_usermessage_content_referencechunk" parentId="messages_UserMessage_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ReferenceChunk [#operation-stream_agents_request_messages_usermessage_content_referencechunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_content_ReferenceChunk_reference_ids"
+  headingId="operation-stream_agents_request_messages_usermessage_content_referencechunk_reference_ids"
+  parentId="messages_UserMessage_content_ReferenceChunk"
+  typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### reference_ids [#operation-stream_agents_request_messages_usermessage_content_referencechunk_reference_ids]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_content_ReferenceChunk_type"
+  headingId="operation-stream_agents_request_messages_usermessage_content_referencechunk_type"
+  parentId="messages_UserMessage_content_ReferenceChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_usermessage_content_referencechunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"reference"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_UserMessage_role"
+  headingId="operation-stream_agents_request_messages_usermessage_role"
+  parentId="messages_UserMessage"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"user\"","linkedLabel":"\"user\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### role [#operation-stream_agents_request_messages_usermessage_role]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"user"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_AssistantMessage"
+  headingId="operation-stream_agents_request_messages_assistantmessage" parentId="messages"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### AssistantMessage [#operation-stream_agents_request_messages_assistantmessage]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_content"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content"
+  parentId="messages_AssistantMessage"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_assistantmessage_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_assistantmessage_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_assistantmessage_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### content [#operation-stream_agents_request_messages_assistantmessage_content]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_AssistantMessage_content_TextChunk"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_textchunk" parentId="messages_AssistantMessage_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### TextChunk [#operation-stream_agents_request_messages_assistantmessage_content_textchunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_content_TextChunk_text"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_textchunk_text"
+  parentId="messages_AssistantMessage_content_TextChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### text [#operation-stream_agents_request_messages_assistantmessage_content_textchunk_text]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_content_TextChunk_type"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_textchunk_type"
+  parentId="messages_AssistantMessage_content_TextChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_assistantmessage_content_textchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"text"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_AssistantMessage_content_ImageURLChunk"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk" parentId="messages_AssistantMessage_content"
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ImageURLChunk [#operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk]
+
+</div>
+
+<div slot="content">
+
+An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_content_ImageURLChunk_image_url"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk_image_url"
+  parentId="messages_AssistantMessage_content_ImageURLChunk"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### image_url [#operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk_image_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_AssistantMessage_content_ImageURLChunk_image_url_ImageURL"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk_image_url_imageurl" parentId="messages_AssistantMessage_content_ImageURLChunk_image_url"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ImageURL [#operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk_image_url_imageurl]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_content_ImageURLChunk_image_url_ImageURL_detail"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk_image_url_imageurl_detail"
+  parentId="messages_AssistantMessage_content_ImageURLChunk_image_url_ImageURL"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### detail [#operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk_image_url_imageurl_detail]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_content_ImageURLChunk_image_url_ImageURL_url"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk_image_url_imageurl_url"
+  parentId="messages_AssistantMessage_content_ImageURLChunk_image_url_ImageURL"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### url [#operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk_image_url_imageurl_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_content_ImageURLChunk_type"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk_type"
+  parentId="messages_AssistantMessage_content_ImageURLChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_assistantmessage_content_imageurlchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"image_url"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_AssistantMessage_content_DocumentURLChunk"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_documenturlchunk" parentId="messages_AssistantMessage_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### DocumentURLChunk [#operation-stream_agents_request_messages_assistantmessage_content_documenturlchunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_content_DocumentURLChunk_document_name"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_documenturlchunk_document_name"
+  parentId="messages_AssistantMessage_content_DocumentURLChunk"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### document_name [#operation-stream_agents_request_messages_assistantmessage_content_documenturlchunk_document_name]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_content_DocumentURLChunk_document_url"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_documenturlchunk_document_url"
+  parentId="messages_AssistantMessage_content_DocumentURLChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### document_url [#operation-stream_agents_request_messages_assistantmessage_content_documenturlchunk_document_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_content_DocumentURLChunk_type"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_documenturlchunk_type"
+  parentId="messages_AssistantMessage_content_DocumentURLChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_assistantmessage_content_documenturlchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"document_url"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_AssistantMessage_content_ReferenceChunk"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_referencechunk" parentId="messages_AssistantMessage_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ReferenceChunk [#operation-stream_agents_request_messages_assistantmessage_content_referencechunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_content_ReferenceChunk_reference_ids"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_referencechunk_reference_ids"
+  parentId="messages_AssistantMessage_content_ReferenceChunk"
+  typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### reference_ids [#operation-stream_agents_request_messages_assistantmessage_content_referencechunk_reference_ids]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_content_ReferenceChunk_type"
+  headingId="operation-stream_agents_request_messages_assistantmessage_content_referencechunk_type"
+  parentId="messages_AssistantMessage_content_ReferenceChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_assistantmessage_content_referencechunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"reference"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_prefix"
+  headingId="operation-stream_agents_request_messages_assistantmessage_prefix"
+  parentId="messages_AssistantMessage"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### prefix [#operation-stream_agents_request_messages_assistantmessage_prefix]
+
+</div>
+
+<div slot="content">
+
+Set this to `true` when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message.
+
+_Default Value:_ `false`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_role"
+  headingId="operation-stream_agents_request_messages_assistantmessage_role"
+  parentId="messages_AssistantMessage"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"assistant\"","linkedLabel":"\"assistant\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### role [#operation-stream_agents_request_messages_assistantmessage_role]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"assistant"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_tool_calls"
+  headingId="operation-stream_agents_request_messages_assistantmessage_tool_calls"
+  parentId="messages_AssistantMessage"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### tool_calls [#operation-stream_agents_request_messages_assistantmessage_tool_calls]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_AssistantMessage_tool_calls_ToolCall"
+  headingId="operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall" parentId="messages_AssistantMessage_tool_calls"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ToolCall [#operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_tool_calls_ToolCall_function"
+  headingId="operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_function"
+  parentId="messages_AssistantMessage_tool_calls_ToolCall"
+  typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_function_functioncall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### function [#operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_function]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_tool_calls_ToolCall_function_arguments"
+  headingId="operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_function_arguments"
+  parentId="messages_AssistantMessage_tool_calls_ToolCall_function"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### arguments [#operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_function_arguments]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_tool_calls_ToolCall_function_name"
+  headingId="operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_function_name"
+  parentId="messages_AssistantMessage_tool_calls_ToolCall_function"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### name [#operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_function_name]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_tool_calls_ToolCall_id"
+  headingId="operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_id"
+  parentId="messages_AssistantMessage_tool_calls_ToolCall"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### id [#operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_id]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"null"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_tool_calls_ToolCall_index"
+  headingId="operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_index"
+  parentId="messages_AssistantMessage_tool_calls_ToolCall"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### index [#operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_index]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `0`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_AssistantMessage_tool_calls_ToolCall_type"
+  headingId="operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_type"
+  parentId="messages_AssistantMessage_tool_calls_ToolCall"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_assistantmessage_tool_calls_toolcall_type]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_ToolMessage"
+  headingId="operation-stream_agents_request_messages_toolmessage" parentId="messages"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ToolMessage [#operation-stream_agents_request_messages_toolmessage]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_content"
+  headingId="operation-stream_agents_request_messages_toolmessage_content"
+  parentId="messages_ToolMessage"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_toolmessage_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_toolmessage_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_toolmessage_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_toolmessage_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### content [#operation-stream_agents_request_messages_toolmessage_content]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_ToolMessage_content_TextChunk"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_textchunk" parentId="messages_ToolMessage_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### TextChunk [#operation-stream_agents_request_messages_toolmessage_content_textchunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_content_TextChunk_text"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_textchunk_text"
+  parentId="messages_ToolMessage_content_TextChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### text [#operation-stream_agents_request_messages_toolmessage_content_textchunk_text]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_content_TextChunk_type"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_textchunk_type"
+  parentId="messages_ToolMessage_content_TextChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_toolmessage_content_textchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"text"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_ToolMessage_content_ImageURLChunk"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_imageurlchunk" parentId="messages_ToolMessage_content"
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ImageURLChunk [#operation-stream_agents_request_messages_toolmessage_content_imageurlchunk]
+
+</div>
+
+<div slot="content">
+
+An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_content_ImageURLChunk_image_url"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_imageurlchunk_image_url"
+  parentId="messages_ToolMessage_content_ImageURLChunk"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-stream_agents_request_messages_toolmessage_content_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### image_url [#operation-stream_agents_request_messages_toolmessage_content_imageurlchunk_image_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_ToolMessage_content_ImageURLChunk_image_url_ImageURL"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_imageurlchunk_image_url_imageurl" parentId="messages_ToolMessage_content_ImageURLChunk_image_url"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ImageURL [#operation-stream_agents_request_messages_toolmessage_content_imageurlchunk_image_url_imageurl]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_content_ImageURLChunk_image_url_ImageURL_detail"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_imageurlchunk_image_url_imageurl_detail"
+  parentId="messages_ToolMessage_content_ImageURLChunk_image_url_ImageURL"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### detail [#operation-stream_agents_request_messages_toolmessage_content_imageurlchunk_image_url_imageurl_detail]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_content_ImageURLChunk_image_url_ImageURL_url"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_imageurlchunk_image_url_imageurl_url"
+  parentId="messages_ToolMessage_content_ImageURLChunk_image_url_ImageURL"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### url [#operation-stream_agents_request_messages_toolmessage_content_imageurlchunk_image_url_imageurl_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_content_ImageURLChunk_type"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_imageurlchunk_type"
+  parentId="messages_ToolMessage_content_ImageURLChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_toolmessage_content_imageurlchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"image_url"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_ToolMessage_content_DocumentURLChunk"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_documenturlchunk" parentId="messages_ToolMessage_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### DocumentURLChunk [#operation-stream_agents_request_messages_toolmessage_content_documenturlchunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_content_DocumentURLChunk_document_name"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_documenturlchunk_document_name"
+  parentId="messages_ToolMessage_content_DocumentURLChunk"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### document_name [#operation-stream_agents_request_messages_toolmessage_content_documenturlchunk_document_name]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_content_DocumentURLChunk_document_url"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_documenturlchunk_document_url"
+  parentId="messages_ToolMessage_content_DocumentURLChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### document_url [#operation-stream_agents_request_messages_toolmessage_content_documenturlchunk_document_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_content_DocumentURLChunk_type"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_documenturlchunk_type"
+  parentId="messages_ToolMessage_content_DocumentURLChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_toolmessage_content_documenturlchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"document_url"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_ToolMessage_content_ReferenceChunk"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_referencechunk" parentId="messages_ToolMessage_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ReferenceChunk [#operation-stream_agents_request_messages_toolmessage_content_referencechunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_content_ReferenceChunk_reference_ids"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_referencechunk_reference_ids"
+  parentId="messages_ToolMessage_content_ReferenceChunk"
+  typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### reference_ids [#operation-stream_agents_request_messages_toolmessage_content_referencechunk_reference_ids]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_content_ReferenceChunk_type"
+  headingId="operation-stream_agents_request_messages_toolmessage_content_referencechunk_type"
+  parentId="messages_ToolMessage_content_ReferenceChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_messages_toolmessage_content_referencechunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"reference"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_name"
+  headingId="operation-stream_agents_request_messages_toolmessage_name"
+  parentId="messages_ToolMessage"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### name [#operation-stream_agents_request_messages_toolmessage_name]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_role"
+  headingId="operation-stream_agents_request_messages_toolmessage_role"
+  parentId="messages_ToolMessage"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"tool\"","linkedLabel":"\"tool\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### role [#operation-stream_agents_request_messages_toolmessage_role]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"tool"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ToolMessage_tool_call_id"
+  headingId="operation-stream_agents_request_messages_toolmessage_tool_call_id"
+  parentId="messages_ToolMessage"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### tool_call_id [#operation-stream_agents_request_messages_toolmessage_tool_call_id]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="n"
+  headingId="operation-stream_agents_request_n"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### n [#operation-stream_agents_request_n]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="parallel_tool_calls"
+  headingId="operation-stream_agents_request_parallel_tool_calls"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### parallel_tool_calls [#operation-stream_agents_request_parallel_tool_calls]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="prediction"
+  headingId="operation-stream_agents_request_prediction"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"Prediction","linkedLabel":"<a href=\"#operation-stream_agents_request_prediction_prediction\">Prediction</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### prediction [#operation-stream_agents_request_prediction]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="prediction_Prediction"
+  headingId="operation-stream_agents_request_prediction_prediction" parentId="prediction"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### Prediction [#operation-stream_agents_request_prediction_prediction]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="prediction_Prediction_content"
+  headingId="operation-stream_agents_request_prediction_prediction_content"
+  parentId="prediction_Prediction"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### content [#operation-stream_agents_request_prediction_prediction_content]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `""`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="prediction_Prediction_type"
+  headingId="operation-stream_agents_request_prediction_prediction_type"
+  parentId="prediction_Prediction"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_prediction_prediction_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"content"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="presence_penalty"
+  headingId="operation-stream_agents_request_presence_penalty"
+  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### presence_penalty [#operation-stream_agents_request_presence_penalty]
+
+</div>
+
+<div slot="content">
+
+presence_penalty determines how much the model penalizes the repetition of words or phrases. A higher presence penalty encourages the model to use a wider variety of words and phrases, making the output more diverse and creative.
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="prompt_mode"
+  headingId="operation-stream_agents_request_prompt_mode"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reasoning\"","linkedLabel":"\"reasoning\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### prompt_mode [#operation-stream_agents_request_prompt_mode]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="random_seed"
+  headingId="operation-stream_agents_request_random_seed"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### random_seed [#operation-stream_agents_request_random_seed]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="response_format"
+  headingId="operation-stream_agents_request_response_format"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ResponseFormat","linkedLabel":"<a href=\"#operation-stream_agents_request_response_format_responseformat\">ResponseFormat</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### response_format [#operation-stream_agents_request_response_format]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="response_format_ResponseFormat"
+  headingId="operation-stream_agents_request_response_format_responseformat" parentId="response_format"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ResponseFormat [#operation-stream_agents_request_response_format_responseformat]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="response_format_ResponseFormat_json_schema"
+  headingId="operation-stream_agents_request_response_format_responseformat_json_schema"
+  parentId="response_format_ResponseFormat"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"JsonSchema","linkedLabel":"<a href=\"#operation-stream_agents_request_response_format_responseformat_json_schema_jsonschema\">JsonSchema</a>","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### json_schema [#operation-stream_agents_request_response_format_responseformat_json_schema]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="response_format_ResponseFormat_json_schema_JsonSchema"
+  headingId="operation-stream_agents_request_response_format_responseformat_json_schema_jsonschema" parentId="response_format_ResponseFormat_json_schema"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### JsonSchema [#operation-stream_agents_request_response_format_responseformat_json_schema_jsonschema]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="response_format_ResponseFormat_json_schema_JsonSchema_description"
+  headingId="operation-stream_agents_request_response_format_responseformat_json_schema_jsonschema_description"
+  parentId="response_format_ResponseFormat_json_schema_JsonSchema"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### description [#operation-stream_agents_request_response_format_responseformat_json_schema_jsonschema_description]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="response_format_ResponseFormat_json_schema_JsonSchema_name"
+  headingId="operation-stream_agents_request_response_format_responseformat_json_schema_jsonschema_name"
+  parentId="response_format_ResponseFormat_json_schema_JsonSchema"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### name [#operation-stream_agents_request_response_format_responseformat_json_schema_jsonschema_name]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="response_format_ResponseFormat_json_schema_JsonSchema_schema_definition"
+  headingId="operation-stream_agents_request_response_format_responseformat_json_schema_jsonschema_schema_definition"
+  parentId="response_format_ResponseFormat_json_schema_JsonSchema"
+  typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### schema_definition [#operation-stream_agents_request_response_format_responseformat_json_schema_jsonschema_schema_definition]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="response_format_ResponseFormat_json_schema_JsonSchema_strict"
+  headingId="operation-stream_agents_request_response_format_responseformat_json_schema_jsonschema_strict"
+  parentId="response_format_ResponseFormat_json_schema_JsonSchema"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### strict [#operation-stream_agents_request_response_format_responseformat_json_schema_jsonschema_strict]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="response_format_ResponseFormat_type"
+  headingId="operation-stream_agents_request_response_format_responseformat_type"
+  parentId="response_format_ResponseFormat"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}},{"label":"\"json_object\"","linkedLabel":"\"json_object\"","children":[],"breakoutSubTypes":{}},{"label":"\"json_schema\"","linkedLabel":"\"json_schema\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_response_format_responseformat_type]
+
+</div>
+
+<div slot="content">
+
+An object specifying the format that the model must output. Setting to `\{ "type": "json_object" \}` enables JSON mode, which guarantees the message the model generates is in JSON. When using JSON mode you MUST also instruct the model to produce JSON yourself with a system or a user message.
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="stop"
+  headingId="operation-stream_agents_request_stop"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### stop [#operation-stream_agents_request_stop]
+
+</div>
+
+<div slot="content">
+
+Stop generation if this token is detected. Or if one of these tokens is detected when providing an array
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="stream"
+  headingId="operation-stream_agents_request_stream"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### stream [#operation-stream_agents_request_stream]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `true`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="tool_choice"
+  headingId="operation-stream_agents_request_tool_choice"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ToolChoice","linkedLabel":"<a href=\"#operation-stream_agents_request_tool_choice_toolchoice\">ToolChoice</a>","children":[],"breakoutSubTypes":{}},{"label":"enum","linkedLabel":"enum","children":[{"label":"\"auto\"","linkedLabel":"\"auto\"","children":[],"breakoutSubTypes":{}},{"label":"\"none\"","linkedLabel":"\"none\"","children":[],"breakoutSubTypes":{}},{"label":"\"any\"","linkedLabel":"\"any\"","children":[],"breakoutSubTypes":{}},{"label":"\"required\"","linkedLabel":"\"required\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### tool_choice [#operation-stream_agents_request_tool_choice]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="tool_choice_ToolChoice"
+  headingId="operation-stream_agents_request_tool_choice_toolchoice" parentId="tool_choice"
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ToolChoice [#operation-stream_agents_request_tool_choice_toolchoice]
+
+</div>
+
+<div slot="content">
+
+ToolChoice is either a ToolChoiceEnum or a ToolChoice
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="tool_choice_ToolChoice_function"
+  headingId="operation-stream_agents_request_tool_choice_toolchoice_function"
+  parentId="tool_choice_ToolChoice"
+  typeInfo={{"label":"FunctionName","linkedLabel":"<a href=\"#operation-stream_agents_request_tool_choice_toolchoice_function_functionname\">FunctionName</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### function [#operation-stream_agents_request_tool_choice_toolchoice_function]
+
+</div>
+
+<div slot="content">
+
+this restriction of `Function` is used to select a specific function to call
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="tool_choice_ToolChoice_function_name"
+  headingId="operation-stream_agents_request_tool_choice_toolchoice_function_name"
+  parentId="tool_choice_ToolChoice_function"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### name [#operation-stream_agents_request_tool_choice_toolchoice_function_name]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="tool_choice_ToolChoice_type"
+  headingId="operation-stream_agents_request_tool_choice_toolchoice_type"
+  parentId="tool_choice_ToolChoice"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_tool_choice_toolchoice_type]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="tools"
+  headingId="operation-stream_agents_request_tools"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-stream_agents_request_tools_tool\">Tool</a>","children":[{"label":"Tool","linkedLabel":"<a href=\"#operation-stream_agents_request_tools_tool\">Tool</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### tools [#operation-stream_agents_request_tools]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="tools_Tool"
+  headingId="operation-stream_agents_request_tools_tool" parentId="tools"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### Tool [#operation-stream_agents_request_tools_tool]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="tools_Tool_function"
+  headingId="operation-stream_agents_request_tools_tool_function"
+  parentId="tools_Tool"
+  typeInfo={{"label":"Function","linkedLabel":"<a href=\"#operation-stream_agents_request_tools_tool_function_function\">Function</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### function [#operation-stream_agents_request_tools_tool_function]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="tools_Tool_function_description"
+  headingId="operation-stream_agents_request_tools_tool_function_description"
+  parentId="tools_Tool_function"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### description [#operation-stream_agents_request_tools_tool_function_description]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="tools_Tool_function_name"
+  headingId="operation-stream_agents_request_tools_tool_function_name"
+  parentId="tools_Tool_function"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### name [#operation-stream_agents_request_tools_tool_function_name]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="tools_Tool_function_parameters"
+  headingId="operation-stream_agents_request_tools_tool_function_parameters"
+  parentId="tools_Tool_function"
+  typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### parameters [#operation-stream_agents_request_tools_tool_function_parameters]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="tools_Tool_function_strict"
+  headingId="operation-stream_agents_request_tools_tool_function_strict"
+  parentId="tools_Tool_function"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### strict [#operation-stream_agents_request_tools_tool_function_strict]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="tools_Tool_type"
+  headingId="operation-stream_agents_request_tools_tool_type"
+  parentId="tools_Tool"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_request_tools_tool_type]
+
+</div>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+<TabbedSection>
+
+<SectionTitle slot="title" variant="default">
+
+### Server-Side Events [#operation-stream_agents_responses]
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-stream_agents_responses_200_text-event-stream">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-stream_agents_responses_200_text-event-stream">
+
+<FrontMatterDisplayType typeInfo={{"label":"event-stream","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent\">CompletionEvent</a>","children":[{"label":"CompletionEvent","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent\">CompletionEvent</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}} />
+
+A stream of Agents completion events
+
+<ExpandableSection>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### CompletionEvent [#operation-stream_agents_responses_200_text-event-stream_completionevent]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data"
+  parentId="CompletionEvent"
+  typeInfo={{"label":"CompletionChunk","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_completionchunk\">CompletionChunk</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### data [#operation-stream_agents_responses_200_text-event-stream_completionevent_data]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices"
+  parentId="CompletionEvent_data"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice\">CompletionResponseStreamChoice</a>","children":[{"label":"CompletionResponseStreamChoice","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice\">CompletionResponseStreamChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### choices [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice" parentId="CompletionEvent_data_choices"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### CompletionResponseStreamChoice [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice"
+  typeInfo={{"label":"DeltaMessage","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_deltamessage\">DeltaMessage</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### delta [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### content [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_TextChunk"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk" parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### TextChunk [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_TextChunk_text"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk_text"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_TextChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### text [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk_text]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_TextChunk_type"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk_type"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_TextChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_textchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"text"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk" parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content"
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ImageURLChunk [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk]
+
+</div>
+
+<div slot="content">
+
+An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### image_url [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url_ImageURL"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl" parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ImageURL [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url_ImageURL_detail"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl_detail"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url_ImageURL"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### detail [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl_detail]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url_ImageURL_url"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl_url"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_image_url_ImageURL"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### url [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_image_url_imageurl_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk_type"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_type"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ImageURLChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_imageurlchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"image_url"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk" parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### DocumentURLChunk [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk_document_name"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk_document_name"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### document_name [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk_document_name]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk_document_url"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk_document_url"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### document_url [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk_document_url]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk_type"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk_type"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_DocumentURLChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_documenturlchunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"document_url"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ReferenceChunk"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk" parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ReferenceChunk [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ReferenceChunk_reference_ids"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk_reference_ids"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ReferenceChunk"
+  typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### reference_ids [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk_reference_ids]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ReferenceChunk_type"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk_type"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_content_ReferenceChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_content_referencechunk_type]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"reference"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_role"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_role"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### role [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_role]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### tool_calls [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall" parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ToolCall [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_function"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall"
+  typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function_functioncall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### function [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_function_arguments"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function_arguments"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_function"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### arguments [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function_arguments]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_function_name"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function_name"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_function"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### name [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_function_name]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_id"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_id"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### id [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_id]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `"null"`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_index"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_index"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### index [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_index]
+
+</div>
+
+<div slot="content">
+
+_Default Value:_ `0`
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall_type"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_type"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice_delta_tool_calls_ToolCall"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_delta_tool_calls_toolcall_type]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_finish_reason"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_finish_reason"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"stop\"","linkedLabel":"\"stop\"","children":[],"breakoutSubTypes":{}},{"label":"\"length\"","linkedLabel":"\"length\"","children":[],"breakoutSubTypes":{}},{"label":"\"error\"","linkedLabel":"\"error\"","children":[],"breakoutSubTypes":{}},{"label":"\"tool_calls\"","linkedLabel":"\"tool_calls\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### finish_reason [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_finish_reason]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_choices_CompletionResponseStreamChoice_index"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_index"
+  parentId="CompletionEvent_data_choices_CompletionResponseStreamChoice"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### index [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_choices_completionresponsestreamchoice_index]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_created"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_created"
+  parentId="CompletionEvent_data"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### created [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_created]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_id"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_id"
+  parentId="CompletionEvent_data"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### id [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_id]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_model"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_model"
+  parentId="CompletionEvent_data"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### model [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_model]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_object"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_object"
+  parentId="CompletionEvent_data"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### object [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_object]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_usage"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_usage"
+  parentId="CompletionEvent_data"
+  typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-stream_agents_responses_200_text-event-stream_completionevent_data_usage_usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### usage [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_usage]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_usage_completion_tokens"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_usage_completion_tokens"
+  parentId="CompletionEvent_data_usage"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### completion_tokens [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_usage_completion_tokens]
+
+</div>
+
+<div slot="content">
+
+_Example:_
+
+```
+34
+```
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_usage_prompt_tokens"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_usage_prompt_tokens"
+  parentId="CompletionEvent_data_usage"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### prompt_tokens [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_usage_prompt_tokens]
+
+</div>
+
+<div slot="content">
+
+_Example:_
+
+```
+16
+```
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_usage_total_tokens"
+  headingId="operation-stream_agents_responses_200_text-event-stream_completionevent_data_usage_total_tokens"
+  parentId="CompletionEvent_data_usage"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### total_tokens [#operation-stream_agents_responses_200_text-event-stream_completionevent_data_usage_total_tokens]
+
+</div>
+
+<div slot="content">
+
+_Example:_
+
+```
+50
+```
+
+</div>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-stream_agents_responses_422_application-json">
+
+422
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-stream_agents_responses_422_application-json">
+
+Validation Error
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-stream_agents_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-stream_agents_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### HttpMeta [#operation-stream_agents_responses_422_application-json_httpmeta]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_Request"
+  headingId="operation-stream_agents_responses_422_application-json_httpmeta_request"
+  parentId="HttpMeta"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### Request [#operation-stream_agents_responses_422_application-json_httpmeta_request]
+
+</div>
+
+<div slot="content">
+
+Raw HTTP request; suitable for debugging
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_Response"
+  headingId="operation-stream_agents_responses_422_application-json_httpmeta_response"
+  parentId="HttpMeta"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### Response [#operation-stream_agents_responses_422_application-json_httpmeta_response]
+
+</div>
+
+<div slot="content">
+
+Raw HTTP response; suitable for custom response parsing
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-stream_agents_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-stream_agents_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-stream_agents_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### detail [#operation-stream_agents_responses_422_application-json_detail]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-stream_agents_responses_422_application-json_detail_validationerror" parentId="detail"
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+#### ValidationError [#operation-stream_agents_responses_422_application-json_detail_validationerror]
+
+</div>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-stream_agents_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### loc [#operation-stream_agents_responses_422_application-json_detail_validationerror_loc]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-stream_agents_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### msg [#operation-stream_agents_responses_422_application-json_detail_validationerror_msg]
+
+</div>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-stream_agents_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<div slot="title">
+
+##### type [#operation-stream_agents_responses_422_application-json_detail_validationerror_type]
 
 </div>
 
