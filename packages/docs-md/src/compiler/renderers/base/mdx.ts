@@ -6,7 +6,7 @@ import type {
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
   RendererConstructorArgs,
-  RendererCreateAppendCodeArgs,
+  RendererCreateCodeArgs,
   RendererCreateExpandableBreakoutArgs,
   RendererCreateExpandablePropertyArgs,
   RendererCreateFrontMatterDisplayTypeArgs,
@@ -67,19 +67,28 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return data;
   }
 
-  public override createCode(...[text, options]: RendererCreateAppendCodeArgs) {
+  public override createCode(...[text, options]: RendererCreateCodeArgs) {
+    let line: string;
     if (options?.variant === "raw") {
       if (options.style === "inline") {
-        return `<code>${this.escapeText(text, { escape: options?.escape ?? "html" })}</code>`;
+        line = `<code>${this.escapeText(text, { escape: options?.escape ?? "html" })}</code>`;
+      } else {
+        const escapedText = this.escapeText(text, {
+          escape: options?.escape ?? "html",
+        }).replaceAll("`", "\\`");
+        this.insertComponentImport("Code");
+        line = `<Code text={\`${escapedText}\`} />`;
       }
-      const escapedText = this.escapeText(text, {
-        escape: options?.escape ?? "html",
-      }).replaceAll("`", "\\`");
-      this.insertComponentImport("Code");
-      return `<Code text={\`${escapedText}\`} />`;
     } else {
-      return super.createCode(text, options);
+      line = super.createCode(
+        text,
+        options ? { ...options, append: false } : undefined
+      );
     }
+    if (options?.append ?? true) {
+      this.appendLine(line);
+    }
+    return line;
   }
 
   protected insertPackageImport(importPath: string) {

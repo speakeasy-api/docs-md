@@ -14,7 +14,7 @@ import type {
   Context,
   RendererAlreadyInContextArgs,
   RendererConstructorArgs,
-  RendererCreateAppendCodeArgs,
+  RendererCreateCodeArgs,
   RendererCreateContextArgs,
   RendererCreateExpandableBreakoutArgs,
   RendererCreateExpandablePropertyArgs,
@@ -321,6 +321,7 @@ export abstract class MarkdownRenderer extends Renderer {
           variant: "raw",
           style: "inline",
           escape: "mdx",
+          append: false,
         });
     }
     const renderedAnnotations = annotations.map((annotation) => {
@@ -339,7 +340,7 @@ export abstract class MarkdownRenderer extends Renderer {
   public override createFrontMatterDisplayType(
     ...[{ typeInfo }]: RendererCreateFrontMatterDisplayTypeArgs
   ) {
-    this.appendCode(this.#computeSingleLineDisplayType(typeInfo), {
+    this.createCode(this.#computeSingleLineDisplayType(typeInfo), {
       variant: "raw",
       style: "inline",
       escape: "mdx",
@@ -373,24 +374,27 @@ export abstract class MarkdownRenderer extends Renderer {
     return escapedText;
   }
 
-  public override createCode(...[text, options]: RendererCreateAppendCodeArgs) {
+  public override createCode(...[text, options]: RendererCreateCodeArgs) {
+    let line: string;
     if (options?.variant === "raw") {
       if (options.style === "inline") {
-        return `<code>${text}</code>`;
-      }
-      return `<pre>
+        line = `<code>${text}</code>`;
+      } else {
+        line = `<pre>
 <code>
 ${text}\n</code>\n</pre>`;
+      }
     } else {
       if (options?.style === "inline") {
-        return `\`${text}\``;
+        line = `\`${text}\``;
+      } else {
+        line = `\`\`\`${options?.language ?? ""}\n${text}\n\`\`\``;
       }
-      return `\`\`\`${options?.language ?? ""}\n${text}\n\`\`\``;
     }
-  }
-
-  public override appendCode(...args: RendererCreateAppendCodeArgs) {
-    this.appendLine(this.createCode(...args));
+    if (options?.append) {
+      this.appendLine(line);
+    }
+    return line;
   }
 
   public override createList(

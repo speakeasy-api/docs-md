@@ -431,7 +431,7 @@ export function renderSchemaFrontmatter({
   if (examples.length > 0) {
     renderer.createText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
     for (const example of examples) {
-      renderer.appendCode(example);
+      renderer.createCode(example);
     }
   } else if (showDebugPlaceholders) {
     renderer.appendDebugPlaceholderStart();

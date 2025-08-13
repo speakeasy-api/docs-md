@@ -78,51 +78,53 @@ export type RendererCreateTextArgs = [
   text: string,
   options?: BaseOptions & EscapeOptions,
 ];
-export type RendererCreateAppendCodeArgs = [
+export type RendererCreateCodeArgs = [
   text: string,
   options?:
-    | (EscapeOptions & {
-        /**
-         * The variant to use for the code block. If `raw`, the code will be
-         * appended using a raw `<pre><code></code></pre>` block. Otherwise, the
-         * code will be appended using a triple backtick block.
-         */
-        variant: "default";
-        /**
-         * The language to use for the code block. This is only used when the
-         * variant is `default`.
-         */
-        language?: string;
-        /**
-         * The style to use for the code block. If the style is "block", then
-         * the code will be rendered using <pre> + <code> tags for raw variants,
-         * and triple backtick blocks for default variants. If the style is
-         * "inline", then the code will be rendered using just a <code> tag for
-         * raw variants, and a single backtick for default variants.
-         */
-        style?: "block" | "inline";
-      })
-    | (EscapeOptions & {
-        /**
-         * The variant to use for the code block. If `raw`, the code will be
-         * appended using a raw `<pre><code></code></pre>` block. Otherwise, the
-         * code will be appended using a triple backtick block.
-         */
-        variant: "raw";
-        /**
-         * The language to use for the code block. This is only used when the
-         * variant is `default`.
-         */
-        language?: never;
-        /**
-         * The style to use for the code block. If the style is "block", then
-         * the code will be rendered using <pre> + <code> tags for raw variants,
-         * and triple backtick blocks for default variants. If the style is
-         * "inline", then the code will be rendered using just a <code> tag for
-         * raw variants, and a single backtick for default variants.
-         */
-        style?: "block" | "inline";
-      }),
+    | (BaseOptions &
+        EscapeOptions & {
+          /**
+           * The variant to use for the code block. If `raw`, the code will be
+           * appended using a raw `<pre><code></code></pre>` block. Otherwise, the
+           * code will be appended using a triple backtick block.
+           */
+          variant: "default";
+          /**
+           * The language to use for the code block. This is only used when the
+           * variant is `default`.
+           */
+          language?: string;
+          /**
+           * The style to use for the code block. If the style is "block", then
+           * the code will be rendered using <pre> + <code> tags for raw variants,
+           * and triple backtick blocks for default variants. If the style is
+           * "inline", then the code will be rendered using just a <code> tag for
+           * raw variants, and a single backtick for default variants.
+           */
+          style?: "block" | "inline";
+        })
+    | (BaseOptions &
+        EscapeOptions & {
+          /**
+           * The variant to use for the code block. If `raw`, the code will be
+           * appended using a raw `<pre><code></code></pre>` block. Otherwise, the
+           * code will be appended using a triple backtick block.
+           */
+          variant: "raw";
+          /**
+           * The language to use for the code block. This is only used when the
+           * variant is `default`.
+           */
+          language?: never;
+          /**
+           * The style to use for the code block. If the style is "block", then
+           * the code will be rendered using <pre> + <code> tags for raw variants,
+           * and triple backtick blocks for default variants. If the style is
+           * "inline", then the code will be rendered using just a <code> tag for
+           * raw variants, and a single backtick for default variants.
+           */
+          style?: "block" | "inline";
+        }),
 ];
 export type RendererCreatePillArgs = [variant: PillVariant];
 export type RendererCreateListArgs = [items: string[], options?: EscapeOptions];
@@ -251,15 +253,13 @@ export abstract class Renderer {
 
   abstract createHeading(...args: RendererCreateHeadingArgs): string;
   abstract createText(...args: RendererCreateTextArgs): string;
+  abstract createCode(...args: RendererCreateCodeArgs): string;
 
   // Outdated operations
 
   // The following methods are used to create basic content on the page. They
   // have "create" variants that create the content and "append"/"insert"
   // variants that append/insert the content into the current page.
-
-  abstract createCode(...args: RendererCreateAppendCodeArgs): string;
-  abstract appendCode(...args: RendererCreateAppendCodeArgs): void;
 
   abstract createList(...args: RendererCreateListArgs): string;
   abstract appendList(...args: RendererCreateListArgs): void;
