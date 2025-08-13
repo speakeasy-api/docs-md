@@ -161,17 +161,20 @@ export function renderOperation({
                 ),
               { variant: "top-level" }
             );
-            renderer.appendSectionContentStart({ variant: "top-level" });
-            // TODO: Zod is actually hard coded for now since its always a dependency
-            // in our SDKs. Ideally this will come from the SDK package.
-            renderer.appendTryItNow({
-              externalDependencies: {
-                zod: "^3.25.64",
-                [tryItNow.npmPackageName]: "latest",
+            renderer.createSectionContent(
+              () => {
+                // TODO: Zod is actually hard coded for now since its always a dependency
+                // in our SDKs. Ideally this will come from the SDK package.
+                renderer.appendTryItNow({
+                  externalDependencies: {
+                    zod: "^3.25.64",
+                    [tryItNow.npmPackageName]: "latest",
+                  },
+                  defaultValue: usageSnippet.code,
+                });
               },
-              defaultValue: usageSnippet.code,
-            });
-            renderer.appendSectionContentEnd();
+              { variant: "top-level" }
+            );
           },
           { variant: "top-level" }
         );

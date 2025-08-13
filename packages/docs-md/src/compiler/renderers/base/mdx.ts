@@ -311,15 +311,15 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.createText("</SectionTitle>");
   }
 
-  public override createSectionContentStart(
-    ...[{ variant = "default", id } = {}]: RendererCreateSectionContentArgs
+  public override createSectionContent(
+    ...[cb, { variant = "default", id } = {}]: RendererCreateSectionContentArgs
   ) {
     this.insertComponentImport("SectionContent");
-    return `<SectionContent slot="content" variant="${variant}"${id ? ` id="${id}"` : ""}>`;
-  }
-
-  public override createSectionContentEnd() {
-    return `</SectionContent>`;
+    this.createText(
+      `<SectionContent slot="content" variant="${variant}"${id ? ` id="${id}"` : ""}>`
+    );
+    cb();
+    this.createText("</SectionContent>");
   }
 
   protected override createTabbedSectionStart() {

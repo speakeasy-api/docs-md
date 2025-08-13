@@ -148,6 +148,7 @@ export type RendererCreateSectionTitleArgs = [
   },
 ];
 export type RendererCreateSectionContentArgs = [
+  cb: () => void,
   options?: {
     id?: string;
     variant?: SectionVariant;
@@ -249,20 +250,21 @@ export abstract class Renderer {
     ...args: RendererCreateRequestSectionArgs
   ): void;
   abstract createResponsesSection(...args: RendererCreateResponsesArgs): void;
+
   abstract createExpandableBreakout(
     ...args: RendererCreateExpandableBreakoutArgs
   ): void;
-
-  // Show a property in an object schema, including it's type info
   abstract createExpandableProperty(
     ...args: RendererCreateExpandablePropertyArgs
   ): void;
   abstract createFrontMatterDisplayType(
     ...args: RendererCreateFrontMatterDisplayTypeArgs
   ): void;
-
   abstract createSection(...args: RendererCreateSectionArgs): void;
   abstract createSectionTitle(...args: RendererCreateSectionTitleArgs): void;
+  abstract createSectionContent(
+    ...args: RendererCreateSectionContentArgs
+  ): void;
 
   // Low level operations
 
@@ -277,16 +279,6 @@ export abstract class Renderer {
   // The following methods are used to create basic content on the page. They
   // have "create" variants that create the content and "append"/"insert"
   // variants that append/insert the content into the current page.
-
-  // Sections show a title followed by content
-  abstract createSectionContentStart(
-    ...args: RendererCreateSectionContentArgs
-  ): string;
-  abstract appendSectionContentStart(
-    ...args: RendererCreateSectionContentArgs
-  ): void;
-  abstract createSectionContentEnd(): string;
-  abstract appendSectionContentEnd(): void;
 
   abstract createDebugPlaceholderStart(): string;
   abstract appendDebugPlaceholderStart(): void;

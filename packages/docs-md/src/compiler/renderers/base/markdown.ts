@@ -204,9 +204,7 @@ export abstract class MarkdownRenderer extends Renderer {
             }),
           { variant: "top-level" }
         );
-        this.appendSectionContentStart({ variant: "top-level" });
-        cb();
-        this.appendSectionContentEnd();
+        this.createSectionContent(cb, { variant: "top-level" });
       },
       { variant: "top-level" }
     );
@@ -284,13 +282,16 @@ export abstract class MarkdownRenderer extends Renderer {
       this.appendTabbedSectionTabStart(this.getCurrentId());
       this.createText(statusCode);
       this.appendTabbedSectionTabEnd();
-      this.appendSectionContentStart({
-        id: this.getCurrentId(),
-        variant: "top-level",
-      });
-      this.handleCreateFrontMatter(createFrontMatter);
-      this.handleCreateBreakouts(createBreakouts);
-      this.appendSectionContentEnd();
+      this.createSectionContent(
+        () => {
+          this.handleCreateFrontMatter(createFrontMatter);
+          this.handleCreateBreakouts(createBreakouts);
+        },
+        {
+          id: this.getCurrentId(),
+          variant: "top-level",
+        }
+      );
       this.exitContext();
       this.exitContext();
     });
@@ -436,24 +437,10 @@ ${text}\n</code>\n</pre>`;
     cb();
   }
 
-  public override createSectionContentStart(
-    ..._args: RendererCreateSectionContentArgs
+  public override createSectionContent(
+    ...[cb]: RendererCreateSectionContentArgs
   ) {
-    return "";
-  }
-
-  public override appendSectionContentStart(
-    ...args: RendererCreateSectionContentArgs
-  ) {
-    this.appendLine(this.createSectionContentStart(...args));
-  }
-
-  public override createSectionContentEnd() {
-    return "";
-  }
-
-  public override appendSectionContentEnd() {
-    this.appendLine(this.createSectionContentEnd());
+    cb();
   }
 
   protected createTabbedSectionStart() {
