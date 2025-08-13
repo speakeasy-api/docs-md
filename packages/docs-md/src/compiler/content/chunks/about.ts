@@ -27,7 +27,7 @@ export function renderAbout(renderer: Renderer, chunk: AboutChunk) {
   }
   if (chunk.chunkData.servers.length > 0) {
     renderer.createText("Servers");
-    renderer.appendList(chunk.chunkData.servers.map((server) => server.url));
+    renderer.createList(chunk.chunkData.servers.map((server) => server.url));
   } else if (showDebugPlaceholders) {
     renderer.appendDebugPlaceholderStart();
     renderer.createText("No servers provided");

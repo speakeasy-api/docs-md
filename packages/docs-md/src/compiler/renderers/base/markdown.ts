@@ -398,15 +398,18 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override createList(
-    ...[items, { escape = "markdown" } = {}]: RendererCreateListArgs
+    ...[
+      items,
+      { escape = "markdown", append = true } = {},
+    ]: RendererCreateListArgs
   ) {
-    return items
+    const list = items
       .map((item) => "- " + this.escapeText(item, { escape }))
       .join("\n");
-  }
-
-  public override appendList(...args: RendererCreateListArgs) {
-    this.appendLine(this.createList(...args));
+    if (append) {
+      this.appendLine(list);
+    }
+    return list;
   }
 
   public override createPillStart(..._args: RendererCreatePillArgs) {

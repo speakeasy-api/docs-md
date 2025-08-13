@@ -127,7 +127,10 @@ export type RendererCreateCodeArgs = [
         }),
 ];
 export type RendererCreatePillArgs = [variant: PillVariant];
-export type RendererCreateListArgs = [items: string[], options?: EscapeOptions];
+export type RendererCreateListArgs = [
+  items: string[],
+  options?: BaseOptions & EscapeOptions,
+];
 export type RendererCreateSectionArgs = [
   options?: {
     variant?: SectionVariant;
@@ -249,20 +252,18 @@ export abstract class Renderer {
     ...args: RendererCreateFrontMatterDisplayTypeArgs
   ): void;
 
-  // Low level operations
+  // Basic markdown operations
 
   abstract createHeading(...args: RendererCreateHeadingArgs): string;
   abstract createText(...args: RendererCreateTextArgs): string;
   abstract createCode(...args: RendererCreateCodeArgs): string;
+  abstract createList(...args: RendererCreateListArgs): string;
 
   // Outdated operations
 
   // The following methods are used to create basic content on the page. They
   // have "create" variants that create the content and "append"/"insert"
   // variants that append/insert the content into the current page.
-
-  abstract createList(...args: RendererCreateListArgs): string;
-  abstract appendList(...args: RendererCreateListArgs): void;
 
   abstract createPillStart(...args: RendererCreatePillArgs): string;
   abstract appendPillStart(...args: RendererCreatePillArgs): void;
