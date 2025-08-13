@@ -3,14 +3,14 @@ import { dirname, relative } from "node:path";
 import { InternalError } from "../../../util/internalError.ts";
 import { HEADINGS } from "../../content/constants.ts";
 import type {
-  RendererAddExpandableBreakoutArgs,
-  RendererAddExpandablePropertyArgs,
-  RendererAddFrontMatterDisplayTypeArgs,
-  RendererAddOperationArgs,
   RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
   RendererConstructorArgs,
   RendererCreateAppendCodeArgs,
+  RendererCreateExpandableBreakoutArgs,
+  RendererCreateExpandablePropertyArgs,
+  RendererCreateFrontMatterDisplayTypeArgs,
+  RendererCreateOperationArgs,
   RendererCreatePillArgs,
   RendererCreateSectionArgs,
   RendererCreateSectionContentArgs,
@@ -135,9 +135,9 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return "</Pill>";
   }
 
-  public override addOperationSection(...args: RendererAddOperationArgs) {
+  public override createOperationSection(...args: RendererCreateOperationArgs) {
     this.#idStack.push(args[0].operationId);
-    super.addOperationSection(...args);
+    super.createOperationSection(...args);
     this.#idStack.pop();
   }
 
@@ -192,10 +192,10 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     return { id, parentId };
   }
 
-  public override addExpandableBreakout(
+  public override createExpandableBreakout(
     ...[
       { createTitle, createContent, expandByDefault },
-    ]: RendererAddExpandableBreakoutArgs
+    ]: RendererCreateExpandableBreakoutArgs
   ) {
     const { id, parentId } = this.#getBreakoutIdInfo();
     this.insertComponentImport("ExpandableBreakout");
@@ -223,10 +223,10 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.appendText("</ExpandableBreakout>");
   }
 
-  public override addExpandableProperty(
+  public override createExpandableProperty(
     ...[
       { typeInfo, annotations, title, createContent, expandByDefault },
-    ]: RendererAddExpandablePropertyArgs
+    ]: RendererCreateExpandablePropertyArgs
   ) {
     const { id, parentId } = this.#getBreakoutIdInfo();
     this.insertComponentImport("ExpandableProperty");
@@ -272,8 +272,8 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.appendText(`</ExpandableProperty>`);
   }
 
-  public override addFrontMatterDisplayType(
-    ...[{ typeInfo }]: RendererAddFrontMatterDisplayTypeArgs
+  public override createFrontMatterDisplayType(
+    ...[{ typeInfo }]: RendererCreateFrontMatterDisplayTypeArgs
   ) {
     this.insertComponentImport("FrontMatterDisplayType");
     this.appendText(

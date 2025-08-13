@@ -157,7 +157,7 @@ export type RendererAppendTryItNowArgs = [
 ];
 
 // Section args
-export type RendererAddOperationArgs = [
+export type RendererCreateOperationArgs = [
   options: {
     method: string;
     path: string;
@@ -167,16 +167,16 @@ export type RendererAddOperationArgs = [
   },
   cb: () => void,
 ];
-export type RendererAddSecuritySectionArgs = [cb: () => void];
-export type RendererAddParametersSectionArgs = [cb: () => void];
-export type RendererAddRequestSectionArgs = [
+export type RendererCreateSecuritySectionArgs = [cb: () => void];
+export type RendererCreateParametersSectionArgs = [cb: () => void];
+export type RendererCreateRequestSectionArgs = [
   options: {
     isOptional: boolean;
     createFrontMatter: () => void;
     createBreakouts: () => void;
   },
 ];
-export type RendererAddResponsesArgs = [
+export type RendererCreateResponsesArgs = [
   cb: (
     createTab: (options: {
       statusCode: string;
@@ -191,14 +191,14 @@ export type RendererAddResponsesArgs = [
 ];
 export type RendererCreateContextArgs = [context: Context];
 
-export type RendererAddExpandableBreakoutArgs = [
+export type RendererCreateExpandableBreakoutArgs = [
   options: {
     expandByDefault: boolean;
     createTitle: () => void;
     createContent?: () => void;
   },
 ];
-export type RendererAddExpandablePropertyArgs = [
+export type RendererCreateExpandablePropertyArgs = [
   options: {
     typeInfo?: DisplayTypeInfo;
     annotations: PropertyAnnotations[];
@@ -207,7 +207,7 @@ export type RendererAddExpandablePropertyArgs = [
     createContent?: () => void;
   },
 ];
-export type RendererAddFrontMatterDisplayTypeArgs = [
+export type RendererCreateFrontMatterDisplayTypeArgs = [
   options: {
     typeInfo: DisplayTypeInfo;
   },
@@ -224,23 +224,27 @@ export type RendererConstructorArgs = {
 
 export abstract class Renderer {
   // High level operations
-  abstract addOperationSection(...args: RendererAddOperationArgs): void;
-  abstract addSecuritySection(...args: RendererAddSecuritySectionArgs): void;
-  abstract addParametersSection(
-    ...args: RendererAddParametersSectionArgs
+  abstract createOperationSection(...args: RendererCreateOperationArgs): void;
+  abstract createSecuritySection(
+    ...args: RendererCreateSecuritySectionArgs
   ): void;
-  abstract addRequestSection(...args: RendererAddRequestSectionArgs): void;
-  abstract addResponsesSection(...args: RendererAddResponsesArgs): void;
-  abstract addExpandableBreakout(
-    ...args: RendererAddExpandableBreakoutArgs
+  abstract createParametersSection(
+    ...args: RendererCreateParametersSectionArgs
+  ): void;
+  abstract createRequestSection(
+    ...args: RendererCreateRequestSectionArgs
+  ): void;
+  abstract createResponsesSection(...args: RendererCreateResponsesArgs): void;
+  abstract createExpandableBreakout(
+    ...args: RendererCreateExpandableBreakoutArgs
   ): void;
 
   // Show a property in an object schema, including it's type info
-  abstract addExpandableProperty(
-    ...args: RendererAddExpandablePropertyArgs
+  abstract createExpandableProperty(
+    ...args: RendererCreateExpandablePropertyArgs
   ): void;
-  abstract addFrontMatterDisplayType(
-    ...args: RendererAddFrontMatterDisplayTypeArgs
+  abstract createFrontMatterDisplayType(
+    ...args: RendererCreateFrontMatterDisplayTypeArgs
   ): void;
 
   // Low level operations

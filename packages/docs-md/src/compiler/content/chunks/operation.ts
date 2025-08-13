@@ -31,7 +31,7 @@ export function renderOperation({
   );
   const { showDebugPlaceholders, expandTopLevelPropertiesOnPageLoad } =
     getSettings().display;
-  renderer.addOperationSection(
+  renderer.createOperationSection(
     {
       method: chunk.chunkData.method,
       path: chunk.chunkData.path,
@@ -42,7 +42,7 @@ export function renderOperation({
     () => {
       if (chunk.chunkData.security) {
         const { contentChunkId } = chunk.chunkData.security;
-        renderer.addSecuritySection(() => {
+        renderer.createSecuritySection(() => {
           const securityChunk = getSecurityFromId(
             contentChunkId,
             renderer.getDocsData()
@@ -51,7 +51,7 @@ export function renderOperation({
             debug(`Rendering security chunk: name=${entry.name}`);
             const hasFrontmatter = !!entry.description || showDebugPlaceholders;
             renderer.enterContext({ id: entry.name, type: "schema" });
-            renderer.addExpandableProperty({
+            renderer.createExpandableProperty({
               annotations: [
                 {
                   title: entry.in,
@@ -83,7 +83,7 @@ export function renderOperation({
       }
 
       if (chunk.chunkData.parameters.length > 0) {
-        renderer.addParametersSection(() => {
+        renderer.createParametersSection(() => {
           for (const parameter of chunk.chunkData.parameters) {
             debug(`Rendering parameter: name=${parameter.name}`);
             renderer.enterContext({ id: parameter.name, type: "schema" });
@@ -112,7 +112,7 @@ export function renderOperation({
               []
             );
             const hasFrontmatter = !!parameter.description;
-            renderer.addExpandableProperty({
+            renderer.createExpandableProperty({
               typeInfo,
               annotations,
               title: parameter.name,
@@ -175,11 +175,11 @@ export function renderOperation({
           requestBody.contentChunkId,
           renderer.getDocsData()
         );
-        renderer.addRequestSection({
+        renderer.createRequestSection({
           isOptional: false,
           createFrontMatter() {
             if (requestBodySchema.chunkData.value.type !== "object") {
-              renderer.addFrontMatterDisplayType({
+              renderer.createFrontMatterDisplayType({
                 typeInfo: getDisplayTypeInfo(
                   requestBodySchema.chunkData.value,
                   renderer,
@@ -237,7 +237,7 @@ export function renderOperation({
                 )
               : true
           );
-          renderer.addResponsesSection(
+          renderer.createResponsesSection(
             (createTab) => {
               for (const [statusCode, responses] of filteredResponseList) {
                 for (const response of responses) {
@@ -253,7 +253,7 @@ export function renderOperation({
                     contentType: response.contentType,
                     createFrontMatter() {
                       if (schema.type !== "object") {
-                        renderer.addFrontMatterDisplayType({
+                        renderer.createFrontMatterDisplayType({
                           typeInfo: getDisplayTypeInfo(schema, renderer, []),
                         });
                       }

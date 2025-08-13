@@ -309,7 +309,7 @@ function renderObjectProperties({
       annotations.push({ title: "deprecated", variant: "warning" });
     }
     const hasFrontmatter = hasSchemaFrontmatter(property.schema);
-    renderer.addExpandableProperty({
+    renderer.createExpandableProperty({
       typeInfo,
       annotations,
       title: property.name,
@@ -378,7 +378,7 @@ function renderContainerTypes({
     renderer.enterContext({ id: breakout.label, type: "schema" });
 
     const hasFrontmatter = hasSchemaFrontmatter(breakout.schema);
-    renderer.addExpandableBreakout({
+    renderer.createExpandableBreakout({
       expandByDefault,
       createTitle: () => {
         renderer.createHeading(

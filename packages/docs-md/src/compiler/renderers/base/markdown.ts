@@ -12,25 +12,25 @@ import { getSettings } from "../.././settings.ts";
 import { HEADINGS } from "../../content/constants.ts";
 import type {
   Context,
-  RendererAddExpandableBreakoutArgs,
-  RendererAddExpandablePropertyArgs,
-  RendererAddFrontMatterDisplayTypeArgs,
-  RendererAddOperationArgs,
-  RendererAddParametersSectionArgs,
-  RendererAddRequestSectionArgs,
-  RendererAddResponsesArgs,
-  RendererAddSecuritySectionArgs,
   RendererAlreadyInContextArgs,
   RendererConstructorArgs,
   RendererCreateAppendCodeArgs,
   RendererCreateAppendTextArgs,
   RendererCreateContextArgs,
+  RendererCreateExpandableBreakoutArgs,
+  RendererCreateExpandablePropertyArgs,
+  RendererCreateFrontMatterDisplayTypeArgs,
   RendererCreateHeadingArgs,
   RendererCreateListArgs,
+  RendererCreateOperationArgs,
+  RendererCreateParametersSectionArgs,
   RendererCreatePillArgs,
+  RendererCreateRequestSectionArgs,
+  RendererCreateResponsesArgs,
   RendererCreateSectionArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
+  RendererCreateSecuritySectionArgs,
   RendererCreateTabbedSectionTabArgs,
   RendererEscapeTextArgs,
   RendererGetCurrentIdArgs,
@@ -138,11 +138,11 @@ export abstract class MarkdownRenderer extends Renderer {
     }
   }
 
-  public override addOperationSection(
+  public override createOperationSection(
     ...[
       { method, path, operationId, summary, description },
       cb,
-    ]: RendererAddOperationArgs
+    ]: RendererCreateOperationArgs
   ): void {
     const { showDebugPlaceholders } = getSettings().display;
     const id = `operation-${snakeCase(operationId)}`;
@@ -211,8 +211,8 @@ export abstract class MarkdownRenderer extends Renderer {
     this.appendSectionEnd();
   }
 
-  public override addSecuritySection(
-    ...[cb]: RendererAddSecuritySectionArgs
+  public override createSecuritySection(
+    ...[cb]: RendererCreateSecuritySectionArgs
   ): void {
     this.enterContext({ id: "security", type: "section" });
     this.#addTopLevelSection({ title: "Security" }, () =>
@@ -225,8 +225,8 @@ export abstract class MarkdownRenderer extends Renderer {
     cb();
   }
 
-  public override addParametersSection(
-    ...[cb]: RendererAddParametersSectionArgs
+  public override createParametersSection(
+    ...[cb]: RendererCreateParametersSectionArgs
   ): void {
     this.enterContext({ id: "parameters", type: "section" });
     this.#addTopLevelSection({ title: "Parameters" }, () =>
@@ -239,10 +239,10 @@ export abstract class MarkdownRenderer extends Renderer {
     cb();
   }
 
-  public override addRequestSection(
+  public override createRequestSection(
     ...[
       { isOptional, createFrontMatter, createBreakouts },
-    ]: RendererAddRequestSectionArgs
+    ]: RendererCreateRequestSectionArgs
   ): void {
     this.enterContext({ id: "request", type: "section" });
     const annotations: PropertyAnnotations[] = [];
@@ -265,8 +265,8 @@ export abstract class MarkdownRenderer extends Renderer {
     this.exitContext();
   }
 
-  public override addResponsesSection(
-    ...[cb, { title = "Responses" } = {}]: RendererAddResponsesArgs
+  public override createResponsesSection(
+    ...[cb, { title = "Responses" } = {}]: RendererCreateResponsesArgs
   ): void {
     this.enterContext({ id: "responses", type: "section" });
     this.appendTabbedSectionStart();
@@ -303,17 +303,17 @@ export abstract class MarkdownRenderer extends Renderer {
     cb();
   }
 
-  public override addExpandableBreakout(
-    ...[{ createTitle, createContent }]: RendererAddExpandableBreakoutArgs
+  public override createExpandableBreakout(
+    ...[{ createTitle, createContent }]: RendererCreateExpandableBreakoutArgs
   ) {
     createTitle();
     createContent?.();
   }
 
-  public override addExpandableProperty(
+  public override createExpandableProperty(
     ...[
       { typeInfo, annotations, title, createContent },
-    ]: RendererAddExpandablePropertyArgs
+    ]: RendererCreateExpandablePropertyArgs
   ) {
     let type;
     if (typeInfo) {
@@ -338,8 +338,8 @@ export abstract class MarkdownRenderer extends Renderer {
     createContent?.();
   }
 
-  public override addFrontMatterDisplayType(
-    ...[{ typeInfo }]: RendererAddFrontMatterDisplayTypeArgs
+  public override createFrontMatterDisplayType(
+    ...[{ typeInfo }]: RendererCreateFrontMatterDisplayTypeArgs
   ) {
     this.appendCode(this.#computeSingleLineDisplayType(typeInfo), {
       variant: "raw",
