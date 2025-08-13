@@ -17,7 +17,7 @@ export function renderGlobalSecurity(
     const typePill = entry.type
       ? ` ${renderer.createPillStart("info")}${entry.type}${renderer.createPillEnd()}`
       : "";
-    renderer.appendHeading(
+    renderer.createHeading(
       headingLevel,
       `${renderer.escapeText(entry.name, { escape: "markdown" })}${inPill}${typePill}`,
       {

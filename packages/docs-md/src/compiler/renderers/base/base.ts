@@ -50,14 +50,18 @@ export abstract class Site {
 
 type Escape = "markdown" | "html" | "mdx" | "none";
 
-type AppendOptions = {
+type BaseOptions = {
+  append?: boolean;
+};
+
+type EscapeOptions = {
   escape?: Escape;
 };
 
 // Argument types for Renderer interface methods
 export type RendererEscapeTextArgs = [
   text: string,
-  options: { escape: Escape },
+  options: Required<EscapeOptions>,
 ];
 export type RendererInsertFrontMatterArgs = [
   options: {
@@ -65,19 +69,19 @@ export type RendererInsertFrontMatterArgs = [
     sidebarLabel: string;
   },
 ];
-export type RendererAppendHeadingArgs = [
+export type RendererCreateHeadingArgs = [
   level: number,
   text: string,
-  options?: AppendOptions & { id?: string },
+  options?: BaseOptions & EscapeOptions & { id?: string },
 ];
 export type RendererCreateAppendTextArgs = [
   text: string,
-  options?: AppendOptions,
+  options?: EscapeOptions,
 ];
 export type RendererCreateAppendCodeArgs = [
   text: string,
   options?:
-    | {
+    | (EscapeOptions & {
         /**
          * The variant to use for the code block. If `raw`, the code will be
          * appended using a raw `<pre><code></code></pre>` block. Otherwise, the
@@ -97,9 +101,8 @@ export type RendererCreateAppendCodeArgs = [
          * raw variants, and a single backtick for default variants.
          */
         style?: "block" | "inline";
-        escape?: Escape;
-      }
-    | {
+      })
+    | (EscapeOptions & {
         /**
          * The variant to use for the code block. If `raw`, the code will be
          * appended using a raw `<pre><code></code></pre>` block. Otherwise, the
@@ -119,11 +122,10 @@ export type RendererCreateAppendCodeArgs = [
          * raw variants, and a single backtick for default variants.
          */
         style?: "block" | "inline";
-        escape?: Escape;
-      },
+      }),
 ];
 export type RendererCreatePillArgs = [variant: PillVariant];
-export type RendererCreateListArgs = [items: string[], options?: AppendOptions];
+export type RendererCreateListArgs = [items: string[], options?: EscapeOptions];
 export type RendererCreateSectionArgs = [
   options?: {
     variant?: SectionVariant;
@@ -243,11 +245,13 @@ export abstract class Renderer {
 
   // Low level operations
 
+  abstract createHeading(...args: RendererCreateHeadingArgs): string;
+
+  // Outdated operations
+
   // The following methods are used to create basic content on the page. They
   // have "create" variants that create the content and "append"/"insert"
   // variants that append/insert the content into the current page.
-  abstract createHeading(...args: RendererAppendHeadingArgs): void;
-  abstract appendHeading(...args: RendererAppendHeadingArgs): void;
 
   abstract createText(...args: RendererCreateAppendTextArgs): string;
   abstract appendText(...args: RendererCreateAppendTextArgs): void;

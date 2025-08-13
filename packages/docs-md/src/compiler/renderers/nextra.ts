@@ -2,7 +2,7 @@ import { join, resolve } from "node:path";
 
 import { getSettings } from "../settings.ts";
 import type {
-  RendererAppendHeadingArgs,
+  RendererCreateHeadingArgs,
   RendererInsertFrontMatterArgs,
   SiteBuildPagePathArgs,
   SiteGetRendererArgs,
@@ -69,7 +69,7 @@ sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
       level,
       text,
       { escape = "markdown", id } = {},
-    ]: RendererAppendHeadingArgs
+    ]: RendererCreateHeadingArgs
   ) {
     let line = `${`#`.repeat(level)} ${this.escapeText(text, { escape })}`;
     if (id) {

@@ -244,7 +244,7 @@ function renderSidebar({
   // TODO: this needs a fresh context stack
   renderer.enterContext({ id: sidebar.label, type: "schema" });
 
-  sidebarLinkRenderer.appendHeading(
+  sidebarLinkRenderer.createHeading(
     HEADINGS.SECTION_HEADING_LEVEL,
     sidebar.label
   );
@@ -381,7 +381,7 @@ function renderContainerTypes({
     renderer.addExpandableBreakout({
       expandByDefault,
       createTitle: () => {
-        renderer.appendHeading(
+        renderer.createHeading(
           HEADINGS.SUB_SECTION_HEADING_LEVEL,
           breakout.label,
           {

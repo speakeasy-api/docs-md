@@ -161,7 +161,7 @@ function renderPages(
           break;
         }
         case "globalSecurity": {
-          renderer.appendHeading(
+          renderer.createHeading(
             HEADINGS.PAGE_TITLE_HEADING_LEVEL,
             "Global Security"
           );
@@ -180,7 +180,7 @@ function renderPages(
           // normally embedded in a separate page. It's not in this case though,
           // so we add one by hand
           const id = `schema-${snakeCase(chunk.chunkData.name)}`;
-          renderer.appendHeading(
+          renderer.createHeading(
             HEADINGS.SECTION_TITLE_HEADING_LEVEL,
             chunk.chunkData.name,
             {

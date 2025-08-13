@@ -6,7 +6,7 @@ import { HEADINGS } from "../constants.ts";
 
 export function renderTag(renderer: Renderer, chunk: TagChunk) {
   const displayName = `${capitalCase(chunk.chunkData.name)} Operations`;
-  renderer.appendHeading(HEADINGS.PAGE_TITLE_HEADING_LEVEL, displayName, {
+  renderer.createHeading(HEADINGS.PAGE_TITLE_HEADING_LEVEL, displayName, {
     id: chunk.chunkData.name,
   });
 }

@@ -257,7 +257,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     );
 
     this.appendText(`<div slot="title">`);
-    this.appendHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, {
+    this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, {
       escape: "mdx",
       id: this.getCurrentId(),
     });

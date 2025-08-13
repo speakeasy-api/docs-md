@@ -149,7 +149,7 @@ export function renderOperation({
         debug(`Rendering try it now`);
         renderer.appendSectionStart({ variant: "top-level" });
         renderer.appendSectionTitleStart({ variant: "top-level" });
-        renderer.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, "Try it Now", {
+        renderer.createHeading(HEADINGS.SECTION_HEADING_LEVEL, "Try it Now", {
           // TODO: Remove explicit references to id and handle in renderers
           id: `operation-${snakeCase(chunk.chunkData.operationId)}+try-it-now`,
         });

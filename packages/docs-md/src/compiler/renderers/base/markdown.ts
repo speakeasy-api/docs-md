@@ -21,11 +21,11 @@ import type {
   RendererAddResponsesArgs,
   RendererAddSecuritySectionArgs,
   RendererAlreadyInContextArgs,
-  RendererAppendHeadingArgs,
   RendererConstructorArgs,
   RendererCreateAppendCodeArgs,
   RendererCreateAppendTextArgs,
   RendererCreateContextArgs,
+  RendererCreateHeadingArgs,
   RendererCreateListArgs,
   RendererCreatePillArgs,
   RendererCreateSectionArgs,
@@ -152,7 +152,7 @@ export abstract class MarkdownRenderer extends Renderer {
     path = this.escapeText(path, {
       escape: "markdown",
     });
-    this.appendHeading(
+    this.createHeading(
       HEADINGS.SECTION_TITLE_HEADING_LEVEL,
       `${methodStart}<b>${method.toUpperCase()}</b>${methodEnd} ${path}`,
       { id, escape: "none" }
@@ -201,7 +201,7 @@ export abstract class MarkdownRenderer extends Renderer {
     }
     this.appendSectionStart({ variant: "top-level" });
     this.appendSectionTitleStart({ variant: "top-level" });
-    this.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
+    this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
       id: this.getCurrentId(),
     });
     this.appendSectionTitleEnd();
@@ -271,7 +271,7 @@ export abstract class MarkdownRenderer extends Renderer {
     this.enterContext({ id: "responses", type: "section" });
     this.appendTabbedSectionStart();
     this.appendSectionTitleStart({ variant: "default" });
-    this.appendHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
+    this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
       id: this.getCurrentId(),
     });
     this.appendSectionTitleEnd();
@@ -352,18 +352,17 @@ export abstract class MarkdownRenderer extends Renderer {
     ...[
       level,
       text,
-      { escape = "markdown", id } = {},
-    ]: RendererAppendHeadingArgs
+      { escape = "markdown", id, append = true } = {},
+    ]: RendererCreateHeadingArgs
   ) {
     let line = `${`#`.repeat(level)} ${this.escapeText(text, { escape })}`;
     if (id) {
       line += ` \\{#${id}\\}`;
     }
+    if (append) {
+      this[rendererLines].push(line);
+    }
     return line;
-  }
-
-  public override appendHeading(...args: RendererAppendHeadingArgs) {
-    this[rendererLines].push(this.createHeading(...args));
   }
 
   public override createText(
