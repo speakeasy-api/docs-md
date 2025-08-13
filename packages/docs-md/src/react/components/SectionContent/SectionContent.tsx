@@ -20,7 +20,6 @@ export function SectionContent({
     <div
       className={clsx(
         styles.content,
-        variant === "breakout" && styles.breakout,
         variant === "top-level" && styles.topLevel
       )}
       id={id}

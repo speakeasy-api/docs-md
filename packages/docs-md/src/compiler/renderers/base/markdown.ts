@@ -195,16 +195,19 @@ export abstract class MarkdownRenderer extends Renderer {
     for (const annotation of annotations) {
       title += ` ${this.createPill(annotation.variant, () => annotation.title)}`;
     }
-    this.appendSectionStart({ variant: "top-level" });
-    this.appendSectionTitleStart({ variant: "top-level" });
-    this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
-      id: this.getCurrentId(),
-    });
-    this.appendSectionTitleEnd();
-    this.appendSectionContentStart({ variant: "top-level" });
-    cb();
-    this.appendSectionContentEnd();
-    this.appendSectionEnd();
+    this.createSection(
+      () => {
+        this.appendSectionTitleStart({ variant: "top-level" });
+        this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
+          id: this.getCurrentId(),
+        });
+        this.appendSectionTitleEnd();
+        this.appendSectionContentStart({ variant: "top-level" });
+        cb();
+        this.appendSectionContentEnd();
+      },
+      { variant: "top-level" }
+    );
   }
 
   public override createSecuritySection(
@@ -419,22 +422,10 @@ ${text}\n</code>\n</pre>`;
     return line;
   }
 
-  public override createSectionStart(
-    ..._args: RendererCreateSectionArgs
-  ): string {
-    return "";
-  }
-
-  public override appendSectionStart(...args: RendererCreateSectionArgs): void {
-    this.appendLine(this.createSectionStart(...args));
-  }
-
-  public override createSectionEnd(): string {
-    return "";
-  }
-
-  public override appendSectionEnd(): void {
-    this.appendLine(this.createSectionEnd());
+  // TODO: need to make other overrides explicitly define return type like we do
+  // here, since overridding doesn't infer type from parent
+  public override createSection(...[cb]: RendererCreateSectionArgs): void {
+    cb();
   }
 
   public override createSectionTitleStart(

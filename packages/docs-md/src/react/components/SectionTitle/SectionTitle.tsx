@@ -19,14 +19,9 @@ export function SectionTitle({
   return (
     <div
       id={id}
-      className={clsx(
-        styles.title,
-        variant === "breakout" && styles.breakout,
-        variant === "top-level" && styles.topLevel
-      )}
+      className={clsx(styles.title, variant === "top-level" && styles.topLevel)}
       slot={slot}
     >
-      {variant === "breakout" && <div className={styles.breakoutLine} />}
       {children}
     </div>
   );

@@ -8,7 +8,7 @@ export type PillVariant =
   | "primary"
   | "secondary";
 
-export type SectionVariant = "default" | "top-level" | "breakout";
+export type SectionVariant = "default" | "top-level";
 
 export type DisplayTypeInfo = {
   label: string;

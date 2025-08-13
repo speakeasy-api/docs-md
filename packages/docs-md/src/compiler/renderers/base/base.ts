@@ -136,6 +136,7 @@ export type RendererCreateListArgs = [
   options?: BaseOptions & EscapeOptions,
 ];
 export type RendererCreateSectionArgs = [
+  cb: () => void,
   options?: {
     variant?: SectionVariant;
   },
@@ -232,7 +233,10 @@ export type RendererConstructorArgs = {
 };
 
 export abstract class Renderer {
+  abstract render(): string;
+
   // High level operations
+
   abstract createOperationSection(...args: RendererCreateOperationArgs): void;
   abstract createSecuritySection(
     ...args: RendererCreateSecuritySectionArgs
@@ -256,16 +260,15 @@ export abstract class Renderer {
     ...args: RendererCreateFrontMatterDisplayTypeArgs
   ): void;
 
+  abstract createSection(...args: RendererCreateSectionArgs): void;
+
   // Low level operations
-
-  abstract createPill(...args: RendererCreatePillArgs): string;
-
-  // Basic markdown operations
 
   abstract createHeading(...args: RendererCreateHeadingArgs): string;
   abstract createText(...args: RendererCreateTextArgs): string;
   abstract createCode(...args: RendererCreateCodeArgs): string;
   abstract createList(...args: RendererCreateListArgs): string;
+  abstract createPill(...args: RendererCreatePillArgs): string;
 
   // Outdated operations
 
@@ -274,10 +277,6 @@ export abstract class Renderer {
   // variants that append/insert the content into the current page.
 
   // Sections show a title followed by content
-  abstract createSectionStart(...args: RendererCreateSectionArgs): string;
-  abstract appendSectionStart(...args: RendererCreateSectionArgs): void;
-  abstract createSectionEnd(): string;
-  abstract appendSectionEnd(): void;
   abstract createSectionTitleStart(
     ...args: RendererCreateSectionTitleArgs
   ): string;
@@ -311,7 +310,11 @@ export abstract class Renderer {
   abstract appendTryItNow(...args: RendererAppendTryItNowArgs): void;
 
   // Helper methods
+
   abstract escapeText(...args: RendererEscapeTextArgs): string;
+  abstract getDocsData(): Map<string, Chunk>;
+
+  // Context methods
 
   abstract enterContext(...args: RendererCreateContextArgs): void;
   abstract exitContext(): void;
@@ -319,7 +322,4 @@ export abstract class Renderer {
   abstract getSchemaDepth(): number;
   abstract alreadyInContext(...args: RendererAlreadyInContextArgs): boolean;
   abstract getCurrentId(...args: RendererGetCurrentIdArgs): string;
-
-  abstract getDocsData(): Map<string, Chunk>;
-  abstract render(): string;
 }

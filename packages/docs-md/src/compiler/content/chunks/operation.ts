@@ -147,25 +147,32 @@ export function renderOperation({
       const usageSnippet = docsCodeSnippets[chunk.id];
       if (usageSnippet && tryItNow) {
         debug(`Rendering try it now`);
-        renderer.appendSectionStart({ variant: "top-level" });
-        renderer.appendSectionTitleStart({ variant: "top-level" });
-        renderer.createHeading(HEADINGS.SECTION_HEADING_LEVEL, "Try it Now", {
-          // TODO: Remove explicit references to id and handle in renderers
-          id: `operation-${snakeCase(chunk.chunkData.operationId)}+try-it-now`,
-        });
-        renderer.appendSectionTitleEnd();
-        renderer.appendSectionContentStart({ variant: "top-level" });
-        // TODO: Zod is actually hard coded for now since its always a dependency
-        // in our SDKs. Ideally this will come from the SDK package.
-        renderer.appendTryItNow({
-          externalDependencies: {
-            zod: "^3.25.64",
-            [tryItNow.npmPackageName]: "latest",
+        renderer.createSection(
+          () => {
+            renderer.appendSectionTitleStart({ variant: "top-level" });
+            renderer.createHeading(
+              HEADINGS.SECTION_HEADING_LEVEL,
+              "Try it Now",
+              {
+                // TODO: Remove explicit references to id and handle in renderers
+                id: `operation-${snakeCase(chunk.chunkData.operationId)}+try-it-now`,
+              }
+            );
+            renderer.appendSectionTitleEnd();
+            renderer.appendSectionContentStart({ variant: "top-level" });
+            // TODO: Zod is actually hard coded for now since its always a dependency
+            // in our SDKs. Ideally this will come from the SDK package.
+            renderer.appendTryItNow({
+              externalDependencies: {
+                zod: "^3.25.64",
+                [tryItNow.npmPackageName]: "latest",
+              },
+              defaultValue: usageSnippet.code,
+            });
+            renderer.appendSectionContentEnd();
           },
-          defaultValue: usageSnippet.code,
-        });
-        renderer.appendSectionContentEnd();
-        renderer.appendSectionEnd();
+          { variant: "top-level" }
+        );
       }
 
       if (chunk.chunkData.requestBody) {
