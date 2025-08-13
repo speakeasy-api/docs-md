@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Button } from "../../primitives/docusaurus/Button.tsx";
 import styles from "./styles.module.css";
 
 type SidebarContent = {
@@ -19,7 +18,7 @@ export function DocusaurusSideBar({
     <>
       <div className={styles.sidebarContainer}>
         <h4 className={styles.sidebarTitle}>{content?.title ?? "Details"}</h4>
-        <Button onClick={closeRequest}>X</Button>
+        <button onClick={closeRequest}>X</button>
       </div>
       {content?.content}
     </>

@@ -2,7 +2,6 @@
 
 import type { PropsWithChildren } from "react";
 
-import { Button } from "../../primitives/docusaurus/Button.tsx";
 import styles from "./styles.module.css";
 
 export function DocusaurusSideBarTrigger({
@@ -10,8 +9,8 @@ export function DocusaurusSideBarTrigger({
   children,
 }: PropsWithChildren<{ onClick: () => void }>) {
   return (
-    <Button onClick={onClick} className={styles.sidebarTrigger}>
+    <button onClick={onClick} className={styles.sidebarTrigger}>
       {children}
-    </Button>
+    </button>
   );
 }

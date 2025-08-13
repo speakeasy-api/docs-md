@@ -1,8 +1,8 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
-import { Button } from "../../primitives/nextra/Button.tsx";
 import styles from "./styles.module.css";
 
 type SidebarContent = {
@@ -20,9 +20,16 @@ export function NextraSideBar({
     <>
       <div className={styles.sidebarContainer}>
         <h4 className={styles.sidebarTitle}>{content?.title ?? "Details"}</h4>
-        <Button onClick={closeRequest} className={styles.close}>
+        <button
+          onClick={closeRequest}
+          // TODO: convert to using CSS tokens
+          className={clsx(
+            "x:focus-visible:nextra-focus x:cursor-pointer x:transition-colors x:border x:border-gray-200 x:hover:bg-gray-100 x:dark:hover:bg-neutral-800 x:select-none x:rounded x:flex x:items-center",
+            styles.close
+          )}
+        >
           X
-        </Button>
+        </button>
       </div>
       {content?.content}
     </>
