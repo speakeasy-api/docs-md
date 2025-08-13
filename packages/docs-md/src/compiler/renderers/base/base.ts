@@ -56,114 +56,21 @@ export abstract class Site {
 
 type Escape = "markdown" | "html" | "mdx" | "none";
 
-type BaseOptions = {
-  append?: boolean;
-};
-
 type EscapeOptions = {
   escape?: Escape;
 };
 
 // Argument types for Renderer interface methods
-export type RendererEscapeTextArgs = [
-  text: string,
-  options: Required<EscapeOptions>,
-];
-export type RendererCreateHeadingArgs = [
-  level: number,
-  text: string,
-  options?: BaseOptions & EscapeOptions & { id?: string },
-];
-export type RendererCreateTextArgs = [
-  text: string,
-  options?: BaseOptions & EscapeOptions,
-];
-export type RendererCreateCodeArgs = [
-  text: string,
-  options?:
-    | (BaseOptions &
-        EscapeOptions & {
-          /**
-           * The variant to use for the code block. If `raw`, the code will be
-           * appended using a raw `<pre><code></code></pre>` block. Otherwise, the
-           * code will be appended using a triple backtick block.
-           */
-          variant: "default";
-          /**
-           * The language to use for the code block. This is only used when the
-           * variant is `default`.
-           */
-          language?: string;
-          /**
-           * The style to use for the code block. If the style is "block", then
-           * the code will be rendered using <pre> + <code> tags for raw variants,
-           * and triple backtick blocks for default variants. If the style is
-           * "inline", then the code will be rendered using just a <code> tag for
-           * raw variants, and a single backtick for default variants.
-           */
-          style?: "block" | "inline";
-        })
-    | (BaseOptions &
-        EscapeOptions & {
-          /**
-           * The variant to use for the code block. If `raw`, the code will be
-           * appended using a raw `<pre><code></code></pre>` block. Otherwise, the
-           * code will be appended using a triple backtick block.
-           */
-          variant: "raw";
-          /**
-           * The language to use for the code block. This is only used when the
-           * variant is `default`.
-           */
-          language?: never;
-          /**
-           * The style to use for the code block. If the style is "block", then
-           * the code will be rendered using <pre> + <code> tags for raw variants,
-           * and triple backtick blocks for default variants. If the style is
-           * "inline", then the code will be rendered using just a <code> tag for
-           * raw variants, and a single backtick for default variants.
-           */
-          style?: "block" | "inline";
-        }),
-];
-export type RendererCreatePillArgs = [
-  variant: PillVariant,
-  cb: () => string,
-  options?: BaseOptions,
-];
-export type RendererCreateListArgs = [
-  items: string[],
-  options?: BaseOptions & EscapeOptions,
-];
-export type RendererCreateSectionArgs = [
-  cb: () => void,
-  options?: {
-    variant?: SectionVariant;
-  },
-];
-export type RendererCreateSectionTitleArgs = [
-  cb: () => void,
-  options?: {
-    variant?: SectionVariant;
-  },
-];
-export type RendererCreateSectionContentArgs = [
-  cb: () => void,
-  options?: {
-    id?: string;
-    variant?: SectionVariant;
-  },
-];
-export type RendererCreateTabbedSectionTabArgs = [id: string];
-export type RendererCreatePopoutArgs = [
-  options: {
-    title: string;
-    embedName: string;
-  },
-  cb: (renderer: Renderer) => void,
-];
 
-// Section args
+export type RendererConstructorArgs = {
+  site: Site;
+  docsData: Map<string, Chunk>;
+  currentPagePath: string;
+  frontMatter?: PageFrontMatter;
+};
+
+// High level operations
+
 export type RendererCreateOperationArgs = [
   options: {
     method: string;
@@ -202,7 +109,26 @@ export type RendererCreateResponsesArgs = [
     title?: string;
   },
 ];
-export type RendererCreateContextArgs = [context: Context];
+
+export type RendererCreateSectionArgs = [
+  cb: () => void,
+  options?: {
+    variant?: SectionVariant;
+  },
+];
+export type RendererCreateSectionTitleArgs = [
+  cb: () => void,
+  options?: {
+    variant?: SectionVariant;
+  },
+];
+export type RendererCreateSectionContentArgs = [
+  cb: () => void,
+  options?: {
+    id?: string;
+    variant?: SectionVariant;
+  },
+];
 
 export type RendererCreateExpandableBreakoutArgs = [
   options: {
@@ -220,23 +146,111 @@ export type RendererCreateExpandablePropertyArgs = [
     createContent?: () => void;
   },
 ];
+
 export type RendererCreateFrontMatterDisplayTypeArgs = [
   options: {
     typeInfo: DisplayTypeInfo;
   },
 ];
+export type RendererCreateDebugPlaceholderArgs = [cb: () => string];
 
+export type RendererCreatePopoutArgs = [
+  options: {
+    title: string;
+    embedName: string;
+  },
+  cb: (renderer: Renderer) => void,
+];
+
+// Low level operations
+
+type LowLevelBaseOptions = {
+  append?: boolean;
+};
+
+export type RendererCreateHeadingArgs = [
+  level: number,
+  text: string,
+  options?: LowLevelBaseOptions & EscapeOptions & { id?: string },
+];
+export type RendererCreateTextArgs = [
+  text: string,
+  options?: LowLevelBaseOptions & EscapeOptions,
+];
+export type RendererCreateCodeArgs = [
+  text: string,
+  options?:
+    | (LowLevelBaseOptions &
+        EscapeOptions & {
+          /**
+           * The variant to use for the code block. If `raw`, the code will be
+           * appended using a raw `<pre><code></code></pre>` block. Otherwise, the
+           * code will be appended using a triple backtick block.
+           */
+          variant: "default";
+          /**
+           * The language to use for the code block. This is only used when the
+           * variant is `default`.
+           */
+          language?: string;
+          /**
+           * The style to use for the code block. If the style is "block", then
+           * the code will be rendered using <pre> + <code> tags for raw variants,
+           * and triple backtick blocks for default variants. If the style is
+           * "inline", then the code will be rendered using just a <code> tag for
+           * raw variants, and a single backtick for default variants.
+           */
+          style?: "block" | "inline";
+        })
+    | (LowLevelBaseOptions &
+        EscapeOptions & {
+          /**
+           * The variant to use for the code block. If `raw`, the code will be
+           * appended using a raw `<pre><code></code></pre>` block. Otherwise, the
+           * code will be appended using a triple backtick block.
+           */
+          variant: "raw";
+          /**
+           * The language to use for the code block. This is only used when the
+           * variant is `default`.
+           */
+          language?: never;
+          /**
+           * The style to use for the code block. If the style is "block", then
+           * the code will be rendered using <pre> + <code> tags for raw variants,
+           * and triple backtick blocks for default variants. If the style is
+           * "inline", then the code will be rendered using just a <code> tag for
+           * raw variants, and a single backtick for default variants.
+           */
+          style?: "block" | "inline";
+        }),
+];
+export type RendererCreateListArgs = [
+  items: string[],
+  options?: LowLevelBaseOptions & EscapeOptions,
+];
+export type RendererCreatePillArgs = [
+  variant: PillVariant,
+  cb: () => string,
+  options?: LowLevelBaseOptions,
+];
+
+// Helper methods
+
+export type RendererEscapeTextArgs = [
+  text: string,
+  options: Required<EscapeOptions>,
+];
+
+// Context methods
+
+export type RendererCreateContextArgs = [context: Context];
 export type RendererAlreadyInContextArgs = [id: string];
 export type RendererGetCurrentIdArgs = [postFixId?: string];
 
-export type RendererConstructorArgs = {
-  site: Site;
-  docsData: Map<string, Chunk>;
-  currentPagePath: string;
-  frontMatter?: PageFrontMatter;
-};
+// Other types
 
-export type RendererCreateDebugPlaceholderArgs = [cb: () => string];
+export type RendererCreateTabbedSectionTabArgs = [id: string];
 
 export abstract class Renderer {
   abstract render(): string;
