@@ -36,7 +36,14 @@ export function Operation({ children }: PropsWithChildren) {
     <>
       {frontMatterSection}
       <div style={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
-        <div style={{ flex: "0 1 50%", minWidth: 0 }}>
+        <div
+          style={{
+            flex: "0 1 50%",
+            minWidth: 0,
+            borderRight: "1px solid var(--speakeasy-border-color)",
+            paddingRight: "1rem",
+          }}
+        >
           {securitySection}
           {parametersSection}
           {requestBodySection}
