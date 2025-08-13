@@ -29,7 +29,7 @@ export class NextraSite extends MdxSite {
   "global-security": { title: "Global Security", theme: { collapsed: false } },
   tag: { title: "Operations", theme: { collapsed: false } },${schemasEntry}
 }`;
-    this.createPage(join(settings.output.pageOutDir, "_meta.ts")).appendText(
+    this.createPage(join(settings.output.pageOutDir, "_meta.ts")).createText(
       config,
       { escape: "none" }
     );

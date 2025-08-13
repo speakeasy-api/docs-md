@@ -23,7 +23,7 @@ export class DocusaurusSite extends MdxSite {
     const settings = getSettings();
     this.createPage(
       join(settings.output.pageOutDir, "_category_.json")
-    ).appendText(
+    ).createText(
       JSON.stringify(
         {
           position: 2,
@@ -38,7 +38,7 @@ export class DocusaurusSite extends MdxSite {
     );
     this.createPage(
       join(settings.output.pageOutDir, "tag", "_category_.json")
-    ).appendText(
+    ).createText(
       JSON.stringify(
         {
           position: 3,
@@ -54,7 +54,7 @@ export class DocusaurusSite extends MdxSite {
     if (settings.display.showSchemasInNav) {
       this.createPage(
         join(settings.output.pageOutDir, "schema", "_category_.json")
-      ).appendText(
+      ).createText(
         JSON.stringify(
           {
             position: 4,

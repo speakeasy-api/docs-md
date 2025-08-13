@@ -17,7 +17,7 @@ import type {
   RendererCreateSectionTitleArgs,
   RendererCreateTabbedSectionTabArgs,
 } from "./base.ts";
-import { MarkdownRenderer, MarkdownSite, rendererLines } from "./markdown.ts";
+import { MarkdownRenderer, MarkdownSite } from "./markdown.ts";
 import { getEmbedPath, getEmbedSymbol } from "./util.ts";
 
 export abstract class MdxSite extends MarkdownSite {
@@ -149,9 +149,9 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     }
     this.#expandableIdStack = [...this.#idStack];
     this.insertComponentImport("ExpandableSection");
-    this.appendText("<ExpandableSection>");
+    this.createText("<ExpandableSection>");
     cb();
-    this.appendText("</ExpandableSection>");
+    this.createText("</ExpandableSection>");
     this.#expandableIdStack = undefined;
   }
 
@@ -163,9 +163,9 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     }
     this.#expandableIdStack = [...this.#idStack];
     this.insertComponentImport("ExpandableSection");
-    this.appendText("<ExpandableSection>");
+    this.createText("<ExpandableSection>");
     cb();
-    this.appendText("</ExpandableSection>");
+    this.createText("</ExpandableSection>");
     this.#expandableIdStack = undefined;
   }
 
@@ -177,9 +177,9 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     }
     this.#expandableIdStack = [...this.#idStack];
     this.insertComponentImport("ExpandableSection");
-    this.appendText("<ExpandableSection>");
+    this.createText("<ExpandableSection>");
     cb();
-    this.appendText("</ExpandableSection>");
+    this.createText("</ExpandableSection>");
     this.#expandableIdStack = undefined;
   }
 
@@ -199,7 +199,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   ) {
     const { id, parentId } = this.#getBreakoutIdInfo();
     this.insertComponentImport("ExpandableBreakout");
-    this.appendText(
+    this.createText(
       `<ExpandableBreakout
   slot="entry"
   id="${id}"
@@ -210,17 +210,17 @@ export abstract class MdxRenderer extends MarkdownRenderer {
       { escape: "none" }
     );
 
-    this.appendText(`<div slot="title">`);
+    this.createText(`<div slot="title">`);
     createTitle();
-    this.appendText("</div>");
+    this.createText("</div>");
 
     if (createContent) {
-      this.appendText(`<div slot="content">`);
+      this.createText(`<div slot="content">`);
       createContent();
-      this.appendText("</div>");
+      this.createText("</div>");
     }
 
-    this.appendText("</ExpandableBreakout>");
+    this.createText("</ExpandableBreakout>");
   }
 
   public override createExpandableProperty(
@@ -230,7 +230,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   ) {
     const { id, parentId } = this.#getBreakoutIdInfo();
     this.insertComponentImport("ExpandableProperty");
-    this.appendText(
+    this.createText(
       `<ExpandableProperty
   slot="entry"
   id="${id}"
@@ -256,27 +256,27 @@ export abstract class MdxRenderer extends MarkdownRenderer {
       { escape: "none" }
     );
 
-    this.appendText(`<div slot="title">`);
+    this.createText(`<div slot="title">`);
     this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, {
       escape: "mdx",
       id: this.getCurrentId(),
     });
-    this.appendText("</div>");
+    this.createText("</div>");
 
     if (createContent) {
-      this.appendText(`<div slot="content">`);
+      this.createText(`<div slot="content">`);
       createContent();
-      this.appendText("</div>");
+      this.createText("</div>");
     }
 
-    this.appendText(`</ExpandableProperty>`);
+    this.createText(`</ExpandableProperty>`);
   }
 
   public override createFrontMatterDisplayType(
     ...[{ typeInfo }]: RendererCreateFrontMatterDisplayTypeArgs
   ) {
     this.insertComponentImport("FrontMatterDisplayType");
-    this.appendText(
+    this.createText(
       `<FrontMatterDisplayType typeInfo={${JSON.stringify(typeInfo)}} />`,
       { escape: "none" }
     );
@@ -365,7 +365,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.#includeSidebar = true;
     this.insertComponentImport("SideBarTrigger");
     this.insertComponentImport("SideBar");
-    this[rendererLines].push(
+    this.appendLine(
       `<p>
     <SideBarTrigger cta="${`View ${this.escapeText(title, { escape: "mdx" })}`}" title="${this.escapeText(title, { escape: "mdx" })}">
       <${getEmbedSymbol(embedName)} />
@@ -383,7 +383,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     ...[{ externalDependencies, defaultValue }]: RendererAppendTryItNowArgs
   ) {
     this.insertComponentImport("TryItNow");
-    this[rendererLines].push(
+    this.appendLine(
       `<TryItNow
  externalDependencies={${JSON.stringify(externalDependencies)}}
  defaultValue={\`${defaultValue}\`}

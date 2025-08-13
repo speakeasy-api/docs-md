@@ -74,9 +74,9 @@ export type RendererCreateHeadingArgs = [
   text: string,
   options?: BaseOptions & EscapeOptions & { id?: string },
 ];
-export type RendererCreateAppendTextArgs = [
+export type RendererCreateTextArgs = [
   text: string,
-  options?: EscapeOptions,
+  options?: BaseOptions & EscapeOptions,
 ];
 export type RendererCreateAppendCodeArgs = [
   text: string,
@@ -250,15 +250,13 @@ export abstract class Renderer {
   // Low level operations
 
   abstract createHeading(...args: RendererCreateHeadingArgs): string;
+  abstract createText(...args: RendererCreateTextArgs): string;
 
   // Outdated operations
 
   // The following methods are used to create basic content on the page. They
   // have "create" variants that create the content and "append"/"insert"
   // variants that append/insert the content into the current page.
-
-  abstract createText(...args: RendererCreateAppendTextArgs): string;
-  abstract appendText(...args: RendererCreateAppendTextArgs): void;
 
   abstract createCode(...args: RendererCreateAppendCodeArgs): string;
   abstract appendCode(...args: RendererCreateAppendCodeArgs): void;
@@ -310,12 +308,14 @@ export abstract class Renderer {
 
   // Helper methods
   abstract escapeText(...args: RendererEscapeTextArgs): string;
+
   abstract enterContext(...args: RendererCreateContextArgs): void;
   abstract exitContext(): void;
   abstract getCurrentContextType(): ContextType;
   abstract getSchemaDepth(): number;
   abstract alreadyInContext(...args: RendererAlreadyInContextArgs): boolean;
   abstract getCurrentId(...args: RendererGetCurrentIdArgs): string;
+
   abstract getDocsData(): Map<string, Chunk>;
   abstract render(): string;
 }

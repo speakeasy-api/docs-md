@@ -27,10 +27,10 @@ export function renderGlobalSecurity(
     );
 
     if (entry.description) {
-      renderer.appendText(entry.description);
+      renderer.createText(entry.description);
     } else if (showDebugPlaceholders) {
       renderer.appendDebugPlaceholderStart();
-      renderer.appendText("No description provided");
+      renderer.createText("No description provided");
       renderer.appendDebugPlaceholderEnd();
     }
   }

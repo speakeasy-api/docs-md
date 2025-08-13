@@ -422,28 +422,28 @@ export function renderSchemaFrontmatter({
   const defaultValue = "defaultValue" in schema ? schema.defaultValue : null;
   const { showDebugPlaceholders } = getSettings().display;
   if (description) {
-    renderer.appendText(description);
+    renderer.createText(description);
   } else if (showDebugPlaceholders) {
     renderer.appendDebugPlaceholderStart();
-    renderer.appendText("No description provided");
+    renderer.createText("No description provided");
     renderer.appendDebugPlaceholderEnd();
   }
   if (examples.length > 0) {
-    renderer.appendText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
+    renderer.createText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
     for (const example of examples) {
       renderer.appendCode(example);
     }
   } else if (showDebugPlaceholders) {
     renderer.appendDebugPlaceholderStart();
-    renderer.appendText("No examples provided");
+    renderer.createText("No examples provided");
     renderer.appendDebugPlaceholderEnd();
   }
 
   if (defaultValue) {
-    renderer.appendText(`_Default Value:_ \`${defaultValue}\``);
+    renderer.createText(`_Default Value:_ \`${defaultValue}\``);
   } else if (showDebugPlaceholders) {
     renderer.appendDebugPlaceholderStart();
-    renderer.appendText("No default value provided");
+    renderer.createText("No default value provided");
     renderer.appendDebugPlaceholderEnd();
   }
 }

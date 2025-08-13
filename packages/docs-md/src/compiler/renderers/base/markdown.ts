@@ -15,7 +15,6 @@ import type {
   RendererAlreadyInContextArgs,
   RendererConstructorArgs,
   RendererCreateAppendCodeArgs,
-  RendererCreateAppendTextArgs,
   RendererCreateContextArgs,
   RendererCreateExpandableBreakoutArgs,
   RendererCreateExpandablePropertyArgs,
@@ -32,6 +31,7 @@ import type {
   RendererCreateSectionTitleArgs,
   RendererCreateSecuritySectionArgs,
   RendererCreateTabbedSectionTabArgs,
+  RendererCreateTextArgs,
   RendererEscapeTextArgs,
   RendererGetCurrentIdArgs,
   SiteBuildPagePathArgs,
@@ -85,15 +85,13 @@ export abstract class MarkdownSite extends Site {
   }
 }
 
-export const rendererLines = Symbol();
-
 export abstract class MarkdownRenderer extends Renderer {
   #isFinalized = false;
   #contextStack: Context[] = [];
   #docsData: Map<string, Chunk>;
   #site: Site;
 
-  [rendererLines]: string[] = [];
+  #rendererLines: string[] = [];
 
   constructor({ docsData, site }: RendererConstructorArgs) {
     super();
@@ -158,28 +156,28 @@ export abstract class MarkdownRenderer extends Renderer {
       { id, escape: "none" }
     );
     if (summary && description) {
-      this.appendText(`_${summary}_`);
-      this.appendText(description);
+      this.createText(`_${summary}_`);
+      this.createText(description);
     } else if (summary) {
-      this.appendText(summary);
+      this.createText(summary);
       if (showDebugPlaceholders) {
         this.appendDebugPlaceholderStart();
-        this.appendText("No description provided");
+        this.createText("No description provided");
         this.appendDebugPlaceholderEnd();
       }
     } else if (description) {
-      this.appendText(description);
+      this.createText(description);
       if (showDebugPlaceholders) {
         this.appendDebugPlaceholderStart();
-        this.appendText("No summary provided");
+        this.createText("No summary provided");
         this.appendDebugPlaceholderEnd();
       }
     } else if (showDebugPlaceholders) {
       this.appendDebugPlaceholderStart();
-      this.appendText("No summary provided");
+      this.createText("No summary provided");
       this.appendDebugPlaceholderEnd();
       this.appendDebugPlaceholderStart();
-      this.appendText("No description provided");
+      this.createText("No description provided");
       this.appendDebugPlaceholderEnd();
     }
     cb();
@@ -279,7 +277,7 @@ export abstract class MarkdownRenderer extends Renderer {
       this.enterContext({ id: statusCode, type: "section" });
       this.enterContext({ id: contentType.replace("/", "-"), type: "section" });
       this.appendTabbedSectionTabStart(this.getCurrentId());
-      this.appendText(statusCode);
+      this.createText(statusCode);
       this.appendTabbedSectionTabEnd();
       this.appendSectionContentStart({
         id: this.getCurrentId(),
@@ -360,19 +358,19 @@ export abstract class MarkdownRenderer extends Renderer {
       line += ` \\{#${id}\\}`;
     }
     if (append) {
-      this[rendererLines].push(line);
+      this.appendLine(line);
     }
     return line;
   }
 
   public override createText(
-    ...[text, { escape = "mdx" } = {}]: RendererCreateAppendTextArgs
+    ...[text, { escape = "mdx", append = true } = {}]: RendererCreateTextArgs
   ) {
-    return this.escapeText(text, { escape });
-  }
-
-  public override appendText(...args: RendererCreateAppendTextArgs) {
-    this[rendererLines].push(this.createText(...args));
+    const escapedText = this.escapeText(text, { escape });
+    if (append) {
+      this.appendLine(escapedText);
+    }
+    return escapedText;
   }
 
   public override createCode(...[text, options]: RendererCreateAppendCodeArgs) {
@@ -392,7 +390,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override appendCode(...args: RendererCreateAppendCodeArgs) {
-    this[rendererLines].push(this.createCode(...args));
+    this.appendLine(this.createCode(...args));
   }
 
   public override createList(
@@ -404,7 +402,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override appendList(...args: RendererCreateListArgs) {
-    this[rendererLines].push(this.createList(...args));
+    this.appendLine(this.createList(...args));
   }
 
   public override createPillStart(..._args: RendererCreatePillArgs) {
@@ -412,7 +410,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override appendPillStart(...args: RendererCreatePillArgs) {
-    this[rendererLines].push(this.createPillStart(...args));
+    this.appendLine(this.createPillStart(...args));
   }
 
   public override createPillEnd() {
@@ -420,7 +418,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override appendPillEnd() {
-    this[rendererLines].push(this.createPillEnd());
+    this.appendLine(this.createPillEnd());
   }
 
   public override createSectionStart(
@@ -430,7 +428,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override appendSectionStart(...args: RendererCreateSectionArgs): void {
-    this[rendererLines].push(this.createSectionStart(...args));
+    this.appendLine(this.createSectionStart(...args));
   }
 
   public override createSectionEnd(): string {
@@ -438,7 +436,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override appendSectionEnd(): void {
-    this[rendererLines].push(this.createSectionEnd());
+    this.appendLine(this.createSectionEnd());
   }
 
   public override createSectionTitleStart(
@@ -450,7 +448,7 @@ ${text}\n</code>\n</pre>`;
   public override appendSectionTitleStart(
     ...args: RendererCreateSectionTitleArgs
   ) {
-    this[rendererLines].push(this.createSectionTitleStart(...args));
+    this.appendLine(this.createSectionTitleStart(...args));
   }
 
   public override createSectionTitleEnd() {
@@ -458,7 +456,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override appendSectionTitleEnd() {
-    this[rendererLines].push(this.createSectionTitleEnd());
+    this.appendLine(this.createSectionTitleEnd());
   }
 
   public override createSectionContentStart(
@@ -470,7 +468,7 @@ ${text}\n</code>\n</pre>`;
   public override appendSectionContentStart(
     ...args: RendererCreateSectionContentArgs
   ) {
-    this[rendererLines].push(this.createSectionContentStart(...args));
+    this.appendLine(this.createSectionContentStart(...args));
   }
 
   public override createSectionContentEnd() {
@@ -478,7 +476,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override appendSectionContentEnd() {
-    this[rendererLines].push(this.createSectionContentEnd());
+    this.appendLine(this.createSectionContentEnd());
   }
 
   protected createTabbedSectionStart() {
@@ -486,7 +484,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   protected appendTabbedSectionStart() {
-    this[rendererLines].push(this.createTabbedSectionStart());
+    this.appendLine(this.createTabbedSectionStart());
   }
 
   protected createTabbedSectionEnd() {
@@ -494,7 +492,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   protected appendTabbedSectionEnd() {
-    this[rendererLines].push(this.createTabbedSectionEnd());
+    this.appendLine(this.createTabbedSectionEnd());
   }
 
   protected createTabbedSectionTabStart(
@@ -506,7 +504,7 @@ ${text}\n</code>\n</pre>`;
   protected appendTabbedSectionTabStart(
     ...args: RendererCreateTabbedSectionTabArgs
   ) {
-    this[rendererLines].push(this.createTabbedSectionTabStart(...args));
+    this.appendLine(this.createTabbedSectionTabStart(...args));
   }
 
   protected createTabbedSectionTabEnd() {
@@ -514,7 +512,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   protected appendTabbedSectionTabEnd() {
-    this[rendererLines].push(this.createTabbedSectionTabEnd());
+    this.appendLine(this.createTabbedSectionTabEnd());
   }
 
   #computeSingleLineDisplayType = (typeInfo: DisplayTypeInfo): string => {
@@ -545,7 +543,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override appendDebugPlaceholderStart() {
-    this[rendererLines].push(this.createDebugPlaceholderStart());
+    this.appendLine(this.createDebugPlaceholderStart());
   }
 
   public override createDebugPlaceholderEnd() {
@@ -553,7 +551,7 @@ ${text}\n</code>\n</pre>`;
   }
 
   public override appendDebugPlaceholderEnd() {
-    this[rendererLines].push(this.createDebugPlaceholderEnd());
+    this.appendLine(this.createDebugPlaceholderEnd());
   }
 
   public override enterContext(...[context]: RendererCreateContextArgs) {
@@ -601,11 +599,19 @@ ${text}\n</code>\n</pre>`;
     return this.#docsData;
   }
 
+  protected appendLine(line: string | null) {
+    // We check to make sure we have a value, because some renderers don't need
+    // to do anything for certain operations. They signal this by returning null
+    if (line) {
+      this.#rendererLines.push(line);
+    }
+  }
+
   public override render() {
     if (this.#isFinalized) {
       throw new InternalError("Renderer has already been finalized");
     }
-    const data = this[rendererLines].join("\n\n");
+    const data = this.#rendererLines.join("\n\n");
     this.#isFinalized = true;
     return data;
   }

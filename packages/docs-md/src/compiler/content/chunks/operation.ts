@@ -67,11 +67,11 @@ export function renderOperation({
               createContent: hasFrontmatter
                 ? () => {
                     if (entry.description) {
-                      renderer.appendText(entry.description);
+                      renderer.createText(entry.description);
                     }
                     if (showDebugPlaceholders) {
                       renderer.appendDebugPlaceholderStart();
-                      renderer.appendText("No description provided");
+                      renderer.createText("No description provided");
                       renderer.appendDebugPlaceholderEnd();
                     }
                   }
@@ -120,11 +120,11 @@ export function renderOperation({
               createContent: hasFrontmatter
                 ? () => {
                     if (parameter.description) {
-                      renderer.appendText(parameter.description);
+                      renderer.createText(parameter.description);
                     }
                     if (showDebugPlaceholders) {
                       renderer.appendDebugPlaceholderStart();
-                      renderer.appendText("No description provided");
+                      renderer.createText("No description provided");
                       renderer.appendDebugPlaceholderEnd();
                     }
                   }
@@ -190,7 +190,7 @@ export function renderOperation({
             // TODO: we can have two descriptions here. Need to figure
             // out something to do with them
             if (requestBody.description) {
-              renderer.appendText(requestBody.description);
+              renderer.createText(requestBody.description);
             }
             renderSchemaFrontmatter({
               renderer,
@@ -258,7 +258,7 @@ export function renderOperation({
                         });
                       }
                       if (response.description) {
-                        renderer.appendText(response.description);
+                        renderer.createText(response.description);
                       }
                       renderSchemaFrontmatter({
                         renderer,
