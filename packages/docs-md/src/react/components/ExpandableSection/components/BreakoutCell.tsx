@@ -2,7 +2,7 @@
 
 import type { PropsWithChildren } from "react";
 
-import { useChildren, useUniqueChild } from "../../Section/hooks.ts";
+import { useChildren, useUniqueChild } from "../../../util/hooks.ts";
 import styles from "../styles.module.css";
 
 type BreakoutCellProps = PropsWithChildren<{ isOpen: boolean }>;

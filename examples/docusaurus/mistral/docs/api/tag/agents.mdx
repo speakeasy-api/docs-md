@@ -4,14 +4,18 @@ sidebar_label: Agents
 ---
 
 import "@speakeasy-api/docs-md/docusaurus.css";
-import { Pill, TryItNow, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableProperty, ExpandableBreakout, TabbedSection, SectionTab, FrontMatterDisplayType } from "@speakeasy-api/docs-md/react";
+import { Operation, Pill, TryItNowSection, TryItNow, Section, SectionTitle, SectionContent, RequestBodySection, ExpandableSection, ExpandableProperty, ExpandableBreakout, ResponseBodySection, TabbedSection, SectionTab, FrontMatterDisplayType } from "@speakeasy-api/docs-md/react";
 
 
 # Agents Operations \{#agents\}
 
+<Operation>
+
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/agents/completions \{#operation-agents_completion_v1_agents_completions_post\}
 
 Agents Completion
+
+<TryItNowSection slot="try-it-now">
 
 <Section variant="top-level">
 
@@ -52,6 +56,10 @@ run();`}
 </SectionContent>
 
 </Section>
+
+</TryItNowSection>
+
+<RequestBodySection slot="request-body">
 
 <Section variant="top-level">
 
@@ -2241,6 +2249,10 @@ this restriction of `Function` is used to select a specific function to call
 
 </Section>
 
+</RequestBodySection>
+
+<ResponseBodySection slot="response-body">
+
 <TabbedSection>
 
 <SectionTitle slot="title" variant="default">
@@ -3307,11 +3319,19 @@ Raw HTTP response; suitable for custom response parsing
 
 </TabbedSection>
 
+</ResponseBodySection>
+
+</Operation>
+
+<Operation>
+
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/agents/completions\#stream \{#operation-stream_agents\}
 
 _Stream Agents completion_
 
 Mistral AI provides the ability to stream responses back to a client in order to allow partial results for certain requests. Tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a data: [DONE] message. Otherwise, the server will hold the request open until the timeout or until completion, with the response containing the full result as JSON.
+
+<TryItNowSection slot="try-it-now">
 
 <Section variant="top-level">
 
@@ -3354,6 +3374,10 @@ run();`}
 </SectionContent>
 
 </Section>
+
+</TryItNowSection>
+
+<RequestBodySection slot="request-body">
 
 <Section variant="top-level">
 
@@ -5541,6 +5565,10 @@ this restriction of `Function` is used to select a specific function to call
 
 </Section>
 
+</RequestBodySection>
+
+<ResponseBodySection slot="response-body">
+
 <TabbedSection>
 
 <SectionTitle slot="title" variant="default">
@@ -6554,3 +6582,7 @@ Raw HTTP response; suitable for custom response parsing
 </SectionContent>
 
 </TabbedSection>
+
+</ResponseBodySection>
+
+</Operation>

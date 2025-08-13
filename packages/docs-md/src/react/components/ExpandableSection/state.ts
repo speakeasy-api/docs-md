@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { createContext, useCallback, useContext, useMemo, useRef } from "react";
 
 import { InternalError } from "../../../util/internalError.ts";
-import { useChildren } from "../Section/hooks.ts";
+import { useChildren } from "../../util/hooks.ts";
 import type { Connection, RowProps, TreeData, TreeNode } from "./types.ts";
 
 type TreeDataContextType = {

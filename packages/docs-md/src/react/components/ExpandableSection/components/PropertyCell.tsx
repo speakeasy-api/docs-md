@@ -14,7 +14,7 @@ import {
   computeSingleLineDisplayType,
 } from "../../../util/displayType.ts";
 import { Pill } from "../../Pill/Pill.tsx";
-import { useChildren, useUniqueChild } from "../../Section/hooks.ts";
+import { useChildren, useUniqueChild } from "../../../util/hooks.ts";
 import styles from "../styles.module.css";
 
 type PropertyCellProps = PropsWithChildren<{

@@ -1,3 +1,5 @@
+// Components
+
 export { TryItNow } from "./components/TryItNow/TryItNow.tsx";
 export { SideBar } from "./components/SideBar/SideBar.tsx";
 export { SideBarTrigger } from "./components/SideBar/SideBarTrigger.tsx";
@@ -13,3 +15,19 @@ export { Code } from "./components/Code/Code.tsx";
 export { Pill } from "./components/Pill/Pill.tsx";
 export { DebugPlaceholder } from "./components/DebugPlaceholder/DebugPlaceholder.tsx";
 export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/FrontMatterDisplayType.tsx";
+export {
+  Operation,
+  TryItNowSection,
+  SecuritySection,
+  ParametersSection,
+  RequestBodySection,
+  ResponseBodySection,
+} from "./components/Operation/Operation.tsx";
+
+// Utilities
+
+export {
+  computeSingleLineDisplayType,
+  computeMultilineTypeLabel,
+} from "./util/displayType.ts";
+export { useUniqueChild, useChildren } from "./util/hooks.ts";
