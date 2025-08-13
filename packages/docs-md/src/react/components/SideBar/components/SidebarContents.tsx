@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import { useAtom } from "jotai";
 import { useCallback, useEffect, useState } from "react";
