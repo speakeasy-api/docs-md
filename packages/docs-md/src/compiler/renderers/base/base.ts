@@ -155,11 +155,12 @@ export type RendererCreateSectionContentArgs = [
   },
 ];
 export type RendererCreateTabbedSectionTabArgs = [id: string];
-export type RendererAppendSidebarLinkArgs = [
+export type RendererCreatePopoutArgs = [
   options: {
     title: string;
     embedName: string;
   },
+  cb: (renderer: Renderer) => void,
 ];
 export type RendererAppendTryItNowArgs = [
   options: {
@@ -274,6 +275,8 @@ export abstract class Renderer {
     ...args: RendererCreateDebugPlaceholderArgs
   ): void;
 
+  abstract createPopout(...args: RendererCreatePopoutArgs): void;
+
   // Low level operations
 
   abstract createHeading(...args: RendererCreateHeadingArgs): string;
@@ -283,10 +286,6 @@ export abstract class Renderer {
   abstract createPill(...args: RendererCreatePillArgs): string;
 
   // Outdated operations
-
-  abstract appendSidebarLink(
-    ...args: RendererAppendSidebarLinkArgs
-  ): Renderer | undefined;
 
   abstract appendTryItNow(...args: RendererAppendTryItNowArgs): void;
 

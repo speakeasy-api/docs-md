@@ -10,11 +10,6 @@ import type { Renderer } from "../..//renderers/base/base.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
 
-type ContainerEntry = {
-  label: string;
-  schema: ObjectValue;
-};
-
 /* ---- Helpers ---- */
 
 function getDisplayTypeLabel(schema: SchemaValue) {
@@ -222,46 +217,6 @@ function hasSchemaFrontmatter(schema: SchemaValue) {
   );
 }
 
-/* ---- Intermediary Rendering ---- */
-
-function renderSidebar({
-  renderer,
-  sidebar,
-}: {
-  renderer: Renderer;
-  sidebar: ContainerEntry;
-}) {
-  const sidebarLinkRenderer = renderer.appendSidebarLink({
-    title: sidebar.label,
-    embedName: sidebar.label,
-  });
-
-  // If no renderer was returned, that means we've already rendered this embed
-  if (!sidebarLinkRenderer) {
-    return;
-  }
-
-  // TODO: this needs a fresh context stack
-  renderer.enterContext({ id: sidebar.label, type: "schema" });
-
-  sidebarLinkRenderer.createHeading(
-    HEADINGS.SECTION_HEADING_LEVEL,
-    sidebar.label
-  );
-
-  renderSchemaFrontmatter({
-    renderer,
-    schema: sidebar.schema,
-  });
-
-  renderObjectProperties({
-    renderer,
-    schema: sidebar.schema,
-  });
-
-  renderer.exitContext();
-}
-
 /* ---- Section Rendering ---- */
 
 function renderObjectProperties({
@@ -364,10 +319,28 @@ function renderContainerTypes({
   const isSidebar = false;
   for (const breakout of entries) {
     if (isSidebar) {
-      renderSidebar({
-        renderer,
-        sidebar: breakout,
-      });
+      renderer.createPopout(
+        {
+          title: breakout.label,
+          embedName: breakout.label,
+        },
+        (renderer) => {
+          renderer.createHeading(
+            HEADINGS.SECTION_HEADING_LEVEL,
+            breakout.label
+          );
+
+          renderSchemaFrontmatter({
+            renderer,
+            schema: breakout.schema,
+          });
+
+          renderObjectProperties({
+            renderer,
+            schema: breakout.schema,
+          });
+        }
+      );
       return;
     }
 

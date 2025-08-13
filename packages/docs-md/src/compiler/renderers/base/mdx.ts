@@ -3,7 +3,6 @@ import { dirname, relative } from "node:path";
 import { InternalError } from "../../../util/internalError.ts";
 import { HEADINGS } from "../../content/constants.ts";
 import type {
-  RendererAppendSidebarLinkArgs,
   RendererAppendTryItNowArgs,
   RendererConstructorArgs,
   RendererCreateCodeArgs,
@@ -13,6 +12,7 @@ import type {
   RendererCreateFrontMatterDisplayTypeArgs,
   RendererCreateOperationArgs,
   RendererCreatePillArgs,
+  RendererCreatePopoutArgs,
   RendererCreateSectionArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
@@ -350,8 +350,8 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.appendLine(`<DebugPlaceholder>${cb()}</DebugPlaceholder>`);
   }
 
-  public override appendSidebarLink(
-    ...[{ title, embedName }]: RendererAppendSidebarLinkArgs
+  public override createPopout(
+    ...[{ title, embedName }, cb]: RendererCreatePopoutArgs
   ) {
     const embedPath = getEmbedPath(embedName);
 
@@ -382,7 +382,8 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     if (this.getSite().hasPage(embedPath)) {
       return;
     }
-    return this.getSite().createPage(embedPath);
+    const renderer = this.getSite().createPage(embedPath);
+    cb(renderer);
   }
 
   public override appendTryItNow(
