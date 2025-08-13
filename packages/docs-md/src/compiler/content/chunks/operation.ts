@@ -1,5 +1,3 @@
-import { snakeCase } from "change-case";
-
 import type { OperationChunk } from "../../../types/chunk.ts";
 import type { PropertyAnnotations } from "../../../types/shared.ts";
 import { assertNever } from "../../../util/assertNever.ts";
@@ -7,7 +5,6 @@ import { getSettings } from "../.././settings.ts";
 import type { Renderer } from "../..//renderers/base/base.ts";
 import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
 import { debug } from "../../logging.ts";
-import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId, getSecurityFromId } from "../util.ts";
 import {
   getDisplayTypeInfo,
@@ -142,42 +139,17 @@ export function renderOperation({
         });
       }
 
-      // TODO: refactor to match other new high-level renderer methods
       const { tryItNow } = getSettings();
       const usageSnippet = docsCodeSnippets[chunk.id];
       if (usageSnippet && tryItNow) {
         debug(`Rendering try it now`);
-        renderer.createSection(
-          () => {
-            renderer.createSectionTitle(
-              () =>
-                renderer.createHeading(
-                  HEADINGS.SECTION_HEADING_LEVEL,
-                  "Try it Now",
-                  {
-                    // TODO: Remove explicit references to id and handle in renderers
-                    id: `operation-${snakeCase(chunk.chunkData.operationId)}+try-it-now`,
-                  }
-                ),
-              { variant: "top-level" }
-            );
-            renderer.createSectionContent(
-              () => {
-                // TODO: Zod is actually hard coded for now since its always a dependency
-                // in our SDKs. Ideally this will come from the SDK package.
-                renderer.appendTryItNow({
-                  externalDependencies: {
-                    zod: "^3.25.64",
-                    [tryItNow.npmPackageName]: "latest",
-                  },
-                  defaultValue: usageSnippet.code,
-                });
-              },
-              { variant: "top-level" }
-            );
+        renderer.createTryItNowSection({
+          externalDependencies: {
+            zod: "^3.25.64",
+            [tryItNow.npmPackageName]: "latest",
           },
-          { variant: "top-level" }
-        );
+          defaultValue: usageSnippet.code,
+        });
       }
 
       if (chunk.chunkData.requestBody) {

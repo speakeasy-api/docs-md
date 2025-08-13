@@ -176,7 +176,7 @@ export abstract class MarkdownRenderer extends Renderer {
     this.exitContext();
   }
 
-  #addTopLevelSection(
+  protected createTopLevelSection(
     {
       title,
       annotations = [],
@@ -208,7 +208,7 @@ export abstract class MarkdownRenderer extends Renderer {
     ...[cb]: RendererCreateSecuritySectionArgs
   ): void {
     this.enterContext({ id: "security", type: "section" });
-    this.#addTopLevelSection({ title: "Security" }, () =>
+    this.createTopLevelSection({ title: "Security" }, () =>
       this.handleCreateSecurity(cb)
     );
     this.exitContext();
@@ -222,7 +222,7 @@ export abstract class MarkdownRenderer extends Renderer {
     ...[cb]: RendererCreateParametersSectionArgs
   ): void {
     this.enterContext({ id: "parameters", type: "section" });
-    this.#addTopLevelSection({ title: "Parameters" }, () =>
+    this.createTopLevelSection({ title: "Parameters" }, () =>
       this.handleCreateParameters(cb)
     );
     this.exitContext();
@@ -245,7 +245,7 @@ export abstract class MarkdownRenderer extends Renderer {
         variant: "info",
       });
     }
-    this.#addTopLevelSection(
+    this.createTopLevelSection(
       {
         title: "Request Body",
         annotations,

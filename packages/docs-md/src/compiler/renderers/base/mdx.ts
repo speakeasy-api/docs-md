@@ -3,7 +3,6 @@ import { dirname, relative } from "node:path";
 import { InternalError } from "../../../util/internalError.ts";
 import { HEADINGS } from "../../content/constants.ts";
 import type {
-  RendererAppendTryItNowArgs,
   RendererConstructorArgs,
   RendererCreateCodeArgs,
   RendererCreateDebugPlaceholderArgs,
@@ -17,6 +16,7 @@ import type {
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
   RendererCreateTabbedSectionTabArgs,
+  RendererCreateTryItNowSectionArgs,
 } from "./base.ts";
 import { MarkdownRenderer, MarkdownSite } from "./markdown.ts";
 import { getEmbedPath, getEmbedSymbol } from "./util.ts";
@@ -386,15 +386,23 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     cb(renderer);
   }
 
-  public override appendTryItNow(
-    ...[{ externalDependencies, defaultValue }]: RendererAppendTryItNowArgs
+  public override createTryItNowSection(
+    ...[
+      { externalDependencies, defaultValue },
+    ]: RendererCreateTryItNowSectionArgs
   ) {
     this.insertComponentImport("TryItNow");
-    this.appendLine(
-      `<TryItNow
- externalDependencies={${JSON.stringify(externalDependencies)}}
- defaultValue={\`${defaultValue}\`}
+    this.createTopLevelSection(
+      {
+        title: "Try it Now",
+      },
+      () =>
+        this.appendLine(
+          `<TryItNow
+  externalDependencies={${JSON.stringify(externalDependencies)}}
+  defaultValue={\`${defaultValue}\`}
 />`
+        )
     );
   }
 }

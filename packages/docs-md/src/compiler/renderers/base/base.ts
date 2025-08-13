@@ -162,12 +162,6 @@ export type RendererCreatePopoutArgs = [
   },
   cb: (renderer: Renderer) => void,
 ];
-export type RendererAppendTryItNowArgs = [
-  options: {
-    externalDependencies: Record<string, string>;
-    defaultValue: string;
-  },
-];
 
 // Section args
 export type RendererCreateOperationArgs = [
@@ -179,6 +173,12 @@ export type RendererCreateOperationArgs = [
     description: string | null;
   },
   cb: () => void,
+];
+export type RendererCreateTryItNowSectionArgs = [
+  options: {
+    externalDependencies: Record<string, string>;
+    defaultValue: string;
+  },
 ];
 export type RendererCreateSecuritySectionArgs = [cb: () => void];
 export type RendererCreateParametersSectionArgs = [cb: () => void];
@@ -244,6 +244,9 @@ export abstract class Renderer {
   // High level operations
 
   abstract createOperationSection(...args: RendererCreateOperationArgs): void;
+  abstract createTryItNowSection(
+    ...args: RendererCreateTryItNowSectionArgs
+  ): void;
   abstract createSecuritySection(
     ...args: RendererCreateSecuritySectionArgs
   ): void;
@@ -284,10 +287,6 @@ export abstract class Renderer {
   abstract createCode(...args: RendererCreateCodeArgs): string;
   abstract createList(...args: RendererCreateListArgs): string;
   abstract createPill(...args: RendererCreatePillArgs): string;
-
-  // Outdated operations
-
-  abstract appendTryItNow(...args: RendererAppendTryItNowArgs): void;
 
   // Helper methods
 
