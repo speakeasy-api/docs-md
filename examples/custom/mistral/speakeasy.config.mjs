@@ -27,7 +27,7 @@ class MistralRenderer extends MdxRenderer {
   }
 
   insertComponentImport(symbol) {
-    this.insertNamedImport("@speakeasy-api/docs-md/react", symbol);
+    this.insertNamedImport("@/components/speakeasy", symbol);
   }
 
   getIdSeparator() {

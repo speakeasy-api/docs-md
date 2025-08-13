@@ -4,22 +4,26 @@ export function Operation({ children }: PropsWithChildren) {
   return <div>{children}</div>;
 }
 
-export function TryItNowSection({ children }: PropsWithChildren) {
+export function OperationFrontMatterSection({ children }: PropsWithChildren) {
+  return <div slot="front-matter">{children}</div>;
+}
+
+export function OperationTryItNowSection({ children }: PropsWithChildren) {
   return <div slot="try-it-now">{children}</div>;
 }
 
-export function SecuritySection({ children }: PropsWithChildren) {
+export function OperationSecuritySection({ children }: PropsWithChildren) {
   return <div slot="security">{children}</div>;
 }
 
-export function ParametersSection({ children }: PropsWithChildren) {
+export function OperationParametersSection({ children }: PropsWithChildren) {
   return <div slot="parameters">{children}</div>;
 }
 
-export function RequestBodySection({ children }: PropsWithChildren) {
+export function OperationRequestBodySection({ children }: PropsWithChildren) {
   return <div slot="request-body">{children}</div>;
 }
 
-export function ResponseBodySection({ children }: PropsWithChildren) {
+export function OperationResponseBodySection({ children }: PropsWithChildren) {
   return <div slot="response-body">{children}</div>;
 }

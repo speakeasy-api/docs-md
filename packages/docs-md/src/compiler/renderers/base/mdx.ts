@@ -155,14 +155,21 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.appendLine(`</Operation>`);
   }
 
+  protected override handleCreateOperationFrontmatter(cb: () => void) {
+    this.insertComponentImport("OperationFrontMatterSection");
+    this.appendLine(`<OperationFrontMatterSection slot="front-matter">`);
+    cb();
+    this.appendLine(`</OperationFrontMatterSection>`);
+  }
+
   public override createTryItNowSection(
     ...[
       { externalDependencies, defaultValue },
     ]: RendererCreateTryItNowSectionArgs
   ) {
-    this.insertComponentImport("TryItNowSection");
+    this.insertComponentImport("OperationTryItNowSection");
     this.insertComponentImport("TryItNow");
-    this.appendLine(`<TryItNowSection slot="try-it-now">`);
+    this.appendLine(`<OperationTryItNowSection slot="try-it-now">`);
     this.createTopLevelSection(
       {
         title: "Try it Now",
@@ -175,41 +182,41 @@ export abstract class MdxRenderer extends MarkdownRenderer {
 />`
         )
     );
-    this.appendLine(`</TryItNowSection>`);
+    this.appendLine(`</OperationTryItNowSection>`);
   }
 
   public override createSecuritySection(
     ...args: RendererCreateSecuritySectionArgs
   ) {
-    this.insertComponentImport("SecuritySection");
-    this.appendLine('<SecuritySection slot="security">');
+    this.insertComponentImport("OperationSecuritySection");
+    this.appendLine('<OperationSecuritySection slot="security">');
     super.createSecuritySection(...args);
-    this.appendLine("</SecuritySection>");
+    this.appendLine("</OperationSecuritySection>");
   }
 
   public override createParametersSection(
     ...args: RendererCreateParametersSectionArgs
   ) {
-    this.insertComponentImport("ParametersSection");
-    this.appendLine('<ParametersSection slot="parameters">');
+    this.insertComponentImport("OperationParametersSection");
+    this.appendLine('<OperationParametersSection slot="parameters">');
     super.createParametersSection(...args);
-    this.appendLine("</ParametersSection>");
+    this.appendLine("</OperationParametersSection>");
   }
 
   public override createRequestSection(
     ...args: RendererCreateRequestSectionArgs
   ) {
-    this.insertComponentImport("RequestBodySection");
-    this.appendLine('<RequestBodySection slot="request-body">');
+    this.insertComponentImport("OperationRequestBodySection");
+    this.appendLine('<OperationRequestBodySection slot="request-body">');
     super.createRequestSection(...args);
-    this.appendLine("</RequestBodySection>");
+    this.appendLine("</OperationRequestBodySection>");
   }
 
   public override createResponsesSection(...args: RendererCreateResponsesArgs) {
-    this.insertComponentImport("ResponseBodySection");
-    this.appendLine('<ResponseBodySection slot="response-body">');
+    this.insertComponentImport("OperationResponseBodySection");
+    this.appendLine('<OperationResponseBodySection slot="response-body">');
     super.createResponsesSection(...args);
-    this.appendLine("</ResponseBodySection>");
+    this.appendLine("</OperationResponseBodySection>");
   }
 
   protected override handleCreateSecurity(cb: () => void) {

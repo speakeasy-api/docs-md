@@ -17,11 +17,12 @@ export { DebugPlaceholder } from "./components/DebugPlaceholder/DebugPlaceholder
 export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/FrontMatterDisplayType.tsx";
 export {
   Operation,
-  TryItNowSection,
-  SecuritySection,
-  ParametersSection,
-  RequestBodySection,
-  ResponseBodySection,
+  OperationFrontMatterSection,
+  OperationTryItNowSection,
+  OperationSecuritySection,
+  OperationParametersSection,
+  OperationRequestBodySection,
+  OperationResponseBodySection,
 } from "./components/Operation/Operation.tsx";
 
 // Utilities

@@ -147,31 +147,33 @@ export abstract class MarkdownRenderer extends Renderer {
     const { showDebugPlaceholders } = getSettings().display;
     const id = `operation-${snakeCase(operationId)}`;
     this.enterContext({ id, type: "operation" });
-    path = this.escapeText(path, {
-      escape: "markdown",
-    });
-    this.createHeading(
-      HEADINGS.SECTION_TITLE_HEADING_LEVEL,
-      `${this.createPill("primary", () => `<b>${method.toUpperCase()}</b>`)} ${path}`,
-      { id, escape: "none" }
-    );
-    if (summary && description) {
-      this.createText(`_${summary}_`);
-      this.createText(description);
-    } else if (summary) {
-      this.createText(summary);
-      if (showDebugPlaceholders) {
+    this.handleCreateOperationFrontmatter(() => {
+      path = this.escapeText(path, {
+        escape: "markdown",
+      });
+      this.createHeading(
+        HEADINGS.SECTION_TITLE_HEADING_LEVEL,
+        `${this.createPill("primary", () => `<b>${method.toUpperCase()}</b>`)} ${path}`,
+        { id, escape: "none" }
+      );
+      if (summary && description) {
+        this.createText(`_${summary}_`);
+        this.createText(description);
+      } else if (summary) {
+        this.createText(summary);
+        if (showDebugPlaceholders) {
+          this.createDebugPlaceholder(() => "No description provided");
+        }
+      } else if (description) {
+        this.createText(description);
+        if (showDebugPlaceholders) {
+          this.createDebugPlaceholder(() => "No summary provided");
+        }
+      } else if (showDebugPlaceholders) {
+        this.createDebugPlaceholder(() => "No summary provided");
         this.createDebugPlaceholder(() => "No description provided");
       }
-    } else if (description) {
-      this.createText(description);
-      if (showDebugPlaceholders) {
-        this.createDebugPlaceholder(() => "No summary provided");
-      }
-    } else if (showDebugPlaceholders) {
-      this.createDebugPlaceholder(() => "No summary provided");
-      this.createDebugPlaceholder(() => "No description provided");
-    }
+    });
     cb();
     this.exitContext();
   }
@@ -212,6 +214,10 @@ export abstract class MarkdownRenderer extends Renderer {
       this.handleCreateSecurity(cb)
     );
     this.exitContext();
+  }
+
+  protected handleCreateOperationFrontmatter(cb: () => void) {
+    cb();
   }
 
   protected handleCreateSecurity(cb: () => void) {
