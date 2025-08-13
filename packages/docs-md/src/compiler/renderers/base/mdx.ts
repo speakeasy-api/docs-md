@@ -135,13 +135,15 @@ export abstract class MdxRenderer extends MarkdownRenderer {
 
   protected abstract insertComponentImport(symbol: string): void;
 
-  public override createPillStart(...[variant]: RendererCreatePillArgs) {
+  public override createPill(
+    ...[variant, cb, { append = false } = {}]: RendererCreatePillArgs
+  ) {
     this.insertComponentImport("Pill");
-    return `<Pill variant="${variant}">`;
-  }
-
-  public override createPillEnd() {
-    return "</Pill>";
+    const pill = `<Pill variant="${variant}">${cb()}</Pill>`;
+    if (append) {
+      this.appendLine(pill);
+    }
+    return pill;
   }
 
   public override createOperationSection(...args: RendererCreateOperationArgs) {

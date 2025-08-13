@@ -145,14 +145,12 @@ export abstract class MarkdownRenderer extends Renderer {
     const { showDebugPlaceholders } = getSettings().display;
     const id = `operation-${snakeCase(operationId)}`;
     this.enterContext({ id, type: "operation" });
-    const methodStart = this.createPillStart("primary");
-    const methodEnd = this.createPillEnd();
     path = this.escapeText(path, {
       escape: "markdown",
     });
     this.createHeading(
       HEADINGS.SECTION_TITLE_HEADING_LEVEL,
-      `${methodStart}<b>${method.toUpperCase()}</b>${methodEnd} ${path}`,
+      `${this.createPill("primary", () => `<b>${method.toUpperCase()}</b>`)} ${path}`,
       { id, escape: "none" }
     );
     if (summary && description) {
@@ -195,7 +193,7 @@ export abstract class MarkdownRenderer extends Renderer {
     cb: () => void
   ): void {
     for (const annotation of annotations) {
-      title += ` ${this.createPillStart(annotation.variant)}${annotation.title}${this.createPillEnd()}`;
+      title += ` ${this.createPill(annotation.variant, () => annotation.title)}`;
     }
     this.appendSectionStart({ variant: "top-level" });
     this.appendSectionTitleStart({ variant: "top-level" });
@@ -325,9 +323,7 @@ export abstract class MarkdownRenderer extends Renderer {
         });
     }
     const renderedAnnotations = annotations.map((annotation) => {
-      const start = this.createPillStart(annotation.variant);
-      const end = this.createPillEnd();
-      return `${start}${annotation.title}${end}`;
+      return this.createPill(annotation.variant, () => annotation.title);
     });
     this.createHeading(
       HEADINGS.PROPERTY_HEADING_LEVEL,
@@ -412,20 +408,15 @@ ${text}\n</code>\n</pre>`;
     return list;
   }
 
-  public override createPillStart(..._args: RendererCreatePillArgs) {
-    return "(";
-  }
-
-  public override appendPillStart(...args: RendererCreatePillArgs) {
-    this.appendLine(this.createPillStart(...args));
-  }
-
-  public override createPillEnd() {
-    return ")";
-  }
-
-  public override appendPillEnd() {
-    this.appendLine(this.createPillEnd());
+  public override createPill(
+    // We don't use variant in the basic Markdown version
+    ...[_variant, cb, { append = false } = {}]: RendererCreatePillArgs
+  ) {
+    const line = `(${cb()})`;
+    if (append) {
+      this.appendLine(line);
+    }
+    return line;
   }
 
   public override createSectionStart(

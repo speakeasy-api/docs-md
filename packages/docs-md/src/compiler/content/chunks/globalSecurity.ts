@@ -12,10 +12,10 @@ export function renderGlobalSecurity(
   const { showDebugPlaceholders } = getSettings().display;
   for (const entry of chunk.chunkData.entries) {
     const inPill = entry.in
-      ? ` ${renderer.createPillStart("info")}${entry.in}${renderer.createPillEnd()}`
+      ? ` ${renderer.createPill("info", () => entry.in)}`
       : "";
     const typePill = entry.type
-      ? ` ${renderer.createPillStart("info")}${entry.type}${renderer.createPillEnd()}`
+      ? ` ${renderer.createPill("info", () => entry.type)}`
       : "";
     renderer.createHeading(
       headingLevel,
