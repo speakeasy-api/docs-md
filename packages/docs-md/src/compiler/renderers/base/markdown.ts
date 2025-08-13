@@ -64,7 +64,7 @@ export abstract class MarkdownSite extends Site {
     return this.#pages.has(path);
   }
 
-  public createPage(...[path]: SiteCreatePageArgs) {
+  public createPage(...[path, frontMatter]: SiteCreatePageArgs) {
     if (!this.#docsData) {
       throw new InternalError("Docs data not set");
     }
@@ -72,6 +72,7 @@ export abstract class MarkdownSite extends Site {
       currentPagePath: path,
       site: this,
       docsData: this.#docsData,
+      frontMatter,
     });
     this.#pages.set(path, renderer);
     return renderer;

@@ -140,8 +140,7 @@ function renderPages(
   for (const [currentPagePath, pageMapEntry] of pageMap) {
     debug(`Rendering page ${currentPagePath}`);
     if (pageMapEntry.type === "renderer") {
-      const renderer = site.createPage(currentPagePath);
-      renderer.insertFrontMatter({
+      const renderer = site.createPage(currentPagePath, {
         sidebarPosition: pageMapEntry.sidebarPosition,
         sidebarLabel: pageMapEntry.sidebarLabel,
       });
@@ -149,8 +148,7 @@ function renderPages(
       continue;
     }
     const { chunks, sidebarLabel, sidebarPosition } = pageMapEntry;
-    const renderer = site.createPage(currentPagePath);
-    renderer.insertFrontMatter({
+    const renderer = site.createPage(currentPagePath, {
       sidebarPosition,
       sidebarLabel,
     });

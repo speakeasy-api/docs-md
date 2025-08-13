@@ -2,8 +2,8 @@ import { join, resolve } from "node:path";
 
 import { getSettings } from "../settings.ts";
 import type {
+  RendererConstructorArgs,
   RendererCreateHeadingArgs,
-  RendererInsertFrontMatterArgs,
   SiteBuildPagePathArgs,
   SiteGetRendererArgs,
 } from "./base/base.ts";
@@ -44,6 +44,16 @@ export class NextraSite extends MdxSite {
 class NextraRenderer extends MdxRenderer {
   #frontMatter: string | undefined;
 
+  constructor(args: RendererConstructorArgs) {
+    super(args);
+    if (args.frontMatter) {
+      this.insertPackageImport("@speakeasy-api/docs-md/nextra.css");
+      this.#frontMatter = `---
+sidebarTitle: ${this.escapeText(args.frontMatter.sidebarLabel, { escape: "mdx" })}
+---`;
+    }
+  }
+
   public override render() {
     const parentData = super.render();
     const data =
@@ -53,15 +63,6 @@ class NextraRenderer extends MdxRenderer {
 
   protected override insertComponentImport(symbol: string) {
     this.insertNamedImport("@speakeasy-api/docs-md/react", symbol);
-  }
-
-  public override insertFrontMatter(
-    ...[{ sidebarLabel }]: RendererInsertFrontMatterArgs
-  ) {
-    this.insertPackageImport("@speakeasy-api/docs-md/nextra.css");
-    this.#frontMatter = `---
-sidebarTitle: ${this.escapeText(sidebarLabel, { escape: "mdx" })}
----`;
   }
 
   public override createHeading(

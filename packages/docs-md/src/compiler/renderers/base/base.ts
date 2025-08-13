@@ -31,7 +31,13 @@ export type Context = {
 };
 
 // Argument types for Site interface methods
-export type SiteCreatePageArgs = [path: string];
+
+type PageFrontMatter = {
+  sidebarPosition: string;
+  sidebarLabel: string;
+};
+
+export type SiteCreatePageArgs = [path: string, frontMatter?: PageFrontMatter];
 export type SiteBuildPagePathArgs = [
   slug: string,
   options?: { appendIndex?: boolean },
@@ -62,12 +68,6 @@ type EscapeOptions = {
 export type RendererEscapeTextArgs = [
   text: string,
   options: Required<EscapeOptions>,
-];
-export type RendererInsertFrontMatterArgs = [
-  options: {
-    sidebarPosition: string;
-    sidebarLabel: string;
-  },
 ];
 export type RendererCreateHeadingArgs = [
   level: number,
@@ -232,6 +232,7 @@ export type RendererConstructorArgs = {
   site: Site;
   docsData: Map<string, Chunk>;
   currentPagePath: string;
+  frontMatter?: PageFrontMatter;
 };
 
 export type RendererCreateDebugPlaceholderArgs = [cb: () => string];
@@ -282,10 +283,6 @@ export abstract class Renderer {
   abstract createPill(...args: RendererCreatePillArgs): string;
 
   // Outdated operations
-
-  // The following methods are used to insert complex content onto the page,
-  // and so they don't have "create" variants.
-  abstract insertFrontMatter(...args: RendererInsertFrontMatterArgs): void;
 
   abstract appendSidebarLink(
     ...args: RendererAppendSidebarLinkArgs
