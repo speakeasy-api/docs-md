@@ -9,9 +9,8 @@ import {
 } from "@codesandbox/sandpack-react";
 import { useAtomValue } from "jotai";
 
-import type { TryItNowProps } from "../../../../../types/shared.ts";
-import { dependenciesAtom, lastEditorValueAtom } from "../state.ts";
-import { styles } from "../styles.ts";
+import type { TryItNowProps } from "../../../../types/shared.ts";
+import { dependenciesAtom, lastEditorValueAtom } from "../state/atoms.ts";
 import { CodeEditor } from "./CodeEditor.tsx";
 import { ConsoleOutput } from "./ConsoleOutput.tsx";
 
@@ -28,7 +27,15 @@ const TryItNowContents = ({
     <SandpackLayout style={layoutStyle}>
       {_enableUnsafeAutoImport ? <CodeEditor /> : <SandpackCodeEditor />}
       {!error && <ConsoleOutput />}
-      <SandpackPreview style={error ? undefined : styles.preview}>
+      <SandpackPreview
+        style={
+          error
+            ? undefined
+            : {
+                display: "none",
+              }
+        }
+      >
         {error ? <pre>{error}</pre> : null}
       </SandpackPreview>
     </SandpackLayout>
@@ -38,17 +45,11 @@ const TryItNowContents = ({
 export const Content = ({
   externalDependencies,
   defaultValue = "",
-  currentTheme = "dark",
   _enableUnsafeAutoImport,
   layoutStyle,
-  themes,
 }: TryItNowProps) => {
   const autoImportDependencies = useAtomValue(dependenciesAtom);
   const previousCodeAtomValue = useAtomValue(lastEditorValueAtom);
-  const activeTheme =
-    themes && typeof themes === "object"
-      ? themes?.[currentTheme]
-      : currentTheme;
 
   return (
     <SandpackProvider
@@ -57,7 +58,7 @@ export const Content = ({
         autorun: false,
         activeFile: "index.ts",
       }}
-      theme={activeTheme}
+      theme="dark"
       template="vanilla-ts"
       files={{
         "index.ts": {

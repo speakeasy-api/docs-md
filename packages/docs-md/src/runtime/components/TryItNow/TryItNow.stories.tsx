@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import type { TryItNowProps } from "../../../types/shared.ts";
-import { Content as TryItNow } from "./common/components/Content.tsx";
+import { TryItNow } from "./TryItNow.tsx";
+
 const meta: Meta<Required<TryItNowProps>> = {
   title: "Components/TryItNow",
   component: TryItNow,
@@ -22,11 +23,6 @@ const meta: Meta<Required<TryItNowProps>> = {
     externalDependencies: {
       control: "object",
       description: "External npm dependencies required by the code snippet",
-    },
-    currentTheme: {
-      control: "select",
-      options: ["dark", "light", "auto"],
-      description: "The theme to use for the code editor",
     },
     _enableUnsafeAutoImport: {
       control: "boolean",

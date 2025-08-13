@@ -4,7 +4,7 @@ sidebar_label: Batch Jobs
 ---
 
 import "@speakeasy-api/docs-md/docusaurus.css";
-import { Pill, TabbedSection, SectionTitle, SectionTab, SectionContent, ExpandableSection, ExpandableProperty, ExpandableBreakout, Section } from "@speakeasy-api/docs-md/docusaurus";
+import { Pill, Section, SectionTitle, SectionContent, TryItNow, TabbedSection, SectionTab, ExpandableSection, ExpandableProperty, ExpandableBreakout } from "@speakeasy-api/docs-md/docusaurus";
 
 
 # Batch Jobs Operations \{#batch/jobs\}
@@ -14,6 +14,38 @@ import { Pill, TabbedSection, SectionTitle, SectionTab, SectionContent, Expandab
 _Get Batch Jobs_
 
 Get a list of batch jobs for your organization and user.
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-jobs_api_routes_batch_get_batch_jobs+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.batch.jobs.list({});
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <TabbedSection>
 
@@ -502,6 +534,44 @@ _Default Value:_ `"list"`
 _Create Batch Job_
 
 Create a new batch job, it will be queued for processing.
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-jobs_api_routes_batch_create_batch_job+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.batch.jobs.create({
+    inputFiles: [
+      "fe3343a2-3b8d-404b-ba32-a78dede2614a",
+    ],
+    endpoint: "/v1/moderations",
+    model: "Altima",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <Section variant="top-level">
 
@@ -1048,6 +1118,40 @@ Get a batch job details by its UUID.
 
 </Section>
 
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-jobs_api_routes_batch_get_batch_job+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.batch.jobs.get({
+    jobId: "4017dc9f-b629-42f4-9700-8c681b9e7f0f",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
+
 <TabbedSection>
 
 <SectionTitle slot="title" variant="default">
@@ -1476,6 +1580,40 @@ Request the cancellation of a batch job.
 </ExpandableProperty>
 
 </ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-jobs_api_routes_batch_cancel_batch_job+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.batch.jobs.cancel({
+    jobId: "4fb29d1c-535b-4f0a-a1cb-2167f86da569",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
 
 </SectionContent>
 

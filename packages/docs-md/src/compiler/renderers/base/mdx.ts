@@ -1,6 +1,5 @@
 import { dirname, relative } from "node:path";
 
-import type { TryItNowProps } from "../../../types/shared.ts";
 import { InternalError } from "../../../util/internalError.ts";
 import { HEADINGS } from "../../content/constants.ts";
 import type {
@@ -33,17 +32,12 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   >();
   #includeSidebar = false;
   #currentPagePath: string;
-  #codeThemes: TryItNowProps["themes"];
   #idStack: string[] = [];
   #expandableIdStack: string[] | undefined;
 
-  constructor(
-    args: RendererConstructorArgs,
-    codeThemes?: TryItNowProps["themes"]
-  ) {
+  constructor(args: RendererConstructorArgs) {
     super(args);
     this.#currentPagePath = args.currentPagePath;
-    this.#codeThemes = codeThemes;
   }
 
   public override render() {
@@ -393,7 +387,6 @@ export abstract class MdxRenderer extends MarkdownRenderer {
       `<TryItNow
  externalDependencies={${JSON.stringify(externalDependencies)}}
  defaultValue={\`${defaultValue}\`}
- ${this.#codeThemes ? `themes={${JSON.stringify(this.#codeThemes)}}` : ""}
 />`
     );
   }

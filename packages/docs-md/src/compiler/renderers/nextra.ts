@@ -1,6 +1,5 @@
 import { join, resolve } from "node:path";
 
-import type { TryItNowProps } from "../../types/shared.ts";
 import { getSettings } from "../settings.ts";
 import type {
   RendererAppendHeadingArgs,
@@ -10,13 +9,6 @@ import type {
 } from "./base/base.ts";
 import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 export class NextraSite extends MdxSite {
-  #codeThemes: TryItNowProps["themes"];
-
-  constructor(options: { codeThemes: TryItNowProps["themes"] }) {
-    super();
-    this.#codeThemes = options.codeThemes;
-  }
-
   public override buildPagePath(
     ...[slug, { appendIndex = false } = {}]: SiteBuildPagePathArgs
   ): string {
@@ -45,7 +37,7 @@ export class NextraSite extends MdxSite {
   }
 
   protected override getRenderer(...[options]: SiteGetRendererArgs) {
-    return new NextraRenderer({ ...options }, this.#codeThemes);
+    return new NextraRenderer({ ...options });
   }
 }
 

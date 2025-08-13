@@ -4,7 +4,7 @@ sidebar_label: Classifiers
 ---
 
 import "@speakeasy-api/docs-md/docusaurus.css";
-import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableProperty, TabbedSection, SectionTab, ExpandableBreakout } from "@speakeasy-api/docs-md/docusaurus";
+import { Pill, Section, SectionTitle, SectionContent, TryItNow, ExpandableSection, ExpandableProperty, TabbedSection, SectionTab, ExpandableBreakout } from "@speakeasy-api/docs-md/docusaurus";
 
 
 # Classifiers Operations \{#classifiers\}
@@ -12,6 +12,44 @@ import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, Expanda
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/moderations \{#operation-moderations_v1_moderations_post\}
 
 Moderations
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-moderations_v1_moderations_post+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.classifiers.moderate({
+    model: "Durango",
+    inputs: [
+      "<value 1>",
+      "<value 2>",
+    ],
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <Section variant="top-level">
 
@@ -410,6 +448,63 @@ Raw HTTP response; suitable for custom response parsing
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/chat/moderations \{#operation-chat_moderations_v1_chat_moderations_post\}
 
 Chat Moderations
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-chat_moderations_v1_chat_moderations_post+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.classifiers.moderateChat({
+    inputs: [
+      {
+        content: "<value>",
+        role: "tool",
+      },
+      {
+        content: [
+          {
+            documentUrl: "https://limited-merit.com",
+            type: "document_url",
+          },
+          {
+            documentUrl: "https://deep-governance.com/",
+            type: "document_url",
+          },
+          {
+            text: "<value>",
+            type: "text",
+          },
+        ],
+        role: "tool",
+      },
+    ],
+    model: "Jetta",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <Section variant="top-level">
 
@@ -2259,6 +2354,43 @@ Classifications
 
 <SectionTitle slot="title" variant="top-level">
 
+### Try it Now \{#operation-classifications_v1_classifications_post+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.classifiers.classify({
+    model: "Silverado",
+    inputs: [
+      "<value 1>",
+    ],
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
 ### Request Body \{#operation-classifications_v1_classifications_post+request\}
 
 </SectionTitle>
@@ -2623,6 +2755,66 @@ Raw HTTP response; suitable for custom response parsing
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/chat/classifications \{#operation-chat_classifications_v1_chat_classifications_post\}
 
 Chat Classifications
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-chat_classifications_v1_chat_classifications_post+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.classifiers.classifyChat({
+    model: "Camry",
+    inputs: [
+      {
+        messages: [
+          {
+            content: "<value>",
+            role: "system",
+          },
+          {
+            prefix: false,
+            role: "assistant",
+          },
+        ],
+      },
+      {
+        messages: [
+          {
+            content: "<value>",
+            role: "system",
+          },
+          {
+            prefix: false,
+            role: "assistant",
+          },
+        ],
+      },
+    ],
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <Section variant="top-level">
 

@@ -4,7 +4,7 @@ sidebar_label: Beta Conversations
 ---
 
 import "@speakeasy-api/docs-md/docusaurus.css";
-import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableProperty, TabbedSection, SectionTab, FrontMatterDisplayType, ExpandableBreakout } from "@speakeasy-api/docs-md/docusaurus";
+import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableProperty, TryItNow, TabbedSection, SectionTab, FrontMatterDisplayType, ExpandableBreakout } from "@speakeasy-api/docs-md/docusaurus";
 
 
 # Beta Conversations Operations \{#beta/conversations\}
@@ -64,6 +64,38 @@ Retrieve a list of conversation entities sorted by creation time.
 </ExpandableProperty>
 
 </ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-agents_api_v1_conversations_list+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.conversations.list({});
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
 
 </SectionContent>
 
@@ -1404,6 +1436,40 @@ Raw HTTP response; suitable for custom response parsing
 _Create a conversation and append entries to it._
 
 Create a new conversation, using a base model or an agent and append entries. Completion and tool executions are run and the response is appended to the conversation.Use the returned conversation_id to continue the conversation.
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-agents_api_v1_conversations_start+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.conversations.start({
+    inputs: "<value>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <Section variant="top-level">
 
@@ -4697,6 +4763,40 @@ Given a conversation_id retrieve a conversation entity with its attributes.
 
 </Section>
 
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-agents_api_v1_conversations_get+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.conversations.get({
+    conversationId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
+
 <TabbedSection>
 
 <SectionTitle slot="title" variant="default">
@@ -6070,6 +6170,55 @@ ID of the conversation to which we append entries.
 </ExpandableProperty>
 
 </ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-agents_api_v1_conversations_append+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.conversations.append({
+    conversationId: "<id>",
+    conversationAppendRequest: {
+      inputs: [
+        {
+          object: "entry",
+          type: "message.input",
+          role: "user",
+          content: [
+            {
+              documentUrl: "https://oblong-decryption.info/",
+              type: "document_url",
+            },
+          ],
+        },
+      ],
+    },
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
 
 </SectionContent>
 
@@ -8921,6 +9070,40 @@ Given a conversation_id retrieve all the entries belonging to that conversation.
 
 </Section>
 
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-agents_api_v1_conversations_history+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.conversations.getHistory({
+    conversationId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
+
 <TabbedSection>
 
 <SectionTitle slot="title" variant="default">
@@ -11113,6 +11296,40 @@ Given a conversation_id retrieve all the messages belonging to that conversation
 
 </Section>
 
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-agents_api_v1_conversations_messages+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.conversations.getMessages({
+    conversationId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
+
 <TabbedSection>
 
 <SectionTitle slot="title" variant="default">
@@ -12620,6 +12837,44 @@ Given a conversation_id and an id, recreate a conversation from this point and r
 </ExpandableProperty>
 
 </ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-agents_api_v1_conversations_restart+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.conversations.restart({
+    conversationId: "<id>",
+    conversationRestartRequest: {
+      inputs: "<value>",
+      fromEntryId: "<id>",
+    },
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
 
 </SectionContent>
 
@@ -15454,6 +15709,61 @@ Raw HTTP response; suitable for custom response parsing
 _Create a conversation and append entries to it._
 
 Create a new conversation, using a base model or an agent and append entries. Completion and tool executions are run and the response is appended to the conversation.Use the returned conversation_id to continue the conversation.
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-agents_api_v1_conversations_start_stream+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.conversations.startStream({
+    inputs: [
+      {
+        object: "entry",
+        type: "function.result",
+        toolCallId: "<id>",
+        result: "<value>",
+      },
+      {
+        object: "entry",
+        type: "message.input",
+        role: "user",
+        content: "<value>",
+      },
+      {
+        object: "entry",
+        type: "message.input",
+        role: "user",
+        content: "<value>",
+      },
+    ],
+  });
+
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <Section variant="top-level">
 
@@ -19167,6 +19477,45 @@ ID of the conversation to which we append entries.
 
 <SectionTitle slot="title" variant="top-level">
 
+### Try it Now \{#operation-agents_api_v1_conversations_append_stream+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.conversations.appendStream({
+    conversationId: "<id>",
+    conversationAppendStreamRequest: {
+      inputs: "<value>",
+    },
+  });
+
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
 ### Request Body \{#operation-agents_api_v1_conversations_append_stream+request\}
 
 </SectionTitle>
@@ -22414,6 +22763,59 @@ Given a conversation_id and an id, recreate a conversation from this point and r
 </ExpandableProperty>
 
 </ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-agents_api_v1_conversations_restart_stream+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.conversations.restartStream({
+    conversationId: "<id>",
+    conversationRestartStreamRequest: {
+      inputs: [
+        {
+          object: "entry",
+          type: "message.input",
+          role: "assistant",
+          content: "<value>",
+        },
+        {
+          object: "entry",
+          type: "message.input",
+          role: "assistant",
+          content: "<value>",
+        },
+      ],
+      fromEntryId: "<id>",
+    },
+  });
+
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
+}
+
+run();`}
+/>
 
 </SectionContent>
 

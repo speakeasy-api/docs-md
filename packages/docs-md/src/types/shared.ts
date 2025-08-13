@@ -1,6 +1,3 @@
-import type { SandpackTheme } from "@codesandbox/sandpack-react";
-import type { PartialDeep } from "type-fest";
-
 import type { SchemaValue } from "./chunk.ts";
 
 export type PillVariant =
@@ -42,6 +39,4 @@ export type TryItNowProps = {
    */
   _enableUnsafeAutoImport?: boolean;
   layoutStyle?: React.CSSProperties;
-  currentTheme?: "dark" | "light";
-  themes?: Record<"dark" | "light", PartialDeep<SandpackTheme>>;
 };

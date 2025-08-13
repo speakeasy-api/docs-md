@@ -4,7 +4,7 @@ sidebar_label: Fine Tuning Jobs
 ---
 
 import "@speakeasy-api/docs-md/docusaurus.css";
-import { Pill, TabbedSection, SectionTitle, SectionTab, SectionContent, ExpandableSection, ExpandableProperty, ExpandableBreakout, Section, FrontMatterDisplayType } from "@speakeasy-api/docs-md/docusaurus";
+import { Pill, Section, SectionTitle, SectionContent, TryItNow, TabbedSection, SectionTab, ExpandableSection, ExpandableProperty, ExpandableBreakout, FrontMatterDisplayType } from "@speakeasy-api/docs-md/docusaurus";
 
 
 # Fine Tuning Jobs Operations \{#fine-tuning/jobs\}
@@ -14,6 +14,38 @@ import { Pill, TabbedSection, SectionTitle, SectionTab, SectionContent, Expandab
 _Get Fine Tuning Jobs_
 
 Get a list of fine-tuning jobs for your organization and user.
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-jobs_api_routes_fine_tuning_get_fine_tuning_jobs+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.fineTuning.jobs.list({});
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <TabbedSection>
 
@@ -1737,6 +1769,43 @@ _Default Value:_ `"list"`
 _Create Fine Tuning Job_
 
 Create a new fine-tuning job, it will be queued for processing.
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-jobs_api_routes_fine_tuning_create_fine_tuning_job+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.fineTuning.jobs.create({
+    model: "Camaro",
+    hyperparameters: {
+      learningRate: 0.0001,
+    },
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <Section variant="top-level">
 
@@ -4700,6 +4769,40 @@ The ID of the job to analyse.
 
 </Section>
 
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-jobs_api_routes_fine_tuning_get_fine_tuning_job+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.fineTuning.jobs.get({
+    jobId: "c167a961-ffca-4bcf-93ac-6169468dd389",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
+
 <TabbedSection>
 
 <SectionTitle slot="title" variant="default">
@@ -7008,6 +7111,40 @@ The ID of the job to cancel.
 
 </Section>
 
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-jobs_api_routes_fine_tuning_cancel_fine_tuning_job+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.fineTuning.jobs.cancel({
+    jobId: "6188a2f6-7513-4e0f-89cc-3f8088523a49",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
+
 <TabbedSection>
 
 <SectionTitle slot="title" variant="default">
@@ -9305,6 +9442,40 @@ Request the start of a validated fine tuning job.
 </ExpandableProperty>
 
 </ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-jobs_api_routes_fine_tuning_start_fine_tuning_job+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.fineTuning.jobs.start({
+    jobId: "56553e4d-0679-471e-b9ac-59a77d671103",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
 
 </SectionContent>
 

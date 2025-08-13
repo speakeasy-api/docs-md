@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 import { useTranspileDependencyMatches } from "../hooks/useCodeDependencies.ts";
 import { useEvaluatedCode } from "../hooks/useTranspiledCode.ts";
-import { setDependenciesAtom } from "../state.ts";
+import { setDependenciesAtom } from "../state/atoms.ts";
 
 export function CodeEditor() {
   const evaluatedCode = useEvaluatedCode();

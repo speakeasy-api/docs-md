@@ -4,7 +4,7 @@ sidebar_label: Ocr
 ---
 
 import "@speakeasy-api/docs-md/docusaurus.css";
-import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableProperty, ExpandableBreakout, TabbedSection, SectionTab } from "@speakeasy-api/docs-md/docusaurus";
+import { Pill, Section, SectionTitle, SectionContent, TryItNow, ExpandableSection, ExpandableProperty, ExpandableBreakout, TabbedSection, SectionTab } from "@speakeasy-api/docs-md/docusaurus";
 
 
 # Ocr Operations \{#ocr\}
@@ -12,6 +12,46 @@ import { Pill, Section, SectionTitle, SectionContent, ExpandableSection, Expanda
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/ocr \{#operation-ocr_v1_ocr_post\}
 
 OCR
+
+<Section variant="top-level">
+
+<SectionTitle slot="title" variant="top-level">
+
+### Try it Now \{#operation-ocr_v1_ocr_post+try-it-now\}
+
+</SectionTitle>
+
+<SectionContent slot="content" variant="top-level">
+
+<TryItNow
+ externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+ defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.ocr.process({
+    model: "CX-9",
+    document: {
+      imageUrl: {
+        url: "https://measly-scrap.com",
+      },
+      type: "image_url",
+    },
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+</Section>
 
 <Section variant="top-level">
 

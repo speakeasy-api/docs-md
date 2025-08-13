@@ -173,17 +173,7 @@ switch (settings.output.framework) {
     break;
   }
   case "nextra": {
-    // TODO: I'm dynamically importing this to temporarily get around an issue
-    // where we depend on Next.js dependencies, which don't exist in docusaurus
-    // builds and cause a crash
-    const { getCodeThemesFromThemeConfig, getNextraThemeConfig } = await import(
-      "./nextraUtils.ts"
-    );
-    const themeConfig = await getNextraThemeConfig();
-    const codeThemes = await getCodeThemesFromThemeConfig(themeConfig);
-    site = new NextraSite({
-      codeThemes,
-    });
+    site = new NextraSite();
     break;
   }
   case "custom": {
