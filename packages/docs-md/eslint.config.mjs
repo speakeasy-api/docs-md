@@ -12,9 +12,7 @@ export default [
     rootDir: getDirname(),
     entryPoints: {
       "eslint.config.mjs": ["default"],
-      "src/runtime/nextra.ts": /.*/,
-      "src/runtime/docusaurus.ts": /.*/,
-      "src/runtime/react.ts": /.*/,
+      "src/react/index.ts": /.*/,
       "src/compiler/compiler.ts": /.*/,
     },
     ignores: ["src/compiler/data/wasm_exec.js", ".storybook/**/*"],
@@ -27,23 +25,23 @@ export default [
           "File system access is only allowed in the CLI wrapper because other code is used in web environments",
       },
       {
-        type: "third-party",
-        moduleSpecifier: /^node:/,
-        denied: [/src\/components\//],
-        message:
-          "Components run in an environment that doesn't have access to Node.js modules",
-      },
-      {
-        type: "first-party",
-        filepath: /src\/runtime/,
-        allowed: [/src\/runtime\//],
-        message: "Only runtime code is allowed to import runtime code",
-      },
-      {
         type: "first-party",
         filepath: /src\/compiler\//,
         allowed: [/src\/compiler\//],
         message: "Only compiler code is allowed to import compiler code",
+      },
+      {
+        type: "third-party",
+        moduleSpecifier: /^node:/,
+        denied: [/src\/react\//],
+        message:
+          "React components run in an environment that doesn't have access to Node.js modules",
+      },
+      {
+        type: "first-party",
+        filepath: /src\/react/,
+        allowed: [/src\/react\//],
+        message: "Only React code is allowed to import React code",
       },
     ],
   }),

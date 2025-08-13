@@ -1,7 +1,10 @@
-import type { CodeProps } from "../common/types.ts";
 import styles from "./styles.module.css";
 
-export function DocusaurusCode({ text }: CodeProps) {
+type CodeProps = {
+  text: string;
+};
+
+export function Code({ text }: CodeProps) {
   return (
     <pre className={styles.pre}>
       <code

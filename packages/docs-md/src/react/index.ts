@@ -9,7 +9,7 @@ export { Section } from "./components/Section/Section.tsx";
 export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
 export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
 export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
-export { Code } from "./components/Code/nextra.tsx";
+export { Code } from "./components/Code/Code.tsx";
 export { Pill } from "./components/Pill/Pill.tsx";
 export { DebugPlaceholder } from "./components/DebugPlaceholder/DebugPlaceholder.tsx";
 export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/FrontMatterDisplayType.tsx";
