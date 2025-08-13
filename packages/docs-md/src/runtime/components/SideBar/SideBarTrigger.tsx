@@ -4,18 +4,11 @@
 // happy to import a server component (this file) that then imports a client
 // component.
 
-import type { SideBarTriggerProps } from "./common/containers.tsx";
 import {
-  SideBarContents,
   SideBarTriggerContents,
-} from "./common/containers.tsx";
-import { NextraSideBar } from "./nextra/sidebar.tsx";
-import { NextraSideBarTrigger } from "./nextra/sidebarTrigger.tsx";
-
-export function SideBar() {
-  return <SideBarContents SideBarContainer={NextraSideBar} />;
-}
+  type SideBarTriggerProps,
+} from "./components/SideBarTriggerContents.tsx";
 
 export function SideBarTrigger(props: SideBarTriggerProps) {
-  return <SideBarTriggerContents {...props} Button={NextraSideBarTrigger} />;
+  return <SideBarTriggerContents {...props} />;
 }

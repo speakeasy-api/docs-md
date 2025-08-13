@@ -1,4 +1,5 @@
-export { SideBar, SideBarTrigger } from "./components/SideBar/docusaurus.tsx";
+export { SideBar } from "./components/SideBar/SideBar.tsx";
+export { SideBarTrigger } from "./components/SideBar/SideBarTrigger.tsx";
 export { ExpandableSection } from "./components/ExpandableSection/ExpandableSection.tsx";
 export { ExpandableBreakout } from "./components/ExpandableSection/ExpandableBreakout.tsx";
 export { ExpandableProperty } from "./components/ExpandableSection/ExpandableProperty.tsx";

@@ -305,6 +305,7 @@ export abstract class Renderer {
   abstract enterContext(...args: RendererCreateContextArgs): void;
   abstract exitContext(): void;
   abstract getCurrentContextType(): ContextType;
+  abstract getSchemaDepth(): number;
   abstract alreadyInContext(...args: RendererAlreadyInContextArgs): boolean;
   abstract getCurrentId(...args: RendererGetCurrentIdArgs): string;
   abstract getDocsData(): Map<string, Chunk>;

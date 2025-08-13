@@ -589,6 +589,11 @@ ${text}\n</code>\n</pre>`;
     return topLevelContext.type;
   }
 
+  public override getSchemaDepth() {
+    return this.#contextStack.filter((context) => context.type === "schema")
+      .length;
+  }
+
   public override alreadyInContext(...[id]: RendererAlreadyInContextArgs) {
     return this.#contextStack.some((context) => context.id === id);
   }
