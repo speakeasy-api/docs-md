@@ -392,6 +392,18 @@ export abstract class MarkdownRenderer extends Renderer {
   }
 
   public override createExpandableBreakout(
+    ...[props]: RendererCreateExpandableBreakoutArgs
+  ) {
+    if (this.#currentSection && props.isTopLevel) {
+      this.#currentSection.properties.push({
+        fragment: this.getCurrentId(),
+        name: props.title,
+      });
+    }
+    this.handleCreateExpandableBreakout(props);
+  }
+
+  protected handleCreateExpandableBreakout(
     ...[{ createTitle, createContent }]: RendererCreateExpandableBreakoutArgs
   ) {
     createTitle();
@@ -399,6 +411,18 @@ export abstract class MarkdownRenderer extends Renderer {
   }
 
   public override createExpandableProperty(
+    ...[props]: RendererCreateExpandablePropertyArgs
+  ) {
+    if (this.#currentSection && props.isTopLevel) {
+      this.#currentSection.properties.push({
+        fragment: this.getCurrentId(),
+        name: props.title,
+      });
+    }
+    this.handleCreateExpandableProperty(props);
+  }
+
+  protected handleCreateExpandableProperty(
     ...[
       { typeInfo, annotations, title, createContent },
     ]: RendererCreateExpandablePropertyArgs

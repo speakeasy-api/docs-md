@@ -226,10 +226,7 @@ function renderObjectProperties({
   renderer: Renderer;
   schema: ObjectValue;
 }) {
-  const { expandTopLevelPropertiesOnPageLoad } = getSettings().display;
-  const expandByDefault =
-    expandTopLevelPropertiesOnPageLoad &&
-    renderer.getCurrentContextType() !== "schema";
+  const isTopLevel = renderer.getCurrentContextType() !== "schema";
   const properties = Object.entries(schema.properties).map(
     ([name, propertySchema]) => {
       if (propertySchema.type === "chunk") {
@@ -268,7 +265,7 @@ function renderObjectProperties({
       typeInfo,
       annotations,
       title: property.name,
-      expandByDefault,
+      isTopLevel,
       createContent: hasFrontmatter
         ? () => {
             renderSchemaFrontmatter({
@@ -296,10 +293,7 @@ function renderContainerTypes({
   renderer: Renderer;
   typeInfo: DisplayTypeInfo;
 }) {
-  const { expandTopLevelPropertiesOnPageLoad } = getSettings().display;
-  const expandByDefault =
-    expandTopLevelPropertiesOnPageLoad &&
-    renderer.getCurrentContextType() !== "schema";
+  const isTopLevel = renderer.getCurrentContextType() !== "schema";
   const entries = Array.from(typeInfo.breakoutSubTypes.entries()).map(
     ([label, schema]) => {
       // Shouldn't be possible due to how type info is computed
@@ -352,7 +346,8 @@ function renderContainerTypes({
 
     const hasFrontmatter = hasSchemaFrontmatter(breakout.schema);
     renderer.createExpandableBreakout({
-      expandByDefault,
+      title: breakout.label,
+      isTopLevel,
       createTitle: () => {
         renderer.createHeading(
           HEADINGS.SUB_SECTION_HEADING_LEVEL,

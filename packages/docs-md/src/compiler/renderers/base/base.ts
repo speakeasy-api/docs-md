@@ -139,17 +139,18 @@ export type RendererCreateSectionContentArgs = [
 
 export type RendererCreateExpandableBreakoutArgs = [
   options: {
-    expandByDefault: boolean;
+    title: string;
+    isTopLevel: boolean;
     createTitle: () => void;
     createContent?: () => void;
   },
 ];
 export type RendererCreateExpandablePropertyArgs = [
   options: {
+    title: string;
+    isTopLevel: boolean;
     typeInfo?: DisplayTypeInfo;
     annotations: PropertyAnnotations[];
-    title: string;
-    expandByDefault: boolean;
     createContent?: () => void;
   },
 ];

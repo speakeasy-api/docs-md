@@ -26,8 +26,7 @@ export function renderOperation({
   debug(
     `Rendering operation chunk: method=${chunk.chunkData.method} path=${chunk.chunkData.path} operationId=${chunk.chunkData.operationId}`
   );
-  const { showDebugPlaceholders, expandTopLevelPropertiesOnPageLoad } =
-    getSettings().display;
+  const { showDebugPlaceholders } = getSettings().display;
   renderer.createOperationSection(
     {
       method: chunk.chunkData.method,
@@ -49,6 +48,8 @@ export function renderOperation({
             const hasFrontmatter = !!entry.description || showDebugPlaceholders;
             renderer.enterContext({ id: entry.name, type: "schema" });
             renderer.createExpandableProperty({
+              title: entry.name,
+              isTopLevel: true,
               annotations: [
                 {
                   title: entry.in,
@@ -59,8 +60,6 @@ export function renderOperation({
                   variant: "info",
                 },
               ],
-              title: entry.name,
-              expandByDefault: expandTopLevelPropertiesOnPageLoad,
               createContent: hasFrontmatter
                 ? () => {
                     if (entry.description) {
@@ -113,7 +112,7 @@ export function renderOperation({
               typeInfo,
               annotations,
               title: parameter.name,
-              expandByDefault: expandTopLevelPropertiesOnPageLoad,
+              isTopLevel: true,
               createContent: hasFrontmatter
                 ? () => {
                     if (parameter.description) {
