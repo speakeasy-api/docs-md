@@ -41,7 +41,7 @@ export type TryItNowProps = {
   layoutStyle?: React.CSSProperties;
 };
 
-type SectionEntry = {
+export type PageMetadataSection = {
   fragment: string;
   properties: {
     fragment: string;
@@ -49,17 +49,21 @@ type SectionEntry = {
   }[];
 };
 
+export type PageMetadataOperation = {
+  fragment: string;
+  method: string;
+  path: string;
+  security?: PageMetadataSection;
+  parameters?: PageMetadataSection;
+  requestBody?: PageMetadataSection;
+
+  // Map is from status code + response type to section
+  responses?: Record<string, PageMetadataSection>;
+};
+
 export type PageMetadata = {
   slug: string;
   sidebarLabel: string;
   sidebarPosition: string;
-  operations: {
-    fragment: string;
-    method: string;
-    path: string;
-    security?: SectionEntry;
-    parameters?: SectionEntry;
-    requestBody?: SectionEntry;
-    responses?: SectionEntry;
-  }[];
+  operations: PageMetadataOperation[];
 };

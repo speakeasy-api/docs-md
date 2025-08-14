@@ -6,6 +6,8 @@ import type { Chunk } from "../../../types/chunk.ts";
 import type {
   DisplayTypeInfo,
   PageMetadata,
+  PageMetadataOperation,
+  PageMetadataSection,
   PropertyAnnotations,
 } from "../../../types/shared.ts";
 import { InternalError } from "../../../util/internalError.ts";
@@ -105,6 +107,8 @@ export abstract class MarkdownRenderer extends Renderer {
   #docsData: Map<string, Chunk>;
   #site: Site;
   #pageMetadata?: PageMetadata;
+  #currentOperation?: PageMetadataOperation;
+  #currentSection?: PageMetadataSection;
 
   #rendererLines: string[] = [];
 
@@ -174,11 +178,15 @@ export abstract class MarkdownRenderer extends Renderer {
     const id = `operation-${snakeCase(operationId)}`;
     this.enterContext({ id, type: "operation" });
 
-    this.#pageMetadata?.operations.push({
-      fragment: id,
-      method,
-      path,
-    });
+    if (this.#pageMetadata) {
+      const currentOperation = {
+        fragment: id,
+        method,
+        path,
+      };
+      this.#currentOperation = currentOperation;
+      this.#pageMetadata.operations.push(currentOperation);
+    }
 
     this.handleCreateOperationFrontmatter(() => {
       path = this.escapeText(path, {
@@ -208,6 +216,7 @@ export abstract class MarkdownRenderer extends Renderer {
       }
     });
     cb();
+    this.#currentOperation = undefined;
     this.exitContext();
   }
 
@@ -243,9 +252,19 @@ export abstract class MarkdownRenderer extends Renderer {
     ...[cb]: RendererCreateSecuritySectionArgs
   ): void {
     this.enterContext({ id: "security", type: "section" });
+    if (this.#currentOperation) {
+      this.#currentSection = {
+        fragment: this.getCurrentId(),
+        properties: [],
+      };
+      this.#currentOperation.security = this.#currentSection;
+    }
+
     this.createTopLevelSection({ title: "Security" }, () =>
       this.handleCreateSecurity(cb)
     );
+
+    this.#currentSection = undefined;
     this.exitContext();
   }
 
@@ -261,9 +280,19 @@ export abstract class MarkdownRenderer extends Renderer {
     ...[cb]: RendererCreateParametersSectionArgs
   ): void {
     this.enterContext({ id: "parameters", type: "section" });
+    if (this.#currentOperation) {
+      this.#currentSection = {
+        fragment: this.getCurrentId(),
+        properties: [],
+      };
+      this.#currentOperation.parameters = this.#currentSection;
+    }
+
     this.createTopLevelSection({ title: "Parameters" }, () =>
       this.handleCreateParameters(cb)
     );
+
+    this.#currentSection = undefined;
     this.exitContext();
   }
 
@@ -277,6 +306,13 @@ export abstract class MarkdownRenderer extends Renderer {
     ]: RendererCreateRequestSectionArgs
   ): void {
     this.enterContext({ id: "request", type: "section" });
+    if (this.#currentOperation) {
+      this.#currentSection = {
+        fragment: this.getCurrentId(),
+        properties: [],
+      };
+      this.#currentOperation.requestBody = this.#currentSection;
+    }
     const annotations: PropertyAnnotations[] = [];
     if (isOptional) {
       annotations.push({
@@ -294,6 +330,7 @@ export abstract class MarkdownRenderer extends Renderer {
         this.handleCreateBreakouts(createBreakouts);
       }
     );
+    this.#currentSection = undefined;
     this.exitContext();
   }
 
@@ -301,6 +338,9 @@ export abstract class MarkdownRenderer extends Renderer {
     ...[cb, { title = "Responses" } = {}]: RendererCreateResponsesArgs
   ): void {
     this.enterContext({ id: "responses", type: "section" });
+    if (this.#currentOperation) {
+      this.#currentOperation.responses = {};
+    }
     this.appendTabbedSectionStart();
     this.createSectionTitle(
       () =>
@@ -312,6 +352,15 @@ export abstract class MarkdownRenderer extends Renderer {
     cb(({ statusCode, contentType, createFrontMatter, createBreakouts }) => {
       this.enterContext({ id: statusCode, type: "section" });
       this.enterContext({ id: contentType.replace("/", "-"), type: "section" });
+      if (this.#currentOperation?.responses) {
+        this.#currentSection = {
+          fragment: this.getCurrentId(),
+          properties: [],
+        };
+        this.#currentOperation.responses[`${statusCode}-${contentType}`] =
+          this.#currentSection;
+      }
+
       this.appendTabbedSectionTabStart(this.getCurrentId());
       this.createText(statusCode);
       this.appendTabbedSectionTabEnd();
@@ -325,6 +374,8 @@ export abstract class MarkdownRenderer extends Renderer {
           variant: "top-level",
         }
       );
+
+      this.#currentSection = undefined;
       this.exitContext();
       this.exitContext();
     });
