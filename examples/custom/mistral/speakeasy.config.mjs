@@ -45,6 +45,11 @@ export default {
       return new MistralSite();
     },
   },
+  display: {
+    visibleResponses: "success",
+    showDebugPlaceholders: false,
+    expandTopLevelPropertiesOnPageLoad: true,
+  },
   tryItNow: {
     npmPackageName: "@mistralai/mistralai",
     sdkClassName: "Mistral",

@@ -6,7 +6,9 @@ export default {
     framework: "nextra",
   },
   display: {
-    // visibleResponses: "success",
+    visibleResponses: "success",
+    showDebugPlaceholders: false,
+    expandTopLevelPropertiesOnPageLoad: true,
   },
   tryItNow: {
     npmPackageName: "@mistralai/mistralai",
