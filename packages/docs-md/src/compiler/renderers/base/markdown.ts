@@ -5,6 +5,7 @@ import { snakeCase } from "change-case";
 import type { Chunk } from "../../../types/chunk.ts";
 import type {
   DisplayTypeInfo,
+  PageMetadata,
   PropertyAnnotations,
 } from "../../../types/shared.ts";
 import { InternalError } from "../../../util/internalError.ts";
@@ -45,6 +46,7 @@ import { Site } from "./base.ts";
 export abstract class MarkdownSite extends Site {
   #pages = new Map<string, Renderer>();
   #docsData: Map<string, Chunk> | undefined;
+  #pageMetadata: PageMetadata[] = [];
 
   public setDocsData(docsData: Map<string, Chunk>): void {
     this.#docsData = docsData;
@@ -81,9 +83,16 @@ export abstract class MarkdownSite extends Site {
   public render() {
     const pages: Record<string, string> = {};
     for (const [path, renderer] of this.#pages) {
-      pages[path] = renderer.render();
+      const { contents, metadata } = renderer.render();
+      pages[path] = contents;
+      this.#pageMetadata.push(metadata);
     }
+    this.processPageMetadata(this.#pageMetadata);
     return pages;
+  }
+
+  public processPageMetadata(_pageMetadata: PageMetadata[]) {
+    // Do nothing
   }
 }
 
@@ -92,13 +101,25 @@ export abstract class MarkdownRenderer extends Renderer {
   #contextStack: Context[] = [];
   #docsData: Map<string, Chunk>;
   #site: Site;
+  #pageMetadata: PageMetadata;
 
   #rendererLines: string[] = [];
 
-  constructor({ docsData, site }: RendererConstructorArgs) {
+  constructor({
+    docsData,
+    site,
+    currentPagePath,
+    frontMatter,
+  }: RendererConstructorArgs) {
     super();
     this.#docsData = docsData;
     this.#site = site;
+    this.#pageMetadata = {
+      sidebarPosition: frontMatter?.sidebarPosition ?? "",
+      sidebarLabel: frontMatter?.sidebarLabel ?? "",
+      slug: currentPagePath,
+      operations: [],
+    };
   }
 
   protected getSite() {
@@ -565,8 +586,8 @@ ${text}\n</code>\n</pre>`;
     if (this.#isFinalized) {
       throw new InternalError("Renderer has already been finalized");
     }
-    const data = this.#rendererLines.join("\n\n");
+    const contents = this.#rendererLines.join("\n\n");
     this.#isFinalized = true;
-    return data;
+    return { contents, metadata: this.#pageMetadata };
   }
 }

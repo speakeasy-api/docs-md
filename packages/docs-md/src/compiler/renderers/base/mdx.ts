@@ -57,7 +57,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
         imports += `import "${importPath}";\n`;
       }
     }
-    const parentData = super.render();
+    const { contents, metadata } = super.render();
     let data = "";
     if (imports) {
       data += imports + "\n\n";
@@ -65,8 +65,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     if (this.#includeSidebar) {
       data += "\n\n<SideBar />\n";
     }
-    data += parentData;
-    return data;
+    return { contents: data + contents, metadata };
   }
 
   public override createCode(...[text, options]: RendererCreateCodeArgs) {

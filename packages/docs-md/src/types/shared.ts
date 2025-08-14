@@ -40,3 +40,25 @@ export type TryItNowProps = {
   _enableUnsafeAutoImport?: boolean;
   layoutStyle?: React.CSSProperties;
 };
+
+type SectionEntry = {
+  fragment: string;
+  properties: {
+    fragment: string;
+    name: string;
+  }[];
+};
+
+export type PageMetadata = {
+  slug: string;
+  sidebarLabel: string;
+  sidebarPosition: string;
+  operations: {
+    method: string;
+    path: string;
+    security: SectionEntry;
+    parameters: SectionEntry;
+    requestBody: SectionEntry;
+    responses: SectionEntry;
+  }[];
+};

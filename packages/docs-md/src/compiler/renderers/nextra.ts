@@ -55,10 +55,10 @@ sidebarTitle: ${this.escapeText(args.frontMatter.sidebarLabel, { escape: "mdx" }
   }
 
   public override render() {
-    const parentData = super.render();
+    const { contents, metadata } = super.render();
     const data =
-      (this.#frontMatter ? this.#frontMatter + "\n\n" : "") + parentData;
-    return data;
+      (this.#frontMatter ? this.#frontMatter + "\n\n" : "") + contents;
+    return { contents: data, metadata };
   }
 
   protected override insertComponentImport(symbol: string) {

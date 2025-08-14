@@ -18,6 +18,7 @@
 import type { Chunk } from "../../../types/chunk.ts";
 import type {
   DisplayTypeInfo,
+  PageMetadata,
   PillVariant,
   PropertyAnnotations,
   SectionVariant,
@@ -49,6 +50,7 @@ export abstract class Site {
   abstract setDocsData(docsData: Map<string, Chunk>): void;
   abstract createPage(...args: SiteCreatePageArgs): Renderer;
   abstract render(): Record<string, string>;
+  abstract processPageMetadata(pageMetadata: PageMetadata[]): void;
   abstract buildPagePath(...args: SiteBuildPagePathArgs): string;
   abstract hasPage(...args: SiteHasPageArgs): boolean;
   protected abstract getRenderer(...args: SiteGetRendererArgs): Renderer;
@@ -253,7 +255,7 @@ export type RendererGetCurrentIdArgs = [postFixId?: string];
 export type RendererCreateTabbedSectionTabArgs = [id: string];
 
 export abstract class Renderer {
-  abstract render(): string;
+  abstract render(): { contents: string; metadata: PageMetadata };
 
   // High level operations
 
