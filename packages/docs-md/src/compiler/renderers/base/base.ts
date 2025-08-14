@@ -38,7 +38,11 @@ type PageFrontMatter = {
   sidebarLabel: string;
 };
 
-export type SiteCreatePageArgs = [path: string, frontMatter?: PageFrontMatter];
+export type SiteCreatePageArgs = [
+  path: string,
+  slug?: string,
+  frontMatter?: PageFrontMatter,
+];
 export type SiteBuildPagePathArgs = [
   slug: string,
   options?: { appendIndex?: boolean },
@@ -68,6 +72,7 @@ export type RendererConstructorArgs = {
   site: Site;
   docsData: Map<string, Chunk>;
   currentPagePath: string;
+  currentPageSlug?: string;
   frontMatter?: PageFrontMatter;
 };
 
@@ -255,7 +260,8 @@ export type RendererGetCurrentIdArgs = [postFixId?: string];
 export type RendererCreateTabbedSectionTabArgs = [id: string];
 
 export abstract class Renderer {
-  abstract render(): { contents: string; metadata: PageMetadata };
+  // Metadata is undefined for embeds, since they're not full pages
+  abstract render(): { contents: string; metadata?: PageMetadata };
 
   // High level operations
 

@@ -54,11 +54,12 @@ export type PageMetadata = {
   sidebarLabel: string;
   sidebarPosition: string;
   operations: {
+    fragment: string;
     method: string;
     path: string;
-    security: SectionEntry;
-    parameters: SectionEntry;
-    requestBody: SectionEntry;
-    responses: SectionEntry;
+    security?: SectionEntry;
+    parameters?: SectionEntry;
+    requestBody?: SectionEntry;
+    responses?: SectionEntry;
   }[];
 };

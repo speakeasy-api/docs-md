@@ -66,11 +66,12 @@ export abstract class MarkdownSite extends Site {
     return this.#pages.has(path);
   }
 
-  public createPage(...[path, frontMatter]: SiteCreatePageArgs) {
+  public createPage(...[path, slug, frontMatter]: SiteCreatePageArgs) {
     if (!this.#docsData) {
       throw new InternalError("Docs data not set");
     }
     const renderer = this.getRenderer({
+      currentPageSlug: slug,
       currentPagePath: path,
       site: this,
       docsData: this.#docsData,
@@ -85,7 +86,9 @@ export abstract class MarkdownSite extends Site {
     for (const [path, renderer] of this.#pages) {
       const { contents, metadata } = renderer.render();
       pages[path] = contents;
-      this.#pageMetadata.push(metadata);
+      if (metadata) {
+        this.#pageMetadata.push(metadata);
+      }
     }
     this.processPageMetadata(this.#pageMetadata);
     return pages;
@@ -101,25 +104,27 @@ export abstract class MarkdownRenderer extends Renderer {
   #contextStack: Context[] = [];
   #docsData: Map<string, Chunk>;
   #site: Site;
-  #pageMetadata: PageMetadata;
+  #pageMetadata?: PageMetadata;
 
   #rendererLines: string[] = [];
 
   constructor({
     docsData,
     site,
-    currentPagePath,
+    currentPageSlug,
     frontMatter,
   }: RendererConstructorArgs) {
     super();
     this.#docsData = docsData;
     this.#site = site;
-    this.#pageMetadata = {
-      sidebarPosition: frontMatter?.sidebarPosition ?? "",
-      sidebarLabel: frontMatter?.sidebarLabel ?? "",
-      slug: currentPagePath,
-      operations: [],
-    };
+    if (currentPageSlug && frontMatter) {
+      this.#pageMetadata = {
+        sidebarPosition: frontMatter.sidebarPosition,
+        sidebarLabel: frontMatter.sidebarLabel,
+        slug: currentPageSlug,
+        operations: [],
+      };
+    }
   }
 
   protected getSite() {
@@ -168,6 +173,13 @@ export abstract class MarkdownRenderer extends Renderer {
     const { showDebugPlaceholders } = getSettings().display;
     const id = `operation-${snakeCase(operationId)}`;
     this.enterContext({ id, type: "operation" });
+
+    this.#pageMetadata?.operations.push({
+      fragment: id,
+      method,
+      path,
+    });
+
     this.handleCreateOperationFrontmatter(() => {
       path = this.escapeText(path, {
         escape: "markdown",

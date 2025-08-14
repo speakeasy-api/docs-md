@@ -3,7 +3,7 @@ import { capitalCase, snakeCase } from "change-case";
 import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
 import { InternalError } from "../../util/internalError.ts";
 import { getSettings } from ".././settings.ts";
-import type { Renderer, Site } from "..//renderers/base/base.ts";
+import type { Site } from "..//renderers/base/base.ts";
 import type { DocsCodeSnippets } from "../data/generateCodeSnippets.ts";
 import { debug } from "../logging.ts";
 import { renderAbout } from "./chunks/about.ts";
@@ -16,19 +16,12 @@ import { getOperationFromId } from "./util.ts";
 
 type Data = Map<string, Chunk>;
 
-type PageMapEntry =
-  | {
-      type: "chunk";
-      sidebarLabel: string;
-      sidebarPosition: string;
-      chunks: Chunk[];
-    }
-  | {
-      type: "renderer";
-      sidebarLabel: string;
-      sidebarPosition: string;
-      renderer: (renderer: Renderer) => void;
-    };
+type PageMapEntry = {
+  slug: string;
+  sidebarLabel: string;
+  sidebarPosition: string;
+  chunks: Chunk[];
+};
 
 type PageMap = Map<string, PageMapEntry>;
 
@@ -41,7 +34,7 @@ function getPageMap(site: Site, data: Data) {
   for (const [, chunk] of data) {
     if (chunk.chunkType === "about") {
       pageMap.set(site.buildPagePath("", { appendIndex: true }), {
-        type: "chunk",
+        slug: "",
         sidebarLabel: "About",
         sidebarPosition: "1",
         chunks: [chunk],
@@ -53,7 +46,7 @@ function getPageMap(site: Site, data: Data) {
   for (const [, chunk] of data) {
     if (chunk.chunkType === "globalSecurity") {
       pageMap.set(site.buildPagePath("global-security"), {
-        type: "chunk",
+        slug: "global-security",
         sidebarLabel: "Global Security",
         sidebarPosition: "2",
         chunks: [chunk],
@@ -77,7 +70,7 @@ function getPageMap(site: Site, data: Data) {
   for (const chunk of tagChunks) {
     const pagePath = site.buildPagePath(chunk.slug);
     const pageMapEntry: PageMapEntry = {
-      type: "chunk",
+      slug: chunk.slug,
       sidebarLabel: capitalCase(chunk.chunkData.name),
       sidebarPosition: `3.${tagIndex++}`,
       chunks: [chunk],
@@ -119,7 +112,7 @@ function getPageMap(site: Site, data: Data) {
       }
       const pagePath = site.buildPagePath(chunk.slug);
       const pageMapEntry: PageMapEntry = {
-        type: "chunk",
+        slug: chunk.slug,
         sidebarLabel: capitalCase(chunk.chunkData.value.name),
         sidebarPosition: `4.${schemaIndex++}`,
         chunks: [chunk] as Chunk[],
@@ -139,16 +132,8 @@ function renderPages(
   const settings = getSettings();
   for (const [currentPagePath, pageMapEntry] of pageMap) {
     debug(`Rendering page ${currentPagePath}`);
-    if (pageMapEntry.type === "renderer") {
-      const renderer = site.createPage(currentPagePath, {
-        sidebarPosition: pageMapEntry.sidebarPosition,
-        sidebarLabel: pageMapEntry.sidebarLabel,
-      });
-      pageMapEntry.renderer(renderer);
-      continue;
-    }
-    const { chunks, sidebarLabel, sidebarPosition } = pageMapEntry;
-    const renderer = site.createPage(currentPagePath, {
+    const { chunks, sidebarLabel, sidebarPosition, slug } = pageMapEntry;
+    const renderer = site.createPage(currentPagePath, slug, {
       sidebarPosition,
       sidebarLabel,
     });
