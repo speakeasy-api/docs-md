@@ -29,6 +29,10 @@ const meta: Meta<Required<TryItNowProps>> = {
       description:
         "Experimental: Automatically scan for external dependencies from npm as user adds imports",
     },
+    readonly: {
+      control: "boolean",
+      description: "When true, the code editor becomes read-only and the output window is hidden",
+    },
   },
 };
 
@@ -387,5 +391,57 @@ console.log(example);
 export const Empty: Story = {
   args: {
     defaultValue: "",
+  },
+};
+
+export const ReadonlyMode: Story = {
+  args: {
+    defaultValue: `// This is a readonly code example
+// Users can view but not edit or execute this code
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  role: 'admin' | 'user' | 'guest';
+}
+
+class UserService {
+  private users: User[] = [];
+  
+  addUser(user: User): void {
+    this.users.push(user);
+    console.log(\`User \${user.name} added successfully\`);
+  }
+  
+  getUserById(id: number): User | undefined {
+    return this.users.find(user => user.id === id);
+  }
+  
+  getAllUsers(): User[] {
+    return [...this.users];
+  }
+}
+
+// Example usage
+const userService = new UserService();
+
+userService.addUser({
+  id: 1,
+  name: "Alice Johnson",
+  email: "alice@example.com",
+  role: "admin"
+});
+
+userService.addUser({
+  id: 2,
+  name: "Bob Smith",
+  email: "bob@example.com",
+  role: "user"
+});
+
+const users = userService.getAllUsers();
+console.log("All users:", users);`,
+    readonly: true,
   },
 };

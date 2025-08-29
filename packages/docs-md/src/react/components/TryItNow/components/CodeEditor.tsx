@@ -8,7 +8,7 @@ import { useTranspileDependencyMatches } from "../hooks/useCodeDependencies.ts";
 import { useEvaluatedCode } from "../hooks/useTranspiledCode.ts";
 import { setDependenciesAtom } from "../state/atoms.ts";
 
-export function CodeEditor() {
+export function CodeEditor({ readonly }: { readonly?: boolean }) {
   const evaluatedCode = useEvaluatedCode();
   const { code } = useActiveCode();
   const dependencies = useTranspileDependencyMatches(evaluatedCode ?? "");
@@ -20,5 +20,5 @@ export function CodeEditor() {
     }
   }, [dependencies, code, setDependenciesAtomValue]);
 
-  return <SandpackCodeEditor />;
+  return <SandpackCodeEditor readOnly={readonly} showRunButton={!readonly} />;
 }

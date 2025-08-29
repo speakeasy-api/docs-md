@@ -39,6 +39,10 @@ export type TryItNowProps = {
    */
   _enableUnsafeAutoImport?: boolean;
   layoutStyle?: React.CSSProperties;
+  /**
+   * When true, the code editor becomes read-only and the output window is hidden
+   */
+  readonly?: boolean;
 };
 
 export type PageMetadataSection = {

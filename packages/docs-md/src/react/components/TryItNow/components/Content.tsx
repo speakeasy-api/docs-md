@@ -17,16 +17,26 @@ import { ConsoleOutput } from "./ConsoleOutput.tsx";
 const TryItNowContents = ({
   _enableUnsafeAutoImport,
   layoutStyle,
+  readonly,
 }: {
   _enableUnsafeAutoImport?: boolean;
   layoutStyle?: React.CSSProperties;
+  readonly?: boolean;
 }) => {
   const error = useErrorMessage();
 
   return (
     <SandpackLayout style={layoutStyle}>
-      {_enableUnsafeAutoImport ? <CodeEditor /> : <SandpackCodeEditor />}
-      {!error && <ConsoleOutput />}
+      {_enableUnsafeAutoImport ? (
+        <CodeEditor readonly={readonly} />
+      ) : (
+        <SandpackCodeEditor
+          showReadOnly={false}
+          readOnly={readonly}
+          showRunButton={!readonly}
+        />
+      )}
+      {!error && !readonly && <ConsoleOutput />}
       <SandpackPreview
         style={
           error
@@ -47,6 +57,7 @@ export const Content = ({
   defaultValue = "",
   _enableUnsafeAutoImport,
   layoutStyle,
+  readonly,
 }: TryItNowProps) => {
   const autoImportDependencies = useAtomValue(dependenciesAtom);
   const previousCodeAtomValue = useAtomValue(lastEditorValueAtom);
@@ -67,6 +78,7 @@ export const Content = ({
               ? previousCodeAtomValue
               : defaultValue,
           active: true,
+          readOnly: readonly,
         },
       }}
       customSetup={{
@@ -77,7 +89,11 @@ export const Content = ({
         entry: "index.ts",
       }}
     >
-      <TryItNowContents layoutStyle={layoutStyle} />
+      <TryItNowContents
+        layoutStyle={layoutStyle}
+        readonly={readonly}
+        _enableUnsafeAutoImport={_enableUnsafeAutoImport}
+      />
     </SandpackProvider>
   );
 };
