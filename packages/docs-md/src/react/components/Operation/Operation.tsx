@@ -1,7 +1,34 @@
 import type { PropsWithChildren } from "react";
 
+import { useChildren, useUniqueChild } from "../../util/hooks.ts";
+import styles from "./styles.module.css";
+
 export function Operation({ children }: PropsWithChildren) {
-  return <div>{children}</div>;
+  const frontMatterChild = useUniqueChild(children, "front-matter");
+  const tryItNowChild = useUniqueChild(children, "try-it-now");
+  const securityChildren = useChildren(children, "security");
+  const parametersChildren = useChildren(children, "parameters");
+  const requestBodyChildren = useChildren(children, "request-body");
+  const responseBodyChildren = useChildren(children, "response-body");
+
+  return (
+    <div className={styles.operation}>
+      {frontMatterChild && (
+        <div className={styles.frontmatter}>{frontMatterChild}</div>
+      )}
+      <div className={tryItNowChild ? styles.twoColumn : styles.singleColumn}>
+        <div className={styles.leftColumn}>
+          {securityChildren}
+          {parametersChildren}
+          {requestBodyChildren}
+          {responseBodyChildren}
+        </div>
+        {tryItNowChild && (
+          <div className={styles.rightColumn}>{tryItNowChild}</div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export function OperationFrontMatterSection({ children }: PropsWithChildren) {

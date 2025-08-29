@@ -92,6 +92,7 @@ export type RendererCreateTryItNowSectionArgs = [
   options: {
     externalDependencies: Record<string, string>;
     defaultValue: string;
+    readonly?: boolean;
   },
 ];
 export type RendererCreateSecuritySectionArgs = [cb: () => void];

@@ -164,7 +164,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
 
   public override createTryItNowSection(
     ...[
-      { externalDependencies, defaultValue },
+      { externalDependencies, defaultValue, readonly },
     ]: RendererCreateTryItNowSectionArgs
   ) {
     this.insertComponentImport("OperationTryItNowSection");
@@ -179,6 +179,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
           `<TryItNow
   externalDependencies={${JSON.stringify(externalDependencies)}}
   defaultValue={\`${defaultValue}\`}
+  readonly={${readonly ?? true}}
 />`
         )
     );

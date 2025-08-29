@@ -148,6 +148,7 @@ export function renderOperation({
             [tryItNow.npmPackageName]: "latest",
           },
           defaultValue: usageSnippet.code,
+          readonly: true,
         });
       }
 

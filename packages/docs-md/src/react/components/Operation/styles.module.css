@@ -1,0 +1,48 @@
+.operation {
+  width: 100%;
+}
+
+.frontmatter {
+  margin-bottom: 2rem;
+}
+
+.singleColumn {
+  width: 100%;
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.leftColumn {
+  min-width: 0; 
+}
+
+.rightColumn {
+  position: sticky;
+  top: 2rem;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  min-width: 0; 
+}
+
+/* Responsive design - stack columns on smaller screens */
+@media (max-width: 1200px) {
+  .twoColumn {
+    grid-template-columns: 1fr;
+  }
+  
+  .rightColumn {
+    position: static;
+    max-height: none;
+    margin-top: 2rem;
+  }
+}
+
+/* Additional spacing adjustments for better readability */
+.leftColumn > * + * {
+  margin-top: 2rem;
+}

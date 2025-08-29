@@ -5,4 +5,8 @@ export default {
     componentOutDir: "./src/components/speakeasy",
     framework: "nextra",
   },
+  tryItNow: {
+    npmPackageName: "speakeasy-api",
+    sdkClassName: "Speakeasy",
+  },
 };
