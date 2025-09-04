@@ -10,8 +10,16 @@ export default {
     showDebugPlaceholders: false,
     expandTopLevelPropertiesOnPageLoad: true,
   },
-  tryItNow: {
-    npmPackageName: "@mistralai/mistralai",
-    sdkClassName: "Mistral",
-  },
+  tryItNow: [
+    {
+      language: "typescript",
+      sdkClassName: "Mistral",
+      packageName: "@mistralai/mistralai",
+    },
+    {
+      language: "python",
+      sdkClassName: "Mistral",
+      packageName: "mistralai",
+    },
+  ],
 };

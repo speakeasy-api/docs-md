@@ -140,14 +140,14 @@ export function renderOperation({
 
       const { tryItNow } = getSettings();
       const usageSnippet = docsCodeSnippets[chunk.id];
-      if (usageSnippet && tryItNow) {
+      if (usageSnippet?.typescript && tryItNow) {
         debug(`Rendering try it now`);
         renderer.createTryItNowSection({
           externalDependencies: {
             zod: "^3.25.64",
-            [tryItNow.npmPackageName]: "latest",
+            [usageSnippet.typescript.packageName]: "latest",
           },
-          defaultValue: usageSnippet.code,
+          defaultValue: usageSnippet.typescript.code,
         });
       }
 

@@ -48,10 +48,26 @@ export const settingsSchema = z.strictObject({
       expandTopLevelPropertiesOnPageLoad: false,
     }),
   tryItNow: z
-    .strictObject({
-      npmPackageName: z.string(),
-      sdkClassName: z.string(),
-    })
+    .array(
+      z.strictObject({
+        language: z.enum([
+          "typescript",
+          "go",
+          "java",
+          "python",
+          "csharp",
+          "terraform",
+          "unity",
+          "php",
+          "swift",
+          "ruby",
+          "postman",
+        ]),
+        sdkClassName: z.string(),
+        packageName: z.string(),
+      })
+    )
+    .min(1)
     .optional(),
 });
 

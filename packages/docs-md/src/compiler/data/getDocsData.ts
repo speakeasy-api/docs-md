@@ -7,7 +7,6 @@ import { fileURLToPath } from "node:url";
 import { unzipSync } from "node:zlib";
 
 import type { Chunk } from "../../types/chunk.ts";
-import { info } from "../logging.js";
 declare class Go {
   argv: string[];
   env: Record<string, string>;
@@ -23,7 +22,6 @@ const wasmPath = join(dirname(fileURLToPath(import.meta.url)), "lib.wasm.gz");
 export async function getData(
   specContents: string
 ): Promise<Map<string, Chunk>> {
-  info("Parsing OpenAPI spec (ignore lock file errors printed below)");
   const gzippedBuffer = await readFile(wasmPath);
   const wasmBuffer = unzipSync(gzippedBuffer);
   const go = new Go();

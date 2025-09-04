@@ -7,12 +7,16 @@ import type {
   ErrorResponse,
 } from "../../types/codeSnippet.ts";
 import { getSettings } from ".././settings.ts";
-import { error } from "../logging.js";
+import { error, info } from "../logging.js";
 
 const CODE_SNIPPETS_API_URL =
   process.env.SPEAKEASY_CODE_SNIPPETS_API_URL ?? "https://api.speakeasy.com";
 
-export type DocsCodeSnippets = Record<OperationChunk["id"], CodeSnippet>;
+// Map from operation ID to language to code snippet
+export type DocsCodeSnippets = Record<
+  OperationChunk["id"],
+  Record<string, CodeSnippet>
+>;
 
 export const generateCodeSnippets = async (
   docsData: Map<string, Chunk>,
@@ -20,6 +24,7 @@ export const generateCodeSnippets = async (
 ): Promise<DocsCodeSnippets> => {
   const { spec, tryItNow } = getSettings();
   if (!tryItNow) {
+    info("TryItNow not enabled, skipping code snippets generation");
     return {};
   }
 
@@ -34,32 +39,46 @@ export const generateCodeSnippets = async (
     }
   }
   try {
-    const formData = new FormData();
+    for (const language of tryItNow) {
+      const formData = new FormData();
 
-    const blob = new Blob([specContents]);
-    formData.append("language", "typescript");
-    formData.append("schema_file", blob, specFilename);
-    formData.append("package_name", tryItNow.npmPackageName);
-    formData.append("sdk_class_name", tryItNow.sdkClassName);
+      const blob = new Blob([specContents]);
+      formData.append("language", language.language);
+      formData.append("schema_file", blob, specFilename);
+      formData.append("package_name", language.packageName);
+      formData.append("sdk_class_name", language.sdkClassName);
 
-    const res = await fetch(`${CODE_SNIPPETS_API_URL}/v1/code_sample/preview`, {
-      method: "POST",
-      body: formData,
-    });
+      const res = await fetch(
+        `${CODE_SNIPPETS_API_URL}/v1/code_sample/preview`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
-    const json = (await res.json()) as unknown;
+      const json = (await res.json()) as unknown;
 
-    if (!res.ok) {
-      const error = json as ErrorResponse;
-      throw new Error(`Failed to generate code sample: ${error.message}`);
-    }
-    const codeSnippets = (json as CodeSamplesResponse).snippets;
+      if (!res.ok) {
+        const error = json as ErrorResponse;
+        throw new Error(`Failed to generate code sample: ${error.message}`);
+      }
+      const codeSnippets = (json as CodeSamplesResponse).snippets.map(
+        (snippet) => ({
+          ...snippet,
+          packageName: language.packageName,
+        })
+      );
 
-    for (const snippet of codeSnippets) {
-      const chunk = operationChunksByOperationId.get(snippet.operationId);
-      // only set the usage snippet if the operation id exists in the spec
-      if (chunk) {
-        docsCodeSnippets[chunk.id] = snippet;
+      for (const snippet of codeSnippets) {
+        const chunk = operationChunksByOperationId.get(snippet.operationId);
+        // only set the usage snippet if the operation id exists in the spec
+        if (chunk) {
+          docsCodeSnippets[chunk.id] ??= {};
+
+          // Won't be null due to the above line
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          docsCodeSnippets[chunk.id]![language.language] = snippet;
+        }
       }
     }
   } catch (err) {
