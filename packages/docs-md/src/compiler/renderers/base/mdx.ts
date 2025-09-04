@@ -5,6 +5,7 @@ import { getSettings } from "../../settings.ts";
 import type {
   RendererConstructorArgs,
   RendererCreateCodeArgs,
+  RendererCreateCodeSamplesSectionArgs,
   RendererCreateDebugPlaceholderArgs,
   RendererCreateExpandableBreakoutArgs,
   RendererCreateExpandablePropertyArgs,
@@ -20,10 +21,13 @@ import type {
   RendererCreateSectionTitleArgs,
   RendererCreateSecuritySectionArgs,
   RendererCreateTabbedSectionTabArgs,
-  RendererCreateTryItNowSectionArgs,
 } from "./base.ts";
 import { MarkdownRenderer, MarkdownSite } from "./markdown.ts";
-import { getEmbedPath, getEmbedSymbol } from "./util.ts";
+import {
+  getEmbedPath,
+  getEmbedSymbol,
+  getPrettyCodeSampleLanguage,
+} from "./util.ts";
 
 export abstract class MdxSite extends MarkdownSite {
   // There isn't any difference between MdxSite and MarkdownSite at the moment,
@@ -162,27 +166,52 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.appendLine(`</OperationFrontMatterSection>`);
   }
 
-  public override createTryItNowSection(
-    ...[
-      { externalDependencies, defaultValue },
-    ]: RendererCreateTryItNowSectionArgs
+  public override createCodeSamplesSection(
+    ...[cb]: RendererCreateCodeSamplesSectionArgs
   ) {
-    this.insertComponentImport("OperationTryItNowSection");
-    this.insertComponentImport("TryItNow");
-    this.appendLine(`<OperationTryItNowSection slot="try-it-now">`);
-    this.createTopLevelSection(
-      {
-        title: "Try it Now",
-      },
+    this.insertComponentImport("OperationCodeSamplesSection");
+    this.appendLine(`<OperationCodeSamplesSection slot="code-samples">`);
+    this.appendTabbedSectionStart();
+    this.createSectionTitle(
       () =>
-        this.appendLine(
-          `<TryItNow
+        this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, "Code Samples", {
+          id: this.getCurrentId(),
+        }),
+      { variant: "default" }
+    );
+    cb({
+      createTryItNowEntry: ({
+        externalDependencies,
+        defaultValue,
+        language,
+      }) => {
+        this.insertComponentImport("TryItNow");
+        this.appendTabbedSectionTabStart("try-it-now");
+        this.createText(getPrettyCodeSampleLanguage(language));
+        this.appendTabbedSectionTabEnd();
+        this.createSectionContent(() => {
+          this.appendLine(
+            `<TryItNow
   externalDependencies={${JSON.stringify(externalDependencies)}}
   defaultValue={\`${defaultValue}\`}
 />`
-        )
-    );
-    this.appendLine(`</OperationTryItNowSection>`);
+          );
+        });
+      },
+      createCodeSampleEntry: ({ language, value }) => {
+        this.insertComponentImport("CodeSample");
+        this.appendTabbedSectionTabStart(language);
+        this.createText(getPrettyCodeSampleLanguage(language));
+        this.appendTabbedSectionTabEnd();
+        this.createSectionContent(() => {
+          this.appendLine(
+            `<CodeSample language="${language}" value={\`${value}\`} />`
+          );
+        });
+      },
+    });
+    this.appendTabbedSectionEnd();
+    this.appendLine(`</OperationCodeSamplesSection>`);
   }
 
   public override createSecuritySection(

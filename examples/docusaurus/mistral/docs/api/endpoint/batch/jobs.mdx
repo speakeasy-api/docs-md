@@ -4,7 +4,7 @@ sidebar_label: Batch Jobs
 ---
 
 import "@speakeasy-api/docs-md/docusaurus.css";
-import { Operation, OperationFrontMatterSection, Pill, OperationTryItNowSection, TryItNow, Section, SectionTitle, SectionContent, OperationResponseBodySection, TabbedSection, SectionTab, ExpandableSection, ExpandableProperty, ExpandableBreakout, OperationRequestBodySection, OperationParametersSection } from "@speakeasy-api/docs-md/react";
+import { Operation, OperationFrontMatterSection, Pill, OperationCodeSamplesSection, TabbedSection, SectionTitle, TryItNow, SectionTab, SectionContent, CodeSample, OperationResponseBodySection, ExpandableSection, ExpandableProperty, ExpandableBreakout, OperationRequestBodySection, Section, OperationParametersSection } from "@speakeasy-api/docs-md/react";
 
 
 # Batch Jobs Operations \{#batch/jobs\}
@@ -21,17 +21,23 @@ Get a list of batch jobs for your organization and user.
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-jobs_api_routes_batch_get_batch_jobs\}
+### Code Samples \{#operation-jobs_api_routes_batch_get_batch_jobs\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="try-it-now">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -53,9 +59,31 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
+
+<CodeSample language="python" value={`from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.batch.jobs.list()
+
+    # Handle response
+    print(res)`} />
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -557,17 +585,23 @@ Create a new batch job, it will be queued for processing.
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-jobs_api_routes_batch_create_batch_job\}
+### Code Samples \{#operation-jobs_api_routes_batch_create_batch_job\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="try-it-now">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -595,9 +629,33 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
+
+<CodeSample language="python" value={`from mistralai import Mistral, models
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.batch.jobs.create(input_files=[
+        "fe3343a2-3b8d-404b-ba32-a78dede2614a",
+    ], endpoint=models.APIEndpoint.ROOT_V1_MODERATIONS, model="Altima")
+
+    # Handle response
+    print(res)`} />
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -1164,17 +1222,23 @@ Get a batch job details by its UUID.
 
 </OperationParametersSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-jobs_api_routes_batch_get_batch_job\}
+### Code Samples \{#operation-jobs_api_routes_batch_get_batch_job\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="try-it-now">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -1198,9 +1262,31 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
+
+<CodeSample language="python" value={`from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.batch.jobs.get(job_id="4017dc9f-b629-42f4-9700-8c681b9e7f0f")
+
+    # Handle response
+    print(res)`} />
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -1651,17 +1737,23 @@ Request the cancellation of a batch job.
 
 </OperationParametersSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-jobs_api_routes_batch_cancel_batch_job\}
+### Code Samples \{#operation-jobs_api_routes_batch_cancel_batch_job\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="try-it-now">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -1685,9 +1777,31 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
+
+<CodeSample language="python" value={`from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.batch.jobs.cancel(job_id="4fb29d1c-535b-4f0a-a1cb-2167f86da569")
+
+    # Handle response
+    print(res)`} />
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 

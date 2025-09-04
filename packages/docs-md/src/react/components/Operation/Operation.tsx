@@ -8,8 +8,8 @@ export function OperationFrontMatterSection({ children }: PropsWithChildren) {
   return <div slot="front-matter">{children}</div>;
 }
 
-export function OperationTryItNowSection({ children }: PropsWithChildren) {
-  return <div slot="try-it-now">{children}</div>;
+export function OperationCodeSamplesSection({ children }: PropsWithChildren) {
+  return <div slot="code-samples">{children}</div>;
 }
 
 export function OperationSecuritySection({ children }: PropsWithChildren) {

@@ -6,6 +6,7 @@ import type {
   CodeSnippet,
   ErrorResponse,
 } from "../../types/codeSnippet.ts";
+import type { CodeSampleLanguage } from ".././settings.ts";
 import { getSettings } from ".././settings.ts";
 import { error, info } from "../logging.js";
 
@@ -15,7 +16,7 @@ const CODE_SNIPPETS_API_URL =
 // Map from operation ID to language to code snippet
 export type DocsCodeSnippets = Record<
   OperationChunk["id"],
-  Record<string, CodeSnippet>
+  Partial<Record<CodeSampleLanguage, CodeSnippet>>
 >;
 
 export const generateCodeSnippets = async (

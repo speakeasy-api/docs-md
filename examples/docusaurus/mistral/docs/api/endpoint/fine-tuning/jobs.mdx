@@ -4,7 +4,7 @@ sidebar_label: Fine Tuning Jobs
 ---
 
 import "@speakeasy-api/docs-md/docusaurus.css";
-import { Operation, OperationFrontMatterSection, Pill, OperationTryItNowSection, TryItNow, Section, SectionTitle, SectionContent, OperationResponseBodySection, TabbedSection, SectionTab, ExpandableSection, ExpandableProperty, ExpandableBreakout, OperationRequestBodySection, FrontMatterDisplayType, OperationParametersSection } from "@speakeasy-api/docs-md/react";
+import { Operation, OperationFrontMatterSection, Pill, OperationCodeSamplesSection, TabbedSection, SectionTitle, TryItNow, SectionTab, SectionContent, CodeSample, OperationResponseBodySection, ExpandableSection, ExpandableProperty, ExpandableBreakout, OperationRequestBodySection, Section, FrontMatterDisplayType, OperationParametersSection } from "@speakeasy-api/docs-md/react";
 
 
 # Fine Tuning Jobs Operations \{#fine-tuning/jobs\}
@@ -21,17 +21,23 @@ Get a list of fine-tuning jobs for your organization and user.
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-jobs_api_routes_fine_tuning_get_fine_tuning_jobs\}
+### Code Samples \{#operation-jobs_api_routes_fine_tuning_get_fine_tuning_jobs\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="try-it-now">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -53,9 +59,31 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
+
+<CodeSample language="python" value={`from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.fine_tuning.jobs.list()
+
+    # Handle response
+    print(res)`} />
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -1792,17 +1820,23 @@ Create a new fine-tuning job, it will be queued for processing.
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-jobs_api_routes_fine_tuning_create_fine_tuning_job\}
+### Code Samples \{#operation-jobs_api_routes_fine_tuning_create_fine_tuning_job\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="try-it-now">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -1829,9 +1863,33 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
+
+<CodeSample language="python" value={`from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.fine_tuning.jobs.create(model="Camaro", hyperparameters={
+        "learning_rate": 0.0001,
+    })
+
+    # Handle response
+    print(res)`} />
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -4815,17 +4873,23 @@ The ID of the job to analyse.
 
 </OperationParametersSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-jobs_api_routes_fine_tuning_get_fine_tuning_job\}
+### Code Samples \{#operation-jobs_api_routes_fine_tuning_get_fine_tuning_job\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="try-it-now">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -4849,9 +4913,31 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
+
+<CodeSample language="python" value={`from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.fine_tuning.jobs.get(job_id="c167a961-ffca-4bcf-93ac-6169468dd389")
+
+    # Handle response
+    print(res)`} />
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -7177,17 +7263,23 @@ The ID of the job to cancel.
 
 </OperationParametersSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-jobs_api_routes_fine_tuning_cancel_fine_tuning_job\}
+### Code Samples \{#operation-jobs_api_routes_fine_tuning_cancel_fine_tuning_job\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="try-it-now">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -7211,9 +7303,31 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
+
+<CodeSample language="python" value={`from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.fine_tuning.jobs.cancel(job_id="6188a2f6-7513-4e0f-89cc-3f8088523a49")
+
+    # Handle response
+    print(res)`} />
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -9533,17 +9647,23 @@ Request the start of a validated fine tuning job.
 
 </OperationParametersSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-jobs_api_routes_fine_tuning_start_fine_tuning_job\}
+### Code Samples \{#operation-jobs_api_routes_fine_tuning_start_fine_tuning_job\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="try-it-now">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -9567,9 +9687,31 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="default">
+
+<CodeSample language="python" value={`from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.fine_tuning.jobs.start(job_id="56553e4d-0679-471e-b9ac-59a77d671103")
+
+    # Handle response
+    print(res)`} />
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 

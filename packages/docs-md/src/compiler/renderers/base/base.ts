@@ -23,6 +23,7 @@ import type {
   PropertyAnnotations,
   SectionVariant,
 } from "../../../types/shared.ts";
+import type { CodeSampleLanguage } from "../../settings.ts";
 
 type ContextType = "operation" | "section" | "schema";
 
@@ -88,11 +89,18 @@ export type RendererCreateOperationArgs = [
   },
   cb: () => void,
 ];
-export type RendererCreateTryItNowSectionArgs = [
-  options: {
-    externalDependencies: Record<string, string>;
-    defaultValue: string;
-  },
+export type RendererCreateCodeSamplesSectionArgs = [
+  cb: (options: {
+    createTryItNowEntry: (options: {
+      language: CodeSampleLanguage;
+      externalDependencies: Record<string, string>;
+      defaultValue: string;
+    }) => void;
+    createCodeSampleEntry: (options: {
+      language: CodeSampleLanguage;
+      value: string;
+    }) => void;
+  }) => void,
 ];
 export type RendererCreateSecuritySectionArgs = [cb: () => void];
 export type RendererCreateParametersSectionArgs = [cb: () => void];
@@ -267,8 +275,8 @@ export abstract class Renderer {
   // High level operations
 
   abstract createOperationSection(...args: RendererCreateOperationArgs): void;
-  abstract createTryItNowSection(
-    ...args: RendererCreateTryItNowSectionArgs
+  abstract createCodeSamplesSection(
+    ...args: RendererCreateCodeSamplesSectionArgs
   ): void;
   abstract createSecuritySection(
     ...args: RendererCreateSecuritySectionArgs

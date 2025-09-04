@@ -18,7 +18,7 @@ export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/Fron
 export {
   Operation,
   OperationFrontMatterSection,
-  OperationTryItNowSection,
+  OperationCodeSamplesSection,
   OperationSecuritySection,
   OperationParametersSection,
   OperationRequestBodySection,

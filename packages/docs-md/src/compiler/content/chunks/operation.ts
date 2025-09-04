@@ -1,6 +1,7 @@
 import type { OperationChunk } from "../../../types/chunk.ts";
 import type { PropertyAnnotations } from "../../../types/shared.ts";
 import { assertNever } from "../../../util/assertNever.ts";
+import type { CodeSampleLanguage } from "../.././settings.ts";
 import { getSettings } from "../.././settings.ts";
 import type { Renderer } from "../..//renderers/base/base.ts";
 import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
@@ -140,15 +141,31 @@ export function renderOperation({
 
       const { tryItNow } = getSettings();
       const usageSnippet = docsCodeSnippets[chunk.id];
-      if (usageSnippet?.typescript && tryItNow) {
-        debug(`Rendering try it now`);
-        renderer.createTryItNowSection({
-          externalDependencies: {
-            zod: "^3.25.64",
-            [usageSnippet.typescript.packageName]: "latest",
-          },
-          defaultValue: usageSnippet.typescript.code,
-        });
+      if (usageSnippet && tryItNow) {
+        renderer.createCodeSamplesSection(
+          ({ createTryItNowEntry, createCodeSampleEntry }) => {
+            for (const [language, snippet] of Object.entries(usageSnippet)) {
+              debug(`Rendering code sample for ${language}`);
+              if (language === "typescript") {
+                createTryItNowEntry({
+                  language,
+                  externalDependencies: {
+                    zod: "^3.25.64",
+                    [snippet.packageName]: "latest",
+                  },
+                  defaultValue: snippet.code,
+                });
+              } else {
+                createCodeSampleEntry({
+                  // The Object.entries call above coerces the key to a string,
+                  // even though the key is originally typed as CodeSampleLanguage
+                  language: language as CodeSampleLanguage,
+                  value: snippet.code,
+                });
+              }
+            }
+          }
+        );
       }
 
       if (chunk.chunkData.requestBody) {
