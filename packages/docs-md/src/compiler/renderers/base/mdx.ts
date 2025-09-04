@@ -169,6 +169,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   public override createCodeSamplesSection(
     ...[cb]: RendererCreateCodeSamplesSectionArgs
   ) {
+    this.enterContext({ id: "code-samples", type: "section" });
     this.insertComponentImport("OperationCodeSamplesSection");
     this.appendLine(`<OperationCodeSamplesSection slot="code-samples">`);
     this.appendTabbedSectionStart();
@@ -185,33 +186,51 @@ export abstract class MdxRenderer extends MarkdownRenderer {
         defaultValue,
         language,
       }) => {
+        this.enterContext({ id: language, type: "section" });
         this.insertComponentImport("TryItNow");
-        this.appendTabbedSectionTabStart("try-it-now");
+        this.appendTabbedSectionTabStart(this.getCurrentId());
         this.createText(getPrettyCodeSampleLanguage(language));
         this.appendTabbedSectionTabEnd();
-        this.createSectionContent(() => {
-          this.appendLine(
-            `<TryItNow
+        this.createSectionContent(
+          () => {
+            this.appendLine(
+              `<TryItNow
   externalDependencies={${JSON.stringify(externalDependencies)}}
   defaultValue={\`${defaultValue}\`}
 />`
-          );
-        });
+            );
+          },
+          {
+            id: this.getCurrentId(),
+            variant: "top-level",
+          }
+        );
+        this.exitContext();
       },
       createCodeSampleEntry: ({ language, value }) => {
-        this.insertComponentImport("CodeSample");
-        this.appendTabbedSectionTabStart(language);
+        this.enterContext({ id: language, type: "section" });
+        this.appendTabbedSectionTabStart(this.getCurrentId());
         this.createText(getPrettyCodeSampleLanguage(language));
         this.appendTabbedSectionTabEnd();
-        this.createSectionContent(() => {
-          this.appendLine(
-            `<CodeSample language="${language}" value={\`${value}\`} />`
-          );
-        });
+        this.createSectionContent(
+          () => {
+            this.createCode(value, {
+              language,
+              variant: "default",
+              style: "block",
+            });
+          },
+          {
+            id: this.getCurrentId(),
+            variant: "top-level",
+          }
+        );
+        this.exitContext();
       },
     });
     this.appendTabbedSectionEnd();
     this.appendLine(`</OperationCodeSamplesSection>`);
+    this.exitContext();
   }
 
   public override createSecuritySection(
