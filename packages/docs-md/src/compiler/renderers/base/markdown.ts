@@ -34,6 +34,7 @@ import type {
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
   RendererCreateSecuritySectionArgs,
+  RendererCreateTabbedSectionArgs,
   RendererCreateTabbedSectionTabArgs,
   RendererCreateTextArgs,
   RendererEscapeTextArgs,
@@ -341,45 +342,48 @@ export abstract class MarkdownRenderer extends Renderer {
     if (this.#currentOperation) {
       this.#currentOperation.responses = {};
     }
-    this.appendTabbedSectionStart();
-    this.createSectionTitle(
-      () =>
-        this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
-          id: this.getCurrentId(),
-        }),
-      { variant: "default" }
-    );
-    cb(({ statusCode, contentType, createFrontMatter, createBreakouts }) => {
-      this.enterContext({ id: statusCode, type: "section" });
-      this.enterContext({ id: contentType.replace("/", "-"), type: "section" });
-      if (this.#currentOperation?.responses) {
-        this.#currentSection = {
-          fragment: this.getCurrentId(),
-          properties: [],
-        };
-        this.#currentOperation.responses[`${statusCode}-${contentType}`] =
-          this.#currentSection;
-      }
-
-      this.appendTabbedSectionTabStart(this.getCurrentId());
-      this.createText(statusCode);
-      this.appendTabbedSectionTabEnd();
-      this.createSectionContent(
-        () => {
-          this.handleCreateFrontMatter(createFrontMatter);
-          this.handleCreateBreakouts(createBreakouts);
-        },
-        {
-          id: this.getCurrentId(),
-          variant: "top-level",
-        }
+    this.createTabbedSection(() => {
+      this.createSectionTitle(
+        () =>
+          this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
+            id: this.getCurrentId(),
+          }),
+        { variant: "default" }
       );
+      cb(({ statusCode, contentType, createFrontMatter, createBreakouts }) => {
+        this.enterContext({ id: statusCode, type: "section" });
+        this.enterContext({
+          id: contentType.replace("/", "-"),
+          type: "section",
+        });
+        if (this.#currentOperation?.responses) {
+          this.#currentSection = {
+            fragment: this.getCurrentId(),
+            properties: [],
+          };
+          this.#currentOperation.responses[`${statusCode}-${contentType}`] =
+            this.#currentSection;
+        }
 
-      this.#currentSection = undefined;
-      this.exitContext();
-      this.exitContext();
+        this.createTabbedSectionTab(() => this.createText(statusCode), {
+          id: this.getCurrentId(),
+        });
+        this.createSectionContent(
+          () => {
+            this.handleCreateFrontMatter(createFrontMatter);
+            this.handleCreateBreakouts(createBreakouts);
+          },
+          {
+            id: this.getCurrentId(),
+            variant: "top-level",
+          }
+        );
+
+        this.#currentSection = undefined;
+        this.exitContext();
+        this.exitContext();
+      });
     });
-    this.appendTabbedSectionEnd();
     this.exitContext();
   }
 
@@ -551,40 +555,14 @@ ${text}\n</code>\n</pre>`;
     cb();
   }
 
-  protected createTabbedSectionStart() {
-    return "";
+  protected createTabbedSection(...[cb]: RendererCreateTabbedSectionArgs) {
+    cb();
   }
 
-  protected appendTabbedSectionStart() {
-    this.appendLine(this.createTabbedSectionStart());
-  }
-
-  protected createTabbedSectionEnd() {
-    return "";
-  }
-
-  protected appendTabbedSectionEnd() {
-    this.appendLine(this.createTabbedSectionEnd());
-  }
-
-  protected createTabbedSectionTabStart(
-    ..._args: RendererCreateTabbedSectionTabArgs
+  protected createTabbedSectionTab(
+    ...[cb]: RendererCreateTabbedSectionTabArgs
   ) {
-    return "";
-  }
-
-  protected appendTabbedSectionTabStart(
-    ...args: RendererCreateTabbedSectionTabArgs
-  ) {
-    this.appendLine(this.createTabbedSectionTabStart(...args));
-  }
-
-  protected createTabbedSectionTabEnd() {
-    return "";
-  }
-
-  protected appendTabbedSectionTabEnd() {
-    this.appendLine(this.createTabbedSectionTabEnd());
+    cb();
   }
 
   #computeSingleLineDisplayType = (typeInfo: DisplayTypeInfo): string => {

@@ -137,6 +137,13 @@ export type RendererCreateSectionTitleArgs = [
     variant?: SectionVariant;
   },
 ];
+export type RendererCreateTabbedSectionArgs = [cb: () => void];
+export type RendererCreateTabbedSectionTabArgs = [
+  cb: () => void,
+  options: {
+    id: string;
+  },
+];
 export type RendererCreateSectionContentArgs = [
   cb: () => void,
   options?: {
@@ -263,10 +270,6 @@ export type RendererEscapeTextArgs = [
 export type RendererCreateContextArgs = [context: Context];
 export type RendererAlreadyInContextArgs = [id: string];
 export type RendererGetCurrentIdArgs = [postFixId?: string];
-
-// Other types
-
-export type RendererCreateTabbedSectionTabArgs = [id: string];
 
 export abstract class Renderer {
   // Metadata is undefined for embeds, since they're not full pages

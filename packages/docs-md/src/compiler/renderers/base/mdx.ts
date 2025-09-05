@@ -20,6 +20,7 @@ import type {
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
   RendererCreateSecuritySectionArgs,
+  RendererCreateTabbedSectionArgs,
   RendererCreateTabbedSectionTabArgs,
 } from "./base.ts";
 import { MarkdownRenderer, MarkdownSite } from "./markdown.ts";
@@ -172,63 +173,65 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.enterContext({ id: "code-samples", type: "section" });
     this.insertComponentImport("OperationCodeSamplesSection");
     this.appendLine(`<OperationCodeSamplesSection slot="code-samples">`);
-    this.appendTabbedSectionStart();
-    this.createSectionTitle(
-      () =>
-        this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, "Code Samples", {
-          id: this.getCurrentId(),
-        }),
-      { variant: "default" }
-    );
-    cb({
-      createTryItNowEntry: ({
-        externalDependencies,
-        defaultValue,
-        language,
-      }) => {
-        this.enterContext({ id: language, type: "section" });
-        this.insertComponentImport("TryItNow");
-        this.appendTabbedSectionTabStart(this.getCurrentId());
-        this.createText(getPrettyCodeSampleLanguage(language));
-        this.appendTabbedSectionTabEnd();
-        this.createSectionContent(
-          () => {
-            this.appendLine(
-              `<TryItNow
+    this.createTabbedSection(() => {
+      this.createSectionTitle(
+        () =>
+          this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, "Code Samples", {
+            id: this.getCurrentId(),
+          }),
+        { variant: "default" }
+      );
+      cb({
+        createTryItNowEntry: ({
+          externalDependencies,
+          defaultValue,
+          language,
+        }) => {
+          this.enterContext({ id: language, type: "section" });
+          this.insertComponentImport("TryItNow");
+          this.createTabbedSectionTab(
+            () => this.createText(getPrettyCodeSampleLanguage(language)),
+            { id: this.getCurrentId() }
+          );
+          this.createSectionContent(
+            () => {
+              this.appendLine(
+                `<TryItNow
   externalDependencies={${JSON.stringify(externalDependencies)}}
   defaultValue={\`${defaultValue}\`}
 />`
-            );
-          },
-          {
-            id: this.getCurrentId(),
-            variant: "top-level",
-          }
-        );
-        this.exitContext();
-      },
-      createCodeSampleEntry: ({ language, value }) => {
-        this.enterContext({ id: language, type: "section" });
-        this.appendTabbedSectionTabStart(this.getCurrentId());
-        this.createText(getPrettyCodeSampleLanguage(language));
-        this.appendTabbedSectionTabEnd();
-        this.createSectionContent(
-          () => {
-            this.createCode(value, {
-              language,
-              variant: "default",
-              style: "block",
-            });
-          },
-          {
-            id: this.getCurrentId(),
-            variant: "top-level",
-          }
-        );
-        this.exitContext();
-      },
+              );
+            },
+            {
+              id: this.getCurrentId(),
+              variant: "top-level",
+            }
+          );
+          this.exitContext();
+        },
+        createCodeSampleEntry: ({ language, value }) => {
+          this.enterContext({ id: language, type: "section" });
+          this.createTabbedSectionTab(
+            () => this.createText(getPrettyCodeSampleLanguage(language)),
+            { id: this.getCurrentId() }
+          );
+          this.createSectionContent(
+            () => {
+              this.createCode(value, {
+                language,
+                variant: "default",
+                style: "block",
+              });
+            },
+            {
+              id: this.getCurrentId(),
+              variant: "top-level",
+            }
+          );
+          this.exitContext();
+        },
+      });
     });
-    this.appendTabbedSectionEnd();
     this.appendLine(`</OperationCodeSamplesSection>`);
     this.exitContext();
   }
@@ -417,24 +420,22 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.appendLine("</SectionContent>");
   }
 
-  protected override createTabbedSectionStart() {
+  protected override createTabbedSection(
+    ...[cb]: RendererCreateTabbedSectionArgs
+  ) {
     this.insertComponentImport("TabbedSection");
-    return `<TabbedSection>`;
+    this.appendLine("<TabbedSection>");
+    cb();
+    this.appendLine("</TabbedSection>");
   }
 
-  protected override createTabbedSectionEnd() {
-    return "</TabbedSection>";
-  }
-
-  protected override createTabbedSectionTabStart(
-    ...[id]: RendererCreateTabbedSectionTabArgs
+  protected override createTabbedSectionTab(
+    ...[cb, { id }]: RendererCreateTabbedSectionTabArgs
   ) {
     this.insertComponentImport("SectionTab");
-    return `<SectionTab slot="tab" id="${id}">`;
-  }
-
-  protected override createTabbedSectionTabEnd() {
-    return "</SectionTab>";
+    this.appendLine(`<SectionTab slot="tab" id="${id}">`);
+    cb();
+    this.appendLine("</SectionTab>");
   }
 
   public override createDebugPlaceholder(
