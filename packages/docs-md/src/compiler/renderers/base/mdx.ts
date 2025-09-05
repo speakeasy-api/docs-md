@@ -217,11 +217,14 @@ export abstract class MdxRenderer extends MarkdownRenderer {
           );
           this.createSectionContent(
             () => {
+              this.insertComponentImport("CodeSample");
+              this.appendLine("<CodeSample>");
               this.createCode(value, {
                 language,
                 variant: "default",
                 style: "block",
               });
+              this.appendLine("</CodeSample>");
             },
             {
               id: this.getCurrentId(),

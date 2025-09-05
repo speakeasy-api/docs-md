@@ -1,5 +1,5 @@
 import "@/app/speakeasy.css";
-import { Operation, OperationFrontMatterSection, Pill, OperationTryItNowSection, TryItNow, Section, SectionTitle, SectionContent, OperationRequestBodySection, ExpandableSection, ExpandableProperty, ExpandableBreakout, OperationResponseBodySection, TabbedSection, SectionTab } from "@/components/speakeasy";
+import { Operation, OperationFrontMatterSection, Pill, OperationCodeSamplesSection, TabbedSection, SectionTitle, TryItNow, SectionTab, SectionContent, CodeSample, OperationRequestBodySection, Section, ExpandableSection, ExpandableProperty, ExpandableBreakout, OperationResponseBodySection } from "@/components/speakeasy";
 
 
 # Ocr Operations \{#ocr\}
@@ -14,17 +14,23 @@ OCR
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-ocr_v1_ocr_post\}
+### Code Samples \{#operation-ocr_v1_ocr_post_code-samples\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-ocr_v1_ocr_post_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-ocr_v1_ocr_post_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -54,9 +60,42 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-ocr_v1_ocr_post_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-ocr_v1_ocr_post_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral, models
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.ocr.process(model="CX-9", document={
+        "image_url": {
+            "url": "https://measly-scrap.com",
+        },
+        "type": models.ImageURLChunkType.IMAGE_URL,
+    })
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 

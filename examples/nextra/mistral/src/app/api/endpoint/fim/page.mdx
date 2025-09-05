@@ -3,7 +3,7 @@ sidebarTitle: Fim
 ---
 
 import "@speakeasy-api/docs-md/nextra.css";
-import { Operation, OperationFrontMatterSection, Pill, OperationTryItNowSection, TryItNow, Section, SectionTitle, SectionContent, OperationRequestBodySection, ExpandableSection, ExpandableProperty, OperationResponseBodySection, TabbedSection, SectionTab, ExpandableBreakout, FrontMatterDisplayType } from "@speakeasy-api/docs-md/react";
+import { Operation, OperationFrontMatterSection, Pill, OperationCodeSamplesSection, TabbedSection, SectionTitle, TryItNow, SectionTab, SectionContent, CodeSample, OperationRequestBodySection, Section, ExpandableSection, ExpandableProperty, OperationResponseBodySection, ExpandableBreakout, FrontMatterDisplayType } from "@speakeasy-api/docs-md/react";
 
 
 # Fim Operations [#fim]
@@ -20,17 +20,23 @@ FIM completion.
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now [#operation-fim_completion_v1_fim_completions_post]
+### Code Samples [#operation-fim_completion_v1_fim_completions_post_code-samples]
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-fim_completion_v1_fim_completions_post_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-fim_completion_v1_fim_completions_post_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -56,9 +62,37 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-fim_completion_v1_fim_completions_post_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-fim_completion_v1_fim_completions_post_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.fim.complete(model="codestral-2405", prompt="def", suffix="return a+b")
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -1222,17 +1256,23 @@ Mistral AI provides the ability to stream responses back to a client in order to
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now [#operation-stream_fim]
+### Code Samples [#operation-stream_fim_code-samples]
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-stream_fim_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-stream_fim_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -1260,9 +1300,39 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-stream_fim_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-stream_fim_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.fim.stream(model="codestral-2405", prompt="def", suffix="return a+b")
+
+    with res as event_stream:
+        for event in event_stream:
+            # handle event
+            print(event, flush=True)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 

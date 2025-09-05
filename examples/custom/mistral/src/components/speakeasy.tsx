@@ -14,11 +14,12 @@ export {
   SectionTitle,
   SectionTab,
   Code,
+  CodeSample,
   Pill,
   DebugPlaceholder,
   FrontMatterDisplayType,
   OperationFrontMatterSection,
-  OperationTryItNowSection,
+  OperationCodeSamplesSection,
   OperationSecuritySection,
   OperationParametersSection,
   OperationRequestBodySection,
@@ -27,7 +28,7 @@ export {
 
 export function Operation({ children }: PropsWithChildren) {
   const frontMatterSection = useChildren(children, "front-matter")[0];
-  const tryItNowSection = useChildren(children, "try-it-now")[0];
+  const tryItNowSection = useChildren(children, "code-samples")[0];
   const securitySection = useChildren(children, "security")[0];
   const parametersSection = useChildren(children, "parameters")[0];
   const requestBodySection = useChildren(children, "request-body")[0];

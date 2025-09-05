@@ -1,5 +1,5 @@
 import "@/app/speakeasy.css";
-import { Operation, OperationFrontMatterSection, Pill, OperationTryItNowSection, TryItNow, Section, SectionTitle, SectionContent, OperationRequestBodySection, ExpandableSection, ExpandableProperty, OperationResponseBodySection, TabbedSection, SectionTab, ExpandableBreakout } from "@/components/speakeasy";
+import { Operation, OperationFrontMatterSection, Pill, OperationCodeSamplesSection, TabbedSection, SectionTitle, TryItNow, SectionTab, SectionContent, CodeSample, OperationRequestBodySection, Section, ExpandableSection, ExpandableProperty, OperationResponseBodySection, ExpandableBreakout } from "@/components/speakeasy";
 
 
 # Classifiers Operations \{#classifiers\}
@@ -14,17 +14,23 @@ Moderations
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-moderations_v1_moderations_post\}
+### Code Samples \{#operation-moderations_v1_moderations_post_code-samples\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-moderations_v1_moderations_post_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-moderations_v1_moderations_post_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -52,9 +58,40 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-moderations_v1_moderations_post_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-moderations_v1_moderations_post_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.classifiers.moderate(model="Durango", inputs=[
+        "<value 1>",
+        "<value 2>",
+    ])
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -296,17 +333,23 @@ Chat Moderations
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-chat_moderations_v1_chat_moderations_post\}
+### Code Samples \{#operation-chat_moderations_v1_chat_moderations_post_code-samples\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-chat_moderations_v1_chat_moderations_post_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-chat_moderations_v1_chat_moderations_post_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -353,9 +396,59 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-chat_moderations_v1_chat_moderations_post_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-chat_moderations_v1_chat_moderations_post_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral, models
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.classifiers.moderate_chat(inputs=[
+        {
+            "content": "<value>",
+            "role": models.ToolMessageRole.TOOL,
+        },
+        {
+            "content": [
+                {
+                    "document_url": "https://limited-merit.com",
+                    "type": models.DocumentURLChunkType.DOCUMENT_URL,
+                },
+                {
+                    "document_url": "https://deep-governance.com/",
+                    "type": models.DocumentURLChunkType.DOCUMENT_URL,
+                },
+                {
+                    "text": "<value>",
+                    "type": models.TextChunkType.TEXT,
+                },
+            ],
+            "role": models.ToolMessageRole.TOOL,
+        },
+    ], model="Jetta")
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -2043,17 +2136,23 @@ Classifications
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-classifications_v1_classifications_post\}
+### Code Samples \{#operation-classifications_v1_classifications_post_code-samples\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-classifications_v1_classifications_post_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-classifications_v1_classifications_post_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -2080,9 +2179,39 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-classifications_v1_classifications_post_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-classifications_v1_classifications_post_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.classifiers.classify(model="Silverado", inputs=[
+        "<value 1>",
+    ])
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -2295,17 +2424,23 @@ Chat Classifications
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-chat_classifications_v1_chat_classifications_post\}
+### Code Samples \{#operation-chat_classifications_v1_chat_classifications_post_code-samples\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-chat_classifications_v1_chat_classifications_post_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-chat_classifications_v1_chat_classifications_post_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -2355,9 +2490,62 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-chat_classifications_v1_chat_classifications_post_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-chat_classifications_v1_chat_classifications_post_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral, models
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.classifiers.classify_chat(model="Camry", inputs=[
+        {
+            "messages": [
+                {
+                    "content": "<value>",
+                    "role": models.SystemMessageRole.SYSTEM,
+                },
+                {
+                    "prefix": False,
+                    "role": models.AssistantMessageRole.ASSISTANT,
+                },
+            ],
+        },
+        {
+            "messages": [
+                {
+                    "content": "<value>",
+                    "role": models.SystemMessageRole.SYSTEM,
+                },
+                {
+                    "prefix": False,
+                    "role": models.AssistantMessageRole.ASSISTANT,
+                },
+            ],
+        },
+    ])
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 

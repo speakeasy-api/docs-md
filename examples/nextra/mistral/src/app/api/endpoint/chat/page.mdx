@@ -3,7 +3,7 @@ sidebarTitle: Chat
 ---
 
 import "@speakeasy-api/docs-md/nextra.css";
-import { Operation, OperationFrontMatterSection, Pill, OperationTryItNowSection, TryItNow, Section, SectionTitle, SectionContent, OperationRequestBodySection, ExpandableSection, ExpandableProperty, ExpandableBreakout, OperationResponseBodySection, TabbedSection, SectionTab, FrontMatterDisplayType } from "@speakeasy-api/docs-md/react";
+import { Operation, OperationFrontMatterSection, Pill, OperationCodeSamplesSection, TabbedSection, SectionTitle, TryItNow, SectionTab, SectionContent, CodeSample, OperationRequestBodySection, Section, ExpandableSection, ExpandableProperty, ExpandableBreakout, OperationResponseBodySection, FrontMatterDisplayType } from "@speakeasy-api/docs-md/react";
 
 
 # Chat Operations [#chat]
@@ -18,17 +18,23 @@ Chat Completion
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now [#operation-chat_completion_v1_chat_completions_post]
+### Code Samples [#operation-chat_completion_v1_chat_completions_post_code-samples]
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-chat_completion_v1_chat_completions_post_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-chat_completion_v1_chat_completions_post_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -58,9 +64,42 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-chat_completion_v1_chat_completions_post_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-chat_completion_v1_chat_completions_post_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral, models
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.chat.complete(model="mistral-small-latest", messages=[
+        {
+            "content": "Who is the best French painter? Answer in one short sentence.",
+            "role": models.UserMessageRole.USER,
+        },
+    ])
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -3233,17 +3272,23 @@ Mistral AI provides the ability to stream responses back to a client in order to
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now [#operation-stream_chat]
+### Code Samples [#operation-stream_chat_code-samples]
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-stream_chat_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-stream_chat_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -3275,9 +3320,44 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-stream_chat_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-stream_chat_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral, models
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.chat.stream(model="mistral-small-latest", messages=[
+        {
+            "content": "Who is the best French painter? Answer in one short sentence.",
+            "role": models.UserMessageRole.USER,
+        },
+    ])
+
+    with res as event_stream:
+        for event in event_stream:
+            # handle event
+            print(event, flush=True)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 

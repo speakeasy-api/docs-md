@@ -12,6 +12,7 @@ export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
 export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
 export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
 export { Code } from "./components/Code/Code.tsx";
+export { CodeSample } from "./components/CodeSample/CodeSample.tsx";
 export { Pill } from "./components/Pill/Pill.tsx";
 export { DebugPlaceholder } from "./components/DebugPlaceholder/DebugPlaceholder.tsx";
 export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/FrontMatterDisplayType.tsx";

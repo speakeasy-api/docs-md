@@ -1,5 +1,5 @@
 import "@/app/speakeasy.css";
-import { Operation, OperationFrontMatterSection, Pill, OperationTryItNowSection, TryItNow, Section, SectionTitle, SectionContent, OperationResponseBodySection, TabbedSection, SectionTab, ExpandableSection, ExpandableProperty, ExpandableBreakout, OperationParametersSection, FrontMatterDisplayType, OperationRequestBodySection } from "@/components/speakeasy";
+import { Operation, OperationFrontMatterSection, Pill, OperationCodeSamplesSection, TabbedSection, SectionTitle, TryItNow, SectionTab, SectionContent, CodeSample, OperationResponseBodySection, ExpandableSection, ExpandableProperty, ExpandableBreakout, OperationParametersSection, Section, FrontMatterDisplayType, OperationRequestBodySection } from "@/components/speakeasy";
 
 
 # Models Operations \{#models\}
@@ -16,17 +16,23 @@ List all models available to the user.
 
 </OperationFrontMatterSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-list_models_v1_models_get\}
+### Code Samples \{#operation-list_models_v1_models_get_code-samples\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-list_models_v1_models_get_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-list_models_v1_models_get_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -48,9 +54,37 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-list_models_v1_models_get_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-list_models_v1_models_get_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.models.list()
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -1006,17 +1040,23 @@ The ID of the model to retrieve.
 
 </OperationParametersSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-retrieve_model_v1_models_model_id_get\}
+### Code Samples \{#operation-retrieve_model_v1_models_model_id_get_code-samples\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-retrieve_model_v1_models_model_id_get_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-retrieve_model_v1_models_model_id_get_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -1040,9 +1080,37 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-retrieve_model_v1_models_model_id_get_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-retrieve_model_v1_models_model_id_get_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.models.retrieve(model_id="ft:open-mistral-7b:587a6b29:20240514:7e773925")
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -1962,17 +2030,23 @@ The ID of the model to delete.
 
 </OperationParametersSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-delete_model_v1_models_model_id_delete\}
+### Code Samples \{#operation-delete_model_v1_models_model_id_delete_code-samples\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-delete_model_v1_models_model_id_delete_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-delete_model_v1_models_model_id_delete_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -1996,9 +2070,37 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-delete_model_v1_models_model_id_delete_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-delete_model_v1_models_model_id_delete_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.models.delete(model_id="ft:open-mistral-7b:587a6b29:20240514:7e773925")
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -2176,17 +2278,23 @@ The ID of the model to update.
 
 </OperationParametersSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-jobs_api_routes_fine_tuning_update_fine_tuned_model\}
+### Code Samples \{#operation-jobs_api_routes_fine_tuning_update_fine_tuned_model_code-samples\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-jobs_api_routes_fine_tuning_update_fine_tuned_model_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-jobs_api_routes_fine_tuning_update_fine_tuned_model_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -2211,9 +2319,37 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-jobs_api_routes_fine_tuning_update_fine_tuned_model_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-jobs_api_routes_fine_tuning_update_fine_tuned_model_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.models.update(model_id="ft:open-mistral-7b:587a6b29:20240514:7e773925")
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -3266,17 +3402,23 @@ The ID of the model to archive.
 
 </OperationParametersSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-jobs_api_routes_fine_tuning_archive_fine_tuned_model\}
+### Code Samples \{#operation-jobs_api_routes_fine_tuning_archive_fine_tuned_model_code-samples\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-jobs_api_routes_fine_tuning_archive_fine_tuned_model_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-jobs_api_routes_fine_tuning_archive_fine_tuned_model_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -3300,9 +3442,37 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-jobs_api_routes_fine_tuning_archive_fine_tuned_model_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-jobs_api_routes_fine_tuning_archive_fine_tuned_model_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.models.archive(model_id="ft:open-mistral-7b:587a6b29:20240514:7e773925")
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -3458,17 +3628,23 @@ The ID of the model to unarchive.
 
 </OperationParametersSection>
 
-<OperationTryItNowSection slot="try-it-now">
+<OperationCodeSamplesSection slot="code-samples">
 
-<Section variant="top-level">
+<TabbedSection>
 
-<SectionTitle slot="title" variant="top-level">
+<SectionTitle slot="title" variant="default">
 
-### Try it Now \{#operation-jobs_api_routes_fine_tuning_unarchive_fine_tuned_model\}
+### Code Samples \{#operation-jobs_api_routes_fine_tuning_unarchive_fine_tuned_model_code-samples\}
 
 </SectionTitle>
 
-<SectionContent slot="content" variant="top-level">
+<SectionTab slot="tab" id="operation-jobs_api_routes_fine_tuning_unarchive_fine_tuned_model_code-samples_typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-jobs_api_routes_fine_tuning_unarchive_fine_tuned_model_code-samples_typescript">
 
 <TryItNow
   externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
@@ -3492,9 +3668,37 @@ run();`}
 
 </SectionContent>
 
-</Section>
+<SectionTab slot="tab" id="operation-jobs_api_routes_fine_tuning_unarchive_fine_tuned_model_code-samples_python">
 
-</OperationTryItNowSection>
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" variant="top-level" id="operation-jobs_api_routes_fine_tuning_unarchive_fine_tuned_model_code-samples_python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.models.unarchive(model_id="ft:open-mistral-7b:587a6b29:20240514:7e773925")
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
