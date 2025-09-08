@@ -177,14 +177,6 @@ export type RendererCreateFrontMatterDisplayTypeArgs = [
 ];
 export type RendererCreateDebugPlaceholderArgs = [cb: () => string];
 
-export type RendererCreatePopoutArgs = [
-  options: {
-    title: string;
-    embedName: string;
-  },
-  cb: (renderer: Renderer) => void,
-];
-
 // Low level operations
 
 type LowLevelBaseOptions = {
@@ -311,8 +303,6 @@ export abstract class Renderer {
   abstract createDebugPlaceholder(
     ...args: RendererCreateDebugPlaceholderArgs
   ): void;
-
-  abstract createPopout(...args: RendererCreatePopoutArgs): void;
 
   // Low level operations
 

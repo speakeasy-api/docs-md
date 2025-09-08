@@ -34,8 +34,6 @@ export { Section } from "./components/Section/Section.tsx";
 export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
 export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
 export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
-export { SideBar } from "./components/SideBar/SideBar.tsx";
-export { SideBarTrigger } from "./components/SideBar/SideBarTrigger.tsx";
 export { TabbedSection } from "./components/TabbedSection/TabbedSection.tsx";
 export { TryItNow } from "./components/TryItNow/TryItNow.tsx";
 

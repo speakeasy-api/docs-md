@@ -307,37 +307,7 @@ function renderContainerTypes({
     }
   );
 
-  // TODO: reenable this once we implement a new sidebar
-  // const isSidebar =
-  //   renderer.getContextStack().length >= getSettings().display.maxSchemaNesting;
-  const isSidebar = false;
   for (const breakout of entries) {
-    if (isSidebar) {
-      renderer.createPopout(
-        {
-          title: breakout.label,
-          embedName: breakout.label,
-        },
-        (renderer) => {
-          renderer.createHeading(
-            HEADINGS.SECTION_HEADING_LEVEL,
-            breakout.label
-          );
-
-          renderSchemaFrontmatter({
-            renderer,
-            schema: breakout.schema,
-          });
-
-          renderObjectProperties({
-            renderer,
-            schema: breakout.schema,
-          });
-        }
-      );
-      return;
-    }
-
     if (renderer.alreadyInContext(breakout.label)) {
       // TODO: handle this better
       continue;
