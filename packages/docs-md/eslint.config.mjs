@@ -43,6 +43,16 @@ export default [
         allowed: [/src\/react\//],
         message: "Only React code is allowed to import React code",
       },
+      {
+        type: "first-party",
+        filepath: /src\/react\/components\/([a-zA-Z0-9-_]+)\/.*\.tsx?$/,
+        allowed: [
+          /src\/react\/components\/$1\/.*\.tsx?$/,
+          /src\/react\/index\.tsx?$/,
+        ],
+        message:
+          "Reminder: any time a top-level component imports another top-level component, it should be taken in as a runtime value that can be overridden. Disable this rule once there is an overridable property.",
+      },
     ],
   }),
   // Since we're a mix of running in both Node.js and React, we override the
