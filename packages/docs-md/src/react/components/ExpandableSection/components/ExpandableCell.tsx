@@ -18,10 +18,6 @@ export function ExpandableCell({
   bottomConnection,
   variant,
 }: ExpandableCellProps) {
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <div className={styles.expandableCellContainer}>
       <div className={styles.expandableButtonContainer}>
@@ -30,7 +26,7 @@ export function ExpandableCell({
             styles.expandableButton,
             variant === "circle" && styles.expandableButtonCircle
           )}
-          onClick={handleClick}
+          onClick={() => setIsOpen(!isOpen)}
         >
           <ChevronIcon
             className={styles.expandableChevron}

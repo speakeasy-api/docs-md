@@ -19,10 +19,10 @@ export type DocsCodeSnippets = Record<
   Partial<Record<CodeSampleLanguage, CodeSnippet>>
 >;
 
-export const generateCodeSnippets = async (
+export async function generateCodeSnippets(
   docsData: Map<string, Chunk>,
   specContents: string
-): Promise<DocsCodeSnippets> => {
+): Promise<DocsCodeSnippets> {
   const { spec, tryItNow } = getSettings();
   if (!tryItNow) {
     info("TryItNow not enabled, skipping code snippets generation");
@@ -87,4 +87,4 @@ export const generateCodeSnippets = async (
     return {};
   }
   return docsCodeSnippets;
-};
+}

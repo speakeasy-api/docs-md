@@ -15,13 +15,13 @@ function HashChangeManager({ children }: PropsWithChildren) {
 
   // Set all appropriate nodes as open when the hash changes or is set on load
   useEffect(() => {
-    const handleHashChange = () => {
+    function handleHashChange() {
       if (!window.location.hash) {
         return;
       }
       const hash = window.location.hash.slice(1); // Remove the '#'
       openNode(hash);
-    };
+    }
 
     // Check initial hash on mount
     handleHashChange();
