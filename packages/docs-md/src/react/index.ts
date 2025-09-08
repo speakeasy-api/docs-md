@@ -30,6 +30,7 @@ export type {
   OperationSecuritySectionProps,
 } from "./components/Operation/types.ts";
 export { Pill } from "./components/Pill/Pill.tsx";
+export type { PillProps } from "./components/Pill/types.ts";
 export { Section } from "./components/Section/Section.tsx";
 export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
 export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
