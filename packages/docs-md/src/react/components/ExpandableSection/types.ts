@@ -1,9 +1,10 @@
-import type { PropsWithChildren } from "react";
+import type { FC, PropsWithChildren } from "react";
 
 import type {
   DisplayTypeInfo,
   PropertyAnnotations,
 } from "../../../types/shared.ts";
+import type { PillProps } from "../Pill/types.ts";
 
 type ConnectionType = "none" | "connected";
 
@@ -91,6 +92,13 @@ export type ExpandablePropertyProps = RowProps & {
    * The annotations for the property (e.g. "required")
    */
   typeAnnotations: PropertyAnnotations[];
+  /**
+   * The component to use for rendering annotations, and defaults to Pill. If
+   * you override the default Pill implementation, then pass your custom
+   * implementation in here too. Otherwise, the default Pill implementation will
+   * be used internally.
+   */
+  Pill?: FC<PillProps>;
 };
 
 export type ExpandableBreakoutProps = RowProps;

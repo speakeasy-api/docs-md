@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import type { PropsWithChildren } from "react";
+import type { FC, PropsWithChildren } from "react";
 import { forwardRef, useMemo } from "react";
 import useMeasure from "react-use-measure";
 
@@ -14,13 +14,14 @@ import {
   computeSingleLineDisplayType,
 } from "../../../util/displayType.ts";
 import { useChildren, useUniqueChild } from "../../../util/hooks.ts";
-import { Pill } from "../../Pill/Pill.tsx";
+import type { PillProps } from "../../Pill/types.ts";
 import styles from "../styles.module.css";
 
 type PropertyCellProps = PropsWithChildren<{
   typeInfo?: DisplayTypeInfo;
   typeAnnotations?: PropertyAnnotations[];
   isOpen: boolean;
+  Pill: FC<PillProps>;
 }>;
 
 const TitleContainer = forwardRef<HTMLDivElement, PropsWithChildren>(
@@ -80,6 +81,7 @@ export function PropertyCell({
   typeInfo,
   typeAnnotations,
   isOpen,
+  Pill,
 }: PropertyCellProps) {
   // We measure the title container (which includes available space for the
   // inline type), the title prefix (which is only the property name and

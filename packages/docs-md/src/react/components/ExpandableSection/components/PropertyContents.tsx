@@ -1,5 +1,7 @@
 "use client";
 
+// eslint-disable-next-line fast-import/no-restricted-imports
+import { Pill as DefaultPill } from "../../Pill/Pill.tsx";
 import { useIsOpen } from "../state.ts";
 import type { ExpandablePropertyProps } from "../types.ts";
 import { PrefixCells } from "./PrefixCells.tsx";
@@ -12,6 +14,7 @@ export function PropertyContents({
   typeInfo,
   typeAnnotations,
   hasFrontMatter,
+  Pill = DefaultPill,
 }: ExpandablePropertyProps) {
   const [isOpen] = useIsOpen(id);
   return (
@@ -25,6 +28,7 @@ export function PropertyContents({
         typeInfo={typeInfo}
         typeAnnotations={typeAnnotations}
         isOpen={isOpen}
+        Pill={Pill}
       >
         {children}
       </PropertyCell>
