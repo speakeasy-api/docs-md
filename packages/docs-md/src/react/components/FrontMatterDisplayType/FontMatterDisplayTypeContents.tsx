@@ -5,14 +5,10 @@ import type { PropsWithChildren } from "react";
 import { forwardRef, useMemo } from "react";
 import useMeasure from "react-use-measure";
 
-import type { DisplayTypeInfo } from "../../../types/shared.ts";
 import { computeMultilineTypeLabel } from "../../util/displayType.ts";
 import expandableSectionStyles from "../ExpandableSection/styles.module.css";
 import styles from "./styles.module.css";
-
-export type FrontMatterDisplayTypeProps = {
-  typeInfo: DisplayTypeInfo;
-};
+import type { FrontMatterDisplayTypeProps } from "./types.ts";
 
 const TitleContainer = forwardRef<HTMLDivElement, PropsWithChildren>(
   function TitleContainer({ children }, ref) {

@@ -1,32 +1,43 @@
 // Components
 
-export { TryItNow } from "./components/TryItNow/TryItNow.tsx";
-export { SideBar } from "./components/SideBar/SideBar.tsx";
-export { SideBarTrigger } from "./components/SideBar/SideBarTrigger.tsx";
-export { ExpandableSection } from "./components/ExpandableSection/ExpandableSection.tsx";
-export { ExpandableBreakout } from "./components/ExpandableSection/ExpandableBreakout.tsx";
-export { ExpandableProperty } from "./components/ExpandableSection/ExpandableProperty.tsx";
-export { TabbedSection } from "./components/TabbedSection/TabbedSection.tsx";
-export { Section } from "./components/Section/Section.tsx";
-export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
-export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
-export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
 export { Code } from "./components/Code/Code.tsx";
 export type { CodeProps } from "./components/Code/types.ts";
 export { CodeSample } from "./components/CodeSample/CodeSample.tsx";
 export type { CodeSampleProps } from "./components/CodeSample/types.ts";
-export { Pill } from "./components/Pill/Pill.tsx";
 export { DebugPlaceholder } from "./components/DebugPlaceholder/DebugPlaceholder.tsx";
+export type { DebugPlaceholderProps } from "./components/DebugPlaceholder/types.ts";
+export { ExpandableBreakout } from "./components/ExpandableSection/ExpandableBreakout.tsx";
+export { ExpandableProperty } from "./components/ExpandableSection/ExpandableProperty.tsx";
+export { ExpandableSection } from "./components/ExpandableSection/ExpandableSection.tsx";
 export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/FrontMatterDisplayType.tsx";
+export type { FrontMatterDisplayTypeProps } from "./components/FrontMatterDisplayType/types.ts";
 export {
   Operation,
-  OperationFrontMatterSection,
   OperationCodeSamplesSection,
-  OperationSecuritySection,
+  OperationFrontMatterSection,
   OperationParametersSection,
   OperationRequestBodySection,
   OperationResponseBodySection,
+  OperationSecuritySection,
 } from "./components/Operation/Operation.tsx";
+export type {
+  OperationCodeSamplesSectionProps,
+  OperationFrontMatterSectionProps,
+  OperationParametersSectionProps,
+  OperationProps,
+  OperationRequestBodySectionProps,
+  OperationResponseBodySectionProps,
+  OperationSecuritySectionProps,
+} from "./components/Operation/types.ts";
+export { Pill } from "./components/Pill/Pill.tsx";
+export { Section } from "./components/Section/Section.tsx";
+export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
+export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
+export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
+export { SideBar } from "./components/SideBar/SideBar.tsx";
+export { SideBarTrigger } from "./components/SideBar/SideBarTrigger.tsx";
+export { TabbedSection } from "./components/TabbedSection/TabbedSection.tsx";
+export { TryItNow } from "./components/TryItNow/TryItNow.tsx";
 
 // Utilities
 
