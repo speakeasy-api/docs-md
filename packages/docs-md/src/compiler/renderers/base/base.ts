@@ -21,7 +21,6 @@ import type {
   PageMetadata,
   PillVariant,
   PropertyAnnotations,
-  SectionVariant,
 } from "../../../types/shared.ts";
 import type { CodeSampleLanguage } from "../../settings.ts";
 
@@ -125,18 +124,8 @@ export type RendererCreateResponsesArgs = [
   },
 ];
 
-export type RendererCreateSectionArgs = [
-  cb: () => void,
-  options?: {
-    variant?: SectionVariant;
-  },
-];
-export type RendererCreateSectionTitleArgs = [
-  cb: () => void,
-  options?: {
-    variant?: SectionVariant;
-  },
-];
+export type RendererCreateSectionArgs = [cb: () => void];
+export type RendererCreateSectionTitleArgs = [cb: () => void];
 export type RendererCreateTabbedSectionArgs = [cb: () => void];
 export type RendererCreateTabbedSectionTabArgs = [
   cb: () => void,
@@ -148,7 +137,6 @@ export type RendererCreateSectionContentArgs = [
   cb: () => void,
   options?: {
     id?: string;
-    variant?: SectionVariant;
   },
 ];
 

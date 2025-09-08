@@ -158,12 +158,10 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.insertComponentImport("OperationCodeSamplesSection");
     this.appendLine(`<OperationCodeSamplesSection slot="code-samples">`);
     this.createTabbedSection(() => {
-      this.createSectionTitle(
-        () =>
-          this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, "Code Samples", {
-            id: this.getCurrentId(),
-          }),
-        { variant: "default" }
+      this.createSectionTitle(() =>
+        this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, "Code Samples", {
+          id: this.getCurrentId(),
+        })
       );
       cb({
         createTryItNowEntry: ({
@@ -188,7 +186,6 @@ export abstract class MdxRenderer extends MarkdownRenderer {
             },
             {
               id: this.getCurrentId(),
-              variant: "top-level",
             }
           );
           this.exitContext();
@@ -212,7 +209,6 @@ export abstract class MdxRenderer extends MarkdownRenderer {
             },
             {
               id: this.getCurrentId(),
-              variant: "top-level",
             }
           );
           this.exitContext();
@@ -378,30 +374,26 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     );
   }
 
-  public override createSection(
-    ...[cb, { variant = "default" } = {}]: RendererCreateSectionArgs
-  ) {
+  public override createSection(...[cb]: RendererCreateSectionArgs) {
     this.insertComponentImport("Section");
-    this.appendLine(`<Section variant="${variant}">`);
+    this.appendLine("<Section>");
     cb();
     this.appendLine("</Section>");
   }
 
-  public override createSectionTitle(
-    ...[cb, { variant = "default" } = {}]: RendererCreateSectionTitleArgs
-  ) {
+  public override createSectionTitle(...[cb]: RendererCreateSectionTitleArgs) {
     this.insertComponentImport("SectionTitle");
-    this.appendLine(`<SectionTitle slot="title" variant="${variant}">`);
+    this.appendLine(`<SectionTitle slot="title">`);
     cb();
     this.appendLine("</SectionTitle>");
   }
 
   public override createSectionContent(
-    ...[cb, { variant = "default", id } = {}]: RendererCreateSectionContentArgs
+    ...[cb, { id } = {}]: RendererCreateSectionContentArgs
   ) {
     this.insertComponentImport("SectionContent");
     this.appendLine(
-      `<SectionContent slot="content" variant="${variant}"${id ? ` id="${id}"` : ""}>`
+      `<SectionContent slot="content"${id ? ` id="${id}"` : ""}>`
     );
     cb();
     this.appendLine("</SectionContent>");

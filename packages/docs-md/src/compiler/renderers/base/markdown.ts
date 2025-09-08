@@ -234,19 +234,14 @@ export abstract class MarkdownRenderer extends Renderer {
     for (const annotation of annotations) {
       title += ` ${this.createPill(annotation.variant, () => annotation.title)}`;
     }
-    this.createSection(
-      () => {
-        this.createSectionTitle(
-          () =>
-            this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
-              id: this.getCurrentId(),
-            }),
-          { variant: "top-level" }
-        );
-        this.createSectionContent(cb, { variant: "top-level" });
-      },
-      { variant: "top-level" }
-    );
+    this.createSection(() => {
+      this.createSectionTitle(() =>
+        this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
+          id: this.getCurrentId(),
+        })
+      );
+      this.createSectionContent(cb);
+    });
   }
 
   public override createSecuritySection(
@@ -343,12 +338,10 @@ export abstract class MarkdownRenderer extends Renderer {
       this.#currentOperation.responses = {};
     }
     this.createTabbedSection(() => {
-      this.createSectionTitle(
-        () =>
-          this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
-            id: this.getCurrentId(),
-          }),
-        { variant: "default" }
+      this.createSectionTitle(() =>
+        this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
+          id: this.getCurrentId(),
+        })
       );
       cb(({ statusCode, contentType, createFrontMatter, createBreakouts }) => {
         this.enterContext({ id: statusCode, type: "section" });
@@ -375,7 +368,6 @@ export abstract class MarkdownRenderer extends Renderer {
           },
           {
             id: this.getCurrentId(),
-            variant: "top-level",
           }
         );
 

@@ -1,23 +1,16 @@
 import clsx from "clsx";
-import type { PropsWithChildren } from "react";
 
-import type { SectionVariant } from "../../../types/shared.ts";
 import { useChildren, useUniqueChild } from "../../util/hooks.ts";
 import styles from "./styles.module.css";
+import type { SectionProps } from "./types.ts";
 
-type SectionProps = PropsWithChildren<{
-  variant: SectionVariant;
-}>;
-
-export function Section({ children, variant }: SectionProps) {
+export function Section({ children }: SectionProps) {
   const titleChild = useUniqueChild(children, "title");
   const contentChildren = useChildren(children, "content");
   return (
     <div className={clsx(styles.section)}>
       <div>{titleChild}</div>
-      <div className={clsx(variant === "top-level" && styles.topLevel)}>
-        {contentChildren}
-      </div>
+      <div>{contentChildren}</div>
     </div>
   );
 }

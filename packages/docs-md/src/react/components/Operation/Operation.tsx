@@ -1,3 +1,4 @@
+import styles from "./styles.module.css";
 import type {
   OperationCodeSamplesSectionProps,
   OperationFrontMatterSectionProps,
@@ -24,7 +25,7 @@ import type {
  * to layout the children in the desired way.
  */
 export function Operation({ children }: OperationProps) {
-  return <div>{children}</div>;
+  return <div className={styles.operation}>{children}</div>;
 }
 
 /**

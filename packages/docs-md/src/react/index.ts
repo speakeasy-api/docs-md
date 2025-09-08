@@ -32,6 +32,7 @@ export type {
 export { Pill } from "./components/Pill/Pill.tsx";
 export type { PillProps } from "./components/Pill/types.ts";
 export { Section } from "./components/Section/Section.tsx";
+export type { SectionProps } from "./components/Section/types.ts";
 export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
 export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
 export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
