@@ -9,13 +9,10 @@ import type {
 } from "./base/base.ts";
 import { MdxRenderer, MdxSite } from "./base/mdx.ts";
 export class NextraSite extends MdxSite {
-  public override buildPagePath(
-    ...[slug, { appendIndex = false } = {}]: SiteBuildPagePathArgs
-  ): string {
+  public override buildPagePath(...[slug]: SiteBuildPagePathArgs): string {
     const settings = getSettings();
-    if (appendIndex) {
-      slug += "/index";
-    }
+    // Do nothing with `appendIndex`, since our appending of `/page.mdx`
+    // implicitly handles the index case.
     return resolve(join(settings.output.pageOutDir, `${slug}/page.mdx`));
   }
 
@@ -27,7 +24,7 @@ export class NextraSite extends MdxSite {
     const config = `export default {
   index: { title: "About", theme: { collapsed: false } },
   "global-security": { title: "Global Security", theme: { collapsed: false } },
-  tag: { title: "Operations", theme: { collapsed: false } },${schemasEntry}
+  endpoint: { title: "Operations", theme: { collapsed: false } },${schemasEntry}
 }`;
     this.createPage(join(settings.output.pageOutDir, "_meta.ts")).createText(
       config,
