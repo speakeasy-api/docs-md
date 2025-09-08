@@ -9,6 +9,11 @@ export type { DebugPlaceholderProps } from "./components/DebugPlaceholder/types.
 export { ExpandableBreakout } from "./components/ExpandableSection/ExpandableBreakout.tsx";
 export { ExpandableProperty } from "./components/ExpandableSection/ExpandableProperty.tsx";
 export { ExpandableSection } from "./components/ExpandableSection/ExpandableSection.tsx";
+export type {
+  ExpandableSectionProps,
+  ExpandablePropertyProps,
+  ExpandableBreakoutProps,
+} from "./components/ExpandableSection/types.ts";
 export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/FrontMatterDisplayType.tsx";
 export type { FrontMatterDisplayTypeProps } from "./components/FrontMatterDisplayType/types.ts";
 export {
@@ -40,6 +45,7 @@ export type { SectionTabProps } from "./components/SectionTab/types.ts";
 export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
 export type { SectionTitleProps } from "./components/SectionTitle/types.ts";
 export { TabbedSection } from "./components/TabbedSection/TabbedSection.tsx";
+export type { TabbedSectionProps } from "./components/TabbedSection/types.ts";
 export { TryItNow } from "./components/TryItNow/TryItNow.tsx";
 export type { TryItNowProps } from "./components/TryItNow/types.ts";
 

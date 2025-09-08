@@ -14,24 +14,21 @@ export function ConnectingCell({
       <div
         className={clsx(
           styles.connectingCell,
-          topConnection === "connected" && styles.verticalConnected,
-          topConnection === "highlighted" && styles.verticalHighlighted
+          topConnection === "connected" && styles.verticalConnected
         )}
       />
       {/* Upper right cell, responsible for the right connection */}
       <div
         className={clsx(
           styles.connectingCell,
-          rightConnection === "connected" && styles.horizontalConnected,
-          rightConnection === "highlighted" && styles.horizontalHighlighted
+          rightConnection === "connected" && styles.horizontalConnected
         )}
       />
       {/* Lower left cell, responsible for the bottom connection */}
       <div
         className={clsx(
           styles.connectingCell,
-          bottomConnection === "connected" && styles.verticalConnected,
-          bottomConnection === "highlighted" && styles.verticalHighlighted
+          bottomConnection === "connected" && styles.verticalConnected
         )}
       />
       {/* Lower right cell, not responsible for any connections */}

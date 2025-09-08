@@ -1,18 +1,9 @@
 "use client";
 
-import type {
-  DisplayTypeInfo,
-  PropertyAnnotations,
-} from "../../../../types/shared.ts";
 import { useIsOpen } from "../state.ts";
-import type { RowProps } from "../types.ts";
+import type { ExpandablePropertyProps } from "../types.ts";
 import { PrefixCells } from "./PrefixCells.tsx";
 import { PropertyCell } from "./PropertyCell.tsx";
-
-export type PropertyContentsProps = RowProps & {
-  typeInfo?: DisplayTypeInfo;
-  typeAnnotations: PropertyAnnotations[];
-};
 
 export function PropertyContents({
   id,
@@ -21,7 +12,7 @@ export function PropertyContents({
   typeInfo,
   typeAnnotations,
   hasFrontMatter,
-}: PropertyContentsProps) {
+}: ExpandablePropertyProps) {
   const [isOpen] = useIsOpen(id);
   return (
     <PrefixCells

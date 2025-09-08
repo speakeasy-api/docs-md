@@ -9,6 +9,7 @@ import {
 
 import { TreeDataContext, useOpenNodeByHash, useTreeData } from "../state.ts";
 import styles from "../styles.module.css";
+import type { ExpandableSectionProps } from "../types.ts";
 
 function HashChangeManager({ children }: PropsWithChildren) {
   const openNode = useOpenNodeByHash();
@@ -36,8 +37,6 @@ function HashChangeManager({ children }: PropsWithChildren) {
 
   return children;
 }
-
-export type ExpandableSectionProps = PropsWithChildren;
 
 export function ExpandableSectionContents({
   children,

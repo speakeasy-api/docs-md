@@ -1,10 +1,7 @@
-import { useChildren } from "@speakeasy-api/docs-md/react";
-import { PropsWithChildren } from "react";
+import { OperationProps, useChildren } from "@speakeasy-api/docs-md/react";
 
 export {
   TryItNow,
-  SideBar,
-  SideBarTrigger,
   ExpandableSection,
   ExpandableBreakout,
   ExpandableProperty,
@@ -26,7 +23,7 @@ export {
   OperationResponseBodySection,
 } from "@speakeasy-api/docs-md/react";
 
-export function Operation({ children }: PropsWithChildren) {
+export function Operation({ children }: OperationProps) {
   const frontMatterSection = useChildren(children, "front-matter")[0];
   const tryItNowSection = useChildren(children, "code-samples")[0];
   const securitySection = useChildren(children, "security")[0];
