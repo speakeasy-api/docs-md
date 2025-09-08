@@ -1,14 +1,22 @@
 "use client";
 
-import { Section } from "../../Section/Section.tsx";
-import { SectionContent } from "../../SectionContent/SectionContent.tsx";
-import { SectionTitle } from "../../SectionTitle/SectionTitle.tsx";
+// eslint-disable-next-line fast-import/no-restricted-imports
+import { Section as DefaultSection } from "../../Section/Section.tsx";
+// eslint-disable-next-line fast-import/no-restricted-imports
+import { SectionContent as DefaultSectionContent } from "../../SectionContent/SectionContent.tsx";
+// eslint-disable-next-line fast-import/no-restricted-imports
+import { SectionTitle as DefaultSectionTitle } from "../../SectionTitle/SectionTitle.tsx";
 import type { TabbedSectionProps } from "../types.ts";
 import { useTabbedChildren } from "./hooks.tsx";
 import styles from "./styles.module.css";
 import { TabButton } from "./TabButton.tsx";
 
-export function TabbedSectionContents({ children }: TabbedSectionProps) {
+export function TabbedSectionContents({
+  children,
+  Section = DefaultSection,
+  SectionContent = DefaultSectionContent,
+  SectionTitle = DefaultSectionTitle,
+}: TabbedSectionProps) {
   const { titleChild, tabChildren, activeChild } = useTabbedChildren({
     children,
     TabButton,
