@@ -23,7 +23,7 @@ type Message = {
   method: Methods;
 };
 
-const encodeLog = (log: SandpackConsoleData): Message => {
+function encodeLog(log: SandpackConsoleData): Message {
   // deep copy the log.data array
   if (!log.data) {
     return Decode([]) as Message;
@@ -59,9 +59,9 @@ const encodeLog = (log: SandpackConsoleData): Message => {
     });
   }
   return Decode([{ ...log, data: modifiedDataArray }]) as Message;
-};
+}
 
-export const ConsoleOutput = () => {
+export function ConsoleOutput() {
   const [logs, setLogs] = useState<Message[]>([]);
   const { theme, themeMode } = useSandpackTheme();
   const { logs: sandpackLogs } = useSandpackConsole({
@@ -121,4 +121,4 @@ export const ConsoleOutput = () => {
       </div>
     </div>
   );
-};
+}

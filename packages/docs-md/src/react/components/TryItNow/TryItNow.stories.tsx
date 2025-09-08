@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import type { TryItNowProps } from "../../../types/shared.ts";
 import { TryItNow } from "./TryItNow.tsx";
+import type { TryItNowProps } from "./types.ts";
 
 const meta: Meta<Required<TryItNowProps>> = {
   title: "Components/TryItNow",
@@ -23,11 +23,6 @@ const meta: Meta<Required<TryItNowProps>> = {
     externalDependencies: {
       control: "object",
       description: "External npm dependencies required by the code snippet",
-    },
-    _enableUnsafeAutoImport: {
-      control: "boolean",
-      description:
-        "Experimental: Automatically scan for external dependencies from npm as user adds imports",
     },
   },
 };
@@ -367,20 +362,6 @@ const sentence = fruits.reduce((acc, fruit, index) => {
   return acc + ", " + fruit;
 }, "");
 console.log("Sentence:", sentence);`,
-  },
-};
-
-export const WithAutoImport: Story = {
-  args: {
-    defaultValue: `// Try importing external packages automatically
-// This is experimental - import statements will be detected
-
-const example = "Auto-import functionality";
-console.log(example);
-
-// Try adding: import { format } from 'date-fns';
-// The system should automatically detect and install the dependency`,
-    _enableUnsafeAutoImport: true,
   },
 };
 
