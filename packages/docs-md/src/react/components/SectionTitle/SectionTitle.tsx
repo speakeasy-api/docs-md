@@ -1,11 +1,5 @@
-import type { PropsWithChildren } from "react";
-
 import styles from "./styles.module.css";
-
-export type SectionTitleProps = PropsWithChildren<{
-  id?: string;
-  slot: "title";
-}>;
+import type { SectionTitleProps } from "./types.ts";
 
 export function SectionTitle({ children, slot, id }: SectionTitleProps) {
   return (
