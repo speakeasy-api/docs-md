@@ -52,7 +52,7 @@ export default [
         ],
         excludeTypeImports: true,
         message:
-          "Reminder: any time a top-level component imports another top-level component, it should be taken in as a runtime value that can be overridden. Disable this rule once there is an overridable property.",
+          "Reminder: any time a top-level component imports another top-level component, it should be taken in as a runtime value that can be overridden. Use eslint-disable-next-line once there is an overridable property.",
       },
     ],
   }),
