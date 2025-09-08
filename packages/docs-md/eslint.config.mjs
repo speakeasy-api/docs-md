@@ -50,6 +50,7 @@ export default [
           /src\/react\/components\/$1\/.*\.tsx?$/,
           /src\/react\/index\.tsx?$/,
         ],
+        excludeTypeImports: true,
         message:
           "Reminder: any time a top-level component imports another top-level component, it should be taken in as a runtime value that can be overridden. Disable this rule once there is an overridable property.",
       },
