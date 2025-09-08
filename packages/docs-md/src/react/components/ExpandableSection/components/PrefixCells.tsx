@@ -1,7 +1,11 @@
 "use client";
 
+import type { FC } from "react";
 import { type PropsWithChildren } from "react";
 
+import type { ConnectingCellProps } from "../../ConnectingCell/types.ts";
+import type { ExpandableCellProps } from "../../ExpandableCell/types.ts";
+import type { NonExpandableCellProps } from "../../NonExpandableCell/types.ts";
 import {
   useAreAllParentsOpen,
   useConnectingCellData,
@@ -9,15 +13,15 @@ import {
   useIsOpen,
 } from "../state.ts";
 import styles from "../styles.module.css";
-import { ConnectingCell } from "./ConnectingCell.tsx";
-import { ExpandableCell } from "./ExpandableCell.tsx";
-import { NonExpandableCell } from "./NonExpandableCell.tsx";
 
 type PrefixCellProps = PropsWithChildren<{
   id: string;
   variant: "circle" | "square";
   slot: "entry";
   hasFrontMatter: boolean;
+  ExpandableCell: FC<ExpandableCellProps>;
+  NonExpandableCell: FC<NonExpandableCellProps>;
+  ConnectingCell: FC<ConnectingCellProps>;
 }>;
 
 export function PrefixCells({
@@ -26,6 +30,9 @@ export function PrefixCells({
   children,
   variant,
   hasFrontMatter,
+  ExpandableCell,
+  NonExpandableCell,
+  ConnectingCell,
 }: PrefixCellProps) {
   // TODO: these need to use id paths, not just id
   const [isOpen, setIsOpen] = useIsOpen(id);

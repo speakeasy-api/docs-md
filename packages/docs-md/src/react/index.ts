@@ -4,8 +4,14 @@ export { Code } from "./components/Code/Code.tsx";
 export type { CodeProps } from "./components/Code/types.ts";
 export { CodeSample } from "./components/CodeSample/CodeSample.tsx";
 export type { CodeSampleProps } from "./components/CodeSample/types.ts";
+export { ConnectingCell } from "./components/ConnectingCell/ConnectingCell.tsx";
+export type { ConnectingCellProps } from "./components/ConnectingCell/types.ts";
 export { DebugPlaceholder } from "./components/DebugPlaceholder/DebugPlaceholder.tsx";
 export type { DebugPlaceholderProps } from "./components/DebugPlaceholder/types.ts";
+export { ExpandableCellIcon } from "./components/ExpandableCellIcon/ExpandableCellIcon.tsx";
+export type { ExpandableCellIconProps } from "./components/ExpandableCellIcon/type.ts";
+export { ExpandableCell } from "./components/ExpandableCell/ExpandableCell.tsx";
+export type { ExpandableCellProps } from "./components/ExpandableCell/types.ts";
 export { ExpandableBreakout } from "./components/ExpandableSection/ExpandableBreakout.tsx";
 export { ExpandableProperty } from "./components/ExpandableSection/ExpandableProperty.tsx";
 export { ExpandableSection } from "./components/ExpandableSection/ExpandableSection.tsx";
@@ -16,6 +22,8 @@ export type {
 } from "./components/ExpandableSection/types.ts";
 export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/FrontMatterDisplayType.tsx";
 export type { FrontMatterDisplayTypeProps } from "./components/FrontMatterDisplayType/types.ts";
+export { NonExpandableCell } from "./components/NonExpandableCell/NonExpandableCell.tsx";
+export type { NonExpandableCellProps } from "./components/NonExpandableCell/types.ts";
 export {
   Operation,
   OperationCodeSamplesSection,

@@ -1,13 +1,13 @@
 import clsx from "clsx";
 
-import styles from "../styles.module.css";
-import type { Connection } from "../types.ts";
+import styles from "../ExpandableSection/styles.module.css";
+import type { ConnectingCellProps } from "./types.ts";
 
 export function ConnectingCell({
   bottom: bottomConnection,
   top: topConnection,
   right: rightConnection,
-}: Pick<Connection, "bottom" | "top" | "right">) {
+}: ConnectingCellProps) {
   return (
     <div className={styles.connectingCellContainer}>
       {/* Upper left cell, responsible for the top connection */}

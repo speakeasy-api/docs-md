@@ -1,10 +1,9 @@
-export function ChevronIcon({
+import type { ExpandableCellIconProps } from "./type.ts";
+
+export function ExpandableCellIcon({
   className,
   style,
-}: {
-  className?: string;
-  style?: React.CSSProperties;
-}) {
+}: ExpandableCellIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

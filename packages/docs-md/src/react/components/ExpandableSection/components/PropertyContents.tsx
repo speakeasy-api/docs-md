@@ -1,6 +1,12 @@
 "use client";
 
 // eslint-disable-next-line fast-import/no-restricted-imports
+import { ConnectingCell as DefaultConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
+// eslint-disable-next-line fast-import/no-restricted-imports
+import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
+// eslint-disable-next-line fast-import/no-restricted-imports
+import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
+// eslint-disable-next-line fast-import/no-restricted-imports
 import { Pill as DefaultPill } from "../../Pill/Pill.tsx";
 import { useIsOpen } from "../state.ts";
 import type { ExpandablePropertyProps } from "../types.ts";
@@ -14,6 +20,9 @@ export function PropertyContents({
   typeInfo,
   typeAnnotations,
   hasFrontMatter,
+  ExpandableCell = DefaultExpandableCell,
+  NonExpandableCell = DefaultNonExpandableCell,
+  ConnectingCell = DefaultConnectingCell,
   Pill = DefaultPill,
 }: ExpandablePropertyProps) {
   const [isOpen] = useIsOpen(id);
@@ -23,6 +32,9 @@ export function PropertyContents({
       slot={slot}
       variant="circle"
       hasFrontMatter={hasFrontMatter}
+      ExpandableCell={ExpandableCell}
+      NonExpandableCell={NonExpandableCell}
+      ConnectingCell={ConnectingCell}
     >
       <PropertyCell
         typeInfo={typeInfo}

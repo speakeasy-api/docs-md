@@ -4,9 +4,12 @@ import type {
   DisplayTypeInfo,
   PropertyAnnotations,
 } from "../../../types/shared.ts";
+import type { ConnectingCellProps } from "../ConnectingCell/types.ts";
+import type { ExpandableCellProps } from "../ExpandableCell/types.ts";
+import type { NonExpandableCellProps } from "../NonExpandableCell/types.ts";
 import type { PillProps } from "../Pill/types.ts";
 
-type ConnectionType = "none" | "connected";
+export type ConnectionType = "none" | "connected";
 
 /**
  * Represents the connection state of a prefix cell in the compiled UI
@@ -99,6 +102,51 @@ export type ExpandablePropertyProps = RowProps & {
    * be used internally.
    */
   Pill?: FC<PillProps>;
+  /**
+   * The component to use for rendering expandable cells, and defaults to
+   * ExpandableCell. If you override the default ExpandableCell implementation,
+   * then pass your custom implementation in here too. Otherwise, the default
+   * ExpandableCell implementation will be used internally.
+   */
+  ExpandableCell?: FC<ExpandableCellProps>;
+  /**
+   * The component to use for rendering non-expandable cells, and defaults to
+   * NonExpandableCell. If you override the default NonExpandableCell
+   * implementation, then pass your custom implementation in here too.
+   * Otherwise, the default NonExpandableCell implementation will be used
+   * internally.
+   */
+  NonExpandableCell?: FC<NonExpandableCellProps>;
+  /**
+   * The component to use for rendering connecting cells, and defaults to
+   * ConnectingCell. If you override the default ConnectingCell implementation,
+   * then pass your custom implementation in here too. Otherwise, the default
+   * ConnectingCell implementation will be used internally.
+   */
+  ConnectingCell?: FC<ConnectingCellProps>;
 };
 
-export type ExpandableBreakoutProps = RowProps;
+export type ExpandableBreakoutProps = RowProps & {
+  /**
+   * The component to use for rendering expandable cells, and defaults to
+   * ExpandableCell. If you override the default ExpandableCell implementation,
+   * then pass your custom implementation in here too. Otherwise, the default
+   * ExpandableCell implementation will be used internally.
+   */
+  ExpandableCell?: FC<ExpandableCellProps>;
+  /**
+   * The component to use for rendering non-expandable cells, and defaults to
+   * NonExpandableCell. If you override the default NonExpandableCell
+   * implementation, then pass your custom implementation in here too.
+   * Otherwise, the default NonExpandableCell implementation will be used
+   * internally.
+   */
+  NonExpandableCell?: FC<NonExpandableCellProps>;
+  /**
+   * The component to use for rendering connecting cells, and defaults to
+   * ConnectingCell. If you override the default ConnectingCell implementation,
+   * then pass your custom implementation in here too. Otherwise, the default
+   * ConnectingCell implementation will be used internally.
+   */
+  ConnectingCell?: FC<ConnectingCellProps>;
+};
