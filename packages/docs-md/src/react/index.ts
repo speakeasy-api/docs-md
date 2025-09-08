@@ -37,6 +37,7 @@ export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
 export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
 export { TabbedSection } from "./components/TabbedSection/TabbedSection.tsx";
 export { TryItNow } from "./components/TryItNow/TryItNow.tsx";
+export type { TryItNowProps } from "./components/TryItNow/types.ts";
 
 // Utilities
 
