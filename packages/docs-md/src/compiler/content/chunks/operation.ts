@@ -62,21 +62,18 @@ export function renderOperation({
                 },
               ],
               hasFrontMatter: !!entry.description || showDebugPlaceholders,
-              createDescription() {
-                if (entry.description) {
-                  renderer.createText(entry.description);
-                } else if (showDebugPlaceholders) {
-                  renderer.createDebugPlaceholder(
-                    () => "No description provided"
-                  );
-                }
-              },
-              createExamples() {
-                // Do nothing, since security doesn't have examples at this level
-              },
-              createDefaultValue() {
-                // Do nothing, since security doesn't have default values at this level
-              },
+              createDescription:
+                entry.description || showDebugPlaceholders
+                  ? () => {
+                      if (entry.description) {
+                        renderer.createText(entry.description);
+                      } else if (showDebugPlaceholders) {
+                        renderer.createDebugPlaceholder(
+                          () => "No description provided"
+                        );
+                      }
+                    }
+                  : undefined,
             });
             renderer.exitContext();
           }
@@ -118,21 +115,18 @@ export function renderOperation({
               rawTitle: parameter.name,
               isTopLevel: true,
               hasFrontMatter: !!parameter.description || showDebugPlaceholders,
-              createDescription() {
-                if (parameter.description) {
-                  renderer.createText(parameter.description);
-                } else if (showDebugPlaceholders) {
-                  renderer.createDebugPlaceholder(
-                    () => "No description provided"
-                  );
-                }
-              },
-              createExamples() {
-                // Do nothing, since security doesn't have examples at this level
-              },
-              createDefaultValue() {
-                // Do nothing, since security doesn't have default values at this level
-              },
+              createDescription:
+                parameter.description || showDebugPlaceholders
+                  ? () => {
+                      if (parameter.description) {
+                        renderer.createText(parameter.description);
+                      } else if (showDebugPlaceholders) {
+                        renderer.createDebugPlaceholder(
+                          () => "No description provided"
+                        );
+                      }
+                    }
+                  : undefined,
             });
 
             // Render breakouts, which will be separate expandable entries
