@@ -225,33 +225,40 @@ function createDescription(schema: SchemaValue, renderer: Renderer) {
   const { showDebugPlaceholders } = getSettings().display;
   const description = "description" in schema ? schema.description : null;
   if (description) {
-    renderer.createText(description);
+    return () => renderer.createText(description);
   } else if (showDebugPlaceholders) {
-    renderer.createDebugPlaceholder(() => "No description provided");
+    return () =>
+      renderer.createDebugPlaceholder(() => "No description provided");
   }
+  return undefined;
 }
 
 export function createExamples(schema: SchemaValue, renderer: Renderer) {
   const examples = "examples" in schema ? schema.examples : [];
   const { showDebugPlaceholders } = getSettings().display;
   if (examples.length > 0) {
-    renderer.createText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
-    for (const example of examples) {
-      renderer.createCode(example);
-    }
+    return () => {
+      renderer.createText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
+      for (const example of examples) {
+        renderer.createCode(example);
+      }
+    };
   } else if (showDebugPlaceholders) {
-    renderer.createDebugPlaceholder(() => "No examples provided");
+    return () => renderer.createDebugPlaceholder(() => "No examples provided");
   }
+  return undefined;
 }
 
 export function createDefaultValue(schema: SchemaValue, renderer: Renderer) {
   const defaultValue = "defaultValue" in schema ? schema.defaultValue : null;
   const { showDebugPlaceholders } = getSettings().display;
   if (defaultValue) {
-    renderer.createText(`_Default Value:_ \`${defaultValue}\``);
+    return () => renderer.createText(`_Default Value:_ \`${defaultValue}\``);
   } else if (showDebugPlaceholders) {
-    renderer.createDebugPlaceholder(() => "No default value provided");
+    return () =>
+      renderer.createDebugPlaceholder(() => "No default value provided");
   }
+  return undefined;
 }
 
 /* ---- Section Rendering ---- */
@@ -303,9 +310,9 @@ function renderObjectProperties({
       rawTitle: property.name,
       isTopLevel,
       hasFrontMatter: hasSchemaFrontmatter(property.schema),
-      createDescription: () => createDescription(property.schema, renderer),
-      createExamples: () => createExamples(property.schema, renderer),
-      createDefaultValue: () => createDefaultValue(property.schema, renderer),
+      createDescription: createDescription(property.schema, renderer),
+      createExamples: createExamples(property.schema, renderer),
+      createDefaultValue: createDefaultValue(property.schema, renderer),
     });
 
     // Render breakouts, which will be separate expandable entries

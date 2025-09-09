@@ -413,36 +413,36 @@ export abstract class MarkdownRenderer extends Renderer {
     this.exitContext();
   }
 
-  protected handleCreateRequestDisplayType(cb: () => void) {
-    cb();
+  protected handleCreateRequestDisplayType(cb?: () => void) {
+    cb?.();
   }
 
-  protected handleCreateRequestDescription(cb: () => void) {
-    cb();
+  protected handleCreateRequestDescription(cb?: () => void) {
+    cb?.();
   }
 
-  protected handleCreateRequestExamples(cb: () => void) {
-    cb();
+  protected handleCreateRequestExamples(cb?: () => void) {
+    cb?.();
   }
 
-  protected handleCreateRequestDefaultValue(cb: () => void) {
-    cb();
+  protected handleCreateRequestDefaultValue(cb?: () => void) {
+    cb?.();
   }
 
-  protected handleCreateResponseDisplayType(cb: () => void) {
-    cb();
+  protected handleCreateResponseDisplayType(cb?: () => void) {
+    cb?.();
   }
 
-  protected handleCreateResponseDescription(cb: () => void) {
-    cb();
+  protected handleCreateResponseDescription(cb?: () => void) {
+    cb?.();
   }
 
-  protected handleCreateResponseExamples(cb: () => void) {
-    cb();
+  protected handleCreateResponseExamples(cb?: () => void) {
+    cb?.();
   }
 
-  protected handleCreateResponseDefaultValue(cb: () => void) {
-    cb();
+  protected handleCreateResponseDefaultValue(cb?: () => void) {
+    cb?.();
   }
 
   protected handleCreateBreakouts(cb: () => void) {
@@ -515,9 +515,9 @@ export abstract class MarkdownRenderer extends Renderer {
       `${rawTitle} ${renderedAnnotations.join(" ")}${type}`,
       { id: this.getCurrentId(), escape: "mdx" }
     );
-    createDescription();
-    createExamples();
-    createDefaultValue();
+    createDescription?.();
+    createExamples?.();
+    createDefaultValue?.();
   }
 
   public override createFrontMatterDisplayType(

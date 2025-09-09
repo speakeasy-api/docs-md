@@ -211,12 +211,11 @@ export function renderOperation({
               renderer.createDebugPlaceholder(() => "No description provided");
             }
           },
-          createExamples() {
-            createExamples(requestBodySchemaValue, renderer);
-          },
-          createDefaultValue() {
-            createDefaultValue(requestBodySchemaValue, renderer);
-          },
+          createExamples: createExamples(requestBodySchemaValue, renderer),
+          createDefaultValue: createDefaultValue(
+            requestBodySchemaValue,
+            renderer
+          ),
           createBreakouts() {
             renderBreakouts({
               renderer,
@@ -295,12 +294,8 @@ export function renderOperation({
                         );
                       }
                     },
-                    createExamples() {
-                      createExamples(schema, renderer);
-                    },
-                    createDefaultValue() {
-                      createDefaultValue(schema, renderer);
-                    },
+                    createExamples: createExamples(schema, renderer),
+                    createDefaultValue: createDefaultValue(schema, renderer),
                     createBreakouts() {
                       renderBreakouts({
                         renderer,

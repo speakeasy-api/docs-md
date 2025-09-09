@@ -384,20 +384,26 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     createTitle();
     this.appendLine("</ExpandableBreakoutTitle>");
 
-    this.insertComponentImport("ExpandableBreakoutDescription");
-    this.appendLine(`<ExpandableBreakoutDescription slot="description">`);
-    createDescription();
-    this.appendLine("</ExpandableBreakoutDescription>");
+    if (createDescription) {
+      this.insertComponentImport("ExpandableBreakoutDescription");
+      this.appendLine(`<ExpandableBreakoutDescription slot="description">`);
+      createDescription();
+      this.appendLine("</ExpandableBreakoutDescription>");
+    }
 
-    this.insertComponentImport("ExpandableBreakoutExamples");
-    this.appendLine(`<ExpandableBreakoutExamples slot="examples">`);
-    createExamples();
-    this.appendLine("</ExpandableBreakoutExamples>");
+    if (createExamples) {
+      this.insertComponentImport("ExpandableBreakoutExamples");
+      this.appendLine(`<ExpandableBreakoutExamples slot="examples">`);
+      createExamples();
+      this.appendLine("</ExpandableBreakoutExamples>");
+    }
 
-    this.insertComponentImport("ExpandableBreakoutDefaultValue");
-    this.appendLine(`<ExpandableBreakoutDefaultValue slot="defaultValue">`);
-    createDefaultValue();
-    this.appendLine("</ExpandableBreakoutDefaultValue>");
+    if (createDefaultValue) {
+      this.insertComponentImport("ExpandableBreakoutDefaultValue");
+      this.appendLine(`<ExpandableBreakoutDefaultValue slot="defaultValue">`);
+      createDefaultValue();
+      this.appendLine("</ExpandableBreakoutDefaultValue>");
+    }
 
     this.appendLine("</ExpandableBreakout>");
   }
@@ -454,20 +460,26 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     });
     this.appendLine("</ExpandablePropertyTitle>");
 
-    this.insertComponentImport("ExpandablePropertyDescription");
-    this.appendLine(`<ExpandablePropertyDescription slot="description">`);
-    createDescription();
-    this.appendLine("</ExpandablePropertyDescription>");
+    if (createDescription) {
+      this.insertComponentImport("ExpandablePropertyDescription");
+      this.appendLine(`<ExpandablePropertyDescription slot="description">`);
+      createDescription();
+      this.appendLine("</ExpandablePropertyDescription>");
+    }
 
-    this.insertComponentImport("ExpandablePropertyExamples");
-    this.appendLine(`<ExpandablePropertyExamples slot="examples">`);
-    createExamples();
-    this.appendLine("</ExpandablePropertyExamples>");
+    if (createExamples) {
+      this.insertComponentImport("ExpandablePropertyExamples");
+      this.appendLine(`<ExpandablePropertyExamples slot="examples">`);
+      createExamples();
+      this.appendLine("</ExpandablePropertyExamples>");
+    }
 
-    this.insertComponentImport("ExpandablePropertyDefaultValue");
-    this.appendLine(`<ExpandablePropertyDefaultValue slot="defaultValue">`);
-    createDefaultValue();
-    this.appendLine("</ExpandablePropertyDefaultValue>");
+    if (createDefaultValue) {
+      this.insertComponentImport("ExpandablePropertyDefaultValue");
+      this.appendLine(`<ExpandablePropertyDefaultValue slot="defaultValue">`);
+      createDefaultValue();
+      this.appendLine("</ExpandablePropertyDefaultValue>");
+    }
 
     this.appendLine("</ExpandableProperty>");
   }
