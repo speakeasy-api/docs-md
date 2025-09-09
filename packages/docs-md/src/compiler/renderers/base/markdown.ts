@@ -431,7 +431,7 @@ export abstract class MarkdownRenderer extends Renderer {
 
   protected handleCreateExpandableProperty(
     ...[
-      { typeInfo, annotations, title, createContent },
+      { typeInfo, annotations, title, description, examples, defaultValue },
     ]: RendererCreateExpandablePropertyArgs
   ) {
     let type;
@@ -453,7 +453,25 @@ export abstract class MarkdownRenderer extends Renderer {
       `${title} ${renderedAnnotations.join(" ")}${type}`,
       { id: this.getCurrentId(), escape: "mdx" }
     );
-    createContent?.();
+    const { showDebugPlaceholders } = getSettings().display;
+    if (description) {
+      this.createText(description);
+    } else if (showDebugPlaceholders) {
+      this.createDebugPlaceholder(() => "No description provided");
+    }
+    if (examples.length > 0) {
+      this.createText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
+      for (const example of examples) {
+        this.createCode(example);
+      }
+    } else if (showDebugPlaceholders) {
+      this.createDebugPlaceholder(() => "No examples provided");
+    }
+    if (defaultValue) {
+      this.createText(`_Default Value:_ \`${defaultValue}\``);
+    } else if (showDebugPlaceholders) {
+      this.createDebugPlaceholder(() => "No default value provided");
+    }
   }
 
   public override createFrontMatterDisplayType(

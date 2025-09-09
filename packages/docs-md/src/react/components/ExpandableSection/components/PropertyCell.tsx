@@ -113,7 +113,9 @@ export function PropertyCell({
 
   // In cases where we append a placeholder to the title, we'll add the full
   // type as a prefix to the content children
-  const contentChildren = useChildren(children, "content");
+  const descriptionChildren = useChildren(children, "description");
+  const examplesChildren = useChildren(children, "examples");
+  const defaultValueChildren = useChildren(children, "defaultValue");
 
   const displayInfo = useMemo(() => {
     if (!typeInfo) {
@@ -184,7 +186,11 @@ export function PropertyCell({
         </TitleContainer>
 
         {isOpen && (
-          <div className={styles.propertyCellContent}>{contentChildren}</div>
+          <div className={styles.propertyCellContent}>
+            {descriptionChildren}
+            {examplesChildren}
+            {defaultValueChildren}
+          </div>
         )}
       </div>
     );
@@ -219,14 +225,21 @@ export function PropertyCell({
         )}
       </TitleContainer>
 
-      {isOpen && (multiline || contentChildren.length > 0) && (
-        <div className={styles.propertyCellContent}>
-          {multiline && (
-            <TypeContainer multiline={multiline} contents={contents} />
-          )}
-          {contentChildren}
-        </div>
-      )}
+      {isOpen &&
+        (multiline ||
+          descriptionChildren.length > 0 ||
+          examplesChildren.length > 0 ||
+          defaultValueChildren.length > 0) && (
+          <div className={styles.propertyCellContent}>
+            {multiline && (
+              <TypeContainer multiline={multiline} contents={contents} />
+            )}
+
+            {descriptionChildren}
+            {examplesChildren}
+            {defaultValueChildren}
+          </div>
+        )}
 
       {/* This offscreen measure is used to determine the width of a character,
           for use in multiline type computation */}

@@ -1,5 +1,11 @@
 import { PropertyContents } from "./components/PropertyContents.tsx";
-import type { ExpandablePropertyProps } from "./types.ts";
+import type {
+  ExpandablePropertyDefaultValueProps,
+  ExpandablePropertyDescriptionProps,
+  ExpandablePropertyExamplesProps,
+  ExpandablePropertyProps,
+  ExpandablePropertyTitleProps,
+} from "./types.ts";
 
 /**
  * An expandable property renders a row in the UI that represents a property in
@@ -8,4 +14,32 @@ import type { ExpandablePropertyProps } from "./types.ts";
  */
 export function ExpandableProperty(props: ExpandablePropertyProps) {
   return <PropertyContents {...props} />;
+}
+
+export function ExpandablePropertyTitle({
+  children,
+  slot,
+}: ExpandablePropertyTitleProps) {
+  return <div slot={slot}>{children}</div>;
+}
+
+export function ExpandablePropertyDescription({
+  children,
+  slot,
+}: ExpandablePropertyDescriptionProps) {
+  return <div slot={slot}>{children}</div>;
+}
+
+export function ExpandablePropertyExamples({
+  children,
+  slot,
+}: ExpandablePropertyExamplesProps) {
+  return <div slot={slot}>{children}</div>;
+}
+
+export function ExpandablePropertyDefaultValue({
+  children,
+  slot,
+}: ExpandablePropertyDefaultValueProps) {
+  return <div slot={slot}>{children}</div>;
 }

@@ -5,7 +5,6 @@ import type {
 } from "../../../types/shared.ts";
 import { assertNever } from "../../../util/assertNever.ts";
 import { InternalError } from "../../../util/internalError.ts";
-import { getSettings } from "../.././settings.ts";
 import type { Renderer } from "../..//renderers/base/base.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
@@ -206,17 +205,6 @@ export function getDisplayTypeInfo(
   }
 }
 
-function hasSchemaFrontmatter(schema: SchemaValue) {
-  const description = "description" in schema ? schema.description : null;
-  const examples = "examples" in schema ? schema.examples : [];
-  const defaultValue = "defaultValue" in schema ? schema.defaultValue : null;
-  const { showDebugPlaceholders } = getSettings().display;
-  return (
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-    description || examples.length > 0 || defaultValue || showDebugPlaceholders
-  );
-}
-
 /* ---- Section Rendering ---- */
 
 function renderObjectProperties({
@@ -260,20 +248,16 @@ function renderObjectProperties({
     if (property.isDeprecated) {
       annotations.push({ title: "deprecated", variant: "warning" });
     }
-    const hasFrontmatter = hasSchemaFrontmatter(property.schema);
     renderer.createExpandableProperty({
       typeInfo,
       annotations,
       title: property.name,
       isTopLevel,
-      createContent: hasFrontmatter
-        ? () => {
-            renderSchemaFrontmatter({
-              renderer,
-              schema: property.schema,
-            });
-          }
-        : undefined,
+      description:
+        "description" in property.schema ? property.schema.description : null,
+      examples: "examples" in property.schema ? property.schema.examples : [],
+      defaultValue:
+        "defaultValue" in property.schema ? property.schema.defaultValue : null,
     });
 
     // Render breakouts, which will be separate expandable entries
@@ -314,7 +298,6 @@ function renderContainerTypes({
     }
     renderer.enterContext({ id: breakout.label, type: "schema" });
 
-    const hasFrontmatter = hasSchemaFrontmatter(breakout.schema);
     renderer.createExpandableBreakout({
       title: breakout.label,
       isTopLevel,
@@ -327,14 +310,7 @@ function renderContainerTypes({
           }
         );
       },
-      createContent: hasFrontmatter
-        ? () => {
-            renderSchemaFrontmatter({
-              renderer,
-              schema: breakout.schema,
-            });
-          }
-        : undefined,
+      createContent: undefined,
     });
 
     renderObjectProperties({
@@ -347,38 +323,6 @@ function renderContainerTypes({
 }
 
 /* ---- Root ---- */
-
-export function renderSchemaFrontmatter({
-  schema,
-  renderer,
-}: {
-  renderer: Renderer;
-  schema: SchemaValue;
-}) {
-  const description = "description" in schema ? schema.description : null;
-  const examples = "examples" in schema ? schema.examples : [];
-  const defaultValue = "defaultValue" in schema ? schema.defaultValue : null;
-  const { showDebugPlaceholders } = getSettings().display;
-  if (description) {
-    renderer.createText(description);
-  } else if (showDebugPlaceholders) {
-    renderer.createDebugPlaceholder(() => "No description provided");
-  }
-  if (examples.length > 0) {
-    renderer.createText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
-    for (const example of examples) {
-      renderer.createCode(example);
-    }
-  } else if (showDebugPlaceholders) {
-    renderer.createDebugPlaceholder(() => "No examples provided");
-  }
-
-  if (defaultValue) {
-    renderer.createText(`_Default Value:_ \`${defaultValue}\``);
-  } else if (showDebugPlaceholders) {
-    renderer.createDebugPlaceholder(() => "No default value provided");
-  }
-}
 
 export function renderBreakouts({
   renderer,

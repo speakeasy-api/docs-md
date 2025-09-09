@@ -7,11 +7,7 @@ import type { Renderer } from "../..//renderers/base/base.ts";
 import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
 import { debug } from "../../logging.ts";
 import { getSchemaFromId, getSecurityFromId } from "../util.ts";
-import {
-  getDisplayTypeInfo,
-  renderBreakouts,
-  renderSchemaFrontmatter,
-} from "./schema.ts";
+import { getDisplayTypeInfo, renderBreakouts } from "./schema.ts";
 
 type RenderOperationOptions = {
   renderer: Renderer;
@@ -27,7 +23,6 @@ export function renderOperation({
   debug(
     `Rendering operation chunk: method=${chunk.chunkData.method} path=${chunk.chunkData.path} operationId=${chunk.chunkData.operationId}`
   );
-  const { showDebugPlaceholders } = getSettings().display;
   renderer.createOperationSection(
     {
       method: chunk.chunkData.method,
@@ -46,7 +41,6 @@ export function renderOperation({
           );
           for (const entry of securityChunk.chunkData.entries) {
             debug(`Rendering security chunk: name=${entry.name}`);
-            const hasFrontmatter = !!entry.description || showDebugPlaceholders;
             renderer.enterContext({ id: entry.name, type: "schema" });
             renderer.createExpandableProperty({
               title: entry.name,
@@ -61,18 +55,9 @@ export function renderOperation({
                   variant: "info",
                 },
               ],
-              createContent: hasFrontmatter
-                ? () => {
-                    if (entry.description) {
-                      renderer.createText(entry.description);
-                    }
-                    if (showDebugPlaceholders) {
-                      renderer.createDebugPlaceholder(
-                        () => "No description provided"
-                      );
-                    }
-                  }
-                : undefined,
+              description: entry.description,
+              examples: [],
+              defaultValue: null,
             });
             renderer.exitContext();
           }
@@ -108,24 +93,14 @@ export function renderOperation({
               renderer,
               []
             );
-            const hasFrontmatter = !!parameter.description;
             renderer.createExpandableProperty({
               typeInfo,
               annotations,
               title: parameter.name,
               isTopLevel: true,
-              createContent: hasFrontmatter
-                ? () => {
-                    if (parameter.description) {
-                      renderer.createText(parameter.description);
-                    }
-                    if (showDebugPlaceholders) {
-                      renderer.createDebugPlaceholder(
-                        () => "No description provided"
-                      );
-                    }
-                  }
-                : undefined,
+              description: parameter.description,
+              examples: [],
+              defaultValue: null,
             });
 
             // Render breakouts, which will be separate expandable entries
@@ -192,10 +167,11 @@ export function renderOperation({
             if (requestBody.description) {
               renderer.createText(requestBody.description);
             }
-            renderSchemaFrontmatter({
-              renderer,
-              schema: requestBodySchema.chunkData.value,
-            });
+            // TODO: reimplement
+            // renderSchemaFrontmatter({
+            //   renderer,
+            //   schema: requestBodySchema.chunkData.value,
+            // });
           },
           createBreakouts() {
             renderBreakouts({
@@ -260,10 +236,11 @@ export function renderOperation({
                       if (response.description) {
                         renderer.createText(response.description);
                       }
-                      renderSchemaFrontmatter({
-                        renderer,
-                        schema,
-                      });
+                      // TODO: reimplement
+                      // renderSchemaFrontmatter({
+                      //   renderer,
+                      //   schema,
+                      // });
                     },
                     createBreakouts() {
                       renderBreakouts({

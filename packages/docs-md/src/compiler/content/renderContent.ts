@@ -1,4 +1,4 @@
-import { capitalCase, snakeCase } from "change-case";
+import { capitalCase } from "change-case";
 
 import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
 import { InternalError } from "../../util/internalError.ts";
@@ -9,7 +9,6 @@ import { debug } from "../logging.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderGlobalSecurity } from "./chunks/globalSecurity.ts";
 import { renderOperation } from "./chunks/operation.ts";
-import { renderBreakouts, renderSchemaFrontmatter } from "./chunks/schema.ts";
 import { renderTag } from "./chunks/tag.ts";
 import { HEADINGS } from "./constants.ts";
 import { getOperationFromId } from "./util.ts";
@@ -129,7 +128,6 @@ function renderPages(
   pageMap: PageMap,
   docsCodeSnippets: DocsCodeSnippets
 ) {
-  const settings = getSettings();
   for (const [currentPagePath, pageMapEntry] of pageMap) {
     debug(`Rendering page ${currentPagePath}`);
     const { chunks, sidebarLabel, sidebarPosition, slug } = pageMapEntry;
@@ -156,28 +154,7 @@ function renderPages(
           break;
         }
         case "schema": {
-          if (!settings.display.showSchemasInNav) {
-            break;
-          }
-          // The normal schema renderer doesn't render a heading, since it's
-          // normally embedded in a separate page. It's not in this case though,
-          // so we add one by hand
-          const id = `schema-${snakeCase(chunk.chunkData.name)}`;
-          renderer.createHeading(
-            HEADINGS.SECTION_TITLE_HEADING_LEVEL,
-            chunk.chunkData.name,
-            {
-              id,
-            }
-          );
-          renderSchemaFrontmatter({
-            renderer,
-            schema: chunk.chunkData.value,
-          });
-          renderBreakouts({
-            renderer,
-            schema: chunk.chunkData.value,
-          });
+          // Do nothing, since these are embedded in other pages
           break;
         }
         case "operation": {

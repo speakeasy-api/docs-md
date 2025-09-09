@@ -154,7 +154,9 @@ export type RendererCreateExpandablePropertyArgs = [
     isTopLevel: boolean;
     typeInfo?: DisplayTypeInfo;
     annotations: PropertyAnnotations[];
-    createContent?: () => void;
+    description: string | null;
+    examples: string[];
+    defaultValue: string | null;
   },
 ];
 
