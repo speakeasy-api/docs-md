@@ -1,3 +1,4 @@
+import { useChildren, useUniqueChild } from "../../util/hooks.ts";
 import styles from "./styles.module.css";
 import type {
   OperationCodeSamplesSectionProps,
@@ -35,7 +36,28 @@ import type {
  * to layout the children in the desired way.
  */
 export function Operation({ children }: OperationProps) {
-  return <div className={styles.operation}>{children}</div>;
+  const titleChild = useUniqueChild(children, "title");
+  const summaryChild = useUniqueChild(children, "summary");
+  const descriptionChildren = useChildren(children, "description");
+  const codeSamplesChildren = useChildren(children, "code-samples");
+  const securityChildren = useChildren(children, "security");
+  const parametersChildren = useChildren(children, "parameters");
+  const requestBodyChildren = useChildren(children, "request-body");
+  const responseBodyChildren = useChildren(children, "response-body");
+  return (
+    <div className={styles.operation}>
+      <div>
+        {titleChild}
+        {summaryChild}
+        {descriptionChildren}
+      </div>
+      {codeSamplesChildren}
+      {securityChildren}
+      {parametersChildren}
+      {requestBodyChildren}
+      {responseBodyChildren}
+    </div>
+  );
 }
 
 /**
