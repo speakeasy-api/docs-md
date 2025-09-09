@@ -189,7 +189,7 @@ export abstract class MarkdownRenderer extends Renderer {
       this.#pageMetadata.operations.push(currentOperation);
     }
 
-    this.handleCreateOperationDescription(() => {
+    this.handleCreateOperationTitle(() => {
       path = this.escapeText(path, {
         escape: "markdown",
       });
@@ -198,25 +198,28 @@ export abstract class MarkdownRenderer extends Renderer {
         `${this.createPill("primary", () => `<b>${method.toUpperCase()}</b>`)} ${path}`,
         { id, escape: "none" }
       );
+    });
+
+    this.handleCreateOperationSummary(() => {
       if (summary && description) {
         this.createText(`_${summary}_`);
-        this.createText(description);
       } else if (summary) {
         this.createText(summary);
-        if (showDebugPlaceholders) {
-          this.createDebugPlaceholder(() => "No description provided");
-        }
-      } else if (description) {
-        this.createText(description);
-        if (showDebugPlaceholders) {
-          this.createDebugPlaceholder(() => "No summary provided");
-        }
       } else if (showDebugPlaceholders) {
         this.createDebugPlaceholder(() => "No summary provided");
+      }
+    });
+
+    this.handleCreateOperationDescription(() => {
+      if (description) {
+        this.createText(description);
+      } else if (showDebugPlaceholders) {
         this.createDebugPlaceholder(() => "No description provided");
       }
     });
+
     cb();
+
     this.#currentOperation = undefined;
     this.exitContext();
   }
@@ -262,6 +265,14 @@ export abstract class MarkdownRenderer extends Renderer {
 
     this.#currentSection = undefined;
     this.exitContext();
+  }
+
+  protected handleCreateOperationTitle(cb: () => void) {
+    cb();
+  }
+
+  protected handleCreateOperationSummary(cb: () => void) {
+    cb();
   }
 
   protected handleCreateOperationDescription(cb: () => void) {

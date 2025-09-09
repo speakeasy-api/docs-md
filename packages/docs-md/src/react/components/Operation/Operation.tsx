@@ -7,6 +7,8 @@ import type {
   OperationRequestBodySectionProps,
   OperationResponseBodySectionProps,
   OperationSecuritySectionProps,
+  OperationSummarySectionProps,
+  OperationTitleSectionProps,
 } from "./types.ts";
 
 /**
@@ -29,9 +31,28 @@ export function Operation({ children }: OperationProps) {
 }
 
 /**
- * This component represents the front matter section of an operation. It is
- * assigned to the `description` slot and contains the title (method and path),
- * summary, and description of the operation.
+ * This component contains the title (method and path) of an operation and is
+ * assigned to the `title` slot.
+ */
+export function OperationTitleSection({
+  children,
+}: OperationTitleSectionProps) {
+  return <div slot="title">{children}</div>;
+}
+
+/**
+ * This component contains the summary of an operation and is assigned
+ * to the `summary` slot.
+ */
+export function OperationSummarySection({
+  children,
+}: OperationSummarySectionProps) {
+  return <div slot="summary">{children}</div>;
+}
+
+/**
+ * This component contains the description of an operation and is assigned
+ * to the `description` slot.zs
  */
 export function OperationDescriptionSection({
   children,

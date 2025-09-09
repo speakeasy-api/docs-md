@@ -26,18 +26,22 @@ export { NonExpandableCell } from "./components/NonExpandableCell/NonExpandableC
 export type { NonExpandableCellProps } from "./components/NonExpandableCell/types.ts";
 export {
   Operation,
-  OperationCodeSamplesSection,
+  OperationTitleSection,
+  OperationSummarySection,
   OperationDescriptionSection,
+  OperationCodeSamplesSection,
   OperationParametersSection,
   OperationRequestBodySection,
   OperationResponseBodySection,
   OperationSecuritySection,
 } from "./components/Operation/Operation.tsx";
 export type {
-  OperationCodeSamplesSectionProps,
-  OperationDescriptionSectionProps,
-  OperationParametersSectionProps,
   OperationProps,
+  OperationTitleSectionProps,
+  OperationSummarySectionProps,
+  OperationDescriptionSectionProps,
+  OperationCodeSamplesSectionProps,
+  OperationParametersSectionProps,
   OperationRequestBodySectionProps,
   OperationResponseBodySectionProps,
   OperationSecuritySectionProps,

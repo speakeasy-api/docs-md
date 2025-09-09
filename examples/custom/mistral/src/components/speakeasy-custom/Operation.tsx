@@ -1,7 +1,9 @@
 import { OperationProps, useChildren } from "@speakeasy-api/docs-md/react";
 
 export function Operation({ children }: OperationProps) {
-  const frontMatterSection = useChildren(children, "front-matter")[0];
+  const titleSection = useChildren(children, "title")[0];
+  const summarySection = useChildren(children, "summary")[0];
+  const descriptionSection = useChildren(children, "description")[0];
   const tryItNowSection = useChildren(children, "code-samples")[0];
   const securitySection = useChildren(children, "security")[0];
   const parametersSection = useChildren(children, "parameters")[0];
@@ -9,7 +11,16 @@ export function Operation({ children }: OperationProps) {
   const responseBodySection = useChildren(children, "response-body")[0];
   return (
     <>
-      {frontMatterSection}
+      <div
+        style={{
+          borderBottom: "1px solid var(--speakeasy-border-color)",
+          paddingBottom: "0.75rem",
+        }}
+      >
+        {titleSection}
+      </div>
+      {summarySection}
+      {descriptionSection}
       <div style={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
         <div
           style={{

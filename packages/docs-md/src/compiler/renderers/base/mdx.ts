@@ -144,6 +144,20 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.appendLine(`</Operation>`);
   }
 
+  protected override handleCreateOperationTitle(cb: () => void): void {
+    this.insertComponentImport("OperationTitleSection");
+    this.appendLine(`<OperationTitleSection slot="title">`);
+    cb();
+    this.appendLine(`</OperationTitleSection>`);
+  }
+
+  protected override handleCreateOperationSummary(cb: () => void) {
+    this.insertComponentImport("OperationSummarySection");
+    this.appendLine(`<OperationSummarySection slot="summary">`);
+    cb();
+    this.appendLine(`</OperationSummarySection>`);
+  }
+
   protected override handleCreateOperationDescription(cb: () => void) {
     this.insertComponentImport("OperationDescriptionSection");
     this.appendLine(`<OperationDescriptionSection slot="description">`);
