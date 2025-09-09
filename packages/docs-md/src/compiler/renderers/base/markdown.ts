@@ -340,10 +340,18 @@ export abstract class MarkdownRenderer extends Renderer {
         annotations,
       },
       () => {
-        this.handleCreateRequestDisplayType(createDisplayType);
-        this.handleCreateRequestDescription(createDescription);
-        this.handleCreateRequestExamples(createExamples);
-        this.handleCreateRequestDefaultValue(createDefaultValue);
+        if (createDisplayType) {
+          this.handleCreateRequestDisplayType(createDisplayType);
+        }
+        if (createDescription) {
+          this.handleCreateRequestDescription(createDescription);
+        }
+        if (createExamples) {
+          this.handleCreateRequestExamples(createExamples);
+        }
+        if (createDefaultValue) {
+          this.handleCreateRequestDefaultValue(createDefaultValue);
+        }
         this.handleCreateBreakouts(createBreakouts);
       }
     );
@@ -393,10 +401,18 @@ export abstract class MarkdownRenderer extends Renderer {
           });
           this.createSectionContent(
             () => {
-              this.handleCreateResponseDisplayType(createDisplayType);
-              this.handleCreateResponseDescription(createDescription);
-              this.handleCreateResponseExamples(createExamples);
-              this.handleCreateResponseDefaultValue(createDefaultValue);
+              if (createDisplayType) {
+                this.handleCreateResponseDisplayType(createDisplayType);
+              }
+              if (createDescription) {
+                this.handleCreateResponseDescription(createDescription);
+              }
+              if (createExamples) {
+                this.handleCreateResponseExamples(createExamples);
+              }
+              if (createDefaultValue) {
+                this.handleCreateResponseDefaultValue(createDefaultValue);
+              }
               this.handleCreateBreakouts(createBreakouts);
             },
             {
@@ -413,36 +429,36 @@ export abstract class MarkdownRenderer extends Renderer {
     this.exitContext();
   }
 
-  protected handleCreateRequestDisplayType(cb?: () => void) {
-    cb?.();
+  protected handleCreateRequestDisplayType(cb: () => void) {
+    cb();
   }
 
-  protected handleCreateRequestDescription(cb?: () => void) {
-    cb?.();
+  protected handleCreateRequestDescription(cb: () => void) {
+    cb();
   }
 
-  protected handleCreateRequestExamples(cb?: () => void) {
-    cb?.();
+  protected handleCreateRequestExamples(cb: () => void) {
+    cb();
   }
 
-  protected handleCreateRequestDefaultValue(cb?: () => void) {
-    cb?.();
+  protected handleCreateRequestDefaultValue(cb: () => void) {
+    cb();
   }
 
-  protected handleCreateResponseDisplayType(cb?: () => void) {
-    cb?.();
+  protected handleCreateResponseDisplayType(cb: () => void) {
+    cb();
   }
 
-  protected handleCreateResponseDescription(cb?: () => void) {
-    cb?.();
+  protected handleCreateResponseDescription(cb: () => void) {
+    cb();
   }
 
-  protected handleCreateResponseExamples(cb?: () => void) {
-    cb?.();
+  protected handleCreateResponseExamples(cb: () => void) {
+    cb();
   }
 
-  protected handleCreateResponseDefaultValue(cb?: () => void) {
-    cb?.();
+  protected handleCreateResponseDefaultValue(cb: () => void) {
+    cb();
   }
 
   protected handleCreateBreakouts(cb: () => void) {
