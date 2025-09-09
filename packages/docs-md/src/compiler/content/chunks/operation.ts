@@ -179,32 +179,41 @@ export function renderOperation({
         const requestBodySchemaValue = requestBodySchema.chunkData.value;
         renderer.createRequestSection({
           isOptional: false,
-          createDisplayType() {
-            if (requestBodySchemaValue.type !== "object") {
-              renderer.createFrontMatterDisplayType({
-                typeInfo: getDisplayTypeInfo(
-                  requestBodySchema.chunkData.value,
-                  renderer,
-                  []
-                ),
-              });
-            }
-          },
-          createDescription() {
-            // TODO: We can have a description at the requestBody level, or at
-            // the top-level schema. We prioritize the requestBody level
-            // description currently, but should we show both?
-            if (requestBody.description) {
-              renderer.createText(requestBody.description);
-            } else if (
-              "description" in requestBodySchemaValue &&
-              requestBodySchemaValue.description
-            ) {
-              renderer.createText(requestBodySchemaValue.description);
-            } else if (showDebugPlaceholders) {
-              renderer.createDebugPlaceholder(() => "No description provided");
-            }
-          },
+          createDisplayType:
+            requestBodySchemaValue.type !== "object"
+              ? () => {
+                  renderer.createFrontMatterDisplayType({
+                    typeInfo: getDisplayTypeInfo(
+                      requestBodySchema.chunkData.value,
+                      renderer,
+                      []
+                    ),
+                  });
+                }
+              : undefined,
+          createDescription:
+            requestBody.description ||
+            ("description" in requestBodySchemaValue &&
+              requestBodySchemaValue.description) ||
+            showDebugPlaceholders
+              ? () => {
+                  // TODO: We can have a description at the requestBody level, or at
+                  // the top-level schema. We prioritize the requestBody level
+                  // description currently, but should we show both?
+                  if (requestBody.description) {
+                    renderer.createText(requestBody.description);
+                  } else if (
+                    "description" in requestBodySchemaValue &&
+                    requestBodySchemaValue.description
+                  ) {
+                    renderer.createText(requestBodySchemaValue.description);
+                  } else if (showDebugPlaceholders) {
+                    renderer.createDebugPlaceholder(
+                      () => "No description provided"
+                    );
+                  }
+                }
+              : undefined,
           createExamples: createExamples(requestBodySchemaValue, renderer),
           createDefaultValue: createDefaultValue(
             requestBodySchemaValue,
@@ -264,30 +273,40 @@ export function renderOperation({
                   createTab({
                     statusCode,
                     contentType: response.contentType,
-                    createDisplayType() {
-                      if (schema.type !== "object") {
-                        renderer.createFrontMatterDisplayType({
-                          typeInfo: getDisplayTypeInfo(schema, renderer, []),
-                        });
-                      }
-                    },
-                    createDescription() {
-                      // TODO: We can have a description at the requestBody level, or at
-                      // the top-level schema. We prioritize the requestBody level
-                      // description currently, but should we show both?
-                      if (response.description) {
-                        renderer.createText(response.description);
-                      } else if (
-                        "description" in schema &&
-                        schema.description
-                      ) {
-                        renderer.createText(schema.description);
-                      } else if (showDebugPlaceholders) {
-                        renderer.createDebugPlaceholder(
-                          () => "No description provided"
-                        );
-                      }
-                    },
+                    createDisplayType:
+                      schema.type !== "object"
+                        ? () => {
+                            renderer.createFrontMatterDisplayType({
+                              typeInfo: getDisplayTypeInfo(
+                                schema,
+                                renderer,
+                                []
+                              ),
+                            });
+                          }
+                        : undefined,
+                    createDescription:
+                      response.description ||
+                      ("description" in schema && schema.description) ||
+                      showDebugPlaceholders
+                        ? () => {
+                            // TODO: We can have a description at the requestBody level, or at
+                            // the top-level schema. We prioritize the requestBody level
+                            // description currently, but should we show both?
+                            if (response.description) {
+                              renderer.createText(response.description);
+                            } else if (
+                              "description" in schema &&
+                              schema.description
+                            ) {
+                              renderer.createText(schema.description);
+                            } else if (showDebugPlaceholders) {
+                              renderer.createDebugPlaceholder(
+                                () => "No description provided"
+                              );
+                            }
+                          }
+                        : undefined,
                     createExamples: createExamples(schema, renderer),
                     createDefaultValue: createDefaultValue(schema, renderer),
                     createBreakouts() {
