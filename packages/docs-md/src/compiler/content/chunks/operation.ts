@@ -23,6 +23,7 @@ export function renderOperation({
   debug(
     `Rendering operation chunk: method=${chunk.chunkData.method} path=${chunk.chunkData.path} operationId=${chunk.chunkData.operationId}`
   );
+  const { showDebugPlaceholders } = getSettings().display;
   renderer.createOperationSection(
     {
       method: chunk.chunkData.method,
@@ -43,7 +44,7 @@ export function renderOperation({
             debug(`Rendering security chunk: name=${entry.name}`);
             renderer.enterContext({ id: entry.name, type: "schema" });
             renderer.createExpandableProperty({
-              title: entry.name,
+              rawTitle: entry.name,
               isTopLevel: true,
               annotations: [
                 {
@@ -55,9 +56,22 @@ export function renderOperation({
                   variant: "info",
                 },
               ],
-              description: entry.description,
-              examples: [],
-              defaultValue: null,
+              hasFrontMatter: !!entry.description || showDebugPlaceholders,
+              createDescription() {
+                if (entry.description) {
+                  renderer.createText(entry.description);
+                } else if (showDebugPlaceholders) {
+                  renderer.createDebugPlaceholder(
+                    () => "No description provided"
+                  );
+                }
+              },
+              createExamples() {
+                // Do nothing, since security doesn't have examples at this level
+              },
+              createDefaultValue() {
+                // Do nothing, since security doesn't have default values at this level
+              },
             });
             renderer.exitContext();
           }
@@ -96,11 +110,24 @@ export function renderOperation({
             renderer.createExpandableProperty({
               typeInfo,
               annotations,
-              title: parameter.name,
+              rawTitle: parameter.name,
               isTopLevel: true,
-              description: parameter.description,
-              examples: [],
-              defaultValue: null,
+              hasFrontMatter: !!parameter.description || showDebugPlaceholders,
+              createDescription() {
+                if (parameter.description) {
+                  renderer.createText(parameter.description);
+                } else if (showDebugPlaceholders) {
+                  renderer.createDebugPlaceholder(
+                    () => "No description provided"
+                  );
+                }
+              },
+              createExamples() {
+                // Do nothing, since security doesn't have examples at this level
+              },
+              createDefaultValue() {
+                // Do nothing, since security doesn't have default values at this level
+              },
             });
 
             // Render breakouts, which will be separate expandable entries

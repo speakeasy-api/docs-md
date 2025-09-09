@@ -6,6 +6,7 @@ import type {
 import { assertNever } from "../../../util/assertNever.ts";
 import { InternalError } from "../../../util/internalError.ts";
 import type { Renderer } from "../..//renderers/base/base.ts";
+import { getSettings } from "../../settings.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
 
@@ -205,6 +206,19 @@ export function getDisplayTypeInfo(
   }
 }
 
+function hasSchemaFrontmatter(schema: SchemaValue) {
+  const description = "description" in schema ? schema.description : null;
+  const examples = "examples" in schema ? schema.examples : [];
+  const defaultValue = "defaultValue" in schema ? schema.defaultValue : null;
+  const { showDebugPlaceholders } = getSettings().display;
+  return (
+    !!description ||
+    examples.length > 0 ||
+    !!defaultValue ||
+    showDebugPlaceholders
+  );
+}
+
 /* ---- Section Rendering ---- */
 
 function renderObjectProperties({
@@ -248,16 +262,47 @@ function renderObjectProperties({
     if (property.isDeprecated) {
       annotations.push({ title: "deprecated", variant: "warning" });
     }
+    const { showDebugPlaceholders } = getSettings().display;
     renderer.createExpandableProperty({
       typeInfo,
       annotations,
-      title: property.name,
+      rawTitle: property.name,
       isTopLevel,
-      description:
-        "description" in property.schema ? property.schema.description : null,
-      examples: "examples" in property.schema ? property.schema.examples : [],
-      defaultValue:
-        "defaultValue" in property.schema ? property.schema.defaultValue : null,
+      hasFrontMatter: hasSchemaFrontmatter(property.schema),
+      createDescription() {
+        const description =
+          "description" in property.schema ? property.schema.description : null;
+        if (description) {
+          renderer.createText(description);
+        } else if (showDebugPlaceholders) {
+          renderer.createDebugPlaceholder(() => "No description provided");
+        }
+      },
+      createExamples() {
+        const examples =
+          "examples" in property.schema ? property.schema.examples : [];
+        if (examples.length > 0) {
+          renderer.createText(
+            `_${examples.length > 1 ? "Examples" : "Example"}:_`
+          );
+          for (const example of examples) {
+            renderer.createCode(example);
+          }
+        } else if (showDebugPlaceholders) {
+          renderer.createDebugPlaceholder(() => "No examples provided");
+        }
+      },
+      createDefaultValue() {
+        const defaultValue =
+          "defaultValue" in property.schema
+            ? property.schema.defaultValue
+            : null;
+        if (defaultValue) {
+          renderer.createText(`_Default Value:_ \`${defaultValue}\``);
+        } else if (showDebugPlaceholders) {
+          renderer.createDebugPlaceholder(() => "No default value provided");
+        }
+      },
     });
 
     // Render breakouts, which will be separate expandable entries

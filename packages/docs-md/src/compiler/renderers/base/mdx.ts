@@ -334,16 +334,16 @@ export abstract class MdxRenderer extends MarkdownRenderer {
       {
         typeInfo,
         annotations,
-        title,
+        rawTitle,
         isTopLevel,
-        description,
-        examples,
-        defaultValue,
+        hasFrontMatter,
+        createDescription,
+        createExamples,
+        createDefaultValue,
       },
     ]: RendererCreateExpandablePropertyArgs
   ) {
     const { id, parentId } = this.#getBreakoutIdInfo();
-    const { showDebugPlaceholders } = getSettings().display;
 
     this.insertComponentImport("ExpandableProperty");
     const expandByDefault =
@@ -368,47 +368,32 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   typeAnnotations={${JSON.stringify(annotations)}}`
       : ""
   }
-  hasFrontMatter={${description || examples || defaultValue || showDebugPlaceholders ? "true" : "false"}}
+  hasFrontMatter={${hasFrontMatter ? "true" : "false"}}
   expandByDefault={${expandByDefault}}
 >`
     );
 
     this.insertComponentImport("ExpandablePropertyTitle");
     this.appendLine(`<ExpandablePropertyTitle slot="title">`);
-    this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, title, {
-      escape: "mdx",
+    this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, rawTitle, {
       id: this.getCurrentId(),
+      escape: "mdx",
     });
     this.appendLine("</ExpandablePropertyTitle>");
 
     this.insertComponentImport("ExpandablePropertyDescription");
     this.appendLine(`<ExpandablePropertyDescription slot="description">`);
-    if (description) {
-      this.createText(description);
-    } else if (showDebugPlaceholders) {
-      this.createDebugPlaceholder(() => "No description provided");
-    }
+    createDescription();
     this.appendLine("</ExpandablePropertyDescription>");
 
     this.insertComponentImport("ExpandablePropertyExamples");
     this.appendLine(`<ExpandablePropertyExamples slot="examples">`);
-    if (examples.length > 0) {
-      this.createText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
-      for (const example of examples) {
-        this.createCode(example);
-      }
-    } else if (showDebugPlaceholders) {
-      this.createDebugPlaceholder(() => "No examples provided");
-    }
+    createExamples();
     this.appendLine("</ExpandablePropertyExamples>");
 
     this.insertComponentImport("ExpandablePropertyDefaultValue");
     this.appendLine(`<ExpandablePropertyDefaultValue slot="defaultValue">`);
-    if (defaultValue) {
-      this.createText(`_Default Value:_ \`${defaultValue}\``);
-    } else if (showDebugPlaceholders) {
-      this.createDebugPlaceholder(() => "No default value provided");
-    }
+    createDefaultValue();
     this.appendLine("</ExpandablePropertyDefaultValue>");
 
     this.appendLine("</ExpandableProperty>");

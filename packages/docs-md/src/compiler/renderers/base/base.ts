@@ -150,13 +150,14 @@ export type RendererCreateExpandableBreakoutArgs = [
 ];
 export type RendererCreateExpandablePropertyArgs = [
   options: {
-    title: string;
     isTopLevel: boolean;
     typeInfo?: DisplayTypeInfo;
     annotations: PropertyAnnotations[];
-    description: string | null;
-    examples: string[];
-    defaultValue: string | null;
+    rawTitle: string;
+    hasFrontMatter: boolean;
+    createDescription: () => void;
+    createExamples: () => void;
+    createDefaultValue: () => void;
   },
 ];
 

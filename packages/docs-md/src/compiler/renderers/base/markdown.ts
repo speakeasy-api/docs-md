@@ -423,7 +423,7 @@ export abstract class MarkdownRenderer extends Renderer {
     if (this.#currentSection && props.isTopLevel) {
       this.#currentSection.properties.push({
         fragment: this.getCurrentId(),
-        name: props.title,
+        name: props.rawTitle,
       });
     }
     this.handleCreateExpandableProperty(props);
@@ -431,7 +431,14 @@ export abstract class MarkdownRenderer extends Renderer {
 
   protected handleCreateExpandableProperty(
     ...[
-      { typeInfo, annotations, title, description, examples, defaultValue },
+      {
+        rawTitle,
+        typeInfo,
+        annotations,
+        createDescription,
+        createExamples,
+        createDefaultValue,
+      },
     ]: RendererCreateExpandablePropertyArgs
   ) {
     let type;
@@ -450,28 +457,12 @@ export abstract class MarkdownRenderer extends Renderer {
     });
     this.createHeading(
       HEADINGS.PROPERTY_HEADING_LEVEL,
-      `${title} ${renderedAnnotations.join(" ")}${type}`,
+      `${rawTitle} ${renderedAnnotations.join(" ")}${type}`,
       { id: this.getCurrentId(), escape: "mdx" }
     );
-    const { showDebugPlaceholders } = getSettings().display;
-    if (description) {
-      this.createText(description);
-    } else if (showDebugPlaceholders) {
-      this.createDebugPlaceholder(() => "No description provided");
-    }
-    if (examples.length > 0) {
-      this.createText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
-      for (const example of examples) {
-        this.createCode(example);
-      }
-    } else if (showDebugPlaceholders) {
-      this.createDebugPlaceholder(() => "No examples provided");
-    }
-    if (defaultValue) {
-      this.createText(`_Default Value:_ \`${defaultValue}\``);
-    } else if (showDebugPlaceholders) {
-      this.createDebugPlaceholder(() => "No default value provided");
-    }
+    createDescription();
+    createExamples();
+    createDefaultValue();
   }
 
   public override createFrontMatterDisplayType(
