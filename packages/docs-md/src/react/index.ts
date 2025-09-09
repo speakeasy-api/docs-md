@@ -12,7 +12,13 @@ export { ExpandableCellIcon } from "./components/ExpandableCellIcon/ExpandableCe
 export type { ExpandableCellIconProps } from "./components/ExpandableCellIcon/type.ts";
 export { ExpandableCell } from "./components/ExpandableCell/ExpandableCell.tsx";
 export type { ExpandableCellProps } from "./components/ExpandableCell/types.ts";
-export { ExpandableBreakout } from "./components/ExpandableSection/ExpandableBreakout.tsx";
+export {
+  ExpandableBreakout,
+  ExpandableBreakoutTitle,
+  ExpandableBreakoutDescription,
+  ExpandableBreakoutExamples,
+  ExpandableBreakoutDefaultValue,
+} from "./components/ExpandableSection/ExpandableBreakout.tsx";
 export {
   ExpandableProperty,
   ExpandablePropertyTitle,
@@ -29,6 +35,10 @@ export type {
   ExpandablePropertyExamplesProps,
   ExpandablePropertyDefaultValueProps,
   ExpandableBreakoutProps,
+  ExpandableBreakoutTitleProps,
+  ExpandableBreakoutDescriptionProps,
+  ExpandableBreakoutExamplesProps,
+  ExpandableBreakoutDefaultValueProps,
 } from "./components/ExpandableSection/types.ts";
 export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/FrontMatterDisplayType.tsx";
 export type { FrontMatterDisplayTypeProps } from "./components/FrontMatterDisplayType/types.ts";

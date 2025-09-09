@@ -343,8 +343,9 @@ function renderContainerTypes({
     }
     renderer.enterContext({ id: breakout.label, type: "schema" });
 
+    const { showDebugPlaceholders } = getSettings().display;
     renderer.createExpandableBreakout({
-      title: breakout.label,
+      rawTitle: breakout.label,
       isTopLevel,
       createTitle: () => {
         renderer.createHeading(
@@ -355,7 +356,41 @@ function renderContainerTypes({
           }
         );
       },
-      createContent: undefined,
+      hasFrontMatter: hasSchemaFrontmatter(breakout.schema),
+      createDescription() {
+        const description =
+          "description" in breakout.schema ? breakout.schema.description : null;
+        if (description) {
+          renderer.createText(description);
+        } else if (showDebugPlaceholders) {
+          renderer.createDebugPlaceholder(() => "No description provided");
+        }
+      },
+      createExamples() {
+        const examples =
+          "examples" in breakout.schema ? breakout.schema.examples : [];
+        if (examples.length > 0) {
+          renderer.createText(
+            `_${examples.length > 1 ? "Examples" : "Example"}:_`
+          );
+          for (const example of examples) {
+            renderer.createCode(example);
+          }
+        } else if (showDebugPlaceholders) {
+          renderer.createDebugPlaceholder(() => "No examples provided");
+        }
+      },
+      createDefaultValue() {
+        const defaultValue =
+          "defaultValue" in breakout.schema
+            ? breakout.schema.defaultValue
+            : null;
+        if (defaultValue) {
+          renderer.createText(`_Default Value:_ \`${defaultValue}\``);
+        } else if (showDebugPlaceholders) {
+          renderer.createDebugPlaceholder(() => "No default value provided");
+        }
+      },
     });
 
     renderObjectProperties({

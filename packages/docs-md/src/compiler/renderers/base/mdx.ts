@@ -45,7 +45,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
       } else if (symbols.defaultAlias) {
         imports += `import ${symbols.defaultAlias} from "${importPath}";\n`;
       } else if (symbols.namedImports.size > 0) {
-        imports += `import { ${Array.from(symbols.namedImports).join(", ")} } from "${importPath}";\n`;
+        imports += `import {\n${Array.from(symbols.namedImports).sort().join(",\n  ")}\n} from "${importPath}";\n`;
       } else {
         imports += `import "${importPath}";\n`;
       }
@@ -299,7 +299,14 @@ export abstract class MdxRenderer extends MarkdownRenderer {
 
   protected override handleCreateExpandableBreakout(
     ...[
-      { createTitle, createContent, isTopLevel },
+      {
+        hasFrontMatter,
+        createTitle,
+        createDescription,
+        createExamples,
+        createDefaultValue,
+        isTopLevel,
+      },
     ]: RendererCreateExpandableBreakoutArgs
   ) {
     const { id, parentId } = this.#getBreakoutIdInfo();
@@ -311,20 +318,30 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   slot="entry"
   id="${id}"
   headingId="${this.getCurrentId()}"${parentId ? ` parentId="${parentId}"` : ""}
-  hasFrontMatter={${createContent ? "true" : "false"}}
+  hasFrontMatter={${hasFrontMatter ? "true" : "false"}}
   expandByDefault={${expandByDefault}}
 >`
     );
 
-    this.appendLine(`<div slot="title">`);
+    this.insertComponentImport("ExpandableBreakoutTitle");
+    this.appendLine(`<ExpandableBreakoutTitle slot="title">`);
     createTitle();
-    this.appendLine("</div>");
+    this.appendLine("</ExpandableBreakoutTitle>");
 
-    if (createContent) {
-      this.appendLine(`<div slot="content">`);
-      createContent();
-      this.appendLine("</div>");
-    }
+    this.insertComponentImport("ExpandableBreakoutDescription");
+    this.appendLine(`<ExpandableBreakoutDescription slot="description">`);
+    createDescription();
+    this.appendLine("</ExpandableBreakoutDescription>");
+
+    this.insertComponentImport("ExpandableBreakoutExamples");
+    this.appendLine(`<ExpandableBreakoutExamples slot="examples">`);
+    createExamples();
+    this.appendLine("</ExpandableBreakoutExamples>");
+
+    this.insertComponentImport("ExpandableBreakoutDefaultValue");
+    this.appendLine(`<ExpandableBreakoutDefaultValue slot="defaultValue">`);
+    createDefaultValue();
+    this.appendLine("</ExpandableBreakoutDefaultValue>");
 
     this.appendLine("</ExpandableBreakout>");
   }

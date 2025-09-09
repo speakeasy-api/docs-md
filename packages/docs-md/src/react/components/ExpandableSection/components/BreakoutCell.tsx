@@ -9,11 +9,19 @@ type BreakoutCellProps = PropsWithChildren<{ isOpen: boolean }>;
 
 export function BreakoutCell({ isOpen, children }: BreakoutCellProps) {
   const titleChild = useUniqueChild(children, "title");
-  const contentChildren = useChildren(children, "content");
+  const descriptionChildren = useChildren(children, "description");
+  const examplesChildren = useChildren(children, "examples");
+  const defaultValueChildren = useChildren(children, "defaultValue");
   return (
     <div className={styles.breakoutCell}>
       <div className={styles.breakoutCellTitle}>{titleChild}</div>
-      {isOpen && contentChildren}
+      {isOpen && (
+        <>
+          {descriptionChildren}
+          {examplesChildren}
+          {defaultValueChildren}
+        </>
+      )}
     </div>
   );
 }

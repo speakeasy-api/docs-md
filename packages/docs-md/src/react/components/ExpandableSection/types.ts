@@ -178,3 +178,14 @@ export type ExpandableBreakoutProps = RowProps & {
    */
   ConnectingCell?: FC<ConnectingCellProps>;
 };
+
+export type ExpandableBreakoutTitleProps = PropsWithChildren<{ slot: "title" }>;
+export type ExpandableBreakoutDescriptionProps = PropsWithChildren<{
+  slot: "description";
+}>;
+export type ExpandableBreakoutExamplesProps = PropsWithChildren<{
+  slot: "examples";
+}>;
+export type ExpandableBreakoutDefaultValueProps = PropsWithChildren<{
+  slot: "defaultValue";
+}>;

@@ -1,27 +1,16 @@
 import type { ReactElement, ReactNode } from "react";
-import { isValidElement, useMemo } from "react";
+import { Children, isValidElement, useMemo } from "react";
 
 import { InternalError } from "../../util/internalError.ts";
 
 function normalizeChildren(
   children: ReactNode
 ): ReactElement<Record<string, unknown>>[] {
-  if (children === null || children === undefined) {
-    return [];
-  }
-  if (!Array.isArray(children) && typeof children === "object") {
-    children = [children];
-  }
-  if (!Array.isArray(children)) {
-    throw new InternalError("Children must be an array");
-  }
-
-  // TODO: for some reason we sometimes get invalid children while building in
-  // Nextra. These invalid children seem to be transient though, and work fine
-  // when the site is up an running. The internal representation does set the
-  // "$$typeof" property to Symbol("react.lazy"), which is a hint.
-  children = children.filter((child) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const childrenArray = Children.toArray(children).filter((child) => {
+    // TODO: for some reason we sometimes get invalid children while building in
+    // Nextra. These invalid children seem to be transient though, and work fine
+    // when the site is up an running. The internal representation does set the
+    // "$$typeof" property to Symbol("react.lazy"), which is a hint.
     if (!isValidElement(child)) {
       return false;
     }
@@ -31,7 +20,7 @@ function normalizeChildren(
     return true;
   });
 
-  return children as ReactElement<Record<string, unknown>>[];
+  return childrenArray as ReactElement<Record<string, unknown>>[];
 }
 
 export function useUniqueChild<ComponentProps>(
