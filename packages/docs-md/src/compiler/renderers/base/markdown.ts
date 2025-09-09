@@ -309,7 +309,14 @@ export abstract class MarkdownRenderer extends Renderer {
 
   public override createRequestSection(
     ...[
-      { isOptional, createFrontMatter, createBreakouts },
+      {
+        isOptional,
+        createDisplayType,
+        createDescription,
+        createExamples,
+        createDefaultValue,
+        createBreakouts,
+      },
     ]: RendererCreateRequestSectionArgs
   ): void {
     this.enterContext({ id: "request", type: "section" });
@@ -333,7 +340,10 @@ export abstract class MarkdownRenderer extends Renderer {
         annotations,
       },
       () => {
-        this.handleCreateFrontMatter(createFrontMatter);
+        this.handleCreateRequestDisplayType(createDisplayType);
+        this.handleCreateRequestDescription(createDescription);
+        this.handleCreateRequestExamples(createExamples);
+        this.handleCreateRequestDefaultValue(createDefaultValue);
         this.handleCreateBreakouts(createBreakouts);
       }
     );
@@ -354,43 +364,84 @@ export abstract class MarkdownRenderer extends Renderer {
           id: this.getCurrentId(),
         })
       );
-      cb(({ statusCode, contentType, createFrontMatter, createBreakouts }) => {
-        this.enterContext({ id: statusCode, type: "section" });
-        this.enterContext({
-          id: contentType.replace("/", "-"),
-          type: "section",
-        });
-        if (this.#currentOperation?.responses) {
-          this.#currentSection = {
-            fragment: this.getCurrentId(),
-            properties: [],
-          };
-          this.#currentOperation.responses[`${statusCode}-${contentType}`] =
-            this.#currentSection;
-        }
-
-        this.createTabbedSectionTab(() => this.createText(statusCode), {
-          id: this.getCurrentId(),
-        });
-        this.createSectionContent(
-          () => {
-            this.handleCreateFrontMatter(createFrontMatter);
-            this.handleCreateBreakouts(createBreakouts);
-          },
-          {
-            id: this.getCurrentId(),
+      cb(
+        ({
+          statusCode,
+          contentType,
+          createDisplayType,
+          createDescription,
+          createExamples,
+          createDefaultValue,
+          createBreakouts,
+        }) => {
+          this.enterContext({ id: statusCode, type: "section" });
+          this.enterContext({
+            id: contentType.replace("/", "-"),
+            type: "section",
+          });
+          if (this.#currentOperation?.responses) {
+            this.#currentSection = {
+              fragment: this.getCurrentId(),
+              properties: [],
+            };
+            this.#currentOperation.responses[`${statusCode}-${contentType}`] =
+              this.#currentSection;
           }
-        );
 
-        this.#currentSection = undefined;
-        this.exitContext();
-        this.exitContext();
-      });
+          this.createTabbedSectionTab(() => this.createText(statusCode), {
+            id: this.getCurrentId(),
+          });
+          this.createSectionContent(
+            () => {
+              this.handleCreateResponseDisplayType(createDisplayType);
+              this.handleCreateResponseDescription(createDescription);
+              this.handleCreateResponseExamples(createExamples);
+              this.handleCreateResponseDefaultValue(createDefaultValue);
+              this.handleCreateBreakouts(createBreakouts);
+            },
+            {
+              id: this.getCurrentId(),
+            }
+          );
+
+          this.#currentSection = undefined;
+          this.exitContext();
+          this.exitContext();
+        }
+      );
     });
     this.exitContext();
   }
 
-  protected handleCreateFrontMatter(cb: () => void) {
+  protected handleCreateRequestDisplayType(cb: () => void) {
+    cb();
+  }
+
+  protected handleCreateRequestDescription(cb: () => void) {
+    cb();
+  }
+
+  protected handleCreateRequestExamples(cb: () => void) {
+    cb();
+  }
+
+  protected handleCreateRequestDefaultValue(cb: () => void) {
+    cb();
+  }
+
+  protected handleCreateResponseDisplayType(cb: () => void) {
+    cb();
+  }
+
+  protected handleCreateResponseDescription(cb: () => void) {
+    cb();
+  }
+
+  protected handleCreateResponseExamples(cb: () => void) {
+    cb();
+  }
+
+  protected handleCreateResponseDefaultValue(cb: () => void) {
     cb();
   }
 

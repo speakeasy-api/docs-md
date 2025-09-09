@@ -267,6 +267,62 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     this.appendLine("</OperationResponseBodySection>");
   }
 
+  protected override handleCreateRequestDisplayType(cb: () => void) {
+    this.insertComponentImport("OperationRequestBodyDisplayTypeSection");
+    this.appendLine("<OperationRequestBodyDisplayTypeSection>");
+    cb();
+    this.appendLine("</OperationRequestBodyDisplayTypeSection>");
+  }
+
+  protected override handleCreateRequestDescription(cb: () => void) {
+    this.insertComponentImport("OperationRequestBodyDescriptionSection");
+    this.appendLine("<OperationRequestBodyDescriptionSection>");
+    cb();
+    this.appendLine("</OperationRequestBodyDescriptionSection>");
+  }
+
+  protected override handleCreateRequestExamples(cb: () => void) {
+    this.insertComponentImport("OperationRequestBodyExamplesSection");
+    this.appendLine("<OperationRequestBodyExamplesSection>");
+    cb();
+    this.appendLine("</OperationRequestBodyExamplesSection>");
+  }
+
+  protected override handleCreateRequestDefaultValue(cb: () => void) {
+    this.insertComponentImport("OperationRequestBodyDefaultValueSection");
+    this.appendLine("<OperationRequestBodyDefaultValueSection>");
+    cb();
+    this.appendLine("</OperationRequestBodyDefaultValueSection>");
+  }
+
+  protected override handleCreateResponseDisplayType(cb: () => void) {
+    this.insertComponentImport("OperationResponseBodyDisplayTypeSection");
+    this.appendLine("<OperationResponseBodyDisplayTypeSection>");
+    cb();
+    this.appendLine("</OperationResponseBodyDisplayTypeSection>");
+  }
+
+  protected override handleCreateResponseDescription(cb: () => void) {
+    this.insertComponentImport("OperationResponseBodyDescriptionSection");
+    this.appendLine("<OperationResponseBodyDescriptionSection>");
+    cb();
+    this.appendLine("</OperationResponseBodyDescriptionSection>");
+  }
+
+  protected override handleCreateResponseExamples(cb: () => void) {
+    this.insertComponentImport("OperationResponseBodyExamplesSection");
+    this.appendLine("<OperationResponseBodyExamplesSection>");
+    cb();
+    this.appendLine("</OperationResponseBodyExamplesSection>");
+  }
+
+  protected override handleCreateResponseDefaultValue(cb: () => void) {
+    this.insertComponentImport("OperationResponseBodyDefaultValueSection");
+    this.appendLine("<OperationResponseBodyDefaultValueSection>");
+    cb();
+    this.appendLine("</OperationResponseBodyDefaultValueSection>");
+  }
+
   protected override handleCreateSecurity(cb: () => void) {
     this.insertComponentImport("ExpandableSection");
     this.appendLine("<ExpandableSection>");

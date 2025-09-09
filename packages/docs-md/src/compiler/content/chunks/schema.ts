@@ -219,6 +219,41 @@ function hasSchemaFrontmatter(schema: SchemaValue) {
   );
 }
 
+/* ---- Front matter rendering */
+
+function createDescription(schema: SchemaValue, renderer: Renderer) {
+  const { showDebugPlaceholders } = getSettings().display;
+  const description = "description" in schema ? schema.description : null;
+  if (description) {
+    renderer.createText(description);
+  } else if (showDebugPlaceholders) {
+    renderer.createDebugPlaceholder(() => "No description provided");
+  }
+}
+
+export function createExamples(schema: SchemaValue, renderer: Renderer) {
+  const examples = "examples" in schema ? schema.examples : [];
+  const { showDebugPlaceholders } = getSettings().display;
+  if (examples.length > 0) {
+    renderer.createText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
+    for (const example of examples) {
+      renderer.createCode(example);
+    }
+  } else if (showDebugPlaceholders) {
+    renderer.createDebugPlaceholder(() => "No examples provided");
+  }
+}
+
+export function createDefaultValue(schema: SchemaValue, renderer: Renderer) {
+  const defaultValue = "defaultValue" in schema ? schema.defaultValue : null;
+  const { showDebugPlaceholders } = getSettings().display;
+  if (defaultValue) {
+    renderer.createText(`_Default Value:_ \`${defaultValue}\``);
+  } else if (showDebugPlaceholders) {
+    renderer.createDebugPlaceholder(() => "No default value provided");
+  }
+}
+
 /* ---- Section Rendering ---- */
 
 function renderObjectProperties({
@@ -262,47 +297,15 @@ function renderObjectProperties({
     if (property.isDeprecated) {
       annotations.push({ title: "deprecated", variant: "warning" });
     }
-    const { showDebugPlaceholders } = getSettings().display;
     renderer.createExpandableProperty({
       typeInfo,
       annotations,
       rawTitle: property.name,
       isTopLevel,
       hasFrontMatter: hasSchemaFrontmatter(property.schema),
-      createDescription() {
-        const description =
-          "description" in property.schema ? property.schema.description : null;
-        if (description) {
-          renderer.createText(description);
-        } else if (showDebugPlaceholders) {
-          renderer.createDebugPlaceholder(() => "No description provided");
-        }
-      },
-      createExamples() {
-        const examples =
-          "examples" in property.schema ? property.schema.examples : [];
-        if (examples.length > 0) {
-          renderer.createText(
-            `_${examples.length > 1 ? "Examples" : "Example"}:_`
-          );
-          for (const example of examples) {
-            renderer.createCode(example);
-          }
-        } else if (showDebugPlaceholders) {
-          renderer.createDebugPlaceholder(() => "No examples provided");
-        }
-      },
-      createDefaultValue() {
-        const defaultValue =
-          "defaultValue" in property.schema
-            ? property.schema.defaultValue
-            : null;
-        if (defaultValue) {
-          renderer.createText(`_Default Value:_ \`${defaultValue}\``);
-        } else if (showDebugPlaceholders) {
-          renderer.createDebugPlaceholder(() => "No default value provided");
-        }
-      },
+      createDescription: () => createDescription(property.schema, renderer),
+      createExamples: () => createExamples(property.schema, renderer),
+      createDefaultValue: () => createDefaultValue(property.schema, renderer),
     });
 
     // Render breakouts, which will be separate expandable entries

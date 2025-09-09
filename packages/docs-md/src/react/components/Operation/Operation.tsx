@@ -4,7 +4,15 @@ import type {
   OperationDescriptionSectionProps,
   OperationParametersSectionProps,
   OperationProps,
+  OperationRequestBodyDefaultValueSectionProps,
+  OperationRequestBodyDescriptionSectionProps,
+  OperationRequestBodyDisplayTypeSectionProps,
+  OperationRequestBodyExamplesSectionProps,
   OperationRequestBodySectionProps,
+  OperationResponseBodyDefaultValueSectionProps,
+  OperationResponseBodyDescriptionSectionProps,
+  OperationResponseBodyDisplayTypeSectionProps,
+  OperationResponseBodyExamplesSectionProps,
   OperationResponseBodySectionProps,
   OperationSecuritySectionProps,
   OperationSummarySectionProps,
@@ -111,11 +119,62 @@ export function OperationParametersSection({
  * schemas). We render front-matter a little differently here, but once we
  * render out the first level of information in the schema, the rest is rendered
  * as a standard schema.
+ *
+ * This component takes the following children:
+ *
+ * - `OperationRequestBodyDisplayTypeSection`: assigned to the
+ *   `request-body-display-type` slot
+ * - `OperationRequestBodyDescriptionSection`: assigned to the
+ *   `request-body-description` slot
+ * - `OperationRequestBodyExamplesSection`: assigned to the
+ *   `request-body-examples` slot
+ * - `OperationRequestBodyDefaultValueSection`: assigned to the
+ *   `request-body-default-value` slot
  */
 export function OperationRequestBodySection({
   children,
 }: OperationRequestBodySectionProps) {
   return <div slot="request-body">{children}</div>;
+}
+
+/**
+ * This component is assigned to the `request-body-display-type` slot and
+ * if the request body is _not_ an object,contains the display type of the request body for the operation
+ */
+export function OperationRequestBodyDisplayTypeSection({
+  children,
+}: OperationRequestBodyDisplayTypeSectionProps) {
+  return <div slot="request-body-display-type">{children}</div>;
+}
+
+/**
+ * This component is assigned to the `request-body-description` slot and
+ * contains the description of the request body for the operation.
+ */
+export function OperationRequestBodyDescriptionSection({
+  children,
+}: OperationRequestBodyDescriptionSectionProps) {
+  return <div slot="request-body-description">{children}</div>;
+}
+
+/**
+ * This component is assigned to the `request-body-examples` slot and
+ * contains the examples of the request body for the operation.
+ */
+export function OperationRequestBodyExamplesSection({
+  children,
+}: OperationRequestBodyExamplesSectionProps) {
+  return <div slot="request-body-examples">{children}</div>;
+}
+
+/**
+ * This component is assigned to the `request-body-default-value` slot and
+ * contains the default value of the request body for the operation.
+ */
+export function OperationRequestBodyDefaultValueSection({
+  children,
+}: OperationRequestBodyDefaultValueSectionProps) {
+  return <div slot="request-body-default-value">{children}</div>;
 }
 
 /**
@@ -128,9 +187,60 @@ export function OperationRequestBodySection({
  * schemas). We render front-matter a little differently in each tab, but once
  * we render out the first level of information in the schema, the rest is
  * rendered as a standard schema.
+ *
+ * This component takes the following children:
+ *
+ * - `OperationResponseBodyDisplayTypeSection`: assigned to the
+ *   `response-body-display-type` slot
+ * - `OperationResponseBodyDescriptionSection`: assigned to the
+ *   `response-body-description` slot
+ * - `OperationResponseBodyExamplesSection`: assigned to the
+ *   `response-body-examples` slot
+ * - `OperationResponseBodyDefaultValueSection`: assigned to the
+ *   `response-body-default-value` slot
  */
 export function OperationResponseBodySection({
   children,
 }: OperationResponseBodySectionProps) {
   return <div slot="response-body">{children}</div>;
+}
+
+/**
+ * This component is assigned to the `response-body-display-type` slot and
+ * if the response body is _not_ an object,contains the display type of the response body for the operation
+ */
+export function OperationResponseBodyDisplayTypeSection({
+  children,
+}: OperationResponseBodyDisplayTypeSectionProps) {
+  return <div slot="response-body-display-type">{children}</div>;
+}
+
+/**
+ * This component is assigned to the `response-body-description` slot and
+ * contains the description of the response body for the operation.
+ */
+export function OperationResponseBodyDescriptionSection({
+  children,
+}: OperationResponseBodyDescriptionSectionProps) {
+  return <div slot="response-body-description">{children}</div>;
+}
+
+/**
+ * This component is assigned to the `response-body-examples` slot and
+ * contains the examples of the response body for the operation.
+ */
+export function OperationResponseBodyExamplesSection({
+  children,
+}: OperationResponseBodyExamplesSectionProps) {
+  return <div slot="response-body-examples">{children}</div>;
+}
+
+/**
+ * This component is assigned to the `response-body-default-value` slot and
+ * contains the default value of the response body for the operation.
+ */
+export function OperationResponseBodyDefaultValueSection({
+  children,
+}: OperationResponseBodyDefaultValueSectionProps) {
+  return <div slot="response-body-default-value">{children}</div>;
 }
