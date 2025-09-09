@@ -200,23 +200,27 @@ export abstract class MarkdownRenderer extends Renderer {
       );
     });
 
-    this.handleCreateOperationSummary(() => {
-      if (summary && description) {
-        this.createText(`_${summary}_`);
-      } else if (summary) {
-        this.createText(summary);
-      } else if (showDebugPlaceholders) {
-        this.createDebugPlaceholder(() => "No summary provided");
-      }
-    });
+    if (summary || showDebugPlaceholders) {
+      this.handleCreateOperationSummary(() => {
+        if (summary && description) {
+          this.createText(`_${summary}_`);
+        } else if (summary) {
+          this.createText(summary);
+        } else if (showDebugPlaceholders) {
+          this.createDebugPlaceholder(() => "No summary provided");
+        }
+      });
+    }
 
-    this.handleCreateOperationDescription(() => {
-      if (description) {
-        this.createText(description);
-      } else if (showDebugPlaceholders) {
-        this.createDebugPlaceholder(() => "No description provided");
-      }
-    });
+    if (description || showDebugPlaceholders) {
+      this.handleCreateOperationDescription(() => {
+        if (description) {
+          this.createText(description);
+        } else if (showDebugPlaceholders) {
+          this.createDebugPlaceholder(() => "No description provided");
+        }
+      });
+    }
 
     cb();
 
