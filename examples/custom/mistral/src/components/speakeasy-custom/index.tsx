@@ -11,7 +11,7 @@ export {
   CodeSample,
   DebugPlaceholder,
   FrontMatterDisplayType,
-  OperationFrontMatterSection,
+  OperationDescriptionSection,
   OperationCodeSamplesSection,
   OperationSecuritySection,
   OperationParametersSection,
@@ -19,6 +19,6 @@ export {
   OperationResponseBodySection,
 } from "@speakeasy-api/docs-md/react";
 
-export { Pill } from "./speakeasy/Pill";
-export { ExpandableProperty } from "./speakeasy/ExpandableProperty";
-export { Operation } from "./speakeasy/Operation";
+export { Pill } from "./Pill";
+export { ExpandableProperty } from "./ExpandableProperty";
+export { Operation } from "./Operation";

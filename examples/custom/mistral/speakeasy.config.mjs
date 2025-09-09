@@ -27,7 +27,7 @@ class MistralRenderer extends MdxRenderer {
   }
 
   insertComponentImport(symbol) {
-    this.insertNamedImport("@/components/speakeasy", symbol);
+    this.insertNamedImport("@/components/speakeasy-custom", symbol);
   }
 
   getIdSeparator() {

@@ -1,12 +1,12 @@
 import "@/app/speakeasy.css";
-import { Operation, OperationFrontMatterSection, Pill, OperationParametersSection, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableProperty, OperationCodeSamplesSection, TabbedSection, TryItNow, SectionTab, CodeSample, OperationResponseBodySection, FrontMatterDisplayType, ExpandableBreakout, OperationRequestBodySection } from "@/components/speakeasy";
+import { Operation, OperationDescriptionSection, Pill, OperationParametersSection, Section, SectionTitle, SectionContent, ExpandableSection, ExpandableProperty, OperationCodeSamplesSection, TabbedSection, TryItNow, SectionTab, CodeSample, OperationResponseBodySection, FrontMatterDisplayType, ExpandableBreakout, OperationRequestBodySection } from "@/components/speakeasy-custom";
 
 
 # Beta Conversations Operations \{#beta/conversations\}
 
 <Operation>
 
-<OperationFrontMatterSection slot="front-matter">
+<OperationDescriptionSection slot="description">
 
 ## <Pill variant="primary"><b>GET</b></Pill> /v1/conversations \{#operation-agents_api_v1_conversations_list\}
 
@@ -14,7 +14,7 @@ _List all created conversations._
 
 Retrieve a list of conversation entities sorted by creation time.
 
-</OperationFrontMatterSection>
+</OperationDescriptionSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -1308,7 +1308,7 @@ _Default Value:_ `"conversation"`
 
 <Operation>
 
-<OperationFrontMatterSection slot="front-matter">
+<OperationDescriptionSection slot="description">
 
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/conversations \{#operation-agents_api_v1_conversations_start\}
 
@@ -1316,7 +1316,7 @@ _Create a conversation and append entries to it._
 
 Create a new conversation, using a base model or an agent and append entries. Completion and tool executions are run and the response is appended to the conversation.Use the returned conversation_id to continue the conversation.
 
-</OperationFrontMatterSection>
+</OperationDescriptionSection>
 
 <OperationCodeSamplesSection slot="code-samples">
 
@@ -4478,7 +4478,7 @@ _Default Value:_ `0`
 
 <Operation>
 
-<OperationFrontMatterSection slot="front-matter">
+<OperationDescriptionSection slot="description">
 
 ## <Pill variant="primary"><b>GET</b></Pill> /v1/conversations/\{conversation\_id\} \{#operation-agents_api_v1_conversations_get\}
 
@@ -4486,7 +4486,7 @@ _Retrieve a conversation information._
 
 Given a conversation_id retrieve a conversation entity with its attributes.
 
-</OperationFrontMatterSection>
+</OperationDescriptionSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -5764,7 +5764,7 @@ _Default Value:_ `"conversation"`
 
 <Operation>
 
-<OperationFrontMatterSection slot="front-matter">
+<OperationDescriptionSection slot="description">
 
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/conversations/\{conversation\_id\} \{#operation-agents_api_v1_conversations_append\}
 
@@ -5772,7 +5772,7 @@ _Append new entries to an existing conversation._
 
 Run completion on the history of the conversation and the user entries. Return the new created entries.
 
-</OperationFrontMatterSection>
+</OperationDescriptionSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -8561,7 +8561,7 @@ _Default Value:_ `0`
 
 <Operation>
 
-<OperationFrontMatterSection slot="front-matter">
+<OperationDescriptionSection slot="description">
 
 ## <Pill variant="primary"><b>GET</b></Pill> /v1/conversations/\{conversation\_id\}/history \{#operation-agents_api_v1_conversations_history\}
 
@@ -8569,7 +8569,7 @@ _Retrieve all entries in a conversation._
 
 Given a conversation_id retrieve all the entries belonging to that conversation. The entries are sorted in the order they were appended, those can be messages, connectors or function_call.
 
-</OperationFrontMatterSection>
+</OperationDescriptionSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -10667,7 +10667,7 @@ _Default Value:_ `"conversation.history"`
 
 <Operation>
 
-<OperationFrontMatterSection slot="front-matter">
+<OperationDescriptionSection slot="description">
 
 ## <Pill variant="primary"><b>GET</b></Pill> /v1/conversations/\{conversation\_id\}/messages \{#operation-agents_api_v1_conversations_messages\}
 
@@ -10675,7 +10675,7 @@ _Retrieve all messages in a conversation._
 
 Given a conversation_id retrieve all the messages belonging to that conversation. This is similar to retrieving all entries except we filter the messages only.
 
-</OperationFrontMatterSection>
+</OperationDescriptionSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -12093,7 +12093,7 @@ _Default Value:_ `"conversation.messages"`
 
 <Operation>
 
-<OperationFrontMatterSection slot="front-matter">
+<OperationDescriptionSection slot="description">
 
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/conversations/\{conversation\_id\}/restart \{#operation-agents_api_v1_conversations_restart\}
 
@@ -12101,7 +12101,7 @@ _Restart a conversation starting from a given entry._
 
 Given a conversation_id and an id, recreate a conversation from this point and run completion. A new conversation is returned with the new entries returned.
 
-</OperationFrontMatterSection>
+</OperationDescriptionSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -14881,7 +14881,7 @@ _Default Value:_ `0`
 
 <Operation>
 
-<OperationFrontMatterSection slot="front-matter">
+<OperationDescriptionSection slot="description">
 
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/conversations\#stream \{#operation-agents_api_v1_conversations_start_stream\}
 
@@ -14889,7 +14889,7 @@ _Create a conversation and append entries to it._
 
 Create a new conversation, using a base model or an agent and append entries. Completion and tool executions are run and the response is appended to the conversation.Use the returned conversation_id to continue the conversation.
 
-</OperationFrontMatterSection>
+</OperationDescriptionSection>
 
 <OperationCodeSamplesSection slot="code-samples">
 
@@ -18503,7 +18503,7 @@ Server side events sent when streaming a conversation response.
 
 <Operation>
 
-<OperationFrontMatterSection slot="front-matter">
+<OperationDescriptionSection slot="description">
 
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/conversations/\{conversation\_id\}\#stream \{#operation-agents_api_v1_conversations_append_stream\}
 
@@ -18511,7 +18511,7 @@ _Append new entries to an existing conversation._
 
 Run completion on the history of the conversation and the user entries. Return the new created entries.
 
-</OperationFrontMatterSection>
+</OperationDescriptionSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -21690,7 +21690,7 @@ Server side events sent when streaming a conversation response.
 
 <Operation>
 
-<OperationFrontMatterSection slot="front-matter">
+<OperationDescriptionSection slot="description">
 
 ## <Pill variant="primary"><b>POST</b></Pill> /v1/conversations/\{conversation\_id\}/restart\#stream \{#operation-agents_api_v1_conversations_restart_stream\}
 
@@ -21698,7 +21698,7 @@ _Restart a conversation starting from a given entry._
 
 Given a conversation_id and an id, recreate a conversation from this point and run completion. A new conversation is returned with the new entries returned.
 
-</OperationFrontMatterSection>
+</OperationDescriptionSection>
 
 <OperationParametersSection slot="parameters">
 

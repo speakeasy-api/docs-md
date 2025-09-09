@@ -27,7 +27,7 @@ export type { NonExpandableCellProps } from "./components/NonExpandableCell/type
 export {
   Operation,
   OperationCodeSamplesSection,
-  OperationFrontMatterSection,
+  OperationDescriptionSection,
   OperationParametersSection,
   OperationRequestBodySection,
   OperationResponseBodySection,
@@ -35,7 +35,7 @@ export {
 } from "./components/Operation/Operation.tsx";
 export type {
   OperationCodeSamplesSectionProps,
-  OperationFrontMatterSectionProps,
+  OperationDescriptionSectionProps,
   OperationParametersSectionProps,
   OperationProps,
   OperationRequestBodySectionProps,

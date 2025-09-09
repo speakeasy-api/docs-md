@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import type {
   OperationCodeSamplesSectionProps,
-  OperationFrontMatterSectionProps,
+  OperationDescriptionSectionProps,
   OperationParametersSectionProps,
   OperationProps,
   OperationRequestBodySectionProps,
@@ -11,9 +11,9 @@ import type {
 
 /**
  * This component is a container for an operation. It contains the following
- * sections:
+ * sections, if supplied:
  *
- * - Front matter: assigned to the `front-matter` slot
+ * - Description: assigned to the `descriptions` slot
  * - Code samples: assigned to the `code-samples` slot
  * - Security: assigned to the `security` slot
  * - Parameters: assigned to the `parameters` slot
@@ -30,13 +30,13 @@ export function Operation({ children }: OperationProps) {
 
 /**
  * This component represents the front matter section of an operation. It is
- * assigned to the `front-matter` slot and contains the title (method and path),
+ * assigned to the `description` slot and contains the title (method and path),
  * summary, and description of the operation.
  */
-export function OperationFrontMatterSection({
+export function OperationDescriptionSection({
   children,
-}: OperationFrontMatterSectionProps) {
-  return <div slot="front-matter">{children}</div>;
+}: OperationDescriptionSectionProps) {
+  return <div slot="description">{children}</div>;
 }
 
 /**

@@ -189,7 +189,7 @@ export abstract class MarkdownRenderer extends Renderer {
       this.#pageMetadata.operations.push(currentOperation);
     }
 
-    this.handleCreateOperationFrontmatter(() => {
+    this.handleCreateOperationDescription(() => {
       path = this.escapeText(path, {
         escape: "markdown",
       });
@@ -264,7 +264,7 @@ export abstract class MarkdownRenderer extends Renderer {
     this.exitContext();
   }
 
-  protected handleCreateOperationFrontmatter(cb: () => void) {
+  protected handleCreateOperationDescription(cb: () => void) {
     cb();
   }
 
