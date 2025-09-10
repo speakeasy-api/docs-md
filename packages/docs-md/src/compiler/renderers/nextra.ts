@@ -20,7 +20,6 @@ export class NextraSite extends MdxSite {
     const settings = getSettings();
     const config = `export default {
   index: { title: "About", theme: { collapsed: false } },
-  "global-security": { title: "Global Security", theme: { collapsed: false } },
   endpoint: { title: "Operations", theme: { collapsed: false } }
 }`;
     this.createPage(join(settings.output.pageOutDir, "_meta.ts")).createText(
