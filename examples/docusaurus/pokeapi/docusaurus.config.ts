@@ -69,10 +69,6 @@ const config: Config = {
     image: "img/docusaurus-social-card.jpg",
     navbar: {
       title: "Speakeasy Docusaurus Demo",
-      logo: {
-        alt: "Speakeasy Docusaurus Demo Logo",
-        src: "img/logo.svg",
-      },
       items: [
         {
           type: "docSidebar",
