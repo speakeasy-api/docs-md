@@ -290,7 +290,7 @@ function renderObjectProperties({
   );
   for (const property of properties) {
     if (renderer.alreadyInContext(property.name)) {
-      // TODO: handle this better
+      // TODO: handle this recursive case better
       continue;
     }
     renderer.enterContext({ id: property.name, type: "schema" });

@@ -7,7 +7,8 @@ export function Pill({ variant, children }: PillProps) {
     // ExpandableProperty
     <span
       style={{
-        border: `1px solid ${variant === "primary" ? "red" : "blue"}`,
+        border: `1px solid ${variant === "primary" ? "green" : "blue"}`,
+        borderRadius: "var(--speakeasy-border-radius-sm)",
         padding: "0.25rem 0.5rem",
       }}
     >
