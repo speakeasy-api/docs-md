@@ -51,23 +51,6 @@ export class DocusaurusSite extends MdxSite {
       ),
       { escape: "none" }
     );
-    if (settings.display.showSchemasInNav) {
-      this.createPage(
-        join(settings.output.pageOutDir, "schema", "_category_.json")
-      ).createText(
-        JSON.stringify(
-          {
-            position: 4,
-            label: "Schemas",
-            collapsible: true,
-            collapsed: true,
-          },
-          null,
-          "  "
-        ),
-        { escape: "none" }
-      );
-    }
     return super.render();
   }
 

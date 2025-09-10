@@ -50,7 +50,6 @@ export default {
   spec: "../../specs/pokeapi.yml",
   output: {
     pageOutDir: "./src/app/api",
-    componentOutDir: "./src/components/speakeasy",
     framework: "custom",
     createSite() {
       return new PokeAPISite();

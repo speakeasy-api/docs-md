@@ -151,12 +151,6 @@ async function getSettings(): Promise<ParsedSettings> {
       configFileContents.data.output.pageOutDir
     );
   }
-  if (!isAbsolute(configFileContents.data.output.componentOutDir)) {
-    configFileContents.data.output.componentOutDir = resolve(
-      configFileDirectory,
-      configFileContents.data.output.componentOutDir
-    );
-  }
 
   return configFileContents.data;
 }
@@ -200,10 +194,6 @@ const pageContents = await generatePages({
 if (args["--clean"]) {
   info("Cleaning output directories");
   rmSync(settings.output.pageOutDir, {
-    recursive: true,
-    force: true,
-  });
-  rmSync(settings.output.componentOutDir, {
     recursive: true,
     force: true,
   });

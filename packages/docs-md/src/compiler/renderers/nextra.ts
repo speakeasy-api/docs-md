@@ -18,13 +18,10 @@ export class NextraSite extends MdxSite {
 
   public override render() {
     const settings = getSettings();
-    const schemasEntry = settings.display.showSchemasInNav
-      ? `\n  schemas: { title: "Schemas", theme: { collapsed: false } },`
-      : "";
     const config = `export default {
   index: { title: "About", theme: { collapsed: false } },
   "global-security": { title: "Global Security", theme: { collapsed: false } },
-  endpoint: { title: "Operations", theme: { collapsed: false } },${schemasEntry}
+  endpoint: { title: "Operations", theme: { collapsed: false } }
 }`;
     this.createPage(join(settings.output.pageOutDir, "_meta.ts")).createText(
       config,

@@ -1,8 +1,7 @@
 import { capitalCase } from "change-case";
 
-import type { Chunk, SchemaChunk, TagChunk } from "../../types/chunk.ts";
+import type { Chunk, TagChunk } from "../../types/chunk.ts";
 import { InternalError } from "../../util/internalError.ts";
-import { getSettings } from ".././settings.ts";
 import type { Site } from "..//renderers/base/base.ts";
 import type { DocsCodeSnippets } from "../data/generateCodeSnippets.ts";
 import { debug } from "../logging.ts";
@@ -25,8 +24,6 @@ type PageMapEntry = {
 type PageMap = Map<string, PageMapEntry>;
 
 function getPageMap(site: Site, data: Data) {
-  const settings = getSettings();
-
   const pageMap: PageMap = new Map();
 
   // Get the about page
@@ -78,45 +75,6 @@ function getPageMap(site: Site, data: Data) {
     for (const operationChunkId of chunk.chunkData.operationChunkIds) {
       const operationChunk = getOperationFromId(operationChunkId, data);
       pageMapEntry.chunks.push(operationChunk);
-    }
-  }
-
-  // Create the schema pages, if they're enabled in settings
-  if (settings.display.showSchemasInNav) {
-    // Find the schema chunks
-    const schemaChunks: SchemaChunk[] = [];
-    for (const [, chunk] of data) {
-      if (
-        chunk.chunkType === "schema" &&
-        chunk.chunkData.value.type === "object" &&
-        // We make sure there's a slug so that we're not showing an unnamed or
-        // internal schema
-        chunk.slug
-      ) {
-        schemaChunks.push(chunk);
-      }
-    }
-
-    // Sort by slug so that the sidebar position is stable
-    schemaChunks.sort((a, b) => a.slug.localeCompare(b.slug));
-
-    // Render the schema pages
-    let schemaIndex = 0;
-    for (const chunk of schemaChunks) {
-      // This can't happen cause we filter above, but TypeScript doesn't know that
-      if (chunk.chunkData.value.type !== "object") {
-        throw new InternalError(
-          `Schema chunk ${chunk.chunkData.value.type} is not an object`
-        );
-      }
-      const pagePath = site.buildPagePath(chunk.slug);
-      const pageMapEntry: PageMapEntry = {
-        slug: chunk.slug,
-        sidebarLabel: capitalCase(chunk.chunkData.value.name),
-        sidebarPosition: `4.${schemaIndex++}`,
-        chunks: [chunk] as Chunk[],
-      };
-      pageMap.set(pagePath, pageMapEntry);
     }
   }
 

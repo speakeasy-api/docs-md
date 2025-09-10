@@ -50,7 +50,6 @@ export default {
   spec: "../../specs/mistral.yaml",
   output: {
     pageOutDir: "./src/app/api",
-    componentOutDir: "./src/components/speakeasy",
     framework: "custom",
     createSite() {
       return new MistralSite();
@@ -58,8 +57,6 @@ export default {
   },
   display: {
     visibleResponses: "success",
-    showDebugPlaceholders: false,
-    expandTopLevelPropertiesOnPageLoad: true,
   },
   tryItNow: [
     {
