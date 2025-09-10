@@ -230,7 +230,7 @@ export type SchemaValue =
   | AnyValue
   | ChunkValue;
 
-export type SchemaChunk = {
+type SchemaChunk = {
   id: string;
   slug: string;
   chunkData: { name: string; value: SchemaValue };
