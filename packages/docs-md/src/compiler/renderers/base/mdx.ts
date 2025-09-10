@@ -1,5 +1,44 @@
 import { dirname, relative } from "node:path";
 
+import type {
+  CodeSampleProps,
+  DebugPlaceholderProps,
+  ExpandableBreakoutDefaultValueProps,
+  ExpandableBreakoutDescriptionProps,
+  ExpandableBreakoutExamplesProps,
+  ExpandableBreakoutProps,
+  ExpandableBreakoutTitleProps,
+  ExpandablePropertyDefaultValueProps,
+  ExpandablePropertyDescriptionProps,
+  ExpandablePropertyExamplesProps,
+  ExpandablePropertyProps,
+  ExpandablePropertyTitleProps,
+  ExpandableSectionProps,
+  FrontMatterDisplayTypeProps,
+  OperationCodeSamplesSectionProps,
+  OperationDescriptionSectionProps,
+  OperationParametersSectionProps,
+  OperationProps,
+  OperationRequestBodyDefaultValueSectionProps,
+  OperationRequestBodyDescriptionSectionProps,
+  OperationRequestBodyDisplayTypeSectionProps,
+  OperationRequestBodyExamplesSectionProps,
+  OperationRequestBodySectionProps,
+  OperationResponseBodyDefaultValueSectionProps,
+  OperationResponseBodyDescriptionSectionProps,
+  OperationResponseBodyDisplayTypeSectionProps,
+  OperationResponseBodyExamplesSectionProps,
+  OperationResponseBodySectionProps,
+  OperationSecuritySectionProps,
+  OperationSummarySectionProps,
+  OperationTitleSectionProps,
+  SectionContentProps,
+  SectionProps,
+  SectionTabProps,
+  SectionTitleProps,
+  TabbedSectionProps,
+  TryItNowProps,
+} from "../../../react/index.ts";
 import { HEADINGS } from "../../content/constants.ts";
 import { getSettings } from "../../settings.ts";
 import type {
@@ -126,11 +165,82 @@ export abstract class MdxRenderer extends MarkdownRenderer {
 
   protected abstract insertComponentImport(symbol: string): void;
 
+  #createComponentOpeningTag<Props extends Record<string, unknown>>(
+    symbol: string,
+    props: Props,
+    { selfClosing }: { selfClosing: boolean }
+  ) {
+    this.insertComponentImport(symbol);
+
+    function serializeProps(separator: string) {
+      return Object.entries(props)
+        .map(([key, value]) => {
+          if (typeof value === "string") {
+            if (value.includes("\n")) {
+              return `${separator}${key}={\`${value}\`}`;
+            }
+            return `${separator}${key}="${value}"`;
+          } else if (value !== undefined) {
+            return `${separator}${key}={${JSON.stringify(value)}}`;
+          } else {
+            return "";
+          }
+        })
+        .join("");
+    }
+
+    let serializedProps = serializeProps(" ");
+    const isMultiline = serializedProps.length > 80;
+    if (isMultiline) {
+      serializedProps = serializeProps("\n  ");
+    }
+    return `<${symbol}${serializedProps}${selfClosing ? (isMultiline ? "\n/" : " /") : isMultiline ? "\n" : ""}>`;
+  }
+
+  #createComponentClosingTag(symbol: string) {
+    return `</${symbol}>`;
+  }
+
+  #appendComponent<Props extends Record<string, unknown>>(
+    symbol: string,
+    props: Props,
+    cb?: () => void
+  ) {
+    this.appendLine(
+      this.#createComponentOpeningTag<Props>(symbol, props, {
+        selfClosing: !cb,
+      })
+    );
+    if (cb) {
+      cb();
+      this.appendLine(this.#createComponentClosingTag(symbol));
+    }
+  }
+
+  #createComponent<Props extends Record<string, unknown>>(
+    symbol: string,
+    props: Props,
+    cb: () => void
+  ) {
+    if (cb) {
+      return (
+        this.#createComponentOpeningTag<Props>(symbol, props, {
+          selfClosing: false,
+        }) +
+        cb() +
+        this.#createComponentClosingTag(symbol)
+      );
+    } else {
+      return this.#createComponentOpeningTag<Props>(symbol, props, {
+        selfClosing: true,
+      });
+    }
+  }
+
   public override createPill(
     ...[variant, cb, { append = false } = {}]: RendererCreatePillArgs
   ) {
-    this.insertComponentImport("Pill");
-    const pill = `<Pill variant="${variant}">${cb()}</Pill>`;
+    const pill = this.#createComponent("Pill", { variant }, cb);
     if (append) {
       this.appendLine(pill);
     }
@@ -138,226 +248,214 @@ export abstract class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createOperationSection(...args: RendererCreateOperationArgs) {
-    this.insertComponentImport("Operation");
-    this.appendLine(`<Operation>`);
-    super.createOperationSection(...args);
-    this.appendLine(`</Operation>`);
+    this.#appendComponent<OperationProps>("Operation", {}, () =>
+      super.createOperationSection(...args)
+    );
   }
 
   protected override handleCreateOperationTitle(cb: () => void): void {
-    this.insertComponentImport("OperationTitleSection");
-    this.appendLine(`<OperationTitleSection slot="title">`);
-    cb();
-    this.appendLine(`</OperationTitleSection>`);
+    this.#appendComponent<OperationTitleSectionProps>(
+      "OperationTitleSection",
+      { slot: "title" },
+      cb
+    );
   }
 
   protected override handleCreateOperationSummary(cb: () => void) {
-    this.insertComponentImport("OperationSummarySection");
-    this.appendLine(`<OperationSummarySection slot="summary">`);
-    cb();
-    this.appendLine(`</OperationSummarySection>`);
+    this.#appendComponent<OperationSummarySectionProps>(
+      "OperationSummarySection",
+      { slot: "summary" },
+      cb
+    );
   }
 
   protected override handleCreateOperationDescription(cb: () => void) {
-    this.insertComponentImport("OperationDescriptionSection");
-    this.appendLine(`<OperationDescriptionSection slot="description">`);
-    cb();
-    this.appendLine(`</OperationDescriptionSection>`);
+    this.#appendComponent<OperationDescriptionSectionProps>(
+      "OperationDescriptionSection",
+      { slot: "description" },
+      cb
+    );
   }
 
   public override createCodeSamplesSection(
     ...[cb]: RendererCreateCodeSamplesSectionArgs
   ) {
     this.enterContext({ id: "code-samples", type: "section" });
-    this.insertComponentImport("OperationCodeSamplesSection");
-    this.appendLine(`<OperationCodeSamplesSection slot="code-samples">`);
-    this.createTabbedSection(() => {
-      this.createSectionTitle(() =>
-        this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, "Code Samples", {
-          id: this.getCurrentId(),
-        })
-      );
-      cb({
-        createTryItNowEntry: ({
-          externalDependencies,
-          defaultValue,
-          language,
-        }) => {
-          this.enterContext({ id: language, type: "section" });
-          this.insertComponentImport("TryItNow");
-          this.createTabbedSectionTab(
-            () => this.createText(getPrettyCodeSampleLanguage(language)),
-            { id: this.getCurrentId() }
+    this.#appendComponent<OperationCodeSamplesSectionProps>(
+      "OperationCodeSamplesSection",
+      { slot: "code-samples" },
+      () => {
+        this.createTabbedSection(() => {
+          this.createSectionTitle(() =>
+            this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, "Code Samples", {
+              id: this.getCurrentId(),
+            })
           );
-          this.createSectionContent(
-            () => {
-              this.appendLine(
-                `<TryItNow
-  externalDependencies={${JSON.stringify(externalDependencies)}}
-  defaultValue={\`${defaultValue}\`}
-/>`
+          cb({
+            createTryItNowEntry: ({
+              externalDependencies,
+              defaultValue,
+              language,
+            }) => {
+              this.enterContext({ id: language, type: "section" });
+              this.createTabbedSectionTab(
+                () => this.createText(getPrettyCodeSampleLanguage(language)),
+                { id: this.getCurrentId() }
               );
+              this.createSectionContent(
+                () => {
+                  this.#appendComponent<TryItNowProps>("TryItNow", {
+                    externalDependencies,
+                    defaultValue,
+                  });
+                },
+                {
+                  id: this.getCurrentId(),
+                }
+              );
+              this.exitContext();
             },
-            {
-              id: this.getCurrentId(),
-            }
-          );
-          this.exitContext();
-        },
-        createCodeSampleEntry: ({ language, value }) => {
-          this.enterContext({ id: language, type: "section" });
-          this.createTabbedSectionTab(
-            () => this.createText(getPrettyCodeSampleLanguage(language)),
-            { id: this.getCurrentId() }
-          );
-          this.createSectionContent(
-            () => {
-              this.insertComponentImport("CodeSample");
-              this.appendLine("<CodeSample>");
-              this.createCode(value, {
-                language,
-                variant: "default",
-                style: "block",
-              });
-              this.appendLine("</CodeSample>");
+            createCodeSampleEntry: ({ language, value }) => {
+              this.enterContext({ id: language, type: "section" });
+              this.createTabbedSectionTab(
+                () => this.createText(getPrettyCodeSampleLanguage(language)),
+                { id: this.getCurrentId() }
+              );
+              this.createSectionContent(
+                () => {
+                  this.#appendComponent<CodeSampleProps>("CodeSample", {}, () =>
+                    this.createCode(value, {
+                      language,
+                      variant: "default",
+                      style: "block",
+                    })
+                  );
+                },
+                {
+                  id: this.getCurrentId(),
+                }
+              );
+              this.exitContext();
             },
-            {
-              id: this.getCurrentId(),
-            }
-          );
-          this.exitContext();
-        },
-      });
-    });
-    this.appendLine(`</OperationCodeSamplesSection>`);
+          });
+        });
+      }
+    );
     this.exitContext();
   }
 
   public override createSecuritySection(
     ...args: RendererCreateSecuritySectionArgs
   ) {
-    this.insertComponentImport("OperationSecuritySection");
-    this.appendLine('<OperationSecuritySection slot="security">');
-    super.createSecuritySection(...args);
-    this.appendLine("</OperationSecuritySection>");
+    this.#appendComponent<OperationSecuritySectionProps>(
+      "OperationSecuritySection",
+      { slot: "security" },
+      () => super.createSecuritySection(...args)
+    );
   }
 
   public override createParametersSection(
     ...args: RendererCreateParametersSectionArgs
   ) {
-    this.insertComponentImport("OperationParametersSection");
-    this.appendLine('<OperationParametersSection slot="parameters">');
-    super.createParametersSection(...args);
-    this.appendLine("</OperationParametersSection>");
+    this.#appendComponent<OperationParametersSectionProps>(
+      "OperationParametersSection",
+      { slot: "parameters" },
+      () => super.createParametersSection(...args)
+    );
   }
 
   public override createRequestSection(
     ...args: RendererCreateRequestSectionArgs
   ) {
-    this.insertComponentImport("OperationRequestBodySection");
-    this.appendLine('<OperationRequestBodySection slot="request-body">');
-    super.createRequestSection(...args);
-    this.appendLine("</OperationRequestBodySection>");
+    this.#appendComponent<OperationRequestBodySectionProps>(
+      "OperationRequestBodySection",
+      { slot: "request-body" },
+      () => super.createRequestSection(...args)
+    );
   }
 
   public override createResponsesSection(...args: RendererCreateResponsesArgs) {
-    this.insertComponentImport("OperationResponseBodySection");
-    this.appendLine('<OperationResponseBodySection slot="response-body">');
-    super.createResponsesSection(...args);
-    this.appendLine("</OperationResponseBodySection>");
+    this.#appendComponent<OperationResponseBodySectionProps>(
+      "OperationResponseBodySection",
+      { slot: "response-body" },
+      () => super.createResponsesSection(...args)
+    );
   }
 
   protected override handleCreateRequestDisplayType(cb: () => void) {
-    this.insertComponentImport("OperationRequestBodyDisplayTypeSection");
-    this.appendLine(
-      '<OperationRequestBodyDisplayTypeSection slot="request-body-display-type">'
+    this.#appendComponent<OperationRequestBodyDisplayTypeSectionProps>(
+      "OperationRequestBodyDisplayTypeSection",
+      { slot: "request-body-display-type" },
+      cb
     );
-    cb();
-    this.appendLine("</OperationRequestBodyDisplayTypeSection>");
   }
 
   protected override handleCreateRequestDescription(cb: () => void) {
-    this.insertComponentImport("OperationRequestBodyDescriptionSection");
-    this.appendLine(
-      '<OperationRequestBodyDescriptionSection slot="request-body-description">'
+    this.#appendComponent<OperationRequestBodyDescriptionSectionProps>(
+      "OperationRequestBodyDescriptionSection",
+      { slot: "request-body-description" },
+      cb
     );
-    cb();
-    this.appendLine("</OperationRequestBodyDescriptionSection>");
   }
 
   protected override handleCreateRequestExamples(cb: () => void) {
-    this.insertComponentImport("OperationRequestBodyExamplesSection");
-    this.appendLine(
-      '<OperationRequestBodyExamplesSection slot="request-body-examples">'
+    this.#appendComponent<OperationRequestBodyExamplesSectionProps>(
+      "OperationRequestBodyExamplesSection",
+      { slot: "request-body-examples" },
+      cb
     );
-    cb();
-    this.appendLine("</OperationRequestBodyExamplesSection>");
   }
 
   protected override handleCreateRequestDefaultValue(cb: () => void) {
-    this.insertComponentImport("OperationRequestBodyDefaultValueSection");
-    this.appendLine(
-      '<OperationRequestBodyDefaultValueSection slot="request-body-default-value">'
+    this.#appendComponent<OperationRequestBodyDefaultValueSectionProps>(
+      "OperationRequestBodyDefaultValueSection",
+      { slot: "request-body-default-value" },
+      cb
     );
-    cb();
-    this.appendLine("</OperationRequestBodyDefaultValueSection>");
   }
 
   protected override handleCreateResponseDisplayType(cb: () => void) {
-    this.insertComponentImport("OperationResponseBodyDisplayTypeSection");
-    this.appendLine(
-      '<OperationResponseBodyDisplayTypeSection slot="response-body-display-type">'
+    this.#appendComponent<OperationResponseBodyDisplayTypeSectionProps>(
+      "OperationResponseBodyDisplayTypeSection",
+      { slot: "response-body-display-type" },
+      cb
     );
-    cb();
-    this.appendLine("</OperationResponseBodyDisplayTypeSection>");
   }
 
   protected override handleCreateResponseDescription(cb: () => void) {
-    this.insertComponentImport("OperationResponseBodyDescriptionSection");
-    this.appendLine(
-      '<OperationResponseBodyDescriptionSection slot="response-body-description">'
+    this.#appendComponent<OperationResponseBodyDescriptionSectionProps>(
+      "OperationResponseBodyDescriptionSection",
+      { slot: "response-body-description" },
+      cb
     );
-    cb();
-    this.appendLine("</OperationResponseBodyDescriptionSection>");
   }
 
   protected override handleCreateResponseExamples(cb: () => void) {
-    this.insertComponentImport("OperationResponseBodyExamplesSection");
-    this.appendLine(
-      '<OperationResponseBodyExamplesSection slot="response-body-examples">'
+    this.#appendComponent<OperationResponseBodyExamplesSectionProps>(
+      "OperationResponseBodyExamplesSection",
+      { slot: "response-body-examples" },
+      cb
     );
-    cb();
-    this.appendLine("</OperationResponseBodyExamplesSection>");
   }
 
   protected override handleCreateResponseDefaultValue(cb: () => void) {
-    this.insertComponentImport("OperationResponseBodyDefaultValueSection");
-    this.appendLine(
-      '<OperationResponseBodyDefaultValueSection slot="response-body-default-value">'
+    this.#appendComponent<OperationResponseBodyDefaultValueSectionProps>(
+      "OperationResponseBodyDefaultValueSection",
+      { slot: "response-body-default-value" },
+      cb
     );
-    cb();
-    this.appendLine("</OperationResponseBodyDefaultValueSection>");
   }
 
   protected override handleCreateSecurity(cb: () => void) {
-    this.insertComponentImport("ExpandableSection");
-    this.appendLine("<ExpandableSection>");
-    cb();
-    this.appendLine("</ExpandableSection>");
+    this.#appendComponent<ExpandableSectionProps>("ExpandableSection", {}, cb);
   }
 
   protected override handleCreateParameters(cb: () => void) {
-    this.insertComponentImport("ExpandableSection");
-    this.appendLine("<ExpandableSection>");
-    cb();
-    this.appendLine("</ExpandableSection>");
+    this.#appendComponent<ExpandableSectionProps>("ExpandableSection", {}, cb);
   }
 
   protected override handleCreateBreakouts(cb: () => void) {
-    this.insertComponentImport("ExpandableSection");
-    this.appendLine("<ExpandableSection>");
-    cb();
-    this.appendLine("</ExpandableSection>");
+    this.#appendComponent<ExpandableSectionProps>("ExpandableSection", {}, cb);
   }
 
   #getBreakoutIdInfo() {
@@ -382,46 +480,50 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     ]: RendererCreateExpandableBreakoutArgs
   ) {
     const { id, parentId } = this.#getBreakoutIdInfo();
-    this.insertComponentImport("ExpandableBreakout");
     const expandByDefault =
       getSettings().display.expandTopLevelPropertiesOnPageLoad && isTopLevel;
-    this.appendLine(
-      `<ExpandableBreakout
-  slot="entry"
-  id="${id}"
-  headingId="${this.getCurrentId()}"${parentId ? ` parentId="${parentId}"` : ""}
-  hasFrontMatter={${hasFrontMatter ? "true" : "false"}}
-  expandByDefault={${expandByDefault}}
->`
+    this.#appendComponent<ExpandableBreakoutProps>(
+      "ExpandableBreakout",
+      {
+        slot: "entry",
+        id,
+        headingId: this.getCurrentId(),
+        parentId,
+        hasFrontMatter,
+        expandByDefault,
+      },
+      () => {
+        this.#appendComponent<ExpandableBreakoutTitleProps>(
+          "ExpandableBreakoutTitle",
+          { slot: "title" },
+          createTitle
+        );
+
+        if (createDescription) {
+          this.#appendComponent<ExpandableBreakoutDescriptionProps>(
+            "ExpandableBreakoutDescription",
+            { slot: "description" },
+            createDescription
+          );
+        }
+
+        if (createExamples) {
+          this.#appendComponent<ExpandableBreakoutExamplesProps>(
+            "ExpandableBreakoutExamples",
+            { slot: "examples" },
+            createExamples
+          );
+        }
+
+        if (createDefaultValue) {
+          this.#appendComponent<ExpandableBreakoutDefaultValueProps>(
+            "ExpandableBreakoutDefaultValue",
+            { slot: "defaultValue" },
+            createDefaultValue
+          );
+        }
+      }
     );
-
-    this.insertComponentImport("ExpandableBreakoutTitle");
-    this.appendLine(`<ExpandableBreakoutTitle slot="title">`);
-    createTitle();
-    this.appendLine("</ExpandableBreakoutTitle>");
-
-    if (createDescription) {
-      this.insertComponentImport("ExpandableBreakoutDescription");
-      this.appendLine(`<ExpandableBreakoutDescription slot="description">`);
-      createDescription();
-      this.appendLine("</ExpandableBreakoutDescription>");
-    }
-
-    if (createExamples) {
-      this.insertComponentImport("ExpandableBreakoutExamples");
-      this.appendLine(`<ExpandableBreakoutExamples slot="examples">`);
-      createExamples();
-      this.appendLine("</ExpandableBreakoutExamples>");
-    }
-
-    if (createDefaultValue) {
-      this.insertComponentImport("ExpandableBreakoutDefaultValue");
-      this.appendLine(`<ExpandableBreakoutDefaultValue slot="defaultValue">`);
-      createDefaultValue();
-      this.appendLine("</ExpandableBreakoutDefaultValue>");
-    }
-
-    this.appendLine("</ExpandableBreakout>");
   }
 
   protected override handleCreateExpandableProperty(
@@ -439,123 +541,116 @@ export abstract class MdxRenderer extends MarkdownRenderer {
     ]: RendererCreateExpandablePropertyArgs
   ) {
     const { id, parentId } = this.#getBreakoutIdInfo();
-
-    this.insertComponentImport("ExpandableProperty");
     const expandByDefault =
       getSettings().display.expandTopLevelPropertiesOnPageLoad && isTopLevel;
-    this.appendLine(
-      `<ExpandableProperty
-  slot="entry"
-  id="${id}"
-  headingId="${this.getCurrentId()}"${
-    parentId
-      ? `
-  parentId="${parentId}"`
-      : ""
-  }${
-    typeInfo
-      ? `
-  typeInfo={${JSON.stringify(typeInfo)}}`
-      : ""
-  }${
-    annotations.length > 0
-      ? `
-  typeAnnotations={${JSON.stringify(annotations)}}`
-      : ""
-  }
-  hasFrontMatter={${hasFrontMatter ? "true" : "false"}}
-  expandByDefault={${expandByDefault}}
->`
+
+    this.#appendComponent<ExpandablePropertyProps>(
+      "ExpandableProperty",
+      {
+        slot: "entry",
+        id,
+        headingId: this.getCurrentId(),
+        parentId,
+        typeInfo,
+        typeAnnotations: annotations,
+        hasFrontMatter,
+        expandByDefault,
+      },
+      () => {
+        this.#appendComponent<ExpandablePropertyTitleProps>(
+          "ExpandablePropertyTitle",
+          { slot: "title" },
+          () => {
+            this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, rawTitle, {
+              id: this.getCurrentId(),
+              escape: "mdx",
+            });
+          }
+        );
+
+        if (createDescription) {
+          this.#appendComponent<ExpandablePropertyDescriptionProps>(
+            "ExpandablePropertyDescription",
+            { slot: "description" },
+            createDescription
+          );
+        }
+
+        if (createExamples) {
+          this.#appendComponent<ExpandablePropertyExamplesProps>(
+            "ExpandablePropertyExamples",
+            { slot: "examples" },
+            createExamples
+          );
+        }
+
+        if (createDefaultValue) {
+          this.#appendComponent<ExpandablePropertyDefaultValueProps>(
+            "ExpandablePropertyDefaultValue",
+            { slot: "defaultValue" },
+            createDefaultValue
+          );
+        }
+      }
     );
-
-    this.insertComponentImport("ExpandablePropertyTitle");
-    this.appendLine(`<ExpandablePropertyTitle slot="title">`);
-    this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, rawTitle, {
-      id: this.getCurrentId(),
-      escape: "mdx",
-    });
-    this.appendLine("</ExpandablePropertyTitle>");
-
-    if (createDescription) {
-      this.insertComponentImport("ExpandablePropertyDescription");
-      this.appendLine(`<ExpandablePropertyDescription slot="description">`);
-      createDescription();
-      this.appendLine("</ExpandablePropertyDescription>");
-    }
-
-    if (createExamples) {
-      this.insertComponentImport("ExpandablePropertyExamples");
-      this.appendLine(`<ExpandablePropertyExamples slot="examples">`);
-      createExamples();
-      this.appendLine("</ExpandablePropertyExamples>");
-    }
-
-    if (createDefaultValue) {
-      this.insertComponentImport("ExpandablePropertyDefaultValue");
-      this.appendLine(`<ExpandablePropertyDefaultValue slot="defaultValue">`);
-      createDefaultValue();
-      this.appendLine("</ExpandablePropertyDefaultValue>");
-    }
-
-    this.appendLine("</ExpandableProperty>");
   }
 
   public override createFrontMatterDisplayType(
     ...[{ typeInfo }]: RendererCreateFrontMatterDisplayTypeArgs
   ) {
-    this.insertComponentImport("FrontMatterDisplayType");
-    this.appendLine(
-      `<FrontMatterDisplayType typeInfo={${JSON.stringify(typeInfo)}} />`
+    this.#appendComponent<FrontMatterDisplayTypeProps>(
+      "FrontMatterDisplayType",
+      { typeInfo }
     );
   }
 
   public override createSection(...[cb]: RendererCreateSectionArgs) {
-    this.insertComponentImport("Section");
-    this.appendLine("<Section>");
-    cb();
-    this.appendLine("</Section>");
+    this.#appendComponent<SectionProps>("Section", {}, cb);
   }
 
   public override createSectionTitle(...[cb]: RendererCreateSectionTitleArgs) {
-    this.insertComponentImport("SectionTitle");
-    this.appendLine(`<SectionTitle slot="title">`);
-    cb();
-    this.appendLine("</SectionTitle>");
+    this.#appendComponent<SectionTitleProps>(
+      "SectionTitle",
+      { slot: "title" },
+      cb
+    );
   }
 
   public override createSectionContent(
     ...[cb, { id } = {}]: RendererCreateSectionContentArgs
   ) {
-    this.insertComponentImport("SectionContent");
-    this.appendLine(
-      `<SectionContent slot="content"${id ? ` id="${id}"` : ""}>`
+    this.#appendComponent<SectionContentProps>(
+      "SectionContent",
+      { slot: "content", id },
+      cb
     );
-    cb();
-    this.appendLine("</SectionContent>");
   }
 
   protected override createTabbedSection(
     ...[cb]: RendererCreateTabbedSectionArgs
   ) {
-    this.insertComponentImport("TabbedSection");
-    this.appendLine("<TabbedSection>");
-    cb();
-    this.appendLine("</TabbedSection>");
+    // We have to do a manual Omit here, since TabbedSectionProps.children is
+    // specially defined and not a standard PropsWithChildren type
+    this.#appendComponent<Omit<TabbedSectionProps, "children">>(
+      "TabbedSection",
+      {},
+      cb
+    );
   }
 
   protected override createTabbedSectionTab(
     ...[cb, { id }]: RendererCreateTabbedSectionTabArgs
   ) {
-    this.insertComponentImport("SectionTab");
-    this.appendLine(`<SectionTab slot="tab" id="${id}">`);
-    cb();
-    this.appendLine("</SectionTab>");
+    this.#appendComponent<SectionTabProps>(
+      "SectionTab",
+      { slot: "tab", id },
+      cb
+    );
   }
 
   public override createDebugPlaceholder(
     ...[cb]: RendererCreateDebugPlaceholderArgs
   ) {
-    this.insertComponentImport("DebugPlaceholder");
-    this.appendLine(`<DebugPlaceholder>${cb()}</DebugPlaceholder>`);
+    this.#appendComponent<DebugPlaceholderProps>("DebugPlaceholder", {}, cb);
   }
 }

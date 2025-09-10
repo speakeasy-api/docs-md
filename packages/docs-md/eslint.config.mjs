@@ -42,6 +42,7 @@ export default [
         filepath: /src\/react/,
         allowed: [/src\/react\//],
         message: "Only React code is allowed to import React code",
+        excludeTypeImports: true,
       },
       {
         type: "first-party",
