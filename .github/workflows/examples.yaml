@@ -23,5 +23,7 @@ jobs:
       - name: Build Docs MD
         working-directory: ./packages/docs-md
         run: npm run build
+      - name: Link workspace binaries
+        run: npm install --workspaces
       - name: Verify example builds
-        run: npm run build-api-docs --workspaces -- --clean
+        run: make verify-api-docs
