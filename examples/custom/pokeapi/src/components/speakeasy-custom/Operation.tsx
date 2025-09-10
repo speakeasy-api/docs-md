@@ -33,10 +33,9 @@ export function Operation({ children }: OperationProps) {
           {securitySection}
           {parametersSection}
           {requestBodySection}
-          {responseBodySection}
         </div>
         <div style={{ flex: "0 1 50%", minWidth: 0 }}>
-          {tryItNowSection ?? <div></div>}
+          {responseBodySection}
         </div>
       </div>
     </>
