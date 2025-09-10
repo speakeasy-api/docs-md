@@ -19,6 +19,10 @@ export function error(message: string, err?: unknown) {
   console.error(err);
 }
 
+export function warn(message: string) {
+  console.warn(chalk.yellow(message));
+}
+
 export function debug(message: string) {
   if (level === "debug") {
     console.debug(chalk.grey(message));

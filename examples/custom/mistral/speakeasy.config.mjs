@@ -54,6 +54,7 @@ export default {
     createSite() {
       return new MistralSite();
     },
+    singlePage: true,
   },
   display: {
     visibleResponses: "success",

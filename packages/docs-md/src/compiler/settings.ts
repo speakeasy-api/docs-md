@@ -40,6 +40,8 @@ export const settingsSchema = z.strictObject({
     createSite: z.function().optional() as z.ZodOptional<
       z.ZodType<(() => Site) | undefined>
     >,
+    aboutPage: z.boolean().default(true),
+    singlePage: z.boolean().default(false),
   }),
   display: z
     .strictObject({

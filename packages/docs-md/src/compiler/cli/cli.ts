@@ -17,7 +17,7 @@ import z from "zod/v4";
 
 import { assertNever } from "../../util/assertNever.ts";
 import { generatePages } from "../generatePages.ts";
-import { error, info, setLevel } from "../logging.js";
+import { error, info, setLevel, warn } from "../logging.js";
 import type { Site } from "../renderers/base/base.ts";
 import { DocusaurusSite } from "../renderers/docusaurus.ts";
 import { NextraSite } from "../renderers/nextra.ts";
@@ -163,10 +163,22 @@ const specContents = JSON.stringify(load(specData));
 let site: Site;
 switch (settings.output.framework) {
   case "docusaurus": {
+    if (settings.output.createSite) {
+      throw new Error("output.createSite cannot be specified with docusaurus");
+    }
+    if (settings.output.singlePage) {
+      throw new Error("output.singlePage can only be used with custom sites");
+    }
     site = new DocusaurusSite();
     break;
   }
   case "nextra": {
+    if (settings.output.createSite) {
+      throw new Error("output.createSite cannot be specified with nextra");
+    }
+    if (settings.output.singlePage) {
+      throw new Error("output.singlePage can only be used with custom sites");
+    }
     site = new NextraSite();
     break;
   }
@@ -176,11 +188,16 @@ switch (settings.output.framework) {
         "output.createSite must be specified when using a custom framework"
       );
     }
+    if (settings.output.singlePage) {
+      warn(
+        "Compiling all docs into a single page is likely to cause performance issues. It is strongly recommended that you enable scroll virtualization in a custom component, but take care not to break SEO."
+      );
+    }
     site = settings.output.createSite();
     break;
   }
   default: {
-    // We should never get here cause we validate the settings in the CLI
+    // We should never get here cause we validate the settings via zod
     assertNever(settings.output.framework);
   }
 }
