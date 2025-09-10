@@ -269,56 +269,72 @@ export abstract class MdxRenderer extends MarkdownRenderer {
 
   protected override handleCreateRequestDisplayType(cb: () => void) {
     this.insertComponentImport("OperationRequestBodyDisplayTypeSection");
-    this.appendLine("<OperationRequestBodyDisplayTypeSection>");
+    this.appendLine(
+      '<OperationRequestBodyDisplayTypeSection slot="request-body-display-type">'
+    );
     cb();
     this.appendLine("</OperationRequestBodyDisplayTypeSection>");
   }
 
   protected override handleCreateRequestDescription(cb: () => void) {
     this.insertComponentImport("OperationRequestBodyDescriptionSection");
-    this.appendLine("<OperationRequestBodyDescriptionSection>");
+    this.appendLine(
+      '<OperationRequestBodyDescriptionSection slot="request-body-description">'
+    );
     cb();
     this.appendLine("</OperationRequestBodyDescriptionSection>");
   }
 
   protected override handleCreateRequestExamples(cb: () => void) {
     this.insertComponentImport("OperationRequestBodyExamplesSection");
-    this.appendLine("<OperationRequestBodyExamplesSection>");
+    this.appendLine(
+      '<OperationRequestBodyExamplesSection slot="request-body-examples">'
+    );
     cb();
     this.appendLine("</OperationRequestBodyExamplesSection>");
   }
 
   protected override handleCreateRequestDefaultValue(cb: () => void) {
     this.insertComponentImport("OperationRequestBodyDefaultValueSection");
-    this.appendLine("<OperationRequestBodyDefaultValueSection>");
+    this.appendLine(
+      '<OperationRequestBodyDefaultValueSection slot="request-body-default-value">'
+    );
     cb();
     this.appendLine("</OperationRequestBodyDefaultValueSection>");
   }
 
   protected override handleCreateResponseDisplayType(cb: () => void) {
     this.insertComponentImport("OperationResponseBodyDisplayTypeSection");
-    this.appendLine("<OperationResponseBodyDisplayTypeSection>");
+    this.appendLine(
+      '<OperationResponseBodyDisplayTypeSection slot="response-body-display-type">'
+    );
     cb();
     this.appendLine("</OperationResponseBodyDisplayTypeSection>");
   }
 
   protected override handleCreateResponseDescription(cb: () => void) {
     this.insertComponentImport("OperationResponseBodyDescriptionSection");
-    this.appendLine("<OperationResponseBodyDescriptionSection>");
+    this.appendLine(
+      '<OperationResponseBodyDescriptionSection slot="response-body-description">'
+    );
     cb();
     this.appendLine("</OperationResponseBodyDescriptionSection>");
   }
 
   protected override handleCreateResponseExamples(cb: () => void) {
     this.insertComponentImport("OperationResponseBodyExamplesSection");
-    this.appendLine("<OperationResponseBodyExamplesSection>");
+    this.appendLine(
+      '<OperationResponseBodyExamplesSection slot="response-body-examples">'
+    );
     cb();
     this.appendLine("</OperationResponseBodyExamplesSection>");
   }
 
   protected override handleCreateResponseDefaultValue(cb: () => void) {
     this.insertComponentImport("OperationResponseBodyDefaultValueSection");
-    this.appendLine("<OperationResponseBodyDefaultValueSection>");
+    this.appendLine(
+      '<OperationResponseBodyDefaultValueSection slot="response-body-default-value">'
+    );
     cb();
     this.appendLine("</OperationResponseBodyDefaultValueSection>");
   }

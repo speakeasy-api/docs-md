@@ -66,8 +66,9 @@ export function Operation({ children }: OperationProps) {
  */
 export function OperationTitleSection({
   children,
+  slot,
 }: OperationTitleSectionProps) {
-  return <div slot="title">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -76,8 +77,9 @@ export function OperationTitleSection({
  */
 export function OperationSummarySection({
   children,
+  slot,
 }: OperationSummarySectionProps) {
-  return <div slot="summary">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -86,8 +88,9 @@ export function OperationSummarySection({
  */
 export function OperationDescriptionSection({
   children,
+  slot,
 }: OperationDescriptionSectionProps) {
-  return <div slot="description">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -98,8 +101,9 @@ export function OperationDescriptionSection({
  */
 export function OperationCodeSamplesSection({
   children,
+  slot,
 }: OperationCodeSamplesSectionProps) {
-  return <div slot="code-samples">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -112,8 +116,9 @@ export function OperationCodeSamplesSection({
  */
 export function OperationSecuritySection({
   children,
+  slot,
 }: OperationSecuritySectionProps) {
-  return <div slot="security">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -127,8 +132,9 @@ export function OperationSecuritySection({
  */
 export function OperationParametersSection({
   children,
+  slot,
 }: OperationParametersSectionProps) {
-  return <div slot="parameters">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -155,8 +161,9 @@ export function OperationParametersSection({
  */
 export function OperationRequestBodySection({
   children,
+  slot,
 }: OperationRequestBodySectionProps) {
-  return <div slot="request-body">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -165,8 +172,9 @@ export function OperationRequestBodySection({
  */
 export function OperationRequestBodyDisplayTypeSection({
   children,
+  slot,
 }: OperationRequestBodyDisplayTypeSectionProps) {
-  return <div slot="request-body-display-type">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -175,8 +183,9 @@ export function OperationRequestBodyDisplayTypeSection({
  */
 export function OperationRequestBodyDescriptionSection({
   children,
+  slot,
 }: OperationRequestBodyDescriptionSectionProps) {
-  return <div slot="request-body-description">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -185,8 +194,9 @@ export function OperationRequestBodyDescriptionSection({
  */
 export function OperationRequestBodyExamplesSection({
   children,
+  slot,
 }: OperationRequestBodyExamplesSectionProps) {
-  return <div slot="request-body-examples">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -195,8 +205,9 @@ export function OperationRequestBodyExamplesSection({
  */
 export function OperationRequestBodyDefaultValueSection({
   children,
+  slot,
 }: OperationRequestBodyDefaultValueSectionProps) {
-  return <div slot="request-body-default-value">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -223,8 +234,9 @@ export function OperationRequestBodyDefaultValueSection({
  */
 export function OperationResponseBodySection({
   children,
+  slot,
 }: OperationResponseBodySectionProps) {
-  return <div slot="response-body">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -233,8 +245,9 @@ export function OperationResponseBodySection({
  */
 export function OperationResponseBodyDisplayTypeSection({
   children,
+  slot,
 }: OperationResponseBodyDisplayTypeSectionProps) {
-  return <div slot="response-body-display-type">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -243,8 +256,9 @@ export function OperationResponseBodyDisplayTypeSection({
  */
 export function OperationResponseBodyDescriptionSection({
   children,
+  slot,
 }: OperationResponseBodyDescriptionSectionProps) {
-  return <div slot="response-body-description">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -253,8 +267,9 @@ export function OperationResponseBodyDescriptionSection({
  */
 export function OperationResponseBodyExamplesSection({
   children,
+  slot,
 }: OperationResponseBodyExamplesSectionProps) {
-  return <div slot="response-body-examples">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
 
 /**
@@ -263,6 +278,7 @@ export function OperationResponseBodyExamplesSection({
  */
 export function OperationResponseBodyDefaultValueSection({
   children,
+  slot,
 }: OperationResponseBodyDefaultValueSectionProps) {
-  return <div slot="response-body-default-value">{children}</div>;
+  return <div slot={slot}>{children}</div>;
 }
