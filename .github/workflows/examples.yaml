@@ -19,11 +19,12 @@ jobs:
         with:
           node-version: "24"
       - name: Install dependencies
-        run: npm ci
+        # We have to do both forms of installs to:
+        # 1) ensure package-lock.json is up to date
+        # 2) ensure the docs-md binary is properly linked to each example
+        run: npm ci && npm install --workspaces
       - name: Build Docs MD
         working-directory: ./packages/docs-md
         run: npm run build
-      - name: Link workspace binaries
-        run: npm install --workspaces
       - name: Verify example builds
         run: make verify-api-docs
