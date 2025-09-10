@@ -18,7 +18,7 @@ build-api-docs:
 	npm run build-api-docs --workspaces -- --clean
 
 verify-api-docs: build-api-docs
-	@if ! (git diff --exit-code --quiet && git diff --cached --exit-code --quiet); then \
+	@if ! (git diff --exit-code && git diff --cached --exit-code); then \
 		echo "Example build out of date. Please run make build-api-docs and commit the results"; \
 		exit 1; \
 	fi
