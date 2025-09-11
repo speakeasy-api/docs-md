@@ -37,10 +37,10 @@ check-formatting-examples:
 
 build: build-packages build-examples
 
-build-packages: install
+build-packages:
 	npm run build --workspace packages
 
-build-examples: install
+build-examples:
 	npm run build --workspace examples
 
 build-api-docs:
