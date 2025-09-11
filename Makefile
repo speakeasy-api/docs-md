@@ -1,18 +1,39 @@
-type-check:
-	npm run type-check --workspaces
 
-lint:
-	npm run lint --workspaces
-
-test: type-check lint
-	npm test --workspaces
-
-format:
-	npm run format --workspaces
 
 install:
 	npm install
-	npm install --workspaces
+
+type-check: type-check-packages type-check-examples
+
+type-check-packages:
+	npm run type-check --workspaces --workspace="packages/*"
+
+type-check-examples:
+	npm run type-check --workspaces --workspace="examples/*"
+
+lint: lint-packages lint-examples
+
+lint-packages:
+	npm run lint --workspaces --workspace="packages/*"
+
+lint-examples:
+	npm run lint --workspaces --workspace="examples/*"
+
+format: format-packages format-examples
+
+format-packages:
+	npm run format --workspaces --workspace="packages/*"
+
+format-examples:
+	npm run format --workspaces --workspace="examples/*"
+
+build: build-packages build-examples
+
+build-packages: install
+	npm run build --workspaces --workspace="packages/*"
+
+build-examples: install
+	npm run build --workspaces --workspace="examples/*"
 
 build-api-docs:
 	npm run build-api-docs --workspaces -- --clean
@@ -23,21 +44,3 @@ verify-api-docs: build-api-docs
 		echo "Example build out of date. Please run make build-api-docs and commit the results"; \
 		exit 1; \
 	fi
-
-build: install
-	npm run build --workspaces
-
-start:
-	npx concurrently \
-	"npm run dev --workspace=server" \
-	"npm run dev --workspace=client/web" \
-	"npm run dev --workspace=demos" \
-	"npm run dev --workspace=asset-proxy"
-
-add-demo:
-	npm run add-demo --workspace="@speakeasy-api/codewords-demos"
-
-.PHONY: interactive
-
-interactive:
-	npm run interactive --workspace=server -- --spec=$(spec) --lang=$(lang) --token=$(token) --command=$(command)
