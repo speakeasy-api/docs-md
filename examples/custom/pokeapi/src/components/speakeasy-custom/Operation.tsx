@@ -21,6 +21,7 @@ export function Operation({ children }: OperationProps) {
       </div>
       {summarySection}
       {descriptionSection}
+      {tryItNowSection}
       <div style={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
         <div
           style={{
