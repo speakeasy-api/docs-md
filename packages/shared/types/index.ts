@@ -8,7 +8,6 @@ export type {
   TagChunk,
   SchemaChunk,
   OperationChunk,
-
   SchemaValue,
   ObjectValue,
 } from "./chunk.ts";

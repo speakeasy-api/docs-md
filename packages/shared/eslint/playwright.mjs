@@ -1,9 +1,12 @@
-import globals from "globals";
-import { getBaseESLintConfig } from "./base.mjs";
 import playwright from "eslint-plugin-playwright";
+import globals from "globals";
 
-export const getPlaywrightESLintConfig = (options) => [
-  ...getBaseESLintConfig(options),
-  playwright.configs["flat/recommended"],
-  { languageOptions: { globals: globals.node } },
-];
+import { getBaseESLintConfig } from "./base.mjs";
+
+export function getPlaywrightESLintConfig(options) {
+  return [
+    ...getBaseESLintConfig(options),
+    playwright.configs["flat/recommended"],
+    { languageOptions: { globals: globals.node } },
+  ];
+}

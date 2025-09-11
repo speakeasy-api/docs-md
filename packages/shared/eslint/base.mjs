@@ -1,19 +1,19 @@
-import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
-import eslintConfigPrettier from "eslint-config-prettier/flat";
-import unusedImports from "eslint-plugin-unused-imports";
 import { includeIgnoreFile } from "@eslint/compat";
+import eslint from "@eslint/js";
+import { globalIgnores } from "eslint/config";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
 import { all } from "eslint-plugin-fast-import";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
-import { globalIgnores } from "eslint/config";
+import unusedImports from "eslint-plugin-unused-imports";
+import tseslint from "typescript-eslint";
 
-export const getBaseESLintConfig = ({
+export function getBaseESLintConfig({
   gitignorePaths,
   rootDir,
   entryPoints,
   ignores,
   restrictedImports,
-}) => {
+}) {
   if (!Array.isArray(gitignorePaths)) {
     gitignorePaths = [gitignorePaths];
   }
@@ -95,4 +95,4 @@ export const getBaseESLintConfig = ({
       },
     },
   ];
-};
+}

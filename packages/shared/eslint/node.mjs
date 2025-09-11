@@ -1,17 +1,20 @@
-import globals from "globals";
-import { getBaseESLintConfig } from "./base.mjs";
 import ava from "eslint-plugin-ava";
+import globals from "globals";
 
-export const getNodeESLintConfig = (options) => [
-  ...getBaseESLintConfig(options),
-  ava.configs["flat/recommended"],
-  {
-    languageOptions: {
-      globals: globals.node,
+import { getBaseESLintConfig } from "./base.mjs";
+
+export function getNodeESLintConfig(options) {
+  return [
+    ...getBaseESLintConfig(options),
+    ava.configs["flat/recommended"],
+    {
+      languageOptions: {
+        globals: globals.node,
+      },
+      rules: {
+        // This rule doesn't support TypeScript tests
+        "ava/no-ignored-test-files": "off",
+      },
     },
-    rules: {
-      // This rule doesn't support TypeScript tests
-      "ava/no-ignored-test-files": "off",
-    },
-  },
-];
+  ];
+}

@@ -1,6 +1,6 @@
 import { resolve } from "node:path";
 
-import { getReactEslintConfig } from "@speakeasy-api/config";
+import { getReactEslintConfig } from "@speakeasy-api/docs-md-shared";
 import { getDirname } from "cross-dirname";
 import globals from "globals";
 
