@@ -6,37 +6,45 @@ install:
 type-check: type-check-packages type-check-examples
 
 type-check-packages:
-	npm run type-check --workspaces --workspace="packages/*"
+	npm run type-check --workspace packages
 
 type-check-examples:
-	npm run type-check --workspaces --workspace="examples/*"
+	npm run type-check --workspace examples
 
 lint: lint-packages lint-examples
 
 lint-packages:
-	npm run lint --workspaces --workspace="packages/*"
+	npm run lint --workspace packages
 
 lint-examples:
-	npm run lint --workspaces --workspace="examples/*"
+	npm run lint --workspace examples
 
 format: format-packages format-examples
 
 format-packages:
-	npm run format --workspaces --workspace="packages/*"
+	npm run format --workspace packages
 
 format-examples:
-	npm run format --workspaces --workspace="examples/*"
+	npm run format --workspace examples
+
+check-formatting: check-formatting-packages check-formatting-examples
+
+check-formatting-packages:
+	npm run check-formatting --workspace packages
+
+check-formatting-examples:
+	npm run check-formatting --workspace examples
 
 build: build-packages build-examples
 
 build-packages: install
-	npm run build --workspaces --workspace="packages/*"
+	npm run build --workspace packages
 
 build-examples: install
-	npm run build --workspaces --workspace="examples/*"
+	npm run build --workspace examples
 
 build-api-docs:
-	npm run build-api-docs --workspaces -- --clean
+	npm run build-api-docs --workspace examples -- --clean
 
 verify-api-docs: build-api-docs
 	@if ! (git diff --exit-code --quiet examples/ && git diff --cached --exit-code --quiet examples/); then \

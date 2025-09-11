@@ -25,10 +25,9 @@ jobs:
         run: npm ci
       - name: Build packages
         run: make build-packages
-      # We have to run npm install again to link the newly built docs-md binary
-      - name: Link workspace binaries
-        run: npm install --workspaces
-      - name: Lint
-        run: make lint-packages
       - name: Type check
         run: make type-check-packages
+      - name: Lint
+        run: make lint-packages
+      - name: Check formatting
+        run: make check-formatting-packages

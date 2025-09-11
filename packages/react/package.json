@@ -17,16 +17,14 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "",
     "clean": "rm -rf dist",
     "build": "tsc && cpx \"src/**/*.css\" dist/",
-    "dev": "",
-    "format": "prettier --config ../../prettier.config.mjs --ignore-path ../../.gitignore --write \"**/*.{js,jsx,mjs,ts,tsx,mts}\"",
+    "prettier": "prettier --config ../../prettier.config.mjs --ignore-path ../../.gitignore \"**/*.{js,jsx,mjs,ts,tsx,mts}\"",
+    "format": "npm run prettier -- --write",
+    "check-formatting": "npm run prettier -- --check",
     "lint": "eslint \"**/*.{js,jsx,mjs,ts,tsx,mts}\"",
-    "start": "",
     "storybook": "storybook dev -p 6006",
-    "type-check": "tsc --noEmit",
-    "build-api-docs": ""
+    "type-check": "tsc --noEmit"
   },
   "author": "",
   "license": "UNLICENSED",

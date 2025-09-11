@@ -1,6 +1,9 @@
 import { basename } from "node:path";
 
-import type { Chunk, OperationChunk } from "@speakeasy-api/docs-md-shared/types";
+import type {
+  Chunk,
+  OperationChunk,
+} from "@speakeasy-api/docs-md-shared/types";
 
 import type {
   CodeSamplesResponse,

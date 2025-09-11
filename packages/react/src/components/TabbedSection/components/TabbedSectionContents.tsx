@@ -1,6 +1,5 @@
 "use client";
 
- 
 import { Section as DefaultSection } from "../../Section/Section.tsx";
 import { SectionContent as DefaultSectionContent } from "../../SectionContent/SectionContent.tsx";
 import { SectionTitle as DefaultSectionTitle } from "../../SectionTitle/SectionTitle.tsx";
