@@ -1,10 +1,8 @@
 "use client";
 
-// eslint-disable-next-line fast-import/no-restricted-imports
+ 
 import { Section as DefaultSection } from "../../Section/Section.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports
 import { SectionContent as DefaultSectionContent } from "../../SectionContent/SectionContent.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports
 import { SectionTitle as DefaultSectionTitle } from "../../SectionTitle/SectionTitle.tsx";
 import type { TabbedSectionProps } from "../types.ts";
 import { useTabbedChildren } from "./hooks.tsx";

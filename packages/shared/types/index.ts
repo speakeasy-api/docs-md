@@ -1,5 +1,18 @@
 import type { SchemaValue } from "./chunk.ts";
 
+export type {
+  Chunk,
+  AboutChunk,
+  GlobalSecurityChunk,
+  SecurityChunk,
+  TagChunk,
+  SchemaChunk,
+  OperationChunk,
+
+  SchemaValue,
+  ObjectValue,
+} from "./chunk.ts";
+
 export type PillVariant =
   | "error"
   | "warning"

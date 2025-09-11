@@ -45,6 +45,7 @@ export const getBaseESLintConfig = ({
       languageOptions: {
         parserOptions: {
           projectService: true,
+          tsconfigRootDir: rootDir,
         },
       },
     },

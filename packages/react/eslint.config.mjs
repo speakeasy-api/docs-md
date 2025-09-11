@@ -12,8 +12,7 @@ export default [
     rootDir: getDirname(),
     entryPoints: {
       "eslint.config.mjs": ["default"],
-      "src/react/index.ts": /.*/,
-      "src/compiler/compiler.ts": /.*/,
+      "src/index.ts": /.*/,
     },
     ignores: ["src/compiler/data/wasm_exec.js", ".storybook/**/*"],
     restrictedImports: [

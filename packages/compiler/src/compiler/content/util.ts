@@ -1,4 +1,5 @@
-import type { Chunk } from "../../types/chunk.ts";
+import type { Chunk } from "@speakeasy-api/docs-md-shared/types";
+
 import { InternalError } from "../../util/internalError.ts";
 
 export function getSecurityFromId(

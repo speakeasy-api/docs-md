@@ -38,7 +38,8 @@ import type {
   SectionTitleProps,
   TabbedSectionProps,
   TryItNowProps,
-} from "../../../react/index.ts";
+} from "@speakeasy-api/docs-md-react";
+
 import { HEADINGS } from "../../content/constants.ts";
 import { getSettings } from "../../settings.ts";
 import type {

@@ -1,5 +1,6 @@
-import type { OperationChunk } from "../../../types/chunk.ts";
-import type { PropertyAnnotations } from "../../../types/shared.ts";
+import type { OperationChunk } from "@speakeasy-api/docs-md-shared/types";
+import type { PropertyAnnotations } from "@speakeasy-api/docs-md-shared/types";
+
 import { assertNever } from "../../../util/assertNever.ts";
 import type { CodeSampleLanguage } from "../.././settings.ts";
 import { getSettings } from "../.././settings.ts";

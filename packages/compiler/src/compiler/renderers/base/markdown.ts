@@ -1,15 +1,15 @@
 import { join, resolve } from "node:path";
 
-import { snakeCase } from "change-case";
-
-import type { Chunk } from "../../../types/chunk.ts";
+import type { Chunk } from "@speakeasy-api/docs-md-shared/types";
 import type {
   DisplayTypeInfo,
   PageMetadata,
   PageMetadataOperation,
   PageMetadataSection,
   PropertyAnnotations,
-} from "../../../types/shared.ts";
+} from "@speakeasy-api/docs-md-shared/types";
+import { snakeCase } from "change-case";
+
 import { InternalError } from "../../../util/internalError.ts";
 import { getSettings } from "../.././settings.ts";
 import { HEADINGS } from "../../content/constants.ts";

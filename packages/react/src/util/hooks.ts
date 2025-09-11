@@ -1,7 +1,7 @@
 import type { ReactElement, ReactNode } from "react";
 import { Children, isValidElement, useMemo } from "react";
 
-import { InternalError } from "../../util/internalError.ts";
+import { InternalError } from "./internalError.ts";
 
 function normalizeChildren(
   children: ReactNode

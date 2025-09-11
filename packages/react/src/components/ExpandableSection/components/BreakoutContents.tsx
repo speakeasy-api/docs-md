@@ -1,10 +1,8 @@
 "use client";
 
-// eslint-disable-next-line fast-import/no-restricted-imports
+ 
 import { ConnectingCell as DefaultConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports
 import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports
 import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
 import { useIsOpen } from "../state.ts";
 import type { ExpandableBreakoutProps } from "../types.ts";

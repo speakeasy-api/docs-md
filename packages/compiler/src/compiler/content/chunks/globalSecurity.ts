@@ -1,4 +1,5 @@
-import type { GlobalSecurityChunk } from "../../../types/chunk.ts";
+import type { GlobalSecurityChunk } from "@speakeasy-api/docs-md-shared/types";
+
 import { debug } from "../../logging.ts";
 import type { Renderer } from "../../renderers/base/base.ts";
 import { getSettings } from "../../settings.ts";

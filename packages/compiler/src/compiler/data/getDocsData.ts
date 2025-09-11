@@ -6,7 +6,7 @@ import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { unzipSync } from "node:zlib";
 
-import type { Chunk } from "../../types/chunk.ts";
+import type { Chunk } from "@speakeasy-api/docs-md-shared/types";
 declare class Go {
   argv: string[];
   env: Record<string, string>;

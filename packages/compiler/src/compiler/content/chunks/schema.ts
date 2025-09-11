@@ -1,8 +1,9 @@
-import type { ObjectValue, SchemaValue } from "../../../types/chunk.ts";
+import type { ObjectValue, SchemaValue } from "@speakeasy-api/docs-md-shared/types";
 import type {
   DisplayTypeInfo,
   PropertyAnnotations,
-} from "../../../types/shared.ts";
+} from "@speakeasy-api/docs-md-shared/types";
+
 import { assertNever } from "../../../util/assertNever.ts";
 import { InternalError } from "../../../util/internalError.ts";
 import type { Renderer } from "../..//renderers/base/base.ts";
