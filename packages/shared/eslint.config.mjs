@@ -22,7 +22,7 @@ export default [
         moduleSpecifier: "node:fs",
         allowed: [/src\/compiler\/cli\//],
         message:
-          "File system access is only allowed in the CLI wrapper because other code needs to be isomorphic",
+          "File system access is only allowed in the CLI wrapper because other code should be kept isomorphic",
       },
     ],
   }),
