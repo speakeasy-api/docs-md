@@ -38,7 +38,9 @@ check-formatting-examples:
 build: build-packages build-examples
 
 build-packages:
-	npm run build --workspace packages
+	# We have to build these in a specific order because of dependencies
+	npm run build --workspace packages/react
+	npm run build --workspace packages/compiler
 
 build-examples:
 	npm run build --workspace examples
