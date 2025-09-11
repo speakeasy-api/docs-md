@@ -85,7 +85,7 @@ export abstract class MdxRenderer extends MarkdownRenderer {
       } else if (symbols.defaultAlias) {
         imports += `import ${symbols.defaultAlias} from "${importPath}";\n`;
       } else if (symbols.namedImports.size > 0) {
-        imports += `import {\n${Array.from(symbols.namedImports).sort().join(",\n  ")}\n} from "${importPath}";\n`;
+        imports += `import {\n  ${Array.from(symbols.namedImports).sort().join(",\n  ")}\n} from "${importPath}";\n`;
       } else {
         imports += `import "${importPath}";\n`;
       }

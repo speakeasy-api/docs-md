@@ -1,12 +1,12 @@
 import type { OperationChunk } from "@speakeasy-api/docs-md-shared/types";
 import type { PropertyAnnotations } from "@speakeasy-api/docs-md-shared/types";
 
-import { assertNever } from "../../../util/assertNever.ts";
 import type { CodeSampleLanguage } from "../.././settings.ts";
 import { getSettings } from "../.././settings.ts";
 import type { Renderer } from "../..//renderers/base/base.ts";
 import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
 import { debug } from "../../logging.ts";
+import { assertNever } from "../../util/assertNever.ts";
 import { getSchemaFromId, getSecurityFromId } from "../util.ts";
 import {
   createDefaultValue,

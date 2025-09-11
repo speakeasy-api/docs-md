@@ -11,14 +11,14 @@ export default [
     rootDir: getDirname(),
     entryPoints: {
       "eslint.config.mjs": ["default"],
-      "src/compiler/compiler.ts": /.*/,
+      "src/compiler.ts": /.*/,
     },
-    ignores: ["src/compiler/data/wasm_exec.js"],
+    ignores: ["src/data/wasm_exec.js"],
     restrictedImports: [
       {
         type: "third-party",
         moduleSpecifier: "node:fs",
-        allowed: [/src\/compiler\/cli\//],
+        allowed: [/src\/cli\//],
         message:
           "File system access is only allowed in the CLI wrapper because other code needs to be isomorphic",
       },
@@ -26,8 +26,8 @@ export default [
   }),
   // Disallow console calls in compiler code (use logging.ts functions instead)
   {
-    files: ["src/compiler/**/*.{ts,js,mts,mjs}"],
-    ignores: ["src/compiler/logging.ts"],
+    files: ["src/**/*.{ts,js,mts,mjs}"],
+    ignores: ["src/logging.ts"],
     rules: {
       "no-console": "error",
     },

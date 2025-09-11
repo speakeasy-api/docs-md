@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { unzipSync } from "node:zlib";
 
 import type { Chunk } from "@speakeasy-api/docs-md-shared/types";
+
 declare class Go {
   argv: string[];
   env: Record<string, string>;
@@ -25,8 +26,17 @@ export async function getData(
   const gzippedBuffer = await readFile(wasmPath);
   const wasmBuffer = unzipSync(gzippedBuffer);
   const go = new Go();
-  const result = await WebAssembly.instantiate(wasmBuffer, go.importObject);
-  void go.run(result.instance);
+  // There are two overloads for WebAssembly.instantiate, and for some reason
+  // TypeScript is picking the wrong one (which doesn't return the correct
+  // type we actually get returned). By forcing the overload, we get the correct
+  // type.
+  const { instance } = await WebAssembly.instantiate(
+    wasmBuffer as BufferSource,
+    go.importObject
+  );
+
+  // For whatever bizarre reason, awaiting this promise causes a crash.
+  void go.run(instance);
   const serializedDocsData = await SerializeDocsData(specContents);
 
   const docsData = (JSON.parse(serializedDocsData) as string[]).map(

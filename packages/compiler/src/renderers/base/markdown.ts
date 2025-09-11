@@ -10,9 +10,9 @@ import type {
 } from "@speakeasy-api/docs-md-shared/types";
 import { snakeCase } from "change-case";
 
-import { InternalError } from "../../../util/internalError.ts";
 import { getSettings } from "../.././settings.ts";
 import { HEADINGS } from "../../content/constants.ts";
+import { InternalError } from "../../util/internalError.ts";
 import type {
   Context,
   RendererAlreadyInContextArgs,

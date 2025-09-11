@@ -55,7 +55,7 @@ sidebarTitle: ${this.escapeText(args.frontMatter.sidebarLabel, { escape: "mdx" }
   }
 
   protected override insertComponentImport(symbol: string) {
-    this.insertNamedImport("@speakeasy-api/docs-md/react", symbol);
+    this.insertNamedImport("@speakeasy-api/docs-md-react", symbol);
   }
 
   public override createHeading(

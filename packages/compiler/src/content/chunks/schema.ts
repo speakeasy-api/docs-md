@@ -7,10 +7,10 @@ import type {
   PropertyAnnotations,
 } from "@speakeasy-api/docs-md-shared/types";
 
-import { assertNever } from "../../../util/assertNever.ts";
-import { InternalError } from "../../../util/internalError.ts";
 import type { Renderer } from "../..//renderers/base/base.ts";
 import { getSettings } from "../../settings.ts";
+import { assertNever } from "../../util/assertNever.ts";
+import { InternalError } from "../../util/internalError.ts";
 import { HEADINGS } from "../constants.ts";
 import { getSchemaFromId } from "../util.ts";
 

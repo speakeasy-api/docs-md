@@ -5,14 +5,28 @@ import type {
   OperationChunk,
 } from "@speakeasy-api/docs-md-shared/types";
 
-import type {
-  CodeSamplesResponse,
-  CodeSnippet,
-  ErrorResponse,
-} from "../../types/codeSnippet.ts";
-import type { CodeSampleLanguage } from ".././settings.ts";
-import { getSettings } from ".././settings.ts";
-import { error, info } from "../logging.js";
+import { error, info } from "../logging.ts";
+import type { CodeSampleLanguage } from "../settings.ts";
+import { getSettings } from "../settings.ts";
+
+type CodeSnippet = {
+  operationId: string;
+  language: string;
+  code: string;
+
+  // This property isn't returned from the API, but we need it for other uses
+  // and have it as part of forming the request
+  packageName: string;
+};
+
+type CodeSamplesResponse = {
+  snippets: Omit<CodeSnippet, "packageName">[];
+};
+
+type ErrorResponse = {
+  message: string;
+  statusCode: number;
+};
 
 const CODE_SNIPPETS_API_URL =
   process.env.SPEAKEASY_CODE_SNIPPETS_API_URL ?? "https://api.speakeasy.com";
