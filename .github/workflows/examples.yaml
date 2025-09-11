@@ -23,9 +23,8 @@ jobs:
           node-version: "24"
       - name: Install dependencies
         run: npm ci
-      - name: Build Compiler
-        working-directory: ./packages/compiler
-        run: npm run build
+      - name: Build Packages
+        run: make build-packages
       # We have to run npm install again to link the newly built compiler binary
       - name: Link workspace binaries
         run: npm install --workspaces
