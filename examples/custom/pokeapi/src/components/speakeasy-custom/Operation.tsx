@@ -1,4 +1,4 @@
-import { OperationProps, useChildren } from "@speakeasy-api/docs-md/react";
+import { OperationProps, useChildren } from "@speakeasy-api/docs-md-react";
 
 export function Operation({ children }: OperationProps) {
   const titleSection = useChildren(children, "title")[0];

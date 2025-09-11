@@ -1,4 +1,4 @@
-import type { PillProps } from "@speakeasy-api/docs-md/react";
+import type { PillProps } from "@speakeasy-api/docs-md-react";
 
 export function Pill({ variant, children }: PillProps) {
   return (

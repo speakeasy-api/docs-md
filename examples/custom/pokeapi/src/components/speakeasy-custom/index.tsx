@@ -1,4 +1,4 @@
-export * from "@speakeasy-api/docs-md/react";
+export * from "@speakeasy-api/docs-md-react";
 
 export { Pill } from "./Pill";
 export { ExpandableProperty } from "./ExpandableProperty";
