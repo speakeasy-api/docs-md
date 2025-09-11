@@ -1,14 +1,14 @@
 "use client";
 
+import type {
+  DisplayTypeInfo,
+  PropertyAnnotations,
+} from "@speakeasy-api/docs-md-shared/types";
 import clsx from "clsx";
 import type { FC, PropsWithChildren } from "react";
 import { forwardRef, useMemo } from "react";
 import useMeasure from "react-use-measure";
 
-import type {
-  DisplayTypeInfo,
-  PropertyAnnotations,
-} from "../../../../types/shared.ts";
 import {
   computeMultilineTypeLabel,
   computeSingleLineDisplayType,

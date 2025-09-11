@@ -1,4 +1,4 @@
-import type { DisplayTypeInfo } from "../../../types/shared.ts";
+import type { DisplayTypeInfo } from "@speakeasy-api/docs-md-shared/types";
 
 export type FrontMatterDisplayTypeProps = {
   typeInfo: DisplayTypeInfo;

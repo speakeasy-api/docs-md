@@ -1,9 +1,9 @@
-import type { FC, PropsWithChildren } from "react";
-
 import type {
   DisplayTypeInfo,
   PropertyAnnotations,
-} from "../../../types/shared.ts";
+} from "@speakeasy-api/docs-md-shared/types";
+import type { FC, PropsWithChildren } from "react";
+
 import type { ConnectingCellProps } from "../ConnectingCell/types.ts";
 import type { ExpandableCellProps } from "../ExpandableCell/types.ts";
 import type { NonExpandableCellProps } from "../NonExpandableCell/types.ts";

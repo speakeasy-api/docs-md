@@ -1,6 +1,5 @@
+import type { PillVariant } from "@speakeasy-api/docs-md-shared/types";
 import type { PropsWithChildren } from "react";
-
-import type { PillVariant } from "../../../types/shared.ts";
 
 export type PillProps = PropsWithChildren<{
   /**

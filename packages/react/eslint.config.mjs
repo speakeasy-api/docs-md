@@ -14,7 +14,7 @@ export default [
       "eslint.config.mjs": ["default"],
       "src/index.ts": /.*/,
     },
-    ignores: ["src/compiler/data/wasm_exec.js", ".storybook/**/*"],
+    ignores: ["src/compiler/data/wasm_exec.js", "src/.storybook/**/*"],
     restrictedImports: [
       {
         type: "third-party",
