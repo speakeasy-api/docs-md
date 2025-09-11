@@ -1,11 +1,7 @@
 import { join, resolve } from "node:path";
 import { writeFileSync } from "node:fs";
 
-import {
-  getSettings,
-  MdxRenderer,
-  MdxSite,
-} from "@speakeasy-api/docs-md/compiler";
+import { getSettings, MdxRenderer, MdxSite } from "@speakeasy-api/docs-md";
 
 export class MistralSite extends MdxSite {
   buildPagePath(slug) {
