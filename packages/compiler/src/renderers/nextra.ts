@@ -40,7 +40,7 @@ class NextraRenderer extends MdxRenderer {
   constructor(args: RendererConstructorArgs) {
     super(args);
     if (args.frontMatter) {
-      this.insertPackageImport("@speakeasy-api/docs-md/nextra.css");
+      this.insertPackageImport("@speakeasy-api/docs-md-react/nextra.css");
       this.#frontMatter = `---
 sidebarTitle: ${this.escapeText(args.frontMatter.sidebarLabel, { escape: "mdx" })}
 ---`;

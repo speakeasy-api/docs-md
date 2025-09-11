@@ -65,7 +65,7 @@ class DocusaurusRenderer extends MdxRenderer {
   constructor(args: RendererConstructorArgs) {
     super(args);
     if (args.frontMatter) {
-      this.insertPackageImport("@speakeasy-api/docs-md/docusaurus.css");
+      this.insertPackageImport("@speakeasy-api/docs-md-react/docusaurus.css");
       this.#frontMatter = `---
 sidebar_position: ${args.frontMatter.sidebarPosition}
 sidebar_label: ${this.escapeText(args.frontMatter.sidebarLabel, { escape: "mdx" })}
