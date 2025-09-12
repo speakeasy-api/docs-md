@@ -1,4 +1,4 @@
-import { writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import { escapeText } from "../../renderers/util.ts";
@@ -29,6 +29,9 @@ sidebarTitle: ${escapeText(frontMatter.sidebarLabel, { escape: "mdx" })}
       index: { title: "About", theme: { collapsed: false } },
       endpoint: { title: "Operations", theme: { collapsed: false } }
     }`;
+    mkdirSync(join(settings.output.pageOutDir, "endpoint"), {
+      recursive: true,
+    });
     writeFileSync(join(settings.output.pageOutDir, "_meta.ts"), config);
   },
 

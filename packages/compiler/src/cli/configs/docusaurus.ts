@@ -1,4 +1,4 @@
-import { writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import { escapeText } from "../../renderers/util.ts";
@@ -31,6 +31,7 @@ import "@speakeasy-api/docs-md-react/docusaurus.css";
     const settings = getSettings();
 
     // Create the about page metadata
+    mkdirSync(settings.output.pageOutDir, { recursive: true });
     writeFileSync(
       join(settings.output.pageOutDir, "_category_.json"),
       JSON.stringify(
@@ -42,10 +43,14 @@ import "@speakeasy-api/docs-md-react/docusaurus.css";
         },
         null,
         "  "
-      )
+      ),
+      {}
     );
 
     // Create the endpoint pages metadata
+    mkdirSync(join(settings.output.pageOutDir, "endpoint"), {
+      recursive: true,
+    });
     writeFileSync(
       join(settings.output.pageOutDir, "endpoint", "_category_.json"),
       JSON.stringify(
