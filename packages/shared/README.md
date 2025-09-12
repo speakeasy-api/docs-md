@@ -1,3 +1,3 @@
-# Docs MD React Components
+# Docs MD Shared Components
 
 See Speakeasy documentation for details.
