@@ -1,5 +1,3 @@
-import { dirname, relative } from "node:path";
-
 import type {
   CodeSampleProps,
   DebugPlaceholderProps,
@@ -39,16 +37,20 @@ import type {
   TabbedSectionProps,
   TryItNowProps,
 } from "@speakeasy-api/docs-md-react";
+import type { PageMetadata } from "@speakeasy-api/docs-md-shared/types";
 
-import { HEADINGS } from "../../content/constants.ts";
-import { getSettings } from "../../settings.ts";
+import { HEADINGS } from "../content/constants.ts";
+import { getSettings } from "../settings.ts";
+import type { CompilerConfig } from "../types/compilerConfig.ts";
 import type {
+  RendererConstructorArgs,
   RendererCreateCodeArgs,
   RendererCreateCodeSamplesSectionArgs,
   RendererCreateDebugPlaceholderArgs,
   RendererCreateExpandableBreakoutArgs,
   RendererCreateExpandablePropertyArgs,
   RendererCreateFrontMatterDisplayTypeArgs,
+  RendererCreateHeadingArgs,
   RendererCreateOperationArgs,
   RendererCreateParametersSectionArgs,
   RendererCreatePillArgs,
@@ -60,118 +62,69 @@ import type {
   RendererCreateSecuritySectionArgs,
   RendererCreateTabbedSectionArgs,
   RendererCreateTabbedSectionTabArgs,
+  SiteBuildPagePathArgs,
+  SiteGetRendererArgs,
 } from "./base.ts";
 import { MarkdownRenderer, MarkdownSite } from "./markdown.ts";
-import { getPrettyCodeSampleLanguage } from "./util.ts";
+import { escapeText, getPrettyCodeSampleLanguage } from "./util.ts";
 
-export abstract class MdxSite extends MarkdownSite {
-  // There isn't any difference between MdxSite and MarkdownSite at the moment,
-  // but we still want the named class for consistency
+export class MdxSite extends MarkdownSite {
+  #compilerConfig: CompilerConfig;
+
+  constructor(compilerConfig: CompilerConfig) {
+    super();
+    this.#compilerConfig = compilerConfig;
+  }
+
+  public override buildPagePath(
+    ...[slug, { appendIndex = false } = {}]: SiteBuildPagePathArgs
+  ): string {
+    return this.#compilerConfig.buildPagePath(slug, { appendIndex });
+  }
+
+  protected override getRenderer(...[options]: SiteGetRendererArgs) {
+    return new MdxRenderer({ ...options }, this.#compilerConfig);
+  }
+
+  public override processPageMetadata(pageMetadata: PageMetadata[]) {
+    this.#compilerConfig.postProcess?.(pageMetadata);
+  }
 }
 
-export abstract class MdxRenderer extends MarkdownRenderer {
-  #imports = new Map<
-    string,
-    { defaultAlias: string | undefined; namedImports: Set<string> }
-  >();
+class MdxRenderer extends MarkdownRenderer {
+  // Mapping of import path to imported symbols
+  #imports = new Map<string, Set<string>>();
+  #compilerConfig: CompilerConfig;
+  #frontMatter: string | undefined;
 
-  public override render() {
-    let imports = "";
-    for (const [importPath, symbols] of this.#imports) {
-      if (symbols.defaultAlias && symbols.namedImports.size > 0) {
-        imports += `import ${symbols.defaultAlias}, { ${Array.from(
-          symbols.namedImports
-        ).join(", ")} } from "${importPath}";\n`;
-      } else if (symbols.defaultAlias) {
-        imports += `import ${symbols.defaultAlias} from "${importPath}";\n`;
-      } else if (symbols.namedImports.size > 0) {
-        imports += `import {\n  ${Array.from(symbols.namedImports).sort().join(",\n  ")}\n} from "${importPath}";\n`;
-      } else {
-        imports += `import "${importPath}";\n`;
-      }
+  constructor(
+    options: RendererConstructorArgs,
+    compilerConfig: CompilerConfig
+  ) {
+    super(options);
+    this.#compilerConfig = compilerConfig;
+    if (options.frontMatter) {
+      this.#frontMatter = compilerConfig.buildPagePreamble(options.frontMatter);
     }
-    const { contents, metadata } = super.render();
-    let data = "";
-    if (imports) {
-      data += imports + "\n\n";
-    }
-    return { contents: data + contents, metadata };
   }
 
-  public override createCode(...[text, options]: RendererCreateCodeArgs) {
-    let line: string;
-    if (options?.variant === "raw") {
-      if (options.style === "inline") {
-        line = `<code>${this.escapeText(text, { escape: options?.escape ?? "html" })}</code>`;
-      } else {
-        const escapedText = this.escapeText(text, {
-          escape: options?.escape ?? "html",
-        }).replaceAll("`", "\\`");
-        this.insertComponentImport("Code");
-        line = `<Code text={\`${escapedText}\`} />`;
-      }
-    } else {
-      line = super.createCode(
-        text,
-        options ? { ...options, append: false } : undefined
-      );
-    }
-    if (options?.append ?? true) {
-      this.appendLine(line);
-    }
-    return line;
-  }
-
-  protected insertPackageImport(importPath: string) {
+  #insertNamedImport(importPath: string, symbol: string) {
     if (!this.#imports.has(importPath)) {
-      this.#imports.set(importPath, {
-        defaultAlias: undefined,
-        namedImports: new Set(),
-      });
+      this.#imports.set(importPath, new Set());
     }
+    this.#imports.get(importPath)?.add(symbol);
   }
 
-  protected insertDefaultImport(importPath: string, symbol: string) {
-    if (!this.#imports.has(importPath)) {
-      this.#imports.set(importPath, {
-        defaultAlias: undefined,
-        namedImports: new Set(),
-      });
-    }
-    // Will never be undefined due to the above. I wish TypeScript could narrow
-    // map/set .has() calls
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    this.#imports.get(importPath)!.defaultAlias = symbol;
+  #insertComponentImport(symbol: string) {
+    this.#insertNamedImport(this.#compilerConfig.componentPackageName, symbol);
   }
-
-  protected insertNamedImport(importPath: string, symbol: string) {
-    if (!this.#imports.has(importPath)) {
-      this.#imports.set(importPath, {
-        defaultAlias: undefined,
-        namedImports: new Set(),
-      });
-    }
-    this.#imports.get(importPath)?.namedImports.add(symbol);
-  }
-
-  protected getRelativeImportPath(startPath: string, endPath: string) {
-    let importPath = relative(dirname(startPath), endPath);
-    // Check if this is an import to a file in the same directory, which
-    // for some reason relative doesn't include the ./ in
-    if (!importPath.startsWith("./") && !importPath.startsWith("../")) {
-      importPath = `./${importPath}`;
-    }
-    return importPath;
-  }
-
-  protected abstract insertComponentImport(symbol: string): void;
 
   #createComponentOpeningTag<Props extends Record<string, unknown>>(
     symbol: string,
     props: Props,
     { selfClosing }: { selfClosing: boolean }
   ) {
-    this.insertComponentImport(symbol);
+    this.#insertComponentImport(symbol);
 
     function serializeProps(separator: string) {
       return Object.entries(props)
@@ -236,6 +189,79 @@ export abstract class MdxRenderer extends MarkdownRenderer {
         selfClosing: true,
       });
     }
+  }
+
+  protected override getIdSeparator() {
+    return this.#compilerConfig.elementIdSeparator ?? "+";
+  }
+
+  public override render() {
+    // Render the main content
+    const { contents, metadata } = super.render();
+
+    // If we have front matter, add it to the top of the file
+    let frontMatter = this.#frontMatter ? this.#frontMatter + "\n" : "";
+
+    // Add imports after front matter
+    for (const [importPath, symbols] of this.#imports) {
+      frontMatter += `import {\n  ${Array.from(symbols).sort().join(",\n  ")}\n} from "${importPath}";\n`;
+    }
+
+    // Add a blank line after front matter, if it exists
+    if (frontMatter) {
+      frontMatter += "\n";
+    }
+
+    // Return the final result
+    return {
+      contents: frontMatter + contents,
+      metadata,
+    };
+  }
+
+  public override createHeading(
+    ...[
+      level,
+      text,
+      { escape = "markdown", id, append = true } = {},
+    ]: RendererCreateHeadingArgs
+  ) {
+    let line = `${`#`.repeat(level)} ${escapeText(text, { escape })}`;
+    if (id) {
+      if (this.#compilerConfig.formatHeadingId) {
+        line += ` ${this.#compilerConfig.formatHeadingId(id)}`;
+      } else {
+        line += ` \\{#${id}\\}`;
+      }
+    }
+    if (append) {
+      this.appendLine(line);
+    }
+    return line;
+  }
+
+  public override createCode(...[text, options]: RendererCreateCodeArgs) {
+    let line: string;
+    if (options?.variant === "raw") {
+      if (options.style === "inline") {
+        line = `<code>${escapeText(text, { escape: options?.escape ?? "html" })}</code>`;
+      } else {
+        const escapedText = escapeText(text, {
+          escape: options?.escape ?? "html",
+        }).replaceAll("`", "\\`");
+        this.#insertComponentImport("Code");
+        line = `<Code text={\`${escapedText}\`} />`;
+      }
+    } else {
+      line = super.createCode(
+        text,
+        options ? { ...options, append: false } : undefined
+      );
+    }
+    if (options?.append ?? true) {
+      this.appendLine(line);
+    }
+    return line;
   }
 
   public override createPill(

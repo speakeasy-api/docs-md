@@ -1,2 +1,3 @@
 export { getSettings } from "./settings.ts";
-export { MdxSite, MdxRenderer } from "./renderers/base/mdx.ts";
+export { escapeText } from "./renderers/util.ts";
+export type { CompilerConfig } from "./types/compilerConfig.ts";

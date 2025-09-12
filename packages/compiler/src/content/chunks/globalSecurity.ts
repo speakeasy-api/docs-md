@@ -1,7 +1,8 @@
 import type { GlobalSecurityChunk } from "@speakeasy-api/docs-md-shared/types";
 
 import { debug } from "../../logging.ts";
-import type { Renderer } from "../../renderers/base/base.ts";
+import type { Renderer } from "../../renderers/base.ts";
+import { escapeText } from "../../renderers/util.ts";
 import { getSettings } from "../../settings.ts";
 
 export function renderGlobalSecurity(
@@ -20,7 +21,7 @@ export function renderGlobalSecurity(
       : "";
     renderer.createHeading(
       headingLevel,
-      `${renderer.escapeText(entry.name, { escape: "markdown" })}${inPill}${typePill}`,
+      `${escapeText(entry.name, { escape: "markdown" })}${inPill}${typePill}`,
       {
         id: entry.name,
         escape: "none",

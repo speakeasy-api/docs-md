@@ -23,7 +23,9 @@ import type {
   PropertyAnnotations,
 } from "@speakeasy-api/docs-md-shared/types";
 
-import type { CodeSampleLanguage } from "../../settings.ts";
+import type { CodeSampleLanguage } from "../settings.ts";
+import type { PageFrontMatter } from "../types/compilerConfig.ts";
+import type { EscapeOptions } from "./util.ts";
 
 type ContextType = "operation" | "section" | "schema";
 
@@ -33,11 +35,6 @@ export type Context = {
 };
 
 // Argument types for Site interface methods
-
-type PageFrontMatter = {
-  sidebarPosition: string;
-  sidebarLabel: string;
-};
 
 export type SiteCreatePageArgs = [
   path: string,
@@ -60,12 +57,6 @@ export abstract class Site {
   abstract hasPage(...args: SiteHasPageArgs): boolean;
   protected abstract getRenderer(...args: SiteGetRendererArgs): Renderer;
 }
-
-type Escape = "markdown" | "html" | "mdx" | "none";
-
-type EscapeOptions = {
-  escape?: Escape;
-};
 
 // Argument types for Renderer interface methods
 
@@ -251,13 +242,6 @@ export type RendererCreatePillArgs = [
   options?: LowLevelBaseOptions,
 ];
 
-// Helper methods
-
-export type RendererEscapeTextArgs = [
-  text: string,
-  options: Required<EscapeOptions>,
-];
-
 // Context methods
 
 export type RendererCreateContextArgs = [context: Context];
@@ -315,7 +299,6 @@ export abstract class Renderer {
 
   // Helper methods
 
-  abstract escapeText(...args: RendererEscapeTextArgs): string;
   abstract getDocsData(): Map<string, Chunk>;
 
   // Context methods

@@ -10,9 +10,9 @@ import type {
 } from "@speakeasy-api/docs-md-shared/types";
 import { snakeCase } from "change-case";
 
-import { getSettings } from "../.././settings.ts";
-import { HEADINGS } from "../../content/constants.ts";
-import { InternalError } from "../../util/internalError.ts";
+import { HEADINGS } from "../content/constants.ts";
+import { getSettings } from "../settings.ts";
+import { InternalError } from "../util/internalError.ts";
 import type {
   Context,
   RendererAlreadyInContextArgs,
@@ -37,7 +37,6 @@ import type {
   RendererCreateTabbedSectionArgs,
   RendererCreateTabbedSectionTabArgs,
   RendererCreateTextArgs,
-  RendererEscapeTextArgs,
   RendererGetCurrentIdArgs,
   SiteBuildPagePathArgs,
   SiteCreatePageArgs,
@@ -45,6 +44,7 @@ import type {
 } from "./base.ts";
 import { Renderer } from "./base.ts";
 import { Site } from "./base.ts";
+import { escapeText } from "./util.ts";
 
 export abstract class MarkdownSite extends Site {
   #pages = new Map<string, Renderer>();
@@ -136,39 +136,6 @@ export abstract class MarkdownRenderer extends Renderer {
     return this.#site;
   }
 
-  public override escapeText(...[text, { escape }]: RendererEscapeTextArgs) {
-    switch (escape) {
-      case "markdown":
-        return (
-          text
-            .replaceAll("\\", "\\\\")
-            .replaceAll("`", "\\`")
-            .replaceAll("*", "\\*")
-            .replaceAll("_", "\\_")
-            .replaceAll("{", "\\{")
-            .replaceAll("}", "\\}")
-            .replaceAll("[", "\\[")
-            .replaceAll("]", "\\]")
-            .replaceAll("<", "\\<")
-            .replaceAll(">", "\\>")
-            .replaceAll("(", "\\(")
-            .replaceAll(")", "\\)")
-            .replaceAll("#", "\\#")
-            .replaceAll("+", "\\+")
-            // .replace("-", "\\-")
-            // .replace(".", "\\.")
-            .replaceAll("!", "\\!")
-            .replaceAll("|", "\\|")
-        );
-      case "mdx":
-        return text.replaceAll("{", "\\{").replaceAll("}", "\\}");
-      case "html":
-        return text.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
-      case "none":
-        return text;
-    }
-  }
-
   public override createOperationSection(
     ...[
       { method, path, operationId, summary, description },
@@ -190,7 +157,7 @@ export abstract class MarkdownRenderer extends Renderer {
     }
 
     this.handleCreateOperationTitle(() => {
-      path = this.escapeText(path, {
+      path = escapeText(path, {
         escape: "markdown",
       });
       this.createHeading(
@@ -557,9 +524,9 @@ export abstract class MarkdownRenderer extends Renderer {
       { escape = "markdown", id, append = true } = {},
     ]: RendererCreateHeadingArgs
   ) {
-    let line = `${`#`.repeat(level)} ${this.escapeText(text, { escape })}`;
+    let line = `${`#`.repeat(level)} ${escapeText(text, { escape })}`;
     if (id) {
-      line += ` \\{#${id}\\}`;
+      line += ` {#${id}}`;
     }
     if (append) {
       this.appendLine(line);
@@ -570,7 +537,7 @@ export abstract class MarkdownRenderer extends Renderer {
   public override createText(
     ...[text, { escape = "mdx", append = true } = {}]: RendererCreateTextArgs
   ) {
-    const escapedText = this.escapeText(text, { escape });
+    const escapedText = escapeText(text, { escape });
     if (append) {
       this.appendLine(escapedText);
     }
@@ -607,7 +574,7 @@ ${text}\n</code>\n</pre>`;
     ]: RendererCreateListArgs
   ) {
     const list = items
-      .map((item) => "- " + this.escapeText(item, { escape }))
+      .map((item) => "- " + escapeText(item, { escape }))
       .join("\n");
     if (append) {
       this.appendLine(list);

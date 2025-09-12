@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import type { Site } from "./renderers/base/base.ts";
+import type { Site } from "./renderers/base.ts";
 import { InternalError } from "./util/internalError.ts";
 
 let settings: ParsedSettings | undefined;

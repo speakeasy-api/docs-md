@@ -1,9 +1,9 @@
 import type { Chunk, TagChunk } from "@speakeasy-api/docs-md-shared/types";
 import { capitalCase } from "change-case";
 
-import type { Site } from "..//renderers/base/base.ts";
 import type { DocsCodeSnippets } from "../data/generateCodeSnippets.ts";
 import { debug } from "../logging.ts";
+import type { Site } from "../renderers/base.ts";
 import { getSettings } from "../settings.ts";
 import { InternalError } from "../util/internalError.ts";
 import { renderAbout } from "./chunks/about.ts";

@@ -17,11 +17,12 @@ import z from "zod/v4";
 
 import { generatePages } from "../generatePages.ts";
 import { error, info, setLevel, warn } from "../logging.ts";
-import type { Site } from "../renderers/base/base.ts";
-import { DocusaurusSite } from "../renderers/docusaurus.ts";
-import { NextraSite } from "../renderers/nextra.ts";
+import type { Site } from "../renderers/base.ts";
+import { MdxSite } from "../renderers/mdx.ts";
 import { type ParsedSettings, settingsSchema } from "../settings.ts";
 import { assertNever } from "../util/assertNever.ts";
+import { docusaurusConfig } from "./configs/docusaurus.ts";
+import { nextraConfig } from "./configs/nextra.ts";
 
 const CONFIG_FILE_NAMES = [
   "speakeasy.config.js",
@@ -169,7 +170,7 @@ switch (settings.output.framework) {
     if (settings.output.singlePage) {
       throw new Error("output.singlePage can only be used with custom sites");
     }
-    site = new DocusaurusSite();
+    site = new MdxSite(docusaurusConfig);
     break;
   }
   case "nextra": {
@@ -179,7 +180,7 @@ switch (settings.output.framework) {
     if (settings.output.singlePage) {
       throw new Error("output.singlePage can only be used with custom sites");
     }
-    site = new NextraSite();
+    site = new MdxSite(nextraConfig);
     break;
   }
   case "custom": {

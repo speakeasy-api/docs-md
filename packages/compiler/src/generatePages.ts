@@ -2,7 +2,7 @@ import { renderContent } from "./content/renderContent.ts";
 import { generateCodeSnippets } from "./data/generateCodeSnippets.ts";
 import { getData } from "./data/getDocsData.ts";
 import { info } from "./logging.js";
-import type { Site } from "./renderers/base/base.ts";
+import type { Site } from "./renderers/base.ts";
 import type { ParsedSettings } from "./settings.ts";
 import { setSettings } from "./settings.ts";
 

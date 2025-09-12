@@ -1,8 +1,8 @@
 import type { AboutChunk } from "@speakeasy-api/docs-md-shared/types";
 
-import { getSettings } from "../.././settings.ts";
-import type { Renderer } from "../..//renderers/base/base.ts";
 import { debug } from "../../logging.ts";
+import type { Renderer } from "../../renderers/base.ts";
+import { getSettings } from "../../settings.ts";
 import { HEADINGS } from "../constants.ts";
 
 export function renderAbout(renderer: Renderer, chunk: AboutChunk) {

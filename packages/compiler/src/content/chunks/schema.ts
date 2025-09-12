@@ -7,7 +7,7 @@ import type {
   PropertyAnnotations,
 } from "@speakeasy-api/docs-md-shared/types";
 
-import type { Renderer } from "../..//renderers/base/base.ts";
+import type { Renderer } from "../../renderers/base.ts";
 import { getSettings } from "../../settings.ts";
 import { assertNever } from "../../util/assertNever.ts";
 import { InternalError } from "../../util/internalError.ts";
