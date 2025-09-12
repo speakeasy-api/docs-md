@@ -44,6 +44,14 @@ build-packages:
 build-examples:
 	npm run build $(EXAMPLES_WORKSPACES)
 
+clean: clean-packages clean-examples
+
+clean-packages:
+	npm run clean --workspace packages
+
+clean-examples:
+	npm run clean $(EXAMPLES_WORKSPACES)
+
 build-api-docs:
 	npm run build-api-docs $(EXAMPLES_WORKSPACES) -- --clean
 
@@ -53,3 +61,6 @@ verify-api-docs: build-api-docs
 		echo "Example build out of date. Please run make build-api-docs and commit the results"; \
 		exit 1; \
 	fi
+
+publish:
+	@set -e; trap 'exit 130' INT TERM; exec node --experimental-strip-types scripts/publish.mts
