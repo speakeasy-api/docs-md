@@ -187,12 +187,6 @@ switch (settings.output.framework) {
   }
 }
 
-const pageContents = await generatePages({
-  site,
-  specContents,
-  settings,
-});
-
 if (args["--clean"]) {
   info("Cleaning output directories");
   rmSync(settings.output.pageOutDir, {
@@ -200,6 +194,12 @@ if (args["--clean"]) {
     force: true,
   });
 }
+
+const pageContents = await generatePages({
+  site,
+  specContents,
+  settings,
+});
 
 for (const [filename, contents] of Object.entries(pageContents)) {
   mkdirSync(dirname(filename), {
