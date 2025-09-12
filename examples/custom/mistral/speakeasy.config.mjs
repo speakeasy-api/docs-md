@@ -4,9 +4,9 @@ import { writeFileSync } from "node:fs";
 import { getSettings } from "@speakeasy-api/docs-md";
 
 /**
- * @type {import("@speakeasy-api/docs-md").CompilerConfig}
+ * @type {import("@speakeasy-api/docs-md").FrameworkConfig}
  */
-const compilerConfig = {
+const framework = {
   rendererType: "mdx",
   componentPackageName: "@/components/speakeasy-custom",
   elementIdSeparator: "_",
@@ -35,7 +35,7 @@ export default {
   spec: "../../specs/mistral.yaml",
   output: {
     pageOutDir: "./src/app/api",
-    framework: compilerConfig,
+    framework,
     singlePage: true,
   },
   display: {

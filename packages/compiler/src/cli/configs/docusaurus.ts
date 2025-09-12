@@ -45,9 +45,9 @@ import "@speakeasy-api/docs-md-react/docusaurus.css";
       )
     );
 
-    // Create the tag pages metadata
+    // Create the endpoint pages metadata
     writeFileSync(
-      join(settings.output.pageOutDir, "tag", "_category_.json"),
+      join(settings.output.pageOutDir, "endpoint", "_category_.json"),
       JSON.stringify(
         {
           position: 3,

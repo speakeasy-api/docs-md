@@ -1,22 +1,26 @@
 import { join, resolve } from "node:path";
 import { writeFileSync } from "node:fs";
 
-import { getSettings, MdxRenderer, MdxSite } from "@speakeasy-api/docs-md";
+import { getSettings } from "@speakeasy-api/docs-md";
 
-class PokeAPISite extends MdxSite {
+/**
+ * @type {import("@speakeasy-api/docs-md").FrameworkConfig}
+ */
+const framework = {
+  rendererType: "mdx",
+  componentPackageName: "@/components/speakeasy-custom",
+  elementIdSeparator: "_",
+
   buildPagePath(slug) {
     const settings = getSettings();
     return resolve(join(settings.output.pageOutDir, `${slug}/page.mdx`));
-  }
+  },
 
-  getRenderer(options) {
-    return new PokeAPIRenderer({ ...options });
-  }
+  buildPagePreamble() {
+    return `import "@/app/speakeasy.css";`;
+  },
 
-  // This method is called after all pages have been rendered. It contains
-  // metadata about the pages that were rendered and can be used to construct a
-  // left navigation sidebar.
-  processPageMetadata(metadata) {
+  postProcess(metadata) {
     // Note: the format for this data is very much a quick and dirty
     // implementation. It's shape will almost certainly change and become easier
     // to work with in the future.
@@ -24,32 +28,14 @@ class PokeAPISite extends MdxSite {
       "./src/components/sidebarMetadata.json",
       JSON.stringify(metadata, null, "  ")
     );
-  }
-}
-
-class PokeAPIRenderer extends MdxRenderer {
-  constructor(args) {
-    super(args);
-    this.insertPackageImport("@/app/speakeasy.css");
-  }
-
-  insertComponentImport(symbol) {
-    this.insertNamedImport("@/components/speakeasy-custom", symbol);
-  }
-
-  getIdSeparator() {
-    return "_";
-  }
-}
+  },
+};
 
 export default {
   spec: "../../specs/pokeapi.yml",
   output: {
     pageOutDir: "./src/app/api",
-    framework: "custom",
-    createSite() {
-      return new PokeAPISite();
-    },
+    framework,
   },
   display: {
     visibleResponses: "success",
