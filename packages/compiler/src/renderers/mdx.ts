@@ -41,7 +41,7 @@ import type { PageMetadata } from "@speakeasy-api/docs-md-shared/types";
 
 import { HEADINGS } from "../content/constants.ts";
 import { getSettings } from "../settings.ts";
-import type { CompilerConfig } from "../types/compilerConfig.ts";
+import type { FrameworkConfig } from "../types/compilerConfig.ts";
 import type {
   RendererConstructorArgs,
   RendererCreateCodeArgs,
@@ -69,9 +69,9 @@ import { MarkdownRenderer, MarkdownSite } from "./markdown.ts";
 import { escapeText, getPrettyCodeSampleLanguage } from "./util.ts";
 
 export class MdxSite extends MarkdownSite {
-  #compilerConfig: CompilerConfig;
+  #compilerConfig: FrameworkConfig;
 
-  constructor(compilerConfig: CompilerConfig) {
+  constructor(compilerConfig: FrameworkConfig) {
     super();
     this.#compilerConfig = compilerConfig;
   }
@@ -94,12 +94,12 @@ export class MdxSite extends MarkdownSite {
 class MdxRenderer extends MarkdownRenderer {
   // Mapping of import path to imported symbols
   #imports = new Map<string, Set<string>>();
-  #compilerConfig: CompilerConfig;
+  #compilerConfig: FrameworkConfig;
   #frontMatter: string | undefined;
 
   constructor(
     options: RendererConstructorArgs,
-    compilerConfig: CompilerConfig
+    compilerConfig: FrameworkConfig
   ) {
     super(options);
     this.#compilerConfig = compilerConfig;

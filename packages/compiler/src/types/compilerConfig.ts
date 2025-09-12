@@ -7,7 +7,9 @@ export type PageFrontMatter = {
   sidebarLabel: string;
 };
 
-type BaseCompilerConfig = {
+// FrameworkConfig MUST be kept in sync with src/settings.ts
+
+type BaseFrameworkConfig = {
   rendererType: string;
   buildPagePath: (...args: SiteBuildPagePathArgs) => string;
   buildPagePreamble: (frontMatter: PageFrontMatter) => string;
@@ -16,11 +18,11 @@ type BaseCompilerConfig = {
   elementIdSeparator?: string;
 };
 
-type MDXCompilerConfig = BaseCompilerConfig & {
+type MDXFrameworkConfig = BaseFrameworkConfig & {
   rendererType: "mdx";
   componentPackageName: string;
 };
 
 // TODO: add Web Component config once we support it
 
-export type CompilerConfig = MDXCompilerConfig;
+export type FrameworkConfig = MDXFrameworkConfig;

@@ -1,11 +1,11 @@
 import { z } from "zod";
 
-import type { Site } from "./renderers/base.ts";
+import type { FrameworkConfig } from "./types/compilerConfig.ts";
 import { InternalError } from "./util/internalError.ts";
 
-let settings: ParsedSettings | undefined;
+let settings: Settings | undefined;
 
-export function setSettings(newSettings: ParsedSettings) {
+export function setSettings(newSettings: Settings) {
   settings = newSettings;
 }
 
@@ -36,10 +36,18 @@ export const settingsSchema = z.strictObject({
   spec: z.string(),
   output: z.strictObject({
     pageOutDir: z.string(),
-    framework: z.enum(["docusaurus", "nextra", "custom"]),
-    createSite: z.function().optional() as z.ZodOptional<
-      z.ZodType<(() => Site) | undefined>
-    >,
+    framework: z.enum(["docusaurus", "nextra"]).or(
+      // This type MUST be kept in sync with src/types/compilerConfig.ts
+      z.object({
+        rendererType: z.string(),
+        componentPackageName: z.string(),
+        buildPagePath: z.function(),
+        buildPagePreamble: z.function(),
+        postProcess: z.function().optional(),
+        formatHeadingId: z.function().optional(),
+        elementIdSeparator: z.string().optional(),
+      })
+    ),
     aboutPage: z.boolean().default(true),
     singlePage: z.boolean().default(false),
   }),
@@ -68,4 +76,12 @@ export const settingsSchema = z.strictObject({
     .optional(),
 });
 
-export type ParsedSettings = z.infer<typeof settingsSchema>;
+type ZodSettings = z.infer<typeof settingsSchema>;
+
+export type Settings = Omit<ZodSettings, "output"> & {
+  output: Omit<ZodSettings["output"], "framework"> & {
+    // Defining FrameworkConfig in Zod would be excruciatingly verbose, so we
+    // define it in Zod as just an object, and then override its type here
+    framework: "docusaurus" | "nextra" | FrameworkConfig;
+  };
+};

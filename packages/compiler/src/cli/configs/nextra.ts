@@ -3,9 +3,9 @@ import { join, resolve } from "node:path";
 
 import { escapeText } from "../../renderers/util.ts";
 import { getSettings } from "../../settings.ts";
-import type { CompilerConfig } from "../../types/compilerConfig.ts";
+import type { FrameworkConfig } from "../../types/compilerConfig.ts";
 
-export const nextraConfig: CompilerConfig = {
+export const nextraConfig: FrameworkConfig = {
   rendererType: "mdx",
   componentPackageName: "@speakeasy-api/docs-md-react",
   elementIdSeparator: "_",

@@ -19,8 +19,7 @@ import { generatePages } from "../generatePages.ts";
 import { error, info, setLevel, warn } from "../logging.ts";
 import type { Site } from "../renderers/base.ts";
 import { MdxSite } from "../renderers/mdx.ts";
-import { type ParsedSettings, settingsSchema } from "../settings.ts";
-import { assertNever } from "../util/assertNever.ts";
+import { type Settings, settingsSchema } from "../settings.ts";
 import { docusaurusConfig } from "./configs/docusaurus.ts";
 import { nextraConfig } from "./configs/nextra.ts";
 
@@ -77,7 +76,7 @@ async function importConfigFile(configFilePath: string): Promise<unknown> {
   );
 }
 
-async function getSettings(): Promise<ParsedSettings> {
+async function getSettings(): Promise<Settings> {
   // First, determine the config file path
   let configFilePath = args["--config"];
   if (!configFilePath) {
@@ -153,7 +152,7 @@ async function getSettings(): Promise<ParsedSettings> {
     );
   }
 
-  return configFileContents.data;
+  return configFileContents.data as Settings;
 }
 
 const settings = await getSettings();
@@ -164,9 +163,6 @@ const specContents = JSON.stringify(load(specData));
 let site: Site;
 switch (settings.output.framework) {
   case "docusaurus": {
-    if (settings.output.createSite) {
-      throw new Error("output.createSite cannot be specified with docusaurus");
-    }
     if (settings.output.singlePage) {
       throw new Error("output.singlePage can only be used with custom sites");
     }
@@ -174,32 +170,20 @@ switch (settings.output.framework) {
     break;
   }
   case "nextra": {
-    if (settings.output.createSite) {
-      throw new Error("output.createSite cannot be specified with nextra");
-    }
     if (settings.output.singlePage) {
       throw new Error("output.singlePage can only be used with custom sites");
     }
     site = new MdxSite(nextraConfig);
     break;
   }
-  case "custom": {
-    if (!settings.output.createSite) {
-      throw new Error(
-        "output.createSite must be specified when using a custom framework"
-      );
-    }
+  default: {
     if (settings.output.singlePage) {
       warn(
         "Compiling all docs into a single page is likely to cause performance issues. It is strongly recommended that you enable scroll virtualization in a custom component, but take care not to break SEO."
       );
     }
-    site = settings.output.createSite();
+    site = new MdxSite(settings.output.framework);
     break;
-  }
-  default: {
-    // We should never get here cause we validate the settings via zod
-    assertNever(settings.output.framework);
   }
 }
 

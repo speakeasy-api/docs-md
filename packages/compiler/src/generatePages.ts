@@ -3,7 +3,7 @@ import { generateCodeSnippets } from "./data/generateCodeSnippets.ts";
 import { getData } from "./data/getDocsData.ts";
 import { info } from "./logging.js";
 import type { Site } from "./renderers/base.ts";
-import type { ParsedSettings } from "./settings.ts";
+import type { Settings } from "./settings.ts";
 import { setSettings } from "./settings.ts";
 
 /**
@@ -17,7 +17,7 @@ export async function generatePages({
 }: {
   site: Site;
   specContents: string;
-  settings: ParsedSettings;
+  settings: Settings;
 }): Promise<Record<string, string>> {
   // Save settings to a global location so we can easily access it around the codebase
   setSettings(settings);
