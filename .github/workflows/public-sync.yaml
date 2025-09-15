@@ -17,18 +17,11 @@ jobs:
         with:
           fetch-depth: 0 # Need full history for subtree
 
-      - name: Setup Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Setup GitHub CLI
+        run: echo "${{ secrets.DOCS_MD_REACT_GITHUB_TOKEN }}" | gh auth login --with-token
 
       - name: Add public remote
-        run: git remote add public-react https://speakeasybot:${{ secrets.DOCS_MD_REACT_GITHUB_TOKEN }}@github.com/speakeasy-api/docs-md-react.git
-
-      - name: Debug remote
-        run: |
-          git remote -v
-          git ls-remote public-react
+        run: git remote add public-react https://github.com/speakeasy-api/docs-md-react.git
 
       - name: Push to public repo
         run: git subtree push --prefix=packages/react public-react main
