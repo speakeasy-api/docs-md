@@ -20,7 +20,10 @@ export const nextraConfig: FrameworkConfig = {
   buildPagePreamble(frontMatter) {
     return `---
 sidebarTitle: ${escapeText(frontMatter.sidebarLabel, { escape: "mdx" })}
----`;
+---
+
+import "@speakeasy-api/docs-md-react/nextra.css";
+`;
   },
 
   postProcess() {
