@@ -1,5 +1,4 @@
-# .github/workflows/sync-react-package.yml
-name: Sync React Package to Public Repo
+name: Sync repos
 
 on:
   push:
@@ -11,6 +10,7 @@ on:
 
 jobs:
   sync:
+    name: Sync React Package to Public Repo
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,6 +24,9 @@ jobs:
 
       - name: Add public remote
         run: git remote add public-react https://x-access-token:${{ secrets.DOCS_MD_REACT_GITHUB_TOKEN }}@github.com/speakeasy-api/docs-md-react.git
-
+      - name: Test token access
+        run: |
+          curl -H "Authorization: token ${{ secrets.DOCS_MD_REACT_GITHUB_TOKEN }}" \
+                https://api.github.com/repos/speakeasy-api/docs-md-react
       - name: Push to public repo
         run: git subtree push --prefix=packages/react public-react main
