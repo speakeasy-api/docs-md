@@ -21,7 +21,6 @@ jobs:
         run: |
           echo "${{ secrets.DOCS_MD_REACT_GITHUB_TOKEN }}" | gh auth login --with-token
           gh auth status
-          git config --global credential.helper ""
-          git config --global credential.https://github.com.helper "!gh auth git-credential"
+          gh auth setup-git
           git remote add public-react https://github.com/speakeasy-api/docs-md-react.git
           git subtree push --prefix=packages/react public-react main
