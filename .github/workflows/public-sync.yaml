@@ -18,7 +18,8 @@ jobs:
           fetch-depth: 0 # Need full history for subtree
 
       - name: Setup GitHub CLI
-        run: echo "${{ secrets.DOCS_MD_REACT_GITHUB_TOKEN }}" | gh auth login --with-token
+        run: |
+          git config credential.helper '!f() { echo username=speakeasybot; echo "password=${{ secrets.DOCS_MD_REACT_GITHUB_TOKEN }}"; };f'
 
       - name: Add public remote
         run: git remote add public-react https://github.com/speakeasy-api/docs-md-react.git
