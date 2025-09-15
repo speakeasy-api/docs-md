@@ -1,0 +1,29 @@
+# .github/workflows/sync-react-package.yml
+name: Sync React Package to Public Repo
+
+on:
+  push:
+    branches: [main]
+    paths: ["packages/react/**"]
+  pull_request:
+    branches: [main]
+    paths: ["packages/react/**"]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Need full history for subtree
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add public remote
+        run: git remote add public-react https://x-access-token:${{ secrets.BOT_REPO_TOKEN }}@github.com/speakeasy-api/docs-md-react.git
+
+      - name: Push to public repo
+        run: git subtree push --prefix=packages/react public-react main
