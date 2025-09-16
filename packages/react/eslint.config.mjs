@@ -43,16 +43,28 @@ export default [
         message: "Only React code is allowed to import React code",
         excludeTypeImports: true,
       },
-      {
-        type: "first-party",
-        filepath: /src\/components\/([a-zA-Z0-9-_]+)\/.*\.tsx?$/,
-        allowed: [/src\/components\/$1\/.*\.tsx?$/, /src\/index\.tsx?$/],
-        excludeTypeImports: true,
-        message:
-          "Reminder: any time a top-level component imports another top-level component, it should be taken in as a runtime value that can be overridden. Use eslint-disable-next-line once there is an overridable property.",
-      },
     ],
   }),
+  {
+    files: ["**/*.{ts,tsx,mts}"],
+    rules: {
+      "fast-import/no-restricted-imports": [
+        "warn",
+        {
+          rules: [
+            {
+              type: "first-party",
+              filepath: /src\/components\/([a-zA-Z0-9-_]+)\/.*\.tsx?$/,
+              allowed: [/src\/components\/$1\/.*\.tsx?$/, /src\/index\.tsx?$/],
+              excludeTypeImports: true,
+              message:
+                "Reminder: any time a top-level component imports another top-level component, it should be taken in as a runtime value that can be overridden. Use eslint-disable-next-line once there is an overridable property.",
+            },
+          ],
+        },
+      ],
+    },
+  },
   // Since we're a mix of running in both Node.js and React, we override the
   // globals set by the React config to include Node.js globals as well.
   {

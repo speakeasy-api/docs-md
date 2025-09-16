@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 
-// eslint-disable-next-line fast-import/no-restricted-imports
+// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { ExpandableCellIcon as DefaultExpandableCellIcon } from "../ExpandableCellIcon/ExpandableCellIcon.tsx";
 import styles from "../ExpandableSection/styles.module.css";
 import type { ExpandableCellProps } from "./types.ts";
