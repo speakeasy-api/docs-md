@@ -1,5 +1,5 @@
-import { spawnSync } from "child_process";
-import { createInterface } from "readline/promises";
+import { spawnSync } from "node:child_process";
+import { createInterface } from "node:readline/promises";
 
 export function runCommand(
   command: string,
