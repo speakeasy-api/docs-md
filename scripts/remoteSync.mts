@@ -20,7 +20,7 @@ if (currentBranch !== "main") {
 }
 
 // Make sure there are no uncommitted changes
-const statusOutput = await runCommand("git", ["status"], {
+const statusOutput = await runCommand("git", ["status", "-s"], {
   cwd: ROOT_DIR,
   stdio: "pipe",
 });
