@@ -19,8 +19,5 @@ jobs:
 
       - name: Push to public repo
         run: |
-          echo "${{ secrets.DOCS_MD_REACT_GITHUB_TOKEN }}" | gh auth login --with-token
-          gh auth status
-          gh auth setup-git
-          git remote add public-react https://github.com/speakeasy-api/docs-md-react.git
+          git remote add public-react https://${{ secrets.DOCS_MD_REACT_GITHUB_TOKEN }}@github.com/speakeasy-api/docs-md-react.git
           git subtree push --prefix=packages/react public-react main
