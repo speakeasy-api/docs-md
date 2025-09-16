@@ -22,12 +22,13 @@ jobs:
           git remote add public-react https://${{ secrets.DOCS_MD_REACT_GITHUB_TOKEN }}@github.com/speakeasy-api/docs-md-react.git
           git remote -v
 
-      - name: Test token
+      - name: Test git authentication
         run: |
-          echo "Token length: ${#DOCS_MD_REACT_GITHUB_TOKEN}"
-          curl -H "Authorization: token $DOCS_MD_REACT_GITHUB_TOKEN" https://api.github.com/user
+          echo "Testing git ls-remote..."
+          git ls-remote public-react
         env:
           DOCS_MD_REACT_GITHUB_TOKEN: ${{ secrets.DOCS_MD_REACT_GITHUB_TOKEN }}
-      # - name: Push to public repo
-      #   run: |
-      #     git subtree push --prefix=packages/react public-react main
+
+      - name: Push to public repo
+        run: |
+          git subtree push --prefix=packages/react public-react main
