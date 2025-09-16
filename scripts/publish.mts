@@ -1,8 +1,7 @@
-import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import readLine from "node:readline/promises";
+import { runCommand, userPrompt } from "./util.mts";
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -33,35 +32,12 @@ if (sharedVersion !== reactVersion || sharedVersion !== compilerVersion) {
 }
 
 // Confirm the version we want to publish
-const rl = readLine.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-rl.on("SIGINT", () => {
-  rl.close();
-  process.exit(130);
-});
-const response = await rl.question(
+const response = await userPrompt(
   `Publish version ${sharedVersion} of:\n - ${sharedName}\n - ${reactName}\n - ${compilerName}\n? (y/N)`
 );
-rl.close();
 if (response !== "y" && response !== "Y") {
   console.log("Aborting publish");
   process.exit(0);
-}
-
-function runCommand(command: string, args: string[], options: { cwd: string }) {
-  const result = spawnSync(command, args, { stdio: "inherit", ...options });
-
-  // Check if process was terminated by signal (exit code 128 + signal number)
-  if (result.status !== null && result.status >= 128) {
-    process.exit(result.status);
-  }
-
-  // Check if process failed
-  if (result.status !== 0) {
-    process.exit(result.status || 1);
-  }
 }
 
 // Force a clean CI install of dependencies
