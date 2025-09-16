@@ -1,8 +1,12 @@
 import clsx from "clsx";
 
-import type { TabButtonProps } from "./hooks.tsx";
 import styles from "./styles.module.css";
+import type { TabButtonProps } from "./types.ts";
 
+/**
+ * The button component used to render a tab in tabbed sections, such as
+ * responses.
+ */
 export function TabButton({ children, isActive, onClick }: TabButtonProps) {
   return (
     <button

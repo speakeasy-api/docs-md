@@ -1,5 +1,8 @@
 import type { ExpandableCellIconProps } from "./type.ts";
 
+/**
+ * The icon used in the expandable cell. This icon is a chevron.
+ */
 export function ExpandableCellIcon({
   className,
   style,

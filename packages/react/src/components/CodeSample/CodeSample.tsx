@@ -7,7 +7,7 @@ import type { CodeSampleProps } from "./types.ts";
  * It Now.
  *
  * Note: this component does _not_ format text or perform syntax highlighting.
- * Instead, it wraps a triple backtick code block in a property sized container.
+ * Instead, it wraps a triple backtick code block in a properly sized container.
  */
 export function CodeSample({ children }: CodeSampleProps) {
   return <div className={styles.codeSampleContainer}>{children}</div>;

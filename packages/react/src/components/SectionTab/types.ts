@@ -2,7 +2,7 @@ import type { PropsWithChildren } from "react";
 
 export type SectionTabProps = PropsWithChildren<{
   /**
-   * The ID of the section tab.
+   * The DOM ID of the section tab.
    */
   id: string;
   /**

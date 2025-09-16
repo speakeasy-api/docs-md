@@ -4,6 +4,7 @@ import type { SectionProps } from "../Section/types.ts";
 import type { SectionContentProps } from "../SectionContent/types.ts";
 import type { SectionTabProps } from "../SectionTab/types.ts";
 import type { SectionTitleProps } from "../SectionTitle/types.ts";
+import type { TabButtonProps } from "../TabButton/types.ts";
 
 export type TabbedSectionProps = {
   /**
@@ -33,4 +34,12 @@ export type TabbedSectionProps = {
    * SectionTitle implementation will be used internally.
    */
   SectionTitle?: FC<SectionTitleProps>;
+
+  /**
+   * The component to use for rendering the tab button. Defaults to
+   * `TabButton`. If you override the default TabButton implementation, then
+   * pass your custom implementation in here too. Otherwise, the default
+   * TabButton implementation will be used internally.
+   */
+  TabButton?: FC<TabButtonProps>;
 };

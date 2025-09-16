@@ -9,15 +9,67 @@ import type { ExpandableCellProps } from "../ExpandableCell/types.ts";
 import type { NonExpandableCellProps } from "../NonExpandableCell/types.ts";
 import type { PillProps } from "../Pill/types.ts";
 
+/**
+ * The connection state for the node. Currently we only have two states, but
+ * we use a string union to allow for future expansion (e.g. "highlighted")
+ */
 export type ConnectionType = "none" | "connected";
 
 /**
  * Represents the connection state of a prefix cell in the compiled UI
  */
 export type Connection = {
+  /**
+   * The connection state for the node to the node immediately below it, as
+   * represented by `|` in the diagram below if the state is `connected`:
+   *
+   * ```
+   * *****
+   * *   *
+   * * o *
+   * * | *
+   * *****
+   * ```
+   */
   bottom: ConnectionType;
+  /**
+   * The connection state for the node to the node above it, as represented by
+   * `|` in the diagram below if the state is `connected`:
+   *
+   * ```
+   * *****
+   * * | *
+   * * o *
+   * *   *
+   * *****
+   * ```
+   */
   top: ConnectionType;
+  /**
+   * The connection state for the node to the node to the left of it, as
+   * represented by `-` in the diagram below if the state is `connected`:
+   *
+   * ```
+   * *****
+   * *   *
+   * *-o *
+   * *   *
+   * *****
+   * ```
+   */
   left: ConnectionType;
+  /**
+   * The connection state for the node to the node immediately right of it, as
+   * represented by `-` in the diagram below if the state is `connected`:
+   *
+   * ```
+   * *****
+   * *   *
+   * * o-*
+   * *   *
+   * *****
+   * ```
+   */
   right: ConnectionType;
 };
 
@@ -39,8 +91,19 @@ export type TreeNode = {
  * which is optimized for different use cases.
  */
 export type TreeData = {
+  /**
+   * The list of nodes in the tree
+   */
   nodes: TreeNode[];
+  /**
+   * A map of node IDs to nodes, for convienient lookup of nodes by ID (aka the
+   * abstract ID)
+   */
   nodeMap: Map<string, TreeNode>;
+  /**
+   * A map of heading IDs to node IDs, for convienient lookup of nodes by
+   * heading ID (aka the DOM ID)
+   */
   headingIdToIdMap: Map<string, string>;
 };
 
@@ -181,11 +244,20 @@ export type ExpandableBreakoutProps = RowProps & {
 
 export type ExpandableBreakoutTitleProps = PropsWithChildren<{ slot: "title" }>;
 export type ExpandableBreakoutDescriptionProps = PropsWithChildren<{
+  /**
+   * The slot for the description, always "description"
+   */
   slot: "description";
 }>;
 export type ExpandableBreakoutExamplesProps = PropsWithChildren<{
+  /**
+   * The slot for the examples, always "examples"
+   */
   slot: "examples";
 }>;
 export type ExpandableBreakoutDefaultValueProps = PropsWithChildren<{
+  /**
+   * The slot for the default value, always "defaultValue"
+   */
   slot: "defaultValue";
 }>;
