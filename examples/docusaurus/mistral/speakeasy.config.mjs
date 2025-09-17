@@ -6,6 +6,7 @@ export default {
   },
   display: {
     visibleResponses: "success",
+    showDebugPlaceholders: true,
   },
   codeSamples: [
     {

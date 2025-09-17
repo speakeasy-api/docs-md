@@ -62,12 +62,6 @@ export type OperationRequestBodyExamplesSectionProps = PropsWithChildren<{
    */
   slot: "request-body-examples";
 }>;
-export type OperationRequestBodyDefaultValueSectionProps = PropsWithChildren<{
-  /**
-   * The slot for the request body default value, always "request-body-default-value"
-   */
-  slot: "request-body-default-value";
-}>;
 
 export type OperationResponseBodySectionProps = PropsWithChildren<{
   /**
@@ -92,10 +86,4 @@ export type OperationResponseBodyExamplesSectionProps = PropsWithChildren<{
    * The slot for the response body examples, always "response-body-examples"
    */
   slot: "response-body-examples";
-}>;
-export type OperationResponseBodyDefaultValueSectionProps = PropsWithChildren<{
-  /**
-   * The slot for the response body default value, always "response-body-default-value"
-   */
-  slot: "response-body-default-value";
 }>;

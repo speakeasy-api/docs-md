@@ -31,7 +31,20 @@ export function renderGlobalSecurity(
     if (entry.description) {
       renderer.createText(entry.description);
     } else if (showDebugPlaceholders) {
-      renderer.createDebugPlaceholder(() => "No description provided");
+      renderer.createDebugPlaceholder({
+        createTitle() {
+          renderer.createText("No description provided");
+        },
+        createExample() {
+          renderer.createCode(
+            "securitySchemes:\n  APIKey:\n    description: My API key description",
+            {
+              variant: "default",
+              style: "block",
+            }
+          );
+        },
+      });
     }
   }
 }

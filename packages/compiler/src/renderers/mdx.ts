@@ -17,12 +17,10 @@ import type {
   OperationDescriptionSectionProps,
   OperationParametersSectionProps,
   OperationProps,
-  OperationRequestBodyDefaultValueSectionProps,
   OperationRequestBodyDescriptionSectionProps,
   OperationRequestBodyDisplayTypeSectionProps,
   OperationRequestBodyExamplesSectionProps,
   OperationRequestBodySectionProps,
-  OperationResponseBodyDefaultValueSectionProps,
   OperationResponseBodyDescriptionSectionProps,
   OperationResponseBodyDisplayTypeSectionProps,
   OperationResponseBodyExamplesSectionProps,
@@ -433,14 +431,6 @@ class MdxRenderer extends MarkdownRenderer {
     );
   }
 
-  protected override handleCreateRequestDefaultValue(cb: () => void) {
-    this.#appendComponent<OperationRequestBodyDefaultValueSectionProps>(
-      "OperationRequestBodyDefaultValueSection",
-      { slot: "request-body-default-value" },
-      cb
-    );
-  }
-
   protected override handleCreateResponseDisplayType(cb: () => void) {
     this.#appendComponent<OperationResponseBodyDisplayTypeSectionProps>(
       "OperationResponseBodyDisplayTypeSection",
@@ -461,14 +451,6 @@ class MdxRenderer extends MarkdownRenderer {
     this.#appendComponent<OperationResponseBodyExamplesSectionProps>(
       "OperationResponseBodyExamplesSection",
       { slot: "response-body-examples" },
-      cb
-    );
-  }
-
-  protected override handleCreateResponseDefaultValue(cb: () => void) {
-    this.#appendComponent<OperationResponseBodyDefaultValueSectionProps>(
-      "OperationResponseBodyDefaultValueSection",
-      { slot: "response-body-default-value" },
       cb
     );
   }
@@ -676,8 +658,12 @@ class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createDebugPlaceholder(
-    ...[cb]: RendererCreateDebugPlaceholderArgs
+    ...[{ createTitle, createExample }]: RendererCreateDebugPlaceholderArgs
   ) {
-    this.#appendComponent<DebugPlaceholderProps>("DebugPlaceholder", {}, cb);
+    this.#appendComponent<DebugPlaceholderProps>("DebugPlaceholder", {}, () => {
+      createTitle();
+      this.createText("_OpenAPI example:_");
+      createExample();
+    });
   }
 }

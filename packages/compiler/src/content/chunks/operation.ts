@@ -8,11 +8,7 @@ import type { CodeSampleLanguage } from "../../settings.ts";
 import { getSettings } from "../../settings.ts";
 import { assertNever } from "../../util/assertNever.ts";
 import { getSchemaFromId, getSecurityFromId } from "../util.ts";
-import {
-  createDefaultValue,
-  getDisplayTypeInfo,
-  renderBreakouts,
-} from "./schema.ts";
+import { getDisplayTypeInfo, renderBreakouts } from "./schema.ts";
 
 type RenderOperationOptions = {
   renderer: Renderer;
@@ -39,7 +35,21 @@ function createTopLevelExamples(
       }
     };
   } else if (showDebugPlaceholders) {
-    return () => renderer.createDebugPlaceholder(() => "No examples provided");
+    return () =>
+      renderer.createDebugPlaceholder({
+        createTitle() {
+          renderer.createText("No examples provided");
+        },
+        createExample() {
+          renderer.createCode(
+            "requestBody:\n  content:\n    application/json:\n      examples:\n        example1:\n          value: {}",
+            {
+              variant: "default",
+              style: "block",
+            }
+          );
+        },
+      });
   }
   return undefined;
 }
@@ -92,9 +102,20 @@ export function renderOperation({
                       if (entry.description) {
                         renderer.createText(entry.description);
                       } else if (showDebugPlaceholders) {
-                        renderer.createDebugPlaceholder(
-                          () => "No description provided"
-                        );
+                        renderer.createDebugPlaceholder({
+                          createTitle() {
+                            renderer.createText("No description provided");
+                          },
+                          createExample() {
+                            renderer.createCode(
+                              "securitySchemes:\n  APIKey:\n    description: My API key description",
+                              {
+                                variant: "default",
+                                style: "block",
+                              }
+                            );
+                          },
+                        });
                       }
                     }
                   : undefined,
@@ -145,9 +166,20 @@ export function renderOperation({
                       if (parameter.description) {
                         renderer.createText(parameter.description);
                       } else if (showDebugPlaceholders) {
-                        renderer.createDebugPlaceholder(
-                          () => "No description provided"
-                        );
+                        renderer.createDebugPlaceholder({
+                          createTitle() {
+                            renderer.createText("No description provided");
+                          },
+                          createExample() {
+                            renderer.createCode(
+                              "description: My awesome description",
+                              {
+                                variant: "default",
+                                style: "block",
+                              }
+                            );
+                          },
+                        });
                       }
                     }
                   : undefined,
@@ -237,18 +269,25 @@ export function renderOperation({
                   ) {
                     renderer.createText(requestBodySchemaValue.description);
                   } else if (showDebugPlaceholders) {
-                    renderer.createDebugPlaceholder(
-                      () => "No description provided"
-                    );
+                    renderer.createDebugPlaceholder({
+                      createTitle() {
+                        renderer.createText("No description provided");
+                      },
+                      createExample() {
+                        renderer.createCode(
+                          "description: My awesome description",
+                          {
+                            variant: "default",
+                            style: "block",
+                          }
+                        );
+                      },
+                    });
                   }
                 }
               : undefined,
           createExamples: createTopLevelExamples(
             requestBody.examples,
-            renderer
-          ),
-          createDefaultValue: createDefaultValue(
-            requestBodySchemaValue,
             renderer
           ),
           createBreakouts() {
@@ -333,9 +372,22 @@ export function renderOperation({
                             ) {
                               renderer.createText(schema.description);
                             } else if (showDebugPlaceholders) {
-                              renderer.createDebugPlaceholder(
-                                () => "No description provided"
-                              );
+                              renderer.createDebugPlaceholder({
+                                createTitle() {
+                                  renderer.createText(
+                                    "No description provided"
+                                  );
+                                },
+                                createExample() {
+                                  renderer.createCode(
+                                    "description: My awesome description",
+                                    {
+                                      variant: "default",
+                                      style: "block",
+                                    }
+                                  );
+                                },
+                              });
                             }
                           }
                         : undefined,
@@ -343,7 +395,6 @@ export function renderOperation({
                       response.examples,
                       renderer
                     ),
-                    createDefaultValue: createDefaultValue(schema, renderer),
                     createBreakouts() {
                       renderBreakouts({
                         renderer,

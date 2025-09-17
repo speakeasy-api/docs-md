@@ -174,7 +174,14 @@ export abstract class MarkdownRenderer extends Renderer {
         } else if (summary) {
           this.createText(summary);
         } else if (showDebugPlaceholders) {
-          this.createDebugPlaceholder(() => "No summary provided");
+          this.createDebugPlaceholder({
+            createTitle: () => this.createText("No summary provided"),
+            createExample: () =>
+              this.createCode("summary: My awesome summary", {
+                variant: "default",
+                style: "block",
+              }),
+          });
         }
       });
     }
@@ -184,7 +191,14 @@ export abstract class MarkdownRenderer extends Renderer {
         if (description) {
           this.createText(description);
         } else if (showDebugPlaceholders) {
-          this.createDebugPlaceholder(() => "No description provided");
+          this.createDebugPlaceholder({
+            createTitle: () => this.createText("No description provided"),
+            createExample: () =>
+              this.createCode("description: My awesome description", {
+                variant: "default",
+                style: "block",
+              }),
+          });
         }
       });
     }
@@ -285,7 +299,6 @@ export abstract class MarkdownRenderer extends Renderer {
         createDisplayType,
         createDescription,
         createExamples,
-        createDefaultValue,
         createBreakouts,
       },
     ]: RendererCreateRequestSectionArgs
@@ -320,9 +333,6 @@ export abstract class MarkdownRenderer extends Renderer {
         if (createExamples) {
           this.handleCreateRequestExamples(createExamples);
         }
-        if (createDefaultValue) {
-          this.handleCreateRequestDefaultValue(createDefaultValue);
-        }
         this.handleCreateBreakouts(createBreakouts);
       }
     );
@@ -350,7 +360,6 @@ export abstract class MarkdownRenderer extends Renderer {
           createDisplayType,
           createDescription,
           createExamples,
-          createDefaultValue,
           createBreakouts,
         }) => {
           this.enterContext({ id: statusCode, type: "section" });
@@ -381,9 +390,6 @@ export abstract class MarkdownRenderer extends Renderer {
               if (createExamples) {
                 this.handleCreateResponseExamples(createExamples);
               }
-              if (createDefaultValue) {
-                this.handleCreateResponseDefaultValue(createDefaultValue);
-              }
               this.handleCreateBreakouts(createBreakouts);
             },
             {
@@ -412,10 +418,6 @@ export abstract class MarkdownRenderer extends Renderer {
     cb();
   }
 
-  protected handleCreateRequestDefaultValue(cb: () => void) {
-    cb();
-  }
-
   protected handleCreateResponseDisplayType(cb: () => void) {
     cb();
   }
@@ -425,10 +427,6 @@ export abstract class MarkdownRenderer extends Renderer {
   }
 
   protected handleCreateResponseExamples(cb: () => void) {
-    cb();
-  }
-
-  protected handleCreateResponseDefaultValue(cb: () => void) {
     cb();
   }
 
@@ -643,9 +641,11 @@ ${text}\n</code>\n</pre>`;
   };
 
   public override createDebugPlaceholder(
-    ...[cb]: RendererCreateDebugPlaceholderArgs
+    ...[{ createTitle, createExample }]: RendererCreateDebugPlaceholderArgs
   ) {
-    this.appendLine(cb());
+    createTitle();
+    this.createText("_OpenAPI example:_");
+    createExample();
   }
 
   public override enterContext(...[context]: RendererCreateContextArgs) {

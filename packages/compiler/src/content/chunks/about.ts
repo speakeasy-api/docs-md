@@ -15,17 +15,47 @@ export function renderAbout(renderer: Renderer, chunk: AboutChunk) {
   if (chunk.chunkData.version) {
     renderer.createText(`_Version: ${chunk.chunkData.version}_`);
   } else if (showDebugPlaceholders) {
-    renderer.createDebugPlaceholder(() => "No version provided");
+    renderer.createDebugPlaceholder({
+      createTitle() {
+        renderer.createText("No version provided");
+      },
+      createExample() {
+        renderer.createCode("info:\n  version: 1.0.0", {
+          variant: "default",
+          style: "block",
+        });
+      },
+    });
   }
   if (chunk.chunkData.description) {
     renderer.createText(chunk.chunkData.description);
   } else if (showDebugPlaceholders) {
-    renderer.createDebugPlaceholder(() => "No description provided");
+    renderer.createDebugPlaceholder({
+      createTitle() {
+        renderer.createText("No description provided");
+      },
+      createExample() {
+        renderer.createCode("info:\n  description: My awesome description", {
+          variant: "default",
+          style: "block",
+        });
+      },
+    });
   }
   if (chunk.chunkData.servers.length > 0) {
     renderer.createText("Servers");
     renderer.createList(chunk.chunkData.servers.map((server) => server.url));
   } else if (showDebugPlaceholders) {
-    renderer.createDebugPlaceholder(() => "No servers provided");
+    renderer.createDebugPlaceholder({
+      createTitle() {
+        renderer.createText("No servers provided");
+      },
+      createExample() {
+        renderer.createCode("servers:\n  - url: https://api.example.com", {
+          variant: "default",
+          style: "block",
+        });
+      },
+    });
   }
 }

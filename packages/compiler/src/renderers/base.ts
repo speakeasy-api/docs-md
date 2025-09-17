@@ -101,7 +101,6 @@ export type RendererCreateRequestSectionArgs = [
     createDisplayType?: () => void;
     createDescription?: () => void;
     createExamples?: () => void;
-    createDefaultValue?: () => void;
     createBreakouts: () => void;
   },
 ];
@@ -113,7 +112,6 @@ export type RendererCreateResponsesArgs = [
       createDisplayType?: () => void;
       createDescription?: () => void;
       createExamples?: () => void;
-      createDefaultValue?: () => void;
       createBreakouts: () => void;
     }) => void
   ) => void,
@@ -167,7 +165,12 @@ export type RendererCreateFrontMatterDisplayTypeArgs = [
     typeInfo: DisplayTypeInfo;
   },
 ];
-export type RendererCreateDebugPlaceholderArgs = [cb: () => string];
+export type RendererCreateDebugPlaceholderArgs = [
+  options: {
+    createTitle: () => void;
+    createExample: () => void;
+  },
+];
 
 // Low level operations
 

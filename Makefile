@@ -65,5 +65,5 @@ verify-api-docs: build-api-docs
 publish:
 	@set -e; trap 'exit 130' INT TERM; exec node --experimental-strip-types scripts/publish.mts
 
-sync-public-react:
+sync-public:
 	@set -e; trap 'exit 130' INT TERM; exec node --experimental-strip-types scripts/remoteSync.mts

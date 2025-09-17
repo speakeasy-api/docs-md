@@ -232,7 +232,17 @@ function createDescription(schema: SchemaValue, renderer: Renderer) {
     return () => renderer.createText(description);
   } else if (showDebugPlaceholders) {
     return () =>
-      renderer.createDebugPlaceholder(() => "No description provided");
+      renderer.createDebugPlaceholder({
+        createTitle() {
+          renderer.createText("No description provided");
+        },
+        createExample() {
+          renderer.createCode("description: My awesome description", {
+            variant: "default",
+            style: "block",
+          });
+        },
+      });
   }
   return undefined;
 }
@@ -248,19 +258,40 @@ function createExamples(schema: SchemaValue, renderer: Renderer) {
       }
     };
   } else if (showDebugPlaceholders) {
-    return () => renderer.createDebugPlaceholder(() => "No examples provided");
+    return () =>
+      renderer.createDebugPlaceholder({
+        createTitle() {
+          renderer.createText("No examples provided");
+        },
+        createExample() {
+          renderer.createCode("examples:\n  - MyExampleValue", {
+            variant: "default",
+            style: "block",
+          });
+        },
+      });
   }
   return undefined;
 }
 
-export function createDefaultValue(schema: SchemaValue, renderer: Renderer) {
+function createDefaultValue(schema: SchemaValue, renderer: Renderer) {
   const defaultValue = "defaultValue" in schema ? schema.defaultValue : null;
   const { showDebugPlaceholders } = getSettings().display;
   if (defaultValue) {
     return () => renderer.createText(`_Default Value:_ \`${defaultValue}\``);
   } else if (showDebugPlaceholders) {
     return () =>
-      renderer.createDebugPlaceholder(() => "No default value provided");
+      renderer.createDebugPlaceholder({
+        createTitle() {
+          renderer.createText("No default value provided");
+        },
+        createExample() {
+          renderer.createCode("defaultValue: MyDefaultValue", {
+            variant: "default",
+            style: "block",
+          });
+        },
+      });
   }
   return undefined;
 }
@@ -377,7 +408,17 @@ function renderContainerTypes({
         if (description) {
           renderer.createText(description);
         } else if (showDebugPlaceholders) {
-          renderer.createDebugPlaceholder(() => "No description provided");
+          renderer.createDebugPlaceholder({
+            createTitle() {
+              renderer.createText("No description provided");
+            },
+            createExample() {
+              renderer.createCode("description: My awesome description", {
+                variant: "default",
+                style: "block",
+              });
+            },
+          });
         }
       },
       createExamples() {
@@ -391,7 +432,17 @@ function renderContainerTypes({
             renderer.createCode(example);
           }
         } else if (showDebugPlaceholders) {
-          renderer.createDebugPlaceholder(() => "No examples provided");
+          renderer.createDebugPlaceholder({
+            createTitle() {
+              renderer.createText("No examples provided");
+            },
+            createExample() {
+              renderer.createCode("examples:\n  - MyExampleValue", {
+                variant: "default",
+                style: "block",
+              });
+            },
+          });
         }
       },
       createDefaultValue() {
@@ -402,7 +453,17 @@ function renderContainerTypes({
         if (defaultValue) {
           renderer.createText(`_Default Value:_ \`${defaultValue}\``);
         } else if (showDebugPlaceholders) {
-          renderer.createDebugPlaceholder(() => "No default value provided");
+          renderer.createDebugPlaceholder({
+            createTitle() {
+              renderer.createText("No default value provided");
+            },
+            createExample() {
+              renderer.createCode("defaultValue: MyDefaultValue", {
+                variant: "default",
+                style: "block",
+              });
+            },
+          });
         }
       },
     });

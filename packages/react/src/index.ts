@@ -55,12 +55,10 @@ export {
   OperationRequestBodyDisplayTypeSection,
   OperationRequestBodyDescriptionSection,
   OperationRequestBodyExamplesSection,
-  OperationRequestBodyDefaultValueSection,
   OperationResponseBodySection,
   OperationResponseBodyDisplayTypeSection,
   OperationResponseBodyDescriptionSection,
   OperationResponseBodyExamplesSection,
-  OperationResponseBodyDefaultValueSection,
   OperationSecuritySection,
 } from "./components/Operation/Operation.tsx";
 export type {
@@ -74,12 +72,10 @@ export type {
   OperationRequestBodyDisplayTypeSectionProps,
   OperationRequestBodyDescriptionSectionProps,
   OperationRequestBodyExamplesSectionProps,
-  OperationRequestBodyDefaultValueSectionProps,
   OperationResponseBodySectionProps,
   OperationResponseBodyDisplayTypeSectionProps,
   OperationResponseBodyDescriptionSectionProps,
   OperationResponseBodyExamplesSectionProps,
-  OperationResponseBodyDefaultValueSectionProps,
   OperationSecuritySectionProps,
 } from "./components/Operation/types.ts";
 export { Pill } from "./components/Pill/Pill.tsx";

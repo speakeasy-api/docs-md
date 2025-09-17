@@ -5,12 +5,10 @@ import type {
   OperationDescriptionSectionProps,
   OperationParametersSectionProps,
   OperationProps,
-  OperationRequestBodyDefaultValueSectionProps,
   OperationRequestBodyDescriptionSectionProps,
   OperationRequestBodyDisplayTypeSectionProps,
   OperationRequestBodyExamplesSectionProps,
   OperationRequestBodySectionProps,
-  OperationResponseBodyDefaultValueSectionProps,
   OperationResponseBodyDescriptionSectionProps,
   OperationResponseBodyDisplayTypeSectionProps,
   OperationResponseBodyExamplesSectionProps,
@@ -156,8 +154,6 @@ export function OperationParametersSection({
  *   `request-body-description` slot
  * - `OperationRequestBodyExamplesSection`: assigned to the
  *   `request-body-examples` slot
- * - `OperationRequestBodyDefaultValueSection`: assigned to the
- *   `request-body-default-value` slot
  */
 export function OperationRequestBodySection({
   children,
@@ -200,17 +196,6 @@ export function OperationRequestBodyExamplesSection({
 }
 
 /**
- * This component is assigned to the `request-body-default-value` slot and
- * contains the default value of the request body for the operation.
- */
-export function OperationRequestBodyDefaultValueSection({
-  children,
-  slot,
-}: OperationRequestBodyDefaultValueSectionProps) {
-  return <div slot={slot}>{children}</div>;
-}
-
-/**
  * This component represents the response bodies of an operation. It is assigned
  * to the `response-body` slot and contains a tabbed interface for displaying
  * the different response bodies.
@@ -229,8 +214,6 @@ export function OperationRequestBodyDefaultValueSection({
  *   `response-body-description` slot
  * - `OperationResponseBodyExamplesSection`: assigned to the
  *   `response-body-examples` slot
- * - `OperationResponseBodyDefaultValueSection`: assigned to the
- *   `response-body-default-value` slot
  */
 export function OperationResponseBodySection({
   children,
@@ -269,16 +252,5 @@ export function OperationResponseBodyExamplesSection({
   children,
   slot,
 }: OperationResponseBodyExamplesSectionProps) {
-  return <div slot={slot}>{children}</div>;
-}
-
-/**
- * This component is assigned to the `response-body-default-value` slot and
- * contains the default value of the response body for the operation.
- */
-export function OperationResponseBodyDefaultValueSection({
-  children,
-  slot,
-}: OperationResponseBodyDefaultValueSectionProps) {
   return <div slot={slot}>{children}</div>;
 }
