@@ -14,11 +14,16 @@ import { getOperationFromId } from "./util.ts";
 
 type Data = Map<string, Chunk>;
 
+type PageMapEntryChunk = {
+  contextChunk?: Chunk;
+  chunk: Chunk;
+};
+
 type PageMapEntry = {
   slug: string;
   sidebarLabel: string;
   sidebarPosition: string;
-  chunks: Chunk[];
+  chunks: PageMapEntryChunk[];
 };
 
 type PageMap = Map<string, PageMapEntry>;
@@ -47,26 +52,29 @@ function getPageMap(site: Site, data: Data) {
 
   // If we're in single page mode, we attach all chunks to a single, root-level entry
   if (singlePage) {
-    const chunks: Chunk[] = [];
+    const chunks: PageMapEntryChunk[] = [];
 
     // Now get the tag chunks and add them to the list
     for (const [, chunk] of data) {
       if (chunk.chunkType === "tag") {
-        chunks.push(chunk);
+        chunks.push({ chunk: chunk });
         for (const operationChunkId of chunk.chunkData.operationChunkIds) {
           const operationChunk = getOperationFromId(operationChunkId, data);
-          chunks.push(operationChunk);
+          chunks.push({ chunk: operationChunk, contextChunk: chunk });
         }
       }
     }
 
     // Sort by slug so that the sidebar position is stable
-    chunks.sort((a, b) => a.slug.localeCompare(b.slug));
+    chunks.sort((a, b) => a.chunk.slug.localeCompare(b.chunk.slug));
 
     // Check if the about page content is enabled, and if so add about and
     // global security chunks to the list
     if (aboutPage) {
-      chunks.unshift(getAboutChunk(data), getGlobalSecurityChunk(data));
+      chunks.unshift(
+        { chunk: getAboutChunk(data) },
+        { chunk: getGlobalSecurityChunk(data) }
+      );
     }
 
     // Finally, create the page entry with all collected chunks
@@ -86,7 +94,10 @@ function getPageMap(site: Site, data: Data) {
         slug: "",
         sidebarLabel: "About",
         sidebarPosition: "1",
-        chunks: [getAboutChunk(data), getGlobalSecurityChunk(data)],
+        chunks: [
+          { chunk: getAboutChunk(data) },
+          { chunk: getGlobalSecurityChunk(data) },
+        ],
       });
     }
 
@@ -109,12 +120,15 @@ function getPageMap(site: Site, data: Data) {
         slug: chunk.slug,
         sidebarLabel: capitalCase(chunk.chunkData.name),
         sidebarPosition: `3.${tagIndex++}`,
-        chunks: [chunk],
+        chunks: [{ chunk: chunk }],
       };
       pageMap.set(pagePath, pageMapEntry);
       for (const operationChunkId of chunk.chunkData.operationChunkIds) {
         const operationChunk = getOperationFromId(operationChunkId, data);
-        pageMapEntry.chunks.push(operationChunk);
+        pageMapEntry.chunks.push({
+          chunk: operationChunk,
+          contextChunk: chunk,
+        });
       }
     }
   }
@@ -136,7 +150,7 @@ function renderPages(
     });
     const settings = getSettings();
     let hasRenderedEndpointHeading = false;
-    for (const chunk of chunks) {
+    for (const { chunk, contextChunk } of chunks) {
       switch (chunk.chunkType) {
         case "about": {
           renderAbout(renderer, chunk);
@@ -175,7 +189,11 @@ function renderPages(
           break;
         }
         case "operation": {
+          if (!contextChunk || contextChunk.chunkType !== "tag") {
+            throw new InternalError("Context chunk not found");
+          }
           renderOperation({
+            tagChunk: contextChunk,
             renderer,
             chunk,
             docsCodeSnippets,

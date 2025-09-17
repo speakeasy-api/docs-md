@@ -1,4 +1,7 @@
-import type { OperationChunk } from "@speakeasy-api/docs-md-shared/types";
+import type {
+  OperationChunk,
+  TagChunk,
+} from "@speakeasy-api/docs-md-shared/types";
 import type { PropertyAnnotations } from "@speakeasy-api/docs-md-shared/types";
 
 import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
@@ -13,6 +16,7 @@ import { getDisplayTypeInfo, renderBreakouts } from "./schema.ts";
 type RenderOperationOptions = {
   renderer: Renderer;
   chunk: OperationChunk;
+  tagChunk: TagChunk;
   docsCodeSnippets: DocsCodeSnippets;
 };
 
@@ -56,6 +60,7 @@ function createTopLevelExamples(
 
 export function renderOperation({
   renderer,
+  tagChunk,
   chunk,
   docsCodeSnippets,
 }: RenderOperationOptions) {
@@ -65,6 +70,7 @@ export function renderOperation({
   const { showDebugPlaceholders } = getSettings().display;
   renderer.createOperationSection(
     {
+      tag: tagChunk,
       method: chunk.chunkData.method,
       path: chunk.chunkData.path,
       operationId: chunk.chunkData.operationId,

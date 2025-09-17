@@ -60,15 +60,15 @@ export type PropertyAnnotations = {
 };
 
 export type PageMetadataSection = {
-  fragment: string;
+  elementId: string;
   properties: {
-    fragment: string;
+    elementId: string;
     name: string;
   }[];
 };
 
 export type PageMetadataOperation = {
-  fragment: string;
+  elementId: string;
   method: string;
   path: string;
   security?: PageMetadataSection;
@@ -79,6 +79,11 @@ export type PageMetadataOperation = {
   responses?: Record<string, PageMetadataSection>;
 };
 
+export type PageMetadataTag = {
+  name: string;
+  operations: PageMetadataOperation[];
+};
+
 /**
  * Page metadata contains useful information about a page that was compiled.
  * This information can be used to render a left nav, add metadata files
@@ -86,7 +91,7 @@ export type PageMetadataOperation = {
  */
 export type PageMetadata = {
   slug: string;
+  filePath: string;
   sidebarLabel: string;
-  sidebarPosition: string;
-  operations: PageMetadataOperation[];
+  tags: PageMetadataTag[];
 };

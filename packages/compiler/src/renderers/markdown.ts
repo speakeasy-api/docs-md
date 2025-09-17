@@ -1,6 +1,9 @@
 import { join, resolve } from "node:path";
 
-import type { Chunk } from "@speakeasy-api/docs-md-shared/types";
+import type {
+  Chunk,
+  PageMetadataTag,
+} from "@speakeasy-api/docs-md-shared/types";
 import type {
   DisplayTypeInfo,
   PageMetadata,
@@ -117,6 +120,7 @@ export abstract class MarkdownRenderer extends Renderer {
     docsData,
     site,
     currentPageSlug,
+    currentPagePath,
     frontMatter,
   }: RendererConstructorArgs) {
     super();
@@ -124,10 +128,10 @@ export abstract class MarkdownRenderer extends Renderer {
     this.#site = site;
     if (currentPageSlug !== undefined && frontMatter) {
       this.#pageMetadata = {
-        sidebarPosition: frontMatter.sidebarPosition,
         sidebarLabel: frontMatter.sidebarLabel,
         slug: currentPageSlug,
-        operations: [],
+        filePath: currentPagePath,
+        tags: [],
       };
     }
   }
@@ -138,7 +142,7 @@ export abstract class MarkdownRenderer extends Renderer {
 
   public override createOperationSection(
     ...[
-      { method, path, operationId, summary, description },
+      { tag, method, path, operationId, summary, description },
       cb,
     ]: RendererCreateOperationArgs
   ): void {
@@ -148,12 +152,23 @@ export abstract class MarkdownRenderer extends Renderer {
 
     if (this.#pageMetadata) {
       const currentOperation = {
-        fragment: id,
+        elementId: id,
         method,
         path,
       };
       this.#currentOperation = currentOperation;
-      this.#pageMetadata.operations.push(currentOperation);
+      let tagMetadata: PageMetadataTag | undefined =
+        this.#pageMetadata.tags.find(
+          (tagMetadata) => tagMetadata.name === tag.chunkData.name
+        );
+      if (!tagMetadata) {
+        tagMetadata = {
+          name: tag.chunkData.name,
+          operations: [],
+        };
+        this.#pageMetadata.tags.push(tagMetadata);
+      }
+      tagMetadata.operations.push(currentOperation);
     }
 
     this.handleCreateOperationTitle(() => {
@@ -238,7 +253,7 @@ export abstract class MarkdownRenderer extends Renderer {
     this.enterContext({ id: "security", type: "section" });
     if (this.#currentOperation) {
       this.#currentSection = {
-        fragment: this.getCurrentId(),
+        elementId: this.getCurrentId(),
         properties: [],
       };
       this.#currentOperation.security = this.#currentSection;
@@ -274,7 +289,7 @@ export abstract class MarkdownRenderer extends Renderer {
     this.enterContext({ id: "parameters", type: "section" });
     if (this.#currentOperation) {
       this.#currentSection = {
-        fragment: this.getCurrentId(),
+        elementId: this.getCurrentId(),
         properties: [],
       };
       this.#currentOperation.parameters = this.#currentSection;
@@ -306,7 +321,7 @@ export abstract class MarkdownRenderer extends Renderer {
     this.enterContext({ id: "request", type: "section" });
     if (this.#currentOperation) {
       this.#currentSection = {
-        fragment: this.getCurrentId(),
+        elementId: this.getCurrentId(),
         properties: [],
       };
       this.#currentOperation.requestBody = this.#currentSection;
@@ -369,7 +384,7 @@ export abstract class MarkdownRenderer extends Renderer {
           });
           if (this.#currentOperation?.responses) {
             this.#currentSection = {
-              fragment: this.getCurrentId(),
+              elementId: this.getCurrentId(),
               properties: [],
             };
             this.#currentOperation.responses[`${statusCode}-${contentType}`] =
@@ -439,7 +454,7 @@ export abstract class MarkdownRenderer extends Renderer {
   ) {
     if (this.#currentSection && props.isTopLevel) {
       this.#currentSection.properties.push({
-        fragment: this.getCurrentId(),
+        elementId: this.getCurrentId(),
         name: props.rawTitle,
       });
     }
@@ -462,7 +477,7 @@ export abstract class MarkdownRenderer extends Renderer {
   ) {
     if (this.#currentSection && props.isTopLevel) {
       this.#currentSection.properties.push({
-        fragment: this.getCurrentId(),
+        elementId: this.getCurrentId(),
         name: props.rawTitle,
       });
     }

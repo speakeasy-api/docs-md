@@ -36,13 +36,20 @@ for (const item of sidebarMetadata) {
 
   currentNode[lastSlugPart] = node;
 
-  for (const operation of item.operations) {
-    const displayName = `${operation.method.toUpperCase()} ${operation.path}`;
-    node.children[displayName] = {
-      label: displayName,
-      href: `/api/${item.slug}#${operation.fragment}`,
+  for (const tag of item.tags) {
+    const tagNode: SideBarTreeNode = {
+      label: tag.name,
       children: {},
     };
+    node.children[tag.name] = tagNode;
+    for (const operation of tag.operations) {
+      const displayName = `${operation.method.toUpperCase()} ${operation.path}`;
+      tagNode.children[displayName] = {
+        label: displayName,
+        href: `/api/${item.slug}#${operation.elementId}`,
+        children: {},
+      };
+    }
   }
 }
 

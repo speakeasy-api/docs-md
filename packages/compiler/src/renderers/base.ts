@@ -15,7 +15,7 @@
 // defined as a tuple. We can then use the spread operator to assign that type
 // to all arguments. It's a bit verbose and convoluted, but solves both 1 and 2
 
-import type { Chunk } from "@speakeasy-api/docs-md-shared/types";
+import type { Chunk, TagChunk } from "@speakeasy-api/docs-md-shared/types";
 import type {
   DisplayTypeInfo,
   PageMetadata,
@@ -72,6 +72,7 @@ export type RendererConstructorArgs = {
 
 export type RendererCreateOperationArgs = [
   options: {
+    tag: TagChunk;
     method: string;
     path: string;
     operationId: string;
