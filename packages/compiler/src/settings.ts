@@ -64,12 +64,13 @@ export const settingsSchema = z.strictObject({
       showDebugPlaceholders: false,
       expandTopLevelPropertiesOnPageLoad: true,
     }),
-  tryItNow: z
+  codeSamples: z
     .array(
       z.strictObject({
         language,
         sdkClassName: z.string(),
         packageName: z.string(),
+        enableTryItNow: z.boolean().default(true),
       })
     )
     .min(1)

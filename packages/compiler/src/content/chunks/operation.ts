@@ -164,14 +164,19 @@ export function renderOperation({
         });
       }
 
-      const { tryItNow } = getSettings();
+      const { codeSamples } = getSettings();
       const usageSnippet = docsCodeSnippets[chunk.id];
-      if (usageSnippet && tryItNow) {
+      if (usageSnippet && codeSamples) {
         renderer.createCodeSamplesSection(
           ({ createTryItNowEntry, createCodeSampleEntry }) => {
             for (const [language, snippet] of Object.entries(usageSnippet)) {
               debug(`Rendering code sample for ${language}`);
-              if (language === "typescript") {
+              if (
+                language === "typescript" &&
+                codeSamples.some(
+                  (s) => s.language === "typescript" && s.enableTryItNow
+                )
+              ) {
                 createTryItNowEntry({
                   language,
                   externalDependencies: {

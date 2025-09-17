@@ -41,9 +41,9 @@ export async function generateCodeSnippets(
   docsData: Map<string, Chunk>,
   specContents: string
 ): Promise<DocsCodeSnippets> {
-  const { spec, tryItNow } = getSettings();
-  if (!tryItNow) {
-    info("TryItNow not enabled, skipping code snippets generation");
+  const { spec, codeSamples } = getSettings();
+  if (!codeSamples) {
+    info("Code samples not enabled, skipping code snippets generation");
     return {};
   }
 
@@ -58,7 +58,7 @@ export async function generateCodeSnippets(
     }
   }
   try {
-    for (const language of tryItNow) {
+    for (const language of codeSamples) {
       const formData = new FormData();
 
       const blob = new Blob([specContents]);

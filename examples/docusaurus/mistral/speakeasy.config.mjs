@@ -7,11 +7,12 @@ export default {
   display: {
     visibleResponses: "success",
   },
-  tryItNow: [
+  codeSamples: [
     {
       language: "typescript",
       sdkClassName: "Mistral",
       packageName: "@mistralai/mistralai",
+      enableTryItNow: true,
     },
     {
       language: "python",
