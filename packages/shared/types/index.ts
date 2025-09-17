@@ -91,7 +91,6 @@ export type PageMetadataTag = {
  */
 export type PageMetadata = {
   slug: string;
-  filePath: string;
   sidebarLabel: string;
   tags: PageMetadataTag[];
 };

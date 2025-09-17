@@ -120,7 +120,6 @@ export abstract class MarkdownRenderer extends Renderer {
     docsData,
     site,
     currentPageSlug,
-    currentPagePath,
     frontMatter,
   }: RendererConstructorArgs) {
     super();
@@ -130,7 +129,6 @@ export abstract class MarkdownRenderer extends Renderer {
       this.#pageMetadata = {
         sidebarLabel: frontMatter.sidebarLabel,
         slug: currentPageSlug,
-        filePath: currentPagePath,
         tags: [],
       };
     }
