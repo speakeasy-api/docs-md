@@ -133,6 +133,9 @@ type BooleanValue = BaseValue & {
 
 type StringValue = BaseValue & {
   type: "string";
+  minLength: number | null;
+  maxLength: number | null;
+  pattern: string | null;
 };
 
 type DateValue = BaseValue & {
@@ -143,29 +146,40 @@ type DateTimeValue = BaseValue & {
   type: "date-time";
 };
 
-type NumberValue = BaseValue & {
-  type: "number";
+type NumberBase = {
+  minimum: number | null;
+  maximum: number | null;
 };
 
-type IntegerValue = BaseValue & {
-  type: "integer";
-};
+type NumberValue = BaseValue &
+  NumberBase & {
+    type: "number";
+  };
 
-type Int32Value = BaseValue & {
-  type: "int32";
-};
+type IntegerValue = BaseValue &
+  NumberBase & {
+    type: "integer";
+  };
 
-type BigIntValue = BaseValue & {
-  type: "bigint";
-};
+type Int32Value = BaseValue &
+  NumberBase & {
+    type: "int32";
+  };
 
-type Float32Value = BaseValue & {
-  type: "float32";
-};
+type BigIntValue = BaseValue &
+  NumberBase & {
+    type: "bigint";
+  };
 
-type DecimalValue = BaseValue & {
-  type: "decimal";
-};
+type Float32Value = BaseValue &
+  NumberBase & {
+    type: "float32";
+  };
+
+type DecimalValue = BaseValue &
+  NumberBase & {
+    type: "decimal";
+  };
 
 type EnumValue = BaseValue & {
   type: "enum";
@@ -182,6 +196,8 @@ export type ObjectValue = BaseValue & {
 type ArrayValue = BaseValue & {
   type: "array";
   items: SchemaValue;
+  minItems: number | null;
+  maxItems: number | null;
 };
 
 type SetValue = BaseValue & {

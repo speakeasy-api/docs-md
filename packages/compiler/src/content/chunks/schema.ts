@@ -339,6 +339,64 @@ function renderObjectProperties({
     if (property.isDeprecated) {
       annotations.push({ title: "deprecated", variant: "warning" });
     }
+    switch (property.schema.type) {
+      case "array": {
+        if (property.schema.minItems !== null) {
+          annotations.push({
+            title: `Min Items: ${property.schema.minItems}`,
+            variant: "warning",
+          });
+        }
+        if (property.schema.maxItems !== null) {
+          annotations.push({
+            title: `Max Items: ${property.schema.maxItems}`,
+            variant: "warning",
+          });
+        }
+        break;
+      }
+      case "integer":
+      case "number":
+      case "int32":
+      case "float32":
+      case "decimal":
+      case "bigint": {
+        if (property.schema.minimum !== null) {
+          annotations.push({
+            title: `Min: ${property.schema.minimum}`,
+            variant: "warning",
+          });
+        }
+        if (property.schema.maximum !== null) {
+          annotations.push({
+            title: `Max: ${property.schema.maximum}`,
+            variant: "warning",
+          });
+        }
+        break;
+      }
+      case "string": {
+        if (property.schema.minLength !== null) {
+          annotations.push({
+            title: `Min Length: ${property.schema.minLength}`,
+            variant: "warning",
+          });
+        }
+        if (property.schema.maxLength !== null) {
+          annotations.push({
+            title: `Max Length: ${property.schema.maxLength}`,
+            variant: "warning",
+          });
+        }
+        if (property.schema.pattern !== null) {
+          annotations.push({
+            title: `Pattern: ${property.schema.pattern}`,
+            variant: "warning",
+          });
+        }
+        break;
+      }
+    }
     renderer.createExpandableProperty({
       typeInfo,
       annotations,
