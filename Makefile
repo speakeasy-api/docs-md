@@ -58,6 +58,7 @@ build-api-docs:
 verify-api-docs: build-api-docs
 	@if ! (git diff --exit-code --quiet examples/ && git diff --cached --exit-code --quiet examples/); then \
 		git status examples/; \
+		git diff examples/; \
 		echo "Example build out of date. Please run make build-api-docs and commit the results"; \
 		exit 1; \
 	fi
