@@ -237,7 +237,7 @@ function createDescription(schema: SchemaValue, renderer: Renderer) {
   return undefined;
 }
 
-export function createExamples(schema: SchemaValue, renderer: Renderer) {
+function createExamples(schema: SchemaValue, renderer: Renderer) {
   const examples = "examples" in schema ? schema.examples : [];
   const { showDebugPlaceholders } = getSettings().display;
   if (examples.length > 0) {
