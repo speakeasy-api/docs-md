@@ -52,6 +52,11 @@ export type GlobalSecurityChunk = {
 
 // Operation chunks
 
+type TopLevelExample = {
+  name: string;
+  value: string;
+};
+
 type Security = {
   contentChunkId: string;
 };
@@ -69,12 +74,14 @@ type Response = {
   description: string | null;
   contentType: string;
   contentChunkId: string;
+  examples: TopLevelExample[];
 };
 
 type RequestBody = {
   description: string | null;
   required: boolean;
   contentChunkId: string;
+  examples: TopLevelExample[];
 };
 
 type OperationData = {

@@ -10,7 +10,6 @@ import { assertNever } from "../../util/assertNever.ts";
 import { getSchemaFromId, getSecurityFromId } from "../util.ts";
 import {
   createDefaultValue,
-  createExamples,
   getDisplayTypeInfo,
   renderBreakouts,
 } from "./schema.ts";
@@ -20,6 +19,30 @@ type RenderOperationOptions = {
   chunk: OperationChunk;
   docsCodeSnippets: DocsCodeSnippets;
 };
+
+function createTopLevelExamples(
+  examples: { name: string; value: string }[],
+  renderer: Renderer
+) {
+  const { showDebugPlaceholders } = getSettings().display;
+  if (examples.length > 0) {
+    return () => {
+      renderer.createText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
+      for (const example of examples) {
+        renderer.createCode(
+          // Unfortunately, the output of Go's YAML to JSON
+          // conversion doesn't give us options to control the
+          // indentation of the output, so we have to do it
+          // ourselves
+          JSON.stringify(JSON.parse(example.value), null, "  ")
+        );
+      }
+    };
+  } else if (showDebugPlaceholders) {
+    return () => renderer.createDebugPlaceholder(() => "No examples provided");
+  }
+  return undefined;
+}
 
 export function renderOperation({
   renderer,
@@ -215,7 +238,10 @@ export function renderOperation({
                   }
                 }
               : undefined,
-          createExamples: createExamples(requestBodySchemaValue, renderer),
+          createExamples: createTopLevelExamples(
+            requestBody.examples,
+            renderer
+          ),
           createDefaultValue: createDefaultValue(
             requestBodySchemaValue,
             renderer
@@ -308,7 +334,10 @@ export function renderOperation({
                             }
                           }
                         : undefined,
-                    createExamples: createExamples(schema, renderer),
+                    createExamples: createTopLevelExamples(
+                      response.examples,
+                      renderer
+                    ),
                     createDefaultValue: createDefaultValue(schema, renderer),
                     createBreakouts() {
                       renderBreakouts({
