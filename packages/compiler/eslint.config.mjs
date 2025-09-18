@@ -12,6 +12,7 @@ export default [
     entryPoints: {
       "eslint.config.mjs": ["default"],
       "src/compiler.ts": /.*/,
+      "src/editor/editor.ts": /.*/,
     },
     ignores: ["src/data/wasm_exec.js"],
     restrictedImports: [
