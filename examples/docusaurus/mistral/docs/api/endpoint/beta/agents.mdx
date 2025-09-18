@@ -64,6 +64,76 @@ Retrieve a list of agent entities sorted by creation time.
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Code Samples \{#operation-agents_api_v1_agents_list+code-samples\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-agents_api_v1_agents_list+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-agents_api_v1_agents_list+code-samples+typescript">
+
+<TryItNow
+  externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.agents.list({});
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-agents_api_v1_agents_list+code-samples+python">
+
+Python
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-agents_api_v1_agents_list+code-samples+python">
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.beta.agents.list()
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationParametersSection slot="parameters">
 
 <Section>
@@ -153,76 +223,6 @@ description: My awesome description
 </Section>
 
 </OperationParametersSection>
-
-<OperationCodeSamplesSection slot="code-samples">
-
-<TabbedSection>
-
-<SectionTitle slot="title">
-
-### Code Samples \{#operation-agents_api_v1_agents_list+code-samples\}
-
-</SectionTitle>
-
-<SectionTab slot="tab" id="operation-agents_api_v1_agents_list+code-samples+typescript">
-
-TypeScript
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-agents_api_v1_agents_list+code-samples+typescript">
-
-<TryItNow
-  externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
-  defaultValue={`import { Mistral } from "@mistralai/mistralai";
-
-const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await mistral.beta.agents.list({});
-
-  // Handle the result
-  console.log(result);
-}
-
-run();`}
-/>
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-agents_api_v1_agents_list+code-samples+python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-agents_api_v1_agents_list+code-samples+python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.agents.list()
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
-
-</SectionContent>
-
-</TabbedSection>
-
-</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -10179,62 +10179,6 @@ Given an agent retrieve an agent entity with its attributes.
 
 </OperationDescriptionSection>
 
-<OperationParametersSection slot="parameters">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Parameters \{#operation-agents_api_v1_agents_get+parameters\}
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<ExpandableSection>
-
-<ExpandableProperty
-  slot="entry"
-  id="agent_id"
-  headingId="operation-agents_api_v1_agents_get+parameters+agent_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### agent_id \{#operation-agents_api_v1_agents_get+parameters+agent_id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-<DebugPlaceholder>
-
-No description provided
-
-_OpenAPI example:_
-
-```
-description: My awesome description
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-</ExpandableSection>
-
-</SectionContent>
-
-</Section>
-
-</OperationParametersSection>
-
 <OperationCodeSamplesSection slot="code-samples">
 
 <TabbedSection>
@@ -10306,6 +10250,62 @@ with Mistral(
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-agents_api_v1_agents_get+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="agent_id"
+  headingId="operation-agents_api_v1_agents_get+parameters+agent_id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agent_id \{#operation-agents_api_v1_agents_get+parameters+agent_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -13688,62 +13688,6 @@ Update an agent attributes and create a new version.
 
 </OperationDescriptionSection>
 
-<OperationParametersSection slot="parameters">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Parameters \{#operation-agents_api_v1_agents_update+parameters\}
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<ExpandableSection>
-
-<ExpandableProperty
-  slot="entry"
-  id="agent_id"
-  headingId="operation-agents_api_v1_agents_update+parameters+agent_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### agent_id \{#operation-agents_api_v1_agents_update+parameters+agent_id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-<DebugPlaceholder>
-
-No description provided
-
-_OpenAPI example:_
-
-```
-description: My awesome description
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-</ExpandableSection>
-
-</SectionContent>
-
-</Section>
-
-</OperationParametersSection>
-
 <OperationCodeSamplesSection slot="code-samples">
 
 <TabbedSection>
@@ -13819,6 +13763,62 @@ with Mistral(
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-agents_api_v1_agents_update+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="agent_id"
+  headingId="operation-agents_api_v1_agents_update+parameters+agent_id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agent_id \{#operation-agents_api_v1_agents_update+parameters+agent_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -20233,6 +20233,91 @@ Switch the version of an agent.
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Code Samples \{#operation-agents_api_v1_agents_update_version+code-samples\}
+
+</SectionTitle>
+
+<SectionTab
+  slot="tab"
+  id="operation-agents_api_v1_agents_update_version+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_agents_update_version+code-samples+typescript"
+>
+
+<TryItNow
+  externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.agents.updateVersion({
+    agentId: "<id>",
+    version: 157995,
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-agents_api_v1_agents_update_version+code-samples+python"
+>
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_agents_update_version+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.beta.agents.update_version(agent_id="<id>", version=157995)
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationParametersSection slot="parameters">
 
 <Section>
@@ -20322,91 +20407,6 @@ description: My awesome description
 </Section>
 
 </OperationParametersSection>
-
-<OperationCodeSamplesSection slot="code-samples">
-
-<TabbedSection>
-
-<SectionTitle slot="title">
-
-### Code Samples \{#operation-agents_api_v1_agents_update_version+code-samples\}
-
-</SectionTitle>
-
-<SectionTab
-  slot="tab"
-  id="operation-agents_api_v1_agents_update_version+code-samples+typescript"
->
-
-TypeScript
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_agents_update_version+code-samples+typescript"
->
-
-<TryItNow
-  externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
-  defaultValue={`import { Mistral } from "@mistralai/mistralai";
-
-const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await mistral.beta.agents.updateVersion({
-    agentId: "<id>",
-    version: 157995,
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();`}
-/>
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-agents_api_v1_agents_update_version+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_agents_update_version+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.agents.update_version(agent_id="<id>", version=157995)
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
-
-</SectionContent>
-
-</TabbedSection>
-
-</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 

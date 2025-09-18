@@ -64,6 +64,85 @@ Retrieve a list of conversation entities sorted by creation time.
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Code Samples \{#operation-agents_api_v1_conversations_list+code-samples\}
+
+</SectionTitle>
+
+<SectionTab
+  slot="tab"
+  id="operation-agents_api_v1_conversations_list+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_conversations_list+code-samples+typescript"
+>
+
+<TryItNow
+  externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.beta.conversations.list({});
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-agents_api_v1_conversations_list+code-samples+python">
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_conversations_list+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.beta.conversations.list()
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationParametersSection slot="parameters">
 
 <Section>
@@ -153,85 +232,6 @@ description: My awesome description
 </Section>
 
 </OperationParametersSection>
-
-<OperationCodeSamplesSection slot="code-samples">
-
-<TabbedSection>
-
-<SectionTitle slot="title">
-
-### Code Samples \{#operation-agents_api_v1_conversations_list+code-samples\}
-
-</SectionTitle>
-
-<SectionTab
-  slot="tab"
-  id="operation-agents_api_v1_conversations_list+code-samples+typescript"
->
-
-TypeScript
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_conversations_list+code-samples+typescript"
->
-
-<TryItNow
-  externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
-  defaultValue={`import { Mistral } from "@mistralai/mistralai";
-
-const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await mistral.beta.conversations.list({});
-
-  // Handle the result
-  console.log(result);
-}
-
-run();`}
-/>
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-agents_api_v1_conversations_list+code-samples+python">
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_conversations_list+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.conversations.list()
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
-
-</SectionContent>
-
-</TabbedSection>
-
-</OperationCodeSamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -14438,62 +14438,6 @@ Given a conversation_id retrieve a conversation entity with its attributes.
 
 </OperationDescriptionSection>
 
-<OperationParametersSection slot="parameters">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Parameters \{#operation-agents_api_v1_conversations_get+parameters\}
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<ExpandableSection>
-
-<ExpandableProperty
-  slot="entry"
-  id="conversation_id"
-  headingId="operation-agents_api_v1_conversations_get+parameters+conversation_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### conversation_id \{#operation-agents_api_v1_conversations_get+parameters+conversation_id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-<DebugPlaceholder>
-
-No description provided
-
-_OpenAPI example:_
-
-```
-description: My awesome description
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-</ExpandableSection>
-
-</SectionContent>
-
-</Section>
-
-</OperationParametersSection>
-
 <OperationCodeSamplesSection slot="code-samples">
 
 <TabbedSection>
@@ -14574,6 +14518,62 @@ with Mistral(
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-agents_api_v1_conversations_get+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="conversation_id"
+  headingId="operation-agents_api_v1_conversations_get+parameters+conversation_id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### conversation_id \{#operation-agents_api_v1_conversations_get+parameters+conversation_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -18436,52 +18436,6 @@ Run completion on the history of the conversation and the user entries. Return t
 
 </OperationDescriptionSection>
 
-<OperationParametersSection slot="parameters">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Parameters \{#operation-agents_api_v1_conversations_append+parameters\}
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<ExpandableSection>
-
-<ExpandableProperty
-  slot="entry"
-  id="conversation_id"
-  headingId="operation-agents_api_v1_conversations_append+parameters+conversation_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### conversation_id \{#operation-agents_api_v1_conversations_append+parameters+conversation_id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-ID of the conversation to which we append entries.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-</ExpandableSection>
-
-</SectionContent>
-
-</Section>
-
-</OperationParametersSection>
-
 <OperationCodeSamplesSection slot="code-samples">
 
 <TabbedSection>
@@ -18592,6 +18546,52 @@ with Mistral(
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-agents_api_v1_conversations_append+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="conversation_id"
+  headingId="operation-agents_api_v1_conversations_append+parameters+conversation_id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### conversation_id \{#operation-agents_api_v1_conversations_append+parameters+conversation_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+ID of the conversation to which we append entries.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -27282,62 +27282,6 @@ Given a conversation_id retrieve all the entries belonging to that conversation.
 
 </OperationDescriptionSection>
 
-<OperationParametersSection slot="parameters">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Parameters \{#operation-agents_api_v1_conversations_history+parameters\}
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<ExpandableSection>
-
-<ExpandableProperty
-  slot="entry"
-  id="conversation_id"
-  headingId="operation-agents_api_v1_conversations_history+parameters+conversation_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### conversation_id \{#operation-agents_api_v1_conversations_history+parameters+conversation_id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-<DebugPlaceholder>
-
-No description provided
-
-_OpenAPI example:_
-
-```
-description: My awesome description
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-</ExpandableSection>
-
-</SectionContent>
-
-</Section>
-
-</OperationParametersSection>
-
 <OperationCodeSamplesSection slot="code-samples">
 
 <TabbedSection>
@@ -27421,6 +27365,62 @@ with Mistral(
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-agents_api_v1_conversations_history+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="conversation_id"
+  headingId="operation-agents_api_v1_conversations_history+parameters+conversation_id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### conversation_id \{#operation-agents_api_v1_conversations_history+parameters+conversation_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -34008,62 +34008,6 @@ Given a conversation_id retrieve all the messages belonging to that conversation
 
 </OperationDescriptionSection>
 
-<OperationParametersSection slot="parameters">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Parameters \{#operation-agents_api_v1_conversations_messages+parameters\}
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<ExpandableSection>
-
-<ExpandableProperty
-  slot="entry"
-  id="conversation_id"
-  headingId="operation-agents_api_v1_conversations_messages+parameters+conversation_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### conversation_id \{#operation-agents_api_v1_conversations_messages+parameters+conversation_id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-<DebugPlaceholder>
-
-No description provided
-
-_OpenAPI example:_
-
-```
-description: My awesome description
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-</ExpandableSection>
-
-</SectionContent>
-
-</Section>
-
-</OperationParametersSection>
-
 <OperationCodeSamplesSection slot="code-samples">
 
 <TabbedSection>
@@ -34147,6 +34091,62 @@ with Mistral(
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-agents_api_v1_conversations_messages+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="conversation_id"
+  headingId="operation-agents_api_v1_conversations_messages+parameters+conversation_id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### conversation_id \{#operation-agents_api_v1_conversations_messages+parameters+conversation_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -38442,62 +38442,6 @@ Given a conversation_id and an id, recreate a conversation from this point and r
 
 </OperationDescriptionSection>
 
-<OperationParametersSection slot="parameters">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Parameters \{#operation-agents_api_v1_conversations_restart+parameters\}
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<ExpandableSection>
-
-<ExpandableProperty
-  slot="entry"
-  id="conversation_id"
-  headingId="operation-agents_api_v1_conversations_restart+parameters+conversation_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### conversation_id \{#operation-agents_api_v1_conversations_restart+parameters+conversation_id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-<DebugPlaceholder>
-
-No description provided
-
-_OpenAPI example:_
-
-```
-description: My awesome description
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-</ExpandableSection>
-
-</SectionContent>
-
-</Section>
-
-</OperationParametersSection>
-
 <OperationCodeSamplesSection slot="code-samples">
 
 <TabbedSection>
@@ -38585,6 +38529,62 @@ with Mistral(
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-agents_api_v1_conversations_restart+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="conversation_id"
+  headingId="operation-agents_api_v1_conversations_restart+parameters+conversation_id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### conversation_id \{#operation-agents_api_v1_conversations_restart+parameters+conversation_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -59000,52 +59000,6 @@ Run completion on the history of the conversation and the user entries. Return t
 
 </OperationDescriptionSection>
 
-<OperationParametersSection slot="parameters">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Parameters \{#operation-agents_api_v1_conversations_append_stream+parameters\}
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<ExpandableSection>
-
-<ExpandableProperty
-  slot="entry"
-  id="conversation_id"
-  headingId="operation-agents_api_v1_conversations_append_stream+parameters+conversation_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### conversation_id \{#operation-agents_api_v1_conversations_append_stream+parameters+conversation_id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-ID of the conversation to which we append entries.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-</ExpandableSection>
-
-</SectionContent>
-
-</Section>
-
-</OperationParametersSection>
-
 <OperationCodeSamplesSection slot="code-samples">
 
 <TabbedSection>
@@ -59136,6 +59090,52 @@ with Mistral(
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-agents_api_v1_conversations_append_stream+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="conversation_id"
+  headingId="operation-agents_api_v1_conversations_append_stream+parameters+conversation_id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### conversation_id \{#operation-agents_api_v1_conversations_append_stream+parameters+conversation_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+ID of the conversation to which we append entries.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -69105,62 +69105,6 @@ Given a conversation_id and an id, recreate a conversation from this point and r
 
 </OperationDescriptionSection>
 
-<OperationParametersSection slot="parameters">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Parameters \{#operation-agents_api_v1_conversations_restart_stream+parameters\}
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<ExpandableSection>
-
-<ExpandableProperty
-  slot="entry"
-  id="conversation_id"
-  headingId="operation-agents_api_v1_conversations_restart_stream+parameters+conversation_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### conversation_id \{#operation-agents_api_v1_conversations_restart_stream+parameters+conversation_id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-<DebugPlaceholder>
-
-No description provided
-
-_OpenAPI example:_
-
-```
-description: My awesome description
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-</ExpandableSection>
-
-</SectionContent>
-
-</Section>
-
-</OperationParametersSection>
-
 <OperationCodeSamplesSection slot="code-samples">
 
 <TabbedSection>
@@ -69278,6 +69222,62 @@ with Mistral(
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-agents_api_v1_conversations_restart_stream+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="conversation_id"
+  headingId="operation-agents_api_v1_conversations_restart_stream+parameters+conversation_id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### conversation_id \{#operation-agents_api_v1_conversations_restart_stream+parameters+conversation_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
 
 <OperationRequestBodySection slot="request-body">
 
