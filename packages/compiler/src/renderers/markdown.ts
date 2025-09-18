@@ -43,16 +43,13 @@ import type {
   RendererGetCurrentIdArgs,
   SiteBuildPagePathArgs,
   SiteCreatePageArgs,
-  SiteHasPageArgs,
 } from "./base.ts";
 import { Renderer } from "./base.ts";
 import { Site } from "./base.ts";
 import { escapeText } from "./util.ts";
 
 export abstract class MarkdownSite extends Site {
-  #pages = new Map<string, Renderer>();
   #docsData: Map<string, Chunk> | undefined;
-  #pageMetadata: PageMetadata[] = [];
 
   public setDocsData(docsData: Map<string, Chunk>): void {
     this.#docsData = docsData;
@@ -68,10 +65,6 @@ export abstract class MarkdownSite extends Site {
     return resolve(join(settings.output.pageOutDir, `${slug}.md`));
   }
 
-  public hasPage(...[path]: SiteHasPageArgs) {
-    return this.#pages.has(path);
-  }
-
   public createPage(...[path, slug, frontMatter]: SiteCreatePageArgs) {
     if (!this.#docsData) {
       throw new InternalError("Docs data not set");
@@ -83,25 +76,7 @@ export abstract class MarkdownSite extends Site {
       docsData: this.#docsData,
       frontMatter,
     });
-    this.#pages.set(path, renderer);
     return renderer;
-  }
-
-  public render() {
-    const pages: Record<string, string> = {};
-    for (const [path, renderer] of this.#pages) {
-      const { contents, metadata } = renderer.render();
-      pages[path] = contents;
-      if (metadata) {
-        this.#pageMetadata.push(metadata);
-      }
-    }
-    this.processPageMetadata(this.#pageMetadata);
-    return pages;
-  }
-
-  public processPageMetadata(_pageMetadata: PageMetadata[]) {
-    // Do nothing
   }
 }
 

@@ -15,6 +15,7 @@ import arg from "arg";
 import { load } from "js-yaml";
 import z from "zod/v4";
 
+import type { FrameworkConfig } from "../compiler.ts";
 import { generatePages } from "../generatePages.ts";
 import { error, info, setLevel, warn } from "../logging.ts";
 import type { Site } from "../renderers/base.ts";
@@ -160,20 +161,20 @@ const settings = await getSettings();
 const specData = readFileSync(settings.spec, "utf-8");
 const specContents = JSON.stringify(load(specData));
 
-let site: Site;
+let frameworkConfig: FrameworkConfig;
 switch (settings.output.framework) {
   case "docusaurus": {
     if (settings.output.singlePage) {
       throw new Error("output.singlePage can only be used with custom sites");
     }
-    site = new MdxSite(docusaurusConfig);
+    frameworkConfig = docusaurusConfig;
     break;
   }
   case "nextra": {
     if (settings.output.singlePage) {
       throw new Error("output.singlePage can only be used with custom sites");
     }
-    site = new MdxSite(nextraConfig);
+    frameworkConfig = nextraConfig;
     break;
   }
   default: {
@@ -182,7 +183,7 @@ switch (settings.output.framework) {
         "Compiling all docs into a single page is likely to cause performance issues. It is strongly recommended that you enable scroll virtualization in a custom component, but take care not to break SEO."
       );
     }
-    site = new MdxSite(settings.output.framework);
+    frameworkConfig = settings.output.framework;
     break;
   }
 }
@@ -195,19 +196,27 @@ if (args["--clean"]) {
   });
 }
 
-const pageContents = await generatePages({
+let site: Site;
+switch (frameworkConfig.rendererType) {
+  case "mdx": {
+    site = new MdxSite(frameworkConfig);
+    break;
+  }
+}
+
+await generatePages({
   site,
+  frameworkConfig,
   specContents,
   settings,
+  onPageComplete: (pagePath, pageContents) => {
+    mkdirSync(dirname(pagePath), {
+      recursive: true,
+    });
+    writeFileSync(pagePath, pageContents, {
+      encoding: "utf-8",
+    });
+  },
 });
-
-for (const [filename, contents] of Object.entries(pageContents)) {
-  mkdirSync(dirname(filename), {
-    recursive: true,
-  });
-  writeFileSync(filename, contents, {
-    encoding: "utf-8",
-  });
-}
 
 info("Success!");

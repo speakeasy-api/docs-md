@@ -45,16 +45,12 @@ export type SiteBuildPagePathArgs = [
   slug: string,
   options?: { appendIndex?: boolean },
 ];
-export type SiteHasPageArgs = [path: string];
 export type SiteGetRendererArgs = [args: RendererConstructorArgs];
 
 export abstract class Site {
   abstract setDocsData(docsData: Map<string, Chunk>): void;
   abstract createPage(...args: SiteCreatePageArgs): Renderer;
-  abstract render(): Record<string, string>;
-  abstract processPageMetadata(pageMetadata: PageMetadata[]): void;
   abstract buildPagePath(...args: SiteBuildPagePathArgs): string;
-  abstract hasPage(...args: SiteHasPageArgs): boolean;
   protected abstract getRenderer(...args: SiteGetRendererArgs): Renderer;
 }
 

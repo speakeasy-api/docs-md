@@ -35,7 +35,6 @@ import type {
   TabbedSectionProps,
   TryItNowProps,
 } from "@speakeasy-api/docs-md-react";
-import type { PageMetadata } from "@speakeasy-api/docs-md-shared/types";
 
 import { HEADINGS } from "../content/constants.ts";
 import { getSettings } from "../settings.ts";
@@ -82,10 +81,6 @@ export class MdxSite extends MarkdownSite {
 
   protected override getRenderer(...[options]: SiteGetRendererArgs) {
     return new MdxRenderer({ ...options }, this.#compilerConfig);
-  }
-
-  public override processPageMetadata(pageMetadata: PageMetadata[]) {
-    this.#compilerConfig.postProcess?.(pageMetadata);
   }
 }
 

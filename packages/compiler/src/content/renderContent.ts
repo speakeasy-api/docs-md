@@ -1,6 +1,11 @@
-import type { Chunk, TagChunk } from "@speakeasy-api/docs-md-shared/types";
+import type {
+  Chunk,
+  PageMetadata,
+  TagChunk,
+} from "@speakeasy-api/docs-md-shared/types";
 import { capitalCase } from "change-case";
 
+import type { FrameworkConfig } from "../compiler.ts";
 import type { DocsCodeSnippets } from "../data/generateCodeSnippets.ts";
 import { debug } from "../logging.ts";
 import type { Site } from "../renderers/base.ts";
@@ -138,9 +143,12 @@ function getPageMap(site: Site, data: Data) {
 
 function renderPages(
   site: Site,
+  frameworkConfig: FrameworkConfig,
   pageMap: PageMap,
-  docsCodeSnippets: DocsCodeSnippets
+  docsCodeSnippets: DocsCodeSnippets,
+  onPageComplete: (pagePath: string, pageContents: string) => void
 ) {
+  const pageMetadata: PageMetadata[] = [];
   for (const [currentPagePath, pageMapEntry] of pageMap) {
     debug(`Rendering page ${currentPagePath}`);
     const { chunks, sidebarLabel, sidebarPosition, slug } = pageMapEntry;
@@ -213,15 +221,22 @@ function renderPages(
         }
       }
     }
+    const { contents, metadata } = renderer.render();
+    if (metadata) {
+      pageMetadata.push(metadata);
+    }
+    onPageComplete(currentPagePath, contents);
   }
+  frameworkConfig.postProcess?.(pageMetadata);
 }
 
 export function renderContent(
   site: Site,
+  frameworkConfig: FrameworkConfig,
   data: Data,
-  docsCodeSnippets: DocsCodeSnippets
+  docsCodeSnippets: DocsCodeSnippets,
+  onPageComplete: (pagePath: string, pageContents: string) => void
 ) {
   const pageMap = getPageMap(site, data);
-  renderPages(site, pageMap, docsCodeSnippets);
-  return site.render();
+  renderPages(site, frameworkConfig, pageMap, docsCodeSnippets, onPageComplete);
 }

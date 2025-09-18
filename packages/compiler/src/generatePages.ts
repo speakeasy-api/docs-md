@@ -1,3 +1,4 @@
+import type { FrameworkConfig } from "./compiler.ts";
 import { renderContent } from "./content/renderContent.ts";
 import { generateCodeSnippets } from "./data/generateCodeSnippets.ts";
 import { getData } from "./data/getDocsData.ts";
@@ -12,13 +13,17 @@ import { setSettings } from "./settings.ts";
  */
 export async function generatePages({
   site,
+  frameworkConfig,
   specContents,
   settings,
+  onPageComplete,
 }: {
   site: Site;
+  frameworkConfig: FrameworkConfig;
   specContents: string;
   settings: Settings;
-}): Promise<Record<string, string>> {
+  onPageComplete: (pagePath: string, pageContents: string) => void;
+}) {
   // Save settings to a global location so we can easily access it around the codebase
   setSettings(settings);
 
@@ -33,5 +38,5 @@ export async function generatePages({
 
   // Render the content
   info("Rendering Markdown");
-  return renderContent(site, data, docsCodeSnippets);
+  renderContent(site, frameworkConfig, data, docsCodeSnippets, onPageComplete);
 }
