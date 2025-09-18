@@ -15,14 +15,14 @@ import { setSettings } from "../settings.ts";
 import type { FrameworkConfig } from "../types/compilerConfig.ts";
 
 export function renderSecurity(
-  security: OperationChunk["chunkData"]["security"],
+  security: OperationChunk,
   settings: Settings,
   frameworkConfig: FrameworkConfig
 ) {
   setSettings(settings);
   const site = new MdxSite(frameworkConfig);
   const renderer = site.createPage("");
-  renderSecurityInternal(security, renderer);
+  renderSecurityInternal(security.chunkData.security, renderer);
   return renderer.render().contents;
 }
 
