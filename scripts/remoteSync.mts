@@ -1,18 +1,10 @@
-import { runCommand } from "./util.mts";
-import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
-
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+import { ROOT_DIR, runCommand } from "./util.mts";
 
 // Make sure we're on main
-const currentBranchOutput = await runCommand(
-  "git",
-  ["branch", "--show-current"],
-  {
-    cwd: ROOT_DIR,
-    stdio: "pipe",
-  }
-);
+const currentBranchOutput = runCommand("git", ["branch", "--show-current"], {
+  cwd: ROOT_DIR,
+  stdio: "pipe",
+});
 const currentBranch = currentBranchOutput[1]?.trim();
 if (currentBranch !== "main") {
   console.error("Must be on main branch");
@@ -20,7 +12,7 @@ if (currentBranch !== "main") {
 }
 
 // Make sure there are no uncommitted changes
-const statusOutput = await runCommand("git", ["status", "-s"], {
+const statusOutput = runCommand("git", ["status", "-s"], {
   cwd: ROOT_DIR,
   stdio: "pipe",
 });
@@ -31,7 +23,7 @@ if (status !== "") {
 }
 
 // Check if we need to add the remote
-const remoteOutput = await runCommand("git", ["remote"], {
+const remoteOutput = runCommand("git", ["remote"], {
   cwd: ROOT_DIR,
   stdio: "pipe",
 });

@@ -1,37 +1,20 @@
-import { readFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
-import { runCommand, userPrompt } from "./util.mts";
+import { join } from "node:path";
+import {
+  getPackagesDetails,
+  ROOT_DIR,
+  runCommand,
+  userPrompt,
+} from "./util.mts";
 
-const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-
-function getPackageDetails(packagePath: string) {
-  const packageJson = JSON.parse(
-    readFileSync(
-      join(ROOT_DIR, "packages", packagePath, "package.json"),
-      "utf-8"
-    )
-  );
-  return {
-    name: packageJson.name as string,
-    version: packageJson.version as string,
-  };
-}
-
-// Make sure all versions are the same
-const { version: sharedVersion, name: sharedName } =
-  getPackageDetails("shared");
-const { version: reactVersion, name: reactName } = getPackageDetails("react");
-const { version: compilerVersion, name: compilerName } =
-  getPackageDetails("compiler");
-
-if (sharedVersion !== reactVersion || sharedVersion !== compilerVersion) {
-  throw new Error(
-    `Versions do not match: shared=${sharedVersion}, react=${reactVersion}, compiler=${compilerVersion}`
-  );
-}
+// Validate versions
+import "./versionCheck.mts";
 
 // Confirm the version we want to publish
+const {
+  shared: { version: sharedVersion, name: sharedName },
+  react: { name: reactName },
+  compiler: { name: compilerName },
+} = getPackagesDetails();
 const response = await userPrompt(
   `Publish version ${sharedVersion} of:\n - ${sharedName}\n - ${reactName}\n - ${compilerName}\n? (y/N)`
 );

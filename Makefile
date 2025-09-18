@@ -63,6 +63,9 @@ verify-api-docs: build-api-docs
 		exit 1; \
 	fi
 
+verify-package-versions:
+	@set -e; trap 'exit 130' INT TERM; exec node --experimental-strip-types scripts/versionCheck.mts
+
 publish:
 	@set -e; trap 'exit 130' INT TERM; exec node --experimental-strip-types scripts/publish.mts
 
