@@ -7,8 +7,9 @@ import {
   useState,
 } from "react";
 
+// eslint-disable-next-line fast-import/no-restricted-imports
+import { ExpandableTreeTopper as DefaultExpandableTreeTopper } from "../../ExpandableTreeTopper/ExpandableTreeTopper.tsx";
 import { TreeDataContext, useOpenNodeByHash, useTreeData } from "../state.ts";
-import styles from "../styles.module.css";
 import type { ExpandableSectionProps } from "../types.ts";
 
 function HashChangeManager({ children }: PropsWithChildren) {
@@ -40,6 +41,7 @@ function HashChangeManager({ children }: PropsWithChildren) {
 
 export function ExpandableSectionContents({
   children,
+  ExpandableTreeTopper = DefaultExpandableTreeTopper,
 }: ExpandableSectionProps) {
   const { treeData, entries } = useTreeData(children);
   const [openNodes, setOpenNodes] = useState(
@@ -77,9 +79,7 @@ export function ExpandableSectionContents({
       }}
     >
       <HashChangeManager>
-        <div className={styles.treeTopper}>
-          <div className={styles.treeTopperDot}></div>
-        </div>
+        <ExpandableTreeTopper />
         {entries}
       </HashChangeManager>
     </TreeDataContext.Provider>

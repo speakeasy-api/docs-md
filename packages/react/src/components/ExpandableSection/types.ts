@@ -6,6 +6,7 @@ import type { FC, PropsWithChildren } from "react";
 
 import type { ConnectingCellProps } from "../ConnectingCell/types.ts";
 import type { ExpandableCellProps } from "../ExpandableCell/types.ts";
+import type { ExpandableTreeTopperProps } from "../ExpandableTreeTopper/types.ts";
 import type { NonExpandableCellProps } from "../NonExpandableCell/types.ts";
 import type { PillProps } from "../Pill/types.ts";
 
@@ -147,7 +148,16 @@ export type RowProps = PropsWithChildren<{
   expandByDefault: boolean;
 }>;
 
-export type ExpandableSectionProps = PropsWithChildren;
+export type ExpandableSectionProps = PropsWithChildren<{
+  /**
+   * The component to use for rendering the tree top decoration, and defaults to
+   * ExpandableTreeTopper. If you override the default ExpandableTreeTopper
+   * implementation, then pass your custom implementation in here too.
+   * Otherwise, the default ExpandableTreeTopper implementation will be used
+   * internally.
+   */
+  ExpandableTreeTopper?: FC<ExpandableTreeTopperProps>;
+}>;
 
 export type ExpandablePropertyProps = RowProps & {
   /**
