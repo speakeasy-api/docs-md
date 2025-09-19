@@ -309,6 +309,94 @@ function createDefaultValue(schema: SchemaValue, renderer: Renderer) {
 
 /* ---- Section Rendering ---- */
 
+function createExpandableProperty(
+  renderer: Renderer,
+  property: {
+    name: string;
+    isRequired: boolean;
+    isDeprecated: boolean;
+    schema: SchemaValue;
+  },
+  typeInfo: DisplayTypeInfo
+) {
+  const isTopLevel = renderer.getCurrentContextType() !== "schema";
+  const annotations: PropertyAnnotations[] = [];
+  if (property.isRequired) {
+    annotations.push({ title: "required", variant: "warning" });
+  }
+  if (property.isDeprecated) {
+    annotations.push({ title: "deprecated", variant: "warning" });
+  }
+  switch (property.schema.type) {
+    case "array": {
+      if (property.schema.minItems !== null) {
+        annotations.push({
+          title: `Min Items: ${property.schema.minItems}`,
+          variant: "warning",
+        });
+      }
+      if (property.schema.maxItems !== null) {
+        annotations.push({
+          title: `Max Items: ${property.schema.maxItems}`,
+          variant: "warning",
+        });
+      }
+      break;
+    }
+    case "integer":
+    case "number":
+    case "int32":
+    case "float32":
+    case "decimal":
+    case "bigint": {
+      if (property.schema.minimum !== null) {
+        annotations.push({
+          title: `Min: ${property.schema.minimum}`,
+          variant: "warning",
+        });
+      }
+      if (property.schema.maximum !== null) {
+        annotations.push({
+          title: `Max: ${property.schema.maximum}`,
+          variant: "warning",
+        });
+      }
+      break;
+    }
+    case "string": {
+      if (property.schema.minLength !== null) {
+        annotations.push({
+          title: `Min Length: ${property.schema.minLength}`,
+          variant: "warning",
+        });
+      }
+      if (property.schema.maxLength !== null) {
+        annotations.push({
+          title: `Max Length: ${property.schema.maxLength}`,
+          variant: "warning",
+        });
+      }
+      if (property.schema.pattern !== null) {
+        annotations.push({
+          title: `Pattern: ${property.schema.pattern}`,
+          variant: "warning",
+        });
+      }
+      break;
+    }
+  }
+  renderer.createExpandableProperty({
+    typeInfo,
+    annotations,
+    rawTitle: property.name,
+    isTopLevel,
+    hasFrontMatter: hasSchemaFrontmatter(property.schema),
+    createDescription: createDescription(property.schema, renderer),
+    createExamples: createExamples(property.schema, renderer),
+    createDefaultValue: createDefaultValue(property.schema, renderer),
+  });
+}
+
 function renderObjectProperties({
   renderer,
   schema,
@@ -316,8 +404,6 @@ function renderObjectProperties({
   renderer: Renderer;
   schema: ObjectValue;
 }) {
-  const isTopLevel = renderer.getCurrentContextType() !== "schema";
-
   const properties = Object.entries(schema.properties).map(
     ([name, propertySchema]) => {
       if (propertySchema.type === "chunk") {
@@ -341,103 +427,48 @@ function renderObjectProperties({
       continue;
     }
 
-    // Check if we're too deeply nested to render this inline
-    if (shouldRenderInEmbed(renderer)) {
-      // TODO
-      continue;
-    }
-
     renderer.enterContext({ id: property.name, type: "schema" });
 
-    // Render the expandable entry
+    // Render the expandable entry in the main document
     const typeInfo = getDisplayTypeInfo(property.schema, renderer, []);
-    const annotations: PropertyAnnotations[] = [];
-    if (property.isRequired) {
-      annotations.push({ title: "required", variant: "warning" });
-    }
-    if (property.isDeprecated) {
-      annotations.push({ title: "deprecated", variant: "warning" });
-    }
-    switch (property.schema.type) {
-      case "array": {
-        if (property.schema.minItems !== null) {
-          annotations.push({
-            title: `Min Items: ${property.schema.minItems}`,
-            variant: "warning",
-          });
-        }
-        if (property.schema.maxItems !== null) {
-          annotations.push({
-            title: `Max Items: ${property.schema.maxItems}`,
-            variant: "warning",
-          });
-        }
-        break;
-      }
-      case "integer":
-      case "number":
-      case "int32":
-      case "float32":
-      case "decimal":
-      case "bigint": {
-        if (property.schema.minimum !== null) {
-          annotations.push({
-            title: `Min: ${property.schema.minimum}`,
-            variant: "warning",
-          });
-        }
-        if (property.schema.maximum !== null) {
-          annotations.push({
-            title: `Max: ${property.schema.maximum}`,
-            variant: "warning",
-          });
-        }
-        break;
-      }
-      case "string": {
-        if (property.schema.minLength !== null) {
-          annotations.push({
-            title: `Min Length: ${property.schema.minLength}`,
-            variant: "warning",
-          });
-        }
-        if (property.schema.maxLength !== null) {
-          annotations.push({
-            title: `Max Length: ${property.schema.maxLength}`,
-            variant: "warning",
-          });
-        }
-        if (property.schema.pattern !== null) {
-          annotations.push({
-            title: `Pattern: ${property.schema.pattern}`,
-            variant: "warning",
-          });
-        }
-        break;
-      }
-    }
-    renderer.createExpandableProperty({
-      typeInfo,
-      annotations,
-      rawTitle: property.name,
-      isTopLevel,
-      hasFrontMatter: hasSchemaFrontmatter(property.schema),
-      createDescription: createDescription(property.schema, renderer),
-      createExamples: createExamples(property.schema, renderer),
-      createDefaultValue: createDefaultValue(property.schema, renderer),
-    });
+    createExpandableProperty(renderer, property, typeInfo);
 
-    // Render breakouts, which will be separate expandable entries
-    renderBreakouts({
-      renderer,
-      schema: property.schema,
-    });
+    // Check if we're too deeply nested to render this inline, but have more
+    // breakouts to render at a deeper level
+    if (shouldRenderInEmbed(renderer) && typeInfo.breakoutSubTypes.size > 0) {
+      const embedRenderer = renderer.createEmbed(property.name);
+
+      // No embed renderer means we've already rendered this embed
+      if (!embedRenderer) {
+        continue;
+      }
+
+      // Enter first an embed context, then a schema context
+      embedRenderer.enterContext({
+        id: `embed-${property.name}`,
+        type: "embed",
+      });
+      embedRenderer.enterContext({ id: property.name, type: "schema" });
+
+      // Re-render the property in the embed document
+      createExpandableProperty(embedRenderer, property, typeInfo);
+
+      // Exit the schema and embed contexts
+      embedRenderer.exitContext();
+      embedRenderer.exitContext();
+    } else {
+      // Render breakouts, which will be separate expandable entries
+      renderBreakouts({
+        renderer,
+        schema: property.schema,
+      });
+    }
 
     renderer.exitContext();
   }
 }
 
-function renderBreakoutEntryFrontmatter(
+function createExpandableBreakout(
   renderer: Renderer,
   breakout: {
     label: string;
@@ -552,8 +583,8 @@ function renderBreakoutEntries({
 
     renderer.enterContext({ id: breakout.label, type: "schema" });
 
-    // Render the breakout entry frontmatter in the main document
-    renderBreakoutEntryFrontmatter(renderer, breakout);
+    // Render the breakout entry in the main document
+    createExpandableBreakout(renderer, breakout);
 
     // Check if we're too deeply nested to render this inline, but have more
     // properties to render at a deeper level
@@ -575,8 +606,8 @@ function renderBreakoutEntries({
       });
       embedRenderer.enterContext({ id: breakout.label, type: "schema" });
 
-      // Re-render the frontmatter in the embed document
-      renderBreakoutEntryFrontmatter(embedRenderer, breakout);
+      // Re-render the breakout in the embed document
+      createExpandableBreakout(embedRenderer, breakout);
 
       // Render the breakout properties in the embed document
       renderObjectProperties({
