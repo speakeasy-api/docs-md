@@ -41,7 +41,7 @@ export function ExpandableCell({
           <ExpandableCellIcon
             className={styles.expandableChevron}
             style={{
-              transform: isOpen ? "rotate(0deg)" : "rotate(180deg)",
+              transform: isOpen ? "rotate(0deg)" : "rotate(-90deg)",
             }}
           />
         </button>
