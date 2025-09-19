@@ -223,6 +223,17 @@ function hasSchemaFrontmatter(schema: SchemaValue) {
   );
 }
 
+function shouldRenderInEmbed(renderer: Renderer) {
+  const { maxNestingLevel } = getSettings().display;
+  if (
+    maxNestingLevel !== undefined &&
+    renderer.getSchemaDepth() > maxNestingLevel
+  ) {
+    return true;
+  }
+  return false;
+}
+
 /* ---- Front matter rendering */
 
 function createDescription(schema: SchemaValue, renderer: Renderer) {
@@ -306,6 +317,7 @@ function renderObjectProperties({
   schema: ObjectValue;
 }) {
   const isTopLevel = renderer.getCurrentContextType() !== "schema";
+
   const properties = Object.entries(schema.properties).map(
     ([name, propertySchema]) => {
       if (propertySchema.type === "chunk") {
@@ -328,6 +340,13 @@ function renderObjectProperties({
       // TODO: handle this recursive case better
       continue;
     }
+
+    // Check if we're too deeply nested to render this inline
+    if (shouldRenderInEmbed(renderer)) {
+      // TODO
+      continue;
+    }
+
     renderer.enterContext({ id: property.name, type: "schema" });
 
     // Render the expandable entry
@@ -418,7 +437,7 @@ function renderObjectProperties({
   }
 }
 
-function renderContainerTypes({
+function renderBreakoutEntries({
   renderer,
   typeInfo,
 }: {
@@ -426,6 +445,7 @@ function renderContainerTypes({
   typeInfo: DisplayTypeInfo;
 }) {
   const isTopLevel = renderer.getCurrentContextType() !== "schema";
+
   const entries = Array.from(typeInfo.breakoutSubTypes.entries()).map(
     ([label, schema]) => {
       // Shouldn't be possible due to how type info is computed
@@ -441,9 +461,16 @@ function renderContainerTypes({
 
   for (const breakout of entries) {
     if (renderer.alreadyInContext(breakout.label)) {
-      // TODO: handle this better
+      // TODO: handle this recursive case better
       continue;
     }
+
+    // Check if we're too deeply nested to render this inline
+    if (shouldRenderInEmbed(renderer)) {
+      // TODO
+      continue;
+    }
+
     renderer.enterContext({ id: breakout.label, type: "schema" });
 
     const { showDebugPlaceholders } = getSettings().display;
@@ -556,7 +583,7 @@ export function renderBreakouts({
   }
   // Otherwise check if we have any breakouts to render
   else if (typeInfo.breakoutSubTypes.size > 0) {
-    renderContainerTypes({
+    renderBreakoutEntries({
       renderer,
       typeInfo,
     });
