@@ -45,8 +45,11 @@ export type SiteCreatePageArgs = [
   frontMatter?: PageFrontMatter,
 ];
 export type SiteCreateEmbedArgs = [
-  slug: string,
-  cb: (renderer: Renderer) => void,
+  options: {
+    slug: string;
+    triggerTitle: string;
+    createdEmbeddedContent: (renderer: Renderer) => void;
+  },
 ];
 export type SiteBuildPagePathArgs = [
   slug: string,
@@ -58,7 +61,7 @@ export type SiteGetRendererArgs = [args: RendererConstructorArgs];
 export abstract class Site {
   abstract setDocsData(docsData: Map<string, Chunk>): void;
   abstract createPage(...args: SiteCreatePageArgs): Renderer;
-  abstract createEmbed(...args: SiteCreateEmbedArgs): void;
+  abstract createEmbed(...args: SiteCreateEmbedArgs): string;
   abstract buildPagePath(...args: SiteBuildPagePathArgs): string;
   abstract buildEmbedPath(...args: SiteBuildEmbedPathArgs): string;
   protected abstract getRenderer(...args: SiteGetRendererArgs): Renderer;
@@ -180,6 +183,14 @@ export type RendererCreateDebugPlaceholderArgs = [
   },
 ];
 
+export type RendererCreateEmbedArgs = [
+  options: {
+    slug: string;
+    triggerTitle: string;
+    createdEmbeddedContent: (renderer: Renderer) => void;
+  },
+];
+
 // Low level operations
 
 type LowLevelBaseOptions = {
@@ -263,7 +274,7 @@ export abstract class Renderer {
   // Metadata is undefined for embeds, since they're not full pages
   abstract render(): { contents: string; metadata?: PageMetadata };
   abstract getPagePath(): string;
-  abstract createEmbed(...args: SiteCreateEmbedArgs): void;
+  abstract createEmbed(...args: RendererCreateEmbedArgs): void;
 
   // High level operations
 

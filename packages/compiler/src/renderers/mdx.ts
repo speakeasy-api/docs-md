@@ -1,3 +1,5 @@
+import { dirname, relative } from "node:path";
+
 import type {
   CodeSampleProps,
   DebugPlaceholderProps,
@@ -44,6 +46,7 @@ import type {
   RendererCreateCodeArgs,
   RendererCreateCodeSamplesSectionArgs,
   RendererCreateDebugPlaceholderArgs,
+  RendererCreateEmbedArgs,
   RendererCreateExpandableBreakoutArgs,
   RendererCreateExpandablePropertyArgs,
   RendererCreateFrontMatterDisplayTypeArgs,
@@ -87,15 +90,18 @@ export class MdxSite extends MarkdownSite {
     return new MdxRenderer({ ...options }, this);
   }
 
-  public override createEmbed(...[slug, cb]: SiteCreateEmbedArgs) {
+  public override createEmbed(
+    ...[{ slug, createdEmbeddedContent }]: SiteCreateEmbedArgs
+  ) {
     if (!this.docsData) {
       throw new InternalError("Docs data not set");
     }
+    const path = this.buildEmbedPath(slug);
     if (this.#embedsCreated.has(slug)) {
-      return;
+      return path;
     }
     this.#embedsCreated.add(slug);
-    const path = this.buildEmbedPath(slug);
+
     const renderer = this.getRenderer({
       currentPageSlug: slug,
       currentPagePath: path,
@@ -109,15 +115,19 @@ export class MdxSite extends MarkdownSite {
       type: "embed",
     });
     renderer.enterContext({ id: slug, type: "schema" });
-    cb(renderer);
+
+    createdEmbeddedContent(renderer);
+
     renderer.exitContext();
     renderer.exitContext();
+
+    return path;
   }
 }
 
 class MdxRenderer extends MarkdownRenderer {
-  // Mapping of import path to imported symbols
-  #imports = new Map<string, Set<string>>();
+  // Mapping of import path to imported symbols to imported symbol alias
+  #imports = new Map<string, Map<string, string>>();
   #frontMatter: string | undefined;
   #site: MdxSite;
 
@@ -133,23 +143,41 @@ class MdxRenderer extends MarkdownRenderer {
 
   #insertNamedImport(importPath: string, symbol: string) {
     if (!this.#imports.has(importPath)) {
-      this.#imports.set(importPath, new Set());
+      this.#imports.set(importPath, new Map());
     }
-    this.#imports.get(importPath)?.add(symbol);
+    this.#imports.get(importPath)?.set(symbol, symbol);
+  }
+
+  #insertDefaultImport(importPath: string, alias: string) {
+    if (!this.#imports.has(importPath)) {
+      this.#imports.set(importPath, new Map());
+    }
+    this.#imports.get(importPath)?.set("default", alias);
   }
 
   #insertComponentImport(symbol: string) {
     this.#insertNamedImport(this.compilerConfig.componentPackageName, symbol);
   }
 
-  #createComponentOpeningTag<Props extends Record<string, unknown>>(
-    symbol: string,
-    props: Props,
-    { selfClosing }: { selfClosing: boolean }
-  ) {
-    this.#insertComponentImport(symbol);
+  #createComponentOpeningTag<Props extends Record<string, unknown>>({
+    symbol,
+    props,
+    selfClosing,
+    noImport = false,
+  }: {
+    symbol: string;
+    props?: Props;
+    selfClosing: boolean;
+    noImport?: boolean;
+  }) {
+    if (!noImport) {
+      this.#insertComponentImport(symbol);
+    }
 
     function serializeProps(separator: string) {
+      if (!props) {
+        return "";
+      }
       return Object.entries(props)
         .map(([key, value]) => {
           if (typeof value === "string") {
@@ -179,13 +207,23 @@ class MdxRenderer extends MarkdownRenderer {
   }
 
   #appendComponent<Props extends Record<string, unknown>>(
-    symbol: string,
-    props: Props,
+    {
+      symbol,
+      props,
+      noImport,
+    }: {
+      symbol: string;
+      props?: Props;
+      noImport?: boolean;
+    },
     cb?: () => void
   ) {
     this.appendLine(
-      this.#createComponentOpeningTag<Props>(symbol, props, {
+      this.#createComponentOpeningTag<Props>({
+        symbol,
+        props,
         selfClosing: !cb,
+        noImport,
       })
     );
     if (cb) {
@@ -201,14 +239,18 @@ class MdxRenderer extends MarkdownRenderer {
   ) {
     if (cb) {
       return (
-        this.#createComponentOpeningTag<Props>(symbol, props, {
+        this.#createComponentOpeningTag<Props>({
+          symbol,
+          props,
           selfClosing: false,
         }) +
         cb() +
         this.#createComponentClosingTag(symbol)
       );
     } else {
-      return this.#createComponentOpeningTag<Props>(symbol, props, {
+      return this.#createComponentOpeningTag<Props>({
+        symbol,
+        props,
         selfClosing: true,
       });
     }
@@ -218,8 +260,23 @@ class MdxRenderer extends MarkdownRenderer {
     return this.compilerConfig.elementIdSeparator ?? "+";
   }
 
-  public override createEmbed(...args: SiteCreateEmbedArgs) {
-    this.#site.createEmbed(...args);
+  public override createEmbed(...[args]: RendererCreateEmbedArgs) {
+    const absolutePath = this.#site.createEmbed(args);
+    const { triggerTitle, slug } = args;
+
+    this.#appendComponent({ symbol: "Trigger" }, () => {
+      this.appendLine(triggerTitle);
+    });
+
+    const componentName = `Embed${slug}`;
+    let importPath = relative(dirname(this.getPagePath()), absolutePath);
+
+    // When an embed imports another embed, we don't get the leading `./`
+    if (!importPath.startsWith(".")) {
+      importPath = `./${importPath}`;
+    }
+    this.#insertDefaultImport(importPath, componentName);
+    this.#appendComponent({ symbol: componentName, noImport: true });
   }
 
   public override render() {
@@ -231,7 +288,21 @@ class MdxRenderer extends MarkdownRenderer {
 
     // Add imports after front matter
     for (const [importPath, symbols] of this.#imports) {
-      frontMatter += `import {\n  ${Array.from(symbols).sort().join(",\n  ")}\n} from "${importPath}";\n`;
+      const defaultImportName = symbols.get("default");
+      const nonDefaultImports = Array.from(symbols)
+        .filter(([symbol]) => symbol !== "default")
+        .map(([symbol, alias]) =>
+          alias !== symbol ? `${alias} as ${symbol}` : symbol
+        )
+        .sort()
+        .join(",\n  ");
+      if (defaultImportName && nonDefaultImports.length > 0) {
+        frontMatter += `import ${defaultImportName}, {\n  ${nonDefaultImports}\n} from "${importPath}";\n`;
+      } else if (defaultImportName) {
+        frontMatter += `import ${defaultImportName} from "${importPath}";\n`;
+      } else {
+        frontMatter += `import {\n  ${nonDefaultImports}\n} from "${importPath}";\n`;
+      }
     }
 
     // Add a blank line after front matter, if it exists
@@ -302,31 +373,40 @@ class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createOperationSection(...args: RendererCreateOperationArgs) {
-    this.#appendComponent<OperationProps>("Operation", {}, () =>
-      super.createOperationSection(...args)
+    this.#appendComponent<OperationProps>(
+      {
+        symbol: "Operation",
+      },
+      () => super.createOperationSection(...args)
     );
   }
 
   protected override handleCreateOperationTitle(cb: () => void): void {
     this.#appendComponent<OperationTitleSectionProps>(
-      "OperationTitleSection",
-      { slot: "title" },
+      {
+        symbol: "OperationTitleSection",
+        props: { slot: "title" },
+      },
       cb
     );
   }
 
   protected override handleCreateOperationSummary(cb: () => void) {
     this.#appendComponent<OperationSummarySectionProps>(
-      "OperationSummarySection",
-      { slot: "summary" },
+      {
+        symbol: "OperationSummarySection",
+        props: { slot: "summary" },
+      },
       cb
     );
   }
 
   protected override handleCreateOperationDescription(cb: () => void) {
     this.#appendComponent<OperationDescriptionSectionProps>(
-      "OperationDescriptionSection",
-      { slot: "description" },
+      {
+        symbol: "OperationDescriptionSection",
+        props: { slot: "description" },
+      },
       cb
     );
   }
@@ -336,8 +416,10 @@ class MdxRenderer extends MarkdownRenderer {
   ) {
     this.enterContext({ id: "code-samples", type: "section" });
     this.#appendComponent<OperationCodeSamplesSectionProps>(
-      "OperationCodeSamplesSection",
-      { slot: "code-samples" },
+      {
+        symbol: "OperationCodeSamplesSection",
+        props: { slot: "code-samples" },
+      },
       () => {
         this.createTabbedSection(() => {
           this.createSectionTitle(() =>
@@ -358,9 +440,12 @@ class MdxRenderer extends MarkdownRenderer {
               );
               this.createSectionContent(
                 () => {
-                  this.#appendComponent<TryItNowProps>("TryItNow", {
-                    externalDependencies,
-                    defaultValue,
+                  this.#appendComponent<TryItNowProps>({
+                    symbol: "TryItNow",
+                    props: {
+                      externalDependencies,
+                      defaultValue,
+                    },
                   });
                 },
                 {
@@ -377,12 +462,16 @@ class MdxRenderer extends MarkdownRenderer {
               );
               this.createSectionContent(
                 () => {
-                  this.#appendComponent<CodeSampleProps>("CodeSample", {}, () =>
-                    this.createCode(value, {
-                      language,
-                      variant: "default",
-                      style: "block",
-                    })
+                  this.#appendComponent<CodeSampleProps>(
+                    {
+                      symbol: "CodeSample",
+                    },
+                    () =>
+                      this.createCode(value, {
+                        language,
+                        variant: "default",
+                        style: "block",
+                      })
                   );
                 },
                 {
@@ -402,8 +491,10 @@ class MdxRenderer extends MarkdownRenderer {
     ...args: RendererCreateSecuritySectionArgs
   ) {
     this.#appendComponent<OperationSecuritySectionProps>(
-      "OperationSecuritySection",
-      { slot: "security" },
+      {
+        symbol: "OperationSecuritySection",
+        props: { slot: "security" },
+      },
       () => super.createSecuritySection(...args)
     );
   }
@@ -412,8 +503,10 @@ class MdxRenderer extends MarkdownRenderer {
     ...args: RendererCreateParametersSectionArgs
   ) {
     this.#appendComponent<OperationParametersSectionProps>(
-      "OperationParametersSection",
-      { slot: "parameters" },
+      {
+        symbol: "OperationParametersSection",
+        props: { slot: "parameters" },
+      },
       () => super.createParametersSection(...args)
     );
   }
@@ -422,78 +515,109 @@ class MdxRenderer extends MarkdownRenderer {
     ...args: RendererCreateRequestSectionArgs
   ) {
     this.#appendComponent<OperationRequestBodySectionProps>(
-      "OperationRequestBodySection",
-      { slot: "request-body" },
+      {
+        symbol: "OperationRequestBodySection",
+        props: { slot: "request-body" },
+      },
       () => super.createRequestSection(...args)
     );
   }
 
   public override createResponsesSection(...args: RendererCreateResponsesArgs) {
     this.#appendComponent<OperationResponseBodySectionProps>(
-      "OperationResponseBodySection",
-      { slot: "response-body" },
+      {
+        symbol: "OperationResponseBodySection",
+        props: { slot: "response-body" },
+      },
       () => super.createResponsesSection(...args)
     );
   }
 
   protected override handleCreateRequestDisplayType(cb: () => void) {
     this.#appendComponent<OperationRequestBodyDisplayTypeSectionProps>(
-      "OperationRequestBodyDisplayTypeSection",
-      { slot: "request-body-display-type" },
+      {
+        symbol: "OperationRequestBodyDisplayTypeSection",
+        props: { slot: "request-body-display-type" },
+      },
       cb
     );
   }
 
   protected override handleCreateRequestDescription(cb: () => void) {
     this.#appendComponent<OperationRequestBodyDescriptionSectionProps>(
-      "OperationRequestBodyDescriptionSection",
-      { slot: "request-body-description" },
+      {
+        symbol: "OperationRequestBodyDescriptionSection",
+        props: { slot: "request-body-description" },
+      },
       cb
     );
   }
 
   protected override handleCreateRequestExamples(cb: () => void) {
     this.#appendComponent<OperationRequestBodyExamplesSectionProps>(
-      "OperationRequestBodyExamplesSection",
-      { slot: "request-body-examples" },
+      {
+        symbol: "OperationRequestBodyExamplesSection",
+        props: { slot: "request-body-examples" },
+      },
       cb
     );
   }
 
   protected override handleCreateResponseDisplayType(cb: () => void) {
     this.#appendComponent<OperationResponseBodyDisplayTypeSectionProps>(
-      "OperationResponseBodyDisplayTypeSection",
-      { slot: "response-body-display-type" },
+      {
+        symbol: "OperationResponseBodyDisplayTypeSection",
+        props: { slot: "response-body-display-type" },
+      },
       cb
     );
   }
 
   protected override handleCreateResponseDescription(cb: () => void) {
     this.#appendComponent<OperationResponseBodyDescriptionSectionProps>(
-      "OperationResponseBodyDescriptionSection",
-      { slot: "response-body-description" },
+      {
+        symbol: "OperationResponseBodyDescriptionSection",
+        props: { slot: "response-body-description" },
+      },
       cb
     );
   }
 
   protected override handleCreateResponseExamples(cb: () => void) {
     this.#appendComponent<OperationResponseBodyExamplesSectionProps>(
-      "OperationResponseBodyExamplesSection",
-      { slot: "response-body-examples" },
+      {
+        symbol: "OperationResponseBodyExamplesSection",
+        props: { slot: "response-body-examples" },
+      },
       cb
     );
   }
 
   protected override handleCreateSecurity(cb: () => void) {
-    this.#appendComponent<ExpandableSectionProps>("ExpandableSection", {}, cb);
+    this.#appendComponent<ExpandableSectionProps>(
+      {
+        symbol: "ExpandableSection",
+      },
+      cb
+    );
   }
 
   protected override handleCreateParameters(cb: () => void) {
-    this.#appendComponent<ExpandableSectionProps>("ExpandableSection", {}, cb);
+    this.#appendComponent<ExpandableSectionProps>(
+      {
+        symbol: "ExpandableSection",
+      },
+      cb
+    );
   }
 
   protected override handleCreateBreakouts(cb: () => void) {
-    this.#appendComponent<ExpandableSectionProps>("ExpandableSection", {}, cb);
+    this.#appendComponent<ExpandableSectionProps>(
+      {
+        symbol: "ExpandableSection",
+      },
+      cb
+    );
   }
 
   #getBreakoutIdInfo() {
@@ -521,42 +645,52 @@ class MdxRenderer extends MarkdownRenderer {
     const expandByDefault =
       getSettings().display.expandTopLevelPropertiesOnPageLoad && isTopLevel;
     this.#appendComponent<ExpandableBreakoutProps>(
-      "ExpandableBreakout",
       {
-        slot: "entry",
-        id,
-        headingId: this.getCurrentId(),
-        parentId,
-        hasFrontMatter,
-        expandByDefault,
+        symbol: "ExpandableBreakout",
+        props: {
+          slot: "entry",
+          id,
+          headingId: this.getCurrentId(),
+          parentId,
+          hasFrontMatter,
+          expandByDefault,
+        },
       },
       () => {
         this.#appendComponent<ExpandableBreakoutTitleProps>(
-          "ExpandableBreakoutTitle",
-          { slot: "title" },
+          {
+            symbol: "ExpandableBreakoutTitle",
+            props: { slot: "title" },
+          },
           createTitle
         );
 
         if (createDescription) {
           this.#appendComponent<ExpandableBreakoutDescriptionProps>(
-            "ExpandableBreakoutDescription",
-            { slot: "description" },
+            {
+              symbol: "ExpandableBreakoutDescription",
+              props: { slot: "description" },
+            },
             createDescription
           );
         }
 
         if (createExamples) {
           this.#appendComponent<ExpandableBreakoutExamplesProps>(
-            "ExpandableBreakoutExamples",
-            { slot: "examples" },
+            {
+              symbol: "ExpandableBreakoutExamples",
+              props: { slot: "examples" },
+            },
             createExamples
           );
         }
 
         if (createDefaultValue) {
           this.#appendComponent<ExpandableBreakoutDefaultValueProps>(
-            "ExpandableBreakoutDefaultValue",
-            { slot: "defaultValue" },
+            {
+              symbol: "ExpandableBreakoutDefaultValue",
+              props: { slot: "defaultValue" },
+            },
             createDefaultValue
           );
         }
@@ -583,21 +717,25 @@ class MdxRenderer extends MarkdownRenderer {
       getSettings().display.expandTopLevelPropertiesOnPageLoad && isTopLevel;
 
     this.#appendComponent<ExpandablePropertyProps>(
-      "ExpandableProperty",
       {
-        slot: "entry",
-        id,
-        headingId: this.getCurrentId(),
-        parentId,
-        typeInfo,
-        typeAnnotations: annotations,
-        hasFrontMatter,
-        expandByDefault,
+        symbol: "ExpandableProperty",
+        props: {
+          slot: "entry",
+          id,
+          headingId: this.getCurrentId(),
+          parentId,
+          typeInfo,
+          typeAnnotations: annotations,
+          hasFrontMatter,
+          expandByDefault,
+        },
       },
       () => {
         this.#appendComponent<ExpandablePropertyTitleProps>(
-          "ExpandablePropertyTitle",
-          { slot: "title" },
+          {
+            symbol: "ExpandablePropertyTitle",
+            props: { slot: "title" },
+          },
           () => {
             this.createHeading(HEADINGS.PROPERTY_HEADING_LEVEL, rawTitle, {
               id: this.getCurrentId(),
@@ -608,24 +746,30 @@ class MdxRenderer extends MarkdownRenderer {
 
         if (createDescription) {
           this.#appendComponent<ExpandablePropertyDescriptionProps>(
-            "ExpandablePropertyDescription",
-            { slot: "description" },
+            {
+              symbol: "ExpandablePropertyDescription",
+              props: { slot: "description" },
+            },
             createDescription
           );
         }
 
         if (createExamples) {
           this.#appendComponent<ExpandablePropertyExamplesProps>(
-            "ExpandablePropertyExamples",
-            { slot: "examples" },
+            {
+              symbol: "ExpandablePropertyExamples",
+              props: { slot: "examples" },
+            },
             createExamples
           );
         }
 
         if (createDefaultValue) {
           this.#appendComponent<ExpandablePropertyDefaultValueProps>(
-            "ExpandablePropertyDefaultValue",
-            { slot: "defaultValue" },
+            {
+              symbol: "ExpandablePropertyDefaultValue",
+              props: { slot: "defaultValue" },
+            },
             createDefaultValue
           );
         }
@@ -636,20 +780,28 @@ class MdxRenderer extends MarkdownRenderer {
   public override createFrontMatterDisplayType(
     ...[{ typeInfo }]: RendererCreateFrontMatterDisplayTypeArgs
   ) {
-    this.#appendComponent<FrontMatterDisplayTypeProps>(
-      "FrontMatterDisplayType",
-      { typeInfo }
-    );
+    this.#appendComponent<FrontMatterDisplayTypeProps>({
+      symbol: "FrontMatterDisplayType",
+      props: { typeInfo },
+      noImport: true,
+    });
   }
 
   public override createSection(...[cb]: RendererCreateSectionArgs) {
-    this.#appendComponent<SectionProps>("Section", {}, cb);
+    this.#appendComponent<SectionProps>(
+      {
+        symbol: "Section",
+      },
+      cb
+    );
   }
 
   public override createSectionTitle(...[cb]: RendererCreateSectionTitleArgs) {
     this.#appendComponent<SectionTitleProps>(
-      "SectionTitle",
-      { slot: "title" },
+      {
+        symbol: "SectionTitle",
+        props: { slot: "title" },
+      },
       cb
     );
   }
@@ -658,8 +810,10 @@ class MdxRenderer extends MarkdownRenderer {
     ...[cb, { id } = {}]: RendererCreateSectionContentArgs
   ) {
     this.#appendComponent<SectionContentProps>(
-      "SectionContent",
-      { slot: "content", id },
+      {
+        symbol: "SectionContent",
+        props: { slot: "content", id },
+      },
       cb
     );
   }
@@ -670,8 +824,9 @@ class MdxRenderer extends MarkdownRenderer {
     // We have to do a manual Omit here, since TabbedSectionProps.children is
     // specially defined and not a standard PropsWithChildren type
     this.#appendComponent<Omit<TabbedSectionProps, "children">>(
-      "TabbedSection",
-      {},
+      {
+        symbol: "TabbedSection",
+      },
       cb
     );
   }
@@ -680,8 +835,10 @@ class MdxRenderer extends MarkdownRenderer {
     ...[cb, { id }]: RendererCreateTabbedSectionTabArgs
   ) {
     this.#appendComponent<SectionTabProps>(
-      "SectionTab",
-      { slot: "tab", id },
+      {
+        symbol: "SectionTab",
+        props: { slot: "tab", id },
+      },
       cb
     );
   }
@@ -689,10 +846,15 @@ class MdxRenderer extends MarkdownRenderer {
   public override createDebugPlaceholder(
     ...[{ createTitle, createExample }]: RendererCreateDebugPlaceholderArgs
   ) {
-    this.#appendComponent<DebugPlaceholderProps>("DebugPlaceholder", {}, () => {
-      createTitle();
-      this.createText("_OpenAPI example:_");
-      createExample();
-    });
+    this.#appendComponent<DebugPlaceholderProps>(
+      {
+        symbol: "DebugPlaceholder",
+      },
+      () => {
+        createTitle();
+        this.createText("_OpenAPI example:_");
+        createExample();
+      }
+    );
   }
 }

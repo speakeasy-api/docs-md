@@ -436,15 +436,19 @@ function renderObjectProperties({
     // Check if we're too deeply nested to render this inline, but have more
     // breakouts to render at a deeper level
     if (shouldRenderInEmbed(renderer) && typeInfo.breakoutSubTypes.size > 0) {
-      renderer.createEmbed(property.name, (embedRenderer) => {
-        // Re-render the breakout in the embed document
-        createExpandableProperty(embedRenderer, property, typeInfo);
+      renderer.createEmbed({
+        slug: property.name,
+        triggerTitle: `View ${property.name} details`,
+        createdEmbeddedContent(embedRenderer) {
+          // Re-render the breakout in the embed document
+          createExpandableProperty(embedRenderer, property, typeInfo);
 
-        // Render breakouts, which will be separate expandable entries
-        renderBreakouts({
-          renderer: embedRenderer,
-          schema: property.schema,
-        });
+          // Render breakouts, which will be separate expandable entries
+          renderBreakouts({
+            renderer: embedRenderer,
+            schema: property.schema,
+          });
+        },
       });
     } else {
       // Render breakouts, which will be separate expandable entries
@@ -582,15 +586,19 @@ function renderBreakoutEntries({
       shouldRenderInEmbed(renderer) &&
       Object.keys(breakout.schema.properties).length > 0
     ) {
-      renderer.createEmbed(breakout.label, (embedRenderer) => {
-        // Re-render the breakout in the embed document
-        createExpandableBreakout(embedRenderer, breakout);
+      renderer.createEmbed({
+        slug: breakout.label,
+        triggerTitle: `View ${breakout.label} details`,
+        createdEmbeddedContent(embedRenderer) {
+          // Re-render the breakout in the embed document
+          createExpandableBreakout(embedRenderer, breakout);
 
-        // Render the breakout properties in the embed document
-        renderObjectProperties({
-          renderer: embedRenderer,
-          schema: breakout.schema,
-        });
+          // Render the breakout properties in the embed document
+          renderObjectProperties({
+            renderer: embedRenderer,
+            schema: breakout.schema,
+          });
+        },
       });
     } else {
       // Render the breakout entries in the main document

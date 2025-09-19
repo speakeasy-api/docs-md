@@ -24,6 +24,7 @@ import type {
   RendererCreateCodeArgs,
   RendererCreateContextArgs,
   RendererCreateDebugPlaceholderArgs,
+  RendererCreateEmbedArgs,
   RendererCreateExpandableBreakoutArgs,
   RendererCreateExpandablePropertyArgs,
   RendererCreateFrontMatterDisplayTypeArgs,
@@ -88,7 +89,7 @@ export abstract class MarkdownSite extends Site {
     return renderer;
   }
 
-  public createEmbed(..._args: SiteCreateEmbedArgs) {
+  public createEmbed(..._args: SiteCreateEmbedArgs): string {
     throw new Error(`Base markdown renderer does not support createEmbed`);
   }
 }
@@ -136,7 +137,7 @@ export abstract class MarkdownRenderer extends Renderer {
     return this.#currentPagePath;
   }
 
-  public override createEmbed(..._args: SiteCreateEmbedArgs) {
+  public override createEmbed(..._args: RendererCreateEmbedArgs) {
     throw new Error(`Base markdown renderer does not support createEmbed`);
   }
 
