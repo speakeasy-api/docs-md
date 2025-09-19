@@ -42,7 +42,7 @@ import type {
 } from "@speakeasy-api/docs-md-react";
 
 import { HEADINGS } from "../content/constants.ts";
-import { getSettings } from "../settings.ts";
+import { getOnPageComplete, getSettings } from "../settings.ts";
 import { InternalError } from "../util/internalError.ts";
 import type {
   RendererConstructorArgs,
@@ -96,6 +96,9 @@ export class MdxSite extends MarkdownSite {
   public override createEmbed(
     ...[{ slug, createdEmbeddedContent }]: SiteCreateEmbedArgs
   ) {
+    if (!slug) {
+      throw new InternalError("Embed slug not provided");
+    }
     if (!this.docsData) {
       throw new InternalError("Docs data not set");
     }
@@ -123,6 +126,9 @@ export class MdxSite extends MarkdownSite {
 
     renderer.exitContext();
     renderer.exitContext();
+
+    const { contents } = renderer.render();
+    getOnPageComplete()(path, contents);
 
     return path;
   }
