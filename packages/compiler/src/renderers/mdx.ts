@@ -264,19 +264,29 @@ class MdxRenderer extends MarkdownRenderer {
     const absolutePath = this.#site.createEmbed(args);
     const { triggerTitle, slug } = args;
 
-    this.#appendComponent({ symbol: "Trigger" }, () => {
-      this.appendLine(triggerTitle);
+    this.#appendComponent({ symbol: "Embed" }, () => {
+      this.#appendComponent(
+        { symbol: "EmbedTrigger", props: { slot: "trigger" } },
+        () => {
+          this.appendLine(triggerTitle);
+        }
+      );
+
+      const componentName = `Embed${slug}`;
+      let importPath = relative(dirname(this.getPagePath()), absolutePath);
+
+      // When an embed imports another embed, we don't get the leading `./`
+      if (!importPath.startsWith(".")) {
+        importPath = `./${importPath}`;
+      }
+      this.#insertDefaultImport(importPath, componentName);
+      this.#appendComponent(
+        { symbol: "EmbedTriggerContents", props: { slot: "trigger-contents" } },
+        () => {
+          this.#appendComponent({ symbol: componentName, noImport: true });
+        }
+      );
     });
-
-    const componentName = `Embed${slug}`;
-    let importPath = relative(dirname(this.getPagePath()), absolutePath);
-
-    // When an embed imports another embed, we don't get the leading `./`
-    if (!importPath.startsWith(".")) {
-      importPath = `./${importPath}`;
-    }
-    this.#insertDefaultImport(importPath, componentName);
-    this.#appendComponent({ symbol: componentName, noImport: true });
   }
 
   public override render() {
