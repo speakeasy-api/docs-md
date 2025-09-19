@@ -36,6 +36,7 @@ export const settingsSchema = z.strictObject({
   spec: z.string(),
   output: z.strictObject({
     pageOutDir: z.string(),
+    embedoutDir: z.string().optional(),
     framework: z.enum(["docusaurus", "nextra"]).or(
       // This type MUST be kept in sync with src/types/compilerConfig.ts
       z.object({
@@ -58,6 +59,7 @@ export const settingsSchema = z.strictObject({
         .default("explicit"),
       showDebugPlaceholders: z.boolean().default(false),
       expandTopLevelPropertiesOnPageLoad: z.boolean().default(true),
+      maxNestingLevel: z.number().optional(),
     })
     .default({
       visibleResponses: "explicit",

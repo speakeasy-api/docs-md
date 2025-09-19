@@ -16,7 +16,9 @@ export function info(message: string) {
 
 export function error(message: string, err?: unknown) {
   console.error(chalk.red(message));
-  console.error(err);
+  if (err) {
+    console.error(err);
+  }
 }
 
 export function warn(message: string) {
