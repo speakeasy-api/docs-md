@@ -1,0 +1,49 @@
+{
+  "name": "glean-docusaurus",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "dev": "rm -rf .docusaurus node_modules/.cache && docusaurus start --no-open -p 3008",
+    "start": "http-server build",
+    "build-api-docs": "docs-md",
+    "clean": "rm -rf .docusaurus node_modules/.cache build",
+    "prebuild": "cd ../../../ && make build-packages",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@codesandbox/sandpack-client": "^2.19.8",
+    "@codesandbox/sandpack-react": "^2.20.0",
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/preset-classic": "^3.7.0",
+    "@speakeasy-api/docs-md": "*",
+    "@speakeasy-api/docs-md-react": "*",
+    "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "^3.7.0",
+    "@docusaurus/tsconfig": "^3.7.0",
+    "@docusaurus/types": "^3.7.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0"
+  }
+}
