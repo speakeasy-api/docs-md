@@ -9,7 +9,7 @@ import type { FrameworkConfig } from "../compiler.ts";
 import type { DocsCodeSnippets } from "../data/generateCodeSnippets.ts";
 import { debug } from "../logging.ts";
 import type { Site } from "../renderers/base.ts";
-import { getSettings } from "../settings.ts";
+import { getOnPageComplete, getSettings } from "../settings.ts";
 import { InternalError } from "../util/internalError.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderGlobalSecurity } from "./chunks/globalSecurity.ts";
@@ -145,8 +145,7 @@ function renderPages(
   site: Site,
   frameworkConfig: FrameworkConfig,
   pageMap: PageMap,
-  docsCodeSnippets: DocsCodeSnippets,
-  onPageComplete: (pagePath: string, pageContents: string) => void
+  docsCodeSnippets: DocsCodeSnippets
 ) {
   const pageMetadata: PageMetadata[] = [];
   for (const [currentPagePath, pageMapEntry] of pageMap) {
@@ -225,7 +224,7 @@ function renderPages(
     if (metadata) {
       pageMetadata.push(metadata);
     }
-    onPageComplete(currentPagePath, contents);
+    getOnPageComplete()(currentPagePath, contents);
   }
   frameworkConfig.postProcess?.(pageMetadata);
 }
@@ -234,9 +233,8 @@ export function renderContent(
   site: Site,
   frameworkConfig: FrameworkConfig,
   data: Data,
-  docsCodeSnippets: DocsCodeSnippets,
-  onPageComplete: (pagePath: string, pageContents: string) => void
+  docsCodeSnippets: DocsCodeSnippets
 ) {
   const pageMap = getPageMap(site, data);
-  renderPages(site, frameworkConfig, pageMap, docsCodeSnippets, onPageComplete);
+  renderPages(site, frameworkConfig, pageMap, docsCodeSnippets);
 }

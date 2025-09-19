@@ -12,6 +12,7 @@ export type PageFrontMatter = {
 type BaseFrameworkConfig = {
   rendererType: string;
   buildPagePath: (...args: SiteBuildPagePathArgs) => string;
+  buildEmbedPath?: (...args: SiteBuildPagePathArgs) => string;
   buildPagePreamble: (frontMatter: PageFrontMatter) => string;
   postProcess?: (pageMetadata: PageMetadata[]) => void;
   formatHeadingId?: (id: string) => string;

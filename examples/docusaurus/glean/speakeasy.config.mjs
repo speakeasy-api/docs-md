@@ -2,7 +2,7 @@ export default {
   spec: "../../specs/glean.yaml",
   output: {
     pageOutDir: "./docs/api",
-    embedoutDir: "./src/components/speakeasy-embeds",
+    embedOutDir: "./src/components/speakeasy-embeds",
     framework: "docusaurus",
   },
   display: {

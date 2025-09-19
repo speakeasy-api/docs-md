@@ -3,7 +3,8 @@ import { join, resolve } from "node:path";
 
 import { escapeText } from "../../renderers/util.ts";
 import { getSettings } from "../../settings.ts";
-import type { FrameworkConfig } from "../../types/compilerConfig.ts";
+import type { FrameworkConfig } from "../../types/FrameworkConfig.ts";
+import { InternalError } from "../../util/internalError.ts";
 
 export const docusaurusConfig: FrameworkConfig = {
   rendererType: "mdx",
@@ -15,6 +16,14 @@ export const docusaurusConfig: FrameworkConfig = {
       slug += "/index";
     }
     return resolve(join(settings.output.pageOutDir, `${slug}.mdx`));
+  },
+
+  buildEmbedPath(slug) {
+    const settings = getSettings();
+    if (!settings.output.embedOutDir) {
+      throw new InternalError("Embed output directory not set");
+    }
+    return resolve(join(settings.output.embedOutDir, `${slug}.mdx`));
   },
 
   buildPagePreamble(frontMatter) {

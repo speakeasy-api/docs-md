@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-import type { FrameworkConfig } from "./types/compilerConfig.ts";
+import type { FrameworkConfig } from "./types/FrameworkConfig.ts";
+import type { OnPageComplete } from "./types/util.ts";
 import { InternalError } from "./util/internalError.ts";
 
 let settings: Settings | undefined;
@@ -14,6 +15,18 @@ export function getSettings() {
     throw new InternalError("Settings not initialized");
   }
   return settings;
+}
+
+let onPageComplete: OnPageComplete | undefined;
+export function setOnPageComplete(fn: OnPageComplete) {
+  onPageComplete = fn;
+}
+
+export function getOnPageComplete() {
+  if (!onPageComplete) {
+    throw new InternalError("OnPageComplete not initialized");
+  }
+  return onPageComplete;
 }
 
 const language = z.enum([
@@ -36,13 +49,14 @@ export const settingsSchema = z.strictObject({
   spec: z.string(),
   output: z.strictObject({
     pageOutDir: z.string(),
-    embedoutDir: z.string().optional(),
+    embedOutDir: z.string().optional(),
     framework: z.enum(["docusaurus", "nextra"]).or(
       // This type MUST be kept in sync with src/types/compilerConfig.ts
       z.object({
         rendererType: z.string(),
         componentPackageName: z.string(),
         buildPagePath: z.function(),
+        buildEmbedPath: z.function().optional(),
         buildPagePreamble: z.function(),
         postProcess: z.function().optional(),
         formatHeadingId: z.function().optional(),

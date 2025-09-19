@@ -24,10 +24,13 @@ import type {
 } from "@speakeasy-api/docs-md-shared/types";
 
 import type { CodeSampleLanguage } from "../settings.ts";
-import type { PageFrontMatter } from "../types/compilerConfig.ts";
+import type {
+  FrameworkConfig,
+  PageFrontMatter,
+} from "../types/FrameworkConfig.ts";
 import type { EscapeOptions } from "./util.ts";
 
-type ContextType = "operation" | "section" | "schema";
+type ContextType = "operation" | "section" | "schema" | "embed";
 
 export type Context = {
   id: string;
@@ -41,16 +44,20 @@ export type SiteCreatePageArgs = [
   slug?: string,
   frontMatter?: PageFrontMatter,
 ];
+export type SiteCreateEmbedArgs = [slug: string, frontMatter?: PageFrontMatter];
 export type SiteBuildPagePathArgs = [
   slug: string,
   options?: { appendIndex?: boolean },
 ];
+export type SiteBuildEmbedPathArgs = [slug: string];
 export type SiteGetRendererArgs = [args: RendererConstructorArgs];
 
 export abstract class Site {
   abstract setDocsData(docsData: Map<string, Chunk>): void;
   abstract createPage(...args: SiteCreatePageArgs): Renderer;
+  abstract createEmbed(...args: SiteCreateEmbedArgs): Renderer | undefined;
   abstract buildPagePath(...args: SiteBuildPagePathArgs): string;
+  abstract buildEmbedPath(...args: SiteBuildEmbedPathArgs): string;
   protected abstract getRenderer(...args: SiteGetRendererArgs): Renderer;
 }
 
@@ -61,6 +68,7 @@ export type RendererConstructorArgs = {
   docsData: Map<string, Chunk>;
   currentPagePath: string;
   currentPageSlug?: string;
+  compilerConfig: FrameworkConfig;
   frontMatter?: PageFrontMatter;
 };
 
@@ -251,6 +259,8 @@ export type RendererGetCurrentIdArgs = [postFixId?: string];
 export abstract class Renderer {
   // Metadata is undefined for embeds, since they're not full pages
   abstract render(): { contents: string; metadata?: PageMetadata };
+  abstract getPagePath(): string;
+  abstract createEmbed(...args: SiteCreateEmbedArgs): Renderer | undefined;
 
   // High level operations
 

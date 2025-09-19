@@ -1,7 +1,7 @@
 import type { OperationChunk } from "@speakeasy-api/docs-md-shared/types";
 
 export type { Settings } from "../settings.ts";
-export type { FrameworkConfig } from "../types/compilerConfig.ts";
+export type { FrameworkConfig } from "../types/FrameworkConfig.ts";
 
 import {
   renderParameters as renderParametersInternal,
@@ -12,7 +12,7 @@ import {
 import { MdxSite } from "../renderers/mdx.ts";
 import type { Settings } from "../settings.ts";
 import { setSettings } from "../settings.ts";
-import type { FrameworkConfig } from "../types/compilerConfig.ts";
+import type { FrameworkConfig } from "../types/FrameworkConfig.ts";
 
 export function renderSecurity(
   security: OperationChunk,

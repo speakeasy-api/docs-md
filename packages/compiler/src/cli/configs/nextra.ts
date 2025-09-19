@@ -3,7 +3,8 @@ import { join, resolve } from "node:path";
 
 import { escapeText } from "../../renderers/util.ts";
 import { getSettings } from "../../settings.ts";
-import type { FrameworkConfig } from "../../types/compilerConfig.ts";
+import type { FrameworkConfig } from "../../types/FrameworkConfig.ts";
+import { InternalError } from "../../util/internalError.ts";
 
 export const nextraConfig: FrameworkConfig = {
   rendererType: "mdx",
@@ -15,6 +16,14 @@ export const nextraConfig: FrameworkConfig = {
     // Do nothing with `appendIndex`, since our appending of `/page.mdx`
     // implicitly handles the index case.
     return resolve(join(settings.output.pageOutDir, `${slug}/page.mdx`));
+  },
+
+  buildEmbedPath(slug) {
+    const settings = getSettings();
+    if (!settings.output.embedOutDir) {
+      throw new InternalError("Embed output directory not set");
+    }
+    return resolve(join(settings.output.embedOutDir, `${slug}.mdx`));
   },
 
   buildPagePreamble(frontMatter) {

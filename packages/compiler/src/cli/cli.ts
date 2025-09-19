@@ -164,16 +164,26 @@ async function getSettings(): Promise<Settings> {
       );
       process.exit(1);
     }
-    if (!configFileContents.data.output.embedoutDir) {
+    if (!configFileContents.data.output.embedOutDir) {
       error(
-        `output.embedoutDir must be specified when display.maxNestingLevel is specified`
+        `output.embedOutDir must be specified when display.maxNestingLevel is specified`
       );
       process.exit(1);
     }
-    if (!isAbsolute(configFileContents.data.output.embedoutDir)) {
-      configFileContents.data.output.embedoutDir = resolve(
+    if (
+      typeof configFileContents.data.output.framework !== "string" &&
+      typeof configFileContents.data.output.framework.buildEmbedPath !==
+        "function"
+    ) {
+      error(
+        `output.framework must have a buildEmbedPath function when display.maxNestingLevel is specified`
+      );
+      process.exit(1);
+    }
+    if (!isAbsolute(configFileContents.data.output.embedOutDir)) {
+      configFileContents.data.output.embedOutDir = resolve(
         configFileDirectory,
-        configFileContents.data.output.embedoutDir
+        configFileContents.data.output.embedOutDir
       );
     }
   }
@@ -221,8 +231,8 @@ if (args["--clean"]) {
     recursive: true,
     force: true,
   });
-  if (settings.output.embedoutDir) {
-    rmSync(settings.output.embedoutDir, {
+  if (settings.output.embedOutDir) {
+    rmSync(settings.output.embedOutDir, {
       recursive: true,
       force: true,
     });

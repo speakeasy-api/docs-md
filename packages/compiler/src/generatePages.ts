@@ -5,7 +5,7 @@ import { getData } from "./data/getDocsData.ts";
 import { info } from "./logging.js";
 import type { Site } from "./renderers/base.ts";
 import type { Settings } from "./settings.ts";
-import { setSettings } from "./settings.ts";
+import { setOnPageComplete, setSettings } from "./settings.ts";
 
 /**
  * Given an OpenAPI spec, generate Markdown pages of the spec. The returned
@@ -26,6 +26,7 @@ export async function generatePages({
 }) {
   // Save settings to a global location so we can easily access it around the codebase
   setSettings(settings);
+  setOnPageComplete(onPageComplete);
 
   // Get the docs data from the spec
   info("Parsing OpenAPI spec (ignore lock file errors printed below)");
@@ -38,5 +39,5 @@ export async function generatePages({
 
   // Render the content
   info("Rendering Markdown");
-  renderContent(site, frameworkConfig, data, docsCodeSnippets, onPageComplete);
+  renderContent(site, frameworkConfig, data, docsCodeSnippets);
 }

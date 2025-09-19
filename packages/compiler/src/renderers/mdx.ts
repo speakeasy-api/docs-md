@@ -38,7 +38,7 @@ import type {
 
 import { HEADINGS } from "../content/constants.ts";
 import { getSettings } from "../settings.ts";
-import type { FrameworkConfig } from "../types/compilerConfig.ts";
+import { InternalError } from "../util/internalError.ts";
 import type {
   RendererConstructorArgs,
   RendererCreateCodeArgs,
@@ -59,45 +59,68 @@ import type {
   RendererCreateSecuritySectionArgs,
   RendererCreateTabbedSectionArgs,
   RendererCreateTabbedSectionTabArgs,
+  SiteBuildEmbedPathArgs,
   SiteBuildPagePathArgs,
+  SiteCreateEmbedArgs,
   SiteGetRendererArgs,
 } from "./base.ts";
 import { MarkdownRenderer, MarkdownSite } from "./markdown.ts";
 import { escapeText, getPrettyCodeSampleLanguage } from "./util.ts";
 
 export class MdxSite extends MarkdownSite {
-  #compilerConfig: FrameworkConfig;
-
-  constructor(compilerConfig: FrameworkConfig) {
-    super();
-    this.#compilerConfig = compilerConfig;
-  }
+  #embedsCreated = new Set<string>();
 
   public override buildPagePath(
     ...[slug, { appendIndex = false } = {}]: SiteBuildPagePathArgs
   ): string {
-    return this.#compilerConfig.buildPagePath(slug, { appendIndex });
+    return this.compilerConfig.buildPagePath(slug, { appendIndex });
+  }
+
+  public override buildEmbedPath(...[slug]: SiteBuildEmbedPathArgs): string {
+    if (!this.compilerConfig.buildEmbedPath) {
+      throw new InternalError("buildEmbedPath not implemented");
+    }
+    return this.compilerConfig.buildEmbedPath(slug);
   }
 
   protected override getRenderer(...[options]: SiteGetRendererArgs) {
-    return new MdxRenderer({ ...options }, this.#compilerConfig);
+    return new MdxRenderer({ ...options }, this);
+  }
+
+  public override createEmbed(...[slug, frontMatter]: SiteCreateEmbedArgs) {
+    if (!this.docsData) {
+      throw new InternalError("Docs data not set");
+    }
+    if (this.#embedsCreated.has(slug)) {
+      return;
+    }
+    this.#embedsCreated.add(slug);
+    const path = this.buildEmbedPath(slug);
+    const renderer = this.getRenderer({
+      currentPageSlug: slug,
+      currentPagePath: path,
+      site: this,
+      docsData: this.docsData,
+      frontMatter,
+      compilerConfig: this.compilerConfig,
+    });
+    return renderer;
   }
 }
 
 class MdxRenderer extends MarkdownRenderer {
   // Mapping of import path to imported symbols
   #imports = new Map<string, Set<string>>();
-  #compilerConfig: FrameworkConfig;
   #frontMatter: string | undefined;
+  #site: MdxSite;
 
-  constructor(
-    options: RendererConstructorArgs,
-    compilerConfig: FrameworkConfig
-  ) {
+  constructor(options: RendererConstructorArgs, site: MdxSite) {
     super(options);
-    this.#compilerConfig = compilerConfig;
+    this.#site = site;
     if (options.frontMatter) {
-      this.#frontMatter = compilerConfig.buildPagePreamble(options.frontMatter);
+      this.#frontMatter = this.compilerConfig.buildPagePreamble(
+        options.frontMatter
+      );
     }
   }
 
@@ -109,7 +132,7 @@ class MdxRenderer extends MarkdownRenderer {
   }
 
   #insertComponentImport(symbol: string) {
-    this.#insertNamedImport(this.#compilerConfig.componentPackageName, symbol);
+    this.#insertNamedImport(this.compilerConfig.componentPackageName, symbol);
   }
 
   #createComponentOpeningTag<Props extends Record<string, unknown>>(
@@ -185,7 +208,11 @@ class MdxRenderer extends MarkdownRenderer {
   }
 
   protected override getIdSeparator() {
-    return this.#compilerConfig.elementIdSeparator ?? "+";
+    return this.compilerConfig.elementIdSeparator ?? "+";
+  }
+
+  public override createEmbed(...args: SiteCreateEmbedArgs) {
+    return this.#site.createEmbed(...args);
   }
 
   public override render() {
@@ -221,8 +248,8 @@ class MdxRenderer extends MarkdownRenderer {
   ) {
     let line = `${`#`.repeat(level)} ${escapeText(text, { escape })}`;
     if (id) {
-      if (this.#compilerConfig.formatHeadingId) {
-        line += ` ${this.#compilerConfig.formatHeadingId(id)}`;
+      if (this.compilerConfig.formatHeadingId) {
+        line += ` ${this.compilerConfig.formatHeadingId(id)}`;
       } else {
         line += ` \\{#${id}\\}`;
       }
