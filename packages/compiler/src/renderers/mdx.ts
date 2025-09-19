@@ -3,6 +3,9 @@ import { dirname, relative } from "node:path";
 import type {
   CodeSampleProps,
   DebugPlaceholderProps,
+  EmbedProps,
+  EmbedTriggerContentsProps,
+  EmbedTriggerProps,
   ExpandableBreakoutDefaultValueProps,
   ExpandableBreakoutDescriptionProps,
   ExpandableBreakoutExamplesProps,
@@ -264,8 +267,8 @@ class MdxRenderer extends MarkdownRenderer {
     const absolutePath = this.#site.createEmbed(args);
     const { triggerTitle, slug } = args;
 
-    this.#appendComponent({ symbol: "Embed" }, () => {
-      this.#appendComponent(
+    this.#appendComponent<EmbedProps>({ symbol: "Embed" }, () => {
+      this.#appendComponent<EmbedTriggerProps>(
         { symbol: "EmbedTrigger", props: { slot: "trigger" } },
         () => {
           this.appendLine(triggerTitle);
@@ -280,7 +283,7 @@ class MdxRenderer extends MarkdownRenderer {
         importPath = `./${importPath}`;
       }
       this.#insertDefaultImport(importPath, componentName);
-      this.#appendComponent(
+      this.#appendComponent<EmbedTriggerContentsProps>(
         { symbol: "EmbedTriggerContents", props: { slot: "trigger-contents" } },
         () => {
           this.#appendComponent({ symbol: componentName, noImport: true });
