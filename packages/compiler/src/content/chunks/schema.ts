@@ -8,7 +8,7 @@ import type {
 } from "@speakeasy-api/docs-md-shared/types";
 
 import type { Renderer } from "../../renderers/base.ts";
-import { getOnPageComplete, getSettings } from "../../settings.ts";
+import { getSettings } from "../../settings.ts";
 import { assertNever } from "../../util/assertNever.ts";
 import { InternalError } from "../../util/internalError.ts";
 import { HEADINGS } from "../constants.ts";
@@ -436,26 +436,16 @@ function renderObjectProperties({
     // Check if we're too deeply nested to render this inline, but have more
     // breakouts to render at a deeper level
     if (shouldRenderInEmbed(renderer) && typeInfo.breakoutSubTypes.size > 0) {
-      const embedRenderer = renderer.createEmbed(property.name);
+      renderer.createEmbed(property.name, (embedRenderer) => {
+        // Re-render the breakout in the embed document
+        createExpandableProperty(embedRenderer, property, typeInfo);
 
-      // No embed renderer means we've already rendered this embed
-      if (!embedRenderer) {
-        continue;
-      }
-
-      // Enter first an embed context, then a schema context
-      embedRenderer.enterContext({
-        id: `embed-${property.name}`,
-        type: "embed",
+        // Render breakouts, which will be separate expandable entries
+        renderBreakouts({
+          renderer: embedRenderer,
+          schema: property.schema,
+        });
       });
-      embedRenderer.enterContext({ id: property.name, type: "schema" });
-
-      // Re-render the property in the embed document
-      createExpandableProperty(embedRenderer, property, typeInfo);
-
-      // Exit the schema and embed contexts
-      embedRenderer.exitContext();
-      embedRenderer.exitContext();
     } else {
       // Render breakouts, which will be separate expandable entries
       renderBreakouts({
@@ -592,36 +582,16 @@ function renderBreakoutEntries({
       shouldRenderInEmbed(renderer) &&
       Object.keys(breakout.schema.properties).length > 0
     ) {
-      const embedRenderer = renderer.createEmbed(breakout.label);
+      renderer.createEmbed(breakout.label, (embedRenderer) => {
+        // Re-render the breakout in the embed document
+        createExpandableBreakout(embedRenderer, breakout);
 
-      // No embed renderer means we've already rendered this embed
-      if (!embedRenderer) {
-        continue;
-      }
-
-      // Enter first an embed context, then a schema context
-      embedRenderer.enterContext({
-        id: `embed-${breakout.label}`,
-        type: "embed",
+        // Render the breakout properties in the embed document
+        renderObjectProperties({
+          renderer: embedRenderer,
+          schema: breakout.schema,
+        });
       });
-      embedRenderer.enterContext({ id: breakout.label, type: "schema" });
-
-      // Re-render the breakout in the embed document
-      createExpandableBreakout(embedRenderer, breakout);
-
-      // Render the breakout properties in the embed document
-      renderObjectProperties({
-        renderer: embedRenderer,
-        schema: breakout.schema,
-      });
-
-      embedRenderer.exitContext();
-      embedRenderer.exitContext();
-
-      getOnPageComplete()(
-        embedRenderer.getPagePath(),
-        embedRenderer.render().contents
-      );
     } else {
       // Render the breakout entries in the main document
       renderBreakoutEntries({

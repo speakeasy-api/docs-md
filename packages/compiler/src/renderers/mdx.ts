@@ -87,7 +87,7 @@ export class MdxSite extends MarkdownSite {
     return new MdxRenderer({ ...options }, this);
   }
 
-  public override createEmbed(...[slug, frontMatter]: SiteCreateEmbedArgs) {
+  public override createEmbed(...[slug, cb]: SiteCreateEmbedArgs) {
     if (!this.docsData) {
       throw new InternalError("Docs data not set");
     }
@@ -101,10 +101,17 @@ export class MdxSite extends MarkdownSite {
       currentPagePath: path,
       site: this,
       docsData: this.docsData,
-      frontMatter,
       compilerConfig: this.compilerConfig,
     });
-    return renderer;
+
+    renderer.enterContext({
+      id: `embed-${slug}`,
+      type: "embed",
+    });
+    renderer.enterContext({ id: slug, type: "schema" });
+    cb(renderer);
+    renderer.exitContext();
+    renderer.exitContext();
   }
 }
 
@@ -212,7 +219,7 @@ class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createEmbed(...args: SiteCreateEmbedArgs) {
-    return this.#site.createEmbed(...args);
+    this.#site.createEmbed(...args);
   }
 
   public override render() {

@@ -88,7 +88,7 @@ export abstract class MarkdownSite extends Site {
     return renderer;
   }
 
-  public createEmbed(..._args: SiteCreateEmbedArgs): Renderer | undefined {
+  public createEmbed(..._args: SiteCreateEmbedArgs) {
     throw new Error(`Base markdown renderer does not support createEmbed`);
   }
 }
@@ -136,9 +136,7 @@ export abstract class MarkdownRenderer extends Renderer {
     return this.#currentPagePath;
   }
 
-  public override createEmbed(
-    ..._args: SiteCreateEmbedArgs
-  ): Renderer | undefined {
+  public override createEmbed(..._args: SiteCreateEmbedArgs) {
     throw new Error(`Base markdown renderer does not support createEmbed`);
   }
 
