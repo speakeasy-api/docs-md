@@ -1,4 +1,7 @@
 import {
+  Embed,
+  EmbedTrigger,
+  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -8,6 +11,9 @@ import {
   ExpandablePropertyDescription,
   ExpandablePropertyTitle
 } from "@speakeasy-api/docs-md-react";
+import Embedperiod from "./period.mdx";
+import Embedmetadata from "./metadata.mdx";
+import EmbedrelatedDocuments from "./relatedDocuments.mdx";
 
 <ExpandableBreakout
   slot="entry"
@@ -113,7 +119,7 @@ The unit of organization over which we did the count aggregation, e.g. org (depa
   parentId="UserActivityInsight_activeDayCount"
   typeInfo={{"label":"Period","linkedLabel":"<a href=\"#embed-useractivityinsight+useractivityinsight+activedaycount+period+period\">Period</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -124,6 +130,22 @@ The unit of organization over which we did the count aggregation, e.g. org (depa
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View period details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedperiod />
+
+</EmbedTriggerContents>
+
+</Embed>
 
 <ExpandableProperty
   slot="entry"
@@ -226,7 +248,7 @@ The unit of organization over which we did the count aggregation, e.g. org (depa
   parentId="UserActivityInsight_activityCount"
   typeInfo={{"label":"Period","linkedLabel":"<a href=\"#embed-useractivityinsight+useractivityinsight+activitycount+period+period\">Period</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -238,11 +260,27 @@ The unit of organization over which we did the count aggregation, e.g. org (depa
 
 </ExpandableProperty>
 
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View period details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedperiod />
+
+</EmbedTriggerContents>
+
+</Embed>
+
 <ExpandableProperty
   slot="entry"
-  id="UserActivityInsight_activityCount_lastActivityTimestamp"
-  headingId="embed-useractivityinsight+useractivityinsight+activitycount+lastactivitytimestamp"
-  parentId="UserActivityInsight_activityCount"
+  id="UserActivityInsight_lastActivityTimestamp"
+  headingId="embed-useractivityinsight+useractivityinsight+lastactivitytimestamp"
+  parentId="UserActivityInsight"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -251,7 +289,7 @@ The unit of organization over which we did the count aggregation, e.g. org (depa
 
 <ExpandablePropertyTitle slot="title">
 
-##### lastActivityTimestamp \{#embed-useractivityinsight+useractivityinsight+activitycount+lastactivitytimestamp\}
+##### lastActivityTimestamp \{#embed-useractivityinsight+useractivityinsight+lastactivitytimestamp\}
 
 </ExpandablePropertyTitle>
 
@@ -265,10 +303,10 @@ Unix timestamp of the last activity (in seconds since epoch UTC).
 
 <ExpandableProperty
   slot="entry"
-  id="UserActivityInsight_activityCount_user"
-  headingId="embed-useractivityinsight+useractivityinsight+activitycount+user"
-  parentId="UserActivityInsight_activityCount"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-useractivityinsight+useractivityinsight+activitycount+user+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  id="UserActivityInsight_user"
+  headingId="embed-useractivityinsight+useractivityinsight+user"
+  parentId="UserActivityInsight"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-useractivityinsight+useractivityinsight+user+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
   expandByDefault={false}
@@ -276,8 +314,134 @@ Unix timestamp of the last activity (in seconds since epoch UTC).
 
 <ExpandablePropertyTitle slot="title">
 
-##### user \{#embed-useractivityinsight+useractivityinsight+activitycount+user\}
+##### user \{#embed-useractivityinsight+useractivityinsight+user\}
 
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="UserActivityInsight_user_metadata"
+  headingId="embed-useractivityinsight+useractivityinsight+user+metadata"
+  parentId="UserActivityInsight_user"
+  typeInfo={{"label":"PersonMetadata","linkedLabel":"<a href=\"#embed-useractivityinsight+useractivityinsight+user+metadata+personmetadata\">PersonMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#embed-useractivityinsight+useractivityinsight+user+metadata\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View metadata details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedmetadata />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="UserActivityInsight_user_name"
+  headingId="embed-useractivityinsight+useractivityinsight+user+name"
+  parentId="UserActivityInsight_user"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#embed-useractivityinsight+useractivityinsight+user+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The display name.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="UserActivityInsight_user_obfuscatedId"
+  headingId="embed-useractivityinsight+useractivityinsight+user+obfuscatedid"
+  parentId="UserActivityInsight_user"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### obfuscatedId \{#embed-useractivityinsight+useractivityinsight+user+obfuscatedid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque identifier that can be used to request metadata for a Person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="UserActivityInsight_user_relatedDocuments"
+  headingId="embed-useractivityinsight+useractivityinsight+user+relateddocuments"
+  parentId="UserActivityInsight_user"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-useractivityinsight+useractivityinsight+user+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#embed-useractivityinsight+useractivityinsight+user+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedDocuments \{#embed-useractivityinsight+useractivityinsight+user+relateddocuments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of documents related to this person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View relatedDocuments details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedrelatedDocuments />
+
+</EmbedTriggerContents>
+
+</Embed>

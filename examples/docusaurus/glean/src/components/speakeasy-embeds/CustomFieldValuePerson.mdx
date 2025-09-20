@@ -1,4 +1,7 @@
 import {
+  Embed,
+  EmbedTrigger,
+  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -8,6 +11,8 @@ import {
   ExpandablePropertyDescription,
   ExpandablePropertyTitle
 } from "@speakeasy-api/docs-md-react";
+import Embedmetadata from "./metadata.mdx";
+import EmbedrelatedDocuments from "./relatedDocuments.mdx";
 
 <ExpandableBreakout
   slot="entry"
@@ -63,7 +68,7 @@ import {
   parentId="CustomFieldValuePerson_person"
   typeInfo={{"label":"PersonMetadata","linkedLabel":"<a href=\"#embed-customfieldvalueperson+customfieldvalueperson+person+metadata+personmetadata\">PersonMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -74,6 +79,22 @@ import {
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View metadata details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedmetadata />
+
+</EmbedTriggerContents>
+
+</Embed>
 
 <ExpandableProperty
   slot="entry"
@@ -150,31 +171,18 @@ A list of documents related to this person.
 
 </ExpandableProperty>
 
-<ExpandableBreakout
-  slot="entry"
-  id="CustomFieldValuePerson_person_relatedDocuments_RelatedDocuments"
-  headingId="embed-customfieldvalueperson+customfieldvalueperson+person+relateddocuments+relateddocuments"
-  parentId="CustomFieldValuePerson_person_relatedDocuments"
-  hasFrontMatter={false}
-  expandByDefault={false}
->
+<Embed slot="embed">
 
-<ExpandableBreakoutTitle slot="title">
+<EmbedTrigger slot="trigger">
 
-#### RelatedDocuments \{#embed-customfieldvalueperson+customfieldvalueperson+person+relateddocuments+relateddocuments\}
+View relatedDocuments details
 
-</ExpandableBreakoutTitle>
+</EmbedTrigger>
 
-<ExpandableBreakoutDescription slot="description">
+<EmbedTriggerContents slot="trigger-contents">
 
-</ExpandableBreakoutDescription>
+<EmbedrelatedDocuments />
 
-<ExpandableBreakoutExamples slot="examples">
+</EmbedTriggerContents>
 
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+</Embed>

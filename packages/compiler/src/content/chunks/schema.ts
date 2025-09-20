@@ -309,16 +309,22 @@ function createDefaultValue(schema: SchemaValue, renderer: Renderer) {
 
 /* ---- Section Rendering ---- */
 
-function createExpandableProperty(
-  renderer: Renderer,
+function createExpandableProperty({
+  renderer,
+  property,
+  typeInfo,
+  hasEmbed,
+}: {
+  renderer: Renderer;
   property: {
     name: string;
     isRequired: boolean;
     isDeprecated: boolean;
     schema: SchemaValue;
-  },
-  typeInfo: DisplayTypeInfo
-) {
+  };
+  typeInfo: DisplayTypeInfo;
+  hasEmbed: boolean;
+}) {
   const isTopLevel = renderer.getCurrentContextType() !== "schema";
   const annotations: PropertyAnnotations[] = [];
   if (property.isRequired) {
@@ -390,7 +396,7 @@ function createExpandableProperty(
     annotations,
     rawTitle: property.name,
     isTopLevel,
-    hasFrontMatter: hasSchemaFrontmatter(property.schema),
+    hasFrontMatter: hasEmbed || hasSchemaFrontmatter(property.schema),
     createDescription: createDescription(property.schema, renderer),
     createExamples: createExamples(property.schema, renderer),
     createDefaultValue: createDefaultValue(property.schema, renderer),
@@ -431,17 +437,24 @@ function renderObjectProperties({
 
     // Render the expandable entry in the main document
     const typeInfo = getDisplayTypeInfo(property.schema, renderer, []);
-    createExpandableProperty(renderer, property, typeInfo);
+    const hasEmbed =
+      shouldRenderInEmbed(renderer) && typeInfo.breakoutSubTypes.size > 0;
+    createExpandableProperty({ renderer, property, typeInfo, hasEmbed });
 
     // Check if we're too deeply nested to render this inline, but have more
     // breakouts to render at a deeper level
-    if (shouldRenderInEmbed(renderer) && typeInfo.breakoutSubTypes.size > 0) {
+    if (hasEmbed) {
       renderer.createEmbed({
         slug: property.name,
         triggerTitle: `View ${property.name} details`,
         createdEmbeddedContent(embedRenderer) {
           // Re-render the breakout in the embed document
-          createExpandableProperty(embedRenderer, property, typeInfo);
+          createExpandableProperty({
+            renderer: embedRenderer,
+            property,
+            typeInfo,
+            hasEmbed: false,
+          });
 
           // Render breakouts, which will be separate expandable entries
           renderBreakouts({
@@ -462,13 +475,18 @@ function renderObjectProperties({
   }
 }
 
-function createExpandableBreakout(
-  renderer: Renderer,
+function createExpandableBreakout({
+  renderer,
+  breakout,
+  hasEmbed,
+}: {
+  renderer: Renderer;
   breakout: {
     label: string;
     schema: ObjectValue;
-  }
-) {
+  };
+  hasEmbed: boolean;
+}) {
   const isTopLevel = renderer.getCurrentContextType() !== "schema";
   const { showDebugPlaceholders } = getSettings().display;
   renderer.createExpandableBreakout({
@@ -483,7 +501,7 @@ function createExpandableBreakout(
         }
       );
     },
-    hasFrontMatter: hasSchemaFrontmatter(breakout.schema),
+    hasFrontMatter: hasEmbed || hasSchemaFrontmatter(breakout.schema),
     createDescription() {
       const description =
         "description" in breakout.schema ? breakout.schema.description : null;
@@ -578,20 +596,28 @@ function renderBreakoutEntries({
     renderer.enterContext({ id: breakout.label, type: "schema" });
 
     // Render the breakout entry in the main document
-    createExpandableBreakout(renderer, breakout);
+    const hasEmbed =
+      shouldRenderInEmbed(renderer) &&
+      Object.keys(breakout.schema.properties).length > 0;
+    createExpandableBreakout({
+      renderer,
+      breakout,
+      hasEmbed,
+    });
 
     // Check if we're too deeply nested to render this inline, but have more
     // properties to render at a deeper level
-    if (
-      shouldRenderInEmbed(renderer) &&
-      Object.keys(breakout.schema.properties).length > 0
-    ) {
+    if (hasEmbed) {
       renderer.createEmbed({
         slug: breakout.label,
         triggerTitle: `View ${breakout.label} details`,
         createdEmbeddedContent(embedRenderer) {
           // Re-render the breakout in the embed document
-          createExpandableBreakout(embedRenderer, breakout);
+          createExpandableBreakout({
+            renderer: embedRenderer,
+            breakout,
+            hasEmbed: false,
+          });
 
           // Render the breakout properties in the embed document
           renderObjectProperties({

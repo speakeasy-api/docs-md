@@ -1,4 +1,7 @@
 import {
+  Embed,
+  EmbedTrigger,
+  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -8,6 +11,12 @@ import {
   ExpandablePropertyDescription,
   ExpandablePropertyTitle
 } from "@speakeasy-api/docs-md-react";
+import EmbedDocument from "./Document.mdx";
+import EmbedinputDetails from "./inputDetails.mdx";
+import Embedranges from "./ranges.mdx";
+import EmbedrequestOptions from "./requestOptions.mdx";
+import EmbedsearchProviderInfo from "./searchProviderInfo.mdx";
+import EmbedSearchResult from "./SearchResult.mdx";
 
 <ExpandableBreakout
   slot="entry"
@@ -92,7 +101,7 @@ A truncated list of documents with this relation. TO BE DEPRECATED.
   id="RelatedDocuments_documents_Document"
   headingId="embed-relateddocuments+relateddocuments+documents+document"
   parentId="RelatedDocuments_documents"
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -115,6 +124,22 @@ A truncated list of documents with this relation. TO BE DEPRECATED.
 </ExpandableBreakoutDefaultValue>
 
 </ExpandableBreakout>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View Document details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedDocument />
+
+</EmbedTriggerContents>
+
+</Embed>
 
 <ExpandableProperty
   slot="entry"
@@ -167,7 +192,7 @@ The datasource associated with the suggestion.
   parentId="RelatedDocuments_querySuggestion"
   typeInfo={{"label":"SearchRequestInputDetails","linkedLabel":"<a href=\"#embed-relateddocuments+relateddocuments+querysuggestion+inputdetails+searchrequestinputdetails\">SearchRequestInputDetails</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -178,6 +203,22 @@ The datasource associated with the suggestion.
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View inputDetails details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedinputDetails />
+
+</EmbedTriggerContents>
+
+</Embed>
 
 <ExpandableProperty
   slot="entry"
@@ -279,36 +320,21 @@ The bolded ranges within the query of the QuerySuggestion.
 
 </ExpandableProperty>
 
-<ExpandableBreakout
-  slot="entry"
-  id="RelatedDocuments_querySuggestion_ranges_TextRange"
-  headingId="embed-relateddocuments+relateddocuments+querysuggestion+ranges+textrange"
-  parentId="RelatedDocuments_querySuggestion_ranges"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
+<Embed slot="embed">
 
-<ExpandableBreakoutTitle slot="title">
+<EmbedTrigger slot="trigger">
 
-#### TextRange \{#embed-relateddocuments+relateddocuments+querysuggestion+ranges+textrange\}
+View ranges details
 
-</ExpandableBreakoutTitle>
+</EmbedTrigger>
 
-<ExpandableBreakoutDescription slot="description">
+<EmbedTriggerContents slot="trigger-contents">
 
-A subsection of a given string to which some special formatting should be applied.
+<Embedranges />
 
-</ExpandableBreakoutDescription>
+</EmbedTriggerContents>
 
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+</Embed>
 
 <ExpandableProperty
   slot="entry"
@@ -317,7 +343,7 @@ A subsection of a given string to which some special formatting should be applie
   parentId="RelatedDocuments_querySuggestion"
   typeInfo={{"label":"SearchRequestOptions","linkedLabel":"<a href=\"#embed-relateddocuments+relateddocuments+querysuggestion+requestoptions+searchrequestoptions\">SearchRequestOptions</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -329,6 +355,22 @@ A subsection of a given string to which some special formatting should be applie
 
 </ExpandableProperty>
 
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View requestOptions details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedrequestOptions />
+
+</EmbedTriggerContents>
+
+</Embed>
+
 <ExpandableProperty
   slot="entry"
   id="RelatedDocuments_querySuggestion_searchProviderInfo"
@@ -336,7 +378,7 @@ A subsection of a given string to which some special formatting should be applie
   parentId="RelatedDocuments_querySuggestion"
   typeInfo={{"label":"SearchProviderInfo","linkedLabel":"<a href=\"#embed-relateddocuments+relateddocuments+querysuggestion+searchproviderinfo+searchproviderinfo\">SearchProviderInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -347,6 +389,22 @@ A subsection of a given string to which some special formatting should be applie
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View searchProviderInfo details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedsearchProviderInfo />
+
+</EmbedTriggerContents>
+
+</Embed>
 
 <ExpandableProperty
   slot="entry"
@@ -403,7 +461,7 @@ A truncated list of documents associated with this relation. To be used in favor
   id="RelatedDocuments_results_SearchResult"
   headingId="embed-relateddocuments+relateddocuments+results+searchresult"
   parentId="RelatedDocuments_results"
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -426,3 +484,19 @@ A truncated list of documents associated with this relation. To be used in favor
 </ExpandableBreakoutDefaultValue>
 
 </ExpandableBreakout>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View SearchResult details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedSearchResult />
+
+</EmbedTriggerContents>
+
+</Embed>

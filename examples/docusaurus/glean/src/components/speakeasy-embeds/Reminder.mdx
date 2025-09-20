@@ -1,4 +1,7 @@
 import {
+  Embed,
+  EmbedTrigger,
+  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -8,6 +11,8 @@ import {
   ExpandablePropertyDescription,
   ExpandablePropertyTitle
 } from "@speakeasy-api/docs-md-react";
+import Embedmetadata from "./metadata.mdx";
+import EmbedrelatedDocuments from "./relatedDocuments.mdx";
 
 <ExpandableBreakout
   slot="entry"
@@ -63,7 +68,7 @@ import {
   parentId="Reminder_assignee"
   typeInfo={{"label":"PersonMetadata","linkedLabel":"<a href=\"#embed-reminder+reminder+assignee+metadata+personmetadata\">PersonMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -74,6 +79,22 @@ import {
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View metadata details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedmetadata />
+
+</EmbedTriggerContents>
+
+</Embed>
 
 <ExpandableProperty
   slot="entry"
@@ -150,40 +171,27 @@ A list of documents related to this person.
 
 </ExpandableProperty>
 
-<ExpandableBreakout
-  slot="entry"
-  id="Reminder_assignee_relatedDocuments_RelatedDocuments"
-  headingId="embed-reminder+reminder+assignee+relateddocuments+relateddocuments"
-  parentId="Reminder_assignee_relatedDocuments"
-  hasFrontMatter={false}
-  expandByDefault={false}
->
+<Embed slot="embed">
 
-<ExpandableBreakoutTitle slot="title">
+<EmbedTrigger slot="trigger">
 
-#### RelatedDocuments \{#embed-reminder+reminder+assignee+relateddocuments+relateddocuments\}
+View relatedDocuments details
 
-</ExpandableBreakoutTitle>
+</EmbedTrigger>
 
-<ExpandableBreakoutDescription slot="description">
+<EmbedTriggerContents slot="trigger-contents">
 
-</ExpandableBreakoutDescription>
+<EmbedrelatedDocuments />
 
-<ExpandableBreakoutExamples slot="examples">
+</EmbedTriggerContents>
 
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+</Embed>
 
 <ExpandableProperty
   slot="entry"
-  id="Reminder_assignee_createdAt"
-  headingId="embed-reminder+reminder+assignee+createdat"
-  parentId="Reminder_assignee"
+  id="Reminder_createdAt"
+  headingId="embed-reminder+reminder+createdat"
+  parentId="Reminder"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -192,7 +200,7 @@ A list of documents related to this person.
 
 <ExpandablePropertyTitle slot="title">
 
-##### createdAt \{#embed-reminder+reminder+assignee+createdat\}
+##### createdAt \{#embed-reminder+reminder+createdat\}
 
 </ExpandablePropertyTitle>
 
@@ -206,9 +214,9 @@ Unix timestamp for when the reminder was first created (in seconds since epoch U
 
 <ExpandableProperty
   slot="entry"
-  id="Reminder_assignee_reason"
-  headingId="embed-reminder+reminder+assignee+reason"
-  parentId="Reminder_assignee"
+  id="Reminder_reason"
+  headingId="embed-reminder+reminder+reason"
+  parentId="Reminder"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -217,7 +225,7 @@ Unix timestamp for when the reminder was first created (in seconds since epoch U
 
 <ExpandablePropertyTitle slot="title">
 
-##### reason \{#embed-reminder+reminder+assignee+reason\}
+##### reason \{#embed-reminder+reminder+reason\}
 
 </ExpandablePropertyTitle>
 
@@ -231,9 +239,9 @@ An optional free-text reason for the reminder. This is particularly useful when 
 
 <ExpandableProperty
   slot="entry"
-  id="Reminder_assignee_remindAt"
-  headingId="embed-reminder+reminder+assignee+remindat"
-  parentId="Reminder_assignee"
+  id="Reminder_remindAt"
+  headingId="embed-reminder+reminder+remindat"
+  parentId="Reminder"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
@@ -242,7 +250,7 @@ An optional free-text reason for the reminder. This is particularly useful when 
 
 <ExpandablePropertyTitle slot="title">
 
-##### remindAt \{#embed-reminder+reminder+assignee+remindat\}
+##### remindAt \{#embed-reminder+reminder+remindat\}
 
 </ExpandablePropertyTitle>
 
@@ -256,10 +264,10 @@ Unix timestamp for when the reminder should trigger (in seconds since epoch UTC)
 
 <ExpandableProperty
   slot="entry"
-  id="Reminder_assignee_requestor"
-  headingId="embed-reminder+reminder+assignee+requestor"
-  parentId="Reminder_assignee"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-reminder+reminder+assignee+requestor+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  id="Reminder_requestor"
+  headingId="embed-reminder+reminder+requestor"
+  parentId="Reminder"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-reminder+reminder+requestor+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
@@ -267,8 +275,134 @@ Unix timestamp for when the reminder should trigger (in seconds since epoch UTC)
 
 <ExpandablePropertyTitle slot="title">
 
-##### requestor \{#embed-reminder+reminder+assignee+requestor\}
+##### requestor \{#embed-reminder+reminder+requestor\}
 
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="Reminder_requestor_metadata"
+  headingId="embed-reminder+reminder+requestor+metadata"
+  parentId="Reminder_requestor"
+  typeInfo={{"label":"PersonMetadata","linkedLabel":"<a href=\"#embed-reminder+reminder+requestor+metadata+personmetadata\">PersonMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#embed-reminder+reminder+requestor+metadata\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View metadata details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedmetadata />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="Reminder_requestor_name"
+  headingId="embed-reminder+reminder+requestor+name"
+  parentId="Reminder_requestor"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#embed-reminder+reminder+requestor+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The display name.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="Reminder_requestor_obfuscatedId"
+  headingId="embed-reminder+reminder+requestor+obfuscatedid"
+  parentId="Reminder_requestor"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### obfuscatedId \{#embed-reminder+reminder+requestor+obfuscatedid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque identifier that can be used to request metadata for a Person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="Reminder_requestor_relatedDocuments"
+  headingId="embed-reminder+reminder+requestor+relateddocuments"
+  parentId="Reminder_requestor"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-reminder+reminder+requestor+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#embed-reminder+reminder+requestor+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedDocuments \{#embed-reminder+reminder+requestor+relateddocuments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of documents related to this person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View relatedDocuments details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedrelatedDocuments />
+
+</EmbedTriggerContents>
+
+</Embed>

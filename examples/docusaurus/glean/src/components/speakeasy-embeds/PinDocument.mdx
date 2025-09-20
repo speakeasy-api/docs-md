@@ -1,4 +1,7 @@
 import {
+  Embed,
+  EmbedTrigger,
+  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -8,6 +11,9 @@ import {
   ExpandablePropertyDescription,
   ExpandablePropertyTitle
 } from "@speakeasy-api/docs-md-react";
+import Embedmetadata from "./metadata.mdx";
+import EmbedrelatedDocuments from "./relatedDocuments.mdx";
+import EmbedFacetFilter from "./FacetFilter.mdx";
 
 <ExpandableBreakout
   slot="entry"
@@ -63,7 +69,7 @@ import {
   parentId="PinDocument_attribution"
   typeInfo={{"label":"PersonMetadata","linkedLabel":"<a href=\"#embed-pindocument+pindocument+attribution+metadata+personmetadata\">PersonMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -74,6 +80,22 @@ import {
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View metadata details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedmetadata />
+
+</EmbedTriggerContents>
+
+</Embed>
 
 <ExpandableProperty
   slot="entry"
@@ -150,41 +172,28 @@ A list of documents related to this person.
 
 </ExpandableProperty>
 
-<ExpandableBreakout
-  slot="entry"
-  id="PinDocument_attribution_relatedDocuments_RelatedDocuments"
-  headingId="embed-pindocument+pindocument+attribution+relateddocuments+relateddocuments"
-  parentId="PinDocument_attribution_relatedDocuments"
-  hasFrontMatter={false}
-  expandByDefault={false}
->
+<Embed slot="embed">
 
-<ExpandableBreakoutTitle slot="title">
+<EmbedTrigger slot="trigger">
 
-#### RelatedDocuments \{#embed-pindocument+pindocument+attribution+relateddocuments+relateddocuments\}
+View relatedDocuments details
 
-</ExpandableBreakoutTitle>
+</EmbedTrigger>
 
-<ExpandableBreakoutDescription slot="description">
+<EmbedTriggerContents slot="trigger-contents">
 
-</ExpandableBreakoutDescription>
+<EmbedrelatedDocuments />
 
-<ExpandableBreakoutExamples slot="examples">
+</EmbedTriggerContents>
 
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+</Embed>
 
 <ExpandableProperty
   slot="entry"
-  id="PinDocument_attribution_audienceFilters"
-  headingId="embed-pindocument+pindocument+attribution+audiencefilters"
-  parentId="PinDocument_attribution"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-pindocument+pindocument+attribution+audiencefilters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#embed-pindocument+pindocument+attribution+audiencefilters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="PinDocument_audienceFilters"
+  headingId="embed-pindocument+pindocument+audiencefilters"
+  parentId="PinDocument"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-pindocument+pindocument+audiencefilters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#embed-pindocument+pindocument+audiencefilters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
@@ -192,7 +201,7 @@ A list of documents related to this person.
 
 <ExpandablePropertyTitle slot="title">
 
-##### audienceFilters \{#embed-pindocument+pindocument+attribution+audiencefilters\}
+##### audienceFilters \{#embed-pindocument+pindocument+audiencefilters\}
 
 </ExpandablePropertyTitle>
 
@@ -206,16 +215,16 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <ExpandableBreakout
   slot="entry"
-  id="PinDocument_attribution_audienceFilters_FacetFilter"
-  headingId="embed-pindocument+pindocument+attribution+audiencefilters+facetfilter"
-  parentId="PinDocument_attribution_audienceFilters"
-  hasFrontMatter={false}
+  id="PinDocument_audienceFilters_FacetFilter"
+  headingId="embed-pindocument+pindocument+audiencefilters+facetfilter"
+  parentId="PinDocument_audienceFilters"
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### FacetFilter \{#embed-pindocument+pindocument+attribution+audiencefilters+facetfilter\}
+#### FacetFilter \{#embed-pindocument+pindocument+audiencefilters+facetfilter\}
 
 </ExpandableBreakoutTitle>
 
@@ -233,11 +242,27 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 </ExpandableBreakout>
 
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View FacetFilter details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedFacetFilter />
+
+</EmbedTriggerContents>
+
+</Embed>
+
 <ExpandableProperty
   slot="entry"
-  id="PinDocument_attribution_createTime"
-  headingId="embed-pindocument+pindocument+attribution+createtime"
-  parentId="PinDocument_attribution"
+  id="PinDocument_createTime"
+  headingId="embed-pindocument+pindocument+createtime"
+  parentId="PinDocument"
   typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
@@ -246,7 +271,7 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <ExpandablePropertyTitle slot="title">
 
-##### createTime \{#embed-pindocument+pindocument+attribution+createtime\}
+##### createTime \{#embed-pindocument+pindocument+createtime\}
 
 </ExpandablePropertyTitle>
 
@@ -254,9 +279,9 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <ExpandableProperty
   slot="entry"
-  id="PinDocument_attribution_documentId"
-  headingId="embed-pindocument+pindocument+attribution+documentid"
-  parentId="PinDocument_attribution"
+  id="PinDocument_documentId"
+  headingId="embed-pindocument+pindocument+documentid"
+  parentId="PinDocument"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
@@ -265,7 +290,7 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <ExpandablePropertyTitle slot="title">
 
-##### documentId \{#embed-pindocument+pindocument+attribution+documentid\}
+##### documentId \{#embed-pindocument+pindocument+documentid\}
 
 </ExpandablePropertyTitle>
 
@@ -279,9 +304,9 @@ The document which should be a pinned result.
 
 <ExpandableProperty
   slot="entry"
-  id="PinDocument_attribution_id"
-  headingId="embed-pindocument+pindocument+attribution+id"
-  parentId="PinDocument_attribution"
+  id="PinDocument_id"
+  headingId="embed-pindocument+pindocument+id"
+  parentId="PinDocument"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -290,7 +315,7 @@ The document which should be a pinned result.
 
 <ExpandablePropertyTitle slot="title">
 
-##### id \{#embed-pindocument+pindocument+attribution+id\}
+##### id \{#embed-pindocument+pindocument+id\}
 
 </ExpandablePropertyTitle>
 
@@ -304,9 +329,9 @@ The opaque id of the pin.
 
 <ExpandableProperty
   slot="entry"
-  id="PinDocument_attribution_queries"
-  headingId="embed-pindocument+pindocument+attribution+queries"
-  parentId="PinDocument_attribution"
+  id="PinDocument_queries"
+  headingId="embed-pindocument+pindocument+queries"
+  parentId="PinDocument"
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -315,7 +340,7 @@ The opaque id of the pin.
 
 <ExpandablePropertyTitle slot="title">
 
-##### queries \{#embed-pindocument+pindocument+attribution+queries\}
+##### queries \{#embed-pindocument+pindocument+queries\}
 
 </ExpandablePropertyTitle>
 
@@ -329,9 +354,9 @@ The query strings for which the pinned result will show.
 
 <ExpandableProperty
   slot="entry"
-  id="PinDocument_attribution_updateTime"
-  headingId="embed-pindocument+pindocument+attribution+updatetime"
-  parentId="PinDocument_attribution"
+  id="PinDocument_updateTime"
+  headingId="embed-pindocument+pindocument+updatetime"
+  parentId="PinDocument"
   typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
@@ -340,7 +365,7 @@ The query strings for which the pinned result will show.
 
 <ExpandablePropertyTitle slot="title">
 
-##### updateTime \{#embed-pindocument+pindocument+attribution+updatetime\}
+##### updateTime \{#embed-pindocument+pindocument+updatetime\}
 
 </ExpandablePropertyTitle>
 
@@ -348,10 +373,10 @@ The query strings for which the pinned result will show.
 
 <ExpandableProperty
   slot="entry"
-  id="PinDocument_attribution_updatedBy"
-  headingId="embed-pindocument+pindocument+attribution+updatedby"
-  parentId="PinDocument_attribution"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-pindocument+pindocument+attribution+updatedby+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  id="PinDocument_updatedBy"
+  headingId="embed-pindocument+pindocument+updatedby"
+  parentId="PinDocument"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-pindocument+pindocument+updatedby+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
@@ -359,8 +384,134 @@ The query strings for which the pinned result will show.
 
 <ExpandablePropertyTitle slot="title">
 
-##### updatedBy \{#embed-pindocument+pindocument+attribution+updatedby\}
+##### updatedBy \{#embed-pindocument+pindocument+updatedby\}
 
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="PinDocument_updatedBy_metadata"
+  headingId="embed-pindocument+pindocument+updatedby+metadata"
+  parentId="PinDocument_updatedBy"
+  typeInfo={{"label":"PersonMetadata","linkedLabel":"<a href=\"#embed-pindocument+pindocument+updatedby+metadata+personmetadata\">PersonMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#embed-pindocument+pindocument+updatedby+metadata\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View metadata details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedmetadata />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="PinDocument_updatedBy_name"
+  headingId="embed-pindocument+pindocument+updatedby+name"
+  parentId="PinDocument_updatedBy"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#embed-pindocument+pindocument+updatedby+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The display name.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="PinDocument_updatedBy_obfuscatedId"
+  headingId="embed-pindocument+pindocument+updatedby+obfuscatedid"
+  parentId="PinDocument_updatedBy"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### obfuscatedId \{#embed-pindocument+pindocument+updatedby+obfuscatedid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque identifier that can be used to request metadata for a Person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="PinDocument_updatedBy_relatedDocuments"
+  headingId="embed-pindocument+pindocument+updatedby+relateddocuments"
+  parentId="PinDocument_updatedBy"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-pindocument+pindocument+updatedby+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#embed-pindocument+pindocument+updatedby+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedDocuments \{#embed-pindocument+pindocument+updatedby+relateddocuments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of documents related to this person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View relatedDocuments details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedrelatedDocuments />
+
+</EmbedTriggerContents>
+
+</Embed>

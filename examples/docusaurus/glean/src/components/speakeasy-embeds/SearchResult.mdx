@@ -1,4 +1,7 @@
 import {
+  Embed,
+  EmbedTrigger,
+  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -8,6 +11,22 @@ import {
   ExpandablePropertyDescription,
   ExpandablePropertyTitle
 } from "@speakeasy-api/docs-md-react";
+import EmbedClusterGroup from "./ClusterGroup.mdx";
+import EmbedcontainerDocument from "./containerDocument.mdx";
+import Embedcontent from "./content.mdx";
+import Embedmetadata from "./metadata.mdx";
+import EmbedparentDocument from "./parentDocument.mdx";
+import Embedsections from "./sections.mdx";
+import Embedperson from "./person.mdx";
+import Embedsuggestions from "./suggestions.mdx";
+import EmbedPinDocument from "./PinDocument.mdx";
+import EmbedinputDetails from "./inputDetails.mdx";
+import Embedranges from "./ranges.mdx";
+import EmbedrequestOptions from "./requestOptions.mdx";
+import EmbedsearchProviderInfo from "./searchProviderInfo.mdx";
+import EmbedRelatedDocuments from "./RelatedDocuments.mdx";
+import EmbedSearchResultSnippet from "./SearchResultSnippet.mdx";
+import EmbedStructuredResult from "./StructuredResult.mdx";
 
 <ExpandableBreakout
   slot="entry"
@@ -67,7 +86,7 @@ A list of results that should be displayed as associated with this result.
   id="SearchResult_allClusteredResults_ClusterGroup"
   headingId="embed-searchresult+searchresult+allclusteredresults+clustergroup"
   parentId="SearchResult_allClusteredResults"
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -91,11 +110,27 @@ A list of results that should be displayed as associated with this result.
 
 </ExpandableBreakout>
 
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View ClusterGroup details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedClusterGroup />
+
+</EmbedTriggerContents>
+
+</Embed>
+
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_attachmentContext"
-  headingId="embed-searchresult+searchresult+allclusteredresults+attachmentcontext"
-  parentId="SearchResult_allClusteredResults"
+  id="SearchResult_attachmentContext"
+  headingId="embed-searchresult+searchresult+attachmentcontext"
+  parentId="SearchResult"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -104,7 +139,7 @@ A list of results that should be displayed as associated with this result.
 
 <ExpandablePropertyTitle slot="title">
 
-##### attachmentContext \{#embed-searchresult+searchresult+allclusteredresults+attachmentcontext\}
+##### attachmentContext \{#embed-searchresult+searchresult+attachmentcontext\}
 
 </ExpandablePropertyTitle>
 
@@ -118,9 +153,9 @@ Additional context for the relationship between the result and the document it's
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_attachmentCount"
-  headingId="embed-searchresult+searchresult+allclusteredresults+attachmentcount"
-  parentId="SearchResult_allClusteredResults"
+  id="SearchResult_attachmentCount"
+  headingId="embed-searchresult+searchresult+attachmentcount"
+  parentId="SearchResult"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -129,7 +164,7 @@ Additional context for the relationship between the result and the document it's
 
 <ExpandablePropertyTitle slot="title">
 
-##### attachmentCount \{#embed-searchresult+searchresult+allclusteredresults+attachmentcount\}
+##### attachmentCount \{#embed-searchresult+searchresult+attachmentcount\}
 
 </ExpandablePropertyTitle>
 
@@ -143,10 +178,10 @@ The total number of attachments.
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_attachments"
-  headingId="embed-searchresult+searchresult+allclusteredresults+attachments"
-  parentId="SearchResult_allClusteredResults"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+attachments+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+attachments+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="SearchResult_attachments"
+  headingId="embed-searchresult+searchresult+attachments"
+  parentId="SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+attachments+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-searchresult+searchresult+attachments+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
@@ -154,7 +189,7 @@ The total number of attachments.
 
 <ExpandablePropertyTitle slot="title">
 
-##### attachments \{#embed-searchresult+searchresult+allclusteredresults+attachments\}
+##### attachments \{#embed-searchresult+searchresult+attachments\}
 
 </ExpandablePropertyTitle>
 
@@ -168,10 +203,10 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_backlinkResults"
-  headingId="embed-searchresult+searchresult+allclusteredresults+backlinkresults"
-  parentId="SearchResult_allClusteredResults"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+backlinkresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+backlinkresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="SearchResult_backlinkResults"
+  headingId="embed-searchresult+searchresult+backlinkresults"
+  parentId="SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+backlinkresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-searchresult+searchresult+backlinkresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
@@ -179,7 +214,7 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <ExpandablePropertyTitle slot="title">
 
-##### backlinkResults \{#embed-searchresult+searchresult+allclusteredresults+backlinkresults\}
+##### backlinkResults \{#embed-searchresult+searchresult+backlinkresults\}
 
 </ExpandablePropertyTitle>
 
@@ -193,9 +228,9 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_clusterType"
-  headingId="embed-searchresult+searchresult+allclusteredresults+clustertype"
-  parentId="SearchResult_allClusteredResults"
+  id="SearchResult_clusterType"
+  headingId="embed-searchresult+searchresult+clustertype"
+  parentId="SearchResult"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"SIMILAR\"","linkedLabel":"\"SIMILAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"FRESHNESS\"","linkedLabel":"\"FRESHNESS\"","children":[],"breakoutSubTypes":{}},{"label":"\"TITLE\"","linkedLabel":"\"TITLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"NONE\"","linkedLabel":"\"NONE\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_REPLY\"","linkedLabel":"\"THREAD_REPLY\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_ROOT\"","linkedLabel":"\"THREAD_ROOT\"","children":[],"breakoutSubTypes":{}},{"label":"\"PREFIX\"","linkedLabel":"\"PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUFFIX\"","linkedLabel":"\"SUFFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_PREFIX\"","linkedLabel":"\"AUTHOR_PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_SUFFIX\"","linkedLabel":"\"AUTHOR_SUFFIX\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -204,7 +239,7 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <ExpandablePropertyTitle slot="title">
 
-##### clusterType \{#embed-searchresult+searchresult+allclusteredresults+clustertype\}
+##### clusterType \{#embed-searchresult+searchresult+clustertype\}
 
 </ExpandablePropertyTitle>
 
@@ -218,10 +253,10 @@ The reason for inclusion of clusteredResults.
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_clusteredResults"
-  headingId="embed-searchresult+searchresult+allclusteredresults+clusteredresults"
-  parentId="SearchResult_allClusteredResults"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+clusteredresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+clusteredresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="SearchResult_clusteredResults"
+  headingId="embed-searchresult+searchresult+clusteredresults"
+  parentId="SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+clusteredresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-searchresult+searchresult+clusteredresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
@@ -229,7 +264,7 @@ The reason for inclusion of clusteredResults.
 
 <ExpandablePropertyTitle slot="title">
 
-##### clusteredResults \{#embed-searchresult+searchresult+allclusteredresults+clusteredresults\}
+##### clusteredResults \{#embed-searchresult+searchresult+clusteredresults\}
 
 </ExpandablePropertyTitle>
 
@@ -243,10 +278,10 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document"
-  parentId="SearchResult_allClusteredResults"
-  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+document+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
+  id="SearchResult_document"
+  headingId="embed-searchresult+searchresult+document"
+  parentId="SearchResult"
+  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#embed-searchresult+searchresult+document+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
@@ -254,7 +289,7 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <ExpandablePropertyTitle slot="title">
 
-##### document \{#embed-searchresult+searchresult+allclusteredresults+document\}
+##### document \{#embed-searchresult+searchresult+document\}
 
 </ExpandablePropertyTitle>
 
@@ -262,9 +297,104 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_fullText"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+fulltext"
-  parentId="SearchResult_allClusteredResults_document"
+  id="SearchResult_document_connectorType"
+  headingId="embed-searchresult+searchresult+document+connectortype"
+  parentId="SearchResult_document"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"API_CRAWL\"","linkedLabel":"\"API_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"BROWSER_CRAWL\"","linkedLabel":"\"BROWSER_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"BROWSER_HISTORY\"","linkedLabel":"\"BROWSER_HISTORY\"","children":[],"breakoutSubTypes":{}},{"label":"\"BUILTIN\"","linkedLabel":"\"BUILTIN\"","children":[],"breakoutSubTypes":{}},{"label":"\"FEDERATED_SEARCH\"","linkedLabel":"\"FEDERATED_SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"PUSH_API\"","linkedLabel":"\"PUSH_API\"","children":[],"breakoutSubTypes":{}},{"label":"\"WEB_CRAWL\"","linkedLabel":"\"WEB_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"NATIVE_HISTORY\"","linkedLabel":"\"NATIVE_HISTORY\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### connectorType \{#embed-searchresult+searchresult+document+connectortype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The source from which document content was pulled, e.g. an API crawl or browser history
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_document_containerDocument"
+  headingId="embed-searchresult+searchresult+document+containerdocument"
+  parentId="SearchResult_document"
+  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#embed-searchresult+searchresult+document+containerdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### containerDocument \{#embed-searchresult+searchresult+document+containerdocument\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View containerDocument details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedcontainerDocument />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_document_content"
+  headingId="embed-searchresult+searchresult+document+content"
+  parentId="SearchResult_document"
+  typeInfo={{"label":"DocumentContent","linkedLabel":"<a href=\"#embed-searchresult+searchresult+document+content+documentcontent\">DocumentContent</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### content \{#embed-searchresult+searchresult+document+content\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View content details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedcontent />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_document_datasource"
+  headingId="embed-searchresult+searchresult+document+datasource"
+  parentId="SearchResult_document"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -273,7 +403,243 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <ExpandablePropertyTitle slot="title">
 
-##### fullText \{#embed-searchresult+searchresult+allclusteredresults+document+fulltext\}
+##### datasource \{#embed-searchresult+searchresult+document+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The app or other repository type from which the document was extracted
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_document_docType"
+  headingId="embed-searchresult+searchresult+document+doctype"
+  parentId="SearchResult_document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### docType \{#embed-searchresult+searchresult+document+doctype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource-specific type of the document (e.g. for Jira issues, this is the issue type such as Bug or Feature Request).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_document_id"
+  headingId="embed-searchresult+searchresult+document+id"
+  parentId="SearchResult_document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#embed-searchresult+searchresult+document+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The Glean Document ID.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_document_metadata"
+  headingId="embed-searchresult+searchresult+document+metadata"
+  parentId="SearchResult_document"
+  typeInfo={{"label":"DocumentMetadata","linkedLabel":"<a href=\"#embed-searchresult+searchresult+document+metadata+documentmetadata\">DocumentMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#embed-searchresult+searchresult+document+metadata\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View metadata details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedmetadata />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_document_parentDocument"
+  headingId="embed-searchresult+searchresult+document+parentdocument"
+  parentId="SearchResult_document"
+  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#embed-searchresult+searchresult+document+parentdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### parentDocument \{#embed-searchresult+searchresult+document+parentdocument\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View parentDocument details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedparentDocument />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_document_sections"
+  headingId="embed-searchresult+searchresult+document+sections"
+  parentId="SearchResult_document"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+document+sections+documentsection\">DocumentSection</a>","children":[{"label":"DocumentSection","linkedLabel":"<a href=\"#embed-searchresult+searchresult+document+sections+documentsection\">DocumentSection</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sections \{#embed-searchresult+searchresult+document+sections\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of content sub-sections in the document, e.g. text blocks with different headings in a Drive doc or Confluence page.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View sections details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedsections />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_document_title"
+  headingId="embed-searchresult+searchresult+document+title"
+  parentId="SearchResult_document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### title \{#embed-searchresult+searchresult+document+title\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The title of the document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_document_url"
+  headingId="embed-searchresult+searchresult+document+url"
+  parentId="SearchResult_document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#embed-searchresult+searchresult+document+url\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A permalink for the document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_fullText"
+  headingId="embed-searchresult+searchresult+fulltext"
+  parentId="SearchResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fullText \{#embed-searchresult+searchresult+fulltext\}
 
 </ExpandablePropertyTitle>
 
@@ -287,9 +653,9 @@ The full body text of the result if not already contained in the snippets. Only 
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_fullTextList"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+fulltextlist"
-  parentId="SearchResult_allClusteredResults_document"
+  id="SearchResult_fullTextList"
+  headingId="embed-searchresult+searchresult+fulltextlist"
+  parentId="SearchResult"
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -298,7 +664,7 @@ The full body text of the result if not already contained in the snippets. Only 
 
 <ExpandablePropertyTitle slot="title">
 
-##### fullTextList \{#embed-searchresult+searchresult+allclusteredresults+document+fulltextlist\}
+##### fullTextList \{#embed-searchresult+searchresult+fulltextlist\}
 
 </ExpandablePropertyTitle>
 
@@ -312,10 +678,10 @@ The full body text of the result if not already contained in the snippets; each 
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_mustIncludeSuggestions"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+mustincludesuggestions"
-  parentId="SearchResult_allClusteredResults_document"
-  typeInfo={{"label":"QuerySuggestionList","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+document+mustincludesuggestions+querysuggestionlist\">QuerySuggestionList</a>","children":[],"breakoutSubTypes":{}}}
+  id="SearchResult_mustIncludeSuggestions"
+  headingId="embed-searchresult+searchresult+mustincludesuggestions"
+  parentId="SearchResult"
+  typeInfo={{"label":"QuerySuggestionList","linkedLabel":"<a href=\"#embed-searchresult+searchresult+mustincludesuggestions+querysuggestionlist\">QuerySuggestionList</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
@@ -323,7 +689,7 @@ The full body text of the result if not already contained in the snippets; each 
 
 <ExpandablePropertyTitle slot="title">
 
-##### mustIncludeSuggestions \{#embed-searchresult+searchresult+allclusteredresults+document+mustincludesuggestions\}
+##### mustIncludeSuggestions \{#embed-searchresult+searchresult+mustincludesuggestions\}
 
 </ExpandablePropertyTitle>
 
@@ -331,9 +697,79 @@ The full body text of the result if not already contained in the snippets; each 
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_nativeAppUrl"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+nativeappurl"
-  parentId="SearchResult_allClusteredResults_document"
+  id="SearchResult_mustIncludeSuggestions_person"
+  headingId="embed-searchresult+searchresult+mustincludesuggestions+person"
+  parentId="SearchResult_mustIncludeSuggestions"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-searchresult+searchresult+mustincludesuggestions+person+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### person \{#embed-searchresult+searchresult+mustincludesuggestions+person\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View person details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedperson />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_mustIncludeSuggestions_suggestions"
+  headingId="embed-searchresult+searchresult+mustincludesuggestions+suggestions"
+  parentId="SearchResult_mustIncludeSuggestions"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+mustincludesuggestions+suggestions+querysuggestion\">QuerySuggestion</a>","children":[{"label":"QuerySuggestion","linkedLabel":"<a href=\"#embed-searchresult+searchresult+mustincludesuggestions+suggestions+querysuggestion\">QuerySuggestion</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### suggestions \{#embed-searchresult+searchresult+mustincludesuggestions+suggestions\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View suggestions details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedsuggestions />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_nativeAppUrl"
+  headingId="embed-searchresult+searchresult+nativeappurl"
+  parentId="SearchResult"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -342,7 +778,7 @@ The full body text of the result if not already contained in the snippets; each 
 
 <ExpandablePropertyTitle slot="title">
 
-##### nativeAppUrl \{#embed-searchresult+searchresult+allclusteredresults+document+nativeappurl\}
+##### nativeAppUrl \{#embed-searchresult+searchresult+nativeappurl\}
 
 </ExpandablePropertyTitle>
 
@@ -356,10 +792,10 @@ A deep link, if available, into the datasource's native application for the user
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_pins"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+pins"
-  parentId="SearchResult_allClusteredResults_document"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+document+pins+pindocument\">PinDocument</a>","children":[{"label":"PinDocument","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+document+pins+pindocument\">PinDocument</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="SearchResult_pins"
+  headingId="embed-searchresult+searchresult+pins"
+  parentId="SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+pins+pindocument\">PinDocument</a>","children":[{"label":"PinDocument","linkedLabel":"<a href=\"#embed-searchresult+searchresult+pins+pindocument\">PinDocument</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
@@ -367,7 +803,7 @@ A deep link, if available, into the datasource's native application for the user
 
 <ExpandablePropertyTitle slot="title">
 
-##### pins \{#embed-searchresult+searchresult+allclusteredresults+document+pins\}
+##### pins \{#embed-searchresult+searchresult+pins\}
 
 </ExpandablePropertyTitle>
 
@@ -379,11 +815,56 @@ A list of pins associated with this search result.
 
 </ExpandableProperty>
 
+<ExpandableBreakout
+  slot="entry"
+  id="SearchResult_pins_PinDocument"
+  headingId="embed-searchresult+searchresult+pins+pindocument"
+  parentId="SearchResult_pins"
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### PinDocument \{#embed-searchresult+searchresult+pins+pindocument\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+</ExpandableBreakoutDefaultValue>
+
+</ExpandableBreakout>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View PinDocument details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedPinDocument />
+
+</EmbedTriggerContents>
+
+</Embed>
+
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_prominence"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+prominence"
-  parentId="SearchResult_allClusteredResults_document"
+  id="SearchResult_prominence"
+  headingId="embed-searchresult+searchresult+prominence"
+  parentId="SearchResult"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"HERO\"","linkedLabel":"\"HERO\"","children":[],"breakoutSubTypes":{}},{"label":"\"PROMOTED\"","linkedLabel":"\"PROMOTED\"","children":[],"breakoutSubTypes":{}},{"label":"\"STANDARD\"","linkedLabel":"\"STANDARD\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -392,7 +873,7 @@ A list of pins associated with this search result.
 
 <ExpandablePropertyTitle slot="title">
 
-##### prominence \{#embed-searchresult+searchresult+allclusteredresults+document+prominence\}
+##### prominence \{#embed-searchresult+searchresult+prominence\}
 
 </ExpandablePropertyTitle>
 
@@ -407,10 +888,10 @@ The level of visual distinction that should be given to a result.
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_querySuggestion"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+querysuggestion"
-  parentId="SearchResult_allClusteredResults_document"
-  typeInfo={{"label":"QuerySuggestion","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+querysuggestion\">QuerySuggestion</a>","children":[],"breakoutSubTypes":{}}}
+  id="SearchResult_querySuggestion"
+  headingId="embed-searchresult+searchresult+querysuggestion"
+  parentId="SearchResult"
+  typeInfo={{"label":"QuerySuggestion","linkedLabel":"<a href=\"#embed-searchresult+searchresult+querysuggestion+querysuggestion\">QuerySuggestion</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
@@ -418,7 +899,7 @@ The level of visual distinction that should be given to a result.
 
 <ExpandablePropertyTitle slot="title">
 
-##### querySuggestion \{#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion\}
+##### querySuggestion \{#embed-searchresult+searchresult+querysuggestion\}
 
 </ExpandablePropertyTitle>
 
@@ -426,10 +907,10 @@ The level of visual distinction that should be given to a result.
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_querySuggestion_relatedResults"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+relatedresults"
-  parentId="SearchResult_allClusteredResults_document_querySuggestion"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+relatedresults+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+relatedresults+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="SearchResult_querySuggestion_datasource"
+  headingId="embed-searchresult+searchresult+querysuggestion+datasource"
+  parentId="SearchResult_querySuggestion"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
@@ -437,7 +918,253 @@ The level of visual distinction that should be given to a result.
 
 <ExpandablePropertyTitle slot="title">
 
-##### relatedResults \{#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+relatedresults\}
+##### datasource \{#embed-searchresult+searchresult+querysuggestion+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource associated with the suggestion.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_querySuggestion_inputDetails"
+  headingId="embed-searchresult+searchresult+querysuggestion+inputdetails"
+  parentId="SearchResult_querySuggestion"
+  typeInfo={{"label":"SearchRequestInputDetails","linkedLabel":"<a href=\"#embed-searchresult+searchresult+querysuggestion+inputdetails+searchrequestinputdetails\">SearchRequestInputDetails</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### inputDetails \{#embed-searchresult+searchresult+querysuggestion+inputdetails\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View inputDetails details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedinputDetails />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_querySuggestion_label"
+  headingId="embed-searchresult+searchresult+querysuggestion+label"
+  parentId="SearchResult_querySuggestion"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### label \{#embed-searchresult+searchresult+querysuggestion+label\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A user-facing description to display for the suggestion.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_querySuggestion_missingTerm"
+  headingId="embed-searchresult+searchresult+querysuggestion+missingterm"
+  parentId="SearchResult_querySuggestion"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### missingTerm \{#embed-searchresult+searchresult+querysuggestion+missingterm\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A query term missing from the original query on which this suggestion is based.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_querySuggestion_query"
+  headingId="embed-searchresult+searchresult+querysuggestion+query"
+  parentId="SearchResult_querySuggestion"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### query \{#embed-searchresult+searchresult+querysuggestion+query\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The query being suggested (e.g. enforcing the missing term from the original query).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_querySuggestion_ranges"
+  headingId="embed-searchresult+searchresult+querysuggestion+ranges"
+  parentId="SearchResult_querySuggestion"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+querysuggestion+ranges+textrange\">TextRange</a>","children":[{"label":"TextRange","linkedLabel":"<a href=\"#embed-searchresult+searchresult+querysuggestion+ranges+textrange\">TextRange</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### ranges \{#embed-searchresult+searchresult+querysuggestion+ranges\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The bolded ranges within the query of the QuerySuggestion.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View ranges details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedranges />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_querySuggestion_requestOptions"
+  headingId="embed-searchresult+searchresult+querysuggestion+requestoptions"
+  parentId="SearchResult_querySuggestion"
+  typeInfo={{"label":"SearchRequestOptions","linkedLabel":"<a href=\"#embed-searchresult+searchresult+querysuggestion+requestoptions+searchrequestoptions\">SearchRequestOptions</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### requestOptions \{#embed-searchresult+searchresult+querysuggestion+requestoptions\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View requestOptions details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedrequestOptions />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_querySuggestion_searchProviderInfo"
+  headingId="embed-searchresult+searchresult+querysuggestion+searchproviderinfo"
+  parentId="SearchResult_querySuggestion"
+  typeInfo={{"label":"SearchProviderInfo","linkedLabel":"<a href=\"#embed-searchresult+searchresult+querysuggestion+searchproviderinfo+searchproviderinfo\">SearchProviderInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### searchProviderInfo \{#embed-searchresult+searchresult+querysuggestion+searchproviderinfo\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View searchProviderInfo details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedsearchProviderInfo />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="SearchResult_relatedResults"
+  headingId="embed-searchresult+searchresult+relatedresults"
+  parentId="SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+relatedresults+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#embed-searchresult+searchresult+relatedresults+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedResults \{#embed-searchresult+searchresult+relatedresults\}
 
 </ExpandablePropertyTitle>
 
@@ -449,12 +1176,57 @@ A list of documents related to this person.
 
 </ExpandableProperty>
 
+<ExpandableBreakout
+  slot="entry"
+  id="SearchResult_relatedResults_RelatedDocuments"
+  headingId="embed-searchresult+searchresult+relatedresults+relateddocuments"
+  parentId="SearchResult_relatedResults"
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### RelatedDocuments \{#embed-searchresult+searchresult+relatedresults+relateddocuments\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+</ExpandableBreakoutDefaultValue>
+
+</ExpandableBreakout>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View RelatedDocuments details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedRelatedDocuments />
+
+</EmbedTriggerContents>
+
+</Embed>
+
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_querySuggestion_snippets"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets"
-  parentId="SearchResult_allClusteredResults_document_querySuggestion"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets+searchresultsnippet\">SearchResultSnippet</a>","children":[{"label":"SearchResultSnippet","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets+searchresultsnippet\">SearchResultSnippet</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="SearchResult_snippets"
+  headingId="embed-searchresult+searchresult+snippets"
+  parentId="SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+snippets+searchresultsnippet\">SearchResultSnippet</a>","children":[{"label":"SearchResultSnippet","linkedLabel":"<a href=\"#embed-searchresult+searchresult+snippets+searchresultsnippet\">SearchResultSnippet</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
@@ -462,7 +1234,7 @@ A list of documents related to this person.
 
 <ExpandablePropertyTitle slot="title">
 
-##### snippets \{#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets\}
+##### snippets \{#embed-searchresult+searchresult+snippets\}
 
 </ExpandablePropertyTitle>
 
@@ -474,12 +1246,57 @@ Any snippets associated to the populated object.
 
 </ExpandableProperty>
 
+<ExpandableBreakout
+  slot="entry"
+  id="SearchResult_snippets_SearchResultSnippet"
+  headingId="embed-searchresult+searchresult+snippets+searchresultsnippet"
+  parentId="SearchResult_snippets"
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### SearchResultSnippet \{#embed-searchresult+searchresult+snippets+searchresultsnippet\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+</ExpandableBreakoutDefaultValue>
+
+</ExpandableBreakout>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View SearchResultSnippet details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedSearchResultSnippet />
+
+</EmbedTriggerContents>
+
+</Embed>
+
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_querySuggestion_snippets_structuredResults"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets+structuredresults"
-  parentId="SearchResult_allClusteredResults_document_querySuggestion_snippets"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets+structuredresults+structuredresult\">StructuredResult</a>","children":[{"label":"StructuredResult","linkedLabel":"<a href=\"#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets+structuredresults+structuredresult\">StructuredResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="SearchResult_structuredResults"
+  headingId="embed-searchresult+searchresult+structuredresults"
+  parentId="SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-searchresult+searchresult+structuredresults+structuredresult\">StructuredResult</a>","children":[{"label":"StructuredResult","linkedLabel":"<a href=\"#embed-searchresult+searchresult+structuredresults+structuredresult\">StructuredResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
@@ -487,7 +1304,7 @@ Any snippets associated to the populated object.
 
 <ExpandablePropertyTitle slot="title">
 
-##### structuredResults \{#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets+structuredresults\}
+##### structuredResults \{#embed-searchresult+searchresult+structuredresults\}
 
 </ExpandablePropertyTitle>
 
@@ -499,11 +1316,58 @@ An array of entities in the work graph retrieved via a data request.
 
 </ExpandableProperty>
 
+<ExpandableBreakout
+  slot="entry"
+  id="SearchResult_structuredResults_StructuredResult"
+  headingId="embed-searchresult+searchresult+structuredresults+structuredresult"
+  parentId="SearchResult_structuredResults"
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### StructuredResult \{#embed-searchresult+searchresult+structuredresults+structuredresult\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+A single object that can support any object in the work graph. Only a single object will be populated.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+</ExpandableBreakoutDefaultValue>
+
+</ExpandableBreakout>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View StructuredResult details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedStructuredResult />
+
+</EmbedTriggerContents>
+
+</Embed>
+
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_querySuggestion_snippets_structuredResults_title"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets+structuredresults+title"
-  parentId="SearchResult_allClusteredResults_document_querySuggestion_snippets_structuredResults"
+  id="SearchResult_title"
+  headingId="embed-searchresult+searchresult+title"
+  parentId="SearchResult"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
@@ -512,7 +1376,7 @@ An array of entities in the work graph retrieved via a data request.
 
 <ExpandablePropertyTitle slot="title">
 
-##### title \{#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets+structuredresults+title\}
+##### title \{#embed-searchresult+searchresult+title\}
 
 </ExpandablePropertyTitle>
 
@@ -520,9 +1384,9 @@ An array of entities in the work graph retrieved via a data request.
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_querySuggestion_snippets_structuredResults_trackingToken"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets+structuredresults+trackingtoken"
-  parentId="SearchResult_allClusteredResults_document_querySuggestion_snippets_structuredResults"
+  id="SearchResult_trackingToken"
+  headingId="embed-searchresult+searchresult+trackingtoken"
+  parentId="SearchResult"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
@@ -531,7 +1395,7 @@ An array of entities in the work graph retrieved via a data request.
 
 <ExpandablePropertyTitle slot="title">
 
-##### trackingToken \{#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets+structuredresults+trackingtoken\}
+##### trackingToken \{#embed-searchresult+searchresult+trackingtoken\}
 
 </ExpandablePropertyTitle>
 
@@ -545,9 +1409,9 @@ An opaque token that represents this particular result in this particular query.
 
 <ExpandableProperty
   slot="entry"
-  id="SearchResult_allClusteredResults_document_querySuggestion_snippets_structuredResults_url"
-  headingId="embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets+structuredresults+url"
-  parentId="SearchResult_allClusteredResults_document_querySuggestion_snippets_structuredResults"
+  id="SearchResult_url"
+  headingId="embed-searchresult+searchresult+url"
+  parentId="SearchResult"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
@@ -556,7 +1420,7 @@ An opaque token that represents this particular result in this particular query.
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#embed-searchresult+searchresult+allclusteredresults+document+querysuggestion+snippets+structuredresults+url\}
+##### url \{#embed-searchresult+searchresult+url\}
 
 </ExpandablePropertyTitle>
 

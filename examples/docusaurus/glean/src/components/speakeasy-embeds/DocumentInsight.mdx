@@ -1,4 +1,7 @@
 import {
+  Embed,
+  EmbedTrigger,
+  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -8,6 +11,12 @@ import {
   ExpandablePropertyDescription,
   ExpandablePropertyTitle
 } from "@speakeasy-api/docs-md-react";
+import EmbedcontainerDocument from "./containerDocument.mdx";
+import Embedcontent from "./content.mdx";
+import Embedmetadata from "./metadata.mdx";
+import EmbedparentDocument from "./parentDocument.mdx";
+import Embedsections from "./sections.mdx";
+import Embedperiod from "./period.mdx";
 
 <ExpandableBreakout
   slot="entry"
@@ -88,7 +97,7 @@ The source from which document content was pulled, e.g. an API crawl or browser 
   parentId="DocumentInsight_document"
   typeInfo={{"label":"Document","linkedLabel":"<a href=\"#embed-documentinsight+documentinsight+document+containerdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -100,6 +109,22 @@ The source from which document content was pulled, e.g. an API crawl or browser 
 
 </ExpandableProperty>
 
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View containerDocument details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedcontainerDocument />
+
+</EmbedTriggerContents>
+
+</Embed>
+
 <ExpandableProperty
   slot="entry"
   id="DocumentInsight_document_content"
@@ -107,7 +132,7 @@ The source from which document content was pulled, e.g. an API crawl or browser 
   parentId="DocumentInsight_document"
   typeInfo={{"label":"DocumentContent","linkedLabel":"<a href=\"#embed-documentinsight+documentinsight+document+content+documentcontent\">DocumentContent</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -118,6 +143,22 @@ The source from which document content was pulled, e.g. an API crawl or browser 
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View content details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedcontent />
+
+</EmbedTriggerContents>
+
+</Embed>
 
 <ExpandableProperty
   slot="entry"
@@ -201,7 +242,7 @@ The Glean Document ID.
   parentId="DocumentInsight_document"
   typeInfo={{"label":"DocumentMetadata","linkedLabel":"<a href=\"#embed-documentinsight+documentinsight+document+metadata+documentmetadata\">DocumentMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -213,6 +254,22 @@ The Glean Document ID.
 
 </ExpandableProperty>
 
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View metadata details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedmetadata />
+
+</EmbedTriggerContents>
+
+</Embed>
+
 <ExpandableProperty
   slot="entry"
   id="DocumentInsight_document_parentDocument"
@@ -220,7 +277,7 @@ The Glean Document ID.
   parentId="DocumentInsight_document"
   typeInfo={{"label":"Document","linkedLabel":"<a href=\"#embed-documentinsight+documentinsight+document+parentdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -231,6 +288,22 @@ The Glean Document ID.
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View parentDocument details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<EmbedparentDocument />
+
+</EmbedTriggerContents>
+
+</Embed>
 
 <ExpandableProperty
   slot="entry"
@@ -257,41 +330,78 @@ A list of content sub-sections in the document, e.g. text blocks with different 
 
 </ExpandableProperty>
 
-<ExpandableBreakout
-  slot="entry"
-  id="DocumentInsight_document_sections_DocumentSection"
-  headingId="embed-documentinsight+documentinsight+document+sections+documentsection"
-  parentId="DocumentInsight_document_sections"
-  hasFrontMatter={false}
-  expandByDefault={false}
->
+<Embed slot="embed">
 
-<ExpandableBreakoutTitle slot="title">
+<EmbedTrigger slot="trigger">
 
-#### DocumentSection \{#embed-documentinsight+documentinsight+document+sections+documentsection\}
+View sections details
 
-</ExpandableBreakoutTitle>
+</EmbedTrigger>
 
-<ExpandableBreakoutDescription slot="description">
+<EmbedTriggerContents slot="trigger-contents">
 
-</ExpandableBreakoutDescription>
+<Embedsections />
 
-<ExpandableBreakoutExamples slot="examples">
+</EmbedTriggerContents>
 
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+</Embed>
 
 <ExpandableProperty
   slot="entry"
-  id="DocumentInsight_document_viewCount"
-  headingId="embed-documentinsight+documentinsight+document+viewcount"
+  id="DocumentInsight_document_title"
+  headingId="embed-documentinsight+documentinsight+document+title"
   parentId="DocumentInsight_document"
-  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-documentinsight+documentinsight+document+viewcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### title \{#embed-documentinsight+documentinsight+document+title\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The title of the document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="DocumentInsight_document_url"
+  headingId="embed-documentinsight+documentinsight+document+url"
+  parentId="DocumentInsight_document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#embed-documentinsight+documentinsight+document+url\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A permalink for the document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="DocumentInsight_viewCount"
+  headingId="embed-documentinsight+documentinsight+viewcount"
+  parentId="DocumentInsight"
+  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-documentinsight+documentinsight+viewcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
@@ -299,7 +409,7 @@ A list of content sub-sections in the document, e.g. text blocks with different 
 
 <ExpandablePropertyTitle slot="title">
 
-##### viewCount \{#embed-documentinsight+documentinsight+document+viewcount\}
+##### viewCount \{#embed-documentinsight+documentinsight+viewcount\}
 
 </ExpandablePropertyTitle>
 
@@ -307,10 +417,95 @@ A list of content sub-sections in the document, e.g. text blocks with different 
 
 <ExpandableProperty
   slot="entry"
-  id="DocumentInsight_document_visitorCount"
-  headingId="embed-documentinsight+documentinsight+document+visitorcount"
-  parentId="DocumentInsight_document"
-  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-documentinsight+documentinsight+document+visitorcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
+  id="DocumentInsight_viewCount_count"
+  headingId="embed-documentinsight+documentinsight+viewcount+count"
+  parentId="DocumentInsight_viewCount"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### count \{#embed-documentinsight+documentinsight+viewcount+count\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The counter value
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="DocumentInsight_viewCount_org"
+  headingId="embed-documentinsight+documentinsight+viewcount+org"
+  parentId="DocumentInsight_viewCount"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### org \{#embed-documentinsight+documentinsight+viewcount+org\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The unit of organization over which we did the count aggregation, e.g. org (department) or company
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="DocumentInsight_viewCount_period"
+  headingId="embed-documentinsight+documentinsight+viewcount+period"
+  parentId="DocumentInsight_viewCount"
+  typeInfo={{"label":"Period","linkedLabel":"<a href=\"#embed-documentinsight+documentinsight+viewcount+period+period\">Period</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### period \{#embed-documentinsight+documentinsight+viewcount+period\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View period details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedperiod />
+
+</EmbedTriggerContents>
+
+</Embed>
+
+<ExpandableProperty
+  slot="entry"
+  id="DocumentInsight_visitorCount"
+  headingId="embed-documentinsight+documentinsight+visitorcount"
+  parentId="DocumentInsight"
+  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-documentinsight+documentinsight+visitorcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
@@ -318,8 +513,93 @@ A list of content sub-sections in the document, e.g. text blocks with different 
 
 <ExpandablePropertyTitle slot="title">
 
-##### visitorCount \{#embed-documentinsight+documentinsight+document+visitorcount\}
+##### visitorCount \{#embed-documentinsight+documentinsight+visitorcount\}
 
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="DocumentInsight_visitorCount_count"
+  headingId="embed-documentinsight+documentinsight+visitorcount+count"
+  parentId="DocumentInsight_visitorCount"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### count \{#embed-documentinsight+documentinsight+visitorcount+count\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The counter value
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="DocumentInsight_visitorCount_org"
+  headingId="embed-documentinsight+documentinsight+visitorcount+org"
+  parentId="DocumentInsight_visitorCount"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### org \{#embed-documentinsight+documentinsight+visitorcount+org\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The unit of organization over which we did the count aggregation, e.g. org (department) or company
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="DocumentInsight_visitorCount_period"
+  headingId="embed-documentinsight+documentinsight+visitorcount+period"
+  parentId="DocumentInsight_visitorCount"
+  typeInfo={{"label":"Period","linkedLabel":"<a href=\"#embed-documentinsight+documentinsight+visitorcount+period+period\">Period</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### period \{#embed-documentinsight+documentinsight+visitorcount+period\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View period details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedperiod />
+
+</EmbedTriggerContents>
+
+</Embed>

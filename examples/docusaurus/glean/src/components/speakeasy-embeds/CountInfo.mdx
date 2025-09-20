@@ -1,4 +1,7 @@
 import {
+  Embed,
+  EmbedTrigger,
+  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -8,6 +11,8 @@ import {
   ExpandablePropertyDescription,
   ExpandablePropertyTitle
 } from "@speakeasy-api/docs-md-react";
+import Embedend from "./end.mdx";
+import Embedstart from "./start.mdx";
 
 <ExpandableBreakout
   slot="entry"
@@ -113,7 +118,7 @@ The unit of organization over which we did the count aggregation, e.g. org (depa
   parentId="CountInfo_period"
   typeInfo={{"label":"TimePoint","linkedLabel":"<a href=\"#embed-countinfo+countinfo+period+end+timepoint\">TimePoint</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -124,6 +129,22 @@ The unit of organization over which we did the count aggregation, e.g. org (depa
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View end details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedend />
+
+</EmbedTriggerContents>
+
+</Embed>
 
 <ExpandableProperty
   slot="entry"
@@ -182,7 +203,7 @@ DEPRECATED - The number of days from now in the past to define upper boundary of
   parentId="CountInfo_period"
   typeInfo={{"label":"TimePoint","linkedLabel":"<a href=\"#embed-countinfo+countinfo+period+start+timepoint\">TimePoint</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasFrontMatter={true}
   expandByDefault={false}
 >
 
@@ -193,3 +214,19 @@ DEPRECATED - The number of days from now in the past to define upper boundary of
 </ExpandablePropertyTitle>
 
 </ExpandableProperty>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger">
+
+View start details
+
+</EmbedTrigger>
+
+<EmbedTriggerContents slot="trigger-contents">
+
+<Embedstart />
+
+</EmbedTriggerContents>
+
+</Embed>
