@@ -156,6 +156,7 @@ export type RendererCreateExpandableBreakoutArgs = [
     createDescription?: () => void;
     createExamples?: () => void;
     createDefaultValue?: () => void;
+    createEmbed?: () => void;
   },
 ];
 export type RendererCreateExpandablePropertyArgs = [
@@ -168,6 +169,7 @@ export type RendererCreateExpandablePropertyArgs = [
     createDescription?: () => void;
     createExamples?: () => void;
     createDefaultValue?: () => void;
+    createEmbed?: () => void;
   },
 ];
 

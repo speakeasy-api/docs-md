@@ -313,7 +313,7 @@ function createExpandableProperty({
   renderer,
   property,
   typeInfo,
-  hasEmbed,
+  createEmbed,
 }: {
   renderer: Renderer;
   property: {
@@ -323,7 +323,7 @@ function createExpandableProperty({
     schema: SchemaValue;
   };
   typeInfo: DisplayTypeInfo;
-  hasEmbed: boolean;
+  createEmbed?: () => void;
 }) {
   const isTopLevel = renderer.getCurrentContextType() !== "schema";
   const annotations: PropertyAnnotations[] = [];
@@ -396,10 +396,11 @@ function createExpandableProperty({
     annotations,
     rawTitle: property.name,
     isTopLevel,
-    hasFrontMatter: hasEmbed || hasSchemaFrontmatter(property.schema),
+    hasFrontMatter: !!createEmbed || hasSchemaFrontmatter(property.schema),
     createDescription: createDescription(property.schema, renderer),
     createExamples: createExamples(property.schema, renderer),
     createDefaultValue: createDefaultValue(property.schema, renderer),
+    createEmbed,
   });
 }
 
@@ -435,36 +436,43 @@ function renderObjectProperties({
 
     renderer.enterContext({ id: property.name, type: "schema" });
 
-    // Render the expandable entry in the main document
+    // Check if we're too deeply nested to render this inline, but have more
+    // breakouts to render at a deeper level
     const typeInfo = getDisplayTypeInfo(property.schema, renderer, []);
     const hasEmbed =
       shouldRenderInEmbed(renderer) && typeInfo.breakoutSubTypes.size > 0;
-    createExpandableProperty({ renderer, property, typeInfo, hasEmbed });
 
-    // Check if we're too deeply nested to render this inline, but have more
-    // breakouts to render at a deeper level
-    if (hasEmbed) {
-      renderer.createEmbed({
-        slug: property.name,
-        triggerTitle: `View ${property.name} details`,
-        createdEmbeddedContent(embedRenderer) {
-          // Re-render the breakout in the embed document
-          createExpandableProperty({
-            renderer: embedRenderer,
-            property,
-            typeInfo,
-            hasEmbed: false,
-          });
+    // Render the expandable entry in the main document
+    createExpandableProperty({
+      renderer,
+      property,
+      typeInfo,
+      createEmbed: !hasEmbed
+        ? undefined
+        : () => {
+            renderer.createEmbed({
+              slug: property.name,
+              triggerTitle: `View ${property.name} details`,
+              createdEmbeddedContent(embedRenderer) {
+                // Re-render the breakout in the embed document
+                createExpandableProperty({
+                  renderer: embedRenderer,
+                  property,
+                  typeInfo,
+                });
 
-          // Render breakouts, which will be separate expandable entries
-          renderBreakouts({
-            renderer: embedRenderer,
-            schema: property.schema,
-          });
-        },
-      });
-    } else {
-      // Render breakouts, which will be separate expandable entries
+                // Render breakouts, which will be separate expandable entries
+                renderBreakouts({
+                  renderer: embedRenderer,
+                  schema: property.schema,
+                });
+              },
+            });
+          },
+    });
+
+    // If we aren't embedding, render its entries in the main document
+    if (!hasEmbed) {
       renderBreakouts({
         renderer,
         schema: property.schema,
@@ -478,14 +486,14 @@ function renderObjectProperties({
 function createExpandableBreakout({
   renderer,
   breakout,
-  hasEmbed,
+  createEmbed,
 }: {
   renderer: Renderer;
   breakout: {
     label: string;
     schema: ObjectValue;
   };
-  hasEmbed: boolean;
+  createEmbed?: () => void;
 }) {
   const isTopLevel = renderer.getCurrentContextType() !== "schema";
   const { showDebugPlaceholders } = getSettings().display;
@@ -501,7 +509,7 @@ function createExpandableBreakout({
         }
       );
     },
-    hasFrontMatter: hasEmbed || hasSchemaFrontmatter(breakout.schema),
+    hasFrontMatter: !!createEmbed || hasSchemaFrontmatter(breakout.schema),
     createDescription() {
       const description =
         "description" in breakout.schema ? breakout.schema.description : null;
@@ -564,6 +572,7 @@ function createExpandableBreakout({
         });
       }
     },
+    createEmbed,
   });
 }
 
@@ -595,39 +604,41 @@ function renderBreakoutEntries({
 
     renderer.enterContext({ id: breakout.label, type: "schema" });
 
-    // Render the breakout entry in the main document
+    // Check if we're too deeply nested to render this inline, but have more
+    // properties to render at a deeper level
     const hasEmbed =
       shouldRenderInEmbed(renderer) &&
       Object.keys(breakout.schema.properties).length > 0;
+
+    // Render the breakout entry in the main document
     createExpandableBreakout({
       renderer,
       breakout,
-      hasEmbed,
+      createEmbed: !hasEmbed
+        ? undefined
+        : () => {
+            renderer.createEmbed({
+              slug: breakout.label,
+              triggerTitle: `View ${breakout.label} details`,
+              createdEmbeddedContent(embedRenderer) {
+                // Re-render the breakout in the embed document
+                createExpandableBreakout({
+                  renderer: embedRenderer,
+                  breakout,
+                });
+
+                // Render the breakout properties in the embed document
+                renderObjectProperties({
+                  renderer: embedRenderer,
+                  schema: breakout.schema,
+                });
+              },
+            });
+          },
     });
 
-    // Check if we're too deeply nested to render this inline, but have more
-    // properties to render at a deeper level
-    if (hasEmbed) {
-      renderer.createEmbed({
-        slug: breakout.label,
-        triggerTitle: `View ${breakout.label} details`,
-        createdEmbeddedContent(embedRenderer) {
-          // Re-render the breakout in the embed document
-          createExpandableBreakout({
-            renderer: embedRenderer,
-            breakout,
-            hasEmbed: false,
-          });
-
-          // Render the breakout properties in the embed document
-          renderObjectProperties({
-            renderer: embedRenderer,
-            schema: breakout.schema,
-          });
-        },
-      });
-    } else {
-      // Render the breakout entries in the main document
+    // If we aren't embedding, render its entries in the main document
+    if (!hasEmbed) {
       renderBreakoutEntries({
         renderer,
         typeInfo,

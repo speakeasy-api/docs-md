@@ -676,6 +676,7 @@ class MdxRenderer extends MarkdownRenderer {
         createDescription,
         createExamples,
         createDefaultValue,
+        createEmbed,
         isTopLevel,
       },
     ]: RendererCreateExpandableBreakoutArgs
@@ -733,6 +734,11 @@ class MdxRenderer extends MarkdownRenderer {
             createDefaultValue
           );
         }
+
+        // Embeds handle their own component imports
+        if (createEmbed) {
+          createEmbed();
+        }
       }
     );
   }
@@ -748,6 +754,7 @@ class MdxRenderer extends MarkdownRenderer {
         createDescription,
         createExamples,
         createDefaultValue,
+        createEmbed,
       },
     ]: RendererCreateExpandablePropertyArgs
   ) {
@@ -811,6 +818,11 @@ class MdxRenderer extends MarkdownRenderer {
             },
             createDefaultValue
           );
+        }
+
+        // Embeds handle their own component imports
+        if (createEmbed) {
+          createEmbed();
         }
       }
     );
