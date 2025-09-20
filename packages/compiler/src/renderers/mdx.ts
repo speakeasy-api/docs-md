@@ -96,9 +96,6 @@ export class MdxSite extends MarkdownSite {
   public override createEmbed(
     ...[{ slug, createdEmbeddedContent }]: SiteCreateEmbedArgs
   ) {
-    if (!slug) {
-      throw new InternalError("Embed slug not provided");
-    }
     if (!this.docsData) {
       throw new InternalError("Docs data not set");
     }
@@ -133,6 +130,8 @@ export class MdxSite extends MarkdownSite {
     return path;
   }
 }
+
+let slugCounter = 0;
 
 class MdxRenderer extends MarkdownRenderer {
   // Mapping of import path to imported symbols to imported symbol alias
@@ -175,7 +174,7 @@ class MdxRenderer extends MarkdownRenderer {
     noImport = false,
   }: {
     symbol: string;
-    props?: Props;
+    props: Props;
     selfClosing: boolean;
     noImport?: boolean;
   }) {
@@ -222,7 +221,7 @@ class MdxRenderer extends MarkdownRenderer {
       noImport,
     }: {
       symbol: string;
-      props?: Props;
+      props: Props;
       noImport?: boolean;
     },
     cb?: () => void
@@ -270,32 +269,48 @@ class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createEmbed(...[args]: RendererCreateEmbedArgs) {
+    // If we don't have a slug, make one up
+    // TODO: fix the reason we're not getting a name on the generator side.
+    if (!args.slug) {
+      args.slug = `EmbedNameMissing${slugCounter++}`;
+    }
+
     const absolutePath = this.#site.createEmbed(args);
     const { triggerTitle, slug } = args;
 
-    this.#appendComponent<EmbedProps>({ symbol: "Embed" }, () => {
-      this.#appendComponent<EmbedTriggerProps>(
-        { symbol: "EmbedTrigger", props: { slot: "trigger" } },
-        () => {
-          this.appendLine(triggerTitle);
+    this.#appendComponent<EmbedProps>(
+      { symbol: "Embed", props: { slot: "embed" } },
+      () => {
+        this.#appendComponent<EmbedTriggerProps>(
+          { symbol: "EmbedTrigger", props: { slot: "trigger" } },
+          () => {
+            this.appendLine(triggerTitle);
+          }
+        );
+
+        const componentName = `Embed${slug}`;
+        let importPath = relative(dirname(this.getPagePath()), absolutePath);
+
+        // When an embed imports another embed, we don't get the leading `./`
+        if (!importPath.startsWith(".")) {
+          importPath = `./${importPath}`;
         }
-      );
-
-      const componentName = `Embed${slug}`;
-      let importPath = relative(dirname(this.getPagePath()), absolutePath);
-
-      // When an embed imports another embed, we don't get the leading `./`
-      if (!importPath.startsWith(".")) {
-        importPath = `./${importPath}`;
+        this.#insertDefaultImport(importPath, componentName);
+        this.#appendComponent<EmbedTriggerContentsProps>(
+          {
+            symbol: "EmbedTriggerContents",
+            props: { slot: "trigger-contents" },
+          },
+          () => {
+            this.#appendComponent({
+              symbol: componentName,
+              props: {},
+              noImport: true,
+            });
+          }
+        );
       }
-      this.#insertDefaultImport(importPath, componentName);
-      this.#appendComponent<EmbedTriggerContentsProps>(
-        { symbol: "EmbedTriggerContents", props: { slot: "trigger-contents" } },
-        () => {
-          this.#appendComponent({ symbol: componentName, noImport: true });
-        }
-      );
-    });
+    );
   }
 
   public override render() {
@@ -395,6 +410,7 @@ class MdxRenderer extends MarkdownRenderer {
     this.#appendComponent<OperationProps>(
       {
         symbol: "Operation",
+        props: {},
       },
       () => super.createOperationSection(...args)
     );
@@ -484,6 +500,7 @@ class MdxRenderer extends MarkdownRenderer {
                   this.#appendComponent<CodeSampleProps>(
                     {
                       symbol: "CodeSample",
+                      props: {},
                     },
                     () =>
                       this.createCode(value, {
@@ -616,6 +633,7 @@ class MdxRenderer extends MarkdownRenderer {
     this.#appendComponent<ExpandableSectionProps>(
       {
         symbol: "ExpandableSection",
+        props: {},
       },
       cb
     );
@@ -625,6 +643,7 @@ class MdxRenderer extends MarkdownRenderer {
     this.#appendComponent<ExpandableSectionProps>(
       {
         symbol: "ExpandableSection",
+        props: {},
       },
       cb
     );
@@ -634,6 +653,7 @@ class MdxRenderer extends MarkdownRenderer {
     this.#appendComponent<ExpandableSectionProps>(
       {
         symbol: "ExpandableSection",
+        props: {},
       },
       cb
     );
@@ -802,7 +822,6 @@ class MdxRenderer extends MarkdownRenderer {
     this.#appendComponent<FrontMatterDisplayTypeProps>({
       symbol: "FrontMatterDisplayType",
       props: { typeInfo },
-      noImport: true,
     });
   }
 
@@ -810,6 +829,7 @@ class MdxRenderer extends MarkdownRenderer {
     this.#appendComponent<SectionProps>(
       {
         symbol: "Section",
+        props: {},
       },
       cb
     );
@@ -845,6 +865,7 @@ class MdxRenderer extends MarkdownRenderer {
     this.#appendComponent<Omit<TabbedSectionProps, "children">>(
       {
         symbol: "TabbedSection",
+        props: {},
       },
       cb
     );
@@ -868,6 +889,7 @@ class MdxRenderer extends MarkdownRenderer {
     this.#appendComponent<DebugPlaceholderProps>(
       {
         symbol: "DebugPlaceholder",
+        props: {},
       },
       () => {
         createTitle();

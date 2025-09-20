@@ -1,5 +1,5 @@
 import type { EmbedProps } from "./types";
 
-export function Embed({ children }: EmbedProps) {
-  return <>{children}</>;
+export function Embed({ children, slot }: EmbedProps) {
+  return <div slot={slot}>{children}</div>;
 }

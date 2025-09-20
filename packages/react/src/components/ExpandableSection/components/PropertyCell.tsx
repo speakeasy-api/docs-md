@@ -116,6 +116,7 @@ export function PropertyCell({
   const descriptionChildren = useChildren(children, "description");
   const examplesChildren = useChildren(children, "examples");
   const defaultValueChildren = useChildren(children, "defaultValue");
+  const embedChildren = useChildren(children, "embed");
 
   const displayInfo = useMemo(() => {
     if (!typeInfo) {
@@ -190,6 +191,7 @@ export function PropertyCell({
             {descriptionChildren}
             {examplesChildren}
             {defaultValueChildren}
+            {embedChildren}
           </div>
         )}
       </div>
@@ -238,6 +240,7 @@ export function PropertyCell({
             {descriptionChildren}
             {examplesChildren}
             {defaultValueChildren}
+            {embedChildren}
           </div>
         )}
 
