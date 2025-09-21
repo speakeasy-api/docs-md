@@ -694,6 +694,7 @@ class MdxRenderer extends MarkdownRenderer {
           parentId,
           hasFrontMatter,
           expandByDefault,
+          hasEmbed: !!createEmbed,
         },
       },
       () => {
@@ -774,6 +775,7 @@ class MdxRenderer extends MarkdownRenderer {
           typeAnnotations: annotations,
           hasFrontMatter,
           expandByDefault,
+          hasEmbed: !!createEmbed,
         },
       },
       () => {
