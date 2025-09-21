@@ -56,7 +56,6 @@ export type SiteBuildPagePathArgs = [
   slug: string,
   options?: { appendIndex?: boolean },
 ];
-export type SiteBuildEmbedPathArgs = [slug: string];
 export type SiteGetRendererArgs = [args: RendererConstructorArgs];
 
 export abstract class Site {
@@ -64,7 +63,6 @@ export abstract class Site {
   abstract createPage(...args: SiteCreatePageArgs): Renderer;
   abstract createEmbed(...args: SiteCreateEmbedArgs): string;
   abstract buildPagePath(...args: SiteBuildPagePathArgs): string;
-  abstract buildEmbedPath(...args: SiteBuildEmbedPathArgs): string;
   protected abstract getRenderer(...args: SiteGetRendererArgs): Renderer;
 }
 

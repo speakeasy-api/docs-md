@@ -4,7 +4,6 @@ import { join, resolve } from "node:path";
 import { escapeText } from "../../renderers/util.ts";
 import { getSettings } from "../../settings.ts";
 import type { FrameworkConfig } from "../../types/FrameworkConfig.ts";
-import { InternalError } from "../../util/internalError.ts";
 
 export const nextraConfig: FrameworkConfig = {
   rendererType: "mdx",
@@ -18,18 +17,11 @@ export const nextraConfig: FrameworkConfig = {
     return resolve(join(settings.output.pageOutDir, `${slug}/page.mdx`));
   },
 
-  buildEmbedPath(slug) {
-    const settings = getSettings();
-    if (!settings.output.embedOutDir) {
-      throw new InternalError("Embed output directory not set");
-    }
-    return resolve(join(settings.output.embedOutDir, `${slug}.mdx`));
-  },
-
   buildPagePreamble(frontMatter) {
     if (!frontMatter) {
       return "";
     }
+
     return `---
 sidebarTitle: ${escapeText(frontMatter.sidebarLabel, { escape: "mdx" })}
 ---

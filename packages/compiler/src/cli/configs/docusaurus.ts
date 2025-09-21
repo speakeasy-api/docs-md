@@ -4,7 +4,6 @@ import { join, resolve } from "node:path";
 import { escapeText } from "../../renderers/util.ts";
 import { getSettings } from "../../settings.ts";
 import type { FrameworkConfig } from "../../types/FrameworkConfig.ts";
-import { InternalError } from "../../util/internalError.ts";
 
 export const docusaurusConfig: FrameworkConfig = {
   rendererType: "mdx",
@@ -18,33 +17,20 @@ export const docusaurusConfig: FrameworkConfig = {
     return resolve(join(settings.output.pageOutDir, `${slug}.mdx`));
   },
 
-  buildEmbedPath(slug) {
-    const settings = getSettings();
-    if (!settings.output.embedOutDir) {
-      throw new InternalError("Embed output directory not set");
-    }
-    return resolve(join(settings.output.embedOutDir, `${slug}.mdx`));
-  },
-
-  buildPagePreamble(frontMatter, { isEmbed }) {
-    if (frontMatter) {
+  buildPagePreamble(frontMatter) {
+    if (!frontMatter) {
       return `---
+hide_table_of_contents: true
+---`;
+    }
+
+    return `---
 sidebar_position: ${frontMatter.sidebarPosition}
 sidebar_label: ${escapeText(frontMatter.sidebarLabel, { escape: "mdx" })}
 ---
 
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 `;
-    } else if (isEmbed) {
-      // Embeds in Docusaurus have a nasty bug where table of contents is
-      // undefined and causes a crash. We just export an empty array to
-      // work around it.
-      return `---
-hide_table_of_contents: true
----`;
-    } else {
-      return "";
-    }
   },
 
   postProcess() {

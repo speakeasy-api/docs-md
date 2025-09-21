@@ -1,4 +1,4 @@
-import { dirname, relative } from "node:path";
+import { dirname, join, relative } from "node:path";
 
 import type {
   CodeSampleProps,
@@ -64,7 +64,6 @@ import type {
   RendererCreateSecuritySectionArgs,
   RendererCreateTabbedSectionArgs,
   RendererCreateTabbedSectionTabArgs,
-  SiteBuildEmbedPathArgs,
   SiteBuildPagePathArgs,
   SiteCreateEmbedArgs,
   SiteGetRendererArgs,
@@ -81,13 +80,6 @@ export class MdxSite extends MarkdownSite {
     return this.compilerConfig.buildPagePath(slug, { appendIndex });
   }
 
-  public override buildEmbedPath(...[slug]: SiteBuildEmbedPathArgs): string {
-    if (!this.compilerConfig.buildEmbedPath) {
-      throw new InternalError("buildEmbedPath not implemented");
-    }
-    return this.compilerConfig.buildEmbedPath(slug);
-  }
-
   protected override getRenderer(...[options]: SiteGetRendererArgs) {
     return new MdxRenderer({ ...options }, this);
   }
@@ -98,16 +90,25 @@ export class MdxSite extends MarkdownSite {
     if (!this.docsData) {
       throw new InternalError("Docs data not set");
     }
+    const {
+      output: { embedOutDir },
+    } = getSettings();
     slug = slug.toLowerCase();
-    const path = this.buildEmbedPath(slug);
+    if (!embedOutDir) {
+      throw new InternalError(
+        "Embed output directory not set, but should have been caught by the settings parser"
+      );
+    }
+    const embedPath = join(embedOutDir, `${slug}.mdx`);
     if (this.#embedsCreated.has(slug)) {
-      return path;
+      return embedPath;
     }
     this.#embedsCreated.add(slug);
 
+    // Create the embed contents
     const renderer = this.getRenderer({
       currentPageSlug: slug,
-      currentPagePath: path,
+      currentPagePath: embedPath,
       site: this,
       docsData: this.docsData,
       compilerConfig: this.compilerConfig,
@@ -128,9 +129,9 @@ export class MdxSite extends MarkdownSite {
     renderer.exitContext();
 
     const { contents } = renderer.render();
-    getOnPageComplete()(path, contents);
+    getOnPageComplete()(embedPath, contents);
 
-    return path;
+    return embedPath;
   }
 }
 
@@ -147,8 +148,7 @@ class MdxRenderer extends MarkdownRenderer {
     super(options);
     this.#site = site;
     this.#frontMatter = this.compilerConfig.buildPagePreamble(
-      options.frontMatter,
-      { isEmbed: options.isEmbed }
+      options.frontMatter
     );
   }
 
