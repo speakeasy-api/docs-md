@@ -281,7 +281,7 @@ class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createEmbed(...[args]: RendererCreateEmbedArgs) {
-    if (!this.#hasEmbed) {
+    if (!this.#hasEmbed && !this.hasParentContextType("embed")) {
       this.#hasEmbed = true;
       this.#insertComponentImport("EmbedProvider");
     }
@@ -357,7 +357,7 @@ class MdxRenderer extends MarkdownRenderer {
     }
 
     // Add the embed provider, if we need one
-    if (this.#hasEmbed) {
+    if (this.#hasEmbed && !this.hasParentContextType("embed")) {
       frontMatter += "<EmbedProvider />\n\n";
     }
 

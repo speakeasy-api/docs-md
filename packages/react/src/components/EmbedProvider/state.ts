@@ -1,8 +1,8 @@
 import { atom } from "jotai";
 
-type SidebarContent = {
+type EmbedContent = {
   title: string;
   content: React.ReactNode;
 };
 
-export const sidebarContentAtom = atom<SidebarContent | null>(null);
+export const embedContentAtom = atom<EmbedContent | null>(null);

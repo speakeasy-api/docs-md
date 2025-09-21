@@ -43,6 +43,7 @@ import type {
   RendererCreateTabbedSectionTabArgs,
   RendererCreateTextArgs,
   RendererGetCurrentIdArgs,
+  RendererHasParentContextTypeArgs,
   SiteBuildPagePathArgs,
   SiteCreateEmbedArgs,
   SiteCreatePageArgs,
@@ -694,6 +695,12 @@ ${text}\n</code>\n</pre>`;
       throw new InternalError("No context found");
     }
     return topLevelContext.type;
+  }
+
+  public override hasParentContextType(
+    ...[type]: RendererHasParentContextTypeArgs
+  ) {
+    return this.#contextStack.some((context) => context.type === type);
   }
 
   public override getSchemaDepth() {

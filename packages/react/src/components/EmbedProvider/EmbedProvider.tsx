@@ -1,25 +1,18 @@
 "use client";
 
 import { useAtom } from "jotai";
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-import { sidebarContentAtom } from "./state";
+import { embedContentAtom } from "./state";
 import styles from "./styles.module.css";
 
-export const EmbedProvider = memo(function EmbedProvider() {
+export function EmbedProvider() {
   // We keep separate track of the open state vs content because we want to
   // start animating the closing of the sidebar before the content is cleared,
   // so that we see it slide off screen. This means we can't use content as an
   // animation trigger because it would otherwise clear all at once
-  const [content, setContent] = useAtom(sidebarContentAtom);
+  const [content, setContent] = useAtom(embedContentAtom);
   const [open, setOpen] = useState(false);
-
-  const contentRef = useRef(content);
-  if (contentRef.current !== content) {
-    console.log(`Content changed to ${content?.title}`);
-    contentRef.current = content;
-  }
-  console.log(contentRef.current?.title, open);
 
   const onAnimationComplete = useCallback(() => {
     if (!open) {
@@ -27,7 +20,6 @@ export const EmbedProvider = memo(function EmbedProvider() {
     }
   }, [open, setContent]);
   useEffect(() => {
-    console.log(`Content changed to ${content?.title}`);
     if (content) {
       setOpen(true);
     }
@@ -52,4 +44,4 @@ export const EmbedProvider = memo(function EmbedProvider() {
       {content && <div>{content.content}</div>}
     </div>
   );
-});
+}

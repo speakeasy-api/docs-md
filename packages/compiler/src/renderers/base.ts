@@ -272,6 +272,7 @@ export type RendererCreatePillArgs = [
 
 export type RendererCreateContextArgs = [context: Context];
 export type RendererAlreadyInContextArgs = [id: string];
+export type RendererHasParentContextTypeArgs = [type: ContextType];
 export type RendererGetCurrentIdArgs = [postFixId?: string];
 
 export abstract class Renderer {
@@ -336,5 +337,8 @@ export abstract class Renderer {
   abstract getCurrentContextType(): ContextType;
   abstract getSchemaDepth(): number;
   abstract alreadyInContext(...args: RendererAlreadyInContextArgs): boolean;
+  abstract hasParentContextType(
+    ...args: RendererHasParentContextTypeArgs
+  ): boolean;
   abstract getCurrentId(...args: RendererGetCurrentIdArgs): string;
 }
