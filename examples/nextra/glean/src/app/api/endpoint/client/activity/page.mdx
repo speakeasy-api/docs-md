@@ -6,8 +6,8 @@ import "@speakeasy-api/docs-md-react/nextra.css";
 
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -30,6 +30,8 @@ import {
 } from "@speakeasy-api/docs-md-react";
 import EmbedFeedbackChatExchange from "../../../../../components/speakeasy-embeds/FeedbackChatExchange.mdx";
 import EmbedSideBySideImplementation from "../../../../../components/speakeasy-embeds/SideBySideImplementation.mdx";
+
+<EmbedProvider />
 
 # Client Activity Operations [#client/activity]
 
@@ -445,17 +447,15 @@ Array of previous request/response exchanges, ordered by oldest to newest.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View FeedbackChatExchange details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="FeedbackChatExchange"
+  triggerText="View FeedbackChatExchange details"
+>
 
 <EmbedFeedbackChatExchange />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1008,17 +1008,15 @@ Array of implementations that were compared side-by-side.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View SideBySideImplementation details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="SideBySideImplementation"
+  triggerText="View SideBySideImplementation details"
+>
 
 <EmbedSideBySideImplementation />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

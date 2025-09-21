@@ -1,7 +1,7 @@
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -15,6 +15,8 @@ import {
 import Embedmetadata from "./metadata.mdx";
 import EmbedrelatedDocuments from "./relatedDocuments.mdx";
 import EmbedQuerySuggestion from "./QuerySuggestion.mdx";
+
+<EmbedProvider />
 
 <ExpandableSection>
 
@@ -74,17 +76,11 @@ import EmbedQuerySuggestion from "./QuerySuggestion.mdx";
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -165,17 +161,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -229,17 +223,15 @@ View relatedDocuments details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View QuerySuggestion details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="QuerySuggestion"
+  triggerText="View QuerySuggestion details"
+>
 
 <EmbedQuerySuggestion />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

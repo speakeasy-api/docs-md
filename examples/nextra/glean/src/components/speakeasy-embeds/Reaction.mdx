@@ -1,7 +1,7 @@
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -13,6 +13,8 @@ import {
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedPerson from "./Person.mdx";
+
+<EmbedProvider />
 
 <ExpandableSection>
 
@@ -148,17 +150,11 @@ A list of POC for company.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View Person details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="Person" triggerText="View Person details">
 
 <EmbedPerson />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

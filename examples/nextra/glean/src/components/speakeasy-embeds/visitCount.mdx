@@ -1,7 +1,7 @@
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableProperty,
   ExpandablePropertyDescription,
   ExpandablePropertyTitle,
@@ -9,6 +9,8 @@ import {
 } from "@speakeasy-api/docs-md-react";
 import Embedend from "./end.mdx";
 import Embedstart from "./start.mdx";
+
+<EmbedProvider />
 
 <ExpandableSection>
 
@@ -118,17 +120,11 @@ The unit of organization over which we did the count aggregation, e.g. org (depa
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View end details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="end" triggerText="View end details">
 
 <Embedend />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -203,17 +199,11 @@ DEPRECATED - The number of days from now in the past to define upper boundary of
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View start details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="start" triggerText="View start details">
 
 <Embedstart />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

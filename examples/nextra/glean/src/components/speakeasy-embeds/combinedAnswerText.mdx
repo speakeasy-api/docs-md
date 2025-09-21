@@ -1,7 +1,7 @@
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -14,6 +14,8 @@ import {
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedStructuredTextItem from "./StructuredTextItem.mdx";
+
+<EmbedProvider />
 
 <ExpandableSection>
 
@@ -89,17 +91,15 @@ An array of objects each of which contains either a string or a link which optio
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View StructuredTextItem details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="StructuredTextItem"
+  triggerText="View StructuredTextItem details"
+>
 
 <EmbedStructuredTextItem />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

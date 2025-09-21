@@ -1,7 +1,7 @@
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -15,6 +15,8 @@ import {
 import EmbedcustomData from "./customData.mdx";
 import Embedwrite from "./write.mdx";
 import EmbedUserRoleSpecification from "./UserRoleSpecification.mdx";
+
+<EmbedProvider />
 
 <ExpandableSection>
 
@@ -130,17 +132,11 @@ Custom fields specific to individual datasources
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View customData details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="customData" triggerText="View customData details">
 
 <EmbedcustomData />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -215,17 +211,11 @@ Describes the write permissions levels that a user has for a specific feature
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View write details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="write" triggerText="View write details">
 
 <Embedwrite />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -285,17 +275,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

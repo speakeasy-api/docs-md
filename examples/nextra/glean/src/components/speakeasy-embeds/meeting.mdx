@@ -1,13 +1,15 @@
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableProperty,
   ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import Embedpeople from "./people.mdx";
+
+<EmbedProvider />
 
 <ExpandableSection>
 
@@ -198,17 +200,11 @@ Full details of some of the attendees of this event
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View people details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="people" triggerText="View people details">
 
 <Embedpeople />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

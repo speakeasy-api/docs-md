@@ -4,7 +4,6 @@ import type {
   CodeSampleProps,
   DebugPlaceholderProps,
   EmbedProps,
-  EmbedTriggerContentsProps,
   EmbedTriggerProps,
   ExpandableBreakoutDefaultValueProps,
   ExpandableBreakoutDescriptionProps,
@@ -119,7 +118,7 @@ export class MdxSite extends MarkdownSite {
     });
     renderer.enterContext({ id: slug, type: "schema" });
 
-    renderer.createEmbedWRapper(() => {
+    renderer.createEmbedWrapper(() => {
       createdEmbeddedContent(renderer);
     });
 
@@ -140,6 +139,7 @@ class MdxRenderer extends MarkdownRenderer {
   #imports = new Map<string, Map<string, string>>();
   #frontMatter: string | undefined;
   #site: MdxSite;
+  #hasEmbed = false;
 
   constructor(options: RendererConstructorArgs, site: MdxSite) {
     super(options);
@@ -270,7 +270,7 @@ class MdxRenderer extends MarkdownRenderer {
     return this.compilerConfig.elementIdSeparator ?? "+";
   }
 
-  public createEmbedWRapper(cb: () => void) {
+  public createEmbedWrapper(cb: () => void) {
     this.#appendComponent<ExpandableSectionProps>(
       {
         symbol: "ExpandableSection",
@@ -281,6 +281,11 @@ class MdxRenderer extends MarkdownRenderer {
   }
 
   public override createEmbed(...[args]: RendererCreateEmbedArgs) {
+    if (!this.#hasEmbed) {
+      this.#hasEmbed = true;
+      this.#insertComponentImport("EmbedProvider");
+    }
+
     // If we don't have a slug, make one up
     // TODO: fix the reason we're not getting a name on the generator side.
     if (!args.slug) {
@@ -288,30 +293,17 @@ class MdxRenderer extends MarkdownRenderer {
     }
 
     const absolutePath = this.#site.createEmbed(args);
-    const { triggerTitle, slug } = args;
+    const { triggerText, embedTitle, slug } = args;
 
     this.#appendComponent<EmbedProps>(
       { symbol: "Embed", props: { slot: "embed" } },
       () => {
-        this.#appendComponent<EmbedTriggerProps>(
-          { symbol: "EmbedTrigger", props: { slot: "trigger" } },
-          () => {
-            this.appendLine(triggerTitle);
-          }
-        );
-
         const componentName = `Embed${slug}`;
-        let importPath = relative(dirname(this.getPagePath()), absolutePath);
 
-        // When an embed imports another embed, we don't get the leading `./`
-        if (!importPath.startsWith(".")) {
-          importPath = `./${importPath}`;
-        }
-        this.#insertDefaultImport(importPath, componentName);
-        this.#appendComponent<EmbedTriggerContentsProps>(
+        this.#appendComponent<EmbedTriggerProps>(
           {
-            symbol: "EmbedTriggerContents",
-            props: { slot: "trigger-contents" },
+            symbol: "EmbedTrigger",
+            props: { slot: "trigger", embedTitle, triggerText },
           },
           () => {
             this.#appendComponent({
@@ -321,6 +313,14 @@ class MdxRenderer extends MarkdownRenderer {
             });
           }
         );
+
+        let importPath = relative(dirname(this.getPagePath()), absolutePath);
+
+        // When an embed imports another embed, we don't get the leading `./`
+        if (!importPath.startsWith(".")) {
+          importPath = `./${importPath}`;
+        }
+        this.#insertDefaultImport(importPath, componentName);
       }
     );
   }
@@ -354,6 +354,11 @@ class MdxRenderer extends MarkdownRenderer {
     // Add a blank line after front matter, if it exists
     if (frontMatter) {
       frontMatter += "\n";
+    }
+
+    // Add the embed provider, if we need one
+    if (this.#hasEmbed) {
+      frontMatter += "<EmbedProvider />\n\n";
     }
 
     // Return the final result

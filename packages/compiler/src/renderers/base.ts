@@ -47,7 +47,8 @@ export type SiteCreatePageArgs = [
 export type SiteCreateEmbedArgs = [
   options: {
     slug: string;
-    triggerTitle: string;
+    embedTitle: string;
+    triggerText: string;
     createdEmbeddedContent: (renderer: Renderer) => void;
   },
 ];
@@ -188,7 +189,8 @@ export type RendererCreateDebugPlaceholderArgs = [
 export type RendererCreateEmbedArgs = [
   options: {
     slug: string;
-    triggerTitle: string;
+    embedTitle: string;
+    triggerText: string;
     createdEmbeddedContent: (renderer: Renderer) => void;
   },
 ];

@@ -1,7 +1,7 @@
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -14,6 +14,8 @@ import {
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedMessageTextBlock from "./MessageTextBlock.mdx";
+
+<EmbedProvider />
 
 <ExpandableSection>
 
@@ -99,17 +101,15 @@ The content of the message.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View MessageTextBlock details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="MessageTextBlock"
+  triggerText="View MessageTextBlock details"
+>
 
 <EmbedMessageTextBlock />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

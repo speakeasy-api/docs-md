@@ -1,7 +1,7 @@
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -13,6 +13,8 @@ import {
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedCalendarAttendee from "./CalendarAttendee.mdx";
+
+<EmbedProvider />
 
 <ExpandableSection>
 
@@ -213,17 +215,15 @@ Full details of some of the attendees of this event
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View CalendarAttendee details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="CalendarAttendee"
+  triggerText="View CalendarAttendee details"
+>
 
 <EmbedCalendarAttendee />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

@@ -1,7 +1,7 @@
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -13,6 +13,8 @@ import {
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedresultDocument from "./resultDocument.mdx";
+
+<EmbedProvider />
 
 <ExpandableSection>
 
@@ -142,17 +144,15 @@ List of documents read by the agent.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View resultDocument details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="resultDocument"
+  triggerText="View resultDocument details"
+>
 
 <EmbedresultDocument />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

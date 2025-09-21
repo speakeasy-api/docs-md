@@ -1,7 +1,7 @@
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -12,6 +12,8 @@ import {
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedRelatedObject from "./RelatedObject.mdx";
+
+<EmbedProvider />
 
 <ExpandableSection>
 
@@ -91,17 +93,15 @@ import EmbedRelatedObject from "./RelatedObject.mdx";
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View RelatedObject details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="RelatedObject"
+  triggerText="View RelatedObject details"
+>
 
 <EmbedRelatedObject />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

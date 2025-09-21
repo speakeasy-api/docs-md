@@ -1,7 +1,7 @@
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -13,6 +13,8 @@ import {
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedSearchResult from "./SearchResult.mdx";
+
+<EmbedProvider />
 
 <ExpandableSection>
 
@@ -123,17 +125,15 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View SearchResult details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="SearchResult"
+  triggerText="View SearchResult details"
+>
 
 <EmbedSearchResult />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

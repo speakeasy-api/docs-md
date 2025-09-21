@@ -452,7 +452,8 @@ function renderObjectProperties({
         : () => {
             renderer.createEmbed({
               slug: property.name,
-              triggerTitle: `View ${property.name} details`,
+              embedTitle: property.name,
+              triggerText: `View ${property.name} details`,
               createdEmbeddedContent(embedRenderer) {
                 // Re-render the breakout in the embed document
                 createExpandableProperty({
@@ -619,7 +620,8 @@ function renderBreakoutEntries({
         : () => {
             renderer.createEmbed({
               slug: breakout.label,
-              triggerTitle: `View ${breakout.label} details`,
+              embedTitle: breakout.label,
+              triggerText: `View ${breakout.label} details`,
               createdEmbeddedContent(embedRenderer) {
                 // Re-render the breakout in the embed document
                 createExpandableBreakout({

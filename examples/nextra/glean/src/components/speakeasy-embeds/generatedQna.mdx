@@ -1,7 +1,7 @@
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -14,6 +14,8 @@ import {
 } from "@speakeasy-api/docs-md-react";
 import EmbedFollowupAction from "./FollowupAction.mdx";
 import EmbedTextRange from "./TextRange.mdx";
+
+<EmbedProvider />
 
 <ExpandableSection>
 
@@ -166,17 +168,15 @@ A follow-up action that can be invoked by the user after a response. The action 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View FollowupAction details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="FollowupAction"
+  triggerText="View FollowupAction details"
+>
 
 <EmbedFollowupAction />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -263,17 +263,11 @@ A subsection of a given string to which some special formatting should be applie
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View TextRange details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="TextRange" triggerText="View TextRange details">
 
 <EmbedTextRange />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
