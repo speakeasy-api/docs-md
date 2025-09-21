@@ -5,6 +5,7 @@ import { useCallback } from "react";
 
 // eslint-disable-next-line fast-import/no-restricted-imports
 import { embedContentAtom } from "../EmbedProvider/state";
+import styles from "../EmbedProvider/styles.module.css";
 import type { EmbedTriggerProps } from "./types";
 
 export function EmbedTrigger({
@@ -19,7 +20,9 @@ export function EmbedTrigger({
   }, [children, setContent, embedTitle]);
   return (
     <div slot={slot}>
-      <button onClick={onClick}>{triggerText}</button>
+      <button className={styles.embedButton} onClick={onClick}>
+        {triggerText}
+      </button>
     </div>
   );
 }

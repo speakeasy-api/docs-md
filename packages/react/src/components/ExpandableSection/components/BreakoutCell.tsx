@@ -17,12 +17,12 @@ export function BreakoutCell({ isOpen, children }: BreakoutCellProps) {
     <div className={styles.breakoutCell}>
       <div className={styles.breakoutCellTitle}>{titleChild}</div>
       {isOpen && (
-        <>
+        <div className={styles.breakoutCellContent}>
           {descriptionChildren}
           {examplesChildren}
           {defaultValueChildren}
           {embedChildren}
-        </>
+        </div>
       )}
     </div>
   );

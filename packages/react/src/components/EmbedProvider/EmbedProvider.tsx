@@ -37,9 +37,11 @@ export function EmbedProvider() {
       }}
       onTransitionEnd={onAnimationComplete}
     >
-      <div>
-        <h4>{content?.title ?? "Details"}</h4>
-        <button onClick={closeRequest}>X</button>
+      <div className={styles.embedHeader}>
+        <h2>{content?.title ?? "Details"}</h2>
+        <button className={styles.embedButton} onClick={closeRequest}>
+          &gt;
+        </button>
       </div>
       {content && <div>{content.content}</div>}
     </div>
