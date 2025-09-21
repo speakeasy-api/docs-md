@@ -146,13 +146,6 @@ export type RowProps = PropsWithChildren<{
    * has children and/or front matter.
    */
   expandByDefault: boolean;
-  /**
-   * Some rows are nested deeply enough that children are rendered in an embed,
-   * not as children of this row, which this flag indicates. This matters
-   * because children are not included on the MDX page this row is rendered to,
-   * so we have to handle logic differently at this level.
-   */
-  hasEmbed: boolean;
 }>;
 
 export type ExpandableSectionProps = PropsWithChildren<{

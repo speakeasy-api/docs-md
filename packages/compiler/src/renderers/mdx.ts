@@ -119,7 +119,9 @@ export class MdxSite extends MarkdownSite {
     });
     renderer.enterContext({ id: slug, type: "schema" });
 
-    createdEmbeddedContent(renderer);
+    renderer.createEmbedWRapper(() => {
+      createdEmbeddedContent(renderer);
+    });
 
     renderer.exitContext();
     renderer.exitContext();
@@ -266,6 +268,16 @@ class MdxRenderer extends MarkdownRenderer {
 
   protected override getIdSeparator() {
     return this.compilerConfig.elementIdSeparator ?? "+";
+  }
+
+  public createEmbedWRapper(cb: () => void) {
+    this.#appendComponent<ExpandableSectionProps>(
+      {
+        symbol: "ExpandableSection",
+        props: {},
+      },
+      cb
+    );
   }
 
   public override createEmbed(...[args]: RendererCreateEmbedArgs) {
@@ -694,7 +706,6 @@ class MdxRenderer extends MarkdownRenderer {
           parentId,
           hasFrontMatter,
           expandByDefault,
-          hasEmbed: !!createEmbed,
         },
       },
       () => {
@@ -775,7 +786,6 @@ class MdxRenderer extends MarkdownRenderer {
           typeAnnotations: annotations,
           hasFrontMatter,
           expandByDefault,
-          hasEmbed: !!createEmbed,
         },
       },
       () => {
