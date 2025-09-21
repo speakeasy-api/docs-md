@@ -98,6 +98,7 @@ export class MdxSite extends MarkdownSite {
     if (!this.docsData) {
       throw new InternalError("Docs data not set");
     }
+    slug = slug.toLowerCase();
     const path = this.buildEmbedPath(slug);
     if (this.#embedsCreated.has(slug)) {
       return path;
