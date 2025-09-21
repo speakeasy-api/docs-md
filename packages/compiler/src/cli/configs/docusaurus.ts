@@ -26,14 +26,25 @@ export const docusaurusConfig: FrameworkConfig = {
     return resolve(join(settings.output.embedOutDir, `${slug}.mdx`));
   },
 
-  buildPagePreamble(frontMatter) {
-    return `---
+  buildPagePreamble(frontMatter, { isEmbed }) {
+    if (frontMatter) {
+      return `---
 sidebar_position: ${frontMatter.sidebarPosition}
 sidebar_label: ${escapeText(frontMatter.sidebarLabel, { escape: "mdx" })}
 ---
 
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 `;
+    } else if (isEmbed) {
+      // Embeds in Docusaurus have a nasty bug where table of contents is
+      // undefined and causes a crash. We just export an empty array to
+      // work around it.
+      return `---
+hide_table_of_contents: true
+---`;
+    } else {
+      return "";
+    }
   },
 
   postProcess() {

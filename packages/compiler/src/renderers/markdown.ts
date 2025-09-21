@@ -86,6 +86,7 @@ export abstract class MarkdownSite extends Site {
       docsData: this.docsData,
       frontMatter,
       compilerConfig: this.compilerConfig,
+      isEmbed: false,
     });
     return renderer;
   }

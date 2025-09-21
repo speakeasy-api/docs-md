@@ -27,6 +27,9 @@ export const nextraConfig: FrameworkConfig = {
   },
 
   buildPagePreamble(frontMatter) {
+    if (!frontMatter) {
+      return "";
+    }
     return `---
 sidebarTitle: ${escapeText(frontMatter.sidebarLabel, { escape: "mdx" })}
 ---

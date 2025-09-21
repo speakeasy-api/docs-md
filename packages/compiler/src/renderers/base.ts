@@ -77,6 +77,7 @@ export type RendererConstructorArgs = {
   currentPageSlug?: string;
   compilerConfig: FrameworkConfig;
   frontMatter?: PageFrontMatter;
+  isEmbed: boolean;
 };
 
 // High level operations

@@ -111,6 +111,7 @@ export class MdxSite extends MarkdownSite {
       site: this,
       docsData: this.docsData,
       compilerConfig: this.compilerConfig,
+      isEmbed: true,
     });
 
     renderer.enterContext({
@@ -145,11 +146,10 @@ class MdxRenderer extends MarkdownRenderer {
   constructor(options: RendererConstructorArgs, site: MdxSite) {
     super(options);
     this.#site = site;
-    if (options.frontMatter) {
-      this.#frontMatter = this.compilerConfig.buildPagePreamble(
-        options.frontMatter
-      );
-    }
+    this.#frontMatter = this.compilerConfig.buildPagePreamble(
+      options.frontMatter,
+      { isEmbed: options.isEmbed }
+    );
   }
 
   #insertNamedImport(importPath: string, symbol: string) {
