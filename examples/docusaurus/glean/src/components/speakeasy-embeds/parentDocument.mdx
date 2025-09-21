@@ -1,7 +1,6 @@
 import {
   Embed,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -9,7 +8,8 @@ import {
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyDescription,
-  ExpandablePropertyTitle
+  ExpandablePropertyTitle,
+  ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import Embedcontent from "./content.mdx";
 import Embedmetadata from "./metadata.mdx";
@@ -34,6 +34,8 @@ import EmbedviewerInfo from "./viewerInfo.mdx";
 import EmbedvisitCount from "./visitCount.mdx";
 import EmbedDocumentSection from "./DocumentSection.mdx";
 
+<ExpandableSection>
+
 <ExpandableProperty
   slot="entry"
   id="parentDocument"
@@ -42,7 +44,6 @@ import EmbedDocumentSection from "./DocumentSection.mdx";
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -62,7 +63,6 @@ import EmbedDocumentSection from "./DocumentSection.mdx";
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -88,7 +88,6 @@ The source from which document content was pulled, e.g. an API crawl or browser 
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -108,7 +107,6 @@ The source from which document content was pulled, e.g. an API crawl or browser 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -134,7 +132,6 @@ The source from which document content was pulled, e.g. an API crawl or browser 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -145,17 +142,11 @@ The source from which document content was pulled, e.g. an API crawl or browser 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View content details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="content" triggerText="View content details">
 
 <Embedcontent />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -170,7 +161,6 @@ View content details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -196,7 +186,6 @@ The app or other repository type from which the document was extracted
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -222,7 +211,6 @@ The datasource-specific type of the document (e.g. for Jira issues, this is the 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -248,7 +236,6 @@ The Glean Document ID.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -259,17 +246,11 @@ The Glean Document ID.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -284,7 +265,6 @@ View metadata details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -301,17 +281,11 @@ A list of content sub-sections in the document, e.g. text blocks with different 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sections details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="sections" triggerText="View sections details">
 
 <Embedsections />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -326,7 +300,6 @@ View sections details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -352,7 +325,6 @@ The title of the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -378,7 +350,6 @@ A permalink for the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -398,7 +369,6 @@ A permalink for the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -424,7 +394,6 @@ The plaintext content of the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -450,7 +419,6 @@ The app or other repository type from which the document was extracted
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -476,7 +444,6 @@ The datasource-specific type of the document (e.g. for Jira issues, this is the 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -502,7 +469,6 @@ The Glean Document ID.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -522,7 +488,6 @@ The Glean Document ID.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -539,17 +504,11 @@ A truncated list of documents with this relation. TO BE DEPRECATED.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View ancestors details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="ancestors" triggerText="View ancestors details">
 
 <Embedancestors />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -564,7 +523,6 @@ View ancestors details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -575,17 +533,11 @@ View ancestors details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View assignedTo details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="assignedTo" triggerText="View assignedTo details">
 
 <EmbedassignedTo />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -600,7 +552,6 @@ View assignedTo details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -611,17 +562,11 @@ View assignedTo details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View author details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="author" triggerText="View author details">
 
 <Embedauthor />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -636,7 +581,6 @@ View author details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -653,17 +597,11 @@ The collections to which the answer belongs.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View collections details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="collections" triggerText="View collections details">
 
 <Embedcollections />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -678,7 +616,6 @@ View collections details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -704,7 +641,6 @@ A list of components this result is associated with. Interpretation is specific 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -715,17 +651,15 @@ A list of components this result is associated with. Interpretation is specific 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View contactPerson details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="contactPerson"
+  triggerText="View contactPerson details"
+>
 
 <EmbedcontactPerson />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -740,7 +674,6 @@ View contactPerson details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -766,7 +699,6 @@ The name of the container (higher level parent, not direct parent) of the result
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -792,7 +724,6 @@ The Glean Document ID of the container. Uniquely identifies the container.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -812,7 +743,6 @@ The Glean Document ID of the container. Uniquely identifies the container.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -829,17 +759,11 @@ Custom fields specific to individual datasources
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View customData details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="customData" triggerText="View customData details">
 
 <EmbedcustomData />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -854,7 +778,6 @@ View customData details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -874,7 +797,6 @@ View customData details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -900,7 +822,6 @@ The user-visible datasource specific id (e.g. Salesforce case number for example
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -926,7 +847,6 @@ The datasource instance from which the document was extracted.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -952,7 +872,6 @@ The document's document_category(.proto).
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -978,7 +897,6 @@ The index-wide unique identifier.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1004,7 +922,6 @@ Hash of the Glean Document ID.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1015,17 +932,11 @@ Hash of the Glean Document ID.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View indexStatus details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="indexStatus" triggerText="View indexStatus details">
 
 <EmbedindexStatus />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1040,7 +951,6 @@ View indexStatus details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1051,17 +961,15 @@ View indexStatus details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View interactions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="interactions"
+  triggerText="View interactions details"
+>
 
 <Embedinteractions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1076,7 +984,6 @@ View interactions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1102,7 +1009,6 @@ A list of tags for the document. Interpretation is datasource specific.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1128,7 +1034,6 @@ A unique identifier used to represent the document in any logging or feedback re
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1145,17 +1050,15 @@ A list of POC for company.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View mentionedPeople details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="mentionedPeople"
+  triggerText="View mentionedPeople details"
+>
 
 <EmbedmentionedPeople />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1170,7 +1073,6 @@ View mentionedPeople details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1190,7 +1092,6 @@ View mentionedPeople details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1216,7 +1117,6 @@ The type of the result. Interpretation is specific to each datasource. (e.g. for
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1227,17 +1127,11 @@ The type of the result. Interpretation is specific to each datasource. (e.g. for
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View owner details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="owner" triggerText="View owner details">
 
 <Embedowner />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1252,7 +1146,6 @@ View owner details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1278,7 +1171,6 @@ The id of the direct parent of the result. Interpretation is specific to each da
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1304,7 +1196,6 @@ For file datasources like onedrive/github etc this has the path to the file
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1315,17 +1206,11 @@ For file datasources like onedrive/github etc this has the path to the file
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View permissions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="permissions" triggerText="View permissions details">
 
 <Embedpermissions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1340,7 +1225,6 @@ View permissions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1357,17 +1241,11 @@ A list of pins associated with this search result.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View pins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="pins" triggerText="View pins details">
 
 <Embedpins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1382,7 +1260,6 @@ View pins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1408,7 +1285,6 @@ The document priority. Interpretation is datasource specific.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1425,17 +1301,11 @@ A list of shortcuts of which destination URL is for the document.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View shortcuts details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="shortcuts" triggerText="View shortcuts details">
 
 <Embedshortcuts />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1450,7 +1320,6 @@ View shortcuts details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1476,7 +1345,6 @@ The status or disposition of the result. Interpretation is specific to each data
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1502,7 +1370,6 @@ The status category of the result. Meant to be more general than status. Interpr
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1528,7 +1395,6 @@ The Glean Document ID of the super container. Super container represents a broad
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1539,17 +1405,11 @@ The Glean Document ID of the super container. Super container represents a broad
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View thumbnail details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="thumbnail" triggerText="View thumbnail details">
 
 <Embedthumbnail />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1564,7 +1424,6 @@ View thumbnail details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1584,7 +1443,6 @@ View thumbnail details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1595,17 +1453,11 @@ View thumbnail details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View updatedBy details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="updatedBy" triggerText="View updatedBy details">
 
 <EmbedupdatedBy />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1620,7 +1472,6 @@ View updatedBy details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1631,17 +1482,15 @@ View updatedBy details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View verification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="verification"
+  triggerText="View verification details"
+>
 
 <Embedverification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1656,7 +1505,6 @@ View verification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1667,17 +1515,11 @@ View verification details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View viewerInfo details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="viewerInfo" triggerText="View viewerInfo details">
 
 <EmbedviewerInfo />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1692,7 +1534,6 @@ View viewerInfo details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1718,7 +1559,6 @@ The level of visibility of the document as understood by our system.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1729,17 +1569,11 @@ The level of visibility of the document as understood by our system.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View visitCount details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="visitCount" triggerText="View visitCount details">
 
 <EmbedvisitCount />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1754,7 +1588,6 @@ View visitCount details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1778,7 +1611,6 @@ A list of content sub-sections in the document, e.g. text blocks with different 
   parentId="parentDocument_sections"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1801,17 +1633,15 @@ A list of content sub-sections in the document, e.g. text blocks with different 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View DocumentSection details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="DocumentSection"
+  triggerText="View DocumentSection details"
+>
 
 <EmbedDocumentSection />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1826,7 +1656,6 @@ View DocumentSection details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1852,7 +1681,6 @@ The title of the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1868,3 +1696,5 @@ A permalink for the document.
 </ExpandablePropertyDescription>
 
 </ExpandableProperty>
+
+</ExpandableSection>

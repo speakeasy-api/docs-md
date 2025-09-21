@@ -7,8 +7,8 @@ import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -37,6 +37,8 @@ import EmbedBulkUploadHistoryEvent from "../../../../src/components/speakeasy-em
 import Embedindexed from "../../../../src/components/speakeasy-embeds/indexed.mdx";
 import Embeduploaded from "../../../../src/components/speakeasy-embeds/uploaded.mdx";
 import EmbedProcessingHistoryEvent from "../../../../src/components/speakeasy-embeds/ProcessingHistoryEvent.mdx";
+
+<EmbedProvider />
 
 # Indexing Datasource Operations \{#indexing/datasource\}
 
@@ -86,7 +88,6 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexi
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={true}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -151,7 +152,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -186,7 +186,6 @@ ENABLED_FOR_ALL
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -206,7 +205,6 @@ ENABLED_FOR_ALL
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -230,7 +228,6 @@ Information about active and recent successful uploads for the datasource
   parentId="documents_bulkUploadHistory"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -255,17 +252,15 @@ Information about a successful bulk upload
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View BulkUploadHistoryEvent details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="BulkUploadHistoryEvent"
+  triggerText="View BulkUploadHistoryEvent details"
+>
 
 <EmbedBulkUploadHistoryEvent />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -280,7 +275,6 @@ View BulkUploadHistoryEvent details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -300,7 +294,6 @@ View BulkUploadHistoryEvent details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -317,17 +310,11 @@ A list of object types and corresponding upload counts
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View indexed details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="indexed" triggerText="View indexed details">
 
 <Embedindexed />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -342,7 +329,6 @@ View indexed details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -359,17 +345,11 @@ A list of object types and corresponding upload counts
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View uploaded details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="uploaded" triggerText="View uploaded details">
 
 <Embeduploaded />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -384,7 +364,6 @@ View uploaded details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -408,7 +387,6 @@ Information about processing history for the datasource
   parentId="documents_processingHistory"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -433,17 +411,15 @@ Processing history event for a datasource
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View ProcessingHistoryEvent details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="ProcessingHistoryEvent"
+  triggerText="View ProcessingHistoryEvent details"
+>
 
 <EmbedProcessingHistoryEvent />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -457,7 +433,6 @@ View ProcessingHistoryEvent details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -477,7 +452,6 @@ View ProcessingHistoryEvent details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -501,7 +475,6 @@ Information about active and recent successful uploads for the datasource
   parentId="identity_bulkUploadHistory"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -526,17 +499,15 @@ Information about a successful bulk upload
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View BulkUploadHistoryEvent details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="BulkUploadHistoryEvent"
+  triggerText="View BulkUploadHistoryEvent details"
+>
 
 <EmbedBulkUploadHistoryEvent />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -551,7 +522,6 @@ View BulkUploadHistoryEvent details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -571,7 +541,6 @@ View BulkUploadHistoryEvent details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -588,17 +557,11 @@ A list of object types and corresponding upload counts
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View indexed details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="indexed" triggerText="View indexed details">
 
 <Embedindexed />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -613,7 +576,6 @@ View indexed details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -630,17 +592,11 @@ A list of object types and corresponding upload counts
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View uploaded details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="uploaded" triggerText="View uploaded details">
 
 <Embeduploaded />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -655,7 +611,6 @@ View uploaded details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -679,7 +634,6 @@ Information about processing history for the datasource
   parentId="identity_processingHistory"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -704,17 +658,15 @@ Processing history event for a datasource
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View ProcessingHistoryEvent details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="ProcessingHistoryEvent"
+  triggerText="View ProcessingHistoryEvent details"
+>
 
 <EmbedProcessingHistoryEvent />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 

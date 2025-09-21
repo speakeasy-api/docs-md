@@ -7,8 +7,8 @@ import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -41,6 +41,8 @@ import EmbedallowedGroupIntersections from "../../../../src/components/speakeasy
 import EmbedallowedUsers from "../../../../src/components/speakeasy-embeds/allowedUsers.mdx";
 import EmbedPermissionsGroupIntersectionDefinition from "../../../../src/components/speakeasy-embeds/PermissionsGroupIntersectionDefinition.mdx";
 import EmbedUserReferenceDefinition from "../../../../src/components/speakeasy-embeds/UserReferenceDefinition.mdx";
+
+<EmbedProvider />
 
 # Indexing Documents Operations \{#indexing/documents\}
 
@@ -92,7 +94,6 @@ Describes the request body of the /indexdocument API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -118,7 +119,6 @@ Indexable document structure
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -144,7 +144,6 @@ Additional variations of the URL that this document points to.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -170,7 +169,6 @@ Describes how a user is referenced in a document. The user can be referenced by 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -196,7 +194,6 @@ some datasources refer to the user by the datasource user id in the document
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -216,7 +213,6 @@ some datasources refer to the user by the datasource user id in the document
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -236,7 +232,6 @@ some datasources refer to the user by the datasource user id in the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -262,7 +257,6 @@ Describes text content or base64 encoded binary content
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -288,7 +282,6 @@ base64 encoded binary content. Only one of textContent or binary content can be 
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -308,7 +301,6 @@ base64 encoded binary content. Only one of textContent or binary content can be 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -334,7 +326,6 @@ text content. Only one of textContent or binary content can be specified
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -358,7 +349,6 @@ Comments associated with the document.
   parentId="document_comments"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -383,17 +373,15 @@ Describes a comment on a document
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View CommentDefinition details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="CommentDefinition"
+  triggerText="View CommentDefinition details"
+>
 
 <EmbedCommentDefinition />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -408,7 +396,6 @@ View CommentDefinition details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -434,7 +421,6 @@ The container name for the content (Folder for example for file content).
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -460,7 +446,6 @@ This represents the datasource sepcific id of the container.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -486,7 +471,6 @@ This represents the object type of the container. It cannot have spaces or _
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -512,7 +496,6 @@ The creation time, in epoch seconds.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -536,7 +519,6 @@ Additional metadata properties of the document. These can surface as [facets and
   parentId="document_customProperties"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -561,17 +543,15 @@ Describes the custom properties of the object.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View CustomProperty details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="CustomProperty"
+  triggerText="View CustomProperty details"
+>
 
 <EmbedCustomProperty />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -586,7 +566,6 @@ View CustomProperty details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -606,7 +585,6 @@ View CustomProperty details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -632,7 +610,6 @@ Source filename, in plain text, for the document. May be used as a fallback titl
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -658,7 +635,6 @@ The datasource specific id for the document. This field is case insensitive and 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -684,7 +660,6 @@ describes the interactions on the document
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -704,7 +679,6 @@ describes the interactions on the document
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -724,7 +698,6 @@ describes the interactions on the document
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -744,7 +717,6 @@ describes the interactions on the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -770,7 +742,6 @@ The type of the document (Case, KnowledgeArticle for Salesforce for example). It
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -796,7 +767,6 @@ Describes how a user is referenced in a document. The user can be referenced by 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -822,7 +792,6 @@ some datasources refer to the user by the datasource user id in the document
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -842,7 +811,6 @@ some datasources refer to the user by the datasource user id in the document
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -862,7 +830,6 @@ some datasources refer to the user by the datasource user id in the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -888,7 +855,6 @@ describes the access control details of the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -914,7 +880,6 @@ If true, then any user who has an account in the datasource can view the documen
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -940,7 +905,6 @@ If true, then any Glean user can view the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -957,17 +921,15 @@ List of allowed group intersections. This describes a permissions constraint of 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View allowedGroupIntersections details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="allowedGroupIntersections"
+  triggerText="View allowedGroupIntersections details"
+>
 
 <EmbedallowedGroupIntersections />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -982,7 +944,6 @@ View allowedGroupIntersections details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1008,7 +969,6 @@ List of groups that can view the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1025,17 +985,15 @@ List of users who can view the document
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View allowedUsers details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="allowedUsers"
+  triggerText="View allowedUsers details"
+>
 
 <EmbedallowedUsers />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1050,7 +1008,6 @@ View allowedUsers details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1070,7 +1027,6 @@ View allowedUsers details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1096,7 +1052,6 @@ Describes text content or base64 encoded binary content
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1122,7 +1077,6 @@ base64 encoded binary content. Only one of textContent or binary content can be 
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1142,7 +1096,6 @@ base64 encoded binary content. Only one of textContent or binary content can be 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1168,7 +1121,6 @@ text content. Only one of textContent or binary content can be specified
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1194,7 +1146,6 @@ Labels associated with the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1220,7 +1171,6 @@ Document title, in plain text, if present. If not present, the title would be at
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1246,7 +1196,6 @@ The last update time, in epoch seconds.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1272,7 +1221,6 @@ Describes how a user is referenced in a document. The user can be referenced by 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1298,7 +1246,6 @@ some datasources refer to the user by the datasource user id in the document
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1318,7 +1265,6 @@ some datasources refer to the user by the datasource user id in the document
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1338,7 +1284,6 @@ some datasources refer to the user by the datasource user id in the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1364,7 +1309,6 @@ The permalink for viewing the document. **Note: viewURL is a required field for 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1439,7 +1383,6 @@ Describes the request body of the /indexdocuments API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1464,7 +1407,6 @@ Datasource of the documents
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1488,7 +1430,6 @@ Batch of documents being added/updated
   parentId="documents"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1521,7 +1462,6 @@ Indexable document structure
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1596,7 +1536,6 @@ Describes the request body of the /bulkindexdocuments API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1621,7 +1560,6 @@ Datasource of the documents
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1646,7 +1584,6 @@ True if older documents need to be force deleted after the upload completes. Def
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1670,7 +1607,6 @@ Batch of documents being added/updated
   parentId="documents"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1703,7 +1639,6 @@ Indexable document structure
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1728,7 +1663,6 @@ Flag to discard previous upload attempts and start from scratch. Must be specifi
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1753,7 +1687,6 @@ true if this is the first page of the upload. Defaults to false
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1778,7 +1711,6 @@ true if this is the last page of the upload. Defaults to false
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1864,7 +1796,6 @@ Describes the request body of the /processalldocuments API call
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1939,7 +1870,6 @@ Describes the request body of the /deletedocument API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1964,7 +1894,6 @@ datasource of the document
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1989,7 +1918,6 @@ The id of the document
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2014,7 +1942,6 @@ object type of the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2087,7 +2014,6 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexi
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={true}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2140,7 +2066,6 @@ Describes the request body of the /debug/\{datasource\}/document API call.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2175,7 +2100,6 @@ art123
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2250,7 +2174,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2276,7 +2199,6 @@ Describes the document status response body
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2312,7 +2234,6 @@ INDEXED
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2348,7 +2269,6 @@ _Example:_
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2384,7 +2304,6 @@ _Example:_
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2420,7 +2339,6 @@ UPLOADED
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2455,7 +2373,6 @@ UPLOADED
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2481,7 +2398,6 @@ describes the access control details of the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2507,7 +2423,6 @@ If true, then any user who has an account in the datasource can view the documen
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2533,7 +2448,6 @@ If true, then any Glean user can view the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2557,7 +2471,6 @@ List of allowed group intersections. This describes a permissions constraint of 
   parentId="uploadedPermissions_allowedGroupIntersections"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2582,17 +2495,15 @@ describes a list of groups that are all required in a permissions constraint
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View PermissionsGroupIntersectionDefinition details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="PermissionsGroupIntersectionDefinition"
+  triggerText="View PermissionsGroupIntersectionDefinition details"
+>
 
 <EmbedPermissionsGroupIntersectionDefinition />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2607,7 +2518,6 @@ View PermissionsGroupIntersectionDefinition details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2633,7 +2543,6 @@ List of groups that can view the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2657,7 +2566,6 @@ List of users who can view the document
   parentId="uploadedPermissions_allowedUsers"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2682,17 +2590,15 @@ Describes how a user is referenced in a document. The user can be referenced by 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserReferenceDefinition details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserReferenceDefinition"
+  triggerText="View UserReferenceDefinition details"
+>
 
 <EmbedUserReferenceDefinition />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2754,7 +2660,6 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexi
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={true}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2807,7 +2712,6 @@ Describes the request body of the /debug/\{datasource\}/documents API call.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2831,7 +2735,6 @@ Documents to fetch debug information for
   parentId="debugDocuments"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2904,7 +2807,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2928,7 +2830,6 @@ List of document ids/urls and their debug information
   parentId="documentStatuses"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -3014,7 +2915,6 @@ Describes the request body of the /checkdocumentaccess API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3039,7 +2939,6 @@ Datasource of document to check access for.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3064,7 +2963,6 @@ Glean Document ID to check access for.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3089,7 +2987,6 @@ Object type of document to check access for.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3154,7 +3051,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3232,7 +3128,6 @@ Describes the request body for /getdocumentstatus API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3257,7 +3152,6 @@ Datasource to get fetch document status for
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3282,7 +3176,6 @@ Glean Document ID within the datasource to get the status for.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3347,7 +3240,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3372,7 +3264,6 @@ Indexing status, enum of NOT_INDEXED, INDEXED, STATUS_UNKNOWN
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3397,7 +3288,6 @@ Time of last successful indexing, in epoch seconds
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3422,7 +3312,6 @@ Time of last successful upload, in epoch seconds
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3500,7 +3389,6 @@ Describes the request body of the /getdocumentcount API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3565,7 +3453,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">

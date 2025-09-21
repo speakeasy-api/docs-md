@@ -1,7 +1,6 @@
 import {
   Embed,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -9,13 +8,16 @@ import {
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyDescription,
-  ExpandablePropertyTitle
+  ExpandablePropertyTitle,
+  ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedUserRoleSpecification from "./UserRoleSpecification.mdx";
 import EmbedFacetFilter from "./FacetFilter.mdx";
 import Embedmetadata from "./metadata.mdx";
 import EmbedrelatedDocuments from "./relatedDocuments.mdx";
 import Embedwrite from "./write.mdx";
+
+<ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
@@ -25,7 +27,6 @@ import Embedwrite from "./write.mdx";
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -45,7 +46,6 @@ import Embedwrite from "./write.mdx";
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -69,7 +69,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="board_addedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -92,17 +91,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -117,7 +114,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -141,7 +137,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   parentId="board_audienceFilters"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -164,17 +159,11 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View FacetFilter details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="FacetFilter" triggerText="View FacetFilter details">
 
 <EmbedFacetFilter />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -189,7 +178,6 @@ View FacetFilter details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -209,7 +197,6 @@ View FacetFilter details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -229,7 +216,6 @@ View FacetFilter details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -240,17 +226,11 @@ View FacetFilter details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -265,7 +245,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -291,7 +270,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -317,7 +295,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -334,17 +311,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -359,7 +334,6 @@ View relatedDocuments details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -385,7 +359,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -411,7 +384,6 @@ The unique ID of the Answer Board.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -437,7 +409,6 @@ The number of items currently in the Answer Board. Separated from the actual ite
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -463,7 +434,6 @@ The unique name of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -483,7 +453,6 @@ The unique name of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -500,17 +469,11 @@ Describes the write permissions levels that a user has for a specific feature
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View write details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="write" triggerText="View write details">
 
 <Embedwrite />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -525,7 +488,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -549,7 +511,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="board_removedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -572,17 +533,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -597,7 +556,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -621,7 +579,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="board_roles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -644,17 +601,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -669,7 +624,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -689,7 +643,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -709,7 +662,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -720,17 +672,11 @@ View UserRoleSpecification details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -745,7 +691,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -771,7 +716,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -797,7 +741,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -814,18 +757,18 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
 </ExpandableProperty>
+
+</ExpandableSection>

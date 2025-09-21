@@ -7,8 +7,8 @@ import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -47,6 +47,8 @@ import EmbedcustomTimeRange from "../../../../../../src/components/speakeasy-emb
 import EmbedsensitiveRegexes from "../../../../../../src/components/speakeasy-embeds/sensitiveRegexes.mdx";
 import EmbedsensitiveTerms from "../../../../../../src/components/speakeasy-embeds/sensitiveTerms.mdx";
 import EmbedSensitiveInfoType from "../../../../../../src/components/speakeasy-embeds/SensitiveInfoType.mdx";
+
+<EmbedProvider />
 
 # Client Governance Data Reports Operations \{#client/governance/data/reports\}
 
@@ -92,7 +94,6 @@ Fetches the specified policy version, or the latest if no version is provided.
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={true}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -117,7 +118,6 @@ The id of the policy to fetch.
   typeAnnotations={[{"title":"query","variant":"info"}]}
   hasFrontMatter={true}
   expandByDefault={true}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -176,7 +176,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -202,7 +201,6 @@ Full policy information that will be used for scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -228,7 +226,6 @@ Auto hide documents with findings in the policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -254,7 +251,6 @@ Detailed configuration of what documents and sensitive content will be scanned.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -271,17 +267,15 @@ Terms that are allow-listed during the scans. If any finding picked up by a rule
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View allowlistOptions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="allowlistOptions"
+  triggerText="View allowlistOptions details"
+>
 
 <EmbedallowlistOptions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -296,7 +290,6 @@ View allowlistOptions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -322,7 +315,6 @@ auto hide documents with findings in the report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -339,17 +331,15 @@ Controls how "shared" a document must be to get picked for scans.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View broadSharingOptions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="broadSharingOptions"
+  triggerText="View broadSharingOptions details"
+>
 
 <EmbedbroadSharingOptions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -364,7 +354,6 @@ View broadSharingOptions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -390,7 +379,6 @@ Timestamp at which this configuration was created.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -407,17 +395,11 @@ Details about the person who created this report/policy.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View createdBy details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="createdBy" triggerText="View createdBy details">
 
 <EmbedcreatedBy />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -432,7 +414,6 @@ View createdBy details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -449,17 +430,15 @@ Controls how "shared" a document must be to get picked for scans.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View externalSharingOptions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="externalSharingOptions"
+  triggerText="View externalSharingOptions details"
+>
 
 <EmbedexternalSharingOptions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -474,7 +453,6 @@ View externalSharingOptions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -500,7 +478,6 @@ Interval between scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -517,17 +494,15 @@ Controls which data-sources and what time-range to include in scans.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View inputOptions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="inputOptions"
+  triggerText="View inputOptions details"
+>
 
 <EmbedinputOptions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -542,7 +517,6 @@ View inputOptions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -568,7 +542,6 @@ redact quote in findings of the report
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -588,7 +561,6 @@ redact quote in findings of the report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -605,17 +577,15 @@ Options for defining sensitive content within scanned documents.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveContentOptions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveContentOptions"
+  triggerText="View sensitiveContentOptions details"
+>
 
 <EmbedsensitiveContentOptions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -630,7 +600,6 @@ View sensitiveContentOptions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -647,17 +616,15 @@ DEPRECATED - use `sensitiveContentOptions` instead.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveInfoTypes details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveInfoTypes"
+  triggerText="View sensitiveInfoTypes details"
+>
 
 <EmbedsensitiveInfoTypes />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -672,7 +639,6 @@ View sensitiveInfoTypes details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -698,7 +664,6 @@ Synonymous with report/policy id.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -724,7 +689,6 @@ Timestamp at which the policy was created.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -750,7 +714,6 @@ Details about the person who created this report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -761,17 +724,11 @@ Details about the person who created this report/policy.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -786,7 +743,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -812,7 +768,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -838,7 +793,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -864,7 +818,6 @@ Interval between scans. DAILY is deprecated.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -884,7 +837,6 @@ Interval between scans. DAILY is deprecated.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -910,7 +862,6 @@ The timestamp at which the report's last run/scan began.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -930,7 +881,6 @@ The timestamp at which the report's last run/scan began.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -956,7 +906,6 @@ Timestamp at which the policy was last updated.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -976,7 +925,6 @@ Timestamp at which the policy was last updated.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1002,7 +950,6 @@ The status of the policy/report. Only ACTIVE status will be picked for scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1028,7 +975,6 @@ Details about the person who created this report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1039,17 +985,11 @@ Details about the person who created this report/policy.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1064,7 +1004,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1090,7 +1029,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1159,7 +1097,6 @@ Updates an existing policy.
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={true}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1206,7 +1143,6 @@ The id of the policy to fetch.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1231,7 +1167,6 @@ The new autoHideDoc boolean the policy will be updated to if provided.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1257,7 +1192,6 @@ Detailed configuration of what documents and sensitive content will be scanned.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1283,7 +1217,6 @@ Terms that are allow-listed during the scans. If any finding picked up by a rule
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1309,7 +1242,6 @@ list of words and phrases to consider as whitelisted content
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1335,7 +1267,6 @@ auto hide documents with findings in the report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1361,7 +1292,6 @@ Controls how "shared" a document must be to get picked for scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1387,7 +1317,6 @@ Anyone on the internet can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1413,7 +1342,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1433,7 +1361,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1453,7 +1380,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1479,7 +1405,6 @@ The minimum number of users the document is shared with.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1505,7 +1430,6 @@ Documents will be filtered based on how many people have access to it.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1531,7 +1455,6 @@ Enable user access check
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1557,7 +1480,6 @@ Any one of the specified users can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1583,7 +1505,6 @@ Timestamp at which this configuration was created.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1609,7 +1530,6 @@ Details about the person who created this report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1620,17 +1540,11 @@ Details about the person who created this report/policy.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1645,7 +1559,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1671,7 +1584,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1697,7 +1609,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1723,7 +1634,6 @@ Controls how "shared" a document must be to get picked for scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1749,7 +1659,6 @@ Anyone on the internet can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1775,7 +1684,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1795,7 +1703,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1815,7 +1722,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1835,7 +1741,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1861,7 +1766,6 @@ The minimum number of users the document is shared with.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1887,7 +1791,6 @@ Documents will be filtered based on how many people have access to it.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1913,7 +1816,6 @@ Enable user access check
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1939,7 +1841,6 @@ Any one of the specified users can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1965,7 +1866,6 @@ Interval between scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1991,7 +1891,6 @@ Controls which data-sources and what time-range to include in scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2002,17 +1901,15 @@ Controls which data-sources and what time-range to include in scans.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View customTimeRange details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="customTimeRange"
+  triggerText="View customTimeRange details"
+>
 
 <EmbedcustomTimeRange />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2027,7 +1924,6 @@ View customTimeRange details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2053,7 +1949,6 @@ List of datasource instances to consider for report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2079,7 +1974,6 @@ List of datasources to consider for report. DEPRECATED - use datasourceInstances
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2105,7 +1999,6 @@ The types of datasource for which to run the report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2131,7 +2024,6 @@ Type of time period for which to run the report/policy. PAST_DAY is deprecated.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2157,7 +2049,6 @@ list of url regex matching documents excluded from report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2183,7 +2074,6 @@ redact quote in findings of the report
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2203,7 +2093,6 @@ redact quote in findings of the report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2229,7 +2118,6 @@ Options for defining sensitive content within scanned documents.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2246,17 +2134,15 @@ DEPRECATED - use `sensitiveContentOptions` instead.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveInfoTypes details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveInfoTypes"
+  triggerText="View sensitiveInfoTypes details"
+>
 
 <EmbedsensitiveInfoTypes />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2271,7 +2157,6 @@ View sensitiveInfoTypes details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2288,17 +2173,15 @@ list of words and phrases to consider as sensitive content
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveRegexes details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveRegexes"
+  triggerText="View sensitiveRegexes details"
+>
 
 <EmbedsensitiveRegexes />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2313,7 +2196,6 @@ View sensitiveRegexes details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2330,17 +2212,15 @@ list of words and phrases to consider as sensitive content
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveTerms details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveTerms"
+  triggerText="View sensitiveTerms details"
+>
 
 <EmbedsensitiveTerms />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2355,7 +2235,6 @@ View sensitiveTerms details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2379,7 +2258,6 @@ DEPRECATED - use `sensitiveContentOptions` instead.
   parentId="config_sensitiveInfoTypes"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2402,17 +2280,15 @@ DEPRECATED - use `sensitiveContentOptions` instead.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View SensitiveInfoType details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="SensitiveInfoType"
+  triggerText="View SensitiveInfoType details"
+>
 
 <EmbedSensitiveInfoType />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2427,7 +2303,6 @@ View SensitiveInfoType details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2452,7 +2327,6 @@ Synonymous with report/policy id.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2477,7 +2351,6 @@ Interval between scans. DAILY is deprecated.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2502,7 +2375,6 @@ The new name of the policy if provided.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2567,7 +2439,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2630,7 +2501,6 @@ Lists policies with filtering.
   typeAnnotations={[{"title":"query","variant":"info"}]}
   hasFrontMatter={true}
   expandByDefault={true}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2655,7 +2525,6 @@ Filter to return reports with a given value of auto-hide.
   typeAnnotations={[{"title":"query","variant":"info"}]}
   hasFrontMatter={true}
   expandByDefault={true}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2714,7 +2583,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2732,7 +2600,6 @@ OK
   parentId="reports"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2809,7 +2676,6 @@ Creates a new policy with specified specifications and returns its id.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2834,7 +2700,6 @@ Controls whether the policy should hide documents with violations.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2860,7 +2725,6 @@ Detailed configuration of what documents and sensitive content will be scanned.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2886,7 +2750,6 @@ Terms that are allow-listed during the scans. If any finding picked up by a rule
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2912,7 +2775,6 @@ list of words and phrases to consider as whitelisted content
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2938,7 +2800,6 @@ auto hide documents with findings in the report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2964,7 +2825,6 @@ Controls how "shared" a document must be to get picked for scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2990,7 +2850,6 @@ Anyone on the internet can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3016,7 +2875,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3036,7 +2894,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3056,7 +2913,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3082,7 +2938,6 @@ The minimum number of users the document is shared with.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3108,7 +2963,6 @@ Documents will be filtered based on how many people have access to it.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3134,7 +2988,6 @@ Enable user access check
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3160,7 +3013,6 @@ Any one of the specified users can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3186,7 +3038,6 @@ Timestamp at which this configuration was created.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3212,7 +3063,6 @@ Details about the person who created this report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3223,17 +3073,11 @@ Details about the person who created this report/policy.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3248,7 +3092,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3274,7 +3117,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3300,7 +3142,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3326,7 +3167,6 @@ Controls how "shared" a document must be to get picked for scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3352,7 +3192,6 @@ Anyone on the internet can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3378,7 +3217,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3398,7 +3236,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3418,7 +3255,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3438,7 +3274,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3464,7 +3299,6 @@ The minimum number of users the document is shared with.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3490,7 +3324,6 @@ Documents will be filtered based on how many people have access to it.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3516,7 +3349,6 @@ Enable user access check
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3542,7 +3374,6 @@ Any one of the specified users can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3568,7 +3399,6 @@ Interval between scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3594,7 +3424,6 @@ Controls which data-sources and what time-range to include in scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3605,17 +3434,15 @@ Controls which data-sources and what time-range to include in scans.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View customTimeRange details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="customTimeRange"
+  triggerText="View customTimeRange details"
+>
 
 <EmbedcustomTimeRange />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3630,7 +3457,6 @@ View customTimeRange details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3656,7 +3482,6 @@ List of datasource instances to consider for report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3682,7 +3507,6 @@ List of datasources to consider for report. DEPRECATED - use datasourceInstances
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3708,7 +3532,6 @@ The types of datasource for which to run the report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3734,7 +3557,6 @@ Type of time period for which to run the report/policy. PAST_DAY is deprecated.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3760,7 +3582,6 @@ list of url regex matching documents excluded from report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3786,7 +3607,6 @@ redact quote in findings of the report
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3806,7 +3626,6 @@ redact quote in findings of the report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3832,7 +3651,6 @@ Options for defining sensitive content within scanned documents.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3849,17 +3667,15 @@ DEPRECATED - use `sensitiveContentOptions` instead.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveInfoTypes details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveInfoTypes"
+  triggerText="View sensitiveInfoTypes details"
+>
 
 <EmbedsensitiveInfoTypes />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3874,7 +3690,6 @@ View sensitiveInfoTypes details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3891,17 +3706,15 @@ list of words and phrases to consider as sensitive content
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveRegexes details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveRegexes"
+  triggerText="View sensitiveRegexes details"
+>
 
 <EmbedsensitiveRegexes />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3916,7 +3729,6 @@ View sensitiveRegexes details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3933,17 +3745,15 @@ list of words and phrases to consider as sensitive content
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveTerms details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveTerms"
+  triggerText="View sensitiveTerms details"
+>
 
 <EmbedsensitiveTerms />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3958,7 +3768,6 @@ View sensitiveTerms details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3982,7 +3791,6 @@ DEPRECATED - use `sensitiveContentOptions` instead.
   parentId="config_sensitiveInfoTypes"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -4005,17 +3813,15 @@ DEPRECATED - use `sensitiveContentOptions` instead.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View SensitiveInfoType details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="SensitiveInfoType"
+  triggerText="View SensitiveInfoType details"
+>
 
 <EmbedSensitiveInfoType />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4030,7 +3836,6 @@ View SensitiveInfoType details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4055,7 +3860,6 @@ Synonymous with report/policy id.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4080,7 +3884,6 @@ Interval between scans. DAILY is deprecated.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4145,7 +3948,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4171,7 +3973,6 @@ Full policy information that will be used for scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4197,7 +3998,6 @@ Auto hide documents with findings in the policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4223,7 +4023,6 @@ Detailed configuration of what documents and sensitive content will be scanned.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4240,17 +4039,15 @@ Terms that are allow-listed during the scans. If any finding picked up by a rule
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View allowlistOptions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="allowlistOptions"
+  triggerText="View allowlistOptions details"
+>
 
 <EmbedallowlistOptions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4265,7 +4062,6 @@ View allowlistOptions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4291,7 +4087,6 @@ auto hide documents with findings in the report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4308,17 +4103,15 @@ Controls how "shared" a document must be to get picked for scans.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View broadSharingOptions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="broadSharingOptions"
+  triggerText="View broadSharingOptions details"
+>
 
 <EmbedbroadSharingOptions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4333,7 +4126,6 @@ View broadSharingOptions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4359,7 +4151,6 @@ Timestamp at which this configuration was created.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4376,17 +4167,11 @@ Details about the person who created this report/policy.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View createdBy details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="createdBy" triggerText="View createdBy details">
 
 <EmbedcreatedBy />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4401,7 +4186,6 @@ View createdBy details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4418,17 +4202,15 @@ Controls how "shared" a document must be to get picked for scans.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View externalSharingOptions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="externalSharingOptions"
+  triggerText="View externalSharingOptions details"
+>
 
 <EmbedexternalSharingOptions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4443,7 +4225,6 @@ View externalSharingOptions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4469,7 +4250,6 @@ Interval between scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4486,17 +4266,15 @@ Controls which data-sources and what time-range to include in scans.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View inputOptions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="inputOptions"
+  triggerText="View inputOptions details"
+>
 
 <EmbedinputOptions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4511,7 +4289,6 @@ View inputOptions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4537,7 +4314,6 @@ redact quote in findings of the report
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4557,7 +4333,6 @@ redact quote in findings of the report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4574,17 +4349,15 @@ Options for defining sensitive content within scanned documents.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveContentOptions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveContentOptions"
+  triggerText="View sensitiveContentOptions details"
+>
 
 <EmbedsensitiveContentOptions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4599,7 +4372,6 @@ View sensitiveContentOptions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4616,17 +4388,15 @@ DEPRECATED - use `sensitiveContentOptions` instead.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveInfoTypes details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveInfoTypes"
+  triggerText="View sensitiveInfoTypes details"
+>
 
 <EmbedsensitiveInfoTypes />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4641,7 +4411,6 @@ View sensitiveInfoTypes details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4667,7 +4436,6 @@ Synonymous with report/policy id.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4693,7 +4461,6 @@ Timestamp at which the policy was created.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4719,7 +4486,6 @@ Details about the person who created this report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4730,17 +4496,11 @@ Details about the person who created this report/policy.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4755,7 +4515,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4781,7 +4540,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4807,7 +4565,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4833,7 +4590,6 @@ Interval between scans. DAILY is deprecated.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4853,7 +4609,6 @@ Interval between scans. DAILY is deprecated.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4879,7 +4634,6 @@ The timestamp at which the report's last run/scan began.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4899,7 +4653,6 @@ The timestamp at which the report's last run/scan began.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4925,7 +4678,6 @@ Timestamp at which the policy was last updated.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4945,7 +4697,6 @@ Timestamp at which the policy was last updated.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4971,7 +4722,6 @@ The status of the policy/report. Only ACTIVE status will be picked for scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4997,7 +4747,6 @@ Details about the person who created this report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5008,17 +4757,11 @@ Details about the person who created this report/policy.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5033,7 +4776,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5059,7 +4801,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5128,7 +4869,6 @@ Downloads CSV violations report for a specific policy id. This does not support 
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={true}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5245,7 +4985,6 @@ Creates a new one-time report and executes its batch job.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5271,7 +5010,6 @@ Detailed configuration of what documents and sensitive content will be scanned.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5297,7 +5035,6 @@ Terms that are allow-listed during the scans. If any finding picked up by a rule
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5323,7 +5060,6 @@ list of words and phrases to consider as whitelisted content
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5349,7 +5085,6 @@ auto hide documents with findings in the report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5375,7 +5110,6 @@ Controls how "shared" a document must be to get picked for scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5401,7 +5135,6 @@ Anyone on the internet can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5427,7 +5160,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5447,7 +5179,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5467,7 +5198,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5493,7 +5223,6 @@ The minimum number of users the document is shared with.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5519,7 +5248,6 @@ Documents will be filtered based on how many people have access to it.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5545,7 +5273,6 @@ Enable user access check
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5571,7 +5298,6 @@ Any one of the specified users can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5597,7 +5323,6 @@ Timestamp at which this configuration was created.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5623,7 +5348,6 @@ Details about the person who created this report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5634,17 +5358,11 @@ Details about the person who created this report/policy.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5659,7 +5377,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5685,7 +5402,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5711,7 +5427,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5737,7 +5452,6 @@ Controls how "shared" a document must be to get picked for scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5763,7 +5477,6 @@ Anyone on the internet can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5789,7 +5502,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5809,7 +5521,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5829,7 +5540,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5849,7 +5559,6 @@ Only users within the organization can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5875,7 +5584,6 @@ The minimum number of users the document is shared with.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5901,7 +5609,6 @@ Documents will be filtered based on how many people have access to it.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5927,7 +5634,6 @@ Enable user access check
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5953,7 +5659,6 @@ Any one of the specified users can access the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5979,7 +5684,6 @@ Interval between scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6005,7 +5709,6 @@ Controls which data-sources and what time-range to include in scans.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6016,17 +5719,15 @@ Controls which data-sources and what time-range to include in scans.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View customTimeRange details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="customTimeRange"
+  triggerText="View customTimeRange details"
+>
 
 <EmbedcustomTimeRange />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6041,7 +5742,6 @@ View customTimeRange details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6067,7 +5767,6 @@ List of datasource instances to consider for report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6093,7 +5792,6 @@ List of datasources to consider for report. DEPRECATED - use datasourceInstances
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6119,7 +5817,6 @@ The types of datasource for which to run the report/policy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6145,7 +5842,6 @@ Type of time period for which to run the report/policy. PAST_DAY is deprecated.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6171,7 +5867,6 @@ list of url regex matching documents excluded from report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6197,7 +5892,6 @@ redact quote in findings of the report
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6217,7 +5911,6 @@ redact quote in findings of the report
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6243,7 +5936,6 @@ Options for defining sensitive content within scanned documents.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6260,17 +5952,15 @@ DEPRECATED - use `sensitiveContentOptions` instead.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveInfoTypes details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveInfoTypes"
+  triggerText="View sensitiveInfoTypes details"
+>
 
 <EmbedsensitiveInfoTypes />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6285,7 +5975,6 @@ View sensitiveInfoTypes details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6302,17 +5991,15 @@ list of words and phrases to consider as sensitive content
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveRegexes details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveRegexes"
+  triggerText="View sensitiveRegexes details"
+>
 
 <EmbedsensitiveRegexes />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6327,7 +6014,6 @@ View sensitiveRegexes details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6344,17 +6030,15 @@ list of words and phrases to consider as sensitive content
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sensitiveTerms details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="sensitiveTerms"
+  triggerText="View sensitiveTerms details"
+>
 
 <EmbedsensitiveTerms />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6369,7 +6053,6 @@ View sensitiveTerms details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6393,7 +6076,6 @@ DEPRECATED - use `sensitiveContentOptions` instead.
   parentId="config_sensitiveInfoTypes"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -6416,17 +6098,15 @@ DEPRECATED - use `sensitiveContentOptions` instead.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View SensitiveInfoType details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="SensitiveInfoType"
+  triggerText="View SensitiveInfoType details"
+>
 
 <EmbedSensitiveInfoType />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6441,7 +6121,6 @@ View SensitiveInfoType details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6466,7 +6145,6 @@ Synonymous with report/policy id.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6531,7 +6209,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6556,7 +6233,6 @@ The id of the report that was just created and run.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6619,7 +6295,6 @@ Downloads CSV violations report for a specific report id.
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={true}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6736,7 +6411,6 @@ Fetches the status of the run corresponding to the report-id.
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={true}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6801,7 +6475,6 @@ Fetches status of report run.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6826,7 +6499,6 @@ The timestamp at which the report's run/scan began.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">

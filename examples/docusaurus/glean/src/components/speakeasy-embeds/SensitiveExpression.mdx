@@ -1,7 +1,6 @@
 import {
   Embed,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -9,9 +8,12 @@ import {
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyDescription,
-  ExpandablePropertyTitle
+  ExpandablePropertyTitle,
+  ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedHotword from "./Hotword.mdx";
+
+<ExpandableSection>
 
 <ExpandableBreakout
   slot="entry"
@@ -19,7 +21,6 @@ import EmbedHotword from "./Hotword.mdx";
   headingId="embed-sensitiveexpression+sensitiveexpression"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -51,7 +52,6 @@ import EmbedHotword from "./Hotword.mdx";
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -77,7 +77,6 @@ Sensitive word, phrase, or regular expression.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -101,7 +100,6 @@ Zero to three proximate regular expressions necessary to consider an expression 
   parentId="SensitiveExpression_hotwords"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -124,18 +122,14 @@ Zero to three proximate regular expressions necessary to consider an expression 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View Hotword details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="Hotword" triggerText="View Hotword details">
 
 <EmbedHotword />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
 </ExpandableBreakout>
+
+</ExpandableSection>

@@ -7,8 +7,8 @@ import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -31,6 +31,8 @@ import {
 } from "@speakeasy-api/docs-md-react";
 import EmbedPermissionsGroupIntersectionDefinition from "../../../../src/components/speakeasy-embeds/PermissionsGroupIntersectionDefinition.mdx";
 import EmbedUserReferenceDefinition from "../../../../src/components/speakeasy-embeds/UserReferenceDefinition.mdx";
+
+<EmbedProvider />
 
 # Indexing Permissions Operations \{#indexing/permissions\}
 
@@ -82,7 +84,6 @@ Describes the request body of the /updatepermissions API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -101,7 +102,6 @@ Describes the request body of the /updatepermissions API call
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -126,7 +126,6 @@ The datasource specific id for the document. This field is case insensitive and 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -151,7 +150,6 @@ The type of the document (Case, KnowledgeArticle for Salesforce for example). It
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -177,7 +175,6 @@ describes the access control details of the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -203,7 +200,6 @@ If true, then any user who has an account in the datasource can view the documen
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -229,7 +225,6 @@ If true, then any Glean user can view the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -253,7 +248,6 @@ List of allowed group intersections. This describes a permissions constraint of 
   parentId="permissions_allowedGroupIntersections"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -278,17 +272,15 @@ describes a list of groups that are all required in a permissions constraint
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View PermissionsGroupIntersectionDefinition details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="PermissionsGroupIntersectionDefinition"
+  triggerText="View PermissionsGroupIntersectionDefinition details"
+>
 
 <EmbedPermissionsGroupIntersectionDefinition />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -303,7 +295,6 @@ View PermissionsGroupIntersectionDefinition details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -329,7 +320,6 @@ List of groups that can view the document
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -353,7 +343,6 @@ List of users who can view the document
   parentId="permissions_allowedUsers"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -378,17 +367,15 @@ Describes how a user is referenced in a document. The user can be referenced by 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserReferenceDefinition details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserReferenceDefinition"
+  triggerText="View UserReferenceDefinition details"
+>
 
 <EmbedUserReferenceDefinition />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -402,7 +389,6 @@ View UserReferenceDefinition details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -478,7 +464,6 @@ Describes the request body of the /indexuser API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -503,7 +488,6 @@ The datasource for which the user is added
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -529,7 +513,6 @@ describes a user in the datasource
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -549,7 +532,6 @@ describes a user in the datasource
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -575,7 +557,6 @@ set to false if the user is a former employee or a bot
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -595,7 +576,6 @@ set to false if the user is a former employee or a bot
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -620,7 +600,6 @@ To be supplied if the user id in the datasource is not the email
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -695,7 +674,6 @@ Describes the request body for the /bulkindexusers API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -720,7 +698,6 @@ datasource of the users
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -745,7 +722,6 @@ True if older user data needs to be force deleted after the upload completes. De
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -770,7 +746,6 @@ Flag to discard previous upload attempts and start from scratch. Must be specifi
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -795,7 +770,6 @@ true if this is the first page of the upload. Defaults to false
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -820,7 +794,6 @@ true if this is the last page of the upload. Defaults to false
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -845,7 +818,6 @@ Unique id that must be used for this instance of datasource users upload
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -869,7 +841,6 @@ batch of users for the datasource
   parentId="users"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -952,7 +923,6 @@ Describes the request body of the /indexgroup API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -977,7 +947,6 @@ The datasource for which the group is added
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1003,7 +972,6 @@ describes a group in the datasource
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1028,7 +996,6 @@ name of the group. Should be unique among all groups for the datasource, and can
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1103,7 +1070,6 @@ Describes the request body for the /bulkindexgroups API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1128,7 +1094,6 @@ datasource of the groups
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1153,7 +1118,6 @@ True if older group data needs to be force deleted after the upload completes. D
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1178,7 +1142,6 @@ Flag to discard previous upload attempts and start from scratch. Must be specifi
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1202,7 +1165,6 @@ batch of groups for the datasource
   parentId="groups"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1235,7 +1197,6 @@ describes a group in the datasource
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1260,7 +1221,6 @@ true if this is the first page of the upload. Defaults to false
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1285,7 +1245,6 @@ true if this is the last page of the upload. Defaults to false
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1360,7 +1319,6 @@ Describes the request body of the /indexmembership API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1385,7 +1343,6 @@ The datasource for which the membership is added
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1411,7 +1368,6 @@ describes the membership row of a group. Only one of memberUserId and memberGrou
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1437,7 +1393,6 @@ The group for which the membership is specified
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1463,7 +1418,6 @@ If the member is a group, then the name of the member group
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1488,7 +1442,6 @@ If the member is a user, then the email or datasource id for the user
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1563,7 +1516,6 @@ Describes the request body for the /bulkindexmemberships API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1588,7 +1540,6 @@ datasource of the memberships
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1613,7 +1564,6 @@ Flag to discard previous upload attempts and start from scratch. Must be specifi
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1638,7 +1588,6 @@ group who's memberships are specified
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1663,7 +1612,6 @@ true if this is the first page of the upload. Defaults to false
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1688,7 +1636,6 @@ true if this is the last page of the upload. Defaults to false
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1712,7 +1659,6 @@ batch of memberships for the group
   parentId="memberships"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1745,7 +1691,6 @@ describes the membership row of a group in the bulk uploaded. Only one of member
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1821,7 +1766,6 @@ Describes the request body of the /processallmemberships API call
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1896,7 +1840,6 @@ Describes the request body of the /deleteuser API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1921,7 +1864,6 @@ The datasource for which the user is removed
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1946,7 +1888,6 @@ The email of the user to be deleted
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2021,7 +1962,6 @@ Describes the request body of the /deletegroup API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2046,7 +1986,6 @@ The datasource for which the group is removed
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2071,7 +2010,6 @@ the name of the group to be deleted
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2146,7 +2084,6 @@ Describes the request body of the /deletemembership API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2171,7 +2108,6 @@ The datasource for which the membership is removed
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2197,7 +2133,6 @@ describes the membership row of a group. Only one of memberUserId and memberGrou
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2223,7 +2158,6 @@ The group for which the membership is specified
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2249,7 +2183,6 @@ If the member is a group, then the name of the member group
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2274,7 +2207,6 @@ If the member is a user, then the email or datasource id for the user
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2349,7 +2281,6 @@ Describes the request body of the /betausers API call
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2374,7 +2305,6 @@ Datasource which needs to be made visible to users specified in the `emails` fie
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">

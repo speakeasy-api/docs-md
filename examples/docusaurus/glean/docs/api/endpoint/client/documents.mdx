@@ -7,8 +7,8 @@ import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -35,6 +35,8 @@ import {
 } from "@speakeasy-api/docs-md-react";
 import EmbedEmbedNameMissing13 from "../../../../src/components/speakeasy-embeds/EmbedNameMissing13.mdx";
 import EmbedDocument from "../../../../src/components/speakeasy-embeds/Document.mdx";
+
+<EmbedProvider />
 
 # Client Documents Operations \{#client/documents\}
 
@@ -86,7 +88,6 @@ Document permissions request
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -145,7 +146,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -220,7 +220,6 @@ Information about documents requested.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -244,7 +243,6 @@ Specifications for containers that should be used as part of the restriction (in
   parentId="documentSpecs"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -275,7 +273,6 @@ Specifications for containers that should be used as part of the restriction (in
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -334,7 +331,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -358,7 +354,6 @@ The document details or the error if document is not found.
   parentId="documents"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -388,7 +383,6 @@ The document details or the error if document is not found.
   parentId="documents_Document"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -411,17 +405,11 @@ The document details or the error if document is not found.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View  details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="" triggerText="View  details">
 
 <EmbedEmbedNameMissing13 />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -434,7 +422,6 @@ View  details
   parentId="documents"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -464,7 +451,6 @@ View  details
   parentId="documents_"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -487,17 +473,11 @@ View  details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View Document details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="Document" triggerText="View Document details">
 
 <EmbedDocument />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -561,7 +541,6 @@ Information about facet conditions for documents to be retrieved.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -586,7 +565,6 @@ Pagination cursor. A previously received opaque token representing the position 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -611,7 +589,6 @@ Filter results to one or more datasources (e.g. gmail, slack). All results are r
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -635,7 +612,6 @@ A list of facet filter sets that will be OR'ed together. SearchRequestOptions wh
   parentId="filterSets"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -705,7 +681,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -730,7 +705,6 @@ Cursor that indicates the start of the next page of results. To be passed in "mo
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -754,7 +728,6 @@ A truncated list of documents with this relation. TO BE DEPRECATED.
   parentId="documents"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -785,7 +758,6 @@ A truncated list of documents with this relation. TO BE DEPRECATED.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -860,7 +832,6 @@ Includes request params such as the query and specs of the documents to summariz
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -884,7 +855,6 @@ Specifications for containers that should be used as part of the restriction (in
   parentId="documentSpecs"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -915,7 +885,6 @@ Specifications for containers that should be used as part of the restriction (in
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -940,7 +909,6 @@ Optional length of summary output. If not given, defaults to 500 chars.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -965,7 +933,6 @@ Optional query that the summary should be about
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -990,7 +957,6 @@ The ISO 8601 timestamp associated with the client request.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1049,7 +1015,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1069,7 +1034,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1088,7 +1052,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1108,7 +1071,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1134,7 +1096,6 @@ Follow-up prompts based on the summarized doc
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1153,7 +1114,6 @@ Follow-up prompts based on the summarized doc
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">

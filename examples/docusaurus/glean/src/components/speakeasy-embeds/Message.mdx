@@ -1,7 +1,6 @@
 import {
   Embed,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -10,9 +9,12 @@ import {
   ExpandableProperty,
   ExpandablePropertyDescription,
   ExpandablePropertyExamples,
-  ExpandablePropertyTitle
+  ExpandablePropertyTitle,
+  ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedMessageTextBlock from "./MessageTextBlock.mdx";
+
+<ExpandableSection>
 
 <ExpandableBreakout
   slot="entry"
@@ -20,7 +22,6 @@ import EmbedMessageTextBlock from "./MessageTextBlock.mdx";
   headingId="embed-message+message"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -52,7 +53,6 @@ import EmbedMessageTextBlock from "./MessageTextBlock.mdx";
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -76,7 +76,6 @@ The content of the message.
   parentId="Message_content"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -99,17 +98,15 @@ The content of the message.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View MessageTextBlock details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="MessageTextBlock"
+  triggerText="View MessageTextBlock details"
+>
 
 <EmbedMessageTextBlock />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -124,7 +121,6 @@ View MessageTextBlock details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -150,3 +146,5 @@ USER
 </ExpandablePropertyExamples>
 
 </ExpandableProperty>
+
+</ExpandableSection>

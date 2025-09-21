@@ -7,8 +7,8 @@ import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -63,6 +63,8 @@ import EmbedRelatedDocuments from "../../../../src/components/speakeasy-embeds/R
 import EmbedCollectionPinMetadata from "../../../../src/components/speakeasy-embeds/CollectionPinMetadata.mdx";
 import EmbedCollectionPinTarget from "../../../../src/components/speakeasy-embeds/CollectionPinTarget.mdx";
 
+<EmbedProvider />
+
 # Client Collections Operations \{#client/collections\}
 
 <Operation>
@@ -113,7 +115,6 @@ Data describing the add operation.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -137,7 +138,6 @@ The CollectionItemDescriptors of the items being added.
   parentId="addedCollectionItemDescriptors"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -168,7 +168,6 @@ The CollectionItemDescriptors of the items being added.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -227,7 +226,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -247,7 +245,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -271,7 +268,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_addedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -294,17 +290,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -319,7 +313,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -345,7 +338,6 @@ Indicates whether edits are allowed for everyone or only admins.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -371,7 +363,6 @@ The datasource type this Collection can hold.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -395,7 +386,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   parentId="collection_audienceFilters"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -418,17 +408,11 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View FacetFilter details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="FacetFilter" triggerText="View FacetFilter details">
 
 <EmbedFacetFilter />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -443,7 +427,6 @@ View FacetFilter details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -469,7 +452,6 @@ The number of children Collections. Separated from the actual children so we can
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -493,7 +475,6 @@ The collections to which the answer belongs.
   parentId="collection_children"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -516,17 +497,11 @@ The collections to which the answer belongs.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View Collection details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="Collection" triggerText="View Collection details">
 
 <EmbedCollection />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -541,7 +516,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -561,7 +535,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -581,7 +554,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -592,17 +564,11 @@ View Collection details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -617,7 +583,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -643,7 +608,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -669,7 +633,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -686,17 +649,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -711,7 +672,6 @@ View relatedDocuments details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -737,7 +697,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -763,7 +722,6 @@ The emoji icon of this Collection.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -789,7 +747,6 @@ The unique ID of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -815,7 +772,6 @@ The number of items currently in the Collection. Separated from the actual items
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -839,7 +795,6 @@ The items in this Collection.
   parentId="collection_items"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -862,17 +817,15 @@ The items in this Collection.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View CollectionItem details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="CollectionItem"
+  triggerText="View CollectionItem details"
+>
 
 <EmbedCollectionItem />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -887,7 +840,6 @@ View CollectionItem details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -913,7 +865,6 @@ The unique name of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -939,7 +890,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -959,7 +909,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -976,17 +925,11 @@ Describes the write permissions levels that a user has for a specific feature
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View write details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="write" triggerText="View write details">
 
 <Embedwrite />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1001,7 +944,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1021,7 +963,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1038,17 +979,15 @@ List of targets this Collection can be pinned to, excluding the targets this Col
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View eligiblePins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="eligiblePins"
+  triggerText="View eligiblePins details"
+>
 
 <EmbedeligiblePins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1063,7 +1002,6 @@ View eligiblePins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1080,17 +1018,15 @@ List of targets this Collection is pinned to.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View existingPins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="existingPins"
+  triggerText="View existingPins details"
+>
 
 <EmbedexistingPins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1105,7 +1041,6 @@ View existingPins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1129,7 +1064,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_removedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1152,17 +1086,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1177,7 +1109,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1201,7 +1132,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_roles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1224,17 +1154,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1249,7 +1177,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1275,7 +1202,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1295,7 +1221,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1321,7 +1246,6 @@ Photo id if the thumbnail is from splash.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1347,7 +1271,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1367,7 +1290,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1387,7 +1309,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1398,17 +1319,11 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1423,7 +1338,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1449,7 +1363,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1475,7 +1388,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1492,17 +1404,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1516,7 +1426,6 @@ View relatedDocuments details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1536,7 +1445,6 @@ View relatedDocuments details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1605,7 +1513,6 @@ Collection content plus any additional metadata for the request.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1629,7 +1536,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="addedRoles"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1660,7 +1566,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1685,7 +1590,6 @@ Indicates whether edits are allowed for everyone or only admins.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1710,7 +1614,6 @@ The datasource type this Collection can hold.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1734,7 +1637,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   parentId="audienceFilters"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1765,7 +1667,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1790,7 +1691,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1815,7 +1715,6 @@ The emoji icon of this Collection.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1840,7 +1739,6 @@ The unique name of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1865,7 +1763,6 @@ The (optional) ItemId of the next CollectionItem in sequence. If omitted, will b
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1890,7 +1787,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1914,7 +1810,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="removedRoles"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1945,7 +1840,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1965,7 +1859,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1991,7 +1884,6 @@ Photo id if the thumbnail is from splash.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2056,7 +1948,6 @@ OK
   headingId="operation-createcollection+responses+200+application-json+"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2078,6 +1969,112 @@ OK
 </ExpandableBreakoutDefaultValue>
 
 </ExpandableBreakout>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-createcollection+responses+422+application-json">
+
+422
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-createcollection+responses+422+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Semantic error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-createcollection+responses+422+application-json+httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-createcollection+responses+422+application-json+httpmeta+httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-createcollection+responses+422+application-json+httpmeta\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_Request"
+  headingId="operation-createcollection+responses+422+application-json+httpmeta+request"
+  parentId="HttpMeta"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-createcollection+responses+422+application-json+httpmeta+request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_Response"
+  headingId="operation-createcollection+responses+422+application-json+httpmeta+response"
+  parentId="HttpMeta"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-createcollection+responses+422+application-json+httpmeta+response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="errorCode"
+  headingId="operation-createcollection+responses+422+application-json+errorcode"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"NAME_EXISTS\"","linkedLabel":"\"NAME_EXISTS\"","children":[],"breakoutSubTypes":{}},{"label":"\"NOT_FOUND\"","linkedLabel":"\"NOT_FOUND\"","children":[],"breakoutSubTypes":{}},{"label":"\"COLLECTION_PINNED\"","linkedLabel":"\"COLLECTION_PINNED\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONCURRENT_HIERARCHY_EDIT\"","linkedLabel":"\"CONCURRENT_HIERARCHY_EDIT\"","children":[],"breakoutSubTypes":{}},{"label":"\"HEIGHT_VIOLATION\"","linkedLabel":"\"HEIGHT_VIOLATION\"","children":[],"breakoutSubTypes":{}},{"label":"\"WIDTH_VIOLATION\"","linkedLabel":"\"WIDTH_VIOLATION\"","children":[],"breakoutSubTypes":{}},{"label":"\"NO_PERMISSIONS\"","linkedLabel":"\"NO_PERMISSIONS\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### errorCode \{#operation-createcollection+responses+422+application-json+errorcode\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 
@@ -2137,7 +2134,6 @@ DeleteCollection request
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2162,7 +2158,6 @@ The datasource allowed in the Collection to be deleted.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2186,6 +2181,126 @@ The IDs of the Collections to delete.
 </Section>
 
 </OperationRequestBodySection>
+
+<OperationResponseBodySection slot="response-body">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Server-Side Events \{#operation-deletecollection+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-deletecollection+responses+422+application-json">
+
+422
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-deletecollection+responses+422+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Semantic error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-deletecollection+responses+422+application-json+httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-deletecollection+responses+422+application-json+httpmeta+httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-deletecollection+responses+422+application-json+httpmeta\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_Request"
+  headingId="operation-deletecollection+responses+422+application-json+httpmeta+request"
+  parentId="HttpMeta"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-deletecollection+responses+422+application-json+httpmeta+request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_Response"
+  headingId="operation-deletecollection+responses+422+application-json+httpmeta+response"
+  parentId="HttpMeta"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-deletecollection+responses+422+application-json+httpmeta+response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="errorCode"
+  headingId="operation-deletecollection+responses+422+application-json+errorcode"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"NAME_EXISTS\"","linkedLabel":"\"NAME_EXISTS\"","children":[],"breakoutSubTypes":{}},{"label":"\"NOT_FOUND\"","linkedLabel":"\"NOT_FOUND\"","children":[],"breakoutSubTypes":{}},{"label":"\"COLLECTION_PINNED\"","linkedLabel":"\"COLLECTION_PINNED\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONCURRENT_HIERARCHY_EDIT\"","linkedLabel":"\"CONCURRENT_HIERARCHY_EDIT\"","children":[],"breakoutSubTypes":{}},{"label":"\"HEIGHT_VIOLATION\"","linkedLabel":"\"HEIGHT_VIOLATION\"","children":[],"breakoutSubTypes":{}},{"label":"\"WIDTH_VIOLATION\"","linkedLabel":"\"WIDTH_VIOLATION\"","children":[],"breakoutSubTypes":{}},{"label":"\"NO_PERMISSIONS\"","linkedLabel":"\"NO_PERMISSIONS\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### errorCode \{#operation-deletecollection+responses+422+application-json+errorcode\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodySection>
 
 </Operation>
 
@@ -2237,7 +2352,6 @@ Data describing the delete operation.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2262,7 +2376,6 @@ The ID of the Collection to remove an item in.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2287,7 +2400,6 @@ The (optional) Glean Document ID of the CollectionItem to remove from this Colle
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2349,7 +2461,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2369,7 +2480,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2393,7 +2503,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_addedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2416,17 +2525,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2441,7 +2548,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2467,7 +2573,6 @@ Indicates whether edits are allowed for everyone or only admins.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2493,7 +2598,6 @@ The datasource type this Collection can hold.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2517,7 +2621,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   parentId="collection_audienceFilters"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2540,17 +2643,11 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View FacetFilter details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="FacetFilter" triggerText="View FacetFilter details">
 
 <EmbedFacetFilter />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2565,7 +2662,6 @@ View FacetFilter details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2591,7 +2687,6 @@ The number of children Collections. Separated from the actual children so we can
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2615,7 +2710,6 @@ The collections to which the answer belongs.
   parentId="collection_children"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2638,17 +2732,11 @@ The collections to which the answer belongs.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View Collection details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="Collection" triggerText="View Collection details">
 
 <EmbedCollection />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2663,7 +2751,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2683,7 +2770,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2703,7 +2789,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2714,17 +2799,11 @@ View Collection details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2739,7 +2818,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2765,7 +2843,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2791,7 +2868,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2808,17 +2884,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2833,7 +2907,6 @@ View relatedDocuments details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2859,7 +2932,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2885,7 +2957,6 @@ The emoji icon of this Collection.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2911,7 +2982,6 @@ The unique ID of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2937,7 +3007,6 @@ The number of items currently in the Collection. Separated from the actual items
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2961,7 +3030,6 @@ The items in this Collection.
   parentId="collection_items"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2984,17 +3052,15 @@ The items in this Collection.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View CollectionItem details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="CollectionItem"
+  triggerText="View CollectionItem details"
+>
 
 <EmbedCollectionItem />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3009,7 +3075,6 @@ View CollectionItem details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3035,7 +3100,6 @@ The unique name of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3061,7 +3125,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3081,7 +3144,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3098,17 +3160,11 @@ Describes the write permissions levels that a user has for a specific feature
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View write details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="write" triggerText="View write details">
 
 <Embedwrite />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3123,7 +3179,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3143,7 +3198,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3160,17 +3214,15 @@ List of targets this Collection can be pinned to, excluding the targets this Col
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View eligiblePins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="eligiblePins"
+  triggerText="View eligiblePins details"
+>
 
 <EmbedeligiblePins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3185,7 +3237,6 @@ View eligiblePins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3202,17 +3253,15 @@ List of targets this Collection is pinned to.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View existingPins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="existingPins"
+  triggerText="View existingPins details"
+>
 
 <EmbedexistingPins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3227,7 +3276,6 @@ View existingPins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3251,7 +3299,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_removedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -3274,17 +3321,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3299,7 +3344,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3323,7 +3367,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_roles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -3346,17 +3389,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3371,7 +3412,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3397,7 +3437,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3417,7 +3456,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3443,7 +3481,6 @@ Photo id if the thumbnail is from splash.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3469,7 +3506,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3489,7 +3525,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3509,7 +3544,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3520,17 +3554,11 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3545,7 +3573,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3571,7 +3598,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3597,7 +3623,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3614,17 +3639,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3688,7 +3711,6 @@ Collection content plus any additional metadata for the request.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3712,7 +3734,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="addedRoles"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -3743,7 +3764,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3768,7 +3788,6 @@ Indicates whether edits are allowed for everyone or only admins.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3793,7 +3812,6 @@ The datasource type this Collection can hold.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3817,7 +3835,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   parentId="audienceFilters"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -3848,7 +3865,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3873,7 +3889,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3898,7 +3913,6 @@ The emoji icon of this Collection.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3923,7 +3937,6 @@ The ID of the Collection to modify.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3948,7 +3961,6 @@ The unique name of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3973,7 +3985,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3997,7 +4008,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="removedRoles"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -4028,7 +4038,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4048,7 +4057,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4074,7 +4082,6 @@ Photo id if the thumbnail is from splash.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4133,7 +4140,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4157,7 +4163,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="addedRoles"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -4188,7 +4193,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4213,7 +4217,6 @@ Indicates whether edits are allowed for everyone or only admins.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4238,7 +4241,6 @@ The datasource type this Collection can hold.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4262,7 +4264,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   parentId="audienceFilters"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -4293,7 +4294,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4318,7 +4318,6 @@ The number of children Collections. Separated from the actual children so we can
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4342,7 +4341,6 @@ The collections to which the answer belongs.
   parentId="children"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -4373,7 +4371,6 @@ The collections to which the answer belongs.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4393,7 +4390,6 @@ The collections to which the answer belongs.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4417,7 +4413,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_addedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -4440,17 +4435,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4465,7 +4458,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4491,7 +4483,6 @@ Indicates whether edits are allowed for everyone or only admins.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4517,7 +4508,6 @@ The datasource type this Collection can hold.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4541,7 +4531,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   parentId="collection_audienceFilters"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -4564,17 +4553,11 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View FacetFilter details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="FacetFilter" triggerText="View FacetFilter details">
 
 <EmbedFacetFilter />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4589,7 +4572,6 @@ View FacetFilter details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4615,7 +4597,6 @@ The number of children Collections. Separated from the actual children so we can
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4639,7 +4620,6 @@ The collections to which the answer belongs.
   parentId="collection_children"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -4662,17 +4642,11 @@ The collections to which the answer belongs.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View Collection details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="Collection" triggerText="View Collection details">
 
 <EmbedCollection />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4687,7 +4661,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4707,7 +4680,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4727,7 +4699,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4738,17 +4709,11 @@ View Collection details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4763,7 +4728,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4789,7 +4753,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4815,7 +4778,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4832,17 +4794,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -4857,7 +4817,6 @@ View relatedDocuments details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4883,7 +4842,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4909,7 +4867,6 @@ The emoji icon of this Collection.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4935,7 +4892,6 @@ The unique ID of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4961,7 +4917,6 @@ The number of items currently in the Collection. Separated from the actual items
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4985,7 +4940,6 @@ The items in this Collection.
   parentId="collection_items"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -5008,17 +4962,15 @@ The items in this Collection.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View CollectionItem details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="CollectionItem"
+  triggerText="View CollectionItem details"
+>
 
 <EmbedCollectionItem />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5033,7 +4985,6 @@ View CollectionItem details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5059,7 +5010,6 @@ The unique name of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5085,7 +5035,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5105,7 +5054,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5122,17 +5070,11 @@ Describes the write permissions levels that a user has for a specific feature
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View write details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="write" triggerText="View write details">
 
 <Embedwrite />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5147,7 +5089,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5167,7 +5108,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5184,17 +5124,15 @@ List of targets this Collection can be pinned to, excluding the targets this Col
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View eligiblePins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="eligiblePins"
+  triggerText="View eligiblePins details"
+>
 
 <EmbedeligiblePins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5209,7 +5147,6 @@ View eligiblePins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5226,17 +5163,15 @@ List of targets this Collection is pinned to.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View existingPins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="existingPins"
+  triggerText="View existingPins details"
+>
 
 <EmbedexistingPins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5251,7 +5186,6 @@ View existingPins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5275,7 +5209,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_removedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -5298,17 +5231,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5323,7 +5254,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5347,7 +5277,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_roles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -5370,17 +5299,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5395,7 +5322,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5421,7 +5347,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5441,7 +5366,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5467,7 +5391,6 @@ Photo id if the thumbnail is from splash.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5493,7 +5416,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5513,7 +5435,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5533,7 +5454,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5544,17 +5464,11 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5569,7 +5483,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5595,7 +5508,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5621,7 +5533,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5638,17 +5549,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5662,7 +5571,6 @@ View relatedDocuments details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5681,7 +5589,6 @@ View relatedDocuments details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5701,7 +5608,6 @@ View relatedDocuments details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5721,7 +5627,6 @@ View relatedDocuments details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5747,7 +5652,6 @@ Additional email addresses of this user beyond the primary, if any.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5764,17 +5668,11 @@ The badges that a user has earned over their lifetime.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View badges details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="badges" triggerText="View badges details">
 
 <Embedbadges />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5789,7 +5687,6 @@ View badges details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5815,7 +5712,6 @@ The URL of the person's banner photo.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5841,7 +5737,6 @@ Short biography or mission statement of the employee.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5867,7 +5762,6 @@ Typically the highest level organizational unit; generally applies to bigger com
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5884,17 +5778,11 @@ Intervals of busy time for this person, along with the type of event they're bus
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View busyEvents details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="busyEvents" triggerText="View busyEvents details">
 
 <EmbedbusyEvents />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5909,7 +5797,6 @@ View busyEvents details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5926,17 +5813,15 @@ Customizable fields for additional team information.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View customFields details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="customFields"
+  triggerText="View customFields details"
+>
 
 <EmbedcustomFields />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5951,7 +5836,6 @@ View customFields details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5968,17 +5852,15 @@ The datasource profiles of the team
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View datasourceProfile details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="datasourceProfile"
+  triggerText="View datasourceProfile details"
+>
 
 <EmbeddatasourceProfile />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -5993,7 +5875,6 @@ View datasourceProfile details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6019,7 +5900,6 @@ An organizational unit where everyone has a similar task, e.g. `Engineering`.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6045,7 +5925,6 @@ The number of people in this person's department.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6071,7 +5950,6 @@ The total number of people who directly report to this person, or 0
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6097,7 +5975,6 @@ The user's primary email address
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6123,7 +6000,6 @@ If a former employee, the last date of employment.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6149,7 +6025,6 @@ Link to a customer's internal profile page. This is set to '#' when no link is d
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6175,7 +6050,6 @@ The first name of the person
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6192,17 +6066,11 @@ Information regarding the invite status of a person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View inviteInfo details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="inviteInfo" triggerText="View inviteInfo details">
 
 <EmbedinviteInfo />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6217,7 +6085,6 @@ View inviteInfo details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6243,7 +6110,6 @@ Whether this person is a "root" node in their organization's hierarchy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6269,7 +6135,6 @@ Whether the user has signed into Glean at least once.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6295,7 +6160,6 @@ The last time the user has used the Glean extension in ISO 8601 format.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6321,7 +6185,6 @@ The last name of the person
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6347,7 +6210,6 @@ User facing string representing the person's location.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6373,7 +6235,6 @@ The logging id of the person used in scrubbed logs, tracking GA metrics.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6390,17 +6251,15 @@ A list of POC for company.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View managementChain details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="managementChain"
+  triggerText="View managementChain details"
+>
 
 <EmbedmanagementChain />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6415,7 +6274,6 @@ View managementChain details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6426,17 +6284,11 @@ View managementChain details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View manager details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="manager" triggerText="View manager details">
 
 <Embedmanager />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6451,7 +6303,6 @@ View manager details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6477,7 +6328,6 @@ The total recursive size of the people reporting to this person, or 1
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6494,17 +6344,15 @@ List of people and distances to those people from this person. Optionally with m
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View peopleDistance details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="peopleDistance"
+  triggerText="View peopleDistance details"
+>
 
 <EmbedpeopleDistance />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6519,7 +6367,6 @@ View peopleDistance details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6537,17 +6384,11 @@ When the server sends this, Permissions.read and Permissions.write are the compl
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View permissions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="permissions" triggerText="View permissions details">
 
 <Embedpermissions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6562,7 +6403,6 @@ View permissions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6588,7 +6428,6 @@ Phone number as a number string.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6614,7 +6453,6 @@ The URL of the person's avatar. Public, glean-authenticated and Base64 encoded d
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6640,7 +6478,6 @@ The preferred name of the person, or a nickname.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6666,7 +6503,6 @@ flag settings to indicate user profile settings for certain items
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6692,7 +6528,6 @@ She/her, He/his or other pronoun.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6703,17 +6538,15 @@ She/her, He/his or other pronoun.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View querySuggestions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="querySuggestions"
+  triggerText="View querySuggestions details"
+>
 
 <EmbedquerySuggestions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6728,7 +6561,6 @@ View querySuggestions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6745,17 +6577,11 @@ A list of POC for company.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View reports details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="reports" triggerText="View reports details">
 
 <Embedreports />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6770,7 +6596,6 @@ View reports details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6787,17 +6612,15 @@ List of social network profiles.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View socialNetwork details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="socialNetwork"
+  triggerText="View socialNetwork details"
+>
 
 <EmbedsocialNetwork />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6812,7 +6635,6 @@ View socialNetwork details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6838,7 +6660,6 @@ The date when the employee started.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6864,7 +6685,6 @@ Percentage of the company that started strictly after this person. Between [0,10
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6881,17 +6701,15 @@ Detailed location with information about country, state, city etc.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View structuredLocation details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="structuredLocation"
+  triggerText="View structuredLocation details"
+>
 
 <EmbedstructuredLocation />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6906,7 +6724,6 @@ View structuredLocation details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6923,17 +6740,11 @@ Info about the employee's team(s).
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View teams details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="teams" triggerText="View teams details">
 
 <Embedteams />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -6948,7 +6759,6 @@ View teams details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -6974,7 +6784,6 @@ The timezone of the person. E.g. "Pacific Daylight Time".
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7000,7 +6809,6 @@ The offset of the person's timezone in seconds from UTC.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7026,7 +6834,6 @@ Job title.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7056,7 +6863,6 @@ FULL_TIME
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7082,7 +6888,6 @@ The original photo URL of the person's avatar before any edits they made are app
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7108,7 +6913,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7134,7 +6938,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7158,7 +6961,6 @@ A list of documents related to this person.
   parentId="creator_relatedDocuments"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -7181,17 +6983,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View RelatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="RelatedDocuments"
+  triggerText="View RelatedDocuments details"
+>
 
 <EmbedRelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -7205,7 +7005,6 @@ View RelatedDocuments details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7230,7 +7029,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7250,7 +7048,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7269,7 +7066,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7288,7 +7084,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7313,7 +7108,6 @@ The emoji icon of this Collection.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7338,7 +7132,6 @@ The unique ID of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7363,7 +7156,6 @@ The number of items currently in the Collection. Separated from the actual items
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7387,7 +7179,6 @@ The items in this Collection.
   parentId="items"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -7418,7 +7209,6 @@ The items in this Collection.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7443,7 +7233,6 @@ The unique name of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7468,7 +7257,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7488,7 +7276,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7514,7 +7301,6 @@ Describes the write permissions levels that a user has for a specific feature
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7540,7 +7326,6 @@ True if user has create permission for this feature and scope
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7566,7 +7351,6 @@ True if user has delete permission for this feature and scope
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7592,7 +7376,6 @@ Describes the scope for a ReadPermission, WritePermission, or GrantPermission ob
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7617,7 +7400,6 @@ True if user has update permission for this feature and scope
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7637,7 +7419,6 @@ True if user has update permission for this feature and scope
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7661,7 +7442,6 @@ List of targets this Collection can be pinned to, excluding the targets this Col
   parentId="pinMetadata_eligiblePins"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -7684,17 +7464,15 @@ List of targets this Collection can be pinned to, excluding the targets this Col
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View CollectionPinMetadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="CollectionPinMetadata"
+  triggerText="View CollectionPinMetadata details"
+>
 
 <EmbedCollectionPinMetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -7709,7 +7487,6 @@ View CollectionPinMetadata details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7733,7 +7510,6 @@ List of targets this Collection is pinned to.
   parentId="pinMetadata_existingPins"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -7756,17 +7532,15 @@ List of targets this Collection is pinned to.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View CollectionPinTarget details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="CollectionPinTarget"
+  triggerText="View CollectionPinTarget details"
+>
 
 <EmbedCollectionPinTarget />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -7780,7 +7554,6 @@ View CollectionPinTarget details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7804,7 +7577,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="removedRoles"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -7835,7 +7607,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7859,7 +7630,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="roles"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -7890,7 +7660,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7915,7 +7684,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7935,7 +7703,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7961,7 +7728,6 @@ Photo id if the thumbnail is from splash.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7986,7 +7752,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8005,7 +7770,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8025,7 +7789,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8045,7 +7808,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8071,7 +7833,6 @@ Additional email addresses of this user beyond the primary, if any.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8088,17 +7849,11 @@ The badges that a user has earned over their lifetime.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View badges details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="badges" triggerText="View badges details">
 
 <Embedbadges />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -8113,7 +7868,6 @@ View badges details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8139,7 +7893,6 @@ The URL of the person's banner photo.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8165,7 +7918,6 @@ Short biography or mission statement of the employee.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8191,7 +7943,6 @@ Typically the highest level organizational unit; generally applies to bigger com
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8208,17 +7959,11 @@ Intervals of busy time for this person, along with the type of event they're bus
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View busyEvents details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="busyEvents" triggerText="View busyEvents details">
 
 <EmbedbusyEvents />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -8233,7 +7978,6 @@ View busyEvents details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8250,17 +7994,15 @@ Customizable fields for additional team information.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View customFields details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="customFields"
+  triggerText="View customFields details"
+>
 
 <EmbedcustomFields />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -8275,7 +8017,6 @@ View customFields details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8292,17 +8033,15 @@ The datasource profiles of the team
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View datasourceProfile details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="datasourceProfile"
+  triggerText="View datasourceProfile details"
+>
 
 <EmbeddatasourceProfile />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -8317,7 +8056,6 @@ View datasourceProfile details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8343,7 +8081,6 @@ An organizational unit where everyone has a similar task, e.g. `Engineering`.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8369,7 +8106,6 @@ The number of people in this person's department.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8395,7 +8131,6 @@ The total number of people who directly report to this person, or 0
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8421,7 +8156,6 @@ The user's primary email address
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8447,7 +8181,6 @@ If a former employee, the last date of employment.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8473,7 +8206,6 @@ Link to a customer's internal profile page. This is set to '#' when no link is d
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8499,7 +8231,6 @@ The first name of the person
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8516,17 +8247,11 @@ Information regarding the invite status of a person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View inviteInfo details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="inviteInfo" triggerText="View inviteInfo details">
 
 <EmbedinviteInfo />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -8541,7 +8266,6 @@ View inviteInfo details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8567,7 +8291,6 @@ Whether this person is a "root" node in their organization's hierarchy.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8593,7 +8316,6 @@ Whether the user has signed into Glean at least once.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8619,7 +8341,6 @@ The last time the user has used the Glean extension in ISO 8601 format.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8645,7 +8366,6 @@ The last name of the person
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8671,7 +8391,6 @@ User facing string representing the person's location.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8697,7 +8416,6 @@ The logging id of the person used in scrubbed logs, tracking GA metrics.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8714,17 +8432,15 @@ A list of POC for company.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View managementChain details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="managementChain"
+  triggerText="View managementChain details"
+>
 
 <EmbedmanagementChain />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -8739,7 +8455,6 @@ View managementChain details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8750,17 +8465,11 @@ View managementChain details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View manager details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="manager" triggerText="View manager details">
 
 <Embedmanager />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -8775,7 +8484,6 @@ View manager details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8801,7 +8509,6 @@ The total recursive size of the people reporting to this person, or 1
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8818,17 +8525,15 @@ List of people and distances to those people from this person. Optionally with m
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View peopleDistance details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="peopleDistance"
+  triggerText="View peopleDistance details"
+>
 
 <EmbedpeopleDistance />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -8843,7 +8548,6 @@ View peopleDistance details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8861,17 +8565,11 @@ When the server sends this, Permissions.read and Permissions.write are the compl
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View permissions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="permissions" triggerText="View permissions details">
 
 <Embedpermissions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -8886,7 +8584,6 @@ View permissions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8912,7 +8609,6 @@ Phone number as a number string.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8938,7 +8634,6 @@ The URL of the person's avatar. Public, glean-authenticated and Base64 encoded d
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8964,7 +8659,6 @@ The preferred name of the person, or a nickname.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -8990,7 +8684,6 @@ flag settings to indicate user profile settings for certain items
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9016,7 +8709,6 @@ She/her, He/his or other pronoun.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9027,17 +8719,15 @@ She/her, He/his or other pronoun.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View querySuggestions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="querySuggestions"
+  triggerText="View querySuggestions details"
+>
 
 <EmbedquerySuggestions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -9052,7 +8742,6 @@ View querySuggestions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9069,17 +8758,11 @@ A list of POC for company.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View reports details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="reports" triggerText="View reports details">
 
 <Embedreports />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -9094,7 +8777,6 @@ View reports details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9111,17 +8793,15 @@ List of social network profiles.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View socialNetwork details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="socialNetwork"
+  triggerText="View socialNetwork details"
+>
 
 <EmbedsocialNetwork />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -9136,7 +8816,6 @@ View socialNetwork details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9162,7 +8841,6 @@ The date when the employee started.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9188,7 +8866,6 @@ Percentage of the company that started strictly after this person. Between [0,10
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9205,17 +8882,15 @@ Detailed location with information about country, state, city etc.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View structuredLocation details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="structuredLocation"
+  triggerText="View structuredLocation details"
+>
 
 <EmbedstructuredLocation />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -9230,7 +8905,6 @@ View structuredLocation details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9247,17 +8921,11 @@ Info about the employee's team(s).
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View teams details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="teams" triggerText="View teams details">
 
 <Embedteams />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -9272,7 +8940,6 @@ View teams details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9298,7 +8965,6 @@ The timezone of the person. E.g. "Pacific Daylight Time".
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9324,7 +8990,6 @@ The offset of the person's timezone in seconds from UTC.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9350,7 +9015,6 @@ Job title.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9380,7 +9044,6 @@ FULL_TIME
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9406,7 +9069,6 @@ The original photo URL of the person's avatar before any edits they made are app
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9432,7 +9094,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9458,7 +9119,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9482,7 +9142,6 @@ A list of documents related to this person.
   parentId="updatedBy_relatedDocuments"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -9505,21 +9164,125 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View RelatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="RelatedDocuments"
+  triggerText="View RelatedDocuments details"
+>
 
 <EmbedRelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
 </ExpandableBreakout>
+
+</ExpandableSection>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-editcollection+responses+422+application-json">
+
+422
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-editcollection+responses+422+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Semantic error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-editcollection+responses+422+application-json+httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-editcollection+responses+422+application-json+httpmeta+httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-editcollection+responses+422+application-json+httpmeta\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_Request"
+  headingId="operation-editcollection+responses+422+application-json+httpmeta+request"
+  parentId="HttpMeta"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-editcollection+responses+422+application-json+httpmeta+request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_Response"
+  headingId="operation-editcollection+responses+422+application-json+httpmeta+response"
+  parentId="HttpMeta"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-editcollection+responses+422+application-json+httpmeta+response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="errorCode"
+  headingId="operation-editcollection+responses+422+application-json+errorcode"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"NAME_EXISTS\"","linkedLabel":"\"NAME_EXISTS\"","children":[],"breakoutSubTypes":{}},{"label":"\"NOT_FOUND\"","linkedLabel":"\"NOT_FOUND\"","children":[],"breakoutSubTypes":{}},{"label":"\"COLLECTION_PINNED\"","linkedLabel":"\"COLLECTION_PINNED\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONCURRENT_HIERARCHY_EDIT\"","linkedLabel":"\"CONCURRENT_HIERARCHY_EDIT\"","children":[],"breakoutSubTypes":{}},{"label":"\"HEIGHT_VIOLATION\"","linkedLabel":"\"HEIGHT_VIOLATION\"","children":[],"breakoutSubTypes":{}},{"label":"\"WIDTH_VIOLATION\"","linkedLabel":"\"WIDTH_VIOLATION\"","children":[],"breakoutSubTypes":{}},{"label":"\"NO_PERMISSIONS\"","linkedLabel":"\"NO_PERMISSIONS\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### errorCode \{#operation-editcollection+responses+422+application-json+errorcode\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 
@@ -9579,7 +9342,6 @@ Edit Collection Items request
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9604,7 +9366,6 @@ The ID of the Collection to edit CollectionItems in.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9629,7 +9390,6 @@ A helpful description of why this CollectionItem is in the Collection that it's 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9654,7 +9414,6 @@ The emoji icon for this CollectionItem. Only used for Text type items.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9679,7 +9438,6 @@ The ID of the CollectionItem to edit.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9738,7 +9496,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9758,7 +9515,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9782,7 +9538,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_addedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -9805,17 +9560,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -9830,7 +9583,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9856,7 +9608,6 @@ Indicates whether edits are allowed for everyone or only admins.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9882,7 +9633,6 @@ The datasource type this Collection can hold.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9906,7 +9656,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   parentId="collection_audienceFilters"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -9929,17 +9678,11 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View FacetFilter details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="FacetFilter" triggerText="View FacetFilter details">
 
 <EmbedFacetFilter />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -9954,7 +9697,6 @@ View FacetFilter details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -9980,7 +9722,6 @@ The number of children Collections. Separated from the actual children so we can
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10004,7 +9745,6 @@ The collections to which the answer belongs.
   parentId="collection_children"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -10027,17 +9767,11 @@ The collections to which the answer belongs.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View Collection details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="Collection" triggerText="View Collection details">
 
 <EmbedCollection />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -10052,7 +9786,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10072,7 +9805,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10092,7 +9824,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10103,17 +9834,11 @@ View Collection details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -10128,7 +9853,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10154,7 +9878,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10180,7 +9903,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10197,17 +9919,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -10222,7 +9942,6 @@ View relatedDocuments details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10248,7 +9967,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10274,7 +9992,6 @@ The emoji icon of this Collection.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10300,7 +10017,6 @@ The unique ID of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10326,7 +10042,6 @@ The number of items currently in the Collection. Separated from the actual items
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10350,7 +10065,6 @@ The items in this Collection.
   parentId="collection_items"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -10373,17 +10087,15 @@ The items in this Collection.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View CollectionItem details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="CollectionItem"
+  triggerText="View CollectionItem details"
+>
 
 <EmbedCollectionItem />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -10398,7 +10110,6 @@ View CollectionItem details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10424,7 +10135,6 @@ The unique name of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10450,7 +10160,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10470,7 +10179,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10487,17 +10195,11 @@ Describes the write permissions levels that a user has for a specific feature
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View write details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="write" triggerText="View write details">
 
 <Embedwrite />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -10512,7 +10214,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10532,7 +10233,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10549,17 +10249,15 @@ List of targets this Collection can be pinned to, excluding the targets this Col
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View eligiblePins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="eligiblePins"
+  triggerText="View eligiblePins details"
+>
 
 <EmbedeligiblePins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -10574,7 +10272,6 @@ View eligiblePins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10591,17 +10288,15 @@ List of targets this Collection is pinned to.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View existingPins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="existingPins"
+  triggerText="View existingPins details"
+>
 
 <EmbedexistingPins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -10616,7 +10311,6 @@ View existingPins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10640,7 +10334,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_removedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -10663,17 +10356,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -10688,7 +10379,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10712,7 +10402,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_roles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -10735,17 +10424,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -10760,7 +10447,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10786,7 +10472,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10806,7 +10491,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10832,7 +10516,6 @@ Photo id if the thumbnail is from splash.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10858,7 +10541,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10878,7 +10560,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10898,7 +10579,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10909,17 +10589,11 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -10934,7 +10608,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10960,7 +10633,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -10986,7 +10658,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11003,17 +10674,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -11077,7 +10746,6 @@ GetCollection request
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11102,7 +10770,6 @@ The datasource allowed in the Collection returned.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11127,7 +10794,6 @@ The ID of the Collection to be retrieved.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11152,7 +10818,6 @@ Whether or not to include the top level Collection in this Collection's hierarch
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11211,7 +10876,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11231,7 +10895,6 @@ OK
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11255,7 +10918,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_addedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -11278,17 +10940,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -11303,7 +10963,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11329,7 +10988,6 @@ Indicates whether edits are allowed for everyone or only admins.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11355,7 +11013,6 @@ The datasource type this Collection can hold.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11379,7 +11036,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   parentId="collection_audienceFilters"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -11402,17 +11058,11 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View FacetFilter details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="FacetFilter" triggerText="View FacetFilter details">
 
 <EmbedFacetFilter />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -11427,7 +11077,6 @@ View FacetFilter details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11453,7 +11102,6 @@ The number of children Collections. Separated from the actual children so we can
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11477,7 +11125,6 @@ The collections to which the answer belongs.
   parentId="collection_children"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -11500,17 +11147,11 @@ The collections to which the answer belongs.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View Collection details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="Collection" triggerText="View Collection details">
 
 <EmbedCollection />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -11525,7 +11166,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11545,7 +11185,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11565,7 +11204,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11576,17 +11214,11 @@ View Collection details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -11601,7 +11233,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11627,7 +11258,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11653,7 +11283,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11670,17 +11299,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -11695,7 +11322,6 @@ View relatedDocuments details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11721,7 +11347,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11747,7 +11372,6 @@ The emoji icon of this Collection.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11773,7 +11397,6 @@ The unique ID of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11799,7 +11422,6 @@ The number of items currently in the Collection. Separated from the actual items
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11823,7 +11445,6 @@ The items in this Collection.
   parentId="collection_items"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -11846,17 +11467,15 @@ The items in this Collection.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View CollectionItem details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="CollectionItem"
+  triggerText="View CollectionItem details"
+>
 
 <EmbedCollectionItem />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -11871,7 +11490,6 @@ View CollectionItem details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11897,7 +11515,6 @@ The unique name of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11923,7 +11540,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11943,7 +11559,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -11960,17 +11575,11 @@ Describes the write permissions levels that a user has for a specific feature
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View write details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="write" triggerText="View write details">
 
 <Embedwrite />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -11985,7 +11594,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12005,7 +11613,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12022,17 +11629,15 @@ List of targets this Collection can be pinned to, excluding the targets this Col
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View eligiblePins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="eligiblePins"
+  triggerText="View eligiblePins details"
+>
 
 <EmbedeligiblePins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -12047,7 +11652,6 @@ View eligiblePins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12064,17 +11668,15 @@ List of targets this Collection is pinned to.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View existingPins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="existingPins"
+  triggerText="View existingPins details"
+>
 
 <EmbedexistingPins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -12089,7 +11691,6 @@ View existingPins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12113,7 +11714,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_removedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -12136,17 +11736,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -12161,7 +11759,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12185,7 +11782,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="collection_roles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -12208,17 +11804,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -12233,7 +11827,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12259,7 +11852,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12279,7 +11871,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12305,7 +11896,6 @@ Photo id if the thumbnail is from splash.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12331,7 +11921,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12351,7 +11940,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12371,7 +11959,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12382,17 +11969,11 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -12407,7 +11988,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12433,7 +12013,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12459,7 +12038,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12476,17 +12054,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -12500,7 +12076,6 @@ View relatedDocuments details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12520,7 +12095,6 @@ View relatedDocuments details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12539,7 +12113,6 @@ View relatedDocuments details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12559,7 +12132,6 @@ View relatedDocuments details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12583,7 +12155,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="rootCollection_addedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -12606,17 +12177,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -12631,7 +12200,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12657,7 +12225,6 @@ Indicates whether edits are allowed for everyone or only admins.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12683,7 +12250,6 @@ The datasource type this Collection can hold.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12707,7 +12273,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   parentId="rootCollection_audienceFilters"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -12730,17 +12295,11 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View FacetFilter details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="FacetFilter" triggerText="View FacetFilter details">
 
 <EmbedFacetFilter />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -12755,7 +12314,6 @@ View FacetFilter details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12781,7 +12339,6 @@ The number of children Collections. Separated from the actual children so we can
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12805,7 +12362,6 @@ The collections to which the answer belongs.
   parentId="rootCollection_children"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -12828,17 +12384,11 @@ The collections to which the answer belongs.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View Collection details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="Collection" triggerText="View Collection details">
 
 <EmbedCollection />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -12853,7 +12403,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12873,7 +12422,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12893,7 +12441,6 @@ View Collection details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12904,17 +12451,11 @@ View Collection details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -12929,7 +12470,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12955,7 +12495,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12981,7 +12520,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -12998,17 +12536,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -13023,7 +12559,6 @@ View relatedDocuments details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13049,7 +12584,6 @@ A brief summary of the Collection's contents.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13075,7 +12609,6 @@ The emoji icon of this Collection.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13101,7 +12634,6 @@ The unique ID of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13127,7 +12659,6 @@ The number of items currently in the Collection. Separated from the actual items
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13151,7 +12682,6 @@ The items in this Collection.
   parentId="rootCollection_items"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -13174,17 +12704,15 @@ The items in this Collection.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View CollectionItem details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="CollectionItem"
+  triggerText="View CollectionItem details"
+>
 
 <EmbedCollectionItem />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -13199,7 +12727,6 @@ View CollectionItem details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13225,7 +12752,6 @@ The unique name of the Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13251,7 +12777,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13271,7 +12796,6 @@ The parent of this Collection, or 0 if it's a top-level Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13288,17 +12812,11 @@ Describes the write permissions levels that a user has for a specific feature
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View write details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="write" triggerText="View write details">
 
 <Embedwrite />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -13313,7 +12831,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13333,7 +12850,6 @@ View write details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13350,17 +12866,15 @@ List of targets this Collection can be pinned to, excluding the targets this Col
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View eligiblePins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="eligiblePins"
+  triggerText="View eligiblePins details"
+>
 
 <EmbedeligiblePins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -13375,7 +12889,6 @@ View eligiblePins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13392,17 +12905,15 @@ List of targets this Collection is pinned to.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View existingPins details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="existingPins"
+  triggerText="View existingPins details"
+>
 
 <EmbedexistingPins />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -13417,7 +12928,6 @@ View existingPins details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13441,7 +12951,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="rootCollection_removedRoles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -13464,17 +12973,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -13489,7 +12996,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13513,7 +13019,6 @@ A list of user roles for the custom entity explicitly granted by the owner.
   parentId="rootCollection_roles"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -13536,17 +13041,15 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View UserRoleSpecification details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="UserRoleSpecification"
+  triggerText="View UserRoleSpecification details"
+>
 
 <EmbedUserRoleSpecification />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -13561,7 +13064,6 @@ View UserRoleSpecification details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13587,7 +13089,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13607,7 +13108,6 @@ The names of the shortcuts (Go Links) that point to this Collection.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13633,7 +13133,6 @@ Photo id if the thumbnail is from splash.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13659,7 +13158,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13679,7 +13177,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13699,7 +13196,6 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13710,17 +13206,11 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -13735,7 +13225,6 @@ View metadata details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13761,7 +13250,6 @@ The display name.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13787,7 +13275,6 @@ An opaque identifier that can be used to request metadata for a Person.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13804,17 +13291,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View relatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
 
 <EmbedrelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -13828,7 +13313,6 @@ View relatedDocuments details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13903,7 +13387,6 @@ ListCollections request
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13929,7 +13412,6 @@ ANSWERS - for Collections representing answer boards
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -13954,7 +13436,6 @@ Whether to include the audience filters with the listed Collections.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -14013,7 +13494,6 @@ OK
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -14037,7 +13517,6 @@ The collections to which the answer belongs.
   parentId="collections"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">

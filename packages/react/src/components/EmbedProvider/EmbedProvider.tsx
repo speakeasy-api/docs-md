@@ -3,7 +3,7 @@
 import { useAtom } from "jotai";
 import { useCallback, useEffect, useState } from "react";
 
-import { embedContentAtom } from "./state";
+import { embedContentAtom } from "./state.ts";
 import styles from "./styles.module.css";
 
 export function EmbedProvider() {

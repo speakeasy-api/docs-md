@@ -1,7 +1,6 @@
 import {
   Embed,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -9,9 +8,12 @@ import {
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyDescription,
-  ExpandablePropertyTitle
+  ExpandablePropertyTitle,
+  ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedTextRange from "./TextRange.mdx";
+
+<ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
@@ -21,7 +23,6 @@ import EmbedTextRange from "./TextRange.mdx";
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -41,7 +42,6 @@ import EmbedTextRange from "./TextRange.mdx";
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -67,7 +67,6 @@ The answer for the related question
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -93,7 +92,6 @@ The text of the related question
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -117,7 +115,6 @@ The bolded ranges within the query of the QuerySuggestion.
   parentId="relatedQuestion_ranges"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -142,18 +139,14 @@ A subsection of a given string to which some special formatting should be applie
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View TextRange details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="TextRange" triggerText="View TextRange details">
 
 <EmbedTextRange />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
 </ExpandableBreakout>
+
+</ExpandableSection>

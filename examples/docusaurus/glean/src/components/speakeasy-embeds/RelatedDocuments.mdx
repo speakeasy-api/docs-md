@@ -1,7 +1,6 @@
 import {
   Embed,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -9,7 +8,8 @@ import {
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyDescription,
-  ExpandablePropertyTitle
+  ExpandablePropertyTitle,
+  ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedDocument from "./Document.mdx";
 import EmbedinputDetails from "./inputDetails.mdx";
@@ -18,13 +18,14 @@ import EmbedrequestOptions from "./requestOptions.mdx";
 import EmbedsearchProviderInfo from "./searchProviderInfo.mdx";
 import EmbedSearchResult from "./SearchResult.mdx";
 
+<ExpandableSection>
+
 <ExpandableBreakout
   slot="entry"
   id="RelatedDocuments"
   headingId="embed-relateddocuments+relateddocuments"
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -56,7 +57,6 @@ import EmbedSearchResult from "./SearchResult.mdx";
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -82,7 +82,6 @@ Which entity in the response that this entity relates to. Relevant when there ar
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -106,7 +105,6 @@ A truncated list of documents with this relation. TO BE DEPRECATED.
   parentId="RelatedDocuments_documents"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -129,17 +127,11 @@ A truncated list of documents with this relation. TO BE DEPRECATED.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View Document details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="Document" triggerText="View Document details">
 
 <EmbedDocument />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -154,7 +146,6 @@ View Document details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -174,7 +165,6 @@ View Document details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -200,7 +190,6 @@ The datasource associated with the suggestion.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -211,17 +200,15 @@ The datasource associated with the suggestion.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View inputDetails details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="inputDetails"
+  triggerText="View inputDetails details"
+>
 
 <EmbedinputDetails />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -236,7 +223,6 @@ View inputDetails details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -262,7 +248,6 @@ A user-facing description to display for the suggestion.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -288,7 +273,6 @@ A query term missing from the original query on which this suggestion is based.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -314,7 +298,6 @@ The query being suggested (e.g. enforcing the missing term from the original que
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -331,17 +314,11 @@ The bolded ranges within the query of the QuerySuggestion.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View ranges details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="ranges" triggerText="View ranges details">
 
 <Embedranges />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -356,7 +333,6 @@ View ranges details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -367,17 +343,15 @@ View ranges details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View requestOptions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="requestOptions"
+  triggerText="View requestOptions details"
+>
 
 <EmbedrequestOptions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -392,7 +366,6 @@ View requestOptions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -403,17 +376,15 @@ View requestOptions details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View searchProviderInfo details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="searchProviderInfo"
+  triggerText="View searchProviderInfo details"
+>
 
 <EmbedsearchProviderInfo />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -428,7 +399,6 @@ View searchProviderInfo details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -454,7 +424,6 @@ How this document relates to the including entity.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -478,7 +447,6 @@ A truncated list of documents associated with this relation. To be used in favor
   parentId="RelatedDocuments_results"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -501,18 +469,18 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View SearchResult details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="SearchResult"
+  triggerText="View SearchResult details"
+>
 
 <EmbedSearchResult />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
 </ExpandableBreakout>
+
+</ExpandableSection>

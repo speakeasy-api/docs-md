@@ -7,8 +7,8 @@ import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
   Embed,
+  EmbedProvider,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -63,6 +63,8 @@ import EmbedResultTab from "../../../../src/components/speakeasy-embeds/ResultTa
 import EmbediconConfig from "../../../../src/components/speakeasy-embeds/iconConfig.mdx";
 import EmbedFacetFilter from "../../../../src/components/speakeasy-embeds/FacetFilter.mdx";
 
+<EmbedProvider />
+
 # Client Messages Operations \{#client/messages\}
 
 <Operation>
@@ -113,7 +115,6 @@ Includes request params such as the id for channel/message and direction.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -138,7 +139,6 @@ The type of the data source. Missing field defaults to SLACK.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -163,7 +163,6 @@ The datasource instance display name from which the document was extracted. This
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -188,7 +187,6 @@ The direction of the results asked with respect to the reference timestamp. Miss
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -213,7 +211,6 @@ ID corresponding to the requested idType. Note that channel and threads are repr
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -238,7 +235,6 @@ Type of the id in the incoming request.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -263,7 +259,6 @@ Whether to include root message in response.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -288,7 +283,6 @@ Timestamp in millis of the reference message. Only applicable when using a messa
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -347,7 +341,6 @@ OK
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -372,7 +365,6 @@ Whether there are more results for client to continue requesting.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -392,7 +384,6 @@ Whether there are more results for client to continue requesting.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -416,7 +407,6 @@ A list of results that should be displayed as associated with this result.
   parentId="rootMessage_allClusteredResults"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -439,17 +429,15 @@ A list of results that should be displayed as associated with this result.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View ClusterGroup details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="ClusterGroup"
+  triggerText="View ClusterGroup details"
+>
 
 <EmbedClusterGroup />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -464,7 +452,6 @@ View ClusterGroup details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -490,7 +477,6 @@ Additional context for the relationship between the result and the document it's
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -516,7 +502,6 @@ The total number of attachments.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -540,7 +525,6 @@ A truncated list of documents associated with this relation. To be used in favor
   parentId="rootMessage_attachments"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -563,17 +547,15 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View SearchResult details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="SearchResult"
+  triggerText="View SearchResult details"
+>
 
 <EmbedSearchResult />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -588,7 +570,6 @@ View SearchResult details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -612,7 +593,6 @@ A truncated list of documents associated with this relation. To be used in favor
   parentId="rootMessage_backlinkResults"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -635,17 +615,15 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View SearchResult details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="SearchResult"
+  triggerText="View SearchResult details"
+>
 
 <EmbedSearchResult />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -660,7 +638,6 @@ View SearchResult details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -686,7 +663,6 @@ The reason for inclusion of clusteredResults.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -710,7 +686,6 @@ A truncated list of documents associated with this relation. To be used in favor
   parentId="rootMessage_clusteredResults"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -733,17 +708,15 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View SearchResult details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="SearchResult"
+  triggerText="View SearchResult details"
+>
 
 <EmbedSearchResult />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -758,7 +731,6 @@ View SearchResult details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -778,7 +750,6 @@ View SearchResult details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -804,7 +775,6 @@ The source from which document content was pulled, e.g. an API crawl or browser 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -815,17 +785,15 @@ The source from which document content was pulled, e.g. an API crawl or browser 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View containerDocument details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="containerDocument"
+  triggerText="View containerDocument details"
+>
 
 <EmbedcontainerDocument />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -840,7 +808,6 @@ View containerDocument details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -851,17 +818,11 @@ View containerDocument details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View content details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="content" triggerText="View content details">
 
 <Embedcontent />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -876,7 +837,6 @@ View content details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -902,7 +862,6 @@ The app or other repository type from which the document was extracted
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -928,7 +887,6 @@ The datasource-specific type of the document (e.g. for Jira issues, this is the 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -954,7 +912,6 @@ The Glean Document ID.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -965,17 +922,11 @@ The Glean Document ID.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View metadata details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
 <Embedmetadata />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -990,7 +941,6 @@ View metadata details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1001,17 +951,15 @@ View metadata details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View parentDocument details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="parentDocument"
+  triggerText="View parentDocument details"
+>
 
 <EmbedparentDocument />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1026,7 +974,6 @@ View parentDocument details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1043,17 +990,11 @@ A list of content sub-sections in the document, e.g. text blocks with different 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View sections details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="sections" triggerText="View sections details">
 
 <Embedsections />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1068,7 +1009,6 @@ View sections details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1094,7 +1034,6 @@ The title of the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1120,7 +1059,6 @@ A permalink for the document.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1146,7 +1084,6 @@ The full body text of the result if not already contained in the snippets. Only 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1172,7 +1109,6 @@ The full body text of the result if not already contained in the snippets; each 
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1192,7 +1128,6 @@ The full body text of the result if not already contained in the snippets; each 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1203,17 +1138,11 @@ The full body text of the result if not already contained in the snippets; each 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View person details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="person" triggerText="View person details">
 
 <Embedperson />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1228,7 +1157,6 @@ View person details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1239,17 +1167,11 @@ View person details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View suggestions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="suggestions" triggerText="View suggestions details">
 
 <Embedsuggestions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1264,7 +1186,6 @@ View suggestions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1290,7 +1211,6 @@ A deep link, if available, into the datasource's native application for the user
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1314,7 +1234,6 @@ A list of pins associated with this search result.
   parentId="rootMessage_pins"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1337,17 +1256,11 @@ A list of pins associated with this search result.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View PinDocument details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="PinDocument" triggerText="View PinDocument details">
 
 <EmbedPinDocument />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1362,7 +1275,6 @@ View PinDocument details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1389,7 +1301,6 @@ The level of visual distinction that should be given to a result.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1409,7 +1320,6 @@ The level of visual distinction that should be given to a result.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1435,7 +1345,6 @@ The datasource associated with the suggestion.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1446,17 +1355,15 @@ The datasource associated with the suggestion.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View inputDetails details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="inputDetails"
+  triggerText="View inputDetails details"
+>
 
 <EmbedinputDetails />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1471,7 +1378,6 @@ View inputDetails details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1497,7 +1403,6 @@ A user-facing description to display for the suggestion.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1523,7 +1428,6 @@ A query term missing from the original query on which this suggestion is based.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1549,7 +1453,6 @@ The query being suggested (e.g. enforcing the missing term from the original que
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1566,17 +1469,11 @@ The bolded ranges within the query of the QuerySuggestion.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View ranges details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="ranges" triggerText="View ranges details">
 
 <Embedranges />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1591,7 +1488,6 @@ View ranges details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1602,17 +1498,15 @@ View ranges details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View requestOptions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="requestOptions"
+  triggerText="View requestOptions details"
+>
 
 <EmbedrequestOptions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1627,7 +1521,6 @@ View requestOptions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1638,17 +1531,15 @@ View requestOptions details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View searchProviderInfo details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="searchProviderInfo"
+  triggerText="View searchProviderInfo details"
+>
 
 <EmbedsearchProviderInfo />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1663,7 +1554,6 @@ View searchProviderInfo details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1687,7 +1577,6 @@ A list of documents related to this person.
   parentId="rootMessage_relatedResults"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1710,17 +1599,15 @@ A list of documents related to this person.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View RelatedDocuments details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="RelatedDocuments"
+  triggerText="View RelatedDocuments details"
+>
 
 <EmbedRelatedDocuments />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1735,7 +1622,6 @@ View RelatedDocuments details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1759,7 +1645,6 @@ Any snippets associated to the populated object.
   parentId="rootMessage_snippets"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1782,17 +1667,15 @@ Any snippets associated to the populated object.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View SearchResultSnippet details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="SearchResultSnippet"
+  triggerText="View SearchResultSnippet details"
+>
 
 <EmbedSearchResultSnippet />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1807,7 +1690,6 @@ View SearchResultSnippet details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1831,7 +1713,6 @@ An array of entities in the work graph retrieved via a data request.
   parentId="rootMessage_structuredResults"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1856,17 +1737,15 @@ A single object that can support any object in the work graph. Only a single obj
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View StructuredResult details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="StructuredResult"
+  triggerText="View StructuredResult details"
+>
 
 <EmbedStructuredResult />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -1881,7 +1760,6 @@ View StructuredResult details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1901,7 +1779,6 @@ View StructuredResult details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1927,7 +1804,6 @@ An opaque token that represents this particular result in this particular query.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1946,7 +1822,6 @@ An opaque token that represents this particular result in this particular query.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1966,7 +1841,6 @@ An opaque token that represents this particular result in this particular query.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1986,7 +1860,6 @@ An opaque token that represents this particular result in this particular query.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2012,7 +1885,6 @@ Indicates the gmail results could not be fetched due to bad token.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2038,7 +1910,6 @@ Indicates the outlook results could not be fetched due to bad token.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2049,17 +1920,15 @@ Indicates the outlook results could not be fetched due to bad token.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View errorMessages details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="errorMessages"
+  triggerText="View errorMessages details"
+>
 
 <EmbederrorMessages />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2074,7 +1943,6 @@ View errorMessages details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2091,17 +1959,15 @@ Indicates results could not be fetched due to invalid operators in the query.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View invalidOperators details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="invalidOperators"
+  triggerText="View invalidOperators details"
+>
 
 <EmbedinvalidOperators />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2116,7 +1982,6 @@ View invalidOperators details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2152,7 +2017,6 @@ _Example:_
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2178,7 +2042,6 @@ Cursor that indicates the start of the next page of results. To be passed in "mo
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2204,7 +2067,6 @@ List of experiment ids for the corresponding request.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2222,7 +2084,6 @@ List of experiment ids for the corresponding request.
   parentId="searchResponse_facetResults"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2245,17 +2106,11 @@ List of experiment ids for the corresponding request.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View FacetResult details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="FacetResult" triggerText="View FacetResult details">
 
 <EmbedFacetResult />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2270,7 +2125,6 @@ View FacetResult details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2290,7 +2144,6 @@ View FacetResult details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2316,7 +2169,6 @@ Answer generated for the given query or the generated question.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2342,7 +2194,6 @@ An opaque cursor representing the search request
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2368,7 +2219,6 @@ List of all follow-up prompts generated for the given query or the generated que
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2385,17 +2235,15 @@ List of follow-up actions generated for the given query or the generated questio
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View followupActions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="followupActions"
+  triggerText="View followupActions details"
+>
 
 <EmbedfollowupActions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2410,7 +2258,6 @@ View followupActions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2436,7 +2283,6 @@ Search query rephrased into a question.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2453,17 +2299,11 @@ The bolded ranges within the query of the QuerySuggestion.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View ranges details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="ranges" triggerText="View ranges details">
 
 <Embedranges />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2478,7 +2318,6 @@ View ranges details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2504,7 +2343,6 @@ Status of backend generating the answer
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2530,7 +2368,6 @@ An opaque token that represents this particular result in this particular query.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2556,7 +2393,6 @@ Whether more results are available. Use cursor to retrieve them.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2576,7 +2412,6 @@ Whether more results are available. Use cursor to retrieve them.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2587,17 +2422,15 @@ Whether more results are available. Use cursor to retrieve them.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View additionalQuerySuggestions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="additionalQuerySuggestions"
+  triggerText="View additionalQuerySuggestions details"
+>
 
 <EmbedadditionalQuerySuggestions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2612,7 +2445,6 @@ View additionalQuerySuggestions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2638,7 +2470,6 @@ Whether the query was modified to remove quotes
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2664,7 +2495,6 @@ A different query was performed than the one requested.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2690,7 +2520,6 @@ A list of terms that were negated when processing the query.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2716,7 +2545,6 @@ The query text sent by the client in the request.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2742,7 +2570,6 @@ No results were found for the original query. The usage of this bit in conjuncti
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2753,17 +2580,15 @@ No results were found for the original query. The usage of this bit in conjuncti
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View querySuggestion details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="querySuggestion"
+  triggerText="View querySuggestion details"
+>
 
 <EmbedquerySuggestion />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2778,7 +2603,6 @@ View querySuggestion details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2804,7 +2628,6 @@ A cleaned up or updated version of the query to be displayed in the query box. U
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2815,17 +2638,15 @@ A cleaned up or updated version of the query to be displayed in the query box. U
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View searchWarning details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="searchWarning"
+  triggerText="View searchWarning details"
+>
 
 <EmbedsearchWarning />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2840,7 +2661,6 @@ View searchWarning details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2866,7 +2686,6 @@ The actual query used to perform search and return results.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2883,17 +2702,15 @@ The bolded ranges within the query of the QuerySuggestion.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View searchedQueryRanges details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="searchedQueryRanges"
+  triggerText="View searchedQueryRanges details"
+>
 
 <EmbedsearchedQueryRanges />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -2908,7 +2725,6 @@ View searchedQueryRanges details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2934,7 +2750,6 @@ The query used to perform search and return results, with negated terms and face
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2960,7 +2775,6 @@ Whether the query triggered expert detection results in the People tab.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2986,7 +2800,6 @@ A platform-generated request ID to correlate backend logs.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3012,7 +2825,6 @@ The unique IDs of the result tabs to which this response belongs.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3036,7 +2848,6 @@ All result tabs available for the current query. Populated if QUERY_METADATA is 
   parentId="searchResponse_resultTabs"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -3059,17 +2870,11 @@ All result tabs available for the current query. Populated if QUERY_METADATA is 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View ResultTab details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="ResultTab" triggerText="View ResultTab details">
 
 <EmbedResultTab />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3084,7 +2889,6 @@ View ResultTab details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3108,7 +2912,6 @@ A truncated list of documents associated with this relation. To be used in favor
   parentId="searchResponse_results"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -3131,17 +2934,15 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View SearchResult details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="SearchResult"
+  triggerText="View SearchResult details"
+>
 
 <EmbedSearchResult />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3156,7 +2957,6 @@ View SearchResult details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3176,7 +2976,6 @@ View SearchResult details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3193,17 +2992,11 @@ Defines how to render an icon
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View iconConfig details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="iconConfig" triggerText="View iconConfig details">
 
 <EmbediconConfig />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3218,7 +3011,6 @@ View iconConfig details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3244,7 +3036,6 @@ Textual description of the results. Can be shown at the top of SERP, e.g. 'Peopl
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3268,7 +3059,6 @@ A list of filters for the query. An AND is assumed between different facetFilter
   parentId="searchResponse_rewrittenFacetFilters"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -3291,17 +3081,11 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View FacetFilter details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="FacetFilter" triggerText="View FacetFilter details">
 
 <EmbedFacetFilter />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3316,7 +3100,6 @@ View FacetFilter details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3336,7 +3119,6 @@ View FacetFilter details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3362,7 +3144,6 @@ The last query seen by the server.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3388,7 +3169,6 @@ The last time the server saw this token.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3414,7 +3194,6 @@ A unique token for this session. A new session (and token) is created when the u
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3440,7 +3219,6 @@ A unique id for all requests a user makes from a given tab, no matter how far ap
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3464,7 +3242,6 @@ An array of entities in the work graph retrieved via a data request.
   parentId="searchResponse_structuredResults"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -3489,17 +3266,15 @@ A single object that can support any object in the work graph. Only a single obj
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View StructuredResult details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="StructuredResult"
+  triggerText="View StructuredResult details"
+>
 
 <EmbedStructuredResult />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -3514,7 +3289,6 @@ View StructuredResult details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">

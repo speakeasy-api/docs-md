@@ -1,7 +1,6 @@
 import {
   Embed,
   EmbedTrigger,
-  EmbedTriggerContents,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
@@ -9,7 +8,8 @@ import {
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyDescription,
-  ExpandablePropertyTitle
+  ExpandablePropertyTitle,
+  ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import EmbedTextRange from "./TextRange.mdx";
 import EmbedauthTokens from "./authTokens.mdx";
@@ -19,6 +19,8 @@ import EmbedfacetFilterSets from "./facetFilterSets.mdx";
 import EmbedfacetFilters from "./facetFilters.mdx";
 import Embedinclusions from "./inclusions.mdx";
 
+<ExpandableSection>
+
 <ExpandableProperty
   slot="entry"
   id="querySuggestion"
@@ -27,7 +29,6 @@ import Embedinclusions from "./inclusions.mdx";
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -47,7 +48,6 @@ import Embedinclusions from "./inclusions.mdx";
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -73,7 +73,6 @@ The datasource associated with the suggestion.
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -93,7 +92,6 @@ The datasource associated with the suggestion.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -119,7 +117,6 @@ Whether the associated query was at least partially copy-pasted.  If subsequent 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -145,7 +142,6 @@ A user-facing description to display for the suggestion.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -171,7 +167,6 @@ A query term missing from the original query on which this suggestion is based.
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -197,7 +192,6 @@ The query being suggested (e.g. enforcing the missing term from the original que
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -221,7 +215,6 @@ The bolded ranges within the query of the QuerySuggestion.
   parentId="querySuggestion_ranges"
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -246,17 +239,11 @@ A subsection of a given string to which some special formatting should be applie
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View TextRange details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="TextRange" triggerText="View TextRange details">
 
 <EmbedTextRange />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -271,7 +258,6 @@ View TextRange details
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -291,7 +277,6 @@ View TextRange details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -308,17 +293,11 @@ Auth tokens which may be used for non-indexed, federated results (e.g. Gmail).
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View authTokens details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="authTokens" triggerText="View authTokens details">
 
 <EmbedauthTokens />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -333,7 +312,6 @@ View authTokens details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -359,7 +337,6 @@ Filter results to a single datasource name (e.g. gmail, slack). All results are 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -385,7 +362,6 @@ Filter results to one or more datasources (e.g. gmail, slack). All results are r
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -411,7 +387,6 @@ Facets for which FacetResults should be fetched and that don't apply to a partic
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -437,7 +412,6 @@ Disables automatic adjustment of the input query for spelling corrections or oth
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -463,7 +437,6 @@ Whether or not to disable spellcheck.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -474,17 +447,11 @@ Whether or not to disable spellcheck.
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View exclusions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="exclusions" triggerText="View exclusions details">
 
 <Embedexclusions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -499,7 +466,6 @@ View exclusions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -510,17 +476,15 @@ View exclusions details
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View facetBucketFilter details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="facetBucketFilter"
+  triggerText="View facetBucketFilter details"
+>
 
 <EmbedfacetBucketFilter />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -535,7 +499,6 @@ View facetBucketFilter details
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -561,7 +524,6 @@ The maximum number of FacetBuckets to return in each FacetResult.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -578,17 +540,15 @@ A list of facet filter sets that will be OR'ed together. SearchRequestOptions wh
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View facetFilterSets details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="facetFilterSets"
+  triggerText="View facetFilterSets details"
+>
 
 <EmbedfacetFilterSets />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -603,7 +563,6 @@ View facetFilterSets details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -620,17 +579,15 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View facetFilters details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="facetFilters"
+  triggerText="View facetFilters details"
+>
 
 <EmbedfacetFilters />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -645,7 +602,6 @@ View facetFilters details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -671,7 +627,6 @@ Hints that the QE should return result counts (via the datasource facet result) 
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -682,17 +637,11 @@ Hints that the QE should return result counts (via the datasource facet result) 
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger">
-
-View inclusions details
-
-</EmbedTrigger>
-
-<EmbedTriggerContents slot="trigger-contents">
+<EmbedTrigger slot="trigger" embedTitle="inclusions" triggerText="View inclusions details">
 
 <Embedinclusions />
 
-</EmbedTriggerContents>
+</EmbedTrigger>
 
 </Embed>
 
@@ -707,7 +656,6 @@ View inclusions details
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -733,7 +681,6 @@ If true, the operators in the query are taken to override any operators in facet
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -759,7 +706,6 @@ Array of hints containing which fields should be populated in the response.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -785,7 +731,6 @@ Enables expanded content to be returned for LLM usage. The size of content per r
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -811,7 +756,6 @@ The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 becaus
   typeAnnotations={[]}
   hasFrontMatter={false}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -831,7 +775,6 @@ The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 becaus
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -857,7 +800,6 @@ URL to the provider's logo.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -883,7 +825,6 @@ Name of the search provider.
   typeAnnotations={[]}
   hasFrontMatter={true}
   expandByDefault={false}
-  hasEmbed={false}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -899,3 +840,5 @@ URL template that can be used to perform the suggested search by replacing the \
 </ExpandablePropertyDescription>
 
 </ExpandableProperty>
+
+</ExpandableSection>
