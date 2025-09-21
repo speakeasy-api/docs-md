@@ -1,0 +1,1141 @@
+---
+sidebarTitle: Client Entities
+---
+
+import "@speakeasy-api/docs-md-react/nextra.css";
+
+import {
+  ExpandableBreakout,
+  ExpandableBreakoutDefaultValue,
+  ExpandableBreakoutDescription,
+  ExpandableBreakoutExamples,
+  ExpandableBreakoutTitle,
+  ExpandableProperty,
+  ExpandablePropertyDefaultValue,
+  ExpandablePropertyDescription,
+  ExpandablePropertyExamples,
+  ExpandablePropertyTitle,
+  ExpandableSection,
+  Operation,
+  OperationDescriptionSection,
+  OperationRequestBodyDescriptionSection,
+  OperationRequestBodySection,
+  OperationResponseBodyDescriptionSection,
+  OperationResponseBodySection,
+  OperationSummarySection,
+  OperationTitleSection,
+  Pill,
+  Section,
+  SectionContent,
+  SectionTab,
+  SectionTitle,
+  TabbedSection
+} from "@speakeasy-api/docs-md-react";
+
+# Client Entities Operations [#client/entities]
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/listentities [#operation-listentities]
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_List entities_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+List some set of details for all entities that fit the given criteria and return in the requested order. Does not support negation in filters, assumes relation type EQUALS. There is a limit of 10000 entities that can be retrieved via this endpoint, except when using FULL_DIRECTORY request type for people entities.
+
+</OperationDescriptionSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body [#operation-listentities_request]
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+List people request
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="cursor"
+  headingId="operation-listentities_request_cursor"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### cursor [#operation-listentities_request_cursor]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Pagination cursor. A previously received opaque token representing the position in the overall results at which to start.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-listentities_request_datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource [#operation-listentities_request_datasource]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource associated with the entity type, most commonly used with CUSTOM_ENTITIES
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="entityType"
+  headingId="operation-listentities_request_entitytype"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"PEOPLE\"","linkedLabel":"\"PEOPLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"TEAMS\"","linkedLabel":"\"TEAMS\"","children":[],"breakoutSubTypes":{}},{"label":"\"CUSTOM_ENTITIES\"","linkedLabel":"\"CUSTOM_ENTITIES\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### entityType [#operation-listentities_request_entitytype]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"PEOPLE"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="filter"
+  headingId="operation-listentities_request_filter"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities_request_filter_facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-listentities_request_filter_facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### filter [#operation-listentities_request_filter]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of filters for the query. An AND is assumed between different facetFilters. For example, owner Sumeet and type Spreadsheet shows documents that are by Sumeet AND are Spreadsheets.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="filter_FacetFilter"
+  headingId="operation-listentities_request_filter_facetfilter"
+  parentId="filter"
+  hasFrontMatter={false}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### FacetFilter [#operation-listentities_request_filter_facetfilter]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+</ExpandableBreakoutDefaultValue>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="includeFields"
+  headingId="operation-listentities_request_includefields"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"PEOPLE\"","linkedLabel":"\"PEOPLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"TEAMS\"","linkedLabel":"\"TEAMS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_DISTANCE\"","linkedLabel":"\"PEOPLE_DISTANCE\"","children":[],"breakoutSubTypes":{}},{"label":"\"PERMISSIONS\"","linkedLabel":"\"PERMISSIONS\"","children":[],"breakoutSubTypes":{}},{"label":"\"FACETS\"","linkedLabel":"\"FACETS\"","children":[],"breakoutSubTypes":{}},{"label":"\"INVITE_INFO\"","linkedLabel":"\"INVITE_INFO\"","children":[],"breakoutSubTypes":{}},{"label":"\"LAST_EXTENSION_USE\"","linkedLabel":"\"LAST_EXTENSION_USE\"","children":[],"breakoutSubTypes":{}},{"label":"\"MANAGEMENT_DETAILS\"","linkedLabel":"\"MANAGEMENT_DETAILS\"","children":[],"breakoutSubTypes":{}},{"label":"\"UNPROCESSED_TEAMS\"","linkedLabel":"\"UNPROCESSED_TEAMS\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### includeFields [#operation-listentities_request_includefields]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of entity fields to return (that aren't returned by default)
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pageSize"
+  headingId="operation-listentities_request_pagesize"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### pageSize [#operation-listentities_request_pagesize]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Hint to the server about how many results to send back. Server may return less.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+100
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="query"
+  headingId="operation-listentities_request_query"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### query [#operation-listentities_request_query]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A query string to search for entities that each entity in the response must conform to. An empty query does not filter any entities.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="requestType"
+  headingId="operation-listentities_request_requesttype"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"STANDARD\"","linkedLabel":"\"STANDARD\"","children":[],"breakoutSubTypes":{}},{"label":"\"FULL_DIRECTORY\"","linkedLabel":"\"FULL_DIRECTORY\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### requestType [#operation-listentities_request_requesttype]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The type of request being made.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"STANDARD"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sort"
+  headingId="operation-listentities_request_sort"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities_request_sort_sortoptions\">SortOptions</a>","children":[{"label":"SortOptions","linkedLabel":"<a href=\"#operation-listentities_request_sort_sortoptions\">SortOptions</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sort [#operation-listentities_request_sort]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Use EntitiesSortOrder enum for SortOptions.sortBy
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="sort_SortOptions"
+  headingId="operation-listentities_request_sort_sortoptions"
+  parentId="sort"
+  hasFrontMatter={false}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### SortOptions [#operation-listentities_request_sort_sortoptions]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+</ExpandableBreakoutDefaultValue>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="source"
+  headingId="operation-listentities_request_source"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### source [#operation-listentities_request_source]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A string denoting the search surface from which the endpoint is called.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodySection slot="response-body">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses [#operation-listentities_responses]
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-listentities_responses_200_application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-listentities_responses_200_application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="cursor"
+  headingId="operation-listentities_responses_200_application-json_cursor"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### cursor [#operation-listentities_responses_200_application-json_cursor]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Pagination cursor. A previously received opaque token representing the position in the overall results at which to start.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="customEntityResults"
+  headingId="operation-listentities_responses_200_application-json_customentityresults"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities_responses_200_application-json_customentityresults_customentity\">CustomEntity</a>","children":[{"label":"CustomEntity","linkedLabel":"<a href=\"#operation-listentities_responses_200_application-json_customentityresults_customentity\">CustomEntity</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### customEntityResults [#operation-listentities_responses_200_application-json_customentityresults]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="customEntityResults_CustomEntity"
+  headingId="operation-listentities_responses_200_application-json_customentityresults_customentity"
+  parentId="customEntityResults"
+  hasFrontMatter={false}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### CustomEntity [#operation-listentities_responses_200_application-json_customentityresults_customentity]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+</ExpandableBreakoutDefaultValue>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="customFacetNames"
+  headingId="operation-listentities_responses_200_application-json_customfacetnames"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### customFacetNames [#operation-listentities_responses_200_application-json_customfacetnames]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of Person attributes that are custom setup by deployment
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="facetResults"
+  headingId="operation-listentities_responses_200_application-json_facetresults"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities_responses_200_application-json_facetresults_facetresult\">FacetResult</a>","children":[{"label":"FacetResult","linkedLabel":"<a href=\"#operation-listentities_responses_200_application-json_facetresults_facetresult\">FacetResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### facetResults [#operation-listentities_responses_200_application-json_facetresults]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="facetResults_FacetResult"
+  headingId="operation-listentities_responses_200_application-json_facetresults_facetresult"
+  parentId="facetResults"
+  hasFrontMatter={false}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### FacetResult [#operation-listentities_responses_200_application-json_facetresults_facetresult]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+</ExpandableBreakoutDefaultValue>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="hasMoreResults"
+  headingId="operation-listentities_responses_200_application-json_hasmoreresults"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### hasMoreResults [#operation-listentities_responses_200_application-json_hasmoreresults]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Whether or not more entities can be fetched.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results"
+  headingId="operation-listentities_responses_200_application-json_results"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities_responses_200_application-json_results_person\">Person</a>","children":[{"label":"Person","linkedLabel":"<a href=\"#operation-listentities_responses_200_application-json_results_person\">Person</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### results [#operation-listentities_responses_200_application-json_results]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of POC for company.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="results_Person"
+  headingId="operation-listentities_responses_200_application-json_results_person"
+  parentId="results"
+  hasFrontMatter={false}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Person [#operation-listentities_responses_200_application-json_results_person]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+</ExpandableBreakoutDefaultValue>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="sortOptions"
+  headingId="operation-listentities_responses_200_application-json_sortoptions"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ENTITY_NAME\"","linkedLabel":"\"ENTITY_NAME\"","children":[],"breakoutSubTypes":{}},{"label":"\"FIRST_NAME\"","linkedLabel":"\"FIRST_NAME\"","children":[],"breakoutSubTypes":{}},{"label":"\"LAST_NAME\"","linkedLabel":"\"LAST_NAME\"","children":[],"breakoutSubTypes":{}},{"label":"\"ORG_SIZE_COUNT\"","linkedLabel":"\"ORG_SIZE_COUNT\"","children":[],"breakoutSubTypes":{}},{"label":"\"START_DATE\"","linkedLabel":"\"START_DATE\"","children":[],"breakoutSubTypes":{}},{"label":"\"TEAM_SIZE\"","linkedLabel":"\"TEAM_SIZE\"","children":[],"breakoutSubTypes":{}},{"label":"\"RELEVANCE\"","linkedLabel":"\"RELEVANCE\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sortOptions [#operation-listentities_responses_200_application-json_sortoptions]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Sort options from EntitiesSortOrder supported for this response. Default is empty list.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults"
+  headingId="operation-listentities_responses_200_application-json_teamresults"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities_responses_200_application-json_teamresults_team\">Team</a>","children":[{"label":"Team","linkedLabel":"<a href=\"#operation-listentities_responses_200_application-json_teamresults_team\">Team</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### teamResults [#operation-listentities_responses_200_application-json_teamresults]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="teamResults_Team"
+  headingId="operation-listentities_responses_200_application-json_teamresults_team"
+  parentId="teamResults"
+  hasFrontMatter={false}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Team [#operation-listentities_responses_200_application-json_teamresults_team]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+</ExpandableBreakoutDefaultValue>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="totalCount"
+  headingId="operation-listentities_responses_200_application-json_totalcount"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalCount [#operation-listentities_responses_200_application-json_totalcount]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The total number of entities available
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/people [#operation-people]
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Read people_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Read people details for the given IDs.
+
+</OperationDescriptionSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body [#operation-people_request]
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+People request
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="emailIds"
+  headingId="operation-people_request_emailids"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### emailIds [#operation-people_request_emailids]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The email IDs to retrieve. The result is the deduplicated union of emailIds and obfuscatedIds.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="includeFields"
+  headingId="operation-people_request_includefields"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"BADGES\"","linkedLabel":"\"BADGES\"","children":[],"breakoutSubTypes":{}},{"label":"\"BUSY_EVENTS\"","linkedLabel":"\"BUSY_EVENTS\"","children":[],"breakoutSubTypes":{}},{"label":"\"DOCUMENT_ACTIVITY\"","linkedLabel":"\"DOCUMENT_ACTIVITY\"","children":[],"breakoutSubTypes":{}},{"label":"\"INVITE_INFO\"","linkedLabel":"\"INVITE_INFO\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_DISTANCE\"","linkedLabel":"\"PEOPLE_DISTANCE\"","children":[],"breakoutSubTypes":{}},{"label":"\"PERMISSIONS\"","linkedLabel":"\"PERMISSIONS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_DETAILS\"","linkedLabel":"\"PEOPLE_DETAILS\"","children":[],"breakoutSubTypes":{}},{"label":"\"MANAGEMENT_DETAILS\"","linkedLabel":"\"MANAGEMENT_DETAILS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_PROFILE_SETTINGS\"","linkedLabel":"\"PEOPLE_PROFILE_SETTINGS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_WITHOUT_MANAGER\"","linkedLabel":"\"PEOPLE_WITHOUT_MANAGER\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### includeFields [#operation-people_request_includefields]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of PersonMetadata fields to return (that aren't returned by default)
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="includeTypes"
+  headingId="operation-people_request_includetypes"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"BADGES\"","linkedLabel":"\"BADGES\"","children":[],"breakoutSubTypes":{}},{"label":"\"BUSY_EVENTS\"","linkedLabel":"\"BUSY_EVENTS\"","children":[],"breakoutSubTypes":{}},{"label":"\"DOCUMENT_ACTIVITY\"","linkedLabel":"\"DOCUMENT_ACTIVITY\"","children":[],"breakoutSubTypes":{}},{"label":"\"INVITE_INFO\"","linkedLabel":"\"INVITE_INFO\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_DISTANCE\"","linkedLabel":"\"PEOPLE_DISTANCE\"","children":[],"breakoutSubTypes":{}},{"label":"\"PERMISSIONS\"","linkedLabel":"\"PERMISSIONS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_DETAILS\"","linkedLabel":"\"PEOPLE_DETAILS\"","children":[],"breakoutSubTypes":{}},{"label":"\"MANAGEMENT_DETAILS\"","linkedLabel":"\"MANAGEMENT_DETAILS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_PROFILE_SETTINGS\"","linkedLabel":"\"PEOPLE_PROFILE_SETTINGS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_WITHOUT_MANAGER\"","linkedLabel":"\"PEOPLE_WITHOUT_MANAGER\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### includeTypes [#operation-people_request_includetypes]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of PersonMetadata fields to return (that aren't returned by default)
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="obfuscatedIds"
+  headingId="operation-people_request_obfuscatedids"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### obfuscatedIds [#operation-people_request_obfuscatedids]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The Person IDs to retrieve. If no IDs are requested, the current user's details are returned.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="source"
+  headingId="operation-people_request_source"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### source [#operation-people_request_source]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A string denoting the search surface from which the endpoint is called.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="timezoneOffset"
+  headingId="operation-people_request_timezoneoffset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timezoneOffset [#operation-people_request_timezoneoffset]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodySection slot="response-body">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses [#operation-people_responses]
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-people_responses_200_application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-people_responses_200_application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="errors"
+  headingId="operation-people_responses_200_application-json_errors"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### errors [#operation-people_responses_200_application-json_errors]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of IDs that could not be found.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="relatedDocuments"
+  headingId="operation-people_responses_200_application-json_relateddocuments"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-people_responses_200_application-json_relateddocuments_relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#operation-people_responses_200_application-json_relateddocuments_relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedDocuments [#operation-people_responses_200_application-json_relateddocuments]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of documents related to this person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="relatedDocuments_RelatedDocuments"
+  headingId="operation-people_responses_200_application-json_relateddocuments_relateddocuments"
+  parentId="relatedDocuments"
+  hasFrontMatter={false}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### RelatedDocuments [#operation-people_responses_200_application-json_relateddocuments_relateddocuments]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+</ExpandableBreakoutDefaultValue>
+
+</ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="results"
+  headingId="operation-people_responses_200_application-json_results"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-people_responses_200_application-json_results_person\">Person</a>","children":[{"label":"Person","linkedLabel":"<a href=\"#operation-people_responses_200_application-json_results_person\">Person</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### results [#operation-people_responses_200_application-json_results]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of POC for company.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableBreakout
+  slot="entry"
+  id="results_Person"
+  headingId="operation-people_responses_200_application-json_results_person"
+  parentId="results"
+  hasFrontMatter={false}
+  expandByDefault={false}
+  hasEmbed={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Person [#operation-people_responses_200_application-json_results_person]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+</ExpandableBreakoutDefaultValue>
+
+</ExpandableBreakout>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
