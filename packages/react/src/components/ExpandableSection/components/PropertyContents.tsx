@@ -128,6 +128,7 @@ export function PropertyContents({
 
     const { display: singleLineDisplay, measure: singleLineMeasure } =
       computeSingleLineDisplayType(typeInfo);
+
     // If the value is 0, that means we haven't rendered yet and don't know the
     // width. In this case, we just don't render the type at all.
     if (offscreenTextSizeMeasureContainerWidth === 0) {
@@ -186,8 +187,9 @@ export function PropertyContents({
     </TitlePrefixContainer>
   );
 
-  let propertyCell: JSX.Element;
   let titleContainer: JSX.Element;
+  let propertyCell: JSX.Element;
+  let measureContainer: JSX.Element | null = null;
   if (!displayInfo || !typeInfo) {
     titleContainer = (
       <TitleContainer ref={titleContainerRef}>{titlePrefix}</TitleContainer>
@@ -244,7 +246,10 @@ export function PropertyContents({
             {breakoutsChildren}
           </>
         )}
-
+      </>
+    );
+    measureContainer = (
+      <>
         {/* This offscreen measure is used to determine the width of a character,
           for use in multiline type computation */}
         <OffscreenMeasureContainer ref={offscreenTextSizeMeasureContainerRef}>
@@ -278,6 +283,7 @@ export function PropertyContents({
       {isOpen && (
         <div className={styles.entryContentContainer}>{propertyCell}</div>
       )}
+      {measureContainer}
     </div>
   );
 }
