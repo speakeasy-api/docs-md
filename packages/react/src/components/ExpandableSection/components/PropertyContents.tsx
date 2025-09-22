@@ -1,11 +1,7 @@
 "use client";
 
-import type {
-  DisplayTypeInfo,
-  PropertyAnnotations,
-} from "@speakeasy-api/docs-md-shared/types";
 import clsx from "clsx";
-import type { FC, PropsWithChildren } from "react";
+import type { JSX, PropsWithChildren } from "react";
 import { forwardRef, useMemo } from "react";
 import useMeasure from "react-use-measure";
 
@@ -20,17 +16,9 @@ import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/Ex
 import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { Pill as DefaultPill } from "../../Pill/Pill.tsx";
-import type { PillProps } from "../../Pill/types.ts";
 import { useIsOpen } from "../state.ts";
 import styles from "../styles.module.css";
 import type { ExpandablePropertyProps } from "../types.ts";
-
-type PropertyCellProps = PropsWithChildren<{
-  typeInfo?: DisplayTypeInfo;
-  typeAnnotations?: PropertyAnnotations[];
-  isOpen: boolean;
-  Pill: FC<PillProps>;
-}>;
 
 const TitleContainer = forwardRef<HTMLDivElement, PropsWithChildren>(
   function TitleContainer({ children }, ref) {
@@ -84,13 +72,19 @@ const OffscreenMeasureContainer = forwardRef<HTMLDivElement, PropsWithChildren>(
   }
 );
 
-function PropertyCell({
+export function PropertyContents({
+  id,
+  slot,
   children,
   typeInfo,
   typeAnnotations,
-  isOpen,
-  Pill,
-}: PropertyCellProps) {
+  hasExpandableContent,
+  ExpandableCell = DefaultExpandableCell,
+  NonExpandableCell = DefaultNonExpandableCell,
+  Pill = DefaultPill,
+}: ExpandablePropertyProps) {
+  const [isOpen, setIsOpen] = useIsOpen(id);
+
   // We measure the title container (which includes available space for the
   // inline type), the title prefix (which is only the property name and
   // annotations), and the type container so that we can determine if and how to
@@ -181,46 +175,41 @@ function PropertyCell({
     typeInfo,
   ]);
 
-  if (!displayInfo || !typeInfo) {
-    return (
-      <div className={styles.propertyCell}>
-        <TitleContainer ref={titleContainerRef}>
-          <TitlePrefixContainer ref={titlePrefixContainerRef}>
-            {titleChild}
-            {typeAnnotations?.map((annotation) => (
-              <Pill key={annotation.title} variant={annotation.variant}>
-                {annotation.title}
-              </Pill>
-            ))}
-          </TitlePrefixContainer>
-        </TitleContainer>
+  const titlePrefix = (
+    <TitlePrefixContainer ref={titlePrefixContainerRef}>
+      {titleChild}
+      {typeAnnotations?.map((annotation) => (
+        <Pill key={annotation.title} variant={annotation.variant}>
+          {annotation.title}
+        </Pill>
+      ))}
+    </TitlePrefixContainer>
+  );
 
+  let propertyCell: JSX.Element;
+  let titleContainer: JSX.Element;
+  if (!displayInfo || !typeInfo) {
+    titleContainer = (
+      <TitleContainer ref={titleContainerRef}>{titlePrefix}</TitleContainer>
+    );
+    propertyCell = (
+      <>
         {isOpen && (
           <div className={styles.propertyCellContent}>
             {descriptionChildren}
             {examplesChildren}
             {defaultValueChildren}
             {embedChildren}
+            {breakoutsChildren}
           </div>
         )}
-      </div>
+      </>
     );
-  }
-
-  const { multiline, contents, singleLineMeasure } = displayInfo;
-
-  return (
-    <div className={styles.propertyCell}>
+  } else {
+    titleContainer = (
       <TitleContainer ref={titleContainerRef}>
-        <TitlePrefixContainer ref={titlePrefixContainerRef}>
-          {titleChild}
-          {typeAnnotations?.map((annotation) => (
-            <Pill key={annotation.title} variant={annotation.variant}>
-              {annotation.title}
-            </Pill>
-          ))}
-        </TitlePrefixContainer>
-        {multiline ? (
+        {titlePrefix}
+        {displayInfo.multiline ? (
           <div>
             <div
               className={clsx(
@@ -232,56 +221,51 @@ function PropertyCell({
             </div>
           </div>
         ) : (
-          <TypeContainer multiline={multiline} contents={contents} />
+          <TypeContainer
+            multiline={displayInfo.multiline}
+            contents={displayInfo.contents}
+          />
         )}
       </TitleContainer>
+    );
+    propertyCell = (
+      <>
+        {isOpen &&
+          (displayInfo.multiline ||
+            descriptionChildren.length > 0 ||
+            examplesChildren.length > 0 ||
+            defaultValueChildren.length > 0) && (
+            <div className={styles.propertyCellContent}>
+              {displayInfo.multiline && (
+                <TypeContainer
+                  multiline={displayInfo.multiline}
+                  contents={displayInfo.contents}
+                />
+              )}
+              {descriptionChildren}
+              {examplesChildren}
+              {defaultValueChildren}
+              {embedChildren}
+              {breakoutsChildren}
+            </div>
+          )}
 
-      {isOpen &&
-        (multiline ||
-          descriptionChildren.length > 0 ||
-          examplesChildren.length > 0 ||
-          defaultValueChildren.length > 0) && (
-          <div className={styles.propertyCellContent}>
-            {multiline && (
-              <TypeContainer multiline={multiline} contents={contents} />
-            )}
-
-            {descriptionChildren}
-            {examplesChildren}
-            {defaultValueChildren}
-            {embedChildren}
-            {breakoutsChildren}
-          </div>
-        )}
-
-      {/* This offscreen measure is used to determine the width of a character,
+        {/* This offscreen measure is used to determine the width of a character,
           for use in multiline type computation */}
-      <OffscreenMeasureContainer ref={offscreenTextSizeMeasureContainerRef}>
-        A
-      </OffscreenMeasureContainer>
+        <OffscreenMeasureContainer ref={offscreenTextSizeMeasureContainerRef}>
+          A
+        </OffscreenMeasureContainer>
 
-      {/* This offscreen measure is used to determine the width of the single
+        {/* This offscreen measure is used to determine the width of the single
           line type, for use in determining if we need to split the type into
           multiple lines */}
-      <OffscreenMeasureContainer ref={offscreenTypeMeasureContainerRef}>
-        {singleLineMeasure}
-      </OffscreenMeasureContainer>
-    </div>
-  );
-}
+        <OffscreenMeasureContainer ref={offscreenTypeMeasureContainerRef}>
+          {displayInfo.singleLineMeasure}
+        </OffscreenMeasureContainer>
+      </>
+    );
+  }
 
-export function PropertyContents({
-  id,
-  slot,
-  children,
-  typeInfo,
-  typeAnnotations,
-  hasExpandableContent,
-  ExpandableCell = DefaultExpandableCell,
-  NonExpandableCell = DefaultNonExpandableCell,
-  Pill = DefaultPill,
-}: ExpandablePropertyProps) {
-  const [isOpen, setIsOpen] = useIsOpen(id);
   return (
     <div slot={slot} className={styles.entryContainer}>
       <div className={styles.entryHeaderContainer}>
@@ -294,15 +278,9 @@ export function PropertyContents({
         ) : (
           <NonExpandableCell />
         )}
+        {titleContainer}
       </div>
-      <PropertyCell
-        typeInfo={typeInfo}
-        typeAnnotations={typeAnnotations}
-        isOpen={isOpen}
-        Pill={Pill}
-      >
-        {children}
-      </PropertyCell>
+      {propertyCell}
     </div>
   );
 }
