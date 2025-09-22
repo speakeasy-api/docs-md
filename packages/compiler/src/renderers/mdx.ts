@@ -106,12 +106,33 @@ export class MdxSite extends MarkdownSite {
         "Embed output directory not set, but should have been caught by the settings parser"
       );
     }
-    const embedPath = join(embedOutDir, `${slug}.mdx`);
+
+    const loaderPath = join(embedOutDir, "loaders", `${slug}.tsx`);
+    const embedPath = join(embedOutDir, "contents", `${slug}.mdx`);
     if (this.#embedsCreated.has(slug)) {
       this.#embedStack.pop();
-      return embedPath;
+      return loaderPath;
     }
     this.#embedsCreated.add(slug);
+
+    // Create the lazy loader
+    const importPath = relative(dirname(loaderPath), embedPath);
+    const loaderContents = `import { lazy, Suspense } from "react";
+
+// This import needs to have a literal value so bundlers can statically
+// analyze this component. This is why we don't use a generic component that
+// takes in a 'src' property, or anything like that.
+const Contents = lazy(() => import("${importPath}"));
+
+export default function() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Contents />
+    </Suspense>
+  );
+}
+`;
+    getOnPageComplete()(loaderPath, loaderContents);
 
     // Create the embed contents
     const renderer = this.getRenderer({
@@ -140,7 +161,7 @@ export class MdxSite extends MarkdownSite {
     getOnPageComplete()(embedPath, contents);
 
     this.#embedStack.pop();
-    return embedPath;
+    return loaderPath;
   }
 }
 
