@@ -519,8 +519,6 @@ function createExpandableBreakout({
 
   renderer.enterContext({ id: breakout.label, type: "schema" });
 
-  const { showDebugPlaceholders } = getSettings().display;
-
   // Check if we're too deeply nested to render this inline, but have more
   // properties to render at a deeper level
   const hasEmbed =
@@ -543,68 +541,9 @@ function createExpandableBreakout({
       hasEmbed ||
       hasSchemaFrontmatter(breakout.schema) ||
       hasSchemaProperties(breakout.schema),
-    createDescription() {
-      const description =
-        "description" in breakout.schema ? breakout.schema.description : null;
-      if (description) {
-        renderer.createText(description);
-      } else if (showDebugPlaceholders) {
-        renderer.createDebugPlaceholder({
-          createTitle() {
-            renderer.createText("No description provided");
-          },
-          createExample() {
-            renderer.createCode("description: My awesome description", {
-              variant: "default",
-              style: "block",
-            });
-          },
-        });
-      }
-    },
-    createExamples() {
-      const examples =
-        "examples" in breakout.schema ? breakout.schema.examples : [];
-      if (examples.length > 0) {
-        renderer.createText(
-          `_${examples.length > 1 ? "Examples" : "Example"}:_`
-        );
-        for (const example of examples) {
-          renderer.createCode(example);
-        }
-      } else if (showDebugPlaceholders) {
-        renderer.createDebugPlaceholder({
-          createTitle() {
-            renderer.createText("No examples provided");
-          },
-          createExample() {
-            renderer.createCode("examples:\n  - MyExampleValue", {
-              variant: "default",
-              style: "block",
-            });
-          },
-        });
-      }
-    },
-    createDefaultValue() {
-      const defaultValue =
-        "defaultValue" in breakout.schema ? breakout.schema.defaultValue : null;
-      if (defaultValue) {
-        renderer.createText(`_Default Value:_ \`${defaultValue}\``);
-      } else if (showDebugPlaceholders) {
-        renderer.createDebugPlaceholder({
-          createTitle() {
-            renderer.createText("No default value provided");
-          },
-          createExample() {
-            renderer.createCode("defaultValue: MyDefaultValue", {
-              variant: "default",
-              style: "block",
-            });
-          },
-        });
-      }
-    },
+    createDescription: createDescription(breakout.schema, renderer),
+    createExamples: createExamples(breakout.schema, renderer),
+    createDefaultValue: createDefaultValue(breakout.schema, renderer),
     createEmbed: !hasEmbed
       ? undefined
       : () => {
@@ -618,13 +557,6 @@ function createExpandableBreakout({
                 renderer: embedRenderer,
                 breakout,
                 isTopLevel: true,
-              });
-
-              // Re-render the entire breakout in the embed so that we see the
-              // name, description, etc. in the embed and in the main document.
-              renderObjectProperties({
-                renderer: embedRenderer,
-                schema: breakout.schema,
               });
             },
           });
