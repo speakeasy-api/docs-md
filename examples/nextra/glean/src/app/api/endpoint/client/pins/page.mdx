@@ -33,6 +33,7 @@ import {
   SectionTitle,
   TabbedSection
 } from "@speakeasy-api/docs-md-react";
+import Embedvalues from "../../../../../components/speakeasy-embeds/values.mdx";
 import Embedbadges from "../../../../../components/speakeasy-embeds/badges.mdx";
 import Embedbusyevents from "../../../../../components/speakeasy-embeds/busyevents.mdx";
 import Embedcustomfields from "../../../../../components/speakeasy-embeds/customfields.mdx";
@@ -50,6 +51,9 @@ import Embedteams from "../../../../../components/speakeasy-embeds/teams.mdx";
 import Embedrelateddocuments from "../../../../../components/speakeasy-embeds/relateddocuments.mdx";
 import Embedmetadata from "../../../../../components/speakeasy-embeds/metadata.mdx";
 import Embedfacetfilter from "../../../../../components/speakeasy-embeds/facetfilter.mdx";
+import Embedattribution from "../../../../../components/speakeasy-embeds/attribution.mdx";
+import Embedaudiencefilters from "../../../../../components/speakeasy-embeds/audiencefilters.mdx";
+import Embedupdatedby from "../../../../../components/speakeasy-embeds/updatedby.mdx";
 
 <EmbedProvider />
 
@@ -102,7 +106,7 @@ Edit pins request
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-editpin_request_audiencefilters_facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-editpin_request_audiencefilters_facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -150,12 +154,111 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <ExpandableProperty
   slot="entry"
+  id="audienceFilters_FacetFilter_fieldName"
+  headingId="operation-editpin_request_audiencefilters_facetfilter_fieldname"
+  parentId="audienceFilters_FacetFilter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fieldName [#operation-editpin_request_audiencefilters_facetfilter_fieldname]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+owner
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="audienceFilters_FacetFilter_groupName"
+  headingId="operation-editpin_request_audiencefilters_facetfilter_groupname"
+  parentId="audienceFilters_FacetFilter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### groupName [#operation-editpin_request_audiencefilters_facetfilter_groupname]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Indicates the value of a facet, if any, that the given facet is grouped under. This is only used for nested facets, for example, fieldName could be owner and groupName would be Spreadsheet if showing all owners for spreadsheets as a nested facet.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+Spreadsheet
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="audienceFilters_FacetFilter_values"
+  headingId="operation-editpin_request_audiencefilters_facetfilter_values"
+  parentId="audienceFilters_FacetFilter"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-editpin_request_audiencefilters_facetfilter_values_facetfiltervalue\">FacetFilterValue</a>","children":[{"label":"FacetFilterValue","linkedLabel":"<a href=\"#operation-editpin_request_audiencefilters_facetfilter_values_facetfiltervalue\">FacetFilterValue</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### values [#operation-editpin_request_audiencefilters_facetfilter_values]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Within a single FacetFilter, the values are to be treated like an OR. For example, fieldName type with values [EQUALS Presentation, EQUALS Spreadsheet] means we want to show a document if it's a Presentation OR a Spreadsheet.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="values" triggerText="View values details">
+
+<Embedvalues />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
   id="id"
   headingId="operation-editpin_request_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -179,7 +282,7 @@ The opaque id of the pin to be edited.
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -237,7 +340,7 @@ OK
   typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-editpin_responses_200_application-json_attribution_person\">Person</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1653,7 +1756,7 @@ A list of documents related to this person.
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-editpin_responses_200_application-json_audiencefilters_facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-editpin_responses_200_application-json_audiencefilters_facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1701,12 +1804,111 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <ExpandableProperty
   slot="entry"
+  id="audienceFilters_FacetFilter_fieldName"
+  headingId="operation-editpin_responses_200_application-json_audiencefilters_facetfilter_fieldname"
+  parentId="audienceFilters_FacetFilter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fieldName [#operation-editpin_responses_200_application-json_audiencefilters_facetfilter_fieldname]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+owner
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="audienceFilters_FacetFilter_groupName"
+  headingId="operation-editpin_responses_200_application-json_audiencefilters_facetfilter_groupname"
+  parentId="audienceFilters_FacetFilter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### groupName [#operation-editpin_responses_200_application-json_audiencefilters_facetfilter_groupname]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Indicates the value of a facet, if any, that the given facet is grouped under. This is only used for nested facets, for example, fieldName could be owner and groupName would be Spreadsheet if showing all owners for spreadsheets as a nested facet.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+Spreadsheet
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="audienceFilters_FacetFilter_values"
+  headingId="operation-editpin_responses_200_application-json_audiencefilters_facetfilter_values"
+  parentId="audienceFilters_FacetFilter"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-editpin_responses_200_application-json_audiencefilters_facetfilter_values_facetfiltervalue\">FacetFilterValue</a>","children":[{"label":"FacetFilterValue","linkedLabel":"<a href=\"#operation-editpin_responses_200_application-json_audiencefilters_facetfilter_values_facetfiltervalue\">FacetFilterValue</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### values [#operation-editpin_responses_200_application-json_audiencefilters_facetfilter_values]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Within a single FacetFilter, the values are to be treated like an OR. For example, fieldName type with values [EQUALS Presentation, EQUALS Spreadsheet] means we want to show a document if it's a Presentation OR a Spreadsheet.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="values" triggerText="View values details">
+
+<Embedvalues />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
   id="createTime"
   headingId="operation-editpin_responses_200_application-json_createtime"
   typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1724,7 +1926,7 @@ A list of filters for the query. An AND is assumed between different facetFilter
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1748,7 +1950,7 @@ The document which should be a pinned result.
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1772,7 +1974,7 @@ The opaque id of the pin.
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1796,7 +1998,7 @@ The query strings for which the pinned result will show.
   typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1814,7 +2016,7 @@ The query strings for which the pinned result will show.
   typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-editpin_responses_200_application-json_updatedby_person\">Person</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3280,7 +3482,7 @@ Get pin request
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3338,7 +3540,7 @@ OK
   typeInfo={{"label":"PinDocument","linkedLabel":"<a href=\"#operation-getpin_responses_200_application-json_pin_pindocument\">PinDocument</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3891,7 +4093,7 @@ OK
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listpins_responses_200_application-json_pins_pindocument\">PinDocument</a>","children":[{"label":"PinDocument","linkedLabel":"<a href=\"#operation-listpins_responses_200_application-json_pins_pindocument\">PinDocument</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3936,6 +4138,216 @@ A list of pins associated with this search result.
 </ExpandableBreakoutDefaultValue>
 
 </ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="pins_PinDocument_attribution"
+  headingId="operation-listpins_responses_200_application-json_pins_pindocument_attribution"
+  parentId="pins_PinDocument"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-listpins_responses_200_application-json_pins_pindocument_attribution_person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### attribution [#operation-listpins_responses_200_application-json_pins_pindocument_attribution]
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="attribution" triggerText="View attribution details">
+
+<Embedattribution />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pins_PinDocument_audienceFilters"
+  headingId="operation-listpins_responses_200_application-json_pins_pindocument_audiencefilters"
+  parentId="pins_PinDocument"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listpins_responses_200_application-json_pins_pindocument_audiencefilters_facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-listpins_responses_200_application-json_pins_pindocument_audiencefilters_facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### audienceFilters [#operation-listpins_responses_200_application-json_pins_pindocument_audiencefilters]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of filters for the query. An AND is assumed between different facetFilters. For example, owner Sumeet and type Spreadsheet shows documents that are by Sumeet AND are Spreadsheets.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="audienceFilters"
+  triggerText="View audienceFilters details"
+>
+
+<Embedaudiencefilters />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pins_PinDocument_createTime"
+  headingId="operation-listpins_responses_200_application-json_pins_pindocument_createtime"
+  parentId="pins_PinDocument"
+  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### createTime [#operation-listpins_responses_200_application-json_pins_pindocument_createtime]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pins_PinDocument_documentId"
+  headingId="operation-listpins_responses_200_application-json_pins_pindocument_documentid"
+  parentId="pins_PinDocument"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentId [#operation-listpins_responses_200_application-json_pins_pindocument_documentid]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The document which should be a pinned result.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pins_PinDocument_id"
+  headingId="operation-listpins_responses_200_application-json_pins_pindocument_id"
+  parentId="pins_PinDocument"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id [#operation-listpins_responses_200_application-json_pins_pindocument_id]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The opaque id of the pin.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pins_PinDocument_queries"
+  headingId="operation-listpins_responses_200_application-json_pins_pindocument_queries"
+  parentId="pins_PinDocument"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### queries [#operation-listpins_responses_200_application-json_pins_pindocument_queries]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The query strings for which the pinned result will show.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pins_PinDocument_updateTime"
+  headingId="operation-listpins_responses_200_application-json_pins_pindocument_updatetime"
+  parentId="pins_PinDocument"
+  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### updateTime [#operation-listpins_responses_200_application-json_pins_pindocument_updatetime]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pins_PinDocument_updatedBy"
+  headingId="operation-listpins_responses_200_application-json_pins_pindocument_updatedby"
+  parentId="pins_PinDocument"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-listpins_responses_200_application-json_pins_pindocument_updatedby_person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### updatedBy [#operation-listpins_responses_200_application-json_pins_pindocument_updatedby]
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="updatedBy" triggerText="View updatedBy details">
+
+<Embedupdatedby />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 
@@ -3994,7 +4406,7 @@ Details about the document and query for the pin.
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-pin_request_audiencefilters_facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-pin_request_audiencefilters_facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4042,12 +4454,111 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <ExpandableProperty
   slot="entry"
+  id="audienceFilters_FacetFilter_fieldName"
+  headingId="operation-pin_request_audiencefilters_facetfilter_fieldname"
+  parentId="audienceFilters_FacetFilter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fieldName [#operation-pin_request_audiencefilters_facetfilter_fieldname]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+owner
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="audienceFilters_FacetFilter_groupName"
+  headingId="operation-pin_request_audiencefilters_facetfilter_groupname"
+  parentId="audienceFilters_FacetFilter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### groupName [#operation-pin_request_audiencefilters_facetfilter_groupname]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Indicates the value of a facet, if any, that the given facet is grouped under. This is only used for nested facets, for example, fieldName could be owner and groupName would be Spreadsheet if showing all owners for spreadsheets as a nested facet.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+Spreadsheet
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="audienceFilters_FacetFilter_values"
+  headingId="operation-pin_request_audiencefilters_facetfilter_values"
+  parentId="audienceFilters_FacetFilter"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-pin_request_audiencefilters_facetfilter_values_facetfiltervalue\">FacetFilterValue</a>","children":[{"label":"FacetFilterValue","linkedLabel":"<a href=\"#operation-pin_request_audiencefilters_facetfilter_values_facetfiltervalue\">FacetFilterValue</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### values [#operation-pin_request_audiencefilters_facetfilter_values]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Within a single FacetFilter, the values are to be treated like an OR. For example, fieldName type with values [EQUALS Presentation, EQUALS Spreadsheet] means we want to show a document if it's a Presentation OR a Spreadsheet.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="values" triggerText="View values details">
+
+<Embedvalues />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
   id="documentId"
   headingId="operation-pin_request_documentid"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4071,7 +4582,7 @@ The document to be pinned.
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -4129,7 +4640,7 @@ OK
   typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-pin_responses_200_application-json_attribution_person\">Person</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5545,7 +6056,7 @@ A list of documents related to this person.
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-pin_responses_200_application-json_audiencefilters_facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-pin_responses_200_application-json_audiencefilters_facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5593,12 +6104,111 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <ExpandableProperty
   slot="entry"
+  id="audienceFilters_FacetFilter_fieldName"
+  headingId="operation-pin_responses_200_application-json_audiencefilters_facetfilter_fieldname"
+  parentId="audienceFilters_FacetFilter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fieldName [#operation-pin_responses_200_application-json_audiencefilters_facetfilter_fieldname]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+owner
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="audienceFilters_FacetFilter_groupName"
+  headingId="operation-pin_responses_200_application-json_audiencefilters_facetfilter_groupname"
+  parentId="audienceFilters_FacetFilter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### groupName [#operation-pin_responses_200_application-json_audiencefilters_facetfilter_groupname]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Indicates the value of a facet, if any, that the given facet is grouped under. This is only used for nested facets, for example, fieldName could be owner and groupName would be Spreadsheet if showing all owners for spreadsheets as a nested facet.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+Spreadsheet
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="audienceFilters_FacetFilter_values"
+  headingId="operation-pin_responses_200_application-json_audiencefilters_facetfilter_values"
+  parentId="audienceFilters_FacetFilter"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-pin_responses_200_application-json_audiencefilters_facetfilter_values_facetfiltervalue\">FacetFilterValue</a>","children":[{"label":"FacetFilterValue","linkedLabel":"<a href=\"#operation-pin_responses_200_application-json_audiencefilters_facetfilter_values_facetfiltervalue\">FacetFilterValue</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### values [#operation-pin_responses_200_application-json_audiencefilters_facetfilter_values]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Within a single FacetFilter, the values are to be treated like an OR. For example, fieldName type with values [EQUALS Presentation, EQUALS Spreadsheet] means we want to show a document if it's a Presentation OR a Spreadsheet.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="values" triggerText="View values details">
+
+<Embedvalues />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
   id="createTime"
   headingId="operation-pin_responses_200_application-json_createtime"
   typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5616,7 +6226,7 @@ A list of filters for the query. An AND is assumed between different facetFilter
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5640,7 +6250,7 @@ The document which should be a pinned result.
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5664,7 +6274,7 @@ The opaque id of the pin.
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5688,7 +6298,7 @@ The query strings for which the pinned result will show.
   typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -5706,7 +6316,7 @@ The query strings for which the pinned result will show.
   typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-pin_responses_200_application-json_updatedby_person\">Person</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -7172,7 +7782,7 @@ Details about the pin being unpinned.
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">

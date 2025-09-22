@@ -11,7 +11,7 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedrelateddocuments from "./relateddocuments.mdx";
+import Embedmetadata from "./metadata.mdx";
 import Embedquerysuggestion from "./querysuggestion.mdx";
 
 <ExpandableSection>
@@ -23,7 +23,7 @@ import Embedquerysuggestion from "./querysuggestion.mdx";
   typeInfo={{"label":"QuerySuggestionList","linkedLabel":"<a href=\"#embed-manager_manager_metadata_querysuggestions_querysuggestionlist\">QuerySuggestionList</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -69,6 +69,16 @@ import Embedquerysuggestion from "./querysuggestion.mdx";
 ##### metadata [#embed-querysuggestions_querysuggestions_person_metadata]
 
 </ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
+
+<Embedmetadata />
+
+</EmbedTrigger>
+
+</Embed>
 
 </ExpandableProperty>
 
@@ -144,20 +154,6 @@ An opaque identifier that can be used to request metadata for a Person.
 A list of documents related to this person.
 
 </ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="relatedDocuments"
-  triggerText="View relatedDocuments details"
->
-
-<Embedrelateddocuments />
-
-</EmbedTrigger>
-
-</Embed>
 
 </ExpandableProperty>
 

@@ -12,12 +12,10 @@ import {
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
 import Embedcontent from "./content.mdx";
-import Embedparentdocument from "./parentdocument.mdx";
+import Embedmetadata from "./metadata.mdx";
 import Embedsections from "./sections.mdx";
 import Embedancestors from "./ancestors.mdx";
-import Embedassignedto from "./assignedto.mdx";
 import Embedauthor from "./author.mdx";
-import Embedcollections from "./collections.mdx";
 import Embedcontactperson from "./contactperson.mdx";
 import Embedcustomdata from "./customdata.mdx";
 import Embedindexstatus from "./indexstatus.mdx";
@@ -43,7 +41,7 @@ import Embeddocumentsection from "./documentsection.mdx";
   typeInfo={{"label":"Document","linkedLabel":"<a href=\"#embed-collectionitem_collectionitem_shortcut_destinationdocument_document\">Document</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -244,6 +242,16 @@ The Glean Document ID.
 
 </ExpandablePropertyTitle>
 
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
+
+<Embedmetadata />
+
+</EmbedTrigger>
+
+</Embed>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -262,20 +270,6 @@ The Glean Document ID.
 ##### parentDocument [#embed-destinationdocument_destinationdocument_containerdocument_parentdocument]
 
 </ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="parentDocument"
-  triggerText="View parentDocument details"
->
-
-<Embedparentdocument />
-
-</EmbedTrigger>
-
-</Embed>
 
 </ExpandableProperty>
 
@@ -554,16 +548,6 @@ A truncated list of documents with this relation. TO BE DEPRECATED.
 
 </ExpandablePropertyTitle>
 
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="assignedTo" triggerText="View assignedTo details">
-
-<Embedassignedto />
-
-</EmbedTrigger>
-
-</Embed>
-
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -617,16 +601,6 @@ A truncated list of documents with this relation. TO BE DEPRECATED.
 The collections to which the answer belongs.
 
 </ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="collections" triggerText="View collections details">
-
-<Embedcollections />
-
-</EmbedTrigger>
-
-</Embed>
 
 </ExpandableProperty>
 
@@ -1785,6 +1759,16 @@ The Glean Document ID.
 ##### metadata [#embed-destinationdocument_destinationdocument_parentdocument_metadata]
 
 </ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
+
+<Embedmetadata />
+
+</EmbedTrigger>
+
+</Embed>
 
 </ExpandableProperty>
 

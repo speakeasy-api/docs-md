@@ -43,6 +43,7 @@ import Embedrequestor from "../../../../../components/speakeasy-embeds/requestor
 import Embedrelateddocuments from "../../../../../components/speakeasy-embeds/relateddocuments.mdx";
 import Embedreminder from "../../../../../components/speakeasy-embeds/reminder.mdx";
 import Embedcountinfo from "../../../../../components/speakeasy-embeds/countinfo.mdx";
+import Embedmetadata from "../../../../../components/speakeasy-embeds/metadata.mdx";
 
 <EmbedProvider />
 
@@ -95,7 +96,7 @@ Details about the reminder.
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -119,7 +120,7 @@ The obfuscated id of the person this verification is assigned to.
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -143,7 +144,7 @@ The document which the verification is for new reminders and/or update.
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -167,7 +168,7 @@ An optional free-text reason for the reminder. This is particularly useful when 
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -231,7 +232,7 @@ OK
   typeInfo={{"label":"VerificationMetadata","linkedLabel":"<a href=\"#operation-addverificationreminder_responses_200_application-json_metadata_verificationmetadata\">VerificationMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1050,7 +1051,7 @@ Number of visitors to the document during included time periods.
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UNVERIFIED\"","linkedLabel":"\"UNVERIFIED\"","children":[],"breakoutSubTypes":{}},{"label":"\"VERIFIED\"","linkedLabel":"\"VERIFIED\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEPRECATED\"","linkedLabel":"\"DEPRECATED\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1176,7 +1177,7 @@ OK
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listverifications_responses_200_application-json_documents_verification\">Verification</a>","children":[{"label":"Verification","linkedLabel":"<a href=\"#operation-listverifications_responses_200_application-json_documents_verification\">Verification</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1221,6 +1222,60 @@ List of document infos that include verification related information for them.
 </ExpandableBreakoutDefaultValue>
 
 </ExpandableBreakout>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Verification_metadata"
+  headingId="operation-listverifications_responses_200_application-json_documents_verification_metadata"
+  parentId="documents_Verification"
+  typeInfo={{"label":"VerificationMetadata","linkedLabel":"<a href=\"#operation-listverifications_responses_200_application-json_documents_verification_metadata_verificationmetadata\">VerificationMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata [#operation-listverifications_responses_200_application-json_documents_verification_metadata]
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
+
+<Embedmetadata />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Verification_state"
+  headingId="operation-listverifications_responses_200_application-json_documents_verification_state"
+  parentId="documents_Verification"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UNVERIFIED\"","linkedLabel":"\"UNVERIFIED\"","children":[],"breakoutSubTypes":{}},{"label":"\"VERIFIED\"","linkedLabel":"\"VERIFIED\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEPRECATED\"","linkedLabel":"\"DEPRECATED\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasFrontMatter={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### state [#operation-listverifications_responses_200_application-json_documents_verification_state]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The verification state for the document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
 
 </ExpandableSection>
 
@@ -1279,7 +1334,7 @@ Details about the verification request.
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"VERIFY\"","linkedLabel":"\"VERIFY\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEPRECATE\"","linkedLabel":"\"DEPRECATE\"","children":[],"breakoutSubTypes":{}},{"label":"\"UNVERIFY\"","linkedLabel":"\"UNVERIFY\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1303,7 +1358,7 @@ The verification action requested.
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1361,7 +1416,7 @@ OK
   typeInfo={{"label":"VerificationMetadata","linkedLabel":"<a href=\"#operation-verify_responses_200_application-json_metadata_verificationmetadata\">VerificationMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasFrontMatter={false}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2180,7 +2235,7 @@ Number of visitors to the document during included time periods.
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UNVERIFIED\"","linkedLabel":"\"UNVERIFIED\"","children":[],"breakoutSubTypes":{}},{"label":"\"VERIFIED\"","linkedLabel":"\"VERIFIED\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEPRECATED\"","linkedLabel":"\"DEPRECATED\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasFrontMatter={true}
-  expandByDefault={false}
+  expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
