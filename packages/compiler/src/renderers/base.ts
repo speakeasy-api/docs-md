@@ -81,6 +81,10 @@ export type RendererConstructorArgs = {
 
 // High level operations
 
+export type RendererCreateTagSectionArgs = [
+  { title: () => void; description?: () => void },
+];
+
 export type RendererCreateOperationArgs = [
   options: {
     tag: TagChunk;
@@ -283,6 +287,7 @@ export abstract class Renderer {
 
   // High level operations
 
+  abstract createTagSection(...args: RendererCreateTagSectionArgs): void;
   abstract createOperationSection(...args: RendererCreateOperationArgs): void;
   abstract createCodeSamplesSection(
     ...args: RendererCreateCodeSamplesSectionArgs

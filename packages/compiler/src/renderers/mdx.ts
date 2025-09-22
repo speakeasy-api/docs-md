@@ -37,6 +37,9 @@ import type {
   SectionTabProps,
   SectionTitleProps,
   TabbedSectionProps,
+  TagDescriptionProps,
+  TagProps,
+  TagTitleProps,
   TryItNowProps,
 } from "@speakeasy-api/docs-md-react";
 
@@ -64,6 +67,7 @@ import type {
   RendererCreateSecuritySectionArgs,
   RendererCreateTabbedSectionArgs,
   RendererCreateTabbedSectionTabArgs,
+  RendererCreateTagSectionArgs,
   SiteBuildPagePathArgs,
   SiteCreateEmbedArgs,
   SiteGetRendererArgs,
@@ -460,6 +464,35 @@ class MdxRenderer extends MarkdownRenderer {
       this.appendLine(pill);
     }
     return pill;
+  }
+
+  public override createTagSection(
+    ...[{ title, description }]: RendererCreateTagSectionArgs
+  ) {
+    this.#appendComponent<TagProps>(
+      {
+        symbol: "Tag",
+        props: { slot: "tag" },
+      },
+      () => {
+        this.#appendComponent<TagTitleProps>(
+          {
+            symbol: "TagTitle",
+            props: { slot: "title" },
+          },
+          title
+        );
+        if (description) {
+          this.#appendComponent<TagDescriptionProps>(
+            {
+              symbol: "TagDescription",
+              props: { slot: "description" },
+            },
+            description
+          );
+        }
+      }
+    );
   }
 
   public override createOperationSection(...args: RendererCreateOperationArgs) {

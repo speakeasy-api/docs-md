@@ -41,6 +41,7 @@ import type {
   RendererCreateSecuritySectionArgs,
   RendererCreateTabbedSectionArgs,
   RendererCreateTabbedSectionTabArgs,
+  RendererCreateTagSectionArgs,
   RendererCreateTextArgs,
   RendererGetCurrentIdArgs,
   RendererHasParentContextTypeArgs,
@@ -141,6 +142,15 @@ export abstract class MarkdownRenderer extends Renderer {
 
   public override createEmbed(..._args: RendererCreateEmbedArgs) {
     throw new Error(`Base markdown renderer does not support createEmbed`);
+  }
+
+  public override createTagSection(
+    ...[{ title, description }]: RendererCreateTagSectionArgs
+  ) {
+    title();
+    if (description) {
+      description();
+    }
   }
 
   public override createOperationSection(

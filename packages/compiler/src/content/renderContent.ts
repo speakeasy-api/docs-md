@@ -14,6 +14,7 @@ import { InternalError } from "../util/internalError.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderGlobalSecurity } from "./chunks/globalSecurity.ts";
 import { renderOperation } from "./chunks/operation.ts";
+import { renderTag } from "./chunks/tag.ts";
 import { HEADINGS } from "./constants.ts";
 import { getOperationFromId } from "./util.ts";
 
@@ -175,6 +176,10 @@ function renderPages(
           // If we're in single page mode, we don't render each tag heading
           // and instead render a single "Endpoints" heading at the top of the
           // page. Otherwise, we render a tag-specific heading
+          // TODO: ideally we'll render a tag component that encompases the
+          // endpoints inside of it, but our current architecture of flattening
+          // the page map doesn't support this. Honestly this file should
+          // probably just be rewritten at this point.
           if (settings.output.singlePage) {
             if (!hasRenderedEndpointHeading) {
               renderer.createHeading(
@@ -184,14 +189,7 @@ function renderPages(
               hasRenderedEndpointHeading = true;
             }
           } else {
-            const displayName = `${capitalCase(chunk.chunkData.name)} Operations`;
-            renderer.createHeading(
-              HEADINGS.PAGE_TITLE_HEADING_LEVEL,
-              displayName,
-              {
-                id: chunk.chunkData.name,
-              }
-            );
+            renderTag(renderer, chunk);
           }
           break;
         }
