@@ -313,6 +313,7 @@ function createExpandableProperty({
   renderer,
   property,
   typeInfo,
+  isTopLevel,
   createEmbed,
 }: {
   renderer: Renderer;
@@ -323,9 +324,9 @@ function createExpandableProperty({
     schema: SchemaValue;
   };
   typeInfo: DisplayTypeInfo;
+  isTopLevel: boolean;
   createEmbed?: () => void;
 }) {
-  const isTopLevel = renderer.getCurrentContextType() !== "schema";
   const annotations: PropertyAnnotations[] = [];
   if (property.isRequired) {
     annotations.push({ title: "required", variant: "warning" });
@@ -434,6 +435,7 @@ function renderObjectProperties({
       continue;
     }
 
+    const isTopLevel = renderer.getCurrentContextType() !== "schema";
     renderer.enterContext({ id: property.name, type: "schema" });
 
     // Check if we're too deeply nested to render this inline, but have more
@@ -447,6 +449,7 @@ function renderObjectProperties({
       renderer,
       property,
       typeInfo,
+      isTopLevel,
       createEmbed: !hasEmbed
         ? undefined
         : () => {
@@ -460,6 +463,7 @@ function renderObjectProperties({
                   renderer: embedRenderer,
                   property,
                   typeInfo,
+                  isTopLevel: true,
                 });
 
                 // Render breakouts, which will be separate expandable entries
@@ -487,6 +491,7 @@ function renderObjectProperties({
 function createExpandableBreakout({
   renderer,
   breakout,
+  isTopLevel,
   createEmbed,
 }: {
   renderer: Renderer;
@@ -494,9 +499,9 @@ function createExpandableBreakout({
     label: string;
     schema: ObjectValue;
   };
+  isTopLevel: boolean;
   createEmbed?: () => void;
 }) {
-  const isTopLevel = renderer.getCurrentContextType() !== "schema";
   const { showDebugPlaceholders } = getSettings().display;
   renderer.createExpandableBreakout({
     rawTitle: breakout.label,
@@ -603,6 +608,7 @@ function renderBreakoutEntries({
       continue;
     }
 
+    const isTopLevel = renderer.getCurrentContextType() !== "schema";
     renderer.enterContext({ id: breakout.label, type: "schema" });
 
     // Check if we're too deeply nested to render this inline, but have more
@@ -615,6 +621,7 @@ function renderBreakoutEntries({
     createExpandableBreakout({
       renderer,
       breakout,
+      isTopLevel,
       createEmbed: !hasEmbed
         ? undefined
         : () => {
@@ -627,6 +634,7 @@ function renderBreakoutEntries({
                 createExpandableBreakout({
                   renderer: embedRenderer,
                   breakout,
+                  isTopLevel: true,
                 });
 
                 // Render the breakout properties in the embed document
