@@ -38,17 +38,15 @@ export function BreakoutContents({
         )}
         <div className={styles.breakoutCellTitle}>{titleChild}</div>
       </div>
-      <div className={styles.breakoutCell}>
-        {isOpen && (
-          <div className={styles.breakoutCellContent}>
-            {descriptionChildren}
-            {examplesChildren}
-            {defaultValueChildren}
-            {embedChildren}
-            {propertiesChildren}
-          </div>
-        )}
-      </div>
+      {isOpen && (
+        <div className={styles.entryContentContainer}>
+          {descriptionChildren}
+          {examplesChildren}
+          {defaultValueChildren}
+          {embedChildren}
+          {propertiesChildren}
+        </div>
+      )}
     </div>
   );
 }

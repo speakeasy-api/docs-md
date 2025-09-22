@@ -4,6 +4,7 @@
 // server component (this file) that then imports a client component.
 
 import { BreakoutContents } from "./components/BreakoutContents.tsx";
+import styles from "./styles.module.css";
 import type {
   ExpandableBreakoutDefaultValueProps,
   ExpandableBreakoutDescriptionProps,
@@ -77,5 +78,9 @@ export function ExpandableBreakoutProperties({
   children,
   slot,
 }: ExpandableBreakoutPropertiesProps) {
-  return <div slot={slot}>{children}</div>;
+  return (
+    <div slot={slot} className={styles.childContainer}>
+      {children}
+    </div>
+  );
 }

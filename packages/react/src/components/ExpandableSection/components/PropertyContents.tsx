@@ -194,15 +194,11 @@ export function PropertyContents({
     );
     propertyCell = (
       <>
-        {isOpen && (
-          <div className={styles.propertyCellContent}>
-            {descriptionChildren}
-            {examplesChildren}
-            {defaultValueChildren}
-            {embedChildren}
-            {breakoutsChildren}
-          </div>
-        )}
+        {descriptionChildren}
+        {examplesChildren}
+        {defaultValueChildren}
+        {embedChildren}
+        {breakoutsChildren}
       </>
     );
   } else {
@@ -230,25 +226,24 @@ export function PropertyContents({
     );
     propertyCell = (
       <>
-        {isOpen &&
-          (displayInfo.multiline ||
-            descriptionChildren.length > 0 ||
-            examplesChildren.length > 0 ||
-            defaultValueChildren.length > 0) && (
-            <div className={styles.propertyCellContent}>
-              {displayInfo.multiline && (
-                <TypeContainer
-                  multiline={displayInfo.multiline}
-                  contents={displayInfo.contents}
-                />
-              )}
-              {descriptionChildren}
-              {examplesChildren}
-              {defaultValueChildren}
-              {embedChildren}
-              {breakoutsChildren}
-            </div>
-          )}
+        {(displayInfo.multiline ||
+          descriptionChildren.length > 0 ||
+          examplesChildren.length > 0 ||
+          defaultValueChildren.length > 0) && (
+          <>
+            {displayInfo.multiline && (
+              <TypeContainer
+                multiline={displayInfo.multiline}
+                contents={displayInfo.contents}
+              />
+            )}
+            {descriptionChildren}
+            {examplesChildren}
+            {defaultValueChildren}
+            {embedChildren}
+            {breakoutsChildren}
+          </>
+        )}
 
         {/* This offscreen measure is used to determine the width of a character,
           for use in multiline type computation */}
@@ -280,7 +275,9 @@ export function PropertyContents({
         )}
         {titleContainer}
       </div>
-      {propertyCell}
+      {isOpen && (
+        <div className={styles.entryContentContainer}>{propertyCell}</div>
+      )}
     </div>
   );
 }
