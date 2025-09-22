@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { ExpandableCellIcon as DefaultExpandableCellIcon } from "../ExpandableCellIcon/ExpandableCellIcon.tsx";
-import styles from "../ExpandableSection/styles.module.css";
+import styles from "./styles.module.css";
 import type { ExpandableCellProps } from "./types.ts";
 
 /**
@@ -24,7 +24,6 @@ import type { ExpandableCellProps } from "./types.ts";
 export function ExpandableCell({
   isOpen,
   setIsOpen,
-  bottomConnection,
   variant,
   ExpandableCellIcon = DefaultExpandableCellIcon,
 }: ExpandableCellProps) {
@@ -34,7 +33,7 @@ export function ExpandableCell({
         <button
           className={clsx(
             styles.expandableButton,
-            variant === "circle" && styles.expandableButtonCircle
+            variant === "property" && styles.expandableButtonCircle
           )}
           onClick={() => setIsOpen(!isOpen)}
         >
@@ -47,14 +46,6 @@ export function ExpandableCell({
         </button>
       </div>
       <div className={styles.expandableConnectionContainer}>
-        <div
-          className={clsx(
-            styles.expandableConnection,
-            isOpen &&
-              bottomConnection === "connected" &&
-              styles.verticalConnected
-          )}
-        ></div>
         <div className={styles.expandableConnection}></div>
       </div>
     </div>

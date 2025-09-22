@@ -4,7 +4,6 @@ import type {
 } from "@speakeasy-api/docs-md-shared/types";
 import type { FC, PropsWithChildren } from "react";
 
-import type { ConnectingCellProps } from "../ConnectingCell/types.ts";
 import type { ExpandableCellProps } from "../ExpandableCell/types.ts";
 import type { ExpandableTreeTopperProps } from "../ExpandableTreeTopper/types.ts";
 import type { NonExpandableCellProps } from "../NonExpandableCell/types.ts";
@@ -14,7 +13,7 @@ import type { PillProps } from "../Pill/types.ts";
  * The connection state for the node. Currently we only have two states, but
  * we use a string union to allow for future expansion (e.g. "highlighted")
  */
-export type ConnectionType = "none" | "connected";
+type ConnectionType = "none" | "connected";
 
 /**
  * Represents the connection state of a prefix cell in the compiled UI
@@ -74,40 +73,6 @@ export type Connection = {
   right: ConnectionType;
 };
 
-/**
- * Represents a node in the tree-representation of a schema. This node is used
- * to determine how to show the node in the UI (e.g. how much indentation, what
- * connections to draw, etc.)
- */
-export type TreeNode = {
-  id: string;
-  headingId: string;
-  parent?: TreeNode;
-  hasNextSibling: boolean;
-  children: TreeNode[];
-};
-
-/**
- * A container type for tree data. We store the data in two versions, each of
- * which is optimized for different use cases.
- */
-export type TreeData = {
-  /**
-   * The list of nodes in the tree
-   */
-  nodes: TreeNode[];
-  /**
-   * A map of node IDs to nodes, for convienient lookup of nodes by ID (aka the
-   * abstract ID)
-   */
-  nodeMap: Map<string, TreeNode>;
-  /**
-   * A map of heading IDs to node IDs, for convienient lookup of nodes by
-   * heading ID (aka the DOM ID)
-   */
-  headingIdToIdMap: Map<string, string>;
-};
-
 // TODO: cleanup id vs headingId
 /**
  * Properties for a row. Each row represents a node in the tree, but in the
@@ -115,7 +80,7 @@ export type TreeData = {
  * occupies exactly one row, with each node stacked one after the other. We use
  * prefix cells to represent their location in the tree.
  */
-export type RowProps = PropsWithChildren<{
+type RowProps = PropsWithChildren<{
   /**
    * The identifier for the row. This id is unique within the tree, but is _not_
    * unique in the DOM, and is not used to set the `id` attribute on the DOM
@@ -190,13 +155,6 @@ export type ExpandablePropertyProps = RowProps & {
    * internally.
    */
   NonExpandableCell?: FC<NonExpandableCellProps>;
-  /**
-   * The component to use for rendering connecting cells, and defaults to
-   * ConnectingCell. If you override the default ConnectingCell implementation,
-   * then pass your custom implementation in here too. Otherwise, the default
-   * ConnectingCell implementation will be used internally.
-   */
-  ConnectingCell?: FC<ConnectingCellProps>;
 };
 
 export type ExpandablePropertyTitleProps = PropsWithChildren<{
@@ -250,13 +208,6 @@ export type ExpandableBreakoutProps = RowProps & {
    * internally.
    */
   NonExpandableCell?: FC<NonExpandableCellProps>;
-  /**
-   * The component to use for rendering connecting cells, and defaults to
-   * ConnectingCell. If you override the default ConnectingCell implementation,
-   * then pass your custom implementation in here too. Otherwise, the default
-   * ConnectingCell implementation will be used internally.
-   */
-  ConnectingCell?: FC<ConnectingCellProps>;
 };
 
 export type ExpandableBreakoutTitleProps = PropsWithChildren<{ slot: "title" }>;
