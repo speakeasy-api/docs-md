@@ -412,6 +412,7 @@ function renderObjectProperties({
   renderer: Renderer;
   schema: ObjectValue;
 }) {
+  const isTopLevel = renderer.getCurrentContextType() !== "schema";
   const properties = Object.entries(schema.properties).map(
     ([name, propertySchema]) => {
       if (propertySchema.type === "chunk") {
@@ -435,7 +436,6 @@ function renderObjectProperties({
       continue;
     }
 
-    const isTopLevel = renderer.getCurrentContextType() !== "schema";
     renderer.enterContext({ id: property.name, type: "schema" });
 
     // Check if we're too deeply nested to render this inline, but have more
@@ -589,6 +589,7 @@ function renderBreakoutEntries({
   renderer: Renderer;
   typeInfo: DisplayTypeInfo;
 }) {
+  const isTopLevel = renderer.getCurrentContextType() !== "schema";
   const entries = Array.from(typeInfo.breakoutSubTypes.entries()).map(
     ([label, schema]) => {
       // Shouldn't be possible due to how type info is computed
@@ -608,7 +609,6 @@ function renderBreakoutEntries({
       continue;
     }
 
-    const isTopLevel = renderer.getCurrentContextType() !== "schema";
     renderer.enterContext({ id: breakout.label, type: "schema" });
 
     // Check if we're too deeply nested to render this inline, but have more
@@ -649,9 +649,9 @@ function renderBreakoutEntries({
 
     // If we aren't embedding, render its entries in the main document
     if (!hasEmbed) {
-      renderBreakoutEntries({
+      renderObjectProperties({
         renderer,
-        typeInfo,
+        schema: breakout.schema,
       });
     }
 
