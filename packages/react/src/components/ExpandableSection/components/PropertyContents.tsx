@@ -231,7 +231,9 @@ export function PropertyContents({
         {(displayInfo.multiline ||
           descriptionChildren.length > 0 ||
           examplesChildren.length > 0 ||
-          defaultValueChildren.length > 0) && (
+          defaultValueChildren.length > 0 ||
+          embedChildren.length > 0 ||
+          breakoutsChildren.length > 0) && (
           <>
             {displayInfo.multiline && (
               <TypeContainer
