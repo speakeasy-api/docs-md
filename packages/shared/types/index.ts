@@ -71,6 +71,8 @@ export type PageMetadataOperation = {
   elementId: string;
   method: string;
   path: string;
+  operationId: string;
+  summary: string | null;
   security?: PageMetadataSection;
   parameters?: PageMetadataSection;
   requestBody?: PageMetadataSection;
