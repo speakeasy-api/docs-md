@@ -135,12 +135,12 @@ export type RowProps = PropsWithChildren<{
    */
   parentId?: string;
   /**
-   * Whether the row has front matter or not. This is used to know whether or
-   * not to render an expandable header cell in the event when there are no
+   * Whether the row has expandable content or not. This is used to know whether
+   * or not to render an expandable header cell in the event when there are no
    * children. In the case of no children, we do render an expandable header
-   * cell if the row has front matter, otherwise we do not.
+   * cell if the row has expandable content, otherwise we do not.
    */
-  hasFrontMatter: boolean;
+  hasExpandableContent: boolean;
   /**
    * Whether the row should be expanded by default or not on page load, if it
    * has children and/or front matter.
@@ -227,6 +227,13 @@ export type ExpandablePropertyDefaultValueProps = PropsWithChildren<{
   slot: "defaultValue";
 }>;
 
+export type ExpandablePropertyBreakoutsProps = PropsWithChildren<{
+  /**
+   * The slot for the breakouts, always "breakouts"
+   */
+  slot: "breakouts";
+}>;
+
 export type ExpandableBreakoutProps = RowProps & {
   /**
    * The component to use for rendering expandable cells, and defaults to
@@ -270,4 +277,10 @@ export type ExpandableBreakoutDefaultValueProps = PropsWithChildren<{
    * The slot for the default value, always "defaultValue"
    */
   slot: "defaultValue";
+}>;
+export type ExpandableBreakoutPropertiesProps = PropsWithChildren<{
+  /**
+   * The slot for the properties, always "properties"
+   */
+  slot: "properties";
 }>;

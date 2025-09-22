@@ -128,7 +128,7 @@ export function renderSecurity(
             variant: "info",
           },
         ],
-        hasFrontMatter: !!entry.description || showDebugPlaceholders,
+        hasExpandableContent: !!entry.description || showDebugPlaceholders,
         createDescription:
           entry.description || showDebugPlaceholders
             ? () => {
@@ -200,7 +200,7 @@ export function renderParameters(
         annotations,
         rawTitle: parameter.name,
         isTopLevel: true,
-        hasFrontMatter: !!parameter.description || showDebugPlaceholders,
+        hasExpandableContent: !!parameter.description || showDebugPlaceholders,
         createDescription:
           parameter.description || showDebugPlaceholders
             ? () => {
@@ -224,12 +224,12 @@ export function renderParameters(
                 }
               }
             : undefined,
-      });
-
-      // Render breakouts, which will be separate expandable entries
-      renderBreakouts({
-        renderer,
-        schema: parameterChunk.chunkData.value,
+        createBreakouts() {
+          renderBreakouts({
+            renderer,
+            schema: parameterChunk.chunkData.value,
+          });
+        },
       });
 
       renderer.exitContext();

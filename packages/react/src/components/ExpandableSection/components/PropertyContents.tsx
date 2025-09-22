@@ -19,7 +19,7 @@ export function PropertyContents({
   children,
   typeInfo,
   typeAnnotations,
-  hasFrontMatter,
+  hasExpandableContent,
   ExpandableCell = DefaultExpandableCell,
   NonExpandableCell = DefaultNonExpandableCell,
   ConnectingCell = DefaultConnectingCell,
@@ -31,7 +31,7 @@ export function PropertyContents({
       id={id}
       slot={slot}
       variant="circle"
-      hasFrontMatter={hasFrontMatter}
+      hasExpandableContent={hasExpandableContent}
       ExpandableCell={ExpandableCell}
       NonExpandableCell={NonExpandableCell}
       ConnectingCell={ConnectingCell}

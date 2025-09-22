@@ -8,6 +8,7 @@ import type {
   ExpandableBreakoutDefaultValueProps,
   ExpandableBreakoutDescriptionProps,
   ExpandableBreakoutExamplesProps,
+  ExpandableBreakoutPropertiesProps,
   ExpandableBreakoutProps,
   ExpandableBreakoutTitleProps,
 } from "./types.ts";
@@ -65,5 +66,16 @@ export function ExpandableBreakoutDefaultValue({
   children,
   slot,
 }: ExpandableBreakoutDefaultValueProps) {
+  return <div slot={slot}>{children}</div>;
+}
+
+/**
+ * The properties of an expandable breakout. This is assigned to the
+ * `properties` slot.
+ */
+export function ExpandableBreakoutProperties({
+  children,
+  slot,
+}: ExpandableBreakoutPropertiesProps) {
   return <div slot={slot}>{children}</div>;
 }

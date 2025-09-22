@@ -23,6 +23,7 @@ export {
   ExpandableBreakoutDescription,
   ExpandableBreakoutExamples,
   ExpandableBreakoutDefaultValue,
+  ExpandableBreakoutProperties,
 } from "./components/ExpandableSection/ExpandableBreakout.tsx";
 export {
   ExpandableProperty,
@@ -30,6 +31,7 @@ export {
   ExpandablePropertyDescription,
   ExpandablePropertyExamples,
   ExpandablePropertyDefaultValue,
+  ExpandablePropertyBreakouts,
 } from "./components/ExpandableSection/ExpandableProperty.tsx";
 export { ExpandableSection } from "./components/ExpandableSection/ExpandableSection.tsx";
 export type {
@@ -39,11 +41,13 @@ export type {
   ExpandablePropertyDescriptionProps,
   ExpandablePropertyExamplesProps,
   ExpandablePropertyDefaultValueProps,
+  ExpandablePropertyBreakoutsProps,
   ExpandableBreakoutProps,
   ExpandableBreakoutTitleProps,
   ExpandableBreakoutDescriptionProps,
   ExpandableBreakoutExamplesProps,
   ExpandableBreakoutDefaultValueProps,
+  ExpandableBreakoutPropertiesProps,
 } from "./components/ExpandableSection/types.ts";
 export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/FrontMatterDisplayType.tsx";
 export type { FrontMatterDisplayTypeProps } from "./components/FrontMatterDisplayType/types.ts";

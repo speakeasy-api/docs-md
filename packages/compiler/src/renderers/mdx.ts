@@ -8,8 +8,10 @@ import type {
   ExpandableBreakoutDefaultValueProps,
   ExpandableBreakoutDescriptionProps,
   ExpandableBreakoutExamplesProps,
+  ExpandableBreakoutPropertiesProps,
   ExpandableBreakoutProps,
   ExpandableBreakoutTitleProps,
+  ExpandablePropertyBreakoutsProps,
   ExpandablePropertyDefaultValueProps,
   ExpandablePropertyDescriptionProps,
   ExpandablePropertyExamplesProps,
@@ -760,11 +762,12 @@ class MdxRenderer extends MarkdownRenderer {
   protected override handleCreateExpandableBreakout(
     ...[
       {
-        hasFrontMatter,
+        hasExpandableContent,
         createTitle,
         createDescription,
         createExamples,
         createDefaultValue,
+        createProperties,
         createEmbed,
         isTopLevel,
       },
@@ -781,7 +784,7 @@ class MdxRenderer extends MarkdownRenderer {
           id,
           headingId: this.getCurrentId(),
           parentId,
-          hasFrontMatter,
+          hasExpandableContent,
           expandByDefault,
         },
       },
@@ -824,6 +827,16 @@ class MdxRenderer extends MarkdownRenderer {
           );
         }
 
+        if (createProperties) {
+          this.#appendComponent<ExpandableBreakoutPropertiesProps>(
+            {
+              symbol: "ExpandableBreakoutProperties",
+              props: { slot: "properties" },
+            },
+            createProperties
+          );
+        }
+
         // Embeds handle their own component imports
         if (createEmbed) {
           createEmbed();
@@ -839,10 +852,11 @@ class MdxRenderer extends MarkdownRenderer {
         annotations,
         rawTitle,
         isTopLevel,
-        hasFrontMatter,
+        hasExpandableContent,
         createDescription,
         createExamples,
         createDefaultValue,
+        createBreakouts,
         createEmbed,
       },
     ]: RendererCreateExpandablePropertyArgs
@@ -861,7 +875,7 @@ class MdxRenderer extends MarkdownRenderer {
           parentId,
           typeInfo,
           typeAnnotations: annotations,
-          hasFrontMatter,
+          hasExpandableContent,
           expandByDefault,
         },
       },
@@ -906,6 +920,16 @@ class MdxRenderer extends MarkdownRenderer {
               props: { slot: "defaultValue" },
             },
             createDefaultValue
+          );
+        }
+
+        if (createBreakouts) {
+          this.#appendComponent<ExpandablePropertyBreakoutsProps>(
+            {
+              symbol: "ExpandablePropertyBreakouts",
+              props: { slot: "breakouts" },
+            },
+            createBreakouts
           );
         }
 

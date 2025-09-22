@@ -5,6 +5,7 @@
 
 import { PropertyContents } from "./components/PropertyContents.tsx";
 import type {
+  ExpandablePropertyBreakoutsProps,
   ExpandablePropertyDefaultValueProps,
   ExpandablePropertyDescriptionProps,
   ExpandablePropertyExamplesProps,
@@ -21,6 +22,9 @@ export function ExpandableProperty(props: ExpandablePropertyProps) {
   return <PropertyContents {...props} />;
 }
 
+/**
+ * The title of an expandable property. This is assigned to the `title` slot.
+ */
 export function ExpandablePropertyTitle({
   children,
   slot,
@@ -28,6 +32,10 @@ export function ExpandablePropertyTitle({
   return <div slot={slot}>{children}</div>;
 }
 
+/**
+ * The description of an expandable property. This is assigned to the
+ * `description` slot.
+ */
 export function ExpandablePropertyDescription({
   children,
   slot,
@@ -35,6 +43,10 @@ export function ExpandablePropertyDescription({
   return <div slot={slot}>{children}</div>;
 }
 
+/**
+ * The examples of an expandable property. This is assigned to the `examples`
+ * slot.
+ */
 export function ExpandablePropertyExamples({
   children,
   slot,
@@ -42,9 +54,20 @@ export function ExpandablePropertyExamples({
   return <div slot={slot}>{children}</div>;
 }
 
+/**
+ * The default value of an expandable property. This is assigned to the
+ * `defaultValue` slot.
+ */
 export function ExpandablePropertyDefaultValue({
   children,
   slot,
 }: ExpandablePropertyDefaultValueProps) {
+  return <div slot={slot}>{children}</div>;
+}
+
+export function ExpandablePropertyBreakouts({
+  children,
+  slot,
+}: ExpandablePropertyBreakoutsProps) {
   return <div slot={slot}>{children}</div>;
 }

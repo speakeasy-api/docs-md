@@ -14,7 +14,7 @@ import { PrefixCells } from "./PrefixCells.tsx";
 export function BreakoutContents({
   id,
   slot,
-  hasFrontMatter,
+  hasExpandableContent,
   children,
   ExpandableCell = DefaultExpandableCell,
   NonExpandableCell = DefaultNonExpandableCell,
@@ -26,7 +26,7 @@ export function BreakoutContents({
       id={id}
       slot={slot}
       variant="square"
-      hasFrontMatter={hasFrontMatter}
+      hasExpandableContent={hasExpandableContent}
       ExpandableCell={ExpandableCell}
       NonExpandableCell={NonExpandableCell}
       ConnectingCell={ConnectingCell}

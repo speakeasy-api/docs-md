@@ -478,13 +478,21 @@ export abstract class MarkdownRenderer extends Renderer {
 
   protected handleCreateExpandableBreakout(
     ...[
-      { createTitle, createDescription, createExamples, createDefaultValue },
+      {
+        createTitle,
+        createDescription,
+        createExamples,
+        createDefaultValue,
+        createProperties,
+      },
     ]: RendererCreateExpandableBreakoutArgs
   ) {
     createTitle();
     createDescription?.();
     createExamples?.();
     createDefaultValue?.();
+    // Basic markdown doesn't support embeds, so we don't render them here;
+    createProperties?.();
   }
 
   public override createExpandableProperty(
@@ -508,6 +516,7 @@ export abstract class MarkdownRenderer extends Renderer {
         createDescription,
         createExamples,
         createDefaultValue,
+        createBreakouts,
       },
     ]: RendererCreateExpandablePropertyArgs
   ) {
@@ -533,6 +542,8 @@ export abstract class MarkdownRenderer extends Renderer {
     createDescription?.();
     createExamples?.();
     createDefaultValue?.();
+    // Basic markdown doesn't support embeds, so we don't render them here;
+    createBreakouts?.();
   }
 
   public override createFrontMatterDisplayType(

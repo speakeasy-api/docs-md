@@ -156,25 +156,27 @@ export type RendererCreateExpandableBreakoutArgs = [
   options: {
     rawTitle: string;
     isTopLevel: boolean;
-    hasFrontMatter: boolean;
+    hasExpandableContent: boolean;
     createTitle: () => void;
     createDescription?: () => void;
     createExamples?: () => void;
     createDefaultValue?: () => void;
     createEmbed?: () => void;
+    createProperties?: () => void;
   },
 ];
 export type RendererCreateExpandablePropertyArgs = [
   options: {
     rawTitle: string;
     isTopLevel: boolean;
-    hasFrontMatter: boolean;
+    hasExpandableContent: boolean;
     typeInfo?: DisplayTypeInfo;
     annotations: PropertyAnnotations[];
     createDescription?: () => void;
     createExamples?: () => void;
     createDefaultValue?: () => void;
     createEmbed?: () => void;
+    createBreakouts?: () => void;
   },
 ];
 

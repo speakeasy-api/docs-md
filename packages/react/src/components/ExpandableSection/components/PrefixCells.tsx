@@ -18,7 +18,7 @@ type PrefixCellProps = PropsWithChildren<{
   id: string;
   variant: "circle" | "square";
   slot: "entry";
-  hasFrontMatter: boolean;
+  hasExpandableContent: boolean;
   ExpandableCell: FC<ExpandableCellProps>;
   NonExpandableCell: FC<NonExpandableCellProps>;
   ConnectingCell: FC<ConnectingCellProps>;
@@ -29,7 +29,7 @@ export function PrefixCells({
   slot,
   children,
   variant,
-  hasFrontMatter,
+  hasExpandableContent,
   ExpandableCell,
   NonExpandableCell,
   ConnectingCell,
@@ -39,7 +39,6 @@ export function PrefixCells({
   const isParentOpen = useAreAllParentsOpen(id);
   const connections = useConnectingCellData(id);
   const hasChildren = useHasChildren(id);
-  const isExpandable = hasChildren || hasFrontMatter;
 
   if (!isParentOpen) {
     return null;
@@ -56,7 +55,7 @@ export function PrefixCells({
         />
       ))}
       <div className={styles.contentAligner}>
-        {isExpandable ? (
+        {hasExpandableContent ? (
           <ExpandableCell
             // TODO: add support for higlighted connections
             bottomConnection={hasChildren ? "connected" : "none"}
