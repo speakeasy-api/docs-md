@@ -95,6 +95,12 @@ export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
 export type { SectionTitleProps } from "./components/SectionTitle/types.ts";
 export { TabbedSection } from "./components/TabbedSection/TabbedSection.tsx";
 export type { TabbedSectionProps } from "./components/TabbedSection/types.ts";
+export { Tag, TagTitle, TagDescription } from "./components/Tag/Tag.tsx";
+export type {
+  TagProps,
+  TagTitleProps,
+  TagDescriptionProps,
+} from "./components/Tag/types.ts";
 export { TryItNow } from "./components/TryItNow/TryItNow.tsx";
 export type { TryItNowProps } from "./components/TryItNow/types.ts";
 
