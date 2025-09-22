@@ -73,6 +73,7 @@ import { escapeText, getPrettyCodeSampleLanguage } from "./util.ts";
 
 export class MdxSite extends MarkdownSite {
   #embedsCreated = new Set<string>();
+  #embedStack: string[] = [];
 
   public override buildPagePath(
     ...[slug, { appendIndex = false } = {}]: SiteBuildPagePathArgs
@@ -90,10 +91,16 @@ export class MdxSite extends MarkdownSite {
     if (!this.docsData) {
       throw new InternalError("Docs data not set");
     }
+
+    // Check if this is a circular reference
+    if (this.#embedStack.includes(slug)) {
+      return undefined;
+    }
+    this.#embedStack.push(slug);
+
     const {
       output: { embedOutDir },
     } = getSettings();
-    slug = slug.toLowerCase();
     if (!embedOutDir) {
       throw new InternalError(
         "Embed output directory not set, but should have been caught by the settings parser"
@@ -101,6 +108,7 @@ export class MdxSite extends MarkdownSite {
     }
     const embedPath = join(embedOutDir, `${slug}.mdx`);
     if (this.#embedsCreated.has(slug)) {
+      this.#embedStack.pop();
       return embedPath;
     }
     this.#embedsCreated.add(slug);
@@ -131,6 +139,7 @@ export class MdxSite extends MarkdownSite {
     const { contents } = renderer.render();
     getOnPageComplete()(embedPath, contents);
 
+    this.#embedStack.pop();
     return embedPath;
   }
 }
@@ -292,8 +301,16 @@ class MdxRenderer extends MarkdownRenderer {
     if (!args.slug) {
       args.slug = `EmbedNameMissing${slugCounter++}`;
     }
+    args.slug = args.slug.toLowerCase();
 
     const absolutePath = this.#site.createEmbed(args);
+
+    // If we get back undefined, it means we have a circular reference
+    if (!absolutePath) {
+      // TODO: handle this circular reference better
+      return;
+    }
+
     const { triggerText, embedTitle, slug } = args;
 
     this.#appendComponent<EmbedProps>(

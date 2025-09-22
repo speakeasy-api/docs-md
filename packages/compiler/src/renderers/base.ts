@@ -61,7 +61,8 @@ export type SiteGetRendererArgs = [args: RendererConstructorArgs];
 export abstract class Site {
   abstract setDocsData(docsData: Map<string, Chunk>): void;
   abstract createPage(...args: SiteCreatePageArgs): Renderer;
-  abstract createEmbed(...args: SiteCreateEmbedArgs): string;
+  // Undefined is returned when an embed circularly references another embed
+  abstract createEmbed(...args: SiteCreateEmbedArgs): string | undefined;
   abstract buildPagePath(...args: SiteBuildPagePathArgs): string;
   protected abstract getRenderer(...args: SiteGetRendererArgs): Renderer;
 }

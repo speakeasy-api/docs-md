@@ -91,7 +91,7 @@ export abstract class MarkdownSite extends Site {
     return renderer;
   }
 
-  public createEmbed(..._args: SiteCreateEmbedArgs): string {
+  public createEmbed(..._args: SiteCreateEmbedArgs): string | undefined {
     throw new Error(`Base markdown renderer does not support createEmbed`);
   }
 }
