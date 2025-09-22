@@ -1,4 +1,4 @@
-import type { SchemaValue } from "./chunk.ts";
+import type { OperationChunk, SchemaValue } from "./chunk.ts";
 
 export type {
   Chunk,
@@ -71,8 +71,8 @@ export type PageMetadataOperation = {
   elementId: string;
   method: string;
   path: string;
-  operationId: string;
-  summary: string | null;
+  operationId: OperationChunk["chunkData"]["operationId"];
+  summary: OperationChunk["chunkData"]["summary"];
   security?: PageMetadataSection;
   parameters?: PageMetadataSection;
   requestBody?: PageMetadataSection;
