@@ -264,6 +264,7 @@ export type SchemaChunk = {
 
 type TagData = {
   name: string;
+  description: string | null;
   operationChunkIds: string[];
 };
 
