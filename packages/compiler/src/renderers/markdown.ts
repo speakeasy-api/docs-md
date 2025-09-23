@@ -387,6 +387,7 @@ export abstract class MarkdownRenderer extends Renderer {
         ({
           statusCode,
           contentType,
+          showContentType,
           createDisplayType,
           createDescription,
           createExamples,
@@ -406,9 +407,15 @@ export abstract class MarkdownRenderer extends Renderer {
               this.#currentSection;
           }
 
-          this.createTabbedSectionTab(() => this.createText(statusCode), {
-            id: this.getCurrentId(),
-          });
+          this.createTabbedSectionTab(
+            () =>
+              this.createText(
+                showContentType ? `${statusCode} (${contentType})` : statusCode
+              ),
+            {
+              id: this.getCurrentId(),
+            }
+          );
           this.createSectionContent(
             () => {
               if (createDisplayType) {

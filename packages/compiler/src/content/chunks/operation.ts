@@ -343,8 +343,11 @@ export function renderResponseBodies(
     );
     renderer.createResponsesSection(
       (createTab) => {
-        for (const [statusCode, responses] of filteredResponseList) {
-          for (const response of responses) {
+        for (const [
+          statusCode,
+          responsesForStatusCode,
+        ] of filteredResponseList) {
+          for (const response of responsesForStatusCode) {
             const schema = getSchemaFromId(
               response.contentChunkId,
               renderer.getDocsData()
@@ -355,6 +358,7 @@ export function renderResponseBodies(
             createTab({
               statusCode,
               contentType: response.contentType,
+              showContentType: responsesForStatusCode.length > 1,
               createDisplayType:
                 schema.type !== "object"
                   ? () => {
