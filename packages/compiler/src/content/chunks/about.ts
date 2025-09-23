@@ -7,9 +7,14 @@ import { HEADINGS } from "../constants.ts";
 
 export function renderAbout(renderer: Renderer, chunk: AboutChunk) {
   debug(`Rendering about chunk`);
-  const { showDebugPlaceholders } = getSettings().display;
+  const {
+    display: { showDebugPlaceholders },
+    output: { singlePage },
+  } = getSettings();
   renderer.createHeading(
-    HEADINGS.PAGE_TITLE_HEADING_LEVEL,
+    singlePage
+      ? HEADINGS.SECTION_TITLE_HEADING_LEVEL
+      : HEADINGS.PAGE_TITLE_HEADING_LEVEL,
     `About ${chunk.chunkData.title}`
   );
   if (chunk.chunkData.version) {
