@@ -53,12 +53,14 @@ type RowProps = PropsWithChildren<{
 export type ExpandableSectionProps = PropsWithChildren<{
   /**
    * The component to use for rendering the tree top decoration, and defaults to
-   * ExpandableTreeTopper. If you override the default ExpandableTreeTopper
-   * implementation, then pass your custom implementation in here too.
-   * Otherwise, the default ExpandableTreeTopper implementation will be used
-   * internally.
+   * ExpandableTreeTopper. Override this property to use a custom version.
    */
   ExpandableTreeTopper?: FC<ExpandableTreeTopperProps>;
+  /**
+   * The component to use for rendering connecting cells, and defaults to
+   * ConnectingCell. Override this property to use a custom version.
+   */
+  ConnectingCell?: FC<ConnectingCellProps>;
 }>;
 
 export type ExpandablePropertyProps = RowProps & {
@@ -127,6 +129,11 @@ export type ExpandablePropertyBreakoutsProps = PropsWithChildren<{
    * The slot for the breakouts, always "breakouts"
    */
   slot: "breakouts";
+  /**
+   * The component to use for rendering connecting cells, and defaults to
+   * ConnectingCell. Override this property to use a custom version.
+   */
+  ConnectingCell?: FC<ConnectingCellProps>;
 }>;
 
 export type ExpandableBreakoutProps = RowProps & {
@@ -171,4 +178,9 @@ export type ExpandableBreakoutPropertiesProps = PropsWithChildren<{
    * The slot for the properties, always "properties"
    */
   slot: "properties";
+  /**
+   * The component to use for rendering connecting cells, and defaults to
+   * ConnectingCell. Override this property to use a custom version.
+   */
+  ConnectingCell?: FC<ConnectingCellProps>;
 }>;

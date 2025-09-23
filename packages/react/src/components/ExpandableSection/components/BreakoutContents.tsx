@@ -74,20 +74,7 @@ export function BreakoutContents({
           >
             {embedChildren}
           </ConnectingCell>
-          {/* `index` is stable for this data, since the children are
-              determined by the compiler and not at runtime */}
-          {propertiesChildren.map((propertyChild, index) => (
-            <ConnectingCell
-              key={index}
-              bottom={
-                index === propertiesChildren.length - 1 ? "none" : "connected"
-              }
-              top="connected"
-              right="connected"
-            >
-              {propertyChild}
-            </ConnectingCell>
-          ))}
+          {propertiesChildren}
         </>
       )}
     </div>

@@ -1,4 +1,4 @@
-import styles from "../ExpandableSection/styles.module.css";
+import styles from "./styles.module.css";
 import type { NonExpandableCellProps } from "./types.ts";
 
 /**

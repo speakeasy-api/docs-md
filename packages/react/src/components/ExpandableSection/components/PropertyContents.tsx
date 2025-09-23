@@ -221,16 +221,7 @@ export function PropertyContents({
       >
         {embedChildren}
       </ConnectingCell>
-      {breakoutsChildren.map((breakoutChild, index) => (
-        <ConnectingCell
-          key={index}
-          bottom={index === breakoutsChildren.length - 1 ? "none" : "connected"}
-          top="connected"
-          right="connected"
-        >
-          {breakoutChild}
-        </ConnectingCell>
-      ))}
+      {breakoutsChildren}
     </>
   );
 
