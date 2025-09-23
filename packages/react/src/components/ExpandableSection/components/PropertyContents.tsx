@@ -11,6 +11,8 @@ import {
 } from "../../../util/displayType.ts";
 import { useChildren, useUniqueChild } from "../../../util/hooks.ts";
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
+import { ConnectingCell as DefaultConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
+// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
@@ -81,6 +83,7 @@ export function PropertyContents({
   ExpandableCell = DefaultExpandableCell,
   NonExpandableCell = DefaultNonExpandableCell,
   Pill = DefaultPill,
+  ConnectingCell = DefaultConnectingCell,
 }: ExpandablePropertyProps) {
   const [isOpen, setIsOpen] = useState(expandByDefault);
 
@@ -186,6 +189,51 @@ export function PropertyContents({
     </TitlePrefixContainer>
   );
 
+  const hasChildrenConnection =
+    breakoutsChildren.length > 0 ? "connected" : "none";
+  const frontmatter = (
+    <>
+      <ConnectingCell
+        bottom={hasChildrenConnection}
+        top={hasChildrenConnection}
+        right="none"
+      >
+        {descriptionChildren}
+      </ConnectingCell>
+      <ConnectingCell
+        bottom={hasChildrenConnection}
+        top={hasChildrenConnection}
+        right="none"
+      >
+        {examplesChildren}
+      </ConnectingCell>
+      <ConnectingCell
+        bottom={hasChildrenConnection}
+        top={hasChildrenConnection}
+        right="none"
+      >
+        {defaultValueChildren}
+      </ConnectingCell>
+      <ConnectingCell
+        bottom={hasChildrenConnection}
+        top={hasChildrenConnection}
+        right="connected"
+      >
+        {embedChildren}
+      </ConnectingCell>
+      {breakoutsChildren.map((breakoutChild, index) => (
+        <ConnectingCell
+          key={index}
+          bottom={index === breakoutsChildren.length - 1 ? "none" : "connected"}
+          top="connected"
+          right="connected"
+        >
+          {breakoutChild}
+        </ConnectingCell>
+      ))}
+    </>
+  );
+
   let titleContainer: JSX.Element;
   let propertyCell: JSX.Element;
   let measureContainer: JSX.Element | null = null;
@@ -193,15 +241,7 @@ export function PropertyContents({
     titleContainer = (
       <TitleContainer ref={titleContainerRef}>{titlePrefix}</TitleContainer>
     );
-    propertyCell = (
-      <>
-        {descriptionChildren}
-        {examplesChildren}
-        {defaultValueChildren}
-        {embedChildren}
-        {breakoutsChildren}
-      </>
-    );
+    propertyCell = frontmatter;
   } else {
     titleContainer = (
       <TitleContainer ref={titleContainerRef}>
@@ -227,26 +267,13 @@ export function PropertyContents({
     );
     propertyCell = (
       <>
-        {(displayInfo.multiline ||
-          descriptionChildren.length > 0 ||
-          examplesChildren.length > 0 ||
-          defaultValueChildren.length > 0 ||
-          embedChildren.length > 0 ||
-          breakoutsChildren.length > 0) && (
-          <>
-            {displayInfo.multiline && (
-              <TypeContainer
-                multiline={displayInfo.multiline}
-                contents={displayInfo.contents}
-              />
-            )}
-            {descriptionChildren}
-            {examplesChildren}
-            {defaultValueChildren}
-            {embedChildren}
-            {breakoutsChildren}
-          </>
+        {displayInfo.multiline && (
+          <TypeContainer
+            multiline={displayInfo.multiline}
+            contents={displayInfo.contents}
+          />
         )}
+        {frontmatter}
       </>
     );
     measureContainer = (
@@ -281,9 +308,7 @@ export function PropertyContents({
         )}
         {titleContainer}
       </div>
-      {isOpen && (
-        <div className={styles.entryContentContainer}>{propertyCell}</div>
-      )}
+      {isOpen && propertyCell}
       {measureContainer}
     </div>
   );

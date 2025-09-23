@@ -4,74 +4,11 @@ import type {
 } from "@speakeasy-api/docs-md-shared/types";
 import type { FC, PropsWithChildren } from "react";
 
+import type { ConnectingCellProps } from "../ConnectingCell/types.ts";
 import type { ExpandableCellProps } from "../ExpandableCell/types.ts";
 import type { ExpandableTreeTopperProps } from "../ExpandableTreeTopper/types.ts";
 import type { NonExpandableCellProps } from "../NonExpandableCell/types.ts";
 import type { PillProps } from "../Pill/types.ts";
-
-/**
- * The connection state for the node. Currently we only have two states, but
- * we use a string union to allow for future expansion (e.g. "highlighted")
- */
-type ConnectionType = "none" | "connected";
-
-/**
- * Represents the connection state of a prefix cell in the compiled UI
- */
-export type Connection = {
-  /**
-   * The connection state for the node to the node immediately below it, as
-   * represented by `|` in the diagram below if the state is `connected`:
-   *
-   * ```
-   * *****
-   * *   *
-   * * o *
-   * * | *
-   * *****
-   * ```
-   */
-  bottom: ConnectionType;
-  /**
-   * The connection state for the node to the node above it, as represented by
-   * `|` in the diagram below if the state is `connected`:
-   *
-   * ```
-   * *****
-   * * | *
-   * * o *
-   * *   *
-   * *****
-   * ```
-   */
-  top: ConnectionType;
-  /**
-   * The connection state for the node to the node to the left of it, as
-   * represented by `-` in the diagram below if the state is `connected`:
-   *
-   * ```
-   * *****
-   * *   *
-   * *-o *
-   * *   *
-   * *****
-   * ```
-   */
-  left: ConnectionType;
-  /**
-   * The connection state for the node to the node immediately right of it, as
-   * represented by `-` in the diagram below if the state is `connected`:
-   *
-   * ```
-   * *****
-   * *   *
-   * * o-*
-   * *   *
-   * *****
-   * ```
-   */
-  right: ConnectionType;
-};
 
 // TODO: cleanup id vs headingId
 /**
@@ -142,19 +79,19 @@ export type ExpandablePropertyProps = RowProps & {
   Pill?: FC<PillProps>;
   /**
    * The component to use for rendering expandable cells, and defaults to
-   * ExpandableCell. If you override the default ExpandableCell implementation,
-   * then pass your custom implementation in here too. Otherwise, the default
-   * ExpandableCell implementation will be used internally.
+   * ExpandableCell. Override this property to use a custom version.
    */
   ExpandableCell?: FC<ExpandableCellProps>;
   /**
    * The component to use for rendering non-expandable cells, and defaults to
-   * NonExpandableCell. If you override the default NonExpandableCell
-   * implementation, then pass your custom implementation in here too.
-   * Otherwise, the default NonExpandableCell implementation will be used
-   * internally.
+   * NonExpandableCell. Override this property to use a custom version.
    */
   NonExpandableCell?: FC<NonExpandableCellProps>;
+  /**
+   * The component to use for rendering connecting cells, and defaults to
+   * ConnectingCell. Override this property to use a custom version.
+   */
+  ConnectingCell?: FC<ConnectingCellProps>;
 };
 
 export type ExpandablePropertyTitleProps = PropsWithChildren<{
@@ -195,19 +132,19 @@ export type ExpandablePropertyBreakoutsProps = PropsWithChildren<{
 export type ExpandableBreakoutProps = RowProps & {
   /**
    * The component to use for rendering expandable cells, and defaults to
-   * ExpandableCell. If you override the default ExpandableCell implementation,
-   * then pass your custom implementation in here too. Otherwise, the default
-   * ExpandableCell implementation will be used internally.
+   * ExpandableCell. Override this property to use a custom version.
    */
   ExpandableCell?: FC<ExpandableCellProps>;
   /**
    * The component to use for rendering non-expandable cells, and defaults to
-   * NonExpandableCell. If you override the default NonExpandableCell
-   * implementation, then pass your custom implementation in here too.
-   * Otherwise, the default NonExpandableCell implementation will be used
-   * internally.
+   * NonExpandableCell. Override this property to use a custom version.
    */
   NonExpandableCell?: FC<NonExpandableCellProps>;
+  /**
+   * The component to use for rendering connecting cells, and defaults to
+   * ConnectingCell. Override this property to use a custom version.
+   */
+  ConnectingCell?: FC<ConnectingCellProps>;
 };
 
 export type ExpandableBreakoutTitleProps = PropsWithChildren<{ slot: "title" }>;
