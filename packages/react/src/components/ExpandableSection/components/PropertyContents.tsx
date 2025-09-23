@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import type { JSX, PropsWithChildren } from "react";
-import { forwardRef, useMemo } from "react";
+import { forwardRef, useMemo, useState } from "react";
 import useMeasure from "react-use-measure";
 
 import {
@@ -16,7 +16,6 @@ import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/Ex
 import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { Pill as DefaultPill } from "../../Pill/Pill.tsx";
-import { useIsOpen } from "../state.ts";
 import styles from "../styles.module.css";
 import type { ExpandablePropertyProps } from "../types.ts";
 
@@ -73,17 +72,17 @@ const OffscreenMeasureContainer = forwardRef<HTMLDivElement, PropsWithChildren>(
 );
 
 export function PropertyContents({
-  id,
   slot,
   children,
   typeInfo,
   typeAnnotations,
   hasExpandableContent,
+  expandByDefault,
   ExpandableCell = DefaultExpandableCell,
   NonExpandableCell = DefaultNonExpandableCell,
   Pill = DefaultPill,
 }: ExpandablePropertyProps) {
-  const [isOpen, setIsOpen] = useIsOpen(id);
+  const [isOpen, setIsOpen] = useState(expandByDefault);
 
   // We measure the title container (which includes available space for the
   // inline type), the title prefix (which is only the property name and

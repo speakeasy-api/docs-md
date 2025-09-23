@@ -1,18 +1,19 @@
 "use client";
 
+import { useState } from "react";
+
 import { useChildren, useUniqueChild } from "../../../util/hooks.ts";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
+// eslint-disable-next-line fast-import/no-restricted-imports
 import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
+// eslint-disable-next-line fast-import/no-restricted-imports
 import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
-import { useIsOpen } from "../state.ts";
 import styles from "../styles.module.css";
 import type { ExpandableBreakoutProps } from "../types.ts";
 
 export function BreakoutContents({
-  id,
   slot,
   hasExpandableContent,
+  expandByDefault,
   children,
   ExpandableCell = DefaultExpandableCell,
   NonExpandableCell = DefaultNonExpandableCell,
@@ -23,7 +24,7 @@ export function BreakoutContents({
   const defaultValueChildren = useChildren(children, "defaultValue");
   const embedChildren = useChildren(children, "embed");
   const propertiesChildren = useChildren(children, "properties");
-  const [isOpen, setIsOpen] = useIsOpen(id);
+  const [isOpen, setIsOpen] = useState(expandByDefault);
   return (
     <div slot={slot} className={styles.entryContainer}>
       <div className={styles.entryHeaderContainer}>
