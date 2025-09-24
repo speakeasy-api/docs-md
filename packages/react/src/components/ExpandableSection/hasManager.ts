@@ -7,7 +7,7 @@ export function useHashManager(id: string, setIsOpen: (open: boolean) => void) {
         return;
       }
       const hash = window.location.hash.slice(1); // Remove the '#'
-      if (hash === id) {
+      if (hash === id || hash.includes(id)) {
         setIsOpen(true);
       }
     }
