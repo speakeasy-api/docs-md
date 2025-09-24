@@ -22,7 +22,7 @@ export function Editor({ defaultValue, onValueChange }: EditorProps) {
 
   return (
     <MonacoEditor
-      height={"100%"}
+      height="var(--speakeasy-code-sample-height, 400px)"
       loading=""
       wrapperProps={{
         className: styles.editorWrapper,
@@ -32,6 +32,7 @@ export function Editor({ defaultValue, onValueChange }: EditorProps) {
           enabled: false,
         },
       }}
+      className={styles.editor}
       language="typescript"
       value={defaultValue}
       onChange={handleValueChange}

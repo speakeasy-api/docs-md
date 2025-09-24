@@ -1,9 +1,53 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { TryItNow } from "../components/TryItNow/TryItNow.tsx";
+import { SectionContent } from "../components/SectionContent/SectionContent.tsx";
+import { SectionTab } from "../components/SectionTab/SectionTab.tsx";
+import { TabbedSection } from "../components/TabbedSection/TabbedSection.tsx";
+import { SectionTitle } from "../components/SectionTitle/SectionTitle.tsx";
+import {
+  Operation,
+  OperationCodeSamplesSection,
+  OperationDescriptionSection,
+  OperationSummarySection,
+  OperationTitleSection,
+} from "../components/Operation/Operation.tsx";
+import { CodeSample } from "../components/CodeSample/CodeSample.tsx";
 
 const meta: Meta<typeof TryItNow> = {
   title: "Components/TryItNow",
   component: TryItNow,
+  render: (args) => (
+    <Operation>
+      <OperationTitleSection slot="title">
+        <h1>Mock Operation Title</h1>
+      </OperationTitleSection>
+      <OperationSummarySection slot="summary">
+        <h2>Mock Operation Summary</h2>
+      </OperationSummarySection>
+      <OperationDescriptionSection slot="description">
+        <p>Mock Operation Description</p>
+      </OperationDescriptionSection>
+      <OperationCodeSamplesSection slot="code-samples">
+        <TabbedSection>
+          <SectionTitle slot="title">
+            <h3>TryItNow</h3>
+          </SectionTitle>
+          <SectionTab slot="tab" id="monaco-editor">
+            TypeScript
+          </SectionTab>
+          <SectionContent slot="content" id="monaco-editor">
+            <TryItNow {...args} />
+          </SectionContent>
+          <SectionTab slot="tab" id="code-samples">
+            Code Samples
+          </SectionTab>
+          <SectionContent slot="content" id="code-samples">
+            <CodeSample>{args.defaultValue}</CodeSample>
+          </SectionContent>
+        </TabbedSection>
+      </OperationCodeSamplesSection>
+    </Operation>
+  ),
   parameters: {
     layout: "padded",
   },
