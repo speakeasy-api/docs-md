@@ -27,7 +27,8 @@ export function computeSingleLineDisplayType(typeInfo: DisplayTypeInfo): {
     default: {
       return {
         measure: typeInfo.label,
-        display: typeInfo.linkedLabel,
+        // TODO: convert this back to linkedLabel
+        display: typeInfo.label.replace("<", "&lt;").replace(">", "&gt;"),
       };
     }
   }
@@ -118,7 +119,8 @@ export function computeMultilineTypeLabel(
     }
     default: {
       return {
-        contents: typeInfo.linkedLabel,
+        // TODO: convert this back to linkedLabel
+        contents: typeInfo.label.replace("<", "&lt;").replace(">", "&gt;"),
         multiline: false,
       };
     }
