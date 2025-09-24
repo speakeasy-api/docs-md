@@ -42,7 +42,11 @@ const meta: Meta<typeof TryItNow> = {
             Code Samples
           </SectionTab>
           <SectionContent slot="content" id="code-samples">
-            <CodeSample>{args.defaultValue}</CodeSample>
+            <CodeSample>
+              <pre>
+                <code>{args.defaultValue}</code>
+              </pre>
+            </CodeSample>
           </SectionContent>
         </TabbedSection>
       </OperationCodeSamplesSection>
