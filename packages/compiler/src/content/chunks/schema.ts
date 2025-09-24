@@ -70,9 +70,15 @@ export function getDisplayTypeInfo(
   schema: SchemaValue,
   renderer: Renderer,
   chunkIdStack: string[]
-): DisplayTypeInfo {
+): DisplayTypeInfo | null {
   switch (schema.type) {
     case "object": {
+      // TODO: I've only seen this happen once, and in the case where it
+      // happened it was a superfluous object, so we filter it out now. This is
+      // mostly likely incorrect though
+      if (!schema.name) {
+        return null;
+      }
       return {
         label: getDisplayTypeLabel(schema),
         linkedLabel: `<a href="#${renderer.getCurrentId(schema.name)}">${schema.name}</a>`,
@@ -82,6 +88,9 @@ export function getDisplayTypeInfo(
     }
     case "array": {
       const typeInfo = getDisplayTypeInfo(schema.items, renderer, chunkIdStack);
+      if (!typeInfo) {
+        return null;
+      }
       return {
         ...typeInfo,
         label: getDisplayTypeLabel(schema),
@@ -90,6 +99,9 @@ export function getDisplayTypeInfo(
     }
     case "map": {
       const typeInfo = getDisplayTypeInfo(schema.items, renderer, chunkIdStack);
+      if (!typeInfo) {
+        return null;
+      }
       return {
         ...typeInfo,
         label: getDisplayTypeLabel(schema),
@@ -98,6 +110,9 @@ export function getDisplayTypeInfo(
     }
     case "set": {
       const typeInfo = getDisplayTypeInfo(schema.items, renderer, chunkIdStack);
+      if (!typeInfo) {
+        return null;
+      }
       return {
         ...typeInfo,
         label: getDisplayTypeLabel(schema),
@@ -106,6 +121,9 @@ export function getDisplayTypeInfo(
     }
     case "jsonl": {
       const typeInfo = getDisplayTypeInfo(schema.items, renderer, chunkIdStack);
+      if (!typeInfo) {
+        return null;
+      }
       return {
         ...typeInfo,
         label: getDisplayTypeLabel(schema),
@@ -114,6 +132,9 @@ export function getDisplayTypeInfo(
     }
     case "event-stream": {
       const typeInfo = getDisplayTypeInfo(schema.items, renderer, chunkIdStack);
+      if (!typeInfo) {
+        return null;
+      }
       return {
         ...typeInfo,
         label: getDisplayTypeLabel(schema),
@@ -125,18 +146,21 @@ export function getDisplayTypeInfo(
         getDisplayTypeInfo(v, renderer, chunkIdStack)
       );
       const hasBreakoutSubType = displayTypes.some(
-        (d) => d.breakoutSubTypes.size > 0
+        (d) => d && d.breakoutSubTypes.size > 0
       );
       if (!hasBreakoutSubType) {
         return {
           label: getDisplayTypeLabel(schema),
           linkedLabel: getDisplayTypeLabel(schema),
-          children: displayTypes,
+          children: displayTypes.filter((d) => d !== null),
           breakoutSubTypes: new Map(),
         };
       }
       const breakoutSubTypes = new Map<string, SchemaValue>();
       for (const displayType of displayTypes) {
+        if (!displayType) {
+          continue;
+        }
         for (const [key, value] of displayType.breakoutSubTypes) {
           breakoutSubTypes.set(key, value);
         }
@@ -144,7 +168,7 @@ export function getDisplayTypeInfo(
       return {
         label: getDisplayTypeLabel(schema),
         linkedLabel: getDisplayTypeLabel(schema),
-        children: displayTypes,
+        children: displayTypes.filter((d) => d !== null),
         breakoutSubTypes,
       };
     }
@@ -358,6 +382,10 @@ function createExpandableProperty({
   // Check if we're too deeply nested to render this inline, but have more
   // breakouts to render at a deeper level
   const typeInfo = getDisplayTypeInfo(property.schema, renderer, []);
+  if (!typeInfo) {
+    return;
+  }
+
   const hasEmbed =
     shouldRenderInEmbed(renderer) && typeInfo.breakoutSubTypes.size > 0;
 
