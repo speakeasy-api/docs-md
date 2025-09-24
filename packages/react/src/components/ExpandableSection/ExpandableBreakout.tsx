@@ -39,7 +39,11 @@ export function ExpandableBreakoutTitle({
   children,
   slot,
 }: ExpandableBreakoutTitleProps) {
-  return <div slot={slot}>{children}</div>;
+  return (
+    <div slot={slot} className={styles.titleSlotContainer}>
+      {children}
+    </div>
+  );
 }
 
 /**

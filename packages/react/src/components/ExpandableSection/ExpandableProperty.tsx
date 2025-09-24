@@ -36,7 +36,7 @@ export function ExpandablePropertyTitle({
   slot,
 }: ExpandablePropertyTitleProps) {
   return (
-    <div slot={slot} className={styles.propertyTitleSlotContainer}>
+    <div slot={slot} className={styles.titleSlotContainer}>
       {children}
     </div>
   );
