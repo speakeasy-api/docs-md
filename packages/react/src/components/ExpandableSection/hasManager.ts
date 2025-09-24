@@ -1,9 +1,6 @@
 import { useEffect } from "react";
 
-export function useHashManager(
-  id: string,
-  setIsOpen: (open: boolean) => void,
-) {
+export function useHashManager(id: string, setIsOpen: (open: boolean) => void) {
   useEffect(() => {
     function handleHashChange() {
       if (!window.location.hash) {
@@ -15,15 +12,10 @@ export function useHashManager(
       if (hash === id) {
         setIsOpen(true);
         setTimeout(() => {
-          const element = document.getElementById(id);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-          } else {
-            console.error(`Element with id ${id} not found`);
-          }
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
         }, 50);
         return;
-      } 
+      }
 
       // Check if this ID is in the path to the target
       // Split both by common separators (-, _, /)
