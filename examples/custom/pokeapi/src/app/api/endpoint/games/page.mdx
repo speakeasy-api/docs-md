@@ -1,11 +1,10 @@
 import "@/app/speakeasy.css";
 import {
   ExpandableBreakout,
-  ExpandableBreakoutDefaultValue,
-  ExpandableBreakoutDescription,
-  ExpandableBreakoutExamples,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
+  ExpandablePropertyBreakouts,
   ExpandablePropertyDescription,
   ExpandablePropertyExamples,
   ExpandablePropertyTitle,
@@ -84,7 +83,7 @@ A generation is a grouping of the Pokémon games that separates them based on th
   id="cookieAuth"
   headingId="operation-api_v2_generation_list_security_cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -101,7 +100,7 @@ A generation is a grouping of the Pokémon games that separates them based on th
   id="basicAuth"
   headingId="operation-api_v2_generation_list_security_basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -141,7 +140,7 @@ A generation is a grouping of the Pokémon games that separates them based on th
   headingId="operation-api_v2_generation_list_parameters_limit"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -157,6 +156,10 @@ Number of results to return per page.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -165,7 +168,7 @@ Number of results to return per page.
   headingId="operation-api_v2_generation_list_parameters_offset"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -181,6 +184,10 @@ The initial index from which to return the results.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -189,7 +196,7 @@ The initial index from which to return the results.
   headingId="operation-api_v2_generation_list_parameters_q"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -205,6 +212,10 @@ The initial index from which to return the results.
 Case-insensitive query applied on the `name` property. 
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -245,7 +256,7 @@ Case-insensitive query applied on the `name` property.
   headingId="operation-api_v2_generation_list_responses_200_application-json_count"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -273,7 +284,7 @@ _Example:_
   headingId="operation-api_v2_generation_list_responses_200_application-json_next"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -301,7 +312,7 @@ http://api.example.org/accounts/?offset=400&limit=100
   headingId="operation-api_v2_generation_list_responses_200_application-json_previous"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -329,7 +340,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   headingId="operation-api_v2_generation_list_responses_200_application-json_results"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_generation_list_responses_200_application-json_results_generationsummary\">GenerationSummary</a>","children":[{"label":"GenerationSummary","linkedLabel":"<a href=\"#operation-api_v2_generation_list_responses_200_application-json_results_generationsummary\">GenerationSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -339,14 +350,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="results_GenerationSummary"
   headingId="operation-api_v2_generation_list_responses_200_application-json_results_generationsummary"
   parentId="results"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -356,19 +367,7 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -377,7 +376,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_GenerationSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -396,7 +395,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_GenerationSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -405,6 +404,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 ##### url \{#operation-api_v2_generation_list_responses_200_application-json_results_generationsummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -457,7 +464,7 @@ A generation is a grouping of the Pokémon games that separates them based on th
   id="cookieAuth"
   headingId="operation-api_v2_generation_retrieve_security_cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -474,7 +481,7 @@ A generation is a grouping of the Pokémon games that separates them based on th
   id="basicAuth"
   headingId="operation-api_v2_generation_retrieve_security_basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -514,7 +521,7 @@ A generation is a grouping of the Pokémon games that separates them based on th
   headingId="operation-api_v2_generation_retrieve_parameters_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -529,6 +536,10 @@ A generation is a grouping of the Pokémon games that separates them based on th
 This parameter can be a string or an integer.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -572,7 +583,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_abilities"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_abilities_abilitysummary\">AbilitySummary</a>","children":[{"label":"AbilitySummary","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_abilities_abilitysummary\">AbilitySummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -582,14 +593,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="abilities_AbilitySummary"
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_abilities_abilitysummary"
   parentId="abilities"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -599,19 +610,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -620,7 +619,7 @@ This parameter can be a string or an integer.
   parentId="abilities_AbilitySummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -639,7 +638,7 @@ This parameter can be a string or an integer.
   parentId="abilities_AbilitySummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -651,13 +650,21 @@ This parameter can be a string or an integer.
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="id"
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_id"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -675,7 +682,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_main_region"
   typeInfo={{"label":"RegionSummary","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_main_region_regionsummary\">RegionSummary</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -685,22 +692,39 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="main_region_RegionSummary"
+  headingId="operation-api_v2_generation_retrieve_responses_200_application-json_main_region_regionsummary"
+  parentId="main_region"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### RegionSummary \{#operation-api_v2_generation_retrieve_responses_200_application-json_main_region_regionsummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="main_region_name"
-  headingId="operation-api_v2_generation_retrieve_responses_200_application-json_main_region_name"
-  parentId="main_region"
+  id="main_region_RegionSummary_name"
+  headingId="operation-api_v2_generation_retrieve_responses_200_application-json_main_region_regionsummary_name"
+  parentId="main_region_RegionSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-api_v2_generation_retrieve_responses_200_application-json_main_region_name\}
+##### name \{#operation-api_v2_generation_retrieve_responses_200_application-json_main_region_regionsummary_name\}
 
 </ExpandablePropertyTitle>
 
@@ -708,20 +732,28 @@ This parameter can be a string or an integer.
 
 <ExpandableProperty
   slot="entry"
-  id="main_region_url"
-  headingId="operation-api_v2_generation_retrieve_responses_200_application-json_main_region_url"
-  parentId="main_region"
+  id="main_region_RegionSummary_url"
+  headingId="operation-api_v2_generation_retrieve_responses_200_application-json_main_region_regionsummary_url"
+  parentId="main_region_RegionSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-api_v2_generation_retrieve_responses_200_application-json_main_region_url\}
+##### url \{#operation-api_v2_generation_retrieve_responses_200_application-json_main_region_regionsummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -731,7 +763,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_moves"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_moves_movesummary\">MoveSummary</a>","children":[{"label":"MoveSummary","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_moves_movesummary\">MoveSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -741,14 +773,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="moves_MoveSummary"
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_moves_movesummary"
   parentId="moves"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -758,19 +790,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -779,7 +799,7 @@ This parameter can be a string or an integer.
   parentId="moves_MoveSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -798,7 +818,7 @@ This parameter can be a string or an integer.
   parentId="moves_MoveSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -810,13 +830,21 @@ This parameter can be a string or an integer.
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="name"
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_name"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -834,7 +862,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_names"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname\">GenerationName</a>","children":[{"label":"GenerationName","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname\">GenerationName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -844,14 +872,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="names_GenerationName"
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname"
   parentId="names"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -861,19 +889,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -882,7 +898,7 @@ This parameter can be a string or an integer.
   parentId="names_GenerationName"
   typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname_language_languagesummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -892,22 +908,39 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="names_GenerationName_language_LanguageSummary"
+  headingId="operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname_language_languagesummary"
+  parentId="names_GenerationName_language"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### LanguageSummary \{#operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname_language_languagesummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="names_GenerationName_language_name"
-  headingId="operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname_language_name"
-  parentId="names_GenerationName_language"
+  id="names_GenerationName_language_LanguageSummary_name"
+  headingId="operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname_language_languagesummary_name"
+  parentId="names_GenerationName_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname_language_name\}
+##### name \{#operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname_language_languagesummary_name\}
 
 </ExpandablePropertyTitle>
 
@@ -915,20 +948,28 @@ This parameter can be a string or an integer.
 
 <ExpandableProperty
   slot="entry"
-  id="names_GenerationName_language_url"
-  headingId="operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname_language_url"
-  parentId="names_GenerationName_language"
+  id="names_GenerationName_language_LanguageSummary_url"
+  headingId="operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname_language_languagesummary_url"
+  parentId="names_GenerationName_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname_language_url\}
+##### url \{#operation-api_v2_generation_retrieve_responses_200_application-json_names_generationname_language_languagesummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -939,7 +980,7 @@ This parameter can be a string or an integer.
   parentId="names_GenerationName"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -951,13 +992,21 @@ This parameter can be a string or an integer.
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="pokemon_species"
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_pokemon_species"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_pokemon_species_pokemonspeciessummary\">PokemonSpeciesSummary</a>","children":[{"label":"PokemonSpeciesSummary","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_pokemon_species_pokemonspeciessummary\">PokemonSpeciesSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -967,14 +1016,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="pokemon_species_PokemonSpeciesSummary"
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_pokemon_species_pokemonspeciessummary"
   parentId="pokemon_species"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -984,19 +1033,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1005,7 +1042,7 @@ This parameter can be a string or an integer.
   parentId="pokemon_species_PokemonSpeciesSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1024,7 +1061,7 @@ This parameter can be a string or an integer.
   parentId="pokemon_species_PokemonSpeciesSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1036,13 +1073,21 @@ This parameter can be a string or an integer.
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="types"
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_types"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_types_typesummary\">TypeSummary</a>","children":[{"label":"TypeSummary","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_types_typesummary\">TypeSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1052,14 +1097,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="types_TypeSummary"
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_types_typesummary"
   parentId="types"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1069,19 +1114,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1090,7 +1123,7 @@ This parameter can be a string or an integer.
   parentId="types_TypeSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1109,7 +1142,7 @@ This parameter can be a string or an integer.
   parentId="types_TypeSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1121,13 +1154,21 @@ This parameter can be a string or an integer.
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="version_groups"
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_version_groups"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_version_groups_versiongroupsummary\">VersionGroupSummary</a>","children":[{"label":"VersionGroupSummary","linkedLabel":"<a href=\"#operation-api_v2_generation_retrieve_responses_200_application-json_version_groups_versiongroupsummary\">VersionGroupSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1137,14 +1178,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="version_groups_VersionGroupSummary"
   headingId="operation-api_v2_generation_retrieve_responses_200_application-json_version_groups_versiongroupsummary"
   parentId="version_groups"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1154,19 +1195,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1175,7 +1204,7 @@ This parameter can be a string or an integer.
   parentId="version_groups_VersionGroupSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1194,7 +1223,7 @@ This parameter can be a string or an integer.
   parentId="version_groups_VersionGroupSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1203,6 +1232,14 @@ This parameter can be a string or an integer.
 ##### url \{#operation-api_v2_generation_retrieve_responses_200_application-json_version_groups_versiongroupsummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1255,7 +1292,7 @@ A Pokédex is a handheld electronic encyclopedia device; one which is capable of
   id="cookieAuth"
   headingId="operation-api_v2_pokedex_list_security_cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1272,7 +1309,7 @@ A Pokédex is a handheld electronic encyclopedia device; one which is capable of
   id="basicAuth"
   headingId="operation-api_v2_pokedex_list_security_basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1312,7 +1349,7 @@ A Pokédex is a handheld electronic encyclopedia device; one which is capable of
   headingId="operation-api_v2_pokedex_list_parameters_limit"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1328,6 +1365,10 @@ Number of results to return per page.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -1336,7 +1377,7 @@ Number of results to return per page.
   headingId="operation-api_v2_pokedex_list_parameters_offset"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1352,6 +1393,10 @@ The initial index from which to return the results.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -1360,7 +1405,7 @@ The initial index from which to return the results.
   headingId="operation-api_v2_pokedex_list_parameters_q"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1376,6 +1421,10 @@ The initial index from which to return the results.
 Case-insensitive query applied on the `name` property. 
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1416,7 +1465,7 @@ Case-insensitive query applied on the `name` property.
   headingId="operation-api_v2_pokedex_list_responses_200_application-json_count"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1444,7 +1493,7 @@ _Example:_
   headingId="operation-api_v2_pokedex_list_responses_200_application-json_next"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1472,7 +1521,7 @@ http://api.example.org/accounts/?offset=400&limit=100
   headingId="operation-api_v2_pokedex_list_responses_200_application-json_previous"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1500,7 +1549,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   headingId="operation-api_v2_pokedex_list_responses_200_application-json_results"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_pokedex_list_responses_200_application-json_results_pokedexsummary\">PokedexSummary</a>","children":[{"label":"PokedexSummary","linkedLabel":"<a href=\"#operation-api_v2_pokedex_list_responses_200_application-json_results_pokedexsummary\">PokedexSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1510,14 +1559,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="results_PokedexSummary"
   headingId="operation-api_v2_pokedex_list_responses_200_application-json_results_pokedexsummary"
   parentId="results"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1527,19 +1576,7 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1548,7 +1585,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_PokedexSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1567,7 +1604,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_PokedexSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1576,6 +1613,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 ##### url \{#operation-api_v2_pokedex_list_responses_200_application-json_results_pokedexsummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1628,7 +1673,7 @@ A Pokédex is a handheld electronic encyclopedia device; one which is capable of
   id="cookieAuth"
   headingId="operation-api_v2_pokedex_retrieve_security_cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1645,7 +1690,7 @@ A Pokédex is a handheld electronic encyclopedia device; one which is capable of
   id="basicAuth"
   headingId="operation-api_v2_pokedex_retrieve_security_basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1685,7 +1730,7 @@ A Pokédex is a handheld electronic encyclopedia device; one which is capable of
   headingId="operation-api_v2_pokedex_retrieve_parameters_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1700,6 +1745,10 @@ A Pokédex is a handheld electronic encyclopedia device; one which is capable of
 This parameter can be a string or an integer.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1743,7 +1792,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription\">PokedexDescription</a>","children":[{"label":"PokedexDescription","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription\">PokedexDescription</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1753,14 +1802,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="descriptions_PokedexDescription"
   headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription"
   parentId="descriptions"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1770,19 +1819,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1791,7 +1828,7 @@ This parameter can be a string or an integer.
   parentId="descriptions_PokedexDescription"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"Max Length: 1000","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1810,7 +1847,7 @@ This parameter can be a string or an integer.
   parentId="descriptions_PokedexDescription"
   typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription_language_languagesummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1820,22 +1857,39 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="descriptions_PokedexDescription_language_LanguageSummary"
+  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription_language_languagesummary"
+  parentId="descriptions_PokedexDescription_language"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### LanguageSummary \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription_language_languagesummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="descriptions_PokedexDescription_language_name"
-  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription_language_name"
-  parentId="descriptions_PokedexDescription_language"
+  id="descriptions_PokedexDescription_language_LanguageSummary_name"
+  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription_language_languagesummary_name"
+  parentId="descriptions_PokedexDescription_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription_language_name\}
+##### name \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription_language_languagesummary_name\}
 
 </ExpandablePropertyTitle>
 
@@ -1843,20 +1897,36 @@ This parameter can be a string or an integer.
 
 <ExpandableProperty
   slot="entry"
-  id="descriptions_PokedexDescription_language_url"
-  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription_language_url"
-  parentId="descriptions_PokedexDescription_language"
+  id="descriptions_PokedexDescription_language_LanguageSummary_url"
+  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription_language_languagesummary_url"
+  parentId="descriptions_PokedexDescription_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription_language_url\}
+##### url \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_descriptions_pokedexdescription_language_languagesummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1866,7 +1936,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_id"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1884,7 +1954,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_is_main_series"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1902,7 +1972,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_name"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1920,7 +1990,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_names"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname\">PokedexName</a>","children":[{"label":"PokedexName","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname\">PokedexName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1930,14 +2000,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="names_PokedexName"
   headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname"
   parentId="names"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1947,19 +2017,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1968,7 +2026,7 @@ This parameter can be a string or an integer.
   parentId="names_PokedexName"
   typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname_language_languagesummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1978,22 +2036,39 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="names_PokedexName_language_LanguageSummary"
+  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname_language_languagesummary"
+  parentId="names_PokedexName_language"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### LanguageSummary \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname_language_languagesummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="names_PokedexName_language_name"
-  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname_language_name"
-  parentId="names_PokedexName_language"
+  id="names_PokedexName_language_LanguageSummary_name"
+  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname_language_languagesummary_name"
+  parentId="names_PokedexName_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname_language_name\}
+##### name \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname_language_languagesummary_name\}
 
 </ExpandablePropertyTitle>
 
@@ -2001,20 +2076,28 @@ This parameter can be a string or an integer.
 
 <ExpandableProperty
   slot="entry"
-  id="names_PokedexName_language_url"
-  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname_language_url"
-  parentId="names_PokedexName_language"
+  id="names_PokedexName_language_LanguageSummary_url"
+  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname_language_languagesummary_url"
+  parentId="names_PokedexName_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname_language_url\}
+##### url \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_names_pokedexname_language_languagesummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2025,7 +2108,7 @@ This parameter can be a string or an integer.
   parentId="names_PokedexName"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -2037,13 +2120,21 @@ This parameter can be a string or an integer.
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="pokemon_entries"
   headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_pokemon_entries"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_pokemon_entries_pokemon_entry\">pokemon_entry</a>","children":[{"label":"pokemon_entry","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_pokemon_entries_pokemon_entry\">pokemon_entry</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2053,14 +2144,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="pokemon_entries_pokemon_entry"
   headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_pokemon_entries_pokemon_entry"
   parentId="pokemon_entries"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2070,19 +2161,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -2091,7 +2170,7 @@ This parameter can be a string or an integer.
   parentId="pokemon_entries_pokemon_entry"
   typeInfo={{"label":"int32","linkedLabel":"int32","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2120,7 +2199,7 @@ _Example:_
   parentId="pokemon_entries_pokemon_entry"
   typeInfo={{"label":"pokemon_species","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_pokemon_entries_pokemon_entry_pokemon_species_pokemon_species\">pokemon_species</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2130,63 +2209,17 @@ _Example:_
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
-<ExpandableProperty
-  slot="entry"
-  id="pokemon_entries_pokemon_entry_pokemon_species_name"
-  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_pokemon_entries_pokemon_entry_pokemon_species_name"
-  parentId="pokemon_entries_pokemon_entry_pokemon_species"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### name \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_pokemon_entries_pokemon_entry_pokemon_species_name\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-bulbasaur
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
-<ExpandableProperty
-  slot="entry"
-  id="pokemon_entries_pokemon_entry_pokemon_species_url"
-  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_pokemon_entries_pokemon_entry_pokemon_species_url"
-  parentId="pokemon_entries_pokemon_entry_pokemon_species"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
+</ExpandableBreakoutProperties>
 
-<ExpandablePropertyTitle slot="title">
+</ExpandableBreakout>
 
-##### url \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_pokemon_entries_pokemon_entry_pokemon_species_url\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-https://pokeapi.co/api/v2/pokemon-species/1/
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2196,7 +2229,7 @@ https://pokeapi.co/api/v2/pokemon-species/1/
   headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_region"
   typeInfo={{"label":"RegionSummary","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_region_regionsummary\">RegionSummary</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2206,22 +2239,39 @@ https://pokeapi.co/api/v2/pokemon-species/1/
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="region_RegionSummary"
+  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_region_regionsummary"
+  parentId="region"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### RegionSummary \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_region_regionsummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="region_name"
-  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_region_name"
-  parentId="region"
+  id="region_RegionSummary_name"
+  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_region_regionsummary_name"
+  parentId="region_RegionSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_region_name\}
+##### name \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_region_regionsummary_name\}
 
 </ExpandablePropertyTitle>
 
@@ -2229,20 +2279,28 @@ https://pokeapi.co/api/v2/pokemon-species/1/
 
 <ExpandableProperty
   slot="entry"
-  id="region_url"
-  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_region_url"
-  parentId="region"
+  id="region_RegionSummary_url"
+  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_region_regionsummary_url"
+  parentId="region_RegionSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_region_url\}
+##### url \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_region_regionsummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2252,7 +2310,7 @@ https://pokeapi.co/api/v2/pokemon-species/1/
   headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_version_groups"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_version_groups_pokemon_entry\">pokemon_entry</a>","children":[{"label":"pokemon_entry","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_version_groups_pokemon_entry\">pokemon_entry</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2262,14 +2320,14 @@ https://pokeapi.co/api/v2/pokemon-species/1/
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="version_groups_pokemon_entry"
   headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_version_groups_pokemon_entry"
   parentId="version_groups"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2279,19 +2337,7 @@ https://pokeapi.co/api/v2/pokemon-species/1/
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -2300,7 +2346,7 @@ https://pokeapi.co/api/v2/pokemon-species/1/
   parentId="version_groups_pokemon_entry"
   typeInfo={{"label":"int32","linkedLabel":"int32","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2329,7 +2375,7 @@ _Example:_
   parentId="version_groups_pokemon_entry"
   typeInfo={{"label":"pokemon_species","linkedLabel":"<a href=\"#operation-api_v2_pokedex_retrieve_responses_200_application-json_version_groups_pokemon_entry_pokemon_species_pokemon_species\">pokemon_species</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2339,63 +2385,17 @@ _Example:_
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
-<ExpandableProperty
-  slot="entry"
-  id="version_groups_pokemon_entry_pokemon_species_name"
-  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_version_groups_pokemon_entry_pokemon_species_name"
-  parentId="version_groups_pokemon_entry_pokemon_species"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### name \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_version_groups_pokemon_entry_pokemon_species_name\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-bulbasaur
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
-<ExpandableProperty
-  slot="entry"
-  id="version_groups_pokemon_entry_pokemon_species_url"
-  headingId="operation-api_v2_pokedex_retrieve_responses_200_application-json_version_groups_pokemon_entry_pokemon_species_url"
-  parentId="version_groups_pokemon_entry_pokemon_species"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
+</ExpandableBreakoutProperties>
 
-<ExpandablePropertyTitle slot="title">
+</ExpandableBreakout>
 
-##### url \{#operation-api_v2_pokedex_retrieve_responses_200_application-json_version_groups_pokemon_entry_pokemon_species_url\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-https://pokeapi.co/api/v2/pokemon-species/1/
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2448,7 +2448,7 @@ Versions of the games, e.g., Red, Blue or Yellow.
   id="cookieAuth"
   headingId="operation-api_v2_version_list_security_cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -2465,7 +2465,7 @@ Versions of the games, e.g., Red, Blue or Yellow.
   id="basicAuth"
   headingId="operation-api_v2_version_list_security_basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -2505,7 +2505,7 @@ Versions of the games, e.g., Red, Blue or Yellow.
   headingId="operation-api_v2_version_list_parameters_limit"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2521,6 +2521,10 @@ Number of results to return per page.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -2529,7 +2533,7 @@ Number of results to return per page.
   headingId="operation-api_v2_version_list_parameters_offset"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2545,6 +2549,10 @@ The initial index from which to return the results.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -2553,7 +2561,7 @@ The initial index from which to return the results.
   headingId="operation-api_v2_version_list_parameters_q"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2569,6 +2577,10 @@ The initial index from which to return the results.
 Case-insensitive query applied on the `name` property. 
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2609,7 +2621,7 @@ Case-insensitive query applied on the `name` property.
   headingId="operation-api_v2_version_list_responses_200_application-json_count"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2637,7 +2649,7 @@ _Example:_
   headingId="operation-api_v2_version_list_responses_200_application-json_next"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2665,7 +2677,7 @@ http://api.example.org/accounts/?offset=400&limit=100
   headingId="operation-api_v2_version_list_responses_200_application-json_previous"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2693,7 +2705,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   headingId="operation-api_v2_version_list_responses_200_application-json_results"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_version_list_responses_200_application-json_results_versionsummary\">VersionSummary</a>","children":[{"label":"VersionSummary","linkedLabel":"<a href=\"#operation-api_v2_version_list_responses_200_application-json_results_versionsummary\">VersionSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2703,14 +2715,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="results_VersionSummary"
   headingId="operation-api_v2_version_list_responses_200_application-json_results_versionsummary"
   parentId="results"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2720,19 +2732,7 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -2741,7 +2741,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_VersionSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -2760,7 +2760,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_VersionSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -2769,6 +2769,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 ##### url \{#operation-api_v2_version_list_responses_200_application-json_results_versionsummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2821,7 +2829,7 @@ Versions of the games, e.g., Red, Blue or Yellow.
   id="cookieAuth"
   headingId="operation-api_v2_version_retrieve_security_cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -2838,7 +2846,7 @@ Versions of the games, e.g., Red, Blue or Yellow.
   id="basicAuth"
   headingId="operation-api_v2_version_retrieve_security_basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -2878,7 +2886,7 @@ Versions of the games, e.g., Red, Blue or Yellow.
   headingId="operation-api_v2_version_retrieve_parameters_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2893,6 +2901,10 @@ Versions of the games, e.g., Red, Blue or Yellow.
 This parameter can be a string or an integer.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2944,7 +2956,7 @@ not sure how to add anything other than a hyperlink
   headingId="operation-api_v2_version_retrieve_responses_200_application-json_id"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -2962,7 +2974,7 @@ not sure how to add anything other than a hyperlink
   headingId="operation-api_v2_version_retrieve_responses_200_application-json_name"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -2980,7 +2992,7 @@ not sure how to add anything other than a hyperlink
   headingId="operation-api_v2_version_retrieve_responses_200_application-json_names"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_version_retrieve_responses_200_application-json_names_versionname\">VersionName</a>","children":[{"label":"VersionName","linkedLabel":"<a href=\"#operation-api_v2_version_retrieve_responses_200_application-json_names_versionname\">VersionName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2990,14 +3002,14 @@ not sure how to add anything other than a hyperlink
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="names_VersionName"
   headingId="operation-api_v2_version_retrieve_responses_200_application-json_names_versionname"
   parentId="names"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -3007,19 +3019,7 @@ not sure how to add anything other than a hyperlink
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -3028,7 +3028,7 @@ not sure how to add anything other than a hyperlink
   parentId="names_VersionName"
   typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_version_retrieve_responses_200_application-json_names_versionname_language_languagesummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -3038,22 +3038,39 @@ not sure how to add anything other than a hyperlink
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="names_VersionName_language_LanguageSummary"
+  headingId="operation-api_v2_version_retrieve_responses_200_application-json_names_versionname_language_languagesummary"
+  parentId="names_VersionName_language"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### LanguageSummary \{#operation-api_v2_version_retrieve_responses_200_application-json_names_versionname_language_languagesummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="names_VersionName_language_name"
-  headingId="operation-api_v2_version_retrieve_responses_200_application-json_names_versionname_language_name"
-  parentId="names_VersionName_language"
+  id="names_VersionName_language_LanguageSummary_name"
+  headingId="operation-api_v2_version_retrieve_responses_200_application-json_names_versionname_language_languagesummary_name"
+  parentId="names_VersionName_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-api_v2_version_retrieve_responses_200_application-json_names_versionname_language_name\}
+##### name \{#operation-api_v2_version_retrieve_responses_200_application-json_names_versionname_language_languagesummary_name\}
 
 </ExpandablePropertyTitle>
 
@@ -3061,20 +3078,28 @@ not sure how to add anything other than a hyperlink
 
 <ExpandableProperty
   slot="entry"
-  id="names_VersionName_language_url"
-  headingId="operation-api_v2_version_retrieve_responses_200_application-json_names_versionname_language_url"
-  parentId="names_VersionName_language"
+  id="names_VersionName_language_LanguageSummary_url"
+  headingId="operation-api_v2_version_retrieve_responses_200_application-json_names_versionname_language_languagesummary_url"
+  parentId="names_VersionName_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-api_v2_version_retrieve_responses_200_application-json_names_versionname_language_url\}
+##### url \{#operation-api_v2_version_retrieve_responses_200_application-json_names_versionname_language_languagesummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -3085,7 +3110,7 @@ not sure how to add anything other than a hyperlink
   parentId="names_VersionName"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -3097,13 +3122,21 @@ not sure how to add anything other than a hyperlink
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="version_group"
   headingId="operation-api_v2_version_retrieve_responses_200_application-json_version_group"
   typeInfo={{"label":"VersionGroupSummary","linkedLabel":"<a href=\"#operation-api_v2_version_retrieve_responses_200_application-json_version_group_versiongroupsummary\">VersionGroupSummary</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -3113,22 +3146,39 @@ not sure how to add anything other than a hyperlink
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="version_group_VersionGroupSummary"
+  headingId="operation-api_v2_version_retrieve_responses_200_application-json_version_group_versiongroupsummary"
+  parentId="version_group"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### VersionGroupSummary \{#operation-api_v2_version_retrieve_responses_200_application-json_version_group_versiongroupsummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="version_group_name"
-  headingId="operation-api_v2_version_retrieve_responses_200_application-json_version_group_name"
-  parentId="version_group"
+  id="version_group_VersionGroupSummary_name"
+  headingId="operation-api_v2_version_retrieve_responses_200_application-json_version_group_versiongroupsummary_name"
+  parentId="version_group_VersionGroupSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-api_v2_version_retrieve_responses_200_application-json_version_group_name\}
+##### name \{#operation-api_v2_version_retrieve_responses_200_application-json_version_group_versiongroupsummary_name\}
 
 </ExpandablePropertyTitle>
 
@@ -3136,20 +3186,28 @@ not sure how to add anything other than a hyperlink
 
 <ExpandableProperty
   slot="entry"
-  id="version_group_url"
-  headingId="operation-api_v2_version_retrieve_responses_200_application-json_version_group_url"
-  parentId="version_group"
+  id="version_group_VersionGroupSummary_url"
+  headingId="operation-api_v2_version_retrieve_responses_200_application-json_version_group_versiongroupsummary_url"
+  parentId="version_group_VersionGroupSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-api_v2_version_retrieve_responses_200_application-json_version_group_url\}
+##### url \{#operation-api_v2_version_retrieve_responses_200_application-json_version_group_versiongroupsummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -3202,7 +3260,7 @@ Version groups categorize highly similar versions of the games.
   id="cookieAuth"
   headingId="operation-api_v2_version_group_list_security_cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -3219,7 +3277,7 @@ Version groups categorize highly similar versions of the games.
   id="basicAuth"
   headingId="operation-api_v2_version_group_list_security_basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -3259,7 +3317,7 @@ Version groups categorize highly similar versions of the games.
   headingId="operation-api_v2_version_group_list_parameters_limit"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -3275,6 +3333,10 @@ Number of results to return per page.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -3283,7 +3345,7 @@ Number of results to return per page.
   headingId="operation-api_v2_version_group_list_parameters_offset"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -3299,6 +3361,10 @@ The initial index from which to return the results.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -3307,7 +3373,7 @@ The initial index from which to return the results.
   headingId="operation-api_v2_version_group_list_parameters_q"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -3323,6 +3389,10 @@ The initial index from which to return the results.
 Case-insensitive query applied on the `name` property. 
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -3366,7 +3436,7 @@ Case-insensitive query applied on the `name` property.
   headingId="operation-api_v2_version_group_list_responses_200_application-json_count"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -3394,7 +3464,7 @@ _Example:_
   headingId="operation-api_v2_version_group_list_responses_200_application-json_next"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -3422,7 +3492,7 @@ http://api.example.org/accounts/?offset=400&limit=100
   headingId="operation-api_v2_version_group_list_responses_200_application-json_previous"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -3450,7 +3520,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   headingId="operation-api_v2_version_group_list_responses_200_application-json_results"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_version_group_list_responses_200_application-json_results_versiongroupsummary\">VersionGroupSummary</a>","children":[{"label":"VersionGroupSummary","linkedLabel":"<a href=\"#operation-api_v2_version_group_list_responses_200_application-json_results_versiongroupsummary\">VersionGroupSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -3460,14 +3530,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="results_VersionGroupSummary"
   headingId="operation-api_v2_version_group_list_responses_200_application-json_results_versiongroupsummary"
   parentId="results"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -3477,19 +3547,7 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -3498,7 +3556,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_VersionGroupSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -3517,7 +3575,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_VersionGroupSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -3526,6 +3584,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 ##### url \{#operation-api_v2_version_group_list_responses_200_application-json_results_versiongroupsummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -3578,7 +3644,7 @@ Version groups categorize highly similar versions of the games.
   id="cookieAuth"
   headingId="operation-api_v2_version_group_retrieve_security_cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -3595,7 +3661,7 @@ Version groups categorize highly similar versions of the games.
   id="basicAuth"
   headingId="operation-api_v2_version_group_retrieve_security_basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -3635,7 +3701,7 @@ Version groups categorize highly similar versions of the games.
   headingId="operation-api_v2_version_group_retrieve_parameters_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -3650,6 +3716,10 @@ Version groups categorize highly similar versions of the games.
 This parameter can be a string or an integer.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -3693,7 +3763,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_generation"
   typeInfo={{"label":"GenerationSummary","linkedLabel":"<a href=\"#operation-api_v2_version_group_retrieve_responses_200_application-json_generation_generationsummary\">GenerationSummary</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -3703,22 +3773,39 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="generation_GenerationSummary"
+  headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_generation_generationsummary"
+  parentId="generation"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### GenerationSummary \{#operation-api_v2_version_group_retrieve_responses_200_application-json_generation_generationsummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="generation_name"
-  headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_generation_name"
-  parentId="generation"
+  id="generation_GenerationSummary_name"
+  headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_generation_generationsummary_name"
+  parentId="generation_GenerationSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-api_v2_version_group_retrieve_responses_200_application-json_generation_name\}
+##### name \{#operation-api_v2_version_group_retrieve_responses_200_application-json_generation_generationsummary_name\}
 
 </ExpandablePropertyTitle>
 
@@ -3726,20 +3813,28 @@ This parameter can be a string or an integer.
 
 <ExpandableProperty
   slot="entry"
-  id="generation_url"
-  headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_generation_url"
-  parentId="generation"
+  id="generation_GenerationSummary_url"
+  headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_generation_generationsummary_url"
+  parentId="generation_GenerationSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-api_v2_version_group_retrieve_responses_200_application-json_generation_url\}
+##### url \{#operation-api_v2_version_group_retrieve_responses_200_application-json_generation_generationsummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -3749,7 +3844,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_id"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -3767,7 +3862,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_move_learn_methods"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_version_group_retrieve_responses_200_application-json_move_learn_methods_move_learn_method\">move_learn_method</a>","children":[{"label":"move_learn_method","linkedLabel":"<a href=\"#operation-api_v2_version_group_retrieve_responses_200_application-json_move_learn_methods_move_learn_method\">move_learn_method</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -3777,14 +3872,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="move_learn_methods_move_learn_method"
   headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_move_learn_methods_move_learn_method"
   parentId="move_learn_methods"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -3794,19 +3889,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -3815,7 +3898,7 @@ This parameter can be a string or an integer.
   parentId="move_learn_methods_move_learn_method"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -3844,7 +3927,7 @@ level-up
   parentId="move_learn_methods_move_learn_method"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -3866,13 +3949,21 @@ https://pokeapi.co/api/v2/move-learn-method/1/
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="name"
   headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_name"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -3890,7 +3981,7 @@ https://pokeapi.co/api/v2/move-learn-method/1/
   headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_order"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -3908,7 +3999,7 @@ https://pokeapi.co/api/v2/move-learn-method/1/
   headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_pokedexes"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_version_group_retrieve_responses_200_application-json_pokedexes_move_learn_method\">move_learn_method</a>","children":[{"label":"move_learn_method","linkedLabel":"<a href=\"#operation-api_v2_version_group_retrieve_responses_200_application-json_pokedexes_move_learn_method\">move_learn_method</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -3918,14 +4009,14 @@ https://pokeapi.co/api/v2/move-learn-method/1/
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="pokedexes_move_learn_method"
   headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_pokedexes_move_learn_method"
   parentId="pokedexes"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -3935,19 +4026,7 @@ https://pokeapi.co/api/v2/move-learn-method/1/
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -3956,7 +4035,7 @@ https://pokeapi.co/api/v2/move-learn-method/1/
   parentId="pokedexes_move_learn_method"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -3985,7 +4064,7 @@ level-up
   parentId="pokedexes_move_learn_method"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -4007,13 +4086,21 @@ https://pokeapi.co/api/v2/move-learn-method/1/
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="regions"
   headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_regions"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_version_group_retrieve_responses_200_application-json_regions_move_learn_method\">move_learn_method</a>","children":[{"label":"move_learn_method","linkedLabel":"<a href=\"#operation-api_v2_version_group_retrieve_responses_200_application-json_regions_move_learn_method\">move_learn_method</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -4023,14 +4110,14 @@ https://pokeapi.co/api/v2/move-learn-method/1/
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="regions_move_learn_method"
   headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_regions_move_learn_method"
   parentId="regions"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -4040,19 +4127,7 @@ https://pokeapi.co/api/v2/move-learn-method/1/
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -4061,7 +4136,7 @@ https://pokeapi.co/api/v2/move-learn-method/1/
   parentId="regions_move_learn_method"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -4090,7 +4165,7 @@ level-up
   parentId="regions_move_learn_method"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -4112,13 +4187,21 @@ https://pokeapi.co/api/v2/move-learn-method/1/
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="versions"
   headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_versions"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_version_group_retrieve_responses_200_application-json_versions_versionsummary\">VersionSummary</a>","children":[{"label":"VersionSummary","linkedLabel":"<a href=\"#operation-api_v2_version_group_retrieve_responses_200_application-json_versions_versionsummary\">VersionSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -4128,14 +4211,14 @@ https://pokeapi.co/api/v2/move-learn-method/1/
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="versions_VersionSummary"
   headingId="operation-api_v2_version_group_retrieve_responses_200_application-json_versions_versionsummary"
   parentId="versions"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -4145,19 +4228,7 @@ https://pokeapi.co/api/v2/move-learn-method/1/
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -4166,7 +4237,7 @@ https://pokeapi.co/api/v2/move-learn-method/1/
   parentId="versions_VersionSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -4185,7 +4256,7 @@ https://pokeapi.co/api/v2/move-learn-method/1/
   parentId="versions_VersionSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -4194,6 +4265,14 @@ https://pokeapi.co/api/v2/move-learn-method/1/
 ##### url \{#operation-api_v2_version_group_retrieve_responses_200_application-json_versions_versionsummary_url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 

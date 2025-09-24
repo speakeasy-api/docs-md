@@ -5,40 +5,31 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
-  ExpandableBreakoutDefaultValue,
-  ExpandableBreakoutDescription,
-  ExpandableBreakoutExamples,
   ExpandableBreakoutTitle,
   ExpandableProperty,
+  ExpandablePropertyBreakouts,
   ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedattachments from "../loaders/attachments.tsx";
-import Embedbacklinkresults from "../loaders/backlinkresults.tsx";
-import Embeddocument from "../loaders/document.tsx";
-import Embedmustincludesuggestions from "../loaders/mustincludesuggestions.tsx";
-import Embedpins from "../loaders/pins.tsx";
-import Embedquerysuggestion from "../loaders/querysuggestion.tsx";
-import Embedrelatedresults from "../loaders/relatedresults.tsx";
-import Embedsnippets from "../loaders/snippets.tsx";
-import Embedstructuredresults from "../loaders/structuredresults.tsx";
+import Embedsearchresult from "../loaders/searchresult.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="clusteredresults"
-  headingId="embed-clusteredresults+clusteredresults"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-allclusteredresults+allclusteredresults+clustergroup+clusteredresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-allclusteredresults+allclusteredresults+clustergroup+clusteredresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="clusteredresults_clusteredResults"
+  headingId="embed-clusteredresults+clusteredresults+clusteredresults"
+  parentId="clusteredresults"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+clusteredresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+clusteredresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### clusteredResults \{#embed-clusteredresults+clusteredresults\}
+##### clusteredResults \{#embed-clusteredresults+clusteredresults+clusteredresults\}
 
 </ExpandablePropertyTitle>
 
@@ -48,640 +39,40 @@ A truncated list of documents associated with this relation. To be used in favor
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
-  id="clusteredresults_SearchResult"
-  headingId="embed-clusteredresults+clusteredresults+searchresult"
-  parentId="clusteredresults"
-  hasFrontMatter={false}
+  id="clusteredresults_clusteredResults_SearchResult"
+  headingId="embed-clusteredresults+clusteredresults+clusteredresults+searchresult"
+  parentId="clusteredresults_clusteredResults"
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### SearchResult \{#embed-clusteredresults+clusteredresults+searchresult\}
+#### SearchResult \{#embed-clusteredresults+clusteredresults+clusteredresults+searchresult\}
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
+<Embed slot="embed">
 
-</ExpandableBreakoutDescription>
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="SearchResult"
+  triggerText="View SearchResult details"
+>
 
-<ExpandableBreakoutExamples slot="examples">
+<Embedsearchresult />
 
-</ExpandableBreakoutExamples>
+</EmbedTrigger>
 
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
+</Embed>
 
 </ExpandableBreakout>
 
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_allClusteredResults"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+allclusteredresults"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+allclusteredresults+clustergroup\">ClusterGroup</a>","children":[{"label":"ClusterGroup","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+allclusteredresults+clustergroup\">ClusterGroup</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### allClusteredResults \{#embed-clusteredresults+clusteredresults+searchresult+allclusteredresults\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A list of results that should be displayed as associated with this result.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_attachmentContext"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+attachmentcontext"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### attachmentContext \{#embed-clusteredresults+clusteredresults+searchresult+attachmentcontext\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Additional context for the relationship between the result and the document it's attached to.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_attachmentCount"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+attachmentcount"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### attachmentCount \{#embed-clusteredresults+clusteredresults+searchresult+attachmentcount\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The total number of attachments.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_attachments"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+attachments"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+attachments+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+attachments+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### attachments \{#embed-clusteredresults+clusteredresults+searchresult+attachments\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A truncated list of documents associated with this relation. To be used in favor of `documents` because it contains a trackingToken.
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="attachments" triggerText="View attachments details">
-
-<Embedattachments />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_backlinkResults"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+backlinkresults"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+backlinkresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+backlinkresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### backlinkResults \{#embed-clusteredresults+clusteredresults+searchresult+backlinkresults\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A truncated list of documents associated with this relation. To be used in favor of `documents` because it contains a trackingToken.
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="backlinkResults"
-  triggerText="View backlinkResults details"
->
-
-<Embedbacklinkresults />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_clusterType"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+clustertype"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"SIMILAR\"","linkedLabel":"\"SIMILAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"FRESHNESS\"","linkedLabel":"\"FRESHNESS\"","children":[],"breakoutSubTypes":{}},{"label":"\"TITLE\"","linkedLabel":"\"TITLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"NONE\"","linkedLabel":"\"NONE\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_REPLY\"","linkedLabel":"\"THREAD_REPLY\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_ROOT\"","linkedLabel":"\"THREAD_ROOT\"","children":[],"breakoutSubTypes":{}},{"label":"\"PREFIX\"","linkedLabel":"\"PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUFFIX\"","linkedLabel":"\"SUFFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_PREFIX\"","linkedLabel":"\"AUTHOR_PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_SUFFIX\"","linkedLabel":"\"AUTHOR_SUFFIX\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### clusterType \{#embed-clusteredresults+clusteredresults+searchresult+clustertype\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The reason for inclusion of clusteredResults.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_clusteredResults"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+clusteredresults"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+clusteredresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+clusteredresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### clusteredResults \{#embed-clusteredresults+clusteredresults+searchresult+clusteredresults\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A truncated list of documents associated with this relation. To be used in favor of `documents` because it contains a trackingToken.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_document"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+document"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+document+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### document \{#embed-clusteredresults+clusteredresults+searchresult+document\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="document" triggerText="View document details">
-
-<Embeddocument />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_fullText"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+fulltext"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### fullText \{#embed-clusteredresults+clusteredresults+searchresult+fulltext\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The full body text of the result if not already contained in the snippets. Only populated for conversation results (e.g. results from a messaging app such as Slack).
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_fullTextList"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+fulltextlist"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### fullTextList \{#embed-clusteredresults+clusteredresults+searchresult+fulltextlist\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The full body text of the result if not already contained in the snippets; each item in the array represents a separate line in the original text. Only populated for conversation results (e.g. results from a messaging app such as Slack).
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_mustIncludeSuggestions"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+mustincludesuggestions"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"QuerySuggestionList","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+mustincludesuggestions+querysuggestionlist\">QuerySuggestionList</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### mustIncludeSuggestions \{#embed-clusteredresults+clusteredresults+searchresult+mustincludesuggestions\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="mustIncludeSuggestions"
-  triggerText="View mustIncludeSuggestions details"
->
-
-<Embedmustincludesuggestions />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_nativeAppUrl"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+nativeappurl"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### nativeAppUrl \{#embed-clusteredresults+clusteredresults+searchresult+nativeappurl\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A deep link, if available, into the datasource's native application for the user's platform (e.g. slack://...).
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_pins"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+pins"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+pins+pindocument\">PinDocument</a>","children":[{"label":"PinDocument","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+pins+pindocument\">PinDocument</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### pins \{#embed-clusteredresults+clusteredresults+searchresult+pins\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A list of pins associated with this search result.
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="pins" triggerText="View pins details">
-
-<Embedpins />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_prominence"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+prominence"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"HERO\"","linkedLabel":"\"HERO\"","children":[],"breakoutSubTypes":{}},{"label":"\"PROMOTED\"","linkedLabel":"\"PROMOTED\"","children":[],"breakoutSubTypes":{}},{"label":"\"STANDARD\"","linkedLabel":"\"STANDARD\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### prominence \{#embed-clusteredresults+clusteredresults+searchresult+prominence\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The level of visual distinction that should be given to a result.
-
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_querySuggestion"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+querysuggestion"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"QuerySuggestion","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+querysuggestion+querysuggestion\">QuerySuggestion</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### querySuggestion \{#embed-clusteredresults+clusteredresults+searchresult+querysuggestion\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="querySuggestion"
-  triggerText="View querySuggestion details"
->
-
-<Embedquerysuggestion />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_relatedResults"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+relatedresults"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+relatedresults+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+relatedresults+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### relatedResults \{#embed-clusteredresults+clusteredresults+searchresult+relatedresults\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A list of documents related to this person.
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="relatedResults"
-  triggerText="View relatedResults details"
->
-
-<Embedrelatedresults />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_snippets"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+snippets"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+snippets+searchresultsnippet\">SearchResultSnippet</a>","children":[{"label":"SearchResultSnippet","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+snippets+searchresultsnippet\">SearchResultSnippet</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### snippets \{#embed-clusteredresults+clusteredresults+searchresult+snippets\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Any snippets associated to the populated object.
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="snippets" triggerText="View snippets details">
-
-<Embedsnippets />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_structuredResults"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+structuredresults"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+structuredresults+structuredresult\">StructuredResult</a>","children":[{"label":"StructuredResult","linkedLabel":"<a href=\"#embed-clusteredresults+clusteredresults+searchresult+structuredresults+structuredresult\">StructuredResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### structuredResults \{#embed-clusteredresults+clusteredresults+searchresult+structuredresults\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-An array of entities in the work graph retrieved via a data request.
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="structuredResults"
-  triggerText="View structuredResults details"
->
-
-<Embedstructuredresults />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_title"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+title"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### title \{#embed-clusteredresults+clusteredresults+searchresult+title\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_trackingToken"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+trackingtoken"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### trackingToken \{#embed-clusteredresults+clusteredresults+searchresult+trackingtoken\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-An opaque token that represents this particular result in this particular query. To be used for /feedback reporting.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="clusteredresults_SearchResult_url"
-  headingId="embed-clusteredresults+clusteredresults+searchresult+url"
-  parentId="clusteredresults_SearchResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### url \{#embed-clusteredresults+clusteredresults+searchresult+url\}
-
-</ExpandablePropertyTitle>
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 

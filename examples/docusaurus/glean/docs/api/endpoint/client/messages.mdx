@@ -10,11 +10,10 @@ import {
   EmbedProvider,
   EmbedTrigger,
   ExpandableBreakout,
-  ExpandableBreakoutDefaultValue,
-  ExpandableBreakoutDescription,
-  ExpandableBreakoutExamples,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
+  ExpandablePropertyBreakouts,
   ExpandablePropertyDescription,
   ExpandablePropertyExamples,
   ExpandablePropertyTitle,
@@ -36,34 +35,26 @@ import {
   Tag,
   TagTitle
 } from "@speakeasy-api/docs-md-react";
-import Embedclustergroup from "../../../../src/components/speakeasy-embeds/loaders/clustergroup.tsx";
-import Embedsearchresult from "../../../../src/components/speakeasy-embeds/loaders/searchresult.tsx";
-import Embedcontainerdocument from "../../../../src/components/speakeasy-embeds/loaders/containerdocument.tsx";
-import Embedcontent from "../../../../src/components/speakeasy-embeds/loaders/content.tsx";
-import Embedmetadata from "../../../../src/components/speakeasy-embeds/loaders/metadata.tsx";
-import Embedparentdocument from "../../../../src/components/speakeasy-embeds/loaders/parentdocument.tsx";
-import Embedsections from "../../../../src/components/speakeasy-embeds/loaders/sections.tsx";
-import Embedperson from "../../../../src/components/speakeasy-embeds/loaders/person.tsx";
-import Embedsuggestions from "../../../../src/components/speakeasy-embeds/loaders/suggestions.tsx";
-import Embedpindocument from "../../../../src/components/speakeasy-embeds/loaders/pindocument.tsx";
-import Embedinputdetails from "../../../../src/components/speakeasy-embeds/loaders/inputdetails.tsx";
-import Embedranges from "../../../../src/components/speakeasy-embeds/loaders/ranges.tsx";
-import Embedrequestoptions from "../../../../src/components/speakeasy-embeds/loaders/requestoptions.tsx";
-import Embedsearchproviderinfo from "../../../../src/components/speakeasy-embeds/loaders/searchproviderinfo.tsx";
-import Embedrelateddocuments from "../../../../src/components/speakeasy-embeds/loaders/relateddocuments.tsx";
-import Embedsearchresultsnippet from "../../../../src/components/speakeasy-embeds/loaders/searchresultsnippet.tsx";
-import Embedstructuredresult from "../../../../src/components/speakeasy-embeds/loaders/structuredresult.tsx";
-import Embederrormessages from "../../../../src/components/speakeasy-embeds/loaders/errormessages.tsx";
-import Embedinvalidoperators from "../../../../src/components/speakeasy-embeds/loaders/invalidoperators.tsx";
-import Embedfacetresult from "../../../../src/components/speakeasy-embeds/loaders/facetresult.tsx";
-import Embedfollowupactions from "../../../../src/components/speakeasy-embeds/loaders/followupactions.tsx";
-import Embedadditionalquerysuggestions from "../../../../src/components/speakeasy-embeds/loaders/additionalquerysuggestions.tsx";
+import Embedallclusteredresults from "../../../../src/components/speakeasy-embeds/loaders/allclusteredresults.tsx";
+import Embedattachments from "../../../../src/components/speakeasy-embeds/loaders/attachments.tsx";
+import Embedbacklinkresults from "../../../../src/components/speakeasy-embeds/loaders/backlinkresults.tsx";
+import Embedclusteredresults from "../../../../src/components/speakeasy-embeds/loaders/clusteredresults.tsx";
+import Embeddocument from "../../../../src/components/speakeasy-embeds/loaders/document.tsx";
+import Embedmustincludesuggestions from "../../../../src/components/speakeasy-embeds/loaders/mustincludesuggestions.tsx";
+import Embedpins from "../../../../src/components/speakeasy-embeds/loaders/pins.tsx";
 import Embedquerysuggestion from "../../../../src/components/speakeasy-embeds/loaders/querysuggestion.tsx";
-import Embedsearchwarning from "../../../../src/components/speakeasy-embeds/loaders/searchwarning.tsx";
-import Embedsearchedqueryranges from "../../../../src/components/speakeasy-embeds/loaders/searchedqueryranges.tsx";
-import Embedresulttab from "../../../../src/components/speakeasy-embeds/loaders/resulttab.tsx";
-import Embediconconfig from "../../../../src/components/speakeasy-embeds/loaders/iconconfig.tsx";
-import Embedfacetfilter from "../../../../src/components/speakeasy-embeds/loaders/facetfilter.tsx";
+import Embedrelatedresults from "../../../../src/components/speakeasy-embeds/loaders/relatedresults.tsx";
+import Embedsnippets from "../../../../src/components/speakeasy-embeds/loaders/snippets.tsx";
+import Embedstructuredresults from "../../../../src/components/speakeasy-embeds/loaders/structuredresults.tsx";
+import Embedgleandataerror from "../../../../src/components/speakeasy-embeds/loaders/gleandataerror.tsx";
+import Embedfacetresults from "../../../../src/components/speakeasy-embeds/loaders/facetresults.tsx";
+import Embedgeneratedqnaresult from "../../../../src/components/speakeasy-embeds/loaders/generatedqnaresult.tsx";
+import Embedmetadata from "../../../../src/components/speakeasy-embeds/loaders/metadata.tsx";
+import Embedresulttabs from "../../../../src/components/speakeasy-embeds/loaders/resulttabs.tsx";
+import Embedresults from "../../../../src/components/speakeasy-embeds/loaders/results.tsx";
+import Embedresultsdescription from "../../../../src/components/speakeasy-embeds/loaders/resultsdescription.tsx";
+import Embedrewrittenfacetfilters from "../../../../src/components/speakeasy-embeds/loaders/rewrittenfacetfilters.tsx";
+import Embedsessioninfo from "../../../../src/components/speakeasy-embeds/loaders/sessioninfo.tsx";
 
 <EmbedProvider />
 
@@ -123,7 +114,7 @@ Includes request params such as the id for channel/message and direction.
   headingId="operation-messages+request+datasource"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"SLACK\"","linkedLabel":"\"SLACK\"","children":[],"breakoutSubTypes":{}},{"label":"\"MICROSOFTTEAMS\"","linkedLabel":"\"MICROSOFTTEAMS\"","children":[],"breakoutSubTypes":{}},{"label":"\"FACEBOOKWORKPLACE\"","linkedLabel":"\"FACEBOOKWORKPLACE\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -147,7 +138,7 @@ The type of the data source. Missing field defaults to SLACK.
   headingId="operation-messages+request+datasourceinstancedisplayname"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -171,7 +162,7 @@ The datasource instance display name from which the document was extracted. This
   headingId="operation-messages+request+direction"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"OLDER\"","linkedLabel":"\"OLDER\"","children":[],"breakoutSubTypes":{}},{"label":"\"NEWER\"","linkedLabel":"\"NEWER\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -195,7 +186,7 @@ The direction of the results asked with respect to the reference timestamp. Miss
   headingId="operation-messages+request+id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -219,7 +210,7 @@ ID corresponding to the requested idType. Note that channel and threads are repr
   headingId="operation-messages+request+idtype"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"CHANNEL_NAME\"","linkedLabel":"\"CHANNEL_NAME\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_ID\"","linkedLabel":"\"THREAD_ID\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONVERSATION_ID\"","linkedLabel":"\"CONVERSATION_ID\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -243,7 +234,7 @@ Type of the id in the incoming request.
   headingId="operation-messages+request+includerootmessage"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -267,7 +258,7 @@ Whether to include root message in response.
   headingId="operation-messages+request+timestampmillis"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -291,7 +282,7 @@ Timestamp in millis of the reference message. Only applicable when using a messa
   headingId="operation-messages+request+workspaceid"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -349,7 +340,7 @@ OK
   headingId="operation-messages+responses+200+application-json+hasmore"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -373,7 +364,7 @@ Whether there are more results for client to continue requesting.
   headingId="operation-messages+responses+200+application-json+rootmessage"
   typeInfo={{"label":"SearchResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -383,22 +374,39 @@ Whether there are more results for client to continue requesting.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="rootMessage_SearchResult"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult"
+  parentId="rootMessage"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### SearchResult \{#operation-messages+responses+200+application-json+rootmessage+searchresult\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_allClusteredResults"
-  headingId="operation-messages+responses+200+application-json+rootmessage+allclusteredresults"
-  parentId="rootMessage"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+allclusteredresults+clustergroup\">ClusterGroup</a>","children":[{"label":"ClusterGroup","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+allclusteredresults+clustergroup\">ClusterGroup</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="rootMessage_SearchResult_allClusteredResults"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+allclusteredresults"
+  parentId="rootMessage_SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+allclusteredresults+clustergroup\">ClusterGroup</a>","children":[{"label":"ClusterGroup","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+allclusteredresults+clustergroup\">ClusterGroup</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### allClusteredResults \{#operation-messages+responses+200+application-json+rootmessage+allclusteredresults\}
+##### allClusteredResults \{#operation-messages+responses+200+application-json+rootmessage+searchresult+allclusteredresults\}
 
 </ExpandablePropertyTitle>
 
@@ -408,65 +416,36 @@ A list of results that should be displayed as associated with this result.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="rootMessage_allClusteredResults_ClusterGroup"
-  headingId="operation-messages+responses+200+application-json+rootmessage+allclusteredresults+clustergroup"
-  parentId="rootMessage_allClusteredResults"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### ClusterGroup \{#operation-messages+responses+200+application-json+rootmessage+allclusteredresults+clustergroup\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="ClusterGroup"
-  triggerText="View ClusterGroup details"
+  embedTitle="allClusteredResults"
+  triggerText="View allClusteredResults details"
 >
 
-<Embedclustergroup />
+<Embedallclusteredresults />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_attachmentContext"
-  headingId="operation-messages+responses+200+application-json+rootmessage+attachmentcontext"
-  parentId="rootMessage"
+  id="rootMessage_SearchResult_attachmentContext"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+attachmentcontext"
+  parentId="rootMessage_SearchResult"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### attachmentContext \{#operation-messages+responses+200+application-json+rootmessage+attachmentcontext\}
+##### attachmentContext \{#operation-messages+responses+200+application-json+rootmessage+searchresult+attachmentcontext\}
 
 </ExpandablePropertyTitle>
 
@@ -480,18 +459,18 @@ Additional context for the relationship between the result and the document it's
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_attachmentCount"
-  headingId="operation-messages+responses+200+application-json+rootmessage+attachmentcount"
-  parentId="rootMessage"
+  id="rootMessage_SearchResult_attachmentCount"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+attachmentcount"
+  parentId="rootMessage_SearchResult"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### attachmentCount \{#operation-messages+responses+200+application-json+rootmessage+attachmentcount\}
+##### attachmentCount \{#operation-messages+responses+200+application-json+rootmessage+searchresult+attachmentcount\}
 
 </ExpandablePropertyTitle>
 
@@ -505,18 +484,18 @@ The total number of attachments.
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_attachments"
-  headingId="operation-messages+responses+200+application-json+rootmessage+attachments"
-  parentId="rootMessage"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+attachments+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+attachments+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="rootMessage_SearchResult_attachments"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+attachments"
+  parentId="rootMessage_SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+attachments+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+attachments+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### attachments \{#operation-messages+responses+200+application-json+rootmessage+attachments\}
+##### attachments \{#operation-messages+responses+200+application-json+rootmessage+searchresult+attachments\}
 
 </ExpandablePropertyTitle>
 
@@ -526,65 +505,32 @@ A truncated list of documents associated with this relation. To be used in favor
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="rootMessage_attachments_SearchResult"
-  headingId="operation-messages+responses+200+application-json+rootmessage+attachments+searchresult"
-  parentId="rootMessage_attachments"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### SearchResult \{#operation-messages+responses+200+application-json+rootmessage+attachments+searchresult\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="SearchResult"
-  triggerText="View SearchResult details"
->
+<EmbedTrigger slot="trigger" embedTitle="attachments" triggerText="View attachments details">
 
-<Embedsearchresult />
+<Embedattachments />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_backlinkResults"
-  headingId="operation-messages+responses+200+application-json+rootmessage+backlinkresults"
-  parentId="rootMessage"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+backlinkresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+backlinkresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="rootMessage_SearchResult_backlinkResults"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+backlinkresults"
+  parentId="rootMessage_SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+backlinkresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+backlinkresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### backlinkResults \{#operation-messages+responses+200+application-json+rootmessage+backlinkresults\}
+##### backlinkResults \{#operation-messages+responses+200+application-json+rootmessage+searchresult+backlinkresults\}
 
 </ExpandablePropertyTitle>
 
@@ -594,65 +540,36 @@ A truncated list of documents associated with this relation. To be used in favor
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="rootMessage_backlinkResults_SearchResult"
-  headingId="operation-messages+responses+200+application-json+rootmessage+backlinkresults+searchresult"
-  parentId="rootMessage_backlinkResults"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### SearchResult \{#operation-messages+responses+200+application-json+rootmessage+backlinkresults+searchresult\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="SearchResult"
-  triggerText="View SearchResult details"
+  embedTitle="backlinkResults"
+  triggerText="View backlinkResults details"
 >
 
-<Embedsearchresult />
+<Embedbacklinkresults />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_clusterType"
-  headingId="operation-messages+responses+200+application-json+rootmessage+clustertype"
-  parentId="rootMessage"
+  id="rootMessage_SearchResult_clusterType"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+clustertype"
+  parentId="rootMessage_SearchResult"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"SIMILAR\"","linkedLabel":"\"SIMILAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"FRESHNESS\"","linkedLabel":"\"FRESHNESS\"","children":[],"breakoutSubTypes":{}},{"label":"\"TITLE\"","linkedLabel":"\"TITLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"NONE\"","linkedLabel":"\"NONE\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_REPLY\"","linkedLabel":"\"THREAD_REPLY\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_ROOT\"","linkedLabel":"\"THREAD_ROOT\"","children":[],"breakoutSubTypes":{}},{"label":"\"PREFIX\"","linkedLabel":"\"PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUFFIX\"","linkedLabel":"\"SUFFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_PREFIX\"","linkedLabel":"\"AUTHOR_PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_SUFFIX\"","linkedLabel":"\"AUTHOR_SUFFIX\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### clusterType \{#operation-messages+responses+200+application-json+rootmessage+clustertype\}
+##### clusterType \{#operation-messages+responses+200+application-json+rootmessage+searchresult+clustertype\}
 
 </ExpandablePropertyTitle>
 
@@ -666,18 +583,18 @@ The reason for inclusion of clusteredResults.
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_clusteredResults"
-  headingId="operation-messages+responses+200+application-json+rootmessage+clusteredresults"
-  parentId="rootMessage"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+clusteredresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+clusteredresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="rootMessage_SearchResult_clusteredResults"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+clusteredresults"
+  parentId="rootMessage_SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+clusteredresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+clusteredresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### clusteredResults \{#operation-messages+responses+200+application-json+rootmessage+clusteredresults\}
+##### clusteredResults \{#operation-messages+responses+200+application-json+rootmessage+searchresult+clusteredresults\}
 
 </ExpandablePropertyTitle>
 
@@ -687,121 +604,44 @@ A truncated list of documents associated with this relation. To be used in favor
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="rootMessage_clusteredResults_SearchResult"
-  headingId="operation-messages+responses+200+application-json+rootmessage+clusteredresults+searchresult"
-  parentId="rootMessage_clusteredResults"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### SearchResult \{#operation-messages+responses+200+application-json+rootmessage+clusteredresults+searchresult\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="SearchResult"
-  triggerText="View SearchResult details"
+  embedTitle="clusteredResults"
+  triggerText="View clusteredResults details"
 >
 
-<Embedsearchresult />
+<Embedclusteredresults />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_document"
-  headingId="operation-messages+responses+200+application-json+rootmessage+document"
-  parentId="rootMessage"
-  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+document+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### document \{#operation-messages+responses+200+application-json+rootmessage+document\}
-
-</ExpandablePropertyTitle>
-
 </ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_document_connectorType"
-  headingId="operation-messages+responses+200+application-json+rootmessage+document+connectortype"
-  parentId="rootMessage_document"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"API_CRAWL\"","linkedLabel":"\"API_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"BROWSER_CRAWL\"","linkedLabel":"\"BROWSER_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"BROWSER_HISTORY\"","linkedLabel":"\"BROWSER_HISTORY\"","children":[],"breakoutSubTypes":{}},{"label":"\"BUILTIN\"","linkedLabel":"\"BUILTIN\"","children":[],"breakoutSubTypes":{}},{"label":"\"FEDERATED_SEARCH\"","linkedLabel":"\"FEDERATED_SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"PUSH_API\"","linkedLabel":"\"PUSH_API\"","children":[],"breakoutSubTypes":{}},{"label":"\"WEB_CRAWL\"","linkedLabel":"\"WEB_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"NATIVE_HISTORY\"","linkedLabel":"\"NATIVE_HISTORY\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="rootMessage_SearchResult_document"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+document"
+  parentId="rootMessage_SearchResult"
+  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+document+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### connectorType \{#operation-messages+responses+200+application-json+rootmessage+document+connectortype\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The source from which document content was pulled, e.g. an API crawl or browser history
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_document_containerDocument"
-  headingId="operation-messages+responses+200+application-json+rootmessage+document+containerdocument"
-  parentId="rootMessage_document"
-  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+document+containerdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### containerDocument \{#operation-messages+responses+200+application-json+rootmessage+document+containerdocument\}
+##### document \{#operation-messages+responses+200+application-json+rootmessage+searchresult+document\}
 
 </ExpandablePropertyTitle>
 
 <Embed slot="embed">
 
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="containerDocument"
-  triggerText="View containerDocument details"
->
+<EmbedTrigger slot="trigger" embedTitle="document" triggerText="View document details">
 
-<Embedcontainerdocument />
+<Embeddocument />
 
 </EmbedTrigger>
 
@@ -811,269 +651,18 @@ The source from which document content was pulled, e.g. an API crawl or browser 
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_document_content"
-  headingId="operation-messages+responses+200+application-json+rootmessage+document+content"
-  parentId="rootMessage_document"
-  typeInfo={{"label":"DocumentContent","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+document+content+documentcontent\">DocumentContent</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### content \{#operation-messages+responses+200+application-json+rootmessage+document+content\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="content" triggerText="View content details">
-
-<Embedcontent />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_document_datasource"
-  headingId="operation-messages+responses+200+application-json+rootmessage+document+datasource"
-  parentId="rootMessage_document"
+  id="rootMessage_SearchResult_fullText"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+fulltext"
+  parentId="rootMessage_SearchResult"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### datasource \{#operation-messages+responses+200+application-json+rootmessage+document+datasource\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The app or other repository type from which the document was extracted
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_document_docType"
-  headingId="operation-messages+responses+200+application-json+rootmessage+document+doctype"
-  parentId="rootMessage_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### docType \{#operation-messages+responses+200+application-json+rootmessage+document+doctype\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The datasource-specific type of the document (e.g. for Jira issues, this is the issue type such as Bug or Feature Request).
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_document_id"
-  headingId="operation-messages+responses+200+application-json+rootmessage+document+id"
-  parentId="rootMessage_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### id \{#operation-messages+responses+200+application-json+rootmessage+document+id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The Glean Document ID.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_document_metadata"
-  headingId="operation-messages+responses+200+application-json+rootmessage+document+metadata"
-  parentId="rootMessage_document"
-  typeInfo={{"label":"DocumentMetadata","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+document+metadata+documentmetadata\">DocumentMetadata</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### metadata \{#operation-messages+responses+200+application-json+rootmessage+document+metadata\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
-
-<Embedmetadata />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_document_parentDocument"
-  headingId="operation-messages+responses+200+application-json+rootmessage+document+parentdocument"
-  parentId="rootMessage_document"
-  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+document+parentdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### parentDocument \{#operation-messages+responses+200+application-json+rootmessage+document+parentdocument\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="parentDocument"
-  triggerText="View parentDocument details"
->
-
-<Embedparentdocument />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_document_sections"
-  headingId="operation-messages+responses+200+application-json+rootmessage+document+sections"
-  parentId="rootMessage_document"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+document+sections+documentsection\">DocumentSection</a>","children":[{"label":"DocumentSection","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+document+sections+documentsection\">DocumentSection</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### sections \{#operation-messages+responses+200+application-json+rootmessage+document+sections\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A list of content sub-sections in the document, e.g. text blocks with different headings in a Drive doc or Confluence page.
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="sections" triggerText="View sections details">
-
-<Embedsections />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_document_title"
-  headingId="operation-messages+responses+200+application-json+rootmessage+document+title"
-  parentId="rootMessage_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### title \{#operation-messages+responses+200+application-json+rootmessage+document+title\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The title of the document.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_document_url"
-  headingId="operation-messages+responses+200+application-json+rootmessage+document+url"
-  parentId="rootMessage_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### url \{#operation-messages+responses+200+application-json+rootmessage+document+url\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A permalink for the document.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_fullText"
-  headingId="operation-messages+responses+200+application-json+rootmessage+fulltext"
-  parentId="rootMessage"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### fullText \{#operation-messages+responses+200+application-json+rootmessage+fulltext\}
+##### fullText \{#operation-messages+responses+200+application-json+rootmessage+searchresult+fulltext\}
 
 </ExpandablePropertyTitle>
 
@@ -1087,18 +676,18 @@ The full body text of the result if not already contained in the snippets. Only 
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_fullTextList"
-  headingId="operation-messages+responses+200+application-json+rootmessage+fulltextlist"
-  parentId="rootMessage"
+  id="rootMessage_SearchResult_fullTextList"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+fulltextlist"
+  parentId="rootMessage_SearchResult"
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### fullTextList \{#operation-messages+responses+200+application-json+rootmessage+fulltextlist\}
+##### fullTextList \{#operation-messages+responses+200+application-json+rootmessage+searchresult+fulltextlist\}
 
 </ExpandablePropertyTitle>
 
@@ -1112,45 +701,30 @@ The full body text of the result if not already contained in the snippets; each 
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_mustIncludeSuggestions"
-  headingId="operation-messages+responses+200+application-json+rootmessage+mustincludesuggestions"
-  parentId="rootMessage"
-  typeInfo={{"label":"QuerySuggestionList","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+mustincludesuggestions+querysuggestionlist\">QuerySuggestionList</a>","children":[],"breakoutSubTypes":{}}}
+  id="rootMessage_SearchResult_mustIncludeSuggestions"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+mustincludesuggestions"
+  parentId="rootMessage_SearchResult"
+  typeInfo={{"label":"QuerySuggestionList","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+mustincludesuggestions+querysuggestionlist\">QuerySuggestionList</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### mustIncludeSuggestions \{#operation-messages+responses+200+application-json+rootmessage+mustincludesuggestions\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_mustIncludeSuggestions_person"
-  headingId="operation-messages+responses+200+application-json+rootmessage+mustincludesuggestions+person"
-  parentId="rootMessage_mustIncludeSuggestions"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+mustincludesuggestions+person+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### person \{#operation-messages+responses+200+application-json+rootmessage+mustincludesuggestions+person\}
+##### mustIncludeSuggestions \{#operation-messages+responses+200+application-json+rootmessage+searchresult+mustincludesuggestions\}
 
 </ExpandablePropertyTitle>
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="person" triggerText="View person details">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="mustIncludeSuggestions"
+  triggerText="View mustIncludeSuggestions details"
+>
 
-<Embedperson />
+<Embedmustincludesuggestions />
 
 </EmbedTrigger>
 
@@ -1160,47 +734,18 @@ The full body text of the result if not already contained in the snippets; each 
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_mustIncludeSuggestions_suggestions"
-  headingId="operation-messages+responses+200+application-json+rootmessage+mustincludesuggestions+suggestions"
-  parentId="rootMessage_mustIncludeSuggestions"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+mustincludesuggestions+suggestions+querysuggestion\">QuerySuggestion</a>","children":[{"label":"QuerySuggestion","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+mustincludesuggestions+suggestions+querysuggestion\">QuerySuggestion</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### suggestions \{#operation-messages+responses+200+application-json+rootmessage+mustincludesuggestions+suggestions\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="suggestions" triggerText="View suggestions details">
-
-<Embedsuggestions />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_nativeAppUrl"
-  headingId="operation-messages+responses+200+application-json+rootmessage+nativeappurl"
-  parentId="rootMessage"
+  id="rootMessage_SearchResult_nativeAppUrl"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+nativeappurl"
+  parentId="rootMessage_SearchResult"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### nativeAppUrl \{#operation-messages+responses+200+application-json+rootmessage+nativeappurl\}
+##### nativeAppUrl \{#operation-messages+responses+200+application-json+rootmessage+searchresult+nativeappurl\}
 
 </ExpandablePropertyTitle>
 
@@ -1214,18 +759,18 @@ A deep link, if available, into the datasource's native application for the user
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_pins"
-  headingId="operation-messages+responses+200+application-json+rootmessage+pins"
-  parentId="rootMessage"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+pins+pindocument\">PinDocument</a>","children":[{"label":"PinDocument","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+pins+pindocument\">PinDocument</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="rootMessage_SearchResult_pins"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+pins"
+  parentId="rootMessage_SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+pins+pindocument\">PinDocument</a>","children":[{"label":"PinDocument","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+pins+pindocument\">PinDocument</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### pins \{#operation-messages+responses+200+application-json+rootmessage+pins\}
+##### pins \{#operation-messages+responses+200+application-json+rootmessage+searchresult+pins\}
 
 </ExpandablePropertyTitle>
 
@@ -1235,61 +780,32 @@ A list of pins associated with this search result.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="rootMessage_pins_PinDocument"
-  headingId="operation-messages+responses+200+application-json+rootmessage+pins+pindocument"
-  parentId="rootMessage_pins"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### PinDocument \{#operation-messages+responses+200+application-json+rootmessage+pins+pindocument\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="PinDocument" triggerText="View PinDocument details">
+<EmbedTrigger slot="trigger" embedTitle="pins" triggerText="View pins details">
 
-<Embedpindocument />
+<Embedpins />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_prominence"
-  headingId="operation-messages+responses+200+application-json+rootmessage+prominence"
-  parentId="rootMessage"
+  id="rootMessage_SearchResult_prominence"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+prominence"
+  parentId="rootMessage_SearchResult"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"HERO\"","linkedLabel":"\"HERO\"","children":[],"breakoutSubTypes":{}},{"label":"\"PROMOTED\"","linkedLabel":"\"PROMOTED\"","children":[],"breakoutSubTypes":{}},{"label":"\"STANDARD\"","linkedLabel":"\"STANDARD\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### prominence \{#operation-messages+responses+200+application-json+rootmessage+prominence\}
+##### prominence \{#operation-messages+responses+200+application-json+rootmessage+searchresult+prominence\}
 
 </ExpandablePropertyTitle>
 
@@ -1304,62 +820,18 @@ The level of visual distinction that should be given to a result.
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_querySuggestion"
-  headingId="operation-messages+responses+200+application-json+rootmessage+querysuggestion"
-  parentId="rootMessage"
-  typeInfo={{"label":"QuerySuggestion","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+querysuggestion+querysuggestion\">QuerySuggestion</a>","children":[],"breakoutSubTypes":{}}}
+  id="rootMessage_SearchResult_querySuggestion"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+querysuggestion"
+  parentId="rootMessage_SearchResult"
+  typeInfo={{"label":"QuerySuggestion","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+querysuggestion+querysuggestion\">QuerySuggestion</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### querySuggestion \{#operation-messages+responses+200+application-json+rootmessage+querysuggestion\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_querySuggestion_datasource"
-  headingId="operation-messages+responses+200+application-json+rootmessage+querysuggestion+datasource"
-  parentId="rootMessage_querySuggestion"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### datasource \{#operation-messages+responses+200+application-json+rootmessage+querysuggestion+datasource\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The datasource associated with the suggestion.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_querySuggestion_inputDetails"
-  headingId="operation-messages+responses+200+application-json+rootmessage+querysuggestion+inputdetails"
-  parentId="rootMessage_querySuggestion"
-  typeInfo={{"label":"SearchRequestInputDetails","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+querysuggestion+inputdetails+searchrequestinputdetails\">SearchRequestInputDetails</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### inputDetails \{#operation-messages+responses+200+application-json+rootmessage+querysuggestion+inputdetails\}
+##### querySuggestion \{#operation-messages+responses+200+application-json+rootmessage+searchresult+querysuggestion\}
 
 </ExpandablePropertyTitle>
 
@@ -1367,11 +839,11 @@ The datasource associated with the suggestion.
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="inputDetails"
-  triggerText="View inputDetails details"
+  embedTitle="querySuggestion"
+  triggerText="View querySuggestion details"
 >
 
-<Embedinputdetails />
+<Embedquerysuggestion />
 
 </EmbedTrigger>
 
@@ -1381,194 +853,18 @@ The datasource associated with the suggestion.
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_querySuggestion_label"
-  headingId="operation-messages+responses+200+application-json+rootmessage+querysuggestion+label"
-  parentId="rootMessage_querySuggestion"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  id="rootMessage_SearchResult_relatedResults"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+relatedresults"
+  parentId="rootMessage_SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+relatedresults+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+relatedresults+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### label \{#operation-messages+responses+200+application-json+rootmessage+querysuggestion+label\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A user-facing description to display for the suggestion.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_querySuggestion_missingTerm"
-  headingId="operation-messages+responses+200+application-json+rootmessage+querysuggestion+missingterm"
-  parentId="rootMessage_querySuggestion"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### missingTerm \{#operation-messages+responses+200+application-json+rootmessage+querysuggestion+missingterm\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A query term missing from the original query on which this suggestion is based.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_querySuggestion_query"
-  headingId="operation-messages+responses+200+application-json+rootmessage+querysuggestion+query"
-  parentId="rootMessage_querySuggestion"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### query \{#operation-messages+responses+200+application-json+rootmessage+querysuggestion+query\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The query being suggested (e.g. enforcing the missing term from the original query).
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_querySuggestion_ranges"
-  headingId="operation-messages+responses+200+application-json+rootmessage+querysuggestion+ranges"
-  parentId="rootMessage_querySuggestion"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+querysuggestion+ranges+textrange\">TextRange</a>","children":[{"label":"TextRange","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+querysuggestion+ranges+textrange\">TextRange</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### ranges \{#operation-messages+responses+200+application-json+rootmessage+querysuggestion+ranges\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The bolded ranges within the query of the QuerySuggestion.
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="ranges" triggerText="View ranges details">
-
-<Embedranges />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_querySuggestion_requestOptions"
-  headingId="operation-messages+responses+200+application-json+rootmessage+querysuggestion+requestoptions"
-  parentId="rootMessage_querySuggestion"
-  typeInfo={{"label":"SearchRequestOptions","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+querysuggestion+requestoptions+searchrequestoptions\">SearchRequestOptions</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### requestOptions \{#operation-messages+responses+200+application-json+rootmessage+querysuggestion+requestoptions\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="requestOptions"
-  triggerText="View requestOptions details"
->
-
-<Embedrequestoptions />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_querySuggestion_searchProviderInfo"
-  headingId="operation-messages+responses+200+application-json+rootmessage+querysuggestion+searchproviderinfo"
-  parentId="rootMessage_querySuggestion"
-  typeInfo={{"label":"SearchProviderInfo","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+querysuggestion+searchproviderinfo+searchproviderinfo\">SearchProviderInfo</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### searchProviderInfo \{#operation-messages+responses+200+application-json+rootmessage+querysuggestion+searchproviderinfo\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="searchProviderInfo"
-  triggerText="View searchProviderInfo details"
->
-
-<Embedsearchproviderinfo />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="rootMessage_relatedResults"
-  headingId="operation-messages+responses+200+application-json+rootmessage+relatedresults"
-  parentId="rootMessage"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+relatedresults+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+relatedresults+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### relatedResults \{#operation-messages+responses+200+application-json+rootmessage+relatedresults\}
+##### relatedResults \{#operation-messages+responses+200+application-json+rootmessage+searchresult+relatedresults\}
 
 </ExpandablePropertyTitle>
 
@@ -1578,65 +874,36 @@ A list of documents related to this person.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="rootMessage_relatedResults_RelatedDocuments"
-  headingId="operation-messages+responses+200+application-json+rootmessage+relatedresults+relateddocuments"
-  parentId="rootMessage_relatedResults"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### RelatedDocuments \{#operation-messages+responses+200+application-json+rootmessage+relatedresults+relateddocuments\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="RelatedDocuments"
-  triggerText="View RelatedDocuments details"
+  embedTitle="relatedResults"
+  triggerText="View relatedResults details"
 >
 
-<Embedrelateddocuments />
+<Embedrelatedresults />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_snippets"
-  headingId="operation-messages+responses+200+application-json+rootmessage+snippets"
-  parentId="rootMessage"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+snippets+searchresultsnippet\">SearchResultSnippet</a>","children":[{"label":"SearchResultSnippet","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+snippets+searchresultsnippet\">SearchResultSnippet</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="rootMessage_SearchResult_snippets"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+snippets"
+  parentId="rootMessage_SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+snippets+searchresultsnippet\">SearchResultSnippet</a>","children":[{"label":"SearchResultSnippet","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+snippets+searchresultsnippet\">SearchResultSnippet</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### snippets \{#operation-messages+responses+200+application-json+rootmessage+snippets\}
+##### snippets \{#operation-messages+responses+200+application-json+rootmessage+searchresult+snippets\}
 
 </ExpandablePropertyTitle>
 
@@ -1646,65 +913,32 @@ Any snippets associated to the populated object.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="rootMessage_snippets_SearchResultSnippet"
-  headingId="operation-messages+responses+200+application-json+rootmessage+snippets+searchresultsnippet"
-  parentId="rootMessage_snippets"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### SearchResultSnippet \{#operation-messages+responses+200+application-json+rootmessage+snippets+searchresultsnippet\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="SearchResultSnippet"
-  triggerText="View SearchResultSnippet details"
->
+<EmbedTrigger slot="trigger" embedTitle="snippets" triggerText="View snippets details">
 
-<Embedsearchresultsnippet />
+<Embedsnippets />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_structuredResults"
-  headingId="operation-messages+responses+200+application-json+rootmessage+structuredresults"
-  parentId="rootMessage"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+structuredresults+structuredresult\">StructuredResult</a>","children":[{"label":"StructuredResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+structuredresults+structuredresult\">StructuredResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="rootMessage_SearchResult_structuredResults"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+structuredresults"
+  parentId="rootMessage_SearchResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+structuredresults+structuredresult\">StructuredResult</a>","children":[{"label":"StructuredResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+rootmessage+searchresult+structuredresults+structuredresult\">StructuredResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### structuredResults \{#operation-messages+responses+200+application-json+rootmessage+structuredresults\}
+##### structuredResults \{#operation-messages+responses+200+application-json+rootmessage+searchresult+structuredresults\}
 
 </ExpandablePropertyTitle>
 
@@ -1714,67 +948,36 @@ An array of entities in the work graph retrieved via a data request.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="rootMessage_structuredResults_StructuredResult"
-  headingId="operation-messages+responses+200+application-json+rootmessage+structuredresults+structuredresult"
-  parentId="rootMessage_structuredResults"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### StructuredResult \{#operation-messages+responses+200+application-json+rootmessage+structuredresults+structuredresult\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-A single object that can support any object in the work graph. Only a single object will be populated.
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="StructuredResult"
-  triggerText="View StructuredResult details"
+  embedTitle="structuredResults"
+  triggerText="View structuredResults details"
 >
 
-<Embedstructuredresult />
+<Embedstructuredresults />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_title"
-  headingId="operation-messages+responses+200+application-json+rootmessage+title"
-  parentId="rootMessage"
+  id="rootMessage_SearchResult_title"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+title"
+  parentId="rootMessage_SearchResult"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### title \{#operation-messages+responses+200+application-json+rootmessage+title\}
+##### title \{#operation-messages+responses+200+application-json+rootmessage+searchresult+title\}
 
 </ExpandablePropertyTitle>
 
@@ -1782,18 +985,18 @@ A single object that can support any object in the work graph. Only a single obj
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_trackingToken"
-  headingId="operation-messages+responses+200+application-json+rootmessage+trackingtoken"
-  parentId="rootMessage"
+  id="rootMessage_SearchResult_trackingToken"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+trackingtoken"
+  parentId="rootMessage_SearchResult"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### trackingToken \{#operation-messages+responses+200+application-json+rootmessage+trackingtoken\}
+##### trackingToken \{#operation-messages+responses+200+application-json+rootmessage+searchresult+trackingtoken\}
 
 </ExpandablePropertyTitle>
 
@@ -1807,20 +1010,28 @@ An opaque token that represents this particular result in this particular query.
 
 <ExpandableProperty
   slot="entry"
-  id="rootMessage_url"
-  headingId="operation-messages+responses+200+application-json+rootmessage+url"
-  parentId="rootMessage"
+  id="rootMessage_SearchResult_url"
+  headingId="operation-messages+responses+200+application-json+rootmessage+searchresult+url"
+  parentId="rootMessage_SearchResult"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-messages+responses+200+application-json+rootmessage+url\}
+##### url \{#operation-messages+responses+200+application-json+rootmessage+searchresult+url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1830,7 +1041,7 @@ An opaque token that represents this particular result in this particular query.
   headingId="operation-messages+responses+200+application-json+searchresponse"
   typeInfo={{"label":"SearchResponse","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse\">SearchResponse</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1840,91 +1051,39 @@ An opaque token that represents this particular result in this particular query.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
-<ExpandableProperty
+<ExpandableBreakout
   slot="entry"
-  id="searchResponse_GleanDataError"
-  headingId="operation-messages+responses+200+application-json+searchresponse+gleandataerror"
+  id="searchResponse_SearchResponse"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse"
   parentId="searchResponse"
-  typeInfo={{"label":"GleanDataError","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+gleandataerror+gleandataerror\">GleanDataError</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
-<ExpandablePropertyTitle slot="title">
+<ExpandableBreakoutTitle slot="title">
 
-##### GleanDataError \{#operation-messages+responses+200+application-json+searchresponse+gleandataerror\}
+#### SearchResponse \{#operation-messages+responses+200+application-json+searchresponse+searchresponse\}
 
-</ExpandablePropertyTitle>
+</ExpandableBreakoutTitle>
 
-</ExpandableProperty>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_GleanDataError_badGmailToken"
-  headingId="operation-messages+responses+200+application-json+searchresponse+gleandataerror+badgmailtoken"
-  parentId="searchResponse_GleanDataError"
-  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  id="searchResponse_SearchResponse_GleanDataError"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+gleandataerror"
+  parentId="searchResponse_SearchResponse"
+  typeInfo={{"label":"GleanDataError","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+gleandataerror+gleandataerror\">GleanDataError</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### badGmailToken \{#operation-messages+responses+200+application-json+searchresponse+gleandataerror+badgmailtoken\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Indicates the gmail results could not be fetched due to bad token.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_GleanDataError_badOutlookToken"
-  headingId="operation-messages+responses+200+application-json+searchresponse+gleandataerror+badoutlooktoken"
-  parentId="searchResponse_GleanDataError"
-  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### badOutlookToken \{#operation-messages+responses+200+application-json+searchresponse+gleandataerror+badoutlooktoken\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Indicates the outlook results could not be fetched due to bad token.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_GleanDataError_errorMessages"
-  headingId="operation-messages+responses+200+application-json+searchresponse+gleandataerror+errormessages"
-  parentId="searchResponse_GleanDataError"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+gleandataerror+errormessages+errormessage\">ErrorMessage</a>","children":[{"label":"ErrorMessage","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+gleandataerror+errormessages+errormessage\">ErrorMessage</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### errorMessages \{#operation-messages+responses+200+application-json+searchresponse+gleandataerror+errormessages\}
+##### GleanDataError \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+gleandataerror\}
 
 </ExpandablePropertyTitle>
 
@@ -1932,11 +1091,11 @@ Indicates the outlook results could not be fetched due to bad token.
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="errorMessages"
-  triggerText="View errorMessages details"
+  embedTitle="GleanDataError"
+  triggerText="View GleanDataError details"
 >
 
-<Embederrormessages />
+<Embedgleandataerror />
 
 </EmbedTrigger>
 
@@ -1946,57 +1105,18 @@ Indicates the outlook results could not be fetched due to bad token.
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_GleanDataError_invalidOperators"
-  headingId="operation-messages+responses+200+application-json+searchresponse+gleandataerror+invalidoperators"
-  parentId="searchResponse_GleanDataError"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+gleandataerror+invalidoperators+invalidoperatorvalueerror\">InvalidOperatorValueError</a>","children":[{"label":"InvalidOperatorValueError","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+gleandataerror+invalidoperators+invalidoperatorvalueerror\">InvalidOperatorValueError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### invalidOperators \{#operation-messages+responses+200+application-json+searchresponse+gleandataerror+invalidoperators\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Indicates results could not be fetched due to invalid operators in the query.
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="invalidOperators"
-  triggerText="View invalidOperators details"
->
-
-<Embedinvalidoperators />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_backendTimeMillis"
-  headingId="operation-messages+responses+200+application-json+searchresponse+backendtimemillis"
-  parentId="searchResponse"
+  id="searchResponse_SearchResponse_backendTimeMillis"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+backendtimemillis"
+  parentId="searchResponse_SearchResponse"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### backendTimeMillis \{#operation-messages+responses+200+application-json+searchresponse+backendtimemillis\}
+##### backendTimeMillis \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+backendtimemillis\}
 
 </ExpandablePropertyTitle>
 
@@ -2020,18 +1140,18 @@ _Example:_
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_cursor"
-  headingId="operation-messages+responses+200+application-json+searchresponse+cursor"
-  parentId="searchResponse"
+  id="searchResponse_SearchResponse_cursor"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+cursor"
+  parentId="searchResponse_SearchResponse"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### cursor \{#operation-messages+responses+200+application-json+searchresponse+cursor\}
+##### cursor \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+cursor\}
 
 </ExpandablePropertyTitle>
 
@@ -2045,18 +1165,18 @@ Cursor that indicates the start of the next page of results. To be passed in "mo
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_experimentIds"
-  headingId="operation-messages+responses+200+application-json+searchresponse+experimentids"
-  parentId="searchResponse"
+  id="searchResponse_SearchResponse_experimentIds"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+experimentids"
+  parentId="searchResponse_SearchResponse"
   typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### experimentIds \{#operation-messages+responses+200+application-json+searchresponse+experimentids\}
+##### experimentIds \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+experimentids\}
 
 </ExpandablePropertyTitle>
 
@@ -2070,188 +1190,30 @@ List of experiment ids for the corresponding request.
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_facetResults"
-  headingId="operation-messages+responses+200+application-json+searchresponse+facetresults"
-  parentId="searchResponse"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+facetresults+facetresult\">FacetResult</a>","children":[{"label":"FacetResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+facetresults+facetresult\">FacetResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="searchResponse_SearchResponse_facetResults"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+facetresults"
+  parentId="searchResponse_SearchResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+facetresults+facetresult\">FacetResult</a>","children":[{"label":"FacetResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+facetresults+facetresult\">FacetResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### facetResults \{#operation-messages+responses+200+application-json+searchresponse+facetresults\}
+##### facetResults \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+facetresults\}
 
 </ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="searchResponse_facetResults_FacetResult"
-  headingId="operation-messages+responses+200+application-json+searchresponse+facetresults+facetresult"
-  parentId="searchResponse_facetResults"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### FacetResult \{#operation-messages+responses+200+application-json+searchresponse+facetresults+facetresult\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="FacetResult" triggerText="View FacetResult details">
-
-<Embedfacetresult />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableBreakout>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_generatedQnaResult"
-  headingId="operation-messages+responses+200+application-json+searchresponse+generatedqnaresult"
-  parentId="searchResponse"
-  typeInfo={{"label":"GeneratedQna","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+generatedqna\">GeneratedQna</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### generatedQnaResult \{#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_generatedQnaResult_answer"
-  headingId="operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+answer"
-  parentId="searchResponse_generatedQnaResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### answer \{#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+answer\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Answer generated for the given query or the generated question.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_generatedQnaResult_cursor"
-  headingId="operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+cursor"
-  parentId="searchResponse_generatedQnaResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### cursor \{#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+cursor\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-An opaque cursor representing the search request
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_generatedQnaResult_followUpPrompts"
-  headingId="operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+followupprompts"
-  parentId="searchResponse_generatedQnaResult"
-  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### followUpPrompts \{#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+followupprompts\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-List of all follow-up prompts generated for the given query or the generated question.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_generatedQnaResult_followupActions"
-  headingId="operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+followupactions"
-  parentId="searchResponse_generatedQnaResult"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+followupactions+followupaction\">FollowupAction</a>","children":[{"label":"FollowupAction","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+followupactions+followupaction\">FollowupAction</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### followupActions \{#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+followupactions\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-List of follow-up actions generated for the given query or the generated question.
-
-</ExpandablePropertyDescription>
 
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="followupActions"
-  triggerText="View followupActions details"
+  embedTitle="facetResults"
+  triggerText="View facetResults details"
 >
 
-<Embedfollowupactions />
+<Embedfacetresults />
 
 </EmbedTrigger>
 
@@ -2261,57 +1223,30 @@ List of follow-up actions generated for the given query or the generated questio
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_generatedQnaResult_question"
-  headingId="operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+question"
-  parentId="searchResponse_generatedQnaResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  id="searchResponse_SearchResponse_generatedQnaResult"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+generatedqnaresult"
+  parentId="searchResponse_SearchResponse"
+  typeInfo={{"label":"GeneratedQna","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+generatedqnaresult+generatedqna\">GeneratedQna</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### question \{#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+question\}
+##### generatedQnaResult \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+generatedqnaresult\}
 
 </ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Search query rephrased into a question.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_generatedQnaResult_ranges"
-  headingId="operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+ranges"
-  parentId="searchResponse_generatedQnaResult"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+ranges+textrange\">TextRange</a>","children":[{"label":"TextRange","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+ranges+textrange\">TextRange</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### ranges \{#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+ranges\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The bolded ranges within the query of the QuerySuggestion.
-
-</ExpandablePropertyDescription>
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="ranges" triggerText="View ranges details">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="generatedQnaResult"
+  triggerText="View generatedQnaResult details"
+>
 
-<Embedranges />
+<Embedgeneratedqnaresult />
 
 </EmbedTrigger>
 
@@ -2321,68 +1256,18 @@ The bolded ranges within the query of the QuerySuggestion.
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_generatedQnaResult_status"
-  headingId="operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+status"
-  parentId="searchResponse_generatedQnaResult"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"COMPUTING\"","linkedLabel":"\"COMPUTING\"","children":[],"breakoutSubTypes":{}},{"label":"\"DISABLED\"","linkedLabel":"\"DISABLED\"","children":[],"breakoutSubTypes":{}},{"label":"\"FAILED\"","linkedLabel":"\"FAILED\"","children":[],"breakoutSubTypes":{}},{"label":"\"NO_ANSWER\"","linkedLabel":"\"NO_ANSWER\"","children":[],"breakoutSubTypes":{}},{"label":"\"SKIPPED\"","linkedLabel":"\"SKIPPED\"","children":[],"breakoutSubTypes":{}},{"label":"\"STREAMING\"","linkedLabel":"\"STREAMING\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUCCEEDED\"","linkedLabel":"\"SUCCEEDED\"","children":[],"breakoutSubTypes":{}},{"label":"\"TIMEOUT\"","linkedLabel":"\"TIMEOUT\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### status \{#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+status\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Status of backend generating the answer
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_generatedQnaResult_trackingToken"
-  headingId="operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+trackingtoken"
-  parentId="searchResponse_generatedQnaResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### trackingToken \{#operation-messages+responses+200+application-json+searchresponse+generatedqnaresult+trackingtoken\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-An opaque token that represents this particular result in this particular query. To be used for /feedback reporting.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_hasMoreResults"
-  headingId="operation-messages+responses+200+application-json+searchresponse+hasmoreresults"
-  parentId="searchResponse"
+  id="searchResponse_SearchResponse_hasMoreResults"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+hasmoreresults"
+  parentId="searchResponse_SearchResponse"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### hasMoreResults \{#operation-messages+responses+200+application-json+searchresponse+hasmoreresults\}
+##### hasMoreResults \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+hasmoreresults\}
 
 </ExpandablePropertyTitle>
 
@@ -2396,49 +1281,26 @@ Whether more results are available. Use cursor to retrieve them.
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_metadata"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata"
-  parentId="searchResponse"
-  typeInfo={{"label":"SearchResponseMetadata","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+metadata+searchresponsemetadata\">SearchResponseMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  id="searchResponse_SearchResponse_metadata"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+metadata"
+  parentId="searchResponse_SearchResponse"
+  typeInfo={{"label":"SearchResponseMetadata","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+metadata+searchresponsemetadata\">SearchResponseMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### metadata \{#operation-messages+responses+200+application-json+searchresponse+metadata\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_metadata_additionalQuerySuggestions"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+additionalquerysuggestions"
-  parentId="searchResponse_metadata"
-  typeInfo={{"label":"QuerySuggestionList","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+metadata+additionalquerysuggestions+querysuggestionlist\">QuerySuggestionList</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### additionalQuerySuggestions \{#operation-messages+responses+200+application-json+searchresponse+metadata+additionalquerysuggestions\}
+##### metadata \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+metadata\}
 
 </ExpandablePropertyTitle>
 
 <Embed slot="embed">
 
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="additionalQuerySuggestions"
-  triggerText="View additionalQuerySuggestions details"
->
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
-<Embedadditionalquerysuggestions />
+<Embedmetadata />
 
 </EmbedTrigger>
 
@@ -2448,348 +1310,18 @@ Whether more results are available. Use cursor to retrieve them.
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_metadata_isNoQuotesSuggestion"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+isnoquotessuggestion"
-  parentId="searchResponse_metadata"
-  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### isNoQuotesSuggestion \{#operation-messages+responses+200+application-json+searchresponse+metadata+isnoquotessuggestion\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Whether the query was modified to remove quotes
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_metadata_modifiedQueryWasUsed"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+modifiedquerywasused"
-  parentId="searchResponse_metadata"
-  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### modifiedQueryWasUsed \{#operation-messages+responses+200+application-json+searchresponse+metadata+modifiedquerywasused\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A different query was performed than the one requested.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_metadata_negatedTerms"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+negatedterms"
-  parentId="searchResponse_metadata"
-  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### negatedTerms \{#operation-messages+responses+200+application-json+searchresponse+metadata+negatedterms\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A list of terms that were negated when processing the query.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_metadata_originalQuery"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+originalquery"
-  parentId="searchResponse_metadata"
+  id="searchResponse_SearchResponse_requestID"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+requestid"
+  parentId="searchResponse_SearchResponse"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### originalQuery \{#operation-messages+responses+200+application-json+searchresponse+metadata+originalquery\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The query text sent by the client in the request.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_metadata_originalQueryHadNoResults"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+originalqueryhadnoresults"
-  parentId="searchResponse_metadata"
-  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### originalQueryHadNoResults \{#operation-messages+responses+200+application-json+searchresponse+metadata+originalqueryhadnoresults\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-No results were found for the original query. The usage of this bit in conjunction with modifiedQueryWasUsed will dictate whether the full page replacement is 0-result or few-result based.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_metadata_querySuggestion"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+querysuggestion"
-  parentId="searchResponse_metadata"
-  typeInfo={{"label":"QuerySuggestion","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+metadata+querysuggestion+querysuggestion\">QuerySuggestion</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### querySuggestion \{#operation-messages+responses+200+application-json+searchresponse+metadata+querysuggestion\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="querySuggestion"
-  triggerText="View querySuggestion details"
->
-
-<Embedquerysuggestion />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_metadata_rewrittenQuery"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+rewrittenquery"
-  parentId="searchResponse_metadata"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### rewrittenQuery \{#operation-messages+responses+200+application-json+searchresponse+metadata+rewrittenquery\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A cleaned up or updated version of the query to be displayed in the query box. Useful for mapping visual facets to search operators.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_metadata_searchWarning"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+searchwarning"
-  parentId="searchResponse_metadata"
-  typeInfo={{"label":"SearchWarning","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+metadata+searchwarning+searchwarning\">SearchWarning</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### searchWarning \{#operation-messages+responses+200+application-json+searchresponse+metadata+searchwarning\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="searchWarning"
-  triggerText="View searchWarning details"
->
-
-<Embedsearchwarning />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_metadata_searchedQuery"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+searchedquery"
-  parentId="searchResponse_metadata"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### searchedQuery \{#operation-messages+responses+200+application-json+searchresponse+metadata+searchedquery\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The actual query used to perform search and return results.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_metadata_searchedQueryRanges"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+searchedqueryranges"
-  parentId="searchResponse_metadata"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+metadata+searchedqueryranges+textrange\">TextRange</a>","children":[{"label":"TextRange","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+metadata+searchedqueryranges+textrange\">TextRange</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### searchedQueryRanges \{#operation-messages+responses+200+application-json+searchresponse+metadata+searchedqueryranges\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The bolded ranges within the query of the QuerySuggestion.
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="searchedQueryRanges"
-  triggerText="View searchedQueryRanges details"
->
-
-<Embedsearchedqueryranges />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_metadata_searchedQueryWithoutNegation"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+searchedquerywithoutnegation"
-  parentId="searchResponse_metadata"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### searchedQueryWithoutNegation \{#operation-messages+responses+200+application-json+searchresponse+metadata+searchedquerywithoutnegation\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The query used to perform search and return results, with negated terms and facets removed.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_metadata_triggeredExpertDetection"
-  headingId="operation-messages+responses+200+application-json+searchresponse+metadata+triggeredexpertdetection"
-  parentId="searchResponse_metadata"
-  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### triggeredExpertDetection \{#operation-messages+responses+200+application-json+searchresponse+metadata+triggeredexpertdetection\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Whether the query triggered expert detection results in the People tab.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_requestID"
-  headingId="operation-messages+responses+200+application-json+searchresponse+requestid"
-  parentId="searchResponse"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### requestID \{#operation-messages+responses+200+application-json+searchresponse+requestid\}
+##### requestID \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+requestid\}
 
 </ExpandablePropertyTitle>
 
@@ -2803,18 +1335,18 @@ A platform-generated request ID to correlate backend logs.
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_resultTabIds"
-  headingId="operation-messages+responses+200+application-json+searchresponse+resulttabids"
-  parentId="searchResponse"
+  id="searchResponse_SearchResponse_resultTabIds"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+resulttabids"
+  parentId="searchResponse_SearchResponse"
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### resultTabIds \{#operation-messages+responses+200+application-json+searchresponse+resulttabids\}
+##### resultTabIds \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+resulttabids\}
 
 </ExpandablePropertyTitle>
 
@@ -2828,18 +1360,18 @@ The unique IDs of the result tabs to which this response belongs.
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_resultTabs"
-  headingId="operation-messages+responses+200+application-json+searchresponse+resulttabs"
-  parentId="searchResponse"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+resulttabs+resulttab\">ResultTab</a>","children":[{"label":"ResultTab","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+resulttabs+resulttab\">ResultTab</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="searchResponse_SearchResponse_resultTabs"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+resulttabs"
+  parentId="searchResponse_SearchResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+resulttabs+resulttab\">ResultTab</a>","children":[{"label":"ResultTab","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+resulttabs+resulttab\">ResultTab</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### resultTabs \{#operation-messages+responses+200+application-json+searchresponse+resulttabs\}
+##### resultTabs \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+resulttabs\}
 
 </ExpandablePropertyTitle>
 
@@ -2849,61 +1381,32 @@ All result tabs available for the current query. Populated if QUERY_METADATA is 
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="searchResponse_resultTabs_ResultTab"
-  headingId="operation-messages+responses+200+application-json+searchresponse+resulttabs+resulttab"
-  parentId="searchResponse_resultTabs"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### ResultTab \{#operation-messages+responses+200+application-json+searchresponse+resulttabs+resulttab\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="ResultTab" triggerText="View ResultTab details">
+<EmbedTrigger slot="trigger" embedTitle="resultTabs" triggerText="View resultTabs details">
 
-<Embedresulttab />
+<Embedresulttabs />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_results"
-  headingId="operation-messages+responses+200+application-json+searchresponse+results"
-  parentId="searchResponse"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+results+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+results+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="searchResponse_SearchResponse_results"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+results"
+  parentId="searchResponse_SearchResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+results+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+results+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### results \{#operation-messages+responses+200+application-json+searchresponse+results\}
+##### results \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+results\}
 
 </ExpandablePropertyTitle>
 
@@ -2913,98 +1416,44 @@ A truncated list of documents associated with this relation. To be used in favor
 
 </ExpandablePropertyDescription>
 
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="results" triggerText="View results details">
+
+<Embedresults />
+
+</EmbedTrigger>
+
+</Embed>
+
 </ExpandableProperty>
 
-<ExpandableBreakout
+<ExpandableProperty
   slot="entry"
-  id="searchResponse_results_SearchResult"
-  headingId="operation-messages+responses+200+application-json+searchresponse+results+searchresult"
-  parentId="searchResponse_results"
-  hasFrontMatter={true}
+  id="searchResponse_SearchResponse_resultsDescription"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+resultsdescription"
+  parentId="searchResponse_SearchResponse"
+  typeInfo={{"label":"ResultsDescription","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+resultsdescription+resultsdescription\">ResultsDescription</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
-<ExpandableBreakoutTitle slot="title">
+<ExpandablePropertyTitle slot="title">
 
-#### SearchResult \{#operation-messages+responses+200+application-json+searchresponse+results+searchresult\}
+##### resultsDescription \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+resultsdescription\}
 
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
+</ExpandablePropertyTitle>
 
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="SearchResult"
-  triggerText="View SearchResult details"
+  embedTitle="resultsDescription"
+  triggerText="View resultsDescription details"
 >
 
-<Embedsearchresult />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableBreakout>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_resultsDescription"
-  headingId="operation-messages+responses+200+application-json+searchresponse+resultsdescription"
-  parentId="searchResponse"
-  typeInfo={{"label":"ResultsDescription","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+resultsdescription+resultsdescription\">ResultsDescription</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### resultsDescription \{#operation-messages+responses+200+application-json+searchresponse+resultsdescription\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_resultsDescription_iconConfig"
-  headingId="operation-messages+responses+200+application-json+searchresponse+resultsdescription+iconconfig"
-  parentId="searchResponse_resultsDescription"
-  typeInfo={{"label":"IconConfig","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+resultsdescription+iconconfig+iconconfig\">IconConfig</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### iconConfig \{#operation-messages+responses+200+application-json+searchresponse+resultsdescription+iconconfig\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Defines how to render an icon
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="iconConfig" triggerText="View iconConfig details">
-
-<Embediconconfig />
+<Embedresultsdescription />
 
 </EmbedTrigger>
 
@@ -3014,43 +1463,18 @@ Defines how to render an icon
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_resultsDescription_text"
-  headingId="operation-messages+responses+200+application-json+searchresponse+resultsdescription+text"
-  parentId="searchResponse_resultsDescription"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  id="searchResponse_SearchResponse_rewrittenFacetFilters"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+rewrittenfacetfilters"
+  parentId="searchResponse_SearchResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+rewrittenfacetfilters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+rewrittenfacetfilters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### text \{#operation-messages+responses+200+application-json+searchresponse+resultsdescription+text\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Textual description of the results. Can be shown at the top of SERP, e.g. 'People who write about this topic' for experts in people tab.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_rewrittenFacetFilters"
-  headingId="operation-messages+responses+200+application-json+searchresponse+rewrittenfacetfilters"
-  parentId="searchResponse"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+rewrittenfacetfilters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+rewrittenfacetfilters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### rewrittenFacetFilters \{#operation-messages+responses+200+application-json+searchresponse+rewrittenfacetfilters\}
+##### rewrittenFacetFilters \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+rewrittenfacetfilters\}
 
 </ExpandablePropertyTitle>
 
@@ -3060,180 +1484,65 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="searchResponse_rewrittenFacetFilters_FacetFilter"
-  headingId="operation-messages+responses+200+application-json+searchresponse+rewrittenfacetfilters+facetfilter"
-  parentId="searchResponse_rewrittenFacetFilters"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### FacetFilter \{#operation-messages+responses+200+application-json+searchresponse+rewrittenfacetfilters+facetfilter\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="FacetFilter" triggerText="View FacetFilter details">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="rewrittenFacetFilters"
+  triggerText="View rewrittenFacetFilters details"
+>
 
-<Embedfacetfilter />
+<Embedrewrittenfacetfilters />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_sessionInfo"
-  headingId="operation-messages+responses+200+application-json+searchresponse+sessioninfo"
-  parentId="searchResponse"
-  typeInfo={{"label":"SessionInfo","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+sessioninfo+sessioninfo\">SessionInfo</a>","children":[],"breakoutSubTypes":{}}}
+  id="searchResponse_SearchResponse_sessionInfo"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+sessioninfo"
+  parentId="searchResponse_SearchResponse"
+  typeInfo={{"label":"SessionInfo","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+sessioninfo+sessioninfo\">SessionInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### sessionInfo \{#operation-messages+responses+200+application-json+searchresponse+sessioninfo\}
+##### sessionInfo \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+sessioninfo\}
 
 </ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="sessionInfo" triggerText="View sessionInfo details">
+
+<Embedsessioninfo />
+
+</EmbedTrigger>
+
+</Embed>
 
 </ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_sessionInfo_lastQuery"
-  headingId="operation-messages+responses+200+application-json+searchresponse+sessioninfo+lastquery"
-  parentId="searchResponse_sessionInfo"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  id="searchResponse_SearchResponse_structuredResults"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+structuredresults"
+  parentId="searchResponse_SearchResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+structuredresults+structuredresult\">StructuredResult</a>","children":[{"label":"StructuredResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+searchresponse+structuredresults+structuredresult\">StructuredResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### lastQuery \{#operation-messages+responses+200+application-json+searchresponse+sessioninfo+lastquery\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The last query seen by the server.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_sessionInfo_lastSeen"
-  headingId="operation-messages+responses+200+application-json+searchresponse+sessioninfo+lastseen"
-  parentId="searchResponse_sessionInfo"
-  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### lastSeen \{#operation-messages+responses+200+application-json+searchresponse+sessioninfo+lastseen\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The last time the server saw this token.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_sessionInfo_sessionTrackingToken"
-  headingId="operation-messages+responses+200+application-json+searchresponse+sessioninfo+sessiontrackingtoken"
-  parentId="searchResponse_sessionInfo"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### sessionTrackingToken \{#operation-messages+responses+200+application-json+searchresponse+sessioninfo+sessiontrackingtoken\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A unique token for this session. A new session (and token) is created when the user issues a request from a new tab or when our server hasn't seen activity for more than 10 minutes from a tab.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_sessionInfo_tabId"
-  headingId="operation-messages+responses+200+application-json+searchresponse+sessioninfo+tabid"
-  parentId="searchResponse_sessionInfo"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### tabId \{#operation-messages+responses+200+application-json+searchresponse+sessioninfo+tabid\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A unique id for all requests a user makes from a given tab, no matter how far apart. A new tab id is only generated when a user issues a request from a new tab.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="searchResponse_structuredResults"
-  headingId="operation-messages+responses+200+application-json+searchresponse+structuredresults"
-  parentId="searchResponse"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+structuredresults+structuredresult\">StructuredResult</a>","children":[{"label":"StructuredResult","linkedLabel":"<a href=\"#operation-messages+responses+200+application-json+searchresponse+structuredresults+structuredresult\">StructuredResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### structuredResults \{#operation-messages+responses+200+application-json+searchresponse+structuredresults\}
+##### structuredResults \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+structuredresults\}
 
 </ExpandablePropertyTitle>
 
@@ -3243,67 +1552,36 @@ An array of entities in the work graph retrieved via a data request.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="searchResponse_structuredResults_StructuredResult"
-  headingId="operation-messages+responses+200+application-json+searchresponse+structuredresults+structuredresult"
-  parentId="searchResponse_structuredResults"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### StructuredResult \{#operation-messages+responses+200+application-json+searchresponse+structuredresults+structuredresult\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-A single object that can support any object in the work graph. Only a single object will be populated.
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="StructuredResult"
-  triggerText="View StructuredResult details"
+  embedTitle="structuredResults"
+  triggerText="View structuredResults details"
 >
 
-<Embedstructuredresult />
+<Embedstructuredresults />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="searchResponse_trackingToken"
-  headingId="operation-messages+responses+200+application-json+searchresponse+trackingtoken"
-  parentId="searchResponse"
+  id="searchResponse_SearchResponse_trackingToken"
+  headingId="operation-messages+responses+200+application-json+searchresponse+searchresponse+trackingtoken"
+  parentId="searchResponse_SearchResponse"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### trackingToken \{#operation-messages+responses+200+application-json+searchresponse+trackingtoken\}
+##### trackingToken \{#operation-messages+responses+200+application-json+searchresponse+searchresponse+trackingtoken\}
 
 </ExpandablePropertyTitle>
 
@@ -3312,6 +1590,14 @@ A single object that can support any object in the work graph. Only a single obj
 A token that should be passed for additional requests related to this request (such as more results requests).
 
 </ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 

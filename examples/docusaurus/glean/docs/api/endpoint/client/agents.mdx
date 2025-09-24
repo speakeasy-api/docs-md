@@ -10,11 +10,11 @@ import {
   EmbedProvider,
   EmbedTrigger,
   ExpandableBreakout,
-  ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
-  ExpandableBreakoutExamples,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
+  ExpandablePropertyBreakouts,
   ExpandablePropertyDescription,
   ExpandablePropertyExamples,
   ExpandablePropertyTitle,
@@ -42,7 +42,7 @@ import {
 import Embedcapabilities from "../../../../src/components/speakeasy-embeds/loaders/capabilities.tsx";
 import Embedmetadata from "../../../../src/components/speakeasy-embeds/loaders/metadata.tsx";
 import Embedcontent from "../../../../src/components/speakeasy-embeds/loaders/content.tsx";
-import Embedmessage from "../../../../src/components/speakeasy-embeds/loaders/message.tsx";
+import Embedmessages from "../../../../src/components/speakeasy-embeds/loaders/messages.tsx";
 
 <EmbedProvider />
 
@@ -96,7 +96,7 @@ Returns details of an [agent](https://developers.glean.com/agents/agents-api) cr
   headingId="operation-get_agent+parameters+timezoneoffset"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -112,6 +112,10 @@ The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 becaus
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -120,7 +124,7 @@ The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 becaus
   headingId="operation-get_agent+parameters+agent_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -135,6 +139,10 @@ The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 becaus
 The ID of the agent.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -178,7 +186,7 @@ Success
   headingId="operation-get_agent+responses+200+application-json+agent_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -212,7 +220,7 @@ mho4lwzylcozgoc2
   headingId="operation-get_agent+responses+200+application-json+capabilities"
   typeInfo={{"label":"Agent Capabilities","linkedLabel":"<a href=\"#operation-get_agent+responses+200+application-json+capabilities+agent capabilities\">Agent Capabilities</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -231,22 +239,48 @@ Describes features that the agent supports. example: \{
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="capabilities_Agent Capabilities"
+  headingId="operation-get_agent+responses+200+application-json+capabilities+agent capabilities"
+  parentId="capabilities"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Agent Capabilities \{#operation-get_agent+responses+200+application-json+capabilities+agent capabilities\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+Describes features that the agent supports. example: \{
+  "ap.io.messages": true,
+  "ap.io.streaming": true
+\}
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="capabilities_AdditionalProperties"
-  headingId="operation-get_agent+responses+200+application-json+capabilities+additionalproperties"
-  parentId="capabilities"
+  id="capabilities_Agent Capabilities_AdditionalProperties"
+  headingId="operation-get_agent+responses+200+application-json+capabilities+agent capabilities+additionalproperties"
+  parentId="capabilities_Agent Capabilities"
   typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### AdditionalProperties \{#operation-get_agent+responses+200+application-json+capabilities+additionalproperties\}
+##### AdditionalProperties \{#operation-get_agent+responses+200+application-json+capabilities+agent capabilities+additionalproperties\}
 
 </ExpandablePropertyTitle>
 
@@ -254,18 +288,18 @@ Describes features that the agent supports. example: \{
 
 <ExpandableProperty
   slot="entry"
-  id="capabilities_ap.io.messages"
-  headingId="operation-get_agent+responses+200+application-json+capabilities+ap.io.messages"
-  parentId="capabilities"
+  id="capabilities_Agent Capabilities_ap.io.messages"
+  headingId="operation-get_agent+responses+200+application-json+capabilities+agent capabilities+ap.io.messages"
+  parentId="capabilities_Agent Capabilities"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### ap.io.messages \{#operation-get_agent+responses+200+application-json+capabilities+ap.io.messages\}
+##### ap.io.messages \{#operation-get_agent+responses+200+application-json+capabilities+agent capabilities+ap.io.messages\}
 
 </ExpandablePropertyTitle>
 
@@ -279,18 +313,18 @@ Whether the agent supports messages as an input. If true, you'll pass `messages`
 
 <ExpandableProperty
   slot="entry"
-  id="capabilities_ap.io.streaming"
-  headingId="operation-get_agent+responses+200+application-json+capabilities+ap.io.streaming"
-  parentId="capabilities"
+  id="capabilities_Agent Capabilities_ap.io.streaming"
+  headingId="operation-get_agent+responses+200+application-json+capabilities+agent capabilities+ap.io.streaming"
+  parentId="capabilities_Agent Capabilities"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### ap.io.streaming \{#operation-get_agent+responses+200+application-json+capabilities+ap.io.streaming\}
+##### ap.io.streaming \{#operation-get_agent+responses+200+application-json+capabilities+agent capabilities+ap.io.streaming\}
 
 </ExpandablePropertyTitle>
 
@@ -302,13 +336,21 @@ Whether the agent supports streaming output. If true, you you can stream agent o
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="description"
   headingId="operation-get_agent+responses+200+application-json+description"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -342,7 +384,7 @@ This agent answers questions about the current company HR policies.
   headingId="operation-get_agent+responses+200+application-json+metadata"
   typeInfo={{"label":"Metadata","linkedLabel":"<a href=\"#operation-get_agent+responses+200+application-json+metadata+metadata\">Metadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -358,6 +400,33 @@ The agent metadata. Currently not implemented.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="metadata_Metadata"
+  headingId="operation-get_agent+responses+200+application-json+metadata+metadata"
+  parentId="metadata"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Metadata \{#operation-get_agent+responses+200+application-json+metadata+metadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+The agent metadata. Currently not implemented.
+
+</ExpandableBreakoutDescription>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -366,7 +435,7 @@ The agent metadata. Currently not implemented.
   headingId="operation-get_agent+responses+200+application-json+name"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -444,7 +513,7 @@ Return [agent](https://developers.glean.com/agents/agents-api)'s input and outpu
   headingId="operation-get_agent_schemas+parameters+timezoneoffset"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -460,6 +529,10 @@ The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 becaus
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -468,7 +541,7 @@ The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 becaus
   headingId="operation-get_agent_schemas+parameters+agent_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -483,6 +556,10 @@ The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 becaus
 The ID of the agent.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -526,7 +603,7 @@ Success
   headingId="operation-get_agent_schemas+responses+200+application-json+agent_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -560,7 +637,7 @@ mho4lwzylcozgoc2
   headingId="operation-get_agent_schemas+responses+200+application-json+input_schema"
   typeInfo={{"label":"Input Schema","linkedLabel":"<a href=\"#operation-get_agent_schemas+responses+200+application-json+input_schema+input schema\">Input Schema</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -576,6 +653,33 @@ The schema for the agent input. In JSON Schema format.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="input_schema_Input Schema"
+  headingId="operation-get_agent_schemas+responses+200+application-json+input_schema+input schema"
+  parentId="input_schema"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Input Schema \{#operation-get_agent_schemas+responses+200+application-json+input_schema+input schema\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+The schema for the agent input. In JSON Schema format.
+
+</ExpandableBreakoutDescription>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -584,7 +688,7 @@ The schema for the agent input. In JSON Schema format.
   headingId="operation-get_agent_schemas+responses+200+application-json+output_schema"
   typeInfo={{"label":"Output Schema","linkedLabel":"<a href=\"#operation-get_agent_schemas+responses+200+application-json+output_schema+output schema\">Output Schema</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -599,6 +703,33 @@ The schema for the agent input. In JSON Schema format.
 The schema for the agent output. In JSON Schema format.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="output_schema_Output Schema"
+  headingId="operation-get_agent_schemas+responses+200+application-json+output_schema+output schema"
+  parentId="output_schema"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Output Schema \{#operation-get_agent_schemas+responses+200+application-json+output_schema+output schema\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+The schema for the agent output. In JSON Schema format.
+
+</ExpandableBreakoutDescription>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -652,7 +783,7 @@ Search for [agents](https://developers.glean.com/agents/agents-api) by agent nam
   headingId="operation-search_agents+request+name"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -720,7 +851,7 @@ Success
   headingId="operation-search_agents+responses+200+application-json+agents"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-search_agents+responses+200+application-json+agents+agent\">Agent</a>","children":[{"label":"Agent","linkedLabel":"<a href=\"#operation-search_agents+responses+200+application-json+agents+agent\">Agent</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -730,14 +861,14 @@ Success
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="agents_Agent"
   headingId="operation-search_agents+responses+200+application-json+agents+agent"
   parentId="agents"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -747,19 +878,7 @@ Success
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -768,7 +887,7 @@ Success
   parentId="agents_Agent"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -803,7 +922,7 @@ mho4lwzylcozgoc2
   parentId="agents_Agent"
   typeInfo={{"label":"Agent Capabilities","linkedLabel":"<a href=\"#operation-search_agents+responses+200+application-json+agents+agent+capabilities+agent capabilities\">Agent Capabilities</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -845,7 +964,7 @@ Describes features that the agent supports. example: \{
   parentId="agents_Agent"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -880,7 +999,7 @@ This agent answers questions about the current company HR policies.
   parentId="agents_Agent"
   typeInfo={{"label":"Metadata","linkedLabel":"<a href=\"#operation-search_agents+responses+200+application-json+agents+agent+metadata+metadata\">Metadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -915,7 +1034,7 @@ The agent metadata. Currently not implemented.
   parentId="agents_Agent"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -940,6 +1059,14 @@ HR Policy Agent
 ```
 
 </ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -999,7 +1126,7 @@ Payload for creating a run.
   headingId="operation-create_and_stream_run+request+agent_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1023,7 +1150,7 @@ The ID of the agent to run.
   headingId="operation-create_and_stream_run+request+input"
   typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1047,7 +1174,7 @@ The input to the agent.
   headingId="operation-create_and_stream_run+request+messages"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-create_and_stream_run+request+messages+message\">Message</a>","children":[{"label":"Message","linkedLabel":"<a href=\"#operation-create_and_stream_run+request+messages+message\">Message</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1063,14 +1190,14 @@ The messages to pass an input to the agent.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="messages_Message"
   headingId="operation-create_and_stream_run+request+messages+message"
   parentId="messages"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1080,19 +1207,7 @@ The messages to pass an input to the agent.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1101,7 +1216,7 @@ The messages to pass an input to the agent.
   parentId="messages_Message"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-create_and_stream_run+request+messages+message+content+messagetextblock\">MessageTextBlock</a>","children":[{"label":"MessageTextBlock","linkedLabel":"<a href=\"#operation-create_and_stream_run+request+messages+message+content+messagetextblock\">MessageTextBlock</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1136,7 +1251,7 @@ The content of the message.
   parentId="messages_Message"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1164,13 +1279,21 @@ USER
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="metadata"
   headingId="operation-create_and_stream_run+request+metadata"
   typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1289,7 +1412,7 @@ Payload for creating a run.
   headingId="operation-create_and_wait_run+request+agent_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1313,7 +1436,7 @@ The ID of the agent to run.
   headingId="operation-create_and_wait_run+request+input"
   typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1337,7 +1460,7 @@ The input to the agent.
   headingId="operation-create_and_wait_run+request+messages"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-create_and_wait_run+request+messages+message\">Message</a>","children":[{"label":"Message","linkedLabel":"<a href=\"#operation-create_and_wait_run+request+messages+message\">Message</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1353,14 +1476,14 @@ The messages to pass an input to the agent.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="messages_Message"
   headingId="operation-create_and_wait_run+request+messages+message"
   parentId="messages"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1370,19 +1493,7 @@ The messages to pass an input to the agent.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1391,7 +1502,7 @@ The messages to pass an input to the agent.
   parentId="messages_Message"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-create_and_wait_run+request+messages+message+content+messagetextblock\">MessageTextBlock</a>","children":[{"label":"MessageTextBlock","linkedLabel":"<a href=\"#operation-create_and_wait_run+request+messages+message+content+messagetextblock\">MessageTextBlock</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1426,7 +1537,7 @@ The content of the message.
   parentId="messages_Message"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1454,13 +1565,21 @@ USER
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="metadata"
   headingId="operation-create_and_wait_run+request+metadata"
   typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1521,7 +1640,7 @@ Success
   headingId="operation-create_and_wait_run+responses+200+application-json+messages"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-create_and_wait_run+responses+200+application-json+messages+message\">Message</a>","children":[{"label":"Message","linkedLabel":"<a href=\"#operation-create_and_wait_run+responses+200+application-json+messages+message\">Message</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1537,14 +1656,14 @@ The messages to pass an input to the agent.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="messages_Message"
   headingId="operation-create_and_wait_run+responses+200+application-json+messages+message"
   parentId="messages"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1554,19 +1673,7 @@ The messages to pass an input to the agent.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1575,7 +1682,7 @@ The messages to pass an input to the agent.
   parentId="messages_Message"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-create_and_wait_run+responses+200+application-json+messages+message+content+messagetextblock\">MessageTextBlock</a>","children":[{"label":"MessageTextBlock","linkedLabel":"<a href=\"#operation-create_and_wait_run+responses+200+application-json+messages+message+content+messagetextblock\">MessageTextBlock</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1610,7 +1717,7 @@ The content of the message.
   parentId="messages_Message"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1638,13 +1745,21 @@ USER
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="run"
   headingId="operation-create_and_wait_run+responses+200+application-json+run"
   typeInfo={{"label":"AgentRun","linkedLabel":"<a href=\"#operation-create_and_wait_run+responses+200+application-json+run+agentrun\">AgentRun</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1660,22 +1775,45 @@ Payload for creating a run.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="run_AgentRun"
+  headingId="operation-create_and_wait_run+responses+200+application-json+run+agentrun"
+  parentId="run"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### AgentRun \{#operation-create_and_wait_run+responses+200+application-json+run+agentrun\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+Payload for creating a run.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="run_agent_id"
-  headingId="operation-create_and_wait_run+responses+200+application-json+run+agent_id"
-  parentId="run"
+  id="run_AgentRun_agent_id"
+  headingId="operation-create_and_wait_run+responses+200+application-json+run+agentrun+agent_id"
+  parentId="run_AgentRun"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### agent_id \{#operation-create_and_wait_run+responses+200+application-json+run+agent_id\}
+##### agent_id \{#operation-create_and_wait_run+responses+200+application-json+run+agentrun+agent_id\}
 
 </ExpandablePropertyTitle>
 
@@ -1689,18 +1827,18 @@ The ID of the agent to run.
 
 <ExpandableProperty
   slot="entry"
-  id="run_input"
-  headingId="operation-create_and_wait_run+responses+200+application-json+run+input"
-  parentId="run"
+  id="run_AgentRun_input"
+  headingId="operation-create_and_wait_run+responses+200+application-json+run+agentrun+input"
+  parentId="run_AgentRun"
   typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### input \{#operation-create_and_wait_run+responses+200+application-json+run+input\}
+##### input \{#operation-create_and_wait_run+responses+200+application-json+run+agentrun+input\}
 
 </ExpandablePropertyTitle>
 
@@ -1714,18 +1852,18 @@ The input to the agent.
 
 <ExpandableProperty
   slot="entry"
-  id="run_messages"
-  headingId="operation-create_and_wait_run+responses+200+application-json+run+messages"
-  parentId="run"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-create_and_wait_run+responses+200+application-json+run+messages+message\">Message</a>","children":[{"label":"Message","linkedLabel":"<a href=\"#operation-create_and_wait_run+responses+200+application-json+run+messages+message\">Message</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="run_AgentRun_messages"
+  headingId="operation-create_and_wait_run+responses+200+application-json+run+agentrun+messages"
+  parentId="run_AgentRun"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-create_and_wait_run+responses+200+application-json+run+agentrun+messages+message\">Message</a>","children":[{"label":"Message","linkedLabel":"<a href=\"#operation-create_and_wait_run+responses+200+application-json+run+agentrun+messages+message\">Message</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### messages \{#operation-create_and_wait_run+responses+200+application-json+run+messages\}
+##### messages \{#operation-create_and_wait_run+responses+200+application-json+run+agentrun+messages\}
 
 </ExpandablePropertyTitle>
 
@@ -1735,61 +1873,32 @@ The messages to pass an input to the agent.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="run_messages_Message"
-  headingId="operation-create_and_wait_run+responses+200+application-json+run+messages+message"
-  parentId="run_messages"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### Message \{#operation-create_and_wait_run+responses+200+application-json+run+messages+message\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="Message" triggerText="View Message details">
+<EmbedTrigger slot="trigger" embedTitle="messages" triggerText="View messages details">
 
-<Embedmessage />
+<Embedmessages />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="run_metadata"
-  headingId="operation-create_and_wait_run+responses+200+application-json+run+metadata"
-  parentId="run"
+  id="run_AgentRun_metadata"
+  headingId="operation-create_and_wait_run+responses+200+application-json+run+agentrun+metadata"
+  parentId="run_AgentRun"
   typeInfo={{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### metadata \{#operation-create_and_wait_run+responses+200+application-json+run+metadata\}
+##### metadata \{#operation-create_and_wait_run+responses+200+application-json+run+agentrun+metadata\}
 
 </ExpandablePropertyTitle>
 
@@ -1803,18 +1912,18 @@ The metadata to pass to the agent.
 
 <ExpandableProperty
   slot="entry"
-  id="run_status"
-  headingId="operation-create_and_wait_run+responses+200+application-json+run+status"
-  parentId="run"
+  id="run_AgentRun_status"
+  headingId="operation-create_and_wait_run+responses+200+application-json+run+agentrun+status"
+  parentId="run_AgentRun"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"error\"","linkedLabel":"\"error\"","children":[],"breakoutSubTypes":{}},{"label":"\"success\"","linkedLabel":"\"success\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### status \{#operation-create_and_wait_run+responses+200+application-json+run+status\}
+##### status \{#operation-create_and_wait_run+responses+200+application-json+run+agentrun+status\}
 
 </ExpandablePropertyTitle>
 
@@ -1823,6 +1932,14 @@ The metadata to pass to the agent.
 The status of the run. One of 'error', 'success'.
 
 </ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 

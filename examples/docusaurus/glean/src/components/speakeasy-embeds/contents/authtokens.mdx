@@ -2,32 +2,34 @@
 hide_table_of_contents: true
 ---
 import {
+  Embed,
+  EmbedTrigger,
   ExpandableBreakout,
-  ExpandableBreakoutDefaultValue,
-  ExpandableBreakoutDescription,
-  ExpandableBreakoutExamples,
   ExpandableBreakoutTitle,
   ExpandableProperty,
+  ExpandablePropertyBreakouts,
   ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
+import Embedauthtoken from "../loaders/authtoken.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="authtokens"
-  headingId="embed-authtokens+authtokens"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-querysuggestion+querysuggestion+requestoptions+authtokens+authtoken\">AuthToken</a>","children":[{"label":"AuthToken","linkedLabel":"<a href=\"#embed-querysuggestion+querysuggestion+requestoptions+authtokens+authtoken\">AuthToken</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="authtokens_authTokens"
+  headingId="embed-authtokens+authtokens+authtokens"
+  parentId="authtokens"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-authtokens+authtokens+authtokens+authtoken\">AuthToken</a>","children":[{"label":"AuthToken","linkedLabel":"<a href=\"#embed-authtokens+authtokens+authtokens+authtoken\">AuthToken</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### authTokens \{#embed-authtokens+authtokens\}
+##### authTokens \{#embed-authtokens+authtokens+authtokens\}
 
 </ExpandablePropertyTitle>
 
@@ -37,160 +39,36 @@ Auth tokens which may be used for non-indexed, federated results (e.g. Gmail).
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
-  id="authtokens_AuthToken"
-  headingId="embed-authtokens+authtokens+authtoken"
-  parentId="authtokens"
-  hasFrontMatter={false}
+  id="authtokens_authTokens_AuthToken"
+  headingId="embed-authtokens+authtokens+authtokens+authtoken"
+  parentId="authtokens_authTokens"
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### AuthToken \{#embed-authtokens+authtokens+authtoken\}
+#### AuthToken \{#embed-authtokens+authtokens+authtokens+authtoken\}
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
+<Embed slot="embed">
 
-</ExpandableBreakoutDescription>
+<EmbedTrigger slot="trigger" embedTitle="AuthToken" triggerText="View AuthToken details">
 
-<ExpandableBreakoutExamples slot="examples">
+<Embedauthtoken />
 
-</ExpandableBreakoutExamples>
+</EmbedTrigger>
 
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
+</Embed>
 
 </ExpandableBreakout>
 
-<ExpandableProperty
-  slot="entry"
-  id="authtokens_AuthToken_accessToken"
-  headingId="embed-authtokens+authtokens+authtoken+accesstoken"
-  parentId="authtokens_AuthToken"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### accessToken \{#embed-authtokens+authtokens+authtoken+accesstoken\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="authtokens_AuthToken_authUser"
-  headingId="embed-authtokens+authtokens+authtoken+authuser"
-  parentId="authtokens_AuthToken"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### authUser \{#embed-authtokens+authtokens+authtoken+authuser\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Used by Google to indicate the index of the logged in user. Useful for generating hyperlinks that support multilogin.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="authtokens_AuthToken_datasource"
-  headingId="embed-authtokens+authtokens+authtoken+datasource"
-  parentId="authtokens_AuthToken"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### datasource \{#embed-authtokens+authtokens+authtoken+datasource\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="authtokens_AuthToken_expiration"
-  headingId="embed-authtokens+authtokens+authtoken+expiration"
-  parentId="authtokens_AuthToken"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### expiration \{#embed-authtokens+authtokens+authtoken+expiration\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Unix timestamp when this token expires (in seconds since epoch UTC).
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="authtokens_AuthToken_scope"
-  headingId="embed-authtokens+authtokens+authtoken+scope"
-  parentId="authtokens_AuthToken"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### scope \{#embed-authtokens+authtokens+authtoken+scope\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="authtokens_AuthToken_tokenType"
-  headingId="embed-authtokens+authtokens+authtoken+tokentype"
-  parentId="authtokens_AuthToken"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### tokenType \{#embed-authtokens+authtokens+authtoken+tokentype\}
-
-</ExpandablePropertyTitle>
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 

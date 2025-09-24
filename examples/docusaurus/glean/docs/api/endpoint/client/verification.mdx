@@ -10,11 +10,10 @@ import {
   EmbedProvider,
   EmbedTrigger,
   ExpandableBreakout,
-  ExpandableBreakoutDefaultValue,
-  ExpandableBreakoutDescription,
-  ExpandableBreakoutExamples,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
+  ExpandablePropertyBreakouts,
   ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection,
@@ -36,16 +35,12 @@ import {
   Tag,
   TagTitle
 } from "@speakeasy-api/docs-md-react";
-import Embedperson from "../../../../src/components/speakeasy-embeds/loaders/person.tsx";
-import Embedcontainerdocument from "../../../../src/components/speakeasy-embeds/loaders/containerdocument.tsx";
-import Embedcontent from "../../../../src/components/speakeasy-embeds/loaders/content.tsx";
-import Embedparentdocument from "../../../../src/components/speakeasy-embeds/loaders/parentdocument.tsx";
-import Embedsections from "../../../../src/components/speakeasy-embeds/loaders/sections.tsx";
-import Embedassignee from "../../../../src/components/speakeasy-embeds/loaders/assignee.tsx";
-import Embedrequestor from "../../../../src/components/speakeasy-embeds/loaders/requestor.tsx";
-import Embedrelateddocuments from "../../../../src/components/speakeasy-embeds/loaders/relateddocuments.tsx";
-import Embedreminder from "../../../../src/components/speakeasy-embeds/loaders/reminder.tsx";
-import Embedcountinfo from "../../../../src/components/speakeasy-embeds/loaders/countinfo.tsx";
+import Embedcandidateverifiers from "../../../../src/components/speakeasy-embeds/loaders/candidateverifiers.tsx";
+import Embeddocument from "../../../../src/components/speakeasy-embeds/loaders/document.tsx";
+import Embedlastreminder from "../../../../src/components/speakeasy-embeds/loaders/lastreminder.tsx";
+import Embedlastverifier from "../../../../src/components/speakeasy-embeds/loaders/lastverifier.tsx";
+import Embedreminders from "../../../../src/components/speakeasy-embeds/loaders/reminders.tsx";
+import Embedvisitorcount from "../../../../src/components/speakeasy-embeds/loaders/visitorcount.tsx";
 import Embedmetadata from "../../../../src/components/speakeasy-embeds/loaders/metadata.tsx";
 
 <EmbedProvider />
@@ -106,7 +101,7 @@ Details about the reminder.
   headingId="operation-addverificationreminder+request+assignee"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -130,7 +125,7 @@ The obfuscated id of the person this verification is assigned to.
   headingId="operation-addverificationreminder+request+documentid"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -154,7 +149,7 @@ The document which the verification is for new reminders and/or update.
   headingId="operation-addverificationreminder+request+reason"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -178,7 +173,7 @@ An optional free-text reason for the reminder. This is particularly useful when 
   headingId="operation-addverificationreminder+request+remindindays"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -242,7 +237,7 @@ OK
   headingId="operation-addverificationreminder+responses+200+application-json+metadata"
   typeInfo={{"label":"VerificationMetadata","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata\">VerificationMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -252,22 +247,39 @@ OK
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="metadata_VerificationMetadata"
+  headingId="operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata"
+  parentId="metadata"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### VerificationMetadata \{#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_candidateVerifiers"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+candidateverifiers"
-  parentId="metadata"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+candidateverifiers+person\">Person</a>","children":[{"label":"Person","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+candidateverifiers+person\">Person</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="metadata_VerificationMetadata_candidateVerifiers"
+  headingId="operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+candidateverifiers"
+  parentId="metadata_VerificationMetadata"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+candidateverifiers+person\">Person</a>","children":[{"label":"Person","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+candidateverifiers+person\">Person</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### candidateVerifiers \{#operation-addverificationreminder+responses+200+application-json+metadata+candidateverifiers\}
+##### candidateVerifiers \{#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+candidateverifiers\}
 
 </ExpandablePropertyTitle>
 
@@ -277,117 +289,15 @@ A list of POC for company.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="metadata_candidateVerifiers_Person"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+candidateverifiers+person"
-  parentId="metadata_candidateVerifiers"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### Person \{#operation-addverificationreminder+responses+200+application-json+metadata+candidateverifiers+person\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="Person" triggerText="View Person details">
-
-<Embedperson />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableBreakout>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+document"
-  parentId="metadata"
-  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+document+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### document \{#operation-addverificationreminder+responses+200+application-json+metadata+document\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_connectorType"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+document+connectortype"
-  parentId="metadata_document"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"API_CRAWL\"","linkedLabel":"\"API_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"BROWSER_CRAWL\"","linkedLabel":"\"BROWSER_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"BROWSER_HISTORY\"","linkedLabel":"\"BROWSER_HISTORY\"","children":[],"breakoutSubTypes":{}},{"label":"\"BUILTIN\"","linkedLabel":"\"BUILTIN\"","children":[],"breakoutSubTypes":{}},{"label":"\"FEDERATED_SEARCH\"","linkedLabel":"\"FEDERATED_SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"PUSH_API\"","linkedLabel":"\"PUSH_API\"","children":[],"breakoutSubTypes":{}},{"label":"\"WEB_CRAWL\"","linkedLabel":"\"WEB_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"NATIVE_HISTORY\"","linkedLabel":"\"NATIVE_HISTORY\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### connectorType \{#operation-addverificationreminder+responses+200+application-json+metadata+document+connectortype\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The source from which document content was pulled, e.g. an API crawl or browser history
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_containerDocument"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+document+containerdocument"
-  parentId="metadata_document"
-  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+document+containerdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### containerDocument \{#operation-addverificationreminder+responses+200+application-json+metadata+document+containerdocument\}
-
-</ExpandablePropertyTitle>
-
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="containerDocument"
-  triggerText="View containerDocument details"
+  embedTitle="candidateVerifiers"
+  triggerText="View candidateVerifiers details"
 >
 
-<Embedcontainerdocument />
+<Embedcandidateverifiers />
 
 </EmbedTrigger>
 
@@ -397,134 +307,26 @@ The source from which document content was pulled, e.g. an API crawl or browser 
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_document_content"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+document+content"
-  parentId="metadata_document"
-  typeInfo={{"label":"DocumentContent","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+document+content+documentcontent\">DocumentContent</a>","children":[],"breakoutSubTypes":{}}}
+  id="metadata_VerificationMetadata_document"
+  headingId="operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+document"
+  parentId="metadata_VerificationMetadata"
+  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+document+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### content \{#operation-addverificationreminder+responses+200+application-json+metadata+document+content\}
+##### document \{#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+document\}
 
 </ExpandablePropertyTitle>
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="content" triggerText="View content details">
+<EmbedTrigger slot="trigger" embedTitle="document" triggerText="View document details">
 
-<Embedcontent />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_datasource"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+document+datasource"
-  parentId="metadata_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### datasource \{#operation-addverificationreminder+responses+200+application-json+metadata+document+datasource\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The app or other repository type from which the document was extracted
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_docType"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+document+doctype"
-  parentId="metadata_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### docType \{#operation-addverificationreminder+responses+200+application-json+metadata+document+doctype\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The datasource-specific type of the document (e.g. for Jira issues, this is the issue type such as Bug or Feature Request).
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_id"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+document+id"
-  parentId="metadata_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### id \{#operation-addverificationreminder+responses+200+application-json+metadata+document+id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The Glean Document ID.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_parentDocument"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+document+parentdocument"
-  parentId="metadata_document"
-  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+document+parentdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### parentDocument \{#operation-addverificationreminder+responses+200+application-json+metadata+document+parentdocument\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="parentDocument"
-  triggerText="View parentDocument details"
->
-
-<Embedparentdocument />
+<Embeddocument />
 
 </EmbedTrigger>
 
@@ -534,103 +336,18 @@ The Glean Document ID.
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_document_sections"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+document+sections"
-  parentId="metadata_document"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+document+sections+documentsection\">DocumentSection</a>","children":[{"label":"DocumentSection","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+document+sections+documentsection\">DocumentSection</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### sections \{#operation-addverificationreminder+responses+200+application-json+metadata+document+sections\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A list of content sub-sections in the document, e.g. text blocks with different headings in a Drive doc or Confluence page.
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="sections" triggerText="View sections details">
-
-<Embedsections />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_title"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+document+title"
-  parentId="metadata_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### title \{#operation-addverificationreminder+responses+200+application-json+metadata+document+title\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The title of the document.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_url"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+document+url"
-  parentId="metadata_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### url \{#operation-addverificationreminder+responses+200+application-json+metadata+document+url\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A permalink for the document.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_expirationTs"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+expirationts"
-  parentId="metadata"
+  id="metadata_VerificationMetadata_expirationTs"
+  headingId="operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+expirationts"
+  parentId="metadata_VerificationMetadata"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### expirationTs \{#operation-addverificationreminder+responses+200+application-json+metadata+expirationts\}
+##### expirationTs \{#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+expirationts\}
 
 </ExpandablePropertyTitle>
 
@@ -644,45 +361,30 @@ The unix timestamp of the verification expiration if applicable (in seconds sinc
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_lastReminder"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+lastreminder"
-  parentId="metadata"
-  typeInfo={{"label":"Reminder","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+reminder\">Reminder</a>","children":[],"breakoutSubTypes":{}}}
+  id="metadata_VerificationMetadata_lastReminder"
+  headingId="operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+lastreminder"
+  parentId="metadata_VerificationMetadata"
+  typeInfo={{"label":"Reminder","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+lastreminder+reminder\">Reminder</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### lastReminder \{#operation-addverificationreminder+responses+200+application-json+metadata+lastreminder\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastReminder_assignee"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+assignee"
-  parentId="metadata_lastReminder"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+assignee+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### assignee \{#operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+assignee\}
+##### lastReminder \{#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+lastreminder\}
 
 </ExpandablePropertyTitle>
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="assignee" triggerText="View assignee details">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="lastReminder"
+  triggerText="View lastReminder details"
+>
 
-<Embedassignee />
+<Embedlastreminder />
 
 </EmbedTrigger>
 
@@ -692,122 +394,18 @@ The unix timestamp of the verification expiration if applicable (in seconds sinc
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_lastReminder_createdAt"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+createdat"
-  parentId="metadata_lastReminder"
+  id="metadata_VerificationMetadata_lastVerificationTs"
+  headingId="operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+lastverificationts"
+  parentId="metadata_VerificationMetadata"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### createdAt \{#operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+createdat\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Unix timestamp for when the reminder was first created (in seconds since epoch UTC).
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastReminder_reason"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+reason"
-  parentId="metadata_lastReminder"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### reason \{#operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+reason\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-An optional free-text reason for the reminder. This is particularly useful when a reminder is used to ask for verification from another user (for example, "Duplicate", "Incomplete", "Incorrect").
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastReminder_remindAt"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+remindat"
-  parentId="metadata_lastReminder"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### remindAt \{#operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+remindat\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Unix timestamp for when the reminder should trigger (in seconds since epoch UTC).
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastReminder_requestor"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+requestor"
-  parentId="metadata_lastReminder"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+requestor+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### requestor \{#operation-addverificationreminder+responses+200+application-json+metadata+lastreminder+requestor\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="requestor" triggerText="View requestor details">
-
-<Embedrequestor />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastVerificationTs"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+lastverificationts"
-  parentId="metadata"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### lastVerificationTs \{#operation-addverificationreminder+responses+200+application-json+metadata+lastverificationts\}
+##### lastVerificationTs \{#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+lastverificationts\}
 
 </ExpandablePropertyTitle>
 
@@ -821,105 +419,30 @@ The unix timestamp of the verification (in seconds since epoch UTC).
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_lastVerifier"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+lastverifier"
-  parentId="metadata"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+lastverifier+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  id="metadata_VerificationMetadata_lastVerifier"
+  headingId="operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+lastverifier"
+  parentId="metadata_VerificationMetadata"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+lastverifier+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### lastVerifier \{#operation-addverificationreminder+responses+200+application-json+metadata+lastverifier\}
+##### lastVerifier \{#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+lastverifier\}
 
 </ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastVerifier_name"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+lastverifier+name"
-  parentId="metadata_lastVerifier"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### name \{#operation-addverificationreminder+responses+200+application-json+metadata+lastverifier+name\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The display name.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastVerifier_obfuscatedId"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+lastverifier+obfuscatedid"
-  parentId="metadata_lastVerifier"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### obfuscatedId \{#operation-addverificationreminder+responses+200+application-json+metadata+lastverifier+obfuscatedid\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-An opaque identifier that can be used to request metadata for a Person.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastVerifier_relatedDocuments"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+lastverifier+relateddocuments"
-  parentId="metadata_lastVerifier"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+lastverifier+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+lastverifier+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### relatedDocuments \{#operation-addverificationreminder+responses+200+application-json+metadata+lastverifier+relateddocuments\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A list of documents related to this person.
-
-</ExpandablePropertyDescription>
 
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="relatedDocuments"
-  triggerText="View relatedDocuments details"
+  embedTitle="lastVerifier"
+  triggerText="View lastVerifier details"
 >
 
-<Embedrelateddocuments />
+<Embedlastverifier />
 
 </EmbedTrigger>
 
@@ -929,18 +452,18 @@ A list of documents related to this person.
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_reminders"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+reminders"
-  parentId="metadata"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+reminders+reminder\">Reminder</a>","children":[{"label":"Reminder","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+reminders+reminder\">Reminder</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="metadata_VerificationMetadata_reminders"
+  headingId="operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+reminders"
+  parentId="metadata_VerificationMetadata"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+reminders+reminder\">Reminder</a>","children":[{"label":"Reminder","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+reminders+reminder\">Reminder</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### reminders \{#operation-addverificationreminder+responses+200+application-json+metadata+reminders\}
+##### reminders \{#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+reminders\}
 
 </ExpandablePropertyTitle>
 
@@ -950,61 +473,32 @@ Info about all outstanding verification reminders for the document if exists.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="metadata_reminders_Reminder"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+reminders+reminder"
-  parentId="metadata_reminders"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### Reminder \{#operation-addverificationreminder+responses+200+application-json+metadata+reminders+reminder\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="Reminder" triggerText="View Reminder details">
+<EmbedTrigger slot="trigger" embedTitle="reminders" triggerText="View reminders details">
 
-<Embedreminder />
+<Embedreminders />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_visitorCount"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+visitorcount"
-  parentId="metadata"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+visitorcount+countinfo\">CountInfo</a>","children":[{"label":"CountInfo","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+visitorcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="metadata_VerificationMetadata_visitorCount"
+  headingId="operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+visitorcount"
+  parentId="metadata_VerificationMetadata"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+visitorcount+countinfo\">CountInfo</a>","children":[{"label":"CountInfo","linkedLabel":"<a href=\"#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+visitorcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### visitorCount \{#operation-addverificationreminder+responses+200+application-json+metadata+visitorcount\}
+##### visitorCount \{#operation-addverificationreminder+responses+200+application-json+metadata+verificationmetadata+visitorcount\}
 
 </ExpandablePropertyTitle>
 
@@ -1014,46 +508,29 @@ Number of visitors to the document during included time periods.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="metadata_visitorCount_CountInfo"
-  headingId="operation-addverificationreminder+responses+200+application-json+metadata+visitorcount+countinfo"
-  parentId="metadata_visitorCount"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### CountInfo \{#operation-addverificationreminder+responses+200+application-json+metadata+visitorcount+countinfo\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="CountInfo" triggerText="View CountInfo details">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="visitorCount"
+  triggerText="View visitorCount details"
+>
 
-<Embedcountinfo />
+<Embedvisitorcount />
 
 </EmbedTrigger>
 
 </Embed>
 
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
 </ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -1061,7 +538,7 @@ Number of visitors to the document during included time periods.
   headingId="operation-addverificationreminder+responses+200+application-json+state"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UNVERIFIED\"","linkedLabel":"\"UNVERIFIED\"","children":[],"breakoutSubTypes":{}},{"label":"\"VERIFIED\"","linkedLabel":"\"VERIFIED\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEPRECATED\"","linkedLabel":"\"DEPRECATED\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1129,7 +606,7 @@ Returns the information to be rendered in verification dashboard. Includes infor
   headingId="operation-listverifications+parameters+count"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1144,6 +621,10 @@ Returns the information to be rendered in verification dashboard. Includes infor
 Maximum number of documents to return
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1187,7 +668,7 @@ OK
   headingId="operation-listverifications+responses+200+application-json+documents"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listverifications+responses+200+application-json+documents+verification\">Verification</a>","children":[{"label":"Verification","linkedLabel":"<a href=\"#operation-listverifications+responses+200+application-json+documents+verification\">Verification</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1203,14 +684,14 @@ List of document infos that include verification related information for them.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="documents_Verification"
   headingId="operation-listverifications+responses+200+application-json+documents+verification"
   parentId="documents"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1220,19 +701,7 @@ List of document infos that include verification related information for them.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1241,7 +710,7 @@ List of document infos that include verification related information for them.
   parentId="documents_Verification"
   typeInfo={{"label":"VerificationMetadata","linkedLabel":"<a href=\"#operation-listverifications+responses+200+application-json+documents+verification+metadata+verificationmetadata\">VerificationMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1270,7 +739,7 @@ List of document infos that include verification related information for them.
   parentId="documents_Verification"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UNVERIFIED\"","linkedLabel":"\"UNVERIFIED\"","children":[],"breakoutSubTypes":{}},{"label":"\"VERIFIED\"","linkedLabel":"\"VERIFIED\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEPRECATED\"","linkedLabel":"\"DEPRECATED\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1285,6 +754,14 @@ List of document infos that include verification related information for them.
 The verification state for the document.
 
 </ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1344,7 +821,7 @@ Details about the verification request.
   headingId="operation-verify+request+action"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"VERIFY\"","linkedLabel":"\"VERIFY\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEPRECATE\"","linkedLabel":"\"DEPRECATE\"","children":[],"breakoutSubTypes":{}},{"label":"\"UNVERIFY\"","linkedLabel":"\"UNVERIFY\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1368,7 +845,7 @@ The verification action requested.
   headingId="operation-verify+request+documentid"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1426,7 +903,7 @@ OK
   headingId="operation-verify+responses+200+application-json+metadata"
   typeInfo={{"label":"VerificationMetadata","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+verificationmetadata\">VerificationMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1436,22 +913,39 @@ OK
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="metadata_VerificationMetadata"
+  headingId="operation-verify+responses+200+application-json+metadata+verificationmetadata"
+  parentId="metadata"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### VerificationMetadata \{#operation-verify+responses+200+application-json+metadata+verificationmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_candidateVerifiers"
-  headingId="operation-verify+responses+200+application-json+metadata+candidateverifiers"
-  parentId="metadata"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+candidateverifiers+person\">Person</a>","children":[{"label":"Person","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+candidateverifiers+person\">Person</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="metadata_VerificationMetadata_candidateVerifiers"
+  headingId="operation-verify+responses+200+application-json+metadata+verificationmetadata+candidateverifiers"
+  parentId="metadata_VerificationMetadata"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+verificationmetadata+candidateverifiers+person\">Person</a>","children":[{"label":"Person","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+verificationmetadata+candidateverifiers+person\">Person</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### candidateVerifiers \{#operation-verify+responses+200+application-json+metadata+candidateverifiers\}
+##### candidateVerifiers \{#operation-verify+responses+200+application-json+metadata+verificationmetadata+candidateverifiers\}
 
 </ExpandablePropertyTitle>
 
@@ -1461,117 +955,15 @@ A list of POC for company.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="metadata_candidateVerifiers_Person"
-  headingId="operation-verify+responses+200+application-json+metadata+candidateverifiers+person"
-  parentId="metadata_candidateVerifiers"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### Person \{#operation-verify+responses+200+application-json+metadata+candidateverifiers+person\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="Person" triggerText="View Person details">
-
-<Embedperson />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableBreakout>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document"
-  headingId="operation-verify+responses+200+application-json+metadata+document"
-  parentId="metadata"
-  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+document+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### document \{#operation-verify+responses+200+application-json+metadata+document\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_connectorType"
-  headingId="operation-verify+responses+200+application-json+metadata+document+connectortype"
-  parentId="metadata_document"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"API_CRAWL\"","linkedLabel":"\"API_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"BROWSER_CRAWL\"","linkedLabel":"\"BROWSER_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"BROWSER_HISTORY\"","linkedLabel":"\"BROWSER_HISTORY\"","children":[],"breakoutSubTypes":{}},{"label":"\"BUILTIN\"","linkedLabel":"\"BUILTIN\"","children":[],"breakoutSubTypes":{}},{"label":"\"FEDERATED_SEARCH\"","linkedLabel":"\"FEDERATED_SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"PUSH_API\"","linkedLabel":"\"PUSH_API\"","children":[],"breakoutSubTypes":{}},{"label":"\"WEB_CRAWL\"","linkedLabel":"\"WEB_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"NATIVE_HISTORY\"","linkedLabel":"\"NATIVE_HISTORY\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### connectorType \{#operation-verify+responses+200+application-json+metadata+document+connectortype\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The source from which document content was pulled, e.g. an API crawl or browser history
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_containerDocument"
-  headingId="operation-verify+responses+200+application-json+metadata+document+containerdocument"
-  parentId="metadata_document"
-  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+document+containerdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### containerDocument \{#operation-verify+responses+200+application-json+metadata+document+containerdocument\}
-
-</ExpandablePropertyTitle>
-
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="containerDocument"
-  triggerText="View containerDocument details"
+  embedTitle="candidateVerifiers"
+  triggerText="View candidateVerifiers details"
 >
 
-<Embedcontainerdocument />
+<Embedcandidateverifiers />
 
 </EmbedTrigger>
 
@@ -1581,134 +973,26 @@ The source from which document content was pulled, e.g. an API crawl or browser 
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_document_content"
-  headingId="operation-verify+responses+200+application-json+metadata+document+content"
-  parentId="metadata_document"
-  typeInfo={{"label":"DocumentContent","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+document+content+documentcontent\">DocumentContent</a>","children":[],"breakoutSubTypes":{}}}
+  id="metadata_VerificationMetadata_document"
+  headingId="operation-verify+responses+200+application-json+metadata+verificationmetadata+document"
+  parentId="metadata_VerificationMetadata"
+  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+verificationmetadata+document+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### content \{#operation-verify+responses+200+application-json+metadata+document+content\}
+##### document \{#operation-verify+responses+200+application-json+metadata+verificationmetadata+document\}
 
 </ExpandablePropertyTitle>
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="content" triggerText="View content details">
+<EmbedTrigger slot="trigger" embedTitle="document" triggerText="View document details">
 
-<Embedcontent />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_datasource"
-  headingId="operation-verify+responses+200+application-json+metadata+document+datasource"
-  parentId="metadata_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### datasource \{#operation-verify+responses+200+application-json+metadata+document+datasource\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The app or other repository type from which the document was extracted
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_docType"
-  headingId="operation-verify+responses+200+application-json+metadata+document+doctype"
-  parentId="metadata_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### docType \{#operation-verify+responses+200+application-json+metadata+document+doctype\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The datasource-specific type of the document (e.g. for Jira issues, this is the issue type such as Bug or Feature Request).
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_id"
-  headingId="operation-verify+responses+200+application-json+metadata+document+id"
-  parentId="metadata_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### id \{#operation-verify+responses+200+application-json+metadata+document+id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The Glean Document ID.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_parentDocument"
-  headingId="operation-verify+responses+200+application-json+metadata+document+parentdocument"
-  parentId="metadata_document"
-  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+document+parentdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### parentDocument \{#operation-verify+responses+200+application-json+metadata+document+parentdocument\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="parentDocument"
-  triggerText="View parentDocument details"
->
-
-<Embedparentdocument />
+<Embeddocument />
 
 </EmbedTrigger>
 
@@ -1718,103 +1002,18 @@ The Glean Document ID.
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_document_sections"
-  headingId="operation-verify+responses+200+application-json+metadata+document+sections"
-  parentId="metadata_document"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+document+sections+documentsection\">DocumentSection</a>","children":[{"label":"DocumentSection","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+document+sections+documentsection\">DocumentSection</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### sections \{#operation-verify+responses+200+application-json+metadata+document+sections\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A list of content sub-sections in the document, e.g. text blocks with different headings in a Drive doc or Confluence page.
-
-</ExpandablePropertyDescription>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="sections" triggerText="View sections details">
-
-<Embedsections />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_title"
-  headingId="operation-verify+responses+200+application-json+metadata+document+title"
-  parentId="metadata_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### title \{#operation-verify+responses+200+application-json+metadata+document+title\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The title of the document.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_document_url"
-  headingId="operation-verify+responses+200+application-json+metadata+document+url"
-  parentId="metadata_document"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### url \{#operation-verify+responses+200+application-json+metadata+document+url\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A permalink for the document.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_expirationTs"
-  headingId="operation-verify+responses+200+application-json+metadata+expirationts"
-  parentId="metadata"
+  id="metadata_VerificationMetadata_expirationTs"
+  headingId="operation-verify+responses+200+application-json+metadata+verificationmetadata+expirationts"
+  parentId="metadata_VerificationMetadata"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### expirationTs \{#operation-verify+responses+200+application-json+metadata+expirationts\}
+##### expirationTs \{#operation-verify+responses+200+application-json+metadata+verificationmetadata+expirationts\}
 
 </ExpandablePropertyTitle>
 
@@ -1828,45 +1027,30 @@ The unix timestamp of the verification expiration if applicable (in seconds sinc
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_lastReminder"
-  headingId="operation-verify+responses+200+application-json+metadata+lastreminder"
-  parentId="metadata"
-  typeInfo={{"label":"Reminder","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+lastreminder+reminder\">Reminder</a>","children":[],"breakoutSubTypes":{}}}
+  id="metadata_VerificationMetadata_lastReminder"
+  headingId="operation-verify+responses+200+application-json+metadata+verificationmetadata+lastreminder"
+  parentId="metadata_VerificationMetadata"
+  typeInfo={{"label":"Reminder","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+verificationmetadata+lastreminder+reminder\">Reminder</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### lastReminder \{#operation-verify+responses+200+application-json+metadata+lastreminder\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastReminder_assignee"
-  headingId="operation-verify+responses+200+application-json+metadata+lastreminder+assignee"
-  parentId="metadata_lastReminder"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+lastreminder+assignee+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### assignee \{#operation-verify+responses+200+application-json+metadata+lastreminder+assignee\}
+##### lastReminder \{#operation-verify+responses+200+application-json+metadata+verificationmetadata+lastreminder\}
 
 </ExpandablePropertyTitle>
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="assignee" triggerText="View assignee details">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="lastReminder"
+  triggerText="View lastReminder details"
+>
 
-<Embedassignee />
+<Embedlastreminder />
 
 </EmbedTrigger>
 
@@ -1876,122 +1060,18 @@ The unix timestamp of the verification expiration if applicable (in seconds sinc
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_lastReminder_createdAt"
-  headingId="operation-verify+responses+200+application-json+metadata+lastreminder+createdat"
-  parentId="metadata_lastReminder"
+  id="metadata_VerificationMetadata_lastVerificationTs"
+  headingId="operation-verify+responses+200+application-json+metadata+verificationmetadata+lastverificationts"
+  parentId="metadata_VerificationMetadata"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### createdAt \{#operation-verify+responses+200+application-json+metadata+lastreminder+createdat\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Unix timestamp for when the reminder was first created (in seconds since epoch UTC).
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastReminder_reason"
-  headingId="operation-verify+responses+200+application-json+metadata+lastreminder+reason"
-  parentId="metadata_lastReminder"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### reason \{#operation-verify+responses+200+application-json+metadata+lastreminder+reason\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-An optional free-text reason for the reminder. This is particularly useful when a reminder is used to ask for verification from another user (for example, "Duplicate", "Incomplete", "Incorrect").
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastReminder_remindAt"
-  headingId="operation-verify+responses+200+application-json+metadata+lastreminder+remindat"
-  parentId="metadata_lastReminder"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### remindAt \{#operation-verify+responses+200+application-json+metadata+lastreminder+remindat\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Unix timestamp for when the reminder should trigger (in seconds since epoch UTC).
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastReminder_requestor"
-  headingId="operation-verify+responses+200+application-json+metadata+lastreminder+requestor"
-  parentId="metadata_lastReminder"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+lastreminder+requestor+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### requestor \{#operation-verify+responses+200+application-json+metadata+lastreminder+requestor\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="requestor" triggerText="View requestor details">
-
-<Embedrequestor />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastVerificationTs"
-  headingId="operation-verify+responses+200+application-json+metadata+lastverificationts"
-  parentId="metadata"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### lastVerificationTs \{#operation-verify+responses+200+application-json+metadata+lastverificationts\}
+##### lastVerificationTs \{#operation-verify+responses+200+application-json+metadata+verificationmetadata+lastverificationts\}
 
 </ExpandablePropertyTitle>
 
@@ -2005,105 +1085,30 @@ The unix timestamp of the verification (in seconds since epoch UTC).
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_lastVerifier"
-  headingId="operation-verify+responses+200+application-json+metadata+lastverifier"
-  parentId="metadata"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+lastverifier+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  id="metadata_VerificationMetadata_lastVerifier"
+  headingId="operation-verify+responses+200+application-json+metadata+verificationmetadata+lastverifier"
+  parentId="metadata_VerificationMetadata"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+verificationmetadata+lastverifier+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### lastVerifier \{#operation-verify+responses+200+application-json+metadata+lastverifier\}
+##### lastVerifier \{#operation-verify+responses+200+application-json+metadata+verificationmetadata+lastverifier\}
 
 </ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastVerifier_name"
-  headingId="operation-verify+responses+200+application-json+metadata+lastverifier+name"
-  parentId="metadata_lastVerifier"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### name \{#operation-verify+responses+200+application-json+metadata+lastverifier+name\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The display name.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastVerifier_obfuscatedId"
-  headingId="operation-verify+responses+200+application-json+metadata+lastverifier+obfuscatedid"
-  parentId="metadata_lastVerifier"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### obfuscatedId \{#operation-verify+responses+200+application-json+metadata+lastverifier+obfuscatedid\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-An opaque identifier that can be used to request metadata for a Person.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="metadata_lastVerifier_relatedDocuments"
-  headingId="operation-verify+responses+200+application-json+metadata+lastverifier+relateddocuments"
-  parentId="metadata_lastVerifier"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+lastverifier+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+lastverifier+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### relatedDocuments \{#operation-verify+responses+200+application-json+metadata+lastverifier+relateddocuments\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A list of documents related to this person.
-
-</ExpandablePropertyDescription>
 
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="relatedDocuments"
-  triggerText="View relatedDocuments details"
+  embedTitle="lastVerifier"
+  triggerText="View lastVerifier details"
 >
 
-<Embedrelateddocuments />
+<Embedlastverifier />
 
 </EmbedTrigger>
 
@@ -2113,18 +1118,18 @@ A list of documents related to this person.
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_reminders"
-  headingId="operation-verify+responses+200+application-json+metadata+reminders"
-  parentId="metadata"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+reminders+reminder\">Reminder</a>","children":[{"label":"Reminder","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+reminders+reminder\">Reminder</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="metadata_VerificationMetadata_reminders"
+  headingId="operation-verify+responses+200+application-json+metadata+verificationmetadata+reminders"
+  parentId="metadata_VerificationMetadata"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+verificationmetadata+reminders+reminder\">Reminder</a>","children":[{"label":"Reminder","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+verificationmetadata+reminders+reminder\">Reminder</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### reminders \{#operation-verify+responses+200+application-json+metadata+reminders\}
+##### reminders \{#operation-verify+responses+200+application-json+metadata+verificationmetadata+reminders\}
 
 </ExpandablePropertyTitle>
 
@@ -2134,61 +1139,32 @@ Info about all outstanding verification reminders for the document if exists.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="metadata_reminders_Reminder"
-  headingId="operation-verify+responses+200+application-json+metadata+reminders+reminder"
-  parentId="metadata_reminders"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### Reminder \{#operation-verify+responses+200+application-json+metadata+reminders+reminder\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="Reminder" triggerText="View Reminder details">
+<EmbedTrigger slot="trigger" embedTitle="reminders" triggerText="View reminders details">
 
-<Embedreminder />
+<Embedreminders />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_visitorCount"
-  headingId="operation-verify+responses+200+application-json+metadata+visitorcount"
-  parentId="metadata"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+visitorcount+countinfo\">CountInfo</a>","children":[{"label":"CountInfo","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+visitorcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="metadata_VerificationMetadata_visitorCount"
+  headingId="operation-verify+responses+200+application-json+metadata+verificationmetadata+visitorcount"
+  parentId="metadata_VerificationMetadata"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+verificationmetadata+visitorcount+countinfo\">CountInfo</a>","children":[{"label":"CountInfo","linkedLabel":"<a href=\"#operation-verify+responses+200+application-json+metadata+verificationmetadata+visitorcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### visitorCount \{#operation-verify+responses+200+application-json+metadata+visitorcount\}
+##### visitorCount \{#operation-verify+responses+200+application-json+metadata+verificationmetadata+visitorcount\}
 
 </ExpandablePropertyTitle>
 
@@ -2198,46 +1174,29 @@ Number of visitors to the document during included time periods.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="metadata_visitorCount_CountInfo"
-  headingId="operation-verify+responses+200+application-json+metadata+visitorcount+countinfo"
-  parentId="metadata_visitorCount"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### CountInfo \{#operation-verify+responses+200+application-json+metadata+visitorcount+countinfo\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="CountInfo" triggerText="View CountInfo details">
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="visitorCount"
+  triggerText="View visitorCount details"
+>
 
-<Embedcountinfo />
+<Embedvisitorcount />
 
 </EmbedTrigger>
 
 </Embed>
 
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
 </ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -2245,7 +1204,7 @@ Number of visitors to the document during included time periods.
   headingId="operation-verify+responses+200+application-json+state"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UNVERIFIED\"","linkedLabel":"\"UNVERIFIED\"","children":[],"breakoutSubTypes":{}},{"label":"\"VERIFIED\"","linkedLabel":"\"VERIFIED\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEPRECATED\"","linkedLabel":"\"DEPRECATED\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 

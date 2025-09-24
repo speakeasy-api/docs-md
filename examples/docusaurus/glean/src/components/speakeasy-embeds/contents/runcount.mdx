@@ -4,208 +4,64 @@ hide_table_of_contents: true
 import {
   Embed,
   EmbedTrigger,
+  ExpandableBreakout,
+  ExpandableBreakoutTitle,
   ExpandableProperty,
-  ExpandablePropertyDescription,
+  ExpandablePropertyBreakouts,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedend from "../loaders/end.tsx";
-import Embedstart from "../loaders/start.tsx";
+import Embedcountinfo from "../loaders/countinfo.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="runcount"
-  headingId="embed-runcount+runcount"
-  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-primaryentry+primaryentry+prompttemplate+runcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
+  id="runcount_runCount"
+  headingId="embed-runcount+runcount+runcount"
+  parentId="runcount"
+  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-runcount+runcount+runcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### runCount \{#embed-runcount+runcount\}
+##### runCount \{#embed-runcount+runcount+runcount\}
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
-<ExpandableProperty
+<ExpandableBreakout
   slot="entry"
-  id="runcount_count"
-  headingId="embed-runcount+runcount+count"
-  parentId="runcount"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  id="runcount_runCount_CountInfo"
+  headingId="embed-runcount+runcount+runcount+countinfo"
+  parentId="runcount_runCount"
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
-<ExpandablePropertyTitle slot="title">
+<ExpandableBreakoutTitle slot="title">
 
-##### count \{#embed-runcount+runcount+count\}
+#### CountInfo \{#embed-runcount+runcount+runcount+countinfo\}
 
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The counter value
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="runcount_org"
-  headingId="embed-runcount+runcount+org"
-  parentId="runcount"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### org \{#embed-runcount+runcount+org\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The unit of organization over which we did the count aggregation, e.g. org (department) or company
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="runcount_period"
-  headingId="embed-runcount+runcount+period"
-  parentId="runcount"
-  typeInfo={{"label":"Period","linkedLabel":"<a href=\"#embed-runcount+runcount+period+period\">Period</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### period \{#embed-runcount+runcount+period\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="runcount_period_end"
-  headingId="embed-runcount+runcount+period+end"
-  parentId="runcount_period"
-  typeInfo={{"label":"TimePoint","linkedLabel":"<a href=\"#embed-runcount+runcount+period+end+timepoint\">TimePoint</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### end \{#embed-runcount+runcount+period+end\}
-
-</ExpandablePropertyTitle>
+</ExpandableBreakoutTitle>
 
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="end" triggerText="View end details">
+<EmbedTrigger slot="trigger" embedTitle="CountInfo" triggerText="View CountInfo details">
 
-<Embedend />
+<Embedcountinfo />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableProperty>
+</ExpandableBreakout>
 
-<ExpandableProperty
-  slot="entry"
-  id="runcount_period_maxDaysFromNow"
-  headingId="embed-runcount+runcount+period+maxdaysfromnow"
-  parentId="runcount_period"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### maxDaysFromNow \{#embed-runcount+runcount+period+maxdaysfromnow\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-DEPRECATED - The number of days from now in the past to define lower boundary of time period.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="runcount_period_minDaysFromNow"
-  headingId="embed-runcount+runcount+period+mindaysfromnow"
-  parentId="runcount_period"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### minDaysFromNow \{#embed-runcount+runcount+period+mindaysfromnow\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-DEPRECATED - The number of days from now in the past to define upper boundary of time period.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="runcount_period_start"
-  headingId="embed-runcount+runcount+period+start"
-  parentId="runcount_period"
-  typeInfo={{"label":"TimePoint","linkedLabel":"<a href=\"#embed-runcount+runcount+period+start+timepoint\">TimePoint</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### start \{#embed-runcount+runcount+period+start\}
-
-</ExpandablePropertyTitle>
-
-<Embed slot="embed">
-
-<EmbedTrigger slot="trigger" embedTitle="start" triggerText="View start details">
-
-<Embedstart />
-
-</EmbedTrigger>
-
-</Embed>
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 

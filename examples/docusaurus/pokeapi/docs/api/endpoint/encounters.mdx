@@ -7,11 +7,10 @@ import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
   ExpandableBreakout,
-  ExpandableBreakoutDefaultValue,
-  ExpandableBreakoutDescription,
-  ExpandableBreakoutExamples,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
+  ExpandablePropertyBreakouts,
   ExpandablePropertyDescription,
   ExpandablePropertyExamples,
   ExpandablePropertyTitle,
@@ -84,7 +83,7 @@ Methods by which the player might can encounter Pokémon in the wild, e.g., walk
   id="cookieAuth"
   headingId="operation-api_v2_encounter_method_list+security+cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -101,7 +100,7 @@ Methods by which the player might can encounter Pokémon in the wild, e.g., walk
   id="basicAuth"
   headingId="operation-api_v2_encounter_method_list+security+basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -141,7 +140,7 @@ Methods by which the player might can encounter Pokémon in the wild, e.g., walk
   headingId="operation-api_v2_encounter_method_list+parameters+limit"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -157,6 +156,10 @@ Number of results to return per page.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -165,7 +168,7 @@ Number of results to return per page.
   headingId="operation-api_v2_encounter_method_list+parameters+offset"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -181,6 +184,10 @@ The initial index from which to return the results.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -189,7 +196,7 @@ The initial index from which to return the results.
   headingId="operation-api_v2_encounter_method_list+parameters+q"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -205,6 +212,10 @@ The initial index from which to return the results.
 Case-insensitive query applied on the `name` property. 
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -248,7 +259,7 @@ Case-insensitive query applied on the `name` property.
   headingId="operation-api_v2_encounter_method_list+responses+200+application-json+count"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -276,7 +287,7 @@ _Example:_
   headingId="operation-api_v2_encounter_method_list+responses+200+application-json+next"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -304,7 +315,7 @@ http://api.example.org/accounts/?offset=400&limit=100
   headingId="operation-api_v2_encounter_method_list+responses+200+application-json+previous"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -332,7 +343,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   headingId="operation-api_v2_encounter_method_list+responses+200+application-json+results"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_encounter_method_list+responses+200+application-json+results+encountermethodsummary\">EncounterMethodSummary</a>","children":[{"label":"EncounterMethodSummary","linkedLabel":"<a href=\"#operation-api_v2_encounter_method_list+responses+200+application-json+results+encountermethodsummary\">EncounterMethodSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -342,14 +353,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="results_EncounterMethodSummary"
   headingId="operation-api_v2_encounter_method_list+responses+200+application-json+results+encountermethodsummary"
   parentId="results"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -359,19 +370,7 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -380,7 +379,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_EncounterMethodSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -399,7 +398,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_EncounterMethodSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -408,6 +407,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 ##### url \{#operation-api_v2_encounter_method_list+responses+200+application-json+results+encountermethodsummary+url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -460,7 +467,7 @@ Methods by which the player might can encounter Pokémon in the wild, e.g., walk
   id="cookieAuth"
   headingId="operation-api_v2_encounter_method_retrieve+security+cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -477,7 +484,7 @@ Methods by which the player might can encounter Pokémon in the wild, e.g., walk
   id="basicAuth"
   headingId="operation-api_v2_encounter_method_retrieve+security+basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -517,7 +524,7 @@ Methods by which the player might can encounter Pokémon in the wild, e.g., walk
   headingId="operation-api_v2_encounter_method_retrieve+parameters+id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -532,6 +539,10 @@ Methods by which the player might can encounter Pokémon in the wild, e.g., walk
 This parameter can be a string or an integer.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -575,7 +586,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_encounter_method_retrieve+responses+200+application-json+id"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -593,7 +604,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_encounter_method_retrieve+responses+200+application-json+name"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -611,7 +622,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_encounter_method_retrieve+responses+200+application-json+names"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname\">EncounterMethodName</a>","children":[{"label":"EncounterMethodName","linkedLabel":"<a href=\"#operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname\">EncounterMethodName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -621,14 +632,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="names_EncounterMethodName"
   headingId="operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname"
   parentId="names"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -638,19 +649,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -659,7 +658,7 @@ This parameter can be a string or an integer.
   parentId="names_EncounterMethodName"
   typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname+language+languagesummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -669,22 +668,39 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="names_EncounterMethodName_language_LanguageSummary"
+  headingId="operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname+language+languagesummary"
+  parentId="names_EncounterMethodName_language"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### LanguageSummary \{#operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname+language+languagesummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="names_EncounterMethodName_language_name"
-  headingId="operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname+language+name"
-  parentId="names_EncounterMethodName_language"
+  id="names_EncounterMethodName_language_LanguageSummary_name"
+  headingId="operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname+language+languagesummary+name"
+  parentId="names_EncounterMethodName_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname+language+name\}
+##### name \{#operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname+language+languagesummary+name\}
 
 </ExpandablePropertyTitle>
 
@@ -692,20 +708,28 @@ This parameter can be a string or an integer.
 
 <ExpandableProperty
   slot="entry"
-  id="names_EncounterMethodName_language_url"
-  headingId="operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname+language+url"
-  parentId="names_EncounterMethodName_language"
+  id="names_EncounterMethodName_language_LanguageSummary_url"
+  headingId="operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname+language+languagesummary+url"
+  parentId="names_EncounterMethodName_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname+language+url\}
+##### url \{#operation-api_v2_encounter_method_retrieve+responses+200+application-json+names+encountermethodname+language+languagesummary+url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -716,7 +740,7 @@ This parameter can be a string or an integer.
   parentId="names_EncounterMethodName"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -728,13 +752,21 @@ This parameter can be a string or an integer.
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="order"
   headingId="operation-api_v2_encounter_method_retrieve+responses+200+application-json+order"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -795,7 +827,7 @@ Conditions which affect what pokemon might appear in the wild, e.g., day or nigh
   id="cookieAuth"
   headingId="operation-api_v2_encounter_condition_list+security+cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -812,7 +844,7 @@ Conditions which affect what pokemon might appear in the wild, e.g., day or nigh
   id="basicAuth"
   headingId="operation-api_v2_encounter_condition_list+security+basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -852,7 +884,7 @@ Conditions which affect what pokemon might appear in the wild, e.g., day or nigh
   headingId="operation-api_v2_encounter_condition_list+parameters+limit"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -868,6 +900,10 @@ Number of results to return per page.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -876,7 +912,7 @@ Number of results to return per page.
   headingId="operation-api_v2_encounter_condition_list+parameters+offset"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -892,6 +928,10 @@ The initial index from which to return the results.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -900,7 +940,7 @@ The initial index from which to return the results.
   headingId="operation-api_v2_encounter_condition_list+parameters+q"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -916,6 +956,10 @@ The initial index from which to return the results.
 Case-insensitive query applied on the `name` property. 
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -959,7 +1003,7 @@ Case-insensitive query applied on the `name` property.
   headingId="operation-api_v2_encounter_condition_list+responses+200+application-json+count"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -987,7 +1031,7 @@ _Example:_
   headingId="operation-api_v2_encounter_condition_list+responses+200+application-json+next"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1015,7 +1059,7 @@ http://api.example.org/accounts/?offset=400&limit=100
   headingId="operation-api_v2_encounter_condition_list+responses+200+application-json+previous"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1043,7 +1087,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   headingId="operation-api_v2_encounter_condition_list+responses+200+application-json+results"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_list+responses+200+application-json+results+encounterconditionsummary\">EncounterConditionSummary</a>","children":[{"label":"EncounterConditionSummary","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_list+responses+200+application-json+results+encounterconditionsummary\">EncounterConditionSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1053,14 +1097,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="results_EncounterConditionSummary"
   headingId="operation-api_v2_encounter_condition_list+responses+200+application-json+results+encounterconditionsummary"
   parentId="results"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1070,19 +1114,7 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1091,7 +1123,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_EncounterConditionSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1110,7 +1142,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_EncounterConditionSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1119,6 +1151,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 ##### url \{#operation-api_v2_encounter_condition_list+responses+200+application-json+results+encounterconditionsummary+url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1171,7 +1211,7 @@ Conditions which affect what pokemon might appear in the wild, e.g., day or nigh
   id="cookieAuth"
   headingId="operation-api_v2_encounter_condition_retrieve+security+cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1188,7 +1228,7 @@ Conditions which affect what pokemon might appear in the wild, e.g., day or nigh
   id="basicAuth"
   headingId="operation-api_v2_encounter_condition_retrieve+security+basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1228,7 +1268,7 @@ Conditions which affect what pokemon might appear in the wild, e.g., day or nigh
   headingId="operation-api_v2_encounter_condition_retrieve+parameters+id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1243,6 +1283,10 @@ Conditions which affect what pokemon might appear in the wild, e.g., day or nigh
 This parameter can be a string or an integer.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1286,7 +1330,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_encounter_condition_retrieve+responses+200+application-json+id"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1304,7 +1348,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_encounter_condition_retrieve+responses+200+application-json+name"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1322,7 +1366,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname\">EncounterConditionName</a>","children":[{"label":"EncounterConditionName","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname\">EncounterConditionName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1332,14 +1376,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="names_EncounterConditionName"
   headingId="operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname"
   parentId="names"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1349,19 +1393,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1370,7 +1402,7 @@ This parameter can be a string or an integer.
   parentId="names_EncounterConditionName"
   typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname+language+languagesummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1380,22 +1412,39 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="names_EncounterConditionName_language_LanguageSummary"
+  headingId="operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname+language+languagesummary"
+  parentId="names_EncounterConditionName_language"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### LanguageSummary \{#operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname+language+languagesummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="names_EncounterConditionName_language_name"
-  headingId="operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname+language+name"
-  parentId="names_EncounterConditionName_language"
+  id="names_EncounterConditionName_language_LanguageSummary_name"
+  headingId="operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname+language+languagesummary+name"
+  parentId="names_EncounterConditionName_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname+language+name\}
+##### name \{#operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname+language+languagesummary+name\}
 
 </ExpandablePropertyTitle>
 
@@ -1403,20 +1452,28 @@ This parameter can be a string or an integer.
 
 <ExpandableProperty
   slot="entry"
-  id="names_EncounterConditionName_language_url"
-  headingId="operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname+language+url"
-  parentId="names_EncounterConditionName_language"
+  id="names_EncounterConditionName_language_LanguageSummary_url"
+  headingId="operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname+language+languagesummary+url"
+  parentId="names_EncounterConditionName_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname+language+url\}
+##### url \{#operation-api_v2_encounter_condition_retrieve+responses+200+application-json+names+encounterconditionname+language+languagesummary+url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1427,7 +1484,7 @@ This parameter can be a string or an integer.
   parentId="names_EncounterConditionName"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1439,13 +1496,21 @@ This parameter can be a string or an integer.
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="values"
   headingId="operation-api_v2_encounter_condition_retrieve+responses+200+application-json+values"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_retrieve+responses+200+application-json+values+encounterconditionvaluesummary\">EncounterConditionValueSummary</a>","children":[{"label":"EncounterConditionValueSummary","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_retrieve+responses+200+application-json+values+encounterconditionvaluesummary\">EncounterConditionValueSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1455,14 +1520,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="values_EncounterConditionValueSummary"
   headingId="operation-api_v2_encounter_condition_retrieve+responses+200+application-json+values+encounterconditionvaluesummary"
   parentId="values"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1472,19 +1537,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1493,7 +1546,7 @@ This parameter can be a string or an integer.
   parentId="values_EncounterConditionValueSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1512,7 +1565,7 @@ This parameter can be a string or an integer.
   parentId="values_EncounterConditionValueSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1521,6 +1574,14 @@ This parameter can be a string or an integer.
 ##### url \{#operation-api_v2_encounter_condition_retrieve+responses+200+application-json+values+encounterconditionvaluesummary+url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1573,7 +1634,7 @@ Encounter condition values are the various states that an encounter condition ca
   id="cookieAuth"
   headingId="operation-api_v2_encounter_condition_value_list+security+cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1590,7 +1651,7 @@ Encounter condition values are the various states that an encounter condition ca
   id="basicAuth"
   headingId="operation-api_v2_encounter_condition_value_list+security+basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1630,7 +1691,7 @@ Encounter condition values are the various states that an encounter condition ca
   headingId="operation-api_v2_encounter_condition_value_list+parameters+limit"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1646,6 +1707,10 @@ Number of results to return per page.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -1654,7 +1719,7 @@ Number of results to return per page.
   headingId="operation-api_v2_encounter_condition_value_list+parameters+offset"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1670,6 +1735,10 @@ The initial index from which to return the results.
 
 </ExpandablePropertyDescription>
 
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
 </ExpandableProperty>
 
 <ExpandableProperty
@@ -1678,7 +1747,7 @@ The initial index from which to return the results.
   headingId="operation-api_v2_encounter_condition_value_list+parameters+q"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1694,6 +1763,10 @@ The initial index from which to return the results.
 Case-insensitive query applied on the `name` property. 
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1737,7 +1810,7 @@ Case-insensitive query applied on the `name` property.
   headingId="operation-api_v2_encounter_condition_value_list+responses+200+application-json+count"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1765,7 +1838,7 @@ _Example:_
   headingId="operation-api_v2_encounter_condition_value_list+responses+200+application-json+next"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1793,7 +1866,7 @@ http://api.example.org/accounts/?offset=400&limit=100
   headingId="operation-api_v2_encounter_condition_value_list+responses+200+application-json+previous"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1821,7 +1894,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   headingId="operation-api_v2_encounter_condition_value_list+responses+200+application-json+results"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_value_list+responses+200+application-json+results+encounterconditionvaluesummary\">EncounterConditionValueSummary</a>","children":[{"label":"EncounterConditionValueSummary","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_value_list+responses+200+application-json+results+encounterconditionvaluesummary\">EncounterConditionValueSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1831,14 +1904,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="results_EncounterConditionValueSummary"
   headingId="operation-api_v2_encounter_condition_value_list+responses+200+application-json+results+encounterconditionvaluesummary"
   parentId="results"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1848,19 +1921,7 @@ http://api.example.org/accounts/?offset=200&limit=100
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1869,7 +1930,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_EncounterConditionValueSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1888,7 +1949,7 @@ http://api.example.org/accounts/?offset=200&limit=100
   parentId="results_EncounterConditionValueSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -1897,6 +1958,14 @@ http://api.example.org/accounts/?offset=200&limit=100
 ##### url \{#operation-api_v2_encounter_condition_value_list+responses+200+application-json+results+encounterconditionvaluesummary+url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1949,7 +2018,7 @@ Encounter condition values are the various states that an encounter condition ca
   id="cookieAuth"
   headingId="operation-api_v2_encounter_condition_value_retrieve+security+cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -1966,7 +2035,7 @@ Encounter condition values are the various states that an encounter condition ca
   id="basicAuth"
   headingId="operation-api_v2_encounter_condition_value_retrieve+security+basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -2006,7 +2075,7 @@ Encounter condition values are the various states that an encounter condition ca
   headingId="operation-api_v2_encounter_condition_value_retrieve+parameters+id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2021,6 +2090,10 @@ Encounter condition values are the various states that an encounter condition ca
 This parameter can be a string or an integer.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2064,7 +2137,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+condition"
   typeInfo={{"label":"EncounterConditionSummary","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+condition+encounterconditionsummary\">EncounterConditionSummary</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2074,22 +2147,39 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="condition_EncounterConditionSummary"
+  headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+condition+encounterconditionsummary"
+  parentId="condition"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### EncounterConditionSummary \{#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+condition+encounterconditionsummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="condition_name"
-  headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+condition+name"
-  parentId="condition"
+  id="condition_EncounterConditionSummary_name"
+  headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+condition+encounterconditionsummary+name"
+  parentId="condition_EncounterConditionSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+condition+name\}
+##### name \{#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+condition+encounterconditionsummary+name\}
 
 </ExpandablePropertyTitle>
 
@@ -2097,20 +2187,28 @@ This parameter can be a string or an integer.
 
 <ExpandableProperty
   slot="entry"
-  id="condition_url"
-  headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+condition+url"
-  parentId="condition"
+  id="condition_EncounterConditionSummary_url"
+  headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+condition+encounterconditionsummary+url"
+  parentId="condition_EncounterConditionSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+condition+url\}
+##### url \{#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+condition+encounterconditionsummary+url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2120,7 +2218,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+id"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -2138,7 +2236,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+name"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -2156,7 +2254,7 @@ This parameter can be a string or an integer.
   headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename\">EncounterConditionValueName</a>","children":[{"label":"EncounterConditionValueName","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename\">EncounterConditionValueName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2166,14 +2264,14 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="names_EncounterConditionValueName"
   headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename"
   parentId="names"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2183,19 +2281,7 @@ This parameter can be a string or an integer.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -2204,7 +2290,7 @@ This parameter can be a string or an integer.
   parentId="names_EncounterConditionValueName"
   typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename+language+languagesummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2214,22 +2300,39 @@ This parameter can be a string or an integer.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="names_EncounterConditionValueName_language_LanguageSummary"
+  headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename+language+languagesummary"
+  parentId="names_EncounterConditionValueName_language"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### LanguageSummary \{#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename+language+languagesummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="names_EncounterConditionValueName_language_name"
-  headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename+language+name"
-  parentId="names_EncounterConditionValueName_language"
+  id="names_EncounterConditionValueName_language_LanguageSummary_name"
+  headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename+language+languagesummary+name"
+  parentId="names_EncounterConditionValueName_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename+language+name\}
+##### name \{#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename+language+languagesummary+name\}
 
 </ExpandablePropertyTitle>
 
@@ -2237,20 +2340,28 @@ This parameter can be a string or an integer.
 
 <ExpandableProperty
   slot="entry"
-  id="names_EncounterConditionValueName_language_url"
-  headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename+language+url"
-  parentId="names_EncounterConditionValueName_language"
+  id="names_EncounterConditionValueName_language_LanguageSummary_url"
+  headingId="operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename+language+languagesummary+url"
+  parentId="names_EncounterConditionValueName_language_LanguageSummary"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename+language+url\}
+##### url \{#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename+language+languagesummary+url\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2261,7 +2372,7 @@ This parameter can be a string or an integer.
   parentId="names_EncounterConditionValueName"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -2270,6 +2381,14 @@ This parameter can be a string or an integer.
 ##### name \{#operation-api_v2_encounter_condition_value_retrieve+responses+200+application-json+names+encounterconditionvaluename+name\}
 
 </ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2322,7 +2441,7 @@ Handles Pokemon Encounters as a sub-resource.
   id="cookieAuth"
   headingId="operation-api_v2_pokemon_encounters_retrieve+security+cookieauth"
   typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -2339,7 +2458,7 @@ Handles Pokemon Encounters as a sub-resource.
   id="basicAuth"
   headingId="operation-api_v2_pokemon_encounters_retrieve+security+basicauth"
   typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -2379,7 +2498,7 @@ Handles Pokemon Encounters as a sub-resource.
   headingId="operation-api_v2_pokemon_encounters_retrieve+parameters+pokemon_id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -2388,6 +2507,10 @@ Handles Pokemon Encounters as a sub-resource.
 ##### pokemon_id \{#operation-api_v2_pokemon_encounters_retrieve+parameters+pokemon_id\}
 
 </ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2437,7 +2560,7 @@ Handles Pokemon Encounters as a sub-resource.
   slot="entry"
   id="ResponseBody"
   headingId="operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2447,19 +2570,7 @@ Handles Pokemon Encounters as a sub-resource.
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -2468,7 +2579,7 @@ Handles Pokemon Encounters as a sub-resource.
   parentId="ResponseBody"
   typeInfo={{"label":"location_area","linkedLabel":"<a href=\"#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+location_area+location_area\">location_area</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2478,63 +2589,9 @@ Handles Pokemon Encounters as a sub-resource.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
-<ExpandableProperty
-  slot="entry"
-  id="ResponseBody_location_area_name"
-  headingId="operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+location_area+name"
-  parentId="ResponseBody_location_area"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### name \{#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+location_area+name\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-cerulean-city-area
-```
-
-</ExpandablePropertyExamples>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="ResponseBody_location_area_url"
-  headingId="operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+location_area+url"
-  parentId="ResponseBody_location_area"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### url \{#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+location_area+url\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-https://pokeapi.co/api/v2/location-area/281/
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2545,7 +2602,7 @@ https://pokeapi.co/api/v2/location-area/281/
   parentId="ResponseBody"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail\">version_detail</a>","children":[{"label":"version_detail","linkedLabel":"<a href=\"#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail\">version_detail</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2555,14 +2612,14 @@ https://pokeapi.co/api/v2/location-area/281/
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="ResponseBody_version_details_version_detail"
   headingId="operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail"
   parentId="ResponseBody_version_details"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2572,19 +2629,7 @@ https://pokeapi.co/api/v2/location-area/281/
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -2593,7 +2638,7 @@ https://pokeapi.co/api/v2/location-area/281/
   parentId="ResponseBody_version_details_version_detail"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+encounter_details+encounter_detail\">encounter_detail</a>","children":[{"label":"encounter_detail","linkedLabel":"<a href=\"#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+encounter_details+encounter_detail\">encounter_detail</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2603,14 +2648,14 @@ https://pokeapi.co/api/v2/location-area/281/
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="ResponseBody_version_details_version_detail_encounter_details_encounter_detail"
   headingId="operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+encounter_details+encounter_detail"
   parentId="ResponseBody_version_details_version_detail_encounter_details"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2620,19 +2665,7 @@ https://pokeapi.co/api/v2/location-area/281/
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -2641,7 +2674,7 @@ https://pokeapi.co/api/v2/location-area/281/
   parentId="ResponseBody_version_details_version_detail_encounter_details_encounter_detail"
   typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2670,7 +2703,7 @@ _Example:_
   parentId="ResponseBody_version_details_version_detail_encounter_details_encounter_detail"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+encounter_details+encounter_detail+condition_values+condition_value\">condition_value</a>","children":[{"label":"condition_value","linkedLabel":"<a href=\"#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+encounter_details+encounter_detail+condition_values+condition_value\">condition_value</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2680,14 +2713,14 @@ _Example:_
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="ResponseBody_version_details_version_detail_encounter_details_encounter_detail_condition_values_condition_value"
   headingId="operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+encounter_details+encounter_detail+condition_values+condition_value"
   parentId="ResponseBody_version_details_version_detail_encounter_details_encounter_detail_condition_values"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2697,19 +2730,7 @@ _Example:_
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -2718,7 +2739,7 @@ _Example:_
   parentId="ResponseBody_version_details_version_detail_encounter_details_encounter_detail_condition_values_condition_value"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2747,7 +2768,7 @@ story-progress-beat-red
   parentId="ResponseBody_version_details_version_detail_encounter_details_encounter_detail_condition_values_condition_value"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2769,6 +2790,14 @@ https://pokeapi.co/api/v2/encounter-condition-value/55/
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="ResponseBody_version_details_version_detail_encounter_details_encounter_detail_max_level"
@@ -2776,7 +2805,7 @@ https://pokeapi.co/api/v2/encounter-condition-value/55/
   parentId="ResponseBody_version_details_version_detail_encounter_details_encounter_detail"
   typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2805,7 +2834,7 @@ _Example:_
   parentId="ResponseBody_version_details_version_detail_encounter_details_encounter_detail"
   typeInfo={{"label":"method","linkedLabel":"<a href=\"#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+encounter_details+encounter_detail+method+method\">method</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2815,63 +2844,9 @@ _Example:_
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
-<ExpandableProperty
-  slot="entry"
-  id="ResponseBody_version_details_version_detail_encounter_details_encounter_detail_method_name"
-  headingId="operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+encounter_details+encounter_detail+method+name"
-  parentId="ResponseBody_version_details_version_detail_encounter_details_encounter_detail_method"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### name \{#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+encounter_details+encounter_detail+method+name\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-gift
-```
-
-</ExpandablePropertyExamples>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="ResponseBody_version_details_version_detail_encounter_details_encounter_detail_method_url"
-  headingId="operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+encounter_details+encounter_detail+method+url"
-  parentId="ResponseBody_version_details_version_detail_encounter_details_encounter_detail_method"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### url \{#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+encounter_details+encounter_detail+method+url\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-https://pokeapi.co/api/v2/encounter-method/18/
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -2882,7 +2857,7 @@ https://pokeapi.co/api/v2/encounter-method/18/
   parentId="ResponseBody_version_details_version_detail_encounter_details_encounter_detail"
   typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2904,6 +2879,14 @@ _Example:_
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="ResponseBody_version_details_version_detail_max_chance"
@@ -2911,7 +2894,7 @@ _Example:_
   parentId="ResponseBody_version_details_version_detail"
   typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2940,7 +2923,7 @@ _Example:_
   parentId="ResponseBody_version_details_version_detail"
   typeInfo={{"label":"version","linkedLabel":"<a href=\"#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+version+version\">version</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -2950,65 +2933,23 @@ _Example:_
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
-<ExpandableProperty
-  slot="entry"
-  id="ResponseBody_version_details_version_detail_version_name"
-  headingId="operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+version+name"
-  parentId="ResponseBody_version_details_version_detail_version"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### name \{#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+version+name\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-red
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
-<ExpandableProperty
-  slot="entry"
-  id="ResponseBody_version_details_version_detail_version_url"
-  headingId="operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+version+url"
-  parentId="ResponseBody_version_details_version_detail_version"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
-  expandByDefault={false}
->
+</ExpandableBreakoutProperties>
 
-<ExpandablePropertyTitle slot="title">
+</ExpandableBreakout>
 
-##### url \{#operation-api_v2_pokemon_encounters_retrieve+responses+200+application-json+responsebody+version_details+version_detail+version+url\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-https://pokeapi.co/api/v2/version/1/
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
 
 </ExpandableSection>
 

@@ -244,6 +244,10 @@ function hasSchemaProperties(schema: SchemaValue) {
   }
 }
 
+function hasBreakoutSubTypes(typeInfo: DisplayTypeInfo) {
+  return typeInfo.breakoutSubTypes.size > 0;
+}
+
 function shouldRenderInEmbed(renderer: Renderer) {
   const { maxNestingLevel } = getSettings().display;
   if (
@@ -422,51 +426,49 @@ function createExpandableProperty({
       break;
     }
   }
-  const hasProperties = hasSchemaProperties(property.schema);
+  const hasBreakouts = hasBreakoutSubTypes(typeInfo);
   renderer.createExpandableProperty({
     typeInfo,
     annotations,
     rawTitle: property.name,
     isTopLevel,
     hasExpandableContent:
-      hasEmbed || hasProperties || hasSchemaFrontmatter(property.schema),
+      hasEmbed || hasBreakouts || hasSchemaFrontmatter(property.schema),
     createDescription: createDescription(property.schema, renderer),
     createExamples: createExamples(property.schema, renderer),
     createDefaultValue: createDefaultValue(property.schema, renderer),
-    createEmbed: !hasEmbed
-      ? undefined
-      : () => {
-          renderer.createEmbed({
-            slug: property.name,
-            embedTitle: property.name,
-            triggerText: `View ${property.name} details`,
-            createdEmbeddedContent(embedRenderer) {
-              // Re-render the entire property in the embed so that we see the
-              // name, description, etc. in the embed and in the main document.
-              createExpandableProperty({
-                renderer: embedRenderer,
-                property,
-                isTopLevel: true,
-              });
-            },
-          });
-        },
-    // If we aren't embedding, render its entries in the main document
-    createBreakouts:
-      hasEmbed || !hasProperties
+    createEmbed:
+      !hasEmbed || !hasBreakouts
         ? undefined
         : () => {
-            renderBreakouts({
-              renderer,
-              schema: property.schema,
+            renderer.createEmbed({
+              slug: property.name,
+              embedTitle: property.name,
+              triggerText: `View ${property.name} details`,
+              createdEmbeddedContent(embedRenderer) {
+                // Re-render the entire property in the embed so that we see the
+                // name, description, etc. in the embed and in the main document.
+                createExpandableProperty({
+                  renderer: embedRenderer,
+                  property,
+                  isTopLevel: true,
+                });
+              },
             });
+          },
+    // If we aren't embedding, render its entries in the main document
+    createBreakouts:
+      hasEmbed || !hasBreakouts
+        ? undefined
+        : () => {
+            renderBreakoutEntries({ renderer, typeInfo });
           },
   });
 
   renderer.exitContext();
 }
 
-function renderObjectProperties({
+export function renderObjectProperties({
   renderer,
   schema,
 }: {
@@ -525,6 +527,8 @@ function createExpandableBreakout({
     shouldRenderInEmbed(renderer) &&
     Object.keys(breakout.schema.properties).length > 0;
 
+  const hasProperties = hasSchemaProperties(breakout.schema);
+
   renderer.createExpandableBreakout({
     rawTitle: breakout.label,
     isTopLevel,
@@ -544,39 +548,41 @@ function createExpandableBreakout({
     createDescription: createDescription(breakout.schema, renderer),
     createExamples: createExamples(breakout.schema, renderer),
     createDefaultValue: createDefaultValue(breakout.schema, renderer),
-    createEmbed: !hasEmbed
-      ? undefined
-      : () => {
-          renderer.createEmbed({
-            slug: breakout.label,
-            embedTitle: breakout.label,
-            triggerText: `View ${breakout.label} details`,
-            createdEmbeddedContent(embedRenderer) {
-              // Re-render the breakout in the embed document
-              createExpandableBreakout({
-                renderer: embedRenderer,
-                breakout,
-                isTopLevel: true,
-              });
-            },
-          });
-        },
+    createEmbed:
+      !hasEmbed || !hasProperties
+        ? undefined
+        : () => {
+            renderer.createEmbed({
+              slug: breakout.label,
+              embedTitle: breakout.label,
+              triggerText: `View ${breakout.label} details`,
+              createdEmbeddedContent(embedRenderer) {
+                // Re-render the breakout in the embed document
+                createExpandableBreakout({
+                  renderer: embedRenderer,
+                  breakout,
+                  isTopLevel: true,
+                });
+              },
+            });
+          },
 
     // If we aren't embedding, render its properties in the main document
-    createProperties: hasEmbed
-      ? undefined
-      : () => {
-          renderObjectProperties({
-            renderer,
-            schema: breakout.schema,
-          });
-        },
+    createProperties:
+      hasEmbed || !hasProperties
+        ? undefined
+        : () => {
+            renderObjectProperties({
+              renderer,
+              schema: breakout.schema,
+            });
+          },
   });
 
   renderer.exitContext();
 }
 
-function renderBreakoutEntries({
+export function renderBreakoutEntries({
   renderer,
   typeInfo,
 }: {
@@ -603,34 +609,5 @@ function renderBreakoutEntries({
       breakout,
       isTopLevel,
     });
-  }
-}
-
-/* ---- Root ---- */
-
-export function renderBreakouts({
-  renderer,
-  schema,
-}: {
-  renderer: Renderer;
-  schema: SchemaValue;
-}) {
-  const typeInfo = getDisplayTypeInfo(schema, renderer, []);
-
-  // Check if this is an object, and if so render its properties
-  if (schema.type === "object") {
-    renderObjectProperties({
-      renderer,
-      schema,
-    });
-    return;
-  }
-  // Otherwise check if we have any breakouts to render
-  else if (typeInfo.breakoutSubTypes.size > 0) {
-    renderBreakoutEntries({
-      renderer,
-      typeInfo,
-    });
-    return;
   }
 }

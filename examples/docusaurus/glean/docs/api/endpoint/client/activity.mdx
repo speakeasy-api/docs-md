@@ -10,11 +10,10 @@ import {
   EmbedProvider,
   EmbedTrigger,
   ExpandableBreakout,
-  ExpandableBreakoutDefaultValue,
-  ExpandableBreakoutDescription,
-  ExpandableBreakoutExamples,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
+  ExpandablePropertyBreakouts,
   ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection,
@@ -32,8 +31,8 @@ import {
   TagTitle
 } from "@speakeasy-api/docs-md-react";
 import Embedparams from "../../../../src/components/speakeasy-embeds/loaders/params.tsx";
-import Embedfeedbackchatexchange from "../../../../src/components/speakeasy-embeds/loaders/feedbackchatexchange.tsx";
-import Embedsidebysideimplementation from "../../../../src/components/speakeasy-embeds/loaders/sidebysideimplementation.tsx";
+import Embedchattranscript from "../../../../src/components/speakeasy-embeds/loaders/chattranscript.tsx";
+import Embedimplementations from "../../../../src/components/speakeasy-embeds/loaders/implementations.tsx";
 
 <EmbedProvider />
 
@@ -87,7 +86,7 @@ Report user activity that occurs on indexed documents such as viewing or editing
   headingId="operation-activity+request+events"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-activity+request+events+activityevent\">ActivityEvent</a>","children":[{"label":"ActivityEvent","linkedLabel":"<a href=\"#operation-activity+request+events+activityevent\">ActivityEvent</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -97,14 +96,14 @@ Report user activity that occurs on indexed documents such as viewing or editing
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="events_ActivityEvent"
   headingId="operation-activity+request+events+activityevent"
   parentId="events"
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -114,19 +113,7 @@ Report user activity that occurs on indexed documents such as viewing or editing
 
 </ExpandableBreakoutTitle>
 
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -135,7 +122,7 @@ Report user activity that occurs on indexed documents such as viewing or editing
   parentId="events_ActivityEvent"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"VIEW\"","linkedLabel":"\"VIEW\"","children":[],"breakoutSubTypes":{}},{"label":"\"EDIT\"","linkedLabel":"\"EDIT\"","children":[],"breakoutSubTypes":{}},{"label":"\"SEARCH\"","linkedLabel":"\"SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"COMMENT\"","linkedLabel":"\"COMMENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"CRAWL\"","linkedLabel":"\"CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"HISTORICAL_SEARCH\"","linkedLabel":"\"HISTORICAL_SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"HISTORICAL_VIEW\"","linkedLabel":"\"HISTORICAL_VIEW\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -160,7 +147,7 @@ The type of activity this represents.
   parentId="events_ActivityEvent"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -185,7 +172,7 @@ Universally unique identifier of the event. To allow for reliable retransmission
   parentId="events_ActivityEvent"
   typeInfo={{"label":"ActivityEventParams","linkedLabel":"<a href=\"#operation-activity+request+events+activityevent+params+activityeventparams\">ActivityEventParams</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -214,7 +201,7 @@ Universally unique identifier of the event. To allow for reliable retransmission
   parentId="events_ActivityEvent"
   typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -239,7 +226,7 @@ The ISO 8601 timestamp when the activity began.
   parentId="events_ActivityEvent"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -254,6 +241,14 @@ The ISO 8601 timestamp when the activity began.
 The URL of the activity.
 
 </ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -307,7 +302,7 @@ Report events that happen to results within a Glean client UI, such as search re
   headingId="operation-feedback+parameters+feedbackqueryparameter"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"query","variant":"info"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -322,6 +317,10 @@ Report events that happen to results within a Glean client UI, such as search re
 A URL encoded versions of Feedback. This is useful for requests.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -353,7 +352,7 @@ A URL encoded versions of Feedback. This is useful for requests.
   headingId="operation-feedback+request+agentid"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -377,7 +376,7 @@ The agent ID of the client that sent the feedback event.
   headingId="operation-feedback+request+applicationid"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -401,7 +400,7 @@ The application ID of the client that sent the feedback event.
   headingId="operation-feedback+request+category"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ANNOUNCEMENT\"","linkedLabel":"\"ANNOUNCEMENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTOCOMPLETE\"","linkedLabel":"\"AUTOCOMPLETE\"","children":[],"breakoutSubTypes":{}},{"label":"\"COLLECTIONS\"","linkedLabel":"\"COLLECTIONS\"","children":[],"breakoutSubTypes":{}},{"label":"\"FEED\"","linkedLabel":"\"FEED\"","children":[],"breakoutSubTypes":{}},{"label":"\"SEARCH\"","linkedLabel":"\"SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"CHAT\"","linkedLabel":"\"CHAT\"","children":[],"breakoutSubTypes":{}},{"label":"\"NTP\"","linkedLabel":"\"NTP\"","children":[],"breakoutSubTypes":{}},{"label":"\"WORKFLOWS\"","linkedLabel":"\"WORKFLOWS\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUMMARY\"","linkedLabel":"\"SUMMARY\"","children":[],"breakoutSubTypes":{}},{"label":"\"GENERAL\"","linkedLabel":"\"GENERAL\"","children":[],"breakoutSubTypes":{}},{"label":"\"PROMPTS\"","linkedLabel":"\"PROMPTS\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -425,7 +424,7 @@ The feature category to which the feedback applies. These should be broad produc
   headingId="operation-feedback+request+channels"
   typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"COMPANY\"","linkedLabel":"\"COMPANY\"","children":[],"breakoutSubTypes":{}},{"label":"\"GLEAN\"","linkedLabel":"\"GLEAN\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -449,7 +448,7 @@ Where the feedback will be sent, e.g. to Glean, the user's company, or both. If 
   headingId="operation-feedback+request+event"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"CLICK\"","linkedLabel":"\"CLICK\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTAINER_CLICK\"","linkedLabel":"\"CONTAINER_CLICK\"","children":[],"breakoutSubTypes":{}},{"label":"\"COPY_LINK\"","linkedLabel":"\"COPY_LINK\"","children":[],"breakoutSubTypes":{}},{"label":"\"CREATE\"","linkedLabel":"\"CREATE\"","children":[],"breakoutSubTypes":{}},{"label":"\"DISMISS\"","linkedLabel":"\"DISMISS\"","children":[],"breakoutSubTypes":{}},{"label":"\"DOWNVOTE\"","linkedLabel":"\"DOWNVOTE\"","children":[],"breakoutSubTypes":{}},{"label":"\"EMAIL\"","linkedLabel":"\"EMAIL\"","children":[],"breakoutSubTypes":{}},{"label":"\"EXECUTE\"","linkedLabel":"\"EXECUTE\"","children":[],"breakoutSubTypes":{}},{"label":"\"FILTER\"","linkedLabel":"\"FILTER\"","children":[],"breakoutSubTypes":{}},{"label":"\"FIRST_TOKEN\"","linkedLabel":"\"FIRST_TOKEN\"","children":[],"breakoutSubTypes":{}},{"label":"\"FOCUS_IN\"","linkedLabel":"\"FOCUS_IN\"","children":[],"breakoutSubTypes":{}},{"label":"\"LAST_TOKEN\"","linkedLabel":"\"LAST_TOKEN\"","children":[],"breakoutSubTypes":{}},{"label":"\"MANUAL_FEEDBACK\"","linkedLabel":"\"MANUAL_FEEDBACK\"","children":[],"breakoutSubTypes":{}},{"label":"\"MANUAL_FEEDBACK_SIDE_BY_SIDE\"","linkedLabel":"\"MANUAL_FEEDBACK_SIDE_BY_SIDE\"","children":[],"breakoutSubTypes":{}},{"label":"\"MARK_AS_READ\"","linkedLabel":"\"MARK_AS_READ\"","children":[],"breakoutSubTypes":{}},{"label":"\"MESSAGE\"","linkedLabel":"\"MESSAGE\"","children":[],"breakoutSubTypes":{}},{"label":"\"MIDDLE_CLICK\"","linkedLabel":"\"MIDDLE_CLICK\"","children":[],"breakoutSubTypes":{}},{"label":"\"PAGE_BLUR\"","linkedLabel":"\"PAGE_BLUR\"","children":[],"breakoutSubTypes":{}},{"label":"\"PAGE_FOCUS\"","linkedLabel":"\"PAGE_FOCUS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PAGE_LEAVE\"","linkedLabel":"\"PAGE_LEAVE\"","children":[],"breakoutSubTypes":{}},{"label":"\"PREVIEW\"","linkedLabel":"\"PREVIEW\"","children":[],"breakoutSubTypes":{}},{"label":"\"RELATED_CLICK\"","linkedLabel":"\"RELATED_CLICK\"","children":[],"breakoutSubTypes":{}},{"label":"\"RIGHT_CLICK\"","linkedLabel":"\"RIGHT_CLICK\"","children":[],"breakoutSubTypes":{}},{"label":"\"SECTION_CLICK\"","linkedLabel":"\"SECTION_CLICK\"","children":[],"breakoutSubTypes":{}},{"label":"\"SEEN\"","linkedLabel":"\"SEEN\"","children":[],"breakoutSubTypes":{}},{"label":"\"SHARE\"","linkedLabel":"\"SHARE\"","children":[],"breakoutSubTypes":{}},{"label":"\"SHOW_MORE\"","linkedLabel":"\"SHOW_MORE\"","children":[],"breakoutSubTypes":{}},{"label":"\"UPVOTE\"","linkedLabel":"\"UPVOTE\"","children":[],"breakoutSubTypes":{}},{"label":"\"VIEW\"","linkedLabel":"\"VIEW\"","children":[],"breakoutSubTypes":{}},{"label":"\"VISIBLE\"","linkedLabel":"\"VISIBLE\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -473,7 +472,7 @@ The action the user took within a Glean client with respect to the object referr
   headingId="operation-feedback+request+id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -497,7 +496,7 @@ Universally unique identifier of the event. To allow for reliable retransmission
   headingId="operation-feedback+request+manualfeedbackinfo"
   typeInfo={{"label":"ManualFeedbackInfo","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo\">ManualFeedbackInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -507,22 +506,39 @@ Universally unique identifier of the event. To allow for reliable retransmission
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo"
+  parentId="manualFeedbackInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ManualFeedbackInfo \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_activeTab"
-  headingId="operation-feedback+request+manualfeedbackinfo+activetab"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_activeTab"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+activetab"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### activeTab \{#operation-feedback+request+manualfeedbackinfo+activetab\}
+##### activeTab \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+activetab\}
 
 </ExpandablePropertyTitle>
 
@@ -536,18 +552,18 @@ Which tabs the user had chosen at the time of the Feedback.event.MANUAL_FEEDBACK
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_chatTranscript"
-  headingId="operation-feedback+request+manualfeedbackinfo+chattranscript"
-  parentId="manualFeedbackInfo"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbackinfo+chattranscript+feedbackchatexchange\">FeedbackChatExchange</a>","children":[{"label":"FeedbackChatExchange","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbackinfo+chattranscript+feedbackchatexchange\">FeedbackChatExchange</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="manualFeedbackInfo_ManualFeedbackInfo_chatTranscript"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+chattranscript"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+chattranscript+feedbackchatexchange\">FeedbackChatExchange</a>","children":[{"label":"FeedbackChatExchange","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+chattranscript+feedbackchatexchange\">FeedbackChatExchange</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### chatTranscript \{#operation-feedback+request+manualfeedbackinfo+chattranscript\}
+##### chatTranscript \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+chattranscript\}
 
 </ExpandablePropertyTitle>
 
@@ -557,65 +573,36 @@ Array of previous request/response exchanges, ordered by oldest to newest.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="manualFeedbackInfo_chatTranscript_FeedbackChatExchange"
-  headingId="operation-feedback+request+manualfeedbackinfo+chattranscript+feedbackchatexchange"
-  parentId="manualFeedbackInfo_chatTranscript"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### FeedbackChatExchange \{#operation-feedback+request+manualfeedbackinfo+chattranscript+feedbackchatexchange\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="FeedbackChatExchange"
-  triggerText="View FeedbackChatExchange details"
+  embedTitle="chatTranscript"
+  triggerText="View chatTranscript details"
 >
 
-<Embedfeedbackchatexchange />
+<Embedchattranscript />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_comments"
-  headingId="operation-feedback+request+manualfeedbackinfo+comments"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_comments"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+comments"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### comments \{#operation-feedback+request+manualfeedbackinfo+comments\}
+##### comments \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+comments\}
 
 </ExpandablePropertyTitle>
 
@@ -629,18 +616,18 @@ The comments users can optionally add to the Feedback.event.MANUAL_FEEDBACK even
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_email"
-  headingId="operation-feedback+request+manualfeedbackinfo+email"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_email"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+email"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### email \{#operation-feedback+request+manualfeedbackinfo+email\}
+##### email \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+email\}
 
 </ExpandablePropertyTitle>
 
@@ -654,18 +641,18 @@ The email address of the user who submitted the Feedback.event.MANUAL_FEEDBACK e
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_imageUrls"
-  headingId="operation-feedback+request+manualfeedbackinfo+imageurls"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_imageUrls"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+imageurls"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### imageUrls \{#operation-feedback+request+manualfeedbackinfo+imageurls\}
+##### imageUrls \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+imageurls\}
 
 </ExpandablePropertyTitle>
 
@@ -679,18 +666,18 @@ URLs of images uploaded by user when providing feedback
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_issue"
-  headingId="operation-feedback+request+manualfeedbackinfo+issue"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_issue"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+issue"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### issue \{#operation-feedback+request+manualfeedbackinfo+issue\}
+##### issue \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+issue\}
 
 </ExpandablePropertyTitle>
 
@@ -704,18 +691,18 @@ The issue the user indicated in the feedback.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_issues"
-  headingId="operation-feedback+request+manualfeedbackinfo+issues"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_issues"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+issues"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"INACCURATE_RESPONSE\"","linkedLabel":"\"INACCURATE_RESPONSE\"","children":[],"breakoutSubTypes":{}},{"label":"\"INCOMPLETE_OR_NO_ANSWER\"","linkedLabel":"\"INCOMPLETE_OR_NO_ANSWER\"","children":[],"breakoutSubTypes":{}},{"label":"\"INCORRECT_CITATION\"","linkedLabel":"\"INCORRECT_CITATION\"","children":[],"breakoutSubTypes":{}},{"label":"\"MISSING_CITATION\"","linkedLabel":"\"MISSING_CITATION\"","children":[],"breakoutSubTypes":{}},{"label":"\"OTHER\"","linkedLabel":"\"OTHER\"","children":[],"breakoutSubTypes":{}},{"label":"\"OUTDATED_RESPONSE\"","linkedLabel":"\"OUTDATED_RESPONSE\"","children":[],"breakoutSubTypes":{}},{"label":"\"RESULT_MISSING\"","linkedLabel":"\"RESULT_MISSING\"","children":[],"breakoutSubTypes":{}},{"label":"\"RESULT_SHOULD_NOT_APPEAR\"","linkedLabel":"\"RESULT_SHOULD_NOT_APPEAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"RESULTS_HELPFUL\"","linkedLabel":"\"RESULTS_HELPFUL\"","children":[],"breakoutSubTypes":{}},{"label":"\"RESULTS_POOR_ORDER\"","linkedLabel":"\"RESULTS_POOR_ORDER\"","children":[],"breakoutSubTypes":{}},{"label":"\"TOO_MUCH_ONE_KIND\"","linkedLabel":"\"TOO_MUCH_ONE_KIND\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### issues \{#operation-feedback+request+manualfeedbackinfo+issues\}
+##### issues \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+issues\}
 
 </ExpandablePropertyTitle>
 
@@ -729,18 +716,18 @@ The issue(s) the user indicated in the feedback.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_numQueriesFromFirstRun"
-  headingId="operation-feedback+request+manualfeedbackinfo+numqueriesfromfirstrun"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_numQueriesFromFirstRun"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+numqueriesfromfirstrun"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### numQueriesFromFirstRun \{#operation-feedback+request+manualfeedbackinfo+numqueriesfromfirstrun\}
+##### numQueriesFromFirstRun \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+numqueriesfromfirstrun\}
 
 </ExpandablePropertyTitle>
 
@@ -754,18 +741,18 @@ How many times this query has been run in the past.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_obscuredQuery"
-  headingId="operation-feedback+request+manualfeedbackinfo+obscuredquery"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_obscuredQuery"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+obscuredquery"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### obscuredQuery \{#operation-feedback+request+manualfeedbackinfo+obscuredquery\}
+##### obscuredQuery \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+obscuredquery\}
 
 </ExpandablePropertyTitle>
 
@@ -779,18 +766,18 @@ The query associated with the Feedback.event.MANUAL_FEEDBACK event, but obscured
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_previousMessages"
-  headingId="operation-feedback+request+manualfeedbackinfo+previousmessages"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_previousMessages"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+previousmessages"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### previousMessages \{#operation-feedback+request+manualfeedbackinfo+previousmessages\}
+##### previousMessages \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+previousmessages\}
 
 </ExpandablePropertyTitle>
 
@@ -804,18 +791,18 @@ The array of previous messages in a chat session, ordered by oldest to newest.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_query"
-  headingId="operation-feedback+request+manualfeedbackinfo+query"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_query"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+query"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### query \{#operation-feedback+request+manualfeedbackinfo+query\}
+##### query \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+query\}
 
 </ExpandablePropertyTitle>
 
@@ -829,18 +816,18 @@ The query associated with the Feedback.event.MANUAL_FEEDBACK event.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_rating"
-  headingId="operation-feedback+request+manualfeedbackinfo+rating"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_rating"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+rating"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### rating \{#operation-feedback+request+manualfeedbackinfo+rating\}
+##### rating \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+rating\}
 
 </ExpandablePropertyTitle>
 
@@ -854,18 +841,18 @@ A rating associated with the user feedback. The value will be between one and th
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_ratingKey"
-  headingId="operation-feedback+request+manualfeedbackinfo+ratingkey"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_ratingKey"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+ratingkey"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### ratingKey \{#operation-feedback+request+manualfeedbackinfo+ratingkey\}
+##### ratingKey \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+ratingkey\}
 
 </ExpandablePropertyTitle>
 
@@ -879,18 +866,18 @@ A description of the rating that contextualizes how it appeared to the user, e.g
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_ratingScale"
-  headingId="operation-feedback+request+manualfeedbackinfo+ratingscale"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_ratingScale"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+ratingscale"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### ratingScale \{#operation-feedback+request+manualfeedbackinfo+ratingscale\}
+##### ratingScale \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+ratingscale\}
 
 </ExpandablePropertyTitle>
 
@@ -904,18 +891,18 @@ The scale of comparison for a rating associated with the feedback. Rating values
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_searchResults"
-  headingId="operation-feedback+request+manualfeedbackinfo+searchresults"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_searchResults"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+searchresults"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### searchResults \{#operation-feedback+request+manualfeedbackinfo+searchresults\}
+##### searchResults \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+searchresults\}
 
 </ExpandablePropertyTitle>
 
@@ -929,18 +916,18 @@ The array of search result Glean Document IDs, ordered by top to bottom result.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_source"
-  headingId="operation-feedback+request+manualfeedbackinfo+source"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_source"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+source"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"AUTOCOMPLETE\"","linkedLabel":"\"AUTOCOMPLETE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CALENDAR\"","linkedLabel":"\"CALENDAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"CHAT\"","linkedLabel":"\"CHAT\"","children":[],"breakoutSubTypes":{}},{"label":"\"CHAT_GENERAL\"","linkedLabel":"\"CHAT_GENERAL\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONCEPT_CARD\"","linkedLabel":"\"CONCEPT_CARD\"","children":[],"breakoutSubTypes":{}},{"label":"\"DESKTOP_APP\"","linkedLabel":"\"DESKTOP_APP\"","children":[],"breakoutSubTypes":{}},{"label":"\"DISAMBIGUATION_CARD\"","linkedLabel":"\"DISAMBIGUATION_CARD\"","children":[],"breakoutSubTypes":{}},{"label":"\"EXPERT_DETECTION\"","linkedLabel":"\"EXPERT_DETECTION\"","children":[],"breakoutSubTypes":{}},{"label":"\"FEED\"","linkedLabel":"\"FEED\"","children":[],"breakoutSubTypes":{}},{"label":"\"GENERATED_Q_AND_A\"","linkedLabel":"\"GENERATED_Q_AND_A\"","children":[],"breakoutSubTypes":{}},{"label":"\"INLINE_MENU\"","linkedLabel":"\"INLINE_MENU\"","children":[],"breakoutSubTypes":{}},{"label":"\"NATIVE_RESULT\"","linkedLabel":"\"NATIVE_RESULT\"","children":[],"breakoutSubTypes":{}},{"label":"\"Q_AND_A\"","linkedLabel":"\"Q_AND_A\"","children":[],"breakoutSubTypes":{}},{"label":"\"RELATED_QUESTIONS\"","linkedLabel":"\"RELATED_QUESTIONS\"","children":[],"breakoutSubTypes":{}},{"label":"\"REPORT_ISSUE\"","linkedLabel":"\"REPORT_ISSUE\"","children":[],"breakoutSubTypes":{}},{"label":"\"SCIOBOT\"","linkedLabel":"\"SCIOBOT\"","children":[],"breakoutSubTypes":{}},{"label":"\"SEARCH\"","linkedLabel":"\"SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"SIDEBAR\"","linkedLabel":"\"SIDEBAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUMMARY\"","linkedLabel":"\"SUMMARY\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### source \{#operation-feedback+request+manualfeedbackinfo+source\}
+##### source \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+source\}
 
 </ExpandablePropertyTitle>
 
@@ -954,18 +941,18 @@ The source associated with the Feedback.event.MANUAL_FEEDBACK event.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackInfo_vote"
-  headingId="operation-feedback+request+manualfeedbackinfo+vote"
-  parentId="manualFeedbackInfo"
+  id="manualFeedbackInfo_ManualFeedbackInfo_vote"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+vote"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UPVOTE\"","linkedLabel":"\"UPVOTE\"","children":[],"breakoutSubTypes":{}},{"label":"\"DOWNVOTE\"","linkedLabel":"\"DOWNVOTE\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### vote \{#operation-feedback+request+manualfeedbackinfo+vote\}
+##### vote \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+vote\}
 
 </ExpandablePropertyTitle>
 
@@ -977,13 +964,21 @@ The vote associated with the Feedback.event.MANUAL_FEEDBACK event.
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="manualFeedbackSideBySideInfo"
   headingId="operation-feedback+request+manualfeedbacksidebysideinfo"
   typeInfo={{"label":"ManualFeedbackSideBySideInfo","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo\">ManualFeedbackSideBySideInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -993,22 +988,39 @@ The vote associated with the Feedback.event.MANUAL_FEEDBACK event.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo"
+  parentId="manualFeedbackSideBySideInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ManualFeedbackSideBySideInfo \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackSideBySideInfo_comments"
-  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+comments"
-  parentId="manualFeedbackSideBySideInfo"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_comments"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+comments"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### comments \{#operation-feedback+request+manualfeedbacksidebysideinfo+comments\}
+##### comments \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+comments\}
 
 </ExpandablePropertyTitle>
 
@@ -1022,18 +1034,18 @@ Specific feedback comments for this implementation.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackSideBySideInfo_email"
-  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+email"
-  parentId="manualFeedbackSideBySideInfo"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_email"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+email"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### email \{#operation-feedback+request+manualfeedbacksidebysideinfo+email\}
+##### email \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+email\}
 
 </ExpandablePropertyTitle>
 
@@ -1047,18 +1059,18 @@ The email address of the user who submitted the side-by-side feedback.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackSideBySideInfo_evaluationSessionId"
-  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+evaluationsessionid"
-  parentId="manualFeedbackSideBySideInfo"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_evaluationSessionId"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+evaluationsessionid"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### evaluationSessionId \{#operation-feedback+request+manualfeedbacksidebysideinfo+evaluationsessionid\}
+##### evaluationSessionId \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+evaluationsessionid\}
 
 </ExpandablePropertyTitle>
 
@@ -1072,18 +1084,18 @@ Unique identifier for this evaluation session to group related feedback events.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackSideBySideInfo_implementationId"
-  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+implementationid"
-  parentId="manualFeedbackSideBySideInfo"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_implementationId"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+implementationid"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### implementationId \{#operation-feedback+request+manualfeedbacksidebysideinfo+implementationid\}
+##### implementationId \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+implementationid\}
 
 </ExpandablePropertyTitle>
 
@@ -1097,18 +1109,18 @@ The ID of the implementation this specific feedback event is for.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackSideBySideInfo_implementations"
-  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+implementations"
-  parentId="manualFeedbackSideBySideInfo"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbacksidebysideinfo+implementations+sidebysideimplementation\">SideBySideImplementation</a>","children":[{"label":"SideBySideImplementation","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbacksidebysideinfo+implementations+sidebysideimplementation\">SideBySideImplementation</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_implementations"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+implementations"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+implementations+sidebysideimplementation\">SideBySideImplementation</a>","children":[{"label":"SideBySideImplementation","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+implementations+sidebysideimplementation\">SideBySideImplementation</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### implementations \{#operation-feedback+request+manualfeedbacksidebysideinfo+implementations\}
+##### implementations \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+implementations\}
 
 </ExpandablePropertyTitle>
 
@@ -1118,65 +1130,36 @@ Array of implementations that were compared side-by-side.
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="manualFeedbackSideBySideInfo_implementations_SideBySideImplementation"
-  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+implementations+sidebysideimplementation"
-  parentId="manualFeedbackSideBySideInfo_implementations"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### SideBySideImplementation \{#operation-feedback+request+manualfeedbacksidebysideinfo+implementations+sidebysideimplementation\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="SideBySideImplementation"
-  triggerText="View SideBySideImplementation details"
+  embedTitle="implementations"
+  triggerText="View implementations details"
 >
 
-<Embedsidebysideimplementation />
+<Embedimplementations />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackSideBySideInfo_query"
-  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+query"
-  parentId="manualFeedbackSideBySideInfo"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_query"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+query"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### query \{#operation-feedback+request+manualfeedbacksidebysideinfo+query\}
+##### query \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+query\}
 
 </ExpandablePropertyTitle>
 
@@ -1190,18 +1173,18 @@ The query or prompt that was evaluated across multiple implementations.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackSideBySideInfo_source"
-  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+source"
-  parentId="manualFeedbackSideBySideInfo"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_source"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+source"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"LIVE_EVAL\"","linkedLabel":"\"LIVE_EVAL\"","children":[],"breakoutSubTypes":{}},{"label":"\"CHAT\"","linkedLabel":"\"CHAT\"","children":[],"breakoutSubTypes":{}},{"label":"\"SEARCH\"","linkedLabel":"\"SEARCH\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### source \{#operation-feedback+request+manualfeedbacksidebysideinfo+source\}
+##### source \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+source\}
 
 </ExpandablePropertyTitle>
 
@@ -1215,18 +1198,18 @@ The source associated with the side-by-side feedback event.
 
 <ExpandableProperty
   slot="entry"
-  id="manualFeedbackSideBySideInfo_vote"
-  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+vote"
-  parentId="manualFeedbackSideBySideInfo"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_vote"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+vote"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UPVOTE\"","linkedLabel":"\"UPVOTE\"","children":[],"breakoutSubTypes":{}},{"label":"\"DOWNVOTE\"","linkedLabel":"\"DOWNVOTE\"","children":[],"breakoutSubTypes":{}},{"label":"\"NEUTRAL\"","linkedLabel":"\"NEUTRAL\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### vote \{#operation-feedback+request+manualfeedbacksidebysideinfo+vote\}
+##### vote \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+vote\}
 
 </ExpandablePropertyTitle>
 
@@ -1238,13 +1221,21 @@ The vote for this specific implementation.
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="pathname"
   headingId="operation-feedback+request+pathname"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1268,7 +1259,7 @@ The path the client was at when the feedback event triggered.
   headingId="operation-feedback+request+payload"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1292,7 +1283,7 @@ For type MANUAL_FEEDBACK, contains string of user feedback. For autocomplete, pa
   headingId="operation-feedback+request+position"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1316,7 +1307,7 @@ Position of the element in the case that the client controls order (such as feed
   headingId="operation-feedback+request+seenfeedbackinfo"
   typeInfo={{"label":"SeenFeedbackInfo","linkedLabel":"<a href=\"#operation-feedback+request+seenfeedbackinfo+seenfeedbackinfo\">SeenFeedbackInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1326,22 +1317,39 @@ Position of the element in the case that the client controls order (such as feed
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="seenFeedbackInfo_SeenFeedbackInfo"
+  headingId="operation-feedback+request+seenfeedbackinfo+seenfeedbackinfo"
+  parentId="seenFeedbackInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### SeenFeedbackInfo \{#operation-feedback+request+seenfeedbackinfo+seenfeedbackinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="seenFeedbackInfo_isExplicit"
-  headingId="operation-feedback+request+seenfeedbackinfo+isexplicit"
-  parentId="seenFeedbackInfo"
+  id="seenFeedbackInfo_SeenFeedbackInfo_isExplicit"
+  headingId="operation-feedback+request+seenfeedbackinfo+seenfeedbackinfo+isexplicit"
+  parentId="seenFeedbackInfo_SeenFeedbackInfo"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### isExplicit \{#operation-feedback+request+seenfeedbackinfo+isexplicit\}
+##### isExplicit \{#operation-feedback+request+seenfeedbackinfo+seenfeedbackinfo+isexplicit\}
 
 </ExpandablePropertyTitle>
 
@@ -1353,13 +1361,21 @@ The confidence of the user seeing the object is high because they explicitly int
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="sessionInfo"
   headingId="operation-feedback+request+sessioninfo"
   typeInfo={{"label":"SessionInfo","linkedLabel":"<a href=\"#operation-feedback+request+sessioninfo+sessioninfo\">SessionInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1369,22 +1385,39 @@ The confidence of the user seeing the object is high because they explicitly int
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="sessionInfo_SessionInfo"
+  headingId="operation-feedback+request+sessioninfo+sessioninfo"
+  parentId="sessionInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### SessionInfo \{#operation-feedback+request+sessioninfo+sessioninfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="sessionInfo_lastQuery"
-  headingId="operation-feedback+request+sessioninfo+lastquery"
-  parentId="sessionInfo"
+  id="sessionInfo_SessionInfo_lastQuery"
+  headingId="operation-feedback+request+sessioninfo+sessioninfo+lastquery"
+  parentId="sessionInfo_SessionInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### lastQuery \{#operation-feedback+request+sessioninfo+lastquery\}
+##### lastQuery \{#operation-feedback+request+sessioninfo+sessioninfo+lastquery\}
 
 </ExpandablePropertyTitle>
 
@@ -1398,18 +1431,18 @@ The last query seen by the server.
 
 <ExpandableProperty
   slot="entry"
-  id="sessionInfo_lastSeen"
-  headingId="operation-feedback+request+sessioninfo+lastseen"
-  parentId="sessionInfo"
+  id="sessionInfo_SessionInfo_lastSeen"
+  headingId="operation-feedback+request+sessioninfo+sessioninfo+lastseen"
+  parentId="sessionInfo_SessionInfo"
   typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### lastSeen \{#operation-feedback+request+sessioninfo+lastseen\}
+##### lastSeen \{#operation-feedback+request+sessioninfo+sessioninfo+lastseen\}
 
 </ExpandablePropertyTitle>
 
@@ -1423,18 +1456,18 @@ The last time the server saw this token.
 
 <ExpandableProperty
   slot="entry"
-  id="sessionInfo_sessionTrackingToken"
-  headingId="operation-feedback+request+sessioninfo+sessiontrackingtoken"
-  parentId="sessionInfo"
+  id="sessionInfo_SessionInfo_sessionTrackingToken"
+  headingId="operation-feedback+request+sessioninfo+sessioninfo+sessiontrackingtoken"
+  parentId="sessionInfo_SessionInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### sessionTrackingToken \{#operation-feedback+request+sessioninfo+sessiontrackingtoken\}
+##### sessionTrackingToken \{#operation-feedback+request+sessioninfo+sessioninfo+sessiontrackingtoken\}
 
 </ExpandablePropertyTitle>
 
@@ -1448,18 +1481,18 @@ A unique token for this session. A new session (and token) is created when the u
 
 <ExpandableProperty
   slot="entry"
-  id="sessionInfo_tabId"
-  headingId="operation-feedback+request+sessioninfo+tabid"
-  parentId="sessionInfo"
+  id="sessionInfo_SessionInfo_tabId"
+  headingId="operation-feedback+request+sessioninfo+sessioninfo+tabid"
+  parentId="sessionInfo_SessionInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### tabId \{#operation-feedback+request+sessioninfo+tabid\}
+##### tabId \{#operation-feedback+request+sessioninfo+sessioninfo+tabid\}
 
 </ExpandablePropertyTitle>
 
@@ -1471,13 +1504,21 @@ A unique id for all requests a user makes from a given tab, no matter how far ap
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="timestamp"
   headingId="operation-feedback+request+timestamp"
   typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1501,7 +1542,7 @@ The ISO 8601 timestamp when the event occured.
   headingId="operation-feedback+request+trackingtokens"
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1525,7 +1566,7 @@ A list of server-generated trackingTokens to which this event applies.
   headingId="operation-feedback+request+uielement"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1549,7 +1590,7 @@ The UI element associated with the event, if any.
   headingId="operation-feedback+request+uitree"
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1573,7 +1614,7 @@ The UI element tree associated with the event, if any.
   headingId="operation-feedback+request+url"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1597,7 +1638,7 @@ The URL the client was at when the feedback event triggered.
   headingId="operation-feedback+request+user"
   typeInfo={{"label":"User","linkedLabel":"<a href=\"#operation-feedback+request+user+user\">User</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1607,22 +1648,39 @@ The URL the client was at when the feedback event triggered.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="user_User"
+  headingId="operation-feedback+request+user+user"
+  parentId="user"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### User \{#operation-feedback+request+user+user\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="user_origID"
-  headingId="operation-feedback+request+user+origid"
-  parentId="user"
+  id="user_User_origID"
+  headingId="operation-feedback+request+user+user+origid"
+  parentId="user_User"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### origID \{#operation-feedback+request+user+origid\}
+##### origID \{#operation-feedback+request+user+user+origid\}
 
 </ExpandablePropertyTitle>
 
@@ -1636,18 +1694,18 @@ An opaque user ID for the authenticated user (ignores actas).
 
 <ExpandableProperty
   slot="entry"
-  id="user_userID"
-  headingId="operation-feedback+request+user+userid"
-  parentId="user"
+  id="user_User_userID"
+  headingId="operation-feedback+request+user+user+userid"
+  parentId="user_User"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### userID \{#operation-feedback+request+user+userid\}
+##### userID \{#operation-feedback+request+user+user+userid\}
 
 </ExpandablePropertyTitle>
 
@@ -1659,13 +1717,21 @@ An opaque user ID for the claimed authority (i.e., the actas param, or the origi
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="userViewInfo"
   headingId="operation-feedback+request+userviewinfo"
   typeInfo={{"label":"UserViewInfo","linkedLabel":"<a href=\"#operation-feedback+request+userviewinfo+userviewinfo\">UserViewInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1675,22 +1741,39 @@ An opaque user ID for the claimed authority (i.e., the actas param, or the origi
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="userViewInfo_UserViewInfo"
+  headingId="operation-feedback+request+userviewinfo+userviewinfo"
+  parentId="userViewInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### UserViewInfo \{#operation-feedback+request+userviewinfo+userviewinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="userViewInfo_docId"
-  headingId="operation-feedback+request+userviewinfo+docid"
-  parentId="userViewInfo"
+  id="userViewInfo_UserViewInfo_docId"
+  headingId="operation-feedback+request+userviewinfo+userviewinfo+docid"
+  parentId="userViewInfo_UserViewInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### docId \{#operation-feedback+request+userviewinfo+docid\}
+##### docId \{#operation-feedback+request+userviewinfo+userviewinfo+docid\}
 
 </ExpandablePropertyTitle>
 
@@ -1704,18 +1787,18 @@ Unique Glean Document ID of the associated document.
 
 <ExpandableProperty
   slot="entry"
-  id="userViewInfo_docTitle"
-  headingId="operation-feedback+request+userviewinfo+doctitle"
-  parentId="userViewInfo"
+  id="userViewInfo_UserViewInfo_docTitle"
+  headingId="operation-feedback+request+userviewinfo+userviewinfo+doctitle"
+  parentId="userViewInfo_UserViewInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### docTitle \{#operation-feedback+request+userviewinfo+doctitle\}
+##### docTitle \{#operation-feedback+request+userviewinfo+userviewinfo+doctitle\}
 
 </ExpandablePropertyTitle>
 
@@ -1729,18 +1812,18 @@ Title of associated document.
 
 <ExpandableProperty
   slot="entry"
-  id="userViewInfo_docUrl"
-  headingId="operation-feedback+request+userviewinfo+docurl"
-  parentId="userViewInfo"
+  id="userViewInfo_UserViewInfo_docUrl"
+  headingId="operation-feedback+request+userviewinfo+userviewinfo+docurl"
+  parentId="userViewInfo_UserViewInfo"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### docUrl \{#operation-feedback+request+userviewinfo+docurl\}
+##### docUrl \{#operation-feedback+request+userviewinfo+userviewinfo+docurl\}
 
 </ExpandablePropertyTitle>
 
@@ -1752,13 +1835,21 @@ URL of associated document.
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="workflowFeedbackInfo"
   headingId="operation-feedback+request+workflowfeedbackinfo"
   typeInfo={{"label":"WorkflowFeedbackInfo","linkedLabel":"<a href=\"#operation-feedback+request+workflowfeedbackinfo+workflowfeedbackinfo\">WorkflowFeedbackInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={false}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1768,22 +1859,39 @@ URL of associated document.
 
 </ExpandablePropertyTitle>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="workflowFeedbackInfo_WorkflowFeedbackInfo"
+  headingId="operation-feedback+request+workflowfeedbackinfo+workflowfeedbackinfo"
+  parentId="workflowFeedbackInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### WorkflowFeedbackInfo \{#operation-feedback+request+workflowfeedbackinfo+workflowfeedbackinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="workflowFeedbackInfo_source"
-  headingId="operation-feedback+request+workflowfeedbackinfo+source"
-  parentId="workflowFeedbackInfo"
+  id="workflowFeedbackInfo_WorkflowFeedbackInfo_source"
+  headingId="operation-feedback+request+workflowfeedbackinfo+workflowfeedbackinfo+source"
+  parentId="workflowFeedbackInfo_WorkflowFeedbackInfo"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ZERO_STATE\"","linkedLabel":"\"ZERO_STATE\"","children":[],"breakoutSubTypes":{}},{"label":"\"LIBRARY\"","linkedLabel":"\"LIBRARY\"","children":[],"breakoutSubTypes":{}},{"label":"\"HOMEPAGE\"","linkedLabel":"\"HOMEPAGE\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### source \{#operation-feedback+request+workflowfeedbackinfo+source\}
+##### source \{#operation-feedback+request+workflowfeedbackinfo+workflowfeedbackinfo+source\}
 
 </ExpandablePropertyTitle>
 
@@ -1792,6 +1900,14 @@ URL of associated document.
 Where the feedback of the workflow originated from
 
 </ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 

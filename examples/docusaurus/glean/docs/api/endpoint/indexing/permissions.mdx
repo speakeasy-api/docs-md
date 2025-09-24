@@ -10,11 +10,11 @@ import {
   EmbedProvider,
   EmbedTrigger,
   ExpandableBreakout,
-  ExpandableBreakoutDefaultValue,
   ExpandableBreakoutDescription,
-  ExpandableBreakoutExamples,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
+  ExpandablePropertyBreakouts,
   ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection,
@@ -31,8 +31,8 @@ import {
   Tag,
   TagTitle
 } from "@speakeasy-api/docs-md-react";
-import Embedpermissionsgroupintersectiondefinition from "../../../../src/components/speakeasy-embeds/loaders/permissionsgroupintersectiondefinition.tsx";
-import Embeduserreferencedefinition from "../../../../src/components/speakeasy-embeds/loaders/userreferencedefinition.tsx";
+import Embedallowedgroupintersections from "../../../../src/components/speakeasy-embeds/loaders/allowedgroupintersections.tsx";
+import Embedallowedusers from "../../../../src/components/speakeasy-embeds/loaders/allowedusers.tsx";
 
 <EmbedProvider />
 
@@ -92,7 +92,7 @@ Describes the request body of the /updatepermissions API call
   headingId="operation-post_api_index_v1_updatepermissions+request+datasource"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={true}
 >
 
@@ -110,7 +110,7 @@ Describes the request body of the /updatepermissions API call
   headingId="operation-post_api_index_v1_updatepermissions+request+id"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -134,7 +134,7 @@ The datasource specific id for the document. This field is case insensitive and 
   headingId="operation-post_api_index_v1_updatepermissions+request+objecttype"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -158,7 +158,7 @@ The type of the document (Case, KnowledgeArticle for Salesforce for example). It
   headingId="operation-post_api_index_v1_updatepermissions+request+permissions"
   typeInfo={{"label":"DocumentPermissionsDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition\">DocumentPermissionsDefinition</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -174,22 +174,45 @@ describes the access control details of the document
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="permissions_DocumentPermissionsDefinition"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition"
+  parentId="permissions"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DocumentPermissionsDefinition \{#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes the access control details of the document
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="permissions_allowAllDatasourceUsersAccess"
-  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+allowalldatasourceusersaccess"
-  parentId="permissions"
+  id="permissions_DocumentPermissionsDefinition_allowAllDatasourceUsersAccess"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowalldatasourceusersaccess"
+  parentId="permissions_DocumentPermissionsDefinition"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### allowAllDatasourceUsersAccess \{#operation-post_api_index_v1_updatepermissions+request+permissions+allowalldatasourceusersaccess\}
+##### allowAllDatasourceUsersAccess \{#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowalldatasourceusersaccess\}
 
 </ExpandablePropertyTitle>
 
@@ -203,18 +226,18 @@ If true, then any user who has an account in the datasource can view the documen
 
 <ExpandableProperty
   slot="entry"
-  id="permissions_allowAnonymousAccess"
-  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+allowanonymousaccess"
-  parentId="permissions"
+  id="permissions_DocumentPermissionsDefinition_allowAnonymousAccess"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowanonymousaccess"
+  parentId="permissions_DocumentPermissionsDefinition"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### allowAnonymousAccess \{#operation-post_api_index_v1_updatepermissions+request+permissions+allowanonymousaccess\}
+##### allowAnonymousAccess \{#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowanonymousaccess\}
 
 </ExpandablePropertyTitle>
 
@@ -228,18 +251,18 @@ If true, then any Glean user can view the document
 
 <ExpandableProperty
   slot="entry"
-  id="permissions_allowedGroupIntersections"
-  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+allowedgroupintersections"
-  parentId="permissions"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+allowedgroupintersections+permissionsgroupintersectiondefinition\">PermissionsGroupIntersectionDefinition</a>","children":[{"label":"PermissionsGroupIntersectionDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+allowedgroupintersections+permissionsgroupintersectiondefinition\">PermissionsGroupIntersectionDefinition</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="permissions_DocumentPermissionsDefinition_allowedGroupIntersections"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedgroupintersections"
+  parentId="permissions_DocumentPermissionsDefinition"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedgroupintersections+permissionsgroupintersectiondefinition\">PermissionsGroupIntersectionDefinition</a>","children":[{"label":"PermissionsGroupIntersectionDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedgroupintersections+permissionsgroupintersectiondefinition\">PermissionsGroupIntersectionDefinition</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### allowedGroupIntersections \{#operation-post_api_index_v1_updatepermissions+request+permissions+allowedgroupintersections\}
+##### allowedGroupIntersections \{#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedgroupintersections\}
 
 </ExpandablePropertyTitle>
 
@@ -249,67 +272,36 @@ List of allowed group intersections. This describes a permissions constraint of 
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="permissions_allowedGroupIntersections_PermissionsGroupIntersectionDefinition"
-  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+allowedgroupintersections+permissionsgroupintersectiondefinition"
-  parentId="permissions_allowedGroupIntersections"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### PermissionsGroupIntersectionDefinition \{#operation-post_api_index_v1_updatepermissions+request+permissions+allowedgroupintersections+permissionsgroupintersectiondefinition\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-describes a list of groups that are all required in a permissions constraint
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="PermissionsGroupIntersectionDefinition"
-  triggerText="View PermissionsGroupIntersectionDefinition details"
+  embedTitle="allowedGroupIntersections"
+  triggerText="View allowedGroupIntersections details"
 >
 
-<Embedpermissionsgroupintersectiondefinition />
+<Embedallowedgroupintersections />
 
 </EmbedTrigger>
 
 </Embed>
 
-</ExpandableBreakout>
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
-  id="permissions_allowedGroups"
-  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+allowedgroups"
-  parentId="permissions"
+  id="permissions_DocumentPermissionsDefinition_allowedGroups"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedgroups"
+  parentId="permissions_DocumentPermissionsDefinition"
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### allowedGroups \{#operation-post_api_index_v1_updatepermissions+request+permissions+allowedgroups\}
+##### allowedGroups \{#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedgroups\}
 
 </ExpandablePropertyTitle>
 
@@ -323,18 +315,18 @@ List of groups that can view the document
 
 <ExpandableProperty
   slot="entry"
-  id="permissions_allowedUsers"
-  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+allowedusers"
-  parentId="permissions"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+allowedusers+userreferencedefinition\">UserReferenceDefinition</a>","children":[{"label":"UserReferenceDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+allowedusers+userreferencedefinition\">UserReferenceDefinition</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="permissions_DocumentPermissionsDefinition_allowedUsers"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedusers"
+  parentId="permissions_DocumentPermissionsDefinition"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedusers+userreferencedefinition\">UserReferenceDefinition</a>","children":[{"label":"UserReferenceDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedusers+userreferencedefinition\">UserReferenceDefinition</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### allowedUsers \{#operation-post_api_index_v1_updatepermissions+request+permissions+allowedusers\}
+##### allowedUsers \{#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedusers\}
 
 </ExpandablePropertyTitle>
 
@@ -344,52 +336,29 @@ List of users who can view the document
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
-
-<ExpandableBreakout
-  slot="entry"
-  id="permissions_allowedUsers_UserReferenceDefinition"
-  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+allowedusers+userreferencedefinition"
-  parentId="permissions_allowedUsers"
-  hasFrontMatter={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### UserReferenceDefinition \{#operation-post_api_index_v1_updatepermissions+request+permissions+allowedusers+userreferencedefinition\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutDescription slot="description">
-
-Describes how a user is referenced in a document. The user can be referenced by email or by a datasource specific id.
-
-</ExpandableBreakoutDescription>
-
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="UserReferenceDefinition"
-  triggerText="View UserReferenceDefinition details"
+  embedTitle="allowedUsers"
+  triggerText="View allowedUsers details"
 >
 
-<Embeduserreferencedefinition />
+<Embedallowedusers />
 
 </EmbedTrigger>
 
 </Embed>
 
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
 </ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -397,7 +366,7 @@ Describes how a user is referenced in a document. The user can be referenced by 
   headingId="operation-post_api_index_v1_updatepermissions+request+viewurl"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -472,7 +441,7 @@ Describes the request body of the /indexuser API call
   headingId="operation-post_api_index_v1_indexuser+request+datasource"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -496,7 +465,7 @@ The datasource for which the user is added
   headingId="operation-post_api_index_v1_indexuser+request+user"
   typeInfo={{"label":"DatasourceUserDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition\">DatasourceUserDefinition</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -512,22 +481,45 @@ describes a user in the datasource
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="user_DatasourceUserDefinition"
+  headingId="operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition"
+  parentId="user"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DatasourceUserDefinition \{#operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes a user in the datasource
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="user_email"
-  headingId="operation-post_api_index_v1_indexuser+request+user+email"
-  parentId="user"
+  id="user_DatasourceUserDefinition_email"
+  headingId="operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+email"
+  parentId="user_DatasourceUserDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### email \{#operation-post_api_index_v1_indexuser+request+user+email\}
+##### email \{#operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+email\}
 
 </ExpandablePropertyTitle>
 
@@ -535,18 +527,18 @@ describes a user in the datasource
 
 <ExpandableProperty
   slot="entry"
-  id="user_isActive"
-  headingId="operation-post_api_index_v1_indexuser+request+user+isactive"
-  parentId="user"
+  id="user_DatasourceUserDefinition_isActive"
+  headingId="operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+isactive"
+  parentId="user_DatasourceUserDefinition"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### isActive \{#operation-post_api_index_v1_indexuser+request+user+isactive\}
+##### isActive \{#operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+isactive\}
 
 </ExpandablePropertyTitle>
 
@@ -560,18 +552,18 @@ set to false if the user is a former employee or a bot
 
 <ExpandableProperty
   slot="entry"
-  id="user_name"
-  headingId="operation-post_api_index_v1_indexuser+request+user+name"
-  parentId="user"
+  id="user_DatasourceUserDefinition_name"
+  headingId="operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+name"
+  parentId="user_DatasourceUserDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-post_api_index_v1_indexuser+request+user+name\}
+##### name \{#operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+name\}
 
 </ExpandablePropertyTitle>
 
@@ -579,18 +571,18 @@ set to false if the user is a former employee or a bot
 
 <ExpandableProperty
   slot="entry"
-  id="user_userId"
-  headingId="operation-post_api_index_v1_indexuser+request+user+userid"
-  parentId="user"
+  id="user_DatasourceUserDefinition_userId"
+  headingId="operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+userid"
+  parentId="user_DatasourceUserDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### userId \{#operation-post_api_index_v1_indexuser+request+user+userid\}
+##### userId \{#operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+userid\}
 
 </ExpandablePropertyTitle>
 
@@ -602,13 +594,21 @@ To be supplied if the user id in the datasource is not the email
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="version"
   headingId="operation-post_api_index_v1_indexuser+request+version"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -682,7 +682,7 @@ Describes the request body for the /bulkindexusers API call
   headingId="operation-post_api_index_v1_bulkindexusers+request+datasource"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -706,7 +706,7 @@ datasource of the users
   headingId="operation-post_api_index_v1_bulkindexusers+request+disablestaledatadeletioncheck"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -730,7 +730,7 @@ True if older user data needs to be force deleted after the upload completes. De
   headingId="operation-post_api_index_v1_bulkindexusers+request+forcerestartupload"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -754,7 +754,7 @@ Flag to discard previous upload attempts and start from scratch. Must be specifi
   headingId="operation-post_api_index_v1_bulkindexusers+request+isfirstpage"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -778,7 +778,7 @@ true if this is the first page of the upload. Defaults to false
   headingId="operation-post_api_index_v1_bulkindexusers+request+islastpage"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -802,7 +802,7 @@ true if this is the last page of the upload. Defaults to false
   headingId="operation-post_api_index_v1_bulkindexusers+request+uploadid"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -826,7 +826,7 @@ Unique id that must be used for this instance of datasource users upload
   headingId="operation-post_api_index_v1_bulkindexusers+request+users"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition\">DatasourceUserDefinition</a>","children":[{"label":"DatasourceUserDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition\">DatasourceUserDefinition</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -842,14 +842,14 @@ batch of users for the datasource
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="users_DatasourceUserDefinition"
   headingId="operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition"
   parentId="users"
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -865,15 +865,7 @@ describes a user in the datasource
 
 </ExpandableBreakoutDescription>
 
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -882,7 +874,7 @@ describes a user in the datasource
   parentId="users_DatasourceUserDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -901,7 +893,7 @@ describes a user in the datasource
   parentId="users_DatasourceUserDefinition"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -926,7 +918,7 @@ set to false if the user is a former employee or a bot
   parentId="users_DatasourceUserDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={false}
+  hasExpandableContent={false}
   expandByDefault={false}
 >
 
@@ -945,7 +937,7 @@ set to false if the user is a former employee or a bot
   parentId="users_DatasourceUserDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -960,6 +952,14 @@ set to false if the user is a former employee or a bot
 To be supplied if the user id in the datasource is not the email
 
 </ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -1019,7 +1019,7 @@ Describes the request body of the /indexgroup API call
   headingId="operation-post_api_index_v1_indexgroup+request+datasource"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1043,7 +1043,7 @@ The datasource for which the group is added
   headingId="operation-post_api_index_v1_indexgroup+request+group"
   typeInfo={{"label":"DatasourceGroupDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_indexgroup+request+group+datasourcegroupdefinition\">DatasourceGroupDefinition</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1059,22 +1059,45 @@ describes a group in the datasource
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="group_DatasourceGroupDefinition"
+  headingId="operation-post_api_index_v1_indexgroup+request+group+datasourcegroupdefinition"
+  parentId="group"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DatasourceGroupDefinition \{#operation-post_api_index_v1_indexgroup+request+group+datasourcegroupdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes a group in the datasource
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="group_name"
-  headingId="operation-post_api_index_v1_indexgroup+request+group+name"
-  parentId="group"
+  id="group_DatasourceGroupDefinition_name"
+  headingId="operation-post_api_index_v1_indexgroup+request+group+datasourcegroupdefinition+name"
+  parentId="group_DatasourceGroupDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-post_api_index_v1_indexgroup+request+group+name\}
+##### name \{#operation-post_api_index_v1_indexgroup+request+group+datasourcegroupdefinition+name\}
 
 </ExpandablePropertyTitle>
 
@@ -1086,13 +1109,21 @@ name of the group. Should be unique among all groups for the datasource, and can
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="version"
   headingId="operation-post_api_index_v1_indexgroup+request+version"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1166,7 +1197,7 @@ Describes the request body for the /bulkindexgroups API call
   headingId="operation-post_api_index_v1_bulkindexgroups+request+datasource"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1190,7 +1221,7 @@ datasource of the groups
   headingId="operation-post_api_index_v1_bulkindexgroups+request+disablestaledatadeletioncheck"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1214,7 +1245,7 @@ True if older group data needs to be force deleted after the upload completes. D
   headingId="operation-post_api_index_v1_bulkindexgroups+request+forcerestartupload"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1238,7 +1269,7 @@ Flag to discard previous upload attempts and start from scratch. Must be specifi
   headingId="operation-post_api_index_v1_bulkindexgroups+request+groups"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-post_api_index_v1_bulkindexgroups+request+groups+datasourcegroupdefinition\">DatasourceGroupDefinition</a>","children":[{"label":"DatasourceGroupDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_bulkindexgroups+request+groups+datasourcegroupdefinition\">DatasourceGroupDefinition</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1254,14 +1285,14 @@ batch of groups for the datasource
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="groups_DatasourceGroupDefinition"
   headingId="operation-post_api_index_v1_bulkindexgroups+request+groups+datasourcegroupdefinition"
   parentId="groups"
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1277,15 +1308,7 @@ describes a group in the datasource
 
 </ExpandableBreakoutDescription>
 
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1294,7 +1317,7 @@ describes a group in the datasource
   parentId="groups_DatasourceGroupDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1312,13 +1335,21 @@ name of the group. Should be unique among all groups for the datasource, and can
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="isFirstPage"
   headingId="operation-post_api_index_v1_bulkindexgroups+request+isfirstpage"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1342,7 +1373,7 @@ true if this is the first page of the upload. Defaults to false
   headingId="operation-post_api_index_v1_bulkindexgroups+request+islastpage"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1366,7 +1397,7 @@ true if this is the last page of the upload. Defaults to false
   headingId="operation-post_api_index_v1_bulkindexgroups+request+uploadid"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1440,7 +1471,7 @@ Describes the request body of the /indexmembership API call
   headingId="operation-post_api_index_v1_indexmembership+request+datasource"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1464,7 +1495,7 @@ The datasource for which the membership is added
   headingId="operation-post_api_index_v1_indexmembership+request+membership"
   typeInfo={{"label":"DatasourceMembershipDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition\">DatasourceMembershipDefinition</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1480,22 +1511,45 @@ describes the membership row of a group. Only one of memberUserId and memberGrou
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="membership_DatasourceMembershipDefinition"
+  headingId="operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition"
+  parentId="membership"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DatasourceMembershipDefinition \{#operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes the membership row of a group. Only one of memberUserId and memberGroupName can be specified.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="membership_groupName"
-  headingId="operation-post_api_index_v1_indexmembership+request+membership+groupname"
-  parentId="membership"
+  id="membership_DatasourceMembershipDefinition_groupName"
+  headingId="operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition+groupname"
+  parentId="membership_DatasourceMembershipDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### groupName \{#operation-post_api_index_v1_indexmembership+request+membership+groupname\}
+##### groupName \{#operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition+groupname\}
 
 </ExpandablePropertyTitle>
 
@@ -1509,18 +1563,18 @@ The group for which the membership is specified
 
 <ExpandableProperty
   slot="entry"
-  id="membership_memberGroupName"
-  headingId="operation-post_api_index_v1_indexmembership+request+membership+membergroupname"
-  parentId="membership"
+  id="membership_DatasourceMembershipDefinition_memberGroupName"
+  headingId="operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition+membergroupname"
+  parentId="membership_DatasourceMembershipDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### memberGroupName \{#operation-post_api_index_v1_indexmembership+request+membership+membergroupname\}
+##### memberGroupName \{#operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition+membergroupname\}
 
 </ExpandablePropertyTitle>
 
@@ -1534,18 +1588,18 @@ If the member is a group, then the name of the member group
 
 <ExpandableProperty
   slot="entry"
-  id="membership_memberUserId"
-  headingId="operation-post_api_index_v1_indexmembership+request+membership+memberuserid"
-  parentId="membership"
+  id="membership_DatasourceMembershipDefinition_memberUserId"
+  headingId="operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition+memberuserid"
+  parentId="membership_DatasourceMembershipDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### memberUserId \{#operation-post_api_index_v1_indexmembership+request+membership+memberuserid\}
+##### memberUserId \{#operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition+memberuserid\}
 
 </ExpandablePropertyTitle>
 
@@ -1557,13 +1611,21 @@ If the member is a user, then the email or datasource id for the user
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="version"
   headingId="operation-post_api_index_v1_indexmembership+request+version"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1637,7 +1699,7 @@ Describes the request body for the /bulkindexmemberships API call
   headingId="operation-post_api_index_v1_bulkindexmemberships+request+datasource"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1661,7 +1723,7 @@ datasource of the memberships
   headingId="operation-post_api_index_v1_bulkindexmemberships+request+forcerestartupload"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1685,7 +1747,7 @@ Flag to discard previous upload attempts and start from scratch. Must be specifi
   headingId="operation-post_api_index_v1_bulkindexmemberships+request+group"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1709,7 +1771,7 @@ group who's memberships are specified
   headingId="operation-post_api_index_v1_bulkindexmemberships+request+isfirstpage"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1733,7 +1795,7 @@ true if this is the first page of the upload. Defaults to false
   headingId="operation-post_api_index_v1_bulkindexmemberships+request+islastpage"
   typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1757,7 +1819,7 @@ true if this is the last page of the upload. Defaults to false
   headingId="operation-post_api_index_v1_bulkindexmemberships+request+memberships"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-post_api_index_v1_bulkindexmemberships+request+memberships+datasourcebulkmembershipdefinition\">DatasourceBulkMembershipDefinition</a>","children":[{"label":"DatasourceBulkMembershipDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_bulkindexmemberships+request+memberships+datasourcebulkmembershipdefinition\">DatasourceBulkMembershipDefinition</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1773,14 +1835,14 @@ batch of memberships for the group
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
   slot="entry"
   id="memberships_DatasourceBulkMembershipDefinition"
   headingId="operation-post_api_index_v1_bulkindexmemberships+request+memberships+datasourcebulkmembershipdefinition"
   parentId="memberships"
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1796,15 +1858,7 @@ describes the membership row of a group in the bulk uploaded. Only one of member
 
 </ExpandableBreakoutDescription>
 
-<ExpandableBreakoutExamples slot="examples">
-
-</ExpandableBreakoutExamples>
-
-<ExpandableBreakoutDefaultValue slot="defaultValue">
-
-</ExpandableBreakoutDefaultValue>
-
-</ExpandableBreakout>
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
@@ -1813,7 +1867,7 @@ describes the membership row of a group in the bulk uploaded. Only one of member
   parentId="memberships_DatasourceBulkMembershipDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1838,7 +1892,7 @@ If the member is a group, then the name of the member group
   parentId="memberships_DatasourceBulkMembershipDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
@@ -1856,13 +1910,21 @@ If the member is a user, then the email or datasource id for the user
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="uploadId"
   headingId="operation-post_api_index_v1_bulkindexmemberships+request+uploadid"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -1937,7 +1999,7 @@ Describes the request body of the /processallmemberships API call
   headingId="operation-post_api_index_v1_processallmemberships+request+datasource"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2011,7 +2073,7 @@ Describes the request body of the /deleteuser API call
   headingId="operation-post_api_index_v1_deleteuser+request+datasource"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2035,7 +2097,7 @@ The datasource for which the user is removed
   headingId="operation-post_api_index_v1_deleteuser+request+email"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2059,7 +2121,7 @@ The email of the user to be deleted
   headingId="operation-post_api_index_v1_deleteuser+request+version"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2133,7 +2195,7 @@ Describes the request body of the /deletegroup API call
   headingId="operation-post_api_index_v1_deletegroup+request+datasource"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2157,7 +2219,7 @@ The datasource for which the group is removed
   headingId="operation-post_api_index_v1_deletegroup+request+groupname"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2181,7 +2243,7 @@ the name of the group to be deleted
   headingId="operation-post_api_index_v1_deletegroup+request+version"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2255,7 +2317,7 @@ Describes the request body of the /deletemembership API call
   headingId="operation-post_api_index_v1_deletemembership+request+datasource"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2279,7 +2341,7 @@ The datasource for which the membership is removed
   headingId="operation-post_api_index_v1_deletemembership+request+membership"
   typeInfo={{"label":"DatasourceMembershipDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition\">DatasourceMembershipDefinition</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2295,22 +2357,45 @@ describes the membership row of a group. Only one of memberUserId and memberGrou
 
 </ExpandablePropertyDescription>
 
-</ExpandableProperty>
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="membership_DatasourceMembershipDefinition"
+  headingId="operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition"
+  parentId="membership"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DatasourceMembershipDefinition \{#operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes the membership row of a group. Only one of memberUserId and memberGroupName can be specified.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
   slot="entry"
-  id="membership_groupName"
-  headingId="operation-post_api_index_v1_deletemembership+request+membership+groupname"
-  parentId="membership"
+  id="membership_DatasourceMembershipDefinition_groupName"
+  headingId="operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition+groupname"
+  parentId="membership_DatasourceMembershipDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### groupName \{#operation-post_api_index_v1_deletemembership+request+membership+groupname\}
+##### groupName \{#operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition+groupname\}
 
 </ExpandablePropertyTitle>
 
@@ -2324,18 +2409,18 @@ The group for which the membership is specified
 
 <ExpandableProperty
   slot="entry"
-  id="membership_memberGroupName"
-  headingId="operation-post_api_index_v1_deletemembership+request+membership+membergroupname"
-  parentId="membership"
+  id="membership_DatasourceMembershipDefinition_memberGroupName"
+  headingId="operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition+membergroupname"
+  parentId="membership_DatasourceMembershipDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### memberGroupName \{#operation-post_api_index_v1_deletemembership+request+membership+membergroupname\}
+##### memberGroupName \{#operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition+membergroupname\}
 
 </ExpandablePropertyTitle>
 
@@ -2349,18 +2434,18 @@ If the member is a group, then the name of the member group
 
 <ExpandableProperty
   slot="entry"
-  id="membership_memberUserId"
-  headingId="operation-post_api_index_v1_deletemembership+request+membership+memberuserid"
-  parentId="membership"
+  id="membership_DatasourceMembershipDefinition_memberUserId"
+  headingId="operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition+memberuserid"
+  parentId="membership_DatasourceMembershipDefinition"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### memberUserId \{#operation-post_api_index_v1_deletemembership+request+membership+memberuserid\}
+##### memberUserId \{#operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition+memberuserid\}
 
 </ExpandablePropertyTitle>
 
@@ -2372,13 +2457,21 @@ If the member is a user, then the email or datasource id for the user
 
 </ExpandableProperty>
 
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
 <ExpandableProperty
   slot="entry"
   id="version"
   headingId="operation-post_api_index_v1_deletemembership+request+version"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2452,7 +2545,7 @@ Describes the request body of the /betausers API call
   headingId="operation-post_api_index_v1_betausers+request+datasource"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
@@ -2476,7 +2569,7 @@ Datasource which needs to be made visible to users specified in the `emails` fie
   headingId="operation-post_api_index_v1_betausers+request+emails"
   typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasFrontMatter={true}
+  hasExpandableContent={true}
   expandByDefault={true}
 >
 
