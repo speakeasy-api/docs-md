@@ -217,7 +217,7 @@ switch (settings.output.framework) {
   default: {
     if (settings.output.singlePage) {
       warn(
-        "Compiling all docs into a single page is likely to cause performance issues. It is strongly recommended that you enable scroll virtualization in a custom component, but take care not to break SEO."
+        "Compiling all docs into a single page is likely to cause performance issues if you have a large spec. It is strongly recommended that you enable scroll virtualization in a custom component, but take care not to break SEO."
       );
     }
     frameworkConfig = settings.output.framework;

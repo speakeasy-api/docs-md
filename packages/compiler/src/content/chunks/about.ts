@@ -7,10 +7,13 @@ import { HEADINGS } from "../constants.ts";
 
 export function renderAbout(renderer: Renderer, chunk: AboutChunk) {
   debug(`Rendering about chunk`);
-  const { showDebugPlaceholders } = getSettings().display;
+  const {
+    display: { showDebugPlaceholders },
+    output: { singlePage },
+  } = getSettings();
   renderer.createHeading(
     HEADINGS.PAGE_TITLE_HEADING_LEVEL,
-    `About ${chunk.chunkData.title}`
+    singlePage ? chunk.chunkData.title : `About ${chunk.chunkData.title}`
   );
   if (chunk.chunkData.version) {
     renderer.createText(`_Version: ${chunk.chunkData.version}_`);

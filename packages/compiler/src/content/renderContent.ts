@@ -157,7 +157,6 @@ function renderPages(
       sidebarLabel,
     });
     const settings = getSettings();
-    let hasRenderedEndpointHeading = false;
     for (const { chunk, contextChunk } of chunks) {
       switch (chunk.chunkType) {
         case "about": {
@@ -166,29 +165,17 @@ function renderPages(
         }
         case "globalSecurity": {
           renderer.createHeading(
-            HEADINGS.PAGE_TITLE_HEADING_LEVEL,
+            HEADINGS.SECTION_TITLE_HEADING_LEVEL,
             "Global Security"
           );
-          renderGlobalSecurity(renderer, chunk, HEADINGS.SECTION_HEADING_LEVEL);
+          renderGlobalSecurity(renderer, chunk);
           break;
         }
         case "tag": {
-          // If we're in single page mode, we don't render each tag heading
-          // and instead render a single "Endpoints" heading at the top of the
-          // page. Otherwise, we render a tag-specific heading
-          // TODO: ideally we'll render a tag component that encompases the
-          // endpoints inside of it, but our current architecture of flattening
-          // the page map doesn't support this. Honestly this file should
-          // probably just be rewritten at this point.
-          if (settings.output.singlePage) {
-            if (!hasRenderedEndpointHeading) {
-              renderer.createHeading(
-                HEADINGS.PAGE_TITLE_HEADING_LEVEL,
-                "Endpoints"
-              );
-              hasRenderedEndpointHeading = true;
-            }
-          } else {
+          // TODO: when we're in single page mode, we don't have a proper
+          // level to render tags, because the page is <h1> and endpoints are
+          // <h2>, leaving no gap in between.
+          if (!settings.output.singlePage) {
             renderTag(renderer, chunk);
           }
           break;

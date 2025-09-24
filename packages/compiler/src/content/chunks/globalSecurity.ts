@@ -4,11 +4,11 @@ import { debug } from "../../logging.ts";
 import type { Renderer } from "../../renderers/base.ts";
 import { escapeText } from "../../renderers/util.ts";
 import { getSettings } from "../../settings.ts";
+import { HEADINGS } from "../constants.ts";
 
 export function renderGlobalSecurity(
   renderer: Renderer,
-  chunk: GlobalSecurityChunk,
-  headingLevel: number
+  chunk: GlobalSecurityChunk
 ) {
   debug(`Rendering global security chunk`);
   const { showDebugPlaceholders } = getSettings().display;
@@ -20,7 +20,7 @@ export function renderGlobalSecurity(
       ? ` ${renderer.createPill("info", () => entry.type)}`
       : "";
     renderer.createHeading(
-      headingLevel,
+      HEADINGS.SECTION_HEADING_LEVEL,
       `${escapeText(entry.name, { escape: "markdown" })}${inPill}${typePill}`,
       {
         id: entry.name,
