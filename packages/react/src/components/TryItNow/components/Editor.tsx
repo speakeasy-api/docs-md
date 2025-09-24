@@ -31,6 +31,7 @@ export function Editor({ defaultValue, onValueChange }: EditorProps) {
         minimap: {
           enabled: false,
         },
+        lineNumbers: "off",
       }}
       className={styles.editor}
       language="typescript"
