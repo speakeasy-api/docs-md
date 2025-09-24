@@ -238,15 +238,13 @@ export function PropertyContents({
       <TitleContainer ref={titleContainerRef}>
         {titlePrefix}
         {displayInfo.multiline ? (
-          <div>
-            <div
-              className={clsx(
-                styles.typeInnerContainer,
-                styles.typeInnerContainerInline
-              )}
-            >
-              {typeInfo.label}
-            </div>
+          <div
+            className={clsx(
+              styles.typeInnerContainer,
+              styles.typeInnerContainerInline
+            )}
+          >
+            {typeInfo.label}
           </div>
         ) : (
           <TypeContainer
@@ -259,10 +257,16 @@ export function PropertyContents({
     propertyCell = (
       <>
         {displayInfo.multiline && (
-          <TypeContainer
-            multiline={displayInfo.multiline}
-            contents={displayInfo.contents}
-          />
+          <ConnectingCell
+            bottom={hasChildrenConnection}
+            top={hasChildrenConnection}
+            right="none"
+          >
+            <TypeContainer
+              multiline={displayInfo.multiline}
+              contents={displayInfo.contents}
+            />
+          </ConnectingCell>
         )}
         {frontmatter}
       </>
