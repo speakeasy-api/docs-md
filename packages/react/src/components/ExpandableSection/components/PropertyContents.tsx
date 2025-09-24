@@ -18,6 +18,7 @@ import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/Ex
 import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { Pill as DefaultPill } from "../../Pill/Pill.tsx";
+import { useHashManager } from "../hasManager.ts";
 import styles from "../styles.module.css";
 import type { ExpandablePropertyProps } from "../types.ts";
 
@@ -74,6 +75,7 @@ const OffscreenMeasureContainer = forwardRef<HTMLDivElement, PropsWithChildren>(
 );
 
 export function PropertyContents({
+  headingId,
   slot,
   children,
   typeInfo,
@@ -86,6 +88,8 @@ export function PropertyContents({
   ConnectingCell = DefaultConnectingCell,
 }: ExpandablePropertyProps) {
   const [isOpen, setIsOpen] = useState(expandByDefault);
+
+  useHashManager(headingId, setIsOpen);
 
   // We measure the title container (which includes available space for the
   // inline type), the title prefix (which is only the property name and

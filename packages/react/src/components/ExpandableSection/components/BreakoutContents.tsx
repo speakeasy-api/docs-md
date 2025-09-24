@@ -9,10 +9,12 @@ import { ConnectingCell as DefaultConnectingCell } from "../../ConnectingCell/Co
 import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
 // eslint-disable-next-line fast-import/no-restricted-imports
 import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
+import { useHashManager } from "../hasManager.ts";
 import styles from "../styles.module.css";
 import type { ExpandableBreakoutProps } from "../types.ts";
 
 export function BreakoutContents({
+  headingId,
   slot,
   hasExpandableContent,
   expandByDefault,
@@ -30,6 +32,9 @@ export function BreakoutContents({
   const [isOpen, setIsOpen] = useState(expandByDefault);
   const hasChildrenConnection =
     propertiesChildren.length > 0 ? "connected" : "none";
+
+  useHashManager(headingId, setIsOpen);
+
   return (
     <div slot={slot} className={styles.entryContainer}>
       <div className={styles.entryHeaderContainer}>
