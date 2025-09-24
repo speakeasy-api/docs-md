@@ -125,6 +125,7 @@ export type RendererCreateResponsesArgs = [
     createTab: (options: {
       statusCode: string;
       contentType: string;
+      showContentTypeInTab: boolean;
       createDisplayType?: () => void;
       createDescription?: () => void;
       createExamples?: () => void;

@@ -392,6 +392,7 @@ export function renderResponseBodies(
             createTab({
               statusCode,
               contentType: response.contentType,
+              showContentTypeInTab: responses.length > 1,
               createDisplayType:
                 schema.type !== "object" && typeInfo
                   ? () => {
