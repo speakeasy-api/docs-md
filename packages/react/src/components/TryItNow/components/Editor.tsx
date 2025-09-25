@@ -19,9 +19,7 @@ const editorOptions = {
   lineNumbersMinChars: 0,
   glyphMargin: false,
   folding: false,
-  fontSize: 14,
-  fontFamily:
-    "'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace",
+  fontFamily: "var(--speakeasy-font-mono)",
   fontLigatures: true,
   renderLineHighlight: "none",
   scrollBeyondLastLine: false,
