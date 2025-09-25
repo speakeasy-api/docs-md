@@ -113,7 +113,7 @@ export type RendererCreateSecuritySectionArgs = [cb: () => void];
 export type RendererCreateParametersSectionArgs = [cb: () => void];
 export type RendererCreateRequestExamplesSectionArgs = [
   options: {
-    cb: () => void;
+    createExample: () => void;
     title: string;
   },
 ];

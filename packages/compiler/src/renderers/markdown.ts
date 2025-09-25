@@ -324,7 +324,7 @@ export abstract class MarkdownRenderer extends Renderer {
   }
 
   public override createRequestExamplesSection(
-    ...[{ cb, title }]: RendererCreateRequestExamplesSectionArgs
+    ...[{ createExample: cb, title }]: RendererCreateRequestExamplesSectionArgs
   ): void {
     this.enterContext({ id: "request-examples", type: "section" });
     if (this.#currentOperation) {
