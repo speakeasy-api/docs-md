@@ -1,7 +1,4 @@
-import type {
-  ObjectValue,
-  SchemaValue,
-} from "@speakeasy-api/docs-md-shared";
+import type { ObjectValue, SchemaValue } from "@speakeasy-api/docs-md-shared";
 import type {
   DisplayTypeInfo,
   PropertyAnnotations,

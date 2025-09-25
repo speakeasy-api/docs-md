@@ -1,9 +1,6 @@
 import { join, resolve } from "node:path";
 
-import type {
-  Chunk,
-  PageMetadataTag,
-} from "@speakeasy-api/docs-md-shared";
+import type { Chunk, PageMetadataTag } from "@speakeasy-api/docs-md-shared";
 import type {
   DisplayTypeInfo,
   PageMetadata,
