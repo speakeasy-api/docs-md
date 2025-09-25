@@ -26,7 +26,9 @@ import type {
  * - Code samples: assigned to the `code-samples` slot
  * - Security: assigned to the `security` slot
  * - Parameters: assigned to the `parameters` slot
+ * - Request body examples: assigned to the `request-body-examples` slot
  * - Request body: assigned to the `request-body` slot
+ * - Response body examples: assigned to the `response-body-examples` slot
  * - Response body: assigned to the `response-body` slot
  *
  * Each child represents a semantic part of an operation and is assigned to a
@@ -40,7 +42,15 @@ export function Operation({ children }: OperationProps) {
   const codeSamplesChildren = useChildren(children, "code-samples");
   const securityChildren = useChildren(children, "security");
   const parametersChildren = useChildren(children, "parameters");
+  const requestBodyExamplesChildren = useChildren(
+    children,
+    "request-body-examples"
+  );
   const requestBodyChildren = useChildren(children, "request-body");
+  const responseBodyExamplesChildren = useChildren(
+    children,
+    "response-body-examples"
+  );
   const responseBodyChildren = useChildren(children, "response-body");
   return (
     <div className={styles.operation}>
@@ -52,7 +62,9 @@ export function Operation({ children }: OperationProps) {
       {codeSamplesChildren}
       {securityChildren}
       {parametersChildren}
+      {requestBodyExamplesChildren}
       {requestBodyChildren}
+      {responseBodyExamplesChildren}
       {responseBodyChildren}
     </div>
   );
@@ -105,6 +117,36 @@ export function OperationCodeSamplesSection({
 }
 
 /**
+ * This component is assigned to the `request-body-examples` slot and
+ * contains the examples of the request body for the operation.
+ */
+export function OperationRequestBodyExamplesSection({
+  children,
+  slot,
+}: OperationRequestBodyExamplesSectionProps) {
+  return (
+    <div slot={slot} className={styles.topLevelFrontMatter}>
+      {children}
+    </div>
+  );
+}
+
+/**
+ * This component is assigned to the `response-body-examples` slot and
+ * contains the examples of the response body for the operation.
+ */
+export function OperationResponseBodyExamplesSection({
+  children,
+  slot,
+}: OperationResponseBodyExamplesSectionProps) {
+  return (
+    <div slot={slot} className={styles.topLevelFrontMatter}>
+      {children}
+    </div>
+  );
+}
+
+/**
  * This component represents the security section of an operation. It is
  * assigned to the `security` slot and contains the security information for
  * the operation.
@@ -152,8 +194,6 @@ export function OperationParametersSection({
  *   `request-body-display-type` slot
  * - `OperationRequestBodyDescriptionSection`: assigned to the
  *   `request-body-description` slot
- * - `OperationRequestBodyExamplesSection`: assigned to the
- *   `request-body-examples` slot
  */
 export function OperationRequestBodySection({
   children,
@@ -189,21 +229,6 @@ export function OperationRequestBodyDescriptionSection({
 }
 
 /**
- * This component is assigned to the `request-body-examples` slot and
- * contains the examples of the request body for the operation.
- */
-export function OperationRequestBodyExamplesSection({
-  children,
-  slot,
-}: OperationRequestBodyExamplesSectionProps) {
-  return (
-    <div slot={slot} className={styles.topLevelFrontMatter}>
-      {children}
-    </div>
-  );
-}
-
-/**
  * This component represents the response bodies of an operation. It is assigned
  * to the `response-body` slot and contains a tabbed interface for displaying
  * the different response bodies.
@@ -220,8 +245,6 @@ export function OperationRequestBodyExamplesSection({
  *   `response-body-display-type` slot
  * - `OperationResponseBodyDescriptionSection`: assigned to the
  *   `response-body-description` slot
- * - `OperationResponseBodyExamplesSection`: assigned to the
- *   `response-body-examples` slot
  */
 export function OperationResponseBodySection({
   children,
@@ -253,21 +276,6 @@ export function OperationResponseBodyDescriptionSection({
   children,
   slot,
 }: OperationResponseBodyDescriptionSectionProps) {
-  return (
-    <div slot={slot} className={styles.topLevelFrontMatter}>
-      {children}
-    </div>
-  );
-}
-
-/**
- * This component is assigned to the `response-body-examples` slot and
- * contains the examples of the response body for the operation.
- */
-export function OperationResponseBodyExamplesSection({
-  children,
-  slot,
-}: OperationResponseBodyExamplesSectionProps) {
   return (
     <div slot={slot} className={styles.topLevelFrontMatter}>
       {children}
