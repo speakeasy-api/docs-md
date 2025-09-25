@@ -548,11 +548,6 @@ class MdxRenderer extends MarkdownRenderer {
       },
       () => {
         this.createTabbedSection(() => {
-          this.createSectionTitle(() =>
-            this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, "Code Samples", {
-              id: this.getCurrentId(),
-            })
-          );
           cb({
             createTryItNowEntry: ({
               externalDependencies,
