@@ -18,6 +18,7 @@ import {
   OperationDescriptionSection,
   OperationParametersSection,
   OperationRequestBodyDescriptionSection,
+  OperationRequestBodyExamplesSection,
   OperationRequestBodySection,
   OperationResponseBodyDescriptionSection,
   OperationResponseBodyDisplayTypeSection,
@@ -50493,6 +50494,7 @@ const mistral = new Mistral({
 async function run() {
   const result = await mistral.beta.conversations.start({
     inputs: "<value>",
+    model: "mistral",
   });
 
   // Handle the result
@@ -50525,7 +50527,7 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.beta.conversations.start(inputs="<value>")
+    res = mistral.beta.conversations.start(inputs="<value>", model="mistral")
 
     # Handle response
     print(res)
@@ -50538,6 +50540,31 @@ with Mistral(
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Examples \{#operation-agents_api_v1_conversations_start_request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "model": "mistral",
+  "messages": []
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 

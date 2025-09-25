@@ -29,7 +29,6 @@ import type {
   OperationRequestBodySectionProps,
   OperationResponseBodyDescriptionSectionProps,
   OperationResponseBodyDisplayTypeSectionProps,
-  OperationResponseBodyExamplesSectionProps,
   OperationResponseBodySectionProps,
   OperationSecuritySectionProps,
   OperationSummarySectionProps,
@@ -61,6 +60,7 @@ import type {
   RendererCreateOperationArgs,
   RendererCreateParametersSectionArgs,
   RendererCreatePillArgs,
+  RendererCreateRequestExamplesSectionArgs,
   RendererCreateRequestSectionArgs,
   RendererCreateResponsesArgs,
   RendererCreateSectionArgs,
@@ -675,13 +675,15 @@ class MdxRenderer extends MarkdownRenderer {
     );
   }
 
-  protected override handleCreateRequestExamples(cb: () => void) {
+  public override createRequestExamplesSection(
+    ...[cb]: RendererCreateRequestExamplesSectionArgs
+  ) {
     this.#appendComponent<OperationRequestBodyExamplesSectionProps>(
       {
         symbol: "OperationRequestBodyExamplesSection",
         props: { slot: "request-body-examples" },
       },
-      cb
+      () => super.createRequestExamplesSection(cb)
     );
   }
 
@@ -700,16 +702,6 @@ class MdxRenderer extends MarkdownRenderer {
       {
         symbol: "OperationResponseBodyDescriptionSection",
         props: { slot: "response-body-description" },
-      },
-      cb
-    );
-  }
-
-  protected override handleCreateResponseExamples(cb: () => void) {
-    this.#appendComponent<OperationResponseBodyExamplesSectionProps>(
-      {
-        symbol: "OperationResponseBodyExamplesSection",
-        props: { slot: "response-body-examples" },
       },
       cb
     );

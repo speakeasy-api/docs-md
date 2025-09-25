@@ -27,12 +27,12 @@ type RenderOperationOptions = {
 
 function createTopLevelExamples(
   examples: { name: string; value: string }[],
-  renderer: Renderer
+  renderer: Renderer,
+  createBlock: (cb: () => void) => void
 ) {
   const { showDebugPlaceholders } = getSettings().display;
   if (examples.length > 0) {
-    return () => {
-      renderer.createText(`_${examples.length > 1 ? "Examples" : "Example"}:_`);
+    createBlock(() => {
       for (const example of examples) {
         renderer.createCode(
           // Unfortunately, the output of Go's YAML to JSON
@@ -47,25 +47,25 @@ function createTopLevelExamples(
           }
         );
       }
-    };
+    });
   } else if (showDebugPlaceholders) {
-    return () =>
+    createBlock(() =>
       renderer.createDebugPlaceholder({
         createTitle() {
           renderer.createText("No examples provided");
         },
         createExample() {
           renderer.createCode(
-            "requestBody:\n  content:\n    application/json:\n      examples:\n        example1:\n          value: {}",
+            "content:\n  application/json:\n    examples:\n      example1:\n        value: { foo: 'bar'}",
             {
               variant: "default",
               style: "block",
             }
           );
         },
-      });
+      })
+    );
   }
-  return undefined;
 }
 
 function renderCodeSamples(
@@ -296,6 +296,11 @@ export function renderRequestBody(
     renderer,
     []
   );
+  createTopLevelExamples(
+    requestBody.examples,
+    renderer,
+    renderer.createRequestExamplesSection.bind(renderer)
+  );
   renderer.createRequestSection({
     isOptional: false,
     createDisplayType:
@@ -337,7 +342,6 @@ export function renderRequestBody(
             }
           }
         : undefined,
-    createExamples: createTopLevelExamples(requestBody.examples, renderer),
     createBreakouts() {
       renderBreakouts({
         renderer,
@@ -440,10 +444,6 @@ export function renderResponseBodies(
                       }
                     }
                   : undefined,
-              createExamples: createTopLevelExamples(
-                response.examples,
-                renderer
-              ),
               createBreakouts() {
                 renderBreakouts({
                   renderer,

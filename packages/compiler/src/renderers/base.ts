@@ -111,12 +111,12 @@ export type RendererCreateCodeSamplesSectionArgs = [
 ];
 export type RendererCreateSecuritySectionArgs = [cb: () => void];
 export type RendererCreateParametersSectionArgs = [cb: () => void];
+export type RendererCreateRequestExamplesSectionArgs = [cb: () => void];
 export type RendererCreateRequestSectionArgs = [
   options: {
     isOptional: boolean;
     createDisplayType?: () => void;
     createDescription?: () => void;
-    createExamples?: () => void;
     createBreakouts: () => void;
   },
 ];
@@ -128,7 +128,6 @@ export type RendererCreateResponsesArgs = [
       showContentTypeInTab: boolean;
       createDisplayType?: () => void;
       createDescription?: () => void;
-      createExamples?: () => void;
       createBreakouts: () => void;
     }) => void
   ) => void,
@@ -300,6 +299,9 @@ export abstract class Renderer {
   ): void;
   abstract createParametersSection(
     ...args: RendererCreateParametersSectionArgs
+  ): void;
+  abstract createRequestExamplesSection(
+    ...args: RendererCreateRequestExamplesSectionArgs
   ): void;
   abstract createRequestSection(
     ...args: RendererCreateRequestSectionArgs
