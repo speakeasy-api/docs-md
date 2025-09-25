@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { useRuntime } from "../state.ts";
 import type { TryItNowProps } from "../types.ts";
 import { Editor as DefaultEditor } from "./Editor.tsx";
 import { Layout as DefaultLayout } from "./Layout.tsx";
@@ -9,7 +10,7 @@ import { Results as DefaultResults } from "./Results.tsx";
 import { RunButton as DefaultRunButton } from "./RunButton.tsx";
 
 export function TryItNowContents({
-  externalDependencies,
+  externalDependencies = {},
   defaultValue,
   Layout = DefaultLayout,
   Editor = DefaultEditor,
@@ -18,8 +19,10 @@ export function TryItNowContents({
   theme = "dark",
 }: TryItNowProps) {
   const [value, setValue] = useState(defaultValue);
+  const { status, execute } = useRuntime();
   console.log(externalDependencies);
   console.log(value);
+  console.log(status);
   return (
     <div>
       <Layout>
@@ -33,7 +36,7 @@ export function TryItNowContents({
         <div slot="runButton">
           <RunButton
             onClick={() => {
-              console.log("Run");
+              execute(value, externalDependencies);
             }}
           />
         </div>
