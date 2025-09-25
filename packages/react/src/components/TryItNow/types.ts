@@ -44,7 +44,7 @@ export type EditorProps = {
   /**
    * The theme of the editor
    */
-  theme: "light" | "dark";
+  theme?: "light" | "dark";
 };
 
 export type RunButtonProps = {
