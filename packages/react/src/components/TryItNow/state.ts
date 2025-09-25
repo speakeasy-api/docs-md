@@ -40,7 +40,6 @@ export function useRuntime() {
   });
 
   const execute = useCallback((code: string, externalDependencies: Record<string, string>) => {
-    console.log(code);
     setStatus((prevStatus) => {
       switch (prevStatus.state) {
         case "success":
@@ -62,13 +61,22 @@ export function useRuntime() {
       }
     });
 
-    void bundle(code, externalDependencies)
-      .then((result) => {
+    async function run() {
+      try {
+        const result = await bundle(code, externalDependencies);
         console.log(result);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      } catch (error) {
+        setStatus({
+          state: "error",
+          error: {
+            type: "other",
+            message: error instanceof Error ? error.message : "Unknown error",
+          },
+        });
+      }
+    }
+
+    void run();
   }, []);
 
   return {
