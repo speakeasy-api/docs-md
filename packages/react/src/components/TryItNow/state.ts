@@ -1,3 +1,4 @@
+import { bundle, run } from "@speakeasy-api/docs-md-shared";
 import { useCallback, useState } from "react";
 
 type Results = {
@@ -43,7 +44,7 @@ export function useRuntime() {
   });
 
   const execute = useCallback(
-    (code: string, externalDependencies: Record<string, string>) => {
+    async (code: string, externalDependencies: Record<string, string>) => {
       console.log(code);
       console.log(externalDependencies);
       setStatus((prevStatus) => {
@@ -67,23 +68,37 @@ export function useRuntime() {
         }
       });
 
-      async function run() {
-        // Currently bundle causes the Docusaurus build to crash. Maybe running in a worker will fix it?
-        // try {
-        //   const result = await bundle(code, externalDependencies);
-        //   console.log(result);
-        // } catch (error) {
-        //   setStatus({
-        //     state: "error",
-        //     error: {
-        //       type: "other",
-        //       message: error instanceof Error ? error.message : "Unknown error",
-        //     },
-        //   });
-        // }
+      try {
+        const result = await bundle(code, externalDependencies);
+        const parsedCode = result.outputFiles[0]?.contents
+          ? new TextDecoder().decode(result.outputFiles[0].contents)
+          : "";
+        const { logs, errors } = await run(parsedCode);
+        if (errors.length > 0) {
+          setStatus({
+            state: "error",
+            error: {
+              type: "other",
+              message: errors.join("\n"),
+            },
+          });
+        } else if (logs.length > 0) {
+          setStatus({
+            state: "success",
+            results: {
+              output: JSON.parse(logs[0] ?? "{}"),
+            },
+          });
+        }
+      } catch (error) {
+        setStatus({
+          state: "error",
+          error: {
+            type: "other",
+            message: error instanceof Error ? error.message : "Unknown error",
+          },
+        });
       }
-
-      void run();
     },
     []
   );

@@ -21,3 +21,4 @@ export type {
 } from "./types/index.ts";
 
 export { bundle } from "./codeRuntime/build.ts";
+export { run } from "./codeRuntime/run.ts";
