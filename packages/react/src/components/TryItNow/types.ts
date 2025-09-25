@@ -22,6 +22,10 @@ export type TryItNowProps = {
    * Results component to use. Defaults to `Results`.
    */
   Results?: FC<ResultsProps>;
+  /**
+   * Layout component to use. Defaults to `Layout`.
+   */
+  Layout?: FC<LayoutProps>;
 };
 
 export type EditorProps = {
@@ -45,4 +49,8 @@ export type RunButtonProps = {
 export type ResultsProps = {
   // TODO: depends on the runtime
   output: unknown;
+};
+
+export type LayoutProps = {
+  children: React.ReactNode;
 };
