@@ -1,16 +1,13 @@
 import { join, resolve } from "node:path";
 
-import type {
-  Chunk,
-  PageMetadataTag,
-} from "@speakeasy-api/docs-md-shared/types";
+import type { Chunk, PageMetadataTag } from "@speakeasy-api/docs-md-shared";
 import type {
   DisplayTypeInfo,
   PageMetadata,
   PageMetadataOperation,
   PageMetadataSection,
   PropertyAnnotations,
-} from "@speakeasy-api/docs-md-shared/types";
+} from "@speakeasy-api/docs-md-shared";
 import { snakeCase } from "change-case";
 
 import { HEADINGS } from "../content/constants.ts";

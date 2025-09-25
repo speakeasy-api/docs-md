@@ -1,4 +1,4 @@
-import type { TagChunk } from "@speakeasy-api/docs-md-shared/types";
+import type { TagChunk } from "@speakeasy-api/docs-md-shared";
 import { capitalCase } from "change-case";
 
 import type { Renderer } from "../../renderers/base.ts";

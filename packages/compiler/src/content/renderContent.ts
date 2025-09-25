@@ -2,7 +2,7 @@ import type {
   Chunk,
   PageMetadata,
   TagChunk,
-} from "@speakeasy-api/docs-md-shared/types";
+} from "@speakeasy-api/docs-md-shared";
 import { capitalCase } from "change-case";
 
 import type { FrameworkConfig } from "../compiler.ts";

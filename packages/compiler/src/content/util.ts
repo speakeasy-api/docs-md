@@ -1,4 +1,4 @@
-import type { Chunk } from "@speakeasy-api/docs-md-shared/types";
+import type { Chunk } from "@speakeasy-api/docs-md-shared";
 
 import { InternalError } from "../util/internalError.ts";
 

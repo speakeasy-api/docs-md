@@ -1,9 +1,6 @@
 import { basename } from "node:path";
 
-import type {
-  Chunk,
-  OperationChunk,
-} from "@speakeasy-api/docs-md-shared/types";
+import type { Chunk, OperationChunk } from "@speakeasy-api/docs-md-shared";
 
 import { error, info } from "../logging.ts";
 import type { CodeSampleLanguage } from "../settings.ts";

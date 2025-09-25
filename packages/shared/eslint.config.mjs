@@ -2,7 +2,7 @@ import { resolve } from "node:path";
 
 import { getDirname } from "cross-dirname";
 
-import { getNodeESLintConfig } from "./index.mjs";
+import { getNodeESLintConfig } from "./config/index.mjs";
 
 const gitignorePath = resolve(getDirname(), "..", "..", ".gitignore");
 
@@ -12,8 +12,8 @@ export default [
     rootDir: getDirname(),
     entryPoints: {
       "eslint.config.mjs": ["default"],
-      "index.mjs": /.*/,
-      "types/index.ts": /.*/,
+      "config/index.mjs": /.*/,
+      "src/index.ts": /.*/,
     },
     ignores: ["src/compiler/data/wasm_exec.js"],
     restrictedImports: [

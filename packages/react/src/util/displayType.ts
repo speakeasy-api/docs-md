@@ -1,4 +1,4 @@
-import type { DisplayTypeInfo } from "@speakeasy-api/docs-md-shared/types";
+import type { DisplayTypeInfo } from "@speakeasy-api/docs-md-shared";
 
 export function computeSingleLineDisplayType(typeInfo: DisplayTypeInfo): {
   measure: string;

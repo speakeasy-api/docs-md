@@ -1,4 +1,4 @@
-import type { PillVariant } from "@speakeasy-api/docs-md-shared/types";
+import type { PillVariant } from "@speakeasy-api/docs-md-shared";
 import type { PropsWithChildren } from "react";
 
 export type PillProps = PropsWithChildren<{

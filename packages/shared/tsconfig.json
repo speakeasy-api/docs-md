@@ -1,12 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "rootDir": "./types",
+    "rootDir": "./src",
     "module": "Node16",
     "moduleResolution": "node16",
     "rewriteRelativeImportExtensions": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
+    "outDir": "./dist",
 
     // Unfortunately hono+zod has a compile error on newer versions of TypeScript,
     // so we have to disable checking/loosen checking on our usage of third party
@@ -17,5 +16,5 @@
     "declarationMap": true,
     "allowJs": true
   },
-  "include": ["types/**/*"]
+  "include": ["src/**/*", "src/types/**/*"]
 }

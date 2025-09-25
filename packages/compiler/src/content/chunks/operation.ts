@@ -2,8 +2,8 @@ import type {
   OperationChunk,
   SchemaValue,
   TagChunk,
-} from "@speakeasy-api/docs-md-shared/types";
-import type { PropertyAnnotations } from "@speakeasy-api/docs-md-shared/types";
+} from "@speakeasy-api/docs-md-shared";
+import type { PropertyAnnotations } from "@speakeasy-api/docs-md-shared";
 
 import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
 import { debug } from "../../logging.ts";
