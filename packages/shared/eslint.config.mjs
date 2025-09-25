@@ -12,7 +12,7 @@ export default [
     rootDir: getDirname(),
     entryPoints: {
       "eslint.config.mjs": ["default"],
-      "index.mjs": /.*/,
+      "config/index.mjs": /.*/,
       "src/index.ts": /.*/,
     },
     ignores: ["src/compiler/data/wasm_exec.js"],
