@@ -181,7 +181,11 @@ export function OperationRequestBodyDescriptionSection({
   children,
   slot,
 }: OperationRequestBodyDescriptionSectionProps) {
-  return <div slot={slot}>{children}</div>;
+  return (
+    <div slot={slot} className={styles.topLevelFrontMatter}>
+      {children}
+    </div>
+  );
 }
 
 /**
@@ -192,7 +196,11 @@ export function OperationRequestBodyExamplesSection({
   children,
   slot,
 }: OperationRequestBodyExamplesSectionProps) {
-  return <div slot={slot}>{children}</div>;
+  return (
+    <div slot={slot} className={styles.topLevelFrontMatter}>
+      {children}
+    </div>
+  );
 }
 
 /**
@@ -230,7 +238,11 @@ export function OperationResponseBodyDisplayTypeSection({
   children,
   slot,
 }: OperationResponseBodyDisplayTypeSectionProps) {
-  return <div slot={slot}>{children}</div>;
+  return (
+    <div slot={slot} className={styles.topLevelFrontMatter}>
+      {children}
+    </div>
+  );
 }
 
 /**
@@ -241,7 +253,11 @@ export function OperationResponseBodyDescriptionSection({
   children,
   slot,
 }: OperationResponseBodyDescriptionSectionProps) {
-  return <div slot={slot}>{children}</div>;
+  return (
+    <div slot={slot} className={styles.topLevelFrontMatter}>
+      {children}
+    </div>
+  );
 }
 
 /**
@@ -252,5 +268,9 @@ export function OperationResponseBodyExamplesSection({
   children,
   slot,
 }: OperationResponseBodyExamplesSectionProps) {
-  return <div slot={slot}>{children}</div>;
+  return (
+    <div slot={slot} className={styles.topLevelFrontMatter}>
+      {children}
+    </div>
+  );
 }
