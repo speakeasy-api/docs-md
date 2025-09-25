@@ -381,6 +381,69 @@ export function renderResponseBodies(
           )
         : true
     );
+    const hasExamples = filteredResponseList.some(([_, responses]) =>
+      responses.some((response) => response.examples.length > 0)
+    );
+    if (hasExamples || showDebugPlaceholders) {
+      renderer.createResponsesExamplesSection(
+        (createTab) => {
+          for (const [statusCode, responses] of filteredResponseList) {
+            for (const response of responses) {
+              if (response.examples.length > 0) {
+                createTab({
+                  statusCode,
+                  contentType: response.contentType,
+                  showContentTypeInTab: responses.length > 1,
+                  createExample() {
+                    for (const example of response.examples) {
+                      renderer.createCode(
+                        // Unfortunately, the output of Go's YAML to JSON
+                        // conversion doesn't give us options to control the
+                        // indentation of the output, so we have to do it
+                        // ourselves
+                        JSON.stringify(JSON.parse(example.value), null, "  "),
+                        {
+                          variant: "default",
+                          style: "block",
+                          language: "json",
+                        }
+                      );
+                    }
+                  },
+                });
+              } else if (showDebugPlaceholders) {
+                createTab({
+                  statusCode,
+                  contentType: response.contentType,
+                  showContentTypeInTab: responses.length > 1,
+                  createExample() {
+                    renderer.createRequestExamplesSection({
+                      title: "Request Examples",
+                      createExample: () =>
+                        renderer.createDebugPlaceholder({
+                          createTitle() {
+                            renderer.createText("No examples provided");
+                          },
+                          createExample() {
+                            renderer.createCode(
+                              "content:\n  application/json:\n    examples:\n      example1:\n        value: { foo: 'bar'}",
+                              {
+                                variant: "default",
+                                style: "block",
+                              }
+                            );
+                          },
+                        }),
+                    });
+                  },
+                });
+              }
+            }
+          }
+        },
+        { title: "Responses Examples" }
+      );
+    }
     renderer.createResponsesSection(
       (createTab) => {
         for (const [statusCode, responses] of filteredResponseList) {

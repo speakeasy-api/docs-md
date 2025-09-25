@@ -36,6 +36,7 @@ import type {
   RendererCreateRequestExamplesSectionArgs,
   RendererCreateRequestSectionArgs,
   RendererCreateResponsesArgs,
+  RendererCreateResponsesExamplesSectionArgs,
   RendererCreateSectionArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
@@ -324,7 +325,7 @@ export abstract class MarkdownRenderer extends Renderer {
   }
 
   public override createRequestExamplesSection(
-    ...[{ createExample: cb, title }]: RendererCreateRequestExamplesSectionArgs
+    ...[{ createExample, title }]: RendererCreateRequestExamplesSectionArgs
   ): void {
     this.enterContext({ id: "request-examples", type: "section" });
     if (this.#currentOperation) {
@@ -335,7 +336,7 @@ export abstract class MarkdownRenderer extends Renderer {
       this.#currentOperation.security = this.#currentSection;
     }
 
-    this.createTopLevelSection({ title }, cb);
+    this.createTopLevelSection({ title }, createExample);
 
     this.#currentSection = undefined;
     this.exitContext();
@@ -377,6 +378,59 @@ export abstract class MarkdownRenderer extends Renderer {
       }
     );
     this.#currentSection = undefined;
+    this.exitContext();
+  }
+
+  public override createResponsesExamplesSection(
+    ...[createExample, { title }]: RendererCreateResponsesExamplesSectionArgs
+  ): void {
+    this.enterContext({ id: "responses", type: "section" });
+    if (this.#currentOperation) {
+      this.#currentOperation.responses = {};
+    }
+    this.createTabbedSection(() => {
+      this.createSectionTitle(() =>
+        this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
+          id: this.getCurrentId(),
+        })
+      );
+      createExample(
+        ({ statusCode, contentType, showContentTypeInTab, createExample }) => {
+          this.enterContext({ id: statusCode, type: "section" });
+          this.enterContext({
+            id: contentType.replace("/", "-"),
+            type: "section",
+          });
+          if (this.#currentOperation?.responses) {
+            this.#currentSection = {
+              elementId: this.getCurrentId(),
+              properties: [],
+            };
+            this.#currentOperation.responses[`${statusCode}-${contentType}`] =
+              this.#currentSection;
+          }
+
+          this.createTabbedSectionTab(
+            () =>
+              this.createText(
+                showContentTypeInTab
+                  ? `${statusCode} (${contentType})`
+                  : statusCode
+              ),
+            {
+              id: this.getCurrentId(),
+            }
+          );
+          this.createSectionContent(createExample, {
+            id: this.getCurrentId(),
+          });
+
+          this.#currentSection = undefined;
+          this.exitContext();
+          this.exitContext();
+        }
+      );
+    });
     this.exitContext();
   }
 

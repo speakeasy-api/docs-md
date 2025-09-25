@@ -29,6 +29,7 @@ import type {
   OperationRequestBodySectionProps,
   OperationResponseBodyDescriptionSectionProps,
   OperationResponseBodyDisplayTypeSectionProps,
+  OperationResponseBodyExamplesSectionProps,
   OperationResponseBodySectionProps,
   OperationSecuritySectionProps,
   OperationSummarySectionProps,
@@ -63,6 +64,7 @@ import type {
   RendererCreateRequestExamplesSectionArgs,
   RendererCreateRequestSectionArgs,
   RendererCreateResponsesArgs,
+  RendererCreateResponsesExamplesSectionArgs,
   RendererCreateSectionArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
@@ -633,6 +635,18 @@ class MdxRenderer extends MarkdownRenderer {
     );
   }
 
+  public override createRequestExamplesSection(
+    ...[cb]: RendererCreateRequestExamplesSectionArgs
+  ) {
+    this.#appendComponent<OperationRequestBodyExamplesSectionProps>(
+      {
+        symbol: "OperationRequestBodyExamplesSection",
+        props: { slot: "request-body-examples" },
+      },
+      () => super.createRequestExamplesSection(cb)
+    );
+  }
+
   public override createRequestSection(
     ...args: RendererCreateRequestSectionArgs
   ) {
@@ -642,6 +656,18 @@ class MdxRenderer extends MarkdownRenderer {
         props: { slot: "request-body" },
       },
       () => super.createRequestSection(...args)
+    );
+  }
+
+  public override createResponsesExamplesSection(
+    ...args: RendererCreateResponsesExamplesSectionArgs
+  ) {
+    this.#appendComponent<OperationResponseBodyExamplesSectionProps>(
+      {
+        symbol: "OperationResponseBodyExamplesSection",
+        props: { slot: "response-body-examples" },
+      },
+      () => super.createResponsesExamplesSection(...args)
     );
   }
 
@@ -672,18 +698,6 @@ class MdxRenderer extends MarkdownRenderer {
         props: { slot: "request-body-description" },
       },
       cb
-    );
-  }
-
-  public override createRequestExamplesSection(
-    ...[cb]: RendererCreateRequestExamplesSectionArgs
-  ) {
-    this.#appendComponent<OperationRequestBodyExamplesSectionProps>(
-      {
-        symbol: "OperationRequestBodyExamplesSection",
-        props: { slot: "request-body-examples" },
-      },
-      () => super.createRequestExamplesSection(cb)
     );
   }
 

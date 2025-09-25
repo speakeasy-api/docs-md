@@ -125,6 +125,19 @@ export type RendererCreateRequestSectionArgs = [
     createBreakouts: () => void;
   },
 ];
+export type RendererCreateResponsesExamplesSectionArgs = [
+  cb: (
+    createTab: (options: {
+      statusCode: string;
+      contentType: string;
+      showContentTypeInTab: boolean;
+      createExample: () => void;
+    }) => void
+  ) => void,
+  options: {
+    title: string;
+  },
+];
 export type RendererCreateResponsesArgs = [
   cb: (
     createTab: (options: {
@@ -310,6 +323,9 @@ export abstract class Renderer {
   ): void;
   abstract createRequestSection(
     ...args: RendererCreateRequestSectionArgs
+  ): void;
+  abstract createResponsesExamplesSection(
+    ...args: RendererCreateResponsesExamplesSectionArgs
   ): void;
   abstract createResponsesSection(...args: RendererCreateResponsesArgs): void;
 
