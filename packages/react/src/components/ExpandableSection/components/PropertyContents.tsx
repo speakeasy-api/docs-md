@@ -126,13 +126,9 @@ export function PropertyContents({
   // split the type display into multiple lines. We alias the bounds so the
   // useMemo isn't affected by non-width bounds changing (or reference
   // instability)
-  const [titleContainerRef, titleContainerBounds] = useMeasure({
-    offsetSize: true,
-  });
+  const [titleContainerRef, titleContainerBounds] = useMeasure();
   const titleContainerWidth = titleContainerBounds.width;
-  const [titlePrefixContainerRef, titlePrefixContainerBounds] = useMeasure({
-    offsetSize: true,
-  });
+  const [titlePrefixContainerRef, titlePrefixContainerBounds] = useMeasure();
   const titlePrefixContainerWidth = titlePrefixContainerBounds.width;
   const [
     offscreenTextSizeMeasureContainerRef,
