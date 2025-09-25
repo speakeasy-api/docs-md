@@ -111,7 +111,12 @@ export type RendererCreateCodeSamplesSectionArgs = [
 ];
 export type RendererCreateSecuritySectionArgs = [cb: () => void];
 export type RendererCreateParametersSectionArgs = [cb: () => void];
-export type RendererCreateRequestExamplesSectionArgs = [cb: () => void];
+export type RendererCreateRequestExamplesSectionArgs = [
+  options: {
+    cb: () => void;
+    title: string;
+  },
+];
 export type RendererCreateRequestSectionArgs = [
   options: {
     isOptional: boolean;

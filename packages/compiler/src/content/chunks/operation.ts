@@ -7,7 +7,10 @@ import type { PropertyAnnotations } from "@speakeasy-api/docs-md-shared/types";
 
 import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
 import { debug } from "../../logging.ts";
-import type { Renderer } from "../../renderers/base.ts";
+import type {
+  Renderer,
+  RendererCreateRequestExamplesSectionArgs,
+} from "../../renderers/base.ts";
 import type { CodeSampleLanguage } from "../../settings.ts";
 import { getSettings } from "../../settings.ts";
 import { assertNever } from "../../util/assertNever.ts";
@@ -28,43 +31,50 @@ type RenderOperationOptions = {
 function createTopLevelExamples(
   examples: { name: string; value: string }[],
   renderer: Renderer,
-  createBlock: (cb: () => void) => void
+  createBlock: (
+    ...[{ cb, title }]: RendererCreateRequestExamplesSectionArgs
+  ) => void
 ) {
   const { showDebugPlaceholders } = getSettings().display;
   if (examples.length > 0) {
-    createBlock(() => {
-      for (const example of examples) {
-        renderer.createCode(
-          // Unfortunately, the output of Go's YAML to JSON
-          // conversion doesn't give us options to control the
-          // indentation of the output, so we have to do it
-          // ourselves
-          JSON.stringify(JSON.parse(example.value), null, "  "),
-          {
-            variant: "default",
-            style: "block",
-            language: "json",
-          }
-        );
-      }
-    });
-  } else if (showDebugPlaceholders) {
-    createBlock(() =>
-      renderer.createDebugPlaceholder({
-        createTitle() {
-          renderer.createText("No examples provided");
-        },
-        createExample() {
+    createBlock({
+      title: examples.length > 1 ? "Requests" : "Request",
+      cb: () => {
+        for (const example of examples) {
           renderer.createCode(
-            "content:\n  application/json:\n    examples:\n      example1:\n        value: { foo: 'bar'}",
+            // Unfortunately, the output of Go's YAML to JSON
+            // conversion doesn't give us options to control the
+            // indentation of the output, so we have to do it
+            // ourselves
+            JSON.stringify(JSON.parse(example.value), null, "  "),
             {
               variant: "default",
               style: "block",
+              language: "json",
             }
           );
-        },
-      })
-    );
+        }
+      },
+    });
+  } else if (showDebugPlaceholders) {
+    createBlock({
+      title: "Request Examples",
+      cb: () =>
+        renderer.createDebugPlaceholder({
+          createTitle() {
+            renderer.createText("No examples provided");
+          },
+          createExample() {
+            renderer.createCode(
+              "content:\n  application/json:\n    examples:\n      example1:\n        value: { foo: 'bar'}",
+              {
+                variant: "default",
+                style: "block",
+              }
+            );
+          },
+        }),
+    });
   }
 }
 

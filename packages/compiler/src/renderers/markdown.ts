@@ -324,7 +324,7 @@ export abstract class MarkdownRenderer extends Renderer {
   }
 
   public override createRequestExamplesSection(
-    ...[cb]: RendererCreateRequestExamplesSectionArgs
+    ...[{ cb, title }]: RendererCreateRequestExamplesSectionArgs
   ): void {
     this.enterContext({ id: "request-examples", type: "section" });
     if (this.#currentOperation) {
@@ -335,7 +335,7 @@ export abstract class MarkdownRenderer extends Renderer {
       this.#currentOperation.security = this.#currentSection;
     }
 
-    this.createTopLevelSection({ title: "Request Examples" }, cb);
+    this.createTopLevelSection({ title }, cb);
 
     this.#currentSection = undefined;
     this.exitContext();
