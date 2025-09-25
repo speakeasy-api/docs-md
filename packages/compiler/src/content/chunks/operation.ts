@@ -39,7 +39,12 @@ function createTopLevelExamples(
           // conversion doesn't give us options to control the
           // indentation of the output, so we have to do it
           // ourselves
-          JSON.stringify(JSON.parse(example.value), null, "  ")
+          JSON.stringify(JSON.parse(example.value), null, "  "),
+          {
+            variant: "default",
+            style: "block",
+            language: "json",
+          }
         );
       }
     };
@@ -427,6 +432,7 @@ export function renderResponseBodies(
                               {
                                 variant: "default",
                                 style: "block",
+                                language: "json",
                               }
                             );
                           },
