@@ -1,4 +1,3 @@
-import { bundle } from "@speakeasy-api/docs-md-shared";
 import { useCallback, useState } from "react";
 
 type Results = {
@@ -9,6 +8,10 @@ type RuntimeError =
   | {
       type: "serverError";
       status: number;
+      message: string;
+    }
+  | {
+      type: "buildError";
       message: string;
     }
   | {
@@ -41,6 +44,8 @@ export function useRuntime() {
 
   const execute = useCallback(
     (code: string, externalDependencies: Record<string, string>) => {
+      console.log(code);
+      console.log(externalDependencies);
       setStatus((prevStatus) => {
         switch (prevStatus.state) {
           case "success":
@@ -63,18 +68,19 @@ export function useRuntime() {
       });
 
       async function run() {
-        try {
-          const result = await bundle(code, externalDependencies);
-          console.log(result);
-        } catch (error) {
-          setStatus({
-            state: "error",
-            error: {
-              type: "other",
-              message: error instanceof Error ? error.message : "Unknown error",
-            },
-          });
-        }
+        // Currently bundle causes the Docusaurus build to crash. Maybe running in a worker will fix it?
+        // try {
+        //   const result = await bundle(code, externalDependencies);
+        //   console.log(result);
+        // } catch (error) {
+        //   setStatus({
+        //     state: "error",
+        //     error: {
+        //       type: "other",
+        //       message: error instanceof Error ? error.message : "Unknown error",
+        //     },
+        //   });
+        // }
       }
 
       void run();
