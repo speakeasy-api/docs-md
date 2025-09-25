@@ -222,7 +222,7 @@ export function PropertyContents({
     </TitlePrefixContainer>
   );
 
-  const debugOverlay = ENABLE_DEBUG_VIEW ? (
+  const debugOverlay = (
     <div
       ref={debugOverlayRef}
       className={styles.debugOverlay}
@@ -250,7 +250,7 @@ Type Measure: ${offscreenTypeMeasureContainerBounds.width}x${offscreenTypeMeasur
 Text Size: ${offscreenTextSizeMeasureContainerBounds.width}x${offscreenTextSizeMeasureContainerBounds.height}
 Multiline: ${displayInfo?.multiline ?? "N/A"}`}
     </div>
-  ) : null;
+  );
 
   const hasChildrenConnection =
     breakoutsChildren.length > 0 ? "connected" : "none";
@@ -295,7 +295,7 @@ Multiline: ${displayInfo?.multiline ?? "N/A"}`}
     titleContainer = (
       <TitleContainer ref={titleContainerRef} onMouseEnter={handleMouseEnter}>
         {titlePrefix}
-        {debugOverlay}
+        {ENABLE_DEBUG_VIEW && debugOverlay}
       </TitleContainer>
     );
     propertyCell = frontmatter;
@@ -318,7 +318,7 @@ Multiline: ${displayInfo?.multiline ?? "N/A"}`}
             contents={displayInfo.contents}
           />
         )}
-        {debugOverlay}
+        {ENABLE_DEBUG_VIEW && debugOverlay}
       </TitleContainer>
     );
     propertyCell = (
