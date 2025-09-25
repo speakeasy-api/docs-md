@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import type { EditorProps } from "../types";
+import type { EditorProps } from "../types.ts";
 import type { editor } from "monaco-editor";
 import MonacoEditor, { Monaco } from "@monaco-editor/react";
 import styles from "./styles.module.css";
