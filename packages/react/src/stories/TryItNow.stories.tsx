@@ -1,3 +1,4 @@
+/* eslint-disable fast-import/no-restricted-imports */
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { CodeSample } from "../components/CodeSample/CodeSample.tsx";

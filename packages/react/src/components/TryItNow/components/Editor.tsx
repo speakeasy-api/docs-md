@@ -1,9 +1,8 @@
 "use client";
 
-import type { Monaco } from "@monaco-editor/react";
 import MonacoEditor from "@monaco-editor/react";
 import type { editor } from "monaco-editor";
-import { useCallback,useState } from "react";
+import { useCallback } from "react";
 
 import type { EditorProps } from "../types.ts";
 import styles from "./styles.module.css";
@@ -54,12 +53,6 @@ const editorOptions = {
 } as editor.IStandaloneEditorConstructionOptions;
 
 export function Editor({ defaultValue, onValueChange, theme }: EditorProps) {
-  const [_, setIsEditorReady] = useState(false);
-
-  function handleEditorDidMount(_: editor.IStandaloneCodeEditor, _2: Monaco) {
-    setIsEditorReady(true);
-  }
-
   const handleValueChange = useCallback(
     (value: string | undefined, _: editor.IModelContentChangedEvent) => {
       onValueChange(value ?? "");
@@ -80,7 +73,6 @@ export function Editor({ defaultValue, onValueChange, theme }: EditorProps) {
       theme={theme === "dark" ? "vs-dark" : "light"}
       value={defaultValue}
       onChange={handleValueChange}
-      onMount={handleEditorDidMount}
     />
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useChildren } from "../../../util/hooks.ts";
+import type { LayoutProps } from "../types.ts";
 import styles from "./styles.module.css";
 
 /**
@@ -8,7 +9,7 @@ import styles from "./styles.module.css";
  * It can be replace by a custom layout if needed.
  *
  */
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: LayoutProps) {
   const editorChild = useChildren(children, "editor");
   const runButtonChild = useChildren(children, "runButton");
   const resultsChild = useChildren(children, "results");
