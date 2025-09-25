@@ -49,7 +49,8 @@ export async function generateCodeSnippets(
 
   const docsCodeSnippets: DocsCodeSnippets = {};
 
-  const specFilename = basename(spec);
+  const specFilename = spec && basename(spec);
+
   // create a by operationId map of the operation chunks
   const operationChunksByOperationId = new Map<string, OperationChunk>();
   for (const chunk of docsData.values()) {

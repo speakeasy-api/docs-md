@@ -133,23 +133,34 @@ async function getSettings(): Promise<Settings> {
     );
   }
 
+  if (!configFileContents.data.spec && !configFileContents.data.specData) {
+    reportError(`Must provide either 'spec' or 'specData'`);
+  }
+  if (configFileContents.data.spec && configFileContents.data.specData) {
+    reportError(`Cannot provide both 'spec' and 'specData'`);
+  }
+
   // Validate and format various settings, as needed
   const configFileDirectory = dirname(configFilePath);
-  if (!isAbsolute(configFileContents.data.spec)) {
-    configFileContents.data.spec = resolve(
-      configFileDirectory,
-      configFileContents.data.spec
-    );
-  }
-  if (!isAbsolute(configFileContents.data.spec)) {
-    configFileContents.data.spec = resolve(
-      configFileDirectory,
-      configFileContents.data.spec
-    );
-  }
-  if (!existsSync(configFileContents.data.spec)) {
-    error(`OpenAPI spec file "${configFileContents.data.spec}" does not exist`);
-    process.exit(1);
+  if (configFileContents.data.spec) {
+    if (!isAbsolute(configFileContents.data.spec)) {
+      configFileContents.data.spec = resolve(
+        configFileDirectory,
+        configFileContents.data.spec
+      );
+    }
+    if (!isAbsolute(configFileContents.data.spec)) {
+      configFileContents.data.spec = resolve(
+        configFileDirectory,
+        configFileContents.data.spec
+      );
+    }
+    if (!existsSync(configFileContents.data.spec)) {
+      error(
+        `OpenAPI spec file "${configFileContents.data.spec}" does not exist`
+      );
+      process.exit(1);
+    }
   }
   if (!isAbsolute(configFileContents.data.output.pageOutDir)) {
     configFileContents.data.output.pageOutDir = resolve(
@@ -193,7 +204,16 @@ async function getSettings(): Promise<Settings> {
 
 const settings = await getSettings();
 
-const specData = readFileSync(settings.spec, "utf-8");
+let specData: string;
+if (settings.spec) {
+  specData = readFileSync(settings.spec, "utf-8");
+} else if (settings.specData) {
+  specData = settings.specData;
+} else {
+  // Already checked, so this is really just to make TypeScript happy
+  error("Must provide either 'spec' or 'specData'");
+  process.exit(1);
+}
 const specContents = JSON.stringify(load(specData));
 
 let frameworkConfig: FrameworkConfig;

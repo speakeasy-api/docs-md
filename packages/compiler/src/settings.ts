@@ -46,7 +46,8 @@ const language = z.enum([
 export type CodeSampleLanguage = z.infer<typeof language>;
 
 export const settingsSchema = z.strictObject({
-  spec: z.string(),
+  spec: z.string().optional(),
+  specData: z.string().optional(),
   output: z.strictObject({
     pageOutDir: z.string(),
     embedOutDir: z.string().optional(),
