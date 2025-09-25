@@ -1,4 +1,4 @@
-import type { PageMetadata } from "@speakeasy-api/docs-md-shared/types";
+import type { PageMetadata } from "@speakeasy-api/docs-md-shared";
 
 import type { SiteBuildPagePathArgs } from "../renderers/base.ts";
 

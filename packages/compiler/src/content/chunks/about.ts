@@ -1,4 +1,4 @@
-import type { AboutChunk } from "@speakeasy-api/docs-md-shared/types";
+import type { AboutChunk } from "@speakeasy-api/docs-md-shared";
 
 import { debug } from "../../logging.ts";
 import type { Renderer } from "../../renderers/base.ts";

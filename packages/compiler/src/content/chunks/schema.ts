@@ -1,11 +1,11 @@
 import type {
   ObjectValue,
   SchemaValue,
-} from "@speakeasy-api/docs-md-shared/types";
+} from "@speakeasy-api/docs-md-shared";
 import type {
   DisplayTypeInfo,
   PropertyAnnotations,
-} from "@speakeasy-api/docs-md-shared/types";
+} from "@speakeasy-api/docs-md-shared";
 
 import type { Renderer } from "../../renderers/base.ts";
 import { getSettings } from "../../settings.ts";

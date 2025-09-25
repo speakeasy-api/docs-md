@@ -1,7 +1,7 @@
 import type {
   DisplayTypeInfo,
   PropertyAnnotations,
-} from "@speakeasy-api/docs-md-shared/types";
+} from "@speakeasy-api/docs-md-shared";
 import type { FC, PropsWithChildren } from "react";
 
 import type { ConnectingCellProps } from "../ConnectingCell/types.ts";

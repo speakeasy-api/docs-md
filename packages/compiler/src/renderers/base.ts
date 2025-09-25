@@ -15,13 +15,13 @@
 // defined as a tuple. We can then use the spread operator to assign that type
 // to all arguments. It's a bit verbose and convoluted, but solves both 1 and 2
 
-import type { Chunk, TagChunk } from "@speakeasy-api/docs-md-shared/types";
+import type { Chunk, TagChunk } from "@speakeasy-api/docs-md-shared";
 import type {
   DisplayTypeInfo,
   PageMetadata,
   PillVariant,
   PropertyAnnotations,
-} from "@speakeasy-api/docs-md-shared/types";
+} from "@speakeasy-api/docs-md-shared";
 
 import type { CodeSampleLanguage } from "../settings.ts";
 import type {

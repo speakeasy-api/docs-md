@@ -1,4 +1,4 @@
-import type { OperationChunk } from "@speakeasy-api/docs-md-shared/types";
+import type { OperationChunk } from "@speakeasy-api/docs-md-shared";
 
 export type { Settings } from "../settings.ts";
 export type { FrameworkConfig } from "../types/FrameworkConfig.ts";
