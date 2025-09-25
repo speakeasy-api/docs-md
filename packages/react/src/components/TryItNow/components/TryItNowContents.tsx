@@ -15,6 +15,7 @@ export function TryItNowContents({
   Editor = DefaultEditor,
   RunButton = DefaultRunButton,
   Results = DefaultResults,
+  theme = "dark",
 }: TryItNowProps) {
   const [value, setValue] = useState(defaultValue);
   console.log(externalDependencies);
@@ -23,7 +24,11 @@ export function TryItNowContents({
     <div>
       <Layout>
         <div slot="editor">
-          <Editor defaultValue={defaultValue} onValueChange={setValue} />
+          <Editor
+            theme={theme}
+            defaultValue={defaultValue}
+            onValueChange={setValue}
+          />
         </div>
         <div slot="runButton">
           <RunButton

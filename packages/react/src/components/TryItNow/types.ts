@@ -26,6 +26,10 @@ export type TryItNowProps = {
    * Layout component to use. Defaults to `Layout`.
    */
   Layout?: FC<LayoutProps>;
+  /**
+   * The theme of the editor
+   */
+  theme: "light" | "dark";
 };
 
 export type EditorProps = {
@@ -37,6 +41,10 @@ export type EditorProps = {
    * Callback to invoke when the value changes
    */
   onValueChange: (value: string) => void;
+  /**
+   * The theme of the editor
+   */
+  theme: "light" | "dark";
 };
 
 export type RunButtonProps = {

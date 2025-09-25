@@ -6,7 +6,54 @@ import type { editor } from "monaco-editor";
 import MonacoEditor, { Monaco } from "@monaco-editor/react";
 import styles from "./styles.module.css";
 
-export function Editor({ defaultValue, onValueChange }: EditorProps) {
+const editorOptions = {
+  minimap: {
+    enabled: false,
+  },
+  lineNumbers: "off",
+  padding: {
+    top: 12,
+    bottom: 12,
+  },
+  lineDecorationsWidth: 12,
+  lineNumbersMinChars: 0,
+  glyphMargin: false,
+  folding: false,
+  fontSize: 14,
+  fontFamily:
+    "'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace",
+  fontLigatures: true,
+  renderLineHighlight: "none",
+  scrollBeyondLastLine: false,
+  wordWrap: "on",
+  wrappingIndent: "indent",
+  automaticLayout: true,
+  fixedOverflowWidgets: true,
+  scrollbar: {
+    vertical: "auto",
+    horizontal: "auto",
+    useShadows: false,
+    verticalScrollbarSize: 10,
+    horizontalScrollbarSize: 10,
+  },
+  overviewRulerLanes: 0,
+  hideCursorInOverviewRuler: true,
+  overviewRulerBorder: false,
+  renderWhitespace: "none",
+  cursorBlinking: "smooth",
+  cursorSmoothCaretAnimation: "on",
+  smoothScrolling: true,
+  mouseWheelZoom: false,
+  contextmenu: true,
+  quickSuggestions: {
+    strings: true,
+    comments: false,
+    other: true,
+  },
+  tabSize: 2,
+} as editor.IStandaloneEditorConstructionOptions;
+
+export function Editor({ defaultValue, onValueChange, theme }: EditorProps) {
   const [_, setIsEditorReady] = useState(false);
 
   function handleEditorDidMount(_: editor.IStandaloneCodeEditor, _2: Monaco) {
@@ -27,53 +74,10 @@ export function Editor({ defaultValue, onValueChange }: EditorProps) {
       wrapperProps={{
         className: styles.editorWrapper,
       }}
-      options={{
-        minimap: {
-          enabled: false,
-        },
-        lineNumbers: "off",
-        padding: {
-          top: 12,
-          bottom: 12,
-        },
-        lineDecorationsWidth: 12,
-        lineNumbersMinChars: 0,
-        glyphMargin: false,
-        folding: false,
-        fontSize: 14,
-        fontFamily: "'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace",
-        fontLigatures: true,
-        renderLineHighlight: "none",
-        scrollBeyondLastLine: false,
-        wordWrap: "on",
-        wrappingIndent: "indent",
-        automaticLayout: true,
-        fixedOverflowWidgets: true,
-        scrollbar: {
-          vertical: "auto",
-          horizontal: "auto",
-          useShadows: false,
-          verticalScrollbarSize: 10,
-          horizontalScrollbarSize: 10,
-        },
-        overviewRulerLanes: 0,
-        hideCursorInOverviewRuler: true,
-        overviewRulerBorder: false,
-        renderWhitespace: "none",
-        cursorBlinking: "smooth",
-        cursorSmoothCaretAnimation: "on",
-        smoothScrolling: true,
-        mouseWheelZoom: false,
-        contextmenu: true,
-        quickSuggestions: {
-          strings: true,
-          comments: false,
-          other: true,
-        },
-        tabSize: 2,
-      }}
+      options={editorOptions}
       className={styles.editor}
       language="typescript"
+      theme={theme === "dark" ? "vs-dark" : "light"}
       value={defaultValue}
       onChange={handleValueChange}
       onMount={handleEditorDidMount}
