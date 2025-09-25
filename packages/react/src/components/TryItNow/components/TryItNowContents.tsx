@@ -4,28 +4,43 @@ import { useState } from "react";
 
 import type { TryItNowProps } from "../types.ts";
 import { Editor as DefaultEditor } from "./Editor.tsx";
+import { Layout as DefaultLayout } from "./Layout.tsx";
 import { Results as DefaultResults } from "./Results.tsx";
 import { RunButton as DefaultRunButton } from "./RunButton.tsx";
 
 export function TryItNowContents({
   externalDependencies,
   defaultValue,
+  Layout = DefaultLayout,
   Editor = DefaultEditor,
   RunButton = DefaultRunButton,
   Results = DefaultResults,
+  theme = "dark",
 }: TryItNowProps) {
   const [value, setValue] = useState(defaultValue);
   console.log(externalDependencies);
   console.log(value);
   return (
     <div>
-      <Editor defaultValue={defaultValue} onValueChange={setValue} />
-      <RunButton
-        onClick={() => {
-          console.log("Run");
-        }}
-      />
-      <Results output={""} />
+      <Layout>
+        <div slot="editor">
+          <Editor
+            theme={theme}
+            defaultValue={defaultValue}
+            onValueChange={setValue}
+          />
+        </div>
+        <div slot="runButton">
+          <RunButton
+            onClick={() => {
+              console.log("Run");
+            }}
+          />
+        </div>
+        <div slot="results">
+          <Results output={""} />
+        </div>
+      </Layout>
     </div>
   );
 }
