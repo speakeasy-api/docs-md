@@ -133,11 +133,11 @@ export function PropertyContents({
   const [
     offscreenTextSizeMeasureContainerRef,
     offscreenTextSizeMeasureContainerBounds,
-  ] = useMeasure({ offsetSize: true });
+  ] = useMeasure();
   const [
     offscreenTypeMeasureContainerRef,
     offscreenTypeMeasureContainerBounds,
-  ] = useMeasure({ offsetSize: true });
+  ] = useMeasure();
   const offscreenTextSizeMeasureContainerWidth =
     offscreenTextSizeMeasureContainerBounds.width;
   const offscreenTypeMeasureContainerWidth =
