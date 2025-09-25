@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TryItNow } from "../components/TryItNow/TryItNow.tsx";
-import { SectionContent } from "../components/SectionContent/SectionContent.tsx";
-import { SectionTab } from "../components/SectionTab/SectionTab.tsx";
-import { TabbedSection } from "../components/TabbedSection/TabbedSection.tsx";
-import { SectionTitle } from "../components/SectionTitle/SectionTitle.tsx";
+
+import { CodeSample } from "../components/CodeSample/CodeSample.tsx";
 import {
   Operation,
   OperationCodeSamplesSection,
@@ -11,7 +8,11 @@ import {
   OperationSummarySection,
   OperationTitleSection,
 } from "../components/Operation/Operation.tsx";
-import { CodeSample } from "../components/CodeSample/CodeSample.tsx";
+import { SectionContent } from "../components/SectionContent/SectionContent.tsx";
+import { SectionTab } from "../components/SectionTab/SectionTab.tsx";
+import { SectionTitle } from "../components/SectionTitle/SectionTitle.tsx";
+import { TabbedSection } from "../components/TabbedSection/TabbedSection.tsx";
+import { TryItNow } from "../components/TryItNow/TryItNow.tsx";
 
 const meta: Meta<typeof TryItNow> = {
   title: "Components/TryItNow",

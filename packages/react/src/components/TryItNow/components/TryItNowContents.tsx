@@ -4,9 +4,9 @@ import { useState } from "react";
 
 import type { TryItNowProps } from "../types.ts";
 import { Editor as DefaultEditor } from "./Editor.tsx";
+import { Layout as DefaultLayout } from "./Layout.tsx";
 import { Results as DefaultResults } from "./Results.tsx";
 import { RunButton as DefaultRunButton } from "./RunButton.tsx";
-import { Layout as DefaultLayout } from "./Layout.tsx";
 
 export function TryItNowContents({
   externalDependencies,
