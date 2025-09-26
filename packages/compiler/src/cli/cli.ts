@@ -19,9 +19,11 @@ import type { FrameworkConfig } from "../compiler.ts";
 import { generatePages } from "../generatePages.ts";
 import { error, info, setLevel, warn } from "../logging.ts";
 import type { Site } from "../renderers/base.ts";
+import { LLMSite } from "../renderers/llms.ts";
 import { MdxSite } from "../renderers/mdx.ts";
 import { type Settings, settingsSchema } from "../settings.ts";
 import { docusaurusConfig } from "./configs/docusaurus.ts";
+import { llmsConfig } from "./configs/llms.ts";
 import { nextraConfig } from "./configs/nextra.ts";
 
 const CONFIG_FILE_NAMES = [
@@ -234,6 +236,11 @@ switch (settings.output.framework) {
     frameworkConfig = nextraConfig;
     break;
   }
+  case "llms": {
+    settings.output.singlePage = true;
+    frameworkConfig = llmsConfig;
+    break;
+  }
   default: {
     if (settings.output.singlePage) {
       warn(
@@ -263,6 +270,10 @@ let site: Site;
 switch (frameworkConfig.rendererType) {
   case "mdx": {
     site = new MdxSite(frameworkConfig);
+    break;
+  }
+  case "markdown": {
+    site = new LLMSite(frameworkConfig);
     break;
   }
 }

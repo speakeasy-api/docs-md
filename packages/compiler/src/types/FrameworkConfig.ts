@@ -23,6 +23,10 @@ type MDXFrameworkConfig = BaseFrameworkConfig & {
   componentPackageName: string;
 };
 
+type MarkdownFrameworkConfig = BaseFrameworkConfig & {
+  rendererType: "markdown";
+};
+
 // TODO: add Web Component config once we support it
 
-export type FrameworkConfig = MDXFrameworkConfig;
+export type FrameworkConfig = MDXFrameworkConfig | MarkdownFrameworkConfig;

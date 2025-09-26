@@ -626,7 +626,11 @@ export abstract class MarkdownRenderer extends Renderer {
   ) {
     let line = `${`#`.repeat(level)} ${escapeText(text, { escape })}`;
     if (id) {
-      line += ` {#${id}}`;
+      if (this.compilerConfig.formatHeadingId) {
+        line += ` ${this.compilerConfig.formatHeadingId(id)}`;
+      } else {
+        line += ` \\{#${id}\\}`;
+      }
     }
     if (append) {
       this.appendLine(line);

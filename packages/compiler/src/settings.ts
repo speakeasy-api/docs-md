@@ -51,7 +51,7 @@ export const settingsSchema = z.strictObject({
   output: z.strictObject({
     pageOutDir: z.string(),
     embedOutDir: z.string().optional(),
-    framework: z.enum(["docusaurus", "nextra"]).or(
+    framework: z.enum(["docusaurus", "nextra", "llms"]).or(
       // This type MUST be kept in sync with src/types/compilerConfig.ts
       z.object({
         rendererType: z.string(),
@@ -100,6 +100,6 @@ export type Settings = Omit<ZodSettings, "output"> & {
   output: Omit<ZodSettings["output"], "framework"> & {
     // Defining FrameworkConfig in Zod would be excruciatingly verbose, so we
     // define it in Zod as just an object, and then override its type here
-    framework: "docusaurus" | "nextra" | FrameworkConfig;
+    framework: "docusaurus" | "nextra" | "llms" | FrameworkConfig;
   };
 };

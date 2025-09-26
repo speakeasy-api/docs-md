@@ -205,6 +205,11 @@ class MdxRenderer extends MarkdownRenderer {
   }
 
   #insertComponentImport(symbol: string) {
+    if (!("componentPackageName" in this.compilerConfig)) {
+      throw new InternalError(
+        "Component package name not set, but should have been caught by the settings parser"
+      );
+    }
     this.#insertNamedImport(this.compilerConfig.componentPackageName, symbol);
   }
 
