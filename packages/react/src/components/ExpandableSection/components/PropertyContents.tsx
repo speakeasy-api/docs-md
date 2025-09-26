@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import type { JSX, PropsWithChildren } from "react";
-import { forwardRef, useMemo, useState, useRef } from "react";
+import { forwardRef, useMemo, useRef, useState } from "react";
 import useMeasure from "react-use-measure";
 
 import {
