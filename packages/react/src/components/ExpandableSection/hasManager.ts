@@ -12,7 +12,18 @@ export function useHashManager(id: string, setIsOpen: (open: boolean) => void) {
       if (hash === id) {
         setIsOpen(true);
         setTimeout(() => {
-          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+          const element = document.getElementById(id);
+          if (element) {
+            // Check if element is already in view (with buffer to prevent jumping)
+            const rect = element.getBoundingClientRect();
+            const buffer = 100; // pixels of buffer to prevent jumping when near viewport edges
+            const isInView =
+              rect.top >= -buffer && rect.bottom <= window.innerHeight + buffer;
+
+            if (!isInView) {
+              element.scrollIntoView();
+            }
+          }
         }, 50);
         return;
       }
