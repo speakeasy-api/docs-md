@@ -21,7 +21,7 @@ export function useHashManager(id: string, setIsOpen: (open: boolean) => void) {
               rect.top >= -buffer && rect.bottom <= window.innerHeight + buffer;
 
             if (!isInView) {
-              element.scrollIntoView();
+              element.scrollIntoView({ behavior: "smooth" });
             }
           }
         }, 50);
