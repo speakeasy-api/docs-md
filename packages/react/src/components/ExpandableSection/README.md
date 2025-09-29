@@ -125,3 +125,23 @@ Breakout cells have their own versions of the above.
 
 Note how each property and breakout is rendered in a flat list, _regardless_ of
 levels of nesting! The nesting aesthetics is implemented fully by `PrefixCells`.
+
+## Anchor Highlight and Scroll Padding
+
+- When navigating to or clicking an in-page hash for a row title, the target row
+  opens (if applicable) and the title is briefly highlighted. Highlighting runs
+  even if the hash does not change.
+- If the target title is already within the viewport (with a buffer), the page
+  does not scroll; otherwise, it scrolls smoothly with headroom provided via
+  `scroll-margin-top` on the title elements.
+- The highlight color is controlled by the CSS variable
+  `--speakeasy-highlight-color`. Define this in your site’s CSS to theme it. If
+  not provided, a sensible default color is used.
+
+Example override:
+
+```
+:root {
+  --speakeasy-highlight-color: rgba(255, 235, 59, 0.6);
+}
+```

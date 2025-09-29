@@ -2,6 +2,9 @@ import { useEffect } from "react";
 
 export function useHashManager(id: string, setIsOpen: (open: boolean) => void) {
   useEffect(() => {
+    // Prevent double-handling when both click and hashchange fire
+    let suppressNextHashFor: string | null = null;
+    let suppressTimer: number | null = null;
     function getHighlightColor(el: HTMLElement): string {
       const val = getComputedStyle(el).getPropertyValue(
         "--speakeasy-highlight-color"
@@ -44,6 +47,14 @@ export function useHashManager(id: string, setIsOpen: (open: boolean) => void) {
         return;
       }
       const hash = window.location.hash.slice(1); // Remove the '#'
+      if (suppressNextHashFor && hash === suppressNextHashFor) {
+        suppressNextHashFor = null;
+        if (suppressTimer) {
+          window.clearTimeout(suppressTimer);
+          suppressTimer = null;
+        }
+        return;
+      }
 
       // Check for exact match
       if (hash === id) {
@@ -103,6 +114,15 @@ export function useHashManager(id: string, setIsOpen: (open: boolean) => void) {
       // Exact target: open, possibly scroll, and highlight
       if (targetHash === id) {
         setIsOpen(true);
+        suppressNextHashFor = id;
+        // Clear suppression if no hashchange arrives shortly
+        if (suppressTimer) {
+          window.clearTimeout(suppressTimer);
+        }
+        suppressTimer = window.setTimeout(() => {
+          suppressNextHashFor = null;
+          suppressTimer = null;
+        }, 500);
         // Run after navigation default handlers queue so DOM is updated
         setTimeout(() => {
           const element = getElement();
@@ -135,6 +155,10 @@ export function useHashManager(id: string, setIsOpen: (open: boolean) => void) {
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
       document.removeEventListener("click", handleAnchorClick, true);
+      if (suppressTimer) {
+        window.clearTimeout(suppressTimer);
+        suppressTimer = null;
+      }
     };
   }, [id, setIsOpen]);
 }
