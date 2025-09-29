@@ -26,8 +26,6 @@ export async function bundle(
     await delay(100);
   }
 
-  code = code.replaceAll("console.log", "__speakeasyLogCapture");
-
   const bundle = await build({
     stdin: {
       contents: code,
