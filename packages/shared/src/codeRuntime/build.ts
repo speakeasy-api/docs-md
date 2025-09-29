@@ -77,7 +77,6 @@ export async function bundle(
                 const version = dependencies[args.path] ?? "latest";
                 const url = `https://esm.sh/${args.path}@${version}`;
 
-                console.log(`Fetching ${args.path}@${version} from ${url}...`);
                 const response = await fetch(url);
 
                 if (!response.ok) {
@@ -87,7 +86,6 @@ export async function bundle(
                 }
 
                 const contents = await response.text();
-                console.log(`Successfully loaded ${args.path}@${version}`);
 
                 return {
                   contents,
@@ -108,7 +106,6 @@ export async function bundle(
             { filter: /.*/, namespace: "esm-internal" },
             async (args) => {
               try {
-                console.log(`Fetching esm.sh internal: ${args.path}`);
                 const response = await fetch(args.path);
 
                 if (!response.ok) {
