@@ -45,8 +45,6 @@ export function useRuntime() {
 
   const execute = useCallback(
     async (code: string, externalDependencies: Record<string, string>) => {
-      console.log(code);
-      console.log(externalDependencies);
       setStatus((prevStatus) => {
         switch (prevStatus.state) {
           case "success":
@@ -86,6 +84,7 @@ export function useRuntime() {
           setStatus({
             state: "success",
             results: {
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
               output: JSON.parse(logs[0] ?? "{}"),
             },
           });

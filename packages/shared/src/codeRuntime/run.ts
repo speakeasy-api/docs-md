@@ -1,21 +1,9 @@
-type WorkerMessage = {
-  type: "execute";
-  bundle: string;
-};
-
-type WorkerLogMessage = {
-  type: "log";
-  message: string;
-};
-
-type WorkerErrorMessage = {
-  type: "error";
-  message: string;
-};
-
-type WorkerCompleteMessage = {
-  type: "complete";
-};
+import type {
+  WorkerCompleteMessage,
+  WorkerErrorMessage,
+  WorkerExecuteMessage,
+  WorkerLogMessage,
+} from "./messages.ts";
 
 export async function run(bundle: string): Promise<{
   logs: string[];
@@ -36,19 +24,20 @@ export async function run(bundle: string): Promise<{
         WorkerLogMessage | WorkerErrorMessage | WorkerCompleteMessage
       >
     ) => {
-      if (event.data.type === "log") {
-        console.log("Intercepted log:", event.data.message);
-        logs.push(event.data.message);
-      } else if (event.data.type === "error") {
-        console.log("Intercepted error:", event.data.message);
-        errors.push(event.data.message);
-      } else if (event.data.type === "complete") {
-        console.log("Intercepted complete");
-        worker.terminate();
-        resolve({
-          logs,
-          errors,
-        });
+      switch (event.data.type) {
+        case "log":
+          logs.push(event.data.message);
+          break;
+        case "error":
+          errors.push(event.data.message);
+          break;
+        case "complete":
+          worker.terminate();
+          resolve({
+            logs,
+            errors,
+          });
+          break;
       }
     };
 
@@ -59,7 +48,7 @@ export async function run(bundle: string): Promise<{
     };
 
     // Send the bundle to the worker
-    const message: WorkerMessage = {
+    const message: WorkerExecuteMessage = {
       type: "execute",
       bundle,
     };

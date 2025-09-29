@@ -20,8 +20,6 @@ export function TryItNowContents({
 }: TryItNowProps) {
   const [value, setValue] = useState(defaultValue);
   const { status, execute } = useRuntime();
-  console.log(externalDependencies);
-  console.log(value);
   console.log(status);
   return (
     <div>
@@ -36,7 +34,7 @@ export function TryItNowContents({
         <div slot="runButton">
           <RunButton
             onClick={() => {
-              execute(value, externalDependencies);
+              void execute(value, externalDependencies);
             }}
           />
         </div>
