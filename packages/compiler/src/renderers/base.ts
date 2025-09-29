@@ -122,7 +122,7 @@ export type RendererCreateRequestSectionArgs = [
     isOptional: boolean;
     createDisplayType?: () => void;
     createDescription?: () => void;
-    createBreakouts: () => void;
+    createBreakouts?: () => void;
   },
 ];
 export type RendererCreateResponsesExamplesSectionArgs = [
@@ -146,7 +146,7 @@ export type RendererCreateResponsesArgs = [
       showContentTypeInTab: boolean;
       createDisplayType?: () => void;
       createDescription?: () => void;
-      createBreakouts: () => void;
+      createBreakouts?: () => void;
     }) => void
   ) => void,
   options?: {

@@ -374,7 +374,9 @@ export abstract class MarkdownRenderer extends Renderer {
         if (createDescription) {
           this.handleCreateRequestDescription(createDescription);
         }
-        this.handleCreateBreakouts(createBreakouts);
+        if (createBreakouts) {
+          this.handleCreateBreakouts(createBreakouts);
+        }
       }
     );
     this.#currentSection = undefined;
@@ -489,7 +491,9 @@ export abstract class MarkdownRenderer extends Renderer {
               if (createDescription) {
                 this.handleCreateResponseDescription(createDescription);
               }
-              this.handleCreateBreakouts(createBreakouts);
+              if (createBreakouts) {
+                this.handleCreateBreakouts(createBreakouts);
+              }
             },
             {
               id: this.getCurrentId(),

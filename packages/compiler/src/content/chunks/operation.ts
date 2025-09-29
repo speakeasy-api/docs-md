@@ -221,12 +221,15 @@ export function renderParameters(
                 }
               }
             : undefined,
-        createBreakouts() {
-          renderBreakouts({
-            renderer,
-            schema: parameterChunk.chunkData.value,
-          });
-        },
+        createBreakouts:
+          typeInfo && typeInfo.breakoutSubTypes.size > 0
+            ? () => {
+                renderBreakouts({
+                  renderer,
+                  schema: parameterChunk.chunkData.value,
+                });
+              }
+            : undefined,
       });
 
       renderer.exitContext();
@@ -337,12 +340,15 @@ export function renderRequestBody(
             }
           }
         : undefined,
-    createBreakouts() {
-      renderBreakouts({
-        renderer,
-        schema: requestBodySchema.chunkData.value,
-      });
-    },
+    createBreakouts:
+      typeInfo && typeInfo.breakoutSubTypes.size > 0
+        ? () => {
+            renderBreakouts({
+              renderer,
+              schema: requestBodySchema.chunkData.value,
+            });
+          }
+        : undefined,
   });
 }
 
@@ -502,12 +508,15 @@ export function renderResponseBodies(
                       }
                     }
                   : undefined,
-              createBreakouts() {
-                renderBreakouts({
-                  renderer,
-                  schema,
-                });
-              },
+              createBreakouts:
+                typeInfo && typeInfo.breakoutSubTypes.size > 0
+                  ? () => {
+                      renderBreakouts({
+                        renderer,
+                        schema,
+                      });
+                    }
+                  : undefined,
             });
           }
         }
