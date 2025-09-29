@@ -1,17 +1,30 @@
-import { build, initialize } from "esbuild-wasm";
+import type { BuildOptions, BuildResult, SameShape } from "esbuild-wasm";
 
-let initialized = false;
+let build:
+  | (<T extends BuildOptions>(
+      options: SameShape<BuildOptions, T>
+    ) => Promise<BuildResult<T>>)
+  | undefined;
+
+// We have to dynamically import esbuild-wasm because it depends on a fully
+// functional window at the module scope, which Docusaurus doesn't provide
+// during SSG. Importing it statically causes it to crash, so we have to
+// dynamically import it only after we've determined we can use it.
 if (typeof window !== "undefined") {
-  initialize({
-    wasmURL: "https://esm.sh/esbuild-wasm@0.25.10/esbuild.wasm",
-  })
-    .then(() => {
-      initialized = true;
-      console.log("ESBuild initialized");
-    })
-    .catch((e) => {
-      console.error(e);
-    });
+  void import("esbuild-wasm").then((esbuild) => {
+    build = esbuild.build;
+    esbuild
+      .initialize({
+        // This version MUST match the version referenced in package.json
+        wasmURL: "https://esm.sh/esbuild-wasm@0.25.10/esbuild.wasm",
+      })
+      .then(() => {
+        console.log("ESBuild initialized");
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  });
 }
 
 async function delay(ms: number) {
@@ -22,7 +35,7 @@ export async function bundle(
   code: string,
   dependencies: Record<string, string> = {}
 ) {
-  while (!initialized) {
+  while (!build) {
     await delay(100);
   }
 
