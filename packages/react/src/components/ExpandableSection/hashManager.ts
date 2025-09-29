@@ -26,10 +26,7 @@ export function useHashManager(id: string, setIsOpen: (open: boolean) => void) {
       // Prefer WAAPI for a transient background flash without global CSS
       try {
         el.animate(
-          [
-            { backgroundColor: color },
-            { backgroundColor: "transparent" },
-          ],
+          [{ backgroundColor: color }, { backgroundColor: "transparent" }],
           { duration: 1200, easing: "ease-out" }
         );
       } catch {
