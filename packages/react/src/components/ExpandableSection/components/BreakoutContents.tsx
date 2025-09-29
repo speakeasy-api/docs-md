@@ -9,7 +9,7 @@ import { ConnectingCell as DefaultConnectingCell } from "../../ConnectingCell/Co
 import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
 // eslint-disable-next-line fast-import/no-restricted-imports
 import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
-import { useHashManager } from "../hasManager.ts";
+import { useHashManager } from "../hashManager.ts";
 import styles from "../styles.module.css";
 import type { ExpandableBreakoutProps } from "../types.ts";
 

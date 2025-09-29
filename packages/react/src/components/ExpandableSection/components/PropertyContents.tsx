@@ -18,7 +18,7 @@ import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/Ex
 import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { Pill as DefaultPill } from "../../Pill/Pill.tsx";
-import { useHashManager } from "../hasManager.ts";
+import { useHashManager } from "../hashManager.ts";
 import styles from "../styles.module.css";
 import type { ExpandablePropertyProps } from "../types.ts";
 
