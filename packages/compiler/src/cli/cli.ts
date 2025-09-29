@@ -38,10 +38,12 @@ const CONFIG_FILE_NAMES = [
 const args = arg({
   "--help": Boolean,
   "--config": String,
+  "--spec": String,
   "--clean": Boolean,
   "--verbose": Boolean,
   "-h": "--help",
   "-c": "--config",
+  "-s": "--spec",
   "-C": "--clean",
   "-v": "--verbose",
 });
@@ -52,6 +54,7 @@ function printHelp() {
 Options:
   --help, -h     Show this help message
   --config, -c   Path to config file
+  --spec, -s     Path to OpenAPI spec file
   --clean, -C    Clean the output directories before generating
   --verbose, -v  Show debug output`);
 }
@@ -135,8 +138,18 @@ async function getSettings(): Promise<Settings> {
     );
   }
 
+  if (args["--spec"]) {
+    const cliSpecPath = args["--spec"];
+    configFileContents.data.spec = isAbsolute(cliSpecPath)
+      ? cliSpecPath
+      : resolve(process.cwd(), cliSpecPath);
+    configFileContents.data.specData = undefined;
+  }
+
   if (!configFileContents.data.spec && !configFileContents.data.specData) {
-    reportError(`Must provide either 'spec' or 'specData'`);
+    reportError(
+      `Must provide either 'spec', 'specData', or use the --spec option`
+    );
   }
   if (configFileContents.data.spec && configFileContents.data.specData) {
     reportError(`Cannot provide both 'spec' and 'specData'`);
