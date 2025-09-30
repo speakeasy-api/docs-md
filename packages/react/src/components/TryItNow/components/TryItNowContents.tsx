@@ -8,6 +8,7 @@ import { Editor as DefaultEditor } from "./Editor.tsx";
 import { Layout as DefaultLayout } from "./Layout.tsx";
 import { Results as DefaultResults } from "./Results.tsx";
 import { RunButton as DefaultRunButton } from "./RunButton.tsx";
+import { EditorLayout } from "./EditorLayout.tsx";
 
 export function TryItNowContents({
   externalDependencies = {},
@@ -27,19 +28,19 @@ export function TryItNowContents({
   return (
     <div>
       <Layout>
-        <div slot="editor">
-          <Editor theme={theme} value={value} onValueChange={setValue} />
-        </div>
-        <div slot="runButton">
-          <RunButton
-            onClick={() => {
-              execute(value);
-            }}
-          />
-        </div>
-        <div slot="results">
-          <Results status={status} />
-        </div>
+        <EditorLayout>
+          <div slot="editor">
+            <Editor theme={theme} value={value} onValueChange={setValue} />
+          </div>
+          <div slot="runButton">
+            <RunButton
+              onClick={() => {
+                execute(value);
+              }}
+            />
+          </div>
+        </EditorLayout>
+        <Results status={status} />
       </Layout>
     </div>
   );

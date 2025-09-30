@@ -62,7 +62,7 @@ export function Results({ status }: ResultsProps) {
   }
 
   return (
-    <div className={styles.results}>
+    <div slot="results" className={styles.results}>
       <pre>
         {displayOutput.length > 1
           ? JSON.stringify(displayOutput, null, 2)
