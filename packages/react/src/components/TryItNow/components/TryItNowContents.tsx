@@ -37,7 +37,7 @@ export function TryItNowContents({
           />
         </div>
         <div slot="results" className={styles.resultsSlot}>
-          <Results output={[]} />
+          <Results output={[]} loading={status.state === "running"} />
         </div>
       </Layout>
     </div>

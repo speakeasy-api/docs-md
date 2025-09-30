@@ -70,6 +70,7 @@ export type RunButtonProps = {
 export type ResultsProps = {
   // TODO: depends on the runtime
   output: Message[];
+  loading?: boolean;
 };
 
 export type LayoutProps = {
