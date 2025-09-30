@@ -82,14 +82,6 @@ export type RunButtonProps = {
    * Callback to invoke when the run button is clicked
    */
   onClick: () => void;
-  /**
-   * Whether the run button is disabled
-   */
-  disabled?: boolean;
-  /**
-   * Whether the run button is loading
-   */
-  loading?: boolean;
 };
 
 export type ResultsProps = {
