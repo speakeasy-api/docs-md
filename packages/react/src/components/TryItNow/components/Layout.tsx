@@ -20,10 +20,7 @@ export function Layout({ children }: LayoutProps) {
         {editorChild}
         <div className={styles.runButtonContainer}>{runButtonChild}</div>
       </div>
-      {resultsChild?.[1] && (
-        <div role="separator" className={styles.separator} />
-      )}
-      {resultsChild?.[1]}
+      {resultsChild}
     </div>
   );
 }
