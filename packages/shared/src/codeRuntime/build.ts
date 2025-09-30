@@ -73,9 +73,9 @@ export async function bundle(
                       namespace: "static-file",
                     };
                   }
-                  // Debug: log if lookup failed
-                  console.warn(`Failed to find package URL for: ${args.importer}`);
-                  console.warn('Available packages:', Array.from(packageUrls.keys()));
+                  throw new Error(
+                    `Failed to find package URL for: ${args.importer}`
+                  );
                 }
                 // If importer is already a URL (from static-file namespace), use it directly
                 if (args.importer?.startsWith("http")) {
@@ -84,9 +84,9 @@ export async function bundle(
                     namespace: "static-file",
                   };
                 }
-                // This shouldn't happen - return undefined to let esbuild handle it
-                console.warn(`Unable to resolve relative import: ${args.path} from ${args.importer}`);
-                return undefined;
+                throw new Error(
+                  `Unable to resolve relative import: ${args.path} from ${args.importer}`
+                );
               }
 
               // Handle absolute paths from the static server
@@ -143,7 +143,7 @@ export async function bundle(
                     // If relative, construct absolute URL from current location
                     baseUrl = new URL(baseUrl, window.location.href).href;
                   }
-                  
+
                   const pkgPath = args.path.startsWith("@")
                     ? `${baseUrl}/${args.path}`
                     : `${baseUrl}/${args.path}`;
@@ -199,12 +199,7 @@ export async function bundle(
 
                   // Fetch the actual module file
                   const moduleUrl = `${pkgPath}/${entryPoint}`;
-                  
-                  // Store the full entry point URL for resolving relative imports
-                  // This allows relative imports to resolve correctly from the entry point's directory
-                  console.log(`Storing package URL: ${args.path} -> ${moduleUrl}`);
                   packageUrls.set(args.path, moduleUrl);
-                  
                   const moduleResponse = await fetch(moduleUrl);
 
                   if (!moduleResponse.ok) {
@@ -220,7 +215,8 @@ export async function bundle(
                     loader: "js",
                   };
                 } catch (error) {
-                  const errorMessage = error instanceof Error ? error.message : String(error);
+                  const errorMessage =
+                    error instanceof Error ? error.message : String(error);
                   console.error(`Failed to load ${args.path}:`, error);
                   return {
                     contents: `throw new Error("Failed to load module: ${args.path}\\n${errorMessage}");`,
@@ -277,13 +273,17 @@ export async function bundle(
                       break; // Success, stop trying
                     }
                   } catch (err) {
-                    lastError = err instanceof Error ? err : new Error(String(err));
+                    lastError =
+                      err instanceof Error ? err : new Error(String(err));
                   }
                 }
 
                 if (!response?.ok) {
-                  throw lastError ?? new Error(
-                    `Failed to fetch ${args.path}: ${response?.status ?? 'unknown'}`
+                  throw (
+                    lastError ??
+                    new Error(
+                      `Failed to fetch ${args.path}: ${response?.status ?? "unknown"}`
+                    )
                   );
                 }
 
@@ -293,11 +293,10 @@ export async function bundle(
                   loader: "js",
                 };
               } catch (error) {
-                console.error(`Failed to load static file ${args.path}:`, error);
-                return {
-                  contents: `throw new Error("Failed to load file: ${args.path}");`,
-                  loader: "js",
-                };
+                throw new Error(
+                  `Failed to load static file ${args.path}:`,
+                  error instanceof Error ? error : undefined
+                );
               }
             }
           );
@@ -325,14 +324,10 @@ export async function bundle(
                     loader: "js",
                   };
                 } catch (error) {
-                  console.error(
+                  throw new Error(
                     `Failed to load esm.sh internal ${args.path}:`,
-                    error
+                    error instanceof Error ? error : undefined
                   );
-                  return {
-                    contents: `throw new Error("Failed to load esm.sh internal: ${args.path}");`,
-                    loader: "js",
-                  };
                 }
               }
             }
