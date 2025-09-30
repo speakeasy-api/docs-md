@@ -9,16 +9,16 @@ function formatEvents(events: RuntimeEvents[]) {
     .map((event) => {
       switch (event.type) {
         case "compilation:error": {
-          return event.error + "";
+          return String(event.error);
         }
         case "execution:log": {
           return event.level + ": " + event.message;
         }
         case "execution:uncaught-exception": {
-          return "Uncaught Exception: " + event.error;
+          return "Uncaught Exception: " + String(event.error);
         }
         case "execution:uncaught-rejection": {
-          return "Uncaught Rejection: " + event.error;
+          return "Uncaught Rejection: " + String(event.error);
         }
         default: {
           return undefined;
