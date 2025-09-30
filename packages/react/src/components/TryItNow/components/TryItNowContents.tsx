@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 import { useRuntime } from "../state.ts";
 import type { TryItNowProps } from "../types.ts";
