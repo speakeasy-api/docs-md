@@ -21,7 +21,10 @@ export function TryItNowContents({
   packageManagerUrl,
 }: TryItNowProps) {
   const [value, setValue] = useState(defaultValue);
-  const { status, execute } = useRuntime({ packageManagerUrl });
+  const { status, execute } = useRuntime({
+    packageManagerUrl,
+    dependencies: externalDependencies,
+  });
   return (
     <div>
       <Layout>
@@ -31,7 +34,7 @@ export function TryItNowContents({
         <div slot="runButton">
           <RunButton
             onClick={() => {
-              void execute(value, externalDependencies);
+              execute(value);
             }}
           />
         </div>

@@ -1,18 +1,26 @@
-export type WorkerExecuteMessage = {
+type WorkerExecuteMessage = {
   type: "execute";
   bundle: string;
 };
 
-export type WorkerLogMessage = {
+type WorkerLogMessage = {
   type: "log";
+  level: "info" | "warn" | "error";
   message: string;
 };
 
-export type WorkerErrorMessage = {
-  type: "error";
-  message: string;
+type WorkerUncaughtExceptionMessage = {
+  type: "uncaught-exception";
+  error: unknown;
 };
 
-export type WorkerCompleteMessage = {
-  type: "complete";
+type WorkerUncaughtRejectMessage = {
+  type: "uncaught-reject";
+  error: unknown;
 };
+
+export type WorkerMessage =
+  | WorkerExecuteMessage
+  | WorkerLogMessage
+  | WorkerUncaughtExceptionMessage
+  | WorkerUncaughtRejectMessage;

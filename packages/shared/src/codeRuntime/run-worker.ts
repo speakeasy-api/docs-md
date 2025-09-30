@@ -1,41 +1,16 @@
 // Web Worker for safely executing bundled code
 // This runs in its own isolated context to prevent interference with the main thread
 
-import type {
-  WorkerCompleteMessage,
-  WorkerErrorMessage,
-  WorkerExecuteMessage,
-  WorkerLogMessage,
-} from "./messages.ts";
+import type { WorkerMessage } from "./messages.ts";
 
 // Helper to enforce strict typing
-function sendMessage(
-  message: WorkerCompleteMessage | WorkerErrorMessage | WorkerLogMessage
-) {
+function sendMessage(message: WorkerMessage) {
   self.postMessage(message);
 }
 
 // Listen for messages from the main thread
-self.onmessage = function (event: MessageEvent<WorkerExecuteMessage>) {
+self.onmessage = function (event: MessageEvent<WorkerMessage>) {
   if (event.data.type === "execute") {
-    // Create console overrides that immediately post messages
-    const previousConsole = console.log;
-
-    // This function runs once the code has completed execution based on a few
-    // possible outcomes:
-    // 1. The code completed successfully
-    // 2. The code threw a synchronous error
-    // 3. The code threw an unhandled rejection (aka asynchronous error)
-    function finalize() {
-      // Restore console
-      console.log = previousConsole;
-
-      // Signal execution completion
-      sendMessage({
-        type: "complete",
-      });
-    }
-
     // Patch console log
     console.log = (message, ...optionalParams) => {
       if (optionalParams.length > 0) {
@@ -49,22 +24,18 @@ self.onmessage = function (event: MessageEvent<WorkerExecuteMessage>) {
       // than once. We should try to come up with a more holistic mechanism
       sendMessage({
         type: "log",
+        level: "info",
         message: JSON.stringify(message),
       });
-      finalize();
     };
 
     // Listen for unhandled rejections, which includes the SDK returning an
     // error
     globalThis.addEventListener("unhandledrejection", (event) => {
       sendMessage({
-        type: "error",
-        message:
-          event.reason instanceof Error
-            ? event.reason.message
-            : "Unknown error",
+        type: "uncaught-reject",
+        error: event.reason,
       });
-      finalize();
     });
 
     try {
@@ -75,10 +46,9 @@ self.onmessage = function (event: MessageEvent<WorkerExecuteMessage>) {
     } catch (error) {
       // Send back the error
       sendMessage({
-        type: "error",
-        message: error instanceof Error ? error.message : "Unknown error",
+        type: "uncaught-exception",
+        error,
       });
-      finalize();
     }
   }
 };

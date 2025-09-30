@@ -1,0 +1,140 @@
+import { InternalError } from "../util/internalError.ts";
+import { bundle } from "./build.ts";
+import type { RuntimeEvents } from "./events.ts";
+import type { WorkerMessage } from "./messages.ts";
+
+export class Runtime {
+  #dependencies: Record<string, string>;
+  #packageManagerUrl?: string;
+  #listeners: Record<
+    RuntimeEvents["type"],
+    ((event: RuntimeEvents) => void)[]
+  > = {
+    "compilation:started": [],
+    "compilation:finished": [],
+    "compilation:error": [],
+    "execution:started": [],
+    "execution:log": [],
+    "execution:uncaught-exception": [],
+    "execution:uncaught-rejection": [],
+  };
+
+  constructor({
+    dependencies,
+    packageManagerUrl,
+  }: {
+    dependencies: Record<string, string>;
+    packageManagerUrl?: string;
+  }) {
+    this.#dependencies = dependencies;
+    this.#packageManagerUrl = packageManagerUrl;
+  }
+
+  public run(code: string) {
+    // Hide the promise, since it doesn't indicate when run finishes (we never
+    // // know, cause Halting Problemplus lack of process.exit in samples)
+    void this.#run(code);
+  }
+
+  async #run(code: string) {
+    this.#emit({ type: "compilation:started" });
+
+    // Bundle the results
+    let bundledCode: string;
+    try {
+      // Bundle the code
+      const bundleResults = await bundle(code, this.#dependencies, {
+        packageManagerUrl: this.#packageManagerUrl,
+      });
+
+      // Check the results of compilation
+      if (bundleResults.errors.length > 0) {
+        for (const error of bundleResults.errors) {
+          this.#emit({ type: "compilation:error", error });
+        }
+        return;
+      }
+      if (bundleResults.outputFiles.length !== 1) {
+        throw new InternalError(
+          `Expected exactly one output file, got ${bundleResults.outputFiles.length}`
+        );
+      }
+
+      // Store the compilation results
+      bundledCode = new TextDecoder().decode(
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        bundleResults.outputFiles[0]!.contents
+      );
+
+      // Signal that compilation finished
+      this.#emit({ type: "compilation:finished" });
+    } catch (error) {
+      // Catch bundle errors, and stop running
+      this.#emit({ type: "compilation:error", error });
+      return;
+    }
+
+    // Run the bundle
+    this.#emit({ type: "execution:started" });
+
+    // Create worker from the worker file
+    const worker = new Worker(new URL("./run-worker.js", import.meta.url), {
+      type: "module",
+    });
+
+    // Set up message handler
+    worker.onmessage = (event: MessageEvent<WorkerMessage>) => {
+      switch (event.data.type) {
+        case "log":
+          this.#emit({
+            type: "execution:log",
+            level: event.data.level,
+            message: event.data.message,
+          });
+          break;
+        case "uncaught-exception":
+          this.#emit({
+            type: "execution:uncaught-exception",
+            error: event.data.error,
+          });
+          break;
+        case "uncaught-reject":
+          this.#emit({
+            type: "execution:uncaught-rejection",
+            error: event.data.error,
+          });
+          break;
+      }
+    };
+
+    // Handle worker errors
+    worker.onerror = (error) => {
+      console.error(error);
+      worker.terminate();
+    };
+
+    // Send the bundle to the worker
+    const message: WorkerMessage = {
+      type: "execute",
+      bundle: bundledCode,
+    };
+    worker.postMessage(message);
+  }
+
+  public cancel() {
+    // TODO
+  }
+
+  public on(
+    event: RuntimeEvents["type"],
+    callback: (event: RuntimeEvents) => void
+  ) {
+    this.#listeners[event].push(callback);
+  }
+
+  #emit(event: RuntimeEvents) {
+    for (const callback of this.#listeners[event.type]) {
+      callback(event);
+    }
+  }
+}
