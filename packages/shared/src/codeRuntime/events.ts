@@ -15,9 +15,11 @@ type ExecutionStartedEvent = {
   type: "execution:started";
 };
 
+export type LogLevel = "log" | "info" | "warn" | "error" | "debug";
+
 type ExecutionLogEvent = {
   type: "execution:log";
-  level: "info" | "warn" | "error";
+  level: LogLevel;
   message: string;
 };
 

@@ -1,3 +1,5 @@
+import type { LogLevel } from "./events.ts";
+
 type WorkerExecuteMessage = {
   type: "execute";
   bundle: string;
@@ -5,7 +7,7 @@ type WorkerExecuteMessage = {
 
 type WorkerLogMessage = {
   type: "log";
-  level: "info" | "warn" | "error";
+  level: LogLevel;
   message: string;
 };
 
