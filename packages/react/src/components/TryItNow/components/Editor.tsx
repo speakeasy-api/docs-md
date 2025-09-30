@@ -52,10 +52,10 @@ const editorOptions = {
   tabSize: 2,
 } as editor.IStandaloneEditorConstructionOptions;
 
-export function Editor({ defaultValue, onValueChange, theme }: EditorProps) {
+export function Editor({ value, onValueChange, theme }: EditorProps) {
   const handleValueChange = useCallback(
-    (value: string | undefined, _: editor.IModelContentChangedEvent) => {
-      onValueChange(value ?? "");
+    (newValue: string | undefined, _: editor.IModelContentChangedEvent) => {
+      onValueChange(newValue ?? "");
     },
     [onValueChange]
   );
@@ -71,7 +71,7 @@ export function Editor({ defaultValue, onValueChange, theme }: EditorProps) {
       className={styles.editor}
       language="typescript"
       theme={theme === "dark" ? "vs-dark" : "light"}
-      value={defaultValue}
+      value={value}
       onChange={handleValueChange}
     />
   );

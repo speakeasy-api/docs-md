@@ -1,18 +1,20 @@
 .editorWrapper {
-  min-height: var(--speakeasy-code-sample-height, 400px);
-  border-radius: var(--speakeasy-code-border-radius);
-  border: 0.1rem solid var(--speakeasy-border-color);
   overflow: hidden;
   position: relative;
+  max-height: 100%;
+  border-radius: var(--speakeasy-code-border-radius) 0 0 var(--speakeasy-code-border-radius);
+  border-right: 0.1rem solid black;
 }
 
 .editor {
-  min-height: var(--speakeasy-code-sample-height, 400px);
   width: 100%;
 }
 
 .layout {
   position: relative;
+  flex: 1;
+  max-width: var(--speakeasy-try-it-now-panel-width);
+  overflow: hidden;
 }
 
 .runButtonContainer {
@@ -23,7 +25,7 @@
   z-index: 10;
 }
 
-.runButtonContainer button {
+.runButton {
   cursor: pointer;
   color: var(--speakeasy-try-it-now-run-button-color);
   background-color: var(--speakeasy-try-it-now-run-button-background-color);
@@ -32,13 +34,97 @@
   border: none;
   transition: all 0.2s ease;
   position: relative;
-  
+
   &:active {
     transform: scale(0.95);
   }
-  
+
   &:focus-visible {
     outline: 2px solid var(--speakeasy-accent-color, #0066cc);
     outline-offset: 2px;
   }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &.loading {
+    cursor: progress;
+    opacity: 0.5;
+  }
 }
+
+
+.outerLayout {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  border: 0.1rem solid var(--speakeasy-border-color);
+  max-height: var(--speakeasy-code-sample-height);
+  border-radius: var(--speakeasy-code-border-radius);
+  background-color: var(--speakeasy-results-background-color, #1e1e1e);
+}
+
+/* Results slot needs to be flex container */
+.resultsSlot {
+  flex: 1;
+  max-width: var(--speakeasy-try-it-now-panel-width);
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  border-radius: var(--speakeasy-code-border-radius);
+  overflow:auto;
+}
+
+/* Stack vertically on tablets and below */
+@media screen and (max-width: 996px) {
+  .outerLayout {
+    flex-direction: column;
+    max-height: none; /* Allow vertical growth when stacked */
+    --speakeasy-try-it-now-panel-width: 100%; /* Set variable for vertical layout */
+
+    border-radius: var(--speakeasy-code-border-radius);
+    max-height: 500px;
+  }
+
+  .layout {
+    border-bottom: 0.1rem solid black;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .editorWrapper {
+    border-radius: var(--speakeasy-code-border-radius) var(--speakeasy-code-border-radius) 0 0;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    max-height: 100%;
+  }
+
+  .layout,
+  .resultsSlot {
+    width: 100%; /* Ensure full width */
+    flex: 1;
+    max-height: 50%;
+  }
+
+  .resultsContainer {
+    min-height: 0;
+    max-height: none;
+  }
+}
+
+.resultsContainer {
+  flex: 1;
+  border-radius: var(--speakeasy-code-border-radius);
+  border: 0.1rem solid var(--speakeasy-border-color);
+  padding: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+

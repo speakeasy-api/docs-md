@@ -14,12 +14,12 @@ export function Layout({ children }: LayoutProps) {
   const runButtonChild = useChildren(children, "runButton");
   const resultsChild = useChildren(children, "results");
   return (
-    <>
+    <div className={styles.outerLayout}>
       <div className={styles.layout}>
         {editorChild}
         <div className={styles.runButtonContainer}>{runButtonChild}</div>
       </div>
       {resultsChild}
-    </>
+    </div>
   );
 }

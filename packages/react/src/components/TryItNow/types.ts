@@ -1,3 +1,4 @@
+import { Message } from "console-feed/lib/definitions/Component";
 import type { FC } from "react";
 
 export type TryItNowProps = {
@@ -38,9 +39,9 @@ export type TryItNowProps = {
 
 export type EditorProps = {
   /**
-   * The code sample for the editor to initially load
+   * The current code value in the editor
    */
-  defaultValue: string;
+  value: string;
   /**
    * Callback to invoke when the value changes
    */
@@ -56,11 +57,19 @@ export type RunButtonProps = {
    * Callback to invoke when the run button is clicked
    */
   onClick: () => void;
+  /**
+   * Whether the run button is disabled
+   */
+  disabled?: boolean;
+  /**
+   * Whether the run button is loading
+   */
+  loading?: boolean;
 };
 
 export type ResultsProps = {
   // TODO: depends on the runtime
-  output: unknown;
+  output: Message[];
 };
 
 export type LayoutProps = {

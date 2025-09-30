@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { useRuntime } from "../state.ts";
 import type { TryItNowProps } from "../types.ts";
@@ -8,6 +8,7 @@ import { Editor as DefaultEditor } from "./Editor.tsx";
 import { Layout as DefaultLayout } from "./Layout.tsx";
 import { Results as DefaultResults } from "./Results.tsx";
 import { RunButton as DefaultRunButton } from "./RunButton.tsx";
+import styles from "./styles.module.css";
 
 export function TryItNowContents({
   externalDependencies = {},
@@ -26,11 +27,7 @@ export function TryItNowContents({
     <div>
       <Layout>
         <div slot="editor">
-          <Editor
-            theme={theme}
-            defaultValue={defaultValue}
-            onValueChange={setValue}
-          />
+          <Editor theme={theme} value={value} onValueChange={setValue} />
         </div>
         <div slot="runButton">
           <RunButton
@@ -39,8 +36,8 @@ export function TryItNowContents({
             }}
           />
         </div>
-        <div slot="results">
-          <Results output={""} />
+        <div slot="results" className={styles.resultsSlot}>
+          <Results output={[]} />
         </div>
       </Layout>
     </div>
