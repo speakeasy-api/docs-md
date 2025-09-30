@@ -18,6 +18,7 @@ export class Runtime {
     "execution:uncaught-exception": [],
     "execution:uncaught-rejection": [],
   };
+  #worker?: Worker;
 
   constructor({
     dependencies,
@@ -37,11 +38,16 @@ export class Runtime {
   }
 
   async #run(code: string) {
-    this.#emit({ type: "compilation:started" });
+    if (this.#worker) {
+      this.#worker.terminate();
+      this.#worker = undefined;
+    }
 
     // Bundle the results
     let bundledCode: string;
     try {
+      this.#emit({ type: "compilation:started" });
+
       // Bundle the code
       const bundleResults = await bundle(code, this.#dependencies, {
         packageManagerUrl: this.#packageManagerUrl,
@@ -78,12 +84,12 @@ export class Runtime {
     this.#emit({ type: "execution:started" });
 
     // Create worker from the worker file
-    const worker = new Worker(new URL("./run-worker.js", import.meta.url), {
+    this.#worker = new Worker(new URL("./run-worker.js", import.meta.url), {
       type: "module",
     });
 
     // Set up message handler
-    worker.onmessage = (event: MessageEvent<WorkerMessage>) => {
+    this.#worker.onmessage = (event: MessageEvent<WorkerMessage>) => {
       switch (event.data.type) {
         case "log":
           this.#emit({
@@ -108,9 +114,12 @@ export class Runtime {
     };
 
     // Handle worker errors
-    worker.onerror = (error) => {
-      console.error(error);
-      worker.terminate();
+    this.#worker.onerror = (error) => {
+      this.#emit({
+        type: "execution:uncaught-exception",
+        error,
+      });
+      this.#worker?.terminate();
     };
 
     // Send the bundle to the worker
@@ -118,11 +127,12 @@ export class Runtime {
       type: "execute",
       bundle: bundledCode,
     };
-    worker.postMessage(message);
+    this.#worker.postMessage(message);
   }
 
   public cancel() {
-    // TODO
+    this.#worker?.terminate();
+    this.#worker = undefined;
   }
 
   public on(
