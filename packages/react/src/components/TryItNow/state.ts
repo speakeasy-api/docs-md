@@ -2,8 +2,8 @@ import type { RuntimeEvents } from "@speakeasy-api/docs-md-shared";
 import { Runtime } from "@speakeasy-api/docs-md-shared";
 import { useCallback, useRef, useState } from "react";
 
-import { InternalError } from "../../util/internalError";
-import type { Status } from "./types";
+import { InternalError } from "../../util/internalError.ts";
+import type { Status } from "./types.ts";
 
 type Options = {
   packageManagerUrl?: string;
