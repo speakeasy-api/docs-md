@@ -1,4 +1,3 @@
-import { Message } from "console-feed/lib/definitions/Component";
 import type { FC } from "react";
 
 export type TryItNowProps = {
@@ -69,7 +68,7 @@ export type RunButtonProps = {
 
 export type ResultsProps = {
   // TODO: depends on the runtime
-  output: Message[];
+  output: string[] | Record<string, unknown> | string;
   loading?: boolean;
 };
 

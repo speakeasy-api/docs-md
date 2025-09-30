@@ -22,7 +22,6 @@ export function TryItNowContents({
 }: TryItNowProps) {
   const [value, setValue] = useState(defaultValue);
   const { status, execute } = useRuntime({ packageManagerUrl });
-  console.log(status);
   return (
     <div>
       <Layout>
@@ -37,7 +36,10 @@ export function TryItNowContents({
           />
         </div>
         <div slot="results" className={styles.resultsSlot}>
-          <Results output={[]} loading={status.state === "running"} />
+          <Results
+            output={status.state === "success" ? status.results.output : []}
+            loading={status.state === "running"}
+          />
         </div>
       </Layout>
     </div>
