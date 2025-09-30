@@ -36,10 +36,7 @@ export function TryItNowContents({
           />
         </div>
         <div slot="results" className={styles.resultsSlot}>
-          <Results
-            output={status.state === "success" ? status.results.output : []}
-            loading={status.state === "running"}
-          />
+          <Results status={status} />
         </div>
       </Layout>
     </div>

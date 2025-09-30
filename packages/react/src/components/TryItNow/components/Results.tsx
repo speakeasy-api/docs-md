@@ -1,45 +1,45 @@
 "use client";
 
-import { Console, Hook, Unhook } from "console-feed";
 import type { ResultsProps } from "../types.ts";
-import styles from "./styles.module.css";
-import { useState, useEffect } from "react";
 
-type LogMessage = {
-  method: "log";
-  data: string;
-  id: string;
-};
-export function Results({ output, loading }: ResultsProps) {
-  const [logs, setLogs] = useState<LogMessage[]>([]);
+export function Results({ status }: ResultsProps) {
+  if (
+    status.state === "idle" ||
+    (status.state === "running" &&
+      !status.previousResults &&
+      !status.previousError)
+  ) {
+    return null;
+  }
 
-  useEffect(() => {
-    const hookedConsole = Hook(
-      window.console,
-      (log) =>
-        setLogs((currLogs) => [...currLogs, log as unknown as LogMessage]),
-      false
-    );
-    return () => {
-      Unhook(hookedConsole);
-    };
-  }, []);
-
-  if (loading) {
-    return (
-      <div className={styles.loadingContainer}>
-        <p>Loading...</p>
-      </div>
-    );
+  let displayOutput: string[] = [];
+  switch (status.state) {
+    case "success":
+      displayOutput = status.results.output.map((output) =>
+        JSON.stringify(JSON.parse(output), null, 2)
+      );
+      break;
+    case "error":
+      if (typeof status.error.output[0] === "string") {
+        displayOutput = status.error.output as string[];
+      } else {
+        displayOutput = (status.error.output as Error[]).map(
+          (error) => error.message
+        );
+      }
+      break;
+    case "running":
+      displayOutput = status.previousResults?.output ?? [];
+      break;
   }
 
   return (
-    <Console
-      // @ts-ignore
-      logs={output ? logs : []}
-      styles={{ LOG_BACKGROUND: "#1e1e1e" }}
-      variant="dark"
-      logGrouping={false}
-    />
+    <div>
+      <pre>
+        {displayOutput.length > 1
+          ? JSON.stringify(displayOutput, null, 2)
+          : displayOutput[0]}
+      </pre>
+    </div>
   );
 }

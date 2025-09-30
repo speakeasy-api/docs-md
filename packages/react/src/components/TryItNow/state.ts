@@ -1,42 +1,7 @@
 import { bundle, run } from "@speakeasy-api/docs-md-shared";
 import { useCallback, useState } from "react";
 
-type Results = {
-  output: Record<string, unknown>;
-};
-
-type RuntimeError =
-  | {
-      type: "serverError";
-      status: number;
-      message: string;
-    }
-  | {
-      type: "buildError";
-      message: string;
-    }
-  | {
-      type: "other";
-      message: string;
-    };
-
-type Status =
-  | {
-      state: "idle";
-    }
-  | {
-      state: "running";
-      previousResults?: Results;
-      previousError?: RuntimeError;
-    }
-  | {
-      state: "success";
-      results: Results;
-    }
-  | {
-      state: "error";
-      error: RuntimeError;
-    };
+import type { Status } from "./types";
 
 type Options = {
   packageManagerUrl?: string;
@@ -49,6 +14,7 @@ export function useRuntime({ packageManagerUrl }: Options = {}) {
 
   const execute = useCallback(
     async (code: string, externalDependencies: Record<string, string>) => {
+      console.log(code);
       setStatus((prevStatus) => {
         switch (prevStatus.state) {
           case "success":
@@ -82,16 +48,14 @@ export function useRuntime({ packageManagerUrl }: Options = {}) {
           setStatus({
             state: "error",
             error: {
-              type: "other",
-              message: errors.join("\n"),
+              output: errors,
             },
           });
         } else if (logs.length > 0) {
           setStatus({
             state: "success",
             results: {
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-              output: JSON.parse(logs[0] ?? "{}"),
+              output: logs,
             },
           });
         }
@@ -99,8 +63,7 @@ export function useRuntime({ packageManagerUrl }: Options = {}) {
         setStatus({
           state: "error",
           error: {
-            type: "other",
-            message: error instanceof Error ? error.message : "Unknown error",
+            output: error instanceof Error ? [error] : ["Unknown error"],
           },
         });
       }
