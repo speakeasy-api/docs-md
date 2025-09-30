@@ -105,7 +105,7 @@ export function useRuntime({ packageManagerUrl }: Options = {}) {
         });
       }
     },
-    []
+    [packageManagerUrl]
   );
 
   return {
