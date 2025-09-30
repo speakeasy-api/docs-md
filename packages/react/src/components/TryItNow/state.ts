@@ -38,7 +38,11 @@ type Status =
       error: RuntimeError;
     };
 
-export function useRuntime() {
+type Options = {
+  packageManagerUrl?: string;
+};
+
+export function useRuntime({ packageManagerUrl }: Options = {}) {
   const [status, setStatus] = useState<Status>({
     state: "idle",
   });
@@ -67,7 +71,9 @@ export function useRuntime() {
       });
 
       try {
-        const result = await bundle(code, externalDependencies);
+        const result = await bundle(code, externalDependencies, {
+          packageManagerUrl,
+        });
         const parsedCode = result.outputFiles[0]?.contents
           ? new TextDecoder().decode(result.outputFiles[0].contents)
           : "";

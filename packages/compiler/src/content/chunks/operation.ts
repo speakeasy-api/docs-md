@@ -37,12 +37,8 @@ function renderCodeSamples(
       ({ createTryItNowEntry, createCodeSampleEntry }) => {
         for (const [language, snippet] of Object.entries(usageSnippet)) {
           debug(`Rendering code sample for ${language}`);
-          if (
-            language === "typescript" &&
-            codeSamples.some(
-              (s) => s.language === "typescript" && s.enableTryItNow
-            )
-          ) {
+          const codeSample = codeSamples.find((s) => s.language === language);
+          if (language === "typescript" && codeSample?.enableTryItNow) {
             createTryItNowEntry({
               language,
               externalDependencies: {
@@ -50,6 +46,7 @@ function renderCodeSamples(
                 [snippet.packageName]: "latest",
               },
               defaultValue: snippet.code,
+              packageManagerUrl: codeSample?.packageManagerUrl,
             });
           } else {
             createCodeSampleEntry({

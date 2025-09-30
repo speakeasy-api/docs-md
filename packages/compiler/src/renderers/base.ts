@@ -102,6 +102,7 @@ export type RendererCreateCodeSamplesSectionArgs = [
       language: CodeSampleLanguage;
       externalDependencies: Record<string, string>;
       defaultValue: string;
+      packageManagerUrl?: string;
     }) => void;
     createCodeSampleEntry: (options: {
       language: CodeSampleLanguage;

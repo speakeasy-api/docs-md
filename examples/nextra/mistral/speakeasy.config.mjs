@@ -13,6 +13,7 @@ export default {
       sdkClassName: "Mistral",
       packageName: "@mistralai/mistralai",
       enableTryItNow: true,
+      packageManagerUrl: "/pkg",
     },
     {
       language: "python",

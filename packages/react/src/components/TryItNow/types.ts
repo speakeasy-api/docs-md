@@ -30,6 +30,10 @@ export type TryItNowProps = {
    * The theme of the editor
    */
   theme?: "light" | "dark";
+  /**
+   * URL to a CDN that is compatible with esm.sh
+   */
+  packageManagerUrl?: string;
 };
 
 export type EditorProps = {
