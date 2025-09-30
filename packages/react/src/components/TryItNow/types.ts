@@ -1,29 +1,22 @@
+import type { RuntimeEvents } from "@speakeasy-api/docs-md-shared";
 import type { FC } from "react";
-
-type Results = {
-  output: string[];
-};
-
-type Errors = {
-  output: Error[] | string[];
-};
 
 export type Status =
   | {
       state: "idle";
     }
   | {
-      state: "running";
-      previousResults?: Results;
-      previousError?: Errors;
+      state: "compiling";
+      previousEvents: RuntimeEvents[];
     }
   | {
-      state: "success";
-      results: Results;
+      state: "compile-error";
+      previousEvents: RuntimeEvents[];
+      events: RuntimeEvents[];
     }
   | {
-      state: "error";
-      error: Errors;
+      state: "executing";
+      events: RuntimeEvents[];
     };
 
 export type TryItNowProps = {

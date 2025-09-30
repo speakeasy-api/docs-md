@@ -1,36 +1,64 @@
 "use client";
 
+import type { RuntimeEvents } from "@speakeasy-api/docs-md-shared";
+
 import type { ResultsProps } from "../types.ts";
 
+function formatEvents(events: RuntimeEvents[]) {
+  return events
+    .map((event) => {
+      switch (event.type) {
+        case "compilation:error": {
+          return event.error + "";
+        }
+        case "execution:log": {
+          return event.level + ": " + event.message;
+        }
+        case "execution:uncaught-exception": {
+          return "Uncaught Exception: " + event.error;
+        }
+        case "execution:uncaught-rejection": {
+          return "Uncaught Rejection: " + event.error;
+        }
+        default: {
+          return undefined;
+        }
+      }
+    })
+    .filter((event) => event !== undefined);
+}
+
 export function Results({ status }: ResultsProps) {
+  // First, check if we don't have anything to show
   if (
     status.state === "idle" ||
-    (status.state === "running" &&
-      !status.previousResults &&
-      !status.previousError)
+    (status.state === "compiling" && !status.previousEvents.length)
   ) {
     return null;
   }
 
   let displayOutput: string[] = [];
   switch (status.state) {
-    case "success":
-      displayOutput = status.results.output.map((output) =>
-        JSON.stringify(JSON.parse(output), null, 2)
-      );
+    case "compiling": {
+      displayOutput = [
+        "Compiling. Previous events:",
+        ...formatEvents(status.previousEvents),
+      ];
       break;
-    case "error":
-      if (typeof status.error.output[0] === "string") {
-        displayOutput = status.error.output as string[];
-      } else {
-        displayOutput = (status.error.output as Error[]).map(
-          (error) => error.message
-        );
-      }
+    }
+    case "compile-error": {
+      displayOutput = [
+        "Compile Error: ",
+        ...formatEvents(status.events),
+        "Previous events:",
+        ...formatEvents(status.previousEvents),
+      ];
       break;
-    case "running":
-      displayOutput = status.previousResults?.output ?? [];
+    }
+    default: {
+      displayOutput = formatEvents(status.events);
       break;
+    }
   }
 
   return (
