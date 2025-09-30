@@ -65,10 +65,14 @@ self.onmessage = function (event: MessageEvent<WorkerMessage>) {
         error: event.reason,
       });
     });
-
+    // Execute the wrapped code using an indirect eval call for safety. See
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#never_use_direct_eval!
     try {
-      // Execute the wrapped code using an indirect eval call for safety. See
-      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#never_use_direct_eval!
+      // First execute the dependency bundle to populate globalThis.__deps__
+      eval?.(`"use strict";
+        ${event.data.dependencyBundle}`);
+
+      // Then execute the user code which can access dependencies via globalThis.__deps__
       eval?.(`"use strict";
         ${event.data.bundle}`);
     } catch (error) {

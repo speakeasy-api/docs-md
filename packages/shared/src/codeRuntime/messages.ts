@@ -2,6 +2,7 @@ import type { LogLevel } from "./events.ts";
 
 type WorkerExecuteMessage = {
   type: "execute";
+  dependencyBundle: string;
   bundle: string;
 };
 

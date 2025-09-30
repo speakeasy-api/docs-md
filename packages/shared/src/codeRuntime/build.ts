@@ -1,5 +1,7 @@
 import type { BuildOptions, BuildResult, SameShape } from "esbuild-wasm";
 
+import { InternalError } from "../util/internalError.ts";
+
 let build:
   | (<T extends BuildOptions>(
       options: SameShape<BuildOptions, T>
@@ -31,24 +33,38 @@ async function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export async function bundle(
-  code: string,
+export async function bundleDependencies(
   dependencies: Record<string, string> = {},
   { packageManagerUrl }: { packageManagerUrl?: string } = {}
-) {
+): Promise<string> {
   while (!build) {
     await delay(100);
   }
 
-  const bundle = await build({
+  // Create virtual entry point that imports all dependencies
+  const depNames = Object.keys(dependencies);
+  if (depNames.length === 0) {
+    // No dependencies, return empty bundle
+    return "globalThis.__deps__ = {};";
+  }
+
+  // Create code that imports and assigns each dependency to globalThis.__deps__
+  const virtualEntry = depNames
+    .map((dep) => {
+      const safeName = dep.replace(/[^a-zA-Z0-9_$]/g, "_");
+      return `import * as ${safeName} from "${dep}";\nglobalThis.__deps__.${safeName} = ${safeName};`;
+    })
+    .join("\n");
+
+  const result = await build({
     stdin: {
-      contents: code,
-      loader: "ts",
-      resolveDir: "/", // Virtual resolve directory
+      contents: `globalThis.__deps__ = globalThis.__deps__ || {};\n${virtualEntry}`,
+      loader: "js",
+      resolveDir: "/",
     },
     bundle: true,
     format: "iife",
-    write: false, // Get result in memory instead of writing to file
+    write: false,
     platform: "browser",
     target: "es2020",
     plugins: [
@@ -337,5 +353,74 @@ export async function bundle(
     ],
   });
 
-  return bundle;
+  // Return the bundled code
+  const code = result.outputFiles?.[0]?.text;
+  if (!code) {
+    throw new Error("Failed to generate dependency bundle");
+  }
+
+  return code;
+}
+
+/**
+ * Bundles user code that depends on pre-bundled dependencies
+ * @param code - The user's TypeScript/JavaScript code to bundle
+ * @param dependencyBundle - The pre-bundled dependencies code from bundleDependencies()
+ * @returns Promise containing the build result
+ */
+export async function bundleCode(
+  code: string,
+  dependencyBundle: string
+): Promise<BuildResult> {
+  if (!build) {
+    throw new InternalError("build is not defined");
+  }
+
+  // Extract available dependencies from the dependency bundle
+  // The bundle contains code like: globalThis.__deps__.safeName = ...
+  const depMatches = dependencyBundle.matchAll(
+    /globalThis\.__deps__\.([a-zA-Z0-9_$]+)/g
+  );
+  const availableDeps = [...new Set([...depMatches].map((m) => m[1]))];
+
+  return build({
+    stdin: {
+      contents: code,
+      loader: "ts",
+      resolveDir: "/",
+    },
+    bundle: true,
+    format: "iife",
+    write: false,
+    platform: "browser",
+    target: "es2020",
+    plugins: [
+      {
+        name: "resolve-from-deps",
+        setup(build) {
+          // Intercept all npm package imports and resolve from __deps__ variable
+          build.onResolve({ filter: /^[^./]/ }, (args) => {
+            // Check if this dependency is available in __deps__
+            const safeName = args.path.replace(/[^a-zA-Z0-9_$]/g, "_");
+            if (availableDeps.includes(safeName)) {
+              return {
+                path: args.path,
+                namespace: "deps-var",
+              };
+            }
+            // Let other paths resolve normally (or fail)
+            return undefined;
+          });
+
+          build.onLoad({ filter: /.*/, namespace: "deps-var" }, (args) => {
+            const safeName = args.path.replace(/[^a-zA-Z0-9_$]/g, "_");
+            return {
+              contents: `module.exports = globalThis.__deps__.${safeName};`,
+              loader: "js",
+            };
+          });
+        },
+      },
+    ],
+  });
 }
