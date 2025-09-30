@@ -62,11 +62,7 @@ export function Editor({ value, onValueChange, theme }: EditorProps) {
 
   return (
     <MonacoEditor
-      height="var(--speakeasy-code-sample-height, 400px)"
       loading=""
-      wrapperProps={{
-        className: styles.editorWrapper,
-      }}
       options={editorOptions}
       className={styles.editor}
       language="typescript"

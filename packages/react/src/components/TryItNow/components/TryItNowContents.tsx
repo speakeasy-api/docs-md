@@ -8,7 +8,6 @@ import { Editor as DefaultEditor } from "./Editor.tsx";
 import { Layout as DefaultLayout } from "./Layout.tsx";
 import { Results as DefaultResults } from "./Results.tsx";
 import { RunButton as DefaultRunButton } from "./RunButton.tsx";
-import styles from "./styles.module.css";
 
 export function TryItNowContents({
   externalDependencies = {},
@@ -38,7 +37,7 @@ export function TryItNowContents({
             }}
           />
         </div>
-        <div slot="results" className={styles.resultsSlot}>
+        <div slot="results">
           <Results status={status} />
         </div>
       </Layout>

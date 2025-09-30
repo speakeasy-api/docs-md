@@ -13,13 +13,17 @@ export function Layout({ children }: LayoutProps) {
   const editorChild = useChildren(children, "editor");
   const runButtonChild = useChildren(children, "runButton");
   const resultsChild = useChildren(children, "results");
+
   return (
-    <div className={styles.outerLayout}>
-      <div className={styles.layout}>
+    <div className={styles.layout}>
+      <div className={styles.editorContainer}>
         {editorChild}
         <div className={styles.runButtonContainer}>{runButtonChild}</div>
       </div>
-      {resultsChild}
+      {resultsChild?.[1] && (
+        <div role="separator" className={styles.separator} />
+      )}
+      {resultsChild?.[1]}
     </div>
   );
 }
