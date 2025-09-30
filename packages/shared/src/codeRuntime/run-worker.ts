@@ -2,6 +2,11 @@
 // context to prevent interference with the main thread, and to prevent console
 // logs from the main thread from mixing with the logs from the worker.
 
+// In this case, we're actually not using the Node.js version of util.format,
+// and so using `node:util` here would be a mistake.
+// eslint-disable-next-line fast-import/require-node-prefix
+import { format } from "util";
+
 import type { LogLevel } from "./events.ts";
 import type { WorkerMessage } from "./messages.ts";
 
@@ -18,9 +23,13 @@ function createConsolePatch(level: LogLevel) {
       typeof message === "string" && /%[sdifcoO]/.test(message);
 
     if (hasSubstitutions) {
-      throw new Error(
-        "console calls with substitution patterns are not supported yet. Stay tuned!"
-      );
+      sendMessage({
+        type: "log",
+        level,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        message: format(message, ...optionalParams),
+      });
+      return;
     }
 
     sendMessage({
