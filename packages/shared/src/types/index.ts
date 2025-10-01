@@ -61,6 +61,7 @@ export type PageMetadataOperation = {
   path: string;
   operationId: OperationChunk["chunkData"]["operationId"];
   summary: OperationChunk["chunkData"]["summary"];
+  description: OperationChunk["chunkData"]["description"];
   security?: PageMetadataSection;
   parameters?: PageMetadataSection;
   requestBody?: PageMetadataSection;

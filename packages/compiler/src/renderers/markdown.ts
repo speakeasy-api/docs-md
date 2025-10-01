@@ -169,6 +169,7 @@ export abstract class MarkdownRenderer extends Renderer {
         path,
         operationId,
         summary,
+        description,
       };
       this.#currentOperation = currentOperation;
       let tagMetadata: PageMetadataTag | undefined =
