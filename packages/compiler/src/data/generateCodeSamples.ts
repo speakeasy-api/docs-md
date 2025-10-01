@@ -5,6 +5,7 @@ import {
   readdirSync,
   readFileSync,
   rmdirSync,
+  rmSync,
 } from "node:fs";
 import { get } from "node:https";
 import { tmpdir } from "node:os";
@@ -49,7 +50,7 @@ function downloadFile(url: string, destination: string) {
       },
     };
 
-    get(url, options, (response) => {
+    const request = get(url, options, (response) => {
       // Handle redirects
       if (
         response.statusCode &&
@@ -57,6 +58,9 @@ function downloadFile(url: string, destination: string) {
         response.statusCode < 400 &&
         response.headers.location
       ) {
+        // Consume and destroy the response stream
+        response.resume();
+        response.destroy();
         file.close();
         downloadFile(response.headers.location, destination)
           .then(resolve)
@@ -64,13 +68,37 @@ function downloadFile(url: string, destination: string) {
         return;
       }
 
+      // Handle error status codes
+      if (response.statusCode && response.statusCode >= 400) {
+        response.resume();
+        response.destroy();
+        file.close();
+        reject(new Error(`HTTP ${response.statusCode} for ${url}`));
+        return;
+      }
+
       response.pipe(file);
+      
       file.on("finish", () => {
         file.close(() => {
           resolve();
         });
       });
-    }).on("error", (err) => {
+
+      file.on("error", (err) => {
+        response.unpipe(file);
+        response.destroy();
+        file.close();
+        reject(err);
+      });
+
+      response.on("error", (err) => {
+        file.close();
+        reject(err);
+      });
+    });
+
+    request.on("error", (err) => {
       file.close();
       reject(err);
     });
@@ -216,7 +244,7 @@ export async function generateCodeSamples(
       }
     }
   } finally {
-    rmdirSync(extractionTempDirBase, { recursive: true });
+    rmSync(extractionTempDirBase, { recursive: true });
   }
 
   // Populate docsCodeSamples with the code samples, prioritizing code samples
