@@ -1,6 +1,6 @@
 import type { FrameworkConfig } from "./compiler.ts";
 import { renderContent } from "./content/renderContent.ts";
-import { generateCodeSnippets } from "./data/generateCodeSnippets.ts";
+import { generateCodeSamples } from "./data/generateCodeSamples.ts";
 import { getData } from "./data/getDocsData.ts";
 import { info } from "./logging.js";
 import type { Site } from "./renderers/base.ts";
@@ -35,7 +35,7 @@ export async function generatePages({
 
   // Get code snippets
   info("Generating Code Snippets");
-  const docsCodeSnippets = await generateCodeSnippets(data, specContents);
+  const docsCodeSnippets = await generateCodeSamples(data, specContents);
 
   // Render the content
   info("Rendering Markdown");

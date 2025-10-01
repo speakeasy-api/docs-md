@@ -5,7 +5,7 @@ import type {
 } from "@speakeasy-api/docs-md-shared";
 import type { PropertyAnnotations } from "@speakeasy-api/docs-md-shared";
 
-import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
+import type { DocsCodeSamples } from "../../data/generateCodeSamples.ts";
 import { debug } from "../../logging.ts";
 import type { Renderer } from "../../renderers/base.ts";
 import type { CodeSampleLanguage } from "../../settings.ts";
@@ -22,12 +22,12 @@ type RenderOperationOptions = {
   renderer: Renderer;
   chunk: OperationChunk;
   tagChunk: TagChunk;
-  docsCodeSnippets: DocsCodeSnippets;
+  docsCodeSnippets: DocsCodeSamples;
 };
 
 function renderCodeSamples(
   renderer: Renderer,
-  docsCodeSnippets: DocsCodeSnippets,
+  docsCodeSnippets: DocsCodeSamples,
   operationChunkId: string
 ) {
   const { codeSamples } = getSettings();
