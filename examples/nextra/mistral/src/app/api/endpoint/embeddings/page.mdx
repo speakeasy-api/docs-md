@@ -11,6 +11,7 @@ import {
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
+  ExpandablePropertyDefaultValue,
   ExpandablePropertyDescription,
   ExpandablePropertyExamples,
   ExpandablePropertyTitle,
@@ -95,9 +96,9 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.embeddings.create({
+  const result = await mistral.embeddings.embeddingsV1EmbeddingsPost({
     model: "mistral-embed",
-    inputs: [
+    input: [
       "Embed this sentence.",
       "As well as this one.",
     ],
@@ -131,7 +132,7 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.embeddings.create(model="mistral-embed", inputs=[
+    res = mistral.embeddings.embeddings_v1_embeddings_post(model="mistral-embed", input_=[
         "Embed this sentence.",
         "As well as this one.",
     ])
@@ -164,8 +165,8 @@ with Mistral(
 
 <ExpandableProperty
   slot="entry"
-  id="inputs"
-  headingId="operation-embeddings_v1_embeddings_post_request_inputs"
+  id="input"
+  headingId="operation-embeddings_v1_embeddings_post_request_input"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
@@ -174,7 +175,7 @@ with Mistral(
 
 <ExpandablePropertyTitle slot="title">
 
-##### inputs [#operation-embeddings_v1_embeddings_post_request_inputs]
+##### input [#operation-embeddings_v1_embeddings_post_request_input]
 
 </ExpandablePropertyTitle>
 
@@ -547,7 +548,7 @@ chat.completion
   headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_completion_tokens"
   parentId="usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
@@ -558,15 +559,30 @@ chat.completion
 
 </ExpandablePropertyTitle>
 
-<ExpandablePropertyExamples slot="examples">
+<ExpandablePropertyDefaultValue slot="defaultValue">
 
-_Example:_
+_Default Value:_ `0`
 
-```
-34
-```
+</ExpandablePropertyDefaultValue>
 
-</ExpandablePropertyExamples>
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="usage_UsageInfo_prompt_audio_seconds"
+  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_prompt_audio_seconds"
+  parentId="usage_UsageInfo"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### prompt_audio_seconds [#operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_prompt_audio_seconds]
+
+</ExpandablePropertyTitle>
 
 </ExpandableProperty>
 
@@ -576,7 +592,7 @@ _Example:_
   headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_prompt_tokens"
   parentId="usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
@@ -587,15 +603,11 @@ _Example:_
 
 </ExpandablePropertyTitle>
 
-<ExpandablePropertyExamples slot="examples">
+<ExpandablePropertyDefaultValue slot="defaultValue">
 
-_Example:_
+_Default Value:_ `0`
 
-```
-16
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyDefaultValue>
 
 </ExpandableProperty>
 
@@ -605,7 +617,7 @@ _Example:_
   headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_total_tokens"
   parentId="usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
@@ -616,15 +628,11 @@ _Example:_
 
 </ExpandablePropertyTitle>
 
-<ExpandablePropertyExamples slot="examples">
+<ExpandablePropertyDefaultValue slot="defaultValue">
 
-_Example:_
+_Default Value:_ `0`
 
-```
-50
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyDefaultValue>
 
 </ExpandableProperty>
 

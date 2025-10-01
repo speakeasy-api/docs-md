@@ -1,5 +1,5 @@
 ---
-sidebarTitle: Batch Jobs
+sidebarTitle: Batch
 ---
 
 import "@speakeasy-api/docs-md-react/nextra.css";
@@ -30,6 +30,7 @@ import {
   SectionTitle,
   TabbedSection,
   Tag,
+  TagDescription,
   TagTitle,
   TryItNow
 } from "@speakeasy-api/docs-md-react";
@@ -38,9 +39,15 @@ import {
 
 <TagTitle slot="title">
 
-# Batch Jobs Endpoints
+# Batch Endpoints
 
 </TagTitle>
+
+<TagDescription slot="description">
+
+Batch API
+
+</TagDescription>
 
 </Tag>
 
@@ -91,7 +98,7 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.batch.jobs.list({});
+  const result = await mistral.batch.jobsApiRoutesBatchGetBatchJobs({});
 
   // Handle the result
   console.log(result);
@@ -127,7 +134,7 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.batch.jobs.list()
+    res = mistral.batch.jobs_api_routes_batch_get_batch_jobs()
 
     # Handle response
     print(res)
@@ -207,6 +214,25 @@ OK
 </ExpandableBreakoutTitle>
 
 <ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="data_BatchJobOut_agent_id"
+  headingId="operation-jobs_api_routes_batch_get_batch_jobs_responses_200_application-json_data_batchjobout_agent_id"
+  parentId="data_BatchJobOut"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agent_id [#operation-jobs_api_routes_batch_get_batch_jobs_responses_200_application-json_data_batchjobout_agent_id]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -472,8 +498,8 @@ _Default Value:_ `1`
   id="data_BatchJobOut_model"
   headingId="operation-jobs_api_routes_batch_get_batch_jobs_responses_200_application-json_data_batchjobout_model"
   parentId="data_BatchJobOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
   hasExpandableContent={false}
   expandByDefault={false}
 >
@@ -713,12 +739,11 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.batch.jobs.create({
+  const result = await mistral.batch.jobsApiRoutesBatchCreateBatchJob({
     inputFiles: [
       "fe3343a2-3b8d-404b-ba32-a78dede2614a",
     ],
     endpoint: "/v1/moderations",
-    model: "Altima",
   });
 
   // Handle the result
@@ -755,9 +780,9 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.batch.jobs.create(input_files=[
+    res = mistral.batch.jobs_api_routes_batch_create_batch_job(input_files=[
         "fe3343a2-3b8d-404b-ba32-a78dede2614a",
-    ], endpoint=models.APIEndpoint.ROOT_V1_MODERATIONS, model="Altima")
+    ], endpoint=models.APIEndpoint.ROOT_V1_MODERATIONS)
 
     # Handle response
     print(res)
@@ -784,6 +809,24 @@ with Mistral(
 <SectionContent slot="content">
 
 <ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="agent_id"
+  headingId="operation-jobs_api_routes_batch_create_batch_job_request_agent_id"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agent_id [#operation-jobs_api_routes_batch_create_batch_job_request_agent_id]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -843,8 +886,8 @@ with Mistral(
   slot="entry"
   id="model"
   headingId="operation-jobs_api_routes_batch_create_batch_job_request_model"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
   hasExpandableContent={false}
   expandByDefault={true}
 >
@@ -920,6 +963,24 @@ OK
 </OperationResponseBodyDescriptionSection>
 
 <ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="agent_id"
+  headingId="operation-jobs_api_routes_batch_create_batch_job_responses_200_application-json_agent_id"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agent_id [#operation-jobs_api_routes_batch_create_batch_job_responses_200_application-json_agent_id]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -1174,8 +1235,8 @@ _Default Value:_ `1`
   slot="entry"
   id="model"
   headingId="operation-jobs_api_routes_batch_create_batch_job_responses_200_application-json_model"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
   hasExpandableContent={false}
   expandByDefault={true}
 >
@@ -1359,7 +1420,7 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.batch.jobs.get({
+  const result = await mistral.batch.jobsApiRoutesBatchGetBatchJob({
     jobId: "4017dc9f-b629-42f4-9700-8c681b9e7f0f",
   });
 
@@ -1397,7 +1458,7 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.batch.jobs.get(job_id="4017dc9f-b629-42f4-9700-8c681b9e7f0f")
+    res = mistral.batch.jobs_api_routes_batch_get_batch_job(job_id="4017dc9f-b629-42f4-9700-8c681b9e7f0f")
 
     # Handle response
     print(res)
@@ -1482,6 +1543,24 @@ OK
 </OperationResponseBodyDescriptionSection>
 
 <ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="agent_id"
+  headingId="operation-jobs_api_routes_batch_get_batch_job_responses_200_application-json_agent_id"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agent_id [#operation-jobs_api_routes_batch_get_batch_job_responses_200_application-json_agent_id]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -1736,8 +1815,8 @@ _Default Value:_ `1`
   slot="entry"
   id="model"
   headingId="operation-jobs_api_routes_batch_get_batch_job_responses_200_application-json_model"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
   hasExpandableContent={false}
   expandByDefault={true}
 >
@@ -1921,7 +2000,7 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.batch.jobs.cancel({
+  const result = await mistral.batch.jobsApiRoutesBatchCancelBatchJob({
     jobId: "4fb29d1c-535b-4f0a-a1cb-2167f86da569",
   });
 
@@ -1959,7 +2038,7 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.batch.jobs.cancel(job_id="4fb29d1c-535b-4f0a-a1cb-2167f86da569")
+    res = mistral.batch.jobs_api_routes_batch_cancel_batch_job(job_id="4fb29d1c-535b-4f0a-a1cb-2167f86da569")
 
     # Handle response
     print(res)
@@ -2044,6 +2123,24 @@ OK
 </OperationResponseBodyDescriptionSection>
 
 <ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="agent_id"
+  headingId="operation-jobs_api_routes_batch_cancel_batch_job_responses_200_application-json_agent_id"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agent_id [#operation-jobs_api_routes_batch_cancel_batch_job_responses_200_application-json_agent_id]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -2298,8 +2395,8 @@ _Default Value:_ `1`
   slot="entry"
   id="model"
   headingId="operation-jobs_api_routes_batch_cancel_batch_job_responses_200_application-json_model"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
   hasExpandableContent={false}
   expandByDefault={true}
 >

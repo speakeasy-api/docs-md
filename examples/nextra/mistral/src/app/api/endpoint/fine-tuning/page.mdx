@@ -1,5 +1,5 @@
 ---
-sidebarTitle: Fine Tuning Jobs
+sidebarTitle: Fine Tuning
 ---
 
 import "@speakeasy-api/docs-md-react/nextra.css";
@@ -35,6 +35,7 @@ import {
   SectionTitle,
   TabbedSection,
   Tag,
+  TagDescription,
   TagTitle,
   TryItNow
 } from "@speakeasy-api/docs-md-react";
@@ -43,9 +44,15 @@ import {
 
 <TagTitle slot="title">
 
-# Fine Tuning Jobs Endpoints
+# Fine Tuning Endpoints
 
 </TagTitle>
+
+<TagDescription slot="description">
+
+Fine-tuning API
+
+</TagDescription>
 
 </Tag>
 
@@ -96,7 +103,7 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.fineTuning.jobs.list({});
+  const result = await mistral.fineTuning.jobsApiRoutesFineTuningGetFineTuningJobs({});
 
   // Handle the result
   console.log(result);
@@ -132,7 +139,7 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.fine_tuning.jobs.list()
+    res = mistral.fine_tuning.jobs_api_routes_fine_tuning_get_fine_tuning_jobs()
 
     # Handle response
     print(res)
@@ -866,7 +873,7 @@ _Default Value:_ `"completion"`
   id="data_CompletionJobOut_model"
   headingId="operation-jobs_api_routes_fine_tuning_get_fine_tuning_jobs_responses_200_application-json_data_completionjobout_model"
   parentId="data_CompletionJobOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ministral-3b-latest\"","linkedLabel":"\"ministral-3b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"ministral-8b-latest\"","linkedLabel":"\"ministral-8b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-7b\"","linkedLabel":"\"open-mistral-7b\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-nemo\"","linkedLabel":"\"open-mistral-nemo\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-small-latest\"","linkedLabel":"\"mistral-small-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-medium-latest\"","linkedLabel":"\"mistral-medium-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-large-latest\"","linkedLabel":"\"mistral-large-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"pixtral-12b-latest\"","linkedLabel":"\"pixtral-12b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"codestral-latest\"","linkedLabel":"\"codestral-latest\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -1892,7 +1899,7 @@ _Default Value:_ `"classifier"`
   id="data_ClassifierJobOut_model"
   headingId="operation-jobs_api_routes_fine_tuning_get_fine_tuning_jobs_responses_200_application-json_data_classifierjobout_model"
   parentId="data_ClassifierJobOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ministral-3b-latest\"","linkedLabel":"\"ministral-3b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"ministral-8b-latest\"","linkedLabel":"\"ministral-8b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-7b\"","linkedLabel":"\"open-mistral-7b\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-nemo\"","linkedLabel":"\"open-mistral-nemo\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-small-latest\"","linkedLabel":"\"mistral-small-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-medium-latest\"","linkedLabel":"\"mistral-medium-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-large-latest\"","linkedLabel":"\"mistral-large-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"pixtral-12b-latest\"","linkedLabel":"\"pixtral-12b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"codestral-latest\"","linkedLabel":"\"codestral-latest\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2200,10 +2207,12 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.fineTuning.jobs.create({
-    model: "Camaro",
-    hyperparameters: {
-      learningRate: 0.0001,
+  const result = await mistral.fineTuning.jobsApiRoutesFineTuningCreateFineTuningJob({
+    jobIn: {
+      model: "open-mistral-7b",
+      hyperparameters: {
+        learningRate: 0.0001,
+      },
     },
   });
 
@@ -2234,14 +2243,14 @@ Python
 <CodeSample>
 
 ```python
-from mistralai import Mistral
+from mistralai import Mistral, models
 
 
 with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.fine_tuning.jobs.create(model="Camaro", hyperparameters={
+    res = mistral.fine_tuning.jobs_api_routes_fine_tuning_create_fine_tuning_job(model=models.FineTuneableModel.OPEN_MISTRAL_7B, hyperparameters={
         "learning_rate": 0.0001,
     })
 
@@ -2256,6 +2265,56 @@ with Mistral(
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters [#operation-jobs_api_routes_fine_tuning_create_fine_tuning_job_parameters]
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="dry_run"
+  headingId="operation-jobs_api_routes_fine_tuning_create_fine_tuning_job_parameters_dry_run"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### dry_run [#operation-jobs_api_routes_fine_tuning_create_fine_tuning_job_parameters_dry_run]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+* If `true` the job is not spawned, instead the query returns a handful of useful metadata
+  for the user to perform sanity checks (see `LegacyJobMetadataOut` response).
+* Otherwise, the job is started and the query returns the job ID along with some of the
+  input parameters (see `JobOut` response).
+
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -3017,7 +3076,7 @@ _Default Value:_ `0`
   slot="entry"
   id="model"
   headingId="operation-jobs_api_routes_fine_tuning_create_fine_tuning_job_request_model"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ministral-3b-latest\"","linkedLabel":"\"ministral-3b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"ministral-8b-latest\"","linkedLabel":"\"ministral-8b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-7b\"","linkedLabel":"\"open-mistral-7b\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-nemo\"","linkedLabel":"\"open-mistral-nemo\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-small-latest\"","linkedLabel":"\"mistral-small-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-medium-latest\"","linkedLabel":"\"mistral-medium-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-large-latest\"","linkedLabel":"\"mistral-large-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"pixtral-12b-latest\"","linkedLabel":"\"pixtral-12b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"codestral-latest\"","linkedLabel":"\"codestral-latest\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -4058,7 +4117,7 @@ _Default Value:_ `"completion"`
   id="CompletionJobOut_model"
   headingId="operation-jobs_api_routes_fine_tuning_create_fine_tuning_job_responses_200_application-json_completionjobout_model"
   parentId="CompletionJobOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ministral-3b-latest\"","linkedLabel":"\"ministral-3b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"ministral-8b-latest\"","linkedLabel":"\"ministral-8b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-7b\"","linkedLabel":"\"open-mistral-7b\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-nemo\"","linkedLabel":"\"open-mistral-nemo\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-small-latest\"","linkedLabel":"\"mistral-small-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-medium-latest\"","linkedLabel":"\"mistral-medium-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-large-latest\"","linkedLabel":"\"mistral-large-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"pixtral-12b-latest\"","linkedLabel":"\"pixtral-12b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"codestral-latest\"","linkedLabel":"\"codestral-latest\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -5083,7 +5142,7 @@ _Default Value:_ `"classifier"`
   id="ClassifierJobOut_model"
   headingId="operation-jobs_api_routes_fine_tuning_create_fine_tuning_job_responses_200_application-json_classifierjobout_model"
   parentId="ClassifierJobOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ministral-3b-latest\"","linkedLabel":"\"ministral-3b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"ministral-8b-latest\"","linkedLabel":"\"ministral-8b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-7b\"","linkedLabel":"\"open-mistral-7b\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-nemo\"","linkedLabel":"\"open-mistral-nemo\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-small-latest\"","linkedLabel":"\"mistral-small-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-medium-latest\"","linkedLabel":"\"mistral-medium-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-large-latest\"","linkedLabel":"\"mistral-large-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"pixtral-12b-latest\"","linkedLabel":"\"pixtral-12b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"codestral-latest\"","linkedLabel":"\"codestral-latest\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -5733,7 +5792,7 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.fineTuning.jobs.get({
+  const result = await mistral.fineTuning.jobsApiRoutesFineTuningGetFineTuningJob({
     jobId: "c167a961-ffca-4bcf-93ac-6169468dd389",
   });
 
@@ -5771,7 +5830,7 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.fine_tuning.jobs.get(job_id="c167a961-ffca-4bcf-93ac-6169468dd389")
+    res = mistral.fine_tuning.jobs_api_routes_fine_tuning_get_fine_tuning_job(job_id="c167a961-ffca-4bcf-93ac-6169468dd389")
 
     # Handle response
     print(res)
@@ -6846,7 +6905,7 @@ _Default Value:_ `"completion"`
   id="CompletionDetailedJobOut_model"
   headingId="operation-jobs_api_routes_fine_tuning_get_fine_tuning_job_responses_200_application-json_completiondetailedjobout_model"
   parentId="CompletionDetailedJobOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ministral-3b-latest\"","linkedLabel":"\"ministral-3b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"ministral-8b-latest\"","linkedLabel":"\"ministral-8b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-7b\"","linkedLabel":"\"open-mistral-7b\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-nemo\"","linkedLabel":"\"open-mistral-nemo\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-small-latest\"","linkedLabel":"\"mistral-small-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-medium-latest\"","linkedLabel":"\"mistral-medium-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-large-latest\"","linkedLabel":"\"mistral-large-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"pixtral-12b-latest\"","linkedLabel":"\"pixtral-12b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"codestral-latest\"","linkedLabel":"\"codestral-latest\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -8255,7 +8314,7 @@ _Default Value:_ `"classifier"`
   id="ClassifierDetailedJobOut_model"
   headingId="operation-jobs_api_routes_fine_tuning_get_fine_tuning_job_responses_200_application-json_classifierdetailedjobout_model"
   parentId="ClassifierDetailedJobOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ministral-3b-latest\"","linkedLabel":"\"ministral-3b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"ministral-8b-latest\"","linkedLabel":"\"ministral-8b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-7b\"","linkedLabel":"\"open-mistral-7b\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-nemo\"","linkedLabel":"\"open-mistral-nemo\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-small-latest\"","linkedLabel":"\"mistral-small-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-medium-latest\"","linkedLabel":"\"mistral-medium-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-large-latest\"","linkedLabel":"\"mistral-large-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"pixtral-12b-latest\"","linkedLabel":"\"pixtral-12b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"codestral-latest\"","linkedLabel":"\"codestral-latest\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -8475,7 +8534,7 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.fineTuning.jobs.cancel({
+  const result = await mistral.fineTuning.jobsApiRoutesFineTuningCancelFineTuningJob({
     jobId: "6188a2f6-7513-4e0f-89cc-3f8088523a49",
   });
 
@@ -8513,7 +8572,7 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.fine_tuning.jobs.cancel(job_id="6188a2f6-7513-4e0f-89cc-3f8088523a49")
+    res = mistral.fine_tuning.jobs_api_routes_fine_tuning_cancel_fine_tuning_job(job_id="6188a2f6-7513-4e0f-89cc-3f8088523a49")
 
     # Handle response
     print(res)
@@ -9588,7 +9647,7 @@ _Default Value:_ `"completion"`
   id="CompletionDetailedJobOut_model"
   headingId="operation-jobs_api_routes_fine_tuning_cancel_fine_tuning_job_responses_200_application-json_completiondetailedjobout_model"
   parentId="CompletionDetailedJobOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ministral-3b-latest\"","linkedLabel":"\"ministral-3b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"ministral-8b-latest\"","linkedLabel":"\"ministral-8b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-7b\"","linkedLabel":"\"open-mistral-7b\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-nemo\"","linkedLabel":"\"open-mistral-nemo\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-small-latest\"","linkedLabel":"\"mistral-small-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-medium-latest\"","linkedLabel":"\"mistral-medium-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-large-latest\"","linkedLabel":"\"mistral-large-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"pixtral-12b-latest\"","linkedLabel":"\"pixtral-12b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"codestral-latest\"","linkedLabel":"\"codestral-latest\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -10997,7 +11056,7 @@ _Default Value:_ `"classifier"`
   id="ClassifierDetailedJobOut_model"
   headingId="operation-jobs_api_routes_fine_tuning_cancel_fine_tuning_job_responses_200_application-json_classifierdetailedjobout_model"
   parentId="ClassifierDetailedJobOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ministral-3b-latest\"","linkedLabel":"\"ministral-3b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"ministral-8b-latest\"","linkedLabel":"\"ministral-8b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-7b\"","linkedLabel":"\"open-mistral-7b\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-nemo\"","linkedLabel":"\"open-mistral-nemo\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-small-latest\"","linkedLabel":"\"mistral-small-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-medium-latest\"","linkedLabel":"\"mistral-medium-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-large-latest\"","linkedLabel":"\"mistral-large-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"pixtral-12b-latest\"","linkedLabel":"\"pixtral-12b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"codestral-latest\"","linkedLabel":"\"codestral-latest\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -11217,7 +11276,7 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.fineTuning.jobs.start({
+  const result = await mistral.fineTuning.jobsApiRoutesFineTuningStartFineTuningJob({
     jobId: "56553e4d-0679-471e-b9ac-59a77d671103",
   });
 
@@ -11255,7 +11314,7 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.fine_tuning.jobs.start(job_id="56553e4d-0679-471e-b9ac-59a77d671103")
+    res = mistral.fine_tuning.jobs_api_routes_fine_tuning_start_fine_tuning_job(job_id="56553e4d-0679-471e-b9ac-59a77d671103")
 
     # Handle response
     print(res)
@@ -12324,7 +12383,7 @@ _Default Value:_ `"completion"`
   id="CompletionDetailedJobOut_model"
   headingId="operation-jobs_api_routes_fine_tuning_start_fine_tuning_job_responses_200_application-json_completiondetailedjobout_model"
   parentId="CompletionDetailedJobOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ministral-3b-latest\"","linkedLabel":"\"ministral-3b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"ministral-8b-latest\"","linkedLabel":"\"ministral-8b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-7b\"","linkedLabel":"\"open-mistral-7b\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-nemo\"","linkedLabel":"\"open-mistral-nemo\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-small-latest\"","linkedLabel":"\"mistral-small-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-medium-latest\"","linkedLabel":"\"mistral-medium-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-large-latest\"","linkedLabel":"\"mistral-large-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"pixtral-12b-latest\"","linkedLabel":"\"pixtral-12b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"codestral-latest\"","linkedLabel":"\"codestral-latest\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -13733,7 +13792,7 @@ _Default Value:_ `"classifier"`
   id="ClassifierDetailedJobOut_model"
   headingId="operation-jobs_api_routes_fine_tuning_start_fine_tuning_job_responses_200_application-json_classifierdetailedjobout_model"
   parentId="ClassifierDetailedJobOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ministral-3b-latest\"","linkedLabel":"\"ministral-3b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"ministral-8b-latest\"","linkedLabel":"\"ministral-8b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-7b\"","linkedLabel":"\"open-mistral-7b\"","children":[],"breakoutSubTypes":{}},{"label":"\"open-mistral-nemo\"","linkedLabel":"\"open-mistral-nemo\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-small-latest\"","linkedLabel":"\"mistral-small-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-medium-latest\"","linkedLabel":"\"mistral-medium-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"mistral-large-latest\"","linkedLabel":"\"mistral-large-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"pixtral-12b-latest\"","linkedLabel":"\"pixtral-12b-latest\"","children":[],"breakoutSubTypes":{}},{"label":"\"codestral-latest\"","linkedLabel":"\"codestral-latest\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}

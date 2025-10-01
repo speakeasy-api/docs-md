@@ -1,0 +1,5068 @@
+---
+sidebar_position: 3.1
+sidebar_label: Audio Transcriptions
+---
+
+import "@speakeasy-api/docs-md-react/docusaurus.css";
+
+import {
+  CodeSample,
+  DebugPlaceholder,
+  ExpandableBreakout,
+  ExpandableBreakoutDefaultValue,
+  ExpandableBreakoutDescription,
+  ExpandableBreakoutExamples,
+  ExpandableBreakoutProperties,
+  ExpandableBreakoutTitle,
+  ExpandableProperty,
+  ExpandablePropertyBreakouts,
+  ExpandablePropertyDefaultValue,
+  ExpandablePropertyDescription,
+  ExpandablePropertyExamples,
+  ExpandablePropertyTitle,
+  ExpandableSection,
+  FrontMatterDisplayType,
+  Operation,
+  OperationCodeSamplesSection,
+  OperationDescriptionSection,
+  OperationRequestBodyDescriptionSection,
+  OperationRequestBodyExamplesSection,
+  OperationRequestBodySection,
+  OperationResponseBodyDescriptionSection,
+  OperationResponseBodyDisplayTypeSection,
+  OperationResponseBodyExamplesSection,
+  OperationResponseBodySection,
+  OperationSummarySection,
+  OperationTitleSection,
+  Pill,
+  Section,
+  SectionContent,
+  SectionTab,
+  SectionTitle,
+  TabbedSection,
+  Tag,
+  TagDescription,
+  TagTitle,
+  TryItNow
+} from "@speakeasy-api/docs-md-react";
+
+<Tag slot="tag">
+
+<TagTitle slot="title">
+
+# Audio Transcriptions Endpoints
+
+</TagTitle>
+
+<TagDescription slot="description">
+
+API for audio transcription.
+
+</TagDescription>
+
+</Tag>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /v1/audio/transcriptions \{#operation-audio_api_v1_transcriptions_post\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+Create Transcription
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-audio_api_v1_transcriptions_post+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-audio_api_v1_transcriptions_post+code-samples+typescript"
+>
+
+<TryItNow
+  externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.audio.transcriptions.audioApiV1TranscriptionsPost({
+    model: "Model X",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-audio_api_v1_transcriptions_post+code-samples+python">
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-audio_api_v1_transcriptions_post+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.audio.transcriptions.audio_api_v1_transcriptions_post(model="Model X")
+
+    # Handle response
+    print(res)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Examples \{#operation-audio_api_v1_transcriptions_post+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+content:
+  application/json:
+    examples:
+      example1:
+        value: { foo: 'bar'}
+```
+
+</DebugPlaceholder>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-audio_api_v1_transcriptions_post+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="file"
+  headingId="operation-audio_api_v1_transcriptions_post+request+file"
+  typeInfo={{"label":"File","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post+request+file+file\">File</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### file \{#operation-audio_api_v1_transcriptions_post+request+file\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The File object (not file name) to be uploaded.
+ To upload a file and specify a custom file name you should format your request as such:
+ ```bash
+ file=@path/to/your/file.jsonl;filename=custom_name.jsonl
+ ```
+ Otherwise, you can just keep the original file name:
+ ```bash
+ file=@path/to/your/file.jsonl
+ ```
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="file_File"
+  headingId="operation-audio_api_v1_transcriptions_post+request+file+file"
+  parentId="file"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### File \{#operation-audio_api_v1_transcriptions_post+request+file+file\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+The File object (not file name) to be uploaded.
+ To upload a file and specify a custom file name you should format your request as such:
+ ```bash
+ file=@path/to/your/file.jsonl;filename=custom_name.jsonl
+ ```
+ Otherwise, you can just keep the original file name:
+ ```bash
+ file=@path/to/your/file.jsonl
+ ```
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="file_File_content"
+  headingId="operation-audio_api_v1_transcriptions_post+request+file+file+content"
+  parentId="file_File"
+  typeInfo={{"label":"binary","linkedLabel":"binary","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### content \{#operation-audio_api_v1_transcriptions_post+request+file+file+content\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="file_File_fileName"
+  headingId="operation-audio_api_v1_transcriptions_post+request+file+file+filename"
+  parentId="file_File"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fileName \{#operation-audio_api_v1_transcriptions_post+request+file+file+filename\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="file_id"
+  headingId="operation-audio_api_v1_transcriptions_post+request+file_id"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### file_id \{#operation-audio_api_v1_transcriptions_post+request+file_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+ID of a file uploaded to /v1/files
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="file_url"
+  headingId="operation-audio_api_v1_transcriptions_post+request+file_url"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### file_url \{#operation-audio_api_v1_transcriptions_post+request+file_url\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Url of a file to be transcribed
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="language"
+  headingId="operation-audio_api_v1_transcriptions_post+request+language"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### language \{#operation-audio_api_v1_transcriptions_post+request+language\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Language of the audio, e.g. 'en'. Providing the language can boost accuracy.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="model"
+  headingId="operation-audio_api_v1_transcriptions_post+request+model"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### model \{#operation-audio_api_v1_transcriptions_post+request+model\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="stream"
+  headingId="operation-audio_api_v1_transcriptions_post+request+stream"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### stream \{#operation-audio_api_v1_transcriptions_post+request+stream\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `false`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="temperature"
+  headingId="operation-audio_api_v1_transcriptions_post+request+temperature"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### temperature \{#operation-audio_api_v1_transcriptions_post+request+temperature\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="timestamp_granularities"
+  headingId="operation-audio_api_v1_transcriptions_post+request+timestamp_granularities"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"segment\"","linkedLabel":"\"segment\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timestamp_granularities \{#operation-audio_api_v1_transcriptions_post+request+timestamp_granularities\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Granularities of timestamps to include in the response.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-audio_api_v1_transcriptions_post+responses\}
+
+</SectionTitle>
+
+<SectionTab
+  slot="tab"
+  id="operation-audio_api_v1_transcriptions_post+responses+200+application-json"
+>
+
+200
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-audio_api_v1_transcriptions_post+responses+200+application-json"
+>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Examples \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+content:
+  application/json:
+    examples:
+      example1:
+        value: { foo: 'bar'}
+```
+
+</DebugPlaceholder>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-audio_api_v1_transcriptions_post+responses\}
+
+</SectionTitle>
+
+<SectionTab
+  slot="tab"
+  id="operation-audio_api_v1_transcriptions_post+responses+200+application-json"
+>
+
+200
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-audio_api_v1_transcriptions_post+responses+200+application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Successful Response
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="language"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+language"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### language \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+language\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="model"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+model"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### model \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+model\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="segments"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments+transcriptionsegmentchunk\">TranscriptionSegmentChunk</a>","children":[{"label":"TranscriptionSegmentChunk","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments+transcriptionsegmentchunk\">TranscriptionSegmentChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### segments \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="segments_TranscriptionSegmentChunk"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments+transcriptionsegmentchunk"
+  parentId="segments"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### TranscriptionSegmentChunk \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments+transcriptionsegmentchunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="segments_TranscriptionSegmentChunk_end"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments+transcriptionsegmentchunk+end"
+  parentId="segments_TranscriptionSegmentChunk"
+  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### end \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments+transcriptionsegmentchunk+end\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="segments_TranscriptionSegmentChunk_start"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments+transcriptionsegmentchunk+start"
+  parentId="segments_TranscriptionSegmentChunk"
+  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### start \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments+transcriptionsegmentchunk+start\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="segments_TranscriptionSegmentChunk_text"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments+transcriptionsegmentchunk+text"
+  parentId="segments_TranscriptionSegmentChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### text \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments+transcriptionsegmentchunk+text\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="segments_TranscriptionSegmentChunk_type"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments+transcriptionsegmentchunk+type"
+  parentId="segments_TranscriptionSegmentChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription_segment\"","linkedLabel":"\"transcription_segment\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+segments+transcriptionsegmentchunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"transcription_segment"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="text"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+text"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### text \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+text\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="usage"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage"
+  typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage+usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### usage \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="usage_UsageInfo"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage+usageinfo"
+  parentId="usage"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### UsageInfo \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage+usageinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="usage_UsageInfo_completion_tokens"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage+usageinfo+completion_tokens"
+  parentId="usage_UsageInfo"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### completion_tokens \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage+usageinfo+completion_tokens\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `0`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="usage_UsageInfo_prompt_audio_seconds"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage+usageinfo+prompt_audio_seconds"
+  parentId="usage_UsageInfo"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### prompt_audio_seconds \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage+usageinfo+prompt_audio_seconds\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="usage_UsageInfo_prompt_tokens"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage+usageinfo+prompt_tokens"
+  parentId="usage_UsageInfo"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### prompt_tokens \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage+usageinfo+prompt_tokens\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `0`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="usage_UsageInfo_total_tokens"
+  headingId="operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage+usageinfo+total_tokens"
+  parentId="usage_UsageInfo"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### total_tokens \{#operation-audio_api_v1_transcriptions_post+responses+200+application-json+usage+usageinfo+total_tokens\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `0`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /v1/audio/transcriptions\#stream \{#operation-audio_api_v1_transcriptions_post_stream\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+Create streaming transcription (SSE)
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-audio_api_v1_transcriptions_post_stream+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-audio_api_v1_transcriptions_post_stream+code-samples+typescript"
+>
+
+<TryItNow
+  externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await mistral.audio.transcriptions.audioApiV1TranscriptionsPostStream({
+    model: "Camry",
+  });
+
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
+}
+
+run();`}
+/>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-audio_api_v1_transcriptions_post_stream+code-samples+python"
+>
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-audio_api_v1_transcriptions_post_stream+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+
+
+with Mistral(
+    api_key="<YOUR_BEARER_TOKEN_HERE>",
+) as mistral:
+
+    res = mistral.audio.transcriptions.audio_api_v1_transcriptions_post_stream(model="Camry")
+
+    with res as event_stream:
+        for event in event_stream:
+            # handle event
+            print(event, flush=True)
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Examples \{#operation-audio_api_v1_transcriptions_post_stream+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+content:
+  application/json:
+    examples:
+      example1:
+        value: { foo: 'bar'}
+```
+
+</DebugPlaceholder>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-audio_api_v1_transcriptions_post_stream+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="file"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+request+file"
+  typeInfo={{"label":"File","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream+request+file+file\">File</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### file \{#operation-audio_api_v1_transcriptions_post_stream+request+file\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The File object (not file name) to be uploaded.
+ To upload a file and specify a custom file name you should format your request as such:
+ ```bash
+ file=@path/to/your/file.jsonl;filename=custom_name.jsonl
+ ```
+ Otherwise, you can just keep the original file name:
+ ```bash
+ file=@path/to/your/file.jsonl
+ ```
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="file_File"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+request+file+file"
+  parentId="file"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### File \{#operation-audio_api_v1_transcriptions_post_stream+request+file+file\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+The File object (not file name) to be uploaded.
+ To upload a file and specify a custom file name you should format your request as such:
+ ```bash
+ file=@path/to/your/file.jsonl;filename=custom_name.jsonl
+ ```
+ Otherwise, you can just keep the original file name:
+ ```bash
+ file=@path/to/your/file.jsonl
+ ```
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="file_File_content"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+request+file+file+content"
+  parentId="file_File"
+  typeInfo={{"label":"binary","linkedLabel":"binary","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### content \{#operation-audio_api_v1_transcriptions_post_stream+request+file+file+content\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="file_File_fileName"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+request+file+file+filename"
+  parentId="file_File"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fileName \{#operation-audio_api_v1_transcriptions_post_stream+request+file+file+filename\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="file_id"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+request+file_id"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### file_id \{#operation-audio_api_v1_transcriptions_post_stream+request+file_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+ID of a file uploaded to /v1/files
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="file_url"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+request+file_url"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### file_url \{#operation-audio_api_v1_transcriptions_post_stream+request+file_url\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Url of a file to be transcribed
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="language"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+request+language"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### language \{#operation-audio_api_v1_transcriptions_post_stream+request+language\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Language of the audio, e.g. 'en'. Providing the language can boost accuracy.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="model"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+request+model"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### model \{#operation-audio_api_v1_transcriptions_post_stream+request+model\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="stream"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+request+stream"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### stream \{#operation-audio_api_v1_transcriptions_post_stream+request+stream\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `true`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="temperature"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+request+temperature"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### temperature \{#operation-audio_api_v1_transcriptions_post_stream+request+temperature\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="timestamp_granularities"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+request+timestamp_granularities"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"segment\"","linkedLabel":"\"segment\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timestamp_granularities \{#operation-audio_api_v1_transcriptions_post_stream+request+timestamp_granularities\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Granularities of timestamps to include in the response.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-audio_api_v1_transcriptions_post_stream+responses\}
+
+</SectionTitle>
+
+<SectionTab
+  slot="tab"
+  id="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream"
+>
+
+200
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream"
+>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Examples \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+content:
+  application/json:
+    examples:
+      example1:
+        value: { foo: 'bar'}
+```
+
+</DebugPlaceholder>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Server-Side Events \{#operation-audio_api_v1_transcriptions_post_stream+responses\}
+
+</SectionTitle>
+
+<SectionTab
+  slot="tab"
+  id="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream"
+>
+
+200
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream"
+>
+
+<OperationResponseBodyDisplayTypeSection slot="response-body-display-type">
+
+<FrontMatterDisplayType
+  typeInfo={{"label":"event-stream","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream+responses+transcriptionstreamevents\">TranscriptionStreamEvents</a>","children":[{"label":"TranscriptionStreamEvents","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream+responses+transcriptionstreamevents\">TranscriptionStreamEvents</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+/>
+
+</OperationResponseBodyDisplayTypeSection>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Stream of transcription events
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableBreakout
+  slot="entry"
+  id="TranscriptionStreamEvents"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents"
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### TranscriptionStreamEvents \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data"
+  parentId="TranscriptionStreamEvents"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"TranscriptionStreamTextDelta","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamtextdelta\">TranscriptionStreamTextDelta</a>","children":[],"breakoutSubTypes":{}},{"label":"TranscriptionStreamLanguage","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamlanguage\">TranscriptionStreamLanguage</a>","children":[],"breakoutSubTypes":{}},{"label":"TranscriptionStreamSegmentDelta","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamsegmentdelta\">TranscriptionStreamSegmentDelta</a>","children":[],"breakoutSubTypes":{}},{"label":"TranscriptionStreamDone","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone\">TranscriptionStreamDone</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### data \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamtextdelta"
+  parentId="TranscriptionStreamEvents_data"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### TranscriptionStreamTextDelta \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamtextdelta\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta_text"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamtextdelta+text"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### text \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamtextdelta+text\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta_type"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamtextdelta+type"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription.text.delta\"","linkedLabel":"\"transcription.text.delta\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamtextdelta+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"transcription.text.delta"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamLanguage"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamlanguage"
+  parentId="TranscriptionStreamEvents_data"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### TranscriptionStreamLanguage \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamlanguage\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamLanguage_audio_language"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamlanguage+audio_language"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamLanguage"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Pattern: ^\\w{2}$","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### audio_language \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamlanguage+audio_language\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamLanguage_type"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamlanguage+type"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamLanguage"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription.language\"","linkedLabel":"\"transcription.language\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamlanguage+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"transcription.language"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamsegmentdelta"
+  parentId="TranscriptionStreamEvents_data"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### TranscriptionStreamSegmentDelta \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamsegmentdelta\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta_end"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamsegmentdelta+end"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta"
+  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### end \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamsegmentdelta+end\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta_start"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamsegmentdelta+start"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta"
+  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### start \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamsegmentdelta+start\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta_text"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamsegmentdelta+text"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### text \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamsegmentdelta+text\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta_type"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamsegmentdelta+type"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription.segment\"","linkedLabel":"\"transcription.segment\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamsegmentdelta+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"transcription.segment"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone"
+  parentId="TranscriptionStreamEvents_data"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### TranscriptionStreamDone \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_language"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+language"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### language \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+language\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_model"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+model"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### model \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+model\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments+transcriptionsegmentchunk\">TranscriptionSegmentChunk</a>","children":[{"label":"TranscriptionSegmentChunk","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments+transcriptionsegmentchunk\">TranscriptionSegmentChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### segments \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments+transcriptionsegmentchunk"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### TranscriptionSegmentChunk \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments+transcriptionsegmentchunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk_end"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments+transcriptionsegmentchunk+end"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk"
+  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### end \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments+transcriptionsegmentchunk+end\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk_start"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments+transcriptionsegmentchunk+start"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk"
+  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### start \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments+transcriptionsegmentchunk+start\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk_text"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments+transcriptionsegmentchunk+text"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### text \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments+transcriptionsegmentchunk+text\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk_type"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments+transcriptionsegmentchunk+type"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription_segment\"","linkedLabel":"\"transcription_segment\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+segments+transcriptionsegmentchunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"transcription_segment"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_text"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+text"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### text \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+text\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_type"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+type"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription.done\"","linkedLabel":"\"transcription.done\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"transcription.done"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
+  typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage+usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### usage \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage+usageinfo"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### UsageInfo \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage+usageinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo_completion_tokens"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage+usageinfo+completion_tokens"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### completion_tokens \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage+usageinfo+completion_tokens\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `0`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo_prompt_audio_seconds"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage+usageinfo+prompt_audio_seconds"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### prompt_audio_seconds \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage+usageinfo+prompt_audio_seconds\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo_prompt_tokens"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage+usageinfo+prompt_tokens"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### prompt_tokens \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage+usageinfo+prompt_tokens\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `0`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo_total_tokens"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage+usageinfo+total_tokens"
+  parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### total_tokens \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+data+transcriptionstreamdone+usage+usageinfo+total_tokens\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `0`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="TranscriptionStreamEvents_event"
+  headingId="operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+event"
+  parentId="TranscriptionStreamEvents"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription.language\"","linkedLabel":"\"transcription.language\"","children":[],"breakoutSubTypes":{}},{"label":"\"transcription.segment\"","linkedLabel":"\"transcription.segment\"","children":[],"breakoutSubTypes":{}},{"label":"\"transcription.text.delta\"","linkedLabel":"\"transcription.text.delta\"","children":[],"breakoutSubTypes":{}},{"label":"\"transcription.done\"","linkedLabel":"\"transcription.done\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### event \{#operation-audio_api_v1_transcriptions_post_stream+responses+200+text-event-stream+transcriptionstreamevents+event\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>

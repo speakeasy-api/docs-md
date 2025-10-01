@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3.6
+sidebar_position: 3.10
 sidebar_label: Embeddings
 ---
 
@@ -104,9 +104,9 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.embeddings.create({
+  const result = await mistral.embeddings.embeddingsV1EmbeddingsPost({
     model: "mistral-embed",
-    inputs: [
+    input: [
       "Embed this sentence.",
       "As well as this one.",
     ],
@@ -139,7 +139,7 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.embeddings.create(model="mistral-embed", inputs=[
+    res = mistral.embeddings.embeddings_v1_embeddings_post(model="mistral-embed", input_=[
         "Embed this sentence.",
         "As well as this one.",
     ])
@@ -222,8 +222,8 @@ description: My awesome description
 
 <ExpandableProperty
   slot="entry"
-  id="inputs"
-  headingId="operation-embeddings_v1_embeddings_post+request+inputs"
+  id="input"
+  headingId="operation-embeddings_v1_embeddings_post+request+input"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
@@ -232,7 +232,7 @@ description: My awesome description
 
 <ExpandablePropertyTitle slot="title">
 
-##### inputs \{#operation-embeddings_v1_embeddings_post+request+inputs\}
+##### input \{#operation-embeddings_v1_embeddings_post+request+input\}
 
 </ExpandablePropertyTitle>
 
@@ -1205,7 +1205,7 @@ defaultValue: MyDefaultValue
   headingId="operation-embeddings_v1_embeddings_post+responses+200+application-json+usage+usageinfo+completion_tokens"
   parentId="usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
@@ -1234,11 +1234,76 @@ description: My awesome description
 
 <ExpandablePropertyExamples slot="examples">
 
-_Example:_
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
 
 ```
-34
+examples:
+  - MyExampleValue
 ```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `0`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="usage_UsageInfo_prompt_audio_seconds"
+  headingId="operation-embeddings_v1_embeddings_post+responses+200+application-json+usage+usageinfo+prompt_audio_seconds"
+  parentId="usage_UsageInfo"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### prompt_audio_seconds \{#operation-embeddings_v1_embeddings_post+responses+200+application-json+usage+usageinfo+prompt_audio_seconds\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
 
 </ExpandablePropertyExamples>
 
@@ -1266,7 +1331,7 @@ defaultValue: MyDefaultValue
   headingId="operation-embeddings_v1_embeddings_post+responses+200+application-json+usage+usageinfo+prompt_tokens"
   parentId="usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
@@ -1295,27 +1360,24 @@ description: My awesome description
 
 <ExpandablePropertyExamples slot="examples">
 
-_Example:_
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
 
 ```
-16
+examples:
+  - MyExampleValue
 ```
+
+</DebugPlaceholder>
 
 </ExpandablePropertyExamples>
 
 <ExpandablePropertyDefaultValue slot="defaultValue">
 
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
+_Default Value:_ `0`
 
 </ExpandablePropertyDefaultValue>
 
@@ -1327,7 +1389,7 @@ defaultValue: MyDefaultValue
   headingId="operation-embeddings_v1_embeddings_post+responses+200+application-json+usage+usageinfo+total_tokens"
   parentId="usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
@@ -1356,27 +1418,24 @@ description: My awesome description
 
 <ExpandablePropertyExamples slot="examples">
 
-_Example:_
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
 
 ```
-50
+examples:
+  - MyExampleValue
 ```
+
+</DebugPlaceholder>
 
 </ExpandablePropertyExamples>
 
 <ExpandablePropertyDefaultValue slot="defaultValue">
 
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
+_Default Value:_ `0`
 
 </ExpandablePropertyDefaultValue>
 

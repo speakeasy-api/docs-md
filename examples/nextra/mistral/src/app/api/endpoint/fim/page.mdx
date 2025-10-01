@@ -102,14 +102,15 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.fim.complete({
-    model: "codestral-2405",
+  const result = await mistral.fim.fimCompletionV1FimCompletionsPost({
     prompt: "def",
     suffix: "return a+b",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
 }
 
 run();`}
@@ -142,10 +143,12 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.fim.complete(model="codestral-2405", prompt="def", suffix="return a+b")
+    res = mistral.fim.fim_completion_v1_fim_completions_post(prompt="def", suffix="return a+b")
 
-    # Handle response
-    print(res)
+    with res as event_stream:
+        for event in event_stream:
+            # handle event
+            print(event, flush=True)
 ```
 
 </CodeSample>
@@ -223,7 +226,7 @@ The minimum number of tokens to generate in the completion.
   id="model"
   headingId="operation-fim_completion_v1_fim_completions_post_request_model"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
 >
@@ -251,6 +254,12 @@ codestral-2405
 ```
 
 </ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"codestral-2405"`
+
+</ExpandablePropertyDefaultValue>
 
 </ExpandableProperty>
 
@@ -477,7 +486,7 @@ _Default Value:_ `1`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json"
 >
 
-200
+200 (application/json)
 
 </SectionTab>
 
@@ -628,7 +637,7 @@ _Example:_
   id="choices_ChatCompletionChoice_message_AssistantMessage_content"
   headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"FileChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_filechunk\">FileChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ThinkChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk\">ThinkChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"AudioChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_audiochunk\">AudioChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -724,7 +733,7 @@ _Default Value:_ `"text"`
 
 <ExpandableBreakoutDescription slot="description">
 
-An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0
 
 </ExpandableBreakoutDescription>
 
@@ -987,6 +996,366 @@ _Default Value:_ `"document_url"`
 <ExpandablePropertyDefaultValue slot="defaultValue">
 
 _Default Value:_ `"reference"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_filechunk"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### FileChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_filechunk]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk_file_id"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_filechunk_file_id"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### file_id [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_filechunk_file_id]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_filechunk_type"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_filechunk_type]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"file"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ThinkChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_closed"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_closed"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### closed [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_closed]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Whether the thinking chunk is closed or not. Currently only used for prefixing.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `true`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### thinking [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_referencechunk"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ReferenceChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_referencechunk]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk_reference_ids"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_referencechunk_reference_ids"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk"
+  typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### reference_ids [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_referencechunk_reference_ids]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_referencechunk_type"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_referencechunk_type]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"reference"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_textchunk"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### TextChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_textchunk]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk_text"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_textchunk_text"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### text [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_textchunk_text]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_textchunk_type"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_textchunk_type]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"text"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_type"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"thinking\"","linkedLabel":"\"thinking\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_type]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"thinking"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_audiochunk"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### AudioChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_audiochunk]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk_input_audio"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_audiochunk_input_audio"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### input_audio [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_audiochunk_input_audio]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_audiochunk_type"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"input_audio\"","linkedLabel":"\"input_audio\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_audiochunk_type]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"input_audio"`
 
 </ExpandablePropertyDefaultValue>
 
@@ -1420,7 +1789,7 @@ chat.completion
   headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo_completion_tokens"
   parentId="usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
@@ -1431,15 +1800,30 @@ chat.completion
 
 </ExpandablePropertyTitle>
 
-<ExpandablePropertyExamples slot="examples">
+<ExpandablePropertyDefaultValue slot="defaultValue">
 
-_Example:_
+_Default Value:_ `0`
 
-```
-34
-```
+</ExpandablePropertyDefaultValue>
 
-</ExpandablePropertyExamples>
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="usage_UsageInfo_prompt_audio_seconds"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo_prompt_audio_seconds"
+  parentId="usage_UsageInfo"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### prompt_audio_seconds [#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo_prompt_audio_seconds]
+
+</ExpandablePropertyTitle>
 
 </ExpandableProperty>
 
@@ -1449,7 +1833,7 @@ _Example:_
   headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo_prompt_tokens"
   parentId="usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
@@ -1460,15 +1844,11 @@ _Example:_
 
 </ExpandablePropertyTitle>
 
-<ExpandablePropertyExamples slot="examples">
+<ExpandablePropertyDefaultValue slot="defaultValue">
 
-_Example:_
+_Default Value:_ `0`
 
-```
-16
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyDefaultValue>
 
 </ExpandableProperty>
 
@@ -1478,7 +1858,7 @@ _Example:_
   headingId="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo_total_tokens"
   parentId="usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
@@ -1489,15 +1869,11 @@ _Example:_
 
 </ExpandablePropertyTitle>
 
-<ExpandablePropertyExamples slot="examples">
+<ExpandablePropertyDefaultValue slot="defaultValue">
 
-_Example:_
+_Default Value:_ `0`
 
-```
-50
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyDefaultValue>
 
 </ExpandableProperty>
 
@@ -1513,434 +1889,31 @@ _Example:_
 
 </SectionContent>
 
-</TabbedSection>
+<SectionTab
+  slot="tab"
+  id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream"
+>
 
-</OperationResponseBodySection>
-
-</Operation>
-
-<Operation>
-
-<OperationTitleSection slot="title">
-
-## <Pill variant="primary"><b>POST</b></Pill> /v1/fim/completions\#stream [#operation-stream_fim]
-
-</OperationTitleSection>
-
-<OperationSummarySection slot="summary">
-
-_Stream fim completion_
-
-</OperationSummarySection>
-
-<OperationDescriptionSection slot="description">
-
-Mistral AI provides the ability to stream responses back to a client in order to allow partial results for certain requests. Tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a data: [DONE] message. Otherwise, the server will hold the request open until the timeout or until completion, with the response containing the full result as JSON.
-
-</OperationDescriptionSection>
-
-<OperationCodeSamplesSection slot="code-samples">
-
-<TabbedSection>
-
-<SectionTab slot="tab" id="operation-stream_fim_code-samples_typescript">
-
-TypeScript
+200 (text/event-stream)
 
 </SectionTab>
 
-<SectionContent slot="content" id="operation-stream_fim_code-samples_typescript">
-
-<TryItNow
-  externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
-  defaultValue={`import { Mistral } from "@mistralai/mistralai";
-
-const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await mistral.fim.stream({
-    model: "codestral-2405",
-    prompt: "def",
-    suffix: "return a+b",
-  });
-
-  for await (const event of result) {
-    // Handle the event
-    console.log(event);
-  }
-}
-
-run();`}
-  packageManagerUrl="/pkg"
-/>
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-stream_fim_code-samples_python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-stream_fim_code-samples_python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.fim.stream(model="codestral-2405", prompt="def", suffix="return a+b")
-
-    with res as event_stream:
-        for event in event_stream:
-            # handle event
-            print(event, flush=True)
-```
-
-</CodeSample>
-
-</SectionContent>
-
-</TabbedSection>
-
-</OperationCodeSamplesSection>
-
-<OperationRequestBodySection slot="request-body">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Request Body [#operation-stream_fim_request]
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<ExpandableSection>
-
-<ExpandableProperty
-  slot="entry"
-  id="max_tokens"
-  headingId="operation-stream_fim_request_max_tokens"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+<SectionContent
+  slot="content"
+  id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream"
 >
-
-<ExpandablePropertyTitle slot="title">
-
-##### max_tokens [#operation-stream_fim_request_max_tokens]
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The maximum number of tokens to generate in the completion. The token count of your prompt plus `max_tokens` cannot exceed the model's context length.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="min_tokens"
-  headingId="operation-stream_fim_request_min_tokens"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### min_tokens [#operation-stream_fim_request_min_tokens]
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The minimum number of tokens to generate in the completion.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="model"
-  headingId="operation-stream_fim_request_model"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### model [#operation-stream_fim_request_model]
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-ID of the model to use. Only compatible for now with:
-  - `codestral-2405`
-  - `codestral-latest`
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-codestral-2405
-```
-
-</ExpandablePropertyExamples>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="prompt"
-  headingId="operation-stream_fim_request_prompt"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### prompt [#operation-stream_fim_request_prompt]
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The text/code to complete.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-def
-```
-
-</ExpandablePropertyExamples>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="random_seed"
-  headingId="operation-stream_fim_request_random_seed"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### random_seed [#operation-stream_fim_request_random_seed]
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The seed to use for random sampling. If set, different calls will generate deterministic results.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="stop"
-  headingId="operation-stream_fim_request_stop"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### stop [#operation-stream_fim_request_stop]
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Stop generation if this token is detected. Or if one of these tokens is detected when providing an array
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="stream"
-  headingId="operation-stream_fim_request_stream"
-  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### stream [#operation-stream_fim_request_stream]
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDefaultValue slot="defaultValue">
-
-_Default Value:_ `true`
-
-</ExpandablePropertyDefaultValue>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="suffix"
-  headingId="operation-stream_fim_request_suffix"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### suffix [#operation-stream_fim_request_suffix]
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Optional text/code that adds more context for the model. When given a `prompt` and a `suffix` the model will fill what is between them. When `suffix` is not provided, the model will simply execute completion starting with `prompt`.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-return a+b
-```
-
-</ExpandablePropertyExamples>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="temperature"
-  headingId="operation-stream_fim_request_temperature"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### temperature [#operation-stream_fim_request_temperature]
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-What sampling temperature to use, we recommend between 0.0 and 0.7. Higher values like 0.7 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or `top_p` but not both. The default value varies depending on the model you are targeting. Call the `/models` endpoint to retrieve the appropriate value.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="top_p"
-  headingId="operation-stream_fim_request_top_p"
-  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"Min: 0","variant":"warning"},{"title":"Max: 1","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### top_p [#operation-stream_fim_request_top_p]
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Nucleus sampling, where the model considers the results of the tokens with `top_p` probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or `temperature` but not both.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyDefaultValue slot="defaultValue">
-
-_Default Value:_ `1`
-
-</ExpandablePropertyDefaultValue>
-
-</ExpandableProperty>
-
-</ExpandableSection>
-
-</SectionContent>
-
-</Section>
-
-</OperationRequestBodySection>
-
-<OperationResponseBodySection slot="response-body">
-
-<TabbedSection>
-
-<SectionTitle slot="title">
-
-### Server-Side Events [#operation-stream_fim_responses]
-
-</SectionTitle>
-
-<SectionTab slot="tab" id="operation-stream_fim_responses_200_text-event-stream">
-
-200
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-stream_fim_responses_200_text-event-stream">
 
 <OperationResponseBodyDisplayTypeSection slot="response-body-display-type">
 
 <FrontMatterDisplayType
-  typeInfo={{"label":"event-stream","linkedLabel":"<a href=\"#operation-stream_fim_responses_completionevent\">CompletionEvent</a>","children":[{"label":"CompletionEvent","linkedLabel":"<a href=\"#operation-stream_fim_responses_completionevent\">CompletionEvent</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"event-stream","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_completionevent\">CompletionEvent</a>","children":[{"label":"CompletionEvent","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_completionevent\">CompletionEvent</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
 />
 
 </OperationResponseBodyDisplayTypeSection>
 
 <OperationResponseBodyDescriptionSection slot="response-body-description">
 
-A stream of FIM completion events
+Successful Response
 
 </OperationResponseBodyDescriptionSection>
 
@@ -1949,14 +1922,14 @@ A stream of FIM completion events
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent"
   hasExpandableContent={true}
   expandByDefault={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### CompletionEvent [#operation-stream_fim_responses_200_text-event-stream_completionevent]
+#### CompletionEvent [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent]
 
 </ExpandableBreakoutTitle>
 
@@ -1965,9 +1938,9 @@ A stream of FIM completion events
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data"
   parentId="CompletionEvent"
-  typeInfo={{"label":"CompletionChunk","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk\">CompletionChunk</a>","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"CompletionChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk\">CompletionChunk</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -1975,7 +1948,7 @@ A stream of FIM completion events
 
 <ExpandablePropertyTitle slot="title">
 
-##### data [#operation-stream_fim_responses_200_text-event-stream_completionevent_data]
+##### data [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data]
 
 </ExpandablePropertyTitle>
 
@@ -1984,7 +1957,7 @@ A stream of FIM completion events
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk"
   parentId="CompletionEvent_data"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -1992,7 +1965,7 @@ A stream of FIM completion events
 
 <ExpandableBreakoutTitle slot="title">
 
-#### CompletionChunk [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk]
+#### CompletionChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk]
 
 </ExpandableBreakoutTitle>
 
@@ -2001,9 +1974,9 @@ A stream of FIM completion events
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices"
   parentId="CompletionEvent_data_CompletionChunk"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice\">CompletionResponseStreamChoice</a>","children":[{"label":"CompletionResponseStreamChoice","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice\">CompletionResponseStreamChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice\">CompletionResponseStreamChoice</a>","children":[{"label":"CompletionResponseStreamChoice","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice\">CompletionResponseStreamChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2011,7 +1984,7 @@ A stream of FIM completion events
 
 <ExpandablePropertyTitle slot="title">
 
-##### choices [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices]
+##### choices [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices]
 
 </ExpandablePropertyTitle>
 
@@ -2020,7 +1993,7 @@ A stream of FIM completion events
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice"
   parentId="CompletionEvent_data_CompletionChunk_choices"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2028,7 +2001,7 @@ A stream of FIM completion events
 
 <ExpandableBreakoutTitle slot="title">
 
-#### CompletionResponseStreamChoice [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice]
+#### CompletionResponseStreamChoice [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice]
 
 </ExpandableBreakoutTitle>
 
@@ -2037,9 +2010,9 @@ A stream of FIM completion events
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice"
-  typeInfo={{"label":"DeltaMessage","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage\">DeltaMessage</a>","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"DeltaMessage","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage\">DeltaMessage</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2047,7 +2020,7 @@ A stream of FIM completion events
 
 <ExpandablePropertyTitle slot="title">
 
-##### delta [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta]
+##### delta [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta]
 
 </ExpandablePropertyTitle>
 
@@ -2056,7 +2029,7 @@ A stream of FIM completion events
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2064,7 +2037,7 @@ A stream of FIM completion events
 
 <ExpandableBreakoutTitle slot="title">
 
-#### DeltaMessage [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage]
+#### DeltaMessage [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage]
 
 </ExpandableBreakoutTitle>
 
@@ -2073,9 +2046,9 @@ A stream of FIM completion events
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"FileChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_filechunk\">FileChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ThinkChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk\">ThinkChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"AudioChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_audiochunk\">AudioChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2083,7 +2056,7 @@ A stream of FIM completion events
 
 <ExpandablePropertyTitle slot="title">
 
-##### content [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content]
+##### content [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content]
 
 </ExpandablePropertyTitle>
 
@@ -2092,7 +2065,7 @@ A stream of FIM completion events
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2100,7 +2073,7 @@ A stream of FIM completion events
 
 <ExpandableBreakoutTitle slot="title">
 
-#### TextChunk [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk]
+#### TextChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk]
 
 </ExpandableBreakoutTitle>
 
@@ -2109,7 +2082,7 @@ A stream of FIM completion events
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk_text"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk_text"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk_text"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -2119,7 +2092,7 @@ A stream of FIM completion events
 
 <ExpandablePropertyTitle slot="title">
 
-##### text [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk_text]
+##### text [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk_text]
 
 </ExpandablePropertyTitle>
 
@@ -2128,7 +2101,7 @@ A stream of FIM completion events
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk_type"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -2138,7 +2111,7 @@ A stream of FIM completion events
 
 <ExpandablePropertyTitle slot="title">
 
-##### type [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk_type]
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk_type]
 
 </ExpandablePropertyTitle>
 
@@ -2157,7 +2130,7 @@ _Default Value:_ `"text"`
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2165,13 +2138,13 @@ _Default Value:_ `"text"`
 
 <ExpandableBreakoutTitle slot="title">
 
-#### ImageURLChunk [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk]
+#### ImageURLChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk]
 
 </ExpandableBreakoutTitle>
 
 <ExpandableBreakoutDescription slot="description">
 
-An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0
 
 </ExpandableBreakoutDescription>
 
@@ -2180,9 +2153,9 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2190,7 +2163,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 <ExpandablePropertyTitle slot="title">
 
-##### image_url [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url]
+##### image_url [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url]
 
 </ExpandablePropertyTitle>
 
@@ -2199,7 +2172,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2207,7 +2180,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 <ExpandableBreakoutTitle slot="title">
 
-#### ImageURL [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl]
+#### ImageURL [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl]
 
 </ExpandableBreakoutTitle>
 
@@ -2216,7 +2189,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL_detail"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl_detail"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl_detail"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -2226,7 +2199,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 <ExpandablePropertyTitle slot="title">
 
-##### detail [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl_detail]
+##### detail [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl_detail]
 
 </ExpandablePropertyTitle>
 
@@ -2235,7 +2208,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL_url"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl_url"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl_url"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -2245,7 +2218,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 <ExpandablePropertyTitle slot="title">
 
-##### url [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl_url]
+##### url [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl_url]
 
 </ExpandablePropertyTitle>
 
@@ -2262,7 +2235,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_type"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -2272,7 +2245,7 @@ An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/
 
 <ExpandablePropertyTitle slot="title">
 
-##### type [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_type]
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_type]
 
 </ExpandablePropertyTitle>
 
@@ -2291,7 +2264,7 @@ _Default Value:_ `"image_url"`
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2299,7 +2272,7 @@ _Default Value:_ `"image_url"`
 
 <ExpandableBreakoutTitle slot="title">
 
-#### DocumentURLChunk [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk]
+#### DocumentURLChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk]
 
 </ExpandableBreakoutTitle>
 
@@ -2308,7 +2281,7 @@ _Default Value:_ `"image_url"`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk_document_name"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_document_name"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_document_name"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -2318,7 +2291,7 @@ _Default Value:_ `"image_url"`
 
 <ExpandablePropertyTitle slot="title">
 
-##### document_name [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_document_name]
+##### document_name [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_document_name]
 
 </ExpandablePropertyTitle>
 
@@ -2333,7 +2306,7 @@ The filename of the document
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk_document_url"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_document_url"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_document_url"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -2343,7 +2316,7 @@ The filename of the document
 
 <ExpandablePropertyTitle slot="title">
 
-##### document_url [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_document_url]
+##### document_url [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_document_url]
 
 </ExpandablePropertyTitle>
 
@@ -2352,7 +2325,7 @@ The filename of the document
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk_type"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -2362,7 +2335,7 @@ The filename of the document
 
 <ExpandablePropertyTitle slot="title">
 
-##### type [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_type]
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_type]
 
 </ExpandablePropertyTitle>
 
@@ -2381,7 +2354,7 @@ _Default Value:_ `"document_url"`
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2389,7 +2362,7 @@ _Default Value:_ `"document_url"`
 
 <ExpandableBreakoutTitle slot="title">
 
-#### ReferenceChunk [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk]
+#### ReferenceChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk]
 
 </ExpandableBreakoutTitle>
 
@@ -2398,7 +2371,7 @@ _Default Value:_ `"document_url"`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk_reference_ids"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk_reference_ids"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk_reference_ids"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk"
   typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -2408,7 +2381,7 @@ _Default Value:_ `"document_url"`
 
 <ExpandablePropertyTitle slot="title">
 
-##### reference_ids [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk_reference_ids]
+##### reference_ids [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk_reference_ids]
 
 </ExpandablePropertyTitle>
 
@@ -2417,7 +2390,7 @@ _Default Value:_ `"document_url"`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk_type"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -2427,13 +2400,373 @@ _Default Value:_ `"document_url"`
 
 <ExpandablePropertyTitle slot="title">
 
-##### type [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk_type]
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk_type]
 
 </ExpandablePropertyTitle>
 
 <ExpandablePropertyDefaultValue slot="defaultValue">
 
 _Default Value:_ `"reference"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_filechunk"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### FileChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_filechunk]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk_file_id"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_filechunk_file_id"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### file_id [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_filechunk_file_id]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_filechunk_type"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_filechunk_type]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"file"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ThinkChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_closed"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_closed"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### closed [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_closed]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Whether the thinking chunk is closed or not. Currently only used for prefixing.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `true`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### thinking [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_referencechunk"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ReferenceChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_referencechunk]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk_reference_ids"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_referencechunk_reference_ids"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk"
+  typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### reference_ids [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_referencechunk_reference_ids]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_referencechunk_type"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_referencechunk_type]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"reference"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_textchunk"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### TextChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_textchunk]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk_text"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_textchunk_text"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### text [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_textchunk_text]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_textchunk_type"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_textchunk_type]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"text"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_type"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"thinking\"","linkedLabel":"\"thinking\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_type]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"thinking"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_audiochunk"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### AudioChunk [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_audiochunk]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk_input_audio"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_audiochunk_input_audio"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### input_audio [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_audiochunk_input_audio]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_audiochunk_type"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"input_audio\"","linkedLabel":"\"input_audio\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_audiochunk_type]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"input_audio"`
 
 </ExpandablePropertyDefaultValue>
 
@@ -2450,7 +2783,7 @@ _Default Value:_ `"reference"`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_role"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_role"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_role"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -2460,7 +2793,7 @@ _Default Value:_ `"reference"`
 
 <ExpandablePropertyTitle slot="title">
 
-##### role [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_role]
+##### role [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_role]
 
 </ExpandablePropertyTitle>
 
@@ -2469,9 +2802,9 @@ _Default Value:_ `"reference"`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2479,7 +2812,7 @@ _Default Value:_ `"reference"`
 
 <ExpandablePropertyTitle slot="title">
 
-##### tool_calls [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls]
+##### tool_calls [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls]
 
 </ExpandablePropertyTitle>
 
@@ -2488,7 +2821,7 @@ _Default Value:_ `"reference"`
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2496,7 +2829,7 @@ _Default Value:_ `"reference"`
 
 <ExpandableBreakoutTitle slot="title">
 
-#### ToolCall [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall]
+#### ToolCall [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall]
 
 </ExpandableBreakoutTitle>
 
@@ -2505,9 +2838,9 @@ _Default Value:_ `"reference"`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
-  typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2515,7 +2848,7 @@ _Default Value:_ `"reference"`
 
 <ExpandablePropertyTitle slot="title">
 
-##### function [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function]
+##### function [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function]
 
 </ExpandablePropertyTitle>
 
@@ -2524,7 +2857,7 @@ _Default Value:_ `"reference"`
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2532,7 +2865,7 @@ _Default Value:_ `"reference"`
 
 <ExpandableBreakoutTitle slot="title">
 
-#### FunctionCall [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall]
+#### FunctionCall [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall]
 
 </ExpandableBreakoutTitle>
 
@@ -2541,7 +2874,7 @@ _Default Value:_ `"reference"`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall_arguments"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall_arguments"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall_arguments"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -2551,7 +2884,7 @@ _Default Value:_ `"reference"`
 
 <ExpandablePropertyTitle slot="title">
 
-##### arguments [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall_arguments]
+##### arguments [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall_arguments]
 
 </ExpandablePropertyTitle>
 
@@ -2560,7 +2893,7 @@ _Default Value:_ `"reference"`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall_name"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall_name"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall_name"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -2570,7 +2903,7 @@ _Default Value:_ `"reference"`
 
 <ExpandablePropertyTitle slot="title">
 
-##### name [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall_name]
+##### name [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall_name]
 
 </ExpandablePropertyTitle>
 
@@ -2587,7 +2920,7 @@ _Default Value:_ `"reference"`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_id"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_id"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_id"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -2597,7 +2930,7 @@ _Default Value:_ `"reference"`
 
 <ExpandablePropertyTitle slot="title">
 
-##### id [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_id]
+##### id [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_id]
 
 </ExpandablePropertyTitle>
 
@@ -2612,7 +2945,7 @@ _Default Value:_ `"null"`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_index"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_index"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_index"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -2622,7 +2955,7 @@ _Default Value:_ `"null"`
 
 <ExpandablePropertyTitle slot="title">
 
-##### index [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_index]
+##### index [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_index]
 
 </ExpandablePropertyTitle>
 
@@ -2637,7 +2970,7 @@ _Default Value:_ `0`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_type"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_type"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -2647,7 +2980,7 @@ _Default Value:_ `0`
 
 <ExpandablePropertyTitle slot="title">
 
-##### type [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_type]
+##### type [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_type]
 
 </ExpandablePropertyTitle>
 
@@ -2672,7 +3005,7 @@ _Default Value:_ `0`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_finish_reason"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_finish_reason"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_finish_reason"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"stop\"","linkedLabel":"\"stop\"","children":[],"breakoutSubTypes":{}},{"label":"\"length\"","linkedLabel":"\"length\"","children":[],"breakoutSubTypes":{}},{"label":"\"error\"","linkedLabel":"\"error\"","children":[],"breakoutSubTypes":{}},{"label":"\"tool_calls\"","linkedLabel":"\"tool_calls\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -2682,7 +3015,7 @@ _Default Value:_ `0`
 
 <ExpandablePropertyTitle slot="title">
 
-##### finish_reason [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_finish_reason]
+##### finish_reason [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_finish_reason]
 
 </ExpandablePropertyTitle>
 
@@ -2691,7 +3024,7 @@ _Default Value:_ `0`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_index"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_index"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_index"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -2701,7 +3034,7 @@ _Default Value:_ `0`
 
 <ExpandablePropertyTitle slot="title">
 
-##### index [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_index]
+##### index [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_index]
 
 </ExpandablePropertyTitle>
 
@@ -2718,7 +3051,7 @@ _Default Value:_ `0`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_created"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_created"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_created"
   parentId="CompletionEvent_data_CompletionChunk"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -2728,7 +3061,7 @@ _Default Value:_ `0`
 
 <ExpandablePropertyTitle slot="title">
 
-##### created [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_created]
+##### created [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_created]
 
 </ExpandablePropertyTitle>
 
@@ -2737,7 +3070,7 @@ _Default Value:_ `0`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_id"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_id"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_id"
   parentId="CompletionEvent_data_CompletionChunk"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -2747,7 +3080,7 @@ _Default Value:_ `0`
 
 <ExpandablePropertyTitle slot="title">
 
-##### id [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_id]
+##### id [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_id]
 
 </ExpandablePropertyTitle>
 
@@ -2756,7 +3089,7 @@ _Default Value:_ `0`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_model"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_model"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_model"
   parentId="CompletionEvent_data_CompletionChunk"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -2766,7 +3099,7 @@ _Default Value:_ `0`
 
 <ExpandablePropertyTitle slot="title">
 
-##### model [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_model]
+##### model [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_model]
 
 </ExpandablePropertyTitle>
 
@@ -2775,7 +3108,7 @@ _Default Value:_ `0`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_object"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_object"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_object"
   parentId="CompletionEvent_data_CompletionChunk"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -2785,7 +3118,7 @@ _Default Value:_ `0`
 
 <ExpandablePropertyTitle slot="title">
 
-##### object [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_object]
+##### object [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_object]
 
 </ExpandablePropertyTitle>
 
@@ -2794,9 +3127,9 @@ _Default Value:_ `0`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_usage"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_usage"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage"
   parentId="CompletionEvent_data_CompletionChunk"
-  typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2804,7 +3137,7 @@ _Default Value:_ `0`
 
 <ExpandablePropertyTitle slot="title">
 
-##### usage [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_usage]
+##### usage [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage]
 
 </ExpandablePropertyTitle>
 
@@ -2813,7 +3146,7 @@ _Default Value:_ `0`
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo"
   parentId="CompletionEvent_data_CompletionChunk_usage"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -2821,7 +3154,7 @@ _Default Value:_ `0`
 
 <ExpandableBreakoutTitle slot="title">
 
-#### UsageInfo [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo]
+#### UsageInfo [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo]
 
 </ExpandableBreakoutTitle>
 
@@ -2830,87 +3163,94 @@ _Default Value:_ `0`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_usage_UsageInfo_completion_tokens"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_completion_tokens"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_completion_tokens"
   parentId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### completion_tokens [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_completion_tokens]
+##### completion_tokens [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_completion_tokens]
 
 </ExpandablePropertyTitle>
 
-<ExpandablePropertyExamples slot="examples">
+<ExpandablePropertyDefaultValue slot="defaultValue">
 
-_Example:_
+_Default Value:_ `0`
 
-```
-34
-```
+</ExpandablePropertyDefaultValue>
 
-</ExpandablePropertyExamples>
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_usage_UsageInfo_prompt_audio_seconds"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_prompt_audio_seconds"
+  parentId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### prompt_audio_seconds [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_prompt_audio_seconds]
+
+</ExpandablePropertyTitle>
 
 </ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_usage_UsageInfo_prompt_tokens"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_prompt_tokens"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_prompt_tokens"
   parentId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### prompt_tokens [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_prompt_tokens]
+##### prompt_tokens [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_prompt_tokens]
 
 </ExpandablePropertyTitle>
 
-<ExpandablePropertyExamples slot="examples">
+<ExpandablePropertyDefaultValue slot="defaultValue">
 
-_Example:_
+_Default Value:_ `0`
 
-```
-16
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyDefaultValue>
 
 </ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_usage_UsageInfo_total_tokens"
-  headingId="operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_total_tokens"
+  headingId="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_total_tokens"
   parentId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### total_tokens [#operation-stream_fim_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_total_tokens]
+##### total_tokens [#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_total_tokens]
 
 </ExpandablePropertyTitle>
 
-<ExpandablePropertyExamples slot="examples">
+<ExpandablePropertyDefaultValue slot="defaultValue">
 
-_Example:_
+_Default Value:_ `0`
 
-```
-50
-```
-
-</ExpandablePropertyExamples>
+</ExpandablePropertyDefaultValue>
 
 </ExpandableProperty>
 

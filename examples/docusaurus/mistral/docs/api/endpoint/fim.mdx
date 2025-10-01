@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3.8
+sidebar_position: 3.12
 sidebar_label: Fim
 ---
 
@@ -109,14 +109,15 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.fim.complete({
-    model: "codestral-2405",
+  const result = await mistral.fim.fimCompletionV1FimCompletionsPost({
     prompt: "def",
     suffix: "return a+b",
   });
 
-  // Handle the result
-  console.log(result);
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
 }
 
 run();`}
@@ -148,10 +149,12 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.fim.complete(model="codestral-2405", prompt="def", suffix="return a+b")
+    res = mistral.fim.fim_completion_v1_fim_completions_post(prompt="def", suffix="return a+b")
 
-    # Handle response
-    print(res)
+    with res as event_stream:
+        for event in event_stream:
+            # handle event
+            print(event, flush=True)
 ```
 
 </CodeSample>
@@ -345,7 +348,7 @@ defaultValue: MyDefaultValue
   id="model"
   headingId="operation-fim_completion_v1_fim_completions_post+request+model"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
 >
@@ -376,17 +379,7 @@ codestral-2405
 
 <ExpandablePropertyDefaultValue slot="defaultValue">
 
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
+_Default Value:_ `"codestral-2405"`
 
 </ExpandablePropertyDefaultValue>
 
@@ -780,7 +773,7 @@ _Default Value:_ `1`
   id="operation-fim_completion_v1_fim_completions_post+responses+200+application-json"
 >
 
-200
+200 (application/json)
 
 </SectionTab>
 
@@ -796,6 +789,56 @@ _Default Value:_ `1`
 <SectionTitle slot="title">
 
 ### Request Examples \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+content:
+  application/json:
+    examples:
+      example1:
+        value: { foo: 'bar'}
+```
+
+</DebugPlaceholder>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream"
+>
+
+200 (text/event-stream)
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream"
+>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Examples \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+request-examples\}
 
 </SectionTitle>
 
@@ -844,7 +887,7 @@ content:
   id="operation-fim_completion_v1_fim_completions_post+responses+200+application-json"
 >
 
-200
+200 (application/json)
 
 </SectionTab>
 
@@ -1255,7 +1298,7 @@ defaultValue: MyDefaultValue
   id="choices_ChatCompletionChoice_message_AssistantMessage_content"
   headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"FileChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+filechunk\">FileChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ThinkChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk\">ThinkChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"AudioChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+audiochunk\">AudioChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -1531,7 +1574,7 @@ _Default Value:_ `"text"`
 
 <ExpandableBreakoutDescription slot="description">
 
-An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0
 
 </ExpandableBreakoutDescription>
 
@@ -2351,6 +2394,1038 @@ examples:
 <ExpandablePropertyDefaultValue slot="defaultValue">
 
 _Default Value:_ `"reference"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+filechunk"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### FileChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+filechunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk_file_id"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+filechunk+file_id"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### file_id \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+filechunk+file_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+filechunk+type"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+filechunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"file"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ThinkChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_closed"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+closed"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### closed \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+closed\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Whether the thinking chunk is closed or not. Currently only used for prefixing.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `true`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### thinking \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+referencechunk"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ReferenceChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+referencechunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk_reference_ids"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+referencechunk+reference_ids"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk"
+  typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### reference_ids \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+referencechunk+reference_ids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+referencechunk+type"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+referencechunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"reference"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+textchunk"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### TextChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+textchunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk_text"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+textchunk+text"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### text \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+textchunk+text\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+textchunk+type"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+thinking+textchunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"text"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+type"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"thinking\"","linkedLabel":"\"thinking\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+thinkchunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"thinking"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+audiochunk"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### AudioChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+audiochunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk_input_audio"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+audiochunk+input_audio"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### input_audio \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+audiochunk+input_audio\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+audiochunk+type"
+  parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"input_audio\"","linkedLabel":"\"input_audio\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+choices+chatcompletionchoice+message+assistantmessage+content+audiochunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"input_audio"`
 
 </ExpandablePropertyDefaultValue>
 
@@ -3469,7 +4544,7 @@ defaultValue: MyDefaultValue
   headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+usage+usageinfo+completion_tokens"
   parentId="usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
@@ -3498,11 +4573,76 @@ description: My awesome description
 
 <ExpandablePropertyExamples slot="examples">
 
-_Example:_
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
 
 ```
-34
+examples:
+  - MyExampleValue
 ```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `0`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="usage_UsageInfo_prompt_audio_seconds"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+usage+usageinfo+prompt_audio_seconds"
+  parentId="usage_UsageInfo"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### prompt_audio_seconds \{#operation-fim_completion_v1_fim_completions_post+responses+200+application-json+usage+usageinfo+prompt_audio_seconds\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
 
 </ExpandablePropertyExamples>
 
@@ -3530,7 +4670,7 @@ defaultValue: MyDefaultValue
   headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+usage+usageinfo+prompt_tokens"
   parentId="usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
@@ -3559,27 +4699,24 @@ description: My awesome description
 
 <ExpandablePropertyExamples slot="examples">
 
-_Example:_
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
 
 ```
-16
+examples:
+  - MyExampleValue
 ```
+
+</DebugPlaceholder>
 
 </ExpandablePropertyExamples>
 
 <ExpandablePropertyDefaultValue slot="defaultValue">
 
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
+_Default Value:_ `0`
 
 </ExpandablePropertyDefaultValue>
 
@@ -3591,7 +4728,7 @@ defaultValue: MyDefaultValue
   headingId="operation-fim_completion_v1_fim_completions_post+responses+200+application-json+usage+usageinfo+total_tokens"
   parentId="usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
@@ -3620,27 +4757,24 @@ description: My awesome description
 
 <ExpandablePropertyExamples slot="examples">
 
-_Example:_
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
 
 ```
-50
+examples:
+  - MyExampleValue
 ```
+
+</DebugPlaceholder>
 
 </ExpandablePropertyExamples>
 
 <ExpandablePropertyDefaultValue slot="defaultValue">
 
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
+_Default Value:_ `0`
 
 </ExpandablePropertyDefaultValue>
 
@@ -3658,804 +4792,31 @@ defaultValue: MyDefaultValue
 
 </SectionContent>
 
-</TabbedSection>
+<SectionTab
+  slot="tab"
+  id="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream"
+>
 
-</OperationResponseBodySection>
-
-</Operation>
-
-<Operation>
-
-<OperationTitleSection slot="title">
-
-## <Pill variant="primary"><b>POST</b></Pill> /v1/fim/completions\#stream \{#operation-stream_fim\}
-
-</OperationTitleSection>
-
-<OperationSummarySection slot="summary">
-
-_Stream fim completion_
-
-</OperationSummarySection>
-
-<OperationDescriptionSection slot="description">
-
-Mistral AI provides the ability to stream responses back to a client in order to allow partial results for certain requests. Tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a data: [DONE] message. Otherwise, the server will hold the request open until the timeout or until completion, with the response containing the full result as JSON.
-
-</OperationDescriptionSection>
-
-<OperationCodeSamplesSection slot="code-samples">
-
-<TabbedSection>
-
-<SectionTab slot="tab" id="operation-stream_fim+code-samples+typescript">
-
-TypeScript
+200 (text/event-stream)
 
 </SectionTab>
 
-<SectionContent slot="content" id="operation-stream_fim+code-samples+typescript">
-
-<TryItNow
-  externalDependencies={{"zod":"^3.25.64","@mistralai/mistralai":"latest"}}
-  defaultValue={`import { Mistral } from "@mistralai/mistralai";
-
-const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await mistral.fim.stream({
-    model: "codestral-2405",
-    prompt: "def",
-    suffix: "return a+b",
-  });
-
-  for await (const event of result) {
-    // Handle the event
-    console.log(event);
-  }
-}
-
-run();`}
-/>
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-stream_fim+code-samples+python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-stream_fim+code-samples+python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.fim.stream(model="codestral-2405", prompt="def", suffix="return a+b")
-
-    with res as event_stream:
-        for event in event_stream:
-            # handle event
-            print(event, flush=True)
-```
-
-</CodeSample>
-
-</SectionContent>
-
-</TabbedSection>
-
-</OperationCodeSamplesSection>
-
-<OperationRequestBodyExamplesSection slot="request-body-examples">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Request Examples \{#operation-stream_fim+request-examples\}
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<DebugPlaceholder>
-
-No examples provided
-
-_OpenAPI example:_
-
-```
-content:
-  application/json:
-    examples:
-      example1:
-        value: { foo: 'bar'}
-```
-
-</DebugPlaceholder>
-
-</SectionContent>
-
-</Section>
-
-</OperationRequestBodyExamplesSection>
-
-<OperationRequestBodySection slot="request-body">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Request Body \{#operation-stream_fim+request\}
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<OperationRequestBodyDescriptionSection slot="request-body-description">
-
-<DebugPlaceholder>
-
-No description provided
-
-_OpenAPI example:_
-
-```
-description: My awesome description
-```
-
-</DebugPlaceholder>
-
-</OperationRequestBodyDescriptionSection>
-
-<ExpandableSection>
-
-<ExpandableProperty
-  slot="entry"
-  id="max_tokens"
-  headingId="operation-stream_fim+request+max_tokens"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+<SectionContent
+  slot="content"
+  id="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream"
 >
-
-<ExpandablePropertyTitle slot="title">
-
-##### max_tokens \{#operation-stream_fim+request+max_tokens\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The maximum number of tokens to generate in the completion. The token count of your prompt plus `max_tokens` cannot exceed the model's context length.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-<DebugPlaceholder>
-
-No examples provided
-
-_OpenAPI example:_
-
-```
-examples:
-  - MyExampleValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyExamples>
-
-<ExpandablePropertyDefaultValue slot="defaultValue">
-
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDefaultValue>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="min_tokens"
-  headingId="operation-stream_fim+request+min_tokens"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### min_tokens \{#operation-stream_fim+request+min_tokens\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The minimum number of tokens to generate in the completion.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-<DebugPlaceholder>
-
-No examples provided
-
-_OpenAPI example:_
-
-```
-examples:
-  - MyExampleValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyExamples>
-
-<ExpandablePropertyDefaultValue slot="defaultValue">
-
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDefaultValue>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="model"
-  headingId="operation-stream_fim+request+model"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### model \{#operation-stream_fim+request+model\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-ID of the model to use. Only compatible for now with:
-  - `codestral-2405`
-  - `codestral-latest`
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-codestral-2405
-```
-
-</ExpandablePropertyExamples>
-
-<ExpandablePropertyDefaultValue slot="defaultValue">
-
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDefaultValue>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="prompt"
-  headingId="operation-stream_fim+request+prompt"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### prompt \{#operation-stream_fim+request+prompt\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The text/code to complete.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-def
-```
-
-</ExpandablePropertyExamples>
-
-<ExpandablePropertyDefaultValue slot="defaultValue">
-
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDefaultValue>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="random_seed"
-  headingId="operation-stream_fim+request+random_seed"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### random_seed \{#operation-stream_fim+request+random_seed\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The seed to use for random sampling. If set, different calls will generate deterministic results.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-<DebugPlaceholder>
-
-No examples provided
-
-_OpenAPI example:_
-
-```
-examples:
-  - MyExampleValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyExamples>
-
-<ExpandablePropertyDefaultValue slot="defaultValue">
-
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDefaultValue>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="stop"
-  headingId="operation-stream_fim+request+stop"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### stop \{#operation-stream_fim+request+stop\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Stop generation if this token is detected. Or if one of these tokens is detected when providing an array
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-<DebugPlaceholder>
-
-No examples provided
-
-_OpenAPI example:_
-
-```
-examples:
-  - MyExampleValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyExamples>
-
-<ExpandablePropertyDefaultValue slot="defaultValue">
-
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDefaultValue>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="stream"
-  headingId="operation-stream_fim+request+stream"
-  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### stream \{#operation-stream_fim+request+stream\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-<DebugPlaceholder>
-
-No description provided
-
-_OpenAPI example:_
-
-```
-description: My awesome description
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-<DebugPlaceholder>
-
-No examples provided
-
-_OpenAPI example:_
-
-```
-examples:
-  - MyExampleValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyExamples>
-
-<ExpandablePropertyDefaultValue slot="defaultValue">
-
-_Default Value:_ `true`
-
-</ExpandablePropertyDefaultValue>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="suffix"
-  headingId="operation-stream_fim+request+suffix"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### suffix \{#operation-stream_fim+request+suffix\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Optional text/code that adds more context for the model. When given a `prompt` and a `suffix` the model will fill what is between them. When `suffix` is not provided, the model will simply execute completion starting with `prompt`.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-return a+b
-```
-
-</ExpandablePropertyExamples>
-
-<ExpandablePropertyDefaultValue slot="defaultValue">
-
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDefaultValue>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="temperature"
-  headingId="operation-stream_fim+request+temperature"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### temperature \{#operation-stream_fim+request+temperature\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-What sampling temperature to use, we recommend between 0.0 and 0.7. Higher values like 0.7 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or `top_p` but not both. The default value varies depending on the model you are targeting. Call the `/models` endpoint to retrieve the appropriate value.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-<DebugPlaceholder>
-
-No examples provided
-
-_OpenAPI example:_
-
-```
-examples:
-  - MyExampleValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyExamples>
-
-<ExpandablePropertyDefaultValue slot="defaultValue">
-
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyDefaultValue>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="top_p"
-  headingId="operation-stream_fim+request+top_p"
-  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"Min: 0","variant":"warning"},{"title":"Max: 1","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### top_p \{#operation-stream_fim+request+top_p\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Nucleus sampling, where the model considers the results of the tokens with `top_p` probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or `temperature` but not both.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-<DebugPlaceholder>
-
-No examples provided
-
-_OpenAPI example:_
-
-```
-examples:
-  - MyExampleValue
-```
-
-</DebugPlaceholder>
-
-</ExpandablePropertyExamples>
-
-<ExpandablePropertyDefaultValue slot="defaultValue">
-
-_Default Value:_ `1`
-
-</ExpandablePropertyDefaultValue>
-
-</ExpandableProperty>
-
-</ExpandableSection>
-
-</SectionContent>
-
-</Section>
-
-</OperationRequestBodySection>
-
-<OperationResponseBodyExamplesSection slot="response-body-examples">
-
-<TabbedSection>
-
-<SectionTitle slot="title">
-
-### Responses Examples \{#operation-stream_fim+responses\}
-
-</SectionTitle>
-
-<SectionTab slot="tab" id="operation-stream_fim+responses+200+text-event-stream">
-
-200
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-stream_fim+responses+200+text-event-stream">
-
-<OperationRequestBodyExamplesSection slot="request-body-examples">
-
-<Section>
-
-<SectionTitle slot="title">
-
-### Request Examples \{#operation-stream_fim+responses+200+text-event-stream+request-examples\}
-
-</SectionTitle>
-
-<SectionContent slot="content">
-
-<DebugPlaceholder>
-
-No examples provided
-
-_OpenAPI example:_
-
-```
-content:
-  application/json:
-    examples:
-      example1:
-        value: { foo: 'bar'}
-```
-
-</DebugPlaceholder>
-
-</SectionContent>
-
-</Section>
-
-</OperationRequestBodyExamplesSection>
-
-</SectionContent>
-
-</TabbedSection>
-
-</OperationResponseBodyExamplesSection>
-
-<OperationResponseBodySection slot="response-body">
-
-<TabbedSection>
-
-<SectionTitle slot="title">
-
-### Server-Side Events \{#operation-stream_fim+responses\}
-
-</SectionTitle>
-
-<SectionTab slot="tab" id="operation-stream_fim+responses+200+text-event-stream">
-
-200
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-stream_fim+responses+200+text-event-stream">
 
 <OperationResponseBodyDisplayTypeSection slot="response-body-display-type">
 
 <FrontMatterDisplayType
-  typeInfo={{"label":"event-stream","linkedLabel":"<a href=\"#operation-stream_fim+responses+completionevent\">CompletionEvent</a>","children":[{"label":"CompletionEvent","linkedLabel":"<a href=\"#operation-stream_fim+responses+completionevent\">CompletionEvent</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"event-stream","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+completionevent\">CompletionEvent</a>","children":[{"label":"CompletionEvent","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+completionevent\">CompletionEvent</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
 />
 
 </OperationResponseBodyDisplayTypeSection>
 
 <OperationResponseBodyDescriptionSection slot="response-body-description">
 
-A stream of FIM completion events
+Successful Response
 
 </OperationResponseBodyDescriptionSection>
 
@@ -4464,14 +4825,14 @@ A stream of FIM completion events
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent"
   hasExpandableContent={true}
   expandByDefault={true}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### CompletionEvent \{#operation-stream_fim+responses+200+text-event-stream+completionevent\}
+#### CompletionEvent \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent\}
 
 </ExpandableBreakoutTitle>
 
@@ -4529,9 +4890,9 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data"
   parentId="CompletionEvent"
-  typeInfo={{"label":"CompletionChunk","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk\">CompletionChunk</a>","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"CompletionChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk\">CompletionChunk</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -4539,7 +4900,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### data \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data\}
+##### data \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data\}
 
 </ExpandablePropertyTitle>
 
@@ -4597,7 +4958,7 @@ defaultValue: MyDefaultValue
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk"
   parentId="CompletionEvent_data"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -4605,7 +4966,7 @@ defaultValue: MyDefaultValue
 
 <ExpandableBreakoutTitle slot="title">
 
-#### CompletionChunk \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk\}
+#### CompletionChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk\}
 
 </ExpandableBreakoutTitle>
 
@@ -4663,9 +5024,9 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices"
   parentId="CompletionEvent_data_CompletionChunk"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice\">CompletionResponseStreamChoice</a>","children":[{"label":"CompletionResponseStreamChoice","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice\">CompletionResponseStreamChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice\">CompletionResponseStreamChoice</a>","children":[{"label":"CompletionResponseStreamChoice","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice\">CompletionResponseStreamChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -4673,7 +5034,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### choices \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices\}
+##### choices \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices\}
 
 </ExpandablePropertyTitle>
 
@@ -4731,7 +5092,7 @@ defaultValue: MyDefaultValue
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice"
   parentId="CompletionEvent_data_CompletionChunk_choices"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -4739,7 +5100,7 @@ defaultValue: MyDefaultValue
 
 <ExpandableBreakoutTitle slot="title">
 
-#### CompletionResponseStreamChoice \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice\}
+#### CompletionResponseStreamChoice \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice\}
 
 </ExpandableBreakoutTitle>
 
@@ -4797,9 +5158,9 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice"
-  typeInfo={{"label":"DeltaMessage","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage\">DeltaMessage</a>","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"DeltaMessage","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage\">DeltaMessage</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -4807,7 +5168,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### delta \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta\}
+##### delta \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta\}
 
 </ExpandablePropertyTitle>
 
@@ -4865,7 +5226,7 @@ defaultValue: MyDefaultValue
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -4873,7 +5234,7 @@ defaultValue: MyDefaultValue
 
 <ExpandableBreakoutTitle slot="title">
 
-#### DeltaMessage \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage\}
+#### DeltaMessage \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage\}
 
 </ExpandableBreakoutTitle>
 
@@ -4931,9 +5292,9 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"FileChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+filechunk\">FileChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ThinkChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk\">ThinkChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"AudioChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+audiochunk\">AudioChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -4941,7 +5302,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### content \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content\}
+##### content \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content\}
 
 </ExpandablePropertyTitle>
 
@@ -4999,7 +5360,7 @@ defaultValue: MyDefaultValue
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -5007,7 +5368,7 @@ defaultValue: MyDefaultValue
 
 <ExpandableBreakoutTitle slot="title">
 
-#### TextChunk \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk\}
+#### TextChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk\}
 
 </ExpandableBreakoutTitle>
 
@@ -5065,7 +5426,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk_text"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk+text"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk+text"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -5075,7 +5436,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### text \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk+text\}
+##### text \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk+text\}
 
 </ExpandablePropertyTitle>
 
@@ -5133,7 +5494,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk_type"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk+type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk+type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -5143,7 +5504,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### type \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk+type\}
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+textchunk+type\}
 
 </ExpandablePropertyTitle>
 
@@ -5195,7 +5556,7 @@ _Default Value:_ `"text"`
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -5203,13 +5564,13 @@ _Default Value:_ `"text"`
 
 <ExpandableBreakoutTitle slot="title">
 
-#### ImageURLChunk \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk\}
+#### ImageURLChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk\}
 
 </ExpandableBreakoutTitle>
 
 <ExpandableBreakoutDescription slot="description">
 
-An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0
 
 </ExpandableBreakoutDescription>
 
@@ -5251,9 +5612,9 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -5261,7 +5622,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### image_url \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url\}
+##### image_url \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url\}
 
 </ExpandablePropertyTitle>
 
@@ -5319,7 +5680,7 @@ defaultValue: MyDefaultValue
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -5327,7 +5688,7 @@ defaultValue: MyDefaultValue
 
 <ExpandableBreakoutTitle slot="title">
 
-#### ImageURL \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl\}
+#### ImageURL \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl\}
 
 </ExpandableBreakoutTitle>
 
@@ -5385,7 +5746,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL_detail"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl+detail"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl+detail"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -5395,7 +5756,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### detail \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl+detail\}
+##### detail \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl+detail\}
 
 </ExpandablePropertyTitle>
 
@@ -5453,7 +5814,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL_url"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl+url"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl+url"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -5463,7 +5824,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### url \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl+url\}
+##### url \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+image_url+imageurl+url\}
 
 </ExpandablePropertyTitle>
 
@@ -5529,7 +5890,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_type"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"image_url\"","linkedLabel":"\"image_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -5539,7 +5900,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### type \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+type\}
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+imageurlchunk+type\}
 
 </ExpandablePropertyTitle>
 
@@ -5591,7 +5952,7 @@ _Default Value:_ `"image_url"`
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -5599,7 +5960,7 @@ _Default Value:_ `"image_url"`
 
 <ExpandableBreakoutTitle slot="title">
 
-#### DocumentURLChunk \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk\}
+#### DocumentURLChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk\}
 
 </ExpandableBreakoutTitle>
 
@@ -5657,7 +6018,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk_document_name"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk+document_name"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk+document_name"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -5667,7 +6028,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### document_name \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk+document_name\}
+##### document_name \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk+document_name\}
 
 </ExpandablePropertyTitle>
 
@@ -5715,7 +6076,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk_document_url"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk+document_url"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk+document_url"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -5725,7 +6086,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### document_url \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk+document_url\}
+##### document_url \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk+document_url\}
 
 </ExpandablePropertyTitle>
 
@@ -5783,7 +6144,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk_type"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk+type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk+type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"document_url\"","linkedLabel":"\"document_url\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -5793,7 +6154,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### type \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk+type\}
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+documenturlchunk+type\}
 
 </ExpandablePropertyTitle>
 
@@ -5845,7 +6206,7 @@ _Default Value:_ `"document_url"`
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -5853,7 +6214,7 @@ _Default Value:_ `"document_url"`
 
 <ExpandableBreakoutTitle slot="title">
 
-#### ReferenceChunk \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk\}
+#### ReferenceChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk\}
 
 </ExpandableBreakoutTitle>
 
@@ -5911,7 +6272,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk_reference_ids"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk+reference_ids"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk+reference_ids"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk"
   typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -5921,7 +6282,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### reference_ids \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk+reference_ids\}
+##### reference_ids \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk+reference_ids\}
 
 </ExpandablePropertyTitle>
 
@@ -5979,7 +6340,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk_type"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk+type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk+type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -5989,7 +6350,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### type \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk+type\}
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+referencechunk+type\}
 
 </ExpandablePropertyTitle>
 
@@ -6038,6 +6399,1038 @@ _Default Value:_ `"reference"`
 
 </ExpandableBreakout>
 
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+filechunk"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### FileChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+filechunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk_file_id"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+filechunk+file_id"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### file_id \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+filechunk+file_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+filechunk+type"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+filechunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"file"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ThinkChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_closed"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+closed"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### closed \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+closed\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Whether the thinking chunk is closed or not. Currently only used for prefixing.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `true`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"ReferenceChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+referencechunk\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"TextChunk","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+textchunk\">TextChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### thinking \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+referencechunk"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ReferenceChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+referencechunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk_reference_ids"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+referencechunk+reference_ids"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk"
+  typeInfo={{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### reference_ids \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+referencechunk+reference_ids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+referencechunk+type"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"reference\"","linkedLabel":"\"reference\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+referencechunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"reference"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+textchunk"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### TextChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+textchunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk_text"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+textchunk+text"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### text \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+textchunk+text\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+textchunk+type"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"text\"","linkedLabel":"\"text\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+thinking+textchunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"text"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+type"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"thinking\"","linkedLabel":"\"thinking\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+thinkchunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"thinking"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+<ExpandableBreakout
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+audiochunk"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### AudioChunk \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+audiochunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk_input_audio"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+audiochunk+input_audio"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### input_audio \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+audiochunk+input_audio\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk_type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+audiochunk+type"
+  parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"input_audio\"","linkedLabel":"\"input_audio\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+content+audiochunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"input_audio"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
 </ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
@@ -6045,7 +7438,7 @@ _Default Value:_ `"reference"`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_role"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+role"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+role"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -6055,7 +7448,7 @@ _Default Value:_ `"reference"`
 
 <ExpandablePropertyTitle slot="title">
 
-##### role \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+role\}
+##### role \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+role\}
 
 </ExpandablePropertyTitle>
 
@@ -6113,9 +7506,9 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -6123,7 +7516,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### tool_calls \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls\}
+##### tool_calls \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls\}
 
 </ExpandablePropertyTitle>
 
@@ -6181,7 +7574,7 @@ defaultValue: MyDefaultValue
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -6189,7 +7582,7 @@ defaultValue: MyDefaultValue
 
 <ExpandableBreakoutTitle slot="title">
 
-#### ToolCall \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall\}
+#### ToolCall \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall\}
 
 </ExpandableBreakoutTitle>
 
@@ -6247,9 +7640,9 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
-  typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"FunctionCall","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -6257,7 +7650,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### function \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function\}
+##### function \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function\}
 
 </ExpandablePropertyTitle>
 
@@ -6315,7 +7708,7 @@ defaultValue: MyDefaultValue
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -6323,7 +7716,7 @@ defaultValue: MyDefaultValue
 
 <ExpandableBreakoutTitle slot="title">
 
-#### FunctionCall \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall\}
+#### FunctionCall \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall\}
 
 </ExpandableBreakoutTitle>
 
@@ -6381,7 +7774,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall_arguments"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall+arguments"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall+arguments"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall"
   typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -6391,7 +7784,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### arguments \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall+arguments\}
+##### arguments \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall+arguments\}
 
 </ExpandablePropertyTitle>
 
@@ -6449,7 +7842,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall_name"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall+name"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall+name"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -6459,7 +7852,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### name \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall+name\}
+##### name \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+function+functioncall+name\}
 
 </ExpandablePropertyTitle>
 
@@ -6525,7 +7918,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_id"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+id"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+id"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -6535,7 +7928,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### id \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+id\}
+##### id \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+id\}
 
 </ExpandablePropertyTitle>
 
@@ -6583,7 +7976,7 @@ _Default Value:_ `"null"`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_index"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+index"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+index"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -6593,7 +7986,7 @@ _Default Value:_ `"null"`
 
 <ExpandablePropertyTitle slot="title">
 
-##### index \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+index\}
+##### index \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+index\}
 
 </ExpandablePropertyTitle>
 
@@ -6641,7 +8034,7 @@ _Default Value:_ `0`
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_type"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+type"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"function\"","linkedLabel":"\"function\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -6651,7 +8044,7 @@ _Default Value:_ `0`
 
 <ExpandablePropertyTitle slot="title">
 
-##### type \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+type\}
+##### type \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+delta+deltamessage+tool_calls+toolcall+type\}
 
 </ExpandablePropertyTitle>
 
@@ -6725,7 +8118,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_finish_reason"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+finish_reason"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+finish_reason"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice"
   typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"stop\"","linkedLabel":"\"stop\"","children":[],"breakoutSubTypes":{}},{"label":"\"length\"","linkedLabel":"\"length\"","children":[],"breakoutSubTypes":{}},{"label":"\"error\"","linkedLabel":"\"error\"","children":[],"breakoutSubTypes":{}},{"label":"\"tool_calls\"","linkedLabel":"\"tool_calls\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -6735,7 +8128,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### finish_reason \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+finish_reason\}
+##### finish_reason \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+finish_reason\}
 
 </ExpandablePropertyTitle>
 
@@ -6793,7 +8186,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_index"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+index"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+index"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -6803,7 +8196,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### index \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+index\}
+##### index \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+choices+completionresponsestreamchoice+index\}
 
 </ExpandablePropertyTitle>
 
@@ -6869,7 +8262,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_created"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+created"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+created"
   parentId="CompletionEvent_data_CompletionChunk"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -6879,7 +8272,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### created \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+created\}
+##### created \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+created\}
 
 </ExpandablePropertyTitle>
 
@@ -6937,7 +8330,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_id"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+id"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+id"
   parentId="CompletionEvent_data_CompletionChunk"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -6947,7 +8340,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### id \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+id\}
+##### id \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+id\}
 
 </ExpandablePropertyTitle>
 
@@ -7005,7 +8398,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_model"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+model"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+model"
   parentId="CompletionEvent_data_CompletionChunk"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
@@ -7015,7 +8408,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### model \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+model\}
+##### model \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+model\}
 
 </ExpandablePropertyTitle>
 
@@ -7073,7 +8466,7 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_object"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+object"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+object"
   parentId="CompletionEvent_data_CompletionChunk"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
@@ -7083,7 +8476,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### object \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+object\}
+##### object \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+object\}
 
 </ExpandablePropertyTitle>
 
@@ -7141,9 +8534,9 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_usage"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+usage"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage"
   parentId="CompletionEvent_data_CompletionChunk"
-  typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
@@ -7151,7 +8544,7 @@ defaultValue: MyDefaultValue
 
 <ExpandablePropertyTitle slot="title">
 
-##### usage \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+usage\}
+##### usage \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage\}
 
 </ExpandablePropertyTitle>
 
@@ -7209,7 +8602,7 @@ defaultValue: MyDefaultValue
 <ExpandableBreakout
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo"
   parentId="CompletionEvent_data_CompletionChunk_usage"
   hasExpandableContent={true}
   expandByDefault={false}
@@ -7217,7 +8610,7 @@ defaultValue: MyDefaultValue
 
 <ExpandableBreakoutTitle slot="title">
 
-#### UsageInfo \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo\}
+#### UsageInfo \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo\}
 
 </ExpandableBreakoutTitle>
 
@@ -7275,17 +8668,17 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_usage_UsageInfo_completion_tokens"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+completion_tokens"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+completion_tokens"
   parentId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### completion_tokens \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+completion_tokens\}
+##### completion_tokens \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+completion_tokens\}
 
 </ExpandablePropertyTitle>
 
@@ -7307,11 +8700,76 @@ description: My awesome description
 
 <ExpandablePropertyExamples slot="examples">
 
-_Example:_
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
 
 ```
-34
+examples:
+  - MyExampleValue
 ```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `0`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="CompletionEvent_data_CompletionChunk_usage_UsageInfo_prompt_audio_seconds"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+prompt_audio_seconds"
+  parentId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### prompt_audio_seconds \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+prompt_audio_seconds\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
 
 </ExpandablePropertyExamples>
 
@@ -7336,17 +8794,17 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_usage_UsageInfo_prompt_tokens"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+prompt_tokens"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+prompt_tokens"
   parentId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### prompt_tokens \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+prompt_tokens\}
+##### prompt_tokens \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+prompt_tokens\}
 
 </ExpandablePropertyTitle>
 
@@ -7368,27 +8826,24 @@ description: My awesome description
 
 <ExpandablePropertyExamples slot="examples">
 
-_Example:_
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
 
 ```
-16
+examples:
+  - MyExampleValue
 ```
+
+</DebugPlaceholder>
 
 </ExpandablePropertyExamples>
 
 <ExpandablePropertyDefaultValue slot="defaultValue">
 
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
+_Default Value:_ `0`
 
 </ExpandablePropertyDefaultValue>
 
@@ -7397,17 +8852,17 @@ defaultValue: MyDefaultValue
 <ExpandableProperty
   slot="entry"
   id="CompletionEvent_data_CompletionChunk_usage_UsageInfo_total_tokens"
-  headingId="operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+total_tokens"
+  headingId="operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+total_tokens"
   parentId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### total_tokens \{#operation-stream_fim+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+total_tokens\}
+##### total_tokens \{#operation-fim_completion_v1_fim_completions_post+responses+200+text-event-stream+completionevent+data+completionchunk+usage+usageinfo+total_tokens\}
 
 </ExpandablePropertyTitle>
 
@@ -7429,27 +8884,24 @@ description: My awesome description
 
 <ExpandablePropertyExamples slot="examples">
 
-_Example:_
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
 
 ```
-50
+examples:
+  - MyExampleValue
 ```
+
+</DebugPlaceholder>
 
 </ExpandablePropertyExamples>
 
 <ExpandablePropertyDefaultValue slot="defaultValue">
 
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
+_Default Value:_ `0`
 
 </ExpandablePropertyDefaultValue>
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3.11
+sidebar_position: 3.15
 sidebar_label: Ocr
 ---
 
@@ -111,13 +111,11 @@ const mistral = new Mistral({
 });
 
 async function run() {
-  const result = await mistral.ocr.process({
+  const result = await mistral.ocr.ocrV1OcrPost({
     model: "CX-9",
     document: {
-      imageUrl: {
-        url: "https://measly-scrap.com",
-      },
-      type: "image_url",
+      documentUrl: "https://upset-labourer.net/",
+      type: "document_url",
     },
   });
 
@@ -148,11 +146,9 @@ with Mistral(
     api_key="<YOUR_BEARER_TOKEN_HERE>",
 ) as mistral:
 
-    res = mistral.ocr.process(model="CX-9", document={
-        "image_url": {
-            "url": "https://measly-scrap.com",
-        },
-        "type": models.ImageURLChunkType.IMAGE_URL,
+    res = mistral.ocr.ocr_v1_ocr_post(model="CX-9", document={
+        "document_url": "https://upset-labourer.net/",
+        "type": models.DocumentURLChunkType.DOCUMENT_URL,
     })
 
     # Handle response
@@ -754,17 +750,7 @@ examples:
 
 <ExpandablePropertyDefaultValue slot="defaultValue">
 
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
+_Default Value:_ `false`
 
 </ExpandablePropertyDefaultValue>
 
@@ -848,7 +834,7 @@ defaultValue: MyDefaultValue
   slot="entry"
   id="document"
   headingId="operation-ocr_v1_ocr_post+request+document"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post+request+document+documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post+request+document+imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"FileChunk","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post+request+document+filechunk\">FileChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post+request+document+documenturlchunk\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\"#operation-ocr_v1_ocr_post+request+document+imageurlchunk\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -900,6 +886,202 @@ defaultValue: MyDefaultValue
 </ExpandablePropertyDefaultValue>
 
 <ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="document_FileChunk"
+  headingId="operation-ocr_v1_ocr_post+request+document+filechunk"
+  parentId="document"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### FileChunk \{#operation-ocr_v1_ocr_post+request+document+filechunk\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutExamples>
+
+<ExpandableBreakoutDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandableBreakoutDefaultValue>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="document_FileChunk_file_id"
+  headingId="operation-ocr_v1_ocr_post+request+document+filechunk+file_id"
+  parentId="document_FileChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### file_id \{#operation-ocr_v1_ocr_post+request+document+filechunk+file_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+<DebugPlaceholder>
+
+No default value provided
+
+_OpenAPI example:_
+
+```
+defaultValue: MyDefaultValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="document_FileChunk_type"
+  headingId="operation-ocr_v1_ocr_post+request+document+filechunk+type"
+  parentId="document_FileChunk"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-ocr_v1_ocr_post+request+document+filechunk+type\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+<DebugPlaceholder>
+
+No description provided
+
+_OpenAPI example:_
+
+```
+description: My awesome description
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+<DebugPlaceholder>
+
+No examples provided
+
+_OpenAPI example:_
+
+```
+examples:
+  - MyExampleValue
+```
+
+</DebugPlaceholder>
+
+</ExpandablePropertyExamples>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"file"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
 
 <ExpandableBreakout
   slot="entry"
@@ -1172,7 +1354,7 @@ _Default Value:_ `"document_url"`
 
 <ExpandableBreakoutDescription slot="description">
 
-An object that looks like `\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0`
+\{"type":"image_url","image_url":\{"url":"data:image/png;base64,iVBORw0
 
 </ExpandableBreakoutDescription>
 
@@ -2078,17 +2260,7 @@ examples:
 
 <ExpandablePropertyDefaultValue slot="defaultValue">
 
-<DebugPlaceholder>
-
-No default value provided
-
-_OpenAPI example:_
-
-```
-defaultValue: MyDefaultValue
-```
-
-</DebugPlaceholder>
+_Default Value:_ `false`
 
 </ExpandablePropertyDefaultValue>
 
