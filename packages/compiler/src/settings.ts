@@ -29,7 +29,7 @@ export function getOnPageComplete() {
   return onPageComplete;
 }
 
-const language = z.enum([
+export const codeSampleLanguageEnum = z.enum([
   "typescript",
   "go",
   "java",
@@ -43,7 +43,42 @@ const language = z.enum([
   "postman",
 ]);
 
-export type CodeSampleLanguage = z.infer<typeof language>;
+export type CodeSampleLanguage = z.infer<typeof codeSampleLanguageEnum>;
+export const codeSampleLanguages = codeSampleLanguageEnum.options;
+
+export function isCodeSampleLanguage(
+  value: string
+): value is CodeSampleLanguage {
+  return (codeSampleLanguages as readonly string[]).includes(value);
+}
+
+const codeSampleConfigSchema = z.strictObject({
+  language: codeSampleLanguageEnum,
+  sdkClassName: z.string(),
+  packageName: z.string(),
+  enableTryItNow: z.boolean().default(true),
+  packageManagerUrl: z.string().optional(),
+});
+
+export type CodeSampleConfig = z.infer<typeof codeSampleConfigSchema>;
+
+const codeSampleUrlSchema = z.string().url();
+const codeSampleSourceSchema = z.union([
+  codeSampleConfigSchema,
+  codeSampleUrlSchema,
+]);
+
+export type CodeSampleSource = z.infer<typeof codeSampleSourceSchema>;
+
+export function isCodeSampleConfig(
+  value: unknown
+): value is CodeSampleConfig {
+  return codeSampleConfigSchema.safeParse(value).success;
+}
+
+const codeSamplesSchema = z.array(codeSampleSourceSchema).min(1);
+
+export type CodeSamplesSetting = z.infer<typeof codeSamplesSchema>;
 
 export const settingsSchema = z.strictObject({
   spec: z.string().optional(),
@@ -81,18 +116,7 @@ export const settingsSchema = z.strictObject({
       showDebugPlaceholders: false,
       expandTopLevelPropertiesOnPageLoad: true,
     }),
-  codeSamples: z
-    .array(
-      z.strictObject({
-        language,
-        sdkClassName: z.string(),
-        packageName: z.string(),
-        enableTryItNow: z.boolean().default(true),
-        packageManagerUrl: z.string().optional(),
-      })
-    )
-    .min(1)
-    .optional(),
+  codeSamples: codeSamplesSchema.optional(),
 });
 
 type ZodSettings = z.infer<typeof settingsSchema>;

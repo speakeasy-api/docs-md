@@ -42,4 +42,10 @@ export default {
     showDebugPlaceholders: false,
     expandTopLevelPropertiesOnPageLoad: true,
   },
+  // Uncomment and set to a hosted archive (zip or tar.gz) containing markdown
+  // usage snippets with <!-- UsageSnippet ... --> markers to load pre-built
+  // code samples directly.
+  // codeSamples: [
+  //   "https://example.com/path/to/sdk-snippets.tar.gz",
+  // ],
 };

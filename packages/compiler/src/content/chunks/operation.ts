@@ -8,8 +8,8 @@ import type { PropertyAnnotations } from "@speakeasy-api/docs-md-shared";
 import type { DocsCodeSnippets } from "../../data/generateCodeSnippets.ts";
 import { debug } from "../../logging.ts";
 import type { Renderer } from "../../renderers/base.ts";
-import type { CodeSampleLanguage } from "../../settings.ts";
-import { getSettings } from "../../settings.ts";
+import type { CodeSampleConfig, CodeSampleLanguage } from "../../settings.ts";
+import { getSettings, isCodeSampleConfig } from "../../settings.ts";
 import { assertNever } from "../../util/assertNever.ts";
 import { getSchemaFromId, getSecurityFromId } from "../util.ts";
 import {
@@ -37,8 +37,16 @@ function renderCodeSamples(
       ({ createTryItNowEntry, createCodeSampleEntry }) => {
         for (const [language, snippet] of Object.entries(usageSnippet)) {
           debug(`Rendering code sample for ${language}`);
-          const codeSample = codeSamples.find((s) => s.language === language);
-          if (language === "typescript" && codeSample?.enableTryItNow) {
+          const codeSampleConfig = codeSamples?.find(
+            (entry): entry is CodeSampleConfig =>
+              isCodeSampleConfig(entry) && entry.language === language
+          );
+
+          if (
+            language === "typescript" &&
+            codeSampleConfig?.enableTryItNow &&
+            snippet.packageName
+          ) {
             createTryItNowEntry({
               language,
               externalDependencies: {
@@ -46,7 +54,7 @@ function renderCodeSamples(
                 [snippet.packageName]: "latest",
               },
               defaultValue: snippet.code,
-              packageManagerUrl: codeSample?.packageManagerUrl,
+              packageManagerUrl: codeSampleConfig?.packageManagerUrl,
             });
           } else {
             createCodeSampleEntry({

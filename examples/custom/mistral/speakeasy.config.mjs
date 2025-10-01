@@ -53,5 +53,6 @@ export default {
       sdkClassName: "Mistral",
       packageName: "mistralai",
     },
+    "https://github.com/mistralai/client-ts/archive/refs/tags/v1.10.0.zip",
   ],
 };
