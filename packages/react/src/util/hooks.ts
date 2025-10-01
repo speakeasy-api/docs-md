@@ -30,17 +30,17 @@ export function useUniqueChild<ComponentProps>(
   return useMemo(() => {
     const normalizedChildren = normalizeChildren(children);
 
-    const titleChildren = normalizedChildren.filter(
+    const child = normalizedChildren.filter(
       (child) => child.props.slot === slot
     );
 
-    if (titleChildren.length > 1) {
+    if (child.length === 0 || child.length > 1) {
       throw new InternalError(
-        `Section must have at most one title child, not ${titleChildren.length}`
+        `Section must have exactly one ${slot} child, not ${child.length}`
       );
     }
 
-    return titleChildren[0] as ReactElement<ComponentProps>;
+    return child[0] as ReactElement<ComponentProps>;
   }, [children, slot]);
 }
 
