@@ -2,8 +2,7 @@ import { basename } from "node:path";
 
 import type { Chunk, OperationChunk } from "@speakeasy-api/docs-md-shared";
 
-import { error, info } from "../logging.ts";
-import type { CodeSampleLanguage } from "../settings.ts";
+import { info } from "../logging.ts";
 import { getSettings } from "../settings.ts";
 
 type CodeSnippet = {
@@ -31,7 +30,7 @@ const CODE_SNIPPETS_API_URL =
 // Map from operation ID to language to code snippet
 export type DocsCodeSnippets = Record<
   OperationChunk["id"],
-  Partial<Record<CodeSampleLanguage, CodeSnippet>>
+  Record<string, CodeSnippet>
 >;
 
 export async function generateCodeSnippets(
@@ -45,7 +44,6 @@ export async function generateCodeSnippets(
   }
 
   const docsCodeSnippets: DocsCodeSnippets = {};
-
   const specFilename = spec && basename(spec);
 
   // create a by operationId map of the operation chunks
@@ -55,52 +53,74 @@ export async function generateCodeSnippets(
       operationChunksByOperationId.set(chunk.chunkData.operationId, chunk);
     }
   }
-  try {
-    for (const language of codeSamples) {
-      const formData = new FormData();
 
-      const blob = new Blob([specContents]);
-      formData.append("language", language.language);
-      formData.append("schema_file", blob, specFilename);
-      formData.append("package_name", language.packageName);
-      formData.append("sdk_class_name", language.sdkClassName);
+  // Fetch code snippets from the preview api
+  const codeSampleResponses = new Map<string, CodeSnippet[]>();
+  for (const language of codeSamples) {
+    const formData = new FormData();
 
-      const res = await fetch(
-        `${CODE_SNIPPETS_API_URL}/v1/code_sample/preview`,
-        {
-          method: "POST",
-          body: formData,
-        }
+    const blob = new Blob([specContents]);
+    formData.append("language", language.language);
+    formData.append("schema_file", blob, specFilename);
+    formData.append("package_name", language.packageName);
+    formData.append("sdk_class_name", language.sdkClassName);
+
+    const res = await fetch(`${CODE_SNIPPETS_API_URL}/v1/code_sample/preview`, {
+      method: "POST",
+      body: formData,
+    });
+
+    const json = (await res.json()) as unknown;
+
+    if (!res.ok) {
+      const error = json as ErrorResponse;
+      throw new Error(`Failed to generate code sample: ${error.message}`);
+    }
+    const codeSnippets = (json as CodeSamplesResponse).snippets.map(
+      (snippet) => ({
+        ...snippet,
+        packageName: language.packageName,
+      })
+    );
+    codeSampleResponses.set(language.language, codeSnippets);
+  }
+
+  // Populate docsCodeSnippets with the code samples, prioritizing code samples
+  // from the OAS and falling back to the fetched samples if absent
+  for (const chunk of docsData.values()) {
+    if (chunk.chunkType !== "operation") {
+      continue;
+    }
+
+    const chunkCodeSnippets: Record<string, CodeSnippet> = {};
+
+    // First, populate the list of samples fetched remotely
+    for (const [language, codeSampleResponse] of codeSampleResponses) {
+      const operationCodeSampleResponses = codeSampleResponse.filter(
+        (sample) => sample.operationId === chunk.chunkData.operationId
       );
-
-      const json = (await res.json()) as unknown;
-
-      if (!res.ok) {
-        const error = json as ErrorResponse;
-        throw new Error(`Failed to generate code sample: ${error.message}`);
-      }
-      const codeSnippets = (json as CodeSamplesResponse).snippets.map(
-        (snippet) => ({
-          ...snippet,
-          packageName: language.packageName,
-        })
-      );
-
-      for (const snippet of codeSnippets) {
-        const chunk = operationChunksByOperationId.get(snippet.operationId);
-        // only set the usage snippet if the operation id exists in the spec
-        if (chunk) {
-          docsCodeSnippets[chunk.id] ??= {};
-
-          // Won't be null due to the above line
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          docsCodeSnippets[chunk.id]![language.language] = snippet;
-        }
+      if (operationCodeSampleResponses.length > 0) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        chunkCodeSnippets[language] = operationCodeSampleResponses[0]!;
       }
     }
-  } catch (err) {
-    error(`There was an error generating code snippets`, err);
-    return {};
+
+    // Then, overwrite any fetched samples with ones that are defined in the OAS
+    for (const [language, code] of Object.entries(
+      chunk.chunkData.codeSamples
+    )) {
+      chunkCodeSnippets[language] = {
+        code,
+        language,
+        operationId: chunk.chunkData.operationId,
+
+        // TODO: remove this once we move away from dynamically fetching
+        // packages in Try It Now.
+        packageName: "",
+      };
+    }
+    docsCodeSnippets[chunk.id] = chunkCodeSnippets;
   }
+
   return docsCodeSnippets;
 }

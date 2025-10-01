@@ -88,14 +88,15 @@ type OperationData = {
   operationId: string;
   path: string;
   method: string;
-  tag: string;
   summary: string | null;
   description: string | null;
-  security: Security | null;
-  globalSecurity: Security | null;
   parameters: Parameter[];
   requestBody: RequestBody | null;
   responses: Record<string, Response[]>;
+  tag: string;
+  security: Security | null;
+  deprecated: boolean;
+  codeSamples: Record<string, string>; // Map of language to code sample
 };
 
 export type OperationChunk = {
