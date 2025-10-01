@@ -5,10 +5,10 @@ import { useState } from "react";
 import { useRuntime } from "../state.ts";
 import type { TryItNowProps } from "../types.ts";
 import { Editor as DefaultEditor } from "./Editor.tsx";
-import { EditorLayout } from "./EditorLayout.tsx";
 import { Layout as DefaultLayout } from "./Layout.tsx";
 import { Results as DefaultResults } from "./Results.tsx";
 import { RunButton as DefaultRunButton } from "./RunButton.tsx";
+import styles from "./styles.module.css";
 
 export function TryItNowContents({
   externalDependencies = {},
@@ -25,22 +25,26 @@ export function TryItNowContents({
     packageManagerUrl,
     dependencies: externalDependencies,
   });
+  const showResults = status.state !== "idle";
+
   return (
     <div>
       <Layout>
-        <EditorLayout>
-          <div slot="editor">
-            <Editor theme={theme} value={value} onValueChange={setValue} />
+        <div slot="editor">
+          <Editor theme={theme} value={value} onValueChange={setValue} />
+        </div>
+        <div slot="runButton" className={styles.runButtonContainer}>
+          <RunButton
+            onClick={() => {
+              execute(value);
+            }}
+          />
+        </div>
+        {showResults && (
+          <div slot="results" className={styles.results}>
+            <Results status={status} />
           </div>
-          <div slot="runButton">
-            <RunButton
-              onClick={() => {
-                execute(value);
-              }}
-            />
-          </div>
-        </EditorLayout>
-        <Results status={status} />
+        )}
       </Layout>
     </div>
   );

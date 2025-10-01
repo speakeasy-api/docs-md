@@ -3,7 +3,7 @@
 import type { RuntimeEvents } from "@speakeasy-api/docs-md-shared";
 
 import type { ResultsProps } from "../types.ts";
-import styles from "./styles.module.css";
+
 function formatEvents(events: RuntimeEvents[]) {
   return events
     .map((event) => {
@@ -62,7 +62,7 @@ export function Results({ status }: ResultsProps) {
   }
 
   return (
-    <div slot="results" className={styles.results}>
+    <div>
       <pre>
         {displayOutput.length > 1
           ? JSON.stringify(displayOutput, null, 2)

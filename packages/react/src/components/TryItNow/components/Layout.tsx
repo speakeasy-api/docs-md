@@ -1,5 +1,6 @@
 "use client";
 
+import { useChildren } from "../../../util/hooks.ts";
 import type { LayoutProps } from "../types.ts";
 import styles from "./styles.module.css";
 
@@ -9,5 +10,16 @@ import styles from "./styles.module.css";
  *
  */
 export function Layout({ children }: LayoutProps) {
-  return <div className={styles.layout}>{children}</div>;
+  const editorChild = useChildren(children, "editor");
+  const runButtonChild = useChildren(children, "runButton");
+  const resultsChild = useChildren(children, "results");
+  return (
+    <div className={styles.layout}>
+      <div className={styles.editorContainer}>
+        {editorChild}
+        {runButtonChild}
+      </div>
+      {resultsChild}
+    </div>
+  );
 }
