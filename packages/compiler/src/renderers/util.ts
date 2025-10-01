@@ -15,12 +15,7 @@ const languageToPrettyLanguage: Record<CodeSampleLanguage, string> = {
 };
 
 export function getPrettyCodeSampleLanguage(language: string) {
-  const prettyLanguage =
-    languageToPrettyLanguage[language as CodeSampleLanguage];
-  if (prettyLanguage) {
-    return prettyLanguage;
-  }
-  return language;
+  return languageToPrettyLanguage[language as CodeSampleLanguage] ?? language;
 }
 
 type Escape = "markdown" | "html" | "mdx" | "none";
