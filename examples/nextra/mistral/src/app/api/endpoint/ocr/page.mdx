@@ -5,7 +5,6 @@ sidebarTitle: Ocr
 import "@speakeasy-api/docs-md-react/nextra.css";
 
 import {
-  CodeSample,
   ExpandableBreakout,
   ExpandableBreakoutDescription,
   ExpandableBreakoutProperties,
@@ -82,11 +81,11 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.ocr.ocrV1OcrPost({
+  const result = await mistral.ocr.process({
     model: "CX-9",
     document: {
       documentUrl: "https://upset-labourer.net/",
@@ -94,44 +93,13 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-ocr_v1_ocr_post_code-samples_python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-ocr_v1_ocr_post_code-samples_python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral, models
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.ocr.ocr_v1_ocr_post(model="CX-9", document={
-        "document_url": "https://upset-labourer.net/",
-        "type": models.DocumentURLChunkType.DOCUMENT_URL,
-    })
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 

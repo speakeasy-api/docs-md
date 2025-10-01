@@ -6,7 +6,6 @@ sidebar_label: Fine Tuning
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
-  CodeSample,
   DebugPlaceholder,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
@@ -106,52 +105,19 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.fineTuning.jobsApiRoutesFineTuningGetFineTuningJobs({});
+  const result = await mistral.fineTuning.jobs.list({});
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-jobs_api_routes_fine_tuning_get_fine_tuning_jobs+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-jobs_api_routes_fine_tuning_get_fine_tuning_jobs+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.fine_tuning.jobs_api_routes_fine_tuning_get_fine_tuning_jobs()
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -5929,61 +5895,24 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.fineTuning.jobsApiRoutesFineTuningCreateFineTuningJob({
-    jobIn: {
-      model: "open-mistral-7b",
-      hyperparameters: {
-        learningRate: 0.0001,
-      },
+  const result = await mistral.fineTuning.jobs.create({
+    model: "Camaro",
+    hyperparameters: {
+      learningRate: 0.0001,
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-jobs_api_routes_fine_tuning_create_fine_tuning_job+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-jobs_api_routes_fine_tuning_create_fine_tuning_job+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral, models
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.fine_tuning.jobs_api_routes_fine_tuning_create_fine_tuning_job(model=models.FineTuneableModel.OPEN_MISTRAL_7B, hyperparameters={
-        "learning_rate": 0.0001,
-    })
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -15380,54 +15309,21 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.fineTuning.jobsApiRoutesFineTuningGetFineTuningJob({
+  const result = await mistral.fineTuning.jobs.get({
     jobId: "c167a961-ffca-4bcf-93ac-6169468dd389",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-jobs_api_routes_fine_tuning_get_fine_tuning_job+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-jobs_api_routes_fine_tuning_get_fine_tuning_job+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.fine_tuning.jobs_api_routes_fine_tuning_get_fine_tuning_job(job_id="c167a961-ffca-4bcf-93ac-6169468dd389")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -23502,54 +23398,21 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.fineTuning.jobsApiRoutesFineTuningCancelFineTuningJob({
+  const result = await mistral.fineTuning.jobs.cancel({
     jobId: "6188a2f6-7513-4e0f-89cc-3f8088523a49",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-jobs_api_routes_fine_tuning_cancel_fine_tuning_job+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-jobs_api_routes_fine_tuning_cancel_fine_tuning_job+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.fine_tuning.jobs_api_routes_fine_tuning_cancel_fine_tuning_job(job_id="6188a2f6-7513-4e0f-89cc-3f8088523a49")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -31624,54 +31487,21 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.fineTuning.jobsApiRoutesFineTuningStartFineTuningJob({
+  const result = await mistral.fineTuning.jobs.start({
     jobId: "56553e4d-0679-471e-b9ac-59a77d671103",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-jobs_api_routes_fine_tuning_start_fine_tuning_job+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-jobs_api_routes_fine_tuning_start_fine_tuning_job+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.fine_tuning.jobs_api_routes_fine_tuning_start_fine_tuning_job(job_id="56553e4d-0679-471e-b9ac-59a77d671103")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 

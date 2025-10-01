@@ -6,7 +6,6 @@ sidebar_label: Beta Conversations
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
-  CodeSample,
   DebugPlaceholder,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
@@ -106,49 +105,19 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.conversations.agentsApiV1ConversationsList({});
+  const result = await mistral.beta.conversations.list({});
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-agents_api_v1_conversations_list+code-samples+python">
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_conversations_list+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.conversations.agents_api_v1_conversations_list()
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -4301,51 +4270,21 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.conversations.agentsApiV1ConversationsStart({
+  const result = await mistral.beta.conversations.start({
     inputs: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-agents_api_v1_conversations_start+code-samples+python">
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_conversations_start+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.conversations.agents_api_v1_conversations_start(inputs="<value>")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -19425,51 +19364,21 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.conversations.agentsApiV1ConversationsGet({
+  const result = await mistral.beta.conversations.get({
     conversationId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-agents_api_v1_conversations_get+code-samples+python">
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_conversations_get+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.conversations.agents_api_v1_conversations_get(conversation_id="<id>")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -23578,83 +23487,24 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.conversations.agentsApiV1ConversationsAppend({
+  const result = await mistral.beta.conversations.append({
     conversationId: "<id>",
     conversationAppendRequest: {
-      inputs: [
-        {
-          object: "entry",
-          type: "message.input",
-          role: "user",
-          content: [
-            {
-              documentUrl: "https://oblong-decryption.info/",
-              type: "document_url",
-            },
-          ],
-          prefix: false,
-        },
-      ],
+      inputs: [],
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-agents_api_v1_conversations_append+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_conversations_append+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral, models
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.conversations.agents_api_v1_conversations_append(conversation_id="<id>", inputs=[
-        {
-            "object": models.MessageInputEntryObject.ENTRY,
-            "type": models.MessageInputEntryType.MESSAGE_INPUT,
-            "role": models.MessageInputEntryRole.USER,
-            "content": [
-                {
-                    "document_url": "https://oblong-decryption.info/",
-                    "type": models.DocumentURLChunkType.DOCUMENT_URL,
-                },
-            ],
-            "prefix": False,
-        },
-    ])
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -37124,54 +36974,21 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.conversations.agentsApiV1ConversationsHistory({
+  const result = await mistral.beta.conversations.getHistory({
     conversationId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-agents_api_v1_conversations_history+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_conversations_history+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.conversations.agents_api_v1_conversations_history(conversation_id="<id>")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -44139,54 +43956,21 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.conversations.agentsApiV1ConversationsMessages({
+  const result = await mistral.beta.conversations.getMessages({
     conversationId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-agents_api_v1_conversations_messages+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_conversations_messages+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.conversations.agents_api_v1_conversations_messages(conversation_id="<id>")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -48778,11 +48562,11 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.conversations.agentsApiV1ConversationsRestart({
+  const result = await mistral.beta.conversations.restart({
     conversationId: "<id>",
     conversationRestartRequest: {
       inputs: "<value>",
@@ -48790,46 +48574,13 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-agents_api_v1_conversations_restart+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_conversations_restart+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.conversations.agents_api_v1_conversations_restart(conversation_id="<id>", inputs="<value>", from_entry_id="<id>")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -62356,11 +62107,11 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.conversations.agentsApiV1ConversationsStartStream({
+  const result = await mistral.beta.conversations.startStream({
     inputs: [
       {
         object: "entry",
@@ -62369,21 +62120,6 @@ async function run() {
         previousAgentName: "<value>",
         nextAgentId: "<id>",
         nextAgentName: "<value>",
-      },
-      {
-        object: "entry",
-        type: "function.result",
-        toolCallId: "<id>",
-        result: "<value>",
-      },
-      {
-        object: "entry",
-        type: "function.call",
-        toolCallId: "<id>",
-        name: "<value>",
-        arguments: {
-          "key": "<value>",
-        },
       },
     ],
   });
@@ -62394,68 +62130,10 @@ async function run() {
   }
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-agents_api_v1_conversations_start_stream+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_conversations_start_stream+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral, models
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.conversations.agents_api_v1_conversations_start_stream(inputs=[
-        {
-            "object": models.AgentHandoffEntryObject.ENTRY,
-            "type": models.AgentHandoffEntryType.AGENT_HANDOFF,
-            "previous_agent_id": "<id>",
-            "previous_agent_name": "<value>",
-            "next_agent_id": "<id>",
-            "next_agent_name": "<value>",
-        },
-        {
-            "object": models.FunctionResultEntryObject.ENTRY,
-            "type": models.FunctionResultEntryType.FUNCTION_RESULT,
-            "tool_call_id": "<id>",
-            "result": "<value>",
-        },
-        {
-            "object": models.FunctionCallEntryObject.ENTRY,
-            "type": models.FunctionCallEntryType.FUNCTION_CALL,
-            "tool_call_id": "<id>",
-            "name": "<value>",
-            "arguments": {
-                "key": "<value>",
-            },
-        },
-    ])
-
-    with res as event_stream:
-        for event in event_stream:
-            # handle event
-            print(event, flush=True)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -79296,11 +78974,11 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.conversations.agentsApiV1ConversationsAppendStream({
+  const result = await mistral.beta.conversations.appendStream({
     conversationId: "<id>",
     conversationAppendStreamRequest: {
       inputs: "<value>",
@@ -79313,44 +78991,10 @@ async function run() {
   }
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-agents_api_v1_conversations_append_stream+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_conversations_append_stream+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.conversations.agents_api_v1_conversations_append_stream(conversation_id="<id>", inputs="<value>")
-
-    with res as event_stream:
-        for event in event_stream:
-            # handle event
-            print(event, flush=True)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -94581,11 +94225,11 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.conversations.agentsApiV1ConversationsRestartStream({
+  const result = await mistral.beta.conversations.restartStream({
     conversationId: "<id>",
     conversationRestartStreamRequest: {
       inputs: [
@@ -94595,12 +94239,6 @@ async function run() {
           role: "assistant",
           content: "<value>",
           prefix: false,
-        },
-        {
-          object: "entry",
-          type: "message.output",
-          role: "assistant",
-          content: "<value>",
         },
       ],
       fromEntryId: "<id>",
@@ -94613,58 +94251,10 @@ async function run() {
   }
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-agents_api_v1_conversations_restart_stream+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_api_v1_conversations_restart_stream+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral, models
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.conversations.agents_api_v1_conversations_restart_stream(conversation_id="<id>", inputs=[
-        {
-            "object": models.MessageInputEntryObject.ENTRY,
-            "type": models.MessageInputEntryType.MESSAGE_INPUT,
-            "role": models.MessageInputEntryRole.ASSISTANT,
-            "content": "<value>",
-            "prefix": False,
-        },
-        {
-            "object": models.MessageOutputEntryObject.ENTRY,
-            "type": models.MessageOutputEntryType.MESSAGE_OUTPUT,
-            "role": models.MessageOutputEntryRole.ASSISTANT,
-            "content": "<value>",
-        },
-    ], from_entry_id="<id>")
-
-    with res as event_stream:
-        for event in event_stream:
-            # handle event
-            print(event, flush=True)
-```
-
-</CodeSample>
 
 </SectionContent>
 

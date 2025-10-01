@@ -5,7 +5,6 @@ sidebarTitle: Classifiers
 import "@speakeasy-api/docs-md-react/nextra.css";
 
 import {
-  CodeSample,
   ExpandableBreakout,
   ExpandableBreakoutDescription,
   ExpandableBreakoutProperties,
@@ -89,59 +88,25 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.classifiers.moderationsV1ModerationsPost({
+  const result = await mistral.classifiers.moderate({
     model: "Durango",
-    input: [
+    inputs: [
       "<value 1>",
       "<value 2>",
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-moderations_v1_moderations_post_code-samples_python">
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-moderations_v1_moderations_post_code-samples_python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.classifiers.moderations_v1_moderations_post(model="Durango", input_=[
-        "<value 1>",
-        "<value 2>",
-    ])
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -437,112 +402,27 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.classifiers.chatModerationsV1ChatModerationsPost({
-    input: [
+  const result = await mistral.classifiers.moderateChat({
+    inputs: [
       {
         content: "<value>",
         role: "tool",
       },
-      {
-        content: [
-          {
-            text: "<value>",
-            type: "text",
-          },
-          {
-            thinking: [
-              {
-                text: "<value>",
-                type: "text",
-              },
-            ],
-            closed: true,
-            type: "thinking",
-          },
-          {
-            documentUrl: "https://elliptical-comparison.info/",
-            type: "document_url",
-          },
-        ],
-        role: "tool",
-      },
     ],
-    model: "1",
+    model: "LeBaron",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-chat_moderations_v1_chat_moderations_post_code-samples_python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-chat_moderations_v1_chat_moderations_post_code-samples_python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral, models
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.classifiers.chat_moderations_v1_chat_moderations_post(input_=[
-        {
-            "content": "<value>",
-            "role": models.ToolMessageRole.TOOL,
-        },
-        {
-            "content": [
-                {
-                    "text": "<value>",
-                    "type": models.TextChunkType.TEXT,
-                },
-                {
-                    "thinking": [
-                        {
-                            "text": "<value>",
-                            "type": models.TextChunkType.TEXT,
-                        },
-                    ],
-                    "closed": True,
-                    "type": models.ThinkChunkType.THINKING,
-                },
-                {
-                    "document_url": "https://elliptical-comparison.info/",
-                    "type": models.DocumentURLChunkType.DOCUMENT_URL,
-                },
-            ],
-            "role": models.ToolMessageRole.TOOL,
-        },
-    ], model="1")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -3583,60 +3463,24 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.classifiers.classificationsV1ClassificationsPost({
+  const result = await mistral.classifiers.classify({
     model: "Silverado",
-    input: [
+    inputs: [
       "<value 1>",
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-classifications_v1_classifications_post_code-samples_python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-classifications_v1_classifications_post_code-samples_python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.classifiers.classifications_v1_classifications_post(model="Silverado", input_=[
-        "<value 1>",
-    ])
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -3901,106 +3745,31 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.classifiers.chatClassificationsV1ChatClassificationsPost({
+  const result = await mistral.classifiers.classifyChat({
     model: "Camry",
-    input: [
+    inputs: [
       {
         messages: [
           {
             content: "<value>",
             role: "system",
-          },
-          {
-            prefix: false,
-            role: "assistant",
-          },
-        ],
-      },
-      {
-        messages: [
-          {
-            content: "<value>",
-            role: "system",
-          },
-          {
-            prefix: false,
-            role: "assistant",
           },
         ],
       },
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-chat_classifications_v1_chat_classifications_post_code-samples_python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-chat_classifications_v1_chat_classifications_post_code-samples_python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral, models
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.classifiers.chat_classifications_v1_chat_classifications_post(model="Camry", input_=[
-        {
-            "messages": [
-                {
-                    "content": "<value>",
-                    "role": models.SystemMessageRole.SYSTEM,
-                },
-                {
-                    "prefix": False,
-                    "role": models.AssistantMessageRole.ASSISTANT,
-                },
-            ],
-        },
-        {
-            "messages": [
-                {
-                    "content": "<value>",
-                    "role": models.SystemMessageRole.SYSTEM,
-                },
-                {
-                    "prefix": False,
-                    "role": models.AssistantMessageRole.ASSISTANT,
-                },
-            ],
-        },
-    ])
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 

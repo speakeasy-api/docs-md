@@ -6,7 +6,6 @@ sidebar_label: Beta Libraries Accesses
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
-  CodeSample,
   DebugPlaceholder,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
@@ -98,48 +97,21 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.libraries.accesses.librariesShareListV1({
+  const result = await mistral.beta.libraries.accesses.list({
     libraryId: "d2169833-d8e2-416e-a372-76518d3d99c2",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-libraries_share_list_v1+code-samples+python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-libraries_share_list_v1+code-samples+python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.libraries.accesses.libraries_share_list_v1(library_id="d2169833-d8e2-416e-a372-76518d3d99c2")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -895,11 +867,11 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.libraries.accesses.librariesShareCreateV1({
+  const result = await mistral.beta.libraries.accesses.updateOrCreate({
     libraryId: "36de3a24-5b1c-4c8f-9d84-d5642205a976",
     sharingIn: {
       orgId: "aadd9ae1-f285-4437-884a-091c77efa6fd",
@@ -909,40 +881,13 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-libraries_share_create_v1+code-samples+python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-libraries_share_create_v1+code-samples+python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral, models
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.libraries.accesses.libraries_share_create_v1(library_id="36de3a24-5b1c-4c8f-9d84-d5642205a976", org_id="aadd9ae1-f285-4437-884a-091c77efa6fd", level=models.ShareEnum.VIEWER, share_with_uuid="0ae92ecb-21ed-47c5-9f7e-0b2cbe325a20", share_with_type=models.EntityType.USER)
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -1871,11 +1816,11 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.libraries.accesses.librariesShareDeleteV1({
+  const result = await mistral.beta.libraries.accesses.delete({
     libraryId: "709e3cad-9fb2-4f4e-bf88-143cf1808107",
     sharingDelete: {
       orgId: "0814a235-c2d0-4814-875a-4b85f93d3dc7",
@@ -1884,40 +1829,13 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-libraries_share_delete_v1+code-samples+python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-libraries_share_delete_v1+code-samples+python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral, models
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.libraries.accesses.libraries_share_delete_v1(library_id="709e3cad-9fb2-4f4e-bf88-143cf1808107", org_id="0814a235-c2d0-4814-875a-4b85f93d3dc7", share_with_uuid="b843cc47-ce8f-4354-8cfc-5fcd7fb2865b", share_with_type=models.EntityType.USER)
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 

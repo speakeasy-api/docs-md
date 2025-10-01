@@ -5,7 +5,6 @@ sidebarTitle: Beta Libraries Documents
 import "@speakeasy-api/docs-md-react/nextra.css";
 
 import {
-  CodeSample,
   ExpandableBreakout,
   ExpandableBreakoutDescription,
   ExpandableBreakoutProperties,
@@ -94,49 +93,21 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.libraries.documents.librariesDocumentsListV1({
+  const result = await mistral.beta.libraries.documents.list({
     libraryId: "5c3ca4cd-62bc-4c71-ad8a-1531ae80d078",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-libraries_documents_list_v1_code-samples_python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-libraries_documents_list_v1_code-samples_python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.libraries.documents.libraries_documents_list_v1(library_id="5c3ca4cd-62bc-4c71-ad8a-1531ae80d078")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -731,55 +702,24 @@ TypeScript
 import { openAsBlob } from "node:fs";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.libraries.documents.librariesDocumentsUploadV1({
+  const result = await mistral.beta.libraries.documents.upload({
     libraryId: "a02150d9-5ee0-4877-b62c-28b1fcdf3b76",
     requestBody: {
       file: await openAsBlob("example.file"),
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-libraries_documents_upload_v1_code-samples_python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-libraries_documents_upload_v1_code-samples_python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.libraries.documents.libraries_documents_upload_v1(library_id="a02150d9-5ee0-4877-b62c-28b1fcdf3b76", file={
-        "file_name": "example.file",
-        "content": open("example.file", "rb"),
-    })
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -1346,50 +1286,22 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.libraries.documents.librariesDocumentsGetV1({
+  const result = await mistral.beta.libraries.documents.get({
     libraryId: "03d908c8-90a1-44fd-bf3a-8490fb7c9a03",
     documentId: "90973aec-0508-4375-8b00-91d732414745",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-libraries_documents_get_v1_code-samples_python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-libraries_documents_get_v1_code-samples_python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.libraries.documents.libraries_documents_get_v1(library_id="03d908c8-90a1-44fd-bf3a-8490fb7c9a03", document_id="90973aec-0508-4375-8b00-91d732414745")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -1843,51 +1755,23 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.libraries.documents.librariesDocumentsUpdateV1({
+  const result = await mistral.beta.libraries.documents.update({
     libraryId: "3ddd8d93-dca5-4a6d-980d-173226c35742",
     documentId: "2a25e44c-b160-40ca-b5c2-b65fb2fcae34",
     documentUpdateIn: {},
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-libraries_documents_update_v1_code-samples_python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-libraries_documents_update_v1_code-samples_python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.libraries.documents.libraries_documents_update_v1(library_id="3ddd8d93-dca5-4a6d-980d-173226c35742", document_id="2a25e44c-b160-40ca-b5c2-b65fb2fcae34")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -2381,11 +2265,11 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  await mistral.beta.libraries.documents.librariesDocumentsDeleteV1({
+  await mistral.beta.libraries.documents.delete({
     libraryId: "005daae9-d42e-407d-82d7-2261c6a1496c",
     documentId: "edc236b0-baff-49a9-884b-4ca36a258da4",
   });
@@ -2393,36 +2277,10 @@ async function run() {
 
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-libraries_documents_delete_v1_code-samples_python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-libraries_documents_delete_v1_code-samples_python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    mistral.beta.libraries.documents.libraries_documents_delete_v1(library_id="005daae9-d42e-407d-82d7-2261c6a1496c", document_id="edc236b0-baff-49a9-884b-4ca36a258da4")
-
-    # Use the SDK ...
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -2533,56 +2391,22 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.libraries.documents.librariesDocumentsGetTextContentV1({
+  const result = await mistral.beta.libraries.documents.textContent({
     libraryId: "1d177215-3b6b-45ba-9fa9-baf773223bec",
     documentId: "60214c91-2aba-4692-a4e6-a53365de8caf",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-libraries_documents_get_text_content_v1_code-samples_python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-libraries_documents_get_text_content_v1_code-samples_python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.libraries.documents.libraries_documents_get_text_content_v1(library_id="1d177215-3b6b-45ba-9fa9-baf773223bec", document_id="60214c91-2aba-4692-a4e6-a53365de8caf")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -2751,53 +2575,22 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.libraries.documents.librariesDocumentsGetStatusV1({
+  const result = await mistral.beta.libraries.documents.status({
     libraryId: "e6906f70-368f-4155-80da-c1718f01bc43",
     documentId: "2c904915-d831-4e9d-a345-8ce405bcef66",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-libraries_documents_get_status_v1_code-samples_python">
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-libraries_documents_get_status_v1_code-samples_python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.libraries.documents.libraries_documents_get_status_v1(library_id="e6906f70-368f-4155-80da-c1718f01bc43", document_id="2c904915-d831-4e9d-a345-8ce405bcef66")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -2984,56 +2777,22 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.libraries.documents.librariesDocumentsGetSignedUrlV1({
+  const result = await mistral.beta.libraries.documents.getSignedUrl({
     libraryId: "23cf6904-a602-4ee8-9f5b-8efc557c336d",
     documentId: "48598486-df71-4994-acbb-1133c72efa8c",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-libraries_documents_get_signed_url_v1_code-samples_python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-libraries_documents_get_signed_url_v1_code-samples_python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.libraries.documents.libraries_documents_get_signed_url_v1(library_id="23cf6904-a602-4ee8-9f5b-8efc557c336d", document_id="48598486-df71-4994-acbb-1133c72efa8c")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -3188,56 +2947,22 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.beta.libraries.documents.librariesDocumentsGetExtractedTextSignedUrlV1({
+  const result = await mistral.beta.libraries.documents.extractedTextSignedUrl({
     libraryId: "a6f15de3-1e82-4f95-af82-851499042ef8",
     documentId: "9749d4f9-24e5-4ca2-99a3-a406863f805d",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-libraries_documents_get_extracted_text_signed_url_v1_code-samples_python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-libraries_documents_get_extracted_text_signed_url_v1_code-samples_python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.beta.libraries.documents.libraries_documents_get_extracted_text_signed_url_v1(library_id="a6f15de3-1e82-4f95-af82-851499042ef8", document_id="9749d4f9-24e5-4ca2-99a3-a406863f805d")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -3392,11 +3117,11 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  await mistral.beta.libraries.documents.librariesDocumentsReprocessV1({
+  await mistral.beta.libraries.documents.reprocess({
     libraryId: "51b29371-de8f-4ba4-932b-a0bafb3a7f64",
     documentId: "3052422c-49ca-45ac-a918-cadb35d61fd8",
   });
@@ -3404,39 +3129,10 @@ async function run() {
 
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-libraries_documents_reprocess_v1_code-samples_python">
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-libraries_documents_reprocess_v1_code-samples_python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    mistral.beta.libraries.documents.libraries_documents_reprocess_v1(library_id="51b29371-de8f-4ba4-932b-a0bafb3a7f64", document_id="3052422c-49ca-45ac-a918-cadb35d61fd8")
-
-    # Use the SDK ...
-```
-
-</CodeSample>
 
 </SectionContent>
 

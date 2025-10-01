@@ -6,7 +6,6 @@ sidebar_label: Agents
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
-  CodeSample,
   DebugPlaceholder,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
@@ -113,11 +112,11 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.agents.agentsCompletionV1AgentsCompletionsPost({
+  const result = await mistral.agents.complete({
     messages: [
       {
         content: "Who is the best French painter? Answer in one short sentence.",
@@ -127,51 +126,13 @@ async function run() {
     agentId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
+  packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-agents_completion_v1_agents_completions_post+code-samples+python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-agents_completion_v1_agents_completions_post+code-samples+python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral, models
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.agents.agents_completion_v1_agents_completions_post(messages=[
-        {
-            "content": "Who is the best French painter? Answer in one short sentence.",
-            "role": models.UserMessageRole.USER,
-        },
-    ], agent_id="<id>")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 

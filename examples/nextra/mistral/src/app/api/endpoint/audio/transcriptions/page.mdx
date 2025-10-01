@@ -5,7 +5,6 @@ sidebarTitle: Audio Transcriptions
 import "@speakeasy-api/docs-md-react/nextra.css";
 
 import {
-  CodeSample,
   ExpandableBreakout,
   ExpandableBreakoutDescription,
   ExpandableBreakoutProperties,
@@ -90,52 +89,21 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.audio.transcriptions.audioApiV1TranscriptionsPost({
+  const result = await mistral.audio.transcriptions.complete({
     model: "Model X",
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-audio_api_v1_transcriptions_post_code-samples_python">
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-audio_api_v1_transcriptions_post_code-samples_python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.audio.transcriptions.audio_api_v1_transcriptions_post(model="Model X")
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
@@ -825,11 +793,11 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.audio.transcriptions.audioApiV1TranscriptionsPostStream({
+  const result = await mistral.audio.transcriptions.stream({
     model: "Camry",
   });
 
@@ -839,45 +807,10 @@ async function run() {
   }
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab
-  slot="tab"
-  id="operation-audio_api_v1_transcriptions_post_stream_code-samples_python"
->
-
-Python
-
-</SectionTab>
-
-<SectionContent
-  slot="content"
-  id="operation-audio_api_v1_transcriptions_post_stream_code-samples_python"
->
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.audio.transcriptions.audio_api_v1_transcriptions_post_stream(model="Camry")
-
-    with res as event_stream:
-        for event in event_stream:
-            # handle event
-            print(event, flush=True)
-```
-
-</CodeSample>
 
 </SectionContent>
 

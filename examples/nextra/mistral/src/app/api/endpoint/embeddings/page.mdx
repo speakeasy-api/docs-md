@@ -5,7 +5,6 @@ sidebarTitle: Embeddings
 import "@speakeasy-api/docs-md-react/nextra.css";
 
 import {
-  CodeSample,
   ExpandableBreakout,
   ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
@@ -92,56 +91,25 @@ TypeScript
   defaultValue={`import { Mistral } from "@mistralai/mistralai";
 
 const mistral = new Mistral({
-  apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+  apiKey: process.env["MISTRAL_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await mistral.embeddings.embeddingsV1EmbeddingsPost({
+  const result = await mistral.embeddings.create({
     model: "mistral-embed",
-    input: [
+    inputs: [
       "Embed this sentence.",
       "As well as this one.",
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
-run();`}
+run();
+`}
   packageManagerUrl="/pkg"
 />
-
-</SectionContent>
-
-<SectionTab slot="tab" id="operation-embeddings_v1_embeddings_post_code-samples_python">
-
-Python
-
-</SectionTab>
-
-<SectionContent slot="content" id="operation-embeddings_v1_embeddings_post_code-samples_python">
-
-<CodeSample>
-
-```python
-from mistralai import Mistral
-
-
-with Mistral(
-    api_key="<YOUR_BEARER_TOKEN_HERE>",
-) as mistral:
-
-    res = mistral.embeddings.embeddings_v1_embeddings_post(model="mistral-embed", input_=[
-        "Embed this sentence.",
-        "As well as this one.",
-    ])
-
-    # Handle response
-    print(res)
-```
-
-</CodeSample>
 
 </SectionContent>
 
