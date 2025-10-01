@@ -1,4 +1,4 @@
-import { useUniqueChild } from "../../util/hooks.ts";
+import { useChildren, useUniqueChild } from "../../util/hooks.ts";
 import type { TagDescriptionProps, TagProps, TagTitleProps } from "./types";
 
 /**
@@ -12,11 +12,11 @@ import type { TagDescriptionProps, TagProps, TagTitleProps } from "./types";
  */
 export function Tag({ children, slot }: TagProps) {
   const titleChild = useUniqueChild(children, "title");
-  const descriptionChild = useUniqueChild(children, "description");
+  const descriptionChildren = useChildren(children, "description");
   return (
     <div slot={slot}>
       {titleChild}
-      {descriptionChild}
+      {descriptionChildren}
     </div>
   );
 }

@@ -37,7 +37,7 @@ import type {
  */
 export function Operation({ children }: OperationProps) {
   const titleChild = useUniqueChild(children, "title");
-  const summaryChild = useUniqueChild(children, "summary");
+  const summaryChildren = useChildren(children, "summary");
   const descriptionChildren = useChildren(children, "description");
   const codeSamplesChildren = useChildren(children, "code-samples");
   const securityChildren = useChildren(children, "security");
@@ -56,7 +56,7 @@ export function Operation({ children }: OperationProps) {
     <div className={styles.operation}>
       <div>
         {titleChild}
-        {summaryChild}
+        {summaryChildren}
         {descriptionChildren}
       </div>
       {codeSamplesChildren}
