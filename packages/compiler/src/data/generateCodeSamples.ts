@@ -1,6 +1,17 @@
-import { basename } from "node:path";
+import { randomUUID } from "node:crypto";
+import {
+  createWriteStream,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  rmdirSync,
+} from "node:fs";
+import { get } from "node:https";
+import { tmpdir } from "node:os";
+import { basename, join } from "node:path";
 
 import type { Chunk, OperationChunk } from "@speakeasy-api/docs-md-shared";
+import { extract } from "tar";
 
 import { info } from "../logging.ts";
 import { getSettings } from "../settings.ts";
@@ -15,36 +26,61 @@ type CodeSample = {
   packageName: string;
 };
 
-type CodeSamplesResponse = {
-  snippets: Omit<CodeSample, "packageName">[];
-};
-
-type ErrorResponse = {
-  message: string;
-  statusCode: number;
-};
-
-const CODE_SAMPLES_API_URL =
-  process.env.SPEAKEASY_CODE_SAMPLES_API_URL ?? "https://api.speakeasy.com";
-
 // Map from operation ID to language to code sample
 export type DocsCodeSamples = Record<
   OperationChunk["id"],
   Record<string, CodeSample>
 >;
 
+function downloadFile(url: string, destination: string) {
+  return new Promise<void>((resolve, reject) => {
+    const file = createWriteStream(destination);
+    const options = {
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    };
+
+    get(url, options, (response) => {
+      // Handle redirects
+      if (
+        response.statusCode &&
+        response.statusCode >= 300 &&
+        response.statusCode < 400 &&
+        response.headers.location
+      ) {
+        file.close();
+        downloadFile(response.headers.location, destination)
+          .then(resolve)
+          .catch(reject);
+        return;
+      }
+
+      response.pipe(file);
+      file.on("finish", () => {
+        file.close(() => {
+          resolve();
+        });
+      });
+    }).on("error", (err) => {
+      file.close();
+      reject(err);
+    });
+  });
+}
+
 export async function generateCodeSamples(
-  docsData: Map<string, Chunk>,
-  specContents: string
+  docsData: Map<string, Chunk>
 ): Promise<DocsCodeSamples> {
-  const { spec, codeSamples } = getSettings();
+  const { codeSamples } = getSettings();
   if (!codeSamples) {
     info("Code samples not enabled, skipping code samples generation");
     return {};
   }
 
   const docsCodeSamples: DocsCodeSamples = {};
-  const specFilename = spec && basename(spec);
 
   // create a by operationId map of the operation chunks
   const operationChunksByOperationId = new Map<string, OperationChunk>();
@@ -54,35 +90,61 @@ export async function generateCodeSamples(
     }
   }
 
-  // Fetch code samples from the preview api
   const codeSampleResponses = new Map<string, CodeSample[]>();
-  for (const language of codeSamples) {
-    const formData = new FormData();
 
-    const blob = new Blob([specContents]);
-    formData.append("language", language.language);
-    formData.append("schema_file", blob, specFilename);
-    formData.append("package_name", language.packageName);
-    formData.append("sdk_class_name", language.sdkClassName);
+  // Fetch code samples from the preview api
+  const extractionTempDirBase = join(tmpdir(), "speakeasy-" + randomUUID());
+  try {
+    for (const codeSample of codeSamples) {
+      // Set up the temp directory for the code sample
+      const extractionDir = join(extractionTempDirBase, codeSample.language);
+      const tarballFilePath = join(
+        extractionDir,
+        basename(codeSample.sampleDownloadUrl)
+      );
+      if (!tarballFilePath.endsWith("tar.gz")) {
+        throw new Error(
+          `Code sample download URL must end in .tar.gz, got ${codeSample.sampleDownloadUrl}`
+        );
+      }
+      mkdirSync(extractionDir, { recursive: true });
 
-    const res = await fetch(`${CODE_SAMPLES_API_URL}/v1/code_sample/preview`, {
-      method: "POST",
-      body: formData,
-    });
+      // Download and extract the code sample
+      await downloadFile(codeSample.sampleDownloadUrl, tarballFilePath);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      await extract({
+        file: tarballFilePath,
+        cwd: extractionDir,
+      });
 
-    const json = (await res.json()) as unknown;
+      // Read in the examples
+      const extractedDirName = readdirSync(extractionDir).find(
+        (item) => item !== basename(tarballFilePath)
+      );
+      if (!extractedDirName) {
+        throw new Error(
+          `Failed to extract code sample from ${tarballFilePath}`
+        );
+      }
+      const extractedDirPath = join(extractionDir, extractedDirName);
+      const examples = readdirSync(join(extractedDirPath, "docs", "sdks"));
+      const exampleReadmeContents: string[] = [];
+      for (const example of examples) {
+        const readmePath = join(
+          extractedDirPath,
+          "docs",
+          "sdks",
+          example,
+          "README.md"
+        );
+        exampleReadmeContents.push(readFileSync(readmePath, "utf-8"));
+      }
 
-    if (!res.ok) {
-      const error = json as ErrorResponse;
-      throw new Error(`Failed to generate code sample: ${error.message}`);
+      // Parse the example contents
+      console.log(exampleReadmeContents);
     }
-    const codeSamples = (json as CodeSamplesResponse).snippets.map(
-      (sample) => ({
-        ...sample,
-        packageName: language.packageName,
-      })
-    );
-    codeSampleResponses.set(language.language, codeSamples);
+  } finally {
+    rmdirSync(extractionTempDirBase, { recursive: true });
   }
 
   // Populate docsCodeSamples with the code samples, prioritizing code samples

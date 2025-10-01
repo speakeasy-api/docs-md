@@ -35,7 +35,7 @@ export async function generatePages({
 
   // Get code snippets
   info("Generating Code Snippets");
-  const docsCodeSnippets = await generateCodeSamples(data, specContents);
+  const docsCodeSnippets = await generateCodeSamples(data);
 
   // Render the content
   info("Rendering Markdown");

@@ -85,6 +85,7 @@ export const settingsSchema = z.strictObject({
     .array(
       z.strictObject({
         language,
+        sampleDownloadUrl: z.string(),
         sdkClassName: z.string(),
         packageName: z.string(),
         enableTryItNow: z.boolean().default(true),
