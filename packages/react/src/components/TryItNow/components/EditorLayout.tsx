@@ -1,7 +1,7 @@
 import { useChildren } from "../../../util/hooks.ts";
 import styles from "./styles.module.css";
 
-export const EditorLayout = ({ children }: { children: React.ReactNode }) => {
+export function EditorLayout({ children }: { children: React.ReactNode }) {
   const editorChild = useChildren(children, "editor");
   const runButtonChild = useChildren(children, "runButton");
 
@@ -11,4 +11,4 @@ export const EditorLayout = ({ children }: { children: React.ReactNode }) => {
       <div className={styles.runButtonContainer}>{runButtonChild}</div>
     </div>
   );
-};
+}

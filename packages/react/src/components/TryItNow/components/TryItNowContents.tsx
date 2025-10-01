@@ -5,10 +5,10 @@ import { useState } from "react";
 import { useRuntime } from "../state.ts";
 import type { TryItNowProps } from "../types.ts";
 import { Editor as DefaultEditor } from "./Editor.tsx";
+import { EditorLayout } from "./EditorLayout.tsx";
 import { Layout as DefaultLayout } from "./Layout.tsx";
 import { Results as DefaultResults } from "./Results.tsx";
 import { RunButton as DefaultRunButton } from "./RunButton.tsx";
-import { EditorLayout } from "./EditorLayout.tsx";
 
 export function TryItNowContents({
   externalDependencies = {},
