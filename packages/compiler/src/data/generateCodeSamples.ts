@@ -4,7 +4,6 @@ import {
   mkdirSync,
   readdirSync,
   readFileSync,
-  rmdirSync,
   rmSync,
 } from "node:fs";
 import { get } from "node:https";
@@ -78,7 +77,7 @@ function downloadFile(url: string, destination: string) {
       }
 
       response.pipe(file);
-      
+
       file.on("finish", () => {
         file.close(() => {
           resolve();
@@ -199,7 +198,6 @@ export async function generateCodeSamples(
 
       // Download and extract the code sample
       await downloadFile(codeSample.sampleDownloadUrl, tarballFilePath);
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       await extract({
         file: tarballFilePath,
         cwd: extractionDir,

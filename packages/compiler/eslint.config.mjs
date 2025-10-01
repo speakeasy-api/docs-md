@@ -15,6 +15,7 @@ export default [
       "src/editor/editor.ts": /.*/,
     },
     ignores: ["src/data/wasm_exec.js"],
+    restrictedImports: [],
   }),
   // Disallow console calls in compiler code (use logging.ts functions instead)
   {
