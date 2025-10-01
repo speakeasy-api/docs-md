@@ -235,6 +235,11 @@ class MdxRenderer extends MarkdownRenderer {
       return Object.entries(props)
         .map(([key, value]) => {
           if (typeof value === "string") {
+            // Use JSON.stringify for TryItNow's defaultValue to preserve spacing
+            if (symbol === "TryItNow" && key === "defaultValue") {
+              return `${separator}${key}={${JSON.stringify(value)}}`;
+            }
+
             if (value.includes("\n")) {
               return `${separator}${key}={\`${value}\`}`;
             }
