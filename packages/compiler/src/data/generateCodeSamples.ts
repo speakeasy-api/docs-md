@@ -15,6 +15,12 @@ import { extract } from "tar";
 
 import { info } from "../logging.ts";
 import { getSettings } from "../settings.ts";
+import { InternalError } from "../util/internalError.ts";
+
+const CODE_SAMPLE_HEADER =
+  /^<!-- UsageSnippet language="(.+)" operationID="(.+)" method="(.+)" path="(.+)" -->$/;
+const CODE_SAMPLE_START = /^```(.*)$/;
+const CODE_SAMPLE_END = /^```$/;
 
 type CodeSample = {
   operationId: string;
@@ -71,6 +77,62 @@ function downloadFile(url: string, destination: string) {
   });
 }
 
+function parseSampleReadme(readmePath: string) {
+  const readmeContent = readFileSync(readmePath, "utf-8");
+
+  let state: "scanning" | "reading" = "scanning";
+  let codeSampleMetadata: {
+    language: string;
+    operationId: string;
+    method: string;
+    path: string;
+    code: string;
+  } | null = null;
+  const codeSamples: Omit<CodeSample, "packageName">[] = [];
+
+  const lines = readmeContent.split("\n");
+  /* eslint-disable @typescript-eslint/no-non-null-assertion */
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i]!;
+    if (state === "scanning") {
+      const match = CODE_SAMPLE_HEADER.exec(line);
+      if (match) {
+        // Advance to the next line and ensure it's a code sample start
+        i++;
+
+        if (!CODE_SAMPLE_START.test(lines[i]!)) {
+          throw new Error(`Failed to find code sample start`);
+        }
+        state = "reading";
+        codeSampleMetadata = {
+          language: match[1]!,
+          operationId: match[2]!,
+          method: match[3]!,
+          path: match[4]!,
+          code: "",
+        };
+      }
+    } else if (state === "reading") {
+      if (CODE_SAMPLE_END.test(line)) {
+        state = "scanning";
+        if (!codeSampleMetadata) {
+          throw new InternalError(`Sample metadata is unexpectedly null`);
+        }
+        codeSamples.push({
+          operationId: codeSampleMetadata.operationId,
+          language: codeSampleMetadata.language,
+          code: codeSampleMetadata.code,
+        });
+      } else {
+        codeSampleMetadata!.code += line + "\n";
+      }
+    }
+  }
+  /* eslint-enable @typescript-eslint/no-non-null-assertion */
+
+  return codeSamples;
+}
+
 export async function generateCodeSamples(
   docsData: Map<string, Chunk>
 ): Promise<DocsCodeSamples> {
@@ -89,8 +151,6 @@ export async function generateCodeSamples(
       operationChunksByOperationId.set(chunk.chunkData.operationId, chunk);
     }
   }
-
-  const codeSampleResponses = new Map<string, CodeSample[]>();
 
   // Fetch code samples from the preview api
   const extractionTempDirBase = join(tmpdir(), "speakeasy-" + randomUUID());
@@ -128,20 +188,32 @@ export async function generateCodeSamples(
       }
       const extractedDirPath = join(extractionDir, extractedDirName);
       const examples = readdirSync(join(extractedDirPath, "docs", "sdks"));
-      const exampleReadmeContents: string[] = [];
+      const codeSampleResults: CodeSample[] = [];
       for (const example of examples) {
-        const readmePath = join(
-          extractedDirPath,
-          "docs",
-          "sdks",
-          example,
-          "README.md"
+        codeSampleResults.push(
+          ...parseSampleReadme(
+            join(extractedDirPath, "docs", "sdks", example, "README.md")
+          ).map((sample) => ({
+            ...sample,
+            packageName: codeSample.packageName,
+          }))
         );
-        exampleReadmeContents.push(readFileSync(readmePath, "utf-8"));
       }
 
-      // Parse the example contents
-      console.log(exampleReadmeContents);
+      // Save the results to docsCodeSamples
+      for (const codeSampleResult of codeSampleResults) {
+        // Find the operation chunk ID from the operation ID
+        const operationChunkId = operationChunksByOperationId.get(
+          codeSampleResult.operationId
+        )?.id;
+        if (!operationChunkId) {
+          // TODO: this happens in practice, but should it?
+          continue;
+        }
+        docsCodeSamples[operationChunkId] ??= {};
+        docsCodeSamples[operationChunkId][codeSampleResult.language] =
+          codeSampleResult;
+      }
     }
   } finally {
     rmdirSync(extractionTempDirBase, { recursive: true });
@@ -154,24 +226,13 @@ export async function generateCodeSamples(
       continue;
     }
 
-    const chunkCodeSamples: Record<string, CodeSample> = {};
-
-    // First, populate the list of samples fetched remotely
-    for (const [language, codeSampleResponse] of codeSampleResponses) {
-      const operationCodeSampleResponses = codeSampleResponse.filter(
-        (sample) => sample.operationId === chunk.chunkData.operationId
-      );
-      if (operationCodeSampleResponses.length > 0) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        chunkCodeSamples[language] = operationCodeSampleResponses[0]!;
-      }
-    }
-
     // Then, overwrite any fetched samples with ones that are defined in the OAS
     for (const [language, code] of Object.entries(
       chunk.chunkData.codeSamples
     )) {
-      chunkCodeSamples[language] = {
+      docsCodeSamples[chunk.id] ??= {};
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      docsCodeSamples[chunk.id]![language] = {
         code,
         language,
         operationId: chunk.chunkData.operationId,
@@ -181,7 +242,6 @@ export async function generateCodeSamples(
         packageName: "",
       };
     }
-    docsCodeSamples[chunk.id] = chunkCodeSamples;
   }
 
   return docsCodeSamples;
