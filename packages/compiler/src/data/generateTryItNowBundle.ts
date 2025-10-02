@@ -38,15 +38,13 @@ export async function generateTryItNowBundle(
     version: "latest",
   });
 
-  // TODO: set up better paths
-  const dependencyBundlePath = join(
-    settings.output.pageOutDir,
-    "tryItNowDeps.js"
-  );
-  mkdirSync(dirname(dependencyBundlePath), {
+  if (!codeSample.tryItNowBundlePath) {
+    throw new InternalError("tryItNowBundlePathis unexpectdly undefined");
+  }
+  mkdirSync(dirname(codeSample.tryItNowBundlePath), {
     recursive: true,
   });
-  writeFileSync(dependencyBundlePath, dependencyBundle, {
+  writeFileSync(codeSample.tryItNowBundlePath, dependencyBundle, {
     encoding: "utf-8",
   });
 }

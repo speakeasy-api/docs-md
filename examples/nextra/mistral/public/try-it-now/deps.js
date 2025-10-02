@@ -25,9 +25,9 @@
     mod
   ));
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/url.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/url.js
   var require_url = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/url.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/url.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.pathToFunc = pathToFunc;
@@ -50,9 +50,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/config.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/config.js
   var require_config = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/config.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/config.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.SDK_METADATA = exports.ServerList = exports.ServerEu = void 0;
@@ -82,9 +82,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/files.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/files.js
   var require_files = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/files.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/files.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.readableStreamToArrayBuffer = readableStreamToArrayBuffer;
@@ -150,9 +150,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/http.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/http.js
   var require_http = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/http.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/http.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.HTTPClient = void 0;
@@ -328,9 +328,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/hooks/custom_user_agent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/hooks/custom_user_agent.js
   var require_custom_user_agent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/hooks/custom_user_agent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/hooks/custom_user_agent.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.CustomUserAgentHook = void 0;
@@ -350,9 +350,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/hooks/deprecation_warning.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/hooks/deprecation_warning.js
   var require_deprecation_warning = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/hooks/deprecation_warning.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/hooks/deprecation_warning.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.DeprecationWarningHook = void 0;
@@ -372,9 +372,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/hooks/registration.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/hooks/registration.js
   var require_registration = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/hooks/registration.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/hooks/registration.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.initHooks = initHooks;
@@ -389,9 +389,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/hooks/hooks.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/hooks/hooks.js
   var require_hooks = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/hooks/hooks.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/hooks/hooks.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.SDKHooks = void 0;
@@ -477,9 +477,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/httpclienterrors.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/httpclienterrors.js
   var require_httpclienterrors = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/httpclienterrors.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/httpclienterrors.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.ConnectionError = exports.RequestTimeoutError = exports.RequestAbortedError = exports.InvalidRequestError = exports.UnexpectedClientError = exports.HTTPClientError = void 0;
@@ -535,9 +535,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/types/fp.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/types/fp.js
   var require_fp = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/types/fp.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/types/fp.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.OK = OK;
@@ -566,9 +566,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/helpers/util.cjs
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/helpers/util.cjs
   var require_util = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/helpers/util.cjs"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/helpers/util.cjs"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.getParsedType = exports.ZodParsedType = exports.objectUtil = exports.util = void 0;
@@ -708,9 +708,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/ZodError.cjs
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/ZodError.cjs
   var require_ZodError = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/ZodError.cjs"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/ZodError.cjs"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.ZodError = exports.quotelessJson = exports.ZodIssueCode = void 0;
@@ -836,9 +836,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/locales/en.cjs
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/locales/en.cjs
   var require_en = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/locales/en.cjs"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/locales/en.cjs"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       var ZodError_js_1 = require_ZodError();
@@ -947,9 +947,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/errors.cjs
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/errors.cjs
   var require_errors = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/errors.cjs"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/errors.cjs"(exports) {
       "use strict";
       var __importDefault = exports && exports.__importDefault || function(mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
@@ -970,9 +970,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/helpers/parseUtil.cjs
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/helpers/parseUtil.cjs
   var require_parseUtil = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/helpers/parseUtil.cjs"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/helpers/parseUtil.cjs"(exports) {
       "use strict";
       var __importDefault = exports && exports.__importDefault || function(mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
@@ -1101,17 +1101,17 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/helpers/typeAliases.cjs
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/helpers/typeAliases.cjs
   var require_typeAliases = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/helpers/typeAliases.cjs"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/helpers/typeAliases.cjs"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/helpers/errorUtil.cjs
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/helpers/errorUtil.cjs
   var require_errorUtil = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/helpers/errorUtil.cjs"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/helpers/errorUtil.cjs"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.errorUtil = void 0;
@@ -1123,9 +1123,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/types.cjs
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/types.cjs
   var require_types = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/types.cjs"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/types.cjs"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.discriminatedUnion = exports.date = exports.boolean = exports.bigint = exports.array = exports.any = exports.coerce = exports.ZodFirstPartyTypeKind = exports.late = exports.ZodSchema = exports.Schema = exports.ZodReadonly = exports.ZodPipeline = exports.ZodBranded = exports.BRAND = exports.ZodNaN = exports.ZodCatch = exports.ZodDefault = exports.ZodNullable = exports.ZodOptional = exports.ZodTransformer = exports.ZodEffects = exports.ZodPromise = exports.ZodNativeEnum = exports.ZodEnum = exports.ZodLiteral = exports.ZodLazy = exports.ZodFunction = exports.ZodSet = exports.ZodMap = exports.ZodRecord = exports.ZodTuple = exports.ZodIntersection = exports.ZodDiscriminatedUnion = exports.ZodUnion = exports.ZodObject = exports.ZodArray = exports.ZodVoid = exports.ZodNever = exports.ZodUnknown = exports.ZodAny = exports.ZodNull = exports.ZodUndefined = exports.ZodSymbol = exports.ZodDate = exports.ZodBoolean = exports.ZodBigInt = exports.ZodNumber = exports.ZodString = exports.ZodType = void 0;
@@ -4665,9 +4665,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/external.cjs
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/external.cjs
   var require_external = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/v3/external.cjs"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/v3/external.cjs"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -4695,9 +4695,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/index.cjs
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/index.cjs
   var require_zod = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod/index.cjs"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod/index.cjs"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -4738,9 +4738,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/base64.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/base64.js
   var require_base64 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/base64.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/base64.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -4811,9 +4811,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/is-plain-object.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/is-plain-object.js
   var require_is_plain_object = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/is-plain-object.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/is-plain-object.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.isPlainObject = isPlainObject;
@@ -4827,9 +4827,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/encodings.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/encodings.js
   var require_encodings = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/encodings.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/encodings.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.encodeDeepObjectQuery = exports.encodePipeDelimitedQuery = exports.encodeSpaceDelimitedQuery = exports.encodeFormQuery = exports.encodeJSONQuery = exports.encodeSimple = exports.encodePipeDelimited = exports.encodeSpaceDelimited = exports.encodeForm = exports.EncodingError = void 0;
@@ -5159,9 +5159,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/dlv.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/dlv.js
   var require_dlv = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/dlv.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/dlv.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.dlv = dlv;
@@ -5176,9 +5176,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/env.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/env.js
   var require_env = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/env.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/env.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -5241,9 +5241,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/retries.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/retries.js
   var require_retries = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/retries.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/retries.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.TemporaryError = exports.PermanentError = void 0;
@@ -5381,9 +5381,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/sdks.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/sdks.js
   var require_sdks = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/sdks.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/sdks.js"(exports) {
       "use strict";
       var __classPrivateFieldSet = exports && exports.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
         if (kind === "m") throw new TypeError("Private method is not writable");
@@ -5642,9 +5642,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/mistralerror.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/mistralerror.js
   var require_mistralerror = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/mistralerror.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/mistralerror.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.MistralError = void 0;
@@ -5663,9 +5663,9 @@
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/sdkvalidationerror.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/sdkvalidationerror.js
   var require_sdkvalidationerror = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/sdkvalidationerror.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/sdkvalidationerror.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -5799,9 +5799,9 @@ ${pre}${str}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/responsevalidationerror.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/responsevalidationerror.js
   var require_responsevalidationerror = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/responsevalidationerror.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/responsevalidationerror.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -5871,9 +5871,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/sdkerror.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/sdkerror.js
   var require_sdkerror = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/sdkerror.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/sdkerror.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.SDKError = void 0;
@@ -5906,9 +5906,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/matchers.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/matchers.js
   var require_matchers = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/matchers.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/matchers.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.jsonErr = jsonErr;
@@ -6114,9 +6114,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/primitives.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/primitives.js
   var require_primitives = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/primitives.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/primitives.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.invariant = invariant;
@@ -6220,9 +6220,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/schemas.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/schemas.js
   var require_schemas = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/schemas.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/schemas.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parse = parse;
@@ -6272,9 +6272,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/security.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/security.js
   var require_security = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/security.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/security.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.SecurityError = exports.SecurityErrorCode = void 0;
@@ -6411,9 +6411,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/codeinterpretertool.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/codeinterpretertool.js
   var require_codeinterpretertool = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/codeinterpretertool.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/codeinterpretertool.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -6488,9 +6488,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionargsstop.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionargsstop.js
   var require_completionargsstop = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionargsstop.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionargsstop.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -6551,9 +6551,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/prediction.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/prediction.js
   var require_prediction = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/prediction.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/prediction.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -6620,9 +6620,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/jsonschema.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/jsonschema.js
   var require_jsonschema = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/jsonschema.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/jsonschema.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -6702,9 +6702,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/responseformats.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/responseformats.js
   var require_responseformats = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/responseformats.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/responseformats.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -6761,9 +6761,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/responseformat.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/responseformat.js
   var require_responseformat = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/responseformat.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/responseformat.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -6841,9 +6841,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolchoiceenum.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolchoiceenum.js
   var require_toolchoiceenum = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolchoiceenum.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolchoiceenum.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -6901,9 +6901,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionargs.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionargs.js
   var require_completionargs = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionargs.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionargs.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -7011,9 +7011,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/documentlibrarytool.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/documentlibrarytool.js
   var require_documentlibrarytool = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/documentlibrarytool.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/documentlibrarytool.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -7099,9 +7099,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/function.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/function.js
   var require_function = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/function.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/function.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -7172,9 +7172,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functiontool.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functiontool.js
   var require_functiontool = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functiontool.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functiontool.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -7252,9 +7252,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/imagegenerationtool.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/imagegenerationtool.js
   var require_imagegenerationtool = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/imagegenerationtool.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/imagegenerationtool.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -7329,9 +7329,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/websearchpremiumtool.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/websearchpremiumtool.js
   var require_websearchpremiumtool = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/websearchpremiumtool.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/websearchpremiumtool.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -7406,9 +7406,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/websearchtool.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/websearchtool.js
   var require_websearchtool = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/websearchtool.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/websearchtool.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -7483,9 +7483,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agent.js
   var require_agent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -7691,9 +7691,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agentconversation.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agentconversation.js
   var require_agentconversation = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agentconversation.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agentconversation.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -7793,9 +7793,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agentcreationrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agentcreationrequest.js
   var require_agentcreationrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agentcreationrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agentcreationrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -7979,9 +7979,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agenthandoffdoneevent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agenthandoffdoneevent.js
   var require_agenthandoffdoneevent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agenthandoffdoneevent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agenthandoffdoneevent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -8081,9 +8081,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agenthandoffentry.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agenthandoffentry.js
   var require_agenthandoffentry = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agenthandoffentry.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agenthandoffentry.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -8203,9 +8203,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agenthandoffstartedevent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agenthandoffstartedevent.js
   var require_agenthandoffstartedevent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agenthandoffstartedevent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agenthandoffstartedevent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -8305,9 +8305,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/audiochunk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/audiochunk.js
   var require_audiochunk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/audiochunk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/audiochunk.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -8393,9 +8393,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/documenturlchunk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/documenturlchunk.js
   var require_documenturlchunk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/documenturlchunk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/documenturlchunk.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -8485,9 +8485,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/filechunk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/filechunk.js
   var require_filechunk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/filechunk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/filechunk.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -8563,9 +8563,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/imageurl.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/imageurl.js
   var require_imageurl = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/imageurl.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/imageurl.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -8632,9 +8632,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/imageurlchunk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/imageurlchunk.js
   var require_imageurlchunk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/imageurlchunk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/imageurlchunk.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -8736,9 +8736,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/referencechunk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/referencechunk.js
   var require_referencechunk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/referencechunk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/referencechunk.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -8824,9 +8824,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/textchunk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/textchunk.js
   var require_textchunk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/textchunk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/textchunk.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -8903,9 +8903,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/thinkchunk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/thinkchunk.js
   var require_thinkchunk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/thinkchunk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/thinkchunk.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -9001,9 +9001,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/contentchunk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/contentchunk.js
   var require_contentchunk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/contentchunk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/contentchunk.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -9107,9 +9107,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functioncall.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functioncall.js
   var require_functioncall = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functioncall.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functioncall.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -9191,9 +9191,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/types/enums.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/types/enums.js
   var require_enums = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/types/enums.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/types/enums.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.catchUnrecognizedEnum = catchUnrecognizedEnum;
@@ -9203,9 +9203,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/tooltypes.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/tooltypes.js
   var require_tooltypes = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/tooltypes.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/tooltypes.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -9267,9 +9267,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolcall.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolcall.js
   var require_toolcall = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolcall.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolcall.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -9342,9 +9342,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/assistantmessage.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/assistantmessage.js
   var require_assistantmessage = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/assistantmessage.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/assistantmessage.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -9451,9 +9451,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/mistralpromptmode.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/mistralpromptmode.js
   var require_mistralpromptmode = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/mistralpromptmode.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/mistralpromptmode.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -9515,9 +9515,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/systemmessagecontentchunks.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/systemmessagecontentchunks.js
   var require_systemmessagecontentchunks = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/systemmessagecontentchunks.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/systemmessagecontentchunks.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -9590,9 +9590,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/systemmessage.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/systemmessage.js
   var require_systemmessage = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/systemmessage.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/systemmessage.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -9691,9 +9691,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/tool.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/tool.js
   var require_tool = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/tool.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/tool.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -9762,9 +9762,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functionname.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functionname.js
   var require_functionname = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functionname.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functionname.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -9829,9 +9829,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolchoice.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolchoice.js
   var require_toolchoice = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolchoice.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolchoice.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -9900,9 +9900,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolmessage.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolmessage.js
   var require_toolmessage = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolmessage.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolmessage.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -10008,9 +10008,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/usermessage.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/usermessage.js
   var require_usermessage = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/usermessage.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/usermessage.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -10103,9 +10103,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agentscompletionrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agentscompletionrequest.js
   var require_agentscompletionrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agentscompletionrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agentscompletionrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -10325,9 +10325,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agentscompletionstreamrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agentscompletionstreamrequest.js
   var require_agentscompletionstreamrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agentscompletionstreamrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agentscompletionstreamrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -10547,9 +10547,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agentupdaterequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agentupdaterequest.js
   var require_agentupdaterequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/agentupdaterequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/agentupdaterequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -10733,9 +10733,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/apiendpoint.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/apiendpoint.js
   var require_apiendpoint = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/apiendpoint.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/apiendpoint.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -10806,9 +10806,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/archiveftmodelout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/archiveftmodelout.js
   var require_archiveftmodelout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/archiveftmodelout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/archiveftmodelout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -10887,9 +10887,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/types/blobs.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/types/blobs.js
   var require_blobs = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/types/blobs.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/types/blobs.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -10955,9 +10955,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/file.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/file.js
   var require_file = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/file.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/file.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -11034,9 +11034,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/timestampgranularity.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/timestampgranularity.js
   var require_timestampgranularity = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/timestampgranularity.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/timestampgranularity.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -11091,9 +11091,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/audiotranscriptionrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/audiotranscriptionrequest.js
   var require_audiotranscriptionrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/audiotranscriptionrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/audiotranscriptionrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -11188,9 +11188,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/audiotranscriptionrequeststream.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/audiotranscriptionrequeststream.js
   var require_audiotranscriptionrequeststream = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/audiotranscriptionrequeststream.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/audiotranscriptionrequeststream.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -11285,9 +11285,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/modelcapabilities.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/modelcapabilities.js
   var require_modelcapabilities = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/modelcapabilities.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/modelcapabilities.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -11377,9 +11377,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/basemodelcard.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/basemodelcard.js
   var require_basemodelcard = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/basemodelcard.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/basemodelcard.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -11494,9 +11494,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/batcherror.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/batcherror.js
   var require_batcherror = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/batcherror.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/batcherror.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -11563,9 +11563,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/batchjobin.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/batchjobin.js
   var require_batchjobin = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/batchjobin.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/batchjobin.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -11654,9 +11654,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/batchjobstatus.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/batchjobstatus.js
   var require_batchjobstatus = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/batchjobstatus.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/batchjobstatus.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -11717,9 +11717,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/batchjobout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/batchjobout.js
   var require_batchjobout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/batchjobout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/batchjobout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -11859,9 +11859,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/batchjobsout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/batchjobsout.js
   var require_batchjobsout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/batchjobsout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/batchjobsout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -11941,9 +11941,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/builtinconnectors.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/builtinconnectors.js
   var require_builtinconnectors = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/builtinconnectors.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/builtinconnectors.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -12002,9 +12002,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/instructrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/instructrequest.js
   var require_instructrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/instructrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/instructrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -12132,9 +12132,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/inputs.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/inputs.js
   var require_inputs = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/inputs.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/inputs.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -12284,9 +12284,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/chatclassificationrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/chatclassificationrequest.js
   var require_chatclassificationrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/chatclassificationrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/chatclassificationrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -12363,9 +12363,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/chatcompletionchoice.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/chatcompletionchoice.js
   var require_chatcompletionchoice = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/chatcompletionchoice.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/chatcompletionchoice.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -12465,9 +12465,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/chatcompletionrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/chatcompletionrequest.js
   var require_chatcompletionrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/chatcompletionrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/chatcompletionrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -12695,9 +12695,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/usageinfo.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/usageinfo.js
   var require_usageinfo = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/usageinfo.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/usageinfo.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -12788,9 +12788,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/chatcompletionresponse.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/chatcompletionresponse.js
   var require_chatcompletionresponse = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/chatcompletionresponse.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/chatcompletionresponse.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -12867,9 +12867,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/chatcompletionstreamrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/chatcompletionstreamrequest.js
   var require_chatcompletionstreamrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/chatcompletionstreamrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/chatcompletionstreamrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -13097,9 +13097,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/chatmoderationrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/chatmoderationrequest.js
   var require_chatmoderationrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/chatmoderationrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/chatmoderationrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -13392,9 +13392,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/metricout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/metricout.js
   var require_metricout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/metricout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/metricout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -13476,9 +13476,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/checkpointout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/checkpointout.js
   var require_checkpointout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/checkpointout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/checkpointout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -13559,9 +13559,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classificationrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classificationrequest.js
   var require_classificationrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classificationrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classificationrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -13652,9 +13652,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classificationtargetresult.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classificationtargetresult.js
   var require_classificationtargetresult = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classificationtargetresult.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classificationtargetresult.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -13719,9 +13719,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classificationresponse.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classificationresponse.js
   var require_classificationresponse = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classificationresponse.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classificationresponse.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -13791,9 +13791,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ftclassifierlossfunction.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ftclassifierlossfunction.js
   var require_ftclassifierlossfunction = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ftclassifierlossfunction.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ftclassifierlossfunction.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -13849,9 +13849,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifiertargetout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifiertargetout.js
   var require_classifiertargetout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifiertargetout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifiertargetout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -13932,9 +13932,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifiertrainingparameters.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifiertrainingparameters.js
   var require_classifiertrainingparameters = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifiertrainingparameters.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifiertrainingparameters.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -14026,9 +14026,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/eventout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/eventout.js
   var require_eventout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/eventout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/eventout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -14106,9 +14106,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/jobmetadataout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/jobmetadataout.js
   var require_jobmetadataout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/jobmetadataout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/jobmetadataout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -14204,9 +14204,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/wandbintegrationout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/wandbintegrationout.js
   var require_wandbintegrationout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/wandbintegrationout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/wandbintegrationout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -14298,9 +14298,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifierdetailedjobout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifierdetailedjobout.js
   var require_classifierdetailedjobout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifierdetailedjobout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifierdetailedjobout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -14486,9 +14486,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ftmodelcapabilitiesout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ftmodelcapabilitiesout.js
   var require_ftmodelcapabilitiesout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ftmodelcapabilitiesout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ftmodelcapabilitiesout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -14576,9 +14576,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifierftmodelout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifierftmodelout.js
   var require_classifierftmodelout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifierftmodelout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifierftmodelout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -14714,9 +14714,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifierjobout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifierjobout.js
   var require_classifierjobout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifierjobout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifierjobout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -14891,9 +14891,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifiertargetin.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifiertargetin.js
   var require_classifiertargetin = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifiertargetin.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifiertargetin.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -14974,9 +14974,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifiertrainingparametersin.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifiertrainingparametersin.js
   var require_classifiertrainingparametersin = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/classifiertrainingparametersin.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/classifiertrainingparametersin.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -15068,9 +15068,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/deltamessage.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/deltamessage.js
   var require_deltamessage = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/deltamessage.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/deltamessage.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -15165,9 +15165,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionresponsestreamchoice.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionresponsestreamchoice.js
   var require_completionresponsestreamchoice = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionresponsestreamchoice.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionresponsestreamchoice.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -15266,9 +15266,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionchunk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionchunk.js
   var require_completionchunk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionchunk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionchunk.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -15345,9 +15345,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completiontrainingparameters.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completiontrainingparameters.js
   var require_completiontrainingparameters = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completiontrainingparameters.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completiontrainingparameters.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -15443,9 +15443,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/githubrepositoryout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/githubrepositoryout.js
   var require_githubrepositoryout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/githubrepositoryout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/githubrepositoryout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -15539,9 +15539,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completiondetailedjobout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completiondetailedjobout.js
   var require_completiondetailedjobout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completiondetailedjobout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completiondetailedjobout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -15740,9 +15740,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionevent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionevent.js
   var require_completionevent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionevent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionevent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -15818,9 +15818,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionftmodelout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionftmodelout.js
   var require_completionftmodelout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionftmodelout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionftmodelout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -15951,9 +15951,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionjobout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionjobout.js
   var require_completionjobout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completionjobout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completionjobout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -16146,9 +16146,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completiontrainingparametersin.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completiontrainingparametersin.js
   var require_completiontrainingparametersin = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/completiontrainingparametersin.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/completiontrainingparametersin.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -16244,9 +16244,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functioncallentryarguments.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functioncallentryarguments.js
   var require_functioncallentryarguments = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functioncallentryarguments.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functioncallentryarguments.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -16307,9 +16307,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functioncallentry.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functioncallentry.js
   var require_functioncallentry = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functioncallentry.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functioncallentry.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -16422,9 +16422,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functionresultentry.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functionresultentry.js
   var require_functionresultentry = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functionresultentry.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functionresultentry.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -16534,9 +16534,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolfilechunk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolfilechunk.js
   var require_toolfilechunk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolfilechunk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolfilechunk.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -16633,9 +16633,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/messageinputcontentchunks.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/messageinputcontentchunks.js
   var require_messageinputcontentchunks = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/messageinputcontentchunks.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/messageinputcontentchunks.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -16713,9 +16713,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/messageinputentry.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/messageinputentry.js
   var require_messageinputentry = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/messageinputentry.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/messageinputentry.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -16858,9 +16858,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolreferencechunk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolreferencechunk.js
   var require_toolreferencechunk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolreferencechunk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolreferencechunk.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -16946,9 +16946,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/messageoutputcontentchunks.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/messageoutputcontentchunks.js
   var require_messageoutputcontentchunks = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/messageoutputcontentchunks.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/messageoutputcontentchunks.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -17029,9 +17029,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/messageoutputentry.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/messageoutputentry.js
   var require_messageoutputentry = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/messageoutputentry.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/messageoutputentry.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -17177,9 +17177,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolexecutionentry.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolexecutionentry.js
   var require_toolexecutionentry = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolexecutionentry.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolexecutionentry.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -17290,9 +17290,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/inputentries.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/inputentries.js
   var require_inputentries = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/inputentries.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/inputentries.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -17373,9 +17373,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationinputs.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationinputs.js
   var require_conversationinputs = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationinputs.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationinputs.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -17437,9 +17437,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationappendrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationappendrequest.js
   var require_conversationappendrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationappendrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationappendrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -17536,9 +17536,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationappendstreamrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationappendstreamrequest.js
   var require_conversationappendstreamrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationappendstreamrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationappendstreamrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -17635,9 +17635,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functioncallevent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functioncallevent.js
   var require_functioncallevent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/functioncallevent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/functioncallevent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -17737,9 +17737,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/outputcontentchunks.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/outputcontentchunks.js
   var require_outputcontentchunks = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/outputcontentchunks.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/outputcontentchunks.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -17820,9 +17820,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/messageoutputevent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/messageoutputevent.js
   var require_messageoutputevent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/messageoutputevent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/messageoutputevent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -17954,9 +17954,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationusageinfo.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationusageinfo.js
   var require_conversationusageinfo = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationusageinfo.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationusageinfo.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -18044,9 +18044,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/responsedoneevent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/responsedoneevent.js
   var require_responsedoneevent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/responsedoneevent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/responsedoneevent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -18135,9 +18135,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/responseerrorevent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/responseerrorevent.js
   var require_responseerrorevent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/responseerrorevent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/responseerrorevent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -18227,9 +18227,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/responsestartedevent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/responsestartedevent.js
   var require_responsestartedevent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/responsestartedevent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/responsestartedevent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -18319,9 +18319,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ssetypes.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ssetypes.js
   var require_ssetypes = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ssetypes.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ssetypes.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -18385,9 +18385,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolexecutiondeltaevent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolexecutiondeltaevent.js
   var require_toolexecutiondeltaevent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolexecutiondeltaevent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolexecutiondeltaevent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -18484,9 +18484,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolexecutiondoneevent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolexecutiondoneevent.js
   var require_toolexecutiondoneevent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolexecutiondoneevent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolexecutiondoneevent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -18583,9 +18583,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolexecutionstartedevent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolexecutionstartedevent.js
   var require_toolexecutionstartedevent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/toolexecutionstartedevent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/toolexecutionstartedevent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -18682,9 +18682,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationevents.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationevents.js
   var require_conversationevents = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationevents.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationevents.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -18877,9 +18877,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationhistory.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationhistory.js
   var require_conversationhistory = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationhistory.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationhistory.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -19016,9 +19016,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/messageentries.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/messageentries.js
   var require_messageentries = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/messageentries.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/messageentries.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -19087,9 +19087,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationmessages.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationmessages.js
   var require_conversationmessages = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationmessages.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationmessages.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -19178,9 +19178,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationrequest.js
   var require_conversationrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -19384,9 +19384,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationresponse.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationresponse.js
   var require_conversationresponse = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationresponse.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationresponse.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -19516,9 +19516,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationrestartrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationrestartrequest.js
   var require_conversationrestartrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationrestartrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationrestartrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -19619,9 +19619,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationrestartstreamrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationrestartstreamrequest.js
   var require_conversationrestartstreamrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationrestartstreamrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationrestartstreamrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -19722,9 +19722,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationstreamrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationstreamrequest.js
   var require_conversationstreamrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/conversationstreamrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/conversationstreamrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -19928,9 +19928,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/deletefileout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/deletefileout.js
   var require_deletefileout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/deletefileout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/deletefileout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -19999,9 +19999,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/deletemodelout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/deletemodelout.js
   var require_deletemodelout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/deletemodelout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/deletemodelout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20070,9 +20070,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/documentout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/documentout.js
   var require_documentout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/documentout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/documentout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20198,9 +20198,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/documenttextcontent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/documenttextcontent.js
   var require_documenttextcontent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/documenttextcontent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/documenttextcontent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20265,9 +20265,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/documentupdatein.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/documentupdatein.js
   var require_documentupdatein = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/documentupdatein.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/documentupdatein.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20332,9 +20332,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/embeddingdtype.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/embeddingdtype.js
   var require_embeddingdtype = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/embeddingdtype.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/embeddingdtype.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20393,9 +20393,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/encodingformat.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/encodingformat.js
   var require_encodingformat = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/encodingformat.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/encodingformat.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20451,9 +20451,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/embeddingrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/embeddingrequest.js
   var require_embeddingrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/embeddingrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/embeddingrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20558,9 +20558,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/embeddingresponsedata.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/embeddingresponsedata.js
   var require_embeddingresponsedata = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/embeddingresponsedata.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/embeddingresponsedata.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20629,9 +20629,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/embeddingresponse.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/embeddingresponse.js
   var require_embeddingresponse = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/embeddingresponse.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/embeddingresponse.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20706,9 +20706,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/entitytype.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/entitytype.js
   var require_entitytype = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/entitytype.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/entitytype.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20772,9 +20772,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/filepurpose.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/filepurpose.js
   var require_filepurpose = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/filepurpose.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/filepurpose.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20838,9 +20838,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/sampletype.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/sampletype.js
   var require_sampletype = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/sampletype.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/sampletype.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20906,9 +20906,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/source.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/source.js
   var require_source = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/source.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/source.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -20972,9 +20972,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/fileschema.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/fileschema.js
   var require_fileschema = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/fileschema.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/fileschema.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -21077,9 +21077,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/filesignedurl.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/filesignedurl.js
   var require_filesignedurl = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/filesignedurl.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/filesignedurl.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -21144,9 +21144,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/fimcompletionrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/fimcompletionrequest.js
   var require_fimcompletionrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/fimcompletionrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/fimcompletionrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -21259,9 +21259,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/fimcompletionresponse.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/fimcompletionresponse.js
   var require_fimcompletionresponse = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/fimcompletionresponse.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/fimcompletionresponse.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -21338,9 +21338,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/fimcompletionstreamrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/fimcompletionstreamrequest.js
   var require_fimcompletionstreamrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/fimcompletionstreamrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/fimcompletionstreamrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -21453,9 +21453,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/finetuneablemodeltype.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/finetuneablemodeltype.js
   var require_finetuneablemodeltype = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/finetuneablemodeltype.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/finetuneablemodeltype.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -21511,9 +21511,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ftmodelcard.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ftmodelcard.js
   var require_ftmodelcard = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ftmodelcard.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ftmodelcard.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -21634,9 +21634,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/githubrepositoryin.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/githubrepositoryin.js
   var require_githubrepositoryin = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/githubrepositoryin.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/githubrepositoryin.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -21721,9 +21721,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/trainingfile.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/trainingfile.js
   var require_trainingfile = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/trainingfile.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/trainingfile.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -21799,9 +21799,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/wandbintegration.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/wandbintegration.js
   var require_wandbintegration = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/wandbintegration.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/wandbintegration.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -21895,9 +21895,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/jobin.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/jobin.js
   var require_jobin = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/jobin.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/jobin.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -22065,9 +22065,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/jobsout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/jobsout.js
   var require_jobsout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/jobsout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/jobsout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -22191,9 +22191,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/legacyjobmetadataout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/legacyjobmetadataout.js
   var require_legacyjobmetadataout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/legacyjobmetadataout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/legacyjobmetadataout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -22311,9 +22311,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/libraryin.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/libraryin.js
   var require_libraryin = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/libraryin.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/libraryin.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -22391,9 +22391,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/libraryinupdate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/libraryinupdate.js
   var require_libraryinupdate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/libraryinupdate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/libraryinupdate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -22460,9 +22460,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/libraryout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/libraryout.js
   var require_libraryout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/libraryout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/libraryout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -22588,9 +22588,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/paginationinfo.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/paginationinfo.js
   var require_paginationinfo = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/paginationinfo.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/paginationinfo.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -22680,9 +22680,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/listdocumentout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/listdocumentout.js
   var require_listdocumentout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/listdocumentout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/listdocumentout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -22751,9 +22751,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/listfilesout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/listfilesout.js
   var require_listfilesout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/listfilesout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/listfilesout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -22823,9 +22823,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/listlibraryout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/listlibraryout.js
   var require_listlibraryout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/listlibraryout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/listlibraryout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -22891,9 +22891,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/sharingout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/sharingout.js
   var require_sharingout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/sharingout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/sharingout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -22985,9 +22985,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/listsharingout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/listsharingout.js
   var require_listsharingout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/listsharingout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/listsharingout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -23053,9 +23053,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/modelconversation.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/modelconversation.js
   var require_modelconversation = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/modelconversation.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/modelconversation.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -23259,9 +23259,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/modellist.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/modellist.js
   var require_modellist = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/modellist.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/modellist.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -23373,9 +23373,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/moderationobject.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/moderationobject.js
   var require_moderationobject = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/moderationobject.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/moderationobject.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -23451,9 +23451,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/moderationresponse.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/moderationresponse.js
   var require_moderationresponse = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/moderationresponse.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/moderationresponse.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -23523,9 +23523,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ocrimageobject.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ocrimageobject.js
   var require_ocrimageobject = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ocrimageobject.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ocrimageobject.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -23621,9 +23621,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ocrpagedimensions.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ocrpagedimensions.js
   var require_ocrpagedimensions = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ocrpagedimensions.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ocrpagedimensions.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -23692,9 +23692,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ocrpageobject.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ocrpageobject.js
   var require_ocrpageobject = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ocrpageobject.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ocrpageobject.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -23767,9 +23767,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ocrrequest.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ocrrequest.js
   var require_ocrrequest = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ocrrequest.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ocrrequest.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -23902,9 +23902,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ocrusageinfo.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ocrusageinfo.js
   var require_ocrusageinfo = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ocrusageinfo.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ocrusageinfo.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -23982,9 +23982,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ocrresponse.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ocrresponse.js
   var require_ocrresponse = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/ocrresponse.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/ocrresponse.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -24068,9 +24068,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/processingstatusout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/processingstatusout.js
   var require_processingstatusout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/processingstatusout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/processingstatusout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -24148,9 +24148,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/retrievefileout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/retrievefileout.js
   var require_retrievefileout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/retrievefileout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/retrievefileout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -24255,9 +24255,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/security.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/security.js
   var require_security2 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/security.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/security.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -24331,9 +24331,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/shareenum.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/shareenum.js
   var require_shareenum = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/shareenum.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/shareenum.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -24396,9 +24396,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/sharingdelete.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/sharingdelete.js
   var require_sharingdelete = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/sharingdelete.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/sharingdelete.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -24481,9 +24481,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/sharingin.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/sharingin.js
   var require_sharingin = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/sharingin.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/sharingin.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -24569,9 +24569,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionsegmentchunk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionsegmentchunk.js
   var require_transcriptionsegmentchunk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionsegmentchunk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionsegmentchunk.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -24661,9 +24661,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionresponse.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionresponse.js
   var require_transcriptionresponse = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionresponse.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionresponse.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -24747,9 +24747,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionstreamdone.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionstreamdone.js
   var require_transcriptionstreamdone = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionstreamdone.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionstreamdone.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -24845,9 +24845,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionstreameventtypes.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionstreameventtypes.js
   var require_transcriptionstreameventtypes = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionstreameventtypes.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionstreameventtypes.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -24905,9 +24905,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionstreamlanguage.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionstreamlanguage.js
   var require_transcriptionstreamlanguage = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionstreamlanguage.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionstreamlanguage.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -24998,9 +24998,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionstreamsegmentdelta.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionstreamsegmentdelta.js
   var require_transcriptionstreamsegmentdelta = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionstreamsegmentdelta.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionstreamsegmentdelta.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -25090,9 +25090,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionstreamtextdelta.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionstreamtextdelta.js
   var require_transcriptionstreamtextdelta = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionstreamtextdelta.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionstreamtextdelta.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -25178,9 +25178,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionstreamevents.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionstreamevents.js
   var require_transcriptionstreamevents = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/transcriptionstreamevents.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/transcriptionstreamevents.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -25315,9 +25315,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/unarchiveftmodelout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/unarchiveftmodelout.js
   var require_unarchiveftmodelout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/unarchiveftmodelout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/unarchiveftmodelout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -25396,9 +25396,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/updateftmodelin.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/updateftmodelin.js
   var require_updateftmodelin = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/updateftmodelin.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/updateftmodelin.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -25465,9 +25465,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/uploadfileout.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/uploadfileout.js
   var require_uploadfileout = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/uploadfileout.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/uploadfileout.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -25570,9 +25570,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/validationerror.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/validationerror.js
   var require_validationerror = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/validationerror.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/validationerror.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -25656,9 +25656,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/index.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/index.js
   var require_components = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/components/index.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/components/index.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -25872,9 +25872,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/httpvalidationerror.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/httpvalidationerror.js
   var require_httpvalidationerror = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/httpvalidationerror.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/httpvalidationerror.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -25952,9 +25952,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/index.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/index.js
   var require_errors2 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/errors/index.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/errors/index.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -25981,9 +25981,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/types/async.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/types/async.js
   var require_async = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/types/async.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/types/async.js"(exports) {
       "use strict";
       var __classPrivateFieldSet = exports && exports.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
         if (kind === "m") throw new TypeError("Private method is not writable");
@@ -26027,9 +26027,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/agentsComplete.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/agentsComplete.js
   var require_agentsComplete = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/agentsComplete.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/agentsComplete.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -26143,9 +26143,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/event-streams.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/event-streams.js
   var require_event_streams = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/lib/event-streams.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/lib/event-streams.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.EventStream = void 0;
@@ -26270,9 +26270,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/agentsStream.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/agentsStream.js
   var require_agentsStream = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/agentsStream.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/agentsStream.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -26396,9 +26396,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/agents.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/agents.js
   var require_agents = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/agents.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/agents.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Agents = void 0;
@@ -26427,9 +26427,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/types/streams.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/types/streams.js
   var require_streams = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/types/streams.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/types/streams.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.isReadableStream = isReadableStream;
@@ -26443,9 +26443,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/audioTranscriptionsComplete.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/audioTranscriptionsComplete.js
   var require_audioTranscriptionsComplete = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/audioTranscriptionsComplete.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/audioTranscriptionsComplete.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -26589,9 +26589,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/audioTranscriptionsStream.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/audioTranscriptionsStream.js
   var require_audioTranscriptionsStream = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/audioTranscriptionsStream.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/audioTranscriptionsStream.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -26743,9 +26743,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/transcriptions.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/transcriptions.js
   var require_transcriptions = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/transcriptions.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/transcriptions.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Transcriptions = void 0;
@@ -26771,9 +26771,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/audio.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/audio.js
   var require_audio = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/audio.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/audio.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Audio = void 0;
@@ -26788,9 +26788,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentsget.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentsget.js
   var require_agentsapiv1agentsget = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentsget.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentsget.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -26864,9 +26864,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentslist.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentslist.js
   var require_agentsapiv1agentslist = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentslist.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentslist.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -26942,9 +26942,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentsupdate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentsupdate.js
   var require_agentsapiv1agentsupdate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentsupdate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentsupdate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -27023,9 +27023,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentsupdateversion.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentsupdateversion.js
   var require_agentsapiv1agentsupdateversion = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentsupdateversion.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1agentsupdateversion.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -27101,9 +27101,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsappend.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsappend.js
   var require_agentsapiv1conversationsappend = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsappend.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsappend.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -27182,9 +27182,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsappendstream.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsappendstream.js
   var require_agentsapiv1conversationsappendstream = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsappendstream.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsappendstream.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -27263,9 +27263,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsget.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsget.js
   var require_agentsapiv1conversationsget = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsget.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsget.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -27361,9 +27361,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationshistory.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationshistory.js
   var require_agentsapiv1conversationshistory = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationshistory.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationshistory.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -27437,9 +27437,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationslist.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationslist.js
   var require_agentsapiv1conversationslist = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationslist.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationslist.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -27537,9 +27537,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsmessages.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsmessages.js
   var require_agentsapiv1conversationsmessages = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsmessages.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsmessages.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -27613,9 +27613,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsrestart.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsrestart.js
   var require_agentsapiv1conversationsrestart = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsrestart.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsrestart.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -27694,9 +27694,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsrestartstream.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsrestartstream.js
   var require_agentsapiv1conversationsrestartstream = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsrestartstream.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/agentsapiv1conversationsrestartstream.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -27775,9 +27775,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/deletemodelv1modelsmodeliddelete.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/deletemodelv1modelsmodeliddelete.js
   var require_deletemodelv1modelsmodeliddelete = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/deletemodelv1modelsmodeliddelete.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/deletemodelv1modelsmodeliddelete.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -27851,9 +27851,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/filesapiroutesdeletefile.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/filesapiroutesdeletefile.js
   var require_filesapiroutesdeletefile = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/filesapiroutesdeletefile.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/filesapiroutesdeletefile.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -27927,9 +27927,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/filesapiroutesdownloadfile.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/filesapiroutesdownloadfile.js
   var require_filesapiroutesdownloadfile = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/filesapiroutesdownloadfile.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/filesapiroutesdownloadfile.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -28003,9 +28003,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/filesapiroutesgetsignedurl.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/filesapiroutesgetsignedurl.js
   var require_filesapiroutesgetsignedurl = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/filesapiroutesgetsignedurl.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/filesapiroutesgetsignedurl.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -28081,9 +28081,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/filesapirouteslistfiles.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/filesapirouteslistfiles.js
   var require_filesapirouteslistfiles = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/filesapirouteslistfiles.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/filesapirouteslistfiles.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -28170,9 +28170,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/filesapiroutesretrievefile.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/filesapiroutesretrievefile.js
   var require_filesapiroutesretrievefile = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/filesapiroutesretrievefile.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/filesapiroutesretrievefile.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -28246,9 +28246,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/filesapiroutesuploadfile.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/filesapiroutesuploadfile.js
   var require_filesapiroutesuploadfile = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/filesapiroutesuploadfile.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/filesapiroutesuploadfile.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -28317,9 +28317,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesbatchcancelbatchjob.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesbatchcancelbatchjob.js
   var require_jobsapiroutesbatchcancelbatchjob = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesbatchcancelbatchjob.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesbatchcancelbatchjob.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -28393,9 +28393,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesbatchgetbatchjob.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesbatchgetbatchjob.js
   var require_jobsapiroutesbatchgetbatchjob = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesbatchgetbatchjob.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesbatchgetbatchjob.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -28469,9 +28469,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesbatchgetbatchjobs.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesbatchgetbatchjobs.js
   var require_jobsapiroutesbatchgetbatchjobs = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesbatchgetbatchjobs.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesbatchgetbatchjobs.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -28566,9 +28566,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningarchivefinetunedmodel.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningarchivefinetunedmodel.js
   var require_jobsapiroutesfinetuningarchivefinetunedmodel = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningarchivefinetunedmodel.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningarchivefinetunedmodel.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -28642,9 +28642,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningcancelfinetuningjob.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningcancelfinetuningjob.js
   var require_jobsapiroutesfinetuningcancelfinetuningjob = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningcancelfinetuningjob.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningcancelfinetuningjob.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -28748,9 +28748,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningcreatefinetuningjob.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningcreatefinetuningjob.js
   var require_jobsapiroutesfinetuningcreatefinetuningjob = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningcreatefinetuningjob.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningcreatefinetuningjob.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -28861,9 +28861,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuninggetfinetuningjob.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuninggetfinetuningjob.js
   var require_jobsapiroutesfinetuninggetfinetuningjob = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuninggetfinetuningjob.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuninggetfinetuningjob.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -28967,9 +28967,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuninggetfinetuningjobs.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuninggetfinetuningjobs.js
   var require_jobsapiroutesfinetuninggetfinetuningjobs = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuninggetfinetuningjobs.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuninggetfinetuningjobs.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -29090,9 +29090,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningstartfinetuningjob.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningstartfinetuningjob.js
   var require_jobsapiroutesfinetuningstartfinetuningjob = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningstartfinetuningjob.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningstartfinetuningjob.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -29196,9 +29196,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningunarchivefinetunedmodel.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningunarchivefinetunedmodel.js
   var require_jobsapiroutesfinetuningunarchivefinetunedmodel = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningunarchivefinetunedmodel.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningunarchivefinetunedmodel.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -29272,9 +29272,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningupdatefinetunedmodel.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningupdatefinetunedmodel.js
   var require_jobsapiroutesfinetuningupdatefinetunedmodel = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningupdatefinetunedmodel.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/jobsapiroutesfinetuningupdatefinetunedmodel.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -29382,9 +29382,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdeletev1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdeletev1.js
   var require_librariesdeletev1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdeletev1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdeletev1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -29458,9 +29458,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsdeletev1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsdeletev1.js
   var require_librariesdocumentsdeletev1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsdeletev1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsdeletev1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -29538,9 +29538,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetextractedtextsignedurlv1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetextractedtextsignedurlv1.js
   var require_librariesdocumentsgetextractedtextsignedurlv1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetextractedtextsignedurlv1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetextractedtextsignedurlv1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -29618,9 +29618,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetsignedurlv1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetsignedurlv1.js
   var require_librariesdocumentsgetsignedurlv1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetsignedurlv1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetsignedurlv1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -29698,9 +29698,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetstatusv1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetstatusv1.js
   var require_librariesdocumentsgetstatusv1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetstatusv1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetstatusv1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -29778,9 +29778,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgettextcontentv1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgettextcontentv1.js
   var require_librariesdocumentsgettextcontentv1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgettextcontentv1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgettextcontentv1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -29858,9 +29858,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetv1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetv1.js
   var require_librariesdocumentsgetv1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetv1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsgetv1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -29938,9 +29938,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentslistv1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentslistv1.js
   var require_librariesdocumentslistv1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentslistv1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentslistv1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -30030,9 +30030,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsreprocessv1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsreprocessv1.js
   var require_librariesdocumentsreprocessv1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsreprocessv1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsreprocessv1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -30110,9 +30110,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsupdatev1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsupdatev1.js
   var require_librariesdocumentsupdatev1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsupdatev1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsupdatev1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -30195,9 +30195,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsuploadv1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsuploadv1.js
   var require_librariesdocumentsuploadv1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsuploadv1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesdocumentsuploadv1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -30296,9 +30296,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesgetv1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesgetv1.js
   var require_librariesgetv1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesgetv1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesgetv1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -30372,9 +30372,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariessharecreatev1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariessharecreatev1.js
   var require_librariessharecreatev1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariessharecreatev1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariessharecreatev1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -30453,9 +30453,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariessharedeletev1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariessharedeletev1.js
   var require_librariessharedeletev1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariessharedeletev1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariessharedeletev1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -30534,9 +30534,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariessharelistv1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariessharelistv1.js
   var require_librariessharelistv1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariessharelistv1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariessharelistv1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -30610,9 +30610,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesupdatev1.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesupdatev1.js
   var require_librariesupdatev1 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/librariesupdatev1.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/librariesupdatev1.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -30691,9 +30691,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/retrievemodelv1modelsmodelidget.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/retrievemodelv1modelsmodelidget.js
   var require_retrievemodelv1modelsmodelidget = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/retrievemodelv1modelsmodelidget.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/retrievemodelv1modelsmodelidget.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -30797,9 +30797,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/index.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/index.js
   var require_operations = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/models/operations/index.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/models/operations/index.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -30868,9 +30868,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/batchJobsCancel.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/batchJobsCancel.js
   var require_batchJobsCancel = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/batchJobsCancel.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/batchJobsCancel.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -30986,9 +30986,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/batchJobsCreate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/batchJobsCreate.js
   var require_batchJobsCreate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/batchJobsCreate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/batchJobsCreate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -31098,9 +31098,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/batchJobsGet.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/batchJobsGet.js
   var require_batchJobsGet = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/batchJobsGet.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/batchJobsGet.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -31216,9 +31216,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/batchJobsList.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/batchJobsList.js
   var require_batchJobsList = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/batchJobsList.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/batchJobsList.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -31339,9 +31339,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/mistraljobs.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/mistraljobs.js
   var require_mistraljobs = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/mistraljobs.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/mistraljobs.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.MistralJobs = void 0;
@@ -31393,9 +31393,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/batch.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/batch.js
   var require_batch = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/batch.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/batch.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Batch = void 0;
@@ -31410,9 +31410,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsAppend.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsAppend.js
   var require_betaConversationsAppend = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsAppend.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsAppend.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -31535,9 +31535,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsAppendStream.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsAppendStream.js
   var require_betaConversationsAppendStream = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsAppendStream.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsAppendStream.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -31668,9 +31668,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsGet.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsGet.js
   var require_betaConversationsGet = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsGet.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsGet.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -31789,9 +31789,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsGetHistory.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsGetHistory.js
   var require_betaConversationsGetHistory = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsGetHistory.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsGetHistory.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -31911,9 +31911,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsGetMessages.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsGetMessages.js
   var require_betaConversationsGetMessages = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsGetMessages.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsGetMessages.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -32033,9 +32033,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsList.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsList.js
   var require_betaConversationsList = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsList.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsList.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -32154,9 +32154,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsRestart.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsRestart.js
   var require_betaConversationsRestart = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsRestart.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsRestart.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -32279,9 +32279,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsRestartStream.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsRestartStream.js
   var require_betaConversationsRestartStream = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsRestartStream.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsRestartStream.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -32412,9 +32412,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsStart.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsStart.js
   var require_betaConversationsStart = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsStart.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsStart.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -32528,9 +32528,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsStartStream.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsStartStream.js
   var require_betaConversationsStartStream = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaConversationsStartStream.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaConversationsStartStream.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -32652,9 +32652,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/conversations.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/conversations.js
   var require_conversations = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/conversations.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/conversations.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Conversations = void 0;
@@ -32766,9 +32766,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesCreate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesCreate.js
   var require_betaLibrariesCreate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesCreate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesCreate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -32882,9 +32882,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDelete.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDelete.js
   var require_betaLibrariesDelete = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDelete.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDelete.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -33004,9 +33004,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesGet.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesGet.js
   var require_betaLibrariesGet = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesGet.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesGet.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -33126,9 +33126,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesList.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesList.js
   var require_betaLibrariesList = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesList.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesList.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -33228,9 +33228,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesUpdate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesUpdate.js
   var require_betaLibrariesUpdate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesUpdate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesUpdate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -33351,9 +33351,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesAccessesDelete.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesAccessesDelete.js
   var require_betaLibrariesAccessesDelete = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesAccessesDelete.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesAccessesDelete.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -33474,9 +33474,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesAccessesList.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesAccessesList.js
   var require_betaLibrariesAccessesList = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesAccessesList.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesAccessesList.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -33596,9 +33596,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesAccessesUpdateOrCreate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesAccessesUpdateOrCreate.js
   var require_betaLibrariesAccessesUpdateOrCreate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesAccessesUpdateOrCreate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesAccessesUpdateOrCreate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -33719,9 +33719,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/accesses.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/accesses.js
   var require_accesses = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/accesses.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/accesses.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Accesses = void 0;
@@ -33763,9 +33763,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsDelete.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsDelete.js
   var require_betaLibrariesDocumentsDelete = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsDelete.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsDelete.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -33889,9 +33889,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsExtractedTextSignedUrl.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsExtractedTextSignedUrl.js
   var require_betaLibrariesDocumentsExtractedTextSignedUrl = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsExtractedTextSignedUrl.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsExtractedTextSignedUrl.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -34015,9 +34015,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsGet.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsGet.js
   var require_betaLibrariesDocumentsGet = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsGet.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsGet.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -34141,9 +34141,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsGetSignedUrl.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsGetSignedUrl.js
   var require_betaLibrariesDocumentsGetSignedUrl = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsGetSignedUrl.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsGetSignedUrl.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -34267,9 +34267,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsList.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsList.js
   var require_betaLibrariesDocumentsList = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsList.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsList.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -34397,9 +34397,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsReprocess.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsReprocess.js
   var require_betaLibrariesDocumentsReprocess = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsReprocess.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsReprocess.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -34523,9 +34523,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsStatus.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsStatus.js
   var require_betaLibrariesDocumentsStatus = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsStatus.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsStatus.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -34649,9 +34649,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsTextContent.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsTextContent.js
   var require_betaLibrariesDocumentsTextContent = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsTextContent.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsTextContent.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -34775,9 +34775,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsUpdate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsUpdate.js
   var require_betaLibrariesDocumentsUpdate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsUpdate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsUpdate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -34902,9 +34902,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsUpload.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsUpload.js
   var require_betaLibrariesDocumentsUpload = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsUpload.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaLibrariesDocumentsUpload.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -35038,9 +35038,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/documents.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/documents.js
   var require_documents = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/documents.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/documents.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Documents = void 0;
@@ -35152,9 +35152,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/libraries.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/libraries.js
   var require_libraries = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/libraries.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/libraries.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Libraries = void 0;
@@ -35224,9 +35224,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaAgentsCreate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaAgentsCreate.js
   var require_betaAgentsCreate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaAgentsCreate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaAgentsCreate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -35340,9 +35340,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaAgentsGet.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaAgentsGet.js
   var require_betaAgentsGet = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaAgentsGet.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaAgentsGet.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -35462,9 +35462,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaAgentsList.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaAgentsList.js
   var require_betaAgentsList = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaAgentsList.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaAgentsList.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -35584,9 +35584,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaAgentsUpdate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaAgentsUpdate.js
   var require_betaAgentsUpdate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaAgentsUpdate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaAgentsUpdate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -35709,9 +35709,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaAgentsUpdateVersion.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaAgentsUpdateVersion.js
   var require_betaAgentsUpdateVersion = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/betaAgentsUpdateVersion.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/betaAgentsUpdateVersion.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -35835,9 +35835,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/mistralagents.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/mistralagents.js
   var require_mistralagents = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/mistralagents.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/mistralagents.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.MistralAgents = void 0;
@@ -35899,9 +35899,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/beta.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/beta.js
   var require_beta = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/beta.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/beta.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Beta = void 0;
@@ -35924,9 +35924,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/chatComplete.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/chatComplete.js
   var require_chatComplete = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/chatComplete.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/chatComplete.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -36040,9 +36040,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/chatStream.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/chatStream.js
   var require_chatStream = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/chatStream.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/chatStream.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -36166,9 +36166,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/Options.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/Options.js
   var require_Options = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/Options.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/Options.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.getDefaultOptions = exports.defaultOptions = exports.jsonDescription = exports.ignoreOverride = void 0;
@@ -36221,9 +36221,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/Refs.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/Refs.js
   var require_Refs = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/Refs.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/Refs.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.getRefs = void 0;
@@ -36251,9 +36251,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/errorMessages.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/errorMessages.js
   var require_errorMessages = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/errorMessages.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/errorMessages.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.setResponseValueAndErrors = exports.addErrorMessage = void 0;
@@ -36276,9 +36276,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/getRelativePath.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/getRelativePath.js
   var require_getRelativePath = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/getRelativePath.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/getRelativePath.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.getRelativePath = void 0;
@@ -36294,9 +36294,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/any.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/any.js
   var require_any = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/any.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/any.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseAnyDef = void 0;
@@ -36319,9 +36319,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/array.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/array.js
   var require_array = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/array.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/array.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseArrayDef = void 0;
@@ -36354,9 +36354,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/bigint.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/bigint.js
   var require_bigint = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/bigint.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/bigint.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseBigintDef = void 0;
@@ -36409,9 +36409,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/boolean.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/boolean.js
   var require_boolean = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/boolean.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/boolean.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseBooleanDef = void 0;
@@ -36424,9 +36424,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/branded.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/branded.js
   var require_branded = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/branded.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/branded.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseBrandedDef = void 0;
@@ -36438,9 +36438,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/catch.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/catch.js
   var require_catch = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/catch.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/catch.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseCatchDef = void 0;
@@ -36452,9 +36452,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/date.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/date.js
   var require_date = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/date.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/date.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseDateDef = void 0;
@@ -36520,9 +36520,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/default.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/default.js
   var require_default = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/default.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/default.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseDefaultDef = void 0;
@@ -36537,9 +36537,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/effects.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/effects.js
   var require_effects = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/effects.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/effects.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseEffectsDef = void 0;
@@ -36552,9 +36552,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/enum.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/enum.js
   var require_enum = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/enum.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/enum.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseEnumDef = void 0;
@@ -36568,9 +36568,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/intersection.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/intersection.js
   var require_intersection = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/intersection.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/intersection.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseIntersectionDef = void 0;
@@ -36619,9 +36619,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/literal.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/literal.js
   var require_literal = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/literal.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/literal.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseLiteralDef = void 0;
@@ -36647,9 +36647,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/string.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/string.js
   var require_string = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/string.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/string.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseStringDef = exports.zodPatterns = void 0;
@@ -36981,9 +36981,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/record.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/record.js
   var require_record = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/record.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/record.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseRecordDef = void 0;
@@ -37046,9 +37046,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/map.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/map.js
   var require_map = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/map.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/map.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseMapDef = void 0;
@@ -37082,9 +37082,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/nativeEnum.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/nativeEnum.js
   var require_nativeEnum = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/nativeEnum.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/nativeEnum.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseNativeEnumDef = void 0;
@@ -37104,9 +37104,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/never.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/never.js
   var require_never = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/never.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/never.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseNeverDef = void 0;
@@ -37123,9 +37123,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/null.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/null.js
   var require_null = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/null.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/null.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseNullDef = void 0;
@@ -37141,9 +37141,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/union.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/union.js
   var require_union = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/union.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/union.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseUnionDef = exports.primitiveMappings = void 0;
@@ -37218,9 +37218,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/nullable.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/nullable.js
   var require_nullable = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/nullable.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/nullable.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseNullableDef = void 0;
@@ -37260,9 +37260,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/number.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/number.js
   var require_number = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/number.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/number.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseNumberDef = void 0;
@@ -37318,9 +37318,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/object.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/object.js
   var require_object = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/object.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/object.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseObjectDef = void 0;
@@ -37397,9 +37397,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/optional.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/optional.js
   var require_optional = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/optional.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/optional.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseOptionalDef = void 0;
@@ -37426,9 +37426,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/pipeline.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/pipeline.js
   var require_pipeline = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/pipeline.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/pipeline.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parsePipelineDef = void 0;
@@ -37455,9 +37455,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/promise.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/promise.js
   var require_promise = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/promise.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/promise.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parsePromiseDef = void 0;
@@ -37469,9 +37469,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/set.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/set.js
   var require_set = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/set.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/set.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseSetDef = void 0;
@@ -37499,9 +37499,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/tuple.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/tuple.js
   var require_tuple = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/tuple.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/tuple.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseTupleDef = void 0;
@@ -37536,9 +37536,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/undefined.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/undefined.js
   var require_undefined = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/undefined.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/undefined.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseUndefinedDef = void 0;
@@ -37552,9 +37552,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/unknown.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/unknown.js
   var require_unknown = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/unknown.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/unknown.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseUnknownDef = void 0;
@@ -37566,9 +37566,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/readonly.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/readonly.js
   var require_readonly = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parsers/readonly.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parsers/readonly.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseReadonlyDef = void 0;
@@ -37580,9 +37580,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/selectParser.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/selectParser.js
   var require_selectParser = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/selectParser.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/selectParser.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.selectParser = void 0;
@@ -37695,9 +37695,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parseDef.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parseDef.js
   var require_parseDef = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parseDef.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parseDef.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.parseDef = void 0;
@@ -37763,17 +37763,17 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parseTypes.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parseTypes.js
   var require_parseTypes = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/parseTypes.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/parseTypes.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/zodToJsonSchema.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/zodToJsonSchema.js
   var require_zodToJsonSchema = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/zodToJsonSchema.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/zodToJsonSchema.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.zodToJsonSchema = void 0;
@@ -37844,9 +37844,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/index.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/index.js
   var require_cjs = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/zod-to-json-schema/dist/cjs/index.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/zod-to-json-schema/dist/cjs/index.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -37908,9 +37908,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/extra/structChat.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/extra/structChat.js
   var require_structChat = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/extra/structChat.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/extra/structChat.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.transformToChatCompletionRequest = transformToChatCompletionRequest;
@@ -37968,9 +37968,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/chat.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/chat.js
   var require_chat = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/chat.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/chat.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Chat = void 0;
@@ -38025,9 +38025,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/classifiersClassify.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/classifiersClassify.js
   var require_classifiersClassify = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/classifiersClassify.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/classifiersClassify.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -38141,9 +38141,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/classifiersClassifyChat.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/classifiersClassifyChat.js
   var require_classifiersClassifyChat = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/classifiersClassifyChat.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/classifiersClassifyChat.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -38257,9 +38257,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/classifiersModerate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/classifiersModerate.js
   var require_classifiersModerate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/classifiersModerate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/classifiersModerate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -38373,9 +38373,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/classifiersModerateChat.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/classifiersModerateChat.js
   var require_classifiersModerateChat = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/classifiersModerateChat.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/classifiersModerateChat.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -38489,9 +38489,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/classifiers.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/classifiers.js
   var require_classifiers = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/classifiers.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/classifiers.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Classifiers = void 0;
@@ -38531,9 +38531,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/embeddingsCreate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/embeddingsCreate.js
   var require_embeddingsCreate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/embeddingsCreate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/embeddingsCreate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -38647,9 +38647,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/embeddings.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/embeddings.js
   var require_embeddings = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/embeddings.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/embeddings.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Embeddings = void 0;
@@ -38671,9 +38671,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/filesDelete.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/filesDelete.js
   var require_filesDelete = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/filesDelete.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/filesDelete.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -38789,9 +38789,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/filesDownload.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/filesDownload.js
   var require_filesDownload = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/filesDownload.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/filesDownload.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -38907,9 +38907,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/filesGetSignedUrl.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/filesGetSignedUrl.js
   var require_filesGetSignedUrl = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/filesGetSignedUrl.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/filesGetSignedUrl.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -39029,9 +39029,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/filesList.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/filesList.js
   var require_filesList = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/filesList.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/filesList.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -39150,9 +39150,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/filesRetrieve.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/filesRetrieve.js
   var require_filesRetrieve = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/filesRetrieve.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/filesRetrieve.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -39268,9 +39268,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/filesUpload.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/filesUpload.js
   var require_filesUpload = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/filesUpload.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/filesUpload.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -39397,9 +39397,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/files.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/files.js
   var require_files2 = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/files.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/files.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Files = void 0;
@@ -39472,9 +39472,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fimComplete.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fimComplete.js
   var require_fimComplete = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fimComplete.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fimComplete.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -39588,9 +39588,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fimStream.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fimStream.js
   var require_fimStream = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fimStream.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fimStream.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -39714,9 +39714,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/fim.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/fim.js
   var require_fim = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/fim.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/fim.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Fim = void 0;
@@ -39748,9 +39748,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fineTuningJobsCancel.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fineTuningJobsCancel.js
   var require_fineTuningJobsCancel = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fineTuningJobsCancel.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fineTuningJobsCancel.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -39865,9 +39865,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fineTuningJobsCreate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fineTuningJobsCreate.js
   var require_fineTuningJobsCreate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fineTuningJobsCreate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fineTuningJobsCreate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -39978,9 +39978,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fineTuningJobsGet.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fineTuningJobsGet.js
   var require_fineTuningJobsGet = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fineTuningJobsGet.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fineTuningJobsGet.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -40095,9 +40095,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fineTuningJobsList.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fineTuningJobsList.js
   var require_fineTuningJobsList = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fineTuningJobsList.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fineTuningJobsList.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -40220,9 +40220,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fineTuningJobsStart.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fineTuningJobsStart.js
   var require_fineTuningJobsStart = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/fineTuningJobsStart.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/fineTuningJobsStart.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -40337,9 +40337,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/jobs.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/jobs.js
   var require_jobs = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/jobs.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/jobs.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Jobs = void 0;
@@ -40401,9 +40401,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/finetuning.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/finetuning.js
   var require_finetuning = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/finetuning.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/finetuning.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.FineTuning = void 0;
@@ -40418,9 +40418,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/modelsArchive.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/modelsArchive.js
   var require_modelsArchive = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/modelsArchive.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/modelsArchive.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -40536,9 +40536,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/modelsDelete.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/modelsDelete.js
   var require_modelsDelete = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/modelsDelete.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/modelsDelete.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -40658,9 +40658,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/modelsList.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/modelsList.js
   var require_modelsList = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/modelsList.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/modelsList.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -40764,9 +40764,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/modelsRetrieve.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/modelsRetrieve.js
   var require_modelsRetrieve = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/modelsRetrieve.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/modelsRetrieve.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -40885,9 +40885,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/modelsUnarchive.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/modelsUnarchive.js
   var require_modelsUnarchive = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/modelsUnarchive.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/modelsUnarchive.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -41003,9 +41003,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/modelsUpdate.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/modelsUpdate.js
   var require_modelsUpdate = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/modelsUpdate.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/modelsUpdate.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -41121,9 +41121,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/models.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/models.js
   var require_models = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/models.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/models.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Models = void 0;
@@ -41195,9 +41195,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/ocrProcess.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/ocrProcess.js
   var require_ocrProcess = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/funcs/ocrProcess.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/funcs/ocrProcess.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;
@@ -41311,9 +41311,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/ocr.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/ocr.js
   var require_ocr = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/ocr.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/ocr.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Ocr = void 0;
@@ -41332,9 +41332,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/sdk.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/sdk.js
   var require_sdk = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/sdk/sdk.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/sdk/sdk.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.Mistral = void 0;
@@ -41393,9 +41393,9 @@ ${(0, sdkvalidationerror_js_1.formatZodError)(this.cause)}`;
     }
   });
 
-  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/index.js
+  // ../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/index.js
   var require_mistralai = __commonJS({
-    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-34fcf2fd-ad24-4f62-827a-c667a789dbe9/node_modules/@mistralai/mistralai/index.js"(exports) {
+    "../../../../../../../private/var/folders/dl/8v9t4zz50xz399_1_1gjqcz80000gn/T/speakeasy-4daddc99-ea97-447b-9be1-de57b3af018a/node_modules/@mistralai/mistralai/index.js"(exports) {
       "use strict";
       var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
         if (k2 === void 0) k2 = k;

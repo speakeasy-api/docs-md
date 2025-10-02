@@ -11,6 +11,7 @@ import type { Renderer } from "../../renderers/base.ts";
 import type { CodeSampleLanguage } from "../../settings.ts";
 import { getSettings } from "../../settings.ts";
 import { assertNever } from "../../util/assertNever.ts";
+import { InternalError } from "../../util/internalError.ts";
 import { getSchemaFromId, getSecurityFromId } from "../util.ts";
 import {
   getDisplayTypeInfo,
@@ -39,12 +40,14 @@ function renderCodeSamples(
           debug(`Rendering code sample for ${language}`);
           const codeSample = codeSamples.find((s) => s.language === language);
           if (language === "typescript" && codeSample?.enableTryItNow) {
+            if (!codeSample?.tryItNowBundleUrl) {
+              throw new InternalError(
+                `No try it now bundle URL found for language ${language}`
+              );
+            }
             createTryItNowEntry({
               language,
-              externalDependencies: {
-                zod: "^3.25.64",
-                [snippet.packageName]: "latest",
-              },
+              dependencyBundleUrl: codeSample.tryItNowBundleUrl,
               defaultValue: snippet.code,
             });
           } else {

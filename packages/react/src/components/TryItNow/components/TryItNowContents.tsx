@@ -11,8 +11,8 @@ import { RunButton as DefaultRunButton } from "./RunButton.tsx";
 import styles from "./styles.module.css";
 
 export function TryItNowContents({
-  externalDependencies = {},
   defaultValue,
+  dependencyBundleUrl,
   Layout = DefaultLayout,
   Editor = DefaultEditor,
   RunButton = DefaultRunButton,
@@ -21,7 +21,7 @@ export function TryItNowContents({
 }: TryItNowProps) {
   const [value, setValue] = useState(defaultValue);
   const { status, execute } = useRuntime({
-    dependencies: externalDependencies,
+    dependencyBundleUrl,
   });
   const showResults = status.state !== "idle";
 

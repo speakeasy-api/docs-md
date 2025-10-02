@@ -50,6 +50,8 @@ const codeSample = z.strictObject({
   sdkTarballPath: z.string(),
   packageName: z.string(),
   enableTryItNow: z.boolean().default(false),
+  tryItNowBundlePath: z.string().optional(),
+  tryItNowBundleUrl: z.string().optional(),
 });
 
 export const settingsSchema = z.strictObject({

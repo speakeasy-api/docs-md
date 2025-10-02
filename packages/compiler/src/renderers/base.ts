@@ -100,7 +100,7 @@ export type RendererCreateCodeSamplesSectionArgs = [
   cb: (options: {
     createTryItNowEntry: (options: {
       language: CodeSampleLanguage;
-      externalDependencies: Record<string, string>;
+      dependencyBundleUrl: string;
       defaultValue: string;
     }) => void;
     createCodeSampleEntry: (options: {

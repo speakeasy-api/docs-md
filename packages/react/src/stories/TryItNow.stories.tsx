@@ -73,29 +73,6 @@ console.log("2 + 2 =", sum(2, 2));`,
   },
 };
 
-export const WithExternalDependencies: Story = {
-  args: {
-    defaultValue: `import { z } from "zod";
-
-const userSchema = z.object({
-  name: z.string(),
-  age: z.number(),
-  email: z.string().email(),
-});
-
-const user = {
-  name: "John Doe",
-  age: 30,
-  email: "john@example.com",
-};
-
-console.log("Valid user:", userSchema.parse(user));`,
-    externalDependencies: {
-      zod: "^3.22.0",
-    },
-  },
-};
-
 export const APIExample: Story = {
   args: {
     defaultValue: `// Example API call

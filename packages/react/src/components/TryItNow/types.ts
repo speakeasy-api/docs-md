@@ -21,14 +21,14 @@ export type Status =
 
 export type TryItNowProps = {
   /**
-   * These are dependencies that are required by the code snippet,
-   * like "zod" or an npm package.
-   */
-  externalDependencies?: Record<string, string>;
-  /**
    * The code sample for the editor to initially load
    */
   defaultValue: string;
+  /**
+   * URL to the prebuilt dependency bundle, as specified by
+   * `codeSample.tryItNowBundleUrl` in the Speakeasy docs config
+   */
+  dependencyBundleUrl: string;
   /**
    * Editor component to use. Defaults to `Editor`.
    */

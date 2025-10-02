@@ -157,32 +157,41 @@ async function getSettings(): Promise<Settings> {
 
   // Validate and format various settings, as needed
   const configFileDirectory = dirname(configFilePath);
-  if (configFileContents.data.spec) {
-    if (!isAbsolute(configFileContents.data.spec)) {
-      configFileContents.data.spec = resolve(
-        configFileDirectory,
-        configFileContents.data.spec
-      );
-    }
-    if (!isAbsolute(configFileContents.data.spec)) {
-      configFileContents.data.spec = resolve(
-        configFileDirectory,
-        configFileContents.data.spec
-      );
-    }
-    if (!existsSync(configFileContents.data.spec)) {
-      error(
-        `OpenAPI spec file "${configFileContents.data.spec}" does not exist`
-      );
+  function resolveAndValidatePath({
+    path,
+    name,
+    validateExists,
+  }: {
+    path: string | undefined;
+    name: string;
+    validateExists: boolean;
+  }) {
+    if (!path) {
+      error(`"${name}" must be specified`);
       process.exit(1);
     }
+    if (!isAbsolute(path)) {
+      path = resolve(configFileDirectory, path);
+    }
+    if (validateExists && !existsSync(path)) {
+      error(`${name} path "${path}" does not exist`);
+      process.exit(1);
+    }
+    return path;
   }
-  if (!isAbsolute(configFileContents.data.output.pageOutDir)) {
-    configFileContents.data.output.pageOutDir = resolve(
-      configFileDirectory,
-      configFileContents.data.output.pageOutDir
-    );
+
+  if (configFileContents.data.spec) {
+    configFileContents.data.spec = resolveAndValidatePath({
+      path: configFileContents.data.spec,
+      name: "spec",
+      validateExists: true,
+    });
   }
+  configFileContents.data.output.pageOutDir = resolveAndValidatePath({
+    path: configFileContents.data.output.pageOutDir,
+    name: "output.pageOutDir",
+    validateExists: false,
+  });
   if (configFileContents.data.display.maxNestingLevel !== undefined) {
     if (configFileContents.data.display.maxNestingLevel < 1) {
       error(
@@ -190,12 +199,11 @@ async function getSettings(): Promise<Settings> {
       );
       process.exit(1);
     }
-    if (!configFileContents.data.output.embedOutDir) {
-      error(
-        `output.embedOutDir must be specified when display.maxNestingLevel is specified`
-      );
-      process.exit(1);
-    }
+    configFileContents.data.output.embedOutDir = resolveAndValidatePath({
+      path: configFileContents.data.output.embedOutDir,
+      name: "output.embedOutDir",
+      validateExists: false,
+    });
     if (
       typeof configFileContents.data.output.framework !== "string" &&
       typeof configFileContents.data.output.framework.buildEmbedPath !==
@@ -206,27 +214,36 @@ async function getSettings(): Promise<Settings> {
       );
       process.exit(1);
     }
-    if (!isAbsolute(configFileContents.data.output.embedOutDir)) {
-      configFileContents.data.output.embedOutDir = resolve(
-        configFileDirectory,
-        configFileContents.data.output.embedOutDir
-      );
-    }
   }
   for (const codeSample of configFileContents.data.codeSamples ?? []) {
-    if (!isAbsolute(codeSample.sdkTarballPath)) {
-      codeSample.sdkTarballPath = resolve(
-        configFileDirectory,
-        codeSample.sdkTarballPath
-      );
+    if (!codeSample.enableTryItNow) {
+      continue;
     }
-    if (!existsSync(codeSample.sdkTarballPath)) {
-      error(`SDK tarball "${codeSample.sdkTarballPath}" does not exist`);
+    if (!codeSample.tryItNowBundlePath) {
+      error(
+        `codeSample.tryItNowBundlePath must be specified when codeSample.enableTryItNow is true`
+      );
       process.exit(1);
     }
+    codeSample.sdkTarballPath = resolveAndValidatePath({
+      path: codeSample.sdkTarballPath,
+      name: "codeSample.sdkTarballPath",
+      validateExists: true,
+    });
     if (!codeSample.sdkTarballPath.endsWith("tar.gz")) {
       error(
         `SDK tarball path ${codeSample.sdkTarballPath} must end in .tar.gz`
+      );
+      process.exit(1);
+    }
+    codeSample.tryItNowBundlePath = resolveAndValidatePath({
+      path: codeSample.tryItNowBundlePath,
+      name: "codeSample.tryItNowBundlePath",
+      validateExists: false,
+    });
+    if (!codeSample.tryItNowBundleUrl) {
+      error(
+        `codeSample.tryItNowBundleUrl must be specified when codeSample.enableTryItNow is true`
       );
       process.exit(1);
     }

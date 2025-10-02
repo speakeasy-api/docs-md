@@ -5,6 +5,7 @@ import type { WorkerMessage } from "./messages.ts";
 
 export class Runtime {
   #dependencyBundle?: string;
+  #dependencyBundleUrl: string;
   #listeners: Record<
     RuntimeEvents["type"],
     ((event: RuntimeEvents) => void)[]
@@ -19,6 +20,10 @@ export class Runtime {
   };
   #worker?: Worker;
 
+  constructor({ dependencyBundleUrl }: { dependencyBundleUrl: string }) {
+    this.#dependencyBundleUrl = dependencyBundleUrl;
+  }
+
   public run(code: string) {
     // Hide the promise, since it doesn't indicate when run finishes (we never
     // // know, cause Halting Problemplus lack of process.exit in samples)
@@ -27,7 +32,7 @@ export class Runtime {
 
   async #run(code: string) {
     if (!this.#dependencyBundle) {
-      const results = await fetch("/bundle.js");
+      const results = await fetch(this.#dependencyBundleUrl);
       this.#dependencyBundle = await results.text();
     }
     if (this.#worker) {
