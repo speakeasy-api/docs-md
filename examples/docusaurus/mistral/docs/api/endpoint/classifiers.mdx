@@ -6,6 +6,7 @@ sidebar_label: Classifiers
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   DebugPlaceholder,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
@@ -39,8 +40,7 @@ import {
   TabbedSection,
   Tag,
   TagDescription,
-  TagTitle,
-  TryItNow
+  TagTitle
 } from "@speakeasy-api/docs-md-react";
 
 <Tag slot="tag">
@@ -107,7 +107,69 @@ TypeScript
   id="operation-moderations_v1_moderations_post+code-samples+typescript"
 >
 
-<TryItNow dependencyBundleUrl="/try-it-now/deps.js" defaultValue={"import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.classifiers.moderate({\n    model: \"Durango\",\n    inputs: [\n      \"<value 1>\",\n      \"<value 2>\",\n    ],\n  });\n\n  console.log(result);\n}\n\nrun();\n"} />
+<CodeSample>
+
+```typescript
+import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.classifiers.moderate({
+    model: "Durango",
+    inputs: [
+      "<value 1>",
+      "<value 2>",
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-moderations_v1_moderations_post+code-samples+python">
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-moderations_v1_moderations_post+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+import os
+
+
+with Mistral(
+    api_key=os.getenv("MISTRAL_API_KEY", ""),
+) as mistral:
+
+    res = mistral.classifiers.moderate(model="Durango", inputs=[
+        "<value 1>",
+        "<value 2>",
+    ])
+
+    # Handle response
+    print(res)
+
+
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -839,7 +901,76 @@ TypeScript
   id="operation-chat_moderations_v1_chat_moderations_post+code-samples+typescript"
 >
 
-<TryItNow dependencyBundleUrl="/try-it-now/deps.js" defaultValue={"import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.classifiers.moderateChat({\n    inputs: [\n      {\n        content: \"<value>\",\n        role: \"tool\",\n      },\n    ],\n    model: \"LeBaron\",\n  });\n\n  console.log(result);\n}\n\nrun();\n"} />
+<CodeSample>
+
+```typescript
+import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.classifiers.moderateChat({
+    inputs: [
+      {
+        content: "<value>",
+        role: "tool",
+      },
+    ],
+    model: "LeBaron",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-chat_moderations_v1_chat_moderations_post+code-samples+python"
+>
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-chat_moderations_v1_chat_moderations_post+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+import os
+
+
+with Mistral(
+    api_key=os.getenv("MISTRAL_API_KEY", ""),
+) as mistral:
+
+    res = mistral.classifiers.moderate_chat(inputs=[
+        {
+            "content": "<value>",
+            "role": "tool",
+        },
+    ], model="LeBaron")
+
+    # Handle response
+    print(res)
+
+
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -9591,7 +9722,70 @@ TypeScript
   id="operation-classifications_v1_classifications_post+code-samples+typescript"
 >
 
-<TryItNow dependencyBundleUrl="/try-it-now/deps.js" defaultValue={"import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.classifiers.classify({\n    model: \"Silverado\",\n    inputs: [\n      \"<value 1>\",\n    ],\n  });\n\n  console.log(result);\n}\n\nrun();\n"} />
+<CodeSample>
+
+```typescript
+import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.classifiers.classify({
+    model: "Silverado",
+    inputs: [
+      "<value 1>",
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-classifications_v1_classifications_post+code-samples+python"
+>
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-classifications_v1_classifications_post+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+import os
+
+
+with Mistral(
+    api_key=os.getenv("MISTRAL_API_KEY", ""),
+) as mistral:
+
+    res = mistral.classifiers.classify(model="Silverado", inputs=[
+        "<value 1>",
+    ])
+
+    # Handle response
+    print(res)
+
+
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -10275,7 +10469,84 @@ TypeScript
   id="operation-chat_classifications_v1_chat_classifications_post+code-samples+typescript"
 >
 
-<TryItNow dependencyBundleUrl="/try-it-now/deps.js" defaultValue={"import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.classifiers.classifyChat({\n    model: \"Camry\",\n    inputs: [\n      {\n        messages: [\n          {\n            content: \"<value>\",\n            role: \"system\",\n          },\n        ],\n      },\n    ],\n  });\n\n  console.log(result);\n}\n\nrun();\n"} />
+<CodeSample>
+
+```typescript
+import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.classifiers.classifyChat({
+    model: "Camry",
+    inputs: [
+      {
+        messages: [
+          {
+            content: "<value>",
+            role: "system",
+          },
+        ],
+      },
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-chat_classifications_v1_chat_classifications_post+code-samples+python"
+>
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-chat_classifications_v1_chat_classifications_post+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+import os
+
+
+with Mistral(
+    api_key=os.getenv("MISTRAL_API_KEY", ""),
+) as mistral:
+
+    res = mistral.classifiers.classify_chat(model="Camry", inputs=[
+        {
+            "messages": [
+                {
+                    "content": "<value>",
+                    "role": "system",
+                },
+            ],
+        },
+    ])
+
+    # Handle response
+    print(res)
+
+
+```
+
+</CodeSample>
 
 </SectionContent>
 

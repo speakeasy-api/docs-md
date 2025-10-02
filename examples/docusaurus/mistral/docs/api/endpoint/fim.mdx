@@ -6,6 +6,7 @@ sidebar_label: Fim
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   DebugPlaceholder,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
@@ -41,8 +42,7 @@ import {
   TabbedSection,
   Tag,
   TagDescription,
-  TagTitle,
-  TryItNow
+  TagTitle
 } from "@speakeasy-api/docs-md-react";
 
 <Tag slot="tag">
@@ -99,7 +99,67 @@ TypeScript
   id="operation-fim_completion_v1_fim_completions_post+code-samples+typescript"
 >
 
-<TryItNow dependencyBundleUrl="/try-it-now/deps.js" defaultValue={"import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.fim.complete({\n    model: \"codestral-2405\",\n    prompt: \"def\",\n    suffix: \"return a+b\",\n  });\n\n  console.log(result);\n}\n\nrun();\n"} />
+<CodeSample>
+
+```typescript
+import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.fim.complete({
+    model: "codestral-2405",
+    prompt: "def",
+    suffix: "return a+b",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-fim_completion_v1_fim_completions_post+code-samples+python"
+>
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-fim_completion_v1_fim_completions_post+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+import os
+
+
+with Mistral(
+    api_key=os.getenv("MISTRAL_API_KEY", ""),
+) as mistral:
+
+    res = mistral.fim.complete(model="codestral-2405", prompt="def", top_p=1, stream=False, suffix="return a+b")
+
+    # Handle response
+    print(res)
+
+
+```
+
+</CodeSample>
 
 </SectionContent>
 

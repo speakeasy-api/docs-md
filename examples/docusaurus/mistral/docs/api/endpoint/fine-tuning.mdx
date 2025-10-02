@@ -6,6 +6,7 @@ sidebar_label: Fine Tuning
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   DebugPlaceholder,
   ExpandableBreakout,
   ExpandableBreakoutDefaultValue,
@@ -42,8 +43,7 @@ import {
   TabbedSection,
   Tag,
   TagDescription,
-  TagTitle,
-  TryItNow
+  TagTitle
 } from "@speakeasy-api/docs-md-react";
 
 <Tag slot="tag">
@@ -100,7 +100,63 @@ TypeScript
   id="operation-jobs_api_routes_fine_tuning_get_fine_tuning_jobs+code-samples+typescript"
 >
 
-<TryItNow dependencyBundleUrl="/try-it-now/deps.js" defaultValue={"import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.fineTuning.jobs.list({});\n\n  console.log(result);\n}\n\nrun();\n"} />
+<CodeSample>
+
+```typescript
+import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.fineTuning.jobs.list({});
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-jobs_api_routes_fine_tuning_get_fine_tuning_jobs+code-samples+python"
+>
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-jobs_api_routes_fine_tuning_get_fine_tuning_jobs+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+import os
+
+
+with Mistral(
+    api_key=os.getenv("MISTRAL_API_KEY", ""),
+) as mistral:
+
+    res = mistral.fine_tuning.jobs.list(page=0, page_size=100, created_by_me=False)
+
+    # Handle response
+    print(res)
+
+
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -5873,7 +5929,70 @@ TypeScript
   id="operation-jobs_api_routes_fine_tuning_create_fine_tuning_job+code-samples+typescript"
 >
 
-<TryItNow dependencyBundleUrl="/try-it-now/deps.js" defaultValue={"import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.fineTuning.jobs.create({\n    model: \"Camaro\",\n    hyperparameters: {\n      learningRate: 0.0001,\n    },\n  });\n\n  console.log(result);\n}\n\nrun();\n"} />
+<CodeSample>
+
+```typescript
+import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.fineTuning.jobs.create({
+    model: "Camaro",
+    hyperparameters: {
+      learningRate: 0.0001,
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-jobs_api_routes_fine_tuning_create_fine_tuning_job+code-samples+python"
+>
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-jobs_api_routes_fine_tuning_create_fine_tuning_job+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+import os
+
+
+with Mistral(
+    api_key=os.getenv("MISTRAL_API_KEY", ""),
+) as mistral:
+
+    res = mistral.fine_tuning.jobs.create(model="Camaro", hyperparameters={
+        "learning_rate": 0.0001,
+    }, invalid_sample_skip_percentage=0)
+
+    # Handle response
+    print(res)
+
+
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -15265,7 +15384,65 @@ TypeScript
   id="operation-jobs_api_routes_fine_tuning_get_fine_tuning_job+code-samples+typescript"
 >
 
-<TryItNow dependencyBundleUrl="/try-it-now/deps.js" defaultValue={"import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.fineTuning.jobs.get({\n    jobId: \"c167a961-ffca-4bcf-93ac-6169468dd389\",\n  });\n\n  console.log(result);\n}\n\nrun();\n"} />
+<CodeSample>
+
+```typescript
+import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.fineTuning.jobs.get({
+    jobId: "c167a961-ffca-4bcf-93ac-6169468dd389",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-jobs_api_routes_fine_tuning_get_fine_tuning_job+code-samples+python"
+>
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-jobs_api_routes_fine_tuning_get_fine_tuning_job+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+import os
+
+
+with Mistral(
+    api_key=os.getenv("MISTRAL_API_KEY", ""),
+) as mistral:
+
+    res = mistral.fine_tuning.jobs.get(job_id="c167a961-ffca-4bcf-93ac-6169468dd389")
+
+    # Handle response
+    print(res)
+
+
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -23335,7 +23512,65 @@ TypeScript
   id="operation-jobs_api_routes_fine_tuning_cancel_fine_tuning_job+code-samples+typescript"
 >
 
-<TryItNow dependencyBundleUrl="/try-it-now/deps.js" defaultValue={"import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.fineTuning.jobs.cancel({\n    jobId: \"6188a2f6-7513-4e0f-89cc-3f8088523a49\",\n  });\n\n  console.log(result);\n}\n\nrun();\n"} />
+<CodeSample>
+
+```typescript
+import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.fineTuning.jobs.cancel({
+    jobId: "6188a2f6-7513-4e0f-89cc-3f8088523a49",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-jobs_api_routes_fine_tuning_cancel_fine_tuning_job+code-samples+python"
+>
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-jobs_api_routes_fine_tuning_cancel_fine_tuning_job+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+import os
+
+
+with Mistral(
+    api_key=os.getenv("MISTRAL_API_KEY", ""),
+) as mistral:
+
+    res = mistral.fine_tuning.jobs.cancel(job_id="6188a2f6-7513-4e0f-89cc-3f8088523a49")
+
+    # Handle response
+    print(res)
+
+
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -31405,7 +31640,65 @@ TypeScript
   id="operation-jobs_api_routes_fine_tuning_start_fine_tuning_job+code-samples+typescript"
 >
 
-<TryItNow dependencyBundleUrl="/try-it-now/deps.js" defaultValue={"import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.fineTuning.jobs.start({\n    jobId: \"56553e4d-0679-471e-b9ac-59a77d671103\",\n  });\n\n  console.log(result);\n}\n\nrun();\n"} />
+<CodeSample>
+
+```typescript
+import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.fineTuning.jobs.start({
+    jobId: "56553e4d-0679-471e-b9ac-59a77d671103",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-jobs_api_routes_fine_tuning_start_fine_tuning_job+code-samples+python"
+>
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-jobs_api_routes_fine_tuning_start_fine_tuning_job+code-samples+python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+import os
+
+
+with Mistral(
+    api_key=os.getenv("MISTRAL_API_KEY", ""),
+) as mistral:
+
+    res = mistral.fine_tuning.jobs.start(job_id="56553e4d-0679-471e-b9ac-59a77d671103")
+
+    # Handle response
+    print(res)
+
+
+```
+
+</CodeSample>
 
 </SectionContent>
 

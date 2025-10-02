@@ -5,6 +5,7 @@ sidebarTitle: Audio Transcriptions
 import "@speakeasy-api/docs-md-react/nextra.css";
 
 import {
+  CodeSample,
   ExpandableBreakout,
   ExpandableBreakoutDescription,
   ExpandableBreakoutProperties,
@@ -84,7 +85,44 @@ TypeScript
   id="operation-audio_api_v1_transcriptions_post_code-samples_typescript"
 >
 
-<TryItNow dependencyBundleUrl="/try-it-now/deps.js" defaultValue={"import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.audio.transcriptions.complete({\n    model: \"Model X\",\n  });\n\n  console.log(result);\n}\n\nrun();\n"} />
+<TryItNow
+  dependencyBundleUrl="/try-it-now/deps.js"
+  defaultValue="import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.audio.transcriptions.complete({\n    model: \"Model X\",\n  });\n\n  console.log(result);\n}\n\nrun();\n"
+/>
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-audio_api_v1_transcriptions_post_code-samples_python">
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-audio_api_v1_transcriptions_post_code-samples_python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+import os
+
+
+with Mistral(
+    api_key=os.getenv("MISTRAL_API_KEY", ""),
+) as mistral:
+
+    res = mistral.audio.transcriptions.complete(model="Model X")
+
+    # Handle response
+    print(res)
+
+
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -769,7 +807,49 @@ TypeScript
   id="operation-audio_api_v1_transcriptions_post_stream_code-samples_typescript"
 >
 
-<TryItNow dependencyBundleUrl="/try-it-now/deps.js" defaultValue={"import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.audio.transcriptions.stream({\n    model: \"Camry\",\n  });\n\n  for await (const event of result) {\n    // Handle the event\n    console.log(event);\n  }\n}\n\nrun();\n"} />
+<TryItNow
+  dependencyBundleUrl="/try-it-now/deps.js"
+  defaultValue="import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.audio.transcriptions.stream({\n    model: \"Camry\",\n  });\n\n  for await (const event of result) {\n    // Handle the event\n    console.log(event);\n  }\n}\n\nrun();\n"
+/>
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-audio_api_v1_transcriptions_post_stream_code-samples_python"
+>
+
+Python
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-audio_api_v1_transcriptions_post_stream_code-samples_python"
+>
+
+<CodeSample>
+
+```python
+from mistralai import Mistral
+import os
+
+
+with Mistral(
+    api_key=os.getenv("MISTRAL_API_KEY", ""),
+) as mistral:
+
+    res = mistral.audio.transcriptions.stream(model="Camry")
+
+    with res as event_stream:
+        for event in event_stream:
+            # handle event
+            print(event, flush=True)
+
+
+```
+
+</CodeSample>
 
 </SectionContent>
 
