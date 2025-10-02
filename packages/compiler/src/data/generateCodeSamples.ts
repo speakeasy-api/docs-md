@@ -69,6 +69,15 @@ function parseSampleReadme(readmePath: string) {
         if (!codeSampleMetadata) {
           throw new InternalError(`Sample metadata is unexpectedly null`);
         }
+
+        // Quick-n-dirty hack to clean up TypeScript examples for Try It Now
+        if (codeSampleMetadata.language === "typescript") {
+          codeSampleMetadata.code = codeSampleMetadata.code.replaceAll(
+            /process.env\[(".*")\] \?\? ""/g,
+            "$1"
+          );
+        }
+
         codeSamples.push({
           operationId: codeSampleMetadata.operationId,
           language: codeSampleMetadata.language,
