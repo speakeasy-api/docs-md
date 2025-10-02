@@ -4,7 +4,7 @@ import type { FC } from "react";
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 
-import { useChildren, useUniqueChild } from "../../util/hooks.ts";
+import { useChildren } from "../../util/hooks.ts";
 import { InternalError } from "../../util/internalError.ts";
 import type { SectionContentProps } from "../SectionContent/types.ts";
 import type { SectionTabProps } from "../SectionTab/types.ts";
@@ -17,7 +17,8 @@ type ContainerProps = {
 };
 
 export function useTabbedChildren({ TabButton, children }: ContainerProps) {
-  const titleChild = useUniqueChild<SectionTitleProps>(children, "title");
+  // We don't always add a title, which is why we don't use useUniqueChild
+  const titleChild = useChildren<SectionTitleProps>(children, "title");
   const contentChildren = useChildren<SectionContentProps>(children, "content");
   const tabChildren = useChildren<SectionTabProps>(children, "tab");
 
