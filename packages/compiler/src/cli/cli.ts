@@ -213,6 +213,24 @@ async function getSettings(): Promise<Settings> {
       );
     }
   }
+  for (const codeSample of configFileContents.data.codeSamples ?? []) {
+    if (!isAbsolute(codeSample.sdkTarballPath)) {
+      codeSample.sdkTarballPath = resolve(
+        configFileDirectory,
+        codeSample.sdkTarballPath
+      );
+    }
+    if (!existsSync(codeSample.sdkTarballPath)) {
+      error(`SDK tarball "${codeSample.sdkTarballPath}" does not exist`);
+      process.exit(1);
+    }
+    if (!codeSample.sdkTarballPath.endsWith("tar.gz")) {
+      error(
+        `SDK tarball path ${codeSample.sdkTarballPath} must end in .tar.gz`
+      );
+      process.exit(1);
+    }
+  }
 
   return configFileContents.data as Settings;
 }

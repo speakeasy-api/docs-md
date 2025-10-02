@@ -6,7 +6,7 @@ import type {
 import { capitalCase } from "change-case";
 
 import type { FrameworkConfig } from "../compiler.ts";
-import type { DocsCodeSamples } from "../data/generateCodeSamples.ts";
+import type { CodeSamples } from "../data/generateCodeSamples.ts";
 import { debug } from "../logging.ts";
 import type { Site } from "../renderers/base.ts";
 import { getOnPageComplete, getSettings } from "../settings.ts";
@@ -146,7 +146,7 @@ function renderPages(
   site: Site,
   frameworkConfig: FrameworkConfig,
   pageMap: PageMap,
-  docsCodeSnippets: DocsCodeSamples
+  docsCodeSamples: CodeSamples
 ) {
   const pageMetadata: PageMetadata[] = [];
   for (const [currentPagePath, pageMapEntry] of pageMap) {
@@ -188,7 +188,7 @@ function renderPages(
             tagChunk: contextChunk,
             renderer,
             chunk,
-            docsCodeSnippets,
+            docsCodeSamples,
           });
           break;
         }
@@ -218,8 +218,8 @@ export function renderContent(
   site: Site,
   frameworkConfig: FrameworkConfig,
   data: Data,
-  docsCodeSnippets: DocsCodeSamples
+  docsCodeSamples: CodeSamples
 ) {
   const pageMap = getPageMap(site, data);
-  renderPages(site, frameworkConfig, pageMap, docsCodeSnippets);
+  renderPages(site, frameworkConfig, pageMap, docsCodeSamples);
 }

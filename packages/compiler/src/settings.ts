@@ -45,6 +45,13 @@ const language = z.enum([
 
 export type CodeSampleLanguage = z.infer<typeof language>;
 
+const codeSample = z.strictObject({
+  language,
+  sdkTarballPath: z.string(),
+  packageName: z.string(),
+  enableTryItNow: z.boolean().default(false),
+});
+
 export const settingsSchema = z.strictObject({
   spec: z.string().optional(),
   specData: z.string().optional(),
@@ -81,18 +88,7 @@ export const settingsSchema = z.strictObject({
       showDebugPlaceholders: false,
       expandTopLevelPropertiesOnPageLoad: true,
     }),
-  codeSamples: z
-    .array(
-      z.strictObject({
-        language,
-        sampleDownloadUrl: z.string(),
-        sdkClassName: z.string(),
-        packageName: z.string(),
-        enableTryItNow: z.boolean().default(false),
-      })
-    )
-    .min(1)
-    .optional(),
+  codeSamples: z.array(codeSample).min(1).optional(),
 });
 
 type ZodSettings = z.infer<typeof settingsSchema>;

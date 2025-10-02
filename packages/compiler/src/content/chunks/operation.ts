@@ -5,7 +5,7 @@ import type {
 } from "@speakeasy-api/docs-md-shared";
 import type { PropertyAnnotations } from "@speakeasy-api/docs-md-shared";
 
-import type { DocsCodeSamples } from "../../data/generateCodeSamples.ts";
+import type { CodeSamples } from "../../data/generateCodeSamples.ts";
 import { debug } from "../../logging.ts";
 import type { Renderer } from "../../renderers/base.ts";
 import type { CodeSampleLanguage } from "../../settings.ts";
@@ -22,16 +22,16 @@ type RenderOperationOptions = {
   renderer: Renderer;
   chunk: OperationChunk;
   tagChunk: TagChunk;
-  docsCodeSnippets: DocsCodeSamples;
+  docsCodeSamples: CodeSamples;
 };
 
 function renderCodeSamples(
   renderer: Renderer,
-  docsCodeSnippets: DocsCodeSamples,
+  docsCodeSamples: CodeSamples,
   operationChunkId: string
 ) {
   const { codeSamples } = getSettings();
-  const usageSnippet = docsCodeSnippets[operationChunkId];
+  const usageSnippet = docsCodeSamples[operationChunkId];
   if (usageSnippet && codeSamples) {
     renderer.createCodeSamplesSection(
       ({ createTryItNowEntry, createCodeSampleEntry }) => {
@@ -528,7 +528,7 @@ export function renderOperation({
   renderer,
   tagChunk,
   chunk,
-  docsCodeSnippets,
+  docsCodeSamples,
 }: RenderOperationOptions) {
   debug(
     `Rendering operation chunk: method=${chunk.chunkData.method} path=${chunk.chunkData.path} operationId=${chunk.chunkData.operationId}`
@@ -543,7 +543,7 @@ export function renderOperation({
       description: chunk.chunkData.description,
     },
     () => {
-      renderCodeSamples(renderer, docsCodeSnippets, chunk.id);
+      renderCodeSamples(renderer, docsCodeSamples, chunk.id);
       renderSecurity(chunk.chunkData.security, renderer);
       renderParameters(chunk.chunkData.parameters, renderer);
       renderRequestBody(chunk.chunkData.requestBody, renderer);

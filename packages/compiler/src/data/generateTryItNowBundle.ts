@@ -8,29 +8,47 @@ import { build } from "esbuild";
 
 import { debug, info } from "../logging.ts";
 import { getSettings } from "../settings.ts";
+import { InternalError } from "../util/internalError.ts";
 
-export async function generateTryItNowBundle(): Promise<void> {
+export async function generateTryItNowBundle(
+  sdkFolders: Map<string, string>
+): Promise<void> {
   const settings = getSettings();
-  for (const codeSample of settings.codeSamples ?? []) {
-    if (!codeSample.enableTryItNow || codeSample.language !== "typescript") {
-      continue;
-    }
-    info(`Prebuilding dependencies for ${codeSample.packageName}`);
-    const dependencyBundle = await bundleTryItNowDeps({
-      packageName: codeSample.packageName,
-      version: "latest",
-    });
-    const dependencyBundlePath = join(
-      settings.output.pageOutDir,
-      "tryItNowDeps.js"
+  const codeSample = settings.codeSamples?.find(
+    (codeSample) =>
+      codeSample.language === "typescript" && codeSample.enableTryItNow
+  );
+
+  if (!codeSample) {
+    info(
+      "No Try It Now enabled TypeScript code sample config found, skipping Try It Now bundle generation"
     );
-    mkdirSync(dirname(dependencyBundlePath), {
-      recursive: true,
-    });
-    writeFileSync(dependencyBundlePath, dependencyBundle, {
-      encoding: "utf-8",
-    });
+    return;
   }
+  const sdkFolder = sdkFolders.get(codeSample.packageName);
+  if (!sdkFolder) {
+    throw new InternalError(
+      `No SDK folder found for ${codeSample.packageName}`
+    );
+  }
+
+  info(`Prebuilding Try It Now dependencies for ${codeSample.packageName}`);
+  const dependencyBundle = await bundleTryItNowDeps({
+    packageName: codeSample.packageName,
+    version: "latest",
+  });
+
+  // TODO: set up better paths
+  const dependencyBundlePath = join(
+    settings.output.pageOutDir,
+    "tryItNowDeps.js"
+  );
+  mkdirSync(dirname(dependencyBundlePath), {
+    recursive: true,
+  });
+  writeFileSync(dependencyBundlePath, dependencyBundle, {
+    encoding: "utf-8",
+  });
 }
 
 async function bundleTryItNowDeps({
@@ -40,28 +58,6 @@ async function bundleTryItNowDeps({
   packageName: string;
   version: string;
 }): Promise<string> {
-  const settings = getSettings();
-  for (const codeSample of settings.codeSamples ?? []) {
-    if (!codeSample.enableTryItNow || codeSample.language !== "typescript") {
-      continue;
-    }
-    info(`Prebuilding dependencies for ${codeSample.packageName}`);
-    const dependencyBundle = await bundleTryItNowDeps({
-      packageName: codeSample.packageName,
-      version: "latest",
-    });
-    const dependencyBundlePath = join(
-      settings.output.pageOutDir,
-      "tryItNowDeps.js"
-    );
-    mkdirSync(dirname(dependencyBundlePath), {
-      recursive: true,
-    });
-    writeFileSync(dependencyBundlePath, dependencyBundle, {
-      encoding: "utf-8",
-    });
-  }
-
   const packageInstallDir = join(tmpdir(), "speakeasy-" + randomUUID());
 
   // Create a package.json file in the temporary directory, and install dependencies

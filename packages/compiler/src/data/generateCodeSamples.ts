@@ -1,17 +1,7 @@
-import { randomUUID } from "node:crypto";
-import {
-  createWriteStream,
-  mkdirSync,
-  readdirSync,
-  readFileSync,
-  rmSync,
-} from "node:fs";
-import { get } from "node:https";
-import { tmpdir } from "node:os";
-import { basename, join } from "node:path";
+import { readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 
 import type { Chunk, OperationChunk } from "@speakeasy-api/docs-md-shared";
-import { extract } from "tar";
 
 import { info } from "../logging.ts";
 import { getSettings } from "../settings.ts";
@@ -33,76 +23,10 @@ type CodeSample = {
 };
 
 // Map from operation ID to language to code sample
-export type DocsCodeSamples = Record<
+export type CodeSamples = Record<
   OperationChunk["id"],
   Record<string, CodeSample>
 >;
-
-function downloadFile(url: string, destination: string) {
-  return new Promise<void>((resolve, reject) => {
-    const file = createWriteStream(destination);
-    const options = {
-      headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-    };
-
-    const request = get(url, options, (response) => {
-      // Handle redirects
-      if (
-        response.statusCode &&
-        response.statusCode >= 300 &&
-        response.statusCode < 400 &&
-        response.headers.location
-      ) {
-        // Consume and destroy the response stream
-        response.resume();
-        response.destroy();
-        file.close();
-        downloadFile(response.headers.location, destination)
-          .then(resolve)
-          .catch(reject);
-        return;
-      }
-
-      // Handle error status codes
-      if (response.statusCode && response.statusCode >= 400) {
-        response.resume();
-        response.destroy();
-        file.close();
-        reject(new Error(`HTTP ${response.statusCode} for ${url}`));
-        return;
-      }
-
-      response.pipe(file);
-
-      file.on("finish", () => {
-        file.close(() => {
-          resolve();
-        });
-      });
-
-      file.on("error", (err) => {
-        response.unpipe(file);
-        response.destroy();
-        file.close();
-        reject(err);
-      });
-
-      response.on("error", (err) => {
-        file.close();
-        reject(err);
-      });
-    });
-
-    request.on("error", (err) => {
-      file.close();
-      reject(err);
-    });
-  });
-}
 
 function parseSampleReadme(readmePath: string) {
   const readmeContent = readFileSync(readmePath, "utf-8");
@@ -160,16 +84,18 @@ function parseSampleReadme(readmePath: string) {
   return codeSamples;
 }
 
-export async function generateCodeSamples(
-  docsData: Map<string, Chunk>
-): Promise<DocsCodeSamples> {
+export function generateCodeSamples(
+  docsData: Map<string, Chunk>,
+  sdkFolders: Map<string, string>
+): CodeSamples {
   const { codeSamples } = getSettings();
   if (!codeSamples) {
     info("Code samples not enabled, skipping code samples generation");
     return {};
   }
+  info("Generating Code Samples");
 
-  const docsCodeSamples: DocsCodeSamples = {};
+  const docsCodeSamples: CodeSamples = {};
 
   // create a by operationId map of the operation chunks
   const operationChunksByOperationId = new Map<string, OperationChunk>();
@@ -179,70 +105,43 @@ export async function generateCodeSamples(
     }
   }
 
-  // Fetch code samples from the preview api
-  const extractionTempDirBase = join(tmpdir(), "speakeasy-" + randomUUID());
-  try {
-    for (const codeSample of codeSamples) {
-      // Set up the temp directory for the code sample
-      const extractionDir = join(extractionTempDirBase, codeSample.language);
-      const tarballFilePath = join(
-        extractionDir,
-        basename(codeSample.sampleDownloadUrl)
+  for (const codeSample of codeSamples) {
+    // Set up the temp directory for the code sample
+    const extractionDir = sdkFolders.get(codeSample.packageName);
+    if (!extractionDir) {
+      throw new InternalError(
+        `No SDK folder found for ${codeSample.packageName}`
       );
-      if (!tarballFilePath.endsWith("tar.gz")) {
-        throw new Error(
-          `Code sample download URL must end in .tar.gz, got ${codeSample.sampleDownloadUrl}`
-        );
-      }
-      mkdirSync(extractionDir, { recursive: true });
-
-      // Download and extract the code sample
-      await downloadFile(codeSample.sampleDownloadUrl, tarballFilePath);
-      await extract({
-        file: tarballFilePath,
-        cwd: extractionDir,
-      });
-
-      // Read in the examples
-      const extractedDirName = readdirSync(extractionDir).find(
-        (item) => item !== basename(tarballFilePath)
-      );
-      if (!extractedDirName) {
-        throw new Error(
-          `Failed to extract code sample from ${tarballFilePath}`
-        );
-      }
-      const extractedDirPath = join(extractionDir, extractedDirName);
-      const examples = readdirSync(join(extractedDirPath, "docs", "sdks"));
-      const codeSampleResults: CodeSample[] = [];
-      for (const example of examples) {
-        codeSampleResults.push(
-          ...parseSampleReadme(
-            join(extractedDirPath, "docs", "sdks", example, "README.md")
-          ).map((sample) => ({
-            ...sample,
-            packageName: codeSample.packageName,
-          }))
-        );
-      }
-
-      // Save the results to docsCodeSamples
-      for (const codeSampleResult of codeSampleResults) {
-        // Find the operation chunk ID from the operation ID
-        const operationChunkId = operationChunksByOperationId.get(
-          codeSampleResult.operationId
-        )?.id;
-        if (!operationChunkId) {
-          // TODO: this happens in practice, but should it?
-          continue;
-        }
-        docsCodeSamples[operationChunkId] ??= {};
-        docsCodeSamples[operationChunkId][codeSampleResult.language] =
-          codeSampleResult;
-      }
     }
-  } finally {
-    rmSync(extractionTempDirBase, { recursive: true });
+
+    // Read in the examples
+    const examples = readdirSync(join(extractionDir, "docs", "sdks"));
+    const codeSampleResults: CodeSample[] = [];
+    for (const example of examples) {
+      codeSampleResults.push(
+        ...parseSampleReadme(
+          join(extractionDir, "docs", "sdks", example, "README.md")
+        ).map((sample) => ({
+          ...sample,
+          packageName: codeSample.packageName,
+        }))
+      );
+    }
+
+    // Save the results to docsCodeSamples
+    for (const codeSampleResult of codeSampleResults) {
+      // Find the operation chunk ID from the operation ID
+      const operationChunkId = operationChunksByOperationId.get(
+        codeSampleResult.operationId
+      )?.id;
+      if (!operationChunkId) {
+        // TODO: this happens in practice, but should it?
+        continue;
+      }
+      docsCodeSamples[operationChunkId] ??= {};
+      docsCodeSamples[operationChunkId][codeSampleResult.language] =
+        codeSampleResult;
+    }
   }
 
   // Populate docsCodeSamples with the code samples, prioritizing code samples

@@ -1,9 +1,16 @@
+import { randomUUID } from "node:crypto";
+import { rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+
 import type { FrameworkConfig } from "./compiler.ts";
 import { renderContent } from "./content/renderContent.ts";
+import type { CodeSamples } from "./data/generateCodeSamples.ts";
 import { generateCodeSamples } from "./data/generateCodeSamples.ts";
 import { generateTryItNowBundle } from "./data/generateTryItNowBundle.ts";
 import { getData } from "./data/getDocsData.ts";
-import { info } from "./logging.js";
+import { extractSdks } from "./data/sdk.ts";
+import { info } from "./logging.ts";
 import type { Site } from "./renderers/base.ts";
 import type { Settings } from "./settings.ts";
 import { setOnPageComplete, setSettings } from "./settings.ts";
@@ -34,15 +41,26 @@ export async function generatePages({
   const data = await getData(specContents);
   site.setDocsData(data);
 
-  // Get code snippets
-  info("Generating Code Snippets");
-  const docsCodeSnippets = await generateCodeSamples(data);
+  let docsCodeSamples: CodeSamples = {};
+  if (settings.codeSamples) {
+    const extractionTempDirBase = join(tmpdir(), "speakeasy-" + randomUUID());
+    try {
+      // Extract all SDKs and save their locations first
+      const sdkFolders = await extractSdks(extractionTempDirBase);
 
-  // Generate the Try It Now bundle
-  info("Generating Try It Now bundle");
-  await generateTryItNowBundle();
+      // Generate the code samples
+      docsCodeSamples = generateCodeSamples(data, sdkFolders);
+
+      // Generate the Try It Now bundle
+      await generateTryItNowBundle(sdkFolders);
+    } finally {
+      rmSync(extractionTempDirBase, {
+        recursive: true,
+      });
+    }
+  }
 
   // Render the content
   info("Rendering Markdown");
-  renderContent(site, frameworkConfig, data, docsCodeSnippets);
+  renderContent(site, frameworkConfig, data, docsCodeSamples);
 }
