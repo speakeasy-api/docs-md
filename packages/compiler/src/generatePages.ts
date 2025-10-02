@@ -1,6 +1,7 @@
 import type { FrameworkConfig } from "./compiler.ts";
 import { renderContent } from "./content/renderContent.ts";
 import { generateCodeSamples } from "./data/generateCodeSamples.ts";
+import { generateTryItNowBundle } from "./data/generateTryItNowBundle.ts";
 import { getData } from "./data/getDocsData.ts";
 import { info } from "./logging.js";
 import type { Site } from "./renderers/base.ts";
@@ -36,6 +37,10 @@ export async function generatePages({
   // Get code snippets
   info("Generating Code Snippets");
   const docsCodeSnippets = await generateCodeSamples(data);
+
+  // Generate the Try It Now bundle
+  info("Generating Try It Now bundle");
+  await generateTryItNowBundle();
 
   // Render the content
   info("Rendering Markdown");

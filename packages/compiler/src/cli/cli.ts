@@ -25,7 +25,6 @@ import { type Settings, settingsSchema } from "../settings.ts";
 import { docusaurusConfig } from "./configs/docusaurus.ts";
 import { llmsConfig } from "./configs/llms.ts";
 import { nextraConfig } from "./configs/nextra.ts";
-import { bundleTryItNowDeps } from "./tryItNow/bundler.ts";
 
 const CONFIG_FILE_NAMES = [
   "speakeasy.config.js",
@@ -306,26 +305,5 @@ await generatePages({
     });
   },
 });
-
-for (const codeSample of settings.codeSamples ?? []) {
-  if (!codeSample.enableTryItNow || codeSample.language !== "typescript") {
-    continue;
-  }
-  info(`Prebuilding dependencies for ${codeSample.packageName}`);
-  const dependencyBundle = await bundleTryItNowDeps({
-    packageName: codeSample.packageName,
-    version: "latest",
-  });
-  const dependencyBundlePath = join(
-    settings.output.pageOutDir,
-    "tryItNowDeps.js"
-  );
-  mkdirSync(dirname(dependencyBundlePath), {
-    recursive: true,
-  });
-  writeFileSync(dependencyBundlePath, dependencyBundle, {
-    encoding: "utf-8",
-  });
-}
 
 info("Success!");
