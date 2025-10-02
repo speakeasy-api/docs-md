@@ -235,7 +235,7 @@ class MdxRenderer extends MarkdownRenderer {
       return Object.entries(props)
         .map(([key, value]) => {
           if (typeof value === "string") {
-            if (value.includes("\n")) {
+            if (value.includes("\n") || value.includes('"')) {
               return `${separator}${key}={\`${value}\`}`;
             }
             return `${separator}${key}="${value}"`;
@@ -574,12 +574,8 @@ class MdxRenderer extends MarkdownRenderer {
                       dependencyBundleUrl,
                       // Stringify the sample so we better preserve white space.
                       // and then trim off the start and end quotes (otherwise
-                      // we end up with `""my code""`) and replace JS escaped
-                      // characters with their HTML equivalent
-                      defaultValue: JSON.stringify(defaultValue)
-                        .slice(1, -1)
-                        .replaceAll("\\n", "&NewLine;")
-                        .replaceAll('\\"', "&quot;"),
+                      // we end up with `""my code""`)
+                      defaultValue: JSON.stringify(defaultValue).slice(1, -1),
                     },
                   });
                 },
