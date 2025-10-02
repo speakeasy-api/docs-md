@@ -15,8 +15,7 @@ export async function generateTryItNowBundle(
 ): Promise<void> {
   const settings = getSettings();
   const codeSample = settings.codeSamples?.find(
-    (codeSample) =>
-      codeSample.language === "typescript" && codeSample.enableTryItNow
+    (codeSample) => codeSample.language === "typescript" && codeSample.tryItNow
   );
 
   if (!codeSample) {
@@ -33,13 +32,13 @@ export async function generateTryItNowBundle(
   info(`Prebuilding Try It Now dependencies for ${codeSample.language}`);
   const dependencyBundle = await bundleTryItNowDeps(sdkFolder);
 
-  if (!codeSample.tryItNowBundlePath) {
-    throw new InternalError("tryItNowBundlePathis unexpectdly undefined");
+  if (!codeSample.tryItNow?.bundlePath) {
+    throw new InternalError("tryItNow.bundlePathis unexpectdly undefined");
   }
-  mkdirSync(dirname(codeSample.tryItNowBundlePath), {
+  mkdirSync(dirname(codeSample.tryItNow.bundlePath), {
     recursive: true,
   });
-  writeFileSync(codeSample.tryItNowBundlePath, dependencyBundle, {
+  writeFileSync(codeSample.tryItNow.bundlePath, dependencyBundle, {
     encoding: "utf-8",
   });
 }

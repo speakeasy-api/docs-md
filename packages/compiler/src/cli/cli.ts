@@ -216,14 +216,8 @@ async function getSettings(): Promise<Settings> {
     }
   }
   for (const codeSample of configFileContents.data.codeSamples ?? []) {
-    if (!codeSample.enableTryItNow) {
+    if (!codeSample.tryItNow) {
       continue;
-    }
-    if (!codeSample.tryItNowBundlePath) {
-      error(
-        `codeSample.tryItNowBundlePath must be specified when codeSample.enableTryItNow is true`
-      );
-      process.exit(1);
     }
     codeSample.sdkTarballPath = resolveAndValidatePath({
       path: codeSample.sdkTarballPath,
@@ -236,17 +230,11 @@ async function getSettings(): Promise<Settings> {
       );
       process.exit(1);
     }
-    codeSample.tryItNowBundlePath = resolveAndValidatePath({
-      path: codeSample.tryItNowBundlePath,
-      name: "codeSample.tryItNowBundlePath",
+    codeSample.tryItNow.bundlePath = resolveAndValidatePath({
+      path: codeSample.tryItNow.bundlePath,
+      name: "codeSample.tryItNow.bundlePath",
       validateExists: false,
     });
-    if (!codeSample.tryItNowBundleUrl) {
-      error(
-        `codeSample.tryItNowBundleUrl must be specified when codeSample.enableTryItNow is true`
-      );
-      process.exit(1);
-    }
   }
 
   return configFileContents.data as Settings;

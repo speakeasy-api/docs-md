@@ -46,8 +46,10 @@ export default {
       language: "typescript",
       enableTryItNow: true,
       sdkTarballPath: "../../sdks/mistral-typescript.tar.gz",
-      tryItNowBundlePath: "./public/try-it-now/deps.js",
-      tryItNowBundleUrl: "/try-it-now/deps.js",
+      tryItNow: {
+        bundlePath: "./public/try-it-now/deps.js",
+        bundleUrl: "/try-it-now/deps.js",
+      },
     },
     {
       language: "python",

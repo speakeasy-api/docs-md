@@ -48,9 +48,12 @@ export type CodeSampleLanguage = z.infer<typeof language>;
 const codeSample = z.strictObject({
   language,
   sdkTarballPath: z.string(),
-  enableTryItNow: z.boolean().default(false),
-  tryItNowBundlePath: z.string().optional(),
-  tryItNowBundleUrl: z.string().optional(),
+  tryItNow: z
+    .strictObject({
+      bundlePath: z.string(),
+      bundleUrl: z.string(),
+    })
+    .optional(),
 });
 
 export const settingsSchema = z.strictObject({

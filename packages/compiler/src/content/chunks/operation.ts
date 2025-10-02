@@ -11,7 +11,6 @@ import type { Renderer } from "../../renderers/base.ts";
 import type { CodeSampleLanguage } from "../../settings.ts";
 import { getSettings } from "../../settings.ts";
 import { assertNever } from "../../util/assertNever.ts";
-import { InternalError } from "../../util/internalError.ts";
 import { getSchemaFromId, getSecurityFromId } from "../util.ts";
 import {
   getDisplayTypeInfo,
@@ -39,15 +38,10 @@ function renderCodeSamples(
         for (const [language, snippet] of Object.entries(usageSnippet)) {
           debug(`Rendering code sample for ${language}`);
           const codeSample = codeSamples.find((s) => s.language === language);
-          if (language === "typescript" && codeSample?.enableTryItNow) {
-            if (!codeSample?.tryItNowBundleUrl) {
-              throw new InternalError(
-                `No try it now bundle URL found for language ${language}`
-              );
-            }
+          if (language === "typescript" && codeSample?.tryItNow) {
             createTryItNowEntry({
               language,
-              dependencyBundleUrl: codeSample.tryItNowBundleUrl,
+              dependencyBundleUrl: codeSample.tryItNow.bundleUrl,
               defaultValue: snippet.code,
             });
           } else {
