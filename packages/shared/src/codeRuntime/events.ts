@@ -20,7 +20,7 @@ export type LogLevel = "log" | "info" | "warn" | "error" | "debug";
 type ExecutionLogEvent = {
   type: "execution:log";
   level: LogLevel;
-  message: string;
+  message: unknown;
 };
 
 type ExecutionUncaughtExceptionEvent = {

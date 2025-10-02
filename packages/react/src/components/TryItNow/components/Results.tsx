@@ -1,32 +1,101 @@
 "use client";
 
 import type { RuntimeEvents } from "@speakeasy-api/docs-md-shared";
+import { JSONTree } from "react-json-tree";
 
 import type { ResultsProps } from "../types.ts";
 import styles from "./styles.module.css";
 
-function formatEvents(events: RuntimeEvents[]) {
+type FormattedEvent = {
+  prefix?: string;
+  value: unknown;
+};
+
+function formatEvents(events: RuntimeEvents[]): FormattedEvent[] {
   return events
-    .map((event) => {
+    .map((event): FormattedEvent | undefined => {
       switch (event.type) {
         case "compilation:error": {
-          return String(event.error);
+          return { prefix: undefined, value: event.error };
         }
         case "execution:log": {
-          return event.level + ": " + event.message;
+          return { prefix: event.level + ": ", value: event.message };
         }
         case "execution:uncaught-exception": {
-          return String(event.error);
+          return { prefix: "Uncaught Exception: ", value: event.error };
         }
         case "execution:uncaught-rejection": {
-          return String(event.error);
+          return { prefix: "Uncaught Rejection: ", value: event.error };
         }
         default: {
           return undefined;
         }
       }
     })
-    .filter((event) => event !== undefined);
+    .filter((event): event is FormattedEvent => event !== undefined);
+}
+
+function formatResutsOutput(events: FormattedEvent[]) {
+  return events.map(function (event, index) {
+    const { prefix, value } = event;
+    // Handle null/undefined/false values
+    if (value === null || value === undefined || value === false) {
+      return (
+        <pre key={index}>
+          {prefix}
+          {JSON.stringify(value)}
+        </pre>
+      );
+    }
+
+    // Handle strings
+    if (typeof value === "string") {
+      return (
+        <pre key={index}>
+          {prefix}
+          {value}
+        </pre>
+      );
+    }
+
+    // Handle numbers and booleans
+    if (typeof value === "number" || typeof value === "boolean") {
+      return (
+        <pre key={index}>
+          {prefix}
+          {String(value)}
+        </pre>
+      );
+    }
+
+    // Handle arrays
+    if (Array.isArray(value)) {
+      return (
+        <pre key={index}>
+          {prefix}
+          <JSONTree data={value} />
+        </pre>
+      );
+    }
+
+    // Handle objects
+    if (typeof value === "object") {
+      return (
+        <pre key={index}>
+          {prefix}
+          <JSONTree data={value} />
+        </pre>
+      );
+    }
+
+    // Fallback for other types
+    return (
+      <pre key={index}>
+        {prefix}
+        {JSON.stringify(value)}
+      </pre>
+    );
+  });
 }
 
 export function Results({ status }: ResultsProps) {
@@ -38,20 +107,20 @@ export function Results({ status }: ResultsProps) {
     return null;
   }
 
-  let displayOutput: string[] = [];
+  let displayOutput: FormattedEvent[] = [];
   switch (status.state) {
     case "compiling": {
       displayOutput = [
-        "Compiling. Previous events:",
+        { prefix: undefined, value: "Compiling. Previous events:" },
         ...formatEvents(status.previousEvents),
       ];
       break;
     }
     case "compile-error": {
       displayOutput = [
-        "Compile Error: ",
+        { prefix: undefined, value: "Compile Error: " },
         ...formatEvents(status.events),
-        "Previous events:",
+        { prefix: undefined, value: "Previous events:" },
         ...formatEvents(status.previousEvents),
       ];
       break;
@@ -62,13 +131,5 @@ export function Results({ status }: ResultsProps) {
     }
   }
 
-  return (
-    <div className={styles.results}>
-      <pre>
-        {displayOutput.length > 1
-          ? JSON.stringify(displayOutput, null, 2)
-          : displayOutput[0]}
-      </pre>
-    </div>
-  );
+  return <div>{formatResutsOutput(displayOutput)}</div>;
 }

@@ -9,7 +9,7 @@ type WorkerExecuteMessage = {
 type WorkerLogMessage = {
   type: "log";
   level: LogLevel;
-  message: string;
+  message: unknown;
 };
 
 type WorkerUncaughtExceptionMessage = {

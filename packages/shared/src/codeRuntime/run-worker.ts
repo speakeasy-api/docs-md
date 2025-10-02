@@ -64,13 +64,13 @@ function createConsolePatch(console: Console, level: LogLevel) {
     sendMessage({
       type: "log",
       level,
-      message: JSON.stringify(message),
+      message,
     });
     for (const optionalParam of optionalParams) {
       sendMessage({
         type: "log",
         level,
-        message: JSON.stringify(optionalParam),
+        message: optionalParam,
       });
     }
   };
