@@ -1,5 +1,5 @@
 import { useChildren, useUniqueChild } from "../../util/hooks.ts";
-import type { TagDescriptionProps, TagProps, TagTitleProps } from "./types";
+import type { TagDescriptionProps, TagProps, TagTitleProps } from "./types.ts";
 
 /**
  * This component is a container for a tag. It contains the following sections,

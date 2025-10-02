@@ -23,6 +23,18 @@ export function getBaseESLintConfig({
     eslintConfigPrettier,
     ...(ignores ? [globalIgnores(ignores)] : []),
     all({ rootDir, entryPoints }),
+    {
+      files: ["**/*.{ts,tsx,mts}"],
+      rules: {
+        "fast-import/consistent-file-extensions": [
+          "error",
+          {
+            mode: "always",
+            forceTsExtension: true,
+          },
+        ],
+      },
+    },
     ...(restrictedImports
       ? [
           {
