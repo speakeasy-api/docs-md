@@ -44,7 +44,6 @@ export default {
   codeSamples: [
     {
       language: "typescript",
-      enableTryItNow: true,
       sdkTarballPath: "../../sdks/mistral-typescript.tar.gz",
       tryItNow: {
         bundlePath: "./public/try-it-now/deps.js",
