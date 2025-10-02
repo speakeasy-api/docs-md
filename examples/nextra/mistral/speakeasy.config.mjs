@@ -13,7 +13,6 @@ export default {
       sdkClassName: "Mistral",
       packageName: "@mistralai/mistralai",
       enableTryItNow: true,
-      packageManagerUrl: "/pkg",
       sampleDownloadUrl:
         "https://github.com/mistralai/client-ts/archive/refs/tags/v1.10.0.tar.gz",
     },

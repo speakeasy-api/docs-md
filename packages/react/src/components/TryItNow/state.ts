@@ -10,7 +10,7 @@ type Options = {
   dependencies: Record<string, string>;
 };
 
-export function useRuntime({ packageManagerUrl, dependencies }: Options) {
+export function useRuntime(_: Options) {
   const [status, setStatus] = useState<Status>({
     state: "idle",
   });
@@ -19,10 +19,7 @@ export function useRuntime({ packageManagerUrl, dependencies }: Options) {
   const runtimeRef = useRef<Runtime | null>(null);
 
   if (!runtimeRef.current) {
-    runtimeRef.current = new Runtime({
-      packageManagerUrl,
-      dependencies,
-    });
+    runtimeRef.current = new Runtime();
     runtimeRef.current.on("compilation:started", () => {
       previousEvents.current = events.current;
       // We don't store started and finished events to keep event history clean

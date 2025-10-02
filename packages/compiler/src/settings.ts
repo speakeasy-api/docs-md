@@ -88,8 +88,7 @@ export const settingsSchema = z.strictObject({
         sampleDownloadUrl: z.string(),
         sdkClassName: z.string(),
         packageName: z.string(),
-        enableTryItNow: z.boolean().default(true),
-        packageManagerUrl: z.string().optional(),
+        enableTryItNow: z.boolean().default(false),
       })
     )
     .min(1)

@@ -18,11 +18,9 @@ export function TryItNowContents({
   RunButton = DefaultRunButton,
   Results = DefaultResults,
   theme = "dark",
-  packageManagerUrl,
 }: TryItNowProps) {
   const [value, setValue] = useState(defaultValue);
   const { status, execute } = useRuntime({
-    packageManagerUrl,
     dependencies: externalDependencies,
   });
   const showResults = status.state !== "idle";

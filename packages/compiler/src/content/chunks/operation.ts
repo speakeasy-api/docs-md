@@ -46,7 +46,6 @@ function renderCodeSamples(
                 [snippet.packageName]: "latest",
               },
               defaultValue: snippet.code,
-              packageManagerUrl: codeSample?.packageManagerUrl,
             });
           } else {
             createCodeSampleEntry({

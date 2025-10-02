@@ -560,7 +560,6 @@ class MdxRenderer extends MarkdownRenderer {
               externalDependencies,
               defaultValue,
               language,
-              packageManagerUrl,
             }) => {
               this.enterContext({ id: language, type: "section" });
               this.createTabbedSectionTab(
@@ -574,7 +573,6 @@ class MdxRenderer extends MarkdownRenderer {
                     props: {
                       externalDependencies,
                       defaultValue,
-                      packageManagerUrl,
                     },
                   });
                 },

@@ -1,11 +1,9 @@
 import { InternalError } from "../util/internalError.ts";
-import { bundleCode, bundleDependencies } from "./build.ts";
+import { bundleCode } from "./build.ts";
 import type { RuntimeEvents } from "./events.ts";
 import type { WorkerMessage } from "./messages.ts";
 
 export class Runtime {
-  #dependencies: Record<string, string>;
-  #packageManagerUrl?: string;
   #dependencyBundle?: string;
   #listeners: Record<
     RuntimeEvents["type"],
@@ -21,17 +19,6 @@ export class Runtime {
   };
   #worker?: Worker;
 
-  constructor({
-    dependencies,
-    packageManagerUrl,
-  }: {
-    dependencies: Record<string, string>;
-    packageManagerUrl?: string;
-  }) {
-    this.#dependencies = dependencies;
-    this.#packageManagerUrl = packageManagerUrl;
-  }
-
   public run(code: string) {
     // Hide the promise, since it doesn't indicate when run finishes (we never
     // // know, cause Halting Problemplus lack of process.exit in samples)
@@ -40,9 +27,8 @@ export class Runtime {
 
   async #run(code: string) {
     if (!this.#dependencyBundle) {
-      this.#dependencyBundle = await bundleDependencies(this.#dependencies, {
-        packageManagerUrl: this.#packageManagerUrl,
-      });
+      const results = await fetch("/bundle.js");
+      this.#dependencyBundle = await results.text();
     }
     if (this.#worker) {
       this.#worker.terminate();
