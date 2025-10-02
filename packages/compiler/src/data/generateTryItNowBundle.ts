@@ -10,7 +10,11 @@ import {
 import { tmpdir } from "node:os";
 import { extname, join } from "node:path";
 
-import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
+import {
+  Extractor,
+  ExtractorConfig,
+  ExtractorLogLevel,
+} from "@microsoft/api-extractor";
 import { build } from "esbuild";
 
 import { debug, error, info } from "../logging.ts";
@@ -98,14 +102,16 @@ function bundleTryItNowTypes(sdkFolder: string, outFile: string) {
     }
   );
 
-  // Load and parse the api-extractor.json file
   const extractorConfig =
     ExtractorConfig.loadFileAndPrepare(apiExtractorJsonPath);
-
-  // Invoke API Extractor
   const extractorResult = Extractor.invoke(extractorConfig, {
     localBuild: true,
-    showVerboseMessages: true,
+    messageCallback(message) {
+      if (message.logLevel === ExtractorLogLevel.Error) {
+        throw new Error(message.text);
+      }
+      message.handled = true;
+    },
   });
 
   if (!extractorResult.succeeded) {
