@@ -2,13 +2,38 @@
 // context to prevent interference with the main thread, and to prevent console
 // logs from the main thread from mixing with the logs from the worker.
 
-// In this case, we're actually not using the Node.js version of util.format,
-// and so using `node:util` here would be a mistake.
-// eslint-disable-next-line fast-import/require-node-prefix
-import { format } from "util";
-
 import type { LogLevel } from "./events.ts";
 import type { WorkerMessage } from "./messages.ts";
+
+// Browser-compatible string formatter (replacement for Node.js util.format)
+function format(template: string, ...args: unknown[]): string {
+  let index = 0;
+  return template.replace(/%([sdifcoO])/g, (match, specifier) => {
+    if (index >= args.length) return match;
+    const arg = args[index++];
+
+    switch (specifier) {
+      case "s": // string
+        return String(arg);
+      case "d": // number
+      case "i": // integer
+        return String(Number(arg));
+      case "f": // float
+        return String(Number(arg));
+      case "o": // object (simple)
+      case "O": // object (detailed)
+        try {
+          return JSON.stringify(arg);
+        } catch {
+          return String(arg);
+        }
+      case "c": // CSS (not supported, just return empty)
+        return "";
+      default:
+        return match;
+    }
+  });
+}
 
 // Helper to enforce strict typing
 function sendMessage(message: WorkerMessage) {
