@@ -6,6 +6,26 @@ import { JSONTree } from "react-json-tree";
 import type { ResultsProps } from "../types.ts";
 import styles from "./styles.module.css";
 
+const jsonTreeTheme = {
+  scheme: "transparent",
+  base00: "transparent", // background
+  base01: "#383830",
+  base02: "#49483e",
+  base03: "#75715e",
+  base04: "#a59f85",
+  base05: "#f8f8f2",
+  base06: "#f5f4f1",
+  base07: "#f9f8f5",
+  base08: "#f92672",
+  base09: "#fd971f",
+  base0A: "#f4bf75",
+  base0B: "#a6e22e",
+  base0C: "#a1efe4",
+  base0D: "#66d9ef",
+  base0E: "#ae81ff",
+  base0F: "#cc6633",
+};
+
 type FormattedEvent = {
   prefix?: string;
   value: unknown;
@@ -38,52 +58,13 @@ function formatEvents(events: RuntimeEvents[]): FormattedEvent[] {
 function formatResutsOutput(events: FormattedEvent[]) {
   return events.map(function (event, index) {
     const { prefix, value } = event;
-    // Handle null/undefined/false values
-    if (value === null || value === undefined || value === false) {
-      return (
-        <pre key={index}>
-          {prefix}
-          {JSON.stringify(value)}
-        </pre>
-      );
-    }
-
-    // Handle strings
-    if (typeof value === "string") {
-      return (
-        <pre key={index}>
-          {prefix}
-          {value}
-        </pre>
-      );
-    }
-
-    // Handle numbers and booleans
-    if (typeof value === "number" || typeof value === "boolean") {
-      return (
-        <pre key={index}>
-          {prefix}
-          {String(value)}
-        </pre>
-      );
-    }
-
-    // Handle arrays
-    if (Array.isArray(value)) {
-      return (
-        <pre key={index}>
-          {prefix}
-          <JSONTree data={value} />
-        </pre>
-      );
-    }
 
     // Handle objects
-    if (typeof value === "object") {
+    if (!value || typeof value === "object") {
       return (
         <pre key={index}>
           {prefix}
-          <JSONTree data={value} />
+          <JSONTree data={value} hideRoot theme={jsonTreeTheme} invertTheme={false} />
         </pre>
       );
     }
