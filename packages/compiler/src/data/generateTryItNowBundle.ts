@@ -88,6 +88,7 @@ async function bundleTryItNowDeps({
       write: false,
       platform: "browser",
       target: "es2020",
+      absWorkingDir: packageInstallDir,
     });
 
     // Return the bundled code
