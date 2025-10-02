@@ -12,7 +12,7 @@ export default {
     {
       language: "typescript",
       packageName: "@mistralai/mistralai",
-      enableTryItNow: false,
+      enableTryItNow: true,
       sdkTarballPath: "../../sdks/mistral-typescript.tar.gz",
       tryItNowBundlePath: "./public/try-it-now/deps.js",
       tryItNowBundleUrl: "/try-it-now/deps.js",
