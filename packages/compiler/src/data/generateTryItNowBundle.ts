@@ -1,9 +1,16 @@
 import { execSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
-import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { extname, join } from "node:path";
 
+import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 import { build } from "esbuild";
 
 import { debug, error, info } from "../logging.ts";
@@ -29,18 +36,84 @@ export async function generateTryItNowBundle(
     throw new InternalError(`No SDK folder found for ${codeSample.language}`);
   }
 
-  info(`Prebuilding Try It Now dependencies for ${codeSample.language}`);
-  const dependencyBundle = await bundleTryItNowDeps(sdkFolder);
-
   if (!codeSample.tryItNow?.outDir) {
     throw new InternalError("tryItNow.outDiris unexpectedly undefined");
   }
+
+  info(`Prebuilding Try It Now dependencies for ${codeSample.language}`);
+  const dependencyBundle = await bundleTryItNowDeps(sdkFolder);
   mkdirSync(codeSample.tryItNow.outDir, {
     recursive: true,
   });
   writeFileSync(join(codeSample.tryItNow.outDir, "deps.js"), dependencyBundle, {
     encoding: "utf-8",
   });
+
+  info(`Prebuilding Try It Now types for ${codeSample.language}`);
+  bundleTryItNowTypes(
+    sdkFolder,
+    join(codeSample.tryItNow.outDir, "types.d.ts")
+  );
+}
+
+function bundleTryItNowTypes(sdkFolder: string, outFile: string) {
+  const packageJson = JSON.parse(
+    readFileSync(join(sdkFolder, "package.json"), "utf-8")
+  ) as Record<string, string | undefined>;
+  let typesField = packageJson.types;
+  if (!typesField) {
+    if (!packageJson.main) {
+      throw new InternalError(
+        "No 'main' or 'types' field found in package.json, cannot bundle types"
+      );
+    }
+    // Try to find types associated with the entry point
+    const entryPoint = join(sdkFolder, packageJson.main);
+    if (existsSync(entryPoint.replace(extname(entryPoint), ".d.ts"))) {
+      typesField = entryPoint.replace(extname(entryPoint), ".d.ts");
+    } else {
+      throw new InternalError(
+        "No types field found in package.json, cannot bundle types"
+      );
+    }
+  }
+  const apiExtractorJsonPath = join(sdkFolder, "api-extractor.json");
+  writeFileSync(
+    apiExtractorJsonPath,
+    JSON.stringify({
+      mainEntryPointFilePath: typesField,
+      apiReport: {
+        enabled: false,
+      },
+      docModel: {
+        enabled: false,
+      },
+      dtsRollup: {
+        enabled: true,
+        untrimmedFilePath: outFile,
+      },
+    }),
+    {
+      encoding: "utf-8",
+    }
+  );
+
+  // Load and parse the api-extractor.json file
+  const extractorConfig =
+    ExtractorConfig.loadFileAndPrepare(apiExtractorJsonPath);
+
+  // Invoke API Extractor
+  const extractorResult = Extractor.invoke(extractorConfig, {
+    localBuild: true,
+    showVerboseMessages: true,
+  });
+
+  if (!extractorResult.succeeded) {
+    throw new InternalError(
+      `API Extractor completed with ${extractorResult.errorCount} errors` +
+        ` and ${extractorResult.warningCount} warnings`
+    );
+  }
 }
 
 async function bundleTryItNowDeps(sdkFolder: string): Promise<string> {
