@@ -557,7 +557,7 @@ class MdxRenderer extends MarkdownRenderer {
         this.createTabbedSection(() => {
           cb({
             createTryItNowEntry: ({
-              dependencyBundleUrl,
+              dependencyUrlPrefix,
               defaultValue,
               language,
             }) => {
@@ -571,7 +571,7 @@ class MdxRenderer extends MarkdownRenderer {
                   this.#appendComponent<TryItNowProps>({
                     symbol: "TryItNow",
                     props: {
-                      dependencyBundleUrl,
+                      dependencyUrlPrefix,
                       // Stringify the sample so we better preserve white space.
                       // and then trim off the start and end quotes (otherwise
                       // we end up with `""my code""`)

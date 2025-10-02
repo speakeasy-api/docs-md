@@ -5,7 +5,7 @@ import type { WorkerMessage } from "./messages.ts";
 
 export class Runtime {
   #dependencyBundle?: string;
-  #dependencyBundleUrl: string;
+  #dependencyUrlPrefix: string;
   #listeners: Record<
     RuntimeEvents["type"],
     ((event: RuntimeEvents) => void)[]
@@ -20,8 +20,8 @@ export class Runtime {
   };
   #worker?: Worker;
 
-  constructor({ dependencyBundleUrl }: { dependencyBundleUrl: string }) {
-    this.#dependencyBundleUrl = dependencyBundleUrl;
+  constructor({ dependencyUrlPrefix }: { dependencyUrlPrefix: string }) {
+    this.#dependencyUrlPrefix = dependencyUrlPrefix;
   }
 
   public run(code: string) {
@@ -32,7 +32,7 @@ export class Runtime {
 
   async #run(code: string) {
     if (!this.#dependencyBundle) {
-      const results = await fetch(this.#dependencyBundleUrl);
+      const results = await fetch(this.#dependencyUrlPrefix + "/deps.js");
       this.#dependencyBundle = await results.text();
     }
     if (this.#worker) {

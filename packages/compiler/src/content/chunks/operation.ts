@@ -41,7 +41,7 @@ function renderCodeSamples(
           if (language === "typescript" && codeSample?.tryItNow) {
             createTryItNowEntry({
               language,
-              dependencyBundleUrl: codeSample.tryItNow.bundleUrl,
+              dependencyUrlPrefix: codeSample.tryItNow.urlPrefix,
               defaultValue: snippet.code,
             });
           } else {

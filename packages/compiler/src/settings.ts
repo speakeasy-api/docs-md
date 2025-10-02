@@ -50,8 +50,8 @@ const codeSample = z.strictObject({
   sdkTarballPath: z.string(),
   tryItNow: z
     .strictObject({
-      bundlePath: z.string(),
-      bundleUrl: z.string(),
+      outDir: z.string(),
+      urlPrefix: z.string(),
     })
     .optional(),
 });

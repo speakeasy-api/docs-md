@@ -230,9 +230,9 @@ async function getSettings(): Promise<Settings> {
       );
       process.exit(1);
     }
-    codeSample.tryItNow.bundlePath = resolveAndValidatePath({
-      path: codeSample.tryItNow.bundlePath,
-      name: "codeSample.tryItNow.bundlePath",
+    codeSample.tryItNow.outDir = resolveAndValidatePath({
+      path: codeSample.tryItNow.outDir,
+      name: "codeSample.tryItNow.outDir",
       validateExists: false,
     });
   }
@@ -303,7 +303,7 @@ if (args["--clean"]) {
   if (settings.codeSamples) {
     for (const codeSample of settings.codeSamples) {
       if (codeSample.tryItNow) {
-        rmSync(codeSample.tryItNow.bundlePath, {
+        rmSync(codeSample.tryItNow.outDir, {
           recursive: true,
           force: true,
         });

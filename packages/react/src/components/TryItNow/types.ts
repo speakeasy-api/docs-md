@@ -25,10 +25,10 @@ export type TryItNowProps = {
    */
   defaultValue: string;
   /**
-   * URL to the prebuilt dependency bundle, as specified by
-   * `codeSample.tryItNowBundleUrl` in the Speakeasy docs config
+   * URL prefix to the prebuilt dependency bundle and types, as specified by
+   * `codeSample.tryItNow.urlPrefix` in the Speakeasy docs config
    */
-  dependencyBundleUrl: string;
+  dependencyUrlPrefix: string;
   /**
    * Editor component to use. Defaults to `Editor`.
    */

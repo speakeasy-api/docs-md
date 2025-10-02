@@ -6,10 +6,10 @@ import { InternalError } from "../../util/internalError.ts";
 import type { Status } from "./types.ts";
 
 type Options = {
-  dependencyBundleUrl: string;
+  dependencyUrlPrefix: string;
 };
 
-export function useRuntime({ dependencyBundleUrl }: Options) {
+export function useRuntime({ dependencyUrlPrefix }: Options) {
   const [status, setStatus] = useState<Status>({
     state: "idle",
   });
@@ -18,7 +18,7 @@ export function useRuntime({ dependencyBundleUrl }: Options) {
   const runtimeRef = useRef<Runtime | null>(null);
 
   if (!runtimeRef.current) {
-    runtimeRef.current = new Runtime({ dependencyBundleUrl });
+    runtimeRef.current = new Runtime({ dependencyUrlPrefix });
     runtimeRef.current.on("compilation:started", () => {
       previousEvents.current = events.current;
       // We don't store started and finished events to keep event history clean

@@ -2,7 +2,7 @@ import { execSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { dirname, join } from "node:path";
+import { join } from "node:path";
 
 import { build } from "esbuild";
 
@@ -32,13 +32,13 @@ export async function generateTryItNowBundle(
   info(`Prebuilding Try It Now dependencies for ${codeSample.language}`);
   const dependencyBundle = await bundleTryItNowDeps(sdkFolder);
 
-  if (!codeSample.tryItNow?.bundlePath) {
-    throw new InternalError("tryItNow.bundlePathis unexpectdly undefined");
+  if (!codeSample.tryItNow?.outDir) {
+    throw new InternalError("tryItNow.outDiris unexpectedly undefined");
   }
-  mkdirSync(dirname(codeSample.tryItNow.bundlePath), {
+  mkdirSync(codeSample.tryItNow.outDir, {
     recursive: true,
   });
-  writeFileSync(codeSample.tryItNow.bundlePath, dependencyBundle, {
+  writeFileSync(join(codeSample.tryItNow.outDir, "deps.js"), dependencyBundle, {
     encoding: "utf-8",
   });
 }

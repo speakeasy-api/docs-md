@@ -12,7 +12,7 @@ import styles from "./styles.module.css";
 
 export function TryItNowContents({
   defaultValue,
-  dependencyBundleUrl,
+  dependencyUrlPrefix,
   Layout = DefaultLayout,
   Editor = DefaultEditor,
   RunButton = DefaultRunButton,
@@ -21,7 +21,7 @@ export function TryItNowContents({
 }: TryItNowProps) {
   const [value, setValue] = useState(defaultValue);
   const { status, execute } = useRuntime({
-    dependencyBundleUrl,
+    dependencyUrlPrefix,
   });
   const showResults = status.state !== "idle";
 
