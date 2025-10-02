@@ -7,7 +7,7 @@ import { useCallback } from "react";
 import type { EditorProps } from "../types.ts";
 import styles from "./styles.module.css";
 
-const editorOptions = {
+const editorOptions: editor.IStandaloneEditorConstructionOptions = {
   minimap: {
     enabled: false,
   },
@@ -50,7 +50,7 @@ const editorOptions = {
     other: true,
   },
   tabSize: 2,
-} as editor.IStandaloneEditorConstructionOptions;
+};
 
 export function Editor({ value, onValueChange, theme }: EditorProps) {
   const handleValueChange = useCallback(

@@ -12,11 +12,9 @@ function normalizeChildren(
     // when the site is up an running. The internal representation does set the
     // "$$typeof" property to Symbol("react.lazy"), which is a hint.
     if (!isValidElement(child)) {
-      console.log("invalid element", child);
       return false;
     }
     if (typeof child.props !== "object") {
-      console.log("invalid props", child.props);
       return false;
     }
     return true;

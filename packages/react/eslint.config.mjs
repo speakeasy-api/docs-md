@@ -63,6 +63,7 @@ export default [
           ],
         },
       ],
+      "no-console": "error",
     },
   },
   // Since we're a mix of running in both Node.js and React, we override the

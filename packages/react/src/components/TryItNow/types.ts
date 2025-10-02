@@ -61,6 +61,12 @@ export type EditorProps = {
    */
   onValueChange: (value: string) => void;
   /**
+   * Contents of a bundled TypeScript Definition File (`.d.ts`) that contains
+   * type information for the SDK. The value is `null` if they haven't loaded
+   * yet, or errored while loading
+   */
+  types: string | null;
+  /**
    * The theme of the editor
    */
   theme?: "light" | "dark";
