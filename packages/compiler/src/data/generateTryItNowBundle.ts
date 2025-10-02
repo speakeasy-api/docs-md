@@ -1,12 +1,12 @@
 import { execSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
-import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 
 import { build } from "esbuild";
 
-import { debug, info } from "../logging.ts";
+import { debug, error, info } from "../logging.ts";
 import { getSettings } from "../settings.ts";
 import { InternalError } from "../util/internalError.ts";
 
@@ -25,18 +25,13 @@ export async function generateTryItNowBundle(
     );
     return;
   }
-  const sdkFolder = sdkFolders.get(codeSample.packageName);
+  const sdkFolder = sdkFolders.get(codeSample.language);
   if (!sdkFolder) {
-    throw new InternalError(
-      `No SDK folder found for ${codeSample.packageName}`
-    );
+    throw new InternalError(`No SDK folder found for ${codeSample.language}`);
   }
 
-  info(`Prebuilding Try It Now dependencies for ${codeSample.packageName}`);
-  const dependencyBundle = await bundleTryItNowDeps({
-    packageName: codeSample.packageName,
-    version: "latest",
-  });
+  info(`Prebuilding Try It Now dependencies for ${codeSample.language}`);
+  const dependencyBundle = await bundleTryItNowDeps(sdkFolder);
 
   if (!codeSample.tryItNowBundlePath) {
     throw new InternalError("tryItNowBundlePathis unexpectdly undefined");
@@ -49,30 +44,43 @@ export async function generateTryItNowBundle(
   });
 }
 
-async function bundleTryItNowDeps({
-  packageName,
-  version,
-}: {
-  packageName: string;
-  version: string;
-}): Promise<string> {
+async function bundleTryItNowDeps(sdkFolder: string): Promise<string> {
   const packageInstallDir = join(tmpdir(), "speakeasy-" + randomUUID());
 
+  const packageFolder = readFileSync(join(sdkFolder, "package.json"), "utf-8");
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+  const packageName = JSON.parse(packageFolder).name;
+  if (typeof packageName !== "string") {
+    error(`Could not find the "name" property in ${sdkFolder}/package.json`);
+    process.exit(1);
+  }
+
   // Create a package.json file in the temporary directory, and install dependencies
-  debug(`Installing minimal dependencies for ${packageName}`);
+  debug(
+    `Creating temporary project for ${packageName} to install dependencies`
+  );
   try {
+    // Create a new temporary directory where we can do a production install
+    // of the SDK that also takes into account .npmignore. We don't want to use
+    // the standard SDK folder becuase it includes dev-time dependencies, code,
+    // etc. that would just bload the bundle size
     mkdirSync(packageInstallDir, {
       recursive: true,
     });
-    writeFileSync(
-      join(packageInstallDir, "package.json"),
-      JSON.stringify({
-        dependencies: {
-          [packageName]: version,
-        },
-      })
-    );
-    execSync(`npm install --prefix ${packageInstallDir}`);
+
+    // Create an empty package.json file. We'll install a tarball to it soon
+    writeFileSync(join(packageInstallDir, "package.json"), "{}");
+
+    // Now npm pack the SDK and save it to the new temporary working directory
+    execSync(`npm pack --pack-destination ${packageInstallDir}`, {
+      cwd: sdkFolder,
+    });
+
+    // Now install the tarball into the temporary directory, which will also
+    // install transitive dependencies such as zod
+    execSync(`npm install --omit=dev *.tgz`, {
+      cwd: packageInstallDir,
+    });
 
     const safeDepName = packageName.replace(/[^a-zA-Z0-9_$]/g, "_");
     const virtualEntry = `import * as ${safeDepName} from "${packageName}";\nglobalThis.__deps__.${safeDepName} = ${safeDepName};`;

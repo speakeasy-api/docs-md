@@ -16,10 +16,6 @@ type CodeSample = {
   operationId: string;
   language: string;
   code: string;
-
-  // This property isn't returned from the API, but we need it for other uses
-  // and have it as part of forming the request
-  packageName: string;
 };
 
 // Map from operation ID to language to code sample
@@ -116,11 +112,9 @@ export function generateCodeSamples(
 
   for (const codeSample of codeSamples) {
     // Set up the temp directory for the code sample
-    const extractionDir = sdkFolders.get(codeSample.packageName);
+    const extractionDir = sdkFolders.get(codeSample.language);
     if (!extractionDir) {
-      throw new InternalError(
-        `No SDK folder found for ${codeSample.packageName}`
-      );
+      throw new InternalError(`No SDK folder found for ${codeSample.language}`);
     }
 
     // Read in the examples
@@ -130,10 +124,7 @@ export function generateCodeSamples(
       codeSampleResults.push(
         ...parseSampleReadme(
           join(extractionDir, "docs", "sdks", example, "README.md")
-        ).map((sample) => ({
-          ...sample,
-          packageName: codeSample.packageName,
-        }))
+        )
       );
     }
 
@@ -170,10 +161,6 @@ export function generateCodeSamples(
         code,
         language,
         operationId: chunk.chunkData.operationId,
-
-        // TODO: remove this once we move away from dynamically fetching
-        // packages in Try It Now.
-        packageName: "",
       };
     }
   }

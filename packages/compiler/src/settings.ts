@@ -48,7 +48,6 @@ export type CodeSampleLanguage = z.infer<typeof language>;
 const codeSample = z.strictObject({
   language,
   sdkTarballPath: z.string(),
-  packageName: z.string(),
   enableTryItNow: z.boolean().default(false),
   tryItNowBundlePath: z.string().optional(),
   tryItNowBundleUrl: z.string().optional(),

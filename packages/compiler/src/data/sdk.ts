@@ -33,7 +33,7 @@ export async function extractSdks(extractionTempDirBase: string) {
     }
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     extractionDir = join(extractionDir, extractedDirName[0]!);
-    sdkPaths.set(codeSample.packageName, extractionDir);
+    sdkPaths.set(codeSample.language, extractionDir);
 
     // If this is TypeScript, build the SDK so we can compile it later
     if (codeSample.language === "typescript") {

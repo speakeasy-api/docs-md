@@ -44,7 +44,6 @@ export default {
   codeSamples: [
     {
       language: "typescript",
-      packageName: "@mistralai/mistralai",
       enableTryItNow: true,
       sdkTarballPath: "../../sdks/mistral-typescript.tar.gz",
       tryItNowBundlePath: "./public/try-it-now/deps.js",
@@ -52,7 +51,6 @@ export default {
     },
     {
       language: "python",
-      packageName: "mistralai",
       sdkTarballPath: "../../sdks/mistral-python.tar.gz",
     },
   ],
