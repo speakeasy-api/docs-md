@@ -72,13 +72,13 @@ async function bundleTryItNowDeps(sdkFolder: string): Promise<string> {
     writeFileSync(join(packageInstallDir, "package.json"), "{}");
 
     // Now npm pack the SDK and save it to the new temporary working directory
-    execSync(`npm pack --pack-destination ${packageInstallDir}`, {
+    execSync(`npm pack -q --pack-destination ${packageInstallDir}`, {
       cwd: sdkFolder,
     });
 
     // Now install the tarball into the temporary directory, which will also
     // install transitive dependencies such as zod
-    execSync(`npm install --omit=dev *.tgz`, {
+    execSync(`npm install -q --omit=dev *.tgz`, {
       cwd: packageInstallDir,
     });
 
