@@ -6,6 +6,7 @@ sidebar_label: Indexing Datasources
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -21,6 +22,7 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection,
   Operation,
+  OperationCodeSamplesSection,
   OperationDescriptionSection,
   OperationRequestBodyDescriptionSection,
   OperationRequestBodySection,
@@ -72,6 +74,64 @@ _Add or update datasource_
 Add or update a custom datasource and its schema.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_adddatasource+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_adddatasource+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.datasources.add({
+    name: "<value>",
+    urlRegex: "https://example-company.datasource.com/.*",
+    quicklinks: [
+      {
+        iconConfig: {
+          color: "#343CED",
+          key: "person_icon",
+          iconType: "GLYPH",
+          name: "user",
+        },
+      },
+    ],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -1366,6 +1426,53 @@ _Get datasource config_
 Fetches the datasource config for the specified custom datasource.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_getdatasourceconfig+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_getdatasourceconfig+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.indexing.datasources.retrieveConfig({
+    datasource: "<value>",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 

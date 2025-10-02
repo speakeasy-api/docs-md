@@ -6,6 +6,7 @@ sidebar_label: Indexing Shortcuts
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   ExpandableBreakout,
   ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
@@ -15,6 +16,7 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection,
   Operation,
+  OperationCodeSamplesSection,
   OperationDescriptionSection,
   OperationRequestBodyDescriptionSection,
   OperationRequestBodySection,
@@ -23,7 +25,9 @@ import {
   Pill,
   Section,
   SectionContent,
+  SectionTab,
   SectionTitle,
+  TabbedSection,
   Tag,
   TagTitle
 } from "@speakeasy-api/docs-md-react";
@@ -57,6 +61,67 @@ _Bulk index external shortcuts_
 Replaces all the currently indexed shortcuts using paginated batch API calls. Note that this endpoint is used for indexing shortcuts not hosted by Glean. If you want to upload shortcuts that would be hosted by Glean, please use the `/uploadshortcuts` endpoint. For information on what you can do with Golinks, which are Glean-hosted shortcuts, please refer to [this](https://help.glean.com/en/articles/5628838-how-go-links-work) page.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexshortcuts+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexshortcuts+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.shortcuts.bulkIndex({
+    uploadId: "<id>",
+    shortcuts: [
+      {
+        inputAlias: "<value>",
+        destinationUrl: "https://plump-tune-up.biz/",
+        createdBy: "<value>",
+        intermediateUrl: "https://lean-sightseeing.net",
+      },
+      {
+        inputAlias: "<value>",
+        destinationUrl: "https://plump-tune-up.biz/",
+        createdBy: "<value>",
+        intermediateUrl: "https://lean-sightseeing.net",
+      },
+    ],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -527,6 +592,70 @@ _Upload shortcuts_
 Creates glean shortcuts for uploaded shortcuts info. Glean would host the shortcuts, and they can be managed in the knowledge tab once uploaded.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_uploadshortcuts+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_uploadshortcuts+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.shortcuts.upload({
+    uploadId: "<id>",
+    shortcuts: [
+      {
+        inputAlias: "<value>",
+        destinationUrl: "https://majestic-pharmacopoeia.info/",
+        createdBy: "<value>",
+      },
+      {
+        inputAlias: "<value>",
+        destinationUrl: "https://majestic-pharmacopoeia.info/",
+        createdBy: "<value>",
+      },
+      {
+        inputAlias: "<value>",
+        destinationUrl: "https://majestic-pharmacopoeia.info/",
+        createdBy: "<value>",
+      },
+    ],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 

@@ -6,6 +6,7 @@ sidebar_label: Client Entities
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -20,6 +21,7 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection,
   Operation,
+  OperationCodeSamplesSection,
   OperationDescriptionSection,
   OperationRequestBodyDescriptionSection,
   OperationRequestBodySection,
@@ -82,6 +84,62 @@ _List entities_
 List some set of details for all entities that fit the given criteria and return in the requested order. Does not support negation in filters, assumes relation type EQUALS. There is a limit of 10000 entities that can be retrieved via this endpoint, except when using FULL_DIRECTORY request type for people entities.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-listentities+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-listentities+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.entities.list({
+    filter: [
+      {
+        fieldName: "type",
+        values: [
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
+          {
+            value: "Presentation",
+            relationType: "EQUALS",
+          },
+        ],
+      },
+    ],
+    pageSize: 100,
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -1996,6 +2054,50 @@ _Read people_
 Read people details for the given IDs.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-people+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-people+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.entities.readPeople({
+    obfuscatedIds: [
+      "abc123",
+      "abc456",
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 

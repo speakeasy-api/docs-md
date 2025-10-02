@@ -6,6 +6,7 @@ sidebar_label: Indexing People
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -21,6 +22,7 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection,
   Operation,
+  OperationCodeSamplesSection,
   OperationDescriptionSection,
   OperationParametersSection,
   OperationRequestBodyDescriptionSection,
@@ -82,6 +84,53 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexi
 
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_debug_datasource_user+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_debug_datasource_user+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.indexing.people.debug({
+    email: "u1@foo.com",
+  }, "<value>");
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -496,6 +545,53 @@ Tip: Use [/debug/\{datasource\}/status](https://developers.glean.com/indexing/de
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_getusercount+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_getusercount+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.indexing.people.count({
+    datasource: "<value>",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationRequestBodySection slot="request-body">
 
 <Section>
@@ -633,6 +729,62 @@ _Index employee_
 Adds an employee or updates information about an employee
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_indexemployee+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_indexemployee+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.people.index({
+    employee: {
+      email: "Jerrold_Hermann@hotmail.com",
+      department: "<value>",
+      datasourceProfiles: [
+        {
+          datasource: "github",
+          handle: "<value>",
+        },
+      ],
+    },
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -1533,6 +1685,85 @@ _Bulk index employees_
 Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexemployees+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexemployees+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.people.bulkIndex({
+    uploadId: "<id>",
+    employees: [
+      {
+        email: "Robin.Stoltenberg@yahoo.com",
+        department: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+      },
+      {
+        email: "Robin.Stoltenberg@yahoo.com",
+        department: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+      },
+      {
+        email: "Robin.Stoltenberg@yahoo.com",
+        department: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+      },
+    ],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -2531,6 +2762,51 @@ Schedules the immediate processing of employees and teams uploaded through the i
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_processallemployeesandteams+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_processallemployeesandteams+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.people.processAllEmployeesAndTeams();
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 </Operation>
 
 <Operation>
@@ -2552,6 +2828,53 @@ _Delete employee_
 Delete an employee. Silently succeeds if employee is not present.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_deleteemployee+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_deleteemployee+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.people.delete({
+    employeeEmail: "<value>",
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -2650,6 +2973,72 @@ _Index team_
 Adds a team or updates information about a team
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-post_api_index_v1_indexteam+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_indexteam+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.people.indexTeam({
+    team: {
+      id: "<id>",
+      name: "<value>",
+      datasourceProfiles: [
+        {
+          datasource: "github",
+          handle: "<value>",
+        },
+        {
+          datasource: "github",
+          handle: "<value>",
+        },
+        {
+          datasource: "github",
+          handle: "<value>",
+        },
+      ],
+      members: [
+        {
+          email: "Nasir.Hilll73@hotmail.com",
+        },
+      ],
+    },
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -3104,6 +3493,50 @@ Delete a team based on provided id.
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-post_api_index_v1_deleteteam+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_deleteteam+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.people.deleteTeam({
+    id: "<id>",
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationRequestBodySection slot="request-body">
 
 <Section>
@@ -3177,6 +3610,100 @@ _Bulk index teams_
 Replaces all the currently indexed teams using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexteams+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexteams+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.people.bulkIndexTeams({
+    uploadId: "<id>",
+    teams: [
+      {
+        id: "<id>",
+        name: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+        members: [],
+      },
+      {
+        id: "<id>",
+        name: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+        members: [],
+      },
+      {
+        id: "<id>",
+        name: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+        members: [],
+      },
+    ],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 

@@ -6,6 +6,7 @@ sidebar_label: Client Documents
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -19,6 +20,7 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection,
   Operation,
+  OperationCodeSamplesSection,
   OperationDescriptionSection,
   OperationRequestBodyDescriptionSection,
   OperationRequestBodySection,
@@ -73,6 +75,45 @@ _Read document permissions_
 Read the emails of all users who have access to the given document.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-getdocpermissions+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-getdocpermissions+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.documents.retrievePermissions({});
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -205,6 +246,45 @@ _Read documents_
 Read the documents including metadata (does not include enhanced metadata via `/documentmetadata`) for the given list of Glean Document IDs or URLs specified in the request.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-getdocuments+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-getdocuments+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.documents.retrieve();
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -695,6 +775,82 @@ _Read documents by facets_
 Read the documents including metadata (does not include enhanced metadata via `/documentmetadata`) macthing the given facet conditions.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-getdocumentsbyfacets+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-getdocumentsbyfacets+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.documents.retrieveByFacets({
+    filterSets: [
+      {
+        filters: [
+          {
+            fieldName: "type",
+            values: [
+              {
+                value: "Spreadsheet",
+                relationType: "EQUALS",
+              },
+              {
+                value: "Presentation",
+                relationType: "EQUALS",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        filters: [
+          {
+            fieldName: "type",
+            values: [
+              {
+                value: "Spreadsheet",
+                relationType: "EQUALS",
+              },
+              {
+                value: "Presentation",
+                relationType: "EQUALS",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -1326,6 +1482,59 @@ _Summarize documents_
 Generate an AI summary of the requested documents.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-summarize+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-summarize+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.documents.summarize({
+    documentSpecs: [
+      {
+        ugcType: "CHATS",
+        ugcId: "<id>",
+      },
+      {
+        ugcType: "CHATS",
+        ugcId: "<id>",
+      },
+      {
+        id: "<id>",
+      },
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 

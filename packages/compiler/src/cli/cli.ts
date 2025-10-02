@@ -300,6 +300,16 @@ if (args["--clean"]) {
       force: true,
     });
   }
+  if (settings.codeSamples) {
+    for (const codeSample of settings.codeSamples) {
+      if (codeSample.tryItNow) {
+        rmSync(codeSample.tryItNow.bundlePath, {
+          recursive: true,
+          force: true,
+        });
+      }
+    }
+  }
 }
 
 let site: Site;

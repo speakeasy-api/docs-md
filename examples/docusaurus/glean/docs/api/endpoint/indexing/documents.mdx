@@ -6,6 +6,7 @@ sidebar_label: Indexing Documents
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -20,6 +21,7 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection,
   Operation,
+  OperationCodeSamplesSection,
   OperationDescriptionSection,
   OperationParametersSection,
   OperationRequestBodyDescriptionSection,
@@ -81,6 +83,55 @@ _Index document_
 Adds a document to the index or updates an existing document.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_indexdocument+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_indexdocument+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.documents.addOrUpdate({
+    document: {
+      datasource: "<value>",
+    },
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -872,6 +923,54 @@ _Index documents_
 Adds or updates multiple documents in the index. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-indexing/choosing-indexdocuments-vs-bulkindexdocuments) documentation for an explanation of when to use this endpoint.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_indexdocuments+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_indexdocuments+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.documents.index({
+    datasource: "<value>",
+    documents: [],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -1687,6 +1786,55 @@ _Bulk index documents_
 Replaces the documents in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexdocuments+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexdocuments+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.documents.bulkIndex({
+    uploadId: "<id>",
+    datasource: "<value>",
+    documents: [],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -2610,6 +2758,51 @@ For more frequent document processing, contact Glean support.
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_processalldocuments+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_processalldocuments+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.documents.processAll();
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationRequestBodySection slot="request-body">
 
 <Section>
@@ -2683,6 +2876,55 @@ _Delete document_
 Deletes the specified document from the index. Succeeds if document is not present.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_deletedocument+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_deletedocument+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.documents.delete({
+    datasource: "<value>",
+    objectType: "<value>",
+    id: "<id>",
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -2833,6 +3075,54 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexi
 
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_debug_datasource_document+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_debug_datasource_document+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.indexing.documents.debug({
+    objectType: "Article",
+    docId: "art123",
+  }, "<value>");
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -3480,6 +3770,58 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexi
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_debug_datasource_documents+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_debug_datasource_documents+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.indexing.documents.debugMany({
+    debugDocuments: [
+      {
+        objectType: "Article",
+        docId: "art123",
+      },
+    ],
+  }, "<value>");
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationParametersSection slot="parameters">
 
 <Section>
@@ -3884,6 +4226,56 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexi
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_checkdocumentaccess+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_checkdocumentaccess+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.indexing.documents.checkAccess({
+    datasource: "<value>",
+    objectType: "<value>",
+    docId: "<id>",
+    userEmail: "<value>",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationRequestBodySection slot="request-body">
 
 <Section>
@@ -4096,6 +4488,55 @@ Tip: Use [/debug/\{datasource\}/document](https://developers.glean.com/indexing/
 
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_getdocumentstatus+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_getdocumentstatus+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.indexing.documents.status({
+    datasource: "<value>",
+    objectType: "<value>",
+    docId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -4357,6 +4798,53 @@ Tip: Use [/debug/\{datasource\}/status](https://developers.glean.com/indexing/de
 
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_getdocumentcount+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_getdocumentcount+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.indexing.documents.count({
+    datasource: "<value>",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 

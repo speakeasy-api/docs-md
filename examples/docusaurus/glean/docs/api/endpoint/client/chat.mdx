@@ -6,6 +6,7 @@ sidebar_label: Client Chat
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -22,6 +23,7 @@ import {
   ExpandableSection,
   FrontMatterDisplayType,
   Operation,
+  OperationCodeSamplesSection,
   OperationDescriptionSection,
   OperationParametersSection,
   OperationRequestBodyDescriptionSection,
@@ -79,6 +81,55 @@ _Chat_
 Have a conversation with Glean AI.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-chat+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-chat+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.chat.create({
+    messages: [
+      {
+        fragments: [
+          {
+            text: "What are the company holidays this year?",
+          },
+        ],
+      },
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -1853,6 +1904,45 @@ Deletes all saved Chats a user has had and all their contained conversational co
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-deleteallchats+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-deleteallchats+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.client.chat.deleteAll();
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationParametersSection slot="parameters">
 
 <Section>
@@ -1920,6 +2010,47 @@ _Deletes saved Chats_
 Deletes saved Chats and all their contained conversational content.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-deletechats+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-deletechats+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.client.chat.delete({
+    ids: [],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -2034,6 +2165,47 @@ _Retrieves a Chat_
 Retrieves the chat history between Glean Assistant and the user for a given Chat.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-getchat+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-getchat+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.chat.retrieve({
+    id: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -2286,6 +2458,45 @@ Retrieves all the saved Chats between Glean Assistant and the user. The returned
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-listchats+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-listchats+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.chat.list();
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationParametersSection slot="parameters">
 
 <Section>
@@ -2491,6 +2702,47 @@ Gets the Chat application details for the specified application ID.
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-getchatapplication+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-getchatapplication+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.chat.retrieveApplication({
+    id: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationParametersSection slot="parameters">
 
 <Section>
@@ -2656,6 +2908,50 @@ _Upload files for Chat._
 Upload files for Chat.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-uploadchatfiles+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-uploadchatfiles+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+import { openAsBlob } from "node:fs";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.chat.uploadFiles({
+    files: [
+      await openAsBlob("example.file"),
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationParametersSection slot="parameters">
 
@@ -3063,6 +3359,49 @@ Get files uploaded by a user for Chat.
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-getchatfiles+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-getchatfiles+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.chat.retrieveFiles({
+    fileIds: [
+      "<value 1>",
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationParametersSection slot="parameters">
 
 <Section>
@@ -3430,6 +3769,51 @@ Delete files uploaded by a user for Chat.
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-deletechatfiles+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-deletechatfiles+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.client.chat.deleteFiles({
+    fileIds: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationParametersSection slot="parameters">
 
 <Section>
@@ -3543,6 +3927,55 @@ _Chat_
 Have a conversation with Glean AI.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-chat_stream+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-chat_stream+code-samples+typescript">
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  const result = await glean.client.chat.createStream({
+    messages: [
+      {
+        fragments: [
+          {
+            text: "What are the company holidays this year?",
+          },
+        ],
+      },
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationParametersSection slot="parameters">
 

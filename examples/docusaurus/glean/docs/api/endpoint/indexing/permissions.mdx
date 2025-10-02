@@ -6,6 +6,7 @@ sidebar_label: Indexing Permissions
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -19,6 +20,7 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection,
   Operation,
+  OperationCodeSamplesSection,
   OperationDescriptionSection,
   OperationRequestBodyDescriptionSection,
   OperationRequestBodySection,
@@ -27,7 +29,9 @@ import {
   Pill,
   Section,
   SectionContent,
+  SectionTab,
   SectionTitle,
+  TabbedSection,
   Tag,
   TagTitle
 } from "@speakeasy-api/docs-md-react";
@@ -65,6 +69,54 @@ _Update document permissions_
 Updates the permissions for a given document without modifying document content.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_updatepermissions+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_updatepermissions+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.permissions.updatePermissions({
+    datasource: "<value>",
+    permissions: {},
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -415,6 +467,54 @@ Adds a datasource user or updates an existing user.
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-post_api_index_v1_indexuser+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_indexuser+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.permissions.indexUser({
+    datasource: "<value>",
+    user: {
+      email: "Art.Schaden@hotmail.com",
+      name: "<value>",
+    },
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationRequestBodySection slot="request-body">
 
 <Section>
@@ -655,6 +755,68 @@ _Bulk index users_
 Replaces the users in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexusers+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexusers+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.permissions.bulkIndexUsers({
+    uploadId: "<id>",
+    datasource: "<value>",
+    users: [
+      {
+        email: "Ivory_Cummerata@hotmail.com",
+        name: "<value>",
+      },
+      {
+        email: "Ivory_Cummerata@hotmail.com",
+        name: "<value>",
+      },
+      {
+        email: "Ivory_Cummerata@hotmail.com",
+        name: "<value>",
+      },
+    ],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -993,6 +1155,53 @@ Add or update a group in the datasource.
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-post_api_index_v1_indexgroup+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_indexgroup+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.permissions.indexGroup({
+    datasource: "<value>",
+    group: {
+      name: "<value>",
+    },
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationRequestBodySection slot="request-body">
 
 <Section>
@@ -1170,6 +1379,62 @@ _Bulk index groups_
 Replaces the groups in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexgroups+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexgroups+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.permissions.bulkIndexGroups({
+    uploadId: "<id>",
+    datasource: "<value>",
+    groups: [
+      {
+        name: "<value>",
+      },
+      {
+        name: "<value>",
+      },
+    ],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -1445,6 +1710,56 @@ Add the memberships of a group in the datasource.
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_indexmembership+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_indexmembership+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.permissions.indexMembership({
+    datasource: "<value>",
+    membership: {
+      groupName: "<value>",
+    },
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationRequestBodySection slot="request-body">
 
 <Section>
@@ -1672,6 +1987,59 @@ _Bulk index memberships for a group_
 Replaces the memberships for a group in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexmemberships+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexmemberships+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.permissions.bulkIndexMemberships({
+    uploadId: "<id>",
+    datasource: "<value>",
+    memberships: [
+      {},
+      {},
+      {},
+    ],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -1973,6 +2341,51 @@ Schedules the immediate processing of all group memberships uploaded through the
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_processallmemberships+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_processallmemberships+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.permissions.processMemberships();
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationRequestBodySection slot="request-body">
 
 <Section>
@@ -2046,6 +2459,51 @@ _Delete user_
 Delete the user from the datasource. Silently succeeds if user is not present.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-post_api_index_v1_deleteuser+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_deleteuser+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.permissions.deleteUser({
+    datasource: "<value>",
+    email: "Ed.Johnston@gmail.com",
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -2169,6 +2627,51 @@ Delete group from the datasource. Silently succeeds if group is not present.
 
 </OperationDescriptionSection>
 
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-post_api_index_v1_deletegroup+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_deletegroup+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.permissions.deleteGroup({
+    datasource: "<value>",
+    groupName: "<value>",
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
+
 <OperationRequestBodySection slot="request-body">
 
 <Section>
@@ -2290,6 +2793,56 @@ _Delete membership_
 Delete membership to a group in the specified datasource. Silently succeeds if membership is not present.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_deletemembership+code-samples+typescript"
+>
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_deletemembership+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.permissions.deleteMembership({
+    datasource: "<value>",
+    membership: {
+      groupName: "<value>",
+    },
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -2518,6 +3071,55 @@ _Beta users_
 Allow the datasource be visible to the specified beta users. The default behaviour is datasource being visible to all users if it is enabled and not visible to any user if it is not enabled.
 
 </OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<TabbedSection>
+
+<SectionTab slot="tab" id="operation-post_api_index_v1_betausers+code-samples+typescript">
+
+TypeScript
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_betausers+code-samples+typescript"
+>
+
+<CodeSample>
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: "GLEAN_API_TOKEN",
+});
+
+async function run() {
+  await glean.indexing.permissions.authorizeBetaUsers({
+    datasource: "<value>",
+    emails: [
+      "Neil92@gmail.com",
+      "Alejandrin_Boyer4@hotmail.com",
+      "Shyanne_McLaughlin95@hotmail.com",
+    ],
+  });
+
+
+}
+
+run();
+
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationCodeSamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 

@@ -8,4 +8,10 @@ export default {
   display: {
     maxNestingLevel: 2,
   },
+  codeSamples: [
+    {
+      language: "typescript",
+      sdkTarballPath: "../../sdks/glean-typescript.tar.gz",
+    },
+  ],
 };
