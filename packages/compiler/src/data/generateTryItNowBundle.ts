@@ -18,7 +18,11 @@ import {
 import { build } from "esbuild";
 
 import { debug, error, info } from "../logging.ts";
-import { getSettings } from "../settings.ts";
+import {
+  getInternalSetting,
+  getSettings,
+  setInternalSetting,
+} from "../settings.ts";
 import { InternalError } from "../util/internalError.ts";
 
 export async function generateTryItNowBundle(
@@ -44,6 +48,15 @@ export async function generateTryItNowBundle(
     throw new InternalError("tryItNow.outDiris unexpectedly undefined");
   }
 
+  // Read in the package.json file
+  const packageFolder = readFileSync(join(sdkFolder, "package.json"), "utf-8");
+  const packageJson = JSON.parse(packageFolder) as Record<string, string>;
+  if (typeof packageJson.name !== "string") {
+    error(`Could not find the "name" property in ${sdkFolder}/package.json`);
+    process.exit(1);
+  }
+  setInternalSetting("typeScriptPackageName", packageJson.name);
+
   info(`Prebuilding Try It Now dependencies for ${codeSample.language}`);
   const dependencyBundle = await bundleTryItNowDeps(sdkFolder);
   mkdirSync(codeSample.tryItNow.outDir, {
@@ -55,17 +68,20 @@ export async function generateTryItNowBundle(
 
   info(`Prebuilding Try It Now types for ${codeSample.language}`);
   bundleTryItNowTypes(
+    packageJson,
     sdkFolder,
     join(codeSample.tryItNow.outDir, "types.d.ts")
   );
 }
 
-function bundleTryItNowTypes(sdkFolder: string, outFile: string) {
-  const packageJson = JSON.parse(
-    readFileSync(join(sdkFolder, "package.json"), "utf-8")
-  ) as Record<string, string | undefined>;
-  let typesField = packageJson.types;
-  if (!typesField) {
+function bundleTryItNowTypes(
+  packageJson: Record<string, string>,
+  sdkFolder: string,
+  outFile: string
+) {
+  // Find the path to the type declaration file
+  let typeDeclarationPath = packageJson.types;
+  if (!typeDeclarationPath) {
     if (!packageJson.main) {
       throw new InternalError(
         "No 'main' or 'types' field found in package.json, cannot bundle types"
@@ -74,18 +90,20 @@ function bundleTryItNowTypes(sdkFolder: string, outFile: string) {
     // Try to find types associated with the entry point
     const entryPoint = join(sdkFolder, packageJson.main);
     if (existsSync(entryPoint.replace(extname(entryPoint), ".d.ts"))) {
-      typesField = entryPoint.replace(extname(entryPoint), ".d.ts");
+      typeDeclarationPath = entryPoint.replace(extname(entryPoint), ".d.ts");
     } else {
       throw new InternalError(
         "No types field found in package.json, cannot bundle types"
       );
     }
   }
+
+  // Create the API Extractor config file
   const apiExtractorJsonPath = join(sdkFolder, "api-extractor.json");
   writeFileSync(
     apiExtractorJsonPath,
     JSON.stringify({
-      mainEntryPointFilePath: typesField,
+      mainEntryPointFilePath: typeDeclarationPath,
       apiReport: {
         enabled: false,
       },
@@ -102,6 +120,7 @@ function bundleTryItNowTypes(sdkFolder: string, outFile: string) {
     }
   );
 
+  // Run API Extractor
   const extractorConfig =
     ExtractorConfig.loadFileAndPrepare(apiExtractorJsonPath);
   const extractorResult = Extractor.invoke(extractorConfig, {
@@ -124,14 +143,7 @@ function bundleTryItNowTypes(sdkFolder: string, outFile: string) {
 
 async function bundleTryItNowDeps(sdkFolder: string): Promise<string> {
   const packageInstallDir = join(tmpdir(), "speakeasy-" + randomUUID());
-
-  const packageFolder = readFileSync(join(sdkFolder, "package.json"), "utf-8");
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-  const packageName = JSON.parse(packageFolder).name;
-  if (typeof packageName !== "string") {
-    error(`Could not find the "name" property in ${sdkFolder}/package.json`);
-    process.exit(1);
-  }
+  const packageName = getInternalSetting("typeScriptPackageName");
 
   // Create a package.json file in the temporary directory, and install dependencies
   debug(

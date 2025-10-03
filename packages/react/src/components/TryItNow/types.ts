@@ -30,6 +30,10 @@ export type TryItNowProps = {
    */
   dependencyUrlPrefix: string;
   /**
+   * The name of the npm package that the bundle and types represent
+   */
+  packageName: string;
+  /**
    * Editor component to use. Defaults to `Editor`.
    */
   Editor?: FC<EditorProps>;
@@ -56,6 +60,10 @@ export type EditorProps = {
    * The current code value in the editor
    */
   value: string;
+  /**
+   * The name of the npm package that the bundle and types represent
+   */
+  packageName: string;
   /**
    * Callback to invoke when the value changes
    */

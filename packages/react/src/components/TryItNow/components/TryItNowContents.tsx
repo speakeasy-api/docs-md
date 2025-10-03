@@ -13,6 +13,7 @@ import styles from "./styles.module.css";
 export function TryItNowContents({
   defaultValue,
   dependencyUrlPrefix,
+  packageName,
   Layout = DefaultLayout,
   Editor = DefaultEditor,
   RunButton = DefaultRunButton,
@@ -54,6 +55,7 @@ export function TryItNowContents({
           value={value}
           onValueChange={setValue}
           types={types}
+          packageName={packageName}
         />
       </div>
       <div slot="runButton" className={styles.runButtonContainer}>

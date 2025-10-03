@@ -1,8 +1,9 @@
 "use client";
 
+import type { Monaco } from "@monaco-editor/react";
 import MonacoEditor from "@monaco-editor/react";
 import type { editor } from "monaco-editor";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import type { EditorProps } from "../types.ts";
 import styles from "./styles.module.css";
@@ -52,13 +53,52 @@ const editorOptions: editor.IStandaloneEditorConstructionOptions = {
   tabSize: 2,
 };
 
-export function Editor({ value, onValueChange, theme }: EditorProps) {
+export function Editor({
+  value,
+  onValueChange,
+  theme,
+  types,
+  packageName,
+}: EditorProps) {
   const handleValueChange = useCallback(
     (newValue: string | undefined, _: editor.IModelContentChangedEvent) => {
       onValueChange(newValue ?? "");
     },
     [onValueChange]
   );
+
+  const [monaco, setMonaco] = useState<Monaco | null>(null);
+  const onMount = useCallback((_: unknown, monaco: Monaco) => {
+    setMonaco(monaco);
+  }, []);
+
+  // Wait till both Monaco and types are loaded before adding the extra lib
+  useEffect(() => {
+    if (!monaco || !types) {
+      return;
+    }
+
+    // compiler options
+    monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+      target: monaco.languages.typescript.ScriptTarget.ES2016,
+      allowNonTsExtensions: true,
+      moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
+      module: monaco.languages.typescript.ModuleKind.CommonJS,
+      noEmit: true,
+      typeRoots: ["node_modules/@types"],
+    });
+
+    // extra libraries
+    monaco.languages.typescript.typescriptDefaults.addExtraLib(
+      types,
+      `node_modules/@types/${packageName}/index.d.ts`
+    );
+
+    monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
+      noSemanticValidation: false,
+      noSyntaxValidation: false,
+    });
+  }, [types, monaco, packageName]);
 
   return (
     <MonacoEditor
@@ -69,6 +109,7 @@ export function Editor({ value, onValueChange, theme }: EditorProps) {
       theme={theme === "dark" ? "vs-dark" : "light"}
       value={value}
       onChange={handleValueChange}
+      onMount={onMount}
     />
   );
 }

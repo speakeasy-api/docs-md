@@ -9,7 +9,7 @@ import type { FrameworkConfig } from "../compiler.ts";
 import type { CodeSamples } from "../data/generateCodeSamples.ts";
 import { debug } from "../logging.ts";
 import type { Site } from "../renderers/base.ts";
-import { getOnPageComplete, getSettings } from "../settings.ts";
+import { getInternalSetting, getSettings } from "../settings.ts";
 import { InternalError } from "../util/internalError.ts";
 import { renderAbout } from "./chunks/about.ts";
 import { renderGlobalSecurity } from "./chunks/globalSecurity.ts";
@@ -209,7 +209,7 @@ function renderPages(
     if (metadata) {
       pageMetadata.push(metadata);
     }
-    getOnPageComplete()(currentPagePath, contents);
+    getInternalSetting("onPageComplete")(currentPagePath, contents);
   }
   frameworkConfig.postProcess?.(pageMetadata);
 }

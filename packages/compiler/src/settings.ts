@@ -17,16 +17,28 @@ export function getSettings() {
   return settings;
 }
 
-let onPageComplete: OnPageComplete | undefined;
-export function setOnPageComplete(fn: OnPageComplete) {
-  onPageComplete = fn;
+type InternalSettings = {
+  typeScriptPackageName?: string;
+  onPageComplete?: OnPageComplete;
+};
+
+const internalSettings: InternalSettings = {};
+
+export function getInternalSetting<Key extends keyof InternalSettings>(
+  key: Key
+) {
+  const value = internalSettings[key];
+  if (!value) {
+    throw new InternalError(`Internal setting ${key} not set`);
+  }
+  return value;
 }
 
-export function getOnPageComplete() {
-  if (!onPageComplete) {
-    throw new InternalError("OnPageComplete not initialized");
-  }
-  return onPageComplete;
+export function setInternalSetting<Key extends keyof InternalSettings>(
+  key: Key,
+  value: InternalSettings[Key]
+) {
+  internalSettings[key] = value;
 }
 
 const language = z.enum([
