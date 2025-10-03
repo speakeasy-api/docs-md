@@ -55,7 +55,7 @@ function formatEvents(events: RuntimeEvents[]): FormattedEvent[] {
     .filter((event): event is FormattedEvent => event !== undefined);
 }
 
-function formatResutsOutput(events: FormattedEvent[]) {
+function formatResultsOutput(events: FormattedEvent[]) {
   return events.map(function (event, index) {
     const { prefix, value } = event;
 
@@ -64,7 +64,12 @@ function formatResutsOutput(events: FormattedEvent[]) {
       return (
         <pre key={index}>
           {prefix}
-          <JSONTree data={value} hideRoot theme={jsonTreeTheme} invertTheme={false} />
+          <JSONTree
+            data={value}
+            hideRoot
+            theme={jsonTreeTheme}
+            invertTheme={false}
+          />
         </pre>
       );
     }
@@ -112,5 +117,9 @@ export function Results({ status }: ResultsProps) {
     }
   }
 
-  return <div className={styles.resultsContent}>{formatResutsOutput(displayOutput)}</div>;
+  return (
+    <div className={styles.resultsContent}>
+      {formatResultsOutput(displayOutput)}
+    </div>
+  );
 }
