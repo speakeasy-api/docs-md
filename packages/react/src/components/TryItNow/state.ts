@@ -18,17 +18,23 @@ export function useRuntime({ dependencyUrlPrefix }: Options) {
   const runtimeRef = useRef<Runtime | null>(null);
   const eventIdCounter = useRef<number>(0);
 
-  const addEventId = useCallback((event: RuntimeEvents): ExtendedRuntimeEvent => {
-    return { ...event, id: `event-${++eventIdCounter.current}` };
-  }, []);
+  const addEventId = useCallback(
+    (event: RuntimeEvents): ExtendedRuntimeEvent => {
+      return { ...event, id: `event-${++eventIdCounter.current}` };
+    },
+    []
+  );
 
-  const handleExecutionEvent = useCallback((event: RuntimeEvents) => {
-    events.current.push(addEventId(event));
-    setStatus({
-      state: "executing",
-      events: events.current,
-    });
-  }, [addEventId]);
+  const handleExecutionEvent = useCallback(
+    (event: RuntimeEvents) => {
+      events.current.push(addEventId(event));
+      setStatus({
+        state: "executing",
+        events: events.current,
+      });
+    },
+    [addEventId]
+  );
 
   if (!runtimeRef.current) {
     runtimeRef.current = new Runtime({ dependencyUrlPrefix });
