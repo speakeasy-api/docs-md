@@ -6,6 +6,7 @@ import {
   readdirSync,
   readFileSync,
   rmSync,
+  statSync,
   writeFileSync,
 } from "node:fs";
 import { dirname, isAbsolute, join, resolve } from "node:path";
@@ -219,17 +220,37 @@ async function getSettings(): Promise<Settings> {
     if (!codeSample.tryItNow) {
       continue;
     }
-    codeSample.sdkTarballPath = resolveAndValidatePath({
-      path: codeSample.sdkTarballPath,
-      name: "codeSample.sdkTarballPath",
-      validateExists: true,
-    });
-    if (!codeSample.sdkTarballPath.endsWith("tar.gz")) {
+    if (!codeSample.sdkTarballPath && !codeSample.sdkFolder) {
       error(
-        `SDK tarball path ${codeSample.sdkTarballPath} must end in .tar.gz`
+        `Must provide either 'sdkTarballPath' or 'sdkFolder' for code sample ${codeSample.language}`
       );
       process.exit(1);
     }
+    if (codeSample.sdkTarballPath) {
+      codeSample.sdkTarballPath = resolveAndValidatePath({
+        path: codeSample.sdkTarballPath,
+        name: "codeSample.sdkTarballPath",
+        validateExists: true,
+      });
+      if (!codeSample.sdkTarballPath.endsWith("tar.gz")) {
+        error(
+          `SDK tarball path ${codeSample.sdkTarballPath} must end in .tar.gz`
+        );
+        process.exit(1);
+      }
+    }
+    if (codeSample.sdkFolder) {
+      codeSample.sdkFolder = resolveAndValidatePath({
+        path: codeSample.sdkFolder,
+        name: "codeSample.sdkFolder",
+        validateExists: true,
+      });
+      if (!statSync(codeSample.sdkFolder).isDirectory()) {
+        error(`SDK folder ${codeSample.sdkFolder} is not a directory`);
+        process.exit(1);
+      }
+    }
+
     codeSample.tryItNow.outDir = resolveAndValidatePath({
       path: codeSample.tryItNow.outDir,
       name: "codeSample.tryItNow.outDir",

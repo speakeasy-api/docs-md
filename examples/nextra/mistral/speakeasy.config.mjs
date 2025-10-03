@@ -10,7 +10,7 @@ export default {
   codeSamples: [
     {
       language: "typescript",
-      sdkTarballPath: "../../sdks/mistral-typescript.tar.gz",
+      sdkFolder: "../../sdks/mistral-typescript",
       tryItNow: {
         outDir: "./public/try-it-now",
         urlPrefix: "/try-it-now",

@@ -6,6 +6,7 @@ import type { Chunk, OperationChunk } from "@speakeasy-api/docs-md-shared";
 import { info } from "../logging.ts";
 import { getSettings } from "../settings.ts";
 import { InternalError } from "../util/internalError.ts";
+import type { SdkFolder } from "./types.ts";
 
 const CODE_SAMPLE_HEADER =
   /^<!-- UsageSnippet language="(.+)" operationID="(.+)" method="(.+)" path="(.+)" -->$/;
@@ -91,7 +92,7 @@ function parseSampleReadme(readmePath: string) {
 
 export function generateCodeSamples(
   docsData: Map<string, Chunk>,
-  sdkFolders: Map<string, string>
+  sdkFolders: Map<string, SdkFolder>
 ): CodeSamples {
   const { codeSamples } = getSettings();
   if (!codeSamples) {
@@ -118,12 +119,12 @@ export function generateCodeSamples(
     }
 
     // Read in the examples
-    const examples = readdirSync(join(extractionDir, "docs", "sdks"));
+    const examples = readdirSync(join(extractionDir.path, "docs", "sdks"));
     const codeSampleResults: CodeSample[] = [];
     for (const example of examples) {
       codeSampleResults.push(
         ...parseSampleReadme(
-          join(extractionDir, "docs", "sdks", example, "README.md")
+          join(extractionDir.path, "docs", "sdks", example, "README.md")
         )
       );
     }

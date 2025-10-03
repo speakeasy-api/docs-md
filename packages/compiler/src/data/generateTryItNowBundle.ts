@@ -24,9 +24,10 @@ import {
   setInternalSetting,
 } from "../settings.ts";
 import { InternalError } from "../util/internalError.ts";
+import type { SdkFolder } from "./types.ts";
 
 export async function generateTryItNowBundle(
-  sdkFolders: Map<string, string>
+  sdkFolders: Map<string, SdkFolder>
 ): Promise<void> {
   const settings = getSettings();
   const codeSample = settings.codeSamples?.find(
@@ -49,10 +50,15 @@ export async function generateTryItNowBundle(
   }
 
   // Read in the package.json file
-  const packageFolder = readFileSync(join(sdkFolder, "package.json"), "utf-8");
+  const packageFolder = readFileSync(
+    join(sdkFolder.path, "package.json"),
+    "utf-8"
+  );
   const packageJson = JSON.parse(packageFolder) as Record<string, string>;
   if (typeof packageJson.name !== "string") {
-    error(`Could not find the "name" property in ${sdkFolder}/package.json`);
+    error(
+      `Could not find the "name" property in ${sdkFolder.path}/package.json`
+    );
     process.exit(1);
   }
   setInternalSetting("typeScriptPackageName", packageJson.name);
@@ -76,7 +82,7 @@ export async function generateTryItNowBundle(
 
 function bundleTryItNowTypes(
   packageJson: Record<string, string>,
-  sdkFolder: string,
+  sdkFolder: SdkFolder,
   outFile: string
 ) {
   // Find the path to the type declaration file
@@ -88,7 +94,7 @@ function bundleTryItNowTypes(
       );
     }
     // Try to find types associated with the entry point
-    const entryPoint = join(sdkFolder, packageJson.main);
+    const entryPoint = join(sdkFolder.path, packageJson.main);
     if (existsSync(entryPoint.replace(extname(entryPoint), ".d.ts"))) {
       typeDeclarationPath = entryPoint.replace(extname(entryPoint), ".d.ts");
     } else {
@@ -99,49 +105,60 @@ function bundleTryItNowTypes(
   }
 
   // Create the API Extractor config file
-  const apiExtractorJsonPath = join(sdkFolder, "api-extractor.json");
-  writeFileSync(
-    apiExtractorJsonPath,
-    JSON.stringify({
-      mainEntryPointFilePath: typeDeclarationPath,
-      apiReport: {
-        enabled: false,
-      },
-      docModel: {
-        enabled: false,
-      },
-      dtsRollup: {
-        enabled: true,
-        untrimmedFilePath: outFile,
-      },
-    }),
-    {
-      encoding: "utf-8",
-    }
-  );
+  const apiExtractorJsonPath = join(sdkFolder.path, "api-extractor.json");
 
-  // Run API Extractor
-  const extractorConfig =
-    ExtractorConfig.loadFileAndPrepare(apiExtractorJsonPath);
-  const extractorResult = Extractor.invoke(extractorConfig, {
-    localBuild: true,
-    messageCallback(message) {
-      if (message.logLevel === ExtractorLogLevel.Error) {
-        throw new Error(message.text);
+  try {
+    writeFileSync(
+      apiExtractorJsonPath,
+      JSON.stringify({
+        mainEntryPointFilePath: typeDeclarationPath,
+        apiReport: {
+          enabled: false,
+        },
+        docModel: {
+          enabled: false,
+        },
+        dtsRollup: {
+          enabled: true,
+          untrimmedFilePath: outFile,
+        },
+        tsdocMetadata: {
+          enabled: false,
+        },
+      }),
+      {
+        encoding: "utf-8",
       }
-      message.handled = true;
-    },
-  });
-
-  if (!extractorResult.succeeded) {
-    throw new InternalError(
-      `API Extractor completed with ${extractorResult.errorCount} errors` +
-        ` and ${extractorResult.warningCount} warnings`
     );
+
+    // Run API Extractor
+    const extractorConfig =
+      ExtractorConfig.loadFileAndPrepare(apiExtractorJsonPath);
+    const extractorResult = Extractor.invoke(extractorConfig, {
+      localBuild: true,
+      messageCallback(message) {
+        if (message.logLevel === ExtractorLogLevel.Error) {
+          throw new Error(message.text);
+        }
+        message.handled = true;
+      },
+    });
+
+    if (!extractorResult.succeeded) {
+      throw new InternalError(
+        `API Extractor completed with ${extractorResult.errorCount} errors` +
+          ` and ${extractorResult.warningCount} warnings`
+      );
+    }
+  } finally {
+    // Remove the API Extractor config file, in case we're running this
+    // directly from an SDK folder, in which case we don't want to mess with
+    // the users git status
+    rmSync(apiExtractorJsonPath, { force: true });
   }
 }
 
-async function bundleTryItNowDeps(sdkFolder: string): Promise<string> {
+async function bundleTryItNowDeps(sdkFolder: SdkFolder): Promise<string> {
   const packageInstallDir = join(tmpdir(), "speakeasy-" + randomUUID());
   const packageName = getInternalSetting("typeScriptPackageName");
 
@@ -163,7 +180,7 @@ async function bundleTryItNowDeps(sdkFolder: string): Promise<string> {
 
     // Now npm pack the SDK and save it to the new temporary working directory
     execSync(`npm pack -q --pack-destination ${packageInstallDir}`, {
-      cwd: sdkFolder,
+      cwd: sdkFolder.path,
     });
 
     // Now install the tarball into the temporary directory, which will also
@@ -199,6 +216,7 @@ async function bundleTryItNowDeps(sdkFolder: string): Promise<string> {
   } finally {
     rmSync(packageInstallDir, {
       recursive: true,
+      force: true,
     });
   }
 }

@@ -20,7 +20,7 @@ declare class Go {
 
 const wasmPath = join(dirname(fileURLToPath(import.meta.url)), "lib.wasm.gz");
 
-export async function getData(
+export async function generateDocsData(
   specContents: string
 ): Promise<Map<string, Chunk>> {
   const gzippedBuffer = await readFile(wasmPath);

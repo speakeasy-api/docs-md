@@ -59,7 +59,8 @@ export type CodeSampleLanguage = z.infer<typeof language>;
 
 const codeSample = z.strictObject({
   language,
-  sdkTarballPath: z.string(),
+  sdkTarballPath: z.string().optional(),
+  sdkFolder: z.string().optional(),
   tryItNow: z
     .strictObject({
       outDir: z.string(),
