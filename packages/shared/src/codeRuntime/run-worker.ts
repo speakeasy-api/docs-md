@@ -40,12 +40,16 @@ function sendMessage(message: WorkerMessage) {
   self.postMessage(message);
 }
 
-function createConsolePatch(level: LogLevel) {
+function createConsolePatch(console: Console, level: LogLevel) {
+  const originalConsoleMethod = console[level];
   // console itself is defined using `any`, so we need to disable the lint
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (message: any, ...optionalParams: any[]) => {
+  console[level] = (message: any, ...optionalParams: any[]) => {
     const hasSubstitutions =
       typeof message === "string" && /%[sdifcoO]/.test(message);
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    originalConsoleMethod.apply(console, [message, ...optionalParams]);
 
     if (hasSubstitutions) {
       sendMessage({
@@ -76,11 +80,11 @@ function createConsolePatch(level: LogLevel) {
 self.onmessage = function (event: MessageEvent<WorkerMessage>) {
   if (event.data.type === "execute") {
     // Patch console
-    console.log = createConsolePatch("log");
-    console.info = createConsolePatch("info");
-    console.warn = createConsolePatch("warn");
-    console.error = createConsolePatch("error");
-    console.debug = createConsolePatch("debug");
+    createConsolePatch(console, "log");
+    createConsolePatch(console, "info");
+    createConsolePatch(console, "warn");
+    createConsolePatch(console, "error");
+    createConsolePatch(console, "debug");
 
     // Listen for unhandled rejections, which includes the API returning an
     // error status code

@@ -16,10 +16,10 @@ function formatEvents(events: RuntimeEvents[]) {
           return event.level + ": " + event.message;
         }
         case "execution:uncaught-exception": {
-          return "Uncaught Exception: " + String(event.error);
+          return String(event.error);
         }
         case "execution:uncaught-rejection": {
-          return "Uncaught Rejection: " + String(event.error);
+          return String(event.error);
         }
         default: {
           return undefined;
