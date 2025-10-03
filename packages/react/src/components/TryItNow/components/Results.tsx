@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 
 const jsonTreeTheme = {
   scheme: "transparent",
-  base00: "transparent", // background
+  base00: "transparent",
   base01: "#383830",
   base02: "#49483e",
   base03: "#75715e",
@@ -112,5 +112,5 @@ export function Results({ status }: ResultsProps) {
     }
   }
 
-  return <div>{formatResutsOutput(displayOutput)}</div>;
+  return <div className={styles.resultsContent}>{formatResutsOutput(displayOutput)}</div>;
 }
