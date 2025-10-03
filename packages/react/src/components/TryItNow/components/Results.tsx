@@ -29,6 +29,7 @@ const jsonTreeTheme = {
 type FormattedEvent = {
   prefix?: string;
   value: unknown;
+  id: string;
 };
 
 function formatEvents(events: RuntimeEvents[]): FormattedEvent[] {
@@ -36,16 +37,28 @@ function formatEvents(events: RuntimeEvents[]): FormattedEvent[] {
     .map((event): FormattedEvent | undefined => {
       switch (event.type) {
         case "compilation:error": {
-          return { prefix: undefined, value: event.error };
+          return { prefix: undefined, id: event.id, value: event.error };
         }
         case "execution:log": {
-          return { prefix: event.level + ": ", value: event.message };
+          return {
+            prefix: event.level + ": ",
+            id: event.id,
+            value: event.message,
+          };
         }
         case "execution:uncaught-exception": {
-          return { prefix: "Uncaught Exception: ", value: event.error };
+          return {
+            prefix: "Uncaught Exception: ",
+            id: event.id,
+            value: event.error,
+          };
         }
         case "execution:uncaught-rejection": {
-          return { prefix: "Uncaught Rejection: ", value: event.error };
+          return {
+            prefix: "Uncaught Rejection: ",
+            id: event.id,
+            value: event.error,
+          };
         }
         default: {
           return undefined;
@@ -56,13 +69,12 @@ function formatEvents(events: RuntimeEvents[]): FormattedEvent[] {
 }
 
 function formatResultsOutput(events: FormattedEvent[]) {
-  return events.map(function (event, index) {
-    const { prefix, value } = event;
+  return events.map(function (event) {
+    const { prefix, value, id } = event;
 
-    // Handle objects
-    if (!value || typeof value === "object") {
+    if (typeof value === "object" || value === undefined) {
       return (
-        <pre key={index}>
+        <pre key={id}>
           {prefix}
           <JSONTree
             data={value}
@@ -74,9 +86,8 @@ function formatResultsOutput(events: FormattedEvent[]) {
       );
     }
 
-    // Fallback for other types
     return (
-      <pre key={index}>
+      <pre key={id}>
         {prefix}
         {JSON.stringify(value)}
       </pre>
@@ -97,16 +108,28 @@ export function Results({ status }: ResultsProps) {
   switch (status.state) {
     case "compiling": {
       displayOutput = [
-        { prefix: undefined, value: "Compiling. Previous events:" },
+        {
+          prefix: undefined,
+          value: "Compiling. Previous events:",
+          id: "compiling-header",
+        },
         ...formatEvents(status.previousEvents),
       ];
       break;
     }
     case "compile-error": {
       displayOutput = [
-        { prefix: undefined, value: "Compile Error: " },
+        {
+          prefix: undefined,
+          value: "Compile Error: ",
+          id: "compile-error-header",
+        },
         ...formatEvents(status.events),
-        { prefix: undefined, value: "Previous events:" },
+        {
+          prefix: undefined,
+          value: "Previous events:",
+          id: "previous-events-header",
+        },
         ...formatEvents(status.previousEvents),
       ];
       break;
