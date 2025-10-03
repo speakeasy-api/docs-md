@@ -56,7 +56,11 @@ export class Runtime {
       // Check the results of compilation
       if (bundleResults.errors.length > 0) {
         for (const error of bundleResults.errors) {
-          this.#emit({ type: "compilation:error", id: this.#generateEventId(), error });
+          this.#emit({
+            type: "compilation:error",
+            id: this.#generateEventId(),
+            error,
+          });
         }
         return;
       }
@@ -79,7 +83,11 @@ export class Runtime {
       this.#emit({ type: "compilation:finished", id: this.#generateEventId() });
     } catch (error) {
       // Catch bundle errors, and stop running
-      this.#emit({ type: "compilation:error", id: this.#generateEventId(), error });
+      this.#emit({
+        type: "compilation:error",
+        id: this.#generateEventId(),
+        error,
+      });
       return;
     }
 
