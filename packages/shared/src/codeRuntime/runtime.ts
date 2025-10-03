@@ -6,7 +6,6 @@ import type { WorkerMessage } from "./messages.ts";
 export class Runtime {
   #dependencyBundle?: string;
   #dependencyUrlPrefix: string;
-  #eventCounter = 0;
   #listeners: Record<
     RuntimeEvents["type"],
     ((event: RuntimeEvents) => void)[]
@@ -23,10 +22,6 @@ export class Runtime {
 
   constructor({ dependencyUrlPrefix }: { dependencyUrlPrefix: string }) {
     this.#dependencyUrlPrefix = dependencyUrlPrefix;
-  }
-
-  #generateEventId(): string {
-    return `event-${Date.now()}-${++this.#eventCounter}`;
   }
 
   public run(code: string) {
@@ -48,7 +43,7 @@ export class Runtime {
     // Bundle the results
     let bundledCode: string;
     try {
-      this.#emit({ type: "compilation:started", id: this.#generateEventId() });
+      this.#emit({ type: "compilation:started" });
 
       // Bundle the code
       const bundleResults = await bundleCode(code, this.#dependencyBundle);
@@ -56,11 +51,7 @@ export class Runtime {
       // Check the results of compilation
       if (bundleResults.errors.length > 0) {
         for (const error of bundleResults.errors) {
-          this.#emit({
-            type: "compilation:error",
-            id: this.#generateEventId(),
-            error,
-          });
+          this.#emit({ type: "compilation:error", error });
         }
         return;
       }
@@ -80,19 +71,15 @@ export class Runtime {
       );
 
       // Signal that compilation finished
-      this.#emit({ type: "compilation:finished", id: this.#generateEventId() });
+      this.#emit({ type: "compilation:finished" });
     } catch (error) {
       // Catch bundle errors, and stop running
-      this.#emit({
-        type: "compilation:error",
-        id: this.#generateEventId(),
-        error,
-      });
+      this.#emit({ type: "compilation:error", error });
       return;
     }
 
     // Run the bundle
-    this.#emit({ type: "execution:started", id: this.#generateEventId() });
+    this.#emit({ type: "execution:started" });
 
     // Create worker from the worker file
     this.#worker = new Worker(new URL("./run-worker.js", import.meta.url), {
@@ -106,7 +93,6 @@ export class Runtime {
           this.#emit({
             type: "execution:log",
             level: event.data.level,
-            id: this.#generateEventId(),
             message: event.data.message,
           });
           break;
@@ -114,14 +100,12 @@ export class Runtime {
           this.#emit({
             type: "execution:uncaught-exception",
             error: event.data.error,
-            id: this.#generateEventId(),
           });
           break;
         case "uncaught-reject":
           this.#emit({
             type: "execution:uncaught-rejection",
             error: event.data.error,
-            id: this.#generateEventId(),
           });
           break;
       }
@@ -132,7 +116,6 @@ export class Runtime {
       this.#emit({
         type: "execution:uncaught-exception",
         error,
-        id: this.#generateEventId(),
       });
       this.#worker?.terminate();
     };

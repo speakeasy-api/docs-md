@@ -1,9 +1,8 @@
 "use client";
 
-import type { RuntimeEvents } from "@speakeasy-api/docs-md-shared";
 import { JSONTree } from "react-json-tree";
 
-import type { ResultsProps } from "../types.ts";
+import type { ExtendedRuntimeEvent, ResultsProps } from "../types.ts";
 import styles from "./styles.module.css";
 
 const jsonTreeTheme = {
@@ -32,7 +31,7 @@ type FormattedEvent = {
   id: string;
 };
 
-function formatEvents(events: RuntimeEvents[]): FormattedEvent[] {
+function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
   return events
     .map((event): FormattedEvent | undefined => {
       switch (event.type) {
@@ -60,7 +59,9 @@ function formatEvents(events: RuntimeEvents[]): FormattedEvent[] {
             value: event.error,
           };
         }
-        default: {
+        case "compilation:started":
+        case "compilation:finished":
+        case "execution:started": {
           return undefined;
         }
       }
@@ -97,39 +98,19 @@ function formatResultsOutput(events: FormattedEvent[]) {
 
 export function Results({ status }: ResultsProps) {
   // First, check if we don't have anything to show
-  if (
-    status.state === "idle" ||
-    (status.state === "compiling" && !status.previousEvents.length)
-  ) {
+  if (status.state === "idle") {
     return null;
   }
 
   let displayOutput: FormattedEvent[] = [];
   switch (status.state) {
     case "compiling": {
-      displayOutput = [
-        {
-          prefix: undefined,
-          value: "Compiling. Previous events:",
-          id: "compiling-header",
-        },
-        ...formatEvents(status.previousEvents),
-      ];
+      displayOutput = formatEvents(status.previousEvents);
       break;
     }
     case "compile-error": {
       displayOutput = [
-        {
-          prefix: undefined,
-          value: "Compile Error: ",
-          id: "compile-error-header",
-        },
         ...formatEvents(status.events),
-        {
-          prefix: undefined,
-          value: "Previous events:",
-          id: "previous-events-header",
-        },
         ...formatEvents(status.previousEvents),
       ];
       break;

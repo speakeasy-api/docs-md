@@ -3,7 +3,7 @@ import { Runtime } from "@speakeasy-api/docs-md-shared";
 import { useCallback, useRef, useState } from "react";
 
 import { InternalError } from "../../util/internalError.ts";
-import type { Status } from "./types.ts";
+import type { ExtendedRuntimeEvent, Status } from "./types.ts";
 
 type Options = {
   dependencyUrlPrefix: string;
@@ -13,9 +13,22 @@ export function useRuntime({ dependencyUrlPrefix }: Options) {
   const [status, setStatus] = useState<Status>({
     state: "idle",
   });
-  const previousEvents = useRef<RuntimeEvents[]>([]);
-  const events = useRef<RuntimeEvents[]>([]);
+  const previousEvents = useRef<ExtendedRuntimeEvent[]>([]);
+  const events = useRef<ExtendedRuntimeEvent[]>([]);
   const runtimeRef = useRef<Runtime | null>(null);
+  const eventIdCounter = useRef<number>(0);
+
+  const addEventId = useCallback((event: RuntimeEvents): ExtendedRuntimeEvent => {
+    return { ...event, id: `event-${++eventIdCounter.current}` };
+  }, []);
+
+  const handleExecutionEvent = useCallback((event: RuntimeEvents) => {
+    events.current.push(addEventId(event));
+    setStatus({
+      state: "executing",
+      events: events.current,
+    });
+  }, [addEventId]);
 
   if (!runtimeRef.current) {
     runtimeRef.current = new Runtime({ dependencyUrlPrefix });
@@ -46,37 +59,13 @@ export function useRuntime({ dependencyUrlPrefix }: Options) {
         previousEvents: previousEvents.current,
         // We still want to send the compilation error event thoughs, so that
         // the UI can show a compilation error.
-        events: [event],
+        events: [addEventId(event)],
       });
     });
-    runtimeRef.current.on("execution:started", (event) => {
-      events.current.push(event);
-      setStatus({
-        state: "executing",
-        events: events.current,
-      });
-    });
-    runtimeRef.current.on("execution:log", (event) => {
-      events.current.push(event);
-      setStatus({
-        state: "executing",
-        events: events.current,
-      });
-    });
-    runtimeRef.current.on("execution:uncaught-exception", (event) => {
-      events.current.push(event);
-      setStatus({
-        state: "executing",
-        events: events.current,
-      });
-    });
-    runtimeRef.current.on("execution:uncaught-rejection", (event) => {
-      events.current.push(event);
-      setStatus({
-        state: "executing",
-        events: events.current,
-      });
-    });
+    runtimeRef.current.on("execution:started", handleExecutionEvent);
+    runtimeRef.current.on("execution:log", handleExecutionEvent);
+    runtimeRef.current.on("execution:uncaught-exception", handleExecutionEvent);
+    runtimeRef.current.on("execution:uncaught-rejection", handleExecutionEvent);
   }
 
   const execute = useCallback((code: string) => {
