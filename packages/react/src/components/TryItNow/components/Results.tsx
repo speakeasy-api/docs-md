@@ -29,6 +29,7 @@ type FormattedEvent = {
   prefix?: string;
   value: unknown;
   id: string;
+  level?: "log" | "warn" | "error" | "info";
 };
 
 function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
@@ -36,13 +37,19 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
     .map((event): FormattedEvent | undefined => {
       switch (event.type) {
         case "compilation:error": {
-          return { prefix: undefined, id: event.id, value: event.error };
+          return {
+            prefix: undefined,
+            id: event.id,
+            value: event.error,
+            level: "error",
+          };
         }
         case "execution:log": {
           return {
-            prefix: event.level + ": ",
+            prefix: undefined,
             id: event.id,
             value: event.message,
+            level: event.level === "debug" ? "log" : event.level,
           };
         }
         case "execution:uncaught-exception": {
@@ -50,6 +57,7 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
             prefix: "Uncaught Exception: ",
             id: event.id,
             value: event.error,
+            level: "error",
           };
         }
         case "execution:uncaught-rejection": {
@@ -57,6 +65,7 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
             prefix: "Uncaught Rejection: ",
             id: event.id,
             value: event.error,
+            level: "error",
           };
         }
         case "compilation:started":
@@ -71,11 +80,21 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
 
 function formatResultsOutput(events: FormattedEvent[]) {
   return events.map(function (event) {
-    const { prefix, value, id } = event;
+    const { prefix, value, id, level } = event;
+
+    const className = level ? styles[level] : "";
+    if (value === undefined || value === null) {
+      return (
+        <pre key={id} className={className + " " + styles.primitiveValue}>
+          {prefix}
+          {value === undefined ? "undefined" : "null"}
+        </pre>
+      );
+    }
 
     if (typeof value === "object" || value === undefined) {
       return (
-        <pre key={id}>
+        <pre key={id} className={className}>
           {prefix}
           <JSONTree
             data={value}
@@ -88,7 +107,7 @@ function formatResultsOutput(events: FormattedEvent[]) {
     }
 
     return (
-      <pre key={id}>
+      <pre key={id} className={className}>
         {prefix}
         {JSON.stringify(value)}
       </pre>
