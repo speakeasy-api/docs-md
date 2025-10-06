@@ -93,9 +93,11 @@ export class Runtime {
     const workerUrl = new URL("./run-worker.js", import.meta.url);
     const workerResponse = await fetch(workerUrl);
     const workerCode = await workerResponse.text();
-    const workerBlob = new Blob([workerCode], { type: "application/javascript" });
+    const workerBlob = new Blob([workerCode], {
+      type: "application/javascript",
+    });
     this.#workerBlobUrl = URL.createObjectURL(workerBlob);
-    
+
     this.#worker = new Worker(this.#workerBlobUrl, {
       type: "module",
     });

@@ -91,13 +91,14 @@ self.onmessage = function (event: MessageEvent<WorkerMessage>) {
     globalThis.addEventListener("unhandledrejection", (event) => {
       sendMessage({
         type: "uncaught-reject",
-        error: event.reason instanceof Error
-          ? {
-              message: event.reason.message,
-              stack: event.reason.stack,
-              name: event.reason.name,
-            }
-          : { message: String(event.reason) },
+        error:
+          event.reason instanceof Error
+            ? {
+                message: event.reason.message,
+                stack: event.reason.stack,
+                name: event.reason.name,
+              }
+            : { message: String(event.reason) },
       });
     });
     // Execute the wrapped code using an indirect eval call for safety. See
@@ -114,13 +115,14 @@ self.onmessage = function (event: MessageEvent<WorkerMessage>) {
       // Send back the error
       sendMessage({
         type: "uncaught-exception",
-        error: error instanceof Error
-          ? {
-              message: error.message,
-              stack: error.stack,
-              name: error.name,
-            }
-          : { message: String(error) },
+        error:
+          error instanceof Error
+            ? {
+                message: error.message,
+                stack: error.stack,
+                name: error.name,
+              }
+            : { message: String(error) },
       });
     }
   }
