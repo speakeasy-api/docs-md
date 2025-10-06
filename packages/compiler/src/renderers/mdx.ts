@@ -227,7 +227,12 @@ class MdxRenderer extends MarkdownRenderer {
     if (!noImport) {
       this.#insertComponentImport(symbol);
     }
-
+    const escapeStyle =
+      this.compilerConfig.rendererType === "mdx"
+        ? this.compilerConfig.stringAttributeEscapeStyle
+        : // It's not actually possible to have a non-mdx render type here, so
+          // this default is just to make TypeScript happy
+          "html";
     function serializeProps(separator: string) {
       if (!props) {
         return "";
@@ -235,17 +240,27 @@ class MdxRenderer extends MarkdownRenderer {
       return Object.entries(props)
         .map(([key, value]) => {
           if (typeof value === "string") {
-            // I discovered that doing `key={value}` actually introduces a giant
-            // performance hit when compiling certain Docusaurus sites. On the
-            const htmlEscapedString = value
-              .replace(/&/g, "&amp;") // Must be first!
-              .replace(/"/g, "&quot;")
-              .replace(/</g, "&lt;")
-              .replace(/>/g, "&gt;")
-              .replace(/\n/g, "&NewLine;")
-              .replace(/\r/g, "&CarriageReturn;")
-              .replace(/\t/g, "&Tab;");
-            return `${separator}${key}="${htmlEscapedString}"`;
+            if (escapeStyle === "html") {
+              const htmlEscapedString = value
+                .replace(/&/g, "&amp;") // Must be first!
+                .replace(/"/g, "&quot;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/\n/g, "&NewLine;")
+                .replace(/\r/g, "&CarriageReturn;")
+                .replace(/\t/g, "&Tab;");
+              return `${separator}${key}="${htmlEscapedString}"`;
+            } else {
+              if (
+                value.includes('"') ||
+                value.includes("\n") ||
+                value.includes("\r") ||
+                value.includes("\t")
+              ) {
+                return `${separator}${key}={\`${JSON.stringify(value).slice(1, -1)}\`}`;
+              }
+              return `${separator}${key}="${value}"`;
+            }
           } else if (value !== undefined) {
             return `${separator}${key}={${JSON.stringify(value)}}`;
           } else {

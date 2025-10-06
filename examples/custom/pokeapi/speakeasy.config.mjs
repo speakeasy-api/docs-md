@@ -9,6 +9,7 @@ import { getSettings } from "@speakeasy-api/docs-md";
 const framework = {
   rendererType: "mdx",
   componentPackageName: "@/components/speakeasy-custom",
+  stringAttributeEscapeStyle: "react-value",
   elementIdSeparator: "_",
 
   buildPagePath(slug) {

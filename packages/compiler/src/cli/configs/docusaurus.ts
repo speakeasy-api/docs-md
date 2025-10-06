@@ -8,6 +8,7 @@ import type { FrameworkConfig } from "../../types/FrameworkConfig.ts";
 export const docusaurusConfig: FrameworkConfig = {
   rendererType: "mdx",
   componentPackageName: "@speakeasy-api/docs-md-react",
+  stringAttributeEscapeStyle: "html",
 
   buildPagePath(slug, { appendIndex = false } = {}) {
     const settings = getSettings();

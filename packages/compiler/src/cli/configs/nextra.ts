@@ -9,6 +9,7 @@ export const nextraConfig: FrameworkConfig = {
   rendererType: "mdx",
   componentPackageName: "@speakeasy-api/docs-md-react",
   elementIdSeparator: "_",
+  stringAttributeEscapeStyle: "react-value",
 
   buildPagePath(slug) {
     const settings = getSettings();
