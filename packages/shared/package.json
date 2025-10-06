@@ -44,7 +44,7 @@
   },
   "scripts": {
     "clean": "",
-    "prebuild": "tsx scripts/bundle-worker.ts",
+    "prebuild": "tsc -p tsconfig.worker.json && tsx src/codeRuntime/wrap-worker.ts",
     "build": "tsc",
     "prettier": "prettier --config ../../prettier.config.mjs --ignore-path ../../.gitignore \"**/*.{js,jsx,mjs,ts,tsx,mts}\"",
     "format": "npm run prettier -- --write",
