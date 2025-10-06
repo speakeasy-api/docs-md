@@ -1,5 +1,3 @@
-// Generated during prebuild step
-import { WORKER_CODE } from "../../dist/codeRuntime/worker-code.js";
 import { InternalError } from "../util/internalError.ts";
 import { bundleCode } from "./build.ts";
 import type { RuntimeEvents } from "./events.ts";
@@ -44,6 +42,10 @@ export class Runtime {
     if (this.#worker) {
       this.#worker.terminate();
       this.#worker = undefined;
+      if (this.#workerBlobUrl) {
+        URL.revokeObjectURL(this.#workerBlobUrl);
+        this.#workerBlobUrl = undefined;
+      }
     }
 
     // Bundle the results
@@ -87,13 +89,13 @@ export class Runtime {
     // Run the bundle
     this.#emit({ type: "execution:started" });
 
-    // Create worker from embedded code to avoid webpack bundling issues
-    // The worker code is embedded at build time to prevent webpack from
-    // processing it as a separate chunk with __webpack_require__ dependencies
-    const blob = new Blob([WORKER_CODE], {
-      type: "application/javascript",
-    });
-    this.#workerBlobUrl = URL.createObjectURL(blob);
+    // Create worker from the worker file using a blob
+    const workerUrl = new URL("./run-worker.js", import.meta.url);
+    const workerResponse = await fetch(workerUrl);
+    const workerCode = await workerResponse.text();
+    const workerBlob = new Blob([workerCode], { type: "application/javascript" });
+    this.#workerBlobUrl = URL.createObjectURL(workerBlob);
+    
     this.#worker = new Worker(this.#workerBlobUrl, {
       type: "module",
     });
@@ -124,17 +126,16 @@ export class Runtime {
     };
 
     // Handle worker errors
-    this.#worker.onerror = (errorEvent) => {
+    this.#worker.onerror = (error) => {
       this.#emit({
         type: "execution:uncaught-exception",
-        error: {
-          message: errorEvent.message,
-          filename: errorEvent.filename,
-          lineno: errorEvent.lineno,
-          colno: errorEvent.colno,
-        },
+        error,
       });
       this.#worker?.terminate();
+      if (this.#workerBlobUrl) {
+        URL.revokeObjectURL(this.#workerBlobUrl);
+        this.#workerBlobUrl = undefined;
+      }
     };
 
     // Send the dependency bundle and user code bundle to the worker
@@ -149,8 +150,6 @@ export class Runtime {
   public cancel() {
     this.#worker?.terminate();
     this.#worker = undefined;
-
-    // Clean up blob URL after terminating worker
     if (this.#workerBlobUrl) {
       URL.revokeObjectURL(this.#workerBlobUrl);
       this.#workerBlobUrl = undefined;
