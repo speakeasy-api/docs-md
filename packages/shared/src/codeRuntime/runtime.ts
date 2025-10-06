@@ -3,8 +3,11 @@ import { bundleCode } from "./build.ts";
 import type { RuntimeEvents } from "./events.ts";
 import type { WorkerMessage } from "./messages.ts";
 
+// Store the shared dependency bundle globally, since it will never change
+// for a given site build, and is used across multiple Runtime instances.
+let dependencyBundle: string | undefined;
+
 export class Runtime {
-  #dependencyBundle?: string;
   #dependencyUrlPrefix: string;
   #listeners: Record<
     RuntimeEvents["type"],
@@ -31,9 +34,9 @@ export class Runtime {
   }
 
   async #run(code: string) {
-    if (!this.#dependencyBundle) {
+    if (!dependencyBundle) {
       const results = await fetch(this.#dependencyUrlPrefix + "/deps.js");
-      this.#dependencyBundle = await results.text();
+      dependencyBundle = await results.text();
     }
     if (this.#worker) {
       this.#worker.terminate();
@@ -46,7 +49,7 @@ export class Runtime {
       this.#emit({ type: "compilation:started" });
 
       // Bundle the code
-      const bundleResults = await bundleCode(code, this.#dependencyBundle);
+      const bundleResults = await bundleCode(code, dependencyBundle);
 
       // Check the results of compilation
       if (bundleResults.errors.length > 0) {
@@ -123,7 +126,7 @@ export class Runtime {
     // Send the dependency bundle and user code bundle to the worker
     const message: WorkerMessage = {
       type: "execute",
-      dependencyBundle: this.#dependencyBundle,
+      dependencyBundle,
       bundle: bundledCode,
     };
     this.#worker.postMessage(message);
