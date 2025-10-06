@@ -1,5 +1,5 @@
 // Generated during prebuild step
-import { WORKER_CODE } from "../../dist/codeRuntime/worker-code.generated.js";
+import { WORKER_CODE } from "../../dist/codeRuntime/worker-code.js";
 import { InternalError } from "../util/internalError.ts";
 import { bundleCode } from "./build.ts";
 import type { RuntimeEvents } from "./events.ts";

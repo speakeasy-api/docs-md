@@ -17,11 +17,11 @@ const __dirname = dirname(__filename);
 const WORKER_FILE = resolve(__dirname, "../../dist/codeRuntime/run-worker.js");
 const OUTPUT_FILE = resolve(
   __dirname,
-  "../../dist/codeRuntime/worker-code.generated.js"
+  "../../dist/codeRuntime/worker-code.js"
 );
 const OUTPUT_DTS_FILE = resolve(
   __dirname,
-  "../../dist/codeRuntime/worker-code.generated.d.ts"
+  "../../dist/codeRuntime/worker-code.d.ts"
 );
 
 try {
