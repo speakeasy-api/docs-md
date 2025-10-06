@@ -235,10 +235,17 @@ class MdxRenderer extends MarkdownRenderer {
       return Object.entries(props)
         .map(([key, value]) => {
           if (typeof value === "string") {
-            if (value.includes("\n") || value.includes('"')) {
-              return `${separator}${key}={\`${value}\`}`;
-            }
-            return `${separator}${key}="${value}"`;
+            // I discovered that doing `key={value}` actually introduces a giant
+            // performance hit when compiling certain Docusaurus sites. On the
+            const htmlEscapedString = value
+              .replace(/&/g, "&amp;") // Must be first!
+              .replace(/"/g, "&quot;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/\n/g, "&NewLine;")
+              .replace(/\r/g, "&CarriageReturn;")
+              .replace(/\t/g, "&Tab;");
+            return `${separator}${key}="${htmlEscapedString}"`;
           } else if (value !== undefined) {
             return `${separator}${key}={${JSON.stringify(value)}}`;
           } else {
@@ -572,10 +579,7 @@ class MdxRenderer extends MarkdownRenderer {
                     symbol: "TryItNow",
                     props: {
                       dependencyUrlPrefix,
-                      // Stringify the sample so we better preserve white space.
-                      // and then trim off the start and end quotes (otherwise
-                      // we end up with `""my code""`)
-                      defaultValue: JSON.stringify(defaultValue).slice(1, -1),
+                      defaultValue,
                       packageName: getInternalSetting("typeScriptPackageName"),
                     },
                   });

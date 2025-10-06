@@ -12,6 +12,10 @@ export default {
     {
       language: "typescript",
       sdkTarballPath: "../../sdks/glean-typescript.tar.gz",
+      tryItNow: {
+        outDir: "./public/try-it-now",
+        urlPrefix: "/try-it-now",
+      },
     },
   ],
 };

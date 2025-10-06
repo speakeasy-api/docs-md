@@ -6,7 +6,6 @@ sidebar_label: Client Activity
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
-  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -32,7 +31,8 @@ import {
   SectionTitle,
   TabbedSection,
   Tag,
-  TagTitle
+  TagTitle,
+  TryItNow
 } from "@speakeasy-api/docs-md-react";
 import Embedparams from "../../../../src/components/speakeasy-embeds/loaders/params.tsx";
 import Embedchattranscript from "../../../../src/components/speakeasy-embeds/loaders/chattranscript.tsx";
@@ -82,51 +82,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-activity+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  await glean.client.activity.report({
-    events: [
-      {
-        action: "HISTORICAL_VIEW",
-        timestamp: new Date("2000-01-23T04:56:07.000Z"),
-        url: "https://example.com/",
-      },
-      {
-        action: "SEARCH",
-        params: {
-          query: "query",
-        },
-        timestamp: new Date("2000-01-23T04:56:07.000Z"),
-        url: "https://example.com/search?q=query",
-      },
-      {
-        action: "VIEW",
-        params: {
-          duration: 20,
-          referrer: "https://example.com/document",
-        },
-        timestamp: new Date("2000-01-23T04:56:07.000Z"),
-        url: "https://example.com/",
-      },
-    ],
-  });
-
-
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.client.activity.report({&NewLine;    events: [&NewLine;      {&NewLine;        action: &quot;HISTORICAL_VIEW&quot;,&NewLine;        timestamp: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        url: &quot;https://example.com/&quot;,&NewLine;      },&NewLine;      {&NewLine;        action: &quot;SEARCH&quot;,&NewLine;        params: {&NewLine;          query: &quot;query&quot;,&NewLine;        },&NewLine;        timestamp: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        url: &quot;https://example.com/search?q=query&quot;,&NewLine;      },&NewLine;      {&NewLine;        action: &quot;VIEW&quot;,&NewLine;        params: {&NewLine;          duration: 20,&NewLine;          referrer: &quot;https://example.com/document&quot;,&NewLine;        },&NewLine;        timestamp: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        url: &quot;https://example.com/&quot;,&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 
@@ -362,31 +322,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-feedback+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  await glean.client.activity.feedback({
-    trackingTokens: [
-      "trackingTokens",
-    ],
-    event: "VIEW",
-  });
-
-
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.client.activity.feedback({&NewLine;    trackingTokens: [&NewLine;      &quot;trackingTokens&quot;,&NewLine;    ],&NewLine;    event: &quot;VIEW&quot;,&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 

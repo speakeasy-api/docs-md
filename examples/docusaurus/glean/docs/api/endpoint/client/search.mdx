@@ -6,7 +6,6 @@ sidebar_label: Client Search
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
-  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -36,7 +35,8 @@ import {
   SectionTitle,
   TabbedSection,
   Tag,
-  TagTitle
+  TagTitle,
+  TryItNow
 } from "@speakeasy-api/docs-md-react";
 import Embedauthtokens from "../../../../src/components/speakeasy-embeds/loaders/authtokens.tsx";
 import Embedexclusions from "../../../../src/components/speakeasy-embeds/loaders/exclusions.tsx";
@@ -138,57 +138,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-adminsearch+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  const result = await glean.client.search.queryAsAdmin({
-    trackingToken: "trackingToken",
-    pageSize: 10,
-    query: "vacation policy",
-    requestOptions: {
-      facetFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "article",
-              relationType: "EQUALS",
-            },
-            {
-              value: "document",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-        {
-          fieldName: "department",
-          values: [
-            {
-              value: "engineering",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      facetBucketSize: 421489,
-    },
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.search.queryAsAdmin({&NewLine;    trackingToken: &quot;trackingToken&quot;,&NewLine;    pageSize: 10,&NewLine;    query: &quot;vacation policy&quot;,&NewLine;    requestOptions: {&NewLine;      facetFilters: [&NewLine;        {&NewLine;          fieldName: &quot;type&quot;,&NewLine;          values: [&NewLine;            {&NewLine;              value: &quot;article&quot;,&NewLine;              relationType: &quot;EQUALS&quot;,&NewLine;            },&NewLine;            {&NewLine;              value: &quot;document&quot;,&NewLine;              relationType: &quot;EQUALS&quot;,&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;        {&NewLine;          fieldName: &quot;department&quot;,&NewLine;          values: [&NewLine;            {&NewLine;              value: &quot;engineering&quot;,&NewLine;              relationType: &quot;EQUALS&quot;,&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;      ],&NewLine;      facetBucketSize: 421489,&NewLine;    },&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 
@@ -5024,31 +4978,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-autocomplete+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  const result = await glean.client.search.autocomplete({
-    trackingToken: "trackingToken",
-    query: "what is a que",
-    datasource: "GDRIVE",
-    resultSize: 10,
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.search.autocomplete({&NewLine;    trackingToken: &quot;trackingToken&quot;,&NewLine;    query: &quot;what is a que&quot;,&NewLine;    datasource: &quot;GDRIVE&quot;,&NewLine;    resultSize: 10,&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 
@@ -6352,28 +6286,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-feed+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  const result = await glean.client.search.retrieveFeed({
-    timeoutMillis: 5000,
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.search.retrieveFeed({&NewLine;    timeoutMillis: 5000,&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 
@@ -7353,228 +7270,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-recommendations+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  const result = await glean.client.search.recommendations({
-    sourceDocument: {
-      containerDocument: {
-        metadata: {
-          datasource: "datasource",
-          objectType: "Feature Request",
-          container: "container",
-          parentId: "JIRA_EN-1337",
-          mimeType: "mimeType",
-          documentId: "documentId",
-          createTime: new Date("2000-01-23T04:56:07.000Z"),
-          updateTime: new Date("2000-01-23T04:56:07.000Z"),
-          author: {
-            name: "name",
-            obfuscatedId: "<id>",
-          },
-          components: [
-            "Backend",
-            "Networking",
-          ],
-          status: "[\"Done\"]",
-          customData: {
-            "someCustomField": {},
-          },
-        },
-      },
-      parentDocument: {
-        metadata: {
-          datasource: "datasource",
-          objectType: "Feature Request",
-          container: "container",
-          parentId: "JIRA_EN-1337",
-          mimeType: "mimeType",
-          documentId: "documentId",
-          createTime: new Date("2000-01-23T04:56:07.000Z"),
-          updateTime: new Date("2000-01-23T04:56:07.000Z"),
-          author: {
-            name: "name",
-            obfuscatedId: "<id>",
-          },
-          components: [
-            "Backend",
-            "Networking",
-          ],
-          status: "[\"Done\"]",
-          customData: {
-            "someCustomField": {},
-          },
-        },
-      },
-      metadata: {
-        datasource: "datasource",
-        objectType: "Feature Request",
-        container: "container",
-        parentId: "JIRA_EN-1337",
-        mimeType: "mimeType",
-        documentId: "documentId",
-        createTime: new Date("2000-01-23T04:56:07.000Z"),
-        updateTime: new Date("2000-01-23T04:56:07.000Z"),
-        author: {
-          name: "name",
-          obfuscatedId: "abc123",
-        },
-        components: [
-          "Backend",
-          "Networking",
-        ],
-        status: "[\"Done\"]",
-        customData: {
-          "someCustomField": {},
-        },
-      },
-    },
-    pageSize: 100,
-    maxSnippetSize: 400,
-    requestOptions: {
-      facetFilterSets: [
-        {
-          filters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          filters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          filters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-        },
-      ],
-      context: {
-        containerDocument: {
-          metadata: {
-            datasource: "datasource",
-            objectType: "Feature Request",
-            container: "container",
-            parentId: "JIRA_EN-1337",
-            mimeType: "mimeType",
-            documentId: "documentId",
-            createTime: new Date("2000-01-23T04:56:07.000Z"),
-            updateTime: new Date("2000-01-23T04:56:07.000Z"),
-            author: {
-              name: "name",
-              obfuscatedId: "<id>",
-            },
-            components: [
-              "Backend",
-              "Networking",
-            ],
-            status: "[\"Done\"]",
-            customData: {
-              "someCustomField": {},
-            },
-          },
-        },
-        parentDocument: {
-          metadata: {
-            datasource: "datasource",
-            objectType: "Feature Request",
-            container: "container",
-            parentId: "JIRA_EN-1337",
-            mimeType: "mimeType",
-            documentId: "documentId",
-            createTime: new Date("2000-01-23T04:56:07.000Z"),
-            updateTime: new Date("2000-01-23T04:56:07.000Z"),
-            author: {
-              name: "name",
-              obfuscatedId: "<id>",
-            },
-            components: [
-              "Backend",
-              "Networking",
-            ],
-            status: "[\"Done\"]",
-            customData: {
-              "someCustomField": {},
-            },
-          },
-        },
-        metadata: {
-          datasource: "datasource",
-          objectType: "Feature Request",
-          container: "container",
-          parentId: "JIRA_EN-1337",
-          mimeType: "mimeType",
-          documentId: "documentId",
-          createTime: new Date("2000-01-23T04:56:07.000Z"),
-          updateTime: new Date("2000-01-23T04:56:07.000Z"),
-          author: {
-            name: "name",
-            obfuscatedId: "abc123",
-          },
-          components: [
-            "Backend",
-            "Networking",
-          ],
-          status: "[\"Done\"]",
-          customData: {
-            "someCustomField": {},
-          },
-        },
-      },
-    },
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.search.recommendations({&NewLine;    sourceDocument: {&NewLine;      containerDocument: {&NewLine;        metadata: {&NewLine;          datasource: &quot;datasource&quot;,&NewLine;          objectType: &quot;Feature Request&quot;,&NewLine;          container: &quot;container&quot;,&NewLine;          parentId: &quot;JIRA_EN-1337&quot;,&NewLine;          mimeType: &quot;mimeType&quot;,&NewLine;          documentId: &quot;documentId&quot;,&NewLine;          createTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;          updateTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;          author: {&NewLine;            name: &quot;name&quot;,&NewLine;            obfuscatedId: &quot;&lt;id&gt;&quot;,&NewLine;          },&NewLine;          components: [&NewLine;            &quot;Backend&quot;,&NewLine;            &quot;Networking&quot;,&NewLine;          ],&NewLine;          status: &quot;[\&quot;Done\&quot;]&quot;,&NewLine;          customData: {&NewLine;            &quot;someCustomField&quot;: {},&NewLine;          },&NewLine;        },&NewLine;      },&NewLine;      parentDocument: {&NewLine;        metadata: {&NewLine;          datasource: &quot;datasource&quot;,&NewLine;          objectType: &quot;Feature Request&quot;,&NewLine;          container: &quot;container&quot;,&NewLine;          parentId: &quot;JIRA_EN-1337&quot;,&NewLine;          mimeType: &quot;mimeType&quot;,&NewLine;          documentId: &quot;documentId&quot;,&NewLine;          createTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;          updateTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;          author: {&NewLine;            name: &quot;name&quot;,&NewLine;            obfuscatedId: &quot;&lt;id&gt;&quot;,&NewLine;          },&NewLine;          components: [&NewLine;            &quot;Backend&quot;,&NewLine;            &quot;Networking&quot;,&NewLine;          ],&NewLine;          status: &quot;[\&quot;Done\&quot;]&quot;,&NewLine;          customData: {&NewLine;            &quot;someCustomField&quot;: {},&NewLine;          },&NewLine;        },&NewLine;      },&NewLine;      metadata: {&NewLine;        datasource: &quot;datasource&quot;,&NewLine;        objectType: &quot;Feature Request&quot;,&NewLine;        container: &quot;container&quot;,&NewLine;        parentId: &quot;JIRA_EN-1337&quot;,&NewLine;        mimeType: &quot;mimeType&quot;,&NewLine;        documentId: &quot;documentId&quot;,&NewLine;        createTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        updateTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        author: {&NewLine;          name: &quot;name&quot;,&NewLine;          obfuscatedId: &quot;abc123&quot;,&NewLine;        },&NewLine;        components: [&NewLine;          &quot;Backend&quot;,&NewLine;          &quot;Networking&quot;,&NewLine;        ],&NewLine;        status: &quot;[\&quot;Done\&quot;]&quot;,&NewLine;        customData: {&NewLine;          &quot;someCustomField&quot;: {},&NewLine;        },&NewLine;      },&NewLine;    },&NewLine;    pageSize: 100,&NewLine;    maxSnippetSize: 400,&NewLine;    requestOptions: {&NewLine;      facetFilterSets: [&NewLine;        {&NewLine;          filters: [&NewLine;            {&NewLine;              fieldName: &quot;type&quot;,&NewLine;              values: [&NewLine;                {&NewLine;                  value: &quot;Spreadsheet&quot;,&NewLine;                  relationType: &quot;EQUALS&quot;,&NewLine;                },&NewLine;                {&NewLine;                  value: &quot;Presentation&quot;,&NewLine;                  relationType: &quot;EQUALS&quot;,&NewLine;                },&NewLine;              ],&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;        {&NewLine;          filters: [&NewLine;            {&NewLine;              fieldName: &quot;type&quot;,&NewLine;              values: [&NewLine;                {&NewLine;                  value: &quot;Spreadsheet&quot;,&NewLine;                  relationType: &quot;EQUALS&quot;,&NewLine;                },&NewLine;                {&NewLine;                  value: &quot;Presentation&quot;,&NewLine;                  relationType: &quot;EQUALS&quot;,&NewLine;                },&NewLine;              ],&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;        {&NewLine;          filters: [&NewLine;            {&NewLine;              fieldName: &quot;type&quot;,&NewLine;              values: [&NewLine;                {&NewLine;                  value: &quot;Spreadsheet&quot;,&NewLine;                  relationType: &quot;EQUALS&quot;,&NewLine;                },&NewLine;                {&NewLine;                  value: &quot;Presentation&quot;,&NewLine;                  relationType: &quot;EQUALS&quot;,&NewLine;                },&NewLine;              ],&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;      ],&NewLine;      context: {&NewLine;        containerDocument: {&NewLine;          metadata: {&NewLine;            datasource: &quot;datasource&quot;,&NewLine;            objectType: &quot;Feature Request&quot;,&NewLine;            container: &quot;container&quot;,&NewLine;            parentId: &quot;JIRA_EN-1337&quot;,&NewLine;            mimeType: &quot;mimeType&quot;,&NewLine;            documentId: &quot;documentId&quot;,&NewLine;            createTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;            updateTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;            author: {&NewLine;              name: &quot;name&quot;,&NewLine;              obfuscatedId: &quot;&lt;id&gt;&quot;,&NewLine;            },&NewLine;            components: [&NewLine;              &quot;Backend&quot;,&NewLine;              &quot;Networking&quot;,&NewLine;            ],&NewLine;            status: &quot;[\&quot;Done\&quot;]&quot;,&NewLine;            customData: {&NewLine;              &quot;someCustomField&quot;: {},&NewLine;            },&NewLine;          },&NewLine;        },&NewLine;        parentDocument: {&NewLine;          metadata: {&NewLine;            datasource: &quot;datasource&quot;,&NewLine;            objectType: &quot;Feature Request&quot;,&NewLine;            container: &quot;container&quot;,&NewLine;            parentId: &quot;JIRA_EN-1337&quot;,&NewLine;            mimeType: &quot;mimeType&quot;,&NewLine;            documentId: &quot;documentId&quot;,&NewLine;            createTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;            updateTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;            author: {&NewLine;              name: &quot;name&quot;,&NewLine;              obfuscatedId: &quot;&lt;id&gt;&quot;,&NewLine;            },&NewLine;            components: [&NewLine;              &quot;Backend&quot;,&NewLine;              &quot;Networking&quot;,&NewLine;            ],&NewLine;            status: &quot;[\&quot;Done\&quot;]&quot;,&NewLine;            customData: {&NewLine;              &quot;someCustomField&quot;: {},&NewLine;            },&NewLine;          },&NewLine;        },&NewLine;        metadata: {&NewLine;          datasource: &quot;datasource&quot;,&NewLine;          objectType: &quot;Feature Request&quot;,&NewLine;          container: &quot;container&quot;,&NewLine;          parentId: &quot;JIRA_EN-1337&quot;,&NewLine;          mimeType: &quot;mimeType&quot;,&NewLine;          documentId: &quot;documentId&quot;,&NewLine;          createTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;          updateTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;          author: {&NewLine;            name: &quot;name&quot;,&NewLine;            obfuscatedId: &quot;abc123&quot;,&NewLine;          },&NewLine;          components: [&NewLine;            &quot;Backend&quot;,&NewLine;            &quot;Networking&quot;,&NewLine;          ],&NewLine;          status: &quot;[\&quot;Done\&quot;]&quot;,&NewLine;          customData: {&NewLine;            &quot;someCustomField&quot;: {},&NewLine;          },&NewLine;        },&NewLine;      },&NewLine;    },&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 
@@ -10417,57 +10117,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-search+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  const result = await glean.client.search.query({
-    trackingToken: "trackingToken",
-    pageSize: 10,
-    query: "vacation policy",
-    requestOptions: {
-      facetFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "article",
-              relationType: "EQUALS",
-            },
-            {
-              value: "document",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-        {
-          fieldName: "department",
-          values: [
-            {
-              value: "engineering",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      facetBucketSize: 400611,
-    },
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.search.query({&NewLine;    trackingToken: &quot;trackingToken&quot;,&NewLine;    pageSize: 10,&NewLine;    query: &quot;vacation policy&quot;,&NewLine;    requestOptions: {&NewLine;      facetFilters: [&NewLine;        {&NewLine;          fieldName: &quot;type&quot;,&NewLine;          values: [&NewLine;            {&NewLine;              value: &quot;article&quot;,&NewLine;              relationType: &quot;EQUALS&quot;,&NewLine;            },&NewLine;            {&NewLine;              value: &quot;document&quot;,&NewLine;              relationType: &quot;EQUALS&quot;,&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;        {&NewLine;          fieldName: &quot;department&quot;,&NewLine;          values: [&NewLine;            {&NewLine;              value: &quot;engineering&quot;,&NewLine;              relationType: &quot;EQUALS&quot;,&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;      ],&NewLine;      facetBucketSize: 400611,&NewLine;    },&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 

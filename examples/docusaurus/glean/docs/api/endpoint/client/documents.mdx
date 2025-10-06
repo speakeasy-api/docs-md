@@ -6,7 +6,6 @@ sidebar_label: Client Documents
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
-  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -35,7 +34,8 @@ import {
   SectionTitle,
   TabbedSection,
   Tag,
-  TagTitle
+  TagTitle,
+  TryItNow
 } from "@speakeasy-api/docs-md-react";
 import Embedcontainerdocument from "../../../../src/components/speakeasy-embeds/loaders/containerdocument.tsx";
 import Embedcontent from "../../../../src/components/speakeasy-embeds/loaders/content.tsx";
@@ -88,26 +88,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-getdocpermissions+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  const result = await glean.client.documents.retrievePermissions({});
-
-  console.log(result);
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.documents.retrievePermissions({});&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 
@@ -259,26 +244,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-getdocuments+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  const result = await glean.client.documents.retrieve();
-
-  console.log(result);
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.documents.retrieve();&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 
@@ -788,63 +758,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-getdocumentsbyfacets+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  const result = await glean.client.documents.retrieveByFacets({
-    filterSets: [
-      {
-        filters: [
-          {
-            fieldName: "type",
-            values: [
-              {
-                value: "Spreadsheet",
-                relationType: "EQUALS",
-              },
-              {
-                value: "Presentation",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        filters: [
-          {
-            fieldName: "type",
-            values: [
-              {
-                value: "Spreadsheet",
-                relationType: "EQUALS",
-              },
-              {
-                value: "Presentation",
-                relationType: "EQUALS",
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.documents.retrieveByFacets({&NewLine;    filterSets: [&NewLine;      {&NewLine;        filters: [&NewLine;          {&NewLine;            fieldName: &quot;type&quot;,&NewLine;            values: [&NewLine;              {&NewLine;                value: &quot;Spreadsheet&quot;,&NewLine;                relationType: &quot;EQUALS&quot;,&NewLine;              },&NewLine;              {&NewLine;                value: &quot;Presentation&quot;,&NewLine;                relationType: &quot;EQUALS&quot;,&NewLine;              },&NewLine;            ],&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;      {&NewLine;        filters: [&NewLine;          {&NewLine;            fieldName: &quot;type&quot;,&NewLine;            values: [&NewLine;              {&NewLine;                value: &quot;Spreadsheet&quot;,&NewLine;                relationType: &quot;EQUALS&quot;,&NewLine;              },&NewLine;              {&NewLine;                value: &quot;Presentation&quot;,&NewLine;                relationType: &quot;EQUALS&quot;,&NewLine;              },&NewLine;            ],&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 
@@ -1495,40 +1413,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-summarize+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  const result = await glean.client.documents.summarize({
-    documentSpecs: [
-      {
-        ugcType: "CHATS",
-        ugcId: "<id>",
-      },
-      {
-        ugcType: "CHATS",
-        ugcId: "<id>",
-      },
-      {
-        id: "<id>",
-      },
-    ],
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.documents.summarize({&NewLine;    documentSpecs: [&NewLine;      {&NewLine;        ugcType: &quot;CHATS&quot;,&NewLine;        ugcId: &quot;&lt;id&gt;&quot;,&NewLine;      },&NewLine;      {&NewLine;        ugcType: &quot;CHATS&quot;,&NewLine;        ugcId: &quot;&lt;id&gt;&quot;,&NewLine;      },&NewLine;      {&NewLine;        id: &quot;&lt;id&gt;&quot;,&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 

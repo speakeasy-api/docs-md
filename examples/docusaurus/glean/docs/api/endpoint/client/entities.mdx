@@ -6,7 +6,6 @@ sidebar_label: Client Entities
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
-  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -36,7 +35,8 @@ import {
   SectionTitle,
   TabbedSection,
   Tag,
-  TagTitle
+  TagTitle,
+  TryItNow
 } from "@speakeasy-api/docs-md-react";
 import Embedvalues from "../../../../src/components/speakeasy-embeds/loaders/values.tsx";
 import Embedmetadata from "../../../../src/components/speakeasy-embeds/loaders/metadata.tsx";
@@ -97,43 +97,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-listentities+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  const result = await glean.client.entities.list({
-    filter: [
-      {
-        fieldName: "type",
-        values: [
-          {
-            value: "Spreadsheet",
-            relationType: "EQUALS",
-          },
-          {
-            value: "Presentation",
-            relationType: "EQUALS",
-          },
-        ],
-      },
-    ],
-    pageSize: 100,
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.entities.list({&NewLine;    filter: [&NewLine;      {&NewLine;        fieldName: &quot;type&quot;,&NewLine;        values: [&NewLine;          {&NewLine;            value: &quot;Spreadsheet&quot;,&NewLine;            relationType: &quot;EQUALS&quot;,&NewLine;          },&NewLine;          {&NewLine;            value: &quot;Presentation&quot;,&NewLine;            relationType: &quot;EQUALS&quot;,&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;    ],&NewLine;    pageSize: 100,&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 
@@ -2067,31 +2035,11 @@ TypeScript
 
 <SectionContent slot="content" id="operation-people+code-samples+typescript">
 
-<CodeSample>
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-
-const glean = new Glean({
-  apiToken: "GLEAN_API_TOKEN",
-});
-
-async function run() {
-  const result = await glean.client.entities.readPeople({
-    obfuscatedIds: [
-      "abc123",
-      "abc456",
-    ],
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-
-</CodeSample>
+<TryItNow
+  dependencyUrlPrefix="/try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.entities.readPeople({&NewLine;    obfuscatedIds: [&NewLine;      &quot;abc123&quot;,&NewLine;      &quot;abc456&quot;,&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
 
 </SectionContent>
 
