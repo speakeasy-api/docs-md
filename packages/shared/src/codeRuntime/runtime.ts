@@ -1,3 +1,5 @@
+// Generated during prebuild step
+import { WORKER_CODE } from "../../dist/codeRuntime/worker-code.generated.js";
 import { InternalError } from "../util/internalError.ts";
 import { bundleCode } from "./build.ts";
 import type { RuntimeEvents } from "./events.ts";
@@ -22,6 +24,7 @@ export class Runtime {
     "execution:uncaught-rejection": [],
   };
   #worker?: Worker;
+  #workerBlobUrl?: string;
 
   constructor({ dependencyUrlPrefix }: { dependencyUrlPrefix: string }) {
     this.#dependencyUrlPrefix = dependencyUrlPrefix;
@@ -84,8 +87,14 @@ export class Runtime {
     // Run the bundle
     this.#emit({ type: "execution:started" });
 
-    // Create worker from the worker file
-    this.#worker = new Worker(new URL("./run-worker.js", import.meta.url), {
+    // Create worker from embedded code to avoid webpack bundling issues
+    // The worker code is embedded at build time to prevent webpack from
+    // processing it as a separate chunk with __webpack_require__ dependencies
+    const blob = new Blob([WORKER_CODE], {
+      type: "application/javascript",
+    });
+    this.#workerBlobUrl = URL.createObjectURL(blob);
+    this.#worker = new Worker(this.#workerBlobUrl, {
       type: "module",
     });
 
@@ -115,10 +124,15 @@ export class Runtime {
     };
 
     // Handle worker errors
-    this.#worker.onerror = (error) => {
+    this.#worker.onerror = (errorEvent) => {
       this.#emit({
         type: "execution:uncaught-exception",
-        error,
+        error: {
+          message: errorEvent.message,
+          filename: errorEvent.filename,
+          lineno: errorEvent.lineno,
+          colno: errorEvent.colno,
+        },
       });
       this.#worker?.terminate();
     };
@@ -135,6 +149,12 @@ export class Runtime {
   public cancel() {
     this.#worker?.terminate();
     this.#worker = undefined;
+
+    // Clean up blob URL after terminating worker
+    if (this.#workerBlobUrl) {
+      URL.revokeObjectURL(this.#workerBlobUrl);
+      this.#workerBlobUrl = undefined;
+    }
   }
 
   public on(

@@ -6,8 +6,8 @@
   "description": "",
   "exports": {
     ".": {
-      "default": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./config": {
       "default": "./config/index.mjs"
@@ -39,8 +39,12 @@
     "typescript-eslint": "^8.26.1",
     "util": "^0.12.5"
   },
+  "devDependencies": {
+    "tsx": "^4.20.6"
+  },
   "scripts": {
     "clean": "",
+    "prebuild": "tsx scripts/bundle-worker.ts",
     "build": "tsc",
     "prettier": "prettier --config ../../prettier.config.mjs --ignore-path ../../.gitignore \"**/*.{js,jsx,mjs,ts,tsx,mts}\"",
     "format": "npm run prettier -- --write",
