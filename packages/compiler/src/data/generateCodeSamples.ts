@@ -9,7 +9,7 @@ import type {
 import { CurlGenerator } from "curl-generator";
 
 import { getSchemaFromId, getSecurityFromId } from "../content/util.ts";
-import { error, info } from "../logging.ts";
+import { error, info, warn } from "../logging.ts";
 import { getSettings } from "../settings.ts";
 import { assertNever } from "../util/assertNever.ts";
 import { InternalError } from "../util/internalError.ts";
@@ -173,7 +173,7 @@ function generateSchemaExample(
       return null;
     }
     case "any": {
-      // Hey, null counts as any, so do the simple thing
+      // Hey, null counts as "any", so do the simple thing
       return getExplicitValue(schema, null);
     }
     default: {
@@ -268,27 +268,19 @@ function generateCurlCodeSamples(
                   "Bearer YOUR_" + security.name.toUpperCase() + "_HERE";
                 break;
               }
-              case "digest": {
-                // TODO
-                break;
-              }
-              case "cookie": {
-                // TODO
+              default: {
+                warn(
+                  `cURL sample generation does not currently support http/apikey security location ${security.in} and will be ignored`
+                );
                 break;
               }
             }
             break;
           }
-          case "mutualTLS": {
-            // TODO
-            break;
-          }
-          case "oauth2": {
-            // TODO
-            break;
-          }
-          case "openIdConnect": {
-            // TODO
+          default: {
+            warn(
+              `cURL sample generation does not currently support security type ${security.type} and will be ignored`
+            );
             break;
           }
         }
