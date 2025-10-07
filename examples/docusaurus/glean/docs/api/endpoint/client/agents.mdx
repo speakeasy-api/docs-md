@@ -26,9 +26,11 @@ import {
   OperationDescriptionSection,
   OperationParametersSection,
   OperationRequestBodyDescriptionSection,
+  OperationRequestBodyExamplesSection,
   OperationRequestBodySection,
   OperationResponseBodyDescriptionSection,
   OperationResponseBodyDisplayTypeSection,
+  OperationResponseBodyExamplesSection,
   OperationResponseBodySection,
   OperationSummarySection,
   OperationTitleSection,
@@ -192,6 +194,38 @@ The ID of the agent.
 </Section>
 
 </OperationParametersSection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-get_agent+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-get_agent+responses+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-get_agent+responses+200+application-json">
+
+```json
+{
+  "agent_id": "mho4lwzylcozgoc2",
+  "capabilities": {},
+  "name": "HR Policy Agent"
+}
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -646,6 +680,38 @@ The ID of the agent.
 
 </OperationParametersSection>
 
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-get_agent_schemas+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-get_agent_schemas+responses+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-get_agent_schemas+responses+200+application-json">
+
+```json
+{
+  "agent_id": "mho4lwzylcozgoc2",
+  "input_schema": {},
+  "output_schema": {}
+}
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
 <OperationResponseBodySection slot="response-body">
 
 <TabbedSection>
@@ -883,6 +949,28 @@ curl https://{instance}-be.glean.com/rest/api/v1/agents/search \
 
 </OperationCodeSamplesSection>
 
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-search_agents+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
 <OperationRequestBodySection slot="request-body">
 
 <Section>
@@ -938,6 +1026,34 @@ HR Policy Agent
 </Section>
 
 </OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-search_agents+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-search_agents+responses+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-search_agents+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -1255,7 +1371,7 @@ curl https://{instance}-be.glean.com/rest/api/v1/agents/runs/stream \
  -X POST \
  -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
  -d '{
-  "agent_id": "lorem ipsum"
+  "agent_id": "ipsum eiusmod"
 }'
 ```
 
@@ -1266,6 +1382,30 @@ curl https://{instance}-be.glean.com/rest/api/v1/agents/runs/stream \
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-create_and_stream_run+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "agent_id": "ipsum eiusmod"
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -1486,6 +1626,37 @@ The metadata to pass to the agent.
 
 </OperationRequestBodySection>
 
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-create_and_stream_run+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-create_and_stream_run+responses+200+text-event-stream">
+
+200
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-create_and_stream_run+responses+200+text-event-stream"
+>
+
+```json
+"ipsum eiusmod"
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
 <OperationResponseBodySection slot="response-body">
 
 <TabbedSection>
@@ -1584,7 +1755,7 @@ curl https://{instance}-be.glean.com/rest/api/v1/agents/runs/wait \
  -X POST \
  -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
  -d '{
-  "agent_id": "lorem ipsum"
+  "agent_id": "ipsum eiusmod"
 }'
 ```
 
@@ -1595,6 +1766,30 @@ curl https://{instance}-be.glean.com/rest/api/v1/agents/runs/wait \
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-create_and_wait_run+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "agent_id": "ipsum eiusmod"
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -1814,6 +2009,37 @@ The metadata to pass to the agent.
 </Section>
 
 </OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-create_and_wait_run+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-create_and_wait_run+responses+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-create_and_wait_run+responses+200+application-json"
+>
+
+```json
+{}
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 

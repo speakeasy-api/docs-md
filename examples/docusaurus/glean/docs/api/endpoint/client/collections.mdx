@@ -24,9 +24,11 @@ import {
   OperationCodeSamplesSection,
   OperationDescriptionSection,
   OperationRequestBodyDescriptionSection,
+  OperationRequestBodyExamplesSection,
   OperationRequestBodySection,
   OperationResponseBodyDescriptionSection,
   OperationResponseBodyDisplayTypeSection,
+  OperationResponseBodyExamplesSection,
   OperationResponseBodySection,
   OperationSummarySection,
   OperationTitleSection,
@@ -131,7 +133,7 @@ curl https://{instance}-be.glean.com/rest/api/v1/addcollectionitems \
  -X POST \
  -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
  -d '{
-  "collectionId": 10
+  "collectionId": 87
 }'
 ```
 
@@ -142,6 +144,30 @@ curl https://{instance}-be.glean.com/rest/api/v1/addcollectionitems \
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-addcollectionitems+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "collectionId": 87
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -412,6 +438,34 @@ The ID of the Collection to add items to.
 </Section>
 
 </OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-addcollectionitems+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-addcollectionitems+responses+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-addcollectionitems+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -1260,7 +1314,7 @@ curl https://{instance}-be.glean.com/rest/api/v1/createcollection \
  -X POST \
  -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
  -d '{
-  "name": "lorem ipsum"
+  "name": "ipsum eiusmod"
 }'
 ```
 
@@ -1271,6 +1325,30 @@ curl https://{instance}-be.glean.com/rest/api/v1/createcollection \
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-createcollection+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "name": "ipsum eiusmod"
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -2011,6 +2089,60 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
 
 </OperationRequestBodySection>
 
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-createcollection+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-createcollection+responses+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-createcollection+responses+200+application-json">
+
+```json
+{
+  "collection": {
+    "description": "ipsum eiusmod",
+    "id": 87,
+    "name": "consequat do"
+  }
+}
+```
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-createcollection+responses+422+application-json">
+
+422
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-createcollection+responses+422+application-json">
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  },
+  "errorCode": "NAME_EXISTS"
+}
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
 <OperationResponseBodySection slot="response-body">
 
 <TabbedSection>
@@ -2238,7 +2370,7 @@ curl https://{instance}-be.glean.com/rest/api/v1/deletecollection \
  -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
  -d '{
   "ids": [
-    95
+    87
   ]
 }'
 ```
@@ -2250,6 +2382,32 @@ curl https://{instance}-be.glean.com/rest/api/v1/deletecollection \
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-deletecollection+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "ids": [
+    87
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -2326,6 +2484,40 @@ The IDs of the Collections to delete.
 </Section>
 
 </OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-deletecollection+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-deletecollection+responses+422+application-json">
+
+422
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-deletecollection+responses+422+application-json">
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  },
+  "errorCode": "NAME_EXISTS"
+}
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -2529,8 +2721,8 @@ curl https://{instance}-be.glean.com/rest/api/v1/deletecollectionitem \
  -X POST \
  -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
  -d '{
-  "collectionId": 51,
-  "itemId": "lorem ipsum"
+  "collectionId": 87,
+  "itemId": "ipsum eiusmod"
 }'
 ```
 
@@ -2541,6 +2733,31 @@ curl https://{instance}-be.glean.com/rest/api/v1/deletecollectionitem \
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-deletecollectionitem+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "collectionId": 87,
+  "itemId": "ipsum eiusmod"
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -2641,6 +2858,37 @@ The item ID of the CollectionItem to remove from this Collection.
 </Section>
 
 </OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-deletecollectionitem+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-deletecollectionitem+responses+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-deletecollectionitem+responses+200+application-json"
+>
+
+```json
+{}
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -3430,8 +3678,8 @@ curl https://{instance}-be.glean.com/rest/api/v1/editcollection \
  -X POST \
  -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
  -d '{
-  "id": 13,
-  "name": "lorem ipsum"
+  "id": 87,
+  "name": "ipsum eiusmod"
 }'
 ```
 
@@ -3442,6 +3690,31 @@ curl https://{instance}-be.glean.com/rest/api/v1/editcollection \
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-editcollection+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "id": 87,
+  "name": "ipsum eiusmod"
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -4181,6 +4454,59 @@ Thumbnail URL. This can be user provided image and/or from downloaded images hos
 </Section>
 
 </OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-editcollection+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-editcollection+responses+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-editcollection+responses+200+application-json">
+
+```json
+{
+  "description": "ipsum eiusmod",
+  "errorCode": "NAME_EXISTS",
+  "id": 87,
+  "name": "consequat do"
+}
+```
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-editcollection+responses+422+application-json">
+
+422
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-editcollection+responses+422+application-json">
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  },
+  "errorCode": "NAME_EXISTS"
+}
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -7718,8 +8044,8 @@ curl https://{instance}-be.glean.com/rest/api/v1/editcollectionitem \
  -X POST \
  -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
  -d '{
-  "collectionId": 84,
-  "itemId": "lorem ipsum"
+  "collectionId": 87,
+  "itemId": "ipsum eiusmod"
 }'
 ```
 
@@ -7730,6 +8056,31 @@ curl https://{instance}-be.glean.com/rest/api/v1/editcollectionitem \
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-editcollectionitem+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "collectionId": 87,
+  "itemId": "ipsum eiusmod"
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -7878,6 +8229,34 @@ The optional name of the Collection item.
 </Section>
 
 </OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-editcollectionitem+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-editcollectionitem+responses+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-editcollectionitem+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -8664,7 +9043,7 @@ curl https://{instance}-be.glean.com/rest/api/v1/getcollection \
  -X POST \
  -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
  -d '{
-  "id": 36
+  "id": 87
 }'
 ```
 
@@ -8675,6 +9054,30 @@ curl https://{instance}-be.glean.com/rest/api/v1/getcollection \
 </TabbedSection>
 
 </OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-getcollection+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "id": 87
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
 
 <OperationRequestBodySection slot="request-body">
 
@@ -8799,6 +9202,34 @@ Whether or not to include the Collection Items in this Collection. Only request 
 </Section>
 
 </OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-getcollection+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-getcollection+responses+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-getcollection+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
@@ -10375,6 +10806,28 @@ curl https://{instance}-be.glean.com/rest/api/v1/listcollections \
 
 </OperationCodeSamplesSection>
 
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-listcollections+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
 <OperationRequestBodySection slot="request-body">
 
 <Section>
@@ -10475,6 +10928,42 @@ Whether to include the editor roles with the listed Collections.
 </Section>
 
 </OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<TabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-listcollections+responses\}
+
+</SectionTitle>
+
+<SectionTab slot="tab" id="operation-listcollections+responses+200+application-json">
+
+200
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-listcollections+responses+200+application-json">
+
+```json
+{
+  "collections": [
+    {
+      "description": "ipsum eiusmod",
+      "id": 87,
+      "name": "consequat do"
+    }
+  ]
+}
+```
+
+</SectionContent>
+
+</TabbedSection>
+
+</OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
