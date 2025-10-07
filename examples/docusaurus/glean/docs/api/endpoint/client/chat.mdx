@@ -6,6 +6,7 @@ sidebar_label: Client Chat
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -99,6 +100,31 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.chat.create({&NewLine;    messages: [&NewLine;      {&NewLine;        fragments: [&NewLine;          {&NewLine;            text: &quot;What are the company holidays this year?&quot;,&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-chat+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-chat+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/chat \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "messages": [
+    {}
+  ]
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -1899,6 +1925,26 @@ TypeScript
 
 </SectionContent>
 
+<SectionTab slot="tab" id="operation-deleteallchats+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-deleteallchats+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/deleteallchats \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE'
+```
+
+</CodeSample>
+
+</SectionContent>
+
 </TabbedSection>
 
 </OperationCodeSamplesSection>
@@ -1988,6 +2034,31 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.client.chat.delete({&NewLine;    ids: [],&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-deletechats+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-deletechats+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/deletechats \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "ids": [
+    "lorem ipsum"
+  ]
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -2126,6 +2197,29 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.chat.retrieve({&NewLine;    id: &quot;&lt;id&gt;&quot;,&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-getchat+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-getchat+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/getchat \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "id": "lorem ipsum"
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -2404,6 +2498,26 @@ TypeScript
 
 </SectionContent>
 
+<SectionTab slot="tab" id="operation-listchats+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-listchats+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/listchats \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE'
+```
+
+</CodeSample>
+
+</SectionContent>
+
 </TabbedSection>
 
 </OperationCodeSamplesSection>
@@ -2633,6 +2747,29 @@ TypeScript
 
 </SectionContent>
 
+<SectionTab slot="tab" id="operation-getchatapplication+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-getchatapplication+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/getchatapplication \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "id": "lorem ipsum"
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
 </TabbedSection>
 
 </OperationCodeSamplesSection>
@@ -2820,6 +2957,34 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;import { openAsBlob } from &quot;node:fs&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.chat.uploadFiles({&NewLine;    files: [&NewLine;      await openAsBlob(&quot;example.file&quot;),&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-uploadchatfiles+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-uploadchatfiles+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/uploadchatfiles \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "files": [
+    {
+      "content": "lorem ipsum",
+      "fileName": "lorem ipsum"
+    }
+  ]
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -3253,6 +3418,31 @@ TypeScript
 
 </SectionContent>
 
+<SectionTab slot="tab" id="operation-getchatfiles+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-getchatfiles+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/getchatfiles \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "fileIds": [
+    "lorem ipsum"
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
 </TabbedSection>
 
 </OperationCodeSamplesSection>
@@ -3644,6 +3834,31 @@ TypeScript
 
 </SectionContent>
 
+<SectionTab slot="tab" id="operation-deletechatfiles+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-deletechatfiles+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/deletechatfiles \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "fileIds": [
+    "lorem ipsum"
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
 </TabbedSection>
 
 </OperationCodeSamplesSection>
@@ -3779,6 +3994,31 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.chat.createStream({&NewLine;    messages: [&NewLine;      {&NewLine;        fragments: [&NewLine;          {&NewLine;            text: &quot;What are the company holidays this year?&quot;,&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-chat_stream+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-chat_stream+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/chat#stream \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "messages": [
+    {}
+  ]
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 

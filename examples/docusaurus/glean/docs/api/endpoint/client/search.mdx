@@ -6,6 +6,7 @@ sidebar_label: Client Search
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -143,6 +144,29 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.search.queryAsAdmin({&NewLine;    trackingToken: &quot;trackingToken&quot;,&NewLine;    pageSize: 10,&NewLine;    query: &quot;vacation policy&quot;,&NewLine;    requestOptions: {&NewLine;      facetFilters: [&NewLine;        {&NewLine;          fieldName: &quot;type&quot;,&NewLine;          values: [&NewLine;            {&NewLine;              value: &quot;article&quot;,&NewLine;              relationType: &quot;EQUALS&quot;,&NewLine;            },&NewLine;            {&NewLine;              value: &quot;document&quot;,&NewLine;              relationType: &quot;EQUALS&quot;,&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;        {&NewLine;          fieldName: &quot;department&quot;,&NewLine;          values: [&NewLine;            {&NewLine;              value: &quot;engineering&quot;,&NewLine;              relationType: &quot;EQUALS&quot;,&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;      ],&NewLine;      facetBucketSize: 421489,&NewLine;    },&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-adminsearch+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-adminsearch+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/adminsearch \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "query": "vacation policy"
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -4986,6 +5010,27 @@ TypeScript
 
 </SectionContent>
 
+<SectionTab slot="tab" id="operation-autocomplete+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-autocomplete+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/autocomplete \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
 </TabbedSection>
 
 </OperationCodeSamplesSection>
@@ -6294,6 +6339,27 @@ TypeScript
 
 </SectionContent>
 
+<SectionTab slot="tab" id="operation-feed+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-feed+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/feed \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
 </TabbedSection>
 
 </OperationCodeSamplesSection>
@@ -7275,6 +7341,27 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.search.recommendations({&NewLine;    sourceDocument: {&NewLine;      containerDocument: {&NewLine;        metadata: {&NewLine;          datasource: &quot;datasource&quot;,&NewLine;          objectType: &quot;Feature Request&quot;,&NewLine;          container: &quot;container&quot;,&NewLine;          parentId: &quot;JIRA_EN-1337&quot;,&NewLine;          mimeType: &quot;mimeType&quot;,&NewLine;          documentId: &quot;documentId&quot;,&NewLine;          createTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;          updateTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;          author: {&NewLine;            name: &quot;name&quot;,&NewLine;            obfuscatedId: &quot;&lt;id&gt;&quot;,&NewLine;          },&NewLine;          components: [&NewLine;            &quot;Backend&quot;,&NewLine;            &quot;Networking&quot;,&NewLine;          ],&NewLine;          status: &quot;[\&quot;Done\&quot;]&quot;,&NewLine;          customData: {&NewLine;            &quot;someCustomField&quot;: {},&NewLine;          },&NewLine;        },&NewLine;      },&NewLine;      parentDocument: {&NewLine;        metadata: {&NewLine;          datasource: &quot;datasource&quot;,&NewLine;          objectType: &quot;Feature Request&quot;,&NewLine;          container: &quot;container&quot;,&NewLine;          parentId: &quot;JIRA_EN-1337&quot;,&NewLine;          mimeType: &quot;mimeType&quot;,&NewLine;          documentId: &quot;documentId&quot;,&NewLine;          createTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;          updateTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;          author: {&NewLine;            name: &quot;name&quot;,&NewLine;            obfuscatedId: &quot;&lt;id&gt;&quot;,&NewLine;          },&NewLine;          components: [&NewLine;            &quot;Backend&quot;,&NewLine;            &quot;Networking&quot;,&NewLine;          ],&NewLine;          status: &quot;[\&quot;Done\&quot;]&quot;,&NewLine;          customData: {&NewLine;            &quot;someCustomField&quot;: {},&NewLine;          },&NewLine;        },&NewLine;      },&NewLine;      metadata: {&NewLine;        datasource: &quot;datasource&quot;,&NewLine;        objectType: &quot;Feature Request&quot;,&NewLine;        container: &quot;container&quot;,&NewLine;        parentId: &quot;JIRA_EN-1337&quot;,&NewLine;        mimeType: &quot;mimeType&quot;,&NewLine;        documentId: &quot;documentId&quot;,&NewLine;        createTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        updateTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        author: {&NewLine;          name: &quot;name&quot;,&NewLine;          obfuscatedId: &quot;abc123&quot;,&NewLine;        },&NewLine;        components: [&NewLine;          &quot;Backend&quot;,&NewLine;          &quot;Networking&quot;,&NewLine;        ],&NewLine;        status: &quot;[\&quot;Done\&quot;]&quot;,&NewLine;        customData: {&NewLine;          &quot;someCustomField&quot;: {},&NewLine;        },&NewLine;      },&NewLine;    },&NewLine;    pageSize: 100,&NewLine;    maxSnippetSize: 400,&NewLine;    requestOptions: {&NewLine;      facetFilterSets: [&NewLine;        {&NewLine;          filters: [&NewLine;            {&NewLine;              fieldName: &quot;type&quot;,&NewLine;              values: [&NewLine;                {&NewLine;                  value: &quot;Spreadsheet&quot;,&NewLine;                  relationType: &quot;EQUALS&quot;,&NewLine;                },&NewLine;                {&NewLine;                  value: &quot;Presentation&quot;,&NewLine;                  relationType: &quot;EQUALS&quot;,&NewLine;                },&NewLine;              ],&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;        {&NewLine;          filters: [&NewLine;            {&NewLine;              fieldName: &quot;type&quot;,&NewLine;              values: [&NewLine;                {&NewLine;                  value: &quot;Spreadsheet&quot;,&NewLine;                  relationType: &quot;EQUALS&quot;,&NewLine;                },&NewLine;                {&NewLine;                  value: &quot;Presentation&quot;,&NewLine;                  relationType: &quot;EQUALS&quot;,&NewLine;                },&NewLine;              ],&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;        {&NewLine;          filters: [&NewLine;            {&NewLine;              fieldName: &quot;type&quot;,&NewLine;              values: [&NewLine;                {&NewLine;                  value: &quot;Spreadsheet&quot;,&NewLine;                  relationType: &quot;EQUALS&quot;,&NewLine;                },&NewLine;                {&NewLine;                  value: &quot;Presentation&quot;,&NewLine;                  relationType: &quot;EQUALS&quot;,&NewLine;                },&NewLine;              ],&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;      ],&NewLine;      context: {&NewLine;        containerDocument: {&NewLine;          metadata: {&NewLine;            datasource: &quot;datasource&quot;,&NewLine;            objectType: &quot;Feature Request&quot;,&NewLine;            container: &quot;container&quot;,&NewLine;            parentId: &quot;JIRA_EN-1337&quot;,&NewLine;            mimeType: &quot;mimeType&quot;,&NewLine;            documentId: &quot;documentId&quot;,&NewLine;            createTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;            updateTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;            author: {&NewLine;              name: &quot;name&quot;,&NewLine;              obfuscatedId: &quot;&lt;id&gt;&quot;,&NewLine;            },&NewLine;            components: [&NewLine;              &quot;Backend&quot;,&NewLine;              &quot;Networking&quot;,&NewLine;            ],&NewLine;            status: &quot;[\&quot;Done\&quot;]&quot;,&NewLine;            customData: {&NewLine;              &quot;someCustomField&quot;: {},&NewLine;            },&NewLine;          },&NewLine;        },&NewLine;        parentDocument: {&NewLine;          metadata: {&NewLine;            datasource: &quot;datasource&quot;,&NewLine;            objectType: &quot;Feature Request&quot;,&NewLine;            container: &quot;container&quot;,&NewLine;            parentId: &quot;JIRA_EN-1337&quot;,&NewLine;            mimeType: &quot;mimeType&quot;,&NewLine;            documentId: &quot;documentId&quot;,&NewLine;            createTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;            updateTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;            author: {&NewLine;              name: &quot;name&quot;,&NewLine;              obfuscatedId: &quot;&lt;id&gt;&quot;,&NewLine;            },&NewLine;            components: [&NewLine;              &quot;Backend&quot;,&NewLine;              &quot;Networking&quot;,&NewLine;            ],&NewLine;            status: &quot;[\&quot;Done\&quot;]&quot;,&NewLine;            customData: {&NewLine;              &quot;someCustomField&quot;: {},&NewLine;            },&NewLine;          },&NewLine;        },&NewLine;        metadata: {&NewLine;          datasource: &quot;datasource&quot;,&NewLine;          objectType: &quot;Feature Request&quot;,&NewLine;          container: &quot;container&quot;,&NewLine;          parentId: &quot;JIRA_EN-1337&quot;,&NewLine;          mimeType: &quot;mimeType&quot;,&NewLine;          documentId: &quot;documentId&quot;,&NewLine;          createTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;          updateTime: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;          author: {&NewLine;            name: &quot;name&quot;,&NewLine;            obfuscatedId: &quot;abc123&quot;,&NewLine;          },&NewLine;          components: [&NewLine;            &quot;Backend&quot;,&NewLine;            &quot;Networking&quot;,&NewLine;          ],&NewLine;          status: &quot;[\&quot;Done\&quot;]&quot;,&NewLine;          customData: {&NewLine;            &quot;someCustomField&quot;: {},&NewLine;          },&NewLine;        },&NewLine;      },&NewLine;    },&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-recommendations+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-recommendations+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/recommendations \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{}'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -10122,6 +10209,29 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.search.query({&NewLine;    trackingToken: &quot;trackingToken&quot;,&NewLine;    pageSize: 10,&NewLine;    query: &quot;vacation policy&quot;,&NewLine;    requestOptions: {&NewLine;      facetFilters: [&NewLine;        {&NewLine;          fieldName: &quot;type&quot;,&NewLine;          values: [&NewLine;            {&NewLine;              value: &quot;article&quot;,&NewLine;              relationType: &quot;EQUALS&quot;,&NewLine;            },&NewLine;            {&NewLine;              value: &quot;document&quot;,&NewLine;              relationType: &quot;EQUALS&quot;,&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;        {&NewLine;          fieldName: &quot;department&quot;,&NewLine;          values: [&NewLine;            {&NewLine;              value: &quot;engineering&quot;,&NewLine;              relationType: &quot;EQUALS&quot;,&NewLine;            },&NewLine;          ],&NewLine;        },&NewLine;      ],&NewLine;      facetBucketSize: 400611,&NewLine;    },&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-search+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-search+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/search \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "query": "vacation policy"
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 

@@ -6,6 +6,7 @@ sidebar_label: Client Activity
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -87,6 +88,35 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.client.activity.report({&NewLine;    events: [&NewLine;      {&NewLine;        action: &quot;HISTORICAL_VIEW&quot;,&NewLine;        timestamp: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        url: &quot;https://example.com/&quot;,&NewLine;      },&NewLine;      {&NewLine;        action: &quot;SEARCH&quot;,&NewLine;        params: {&NewLine;          query: &quot;query&quot;,&NewLine;        },&NewLine;        timestamp: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        url: &quot;https://example.com/search?q=query&quot;,&NewLine;      },&NewLine;      {&NewLine;        action: &quot;VIEW&quot;,&NewLine;        params: {&NewLine;          duration: 20,&NewLine;          referrer: &quot;https://example.com/document&quot;,&NewLine;        },&NewLine;        timestamp: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        url: &quot;https://example.com/&quot;,&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-activity+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-activity+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/activity \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "events": [
+    {
+      "action": "VIEW",
+      "timestamp": "2025-10-07T04:35:26.299Z",
+      "url": "lorem ipsum"
+    }
+  ]
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -327,6 +357,32 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.client.activity.feedback({&NewLine;    trackingTokens: [&NewLine;      &quot;trackingTokens&quot;,&NewLine;    ],&NewLine;    event: &quot;VIEW&quot;,&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-feedback+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-feedback+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/feedback \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "event": "CLICK",
+  "trackingTokens": [
+    "lorem ipsum"
+  ]
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 

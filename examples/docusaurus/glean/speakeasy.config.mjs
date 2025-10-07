@@ -17,5 +17,8 @@ export default {
         urlPrefix: "/try-it-now",
       },
     },
+    {
+      language: "curl",
+    },
   ],
 };

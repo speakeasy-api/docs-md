@@ -6,6 +6,7 @@ sidebar_label: Client Tools
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -92,6 +93,26 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.tools.list();&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-get_rest_api_v1_tools_list+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-get_rest_api_v1_tools_list+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/tools/list \
+ -X GET \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -405,6 +426,35 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.tools.run({&NewLine;    name: &quot;&lt;value&gt;&quot;,&NewLine;    parameters: {&NewLine;      &quot;key&quot;: {&NewLine;        name: &quot;&lt;value&gt;&quot;,&NewLine;        value: &quot;&lt;value&gt;&quot;,&NewLine;      },&NewLine;    },&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-post_rest_api_v1_tools_call+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-post_rest_api_v1_tools_call+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/tools/call \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "name": "lorem ipsum",
+  "parameters": [
+    {
+      "name": "lorem ipsum",
+      "value": "lorem ipsum"
+    }
+  ]
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 

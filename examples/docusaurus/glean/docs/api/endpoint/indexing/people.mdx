@@ -6,6 +6,7 @@ sidebar_label: Indexing People
 import "@speakeasy-api/docs-md-react/docusaurus.css";
 
 import {
+  CodeSample,
   Embed,
   EmbedProvider,
   EmbedTrigger,
@@ -108,6 +109,35 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.indexing.people.debug({&NewLine;    email: &quot;u1@foo.com&quot;,&NewLine;  }, &quot;&lt;value&gt;&quot;);&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_debug_datasource_user+code-samples+curl"
+>
+
+cURL
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_debug_datasource_user+code-samples+curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/debug/{datasource}/user \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "email": "u1@foo.com"
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -554,6 +584,29 @@ TypeScript
 
 </SectionContent>
 
+<SectionTab slot="tab" id="operation-post_api_index_v1_getusercount+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-post_api_index_v1_getusercount+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/getusercount \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "datasource": "lorem ipsum"
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
 </TabbedSection>
 
 </OperationCodeSamplesSection>
@@ -719,6 +772,32 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.people.index({&NewLine;    employee: {&NewLine;      email: &quot;Jerrold_Hermann@hotmail.com&quot;,&NewLine;      department: &quot;&lt;value&gt;&quot;,&NewLine;      datasourceProfiles: [&NewLine;        {&NewLine;          datasource: &quot;github&quot;,&NewLine;          handle: &quot;&lt;value&gt;&quot;,&NewLine;        },&NewLine;      ],&NewLine;    },&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-post_api_index_v1_indexemployee+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-post_api_index_v1_indexemployee+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/indexemployee \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "employee": {
+    "department": "lorem ipsum",
+    "email": "lorem ipsum"
+  }
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -1649,6 +1728,41 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.people.bulkIndex({&NewLine;    uploadId: &quot;&lt;id&gt;&quot;,&NewLine;    employees: [&NewLine;      {&NewLine;        email: &quot;Robin.Stoltenberg@yahoo.com&quot;,&NewLine;        department: &quot;&lt;value&gt;&quot;,&NewLine;        datasourceProfiles: [&NewLine;          {&NewLine;            datasource: &quot;github&quot;,&NewLine;            handle: &quot;&lt;value&gt;&quot;,&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;      {&NewLine;        email: &quot;Robin.Stoltenberg@yahoo.com&quot;,&NewLine;        department: &quot;&lt;value&gt;&quot;,&NewLine;        datasourceProfiles: [&NewLine;          {&NewLine;            datasource: &quot;github&quot;,&NewLine;            handle: &quot;&lt;value&gt;&quot;,&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;      {&NewLine;        email: &quot;Robin.Stoltenberg@yahoo.com&quot;,&NewLine;        department: &quot;&lt;value&gt;&quot;,&NewLine;        datasourceProfiles: [&NewLine;          {&NewLine;            datasource: &quot;github&quot;,&NewLine;            handle: &quot;&lt;value&gt;&quot;,&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexemployees+code-samples+curl"
+>
+
+cURL
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexemployees+code-samples+curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/bulkindexemployees \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "employees": [
+    {
+      "department": "lorem ipsum",
+      "email": "lorem ipsum"
+    }
+  ],
+  "uploadId": "lorem ipsum"
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -2679,6 +2793,32 @@ TypeScript
 
 </SectionContent>
 
+<SectionTab
+  slot="tab"
+  id="operation-post_api_index_v1_processallemployeesandteams+code-samples+curl"
+>
+
+cURL
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_processallemployeesandteams+code-samples+curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/processallemployeesandteams \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE'
+```
+
+</CodeSample>
+
+</SectionContent>
+
 </TabbedSection>
 
 </OperationCodeSamplesSection>
@@ -2728,6 +2868,32 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.people.delete({&NewLine;    employeeEmail: &quot;&lt;value&gt;&quot;,&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-post_api_index_v1_deleteemployee+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_deleteemployee+code-samples+curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/deleteemployee \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "employeeEmail": "lorem ipsum"
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -2853,6 +3019,37 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.people.indexTeam({&NewLine;    team: {&NewLine;      id: &quot;&lt;id&gt;&quot;,&NewLine;      name: &quot;&lt;value&gt;&quot;,&NewLine;      datasourceProfiles: [&NewLine;        {&NewLine;          datasource: &quot;github&quot;,&NewLine;          handle: &quot;&lt;value&gt;&quot;,&NewLine;        },&NewLine;        {&NewLine;          datasource: &quot;github&quot;,&NewLine;          handle: &quot;&lt;value&gt;&quot;,&NewLine;        },&NewLine;        {&NewLine;          datasource: &quot;github&quot;,&NewLine;          handle: &quot;&lt;value&gt;&quot;,&NewLine;        },&NewLine;      ],&NewLine;      members: [&NewLine;        {&NewLine;          email: &quot;Nasir.Hilll73@hotmail.com&quot;,&NewLine;        },&NewLine;      ],&NewLine;    },&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-post_api_index_v1_indexteam+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-post_api_index_v1_indexteam+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/indexteam \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "team": {
+    "id": "lorem ipsum",
+    "members": [
+      {
+        "email": "lorem ipsum"
+      }
+    ],
+    "name": "lorem ipsum"
+  }
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 
@@ -3336,6 +3533,29 @@ TypeScript
 
 </SectionContent>
 
+<SectionTab slot="tab" id="operation-post_api_index_v1_deleteteam+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent slot="content" id="operation-post_api_index_v1_deleteteam+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/deleteteam \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "id": "lorem ipsum"
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
 </TabbedSection>
 
 </OperationCodeSamplesSection>
@@ -3437,6 +3657,43 @@ TypeScript
   defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.people.bulkIndexTeams({&NewLine;    uploadId: &quot;&lt;id&gt;&quot;,&NewLine;    teams: [&NewLine;      {&NewLine;        id: &quot;&lt;id&gt;&quot;,&NewLine;        name: &quot;&lt;value&gt;&quot;,&NewLine;        datasourceProfiles: [&NewLine;          {&NewLine;            datasource: &quot;github&quot;,&NewLine;            handle: &quot;&lt;value&gt;&quot;,&NewLine;          },&NewLine;          {&NewLine;            datasource: &quot;github&quot;,&NewLine;            handle: &quot;&lt;value&gt;&quot;,&NewLine;          },&NewLine;        ],&NewLine;        members: [],&NewLine;      },&NewLine;      {&NewLine;        id: &quot;&lt;id&gt;&quot;,&NewLine;        name: &quot;&lt;value&gt;&quot;,&NewLine;        datasourceProfiles: [&NewLine;          {&NewLine;            datasource: &quot;github&quot;,&NewLine;            handle: &quot;&lt;value&gt;&quot;,&NewLine;          },&NewLine;          {&NewLine;            datasource: &quot;github&quot;,&NewLine;            handle: &quot;&lt;value&gt;&quot;,&NewLine;          },&NewLine;        ],&NewLine;        members: [],&NewLine;      },&NewLine;      {&NewLine;        id: &quot;&lt;id&gt;&quot;,&NewLine;        name: &quot;&lt;value&gt;&quot;,&NewLine;        datasourceProfiles: [&NewLine;          {&NewLine;            datasource: &quot;github&quot;,&NewLine;            handle: &quot;&lt;value&gt;&quot;,&NewLine;          },&NewLine;          {&NewLine;            datasource: &quot;github&quot;,&NewLine;            handle: &quot;&lt;value&gt;&quot;,&NewLine;          },&NewLine;        ],&NewLine;        members: [],&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
   packageName="@gleanwork/api-client"
 />
+
+</SectionContent>
+
+<SectionTab slot="tab" id="operation-post_api_index_v1_bulkindexteams+code-samples+curl">
+
+cURL
+
+</SectionTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexteams+code-samples+curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/bulkindexteams \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "teams": [
+    {
+      "id": "lorem ipsum",
+      "members": [
+        {
+          "email": "lorem ipsum"
+        }
+      ],
+      "name": "lorem ipsum"
+    }
+  ],
+  "uploadId": "lorem ipsum"
+}'
+```
+
+</CodeSample>
 
 </SectionContent>
 

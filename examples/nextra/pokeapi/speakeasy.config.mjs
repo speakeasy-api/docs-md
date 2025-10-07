@@ -4,4 +4,9 @@ export default {
     pageOutDir: "./src/app/api",
     framework: "nextra",
   },
+  codeSamples: [
+    {
+      language: "curl",
+    },
+  ],
 };

@@ -1,4 +1,5 @@
 const languageToPrettyLanguage: Record<string, string> = {
+  curl: "cURL",
   typescript: "TypeScript",
   go: "Go",
   java: "Java",

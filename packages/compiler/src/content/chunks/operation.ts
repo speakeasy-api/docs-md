@@ -49,8 +49,6 @@ function renderCodeSamples(
               dependencyUrlPrefix: codeSample.tryItNow.urlPrefix,
               defaultValue: snippet.code,
             });
-          } else if (codeSample.language === "curl" && codeSample.tryItNow) {
-            // TODO: Implement curl try it now
           } else {
             createCodeSampleEntry({
               language: language,
