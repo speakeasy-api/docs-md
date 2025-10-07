@@ -1,12 +1,11 @@
-import ava from "eslint-plugin-ava";
 import globals from "globals";
 
-import { getBaseESLintConfig } from "./base.mjs";
+import { getBaseESLintConfig } from "./base.ts";
+import type { BaseESLintConfigOptions } from "./types.ts";
 
-export function getNodeESLintConfig(options) {
+export function getNodeESLintConfig(options: BaseESLintConfigOptions) {
   return [
     ...getBaseESLintConfig(options),
-    ava.configs["flat/recommended"],
     {
       languageOptions: {
         globals: globals.node,

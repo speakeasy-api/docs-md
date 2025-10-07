@@ -2,9 +2,10 @@ import pluginReact from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import globals from "globals";
 
-import { getBaseESLintConfig } from "./base.mjs";
+import { getBaseESLintConfig } from "./base.ts";
+import type { BaseESLintConfigOptions } from "./types.ts";
 
-export function getReactEslintConfig(options) {
+export function getReactEslintConfig(options: BaseESLintConfigOptions) {
   return [
     ...getBaseESLintConfig(options),
     pluginReact.configs.flat.recommended,

@@ -1,5 +1,6 @@
 import { includeIgnoreFile } from "@eslint/compat";
 import eslint from "@eslint/js";
+import type { Linter } from "eslint";
 import { globalIgnores } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 import { all } from "eslint-plugin-fast-import";
@@ -7,18 +8,22 @@ import simpleImportSort from "eslint-plugin-simple-import-sort";
 import unusedImports from "eslint-plugin-unused-imports";
 import tseslint from "typescript-eslint";
 
+import type { BaseESLintConfigOptions } from "./types.ts";
+
 export function getBaseESLintConfig({
   gitignorePaths,
   rootDir,
   entryPoints,
   ignores,
   restrictedImports,
-}) {
+}: BaseESLintConfigOptions): Linter.Config[] {
   if (!Array.isArray(gitignorePaths)) {
     gitignorePaths = [gitignorePaths];
   }
-  return [
-    ...gitignorePaths.map(includeIgnoreFile),
+  const config: Linter.Config[] = [
+    ...gitignorePaths.map((ignoreFilePath) =>
+      includeIgnoreFile(ignoreFilePath)
+    ),
     eslint.configs.recommended,
     eslintConfigPrettier,
     ...(ignores ? [globalIgnores(ignores)] : []),
@@ -35,21 +40,6 @@ export function getBaseESLintConfig({
         ],
       },
     },
-    ...(restrictedImports
-      ? [
-          {
-            files: ["**/*.{ts,tsx,mts}"],
-            rules: {
-              "fast-import/no-restricted-imports": [
-                "error",
-                {
-                  rules: restrictedImports,
-                },
-              ],
-            },
-          },
-        ]
-      : undefined),
     ...tseslint.configs.recommendedTypeChecked,
     ...tseslint.configs.stylisticTypeChecked,
     {
@@ -107,4 +97,20 @@ export function getBaseESLintConfig({
       },
     },
   ];
+
+  if (restrictedImports) {
+    config.push({
+      files: ["**/*.{ts,tsx,mts}"],
+      rules: {
+        "fast-import/no-restricted-imports": [
+          "error",
+          {
+            rules: restrictedImports,
+          },
+        ],
+      },
+    });
+  }
+
+  return config;
 }
