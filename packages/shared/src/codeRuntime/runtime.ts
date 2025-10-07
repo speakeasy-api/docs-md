@@ -31,18 +31,24 @@ export class Runtime {
 
   public run(code: string) {
     // Hide the promise, since it doesn't indicate when run finishes (we never
-    // // know, cause Halting Problem plus lack of process.exit in samples)
+    // know, cause Halting Problem plus lack of process.exit in samples)
     void this.#run(code);
   }
 
   async #run(code: string) {
-    if (!dependencyBundle) {
-      const results = await fetch(this.#dependencyUrlPrefix + "/deps.js");
-      dependencyBundle = await results.text();
-    }
-    if (!workerCode) {
-      const results = await fetch(this.#dependencyUrlPrefix + "/worker.js");
-      workerCode = await results.text();
+    if (!dependencyBundle || !workerCode) {
+      const [deps, worker] = await Promise.all([
+        dependencyBundle
+          ? Promise.resolve(dependencyBundle)
+          : fetch(this.#dependencyUrlPrefix + "/deps.js").then((r) => r.text()),
+        workerCode
+          ? Promise.resolve(workerCode)
+          : fetch(this.#dependencyUrlPrefix + "/worker.js").then((r) =>
+              r.text()
+            ),
+      ]);
+      dependencyBundle = deps;
+      workerCode = worker;
     }
     if (this.#worker) {
       this.#worker.terminate();
@@ -95,7 +101,8 @@ export class Runtime {
     this.#emit({ type: "execution:started" });
     const blob = new Blob([workerCode], { type: "application/javascript" });
     const url = URL.createObjectURL(blob);
-    this.#worker = new Worker(url, {
+    this.#workerBlobUrl = url.toString();
+    this.#worker = new Worker(this.#workerBlobUrl, {
       type: "module",
     });
 
