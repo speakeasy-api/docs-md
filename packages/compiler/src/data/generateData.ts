@@ -8,6 +8,7 @@ import { getSettings } from "../settings.ts";
 import {
   type CodeSamples,
   generateCodeSamples,
+  generateRequestResponseExamples,
 } from "./generateCodeSamples.ts";
 import { generateDocsData } from "./generateDocsData.ts";
 import { generateTryItNowBundle } from "./generateTryItNowBundle.ts";
@@ -24,6 +25,10 @@ export async function generateData({
   const data = await generateDocsData(specContents);
   site.setDocsData(data);
 
+  // Generate the request/response examples
+  generateRequestResponseExamples(data);
+
+  // Generate the code samples
   let docsCodeSamples: CodeSamples = {};
   const { codeSamples } = getSettings();
   if (codeSamples) {

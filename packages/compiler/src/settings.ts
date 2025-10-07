@@ -98,8 +98,10 @@ export const settingsSchema = z.strictObject({
         elementIdSeparator: z.string().optional(),
       })
     ),
-    aboutPage: z.boolean().default(true),
-    singlePage: z.boolean().default(false),
+    aboutPage: z.boolean().optional().default(true),
+    singlePage: z.boolean().optional().default(false),
+    generateRequestBodyExamples: z.boolean().optional().default(true),
+    generateResponseExamples: z.boolean().optional().default(true),
   }),
   display: z
     .strictObject({

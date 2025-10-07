@@ -20,11 +20,84 @@ const CODE_SAMPLE_HEADER =
 const CODE_SAMPLE_START = /^```(.*)$/;
 const CODE_SAMPLE_END = /^```$/;
 
+// We use a fixed list of sample strings we iterate through deterministically
+// so that docs builds remain idempotent
+let sampleStringIndex = 0;
+const sampleStrings = [
+  "cillum culpa aute minim",
+  "ipsum eiusmod",
+  "consequat do",
+  "reprehenderit ut dolore",
+  "occaecat dolor sit",
+  "nostrud",
+  "aute aliqua aute commodo",
+  "irure",
+  "dolor",
+  "sunt",
+  "nisi minim commodo irure minim",
+  "do do sint mollit",
+  "occaecat",
+  "fugiat",
+  "non nisi proident Lorem",
+  "nostrud anim",
+  "exercitation aliqua sint",
+  "ut sint",
+  "dolor voluptate eu",
+  "quis minim non magna quis",
+  "et voluptate",
+  "commodo labore aliqua ad",
+  "elit culpa est non",
+  "dolore aliqua eu",
+  "proident",
+  "anim eiusmod labore",
+  "ullamco",
+  "voluptate aliquip",
+  "et excepteur dolore commodo id",
+  "in consectetur excepteur sint",
+  "sunt amet",
+  "duis ea",
+  "nisi laborum",
+  "cupidatat nulla velit",
+  "magna est commodo officia",
+  "velit qui velit ullamco",
+  "ad do deserunt exercitation",
+  "quis deserunt anim",
+  "velit laboris fugiat",
+  "ad occaecat elit proident ea",
+];
+
+let sampleNumberIndex = 0;
+const sampleNumbers = [
+  23, 87, 14, 56, 91, 32, 78, 5, 69, 41, 18, 74, 29, 85, 62, 7, 93, 36, 51, 80,
+  13, 47, 25, 89, 64, 2, 71, 38, 55, 92, 16, 49, 27, 84, 61, 9, 76, 33, 58, 97,
+];
+
 type CodeSample = {
   operationId: string;
   language: string;
   code: string;
 };
+
+function initRandomSamples() {
+  sampleStringIndex = 0;
+  sampleNumberIndex = 0;
+}
+
+function getRandomString() {
+  sampleStringIndex++;
+  if (sampleStringIndex >= sampleStrings.length) {
+    sampleStringIndex = 0;
+  }
+  return sampleStrings[sampleStringIndex];
+}
+
+function getRandomNumber() {
+  sampleNumberIndex++;
+  if (sampleNumberIndex >= sampleNumbers.length) {
+    sampleNumberIndex = 0;
+  }
+  return sampleNumbers[sampleNumberIndex];
+}
 
 // Map from operation ID to language to code sample
 export type CodeSamples = Record<
@@ -152,7 +225,7 @@ function generateSchemaExample(
     }
     case "binary":
     case "string": {
-      return getExplicitValue(schema, "lorem ipsum");
+      return getExplicitValue(schema, getRandomString());
     }
     case "boolean": {
       return getExplicitValue(schema, false);
@@ -163,11 +236,11 @@ function generateSchemaExample(
     case "int32":
     case "float32":
     case "decimal": {
-      return getExplicitValue(schema, Math.round(Math.random() * 100));
+      return getExplicitValue(schema, getRandomNumber());
     }
     case "date":
     case "date-time": {
-      return getExplicitValue(schema, new Date().toISOString());
+      return getExplicitValue(schema, "2025-10-07T20:56:01.974Z");
     }
     case "null": {
       return null;
@@ -294,6 +367,8 @@ function generateCurlCodeSamples(
         chunk.chunkData.requestBody.contentChunkId,
         docsData
       );
+      // Reset the sample word index for each request body
+      initRandomSamples();
       body = JSON.stringify(
         generateSchemaExample(requestBodyChunk.chunkData.value, docsData),
         null,
@@ -323,6 +398,60 @@ function generateCurlCodeSamples(
       operationId: chunk.chunkData.operationId,
       language: "curl",
     };
+  }
+}
+
+export function generateRequestResponseExamples(docsData: Map<string, Chunk>) {
+  const { generateRequestBodyExamples, generateResponseExamples } =
+    getSettings().output;
+  for (const chunk of docsData.values()) {
+    if (chunk.chunkType !== "operation") {
+      continue;
+    }
+
+    // Create the request body example if one doesn't currently exist
+    if (
+      chunk.chunkData.requestBody &&
+      !chunk.chunkData.requestBody.examples.length &&
+      generateRequestBodyExamples
+    ) {
+      // Reset the sample word index for each request body
+      initRandomSamples();
+      chunk.chunkData.requestBody.examples.push({
+        name: "Example",
+        value: JSON.stringify(
+          generateSchemaExample(
+            getSchemaFromId(
+              chunk.chunkData.requestBody.contentChunkId,
+              docsData
+            ).chunkData.value,
+            docsData
+          ),
+          null,
+          "  "
+        ),
+      });
+    }
+
+    // Create the response examples if they don't currently exist
+    for (const response of Object.values(chunk.chunkData.responses).flat()) {
+      if (response.examples.length || !generateResponseExamples) {
+        continue;
+      }
+      // Reset the sample word index for each response
+      initRandomSamples();
+      response.examples.push({
+        name: "Example",
+        value: JSON.stringify(
+          generateSchemaExample(
+            getSchemaFromId(response.contentChunkId, docsData).chunkData.value,
+            docsData
+          ),
+          null,
+          "  "
+        ),
+      });
+    }
   }
 }
 
