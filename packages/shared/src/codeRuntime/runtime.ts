@@ -93,7 +93,7 @@ export class Runtime {
 
     // Run the bundle
     this.#emit({ type: "execution:started" });
-    const blob = new Blob([workerCode], { type: 'application/javascript' });
+    const blob = new Blob([workerCode], { type: "application/javascript" });
     const url = URL.createObjectURL(blob);
     this.#worker = new Worker(url, {
       type: "module",

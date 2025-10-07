@@ -50,7 +50,6 @@ export async function generateTryItNowBundle(
     throw new InternalError("tryItNow.outDiris unexpectedly undefined");
   }
 
-
   // Read in the package.json file
   const packageFolder = readFileSync(
     join(sdkFolder.path, "package.json"),
@@ -228,9 +227,9 @@ async function bundleTryItNowDeps(sdkFolder: SdkFolder): Promise<string> {
   }
 }
 
- function bundleTryItNowWorker(): string {
-  const workerUrl = import.meta.resolve('@speakeasy-api/docs-md-shared/worker');
+function bundleTryItNowWorker(): string {
+  const workerUrl = import.meta.resolve("@speakeasy-api/docs-md-shared/worker");
   const workerPath = fileURLToPath(workerUrl);
-  const workerCode = readFileSync(workerPath, 'utf-8');
+  const workerCode = readFileSync(workerPath, "utf-8");
   return workerCode;
 }
