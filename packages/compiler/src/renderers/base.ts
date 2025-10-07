@@ -23,7 +23,6 @@ import type {
   PropertyAnnotations,
 } from "@speakeasy-api/docs-md-shared";
 
-import type { CodeSampleLanguage } from "../settings.ts";
 import type {
   FrameworkConfig,
   PageFrontMatter,
@@ -99,12 +98,12 @@ export type RendererCreateOperationArgs = [
 export type RendererCreateCodeSamplesSectionArgs = [
   cb: (options: {
     createTryItNowEntry: (options: {
-      language: CodeSampleLanguage;
+      language: string;
       dependencyUrlPrefix: string;
       defaultValue: string;
     }) => void;
     createCodeSampleEntry: (options: {
-      language: CodeSampleLanguage;
+      language: string;
       value: string;
     }) => void;
   }) => void,

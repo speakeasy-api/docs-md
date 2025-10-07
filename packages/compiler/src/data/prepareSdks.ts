@@ -15,6 +15,10 @@ export async function prepareSdks(extractionTempDirBase: string) {
     return sdkPaths;
   }
   for (const codeSample of codeSamples) {
+    // cURL code samples don't use the SDK
+    if (codeSample.language === "curl") {
+      continue;
+    }
     let sdkDir: string;
     if (codeSample.sdkFolder) {
       sdkDir = codeSample.sdkFolder;

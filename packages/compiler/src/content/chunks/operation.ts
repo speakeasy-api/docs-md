@@ -8,7 +8,6 @@ import type { PropertyAnnotations } from "@speakeasy-api/docs-md-shared";
 import type { CodeSamples } from "../../data/generateCodeSamples.ts";
 import { debug } from "../../logging.ts";
 import type { Renderer } from "../../renderers/base.ts";
-import type { CodeSampleLanguage } from "../../settings.ts";
 import { getSettings } from "../../settings.ts";
 import { assertNever } from "../../util/assertNever.ts";
 import { getSchemaFromId, getSecurityFromId } from "../util.ts";
@@ -38,17 +37,23 @@ function renderCodeSamples(
         for (const [language, snippet] of Object.entries(usageSnippet)) {
           debug(`Rendering code sample for ${language}`);
           const codeSample = codeSamples.find((s) => s.language === language);
-          if (language === "typescript" && codeSample?.tryItNow) {
+
+          // It's possible to have a code sample that's not in our list of
+          // snippets if users define one in their OAS using `x-codeSamples`
+          if (!codeSample) {
+            continue;
+          }
+          if (codeSample.language === "typescript" && codeSample.tryItNow) {
             createTryItNowEntry({
               language,
               dependencyUrlPrefix: codeSample.tryItNow.urlPrefix,
               defaultValue: snippet.code,
             });
+          } else if (codeSample.language === "curl" && codeSample.tryItNow) {
+            // TODO: Implement curl try it now
           } else {
             createCodeSampleEntry({
-              // The Object.entries call above coerces the key to a string,
-              // even though the key is originally typed as CodeSampleLanguage
-              language: language as CodeSampleLanguage,
+              language: language,
               value: snippet.code,
             });
           }

@@ -41,33 +41,44 @@ export function setInternalSetting<Key extends keyof InternalSettings>(
   internalSettings[key] = value;
 }
 
-const language = z.enum([
-  "typescript",
-  "go",
-  "java",
-  "python",
-  "csharp",
-  "terraform",
-  "unity",
-  "php",
-  "swift",
-  "ruby",
-  "postman",
-]);
+const curl = z.object({
+  language: z.literal("curl"),
+  tryItNow: z.boolean().optional().default(false),
+});
 
-export type CodeSampleLanguage = z.infer<typeof language>;
-
-const codeSample = z.strictObject({
-  language,
+const sdkCommonProperties = {
   sdkTarballPath: z.string().optional(),
   sdkFolder: z.string().optional(),
+};
+
+const typescript = z.object({
+  language: z.literal("typescript"),
   tryItNow: z
     .strictObject({
       outDir: z.string(),
       urlPrefix: z.string(),
     })
     .optional(),
+  ...sdkCommonProperties,
 });
+
+const otherSdkLanguages = z.object({
+  language: z.enum([
+    "go",
+    "java",
+    "python",
+    "csharp",
+    "terraform",
+    "unity",
+    "php",
+    "swift",
+    "ruby",
+    "postman",
+  ]),
+  ...sdkCommonProperties,
+});
+
+const codeSample = z.union([curl, typescript, otherSdkLanguages]);
 
 export const settingsSchema = z.strictObject({
   spec: z.string().optional(),

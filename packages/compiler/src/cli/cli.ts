@@ -217,7 +217,7 @@ async function getSettings(): Promise<Settings> {
     }
   }
   for (const codeSample of configFileContents.data.codeSamples ?? []) {
-    if (!codeSample.tryItNow) {
+    if (codeSample.language === "curl") {
       continue;
     }
     if (!codeSample.sdkTarballPath && !codeSample.sdkFolder) {
@@ -251,11 +251,13 @@ async function getSettings(): Promise<Settings> {
       }
     }
 
-    codeSample.tryItNow.outDir = resolveAndValidatePath({
-      path: codeSample.tryItNow.outDir,
-      name: "codeSample.tryItNow.outDir",
-      validateExists: false,
-    });
+    if (codeSample.language === "typescript" && codeSample.tryItNow) {
+      codeSample.tryItNow.outDir = resolveAndValidatePath({
+        path: codeSample.tryItNow.outDir,
+        name: "codeSample.tryItNow.outDir",
+        validateExists: false,
+      });
+    }
   }
 
   return configFileContents.data as Settings;
@@ -323,6 +325,9 @@ if (args["--clean"]) {
   }
   if (settings.codeSamples) {
     for (const codeSample of settings.codeSamples) {
+      if (codeSample.language !== "typescript" || !codeSample.tryItNow) {
+        continue;
+      }
       if (codeSample.tryItNow) {
         rmSync(codeSample.tryItNow.outDir, {
           recursive: true,

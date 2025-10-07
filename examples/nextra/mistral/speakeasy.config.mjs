@@ -9,6 +9,10 @@ export default {
   },
   codeSamples: [
     {
+      language: "curl",
+      tryItNow: false,
+    },
+    {
       language: "typescript",
       sdkFolder: "../../sdks/mistral-typescript",
       tryItNow: {
