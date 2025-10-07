@@ -6,6 +6,7 @@ import type { WorkerMessage } from "./messages.ts";
 // Store the shared dependency bundle globally, since it will never change
 // for a given site build, and is used across multiple Runtime instances.
 let dependencyBundle: string | undefined;
+let workerCode: string | undefined;
 
 export class Runtime {
   #dependencyUrlPrefix: string;
@@ -30,7 +31,7 @@ export class Runtime {
 
   public run(code: string) {
     // Hide the promise, since it doesn't indicate when run finishes (we never
-    // // know, cause Halting Problemplus lack of process.exit in samples)
+    // // know, cause Halting Problem plus lack of process.exit in samples)
     void this.#run(code);
   }
 
@@ -38,6 +39,10 @@ export class Runtime {
     if (!dependencyBundle) {
       const results = await fetch(this.#dependencyUrlPrefix + "/deps.js");
       dependencyBundle = await results.text();
+    }
+    if (!workerCode) {
+      const results = await fetch(this.#dependencyUrlPrefix + "/worker.js");
+      workerCode = await results.text();
     }
     if (this.#worker) {
       this.#worker.terminate();
@@ -88,17 +93,9 @@ export class Runtime {
 
     // Run the bundle
     this.#emit({ type: "execution:started" });
-
-    // Create worker from the worker file using a blob
-    const workerUrl = new URL("./run-worker.js", import.meta.url);
-    const workerResponse = await fetch(workerUrl);
-    const workerCode = await workerResponse.text();
-    const workerBlob = new Blob([workerCode], {
-      type: "application/javascript",
-    });
-    this.#workerBlobUrl = URL.createObjectURL(workerBlob);
-
-    this.#worker = new Worker(this.#workerBlobUrl, {
+    const blob = new Blob([workerCode], { type: 'application/javascript' });
+    const url = URL.createObjectURL(blob);
+    this.#worker = new Worker(url, {
       type: "module",
     });
 

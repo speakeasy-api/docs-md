@@ -9,6 +9,7 @@ import {
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { extname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 import {
   Extractor,
@@ -49,6 +50,7 @@ export async function generateTryItNowBundle(
     throw new InternalError("tryItNow.outDiris unexpectedly undefined");
   }
 
+
   // Read in the package.json file
   const packageFolder = readFileSync(
     join(sdkFolder.path, "package.json"),
@@ -69,6 +71,11 @@ export async function generateTryItNowBundle(
     recursive: true,
   });
   writeFileSync(join(codeSample.tryItNow.outDir, "deps.js"), dependencyBundle, {
+    encoding: "utf-8",
+  });
+
+  const workerCode = bundleTryItNowWorker();
+  writeFileSync(join(codeSample.tryItNow.outDir, "worker.js"), workerCode, {
     encoding: "utf-8",
   });
 
@@ -169,8 +176,8 @@ async function bundleTryItNowDeps(sdkFolder: SdkFolder): Promise<string> {
   try {
     // Create a new temporary directory where we can do a production install
     // of the SDK that also takes into account .npmignore. We don't want to use
-    // the standard SDK folder becuase it includes dev-time dependencies, code,
-    // etc. that would just bload the bundle size
+    // the standard SDK folder because it includes dev-time dependencies, code,
+    // etc. that would just bloat the bundle size
     mkdirSync(packageInstallDir, {
       recursive: true,
     });
@@ -219,4 +226,11 @@ async function bundleTryItNowDeps(sdkFolder: SdkFolder): Promise<string> {
       force: true,
     });
   }
+}
+
+ function bundleTryItNowWorker(): string {
+  const workerUrl = import.meta.resolve('@speakeasy-api/docs-md-shared/worker');
+  const workerPath = fileURLToPath(workerUrl);
+  const workerCode = readFileSync(workerPath, 'utf-8');
+  return workerCode;
 }
