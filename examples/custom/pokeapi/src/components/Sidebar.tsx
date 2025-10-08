@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import sidebarMetadata from "./sidebarMetadata.json";
+import { useState } from "react";
+import styles from "./styles.module.css";
+import { ExpandableCellIcon } from "@speakeasy-api/docs-md-react";
 
 type SideBarTreeNode = {
   label: string;
@@ -21,7 +24,8 @@ for (const item of sidebarMetadata) {
   for (const parentSlugPart of parentSlugParts) {
     if (!currentNode[parentSlugPart]) {
       currentNode[parentSlugPart] = {
-        label: parentSlugPart,
+        label:
+          parentSlugPart.slice(0, 1).toUpperCase() + parentSlugPart.slice(1),
         children: {},
       };
     }
@@ -48,6 +52,49 @@ for (const item of sidebarMetadata) {
   }
 }
 
+function ListEntry({
+  value,
+  level,
+}: {
+  value: SideBarTreeNode;
+  level: number;
+}) {
+  const [isOpen, setIsOpen] = useState(level === 0);
+  const hasChildren = Object.keys(value.children).length > 0;
+  return (
+    <li>
+      <div
+        className={styles.listEntry}
+        style={{ paddingLeft: `${level + 1}rem` }}
+      >
+        <div className={styles.listEntryLabel}>
+          {value.href ? (
+            <Link href={value.href}>{value.label}</Link>
+          ) : (
+            value.label
+          )}
+        </div>
+        {hasChildren && (
+          <button
+            className={styles.listEntryButton}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <ExpandableCellIcon
+              className={styles.expandableChevron}
+              style={{
+                transform: isOpen ? "rotate(0deg)" : "rotate(-90deg)",
+              }}
+            />
+          </button>
+        )}
+      </div>
+      {hasChildren && isOpen && (
+        <List items={value.children} level={level + 1} />
+      )}
+    </li>
+  );
+}
+
 function List({
   items,
   level = 0,
@@ -56,16 +103,9 @@ function List({
   level?: number;
 }) {
   return (
-    <ul style={{ paddingLeft: `${level}rem` }}>
+    <ul className={styles.list}>
       {Object.entries(items).map(([key, value]) => (
-        <li key={key}>
-          {value.href ? (
-            <Link href={value.href}>{value.label}</Link>
-          ) : (
-            value.label
-          )}
-          {value.children && <List items={value.children} level={level + 1} />}
-        </li>
+        <ListEntry key={key} value={value} level={level} />
       ))}
     </ul>
   );
