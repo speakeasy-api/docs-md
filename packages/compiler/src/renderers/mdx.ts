@@ -588,7 +588,9 @@ class MdxRenderer extends MarkdownRenderer {
                 () => this.createText(getPrettyCodeSampleLanguage(language)),
                 {
                   id: this.getCurrentId(),
-                  tags: [`code-sample:${language}`],
+                  tags: {
+                    codeSample: language,
+                  },
                 }
               );
               this.createSectionContent(
@@ -612,7 +614,7 @@ class MdxRenderer extends MarkdownRenderer {
               this.enterContext({ id: language, type: "section" });
               this.createTabbedSectionTab(
                 () => this.createText(getPrettyCodeSampleLanguage(language)),
-                { id: this.getCurrentId(), tags: [`code-sample:${language}`] }
+                { id: this.getCurrentId(), tags: { codeSample: language } }
               );
               this.createSectionContent(
                 () => {

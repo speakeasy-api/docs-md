@@ -419,7 +419,9 @@ export abstract class MarkdownRenderer extends Renderer {
               ),
             {
               id: this.getCurrentId(),
-              tags: [`response-example:${statusCode}:${contentType}`],
+              tags: {
+                responseExample: `${statusCode}:${contentType}`,
+              },
             }
           );
           this.createSectionContent(createExample, {
@@ -480,7 +482,9 @@ export abstract class MarkdownRenderer extends Renderer {
               ),
             {
               id: this.getCurrentId(),
-              tags: [`response:${statusCode}:${contentType}`],
+              tags: {
+                response: `${statusCode}:${contentType}`,
+              },
             }
           );
           this.createSectionContent(

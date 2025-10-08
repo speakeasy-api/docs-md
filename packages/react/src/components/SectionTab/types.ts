@@ -16,9 +16,9 @@ export type SectionTabProps = PropsWithChildren<{
    * specific language, and control them externally.
    *
    * Current tags are:
-   * - response:${statusCode}:${contentType} on the Response section tabs
-   * - response-example:${statusCode}:${contentType} on the Response section tabs
-   * - code-sample:${language} on the Code Sample section tabs
+   * - response: `${statusCode}:${contentType}` on the Response section tabs
+   * - responseExample: `${statusCode}:${contentType}` on the Response Example section tabs
+   * - codeSample: `${language}` on the Code Sample section tabs
    */
-  tags: string[];
+  tags: Record<string, string>;
 }>;
