@@ -37,7 +37,6 @@ export default {
   output: {
     pageOutDir: "./src/app/api",
     framework,
-    singlePage: true,
   },
   display: {
     visibleResponses: "success",

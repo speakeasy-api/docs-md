@@ -38,9 +38,9 @@ export default {
     pageOutDir: "./src/app/api",
     framework,
   },
-  display: {
-    visibleResponses: "success",
-    showDebugPlaceholders: false,
-    expandTopLevelPropertiesOnPageLoad: true,
-  },
+  codeSamples: [
+    {
+      language: "curl",
+    },
+  ],
 };

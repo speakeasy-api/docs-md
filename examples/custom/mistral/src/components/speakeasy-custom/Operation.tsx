@@ -1,14 +1,26 @@
-import { OperationProps, useChildren } from "@speakeasy-api/docs-md-react";
+import {
+  OperationProps,
+  useChildren,
+  useUniqueChild,
+} from "@speakeasy-api/docs-md-react";
 
 export function Operation({ children }: OperationProps) {
-  const titleSection = useChildren(children, "title")[0];
-  const summarySection = useChildren(children, "summary")[0];
-  const descriptionSection = useChildren(children, "description")[0];
-  const tryItNowSection = useChildren(children, "code-samples")[0];
-  const securitySection = useChildren(children, "security")[0];
-  const parametersSection = useChildren(children, "parameters")[0];
-  const requestBodySection = useChildren(children, "request-body")[0];
-  const responseBodySection = useChildren(children, "response-body")[0];
+  const titleChild = useUniqueChild(children, "title");
+  const summaryChildren = useChildren(children, "summary");
+  const descriptionChildren = useChildren(children, "description");
+  const codeSamplesChildren = useChildren(children, "code-samples");
+  const securityChildren = useChildren(children, "security");
+  const parametersChildren = useChildren(children, "parameters");
+  const requestBodyExamplesChildren = useChildren(
+    children,
+    "request-body-examples"
+  );
+  const requestBodyChildren = useChildren(children, "request-body");
+  const responseBodyExamplesChildren = useChildren(
+    children,
+    "response-body-examples"
+  );
+  const responseBodyChildren = useChildren(children, "response-body");
   return (
     <>
       <div
@@ -17,26 +29,36 @@ export function Operation({ children }: OperationProps) {
           paddingBottom: "0.75rem",
         }}
       >
-        {titleSection}
+        {titleChild}
       </div>
-      {summarySection}
-      {descriptionSection}
+      {summaryChildren}
+      {descriptionChildren}
       <div style={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
         <div
           style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "2rem",
             flex: "0 1 50%",
             minWidth: 0,
             borderRight: "1px solid var(--speakeasy-border-color)",
             paddingRight: "1rem",
           }}
         >
-          {securitySection}
-          {parametersSection}
-          {requestBodySection}
-          {responseBodySection}
+          {securityChildren}
+          {parametersChildren}
+          {requestBodyChildren}
         </div>
-        <div style={{ flex: "0 1 50%", minWidth: 0 }}>
-          {tryItNowSection ?? <div></div>}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "2rem",
+            flex: "0 1 50%",
+            minWidth: 0,
+          }}
+        >
+          {responseBodyChildren}
         </div>
       </div>
     </>
