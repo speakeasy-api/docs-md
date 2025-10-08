@@ -156,13 +156,11 @@ export default function() {
       id: `embed-${slug}`,
       type: "embed",
     });
-    renderer.enterContext({ id: slug, type: "schema" });
 
     renderer.createEmbedWrapper(() => {
       createdEmbeddedContent(renderer);
     });
 
-    renderer.exitContext();
     renderer.exitContext();
 
     const { contents } = renderer.render();
