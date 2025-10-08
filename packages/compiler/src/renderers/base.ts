@@ -160,6 +160,7 @@ export type RendererCreateTabbedSectionTabArgs = [
   cb: () => void,
   options: {
     id: string;
+    tags: string[];
   },
 ];
 export type RendererCreateSectionContentArgs = [

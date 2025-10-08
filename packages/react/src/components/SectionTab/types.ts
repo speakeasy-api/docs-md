@@ -10,4 +10,15 @@ export type SectionTabProps = PropsWithChildren<{
    * exists to allow our runtime hooks to find these slots.
    */
   slot: "tab";
+  /**
+   * Tags to apply to the section tab and are used to convey metadata about
+   * the tab. As an example, these can be used to get code sample tabs for a
+   * specific language, and control them externally.
+   *
+   * Current tags are:
+   * - response:${statusCode}:${contentType} on the Response section tabs
+   * - response-example:${statusCode}:${contentType} on the Response section tabs
+   * - code-sample:${language} on the Code Sample section tabs
+   */
+  tags: string[];
 }>;

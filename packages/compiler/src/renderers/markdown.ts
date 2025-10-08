@@ -419,6 +419,7 @@ export abstract class MarkdownRenderer extends Renderer {
               ),
             {
               id: this.getCurrentId(),
+              tags: [`response-example:${statusCode}:${contentType}`],
             }
           );
           this.createSectionContent(createExample, {
@@ -479,6 +480,7 @@ export abstract class MarkdownRenderer extends Renderer {
               ),
             {
               id: this.getCurrentId(),
+              tags: [`response:${statusCode}:${contentType}`],
             }
           );
           this.createSectionContent(

@@ -586,7 +586,10 @@ class MdxRenderer extends MarkdownRenderer {
               this.enterContext({ id: language, type: "section" });
               this.createTabbedSectionTab(
                 () => this.createText(getPrettyCodeSampleLanguage(language)),
-                { id: this.getCurrentId() }
+                {
+                  id: this.getCurrentId(),
+                  tags: [`code-sample:${language}`],
+                }
               );
               this.createSectionContent(
                 () => {
@@ -609,7 +612,7 @@ class MdxRenderer extends MarkdownRenderer {
               this.enterContext({ id: language, type: "section" });
               this.createTabbedSectionTab(
                 () => this.createText(getPrettyCodeSampleLanguage(language)),
-                { id: this.getCurrentId() }
+                { id: this.getCurrentId(), tags: [`code-sample:${language}`] }
               );
               this.createSectionContent(
                 () => {
@@ -1026,12 +1029,12 @@ class MdxRenderer extends MarkdownRenderer {
   }
 
   protected override createTabbedSectionTab(
-    ...[cb, { id }]: RendererCreateTabbedSectionTabArgs
+    ...[cb, { id, tags }]: RendererCreateTabbedSectionTabArgs
   ) {
     this.#appendComponent<SectionTabProps>(
       {
         symbol: "SectionTab",
-        props: { slot: "tab", id },
+        props: { slot: "tab", id, tags },
       },
       cb
     );

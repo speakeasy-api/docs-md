@@ -34,13 +34,13 @@ const meta: Meta<typeof TryItNow> = {
           <SectionTitle slot="title">
             <h3>TryItNow</h3>
           </SectionTitle>
-          <SectionTab slot="tab" id="monaco-editor">
+          <SectionTab slot="tab" id="monaco-editor" tags={[]}>
             TypeScript
           </SectionTab>
           <SectionContent slot="content" id="monaco-editor">
             <TryItNow {...args} />
           </SectionContent>
-          <SectionTab slot="tab" id="code-samples">
+          <SectionTab slot="tab" id="code-samples" tags={[]}>
             Code Samples
           </SectionTab>
           <SectionContent slot="content" id="code-samples">
