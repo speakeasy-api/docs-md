@@ -215,9 +215,9 @@ export function PropertyContents({
     <TitlePrefixContainer ref={titlePrefixContainerRef}>
       {titleChild}
       {typeAnnotations?.map((annotation) => (
-        <Pill key={annotation.title} variant={annotation.variant}>
-          {annotation.title}
-        </Pill>
+        <spk-pill key={annotation.title} variant={annotation.variant}>
+          <div slot="content">{annotation.title}</div>
+        </spk-pill>
       ))}
     </TitlePrefixContainer>
   );
