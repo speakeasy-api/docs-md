@@ -1,5 +1,5 @@
 import type { RuntimeEvents } from "@speakeasy-api/docs-md-shared";
-import type { FC } from "react";
+import type { CSSProperties, FC } from "react";
 
 export type ExtendedRuntimeEvent = RuntimeEvents & { id: string };
 
@@ -97,6 +97,7 @@ export type ButtonProps = {
   onClick?: () => void;
   ariaLabel?: string;
   children?: React.ReactNode;
+  className?: string;
 };
 
 export type ResultsProps = {
@@ -105,4 +106,19 @@ export type ResultsProps = {
 
 export type LayoutProps = {
   children: React.ReactNode;
+};
+
+export type RestartIconProps = {
+  className?: string;
+  style?: CSSProperties;
+};
+
+export type CheckIconProps = {
+  className?: string;
+  style?: CSSProperties;
+};
+
+export type CopyIconProps = {
+  className?: string;
+  style?: CSSProperties;
 };

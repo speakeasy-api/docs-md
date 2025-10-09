@@ -7,6 +7,8 @@ import { useRuntime } from "../state.ts";
 import type { ButtonProps, TryItNowProps } from "../types.ts";
 import { Button } from "./Button.tsx";
 import { Editor as DefaultEditor } from "./Editor.tsx";
+import { CopyIcon } from "./icons/CopyIcon.tsx";
+import { RestartIcon } from "./icons/RestartIcon.tsx";
 import { Layout as DefaultLayout } from "./Layout.tsx";
 import { Results as DefaultResults } from "./Results.tsx";
 import styles from "./styles.module.css";
@@ -53,16 +55,24 @@ function DefaultRunButton({ onClick }: Pick<ButtonProps, "onClick">) {
 
 function DefaultResetButton({ onClick }: Pick<ButtonProps, "onClick">) {
   return (
-    <Button onClick={onClick} ariaLabel="Reset code">
-      Reset
+    <Button
+      className={styles.resetButton}
+      onClick={onClick}
+      ariaLabel="Reset code"
+    >
+      <RestartIcon />
     </Button>
   );
 }
 
 function DefaultCopyButton({ onClick }: Pick<ButtonProps, "onClick">) {
   return (
-    <Button onClick={onClick} ariaLabel="Copy code">
-      Copy
+    <Button
+      className={styles.copyButton}
+      onClick={onClick}
+      ariaLabel="Copy code"
+    >
+      <CopyIcon />
     </Button>
   );
 }
