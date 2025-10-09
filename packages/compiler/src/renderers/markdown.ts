@@ -19,6 +19,8 @@ import type {
   RendererAlreadyInContextArgs,
   RendererConstructorArgs,
   RendererCreateCodeArgs,
+  RendererCreateCodeSampleTabbedSectionArgs,
+  RendererCreateCodeSampleTabbedSectionTabArgs,
   RendererCreateContextArgs,
   RendererCreateDebugPlaceholderArgs,
   RendererCreateEmbedArgs,
@@ -34,12 +36,12 @@ import type {
   RendererCreateRequestSectionArgs,
   RendererCreateResponsesArgs,
   RendererCreateResponsesExamplesSectionArgs,
+  RendererCreateResponseTabbedSectionArgs,
+  RendererCreateResponseTabbedSectionTabArgs,
   RendererCreateSectionArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
   RendererCreateSecuritySectionArgs,
-  RendererCreateTabbedSectionArgs,
-  RendererCreateTabbedSectionTabArgs,
   RendererCreateTagSectionArgs,
   RendererCreateTextArgs,
   RendererGetCurrentIdArgs,
@@ -388,7 +390,7 @@ export abstract class MarkdownRenderer extends Renderer {
     if (this.#currentOperation) {
       this.#currentOperation.responses = {};
     }
-    this.createTabbedSection(() => {
+    this.createResponseTabbedSection(() => {
       this.createSectionTitle(() =>
         this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
           id: this.getCurrentId(),
@@ -410,7 +412,7 @@ export abstract class MarkdownRenderer extends Renderer {
               this.#currentSection;
           }
 
-          this.createTabbedSectionTab(
+          this.createResponseTabbedSectionTab(
             () =>
               this.createText(
                 showContentTypeInTab
@@ -444,7 +446,7 @@ export abstract class MarkdownRenderer extends Renderer {
     if (this.#currentOperation) {
       this.#currentOperation.responses = {};
     }
-    this.createTabbedSection(() => {
+    this.createResponseTabbedSection(() => {
       this.createSectionTitle(() =>
         this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
           id: this.getCurrentId(),
@@ -473,7 +475,7 @@ export abstract class MarkdownRenderer extends Renderer {
               this.#currentSection;
           }
 
-          this.createTabbedSectionTab(
+          this.createResponseTabbedSectionTab(
             () =>
               this.createText(
                 showContentTypeInTab
@@ -721,12 +723,26 @@ ${text}\n</code>\n</pre>`;
     cb();
   }
 
-  protected createTabbedSection(...[cb]: RendererCreateTabbedSectionArgs) {
+  protected createResponseTabbedSection(
+    ...[cb]: RendererCreateResponseTabbedSectionArgs
+  ) {
     cb();
   }
 
-  protected createTabbedSectionTab(
-    ...[cb]: RendererCreateTabbedSectionTabArgs
+  protected createResponseTabbedSectionTab(
+    ...[cb]: RendererCreateResponseTabbedSectionTabArgs
+  ) {
+    cb();
+  }
+
+  protected createCodeSampleTabbedSection(
+    ...[cb]: RendererCreateCodeSampleTabbedSectionArgs
+  ) {
+    cb();
+  }
+
+  protected createCodeSampleTabbedSectionTab(
+    ...[cb]: RendererCreateCodeSampleTabbedSectionTabArgs
   ) {
     cb();
   }

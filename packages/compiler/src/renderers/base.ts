@@ -155,8 +155,16 @@ export type RendererCreateResponsesArgs = [
 
 export type RendererCreateSectionArgs = [cb: () => void];
 export type RendererCreateSectionTitleArgs = [cb: () => void];
-export type RendererCreateTabbedSectionArgs = [cb: () => void];
-export type RendererCreateTabbedSectionTabArgs = [
+export type RendererCreateCodeSampleTabbedSectionArgs = [cb: () => void];
+export type RendererCreateCodeSampleTabbedSectionTabArgs = [
+  cb: () => void,
+  options: {
+    id: string;
+    tags: Record<string, string>;
+  },
+];
+export type RendererCreateResponseTabbedSectionArgs = [cb: () => void];
+export type RendererCreateResponseTabbedSectionTabArgs = [
   cb: () => void,
   options: {
     id: string;

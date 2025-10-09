@@ -4,9 +4,6 @@ export default {
     pageOutDir: "./src/app/api",
     framework: "nextra",
   },
-  display: {
-    visibleResponses: "success",
-  },
   codeSamples: [
     {
       language: "typescript",

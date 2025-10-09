@@ -2,6 +2,8 @@ import { dirname, join, relative } from "node:path";
 
 import type {
   CodeSampleProps,
+  CodeSampleTabbedSectionProps,
+  CodeSampleTabProps,
   DebugPlaceholderProps,
   EmbedProps,
   EmbedTriggerProps,
@@ -34,11 +36,11 @@ import type {
   OperationSecuritySectionProps,
   OperationSummarySectionProps,
   OperationTitleSectionProps,
+  ResponseTabbedSectionProps,
+  ResponseTabProps,
   SectionContentProps,
   SectionProps,
-  SectionTabProps,
   SectionTitleProps,
-  TabbedSectionProps,
   TagDescriptionProps,
   TagProps,
   TagTitleProps,
@@ -52,6 +54,8 @@ import type {
   RendererConstructorArgs,
   RendererCreateCodeArgs,
   RendererCreateCodeSamplesSectionArgs,
+  RendererCreateCodeSampleTabbedSectionArgs,
+  RendererCreateCodeSampleTabbedSectionTabArgs,
   RendererCreateDebugPlaceholderArgs,
   RendererCreateEmbedArgs,
   RendererCreateExpandableBreakoutArgs,
@@ -65,12 +69,12 @@ import type {
   RendererCreateRequestSectionArgs,
   RendererCreateResponsesArgs,
   RendererCreateResponsesExamplesSectionArgs,
+  RendererCreateResponseTabbedSectionArgs,
+  RendererCreateResponseTabbedSectionTabArgs,
   RendererCreateSectionArgs,
   RendererCreateSectionContentArgs,
   RendererCreateSectionTitleArgs,
   RendererCreateSecuritySectionArgs,
-  RendererCreateTabbedSectionArgs,
-  RendererCreateTabbedSectionTabArgs,
   RendererCreateTagSectionArgs,
   SiteBuildPagePathArgs,
   SiteCreateEmbedArgs,
@@ -574,7 +578,7 @@ class MdxRenderer extends MarkdownRenderer {
         props: { slot: "code-samples" },
       },
       () => {
-        this.createTabbedSection(() => {
+        this.createCodeSampleTabbedSection(() => {
           cb({
             createTryItNowEntry: ({
               dependencyUrlPrefix,
@@ -582,7 +586,7 @@ class MdxRenderer extends MarkdownRenderer {
               language,
             }) => {
               this.enterContext({ id: language, type: "section" });
-              this.createTabbedSectionTab(
+              this.createCodeSampleTabbedSectionTab(
                 () => this.createText(getPrettyCodeSampleLanguage(language)),
                 {
                   id: this.getCurrentId(),
@@ -610,7 +614,7 @@ class MdxRenderer extends MarkdownRenderer {
             },
             createCodeSampleEntry: ({ language, value }) => {
               this.enterContext({ id: language, type: "section" });
-              this.createTabbedSectionTab(
+              this.createCodeSampleTabbedSectionTab(
                 () => this.createText(getPrettyCodeSampleLanguage(language)),
                 { id: this.getCurrentId(), tags: { codeSample: language } }
               );
@@ -1014,26 +1018,52 @@ class MdxRenderer extends MarkdownRenderer {
     );
   }
 
-  protected override createTabbedSection(
-    ...[cb]: RendererCreateTabbedSectionArgs
+  protected override createCodeSampleTabbedSection(
+    ...[cb]: RendererCreateCodeSampleTabbedSectionArgs
   ) {
     // We have to do a manual Omit here, since TabbedSectionProps.children is
     // specially defined and not a standard PropsWithChildren type
-    this.#appendComponent<Omit<TabbedSectionProps, "children">>(
+    this.#appendComponent<Omit<CodeSampleTabbedSectionProps, "children">>(
       {
-        symbol: "TabbedSection",
+        symbol: "CodeSampleTabbedSection",
         props: {},
       },
       cb
     );
   }
 
-  protected override createTabbedSectionTab(
-    ...[cb, { id, tags }]: RendererCreateTabbedSectionTabArgs
+  protected override createCodeSampleTabbedSectionTab(
+    ...[cb, { id, tags }]: RendererCreateCodeSampleTabbedSectionTabArgs
   ) {
-    this.#appendComponent<SectionTabProps>(
+    this.#appendComponent<CodeSampleTabProps>(
       {
-        symbol: "SectionTab",
+        symbol: "CodeSampleTab",
+        props: { slot: "tab", id, tags },
+      },
+      cb
+    );
+  }
+
+  protected override createResponseTabbedSection(
+    ...[cb]: RendererCreateResponseTabbedSectionArgs
+  ) {
+    // We have to do a manual Omit here, since TabbedSectionProps.children is
+    // specially defined and not a standard PropsWithChildren type
+    this.#appendComponent<Omit<ResponseTabbedSectionProps, "children">>(
+      {
+        symbol: "ResponseTabbedSection",
+        props: {},
+      },
+      cb
+    );
+  }
+
+  protected override createResponseTabbedSectionTab(
+    ...[cb, { id, tags }]: RendererCreateResponseTabbedSectionTabArgs
+  ) {
+    this.#appendComponent<ResponseTabProps>(
+      {
+        symbol: "ResponseTab",
         props: { slot: "tab", id, tags },
       },
       cb

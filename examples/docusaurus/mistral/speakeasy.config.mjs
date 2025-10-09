@@ -5,7 +5,6 @@ export default {
     framework: "docusaurus",
   },
   display: {
-    visibleResponses: "success",
     showDebugPlaceholders: true,
   },
   codeSamples: [

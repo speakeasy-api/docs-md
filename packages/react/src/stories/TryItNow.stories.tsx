@@ -9,10 +9,10 @@ import {
   OperationSummarySection,
   OperationTitleSection,
 } from "../components/Operation/Operation.tsx";
+import { ResponseTab } from "../components/ResponseTabbedSection/ResponseTab.tsx";
+import { ResponseTabbedSection } from "../components/ResponseTabbedSection/ResponseTabbedSection.tsx";
 import { SectionContent } from "../components/SectionContent/SectionContent.tsx";
-import { SectionTab } from "../components/SectionTab/SectionTab.tsx";
 import { SectionTitle } from "../components/SectionTitle/SectionTitle.tsx";
-import { TabbedSection } from "../components/TabbedSection/TabbedSection.tsx";
 import { TryItNow } from "../components/TryItNow/TryItNow.tsx";
 
 const meta: Meta<typeof TryItNow> = {
@@ -30,19 +30,19 @@ const meta: Meta<typeof TryItNow> = {
         <p>Mock Operation Description</p>
       </OperationDescriptionSection>
       <OperationCodeSamplesSection slot="code-samples">
-        <TabbedSection>
+        <ResponseTabbedSection>
           <SectionTitle slot="title">
             <h3>TryItNow</h3>
           </SectionTitle>
-          <SectionTab slot="tab" id="monaco-editor" tags={{}}>
+          <ResponseTab slot="tab" id="monaco-editor" tags={{}}>
             TypeScript
-          </SectionTab>
+          </ResponseTab>
           <SectionContent slot="content" id="monaco-editor">
             <TryItNow {...args} />
           </SectionContent>
-          <SectionTab slot="tab" id="code-samples" tags={{}}>
+          <ResponseTab slot="tab" id="code-samples" tags={{}}>
             Code Samples
-          </SectionTab>
+          </ResponseTab>
           <SectionContent slot="content" id="code-samples">
             <CodeSample>
               <pre>
@@ -50,7 +50,7 @@ const meta: Meta<typeof TryItNow> = {
               </pre>
             </CodeSample>
           </SectionContent>
-        </TabbedSection>
+        </ResponseTabbedSection>
       </OperationCodeSamplesSection>
     </Operation>
   ),

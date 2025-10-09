@@ -1,17 +1,16 @@
-import type { FC } from "react";
+import type { FC, PropsWithChildren } from "react";
 
 import type { SectionProps } from "../Section/types.ts";
 import type { SectionContentProps } from "../SectionContent/types.ts";
-import type { SectionTabProps } from "../SectionTab/types.ts";
 import type { SectionTitleProps } from "../SectionTitle/types.ts";
 import type { TabButtonProps } from "../TabButton/types.ts";
 
-export type TabbedSectionProps = {
+export type ResponseTabbedSectionProps = {
   /**
    * The children of the tabbed section. This will always be an array of
-   * `SectionTab` components, so we don't use the typical PropsWithChildren`.
+   * `ResponseTab` components, so we don't use the typical PropsWithChildren`.
    */
-  children: React.ReactElement<SectionTabProps>[];
+  children: React.ReactElement<ResponseTabProps>[];
 
   /**
    * The component to use for rendering the base section. Defaults to
@@ -43,3 +42,24 @@ export type TabbedSectionProps = {
    */
   TabButton?: FC<TabButtonProps>;
 };
+
+export type ResponseTabProps = PropsWithChildren<{
+  /**
+   * The DOM ID of the response tab.
+   */
+  id: string;
+  /**
+   * The slot of the response tab, and will always be set to "tab". This property
+   * exists to allow our runtime hooks to find these slots.
+   */
+  slot: "tab";
+  /**
+   * Tags to apply to the response tab and are used to convey metadata about
+   * the tab. As an example, these can be used to get tabs for a specific
+   * response type, and control them externally.
+   *
+   * Current tags are:
+   * - response: `${statusCode}:${contentType}`
+   */
+  tags: Record<string, string>;
+}>;

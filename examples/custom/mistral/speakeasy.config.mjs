@@ -38,9 +38,6 @@ export default {
     pageOutDir: "./src/app/api",
     framework,
   },
-  display: {
-    visibleResponses: "success",
-  },
   codeSamples: [
     {
       language: "typescript",

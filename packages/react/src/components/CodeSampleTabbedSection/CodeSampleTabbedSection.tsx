@@ -1,6 +1,6 @@
 "use client";
 
-import { useTabbedChildren } from "../../util/hooks.tsx";
+import { useTabbedChildren } from "../../util/clientHooks.tsx";
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { Section as DefaultSection } from "../Section/Section.tsx";
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
@@ -10,15 +10,25 @@ import { SectionTitle as DefaultSectionTitle } from "../SectionTitle/SectionTitl
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { TabButton as DefaultTabButton } from "../TabButton/TabButton.tsx";
 import styles from "./styles.module.css";
-import type { TabbedSectionProps } from "./types.ts";
+import type { CodeSampleTabbedSectionProps } from "./types.ts";
 
-export function TabbedSectionContents({
+/**
+ * This component represents an operation response section with tabs for
+ * different responses codes and content types. It is like an extended version
+ * of a standard Section component. In addition to taking in a single `title`
+ * slotted child and a set of `content` slotted children, it also takes in a set
+ * of `tab` slotted children.
+ *
+ * There is always a one-to-one mapping between the `tab` and `content` slotted
+ * children. Each tab and child are linked together via the `id` prop.
+ */
+export function CodeSampleTabbedSection({
   children,
   Section = DefaultSection,
   SectionContent = DefaultSectionContent,
   SectionTitle = DefaultSectionTitle,
   TabButton = DefaultTabButton,
-}: TabbedSectionProps) {
+}: CodeSampleTabbedSectionProps) {
   const { titleChild, tabChildren, activeChild } = useTabbedChildren({
     children,
     TabButton,

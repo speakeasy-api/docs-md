@@ -93,12 +93,20 @@ export { Section } from "./components/Section/Section.tsx";
 export type { SectionProps } from "./components/Section/types.ts";
 export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
 export type { SectionContentProps } from "./components/SectionContent/types.ts";
-export { SectionTab } from "./components/SectionTab/SectionTab.tsx";
-export type { SectionTabProps } from "./components/SectionTab/types.ts";
 export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
 export type { SectionTitleProps } from "./components/SectionTitle/types.ts";
-export { TabbedSection } from "./components/TabbedSection/TabbedSection.tsx";
-export type { TabbedSectionProps } from "./components/TabbedSection/types.ts";
+export { CodeSampleTab } from "./components/CodeSampleTabbedSection/CodeSampleTab.tsx";
+export { CodeSampleTabbedSection } from "./components/CodeSampleTabbedSection/CodeSampleTabbedSection.tsx";
+export type {
+  CodeSampleTabbedSectionProps,
+  CodeSampleTabProps,
+} from "./components/CodeSampleTabbedSection/types.ts";
+export { ResponseTab } from "./components/ResponseTabbedSection/ResponseTab.tsx";
+export { ResponseTabbedSection } from "./components/ResponseTabbedSection/ResponseTabbedSection.tsx";
+export type {
+  ResponseTabbedSectionProps,
+  ResponseTabProps,
+} from "./components/ResponseTabbedSection/types.ts";
 export { Tag, TagTitle, TagDescription } from "./components/Tag/Tag.tsx";
 export type {
   TagProps,
@@ -114,8 +122,5 @@ export {
   computeSingleLineDisplayType,
   computeMultilineTypeLabel,
 } from "./util/displayType.ts";
-export {
-  useUniqueChild,
-  useChildren,
-  useTabbedChildren,
-} from "./util/hooks.tsx";
+export { useUniqueChild, useChildren } from "./util/hooks.ts";
+export { useTabbedChildren } from "./util/clientHooks.tsx";
