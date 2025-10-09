@@ -40,9 +40,17 @@ export type TryItNowProps = {
    */
   Editor?: FC<EditorProps>;
   /**
+   * Copy button component to use. Defaults to `CopyButton`.
+   */
+  CopyButton?: FC<ButtonProps>;
+  /**
    * Run button component to use. Defaults to `RunButton`.
    */
-  RunButton?: FC<RunButtonProps>;
+  RunButton?: FC<ButtonProps>;
+  /**
+   * Reset button component to use. Defaults to `ResetButton`.
+   */
+  ResetButton?: FC<ButtonProps>;
   /**
    * Results component to use. Defaults to `Results`.
    */
@@ -82,11 +90,13 @@ export type EditorProps = {
   theme?: "light" | "dark";
 };
 
-export type RunButtonProps = {
+export type ButtonProps = {
   /**
    * Callback to invoke when the run button is clicked
    */
-  onClick: () => void;
+  onClick?: () => void;
+  ariaLabel?: string;
+  children?: React.ReactNode;
 };
 
 export type ResultsProps = {

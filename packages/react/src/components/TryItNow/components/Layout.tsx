@@ -2,6 +2,7 @@
 
 import { useChildren } from "../../../util/hooks.ts";
 import type { LayoutProps } from "../types.ts";
+import { Controls } from "./Controls.tsx";
 import styles from "./styles.module.css";
 
 /**
@@ -13,11 +14,17 @@ export function Layout({ children }: LayoutProps) {
   const editorChild = useChildren(children, "editor");
   const runButtonChild = useChildren(children, "runButton");
   const resultsChild = useChildren(children, "results");
+  const resetButtonChild = useChildren(children, "resetButton");
+  const copyButtonChild = useChildren(children, "copyButton");
   return (
     <div className={styles.layout}>
       <div className={styles.editorContainer}>
         {editorChild}
-        {runButtonChild}
+        <Controls>
+          {copyButtonChild}
+          {resetButtonChild}
+          {runButtonChild}
+        </Controls>
       </div>
       {resultsChild}
     </div>

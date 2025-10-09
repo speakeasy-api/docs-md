@@ -4,11 +4,11 @@ import { atom, useAtom } from "jotai";
 import { useEffect, useState } from "react";
 
 import { useRuntime } from "../state.ts";
-import type { TryItNowProps } from "../types.ts";
+import type { ButtonProps, TryItNowProps } from "../types.ts";
+import { Button } from "./Button.tsx";
 import { Editor as DefaultEditor } from "./Editor.tsx";
 import { Layout as DefaultLayout } from "./Layout.tsx";
 import { Results as DefaultResults } from "./Results.tsx";
-import { RunButton as DefaultRunButton } from "./RunButton.tsx";
 import styles from "./styles.module.css";
 
 const typesAtom = atom<string | null>(null);
@@ -43,6 +43,30 @@ const fetchTypesAtom = atom(
   }
 );
 
+function DefaultRunButton({ onClick }: Pick<ButtonProps, "onClick">) {
+  return (
+    <Button onClick={onClick} ariaLabel="Run code">
+      Run
+    </Button>
+  );
+}
+
+function DefaultResetButton({ onClick }: Pick<ButtonProps, "onClick">) {
+  return (
+    <Button onClick={onClick} ariaLabel="Reset code">
+      Reset
+    </Button>
+  );
+}
+
+function DefaultCopyButton({ onClick }: Pick<ButtonProps, "onClick">) {
+  return (
+    <Button onClick={onClick} ariaLabel="Copy code">
+      Copy
+    </Button>
+  );
+}
+
 export function TryItNowContents({
   defaultValue,
   dependencyUrlPrefix,
@@ -50,7 +74,9 @@ export function TryItNowContents({
   Layout = DefaultLayout,
   Editor = DefaultEditor,
   RunButton = DefaultRunButton,
+  ResetButton = DefaultResetButton,
   Results = DefaultResults,
+  CopyButton = DefaultCopyButton,
   theme = "dark",
 }: TryItNowProps) {
   const [types] = useAtom(typesAtom);
@@ -76,6 +102,14 @@ export function TryItNowContents({
     }
   }, [error]);
 
+  function handleReset() {
+    // TODO
+  }
+
+  function handleCopy() {
+    void navigator.clipboard.writeText(value);
+  }
+
   return (
     <>
       <Layout>
@@ -94,6 +128,12 @@ export function TryItNowContents({
               execute(value);
             }}
           />
+        </div>
+        <div slot="copyButton">
+          <CopyButton onClick={handleCopy} />
+        </div>
+        <div slot="resetButton">
+          <ResetButton onClick={handleReset} />
         </div>
         {showResults && (
           <div slot="results" className={styles.results}>
