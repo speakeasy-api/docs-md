@@ -503,17 +503,9 @@ class MdxRenderer extends MarkdownRenderer {
   public override createPill(
     ...[variant, cb, { append = false } = {}]: RendererCreatePillArgs
   ) {
-    const pill = this.#createComponent(
-      "spk-pill",
-      { variant },
-      () => {
-        const content = cb();
-        return `<span slot="content">${content}</span>`;
-      },
-      {
-        noImport: true,
-      }
-    );
+    const pill = this.#createComponent("spk-pill", { variant }, cb, {
+      noImport: true,
+    });
     if (append) {
       this.appendLine(pill);
     }

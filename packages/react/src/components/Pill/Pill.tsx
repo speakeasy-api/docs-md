@@ -31,7 +31,7 @@ export class PillElement extends LitElement {
 
   public override render() {
     return html`<span class="pill ${this.variant}">
-      <slot name="content"></slot>
+      <slot></slot>
     </span>`;
   }
 }
