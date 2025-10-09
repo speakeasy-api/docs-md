@@ -60,7 +60,6 @@ export function TryItNowContents({
   const { status, execute } = useRuntime({
     dependencyUrlPrefix,
   });
-  const showResults = status.state !== "idle";
 
   useEffect(() => {
     void fetchTypes(dependencyUrlPrefix);
@@ -78,7 +77,7 @@ export function TryItNowContents({
 
   return (
     <>
-      <Layout>
+      <Layout status={status}>
         <div slot="editor">
           <Editor
             theme={theme}
@@ -95,11 +94,9 @@ export function TryItNowContents({
             }}
           />
         </div>
-        {showResults && (
-          <div slot="results" className={styles.results}>
-            <Results status={status} />
-          </div>
-        )}
+        <div slot="results" className={styles.results}>
+          <Results status={status} />
+        </div>
       </Layout>
     </>
   );

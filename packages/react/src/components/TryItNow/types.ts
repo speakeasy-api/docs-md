@@ -95,4 +95,5 @@ export type ResultsProps = {
 
 export type LayoutProps = {
   children: React.ReactNode;
+  status: Status;
 };

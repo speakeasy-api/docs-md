@@ -48,7 +48,7 @@
   background-color: #1e1e1e;
   flex-direction: column;
   flex-grow: 1;
-  max-width: 50%;
+  width: 100%;
   overflow-y: auto;
   color: var(--speakeasy-try-it-now-results-text-color);
   
@@ -94,10 +94,43 @@
 .layout {
   overflow: hidden;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border: 0.1rem solid var(--speakeasy-border-color);
   border-radius: var(--speakeasy-code-border-radius);
   height: var(--speakeasy-code-sample-height);
+}
+
+/* Tab styles */
+.tabHeader {
+  display: flex;
+  border-bottom: 0.1rem solid var(--speakeasy-border-color);
+  background-color: var(--speakeasy-background-color, #f5f5f5);
+}
+
+.tab {
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--speakeasy-text-color, #666);
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--speakeasy-text-color, #000);
+  }
+
+  &:tabActive {
+    color: var(--speakeasy-text-color, #000);
+    border-bottom-color: var(--speakeasy-primary-color, #0066cc);
+  }
+}
+
+.tabContent {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
 }
 
 /* Stack vertically on tablets and below */
@@ -107,17 +140,7 @@
   }
 
   .layout {
-    display: grid;
-    grid-template-rows: 250px;
     max-height: 800px;
     height: unset;
-  }
-
-  .layout:has(> :nth-child(2)) {
-    grid-template-rows: 250px 200px;
-  }
-
-  .results {
-    max-width: 100%;
   }
 }

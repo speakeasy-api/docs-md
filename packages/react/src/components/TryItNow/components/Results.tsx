@@ -116,13 +116,13 @@ function formatResultsOutput(events: FormattedEvent[]) {
 }
 
 export function Results({ status }: ResultsProps) {
-  // First, check if we don't have anything to show
-  if (status.state === "idle") {
-    return null;
-  }
-
   let displayOutput: FormattedEvent[] = [];
+
   switch (status.state) {
+    case "idle": {
+      displayOutput = [];
+      break;
+    }
     case "compiling": {
       displayOutput = formatEvents(status.previousEvents);
       break;
