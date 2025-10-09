@@ -2,8 +2,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import type { PillElement } from "../components/Pill/Pill.tsx";
-import type { PillProps } from "../components/Pill/types.ts";
+import type { PillElement, PillProps } from "../components/Pill/Pill.tsx";
 
 type ReactCustomElement<Element extends HTMLElement, Props> = Props &
   DetailedHTMLProps<HTMLAttributes<Element & Props>, Element>;

@@ -3,27 +3,29 @@
 import type { PillVariant } from "@speakeasy-api/docs-md-shared";
 import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import type { PropsWithChildren } from "react";
 
 import { styles as litStyles } from "./styles.ts";
-import type { PillProps } from "./types.ts";
 
-/**
- * A pill displays a small piece of information inline surrounded by a border
- * and optional background color. The pill takes in a "variant" that controls
- * the color scheme, such as "primary" or "error".
- */
-export function Pill({ variant, children }: PillProps) {
-  return (
-    <spk-pill variant={variant}>
-      <div slot="content">{children}</div>
-    </spk-pill>
-  );
-}
+type LitElementProps = keyof LitElement;
+
+export type PillProps = PropsWithChildren<
+  Omit<PillElement, LitElementProps | "render" | "renderRoot">
+>;
 
 @customElement("spk-pill")
 export class PillElement extends LitElement {
   static override styles = litStyles;
 
+  /**
+   * The variant to use for the pill, one of:
+   * - "error"
+   * - "warning"
+   * - "info"
+   * - "success"
+   * - "primary"
+   * - "secondary"
+   */
   @property({ type: String })
   public variant: PillVariant = "primary";
 

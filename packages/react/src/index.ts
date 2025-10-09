@@ -92,8 +92,7 @@ export type {
   OperationResponseBodyExamplesSectionProps,
   OperationSecuritySectionProps,
 } from "./components/Operation/types.ts";
-export { Pill } from "./components/Pill/Pill.tsx";
-export type { PillProps } from "./components/Pill/types.ts";
+export type { PillProps } from "./components/Pill/Pill.tsx";
 export { Section } from "./components/Section/Section.tsx";
 export type { SectionProps } from "./components/Section/types.ts";
 export { SectionContent } from "./components/SectionContent/SectionContent.tsx";
