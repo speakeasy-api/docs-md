@@ -5,23 +5,24 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
   ExpandablePropertyDescription,
+  ExpandablePropertyExamples,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedfacetfilter from "../loaders/facetfilter.tsx";
+import Embedvalues from "../loaders/values.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="facetfilters_facetFilters"
-  headingId="embed-facetfilters+facetfilters+facetfilters"
-  parentId="facetfilters"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-facetfilters+facetfilters+facetfilters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#embed-facetfilters+facetfilters+facetfilters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="facetFilters"
+  headingId="embed-facetfilters+facetfilters"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-facetfilters+facetfilters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#embed-facetfilters+facetfilters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -29,7 +30,7 @@ import Embedfacetfilter from "../loaders/facetfilter.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### facetFilters \{#embed-facetfilters+facetfilters+facetfilters\}
+##### facetFilters \{#embed-facetfilters+facetfilters\}
 
 </ExpandablePropertyTitle>
 
@@ -43,28 +44,121 @@ A list of filters for the query. An AND is assumed between different facetFilter
 
 <ExpandableBreakout
   slot="entry"
-  id="facetfilters_facetFilters_FacetFilter"
-  headingId="embed-facetfilters+facetfilters+facetfilters+facetfilter"
-  parentId="facetfilters_facetFilters"
+  id="facetFilters_FacetFilter"
+  headingId="embed-facetfilters+facetfilters+facetfilter"
+  parentId="facetFilters"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### FacetFilter \{#embed-facetfilters+facetfilters+facetfilters+facetfilter\}
+#### FacetFilter \{#embed-facetfilters+facetfilters+facetfilter\}
 
 </ExpandableBreakoutTitle>
 
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="facetFilters_FacetFilter_fieldName"
+  headingId="embed-facetfilters+facetfilters+facetfilter+fieldname"
+  parentId="facetFilters_FacetFilter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fieldName \{#embed-facetfilters+facetfilters+facetfilter+fieldname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+owner
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="facetFilters_FacetFilter_groupName"
+  headingId="embed-facetfilters+facetfilters+facetfilter+groupname"
+  parentId="facetFilters_FacetFilter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### groupName \{#embed-facetfilters+facetfilters+facetfilter+groupname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Indicates the value of a facet, if any, that the given facet is grouped under. This is only used for nested facets, for example, fieldName could be owner and groupName would be Spreadsheet if showing all owners for spreadsheets as a nested facet.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+Spreadsheet
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="facetFilters_FacetFilter_values"
+  headingId="embed-facetfilters+facetfilters+facetfilter+values"
+  parentId="facetFilters_FacetFilter"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-facetfilters+facetfilters+facetfilter+values+facetfiltervalue\">FacetFilterValue</a>","children":[{"label":"FacetFilterValue","linkedLabel":"<a href=\"#embed-facetfilters+facetfilters+facetfilter+values+facetfiltervalue\">FacetFilterValue</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### values \{#embed-facetfilters+facetfilters+facetfilter+values\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Within a single FacetFilter, the values are to be treated like an OR. For example, fieldName type with values [EQUALS Presentation, EQUALS Spreadsheet] means we want to show a document if it's a Presentation OR a Spreadsheet.
+
+</ExpandablePropertyDescription>
+
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="FacetFilter" triggerText="View FacetFilter details">
+<EmbedTrigger slot="trigger" embedTitle="values" triggerText="View values details">
 
-<Embedfacetfilter />
+<Embedvalues />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

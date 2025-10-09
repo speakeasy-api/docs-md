@@ -5,22 +5,23 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedanswerlike from "../loaders/answerlike.tsx";
+import Embeduser from "../loaders/user.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="likedby_likedBy"
-  headingId="embed-likedby+likedby+likedby"
-  parentId="likedby"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-likedby+likedby+likedby+answerlike\">AnswerLike</a>","children":[{"label":"AnswerLike","linkedLabel":"<a href=\"#embed-likedby+likedby+likedby+answerlike\">AnswerLike</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="likedBy"
+  headingId="embed-likedby+likedby"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-likedby+likedby+answerlike\">AnswerLike</a>","children":[{"label":"AnswerLike","linkedLabel":"<a href=\"#embed-likedby+likedby+answerlike\">AnswerLike</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[{"title":"required","variant":"warning"}]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -28,7 +29,7 @@ import Embedanswerlike from "../loaders/answerlike.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### likedBy \{#embed-likedby+likedby+likedby\}
+##### likedBy \{#embed-likedby+likedby\}
 
 </ExpandablePropertyTitle>
 
@@ -36,28 +37,76 @@ import Embedanswerlike from "../loaders/answerlike.tsx";
 
 <ExpandableBreakout
   slot="entry"
-  id="likedby_likedBy_AnswerLike"
-  headingId="embed-likedby+likedby+likedby+answerlike"
-  parentId="likedby_likedBy"
+  id="likedBy_AnswerLike"
+  headingId="embed-likedby+likedby+answerlike"
+  parentId="likedBy"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### AnswerLike \{#embed-likedby+likedby+likedby+answerlike\}
+#### AnswerLike \{#embed-likedby+likedby+answerlike\}
 
 </ExpandableBreakoutTitle>
 
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="likedBy_AnswerLike_createTime"
+  headingId="embed-likedby+likedby+answerlike+createtime"
+  parentId="likedBy_AnswerLike"
+  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### createTime \{#embed-likedby+likedby+answerlike+createtime\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The time the user liked the answer in ISO format (ISO 8601).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="likedBy_AnswerLike_user"
+  headingId="embed-likedby+likedby+answerlike+user"
+  parentId="likedBy_AnswerLike"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-likedby+likedby+answerlike+user+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### user \{#embed-likedby+likedby+answerlike+user\}
+
+</ExpandablePropertyTitle>
+
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="AnswerLike" triggerText="View AnswerLike details">
+<EmbedTrigger slot="trigger" embedTitle="user" triggerText="View user details">
 
-<Embedanswerlike />
+<Embeduser />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

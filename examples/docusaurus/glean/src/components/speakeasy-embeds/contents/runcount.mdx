@@ -5,22 +5,23 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedcountinfo from "../loaders/countinfo.tsx";
+import Embedperiod from "../loaders/period.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="runcount_runCount"
-  headingId="embed-runcount+runcount+runcount"
-  parentId="runcount"
-  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-runcount+runcount+runcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
+  id="runCount"
+  headingId="embed-runcount+runcount"
+  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-runcount+runcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -28,7 +29,7 @@ import Embedcountinfo from "../loaders/countinfo.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### runCount \{#embed-runcount+runcount+runcount\}
+##### runCount \{#embed-runcount+runcount\}
 
 </ExpandablePropertyTitle>
 
@@ -36,28 +37,101 @@ import Embedcountinfo from "../loaders/countinfo.tsx";
 
 <ExpandableBreakout
   slot="entry"
-  id="runcount_runCount_CountInfo"
-  headingId="embed-runcount+runcount+runcount+countinfo"
-  parentId="runcount_runCount"
+  id="runCount_CountInfo"
+  headingId="embed-runcount+runcount+countinfo"
+  parentId="runCount"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### CountInfo \{#embed-runcount+runcount+runcount+countinfo\}
+#### CountInfo \{#embed-runcount+runcount+countinfo\}
 
 </ExpandableBreakoutTitle>
 
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="runCount_CountInfo_count"
+  headingId="embed-runcount+runcount+countinfo+count"
+  parentId="runCount_CountInfo"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### count \{#embed-runcount+runcount+countinfo+count\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The counter value
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="runCount_CountInfo_org"
+  headingId="embed-runcount+runcount+countinfo+org"
+  parentId="runCount_CountInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### org \{#embed-runcount+runcount+countinfo+org\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The unit of organization over which we did the count aggregation, e.g. org (department) or company
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="runCount_CountInfo_period"
+  headingId="embed-runcount+runcount+countinfo+period"
+  parentId="runCount_CountInfo"
+  typeInfo={{"label":"Period","linkedLabel":"<a href=\"#embed-runcount+runcount+countinfo+period+period\">Period</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### period \{#embed-runcount+runcount+countinfo+period\}
+
+</ExpandablePropertyTitle>
+
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="CountInfo" triggerText="View CountInfo details">
+<EmbedTrigger slot="trigger" embedTitle="period" triggerText="View period details">
 
-<Embedcountinfo />
+<Embedperiod />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

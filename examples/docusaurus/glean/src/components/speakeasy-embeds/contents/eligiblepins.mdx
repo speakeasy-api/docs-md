@@ -5,6 +5,7 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
@@ -12,16 +13,15 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedcollectionpinmetadata from "../loaders/collectionpinmetadata.tsx";
+import Embedtarget from "../loaders/target.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="eligiblepins_eligiblePins"
-  headingId="embed-eligiblepins+eligiblepins+eligiblepins"
-  parentId="eligiblepins"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-eligiblepins+eligiblepins+eligiblepins+collectionpinmetadata\">CollectionPinMetadata</a>","children":[{"label":"CollectionPinMetadata","linkedLabel":"<a href=\"#embed-eligiblepins+eligiblepins+eligiblepins+collectionpinmetadata\">CollectionPinMetadata</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="eligiblePins"
+  headingId="embed-eligiblepins+eligiblepins"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-eligiblepins+eligiblepins+collectionpinmetadata\">CollectionPinMetadata</a>","children":[{"label":"CollectionPinMetadata","linkedLabel":"<a href=\"#embed-eligiblepins+eligiblepins+collectionpinmetadata\">CollectionPinMetadata</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -29,7 +29,7 @@ import Embedcollectionpinmetadata from "../loaders/collectionpinmetadata.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### eligiblePins \{#embed-eligiblepins+eligiblepins+eligiblepins\}
+##### eligiblePins \{#embed-eligiblepins+eligiblepins\}
 
 </ExpandablePropertyTitle>
 
@@ -43,32 +43,76 @@ List of targets this Collection can be pinned to, excluding the targets this Col
 
 <ExpandableBreakout
   slot="entry"
-  id="eligiblepins_eligiblePins_CollectionPinMetadata"
-  headingId="embed-eligiblepins+eligiblepins+eligiblepins+collectionpinmetadata"
-  parentId="eligiblepins_eligiblePins"
+  id="eligiblePins_CollectionPinMetadata"
+  headingId="embed-eligiblepins+eligiblepins+collectionpinmetadata"
+  parentId="eligiblePins"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### CollectionPinMetadata \{#embed-eligiblepins+eligiblepins+eligiblepins+collectionpinmetadata\}
+#### CollectionPinMetadata \{#embed-eligiblepins+eligiblepins+collectionpinmetadata\}
 
 </ExpandableBreakoutTitle>
 
-<Embed slot="embed">
+<ExpandableBreakoutProperties slot="properties">
 
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="CollectionPinMetadata"
-  triggerText="View CollectionPinMetadata details"
+<ExpandableProperty
+  slot="entry"
+  id="eligiblePins_CollectionPinMetadata_id"
+  headingId="embed-eligiblepins+eligiblepins+collectionpinmetadata+id"
+  parentId="eligiblePins_CollectionPinMetadata"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
 >
 
-<Embedcollectionpinmetadata />
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#embed-eligiblepins+eligiblepins+collectionpinmetadata+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The ID of the Collection.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="eligiblePins_CollectionPinMetadata_target"
+  headingId="embed-eligiblepins+eligiblepins+collectionpinmetadata+target"
+  parentId="eligiblePins_CollectionPinMetadata"
+  typeInfo={{"label":"CollectionPinTarget","linkedLabel":"<a href=\"#embed-eligiblepins+eligiblepins+collectionpinmetadata+target+collectionpintarget\">CollectionPinTarget</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### target \{#embed-eligiblepins+eligiblepins+collectionpinmetadata+target\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="target" triggerText="View target details">
+
+<Embedtarget />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

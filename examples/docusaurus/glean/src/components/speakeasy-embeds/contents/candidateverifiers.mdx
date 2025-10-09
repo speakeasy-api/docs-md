@@ -5,6 +5,7 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
@@ -12,16 +13,16 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedperson from "../loaders/person.tsx";
+import Embedmetadata from "../loaders/metadata.tsx";
+import Embedrelateddocuments from "../loaders/relateddocuments.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="candidateverifiers_candidateVerifiers"
-  headingId="embed-candidateverifiers+candidateverifiers+candidateverifiers"
-  parentId="candidateverifiers"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-candidateverifiers+candidateverifiers+candidateverifiers+person\">Person</a>","children":[{"label":"Person","linkedLabel":"<a href=\"#embed-candidateverifiers+candidateverifiers+candidateverifiers+person\">Person</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="candidateVerifiers"
+  headingId="embed-candidateverifiers+candidateverifiers"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-candidateverifiers+candidateverifiers+person\">Person</a>","children":[{"label":"Person","linkedLabel":"<a href=\"#embed-candidateverifiers+candidateverifiers+person\">Person</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -29,7 +30,7 @@ import Embedperson from "../loaders/person.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### candidateVerifiers \{#embed-candidateverifiers+candidateverifiers+candidateverifiers\}
+##### candidateVerifiers \{#embed-candidateverifiers+candidateverifiers\}
 
 </ExpandablePropertyTitle>
 
@@ -43,28 +44,140 @@ A list of POC for company.
 
 <ExpandableBreakout
   slot="entry"
-  id="candidateverifiers_candidateVerifiers_Person"
-  headingId="embed-candidateverifiers+candidateverifiers+candidateverifiers+person"
-  parentId="candidateverifiers_candidateVerifiers"
+  id="candidateVerifiers_Person"
+  headingId="embed-candidateverifiers+candidateverifiers+person"
+  parentId="candidateVerifiers"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### Person \{#embed-candidateverifiers+candidateverifiers+candidateverifiers+person\}
+#### Person \{#embed-candidateverifiers+candidateverifiers+person\}
 
 </ExpandableBreakoutTitle>
 
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="candidateVerifiers_Person_metadata"
+  headingId="embed-candidateverifiers+candidateverifiers+person+metadata"
+  parentId="candidateVerifiers_Person"
+  typeInfo={{"label":"PersonMetadata","linkedLabel":"<a href=\"#embed-candidateverifiers+candidateverifiers+person+metadata+personmetadata\">PersonMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#embed-candidateverifiers+candidateverifiers+person+metadata\}
+
+</ExpandablePropertyTitle>
+
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="Person" triggerText="View Person details">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
-<Embedperson />
+<Embedmetadata />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="candidateVerifiers_Person_name"
+  headingId="embed-candidateverifiers+candidateverifiers+person+name"
+  parentId="candidateVerifiers_Person"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#embed-candidateverifiers+candidateverifiers+person+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The display name.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="candidateVerifiers_Person_obfuscatedId"
+  headingId="embed-candidateverifiers+candidateverifiers+person+obfuscatedid"
+  parentId="candidateVerifiers_Person"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### obfuscatedId \{#embed-candidateverifiers+candidateverifiers+person+obfuscatedid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque identifier that can be used to request metadata for a Person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="candidateVerifiers_Person_relatedDocuments"
+  headingId="embed-candidateverifiers+candidateverifiers+person+relateddocuments"
+  parentId="candidateVerifiers_Person"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-candidateverifiers+candidateverifiers+person+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#embed-candidateverifiers+candidateverifiers+person+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedDocuments \{#embed-candidateverifiers+candidateverifiers+person+relateddocuments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of documents related to this person.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
+
+<Embedrelateddocuments />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

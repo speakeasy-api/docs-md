@@ -5,6 +5,7 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
@@ -12,16 +13,15 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedclustergroup from "../loaders/clustergroup.tsx";
+import Embedclusteredresults from "../loaders/clusteredresults.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="allclusteredresults_allClusteredResults"
-  headingId="embed-allclusteredresults+allclusteredresults+allclusteredresults"
-  parentId="allclusteredresults"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-allclusteredresults+allclusteredresults+allclusteredresults+clustergroup\">ClusterGroup</a>","children":[{"label":"ClusterGroup","linkedLabel":"<a href=\"#embed-allclusteredresults+allclusteredresults+allclusteredresults+clustergroup\">ClusterGroup</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="allClusteredResults"
+  headingId="embed-allclusteredresults+allclusteredresults"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-allclusteredresults+allclusteredresults+clustergroup\">ClusterGroup</a>","children":[{"label":"ClusterGroup","linkedLabel":"<a href=\"#embed-allclusteredresults+allclusteredresults+clustergroup\">ClusterGroup</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -29,7 +29,7 @@ import Embedclustergroup from "../loaders/clustergroup.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### allClusteredResults \{#embed-allclusteredresults+allclusteredresults+allclusteredresults\}
+##### allClusteredResults \{#embed-allclusteredresults+allclusteredresults\}
 
 </ExpandablePropertyTitle>
 
@@ -43,32 +43,111 @@ A list of results that should be displayed as associated with this result.
 
 <ExpandableBreakout
   slot="entry"
-  id="allclusteredresults_allClusteredResults_ClusterGroup"
-  headingId="embed-allclusteredresults+allclusteredresults+allclusteredresults+clustergroup"
-  parentId="allclusteredresults_allClusteredResults"
+  id="allClusteredResults_ClusterGroup"
+  headingId="embed-allclusteredresults+allclusteredresults+clustergroup"
+  parentId="allClusteredResults"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### ClusterGroup \{#embed-allclusteredresults+allclusteredresults+allclusteredresults+clustergroup\}
+#### ClusterGroup \{#embed-allclusteredresults+allclusteredresults+clustergroup\}
 
 </ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="allClusteredResults_ClusterGroup_clusterType"
+  headingId="embed-allclusteredresults+allclusteredresults+clustergroup+clustertype"
+  parentId="allClusteredResults_ClusterGroup"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"SIMILAR\"","linkedLabel":"\"SIMILAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"FRESHNESS\"","linkedLabel":"\"FRESHNESS\"","children":[],"breakoutSubTypes":{}},{"label":"\"TITLE\"","linkedLabel":"\"TITLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"NONE\"","linkedLabel":"\"NONE\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_REPLY\"","linkedLabel":"\"THREAD_REPLY\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_ROOT\"","linkedLabel":"\"THREAD_ROOT\"","children":[],"breakoutSubTypes":{}},{"label":"\"PREFIX\"","linkedLabel":"\"PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUFFIX\"","linkedLabel":"\"SUFFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_PREFIX\"","linkedLabel":"\"AUTHOR_PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_SUFFIX\"","linkedLabel":"\"AUTHOR_SUFFIX\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### clusterType \{#embed-allclusteredresults+allclusteredresults+clustergroup+clustertype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The reason for inclusion of clusteredResults.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="allClusteredResults_ClusterGroup_clusteredResults"
+  headingId="embed-allclusteredresults+allclusteredresults+clustergroup+clusteredresults"
+  parentId="allClusteredResults_ClusterGroup"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-allclusteredresults+allclusteredresults+clustergroup+clusteredresults+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-allclusteredresults+allclusteredresults+clustergroup+clusteredresults+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### clusteredResults \{#embed-allclusteredresults+allclusteredresults+clustergroup+clusteredresults\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A truncated list of documents associated with this relation. To be used in favor of `documents` because it contains a trackingToken.
+
+</ExpandablePropertyDescription>
 
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="ClusterGroup"
-  triggerText="View ClusterGroup details"
+  embedTitle="clusteredResults"
+  triggerText="View clusteredResults details"
 >
 
-<Embedclustergroup />
+<Embedclusteredresults />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="allClusteredResults_ClusterGroup_visibleCountHint"
+  headingId="embed-allclusteredresults+allclusteredresults+clustergroup+visiblecounthint"
+  parentId="allClusteredResults_ClusterGroup"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### visibleCountHint \{#embed-allclusteredresults+allclusteredresults+clustergroup+visiblecounthint\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The default number of results to display before truncating and showing a "see more" link
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

@@ -5,22 +5,24 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedcollectionpinnedmetadata from "../loaders/collectionpinnedmetadata.tsx";
+import Embedeligiblepins from "../loaders/eligiblepins.tsx";
+import Embedexistingpins from "../loaders/existingpins.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="pinmetadata_pinMetadata"
-  headingId="embed-pinmetadata+pinmetadata+pinmetadata"
-  parentId="pinmetadata"
-  typeInfo={{"label":"CollectionPinnedMetadata","linkedLabel":"<a href=\"#embed-pinmetadata+pinmetadata+pinmetadata+collectionpinnedmetadata\">CollectionPinnedMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  id="pinMetadata"
+  headingId="embed-pinmetadata+pinmetadata"
+  typeInfo={{"label":"CollectionPinnedMetadata","linkedLabel":"<a href=\"#embed-pinmetadata+pinmetadata+collectionpinnedmetadata\">CollectionPinnedMetadata</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -28,7 +30,7 @@ import Embedcollectionpinnedmetadata from "../loaders/collectionpinnedmetadata.t
 
 <ExpandablePropertyTitle slot="title">
 
-##### pinMetadata \{#embed-pinmetadata+pinmetadata+pinmetadata\}
+##### pinMetadata \{#embed-pinmetadata+pinmetadata\}
 
 </ExpandablePropertyTitle>
 
@@ -36,32 +38,100 @@ import Embedcollectionpinnedmetadata from "../loaders/collectionpinnedmetadata.t
 
 <ExpandableBreakout
   slot="entry"
-  id="pinmetadata_pinMetadata_CollectionPinnedMetadata"
-  headingId="embed-pinmetadata+pinmetadata+pinmetadata+collectionpinnedmetadata"
-  parentId="pinmetadata_pinMetadata"
+  id="pinMetadata_CollectionPinnedMetadata"
+  headingId="embed-pinmetadata+pinmetadata+collectionpinnedmetadata"
+  parentId="pinMetadata"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### CollectionPinnedMetadata \{#embed-pinmetadata+pinmetadata+pinmetadata+collectionpinnedmetadata\}
+#### CollectionPinnedMetadata \{#embed-pinmetadata+pinmetadata+collectionpinnedmetadata\}
 
 </ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="pinMetadata_CollectionPinnedMetadata_eligiblePins"
+  headingId="embed-pinmetadata+pinmetadata+collectionpinnedmetadata+eligiblepins"
+  parentId="pinMetadata_CollectionPinnedMetadata"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-pinmetadata+pinmetadata+collectionpinnedmetadata+eligiblepins+collectionpinmetadata\">CollectionPinMetadata</a>","children":[{"label":"CollectionPinMetadata","linkedLabel":"<a href=\"#embed-pinmetadata+pinmetadata+collectionpinnedmetadata+eligiblepins+collectionpinmetadata\">CollectionPinMetadata</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### eligiblePins \{#embed-pinmetadata+pinmetadata+collectionpinnedmetadata+eligiblepins\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of targets this Collection can be pinned to, excluding the targets this Collection is already pinned to. We also include Collection ID already is pinned to each eligible target, which will be 0 if the target has no pinned Collection.
+
+</ExpandablePropertyDescription>
 
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="CollectionPinnedMetadata"
-  triggerText="View CollectionPinnedMetadata details"
+  embedTitle="eligiblePins"
+  triggerText="View eligiblePins details"
 >
 
-<Embedcollectionpinnedmetadata />
+<Embedeligiblepins />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pinMetadata_CollectionPinnedMetadata_existingPins"
+  headingId="embed-pinmetadata+pinmetadata+collectionpinnedmetadata+existingpins"
+  parentId="pinMetadata_CollectionPinnedMetadata"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-pinmetadata+pinmetadata+collectionpinnedmetadata+existingpins+collectionpintarget\">CollectionPinTarget</a>","children":[{"label":"CollectionPinTarget","linkedLabel":"<a href=\"#embed-pinmetadata+pinmetadata+collectionpinnedmetadata+existingpins+collectionpintarget\">CollectionPinTarget</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### existingPins \{#embed-pinmetadata+pinmetadata+collectionpinnedmetadata+existingpins\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of targets this Collection is pinned to.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="existingPins"
+  triggerText="View existingPins details"
+>
+
+<Embedexistingpins />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

@@ -5,22 +5,23 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedperson from "../loaders/person.tsx";
+import Embedmetadata from "../loaders/metadata.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="createdby_createdBy"
-  headingId="embed-createdby+createdby+createdby"
-  parentId="createdby"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-createdby+createdby+createdby+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  id="createdBy"
+  headingId="embed-createdby+createdby"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-createdby+createdby+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -28,7 +29,7 @@ import Embedperson from "../loaders/person.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### createdBy \{#embed-createdby+createdby+createdby\}
+##### createdBy \{#embed-createdby+createdby\}
 
 </ExpandablePropertyTitle>
 
@@ -36,28 +37,126 @@ import Embedperson from "../loaders/person.tsx";
 
 <ExpandableBreakout
   slot="entry"
-  id="createdby_createdBy_Person"
-  headingId="embed-createdby+createdby+createdby+person"
-  parentId="createdby_createdBy"
+  id="createdBy_Person"
+  headingId="embed-createdby+createdby+person"
+  parentId="createdBy"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### Person \{#embed-createdby+createdby+createdby+person\}
+#### Person \{#embed-createdby+createdby+person\}
 
 </ExpandableBreakoutTitle>
 
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="createdBy_Person_metadata"
+  headingId="embed-createdby+createdby+person+metadata"
+  parentId="createdBy_Person"
+  typeInfo={{"label":"PersonMetadata","linkedLabel":"<a href=\"#embed-createdby+createdby+person+metadata+personmetadata\">PersonMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#embed-createdby+createdby+person+metadata\}
+
+</ExpandablePropertyTitle>
+
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="Person" triggerText="View Person details">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
-<Embedperson />
+<Embedmetadata />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="createdBy_Person_name"
+  headingId="embed-createdby+createdby+person+name"
+  parentId="createdBy_Person"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#embed-createdby+createdby+person+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The display name.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="createdBy_Person_obfuscatedId"
+  headingId="embed-createdby+createdby+person+obfuscatedid"
+  parentId="createdBy_Person"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### obfuscatedId \{#embed-createdby+createdby+person+obfuscatedid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque identifier that can be used to request metadata for a Person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="createdBy_Person_relatedDocuments"
+  headingId="embed-createdby+createdby+person+relateddocuments"
+  parentId="createdBy_Person"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-createdby+createdby+person+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#embed-createdby+createdby+person+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedDocuments \{#embed-createdby+createdby+person+relateddocuments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of documents related to this person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

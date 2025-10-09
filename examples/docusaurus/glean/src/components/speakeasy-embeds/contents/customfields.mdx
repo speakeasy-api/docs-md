@@ -5,23 +5,24 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
+  ExpandablePropertyDefaultValue,
   ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedcustomfielddata from "../loaders/customfielddata.tsx";
+import Embedvalues from "../loaders/values.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="customfields_customFields"
-  headingId="embed-customfields+customfields+customfields"
-  parentId="customfields"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-customfields+customfields+customfields+customfielddata\">CustomFieldData</a>","children":[{"label":"CustomFieldData","linkedLabel":"<a href=\"#embed-customfields+customfields+customfields+customfielddata\">CustomFieldData</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="customFields"
+  headingId="embed-customfields+customfields"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-customfields+customfields+customfielddata\">CustomFieldData</a>","children":[{"label":"CustomFieldData","linkedLabel":"<a href=\"#embed-customfields+customfields+customfielddata\">CustomFieldData</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -29,7 +30,7 @@ import Embedcustomfielddata from "../loaders/customfielddata.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### customFields \{#embed-customfields+customfields+customfields\}
+##### customFields \{#embed-customfields+customfields\}
 
 </ExpandablePropertyTitle>
 
@@ -43,32 +44,107 @@ Customizable fields for additional team information.
 
 <ExpandableBreakout
   slot="entry"
-  id="customfields_customFields_CustomFieldData"
-  headingId="embed-customfields+customfields+customfields+customfielddata"
-  parentId="customfields_customFields"
+  id="customFields_CustomFieldData"
+  headingId="embed-customfields+customfields+customfielddata"
+  parentId="customFields"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### CustomFieldData \{#embed-customfields+customfields+customfields+customfielddata\}
+#### CustomFieldData \{#embed-customfields+customfields+customfielddata\}
 
 </ExpandableBreakoutTitle>
 
-<Embed slot="embed">
+<ExpandableBreakoutProperties slot="properties">
 
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="CustomFieldData"
-  triggerText="View CustomFieldData details"
+<ExpandableProperty
+  slot="entry"
+  id="customFields_CustomFieldData_displayable"
+  headingId="embed-customfields+customfields+customfielddata+displayable"
+  parentId="customFields_CustomFieldData"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
 >
 
-<Embedcustomfielddata />
+<ExpandablePropertyTitle slot="title">
+
+##### displayable \{#embed-customfields+customfields+customfielddata+displayable\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Determines whether the client should display this custom field
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `true`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="customFields_CustomFieldData_label"
+  headingId="embed-customfields+customfields+customfielddata+label"
+  parentId="customFields_CustomFieldData"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### label \{#embed-customfields+customfields+customfielddata+label\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A user-facing label for this field.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="customFields_CustomFieldData_values"
+  headingId="embed-customfields+customfields+customfielddata+values"
+  parentId="customFields_CustomFieldData"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"CustomFieldValueStr","linkedLabel":"<a href=\"#embed-customfields+customfields+customfielddata+values+customfieldvaluestr\">CustomFieldValueStr</a>","children":[],"breakoutSubTypes":{}},{"label":"CustomFieldValueHyperlink","linkedLabel":"<a href=\"#embed-customfields+customfields+customfielddata+values+customfieldvaluehyperlink\">CustomFieldValueHyperlink</a>","children":[],"breakoutSubTypes":{}},{"label":"CustomFieldValuePerson","linkedLabel":"<a href=\"#embed-customfields+customfields+customfielddata+values+customfieldvalueperson\">CustomFieldValuePerson</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### values \{#embed-customfields+customfields+customfielddata+values\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="values" triggerText="View values details">
+
+<Embedvalues />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

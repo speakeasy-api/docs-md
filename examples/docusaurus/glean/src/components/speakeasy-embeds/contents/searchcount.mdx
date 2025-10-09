@@ -5,22 +5,23 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedcountinfo from "../loaders/countinfo.tsx";
+import Embedperiod from "../loaders/period.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="searchcount_searchCount"
-  headingId="embed-searchcount+searchcount+searchcount"
-  parentId="searchcount"
-  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-searchcount+searchcount+searchcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
+  id="searchCount"
+  headingId="embed-searchcount+searchcount"
+  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-searchcount+searchcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -28,7 +29,7 @@ import Embedcountinfo from "../loaders/countinfo.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### searchCount \{#embed-searchcount+searchcount+searchcount\}
+##### searchCount \{#embed-searchcount+searchcount\}
 
 </ExpandablePropertyTitle>
 
@@ -36,28 +37,101 @@ import Embedcountinfo from "../loaders/countinfo.tsx";
 
 <ExpandableBreakout
   slot="entry"
-  id="searchcount_searchCount_CountInfo"
-  headingId="embed-searchcount+searchcount+searchcount+countinfo"
-  parentId="searchcount_searchCount"
+  id="searchCount_CountInfo"
+  headingId="embed-searchcount+searchcount+countinfo"
+  parentId="searchCount"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### CountInfo \{#embed-searchcount+searchcount+searchcount+countinfo\}
+#### CountInfo \{#embed-searchcount+searchcount+countinfo\}
 
 </ExpandableBreakoutTitle>
 
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="searchCount_CountInfo_count"
+  headingId="embed-searchcount+searchcount+countinfo+count"
+  parentId="searchCount_CountInfo"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### count \{#embed-searchcount+searchcount+countinfo+count\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The counter value
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="searchCount_CountInfo_org"
+  headingId="embed-searchcount+searchcount+countinfo+org"
+  parentId="searchCount_CountInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### org \{#embed-searchcount+searchcount+countinfo+org\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The unit of organization over which we did the count aggregation, e.g. org (department) or company
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="searchCount_CountInfo_period"
+  headingId="embed-searchcount+searchcount+countinfo+period"
+  parentId="searchCount_CountInfo"
+  typeInfo={{"label":"Period","linkedLabel":"<a href=\"#embed-searchcount+searchcount+countinfo+period+period\">Period</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### period \{#embed-searchcount+searchcount+countinfo+period\}
+
+</ExpandablePropertyTitle>
+
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="CountInfo" triggerText="View CountInfo details">
+<EmbedTrigger slot="trigger" embedTitle="period" triggerText="View period details">
 
-<Embedcountinfo />
+<Embedperiod />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

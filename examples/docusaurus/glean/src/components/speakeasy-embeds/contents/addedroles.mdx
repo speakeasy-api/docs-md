@@ -5,6 +5,7 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
@@ -12,16 +13,16 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embeduserrolespecification from "../loaders/userrolespecification.tsx";
+import Embedgroup from "../loaders/group.tsx";
+import Embedperson from "../loaders/person.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="addedroles_addedRoles"
-  headingId="embed-addedroles+addedroles+addedroles"
-  parentId="addedroles"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-addedroles+addedroles+addedroles+userrolespecification\">UserRoleSpecification</a>","children":[{"label":"UserRoleSpecification","linkedLabel":"<a href=\"#embed-addedroles+addedroles+addedroles+userrolespecification\">UserRoleSpecification</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="addedRoles"
+  headingId="embed-addedroles+addedroles"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-addedroles+addedroles+userrolespecification\">UserRoleSpecification</a>","children":[{"label":"UserRoleSpecification","linkedLabel":"<a href=\"#embed-addedroles+addedroles+userrolespecification\">UserRoleSpecification</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -29,7 +30,7 @@ import Embeduserrolespecification from "../loaders/userrolespecification.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### addedRoles \{#embed-addedroles+addedroles+addedroles\}
+##### addedRoles \{#embed-addedroles+addedroles\}
 
 </ExpandablePropertyTitle>
 
@@ -43,32 +44,124 @@ A list of user roles for the custom entity explicitly granted by the owner.
 
 <ExpandableBreakout
   slot="entry"
-  id="addedroles_addedRoles_UserRoleSpecification"
-  headingId="embed-addedroles+addedroles+addedroles+userrolespecification"
-  parentId="addedroles_addedRoles"
+  id="addedRoles_UserRoleSpecification"
+  headingId="embed-addedroles+addedroles+userrolespecification"
+  parentId="addedRoles"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### UserRoleSpecification \{#embed-addedroles+addedroles+addedroles+userrolespecification\}
+#### UserRoleSpecification \{#embed-addedroles+addedroles+userrolespecification\}
 
 </ExpandableBreakoutTitle>
 
-<Embed slot="embed">
+<ExpandableBreakoutProperties slot="properties">
 
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="UserRoleSpecification"
-  triggerText="View UserRoleSpecification details"
+<ExpandableProperty
+  slot="entry"
+  id="addedRoles_UserRoleSpecification_group"
+  headingId="embed-addedroles+addedroles+userrolespecification+group"
+  parentId="addedRoles_UserRoleSpecification"
+  typeInfo={{"label":"Group","linkedLabel":"<a href=\"#embed-addedroles+addedroles+userrolespecification+group+group\">Group</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
 >
 
-<Embeduserrolespecification />
+<ExpandablePropertyTitle slot="title">
+
+##### group \{#embed-addedroles+addedroles+userrolespecification+group\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="group" triggerText="View group details">
+
+<Embedgroup />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="addedRoles_UserRoleSpecification_person"
+  headingId="embed-addedroles+addedroles+userrolespecification+person"
+  parentId="addedRoles_UserRoleSpecification"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-addedroles+addedroles+userrolespecification+person+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### person \{#embed-addedroles+addedroles+userrolespecification+person\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="person" triggerText="View person details">
+
+<Embedperson />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="addedRoles_UserRoleSpecification_role"
+  headingId="embed-addedroles+addedroles+userrolespecification+role"
+  parentId="addedRoles_UserRoleSpecification"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"OWNER\"","linkedLabel":"\"OWNER\"","children":[],"breakoutSubTypes":{}},{"label":"\"VIEWER\"","linkedLabel":"\"VIEWER\"","children":[],"breakoutSubTypes":{}},{"label":"\"ANSWER_MODERATOR\"","linkedLabel":"\"ANSWER_MODERATOR\"","children":[],"breakoutSubTypes":{}},{"label":"\"EDITOR\"","linkedLabel":"\"EDITOR\"","children":[],"breakoutSubTypes":{}},{"label":"\"VERIFIER\"","linkedLabel":"\"VERIFIER\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### role \{#embed-addedroles+addedroles+userrolespecification+role\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A user's role with respect to a specific document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="addedRoles_UserRoleSpecification_sourceDocumentSpec"
+  headingId="embed-addedroles+addedroles+userrolespecification+sourcedocumentspec"
+  parentId="addedRoles_UserRoleSpecification"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sourceDocumentSpec \{#embed-addedroles+addedroles+userrolespecification+sourcedocumentspec\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

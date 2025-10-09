@@ -5,22 +5,23 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedcountinfo from "../loaders/countinfo.tsx";
+import Embedperiod from "../loaders/period.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="clickcount_clickCount"
-  headingId="embed-clickcount+clickcount+clickcount"
-  parentId="clickcount"
-  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-clickcount+clickcount+clickcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
+  id="clickCount"
+  headingId="embed-clickcount+clickcount"
+  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-clickcount+clickcount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -28,7 +29,7 @@ import Embedcountinfo from "../loaders/countinfo.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### clickCount \{#embed-clickcount+clickcount+clickcount\}
+##### clickCount \{#embed-clickcount+clickcount\}
 
 </ExpandablePropertyTitle>
 
@@ -36,28 +37,101 @@ import Embedcountinfo from "../loaders/countinfo.tsx";
 
 <ExpandableBreakout
   slot="entry"
-  id="clickcount_clickCount_CountInfo"
-  headingId="embed-clickcount+clickcount+clickcount+countinfo"
-  parentId="clickcount_clickCount"
+  id="clickCount_CountInfo"
+  headingId="embed-clickcount+clickcount+countinfo"
+  parentId="clickCount"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### CountInfo \{#embed-clickcount+clickcount+clickcount+countinfo\}
+#### CountInfo \{#embed-clickcount+clickcount+countinfo\}
 
 </ExpandableBreakoutTitle>
 
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="clickCount_CountInfo_count"
+  headingId="embed-clickcount+clickcount+countinfo+count"
+  parentId="clickCount_CountInfo"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### count \{#embed-clickcount+clickcount+countinfo+count\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The counter value
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="clickCount_CountInfo_org"
+  headingId="embed-clickcount+clickcount+countinfo+org"
+  parentId="clickCount_CountInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### org \{#embed-clickcount+clickcount+countinfo+org\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The unit of organization over which we did the count aggregation, e.g. org (department) or company
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="clickCount_CountInfo_period"
+  headingId="embed-clickcount+clickcount+countinfo+period"
+  parentId="clickCount_CountInfo"
+  typeInfo={{"label":"Period","linkedLabel":"<a href=\"#embed-clickcount+clickcount+countinfo+period+period\">Period</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### period \{#embed-clickcount+clickcount+countinfo+period\}
+
+</ExpandablePropertyTitle>
+
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="CountInfo" triggerText="View CountInfo details">
+<EmbedTrigger slot="trigger" embedTitle="period" triggerText="View period details">
 
-<Embedcountinfo />
+<Embedperiod />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

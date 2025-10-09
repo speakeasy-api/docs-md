@@ -6,6 +6,7 @@ import {
   EmbedTrigger,
   ExpandableBreakout,
   ExpandableBreakoutDescription,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
@@ -13,16 +14,16 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embeddebugdocumentresponse from "../loaders/debugdocumentresponse.tsx";
+import Embedstatus from "../loaders/status.tsx";
+import Embeduploadedpermissions from "../loaders/uploadedpermissions.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="debuginfo_debugInfo"
-  headingId="embed-debuginfo+debuginfo+debuginfo"
-  parentId="debuginfo"
-  typeInfo={{"label":"DebugDocumentResponse","linkedLabel":"<a href=\"#embed-debuginfo+debuginfo+debuginfo+debugdocumentresponse\">DebugDocumentResponse</a>","children":[],"breakoutSubTypes":{}}}
+  id="debugInfo"
+  headingId="embed-debuginfo+debuginfo"
+  typeInfo={{"label":"DebugDocumentResponse","linkedLabel":"<a href=\"#embed-debuginfo+debuginfo+debugdocumentresponse\">DebugDocumentResponse</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -30,7 +31,7 @@ import Embeddebugdocumentresponse from "../loaders/debugdocumentresponse.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### debugInfo \{#embed-debuginfo+debuginfo+debuginfo\}
+##### debugInfo \{#embed-debuginfo+debuginfo\}
 
 </ExpandablePropertyTitle>
 
@@ -44,16 +45,16 @@ Describes the response body of the /debug/\{datasource\}/document API call
 
 <ExpandableBreakout
   slot="entry"
-  id="debuginfo_debugInfo_DebugDocumentResponse"
-  headingId="embed-debuginfo+debuginfo+debuginfo+debugdocumentresponse"
-  parentId="debuginfo_debugInfo"
+  id="debugInfo_DebugDocumentResponse"
+  headingId="embed-debuginfo+debuginfo+debugdocumentresponse"
+  parentId="debugInfo"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### DebugDocumentResponse \{#embed-debuginfo+debuginfo+debuginfo+debugdocumentresponse\}
+#### DebugDocumentResponse \{#embed-debuginfo+debuginfo+debugdocumentresponse\}
 
 </ExpandableBreakoutTitle>
 
@@ -63,19 +64,83 @@ Describes the response body of the /debug/\{datasource\}/document API call
 
 </ExpandableBreakoutDescription>
 
-<Embed slot="embed">
+<ExpandableBreakoutProperties slot="properties">
 
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="DebugDocumentResponse"
-  triggerText="View DebugDocumentResponse details"
+<ExpandableProperty
+  slot="entry"
+  id="debugInfo_DebugDocumentResponse_status"
+  headingId="embed-debuginfo+debuginfo+debugdocumentresponse+status"
+  parentId="debugInfo_DebugDocumentResponse"
+  typeInfo={{"label":"DocumentStatusResponse","linkedLabel":"<a href=\"#embed-debuginfo+debuginfo+debugdocumentresponse+status+documentstatusresponse\">DocumentStatusResponse</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
 >
 
-<Embeddebugdocumentresponse />
+<ExpandablePropertyTitle slot="title">
+
+##### status \{#embed-debuginfo+debuginfo+debugdocumentresponse+status\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Describes the document status response body
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="status" triggerText="View status details">
+
+<Embedstatus />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="debugInfo_DebugDocumentResponse_uploadedPermissions"
+  headingId="embed-debuginfo+debuginfo+debugdocumentresponse+uploadedpermissions"
+  parentId="debugInfo_DebugDocumentResponse"
+  typeInfo={{"label":"DocumentPermissionsDefinition","linkedLabel":"<a href=\"#embed-debuginfo+debuginfo+debugdocumentresponse+uploadedpermissions+documentpermissionsdefinition\">DocumentPermissionsDefinition</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### uploadedPermissions \{#embed-debuginfo+debuginfo+debugdocumentresponse+uploadedpermissions\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+describes the access control details of the document
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="uploadedPermissions"
+  triggerText="View uploadedPermissions details"
+>
+
+<Embeduploadedpermissions />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

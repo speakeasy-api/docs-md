@@ -2,7 +2,10 @@
 hide_table_of_contents: true
 ---
 import {
+  Embed,
+  EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
@@ -10,15 +13,17 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
+import Embeddocuments from "../loaders/documents.tsx";
+import Embedquerysuggestion from "../loaders/querysuggestion.tsx";
+import Embedresults from "../loaders/results.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="relateddocuments_relatedDocuments"
-  headingId="embed-relateddocuments+relateddocuments+relateddocuments"
-  parentId="relateddocuments"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-relateddocuments+relateddocuments+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#embed-relateddocuments+relateddocuments+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="relatedDocuments"
+  headingId="embed-relateddocuments+relateddocuments"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-relateddocuments+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#embed-relateddocuments+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -26,7 +31,7 @@ import {
 
 <ExpandablePropertyTitle slot="title">
 
-##### relatedDocuments \{#embed-relateddocuments+relateddocuments+relateddocuments\}
+##### relatedDocuments \{#embed-relateddocuments+relateddocuments\}
 
 </ExpandablePropertyTitle>
 
@@ -40,18 +45,175 @@ A list of documents related to this person.
 
 <ExpandableBreakout
   slot="entry"
-  id="relateddocuments_relatedDocuments_RelatedDocuments"
-  headingId="embed-relateddocuments+relateddocuments+relateddocuments+relateddocuments"
-  parentId="relateddocuments_relatedDocuments"
+  id="relatedDocuments_RelatedDocuments"
+  headingId="embed-relateddocuments+relateddocuments+relateddocuments"
+  parentId="relatedDocuments"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### RelatedDocuments \{#embed-relateddocuments+relateddocuments+relateddocuments+relateddocuments\}
+#### RelatedDocuments \{#embed-relateddocuments+relateddocuments+relateddocuments\}
 
 </ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="relatedDocuments_RelatedDocuments_associatedEntityId"
+  headingId="embed-relateddocuments+relateddocuments+relateddocuments+associatedentityid"
+  parentId="relatedDocuments_RelatedDocuments"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### associatedEntityId \{#embed-relateddocuments+relateddocuments+relateddocuments+associatedentityid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Which entity in the response that this entity relates to. Relevant when there are multiple entities associated with the response (such as merged customers)
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="relatedDocuments_RelatedDocuments_documents"
+  headingId="embed-relateddocuments+relateddocuments+relateddocuments+documents"
+  parentId="relatedDocuments_RelatedDocuments"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-relateddocuments+relateddocuments+relateddocuments+documents+document\">Document</a>","children":[{"label":"Document","linkedLabel":"<a href=\"#embed-relateddocuments+relateddocuments+relateddocuments+documents+document\">Document</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documents \{#embed-relateddocuments+relateddocuments+relateddocuments+documents\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A truncated list of documents with this relation. TO BE DEPRECATED.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="documents" triggerText="View documents details">
+
+<Embeddocuments />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="relatedDocuments_RelatedDocuments_querySuggestion"
+  headingId="embed-relateddocuments+relateddocuments+relateddocuments+querysuggestion"
+  parentId="relatedDocuments_RelatedDocuments"
+  typeInfo={{"label":"QuerySuggestion","linkedLabel":"<a href=\"#embed-relateddocuments+relateddocuments+relateddocuments+querysuggestion+querysuggestion\">QuerySuggestion</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### querySuggestion \{#embed-relateddocuments+relateddocuments+relateddocuments+querysuggestion\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="querySuggestion"
+  triggerText="View querySuggestion details"
+>
+
+<Embedquerysuggestion />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="relatedDocuments_RelatedDocuments_relation"
+  headingId="embed-relateddocuments+relateddocuments+relateddocuments+relation"
+  parentId="relatedDocuments_RelatedDocuments"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ATTACHMENT\"","linkedLabel":"\"ATTACHMENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"CANONICAL\"","linkedLabel":"\"CANONICAL\"","children":[],"breakoutSubTypes":{}},{"label":"\"CASE\"","linkedLabel":"\"CASE\"","children":[],"breakoutSubTypes":{}},{"label":"\"contact\"","linkedLabel":"\"contact\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTACT\"","linkedLabel":"\"CONTACT\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONVERSATION_MESSAGES\"","linkedLabel":"\"CONVERSATION_MESSAGES\"","children":[],"breakoutSubTypes":{}},{"label":"\"EXPERT\"","linkedLabel":"\"EXPERT\"","children":[],"breakoutSubTypes":{}},{"label":"\"FROM\"","linkedLabel":"\"FROM\"","children":[],"breakoutSubTypes":{}},{"label":"\"HIGHLIGHT\"","linkedLabel":"\"HIGHLIGHT\"","children":[],"breakoutSubTypes":{}},{"label":"\"opportunity\"","linkedLabel":"\"opportunity\"","children":[],"breakoutSubTypes":{}},{"label":"\"OPPORTUNITY\"","linkedLabel":"\"OPPORTUNITY\"","children":[],"breakoutSubTypes":{}},{"label":"\"RECENT\"","linkedLabel":"\"RECENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"SOURCE\"","linkedLabel":"\"SOURCE\"","children":[],"breakoutSubTypes":{}},{"label":"\"TICKET\"","linkedLabel":"\"TICKET\"","children":[],"breakoutSubTypes":{}},{"label":"\"TRANSCRIPT\"","linkedLabel":"\"TRANSCRIPT\"","children":[],"breakoutSubTypes":{}},{"label":"\"WITH\"","linkedLabel":"\"WITH\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relation \{#embed-relateddocuments+relateddocuments+relateddocuments+relation\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+How this document relates to the including entity.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="relatedDocuments_RelatedDocuments_results"
+  headingId="embed-relateddocuments+relateddocuments+relateddocuments+results"
+  parentId="relatedDocuments_RelatedDocuments"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-relateddocuments+relateddocuments+relateddocuments+results+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#embed-relateddocuments+relateddocuments+relateddocuments+results+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### results \{#embed-relateddocuments+relateddocuments+relateddocuments+results\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A truncated list of documents associated with this relation. To be used in favor of `documents` because it contains a trackingToken.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="results" triggerText="View results details">
+
+<Embedresults />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

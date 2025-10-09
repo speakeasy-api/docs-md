@@ -5,22 +5,23 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedquerysuggestionlist from "../loaders/querysuggestionlist.tsx";
+import Embedperson from "../loaders/person.tsx";
+import Embedsuggestions from "../loaders/suggestions.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="additionalquerysuggestions_additionalQuerySuggestions"
-  headingId="embed-additionalquerysuggestions+additionalquerysuggestions+additionalquerysuggestions"
-  parentId="additionalquerysuggestions"
-  typeInfo={{"label":"QuerySuggestionList","linkedLabel":"<a href=\"#embed-additionalquerysuggestions+additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist\">QuerySuggestionList</a>","children":[],"breakoutSubTypes":{}}}
+  id="additionalQuerySuggestions"
+  headingId="embed-additionalquerysuggestions+additionalquerysuggestions"
+  typeInfo={{"label":"QuerySuggestionList","linkedLabel":"<a href=\"#embed-additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist\">QuerySuggestionList</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -28,7 +29,7 @@ import Embedquerysuggestionlist from "../loaders/querysuggestionlist.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### additionalQuerySuggestions \{#embed-additionalquerysuggestions+additionalquerysuggestions+additionalquerysuggestions\}
+##### additionalQuerySuggestions \{#embed-additionalquerysuggestions+additionalquerysuggestions\}
 
 </ExpandablePropertyTitle>
 
@@ -36,32 +37,80 @@ import Embedquerysuggestionlist from "../loaders/querysuggestionlist.tsx";
 
 <ExpandableBreakout
   slot="entry"
-  id="additionalquerysuggestions_additionalQuerySuggestions_QuerySuggestionList"
-  headingId="embed-additionalquerysuggestions+additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist"
-  parentId="additionalquerysuggestions_additionalQuerySuggestions"
+  id="additionalQuerySuggestions_QuerySuggestionList"
+  headingId="embed-additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist"
+  parentId="additionalQuerySuggestions"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### QuerySuggestionList \{#embed-additionalquerysuggestions+additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist\}
+#### QuerySuggestionList \{#embed-additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist\}
 
 </ExpandableBreakoutTitle>
 
-<Embed slot="embed">
+<ExpandableBreakoutProperties slot="properties">
 
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="QuerySuggestionList"
-  triggerText="View QuerySuggestionList details"
+<ExpandableProperty
+  slot="entry"
+  id="additionalQuerySuggestions_QuerySuggestionList_person"
+  headingId="embed-additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist+person"
+  parentId="additionalQuerySuggestions_QuerySuggestionList"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist+person+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
 >
 
-<Embedquerysuggestionlist />
+<ExpandablePropertyTitle slot="title">
+
+##### person \{#embed-additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist+person\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="person" triggerText="View person details">
+
+<Embedperson />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="additionalQuerySuggestions_QuerySuggestionList_suggestions"
+  headingId="embed-additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist+suggestions"
+  parentId="additionalQuerySuggestions_QuerySuggestionList"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist+suggestions+querysuggestion\">QuerySuggestion</a>","children":[{"label":"QuerySuggestion","linkedLabel":"<a href=\"#embed-additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist+suggestions+querysuggestion\">QuerySuggestion</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### suggestions \{#embed-additionalquerysuggestions+additionalquerysuggestions+querysuggestionlist+suggestions\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="suggestions" triggerText="View suggestions details">
+
+<Embedsuggestions />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

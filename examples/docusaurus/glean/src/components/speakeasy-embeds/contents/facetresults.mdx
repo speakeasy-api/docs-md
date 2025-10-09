@@ -5,22 +5,24 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
+  ExpandablePropertyExamples,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedfacetresult from "../loaders/facetresult.tsx";
+import Embedbuckets from "../loaders/buckets.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="facetresults_facetResults"
-  headingId="embed-facetresults+facetresults+facetresults"
-  parentId="facetresults"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-facetresults+facetresults+facetresults+facetresult\">FacetResult</a>","children":[{"label":"FacetResult","linkedLabel":"<a href=\"#embed-facetresults+facetresults+facetresults+facetresult\">FacetResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="facetResults"
+  headingId="embed-facetresults+facetresults"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-facetresults+facetresults+facetresult\">FacetResult</a>","children":[{"label":"FacetResult","linkedLabel":"<a href=\"#embed-facetresults+facetresults+facetresult\">FacetResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -28,7 +30,7 @@ import Embedfacetresult from "../loaders/facetresult.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### facetResults \{#embed-facetresults+facetresults+facetresults\}
+##### facetResults \{#embed-facetresults+facetresults\}
 
 </ExpandablePropertyTitle>
 
@@ -36,28 +38,197 @@ import Embedfacetresult from "../loaders/facetresult.tsx";
 
 <ExpandableBreakout
   slot="entry"
-  id="facetresults_facetResults_FacetResult"
-  headingId="embed-facetresults+facetresults+facetresults+facetresult"
-  parentId="facetresults_facetResults"
+  id="facetResults_FacetResult"
+  headingId="embed-facetresults+facetresults+facetresult"
+  parentId="facetResults"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### FacetResult \{#embed-facetresults+facetresults+facetresults+facetresult\}
+#### FacetResult \{#embed-facetresults+facetresults+facetresult\}
 
 </ExpandableBreakoutTitle>
 
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="facetResults_FacetResult_buckets"
+  headingId="embed-facetresults+facetresults+facetresult+buckets"
+  parentId="facetResults_FacetResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-facetresults+facetresults+facetresult+buckets+facetbucket\">FacetBucket</a>","children":[{"label":"FacetBucket","linkedLabel":"<a href=\"#embed-facetresults+facetresults+facetresult+buckets+facetbucket\">FacetBucket</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### buckets \{#embed-facetresults+facetresults+facetresult+buckets\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of unique buckets that exist within this result set.
+
+</ExpandablePropertyDescription>
+
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="FacetResult" triggerText="View FacetResult details">
+<EmbedTrigger slot="trigger" embedTitle="buckets" triggerText="View buckets details">
 
-<Embedfacetresult />
+<Embedbuckets />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="facetResults_FacetResult_groupName"
+  headingId="embed-facetresults+facetresults+facetresult+groupname"
+  parentId="facetResults_FacetResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### groupName \{#embed-facetresults+facetresults+facetresult+groupname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+For most facets this will be the empty string, meaning the facet is high-level and applies to all documents for the datasource. When non-empty, this is used to group facets together (i.e. group facets for each doctype for a certain datasource)
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+Service Cloud
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="facetResults_FacetResult_hasMoreBuckets"
+  headingId="embed-facetresults+facetresults+facetresult+hasmorebuckets"
+  parentId="facetResults_FacetResult"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### hasMoreBuckets \{#embed-facetresults+facetresults+facetresult+hasmorebuckets\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Returns true if more buckets exist than those returned. Additional buckets can be retrieve by requesting again with a higher facetBucketSize.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+false
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="facetResults_FacetResult_operatorName"
+  headingId="embed-facetresults+facetresults+facetresult+operatorname"
+  parentId="facetResults_FacetResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### operatorName \{#embed-facetresults+facetresults+facetresult+operatorname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+How to display this facet. Currently supportes 'SelectSingle' and 'SelectMultiple'.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+SelectMultiple
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="facetResults_FacetResult_sourceName"
+  headingId="embed-facetresults+facetresults+facetresult+sourcename"
+  parentId="facetResults_FacetResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sourceName \{#embed-facetresults+facetresults+facetresult+sourcename\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The source of this facet (e.g. container_name, type, last_updated_at).
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+container_name
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

@@ -5,22 +5,24 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedreminder from "../loaders/reminder.tsx";
+import Embedassignee from "../loaders/assignee.tsx";
+import Embedrequestor from "../loaders/requestor.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="lastreminder_lastReminder"
-  headingId="embed-lastreminder+lastreminder+lastreminder"
-  parentId="lastreminder"
-  typeInfo={{"label":"Reminder","linkedLabel":"<a href=\"#embed-lastreminder+lastreminder+lastreminder+reminder\">Reminder</a>","children":[],"breakoutSubTypes":{}}}
+  id="lastReminder"
+  headingId="embed-lastreminder+lastreminder"
+  typeInfo={{"label":"Reminder","linkedLabel":"<a href=\"#embed-lastreminder+lastreminder+reminder\">Reminder</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -28,7 +30,7 @@ import Embedreminder from "../loaders/reminder.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### lastReminder \{#embed-lastreminder+lastreminder+lastreminder\}
+##### lastReminder \{#embed-lastreminder+lastreminder\}
 
 </ExpandablePropertyTitle>
 
@@ -36,28 +38,155 @@ import Embedreminder from "../loaders/reminder.tsx";
 
 <ExpandableBreakout
   slot="entry"
-  id="lastreminder_lastReminder_Reminder"
-  headingId="embed-lastreminder+lastreminder+lastreminder+reminder"
-  parentId="lastreminder_lastReminder"
+  id="lastReminder_Reminder"
+  headingId="embed-lastreminder+lastreminder+reminder"
+  parentId="lastReminder"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### Reminder \{#embed-lastreminder+lastreminder+lastreminder+reminder\}
+#### Reminder \{#embed-lastreminder+lastreminder+reminder\}
 
 </ExpandableBreakoutTitle>
 
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="lastReminder_Reminder_assignee"
+  headingId="embed-lastreminder+lastreminder+reminder+assignee"
+  parentId="lastReminder_Reminder"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-lastreminder+lastreminder+reminder+assignee+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### assignee \{#embed-lastreminder+lastreminder+reminder+assignee\}
+
+</ExpandablePropertyTitle>
+
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="Reminder" triggerText="View Reminder details">
+<EmbedTrigger slot="trigger" embedTitle="assignee" triggerText="View assignee details">
 
-<Embedreminder />
+<Embedassignee />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="lastReminder_Reminder_createdAt"
+  headingId="embed-lastreminder+lastreminder+reminder+createdat"
+  parentId="lastReminder_Reminder"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### createdAt \{#embed-lastreminder+lastreminder+reminder+createdat\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp for when the reminder was first created (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="lastReminder_Reminder_reason"
+  headingId="embed-lastreminder+lastreminder+reminder+reason"
+  parentId="lastReminder_Reminder"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### reason \{#embed-lastreminder+lastreminder+reminder+reason\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An optional free-text reason for the reminder. This is particularly useful when a reminder is used to ask for verification from another user (for example, "Duplicate", "Incomplete", "Incorrect").
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="lastReminder_Reminder_remindAt"
+  headingId="embed-lastreminder+lastreminder+reminder+remindat"
+  parentId="lastReminder_Reminder"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### remindAt \{#embed-lastreminder+lastreminder+reminder+remindat\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp for when the reminder should trigger (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="lastReminder_Reminder_requestor"
+  headingId="embed-lastreminder+lastreminder+reminder+requestor"
+  parentId="lastReminder_Reminder"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-lastreminder+lastreminder+reminder+requestor+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### requestor \{#embed-lastreminder+lastreminder+reminder+requestor\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="requestor" triggerText="View requestor details">
+
+<Embedrequestor />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

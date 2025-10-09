@@ -5,22 +5,24 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedperson from "../loaders/person.tsx";
+import Embedmetadata from "../loaders/metadata.tsx";
+import Embedrelateddocuments from "../loaders/relateddocuments.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="answerauthor_answerAuthor"
-  headingId="embed-answerauthor+answerauthor+answerauthor"
-  parentId="answerauthor"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-answerauthor+answerauthor+answerauthor+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  id="answerAuthor"
+  headingId="embed-answerauthor+answerauthor"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-answerauthor+answerauthor+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -28,7 +30,7 @@ import Embedperson from "../loaders/person.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### answerAuthor \{#embed-answerauthor+answerauthor+answerauthor\}
+##### answerAuthor \{#embed-answerauthor+answerauthor\}
 
 </ExpandablePropertyTitle>
 
@@ -36,28 +38,140 @@ import Embedperson from "../loaders/person.tsx";
 
 <ExpandableBreakout
   slot="entry"
-  id="answerauthor_answerAuthor_Person"
-  headingId="embed-answerauthor+answerauthor+answerauthor+person"
-  parentId="answerauthor_answerAuthor"
+  id="answerAuthor_Person"
+  headingId="embed-answerauthor+answerauthor+person"
+  parentId="answerAuthor"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### Person \{#embed-answerauthor+answerauthor+answerauthor+person\}
+#### Person \{#embed-answerauthor+answerauthor+person\}
 
 </ExpandableBreakoutTitle>
 
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="answerAuthor_Person_metadata"
+  headingId="embed-answerauthor+answerauthor+person+metadata"
+  parentId="answerAuthor_Person"
+  typeInfo={{"label":"PersonMetadata","linkedLabel":"<a href=\"#embed-answerauthor+answerauthor+person+metadata+personmetadata\">PersonMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#embed-answerauthor+answerauthor+person+metadata\}
+
+</ExpandablePropertyTitle>
+
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="Person" triggerText="View Person details">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
-<Embedperson />
+<Embedmetadata />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="answerAuthor_Person_name"
+  headingId="embed-answerauthor+answerauthor+person+name"
+  parentId="answerAuthor_Person"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#embed-answerauthor+answerauthor+person+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The display name.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="answerAuthor_Person_obfuscatedId"
+  headingId="embed-answerauthor+answerauthor+person+obfuscatedid"
+  parentId="answerAuthor_Person"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### obfuscatedId \{#embed-answerauthor+answerauthor+person+obfuscatedid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque identifier that can be used to request metadata for a Person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="answerAuthor_Person_relatedDocuments"
+  headingId="embed-answerauthor+answerauthor+person+relateddocuments"
+  parentId="answerAuthor_Person"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-answerauthor+answerauthor+person+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#embed-answerauthor+answerauthor+person+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedDocuments \{#embed-answerauthor+answerauthor+person+relateddocuments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of documents related to this person.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
+
+<Embedrelateddocuments />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

@@ -5,6 +5,7 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
@@ -12,16 +13,17 @@ import {
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embeduseractivityinsight from "../loaders/useractivityinsight.tsx";
+import Embedactivedaycount from "../loaders/activedaycount.tsx";
+import Embedactivitycount from "../loaders/activitycount.tsx";
+import Embeduser from "../loaders/user.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="aiappinsights_aiAppInsights"
-  headingId="embed-aiappinsights+aiappinsights+aiappinsights"
-  parentId="aiappinsights"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-aiappinsights+aiappinsights+aiappinsights+useractivityinsight\">UserActivityInsight</a>","children":[{"label":"UserActivityInsight","linkedLabel":"<a href=\"#embed-aiappinsights+aiappinsights+aiappinsights+useractivityinsight\">UserActivityInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  id="aiAppInsights"
+  headingId="embed-aiappinsights+aiappinsights"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-aiappinsights+aiappinsights+useractivityinsight\">UserActivityInsight</a>","children":[{"label":"UserActivityInsight","linkedLabel":"<a href=\"#embed-aiappinsights+aiappinsights+useractivityinsight\">UserActivityInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -29,7 +31,7 @@ import Embeduseractivityinsight from "../loaders/useractivityinsight.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### aiAppInsights \{#embed-aiappinsights+aiappinsights+aiappinsights\}
+##### aiAppInsights \{#embed-aiappinsights+aiappinsights\}
 
 </ExpandablePropertyTitle>
 
@@ -43,32 +45,167 @@ Insights for all active users with respect to set of actions.
 
 <ExpandableBreakout
   slot="entry"
-  id="aiappinsights_aiAppInsights_UserActivityInsight"
-  headingId="embed-aiappinsights+aiappinsights+aiappinsights+useractivityinsight"
-  parentId="aiappinsights_aiAppInsights"
+  id="aiAppInsights_UserActivityInsight"
+  headingId="embed-aiappinsights+aiappinsights+useractivityinsight"
+  parentId="aiAppInsights"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### UserActivityInsight \{#embed-aiappinsights+aiappinsights+aiappinsights+useractivityinsight\}
+#### UserActivityInsight \{#embed-aiappinsights+aiappinsights+useractivityinsight\}
 
 </ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="aiAppInsights_UserActivityInsight_activeDayCount"
+  headingId="embed-aiappinsights+aiappinsights+useractivityinsight+activedaycount"
+  parentId="aiAppInsights_UserActivityInsight"
+  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-aiappinsights+aiappinsights+useractivityinsight+activedaycount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### activeDayCount \{#embed-aiappinsights+aiappinsights+useractivityinsight+activedaycount\}
+
+</ExpandablePropertyTitle>
 
 <Embed slot="embed">
 
 <EmbedTrigger
   slot="trigger"
-  embedTitle="UserActivityInsight"
-  triggerText="View UserActivityInsight details"
+  embedTitle="activeDayCount"
+  triggerText="View activeDayCount details"
 >
 
-<Embeduseractivityinsight />
+<Embedactivedaycount />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="aiAppInsights_UserActivityInsight_activity"
+  headingId="embed-aiappinsights+aiappinsights+useractivityinsight+activity"
+  parentId="aiAppInsights_UserActivityInsight"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ALL\"","linkedLabel":"\"ALL\"","children":[],"breakoutSubTypes":{}},{"label":"\"SEARCH\"","linkedLabel":"\"SEARCH\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### activity \{#embed-aiappinsights+aiappinsights+useractivityinsight+activity\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Activity e.g. search, home page visit or all.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="aiAppInsights_UserActivityInsight_activityCount"
+  headingId="embed-aiappinsights+aiappinsights+useractivityinsight+activitycount"
+  parentId="aiAppInsights_UserActivityInsight"
+  typeInfo={{"label":"CountInfo","linkedLabel":"<a href=\"#embed-aiappinsights+aiappinsights+useractivityinsight+activitycount+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### activityCount \{#embed-aiappinsights+aiappinsights+useractivityinsight+activitycount\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="activityCount"
+  triggerText="View activityCount details"
+>
+
+<Embedactivitycount />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="aiAppInsights_UserActivityInsight_lastActivityTimestamp"
+  headingId="embed-aiappinsights+aiappinsights+useractivityinsight+lastactivitytimestamp"
+  parentId="aiAppInsights_UserActivityInsight"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastActivityTimestamp \{#embed-aiappinsights+aiappinsights+useractivityinsight+lastactivitytimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp of the last activity (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="aiAppInsights_UserActivityInsight_user"
+  headingId="embed-aiappinsights+aiappinsights+useractivityinsight+user"
+  parentId="aiAppInsights_UserActivityInsight"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-aiappinsights+aiappinsights+useractivityinsight+user+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### user \{#embed-aiappinsights+aiappinsights+useractivityinsight+user\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="user" triggerText="View user details">
+
+<Embeduser />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 

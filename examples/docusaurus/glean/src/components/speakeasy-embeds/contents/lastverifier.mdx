@@ -5,22 +5,24 @@ import {
   Embed,
   EmbedTrigger,
   ExpandableBreakout,
+  ExpandableBreakoutProperties,
   ExpandableBreakoutTitle,
   ExpandableProperty,
   ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
   ExpandablePropertyTitle,
   ExpandableSection
 } from "@speakeasy-api/docs-md-react";
-import Embedperson from "../loaders/person.tsx";
+import Embedmetadata from "../loaders/metadata.tsx";
+import Embedrelateddocuments from "../loaders/relateddocuments.tsx";
 
 <ExpandableSection>
 
 <ExpandableProperty
   slot="entry"
-  id="lastverifier_lastVerifier"
-  headingId="embed-lastverifier+lastverifier+lastverifier"
-  parentId="lastverifier"
-  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-lastverifier+lastverifier+lastverifier+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
+  id="lastVerifier"
+  headingId="embed-lastverifier+lastverifier"
+  typeInfo={{"label":"Person","linkedLabel":"<a href=\"#embed-lastverifier+lastverifier+person\">Person</a>","children":[],"breakoutSubTypes":{}}}
   typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={true}
@@ -28,7 +30,7 @@ import Embedperson from "../loaders/person.tsx";
 
 <ExpandablePropertyTitle slot="title">
 
-##### lastVerifier \{#embed-lastverifier+lastverifier+lastverifier\}
+##### lastVerifier \{#embed-lastverifier+lastverifier\}
 
 </ExpandablePropertyTitle>
 
@@ -36,28 +38,140 @@ import Embedperson from "../loaders/person.tsx";
 
 <ExpandableBreakout
   slot="entry"
-  id="lastverifier_lastVerifier_Person"
-  headingId="embed-lastverifier+lastverifier+lastverifier+person"
-  parentId="lastverifier_lastVerifier"
+  id="lastVerifier_Person"
+  headingId="embed-lastverifier+lastverifier+person"
+  parentId="lastVerifier"
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandableBreakoutTitle slot="title">
 
-#### Person \{#embed-lastverifier+lastverifier+lastverifier+person\}
+#### Person \{#embed-lastverifier+lastverifier+person\}
 
 </ExpandableBreakoutTitle>
 
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="lastVerifier_Person_metadata"
+  headingId="embed-lastverifier+lastverifier+person+metadata"
+  parentId="lastVerifier_Person"
+  typeInfo={{"label":"PersonMetadata","linkedLabel":"<a href=\"#embed-lastverifier+lastverifier+person+metadata+personmetadata\">PersonMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#embed-lastverifier+lastverifier+person+metadata\}
+
+</ExpandablePropertyTitle>
+
 <Embed slot="embed">
 
-<EmbedTrigger slot="trigger" embedTitle="Person" triggerText="View Person details">
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
 
-<Embedperson />
+<Embedmetadata />
 
 </EmbedTrigger>
 
 </Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="lastVerifier_Person_name"
+  headingId="embed-lastverifier+lastverifier+person+name"
+  parentId="lastVerifier_Person"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#embed-lastverifier+lastverifier+person+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The display name.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="lastVerifier_Person_obfuscatedId"
+  headingId="embed-lastverifier+lastverifier+person+obfuscatedid"
+  parentId="lastVerifier_Person"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### obfuscatedId \{#embed-lastverifier+lastverifier+person+obfuscatedid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque identifier that can be used to request metadata for a Person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="lastVerifier_Person_relatedDocuments"
+  headingId="embed-lastverifier+lastverifier+person+relateddocuments"
+  parentId="lastVerifier_Person"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-lastverifier+lastverifier+person+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#embed-lastverifier+lastverifier+person+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedDocuments \{#embed-lastverifier+lastverifier+person+relateddocuments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of documents related to this person.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
+
+<Embedrelateddocuments />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
 
