@@ -7,6 +7,7 @@ import { useRuntime } from "../state.ts";
 import type { ButtonProps, TryItNowProps } from "../types.ts";
 import { Button } from "./Button.tsx";
 import { Editor as DefaultEditor } from "./Editor.tsx";
+import { CheckIcon } from "./icons/CheckIcon.tsx";
 import { CopyIcon } from "./icons/CopyIcon.tsx";
 import { RestartIcon } from "./icons/RestartIcon.tsx";
 import { Layout as DefaultLayout } from "./Layout.tsx";
@@ -65,14 +66,24 @@ function DefaultResetButton({ onClick }: Pick<ButtonProps, "onClick">) {
   );
 }
 
-function DefaultCopyButton({ onClick }: Pick<ButtonProps, "onClick">) {
+function DefaultCopyButton({ copyValue }: Pick<ButtonProps, "copyValue">) {
+  const [copied, setCopied] = useState(false);
+
+  function handleClick() {
+    if (copyValue) {
+      void navigator.clipboard.writeText(copyValue);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  }
+
   return (
     <Button
       className={styles.copyButton}
-      onClick={onClick}
-      ariaLabel="Copy code"
+      onClick={handleClick}
+      ariaLabel={copied ? "Copied!" : "Copy code"}
     >
-      <CopyIcon />
+      {copied ? <CheckIcon /> : <CopyIcon />}
     </Button>
   );
 }
@@ -116,10 +127,6 @@ export function TryItNowContents({
     // TODO
   }
 
-  function handleCopy() {
-    void navigator.clipboard.writeText(value);
-  }
-
   return (
     <>
       <Layout>
@@ -140,7 +147,7 @@ export function TryItNowContents({
           />
         </div>
         <div slot="copyButton">
-          <CopyButton onClick={handleCopy} />
+          <CopyButton copyValue={value} />
         </div>
         <div slot="resetButton">
           <ResetButton onClick={handleReset} />

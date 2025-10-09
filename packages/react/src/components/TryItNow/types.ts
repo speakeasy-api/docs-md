@@ -98,6 +98,10 @@ export type ButtonProps = {
   ariaLabel?: string;
   children?: React.ReactNode;
   className?: string;
+  /**
+   * Text to copy to clipboard (for copy buttons)
+   */
+  copyValue?: string;
 };
 
 export type ResultsProps = {
