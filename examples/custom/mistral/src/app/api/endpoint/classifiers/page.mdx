@@ -1,6 +1,8 @@
 import "@/app/speakeasy.css";
 import {
   CodeSample,
+  CodeSampleTab,
+  CodeSampleTabbedSection,
   ExpandableBreakout,
   ExpandableBreakoutDescription,
   ExpandableBreakoutProperties,
@@ -22,11 +24,11 @@ import {
   OperationSummarySection,
   OperationTitleSection,
   Pill,
+  ResponseTab,
+  ResponseTabbedSection,
   Section,
   SectionContent,
-  SectionTab,
   SectionTitle,
-  TabbedSection,
   Tag,
   TagDescription,
   TagTitle,
@@ -65,9 +67,9 @@ Moderations
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-moderations_v1_moderations_post_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -75,7 +77,7 @@ Moderations
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -90,7 +92,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-moderations_v1_moderations_post_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -98,7 +100,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -131,7 +133,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-moderations_v1_moderations_post_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -139,7 +141,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-moderations_v1_moderations_post_code-samples_curl">
 
@@ -159,7 +161,7 @@ curl https://api.mistral.ai/v1/moderations \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -260,7 +262,7 @@ ID of the model to use.
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -268,7 +270,7 @@ ID of the model to use.
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-moderations_v1_moderations_post_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -276,7 +278,7 @@ ID of the model to use.
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -295,13 +297,39 @@ ID of the model to use.
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-moderations_v1_moderations_post_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-moderations_v1_moderations_post_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -309,7 +337,7 @@ ID of the model to use.
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-moderations_v1_moderations_post_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -317,7 +345,7 @@ ID of the model to use.
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -475,7 +503,227 @@ Moderation result
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-moderations_v1_moderations_post_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-moderations_v1_moderations_post_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-moderations_v1_moderations_post_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-moderations_v1_moderations_post_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-moderations_v1_moderations_post_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-moderations_v1_moderations_post_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-moderations_v1_moderations_post_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-moderations_v1_moderations_post_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-moderations_v1_moderations_post_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-moderations_v1_moderations_post_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-moderations_v1_moderations_post_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-moderations_v1_moderations_post_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-moderations_v1_moderations_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-moderations_v1_moderations_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-moderations_v1_moderations_post_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-moderations_v1_moderations_post_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-moderations_v1_moderations_post_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-moderations_v1_moderations_post_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-moderations_v1_moderations_post_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-moderations_v1_moderations_post_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-moderations_v1_moderations_post_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-moderations_v1_moderations_post_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-moderations_v1_moderations_post_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -497,9 +745,9 @@ Chat Moderations
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-chat_moderations_v1_chat_moderations_post_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -507,7 +755,7 @@ Chat Moderations
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -522,7 +770,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-chat_moderations_v1_chat_moderations_post_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -530,7 +778,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -565,7 +813,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-chat_moderations_v1_chat_moderations_post_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -573,7 +821,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -600,7 +848,7 @@ curl https://api.mistral.ai/v1/chat/moderations \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -3450,7 +3698,7 @@ _Default Value:_ `"tool"`
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -3458,7 +3706,7 @@ _Default Value:_ `"tool"`
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-chat_moderations_v1_chat_moderations_post_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -3466,7 +3714,7 @@ _Default Value:_ `"tool"`
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -3485,13 +3733,39 @@ _Default Value:_ `"tool"`
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -3499,7 +3773,7 @@ _Default Value:_ `"tool"`
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-chat_moderations_v1_chat_moderations_post_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -3507,7 +3781,7 @@ _Default Value:_ `"tool"`
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -3665,7 +3939,227 @@ Moderation result
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-chat_moderations_v1_chat_moderations_post_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -3687,9 +4181,9 @@ Classifications
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-classifications_v1_classifications_post_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -3697,7 +4191,7 @@ Classifications
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3712,7 +4206,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-classifications_v1_classifications_post_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -3720,7 +4214,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3752,7 +4246,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-classifications_v1_classifications_post_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -3760,7 +4254,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3783,7 +4277,7 @@ curl https://api.mistral.ai/v1/classifications \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -3884,7 +4378,7 @@ ID of the model to use.
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -3892,7 +4386,7 @@ ID of the model to use.
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-classifications_v1_classifications_post_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -3900,7 +4394,7 @@ ID of the model to use.
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -3925,13 +4419,39 @@ ID of the model to use.
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-classifications_v1_classifications_post_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-classifications_v1_classifications_post_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -3939,7 +4459,7 @@ ID of the model to use.
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-classifications_v1_classifications_post_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -3947,7 +4467,7 @@ ID of the model to use.
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -4074,7 +4594,227 @@ mod-e5cc70bb28c444948073e77776eb30ef
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-classifications_v1_classifications_post_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-classifications_v1_classifications_post_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-classifications_v1_classifications_post_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-classifications_v1_classifications_post_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-classifications_v1_classifications_post_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-classifications_v1_classifications_post_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-classifications_v1_classifications_post_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-classifications_v1_classifications_post_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-classifications_v1_classifications_post_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-classifications_v1_classifications_post_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-classifications_v1_classifications_post_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-classifications_v1_classifications_post_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-classifications_v1_classifications_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-classifications_v1_classifications_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-classifications_v1_classifications_post_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-classifications_v1_classifications_post_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-classifications_v1_classifications_post_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-classifications_v1_classifications_post_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-classifications_v1_classifications_post_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-classifications_v1_classifications_post_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-classifications_v1_classifications_post_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-classifications_v1_classifications_post_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-classifications_v1_classifications_post_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -4096,9 +4836,9 @@ Chat Classifications
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-chat_classifications_v1_chat_classifications_post_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -4106,7 +4846,7 @@ Chat Classifications
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -4121,7 +4861,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-chat_classifications_v1_chat_classifications_post_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -4129,7 +4869,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -4168,7 +4908,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-chat_classifications_v1_chat_classifications_post_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -4176,7 +4916,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -4205,7 +4945,7 @@ curl https://api.mistral.ai/v1/chat/classifications \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -7101,7 +7841,7 @@ _Default Value:_ `"tool"`
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -7109,7 +7849,7 @@ _Default Value:_ `"tool"`
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-chat_classifications_v1_chat_classifications_post_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -7117,7 +7857,7 @@ _Default Value:_ `"tool"`
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -7142,13 +7882,39 @@ _Default Value:_ `"tool"`
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -7156,7 +7922,7 @@ _Default Value:_ `"tool"`
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-chat_classifications_v1_chat_classifications_post_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -7164,7 +7930,7 @@ _Default Value:_ `"tool"`
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -7291,7 +8057,227 @@ mod-e5cc70bb28c444948073e77776eb30ef
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-chat_classifications_v1_chat_classifications_post_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 

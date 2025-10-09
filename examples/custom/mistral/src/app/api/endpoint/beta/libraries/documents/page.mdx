@@ -1,6 +1,8 @@
 import "@/app/speakeasy.css";
 import {
   CodeSample,
+  CodeSampleTab,
+  CodeSampleTabbedSection,
   ExpandableBreakout,
   ExpandableBreakoutDescription,
   ExpandableBreakoutProperties,
@@ -24,11 +26,11 @@ import {
   OperationSummarySection,
   OperationTitleSection,
   Pill,
+  ResponseTab,
+  ResponseTabbedSection,
   Section,
   SectionContent,
-  SectionTab,
   SectionTitle,
-  TabbedSection,
   Tag,
   TagDescription,
   TagTitle,
@@ -73,9 +75,9 @@ Given a library, lists the document that have been uploaded to that library.
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_list_v1_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -83,7 +85,7 @@ Given a library, lists the document that have been uploaded to that library.
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -98,7 +100,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_list_v1_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -106,7 +108,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-libraries_documents_list_v1_code-samples_python">
 
@@ -133,7 +135,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_list_v1_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -141,7 +143,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-libraries_documents_list_v1_code-samples_curl">
 
@@ -157,13 +159,13 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -171,7 +173,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents \
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_list_v1_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -179,7 +181,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents \
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -216,13 +218,39 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents \
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_list_v1_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_list_v1_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -230,7 +258,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents \
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_list_v1_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -238,7 +266,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents \
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -761,7 +789,227 @@ Successful Response
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_list_v1_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_list_v1_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-libraries_documents_list_v1_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_documents_list_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-libraries_documents_list_v1_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-libraries_documents_list_v1_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-libraries_documents_list_v1_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-libraries_documents_list_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-libraries_documents_list_v1_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-libraries_documents_list_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-libraries_documents_list_v1_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-libraries_documents_list_v1_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_documents_list_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_documents_list_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-libraries_documents_list_v1_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-libraries_documents_list_v1_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-libraries_documents_list_v1_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-libraries_documents_list_v1_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-libraries_documents_list_v1_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-libraries_documents_list_v1_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-libraries_documents_list_v1_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-libraries_documents_list_v1_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-libraries_documents_list_v1_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -789,9 +1037,9 @@ Given a library, upload a new document to that library. It is queued for process
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_upload_v1_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -799,7 +1047,7 @@ Given a library, upload a new document to that library. It is queued for process
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -814,7 +1062,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_upload_v1_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -822,7 +1070,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-libraries_documents_upload_v1_code-samples_python">
 
@@ -852,7 +1100,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_upload_v1_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -860,7 +1108,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-libraries_documents_upload_v1_code-samples_curl">
 
@@ -882,7 +1130,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -1086,7 +1334,7 @@ The File object (not file name) to be uploaded.
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -1094,7 +1342,7 @@ The File object (not file name) to be uploaded.
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_upload_v1_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -1102,7 +1350,7 @@ The File object (not file name) to be uploaded.
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -1128,13 +1376,39 @@ The File object (not file name) to be uploaded.
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_upload_v1_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_upload_v1_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -1142,7 +1416,7 @@ The File object (not file name) to be uploaded.
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_upload_v1_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -1150,7 +1424,7 @@ The File object (not file name) to be uploaded.
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -1475,7 +1749,227 @@ A document with the same hash was found in this library. Returns the existing do
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_upload_v1_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_upload_v1_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-libraries_documents_upload_v1_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_documents_upload_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-libraries_documents_upload_v1_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-libraries_documents_upload_v1_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-libraries_documents_upload_v1_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-libraries_documents_upload_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-libraries_documents_upload_v1_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-libraries_documents_upload_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-libraries_documents_upload_v1_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-libraries_documents_upload_v1_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_documents_upload_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_documents_upload_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-libraries_documents_upload_v1_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-libraries_documents_upload_v1_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-libraries_documents_upload_v1_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-libraries_documents_upload_v1_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-libraries_documents_upload_v1_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-libraries_documents_upload_v1_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-libraries_documents_upload_v1_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-libraries_documents_upload_v1_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-libraries_documents_upload_v1_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -1503,9 +1997,9 @@ Given a library and a document in this library, you can retrieve the metadata of
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_v1_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -1513,7 +2007,7 @@ Given a library and a document in this library, you can retrieve the metadata of
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -1528,7 +2022,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_v1_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -1536,7 +2030,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-libraries_documents_get_v1_code-samples_python">
 
@@ -1563,7 +2057,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_v1_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -1571,7 +2065,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-libraries_documents_get_v1_code-samples_curl">
 
@@ -1587,7 +2081,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -1651,7 +2145,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -1659,7 +2153,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_get_v1_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -1667,7 +2161,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -1693,13 +2187,39 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_get_v1_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_get_v1_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -1707,7 +2227,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_get_v1_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -1715,7 +2235,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -2040,7 +2560,227 @@ Successful Response
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_get_v1_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_get_v1_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-libraries_documents_get_v1_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_documents_get_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-libraries_documents_get_v1_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-libraries_documents_get_v1_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-libraries_documents_get_v1_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-libraries_documents_get_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-libraries_documents_get_v1_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-libraries_documents_get_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-libraries_documents_get_v1_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-libraries_documents_get_v1_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_documents_get_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_documents_get_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-libraries_documents_get_v1_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-libraries_documents_get_v1_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-libraries_documents_get_v1_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-libraries_documents_get_v1_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-libraries_documents_get_v1_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-libraries_documents_get_v1_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-libraries_documents_get_v1_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-libraries_documents_get_v1_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-libraries_documents_get_v1_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -2068,9 +2808,9 @@ Given a library and a document in that library, update the name of that document
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_update_v1_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -2078,7 +2818,7 @@ Given a library and a document in that library, update the name of that document
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -2093,7 +2833,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_update_v1_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -2101,7 +2841,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-libraries_documents_update_v1_code-samples_python">
 
@@ -2128,7 +2868,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_update_v1_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -2136,7 +2876,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-libraries_documents_update_v1_code-samples_curl">
 
@@ -2153,7 +2893,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -2279,7 +3019,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -2287,7 +3027,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_update_v1_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -2295,7 +3035,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -2321,13 +3061,39 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_update_v1_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_update_v1_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -2335,7 +3101,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_update_v1_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -2343,7 +3109,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -2668,7 +3434,227 @@ Successful Response
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_update_v1_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_update_v1_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-libraries_documents_update_v1_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_documents_update_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-libraries_documents_update_v1_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-libraries_documents_update_v1_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-libraries_documents_update_v1_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-libraries_documents_update_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-libraries_documents_update_v1_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-libraries_documents_update_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-libraries_documents_update_v1_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-libraries_documents_update_v1_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_documents_update_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_documents_update_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-libraries_documents_update_v1_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-libraries_documents_update_v1_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-libraries_documents_update_v1_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-libraries_documents_update_v1_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-libraries_documents_update_v1_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-libraries_documents_update_v1_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-libraries_documents_update_v1_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-libraries_documents_update_v1_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-libraries_documents_update_v1_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -2696,9 +3682,9 @@ Given a library and a document in that library, delete that document. The docume
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_delete_v1_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -2706,7 +3692,7 @@ Given a library and a document in that library, delete that document. The docume
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -2721,7 +3707,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_delete_v1_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -2729,7 +3715,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-libraries_documents_delete_v1_code-samples_python">
 
@@ -2755,7 +3741,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_delete_v1_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -2763,7 +3749,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-libraries_documents_delete_v1_code-samples_curl">
 
@@ -2779,7 +3765,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -2841,6 +3827,280 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id} \
 
 </OperationParametersSection>
 
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-libraries_documents_delete_v1_responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_delete_v1_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_delete_v1_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Server-Side Events \{#operation-libraries_documents_delete_v1_responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_delete_v1_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_delete_v1_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-libraries_documents_delete_v1_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_documents_delete_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-libraries_documents_delete_v1_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-libraries_documents_delete_v1_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-libraries_documents_delete_v1_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-libraries_documents_delete_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-libraries_documents_delete_v1_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-libraries_documents_delete_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-libraries_documents_delete_v1_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-libraries_documents_delete_v1_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_documents_delete_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_documents_delete_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-libraries_documents_delete_v1_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-libraries_documents_delete_v1_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-libraries_documents_delete_v1_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-libraries_documents_delete_v1_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-libraries_documents_delete_v1_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-libraries_documents_delete_v1_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-libraries_documents_delete_v1_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-libraries_documents_delete_v1_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-libraries_documents_delete_v1_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
 </Operation>
 
 <Operation>
@@ -2865,9 +4125,9 @@ Given a library and a document in that library, you can retrieve the text conten
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_text_content_v1_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -2875,7 +4135,7 @@ Given a library and a document in that library, you can retrieve the text conten
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -2890,7 +4150,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_text_content_v1_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -2898,7 +4158,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -2928,7 +4188,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_text_content_v1_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -2936,7 +4196,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -2955,7 +4215,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/te
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -3019,7 +4279,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/te
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -3027,7 +4287,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/te
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_get_text_content_v1_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -3035,7 +4295,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/te
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -3050,13 +4310,39 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/te
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_get_text_content_v1_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_get_text_content_v1_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -3064,7 +4350,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/te
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_get_text_content_v1_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -3072,7 +4358,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/te
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -3109,7 +4395,227 @@ Successful Response
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_get_text_content_v1_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_get_text_content_v1_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-libraries_documents_get_text_content_v1_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_documents_get_text_content_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-libraries_documents_get_text_content_v1_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-libraries_documents_get_text_content_v1_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-libraries_documents_get_text_content_v1_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-libraries_documents_get_text_content_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-libraries_documents_get_text_content_v1_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-libraries_documents_get_text_content_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-libraries_documents_get_text_content_v1_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-libraries_documents_get_text_content_v1_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_documents_get_text_content_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_documents_get_text_content_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-libraries_documents_get_text_content_v1_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-libraries_documents_get_text_content_v1_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-libraries_documents_get_text_content_v1_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-libraries_documents_get_text_content_v1_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-libraries_documents_get_text_content_v1_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-libraries_documents_get_text_content_v1_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-libraries_documents_get_text_content_v1_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-libraries_documents_get_text_content_v1_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-libraries_documents_get_text_content_v1_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -3137,9 +4643,9 @@ Given a library and a document in that library, retrieve the processing status o
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_status_v1_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -3147,7 +4653,7 @@ Given a library and a document in that library, retrieve the processing status o
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3162,7 +4668,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_status_v1_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -3170,7 +4676,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3200,7 +4706,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_status_v1_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -3208,7 +4714,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3227,7 +4733,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/st
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -3291,7 +4797,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/st
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -3299,7 +4805,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/st
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_get_status_v1_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -3307,7 +4813,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/st
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -3323,13 +4829,39 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/st
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_get_status_v1_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_get_status_v1_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -3337,7 +4869,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/st
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_get_status_v1_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -3345,7 +4877,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/st
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -3400,7 +4932,227 @@ Successful Response
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_get_status_v1_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_get_status_v1_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-libraries_documents_get_status_v1_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_documents_get_status_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-libraries_documents_get_status_v1_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-libraries_documents_get_status_v1_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-libraries_documents_get_status_v1_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-libraries_documents_get_status_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-libraries_documents_get_status_v1_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-libraries_documents_get_status_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-libraries_documents_get_status_v1_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-libraries_documents_get_status_v1_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_documents_get_status_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_documents_get_status_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-libraries_documents_get_status_v1_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-libraries_documents_get_status_v1_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-libraries_documents_get_status_v1_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-libraries_documents_get_status_v1_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-libraries_documents_get_status_v1_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-libraries_documents_get_status_v1_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-libraries_documents_get_status_v1_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-libraries_documents_get_status_v1_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-libraries_documents_get_status_v1_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -3428,9 +5180,9 @@ Given a library and a document in that library, retrieve the signed URL of a spe
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_signed_url_v1_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -3438,7 +5190,7 @@ Given a library and a document in that library, retrieve the signed URL of a spe
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3453,7 +5205,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_signed_url_v1_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -3461,7 +5213,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3491,7 +5243,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_signed_url_v1_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -3499,7 +5251,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3518,7 +5270,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/si
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -3582,7 +5334,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/si
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -3590,7 +5342,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/si
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_get_signed_url_v1_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -3598,7 +5350,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/si
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -3611,13 +5363,39 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/si
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_get_signed_url_v1_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_get_signed_url_v1_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -3625,7 +5403,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/si
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_get_signed_url_v1_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -3633,7 +5411,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/si
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -3656,7 +5434,227 @@ Successful Response
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_get_signed_url_v1_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_get_signed_url_v1_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-libraries_documents_get_signed_url_v1_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_documents_get_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-libraries_documents_get_signed_url_v1_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-libraries_documents_get_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-libraries_documents_get_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-libraries_documents_get_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-libraries_documents_get_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-libraries_documents_get_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-libraries_documents_get_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-libraries_documents_get_signed_url_v1_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_documents_get_signed_url_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_documents_get_signed_url_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-libraries_documents_get_signed_url_v1_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-libraries_documents_get_signed_url_v1_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-libraries_documents_get_signed_url_v1_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-libraries_documents_get_signed_url_v1_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-libraries_documents_get_signed_url_v1_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-libraries_documents_get_signed_url_v1_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-libraries_documents_get_signed_url_v1_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-libraries_documents_get_signed_url_v1_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-libraries_documents_get_signed_url_v1_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -3684,9 +5682,9 @@ Given a library and a document in that library, retrieve the signed URL of text 
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_extracted_text_signed_url_v1_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -3694,7 +5692,7 @@ Given a library and a document in that library, retrieve the signed URL of text 
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3709,7 +5707,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_extracted_text_signed_url_v1_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -3717,7 +5715,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3747,7 +5745,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_get_extracted_text_signed_url_v1_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -3755,7 +5753,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3774,7 +5772,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/ex
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -3838,7 +5836,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/ex
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -3846,7 +5844,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/ex
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -3854,7 +5852,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/ex
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -3867,13 +5865,39 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/ex
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -3881,7 +5905,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/ex
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -3889,7 +5913,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/ex
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -3912,7 +5936,227 @@ Successful Response
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-libraries_documents_get_extracted_text_signed_url_v1_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -3940,9 +6184,9 @@ Given a library and a document in that library, reprocess that document, it will
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_reprocess_v1_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -3950,7 +6194,7 @@ Given a library and a document in that library, reprocess that document, it will
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -3965,7 +6209,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_reprocess_v1_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -3973,7 +6217,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -4002,7 +6246,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-libraries_documents_reprocess_v1_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -4010,7 +6254,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -4029,7 +6273,7 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/re
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -4090,5 +6334,279 @@ curl https://api.mistral.ai/v1/libraries/{library_id}/documents/{document_id}/re
 </Section>
 
 </OperationParametersSection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-libraries_documents_reprocess_v1_responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_reprocess_v1_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_reprocess_v1_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Server-Side Events \{#operation-libraries_documents_reprocess_v1_responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-libraries_documents_reprocess_v1_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-libraries_documents_reprocess_v1_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-libraries_documents_reprocess_v1_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_documents_reprocess_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta \{#operation-libraries_documents_reprocess_v1_responses_422_application-json_httpmeta\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-libraries_documents_reprocess_v1_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata \{#operation-libraries_documents_reprocess_v1_responses_422_application-json_httpmeta_httpmetadata\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-libraries_documents_reprocess_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request \{#operation-libraries_documents_reprocess_v1_responses_422_application-json_httpmeta_httpmetadata_request\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-libraries_documents_reprocess_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response \{#operation-libraries_documents_reprocess_v1_responses_422_application-json_httpmeta_httpmetadata_response\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-libraries_documents_reprocess_v1_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_documents_reprocess_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_documents_reprocess_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail \{#operation-libraries_documents_reprocess_v1_responses_422_application-json_detail\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-libraries_documents_reprocess_v1_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError \{#operation-libraries_documents_reprocess_v1_responses_422_application-json_detail_validationerror\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-libraries_documents_reprocess_v1_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc \{#operation-libraries_documents_reprocess_v1_responses_422_application-json_detail_validationerror_loc\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-libraries_documents_reprocess_v1_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg \{#operation-libraries_documents_reprocess_v1_responses_422_application-json_detail_validationerror_msg\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-libraries_documents_reprocess_v1_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type \{#operation-libraries_documents_reprocess_v1_responses_422_application-json_detail_validationerror_type\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
 
 </Operation>

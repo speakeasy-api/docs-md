@@ -6,6 +6,8 @@ import "@speakeasy-api/docs-md-react/nextra.css";
 
 import {
   CodeSample,
+  CodeSampleTab,
+  CodeSampleTabbedSection,
   ExpandableBreakout,
   ExpandableBreakoutDescription,
   ExpandableBreakoutProperties,
@@ -30,11 +32,11 @@ import {
   OperationSummarySection,
   OperationTitleSection,
   Pill,
+  ResponseTab,
+  ResponseTabbedSection,
   Section,
   SectionContent,
-  SectionTab,
   SectionTitle,
-  TabbedSection,
   Tag,
   TagDescription,
   TagTitle,
@@ -79,9 +81,9 @@ Retrieve a list of agent entities sorted by creation time.
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_list_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -89,7 +91,7 @@ Retrieve a list of agent entities sorted by creation time.
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-agents_api_v1_agents_list_code-samples_typescript">
 
@@ -101,7 +103,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_list_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -109,7 +111,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-agents_api_v1_agents_list_code-samples_python">
 
@@ -136,7 +138,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_list_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -144,7 +146,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-agents_api_v1_agents_list_code-samples_curl">
 
@@ -160,7 +162,7 @@ curl https://api.mistral.ai/v1/agents \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -224,7 +226,7 @@ curl https://api.mistral.ai/v1/agents \
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -232,7 +234,7 @@ curl https://api.mistral.ai/v1/agents \
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-agents_api_v1_agents_list_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -240,7 +242,7 @@ curl https://api.mistral.ai/v1/agents \
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -262,13 +264,39 @@ curl https://api.mistral.ai/v1/agents \
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-agents_api_v1_agents_list_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_agents_list_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -276,7 +304,7 @@ curl https://api.mistral.ai/v1/agents \
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-agents_api_v1_agents_list_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -284,7 +312,7 @@ curl https://api.mistral.ai/v1/agents \
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -1492,7 +1520,227 @@ _Default Value:_ `"document_library"`
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-agents_api_v1_agents_list_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_agents_list_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-agents_api_v1_agents_list_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_list_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta [#operation-agents_api_v1_agents_list_responses_422_application-json_httpmeta]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-agents_api_v1_agents_list_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata [#operation-agents_api_v1_agents_list_responses_422_application-json_httpmeta_httpmetadata]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-agents_api_v1_agents_list_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request [#operation-agents_api_v1_agents_list_responses_422_application-json_httpmeta_httpmetadata_request]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-agents_api_v1_agents_list_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response [#operation-agents_api_v1_agents_list_responses_422_application-json_httpmeta_httpmetadata_response]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-agents_api_v1_agents_list_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_list_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_list_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail [#operation-agents_api_v1_agents_list_responses_422_application-json_detail]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-agents_api_v1_agents_list_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError [#operation-agents_api_v1_agents_list_responses_422_application-json_detail_validationerror]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-agents_api_v1_agents_list_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc [#operation-agents_api_v1_agents_list_responses_422_application-json_detail_validationerror_loc]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-agents_api_v1_agents_list_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg [#operation-agents_api_v1_agents_list_responses_422_application-json_detail_validationerror_msg]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-agents_api_v1_agents_list_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-agents_api_v1_agents_list_responses_422_application-json_detail_validationerror_type]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -1520,9 +1768,9 @@ Create a new agent giving it instructions, tools, description. The agent is then
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_create_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -1530,7 +1778,7 @@ Create a new agent giving it instructions, tools, description. The agent is then
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -1545,7 +1793,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_create_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -1553,7 +1801,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-agents_api_v1_agents_create_code-samples_python">
 
@@ -1580,7 +1828,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_create_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -1588,7 +1836,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-agents_api_v1_agents_create_code-samples_curl">
 
@@ -1608,7 +1856,7 @@ curl https://api.mistral.ai/v1/agents \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -2714,7 +2962,7 @@ _Default Value:_ `"document_library"`
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -2722,7 +2970,7 @@ _Default Value:_ `"document_library"`
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-agents_api_v1_agents_create_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -2730,7 +2978,7 @@ _Default Value:_ `"document_library"`
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -2750,13 +2998,39 @@ _Default Value:_ `"document_library"`
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-agents_api_v1_agents_create_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_agents_create_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -2764,7 +3038,7 @@ _Default Value:_ `"document_library"`
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-agents_api_v1_agents_create_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -2772,7 +3046,7 @@ _Default Value:_ `"document_library"`
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -3940,7 +4214,227 @@ _Default Value:_ `"document_library"`
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-agents_api_v1_agents_create_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_agents_create_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-agents_api_v1_agents_create_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_create_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta [#operation-agents_api_v1_agents_create_responses_422_application-json_httpmeta]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-agents_api_v1_agents_create_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata [#operation-agents_api_v1_agents_create_responses_422_application-json_httpmeta_httpmetadata]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-agents_api_v1_agents_create_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request [#operation-agents_api_v1_agents_create_responses_422_application-json_httpmeta_httpmetadata_request]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-agents_api_v1_agents_create_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response [#operation-agents_api_v1_agents_create_responses_422_application-json_httpmeta_httpmetadata_response]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-agents_api_v1_agents_create_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_create_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_create_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail [#operation-agents_api_v1_agents_create_responses_422_application-json_detail]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-agents_api_v1_agents_create_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError [#operation-agents_api_v1_agents_create_responses_422_application-json_detail_validationerror]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-agents_api_v1_agents_create_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc [#operation-agents_api_v1_agents_create_responses_422_application-json_detail_validationerror_loc]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-agents_api_v1_agents_create_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg [#operation-agents_api_v1_agents_create_responses_422_application-json_detail_validationerror_msg]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-agents_api_v1_agents_create_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-agents_api_v1_agents_create_responses_422_application-json_detail_validationerror_type]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -3968,9 +4462,9 @@ Given an agent retrieve an agent entity with its attributes.
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_get_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -3978,7 +4472,7 @@ Given an agent retrieve an agent entity with its attributes.
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-agents_api_v1_agents_get_code-samples_typescript">
 
@@ -3990,7 +4484,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_get_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -3998,7 +4492,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-agents_api_v1_agents_get_code-samples_python">
 
@@ -4025,7 +4519,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_get_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -4033,7 +4527,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-agents_api_v1_agents_get_code-samples_curl">
 
@@ -4049,7 +4543,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id} \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -4095,7 +4589,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id} \
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -4103,7 +4597,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id} \
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-agents_api_v1_agents_get_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -4111,7 +4605,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id} \
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -4131,13 +4625,39 @@ curl https://api.mistral.ai/v1/agents/{agent_id} \
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-agents_api_v1_agents_get_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_agents_get_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -4145,7 +4665,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id} \
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-agents_api_v1_agents_get_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -4153,7 +4673,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id} \
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -5321,7 +5841,227 @@ _Default Value:_ `"document_library"`
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-agents_api_v1_agents_get_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_agents_get_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-agents_api_v1_agents_get_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_get_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta [#operation-agents_api_v1_agents_get_responses_422_application-json_httpmeta]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-agents_api_v1_agents_get_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata [#operation-agents_api_v1_agents_get_responses_422_application-json_httpmeta_httpmetadata]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-agents_api_v1_agents_get_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request [#operation-agents_api_v1_agents_get_responses_422_application-json_httpmeta_httpmetadata_request]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-agents_api_v1_agents_get_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response [#operation-agents_api_v1_agents_get_responses_422_application-json_httpmeta_httpmetadata_response]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-agents_api_v1_agents_get_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_get_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_get_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail [#operation-agents_api_v1_agents_get_responses_422_application-json_detail]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-agents_api_v1_agents_get_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError [#operation-agents_api_v1_agents_get_responses_422_application-json_detail_validationerror]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-agents_api_v1_agents_get_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc [#operation-agents_api_v1_agents_get_responses_422_application-json_detail_validationerror_loc]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-agents_api_v1_agents_get_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg [#operation-agents_api_v1_agents_get_responses_422_application-json_detail_validationerror_msg]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-agents_api_v1_agents_get_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-agents_api_v1_agents_get_responses_422_application-json_detail_validationerror_type]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -5349,9 +6089,9 @@ Update an agent attributes and create a new version.
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_update_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -5359,7 +6099,7 @@ Update an agent attributes and create a new version.
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -5374,7 +6114,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_update_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -5382,7 +6122,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-agents_api_v1_agents_update_code-samples_python">
 
@@ -5409,7 +6149,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_update_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -5417,7 +6157,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent slot="content" id="operation-agents_api_v1_agents_update_code-samples_curl">
 
@@ -5434,7 +6174,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id} \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -6577,7 +7317,7 @@ _Default Value:_ `"document_library"`
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -6585,7 +7325,7 @@ _Default Value:_ `"document_library"`
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-agents_api_v1_agents_update_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -6593,7 +7333,7 @@ _Default Value:_ `"document_library"`
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -6613,13 +7353,39 @@ _Default Value:_ `"document_library"`
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-agents_api_v1_agents_update_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_agents_update_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -6627,7 +7393,7 @@ _Default Value:_ `"document_library"`
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-agents_api_v1_agents_update_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -6635,7 +7401,7 @@ _Default Value:_ `"document_library"`
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -7803,7 +8569,227 @@ _Default Value:_ `"document_library"`
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-agents_api_v1_agents_update_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_agents_update_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-agents_api_v1_agents_update_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_update_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta [#operation-agents_api_v1_agents_update_responses_422_application-json_httpmeta]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-agents_api_v1_agents_update_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata [#operation-agents_api_v1_agents_update_responses_422_application-json_httpmeta_httpmetadata]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-agents_api_v1_agents_update_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request [#operation-agents_api_v1_agents_update_responses_422_application-json_httpmeta_httpmetadata_request]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-agents_api_v1_agents_update_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response [#operation-agents_api_v1_agents_update_responses_422_application-json_httpmeta_httpmetadata_response]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-agents_api_v1_agents_update_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_update_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_update_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail [#operation-agents_api_v1_agents_update_responses_422_application-json_detail]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-agents_api_v1_agents_update_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError [#operation-agents_api_v1_agents_update_responses_422_application-json_detail_validationerror]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-agents_api_v1_agents_update_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc [#operation-agents_api_v1_agents_update_responses_422_application-json_detail_validationerror_loc]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-agents_api_v1_agents_update_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg [#operation-agents_api_v1_agents_update_responses_422_application-json_detail_validationerror_msg]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-agents_api_v1_agents_update_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-agents_api_v1_agents_update_responses_422_application-json_detail_validationerror_type]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
@@ -7831,9 +8817,9 @@ Switch the version of an agent.
 
 <OperationCodeSamplesSection slot="code-samples">
 
-<TabbedSection>
+<CodeSampleTabbedSection>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_update_version_code-samples_typescript"
   tags={{"codeSample":"typescript"}}
@@ -7841,7 +8827,7 @@ Switch the version of an agent.
 
 TypeScript
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -7856,7 +8842,7 @@ TypeScript
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_update_version_code-samples_python"
   tags={{"codeSample":"python"}}
@@ -7864,7 +8850,7 @@ TypeScript
 
 Python
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -7894,7 +8880,7 @@ with Mistral(
 
 </SectionContent>
 
-<SectionTab
+<CodeSampleTab
   slot="tab"
   id="operation-agents_api_v1_agents_update_version_code-samples_curl"
   tags={{"codeSample":"curl"}}
@@ -7902,7 +8888,7 @@ with Mistral(
 
 cURL
 
-</SectionTab>
+</CodeSampleTab>
 
 <SectionContent
   slot="content"
@@ -7921,7 +8907,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id}/version \
 
 </SectionContent>
 
-</TabbedSection>
+</CodeSampleTabbedSection>
 
 </OperationCodeSamplesSection>
 
@@ -7985,7 +8971,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id}/version \
 
 <OperationResponseBodyExamplesSection slot="response-body-examples">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -7993,7 +8979,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id}/version \
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-agents_api_v1_agents_update_version_responses_200_application-json"
   tags={{"responseExample":"200:application/json"}}
@@ -8001,7 +8987,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id}/version \
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -8021,13 +9007,39 @@ curl https://api.mistral.ai/v1/agents/{agent_id}/version \
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-agents_api_v1_agents_update_version_responses_422_application-json"
+  tags={{"responseExample":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_agents_update_version_responses_422_application-json"
+>
+
+```json
+{
+  "HttpMeta": {
+    "Request": null,
+    "Response": null
+  }
+}
+```
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodyExamplesSection>
 
 <OperationResponseBodySection slot="response-body">
 
-<TabbedSection>
+<ResponseTabbedSection>
 
 <SectionTitle slot="title">
 
@@ -8035,7 +9047,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id}/version \
 
 </SectionTitle>
 
-<SectionTab
+<ResponseTab
   slot="tab"
   id="operation-agents_api_v1_agents_update_version_responses_200_application-json"
   tags={{"response":"200:application/json"}}
@@ -8043,7 +9055,7 @@ curl https://api.mistral.ai/v1/agents/{agent_id}/version \
 
 200
 
-</SectionTab>
+</ResponseTab>
 
 <SectionContent
   slot="content"
@@ -9211,7 +10223,227 @@ _Default Value:_ `"document_library"`
 
 </SectionContent>
 
-</TabbedSection>
+<ResponseTab
+  slot="tab"
+  id="operation-agents_api_v1_agents_update_version_responses_422_application-json"
+  tags={{"response":"422:application/json"}}
+>
+
+422
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-agents_api_v1_agents_update_version_responses_422_application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+Validation Error
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta"
+  headingId="operation-agents_api_v1_agents_update_version_responses_422_application-json_httpmeta"
+  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_update_version_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### HttpMeta [#operation-agents_api_v1_agents_update_version_responses_422_application-json_httpmeta]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="HttpMeta_HTTPMetadata"
+  headingId="operation-agents_api_v1_agents_update_version_responses_422_application-json_httpmeta_httpmetadata"
+  parentId="HttpMeta"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### HTTPMetadata [#operation-agents_api_v1_agents_update_version_responses_422_application-json_httpmeta_httpmetadata]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Request"
+  headingId="operation-agents_api_v1_agents_update_version_responses_422_application-json_httpmeta_httpmetadata_request"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Request [#operation-agents_api_v1_agents_update_version_responses_422_application-json_httpmeta_httpmetadata_request]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP request; suitable for debugging
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="HttpMeta_HTTPMetadata_Response"
+  headingId="operation-agents_api_v1_agents_update_version_responses_422_application-json_httpmeta_httpmetadata_response"
+  parentId="HttpMeta_HTTPMetadata"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### Response [#operation-agents_api_v1_agents_update_version_responses_422_application-json_httpmeta_httpmetadata_response]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw HTTP response; suitable for custom response parsing
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail"
+  headingId="operation-agents_api_v1_agents_update_version_responses_422_application-json_detail"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_update_version_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-agents_api_v1_agents_update_version_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### detail [#operation-agents_api_v1_agents_update_version_responses_422_application-json_detail]
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="detail_ValidationError"
+  headingId="operation-agents_api_v1_agents_update_version_responses_422_application-json_detail_validationerror"
+  parentId="detail"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ValidationError [#operation-agents_api_v1_agents_update_version_responses_422_application-json_detail_validationerror]
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_loc"
+  headingId="operation-agents_api_v1_agents_update_version_responses_422_application-json_detail_validationerror_loc"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loc [#operation-agents_api_v1_agents_update_version_responses_422_application-json_detail_validationerror_loc]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_msg"
+  headingId="operation-agents_api_v1_agents_update_version_responses_422_application-json_detail_validationerror_msg"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### msg [#operation-agents_api_v1_agents_update_version_responses_422_application-json_detail_validationerror_msg]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="detail_ValidationError_type"
+  headingId="operation-agents_api_v1_agents_update_version_responses_422_application-json_detail_validationerror_type"
+  parentId="detail_ValidationError"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### type [#operation-agents_api_v1_agents_update_version_responses_422_application-json_detail_validationerror_type]
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
 
 </OperationResponseBodySection>
 
