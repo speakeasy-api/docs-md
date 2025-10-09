@@ -98,7 +98,6 @@ export type { SectionTabProps } from "./components/SectionTab/types.ts";
 export { SectionTitle } from "./components/SectionTitle/SectionTitle.tsx";
 export type { SectionTitleProps } from "./components/SectionTitle/types.ts";
 export { TabbedSection } from "./components/TabbedSection/TabbedSection.tsx";
-export { useTabbedChildren } from "./components/TabbedSection/hooks.tsx";
 export type { TabbedSectionProps } from "./components/TabbedSection/types.ts";
 export { Tag, TagTitle, TagDescription } from "./components/Tag/Tag.tsx";
 export type {
@@ -115,4 +114,8 @@ export {
   computeSingleLineDisplayType,
   computeMultilineTypeLabel,
 } from "./util/displayType.ts";
-export { useUniqueChild, useChildren } from "./util/hooks.ts";
+export {
+  useUniqueChild,
+  useChildren,
+  useTabbedChildren,
+} from "./util/hooks.tsx";
