@@ -1,3 +1,7 @@
+// Web Component registration
+
+import "./components/Pill/Pill.tsx";
+
 // Components
 
 export { Code } from "./components/Code/Code.tsx";

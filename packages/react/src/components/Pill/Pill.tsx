@@ -1,3 +1,5 @@
+"use client";
+
 import type { PillVariant } from "@speakeasy-api/docs-md-shared";
 import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
