@@ -1,6 +1,7 @@
 // Web Component registration
-
 import "./components/Pill/Pill.tsx";
+// Set up ambient types
+import "./types/components.ts";
 
 // Components
 
