@@ -1,0 +1,194 @@
+.trigger {
+  border: var(--speakeasy-border-width) solid
+    var(--speakeasy-button-border-color);
+  background-color: var(--speakeasy-button-background-color);
+  padding: var(--speakeasy-button-padding);
+  border-radius: var(--speakeasy-button-radius);
+}
+
+.trigger:hover {
+  background-color: var(--speakeasy-button-background-color-hover);
+  border-color: var(--speakeasy-button-border-color-hover);
+}
+
+.dialogOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--speakeasy-dialog-z-index);
+  background-color: var(--speakeasy-dialog-overlay-background);
+  animation: var(--speakeasy-dialog-overlay-animation-in);
+}
+
+.dialogOverlay[data-state="closed"] {
+  animation: var(--speakeasy-dialog-overlay-animation-out);
+}
+
+.dialogContent {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: var(--speakeasy-dialog-z-index);
+  width: 100%;
+  max-width: var(--speakeasy-dialog-max-width);
+  min-height: var(--speakeasy-dialog-min-height);
+  max-height: var(--speakeasy-dialog-max-height);
+  transform: translate(-50%, -50%);
+  gap: var(--speakeasy-dialog-gap);
+  border: var(--speakeasy-border-width) solid
+    var(--speakeasy-dialog-border-color);
+  padding: var(--speakeasy-dialog-padding);
+  box-shadow: var(--speakeasy-dialog-box-shadow);
+  border-radius: var(--speakeasy-dialog-border-radius);
+  animation: var(--speakeasy-dialog-content-animation-in);
+  overflow: auto;
+  background-color: #fff; /* fallback color if --speakeasy-border-color is transparent*/
+  background-image: linear-gradient(
+    var(--speakeasy-background-color),
+    var(--speakeasy-background-color)
+  );
+}
+
+.closeButton {
+  position: absolute;
+  right: var(--speakeasy-dialog-close-button-position);
+  top: var(--speakeasy-dialog-close-button-position);
+  height: var(--speakeasy-dialog-close-button-size);
+  width: var(--speakeasy-dialog-close-button-size);
+  border-radius: var(--speakeasy-dialog-close-button-border-radius);
+  opacity: var(--speakeasy-dialog-close-button-opacity);
+  transition: opacity var(--speakeasy-dialog-transition-duration);
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: var(--speakeasy-dialog-close-button-color);
+  background: transparent;
+}
+
+.closeButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.closeButton:focus {
+  outline: 2px solid var(--speakeasy-dialog-close-button-focus-ring);
+  outline-offset: 2px;
+}
+
+.closeButton[data-state="open"] {
+  background-color: var(--speakeasy-dialog-close-button-open-background);
+  color: var(--speakeasy-dialog-close-button-open-color);
+}
+
+.closeIcon {
+  height: 100%;
+  width: 100%;
+}
+
+.dialogDescription {
+  margin: 10px 0 20px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.dialogSROnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 500;
+  height: 35px;
+  user-select: none;
+}
+
+.iconButton {
+  all: unset;
+  font-family: inherit;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: violet;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: gray;
+}
+
+@media (min-width: 640px) {
+  .header {
+    text-align: left;
+  }
+}
+
+/* Dialog Footer */
+.footer {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .footer {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.95);
+  }
+}

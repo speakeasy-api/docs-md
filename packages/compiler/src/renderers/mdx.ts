@@ -6,7 +6,7 @@ import type {
   CodeSampleTabProps,
   DebugPlaceholderProps,
   EmbedProps,
-  EmbedTriggerProps,
+  EmbedDialogProps,
   ExpandableBreakoutDefaultValueProps,
   ExpandableBreakoutDescriptionProps,
   ExpandableBreakoutExamplesProps,
@@ -355,7 +355,6 @@ class MdxRenderer extends MarkdownRenderer {
   public override createEmbed(...[args]: RendererCreateEmbedArgs) {
     if (!this.#hasEmbed && !this.hasParentContextType("embed")) {
       this.#hasEmbed = true;
-      this.#insertComponentImport("EmbedProvider");
     }
 
     // If we don't have a slug, make one up
@@ -380,10 +379,10 @@ class MdxRenderer extends MarkdownRenderer {
       () => {
         const componentName = `Embed${slug}`;
 
-        this.#appendComponent<EmbedTriggerProps>(
+        this.#appendComponent<EmbedDialogProps>(
           {
-            symbol: "EmbedTrigger",
-            props: { slot: "trigger", embedTitle, triggerText },
+            symbol: "EmbedDialog",
+            props: { slot: "embeddialog", embedTitle, triggerText },
           },
           () => {
             this.#appendComponent({
@@ -434,11 +433,6 @@ class MdxRenderer extends MarkdownRenderer {
     // Add a blank line after front matter, if it exists
     if (frontMatter) {
       frontMatter += "\n";
-    }
-
-    // Add the embed provider, if we need one
-    if (this.#hasEmbed && !this.hasParentContextType("embed")) {
-      frontMatter += "<EmbedProvider />\n\n";
     }
 
     // Return the final result

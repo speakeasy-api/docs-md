@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 
-export type EmbedTriggerProps = PropsWithChildren<{
-  slot: "trigger";
+export type EmbedDialogProps = PropsWithChildren<{
+  slot: "embeddialog";
   triggerText: string;
   embedTitle: string;
 }>;
