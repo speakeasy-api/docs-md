@@ -10,7 +10,7 @@ import styles from "./styles.module.css";
  * It can be replace by a custom layout if needed.
  *
  */
-export function Layout({ children }: LayoutProps) {
+export function Layout({ children, status }: LayoutProps) {
   const editorChild = useChildren(children, "editor");
   const runButtonChild = useChildren(children, "runButton");
   const resultsChild = useChildren(children, "results");
@@ -20,7 +20,7 @@ export function Layout({ children }: LayoutProps) {
     <div className={styles.layout}>
       <div className={styles.editorContainer}>
         {editorChild}
-        <Controls>
+        <Controls status={status}>
           {copyButtonChild}
           {resetButtonChild}
           {runButtonChild}

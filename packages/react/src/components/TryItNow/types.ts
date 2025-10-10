@@ -110,6 +110,12 @@ export type ResultsProps = {
 
 export type LayoutProps = {
   children: React.ReactNode;
+  status: Status;
+};
+
+export type ControlsProps = {
+  children: React.ReactNode;
+  status: Status;
 };
 
 export type RestartIconProps = {

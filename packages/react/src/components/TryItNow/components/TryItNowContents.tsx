@@ -131,7 +131,7 @@ export function TryItNowContents({
 
   return (
     <>
-      <Layout>
+      <Layout status={status}>
         <div slot="editor">
           <Editor
             theme={theme}
