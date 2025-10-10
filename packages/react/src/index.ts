@@ -107,6 +107,12 @@ export type {
   ResponseTabbedSectionProps,
   ResponseTabProps,
 } from "./components/ResponseTabbedSection/types.ts";
+export { ResponseExamplesTab } from "./components/ResponseExamplesTabbedSection/ResponseExamplesTab.tsx";
+export { ResponseExamplesTabbedSection } from "./components/ResponseExamplesTabbedSection/ResponseExamplesTabbedSection.tsx";
+export type {
+  ResponseExamplesTabbedSectionProps,
+  ResponseExamplesTabProps,
+} from "./components/ResponseExamplesTabbedSection/types.ts";
 export { Tag, TagTitle, TagDescription } from "./components/Tag/Tag.tsx";
 export type {
   TagProps,

@@ -171,6 +171,14 @@ export type RendererCreateResponseTabbedSectionTabArgs = [
     tags: Record<string, string>;
   },
 ];
+export type RendererCreateResponseExamplesTabbedSectionArgs = [cb: () => void];
+export type RendererCreateResponseExamplesTabbedSectionTabArgs = [
+  cb: () => void,
+  options: {
+    id: string;
+    tags: Record<string, string>;
+  },
+];
 export type RendererCreateSectionContentArgs = [
   cb: () => void,
   options?: {

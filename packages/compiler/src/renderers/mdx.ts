@@ -36,6 +36,8 @@ import type {
   OperationSecuritySectionProps,
   OperationSummarySectionProps,
   OperationTitleSectionProps,
+  ResponseExamplesTabbedSectionProps,
+  ResponseExamplesTabProps,
   ResponseTabbedSectionProps,
   ResponseTabProps,
   SectionContentProps,
@@ -67,6 +69,8 @@ import type {
   RendererCreatePillArgs,
   RendererCreateRequestExamplesSectionArgs,
   RendererCreateRequestSectionArgs,
+  RendererCreateResponseExamplesTabbedSectionArgs,
+  RendererCreateResponseExamplesTabbedSectionTabArgs,
   RendererCreateResponsesArgs,
   RendererCreateResponsesExamplesSectionArgs,
   RendererCreateResponseTabbedSectionArgs,
@@ -1064,6 +1068,32 @@ class MdxRenderer extends MarkdownRenderer {
     this.#appendComponent<ResponseTabProps>(
       {
         symbol: "ResponseTab",
+        props: { slot: "tab", id, tags },
+      },
+      cb
+    );
+  }
+
+  protected override createResponseExamplesTabbedSection(
+    ...[cb]: RendererCreateResponseExamplesTabbedSectionArgs
+  ) {
+    // We have to do a manual Omit here, since TabbedSectionProps.children is
+    // specially defined and not a standard PropsWithChildren type
+    this.#appendComponent<Omit<ResponseExamplesTabbedSectionProps, "children">>(
+      {
+        symbol: "ResponseExamplesTabbedSection",
+        props: {},
+      },
+      cb
+    );
+  }
+
+  protected override createResponseExamplesTabbedSectionTab(
+    ...[cb, { id, tags }]: RendererCreateResponseExamplesTabbedSectionTabArgs
+  ) {
+    this.#appendComponent<ResponseExamplesTabProps>(
+      {
+        symbol: "ResponseExamplesTab",
         props: { slot: "tab", id, tags },
       },
       cb

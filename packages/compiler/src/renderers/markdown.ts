@@ -34,6 +34,8 @@ import type {
   RendererCreatePillArgs,
   RendererCreateRequestExamplesSectionArgs,
   RendererCreateRequestSectionArgs,
+  RendererCreateResponseExamplesTabbedSectionArgs,
+  RendererCreateResponseExamplesTabbedSectionTabArgs,
   RendererCreateResponsesArgs,
   RendererCreateResponsesExamplesSectionArgs,
   RendererCreateResponseTabbedSectionArgs,
@@ -390,7 +392,7 @@ export abstract class MarkdownRenderer extends Renderer {
     if (this.#currentOperation) {
       this.#currentOperation.responses = {};
     }
-    this.createResponseTabbedSection(() => {
+    this.createResponseExamplesTabbedSection(() => {
       this.createSectionTitle(() =>
         this.createHeading(HEADINGS.SECTION_HEADING_LEVEL, title, {
           id: this.getCurrentId(),
@@ -412,7 +414,7 @@ export abstract class MarkdownRenderer extends Renderer {
               this.#currentSection;
           }
 
-          this.createResponseTabbedSectionTab(
+          this.createResponseExamplesTabbedSectionTab(
             () =>
               this.createText(
                 showContentTypeInTab
@@ -731,6 +733,18 @@ ${text}\n</code>\n</pre>`;
 
   protected createResponseTabbedSectionTab(
     ...[cb]: RendererCreateResponseTabbedSectionTabArgs
+  ) {
+    cb();
+  }
+
+  protected createResponseExamplesTabbedSection(
+    ...[cb]: RendererCreateResponseExamplesTabbedSectionArgs
+  ) {
+    cb();
+  }
+
+  protected createResponseExamplesTabbedSectionTab(
+    ...[cb]: RendererCreateResponseExamplesTabbedSectionTabArgs
   ) {
     cb();
   }
