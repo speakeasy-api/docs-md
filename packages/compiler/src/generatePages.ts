@@ -28,7 +28,7 @@ export async function generatePages({
   setInternalSetting("onPageComplete", onPageComplete);
 
   // Get the docs data from the spec
-  info("Parsing OpenAPI spec (ignore lock file errors printed below)");
+  info("Parsing OpenAPI spec (ignore gen.yaml file errors printed below)");
   const { data, docsCodeSamples } = await generateData({
     site,
     specContents,
