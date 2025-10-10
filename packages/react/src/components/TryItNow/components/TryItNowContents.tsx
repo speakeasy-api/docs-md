@@ -57,7 +57,7 @@ function DefaultRunButton({ onClick }: Pick<ButtonProps, "onClick">) {
 function DefaultResetButton({ onClick }: Pick<ButtonProps, "onClick">) {
   return (
     <Button
-      className={styles.resetButton}
+      className={styles.iconButton}
       onClick={onClick}
       ariaLabel="Reset code"
     >
@@ -79,7 +79,7 @@ function DefaultCopyButton({ copyValue }: Pick<ButtonProps, "copyValue">) {
 
   return (
     <Button
-      className={styles.copyButton}
+      className={styles.iconButton}
       onClick={handleClick}
       ariaLabel={copied ? "Copied!" : "Copy code"}
     >
