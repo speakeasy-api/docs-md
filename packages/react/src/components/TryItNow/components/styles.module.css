@@ -48,11 +48,11 @@
 .iconButton {
   width: 2rem;
   height: 2rem;
-  padding: 0.25rem;
+  padding: 0.35rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s ease-in-out;
+  position: relative;
 }
 
 .resetButton {
@@ -61,6 +61,31 @@
 
 .copyButton {
   composes: iconButton;
+}
+
+.copyButtonIcon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+}
+
+.copyButtonIconEnter {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.copyButtonIconExit {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.copyButtonIconActive {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .runButton:active {

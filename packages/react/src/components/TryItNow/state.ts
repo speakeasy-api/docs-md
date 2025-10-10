@@ -81,8 +81,18 @@ export function useRuntime({ dependencyUrlPrefix }: Options) {
     runtimeRef.current.run(code);
   }, []);
 
+  const reset = useCallback(() => {
+    previousEvents.current = [];
+    events.current = [];
+    eventIdCounter.current = 0;
+    setStatus({
+      state: "idle",
+    });
+  }, []);
+
   return {
     status,
     execute,
+    reset,
   };
 }

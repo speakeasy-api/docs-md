@@ -1,7 +1,7 @@
 "use client";
 
 import { atom, useAtom } from "jotai";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useRuntime } from "../state.ts";
 import type { ButtonProps, TryItNowProps } from "../types.ts";
@@ -104,7 +104,8 @@ export function TryItNowContents({
   const [error] = useAtom(errorAtom);
   const [, fetchTypes] = useAtom(fetchTypesAtom);
   const [value, setValue] = useState(defaultValue);
-  const { status, execute } = useRuntime({
+  const initialValue = useRef<string>(defaultValue);
+  const { status, execute, reset } = useRuntime({
     dependencyUrlPrefix,
   });
   const showResults = status.state !== "idle";
@@ -124,7 +125,8 @@ export function TryItNowContents({
   }, [error]);
 
   function handleReset() {
-    // TODO
+    setValue(initialValue.current);
+    reset();
   }
 
   return (
