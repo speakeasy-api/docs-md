@@ -15,7 +15,7 @@ const editorOptions: editor.IStandaloneEditorConstructionOptions = {
   lineNumbers: "off",
   padding: {
     top: 12,
-    bottom: 12,
+    bottom: 80,
   },
   lineDecorationsWidth: 12,
   lineNumbersMinChars: 0,
