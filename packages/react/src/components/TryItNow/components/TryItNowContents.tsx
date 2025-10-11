@@ -113,6 +113,7 @@ export function TryItNowContents({
   ResetButton = DefaultResetButton,
   Results = DefaultResults,
   CopyButton = DefaultCopyButton,
+  editorProps = {},
   theme = "dark",
 }: TryItNowProps) {
   const [types] = useAtom(typesAtom);
@@ -154,6 +155,7 @@ export function TryItNowContents({
             onValueChange={setValue}
             types={types}
             packageName={packageName}
+            {...editorProps}
           />
         </div>
         <div slot="runButton" className={styles.runButtonContainer}>

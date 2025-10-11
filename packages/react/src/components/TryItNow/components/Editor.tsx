@@ -13,10 +13,6 @@ const editorOptions: editor.IStandaloneEditorConstructionOptions = {
     enabled: false,
   },
   lineNumbers: "off",
-  padding: {
-    top: 12,
-    bottom: 80,
-  },
   lineDecorationsWidth: 12,
   lineNumbersMinChars: 0,
   glyphMargin: false,
@@ -59,6 +55,10 @@ export function Editor({
   theme,
   types,
   packageName,
+  editorPadding = {
+    top: 12,
+    bottom: 80,
+  },
 }: EditorProps) {
   const handleValueChange = useCallback(
     (newValue: string | undefined, _: editor.IModelContentChangedEvent) => {
@@ -103,7 +103,10 @@ export function Editor({
   return (
     <MonacoEditor
       loading=""
-      options={editorOptions}
+      options={{
+        ...editorOptions,
+        padding: editorPadding,
+      }}
       className={styles.editor}
       language="typescript"
       theme={theme === "dark" ? "vs-dark" : "light"}

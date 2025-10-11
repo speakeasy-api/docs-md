@@ -63,6 +63,10 @@ export type TryItNowProps = {
    * The theme of the editor
    */
   theme?: "light" | "dark";
+  /**
+   * Editor props to pass to the editor component
+   */
+  editorProps?: Partial<EditorProps>;
 };
 
 export type EditorProps = {
@@ -88,6 +92,10 @@ export type EditorProps = {
    * The theme of the editor
    */
   theme?: "light" | "dark";
+  editorPadding?: {
+    top?: number;
+    bottom?: number;
+  };
 };
 
 export type ButtonProps = {
