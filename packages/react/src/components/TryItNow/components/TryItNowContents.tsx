@@ -8,7 +8,7 @@ import { CheckIcon as DefaultCheckIcon } from "../../CheckIcon/CheckIcon.tsx";
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { CopyIcon as DefaultCopyIcon } from "../../CopyIcon/CopyIcon.tsx";
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { RestartIcon as DefaultRestartIcon } from "../../RestartIcon/RestartIcon.tsx";
+import { ResetIcon as DefaultResetIcon } from "../../ResetIcon/ResetIcon.tsx";
 import { useRuntime } from "../state.ts";
 import type {
   ButtonProps,
@@ -64,7 +64,7 @@ function DefaultRunButton({ onClick }: Pick<ButtonProps, "onClick">) {
 
 function DefaultResetButton({
   onClick,
-  RestartIcon = DefaultRestartIcon,
+  ResetIcon = DefaultResetIcon,
 }: ResetButtonProps) {
   return (
     <Button
@@ -72,7 +72,7 @@ function DefaultResetButton({
       onClick={onClick}
       ariaLabel="Reset code"
     >
-      <RestartIcon />
+      <ResetIcon />
     </Button>
   );
 }

@@ -1,6 +1,6 @@
-import type { RestartIconProps } from "../TryItNow/types.ts";
+import type { ResetIconProps } from "../TryItNow/types.ts";
 
-export function RestartIcon({ className, style }: RestartIconProps) {
+export function ResetIcon({ className, style }: ResetIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

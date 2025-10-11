@@ -101,7 +101,7 @@ export type ButtonProps = {
 };
 
 export type ResetButtonProps = Pick<ButtonProps, "onClick"> & {
-  RestartIcon?: ComponentType<RestartIconProps>;
+  ResetIcon?: ComponentType<ResetIconProps>;
 };
 
 export type CopyButtonProps = {
@@ -124,7 +124,7 @@ export type ControlsProps = {
   status: Status;
 };
 
-export type RestartIconProps = {
+export type ResetIconProps = {
   className?: string;
   style?: CSSProperties;
 };
