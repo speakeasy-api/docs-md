@@ -100,7 +100,7 @@ export type ButtonProps = {
   className?: string;
 };
 
-export type ResetButtonProps =  Pick<ButtonProps, "onClick"> & {
+export type ResetButtonProps = Pick<ButtonProps, "onClick"> & {
   RestartIcon?: ComponentType<RestartIconProps>;
 };
 
