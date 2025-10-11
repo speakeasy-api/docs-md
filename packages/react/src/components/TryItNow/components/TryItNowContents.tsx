@@ -3,13 +3,21 @@
 import { atom, useAtom } from "jotai";
 import { useEffect, useRef, useState } from "react";
 
+// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
+import { CheckIcon as DefaultCheckIcon } from "../../CheckIcon/CheckIcon.tsx";
+// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
+import { CopyIcon as DefaultCopyIcon } from "../../CopyIcon/CopyIcon.tsx";
+// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
+import { RestartIcon as DefaultRestartIcon } from "../../RestartIcon/RestartIcon.tsx";
 import { useRuntime } from "../state.ts";
-import type { ButtonProps, TryItNowProps } from "../types.ts";
+import type {
+  ButtonProps,
+  CopyButtonProps,
+  ResetButtonProps,
+  TryItNowProps,
+} from "../types.ts";
 import { Button } from "./Button.tsx";
 import { Editor as DefaultEditor } from "./Editor.tsx";
-import { CheckIcon } from "./icons/CheckIcon.tsx";
-import { CopyIcon } from "./icons/CopyIcon.tsx";
-import { RestartIcon } from "./icons/RestartIcon.tsx";
 import { Layout as DefaultLayout } from "./Layout.tsx";
 import { Results as DefaultResults } from "./Results.tsx";
 import styles from "./styles.module.css";
@@ -54,7 +62,10 @@ function DefaultRunButton({ onClick }: Pick<ButtonProps, "onClick">) {
   );
 }
 
-function DefaultResetButton({ onClick }: Pick<ButtonProps, "onClick">) {
+function DefaultResetButton({
+  onClick,
+  RestartIcon = DefaultRestartIcon,
+}: ResetButtonProps) {
   return (
     <Button
       className={styles.iconButton}
@@ -66,7 +77,11 @@ function DefaultResetButton({ onClick }: Pick<ButtonProps, "onClick">) {
   );
 }
 
-function DefaultCopyButton({ copyValue }: Pick<ButtonProps, "copyValue">) {
+function DefaultCopyButton({
+  copyValue,
+  CheckIcon = DefaultCheckIcon,
+  CopyIcon = DefaultCopyIcon,
+}: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
 
   function handleClick() {

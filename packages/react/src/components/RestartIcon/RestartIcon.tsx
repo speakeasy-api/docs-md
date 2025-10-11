@@ -1,6 +1,6 @@
-import type { CheckIconProps } from "../../types.ts";
+import type { RestartIconProps } from "../TryItNow/types.ts";
 
-export function CheckIcon({ className, style }: CheckIconProps) {
+export function RestartIcon({ className, style }: RestartIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,7 +15,8 @@ export function CheckIcon({ className, style }: CheckIconProps) {
       width="100%"
       height="100%"
     >
-      <path d="M20 6L9 17l-5-5" />
+      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+      <path d="M3 3v5h5" />
     </svg>
   );
 }

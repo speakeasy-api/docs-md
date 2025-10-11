@@ -1,5 +1,5 @@
 import type { RuntimeEvents } from "@speakeasy-api/docs-md-shared";
-import type { CSSProperties, FC } from "react";
+import type { ComponentType, CSSProperties, FC } from "react";
 
 export type ExtendedRuntimeEvent = RuntimeEvents & { id: string };
 
@@ -42,7 +42,7 @@ export type TryItNowProps = {
   /**
    * Copy button component to use. Defaults to `CopyButton`.
    */
-  CopyButton?: FC<ButtonProps>;
+  CopyButton?: FC<CopyButtonProps>;
   /**
    * Run button component to use. Defaults to `RunButton`.
    */
@@ -50,7 +50,7 @@ export type TryItNowProps = {
   /**
    * Reset button component to use. Defaults to `ResetButton`.
    */
-  ResetButton?: FC<ButtonProps>;
+  ResetButton?: FC<ResetButtonProps>;
   /**
    * Results component to use. Defaults to `Results`.
    */
@@ -98,10 +98,16 @@ export type ButtonProps = {
   ariaLabel?: string;
   children?: React.ReactNode;
   className?: string;
-  /**
-   * Text to copy to clipboard (for copy buttons)
-   */
+};
+
+export type ResetButtonProps =  Pick<ButtonProps, "onClick"> & {
+  RestartIcon?: ComponentType<RestartIconProps>;
+};
+
+export type CopyButtonProps = {
   copyValue?: string;
+  CheckIcon?: ComponentType<CheckIconProps>;
+  CopyIcon?: ComponentType<CopyIconProps>;
 };
 
 export type ResultsProps = {
