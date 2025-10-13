@@ -7,7 +7,7 @@ import type { ExtendedRuntimeEvent, Status } from "./types.ts";
 
 type Options = {
   dependencyUrlPrefix: string;
-  defaultValue: string
+  defaultValue: string;
 };
 
 export function useRuntime({ dependencyUrlPrefix, defaultValue }: Options) {
