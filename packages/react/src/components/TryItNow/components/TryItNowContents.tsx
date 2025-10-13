@@ -1,7 +1,7 @@
 "use client";
 
 import { atom, useAtom } from "jotai";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { CheckIcon as DefaultCheckIcon } from "../../CheckIcon/CheckIcon.tsx";
@@ -120,9 +120,9 @@ export function TryItNowContents({
   const [error] = useAtom(errorAtom);
   const [, fetchTypes] = useAtom(fetchTypesAtom);
   const [value, setValue] = useState(defaultValue);
-  const initialValue = useRef<string>(defaultValue);
   const { status, execute, reset } = useRuntime({
     dependencyUrlPrefix,
+    defaultValue,
   });
   const showResults = status.state !== "idle";
 
@@ -141,8 +141,7 @@ export function TryItNowContents({
   }, [error]);
 
   function handleReset() {
-    setValue(initialValue.current);
-    reset();
+    reset(setValue);
   }
 
   return (

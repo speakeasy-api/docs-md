@@ -7,9 +7,10 @@ import type { ExtendedRuntimeEvent, Status } from "./types.ts";
 
 type Options = {
   dependencyUrlPrefix: string;
+  defaultValue: string
 };
 
-export function useRuntime({ dependencyUrlPrefix }: Options) {
+export function useRuntime({ dependencyUrlPrefix, defaultValue }: Options) {
   const [status, setStatus] = useState<Status>({
     state: "idle",
   });
@@ -17,6 +18,7 @@ export function useRuntime({ dependencyUrlPrefix }: Options) {
   const events = useRef<ExtendedRuntimeEvent[]>([]);
   const runtimeRef = useRef<Runtime | null>(null);
   const eventIdCounter = useRef<number>(0);
+  const initialValue = useRef<string>(defaultValue);
 
   const addEventId = useCallback(
     (event: RuntimeEvents): ExtendedRuntimeEvent => {
@@ -81,13 +83,14 @@ export function useRuntime({ dependencyUrlPrefix }: Options) {
     runtimeRef.current.run(code);
   }, []);
 
-  const reset = useCallback(() => {
+  const reset = useCallback((onReset?: (initialValue: string) => void) => {
     previousEvents.current = [];
     events.current = [];
     eventIdCounter.current = 0;
     setStatus({
       state: "idle",
     });
+    onReset?.(initialValue.current);
   }, []);
 
   return {
