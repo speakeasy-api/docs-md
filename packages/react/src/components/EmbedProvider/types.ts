@@ -1,3 +1,7 @@
-import type { PropsWithChildren } from "react";
+import type { FC } from "react";
 
-export type EmbedProps = PropsWithChildren<{ slot: "embed" }>;
+import type { EmbedDialogProps } from "../EmbedDialog/types.ts";
+
+export type EmbedProviderProps = {
+  EmbedDialog: FC<EmbedDialogProps>;
+};

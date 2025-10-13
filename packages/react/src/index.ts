@@ -9,7 +9,7 @@ export type { ConnectingCellProps } from "./components/ConnectingCell/types.ts";
 export { DebugPlaceholder } from "./components/DebugPlaceholder/DebugPlaceholder.tsx";
 export type { DebugPlaceholderProps } from "./components/DebugPlaceholder/types.ts";
 export { Embed } from "./components/Embed/Embed.tsx";
-export type { EmbedProps } from "./components/EmbedProvider/types.ts";
+export type { EmbedProps } from "./components/Embed/types.ts";
 export { EmbedProvider } from "./components/EmbedProvider/EmbedProvider.tsx";
 export { EmbedTrigger } from "./components/EmbedTrigger/EmbedTrigger.tsx";
 export type { EmbedTriggerProps } from "./components/EmbedTrigger/types.ts";

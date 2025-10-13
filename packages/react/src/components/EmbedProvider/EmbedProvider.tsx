@@ -3,10 +3,14 @@
 import { useAtom } from "jotai";
 import { useCallback, useEffect, useState } from "react";
 
+// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
+import { EmbedDialog as DefaultEmbedDialog } from "../EmbedDialog/EmbedDialog.tsx";
 import { embedContentAtom } from "./state.ts";
-import styles from "./styles.module.css";
+import type { EmbedProviderProps } from "./types.ts";
 
-export function EmbedProvider() {
+export function EmbedProvider({
+  EmbedDialog = DefaultEmbedDialog,
+}: EmbedProviderProps) {
   // We keep separate track of the open state vs content because we want to
   // start animating the closing of the sidebar before the content is cleared,
   // so that we see it slide off screen. This means we can't use content as an
@@ -14,36 +18,28 @@ export function EmbedProvider() {
   const [content, setContent] = useAtom(embedContentAtom);
   const [open, setOpen] = useState(false);
 
-  const onAnimationComplete = useCallback(() => {
-    if (!open) {
-      setContent(null);
-    }
-  }, [open, setContent]);
+  const handleAnimateCloseComplete = useCallback(() => {
+    setContent(null);
+  }, [setContent]);
+
   useEffect(() => {
     if (content) {
       setOpen(true);
     }
   }, [content]);
 
-  const closeRequest = useCallback(() => {
+  const handleClose = useCallback(() => {
     setOpen(false);
   }, []);
 
   return (
-    <div
-      className={styles.embedContainer}
-      style={{
-        transform: open ? "translateX(0)" : "translateX(100%)",
-      }}
-      onTransitionEnd={onAnimationComplete}
+    <EmbedDialog
+      embedTitle={content?.title ?? "Details"}
+      open={open}
+      onClose={handleClose}
+      onAnimateCloseComplete={handleAnimateCloseComplete}
     >
-      <div className={styles.embedHeader}>
-        <h2>{content?.title ?? "Details"}</h2>
-        <button className={styles.embedButton} onClick={closeRequest}>
-          &gt;
-        </button>
-      </div>
-      {content && <div>{content.content}</div>}
-    </div>
+      {content?.content}
+    </EmbedDialog>
   );
 }
