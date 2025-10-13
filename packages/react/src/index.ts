@@ -11,6 +11,7 @@ export type { DebugPlaceholderProps } from "./components/DebugPlaceholder/types.
 export { Embed } from "./components/Embed/Embed.tsx";
 export type { EmbedProps } from "./components/Embed/types.ts";
 export { EmbedProvider } from "./components/EmbedProvider/EmbedProvider.tsx";
+export { CloseEmbedIcon } from "./components/CloseEmbedIcon/CloseEmbedIcon.tsx";
 export { EmbedTrigger } from "./components/EmbedTrigger/EmbedTrigger.tsx";
 export type { EmbedTriggerProps } from "./components/EmbedTrigger/types.ts";
 export { ExpandableCellIcon } from "./components/ExpandableCellIcon/ExpandableCellIcon.tsx";

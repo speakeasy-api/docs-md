@@ -1,7 +1,7 @@
 import type { FC } from "react";
 
-import type { EmbedDialogProps } from "../EmbedDialog/types.ts";
+import type { CloseEmbedIconProps } from "../CloseEmbedIcon/types.ts";
 
 export type EmbedProviderProps = {
-  EmbedDialog: FC<EmbedDialogProps>;
+  CloseEmbedIcon?: FC<CloseEmbedIconProps>;
 };

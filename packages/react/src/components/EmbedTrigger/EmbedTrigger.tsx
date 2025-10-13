@@ -5,7 +5,7 @@ import { useCallback } from "react";
 
 // eslint-disable-next-line fast-import/no-restricted-imports
 import { embedContentAtom } from "../EmbedProvider/state.ts";
-import styles from "../EmbedProvider/styles.module.css";
+import styles from "./styles.module.css";
 import type { EmbedTriggerProps } from "./types.ts";
 
 export function EmbedTrigger({
