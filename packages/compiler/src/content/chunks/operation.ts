@@ -43,7 +43,7 @@ function renderCodeSamples(
           if (!codeSample) {
             continue;
           }
-          if (codeSample.language === "typescript" && codeSample.tryItNow) {
+          if ((codeSample.language === "typescript" || codeSample.language === "curl") && codeSample.tryItNow) {
             createTryItNowEntry({
               language,
               dependencyUrlPrefix: codeSample.tryItNow.urlPrefix,
