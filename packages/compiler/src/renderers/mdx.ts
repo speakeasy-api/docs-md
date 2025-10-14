@@ -375,32 +375,43 @@ class MdxRenderer extends MarkdownRenderer {
 
     const { triggerText, embedTitle, slug } = args;
 
-    this.#appendComponent<EmbedProps>(
-      { symbol: "Embed", props: { slot: "embed" } },
+    this.#appendComponent<ExpandablePropertyBreakoutsProps>(
+      {
+        symbol: "ExpandablePropertyBreakouts",
+        props: { slot: "breakouts" },
+      },
       () => {
-        const componentName = `Embed${slug}`;
-
-        this.#appendComponent<EmbedTriggerProps>(
-          {
-            symbol: "EmbedTrigger",
-            props: { slot: "trigger", embedTitle, triggerText },
-          },
+        this.#appendComponent<EmbedProps>(
+          { symbol: "Embed", props: { slot: "embed" } },
           () => {
-            this.#appendComponent({
-              symbol: componentName,
-              props: {},
-              noImport: true,
-            });
+            const componentName = `Embed${slug}`;
+
+            this.#appendComponent<EmbedTriggerProps>(
+              {
+                symbol: "EmbedTrigger",
+                props: { slot: "trigger", embedTitle, triggerText },
+              },
+              () => {
+                this.#appendComponent({
+                  symbol: componentName,
+                  props: {},
+                  noImport: true,
+                });
+              }
+            );
+
+            let importPath = relative(
+              dirname(this.getPagePath()),
+              absolutePath
+            );
+
+            // When an embed imports another embed, we don't get the leading `./`
+            if (!importPath.startsWith(".")) {
+              importPath = `./${importPath}`;
+            }
+            this.#insertDefaultImport(importPath, componentName);
           }
         );
-
-        let importPath = relative(dirname(this.getPagePath()), absolutePath);
-
-        // When an embed imports another embed, we don't get the leading `./`
-        if (!importPath.startsWith(".")) {
-          importPath = `./${importPath}`;
-        }
-        this.#insertDefaultImport(importPath, componentName);
       }
     );
   }
