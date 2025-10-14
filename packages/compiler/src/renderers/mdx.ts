@@ -607,6 +607,7 @@ class MdxRenderer extends MarkdownRenderer {
                       dependencyUrlPrefix,
                       defaultValue,
                       packageName: getInternalSetting("typeScriptPackageName"),
+                      language: language as "typescript" | "curl",
                     },
                   });
                 },

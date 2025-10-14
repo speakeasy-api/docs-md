@@ -67,6 +67,10 @@ export type TryItNowProps = {
    * Editor props to pass to the editor component
    */
   editorProps?: Partial<EditorProps>;
+  /**
+   * The language of the editor
+   */
+  language: "typescript" | "curl";
 };
 
 export type EditorProps = {
@@ -96,6 +100,7 @@ export type EditorProps = {
     top?: number;
     bottom?: number;
   };
+  language: "typescript" | "curl";
 };
 
 export type ButtonProps = {

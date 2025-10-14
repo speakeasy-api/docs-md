@@ -114,6 +114,7 @@ export function TryItNowContents({
   Results = DefaultResults,
   CopyButton = DefaultCopyButton,
   editorProps = {},
+  language = "typescript",
   theme = "dark",
 }: TryItNowProps) {
   const [types] = useAtom(typesAtom);
@@ -127,18 +128,20 @@ export function TryItNowContents({
   const showResults = status.state !== "idle";
 
   useEffect(() => {
-    void fetchTypes(dependencyUrlPrefix);
-  }, [dependencyUrlPrefix, fetchTypes]);
+    if (language === "typescript") {
+      void fetchTypes(dependencyUrlPrefix);
+    }
+  }, [dependencyUrlPrefix, fetchTypes, language]);
 
   useEffect(() => {
-    if (error) {
+    if (error && language !== "typescript") {
       // eslint-disable-next-line no-console
       console.error(
         "Failed to load types, type checking disabled in editor:",
         error
       );
     }
-  }, [error]);
+  }, [error, language]);
 
   function handleReset() {
     reset(setValue);
@@ -153,6 +156,7 @@ export function TryItNowContents({
             value={value}
             onValueChange={setValue}
             types={types}
+            language={language}
             packageName={packageName}
             {...editorProps}
           />

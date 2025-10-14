@@ -55,6 +55,7 @@ export function Editor({
   theme,
   types,
   packageName,
+  language,
   editorPadding = {
     top: 12,
     bottom: 80,
@@ -100,6 +101,9 @@ export function Editor({
     });
   }, [types, monaco, packageName]);
 
+  // Map our language types to Monaco editor language IDs
+  const monacoLanguage = language === "curl" ? "shell" : language;
+
   return (
     <MonacoEditor
       loading=""
@@ -108,7 +112,7 @@ export function Editor({
         padding: editorPadding,
       }}
       className={styles.editor}
-      language="typescript"
+      language={monacoLanguage}
       theme={theme === "dark" ? "vs-dark" : "light"}
       value={value}
       onChange={handleValueChange}
