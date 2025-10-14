@@ -6,6 +6,7 @@ import { getDirname } from "cross-dirname";
 import compilerConfig from "./packages/compiler/eslint.config.mjs";
 import reactConfig from "./packages/react/eslint.config.mjs";
 import sharedConfig from "./packages/shared/eslint.config.mjs";
+import e2eConfig from "./packages/e2e/eslint.config.mjs";
 
 const rootDir = getDirname();
 const gitignorePath = resolve(rootDir, ".gitignore");
@@ -39,5 +40,11 @@ export default [
   ...sharedConfig.map(config => ({
     ...config,
     files: config.files ? config.files.map(f => `packages/shared/${f}`) : ["packages/shared/**/*"],
+  })),
+
+  // Apply e2e config to e2e package
+  ...e2eConfig.map(config => ({
+    ...config,
+    files: config.files ? config.files.map(f => `packages/e2e/${f}`) : ["packages/e2e/**/*"],
   })),
 ];
