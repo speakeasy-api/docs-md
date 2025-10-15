@@ -17,9 +17,6 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
-
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
 
@@ -30,47 +27,40 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'docusaurus-mistral',
+      testMatch: ['**/shared/**/*.spec.ts', '**/docusaurus-mistral/**/*.spec.ts'],
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://localhost:3003',
+      },
     },
-
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: 'nextra-mistral',
+      testMatch: ['**/shared/**/*.spec.ts', '**/nextra-mistral/**/*.spec.ts'],
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://localhost:3004',
+      },
     },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
   ],
 
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://127.0.0.1:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  /* Run dev servers for both example sites before starting tests */
+  webServer: [
+    {
+      command: 'npm run build && npm run start -- --port 3003',
+      cwd: '../../examples/docusaurus/mistral',
+      url: 'http://localhost:3003',
+      reuseExistingServer: !process.env.CI,
+      stdout: 'pipe',
+    },
+    {
+      command: 'npm run build && npm run start -- --port 3004',
+      cwd: '../../examples/nextra/mistral',
+      url: 'http://localhost:3004',
+      reuseExistingServer: !process.env.CI,
+      stdout: 'pipe',
+    },
+  ],
 
   /* Global setup and teardown */
   globalSetup: './tests/global-setup.ts',
