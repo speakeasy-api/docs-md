@@ -1,0 +1,2826 @@
+---
+sidebar_position: 3.8
+sidebar_label: Client Entities
+---
+
+import "@speakeasy-api/docs-md-react/docusaurus.css";
+
+import {
+  CodeSample,
+  CodeSampleTab,
+  CodeSampleTabbedSection,
+  Embed,
+  EmbedProvider,
+  EmbedTrigger,
+  ExpandableBreakout,
+  ExpandableBreakoutProperties,
+  ExpandableBreakoutTitle,
+  ExpandableProperty,
+  ExpandablePropertyBreakouts,
+  ExpandablePropertyDefaultValue,
+  ExpandablePropertyDescription,
+  ExpandablePropertyExamples,
+  ExpandablePropertyTitle,
+  ExpandableSection,
+  Operation,
+  OperationCodeSamplesSection,
+  OperationDescriptionSection,
+  OperationRequestBodyDescriptionSection,
+  OperationRequestBodyExamplesSection,
+  OperationRequestBodySection,
+  OperationResponseBodyDescriptionSection,
+  OperationResponseBodyExamplesSection,
+  OperationResponseBodySection,
+  OperationSummarySection,
+  OperationTitleSection,
+  Pill,
+  ResponseExamplesTab,
+  ResponseExamplesTabbedSection,
+  ResponseTab,
+  ResponseTabbedSection,
+  Section,
+  SectionContent,
+  SectionTitle,
+  Tag,
+  TagTitle,
+  TryItNow
+} from "@speakeasy-api/docs-md-react";
+import Embedvalues from "../../../../../src/components/glean-embeds/loaders/values.tsx";
+import Embedmetadata from "../../../../../src/components/glean-embeds/loaders/metadata.tsx";
+import Embedpermissions from "../../../../../src/components/glean-embeds/loaders/permissions.tsx";
+import Embedroles from "../../../../../src/components/glean-embeds/loaders/roles.tsx";
+import Embedbuckets from "../../../../../src/components/glean-embeds/loaders/buckets.tsx";
+import Embedrelateddocuments from "../../../../../src/components/glean-embeds/loaders/relateddocuments.tsx";
+import Embedcustomfields from "../../../../../src/components/glean-embeds/loaders/customfields.tsx";
+import Embeddatasourceprofiles from "../../../../../src/components/glean-embeds/loaders/datasourceprofiles.tsx";
+import Embedemails from "../../../../../src/components/glean-embeds/loaders/emails.tsx";
+import Embedmembers from "../../../../../src/components/glean-embeds/loaders/members.tsx";
+import Embedrelatedobjects from "../../../../../src/components/glean-embeds/loaders/relatedobjects.tsx";
+import Embeddocuments from "../../../../../src/components/glean-embeds/loaders/documents.tsx";
+import Embedquerysuggestion from "../../../../../src/components/glean-embeds/loaders/querysuggestion.tsx";
+import Embedresults from "../../../../../src/components/glean-embeds/loaders/results.tsx";
+
+<EmbedProvider />
+
+<Tag slot="tag">
+
+<TagTitle slot="title">
+
+# Client Entities Endpoints
+
+</TagTitle>
+
+</Tag>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/listentities \{#operation-listentities\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_List entities_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+List some set of details for all entities that fit the given criteria and return in the requested order. Does not support negation in filters, assumes relation type EQUALS. There is a limit of 10000 entities that can be retrieved via this endpoint, except when using FULL_DIRECTORY request type for people entities.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-listentities+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-listentities+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.entities.list({&NewLine;    filter: [&NewLine;      {&NewLine;        fieldName: &quot;type&quot;,&NewLine;        values: [&NewLine;          {&NewLine;            value: &quot;Spreadsheet&quot;,&NewLine;            relationType: &quot;EQUALS&quot;,&NewLine;          },&NewLine;          {&NewLine;            value: &quot;Presentation&quot;,&NewLine;            relationType: &quot;EQUALS&quot;,&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;    ],&NewLine;    pageSize: 100,&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-listentities+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-listentities+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/listentities \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-listentities+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-listentities+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+List people request
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="cursor"
+  headingId="operation-listentities+request+cursor"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### cursor \{#operation-listentities+request+cursor\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Pagination cursor. A previously received opaque token representing the position in the overall results at which to start.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-listentities+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-listentities+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource associated with the entity type, most commonly used with CUSTOM_ENTITIES
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="entityType"
+  headingId="operation-listentities+request+entitytype"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"PEOPLE\"","linkedLabel":"\"PEOPLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"TEAMS\"","linkedLabel":"\"TEAMS\"","children":[],"breakoutSubTypes":{}},{"label":"\"CUSTOM_ENTITIES\"","linkedLabel":"\"CUSTOM_ENTITIES\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### entityType \{#operation-listentities+request+entitytype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"PEOPLE"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="filter"
+  headingId="operation-listentities+request+filter"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+request+filter+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-listentities+request+filter+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### filter \{#operation-listentities+request+filter\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of filters for the query. An AND is assumed between different facetFilters. For example, owner Sumeet and type Spreadsheet shows documents that are by Sumeet AND are Spreadsheets.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="filter_FacetFilter"
+  headingId="operation-listentities+request+filter+facetfilter"
+  parentId="filter"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### FacetFilter \{#operation-listentities+request+filter+facetfilter\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="filter_FacetFilter_fieldName"
+  headingId="operation-listentities+request+filter+facetfilter+fieldname"
+  parentId="filter_FacetFilter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fieldName \{#operation-listentities+request+filter+facetfilter+fieldname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+owner
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="filter_FacetFilter_groupName"
+  headingId="operation-listentities+request+filter+facetfilter+groupname"
+  parentId="filter_FacetFilter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### groupName \{#operation-listentities+request+filter+facetfilter+groupname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Indicates the value of a facet, if any, that the given facet is grouped under. This is only used for nested facets, for example, fieldName could be owner and groupName would be Spreadsheet if showing all owners for spreadsheets as a nested facet.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+Spreadsheet
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="filter_FacetFilter_values"
+  headingId="operation-listentities+request+filter+facetfilter+values"
+  parentId="filter_FacetFilter"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+request+filter+facetfilter+values+facetfiltervalue\">FacetFilterValue</a>","children":[{"label":"FacetFilterValue","linkedLabel":"<a href=\"#operation-listentities+request+filter+facetfilter+values+facetfiltervalue\">FacetFilterValue</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### values \{#operation-listentities+request+filter+facetfilter+values\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Within a single FacetFilter, the values are to be treated like an OR. For example, fieldName type with values [EQUALS Presentation, EQUALS Spreadsheet] means we want to show a document if it's a Presentation OR a Spreadsheet.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="values" triggerText="View values details">
+
+<Embedvalues />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="includeFields"
+  headingId="operation-listentities+request+includefields"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"PEOPLE\"","linkedLabel":"\"PEOPLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"TEAMS\"","linkedLabel":"\"TEAMS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_DISTANCE\"","linkedLabel":"\"PEOPLE_DISTANCE\"","children":[],"breakoutSubTypes":{}},{"label":"\"PERMISSIONS\"","linkedLabel":"\"PERMISSIONS\"","children":[],"breakoutSubTypes":{}},{"label":"\"FACETS\"","linkedLabel":"\"FACETS\"","children":[],"breakoutSubTypes":{}},{"label":"\"INVITE_INFO\"","linkedLabel":"\"INVITE_INFO\"","children":[],"breakoutSubTypes":{}},{"label":"\"LAST_EXTENSION_USE\"","linkedLabel":"\"LAST_EXTENSION_USE\"","children":[],"breakoutSubTypes":{}},{"label":"\"MANAGEMENT_DETAILS\"","linkedLabel":"\"MANAGEMENT_DETAILS\"","children":[],"breakoutSubTypes":{}},{"label":"\"UNPROCESSED_TEAMS\"","linkedLabel":"\"UNPROCESSED_TEAMS\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### includeFields \{#operation-listentities+request+includefields\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of entity fields to return (that aren't returned by default)
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pageSize"
+  headingId="operation-listentities+request+pagesize"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### pageSize \{#operation-listentities+request+pagesize\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Hint to the server about how many results to send back. Server may return less.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+100
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="query"
+  headingId="operation-listentities+request+query"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### query \{#operation-listentities+request+query\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A query string to search for entities that each entity in the response must conform to. An empty query does not filter any entities.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="requestType"
+  headingId="operation-listentities+request+requesttype"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"STANDARD\"","linkedLabel":"\"STANDARD\"","children":[],"breakoutSubTypes":{}},{"label":"\"FULL_DIRECTORY\"","linkedLabel":"\"FULL_DIRECTORY\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### requestType \{#operation-listentities+request+requesttype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The type of request being made.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"STANDARD"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sort"
+  headingId="operation-listentities+request+sort"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+request+sort+sortoptions\">SortOptions</a>","children":[{"label":"SortOptions","linkedLabel":"<a href=\"#operation-listentities+request+sort+sortoptions\">SortOptions</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sort \{#operation-listentities+request+sort\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Use EntitiesSortOrder enum for SortOptions.sortBy
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="sort_SortOptions"
+  headingId="operation-listentities+request+sort+sortoptions"
+  parentId="sort"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### SortOptions \{#operation-listentities+request+sort+sortoptions\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="sort_SortOptions_orderBy"
+  headingId="operation-listentities+request+sort+sortoptions+orderby"
+  parentId="sort_SortOptions"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ASC\"","linkedLabel":"\"ASC\"","children":[],"breakoutSubTypes":{}},{"label":"\"DESC\"","linkedLabel":"\"DESC\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### orderBy \{#operation-listentities+request+sort+sortoptions+orderby\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sort_SortOptions_sortBy"
+  headingId="operation-listentities+request+sort+sortoptions+sortby"
+  parentId="sort_SortOptions"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sortBy \{#operation-listentities+request+sort+sortoptions+sortby\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="source"
+  headingId="operation-listentities+request+source"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### source \{#operation-listentities+request+source\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A string denoting the search surface from which the endpoint is called.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-listentities+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-listentities+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-listentities+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-listentities+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-listentities+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-listentities+responses+200+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="cursor"
+  headingId="operation-listentities+responses+200+application-json+cursor"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### cursor \{#operation-listentities+responses+200+application-json+cursor\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Pagination cursor. A previously received opaque token representing the position in the overall results at which to start.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="customEntityResults"
+  headingId="operation-listentities+responses+200+application-json+customentityresults"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+customentityresults+customentity\">CustomEntity</a>","children":[{"label":"CustomEntity","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+customentityresults+customentity\">CustomEntity</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### customEntityResults \{#operation-listentities+responses+200+application-json+customentityresults\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="customEntityResults_CustomEntity"
+  headingId="operation-listentities+responses+200+application-json+customentityresults+customentity"
+  parentId="customEntityResults"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### CustomEntity \{#operation-listentities+responses+200+application-json+customentityresults+customentity\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="customEntityResults_CustomEntity_datasource"
+  headingId="operation-listentities+responses+200+application-json+customentityresults+customentity+datasource"
+  parentId="customEntityResults_CustomEntity"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-listentities+responses+200+application-json+customentityresults+customentity+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource the custom entity is from.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="customEntityResults_CustomEntity_id"
+  headingId="operation-listentities+responses+200+application-json+customentityresults+customentity+id"
+  parentId="customEntityResults_CustomEntity"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-listentities+responses+200+application-json+customentityresults+customentity+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unique identifier.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="customEntityResults_CustomEntity_metadata"
+  headingId="operation-listentities+responses+200+application-json+customentityresults+customentity+metadata"
+  parentId="customEntityResults_CustomEntity"
+  typeInfo={{"label":"CustomEntityMetadata","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+customentityresults+customentity+metadata+customentitymetadata\">CustomEntityMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#operation-listentities+responses+200+application-json+customentityresults+customentity+metadata\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
+
+<Embedmetadata />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="customEntityResults_CustomEntity_objectType"
+  headingId="operation-listentities+responses+200+application-json+customentityresults+customentity+objecttype"
+  parentId="customEntityResults_CustomEntity"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### objectType \{#operation-listentities+responses+200+application-json+customentityresults+customentity+objecttype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The type of the entity. Interpretation is specific to each datasource
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="customEntityResults_CustomEntity_permissions"
+  headingId="operation-listentities+responses+200+application-json+customentityresults+customentity+permissions"
+  parentId="customEntityResults_CustomEntity"
+  typeInfo={{"label":"ObjectPermissions","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+customentityresults+customentity+permissions+objectpermissions\">ObjectPermissions</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### permissions \{#operation-listentities+responses+200+application-json+customentityresults+customentity+permissions\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="permissions" triggerText="View permissions details">
+
+<Embedpermissions />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="customEntityResults_CustomEntity_roles"
+  headingId="operation-listentities+responses+200+application-json+customentityresults+customentity+roles"
+  parentId="customEntityResults_CustomEntity"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+customentityresults+customentity+roles+userrolespecification\">UserRoleSpecification</a>","children":[{"label":"UserRoleSpecification","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+customentityresults+customentity+roles+userrolespecification\">UserRoleSpecification</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### roles \{#operation-listentities+responses+200+application-json+customentityresults+customentity+roles\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of user roles for the custom entity explicitly granted by the owner.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="roles" triggerText="View roles details">
+
+<Embedroles />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="customEntityResults_CustomEntity_title"
+  headingId="operation-listentities+responses+200+application-json+customentityresults+customentity+title"
+  parentId="customEntityResults_CustomEntity"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### title \{#operation-listentities+responses+200+application-json+customentityresults+customentity+title\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Title or name of the custom entity.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="customFacetNames"
+  headingId="operation-listentities+responses+200+application-json+customfacetnames"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### customFacetNames \{#operation-listentities+responses+200+application-json+customfacetnames\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of Person attributes that are custom setup by deployment
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="facetResults"
+  headingId="operation-listentities+responses+200+application-json+facetresults"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+facetresults+facetresult\">FacetResult</a>","children":[{"label":"FacetResult","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+facetresults+facetresult\">FacetResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### facetResults \{#operation-listentities+responses+200+application-json+facetresults\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="facetResults_FacetResult"
+  headingId="operation-listentities+responses+200+application-json+facetresults+facetresult"
+  parentId="facetResults"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### FacetResult \{#operation-listentities+responses+200+application-json+facetresults+facetresult\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="facetResults_FacetResult_buckets"
+  headingId="operation-listentities+responses+200+application-json+facetresults+facetresult+buckets"
+  parentId="facetResults_FacetResult"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+facetresults+facetresult+buckets+facetbucket\">FacetBucket</a>","children":[{"label":"FacetBucket","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+facetresults+facetresult+buckets+facetbucket\">FacetBucket</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### buckets \{#operation-listentities+responses+200+application-json+facetresults+facetresult+buckets\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of unique buckets that exist within this result set.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="buckets" triggerText="View buckets details">
+
+<Embedbuckets />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="facetResults_FacetResult_groupName"
+  headingId="operation-listentities+responses+200+application-json+facetresults+facetresult+groupname"
+  parentId="facetResults_FacetResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### groupName \{#operation-listentities+responses+200+application-json+facetresults+facetresult+groupname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+For most facets this will be the empty string, meaning the facet is high-level and applies to all documents for the datasource. When non-empty, this is used to group facets together (i.e. group facets for each doctype for a certain datasource)
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+Service Cloud
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="facetResults_FacetResult_hasMoreBuckets"
+  headingId="operation-listentities+responses+200+application-json+facetresults+facetresult+hasmorebuckets"
+  parentId="facetResults_FacetResult"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### hasMoreBuckets \{#operation-listentities+responses+200+application-json+facetresults+facetresult+hasmorebuckets\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Returns true if more buckets exist than those returned. Additional buckets can be retrieve by requesting again with a higher facetBucketSize.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+false
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="facetResults_FacetResult_operatorName"
+  headingId="operation-listentities+responses+200+application-json+facetresults+facetresult+operatorname"
+  parentId="facetResults_FacetResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### operatorName \{#operation-listentities+responses+200+application-json+facetresults+facetresult+operatorname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+How to display this facet. Currently supportes 'SelectSingle' and 'SelectMultiple'.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+SelectMultiple
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="facetResults_FacetResult_sourceName"
+  headingId="operation-listentities+responses+200+application-json+facetresults+facetresult+sourcename"
+  parentId="facetResults_FacetResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sourceName \{#operation-listentities+responses+200+application-json+facetresults+facetresult+sourcename\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The source of this facet (e.g. container_name, type, last_updated_at).
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+container_name
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="hasMoreResults"
+  headingId="operation-listentities+responses+200+application-json+hasmoreresults"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### hasMoreResults \{#operation-listentities+responses+200+application-json+hasmoreresults\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Whether or not more entities can be fetched.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results"
+  headingId="operation-listentities+responses+200+application-json+results"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+results+person\">Person</a>","children":[{"label":"Person","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+results+person\">Person</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### results \{#operation-listentities+responses+200+application-json+results\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of POC for company.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="results_Person"
+  headingId="operation-listentities+responses+200+application-json+results+person"
+  parentId="results"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Person \{#operation-listentities+responses+200+application-json+results+person\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="results_Person_metadata"
+  headingId="operation-listentities+responses+200+application-json+results+person+metadata"
+  parentId="results_Person"
+  typeInfo={{"label":"PersonMetadata","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+results+person+metadata+personmetadata\">PersonMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#operation-listentities+responses+200+application-json+results+person+metadata\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
+
+<Embedmetadata />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results_Person_name"
+  headingId="operation-listentities+responses+200+application-json+results+person+name"
+  parentId="results_Person"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-listentities+responses+200+application-json+results+person+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The display name.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results_Person_obfuscatedId"
+  headingId="operation-listentities+responses+200+application-json+results+person+obfuscatedid"
+  parentId="results_Person"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### obfuscatedId \{#operation-listentities+responses+200+application-json+results+person+obfuscatedid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque identifier that can be used to request metadata for a Person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results_Person_relatedDocuments"
+  headingId="operation-listentities+responses+200+application-json+results+person+relateddocuments"
+  parentId="results_Person"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+results+person+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+results+person+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedDocuments \{#operation-listentities+responses+200+application-json+results+person+relateddocuments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of documents related to this person.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
+
+<Embedrelateddocuments />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sortOptions"
+  headingId="operation-listentities+responses+200+application-json+sortoptions"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ENTITY_NAME\"","linkedLabel":"\"ENTITY_NAME\"","children":[],"breakoutSubTypes":{}},{"label":"\"FIRST_NAME\"","linkedLabel":"\"FIRST_NAME\"","children":[],"breakoutSubTypes":{}},{"label":"\"LAST_NAME\"","linkedLabel":"\"LAST_NAME\"","children":[],"breakoutSubTypes":{}},{"label":"\"ORG_SIZE_COUNT\"","linkedLabel":"\"ORG_SIZE_COUNT\"","children":[],"breakoutSubTypes":{}},{"label":"\"START_DATE\"","linkedLabel":"\"START_DATE\"","children":[],"breakoutSubTypes":{}},{"label":"\"TEAM_SIZE\"","linkedLabel":"\"TEAM_SIZE\"","children":[],"breakoutSubTypes":{}},{"label":"\"RELEVANCE\"","linkedLabel":"\"RELEVANCE\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sortOptions \{#operation-listentities+responses+200+application-json+sortoptions\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Sort options from EntitiesSortOrder supported for this response. Default is empty list.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults"
+  headingId="operation-listentities+responses+200+application-json+teamresults"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team\">Team</a>","children":[{"label":"Team","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team\">Team</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### teamResults \{#operation-listentities+responses+200+application-json+teamresults\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="teamResults_Team"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team"
+  parentId="teamResults"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Team \{#operation-listentities+responses+200+application-json+teamresults+team\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_bannerUrl"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+bannerurl"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### bannerUrl \{#operation-listentities+responses+200+application-json+teamresults+team+bannerurl\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A link to the team's banner photo.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_businessUnit"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+businessunit"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### businessUnit \{#operation-listentities+responses+200+application-json+teamresults+team+businessunit\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Typically the highest level organizational unit; generally applies to bigger companies with multiple distinct businesses.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_canBeDeleted"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+canbedeleted"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### canBeDeleted \{#operation-listentities+responses+200+application-json+teamresults+team+canbedeleted\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+can this team be deleted. Some manually ingested teams like GCS_CSV or PUSH_API cannot
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `true`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_createdFrom"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+createdfrom"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### createdFrom \{#operation-listentities+responses+200+application-json+teamresults+team+createdfrom\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+For teams created from docs, the doc title. Otherwise empty.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_customFields"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+customfields"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team+customfields+customfielddata\">CustomFieldData</a>","children":[{"label":"CustomFieldData","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team+customfields+customfielddata\">CustomFieldData</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### customFields \{#operation-listentities+responses+200+application-json+teamresults+team+customfields\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Customizable fields for additional team information.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="customFields"
+  triggerText="View customFields details"
+>
+
+<Embedcustomfields />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_datasource"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+datasource"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-listentities+responses+200+application-json+teamresults+team+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+the data source of the team, e.g. GDRIVE
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_datasourceProfiles"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+datasourceprofiles"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team+datasourceprofiles+datasourceprofile\">DatasourceProfile</a>","children":[{"label":"DatasourceProfile","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team+datasourceprofiles+datasourceprofile\">DatasourceProfile</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasourceProfiles \{#operation-listentities+responses+200+application-json+teamresults+team+datasourceprofiles\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource profiles of the team
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="datasourceProfiles"
+  triggerText="View datasourceProfiles details"
+>
+
+<Embeddatasourceprofiles />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_department"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+department"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### department \{#operation-listentities+responses+200+application-json+teamresults+team+department\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An organizational unit where everyone has a similar task, e.g. `Engineering`.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_description"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+description"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### description \{#operation-listentities+responses+200+application-json+teamresults+team+description\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A description of the team
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_emails"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+emails"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team+emails+teamemail\">TeamEmail</a>","children":[{"label":"TeamEmail","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team+emails+teamemail\">TeamEmail</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### emails \{#operation-listentities+responses+200+application-json+teamresults+team+emails\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The emails for this team
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="emails" triggerText="View emails details">
+
+<Embedemails />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_externalLink"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+externallink"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### externalLink \{#operation-listentities+responses+200+application-json+teamresults+team+externallink\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Link to a team page on the internet or your company's intranet
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_id"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+id"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-listentities+responses+200+application-json+teamresults+team+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unique identifier
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_lastUpdatedAt"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+lastupdatedat"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastUpdatedAt \{#operation-listentities+responses+200+application-json+teamresults+team+lastupdatedat\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+when this team was last updated.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_loggingId"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+loggingid"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### loggingId \{#operation-listentities+responses+200+application-json+teamresults+team+loggingid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The logging id of the team used in scrubbed logs, client analytics, and metrics.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_memberCount"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+membercount"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### memberCount \{#operation-listentities+responses+200+application-json+teamresults+team+membercount\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Number of members on this team (recursive; includes all individuals that belong to this team, and all individuals that belong to a subteam within this team)
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_members"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+members"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team+members+persontoteamrelationship\">PersonToTeamRelationship</a>","children":[{"label":"PersonToTeamRelationship","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team+members+persontoteamrelationship\">PersonToTeamRelationship</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### members \{#operation-listentities+responses+200+application-json+teamresults+team+members\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The members on this team
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="members" triggerText="View members details">
+
+<Embedmembers />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_name"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+name"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-listentities+responses+200+application-json+teamresults+team+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Team name
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_permissions"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+permissions"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"ObjectPermissions","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team+permissions+objectpermissions\">ObjectPermissions</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### permissions \{#operation-listentities+responses+200+application-json+teamresults+team+permissions\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="permissions" triggerText="View permissions details">
+
+<Embedpermissions />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_photoUrl"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+photourl"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### photoUrl \{#operation-listentities+responses+200+application-json+teamresults+team+photourl\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A link to the team's photo.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_relatedObjects"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+relatedobjects"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"map","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team+relatedobjects+relatedobjectedge\">RelatedObjectEdge</a>","children":[{"label":"RelatedObjectEdge","linkedLabel":"<a href=\"#operation-listentities+responses+200+application-json+teamresults+team+relatedobjects+relatedobjectedge\">RelatedObjectEdge</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedObjects \{#operation-listentities+responses+200+application-json+teamresults+team+relatedobjects\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of objects related to a source object.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedObjects"
+  triggerText="View relatedObjects details"
+>
+
+<Embedrelatedobjects />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="teamResults_Team_status"
+  headingId="operation-listentities+responses+200+application-json+teamresults+team+status"
+  parentId="teamResults_Team"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"PROCESSED\"","linkedLabel":"\"PROCESSED\"","children":[],"breakoutSubTypes":{}},{"label":"\"QUEUED_FOR_CREATION\"","linkedLabel":"\"QUEUED_FOR_CREATION\"","children":[],"breakoutSubTypes":{}},{"label":"\"QUEUED_FOR_DELETION\"","linkedLabel":"\"QUEUED_FOR_DELETION\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### status \{#operation-listentities+responses+200+application-json+teamresults+team+status\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+whether this team is fully processed or there are still unprocessed operations that'll affect it
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"PROCESSED"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="totalCount"
+  headingId="operation-listentities+responses+200+application-json+totalcount"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalCount \{#operation-listentities+responses+200+application-json+totalcount\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The total number of entities available
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/people \{#operation-people\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Read people_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Read people details for the given IDs.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-people+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-people+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.entities.readPeople({&NewLine;    obfuscatedIds: [&NewLine;      &quot;abc123&quot;,&NewLine;      &quot;abc456&quot;,&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab slot="tab" id="operation-people+code-samples+curl" tags={{"codeSample":"curl"}}>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-people+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/people \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-people+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-people+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+People request
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="emailIds"
+  headingId="operation-people+request+emailids"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### emailIds \{#operation-people+request+emailids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The email IDs to retrieve. The result is the deduplicated union of emailIds and obfuscatedIds.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="includeFields"
+  headingId="operation-people+request+includefields"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"BADGES\"","linkedLabel":"\"BADGES\"","children":[],"breakoutSubTypes":{}},{"label":"\"BUSY_EVENTS\"","linkedLabel":"\"BUSY_EVENTS\"","children":[],"breakoutSubTypes":{}},{"label":"\"DOCUMENT_ACTIVITY\"","linkedLabel":"\"DOCUMENT_ACTIVITY\"","children":[],"breakoutSubTypes":{}},{"label":"\"INVITE_INFO\"","linkedLabel":"\"INVITE_INFO\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_DISTANCE\"","linkedLabel":"\"PEOPLE_DISTANCE\"","children":[],"breakoutSubTypes":{}},{"label":"\"PERMISSIONS\"","linkedLabel":"\"PERMISSIONS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_DETAILS\"","linkedLabel":"\"PEOPLE_DETAILS\"","children":[],"breakoutSubTypes":{}},{"label":"\"MANAGEMENT_DETAILS\"","linkedLabel":"\"MANAGEMENT_DETAILS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_PROFILE_SETTINGS\"","linkedLabel":"\"PEOPLE_PROFILE_SETTINGS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PEOPLE_WITHOUT_MANAGER\"","linkedLabel":"\"PEOPLE_WITHOUT_MANAGER\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### includeFields \{#operation-people+request+includefields\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of PersonMetadata fields to return (that aren't returned by default)
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="includeTypes"
+  headingId="operation-people+request+includetypes"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"PEOPLE_WITHOUT_MANAGER\"","linkedLabel":"\"PEOPLE_WITHOUT_MANAGER\"","children":[],"breakoutSubTypes":{}},{"label":"\"INVALID_ENTITIES\"","linkedLabel":"\"INVALID_ENTITIES\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### includeTypes \{#operation-people+request+includetypes\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The types of people entities to include in the response in addition to those returned by default.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="obfuscatedIds"
+  headingId="operation-people+request+obfuscatedids"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### obfuscatedIds \{#operation-people+request+obfuscatedids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The Person IDs to retrieve. If no IDs are requested, the current user's details are returned.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="source"
+  headingId="operation-people+request+source"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### source \{#operation-people+request+source\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A string denoting the search surface from which the endpoint is called.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="timezoneOffset"
+  headingId="operation-people+request+timezoneoffset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timezoneOffset \{#operation-people+request+timezoneoffset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-people+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-people+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-people+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-people+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-people+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-people+responses+200+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="errors"
+  headingId="operation-people+responses+200+application-json+errors"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### errors \{#operation-people+responses+200+application-json+errors\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of IDs that could not be found.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="relatedDocuments"
+  headingId="operation-people+responses+200+application-json+relateddocuments"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-people+responses+200+application-json+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#operation-people+responses+200+application-json+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedDocuments \{#operation-people+responses+200+application-json+relateddocuments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of documents related to this person.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="relatedDocuments_RelatedDocuments"
+  headingId="operation-people+responses+200+application-json+relateddocuments+relateddocuments"
+  parentId="relatedDocuments"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### RelatedDocuments \{#operation-people+responses+200+application-json+relateddocuments+relateddocuments\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="relatedDocuments_RelatedDocuments_associatedEntityId"
+  headingId="operation-people+responses+200+application-json+relateddocuments+relateddocuments+associatedentityid"
+  parentId="relatedDocuments_RelatedDocuments"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### associatedEntityId \{#operation-people+responses+200+application-json+relateddocuments+relateddocuments+associatedentityid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Which entity in the response that this entity relates to. Relevant when there are multiple entities associated with the response (such as merged customers)
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="relatedDocuments_RelatedDocuments_documents"
+  headingId="operation-people+responses+200+application-json+relateddocuments+relateddocuments+documents"
+  parentId="relatedDocuments_RelatedDocuments"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-people+responses+200+application-json+relateddocuments+relateddocuments+documents+document\">Document</a>","children":[{"label":"Document","linkedLabel":"<a href=\"#operation-people+responses+200+application-json+relateddocuments+relateddocuments+documents+document\">Document</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documents \{#operation-people+responses+200+application-json+relateddocuments+relateddocuments+documents\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A truncated list of documents with this relation. TO BE DEPRECATED.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="documents" triggerText="View documents details">
+
+<Embeddocuments />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="relatedDocuments_RelatedDocuments_querySuggestion"
+  headingId="operation-people+responses+200+application-json+relateddocuments+relateddocuments+querysuggestion"
+  parentId="relatedDocuments_RelatedDocuments"
+  typeInfo={{"label":"QuerySuggestion","linkedLabel":"<a href=\"#operation-people+responses+200+application-json+relateddocuments+relateddocuments+querysuggestion+querysuggestion\">QuerySuggestion</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### querySuggestion \{#operation-people+responses+200+application-json+relateddocuments+relateddocuments+querysuggestion\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="querySuggestion"
+  triggerText="View querySuggestion details"
+>
+
+<Embedquerysuggestion />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="relatedDocuments_RelatedDocuments_relation"
+  headingId="operation-people+responses+200+application-json+relateddocuments+relateddocuments+relation"
+  parentId="relatedDocuments_RelatedDocuments"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ATTACHMENT\"","linkedLabel":"\"ATTACHMENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"CANONICAL\"","linkedLabel":"\"CANONICAL\"","children":[],"breakoutSubTypes":{}},{"label":"\"CASE\"","linkedLabel":"\"CASE\"","children":[],"breakoutSubTypes":{}},{"label":"\"contact\"","linkedLabel":"\"contact\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTACT\"","linkedLabel":"\"CONTACT\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONVERSATION_MESSAGES\"","linkedLabel":"\"CONVERSATION_MESSAGES\"","children":[],"breakoutSubTypes":{}},{"label":"\"EXPERT\"","linkedLabel":"\"EXPERT\"","children":[],"breakoutSubTypes":{}},{"label":"\"FROM\"","linkedLabel":"\"FROM\"","children":[],"breakoutSubTypes":{}},{"label":"\"HIGHLIGHT\"","linkedLabel":"\"HIGHLIGHT\"","children":[],"breakoutSubTypes":{}},{"label":"\"opportunity\"","linkedLabel":"\"opportunity\"","children":[],"breakoutSubTypes":{}},{"label":"\"OPPORTUNITY\"","linkedLabel":"\"OPPORTUNITY\"","children":[],"breakoutSubTypes":{}},{"label":"\"RECENT\"","linkedLabel":"\"RECENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"SOURCE\"","linkedLabel":"\"SOURCE\"","children":[],"breakoutSubTypes":{}},{"label":"\"TICKET\"","linkedLabel":"\"TICKET\"","children":[],"breakoutSubTypes":{}},{"label":"\"TRANSCRIPT\"","linkedLabel":"\"TRANSCRIPT\"","children":[],"breakoutSubTypes":{}},{"label":"\"WITH\"","linkedLabel":"\"WITH\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relation \{#operation-people+responses+200+application-json+relateddocuments+relateddocuments+relation\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+How this document relates to the including entity.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="relatedDocuments_RelatedDocuments_results"
+  headingId="operation-people+responses+200+application-json+relateddocuments+relateddocuments+results"
+  parentId="relatedDocuments_RelatedDocuments"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-people+responses+200+application-json+relateddocuments+relateddocuments+results+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#operation-people+responses+200+application-json+relateddocuments+relateddocuments+results+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### results \{#operation-people+responses+200+application-json+relateddocuments+relateddocuments+results\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A truncated list of documents associated with this relation. To be used in favor of `documents` because it contains a trackingToken.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="results" triggerText="View results details">
+
+<Embedresults />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results"
+  headingId="operation-people+responses+200+application-json+results"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-people+responses+200+application-json+results+person\">Person</a>","children":[{"label":"Person","linkedLabel":"<a href=\"#operation-people+responses+200+application-json+results+person\">Person</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### results \{#operation-people+responses+200+application-json+results\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of POC for company.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="results_Person"
+  headingId="operation-people+responses+200+application-json+results+person"
+  parentId="results"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Person \{#operation-people+responses+200+application-json+results+person\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="results_Person_metadata"
+  headingId="operation-people+responses+200+application-json+results+person+metadata"
+  parentId="results_Person"
+  typeInfo={{"label":"PersonMetadata","linkedLabel":"<a href=\"#operation-people+responses+200+application-json+results+person+metadata+personmetadata\">PersonMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#operation-people+responses+200+application-json+results+person+metadata\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
+
+<Embedmetadata />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results_Person_name"
+  headingId="operation-people+responses+200+application-json+results+person+name"
+  parentId="results_Person"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-people+responses+200+application-json+results+person+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The display name.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results_Person_obfuscatedId"
+  headingId="operation-people+responses+200+application-json+results+person+obfuscatedid"
+  parentId="results_Person"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### obfuscatedId \{#operation-people+responses+200+application-json+results+person+obfuscatedid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque identifier that can be used to request metadata for a Person.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results_Person_relatedDocuments"
+  headingId="operation-people+responses+200+application-json+results+person+relateddocuments"
+  parentId="results_Person"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-people+responses+200+application-json+results+person+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[{"label":"RelatedDocuments","linkedLabel":"<a href=\"#operation-people+responses+200+application-json+results+person+relateddocuments+relateddocuments\">RelatedDocuments</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### relatedDocuments \{#operation-people+responses+200+application-json+results+person+relateddocuments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of documents related to this person.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="relatedDocuments"
+  triggerText="View relatedDocuments details"
+>
+
+<Embedrelateddocuments />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>

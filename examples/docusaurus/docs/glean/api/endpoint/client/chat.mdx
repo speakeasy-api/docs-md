@@ -1,0 +1,5768 @@
+---
+sidebar_position: 3.5
+sidebar_label: Client Chat
+---
+
+import "@speakeasy-api/docs-md-react/docusaurus.css";
+
+import {
+  CodeSample,
+  CodeSampleTab,
+  CodeSampleTabbedSection,
+  Embed,
+  EmbedProvider,
+  EmbedTrigger,
+  ExpandableBreakout,
+  ExpandableBreakoutDescription,
+  ExpandableBreakoutProperties,
+  ExpandableBreakoutTitle,
+  ExpandableProperty,
+  ExpandablePropertyBreakouts,
+  ExpandablePropertyDefaultValue,
+  ExpandablePropertyDescription,
+  ExpandablePropertyExamples,
+  ExpandablePropertyTitle,
+  ExpandableSection,
+  FrontMatterDisplayType,
+  Operation,
+  OperationCodeSamplesSection,
+  OperationDescriptionSection,
+  OperationParametersSection,
+  OperationRequestBodyDescriptionSection,
+  OperationRequestBodyExamplesSection,
+  OperationRequestBodySection,
+  OperationResponseBodyDescriptionSection,
+  OperationResponseBodyDisplayTypeSection,
+  OperationResponseBodyExamplesSection,
+  OperationResponseBodySection,
+  OperationSummarySection,
+  OperationTitleSection,
+  Pill,
+  ResponseExamplesTab,
+  ResponseExamplesTabbedSection,
+  ResponseTab,
+  ResponseTabbedSection,
+  Section,
+  SectionContent,
+  SectionTitle,
+  Tag,
+  TagTitle,
+  TryItNow
+} from "@speakeasy-api/docs-md-react";
+import Embedagentconfig from "../../../../../src/components/glean-embeds/loaders/agentconfig.tsx";
+import Embedcitations from "../../../../../src/components/glean-embeds/loaders/citations.tsx";
+import Embedfragments from "../../../../../src/components/glean-embeds/loaders/fragments.tsx";
+import Embedchat from "../../../../../src/components/glean-embeds/loaders/chat.tsx";
+import Embedmetadata from "../../../../../src/components/glean-embeds/loaders/metadata.tsx";
+
+<EmbedProvider />
+
+<Tag slot="tag">
+
+<TagTitle slot="title">
+
+# Client Chat Endpoints
+
+</TagTitle>
+
+</Tag>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/chat \{#operation-chat\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Chat_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Have a conversation with Glean AI.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-chat+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-chat+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.chat.create({&NewLine;    messages: [&NewLine;      {&NewLine;        fragments: [&NewLine;          {&NewLine;            text: &quot;What are the company holidays this year?&quot;,&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab slot="tab" id="operation-chat+code-samples+curl" tags={{"codeSample":"curl"}}>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-chat+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/chat \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "messages": [
+    {}
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-chat+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="timezoneOffset"
+  headingId="operation-chat+parameters+timezoneoffset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timezoneOffset \{#operation-chat+parameters+timezoneoffset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Examples \{#operation-chat+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "messages": [
+    {
+      "author": "USER",
+      "messageType": "CONTENT",
+      "fragments": [
+        {
+          "text": "What are the company holidays this year?"
+        }
+      ]
+    }
+  ]
+}
+```
+
+```json
+{
+  "agentConfig": {
+    "agent": "GPT"
+  },
+  "messages": [
+    {
+      "author": "USER",
+      "messageType": "CONTENT",
+      "fragments": [
+        {
+          "text": "Who was the first person to land on the moon?"
+        }
+      ]
+    }
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-chat+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Includes chat history for Glean AI to respond to.
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="agentConfig"
+  headingId="operation-chat+request+agentconfig"
+  typeInfo={{"label":"AgentConfig","linkedLabel":"<a href=\"#operation-chat+request+agentconfig+agentconfig\">AgentConfig</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agentConfig \{#operation-chat+request+agentconfig\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Describes the agent that executes the request.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="agentConfig_AgentConfig"
+  headingId="operation-chat+request+agentconfig+agentconfig"
+  parentId="agentConfig"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### AgentConfig \{#operation-chat+request+agentconfig+agentconfig\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+Describes the agent that executes the request.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="agentConfig_AgentConfig_agent"
+  headingId="operation-chat+request+agentconfig+agentconfig+agent"
+  parentId="agentConfig_AgentConfig"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"DEFAULT\"","linkedLabel":"\"DEFAULT\"","children":[],"breakoutSubTypes":{}},{"label":"\"GPT\"","linkedLabel":"\"GPT\"","children":[],"breakoutSubTypes":{}},{"label":"\"UNIVERSAL\"","linkedLabel":"\"UNIVERSAL\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agent \{#operation-chat+request+agentconfig+agentconfig+agent\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Name of the agent.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="agentConfig_AgentConfig_mode"
+  headingId="operation-chat+request+agentconfig+agentconfig+mode"
+  parentId="agentConfig_AgentConfig"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"DEFAULT\"","linkedLabel":"\"DEFAULT\"","children":[],"breakoutSubTypes":{}},{"label":"\"QUICK\"","linkedLabel":"\"QUICK\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### mode \{#operation-chat+request+agentconfig+agentconfig+mode\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Top level modes to run GleanChat in.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="agentId"
+  headingId="operation-chat+request+agentid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agentId \{#operation-chat+request+agentid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The ID of the Agent that should process this chat request. Only Agents with trigger set to 'User chat message' are invokable through this API. If not specified, the default chat experience will be used.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="applicationId"
+  headingId="operation-chat+request+applicationid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### applicationId \{#operation-chat+request+applicationid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The ID of the application this request originates from, used to determine the configuration of underlying chat processes. This should correspond to the ID set during admin setup. If not specified, the default chat experience will be used.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="chatId"
+  headingId="operation-chat+request+chatid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### chatId \{#operation-chat+request+chatid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The id of the Chat that context should be retrieved from and messages added to. An empty id starts a new Chat, and the Chat is saved if saveChat is true.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="exclusions"
+  headingId="operation-chat+request+exclusions"
+  typeInfo={{"label":"ChatRestrictionFilters","linkedLabel":"<a href=\"#operation-chat+request+exclusions+chatrestrictionfilters\">ChatRestrictionFilters</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### exclusions \{#operation-chat+request+exclusions\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="exclusions_ChatRestrictionFilters"
+  headingId="operation-chat+request+exclusions+chatrestrictionfilters"
+  parentId="exclusions"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ChatRestrictionFilters \{#operation-chat+request+exclusions+chatrestrictionfilters\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="exclusions_ChatRestrictionFilters_containerSpecs"
+  headingId="operation-chat+request+exclusions+chatrestrictionfilters+containerspecs"
+  parentId="exclusions_ChatRestrictionFilters"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### containerSpecs \{#operation-chat+request+exclusions+chatrestrictionfilters+containerspecs\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Specifications for containers that should be used as part of the restriction (include/exclude). Memberships are recursively defined for a subset of datasources (currently: SharePoint, OneDrive, Google Drive, and Confluence). Please contact the Glean team to enable this for more datasources. Recursive memberships do not apply for Collections.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="exclusions_ChatRestrictionFilters_datasourceInstances"
+  headingId="operation-chat+request+exclusions+chatrestrictionfilters+datasourceinstances"
+  parentId="exclusions_ChatRestrictionFilters"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasourceInstances \{#operation-chat+request+exclusions+chatrestrictionfilters+datasourceinstances\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="exclusions_ChatRestrictionFilters_documentSpecs"
+  headingId="operation-chat+request+exclusions+chatrestrictionfilters+documentspecs"
+  parentId="exclusions_ChatRestrictionFilters"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentSpecs \{#operation-chat+request+exclusions+chatrestrictionfilters+documentspecs\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Specifications for containers that should be used as part of the restriction (include/exclude). Memberships are recursively defined for a subset of datasources (currently: SharePoint, OneDrive, Google Drive, and Confluence). Please contact the Glean team to enable this for more datasources. Recursive memberships do not apply for Collections.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="inclusions"
+  headingId="operation-chat+request+inclusions"
+  typeInfo={{"label":"ChatRestrictionFilters","linkedLabel":"<a href=\"#operation-chat+request+inclusions+chatrestrictionfilters\">ChatRestrictionFilters</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### inclusions \{#operation-chat+request+inclusions\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="inclusions_ChatRestrictionFilters"
+  headingId="operation-chat+request+inclusions+chatrestrictionfilters"
+  parentId="inclusions"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ChatRestrictionFilters \{#operation-chat+request+inclusions+chatrestrictionfilters\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="inclusions_ChatRestrictionFilters_containerSpecs"
+  headingId="operation-chat+request+inclusions+chatrestrictionfilters+containerspecs"
+  parentId="inclusions_ChatRestrictionFilters"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### containerSpecs \{#operation-chat+request+inclusions+chatrestrictionfilters+containerspecs\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Specifications for containers that should be used as part of the restriction (include/exclude). Memberships are recursively defined for a subset of datasources (currently: SharePoint, OneDrive, Google Drive, and Confluence). Please contact the Glean team to enable this for more datasources. Recursive memberships do not apply for Collections.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="inclusions_ChatRestrictionFilters_datasourceInstances"
+  headingId="operation-chat+request+inclusions+chatrestrictionfilters+datasourceinstances"
+  parentId="inclusions_ChatRestrictionFilters"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasourceInstances \{#operation-chat+request+inclusions+chatrestrictionfilters+datasourceinstances\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="inclusions_ChatRestrictionFilters_documentSpecs"
+  headingId="operation-chat+request+inclusions+chatrestrictionfilters+documentspecs"
+  parentId="inclusions_ChatRestrictionFilters"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentSpecs \{#operation-chat+request+inclusions+chatrestrictionfilters+documentspecs\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Specifications for containers that should be used as part of the restriction (include/exclude). Memberships are recursively defined for a subset of datasources (currently: SharePoint, OneDrive, Google Drive, and Confluence). Please contact the Glean team to enable this for more datasources. Recursive memberships do not apply for Collections.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages"
+  headingId="operation-chat+request+messages"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat+request+messages+chatmessage\">ChatMessage</a>","children":[{"label":"ChatMessage","linkedLabel":"<a href=\"#operation-chat+request+messages+chatmessage\">ChatMessage</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### messages \{#operation-chat+request+messages\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of chat messages, from most recent to least recent. At least one message must specify a USER author.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_ChatMessage"
+  headingId="operation-chat+request+messages+chatmessage"
+  parentId="messages"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ChatMessage \{#operation-chat+request+messages+chatmessage\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+A message that is rendered as one coherent unit with one given sender.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_agentConfig"
+  headingId="operation-chat+request+messages+chatmessage+agentconfig"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"AgentConfig","linkedLabel":"<a href=\"#operation-chat+request+messages+chatmessage+agentconfig+agentconfig\">AgentConfig</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agentConfig \{#operation-chat+request+messages+chatmessage+agentconfig\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Describes the agent that executes the request.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="agentConfig" triggerText="View agentConfig details">
+
+<Embedagentconfig />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_author"
+  headingId="operation-chat+request+messages+chatmessage+author"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"USER\"","linkedLabel":"\"USER\"","children":[],"breakoutSubTypes":{}},{"label":"\"GLEAN_AI\"","linkedLabel":"\"GLEAN_AI\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### author \{#operation-chat+request+messages+chatmessage+author\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"USER"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_citations"
+  headingId="operation-chat+request+messages+chatmessage+citations"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat+request+messages+chatmessage+citations+chatmessagecitation\">ChatMessageCitation</a>","children":[{"label":"ChatMessageCitation","linkedLabel":"<a href=\"#operation-chat+request+messages+chatmessage+citations+chatmessagecitation\">ChatMessageCitation</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### citations \{#operation-chat+request+messages+chatmessage+citations\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of Citations that were used to generate the response.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="citations" triggerText="View citations details">
+
+<Embedcitations />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_fragments"
+  headingId="operation-chat+request+messages+chatmessage+fragments"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat+request+messages+chatmessage+fragments+chatmessagefragment\">ChatMessageFragment</a>","children":[{"label":"ChatMessageFragment","linkedLabel":"<a href=\"#operation-chat+request+messages+chatmessage+fragments+chatmessagefragment\">ChatMessageFragment</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fragments \{#operation-chat+request+messages+chatmessage+fragments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of rich data used to represent the response or formulate a request. These are linearly stitched together to support richer data formats beyond simple text.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="fragments" triggerText="View fragments details">
+
+<Embedfragments />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_hasMoreFragments"
+  headingId="operation-chat+request+messages+chatmessage+hasmorefragments"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### hasMoreFragments \{#operation-chat+request+messages+chatmessage+hasmorefragments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Signals there are additional response fragments incoming.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_messageId"
+  headingId="operation-chat+request+messages+chatmessage+messageid"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### messageId \{#operation-chat+request+messages+chatmessage+messageid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A unique server-side generated ID used to identify a message, automatically populated for any USER authored messages.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_messageTrackingToken"
+  headingId="operation-chat+request+messages+chatmessage+messagetrackingtoken"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### messageTrackingToken \{#operation-chat+request+messages+chatmessage+messagetrackingtoken\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Opaque tracking token generated server-side.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_messageType"
+  headingId="operation-chat+request+messages+chatmessage+messagetype"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UPDATE\"","linkedLabel":"\"UPDATE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTEXT\"","linkedLabel":"\"CONTEXT\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEBUG\"","linkedLabel":"\"DEBUG\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEBUG_EXTERNAL\"","linkedLabel":"\"DEBUG_EXTERNAL\"","children":[],"breakoutSubTypes":{}},{"label":"\"ERROR\"","linkedLabel":"\"ERROR\"","children":[],"breakoutSubTypes":{}},{"label":"\"HEADING\"","linkedLabel":"\"HEADING\"","children":[],"breakoutSubTypes":{}},{"label":"\"WARNING\"","linkedLabel":"\"WARNING\"","children":[],"breakoutSubTypes":{}},{"label":"\"SERVER_TOOL\"","linkedLabel":"\"SERVER_TOOL\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### messageType \{#operation-chat+request+messages+chatmessage+messagetype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Semantically groups content of a certain type. It can be used for purposes such as differential UI treatment. USER authored messages should be of type CONTENT and do not need `messageType` specified.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"CONTENT"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_ts"
+  headingId="operation-chat+request+messages+chatmessage+ts"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### ts \{#operation-chat+request+messages+chatmessage+ts\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Response timestamp of the message.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_uploadedFileIds"
+  headingId="operation-chat+request+messages+chatmessage+uploadedfileids"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### uploadedFileIds \{#operation-chat+request+messages+chatmessage+uploadedfileids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+IDs of files uploaded in the message that are referenced to generate the answer.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="saveChat"
+  headingId="operation-chat+request+savechat"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### saveChat \{#operation-chat+request+savechat\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Save the current interaction as a Chat for the user to access and potentially continue later.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo"
+  headingId="operation-chat+request+sessioninfo"
+  typeInfo={{"label":"SessionInfo","linkedLabel":"<a href=\"#operation-chat+request+sessioninfo+sessioninfo\">SessionInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sessionInfo \{#operation-chat+request+sessioninfo\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="sessionInfo_SessionInfo"
+  headingId="operation-chat+request+sessioninfo+sessioninfo"
+  parentId="sessionInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### SessionInfo \{#operation-chat+request+sessioninfo+sessioninfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo_SessionInfo_lastQuery"
+  headingId="operation-chat+request+sessioninfo+sessioninfo+lastquery"
+  parentId="sessionInfo_SessionInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastQuery \{#operation-chat+request+sessioninfo+sessioninfo+lastquery\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The last query seen by the server.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo_SessionInfo_lastSeen"
+  headingId="operation-chat+request+sessioninfo+sessioninfo+lastseen"
+  parentId="sessionInfo_SessionInfo"
+  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastSeen \{#operation-chat+request+sessioninfo+sessioninfo+lastseen\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The last time the server saw this token.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo_SessionInfo_sessionTrackingToken"
+  headingId="operation-chat+request+sessioninfo+sessioninfo+sessiontrackingtoken"
+  parentId="sessionInfo_SessionInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sessionTrackingToken \{#operation-chat+request+sessioninfo+sessioninfo+sessiontrackingtoken\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A unique token for this session. A new session (and token) is created when the user issues a request from a new tab or when our server hasn't seen activity for more than 10 minutes from a tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo_SessionInfo_tabId"
+  headingId="operation-chat+request+sessioninfo+sessioninfo+tabid"
+  parentId="sessionInfo_SessionInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### tabId \{#operation-chat+request+sessioninfo+sessioninfo+tabid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A unique id for all requests a user makes from a given tab, no matter how far apart. A new tab id is only generated when a user issues a request from a new tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="stream"
+  headingId="operation-chat+request+stream"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### stream \{#operation-chat+request+stream\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+If set, response lines will be streamed one-by-one as they become available. Each will be a ChatResponse, formatted as JSON, and separated by a new line. If false, the entire response will be returned at once. Note that if this is set and the model being used does not support streaming, the model's response will not be streamed, but other messages from the endpoint still will be.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="timeoutMillis"
+  headingId="operation-chat+request+timeoutmillis"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timeoutMillis \{#operation-chat+request+timeoutmillis\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Timeout in milliseconds for the request. A `408` error will be returned if handling the request takes longer.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+30000
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-chat+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-chat+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-chat+responses+200+application-json">
+
+```json
+{
+  "messages": [
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "hasMoreFragments": false,
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT"
+      },
+      "fragments": [
+        {
+          "text": "There are no holidays!"
+        }
+      ]
+    }
+  ]
+}
+```
+
+```json
+{
+  "messages": [
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT",
+        "hasMoreFragments": true
+      },
+      "fragments": null
+    },
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT",
+        "hasMoreFragments": true
+      },
+      "fragments": null
+    },
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT",
+        "hasMoreFragments": true
+      },
+      "fragments": [
+        {
+          "text": "e are"
+        }
+      ]
+    },
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT",
+        "hasMoreFragments": true
+      },
+      "fragments": [
+        {
+          "text": "no hol"
+        }
+      ]
+    },
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT",
+        "hasMoreFragments": false
+      },
+      "fragments": [
+        {
+          "text": "idays!"
+        }
+      ]
+    }
+  ]
+}
+```
+
+```json
+{
+  "messages": [
+    {
+      "author": "GLEAN_AI",
+      "messageType": "UPDATE",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT"
+      },
+      "fragments": [
+        {
+          "text": "**Reading:**"
+        },
+        {
+          "structuredResults": [
+            {
+              "document": {
+                "id": "123",
+                "title": "Company Handbook"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+```json
+{
+  "messages": [
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT"
+      },
+      "citations": [
+        {
+          "sourceDocument": {
+            "id": "123",
+            "title": "Company Handbook",
+            "referenceRanges": [
+              {
+                "textRange": {
+                  "startIndex": 0,
+                  "endIndex": 12,
+                  "type": "CITATION"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-chat+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-chat+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-chat+responses+200+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="backendTimeMillis"
+  headingId="operation-chat+responses+200+application-json+backendtimemillis"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### backendTimeMillis \{#operation-chat+responses+200+application-json+backendtimemillis\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Time in milliseconds the backend took to respond to the request.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+1100
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="chatId"
+  headingId="operation-chat+responses+200+application-json+chatid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### chatId \{#operation-chat+responses+200+application-json+chatid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The id of the associated Chat the messages belong to, if one exists.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="chatSessionTrackingToken"
+  headingId="operation-chat+responses+200+application-json+chatsessiontrackingtoken"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### chatSessionTrackingToken \{#operation-chat+responses+200+application-json+chatsessiontrackingtoken\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A token that is used to track the session.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="followUpPrompts"
+  headingId="operation-chat+responses+200+application-json+followupprompts"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### followUpPrompts \{#operation-chat+responses+200+application-json+followupprompts\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Follow-up prompts for the user to potentially use
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages"
+  headingId="operation-chat+responses+200+application-json+messages"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat+responses+200+application-json+messages+chatmessage\">ChatMessage</a>","children":[{"label":"ChatMessage","linkedLabel":"<a href=\"#operation-chat+responses+200+application-json+messages+chatmessage\">ChatMessage</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### messages \{#operation-chat+responses+200+application-json+messages\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of chat messages, from most recent to least recent. At least one message must specify a USER author.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_ChatMessage"
+  headingId="operation-chat+responses+200+application-json+messages+chatmessage"
+  parentId="messages"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ChatMessage \{#operation-chat+responses+200+application-json+messages+chatmessage\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+A message that is rendered as one coherent unit with one given sender.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_agentConfig"
+  headingId="operation-chat+responses+200+application-json+messages+chatmessage+agentconfig"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"AgentConfig","linkedLabel":"<a href=\"#operation-chat+responses+200+application-json+messages+chatmessage+agentconfig+agentconfig\">AgentConfig</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agentConfig \{#operation-chat+responses+200+application-json+messages+chatmessage+agentconfig\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Describes the agent that executes the request.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="agentConfig" triggerText="View agentConfig details">
+
+<Embedagentconfig />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_author"
+  headingId="operation-chat+responses+200+application-json+messages+chatmessage+author"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"USER\"","linkedLabel":"\"USER\"","children":[],"breakoutSubTypes":{}},{"label":"\"GLEAN_AI\"","linkedLabel":"\"GLEAN_AI\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### author \{#operation-chat+responses+200+application-json+messages+chatmessage+author\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"USER"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_citations"
+  headingId="operation-chat+responses+200+application-json+messages+chatmessage+citations"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat+responses+200+application-json+messages+chatmessage+citations+chatmessagecitation\">ChatMessageCitation</a>","children":[{"label":"ChatMessageCitation","linkedLabel":"<a href=\"#operation-chat+responses+200+application-json+messages+chatmessage+citations+chatmessagecitation\">ChatMessageCitation</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### citations \{#operation-chat+responses+200+application-json+messages+chatmessage+citations\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of Citations that were used to generate the response.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="citations" triggerText="View citations details">
+
+<Embedcitations />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_fragments"
+  headingId="operation-chat+responses+200+application-json+messages+chatmessage+fragments"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat+responses+200+application-json+messages+chatmessage+fragments+chatmessagefragment\">ChatMessageFragment</a>","children":[{"label":"ChatMessageFragment","linkedLabel":"<a href=\"#operation-chat+responses+200+application-json+messages+chatmessage+fragments+chatmessagefragment\">ChatMessageFragment</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fragments \{#operation-chat+responses+200+application-json+messages+chatmessage+fragments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of rich data used to represent the response or formulate a request. These are linearly stitched together to support richer data formats beyond simple text.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="fragments" triggerText="View fragments details">
+
+<Embedfragments />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_hasMoreFragments"
+  headingId="operation-chat+responses+200+application-json+messages+chatmessage+hasmorefragments"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### hasMoreFragments \{#operation-chat+responses+200+application-json+messages+chatmessage+hasmorefragments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Signals there are additional response fragments incoming.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_messageId"
+  headingId="operation-chat+responses+200+application-json+messages+chatmessage+messageid"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### messageId \{#operation-chat+responses+200+application-json+messages+chatmessage+messageid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A unique server-side generated ID used to identify a message, automatically populated for any USER authored messages.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_messageTrackingToken"
+  headingId="operation-chat+responses+200+application-json+messages+chatmessage+messagetrackingtoken"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### messageTrackingToken \{#operation-chat+responses+200+application-json+messages+chatmessage+messagetrackingtoken\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Opaque tracking token generated server-side.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_messageType"
+  headingId="operation-chat+responses+200+application-json+messages+chatmessage+messagetype"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UPDATE\"","linkedLabel":"\"UPDATE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTEXT\"","linkedLabel":"\"CONTEXT\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEBUG\"","linkedLabel":"\"DEBUG\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEBUG_EXTERNAL\"","linkedLabel":"\"DEBUG_EXTERNAL\"","children":[],"breakoutSubTypes":{}},{"label":"\"ERROR\"","linkedLabel":"\"ERROR\"","children":[],"breakoutSubTypes":{}},{"label":"\"HEADING\"","linkedLabel":"\"HEADING\"","children":[],"breakoutSubTypes":{}},{"label":"\"WARNING\"","linkedLabel":"\"WARNING\"","children":[],"breakoutSubTypes":{}},{"label":"\"SERVER_TOOL\"","linkedLabel":"\"SERVER_TOOL\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### messageType \{#operation-chat+responses+200+application-json+messages+chatmessage+messagetype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Semantically groups content of a certain type. It can be used for purposes such as differential UI treatment. USER authored messages should be of type CONTENT and do not need `messageType` specified.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"CONTENT"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_ts"
+  headingId="operation-chat+responses+200+application-json+messages+chatmessage+ts"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### ts \{#operation-chat+responses+200+application-json+messages+chatmessage+ts\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Response timestamp of the message.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_uploadedFileIds"
+  headingId="operation-chat+responses+200+application-json+messages+chatmessage+uploadedfileids"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### uploadedFileIds \{#operation-chat+responses+200+application-json+messages+chatmessage+uploadedfileids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+IDs of files uploaded in the message that are referenced to generate the answer.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/deleteallchats \{#operation-deleteallchats\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Deletes all saved Chats owned by a user_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Deletes all saved Chats a user has had and all their contained conversational content.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-deleteallchats+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-deleteallchats+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.client.chat.deleteAll();&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-deleteallchats+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-deleteallchats+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/deleteallchats \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-deleteallchats+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="timezoneOffset"
+  headingId="operation-deleteallchats+parameters+timezoneoffset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timezoneOffset \{#operation-deleteallchats+parameters+timezoneoffset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/deletechats \{#operation-deletechats\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Deletes saved Chats_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Deletes saved Chats and all their contained conversational content.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-deletechats+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-deletechats+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.client.chat.delete({&NewLine;    ids: [],&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-deletechats+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-deletechats+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/deletechats \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "ids": [
+    "ipsum eiusmod"
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-deletechats+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="timezoneOffset"
+  headingId="operation-deletechats+parameters+timezoneoffset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timezoneOffset \{#operation-deletechats+parameters+timezoneoffset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-deletechats+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "ids": [
+    "ipsum eiusmod"
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-deletechats+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="ids"
+  headingId="operation-deletechats+request+ids"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### ids \{#operation-deletechats+request+ids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A non-empty list of ids of the Chats to be deleted.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/getchat \{#operation-getchat\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Retrieves a Chat_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Retrieves the chat history between Glean Assistant and the user for a given Chat.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-getchat+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-getchat+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.chat.retrieve({&NewLine;    id: &quot;&lt;id&gt;&quot;,&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-getchat+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-getchat+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/getchat \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "id": "ipsum eiusmod"
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-getchat+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="timezoneOffset"
+  headingId="operation-getchat+parameters+timezoneoffset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timezoneOffset \{#operation-getchat+parameters+timezoneoffset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-getchat+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "id": "ipsum eiusmod"
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-getchat+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="id"
+  headingId="operation-getchat+request+id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-getchat+request+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The id of the Chat to be retrieved.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-getchat+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-getchat+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-getchat+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-getchat+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-getchat+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-getchat+responses+200+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="chatResult"
+  headingId="operation-getchat+responses+200+application-json+chatresult"
+  typeInfo={{"label":"ChatResult","linkedLabel":"<a href=\"#operation-getchat+responses+200+application-json+chatresult+chatresult\">ChatResult</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### chatResult \{#operation-getchat+responses+200+application-json+chatresult\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="chatResult_ChatResult"
+  headingId="operation-getchat+responses+200+application-json+chatresult+chatresult"
+  parentId="chatResult"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ChatResult \{#operation-getchat+responses+200+application-json+chatresult+chatresult\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="chatResult_ChatResult_chat"
+  headingId="operation-getchat+responses+200+application-json+chatresult+chatresult+chat"
+  parentId="chatResult_ChatResult"
+  typeInfo={{"label":"Chat","linkedLabel":"<a href=\"#operation-getchat+responses+200+application-json+chatresult+chatresult+chat+chat\">Chat</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### chat \{#operation-getchat+responses+200+application-json+chatresult+chatresult+chat\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A historical representation of a series of chat messages a user had with Glean Assistant.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="chat" triggerText="View chat details">
+
+<Embedchat />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="chatResult_ChatResult_trackingToken"
+  headingId="operation-getchat+responses+200+application-json+chatresult+chatresult+trackingtoken"
+  parentId="chatResult_ChatResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### trackingToken \{#operation-getchat+responses+200+application-json+chatresult+chatresult+trackingtoken\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque token that represents this particular Chat. To be used for `/feedback` reporting.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/listchats \{#operation-listchats\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Retrieves all saved Chats_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Retrieves all the saved Chats between Glean Assistant and the user. The returned Chats contain only metadata and no conversational content.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-listchats+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-listchats+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.chat.list();&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-listchats+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-listchats+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/listchats \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-listchats+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="timezoneOffset"
+  headingId="operation-listchats+parameters+timezoneoffset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timezoneOffset \{#operation-listchats+parameters+timezoneoffset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-listchats+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-listchats+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-listchats+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-listchats+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-listchats+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-listchats+responses+200+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="chatResults"
+  headingId="operation-listchats+responses+200+application-json+chatresults"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-listchats+responses+200+application-json+chatresults+chatmetadataresult\">ChatMetadataResult</a>","children":[{"label":"ChatMetadataResult","linkedLabel":"<a href=\"#operation-listchats+responses+200+application-json+chatresults+chatmetadataresult\">ChatMetadataResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### chatResults \{#operation-listchats+responses+200+application-json+chatresults\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="chatResults_ChatMetadataResult"
+  headingId="operation-listchats+responses+200+application-json+chatresults+chatmetadataresult"
+  parentId="chatResults"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ChatMetadataResult \{#operation-listchats+responses+200+application-json+chatresults+chatmetadataresult\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="chatResults_ChatMetadataResult_chat"
+  headingId="operation-listchats+responses+200+application-json+chatresults+chatmetadataresult+chat"
+  parentId="chatResults_ChatMetadataResult"
+  typeInfo={{"label":"ChatMetadata","linkedLabel":"<a href=\"#operation-listchats+responses+200+application-json+chatresults+chatmetadataresult+chat+chatmetadata\">ChatMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### chat \{#operation-listchats+responses+200+application-json+chatresults+chatmetadataresult+chat\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Metadata of a Chat a user had with Glean Assistant. This contains no actual conversational content.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="chat" triggerText="View chat details">
+
+<Embedchat />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="chatResults_ChatMetadataResult_trackingToken"
+  headingId="operation-listchats+responses+200+application-json+chatresults+chatmetadataresult+trackingtoken"
+  parentId="chatResults_ChatMetadataResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### trackingToken \{#operation-listchats+responses+200+application-json+chatresults+chatmetadataresult+trackingtoken\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque token that represents this particular Chat. To be used for `/feedback` reporting.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/getchatapplication \{#operation-getchatapplication\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Gets the metadata for a custom Chat application_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Gets the Chat application details for the specified application ID.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-getchatapplication+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-getchatapplication+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.chat.retrieveApplication({&NewLine;    id: &quot;&lt;id&gt;&quot;,&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-getchatapplication+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-getchatapplication+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/getchatapplication \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "id": "ipsum eiusmod"
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-getchatapplication+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="timezoneOffset"
+  headingId="operation-getchatapplication+parameters+timezoneoffset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timezoneOffset \{#operation-getchatapplication+parameters+timezoneoffset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-getchatapplication+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "id": "ipsum eiusmod"
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-getchatapplication+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="id"
+  headingId="operation-getchatapplication+request+id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-getchatapplication+request+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The id of the Chat application to be retrieved.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-getchatapplication+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-getchatapplication+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-getchatapplication+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-getchatapplication+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-getchatapplication+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-getchatapplication+responses+200+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="application"
+  headingId="operation-getchatapplication+responses+200+application-json+application"
+  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### application \{#operation-getchatapplication+responses+200+application-json+application\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/uploadchatfiles \{#operation-uploadchatfiles\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Upload files for Chat._
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Upload files for Chat.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-uploadchatfiles+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-uploadchatfiles+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;import { openAsBlob } from &quot;node:fs&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.chat.uploadFiles({&NewLine;    files: [&NewLine;      await openAsBlob(&quot;example.file&quot;),&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-uploadchatfiles+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-uploadchatfiles+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/uploadchatfiles \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "files": [
+    {
+      "content": "ipsum eiusmod",
+      "fileName": "consequat do"
+    }
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-uploadchatfiles+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="timezoneOffset"
+  headingId="operation-uploadchatfiles+parameters+timezoneoffset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timezoneOffset \{#operation-uploadchatfiles+parameters+timezoneoffset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-uploadchatfiles+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "files": [
+    {
+      "content": "ipsum eiusmod",
+      "fileName": "consequat do"
+    }
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-uploadchatfiles+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="files"
+  headingId="operation-uploadchatfiles+request+files"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-uploadchatfiles+request+files+file\">file</a>","children":[{"label":"file","linkedLabel":"<a href=\"#operation-uploadchatfiles+request+files+file\">file</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### files \{#operation-uploadchatfiles+request+files\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Raw files to be uploaded for chat in binary format.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="files_file"
+  headingId="operation-uploadchatfiles+request+files+file"
+  parentId="files"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### file \{#operation-uploadchatfiles+request+files+file\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="files_file_content"
+  headingId="operation-uploadchatfiles+request+files+file+content"
+  parentId="files_file"
+  typeInfo={{"label":"binary","linkedLabel":"binary","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### content \{#operation-uploadchatfiles+request+files+file+content\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="files_file_fileName"
+  headingId="operation-uploadchatfiles+request+files+file+filename"
+  parentId="files_file"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fileName \{#operation-uploadchatfiles+request+files+file+filename\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-uploadchatfiles+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-uploadchatfiles+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-uploadchatfiles+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-uploadchatfiles+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-uploadchatfiles+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-uploadchatfiles+responses+200+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="files"
+  headingId="operation-uploadchatfiles+responses+200+application-json+files"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-uploadchatfiles+responses+200+application-json+files+chatfile\">ChatFile</a>","children":[{"label":"ChatFile","linkedLabel":"<a href=\"#operation-uploadchatfiles+responses+200+application-json+files+chatfile\">ChatFile</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### files \{#operation-uploadchatfiles+responses+200+application-json+files\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Files uploaded for chat.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="files_ChatFile"
+  headingId="operation-uploadchatfiles+responses+200+application-json+files+chatfile"
+  parentId="files"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ChatFile \{#operation-uploadchatfiles+responses+200+application-json+files+chatfile\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+Structure for file uploaded by a user for Chat.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="files_ChatFile_id"
+  headingId="operation-uploadchatfiles+responses+200+application-json+files+chatfile+id"
+  parentId="files_ChatFile"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-uploadchatfiles+responses+200+application-json+files+chatfile+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unique identifier of the file.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+FILE_1234
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="files_ChatFile_metadata"
+  headingId="operation-uploadchatfiles+responses+200+application-json+files+chatfile+metadata"
+  parentId="files_ChatFile"
+  typeInfo={{"label":"ChatFileMetadata","linkedLabel":"<a href=\"#operation-uploadchatfiles+responses+200+application-json+files+chatfile+metadata+chatfilemetadata\">ChatFileMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#operation-uploadchatfiles+responses+200+application-json+files+chatfile+metadata\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Metadata of a file uploaded by a user for Chat.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
+
+<Embedmetadata />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="files_ChatFile_name"
+  headingId="operation-uploadchatfiles+responses+200+application-json+files+chatfile+name"
+  parentId="files_ChatFile"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-uploadchatfiles+responses+200+application-json+files+chatfile+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Name of the uploaded file.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+sample.pdf
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="files_ChatFile_url"
+  headingId="operation-uploadchatfiles+responses+200+application-json+files+chatfile+url"
+  parentId="files_ChatFile"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-uploadchatfiles+responses+200+application-json+files+chatfile+url\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Url of the file.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+www.google.com
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/getchatfiles \{#operation-getchatfiles\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Get files uploaded by a user for Chat._
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Get files uploaded by a user for Chat.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-getchatfiles+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-getchatfiles+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.chat.retrieveFiles({&NewLine;    fileIds: [&NewLine;      &quot;&lt;value 1&gt;&quot;,&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-getchatfiles+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-getchatfiles+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/getchatfiles \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "fileIds": [
+    "ipsum eiusmod"
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-getchatfiles+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="timezoneOffset"
+  headingId="operation-getchatfiles+parameters+timezoneoffset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timezoneOffset \{#operation-getchatfiles+parameters+timezoneoffset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-getchatfiles+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "fileIds": [
+    "ipsum eiusmod"
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-getchatfiles+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="chatId"
+  headingId="operation-getchatfiles+request+chatid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### chatId \{#operation-getchatfiles+request+chatid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The ID of the chat that contains the chat file.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="fileIds"
+  headingId="operation-getchatfiles+request+fileids"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fileIds \{#operation-getchatfiles+request+fileids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+IDs of files to fetch.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-getchatfiles+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-getchatfiles+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-getchatfiles+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-getchatfiles+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-getchatfiles+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-getchatfiles+responses+200+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="files"
+  headingId="operation-getchatfiles+responses+200+application-json+files"
+  typeInfo={{"label":"map","linkedLabel":"<a href=\"#operation-getchatfiles+responses+200+application-json+files+chatfile\">ChatFile</a>","children":[{"label":"ChatFile","linkedLabel":"<a href=\"#operation-getchatfiles+responses+200+application-json+files+chatfile\">ChatFile</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### files \{#operation-getchatfiles+responses+200+application-json+files\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A map of file IDs to ChatFile structs.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="files_ChatFile"
+  headingId="operation-getchatfiles+responses+200+application-json+files+chatfile"
+  parentId="files"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ChatFile \{#operation-getchatfiles+responses+200+application-json+files+chatfile\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+Structure for file uploaded by a user for Chat.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="files_ChatFile_id"
+  headingId="operation-getchatfiles+responses+200+application-json+files+chatfile+id"
+  parentId="files_ChatFile"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-getchatfiles+responses+200+application-json+files+chatfile+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unique identifier of the file.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+FILE_1234
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="files_ChatFile_metadata"
+  headingId="operation-getchatfiles+responses+200+application-json+files+chatfile+metadata"
+  parentId="files_ChatFile"
+  typeInfo={{"label":"ChatFileMetadata","linkedLabel":"<a href=\"#operation-getchatfiles+responses+200+application-json+files+chatfile+metadata+chatfilemetadata\">ChatFileMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#operation-getchatfiles+responses+200+application-json+files+chatfile+metadata\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Metadata of a file uploaded by a user for Chat.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
+
+<Embedmetadata />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="files_ChatFile_name"
+  headingId="operation-getchatfiles+responses+200+application-json+files+chatfile+name"
+  parentId="files_ChatFile"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-getchatfiles+responses+200+application-json+files+chatfile+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Name of the uploaded file.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+sample.pdf
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="files_ChatFile_url"
+  headingId="operation-getchatfiles+responses+200+application-json+files+chatfile+url"
+  parentId="files_ChatFile"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-getchatfiles+responses+200+application-json+files+chatfile+url\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Url of the file.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+www.google.com
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/deletechatfiles \{#operation-deletechatfiles\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Delete files uploaded by a user for chat._
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Delete files uploaded by a user for Chat.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-deletechatfiles+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-deletechatfiles+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.client.chat.deleteFiles({&NewLine;    fileIds: [&NewLine;      &quot;&lt;value 1&gt;&quot;,&NewLine;      &quot;&lt;value 2&gt;&quot;,&NewLine;      &quot;&lt;value 3&gt;&quot;,&NewLine;    ],&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-deletechatfiles+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-deletechatfiles+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/deletechatfiles \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "fileIds": [
+    "ipsum eiusmod"
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-deletechatfiles+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="timezoneOffset"
+  headingId="operation-deletechatfiles+parameters+timezoneoffset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timezoneOffset \{#operation-deletechatfiles+parameters+timezoneoffset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-deletechatfiles+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "fileIds": [
+    "ipsum eiusmod"
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-deletechatfiles+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="fileIds"
+  headingId="operation-deletechatfiles+request+fileids"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fileIds \{#operation-deletechatfiles+request+fileids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+IDs of files to delete.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/chat\#stream \{#operation-chat_stream\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Chat_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Have a conversation with Glean AI.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-chat_stream+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-chat_stream+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.chat.createStream({&NewLine;    messages: [&NewLine;      {&NewLine;        fragments: [&NewLine;          {&NewLine;            text: &quot;What are the company holidays this year?&quot;,&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-chat_stream+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-chat_stream+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/chat#stream \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "messages": [
+    {}
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-chat_stream+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="timezoneOffset"
+  headingId="operation-chat_stream+parameters+timezoneoffset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timezoneOffset \{#operation-chat_stream+parameters+timezoneoffset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Examples \{#operation-chat_stream+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "messages": [
+    {
+      "author": "USER",
+      "messageType": "CONTENT",
+      "fragments": [
+        {
+          "text": "What are the company holidays this year?"
+        }
+      ]
+    }
+  ]
+}
+```
+
+```json
+{
+  "agentConfig": {
+    "agent": "GPT"
+  },
+  "messages": [
+    {
+      "author": "USER",
+      "messageType": "CONTENT",
+      "fragments": [
+        {
+          "text": "Who was the first person to land on the moon?"
+        }
+      ]
+    }
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-chat_stream+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Includes chat history for Glean AI to respond to.
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="agentConfig"
+  headingId="operation-chat_stream+request+agentconfig"
+  typeInfo={{"label":"AgentConfig","linkedLabel":"<a href=\"#operation-chat_stream+request+agentconfig+agentconfig\">AgentConfig</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agentConfig \{#operation-chat_stream+request+agentconfig\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Describes the agent that executes the request.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="agentConfig_AgentConfig"
+  headingId="operation-chat_stream+request+agentconfig+agentconfig"
+  parentId="agentConfig"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### AgentConfig \{#operation-chat_stream+request+agentconfig+agentconfig\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+Describes the agent that executes the request.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="agentConfig_AgentConfig_agent"
+  headingId="operation-chat_stream+request+agentconfig+agentconfig+agent"
+  parentId="agentConfig_AgentConfig"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"DEFAULT\"","linkedLabel":"\"DEFAULT\"","children":[],"breakoutSubTypes":{}},{"label":"\"GPT\"","linkedLabel":"\"GPT\"","children":[],"breakoutSubTypes":{}},{"label":"\"UNIVERSAL\"","linkedLabel":"\"UNIVERSAL\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agent \{#operation-chat_stream+request+agentconfig+agentconfig+agent\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Name of the agent.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="agentConfig_AgentConfig_mode"
+  headingId="operation-chat_stream+request+agentconfig+agentconfig+mode"
+  parentId="agentConfig_AgentConfig"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"DEFAULT\"","linkedLabel":"\"DEFAULT\"","children":[],"breakoutSubTypes":{}},{"label":"\"QUICK\"","linkedLabel":"\"QUICK\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### mode \{#operation-chat_stream+request+agentconfig+agentconfig+mode\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Top level modes to run GleanChat in.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="agentId"
+  headingId="operation-chat_stream+request+agentid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agentId \{#operation-chat_stream+request+agentid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The ID of the Agent that should process this chat request. Only Agents with trigger set to 'User chat message' are invokable through this API. If not specified, the default chat experience will be used.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="applicationId"
+  headingId="operation-chat_stream+request+applicationid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### applicationId \{#operation-chat_stream+request+applicationid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The ID of the application this request originates from, used to determine the configuration of underlying chat processes. This should correspond to the ID set during admin setup. If not specified, the default chat experience will be used.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="chatId"
+  headingId="operation-chat_stream+request+chatid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### chatId \{#operation-chat_stream+request+chatid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The id of the Chat that context should be retrieved from and messages added to. An empty id starts a new Chat, and the Chat is saved if saveChat is true.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="exclusions"
+  headingId="operation-chat_stream+request+exclusions"
+  typeInfo={{"label":"ChatRestrictionFilters","linkedLabel":"<a href=\"#operation-chat_stream+request+exclusions+chatrestrictionfilters\">ChatRestrictionFilters</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### exclusions \{#operation-chat_stream+request+exclusions\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="exclusions_ChatRestrictionFilters"
+  headingId="operation-chat_stream+request+exclusions+chatrestrictionfilters"
+  parentId="exclusions"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ChatRestrictionFilters \{#operation-chat_stream+request+exclusions+chatrestrictionfilters\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="exclusions_ChatRestrictionFilters_containerSpecs"
+  headingId="operation-chat_stream+request+exclusions+chatrestrictionfilters+containerspecs"
+  parentId="exclusions_ChatRestrictionFilters"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### containerSpecs \{#operation-chat_stream+request+exclusions+chatrestrictionfilters+containerspecs\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Specifications for containers that should be used as part of the restriction (include/exclude). Memberships are recursively defined for a subset of datasources (currently: SharePoint, OneDrive, Google Drive, and Confluence). Please contact the Glean team to enable this for more datasources. Recursive memberships do not apply for Collections.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="exclusions_ChatRestrictionFilters_datasourceInstances"
+  headingId="operation-chat_stream+request+exclusions+chatrestrictionfilters+datasourceinstances"
+  parentId="exclusions_ChatRestrictionFilters"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasourceInstances \{#operation-chat_stream+request+exclusions+chatrestrictionfilters+datasourceinstances\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="exclusions_ChatRestrictionFilters_documentSpecs"
+  headingId="operation-chat_stream+request+exclusions+chatrestrictionfilters+documentspecs"
+  parentId="exclusions_ChatRestrictionFilters"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentSpecs \{#operation-chat_stream+request+exclusions+chatrestrictionfilters+documentspecs\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Specifications for containers that should be used as part of the restriction (include/exclude). Memberships are recursively defined for a subset of datasources (currently: SharePoint, OneDrive, Google Drive, and Confluence). Please contact the Glean team to enable this for more datasources. Recursive memberships do not apply for Collections.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="inclusions"
+  headingId="operation-chat_stream+request+inclusions"
+  typeInfo={{"label":"ChatRestrictionFilters","linkedLabel":"<a href=\"#operation-chat_stream+request+inclusions+chatrestrictionfilters\">ChatRestrictionFilters</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### inclusions \{#operation-chat_stream+request+inclusions\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="inclusions_ChatRestrictionFilters"
+  headingId="operation-chat_stream+request+inclusions+chatrestrictionfilters"
+  parentId="inclusions"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ChatRestrictionFilters \{#operation-chat_stream+request+inclusions+chatrestrictionfilters\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="inclusions_ChatRestrictionFilters_containerSpecs"
+  headingId="operation-chat_stream+request+inclusions+chatrestrictionfilters+containerspecs"
+  parentId="inclusions_ChatRestrictionFilters"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### containerSpecs \{#operation-chat_stream+request+inclusions+chatrestrictionfilters+containerspecs\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Specifications for containers that should be used as part of the restriction (include/exclude). Memberships are recursively defined for a subset of datasources (currently: SharePoint, OneDrive, Google Drive, and Confluence). Please contact the Glean team to enable this for more datasources. Recursive memberships do not apply for Collections.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="inclusions_ChatRestrictionFilters_datasourceInstances"
+  headingId="operation-chat_stream+request+inclusions+chatrestrictionfilters+datasourceinstances"
+  parentId="inclusions_ChatRestrictionFilters"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasourceInstances \{#operation-chat_stream+request+inclusions+chatrestrictionfilters+datasourceinstances\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="inclusions_ChatRestrictionFilters_documentSpecs"
+  headingId="operation-chat_stream+request+inclusions+chatrestrictionfilters+documentspecs"
+  parentId="inclusions_ChatRestrictionFilters"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentSpecs \{#operation-chat_stream+request+inclusions+chatrestrictionfilters+documentspecs\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Specifications for containers that should be used as part of the restriction (include/exclude). Memberships are recursively defined for a subset of datasources (currently: SharePoint, OneDrive, Google Drive, and Confluence). Please contact the Glean team to enable this for more datasources. Recursive memberships do not apply for Collections.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages"
+  headingId="operation-chat_stream+request+messages"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat_stream+request+messages+chatmessage\">ChatMessage</a>","children":[{"label":"ChatMessage","linkedLabel":"<a href=\"#operation-chat_stream+request+messages+chatmessage\">ChatMessage</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### messages \{#operation-chat_stream+request+messages\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of chat messages, from most recent to least recent. At least one message must specify a USER author.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="messages_ChatMessage"
+  headingId="operation-chat_stream+request+messages+chatmessage"
+  parentId="messages"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ChatMessage \{#operation-chat_stream+request+messages+chatmessage\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+A message that is rendered as one coherent unit with one given sender.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_agentConfig"
+  headingId="operation-chat_stream+request+messages+chatmessage+agentconfig"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"AgentConfig","linkedLabel":"<a href=\"#operation-chat_stream+request+messages+chatmessage+agentconfig+agentconfig\">AgentConfig</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agentConfig \{#operation-chat_stream+request+messages+chatmessage+agentconfig\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Describes the agent that executes the request.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="agentConfig" triggerText="View agentConfig details">
+
+<Embedagentconfig />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_author"
+  headingId="operation-chat_stream+request+messages+chatmessage+author"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"USER\"","linkedLabel":"\"USER\"","children":[],"breakoutSubTypes":{}},{"label":"\"GLEAN_AI\"","linkedLabel":"\"GLEAN_AI\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### author \{#operation-chat_stream+request+messages+chatmessage+author\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"USER"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_citations"
+  headingId="operation-chat_stream+request+messages+chatmessage+citations"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat_stream+request+messages+chatmessage+citations+chatmessagecitation\">ChatMessageCitation</a>","children":[{"label":"ChatMessageCitation","linkedLabel":"<a href=\"#operation-chat_stream+request+messages+chatmessage+citations+chatmessagecitation\">ChatMessageCitation</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### citations \{#operation-chat_stream+request+messages+chatmessage+citations\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of Citations that were used to generate the response.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="citations" triggerText="View citations details">
+
+<Embedcitations />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_fragments"
+  headingId="operation-chat_stream+request+messages+chatmessage+fragments"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-chat_stream+request+messages+chatmessage+fragments+chatmessagefragment\">ChatMessageFragment</a>","children":[{"label":"ChatMessageFragment","linkedLabel":"<a href=\"#operation-chat_stream+request+messages+chatmessage+fragments+chatmessagefragment\">ChatMessageFragment</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### fragments \{#operation-chat_stream+request+messages+chatmessage+fragments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of rich data used to represent the response or formulate a request. These are linearly stitched together to support richer data formats beyond simple text.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="fragments" triggerText="View fragments details">
+
+<Embedfragments />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_hasMoreFragments"
+  headingId="operation-chat_stream+request+messages+chatmessage+hasmorefragments"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### hasMoreFragments \{#operation-chat_stream+request+messages+chatmessage+hasmorefragments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Signals there are additional response fragments incoming.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_messageId"
+  headingId="operation-chat_stream+request+messages+chatmessage+messageid"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### messageId \{#operation-chat_stream+request+messages+chatmessage+messageid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A unique server-side generated ID used to identify a message, automatically populated for any USER authored messages.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_messageTrackingToken"
+  headingId="operation-chat_stream+request+messages+chatmessage+messagetrackingtoken"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### messageTrackingToken \{#operation-chat_stream+request+messages+chatmessage+messagetrackingtoken\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Opaque tracking token generated server-side.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_messageType"
+  headingId="operation-chat_stream+request+messages+chatmessage+messagetype"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UPDATE\"","linkedLabel":"\"UPDATE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTEXT\"","linkedLabel":"\"CONTEXT\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEBUG\"","linkedLabel":"\"DEBUG\"","children":[],"breakoutSubTypes":{}},{"label":"\"DEBUG_EXTERNAL\"","linkedLabel":"\"DEBUG_EXTERNAL\"","children":[],"breakoutSubTypes":{}},{"label":"\"ERROR\"","linkedLabel":"\"ERROR\"","children":[],"breakoutSubTypes":{}},{"label":"\"HEADING\"","linkedLabel":"\"HEADING\"","children":[],"breakoutSubTypes":{}},{"label":"\"WARNING\"","linkedLabel":"\"WARNING\"","children":[],"breakoutSubTypes":{}},{"label":"\"SERVER_TOOL\"","linkedLabel":"\"SERVER_TOOL\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### messageType \{#operation-chat_stream+request+messages+chatmessage+messagetype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Semantically groups content of a certain type. It can be used for purposes such as differential UI treatment. USER authored messages should be of type CONTENT and do not need `messageType` specified.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyDefaultValue slot="defaultValue">
+
+_Default Value:_ `"CONTENT"`
+
+</ExpandablePropertyDefaultValue>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_ts"
+  headingId="operation-chat_stream+request+messages+chatmessage+ts"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### ts \{#operation-chat_stream+request+messages+chatmessage+ts\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Response timestamp of the message.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="messages_ChatMessage_uploadedFileIds"
+  headingId="operation-chat_stream+request+messages+chatmessage+uploadedfileids"
+  parentId="messages_ChatMessage"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### uploadedFileIds \{#operation-chat_stream+request+messages+chatmessage+uploadedfileids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+IDs of files uploaded in the message that are referenced to generate the answer.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="saveChat"
+  headingId="operation-chat_stream+request+savechat"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### saveChat \{#operation-chat_stream+request+savechat\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Save the current interaction as a Chat for the user to access and potentially continue later.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo"
+  headingId="operation-chat_stream+request+sessioninfo"
+  typeInfo={{"label":"SessionInfo","linkedLabel":"<a href=\"#operation-chat_stream+request+sessioninfo+sessioninfo\">SessionInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sessionInfo \{#operation-chat_stream+request+sessioninfo\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="sessionInfo_SessionInfo"
+  headingId="operation-chat_stream+request+sessioninfo+sessioninfo"
+  parentId="sessionInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### SessionInfo \{#operation-chat_stream+request+sessioninfo+sessioninfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo_SessionInfo_lastQuery"
+  headingId="operation-chat_stream+request+sessioninfo+sessioninfo+lastquery"
+  parentId="sessionInfo_SessionInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastQuery \{#operation-chat_stream+request+sessioninfo+sessioninfo+lastquery\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The last query seen by the server.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo_SessionInfo_lastSeen"
+  headingId="operation-chat_stream+request+sessioninfo+sessioninfo+lastseen"
+  parentId="sessionInfo_SessionInfo"
+  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastSeen \{#operation-chat_stream+request+sessioninfo+sessioninfo+lastseen\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The last time the server saw this token.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo_SessionInfo_sessionTrackingToken"
+  headingId="operation-chat_stream+request+sessioninfo+sessioninfo+sessiontrackingtoken"
+  parentId="sessionInfo_SessionInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sessionTrackingToken \{#operation-chat_stream+request+sessioninfo+sessioninfo+sessiontrackingtoken\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A unique token for this session. A new session (and token) is created when the user issues a request from a new tab or when our server hasn't seen activity for more than 10 minutes from a tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo_SessionInfo_tabId"
+  headingId="operation-chat_stream+request+sessioninfo+sessioninfo+tabid"
+  parentId="sessionInfo_SessionInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### tabId \{#operation-chat_stream+request+sessioninfo+sessioninfo+tabid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A unique id for all requests a user makes from a given tab, no matter how far apart. A new tab id is only generated when a user issues a request from a new tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="stream"
+  headingId="operation-chat_stream+request+stream"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### stream \{#operation-chat_stream+request+stream\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+If set, response lines will be streamed one-by-one as they become available. Each will be a ChatResponse, formatted as JSON, and separated by a new line. If false, the entire response will be returned at once. Note that if this is set and the model being used does not support streaming, the model's response will not be streamed, but other messages from the endpoint still will be.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="timeoutMillis"
+  headingId="operation-chat_stream+request+timeoutmillis"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timeoutMillis \{#operation-chat_stream+request+timeoutmillis\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Timeout in milliseconds for the request. A `408` error will be returned if handling the request takes longer.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+30000
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-chat_stream+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-chat_stream+responses+200+text-plain"
+  tags={{"responseExample":"200:text/plain"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-chat_stream+responses+200+text-plain">
+
+```json
+{
+  "messages": [
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "hasMoreFragments": false,
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT"
+      },
+      "fragments": [
+        {
+          "text": "There are no holidays!"
+        }
+      ]
+    }
+  ]
+}
+```
+
+```json
+{
+  "messages": [
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT",
+        "hasMoreFragments": true
+      },
+      "fragments": null
+    },
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT",
+        "hasMoreFragments": true
+      },
+      "fragments": null
+    },
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT",
+        "hasMoreFragments": true
+      },
+      "fragments": [
+        {
+          "text": "e are"
+        }
+      ]
+    },
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT",
+        "hasMoreFragments": true
+      },
+      "fragments": [
+        {
+          "text": "no hol"
+        }
+      ]
+    },
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT",
+        "hasMoreFragments": false
+      },
+      "fragments": [
+        {
+          "text": "idays!"
+        }
+      ]
+    }
+  ]
+}
+```
+
+```json
+{
+  "messages": [
+    {
+      "author": "GLEAN_AI",
+      "messageType": "UPDATE",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT"
+      },
+      "fragments": [
+        {
+          "text": "**Reading:**"
+        },
+        {
+          "structuredResults": [
+            {
+              "document": {
+                "id": "123",
+                "title": "Company Handbook"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+```json
+{
+  "messages": [
+    {
+      "author": "GLEAN_AI",
+      "messageType": "CONTENT",
+      "agentConfig": {
+        "agent": "DEFAULT",
+        "mode": "DEFAULT"
+      },
+      "citations": [
+        {
+          "sourceDocument": {
+            "id": "123",
+            "title": "Company Handbook",
+            "referenceRanges": [
+              {
+                "textRange": {
+                  "startIndex": 0,
+                  "endIndex": 12,
+                  "type": "CITATION"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-chat_stream+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-chat_stream+responses+200+text-plain"
+  tags={{"response":"200:text/plain"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-chat_stream+responses+200+text-plain">
+
+<OperationResponseBodyDisplayTypeSection slot="response-body-display-type">
+
+<FrontMatterDisplayType
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+/>
+
+</OperationResponseBodyDisplayTypeSection>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>

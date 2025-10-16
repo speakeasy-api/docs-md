@@ -1,0 +1,2100 @@
+---
+sidebar_position: 3.0
+sidebar_label: Client Activity
+---
+
+import "@speakeasy-api/docs-md-react/docusaurus.css";
+
+import {
+  CodeSample,
+  CodeSampleTab,
+  CodeSampleTabbedSection,
+  Embed,
+  EmbedProvider,
+  EmbedTrigger,
+  ExpandableBreakout,
+  ExpandableBreakoutProperties,
+  ExpandableBreakoutTitle,
+  ExpandableProperty,
+  ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
+  ExpandablePropertyTitle,
+  ExpandableSection,
+  Operation,
+  OperationCodeSamplesSection,
+  OperationDescriptionSection,
+  OperationParametersSection,
+  OperationRequestBodyExamplesSection,
+  OperationRequestBodySection,
+  OperationSummarySection,
+  OperationTitleSection,
+  Pill,
+  Section,
+  SectionContent,
+  SectionTitle,
+  Tag,
+  TagTitle,
+  TryItNow
+} from "@speakeasy-api/docs-md-react";
+import Embedparams from "../../../../../src/components/glean-embeds/loaders/params.tsx";
+import Embedchattranscript from "../../../../../src/components/glean-embeds/loaders/chattranscript.tsx";
+import Embedimplementations from "../../../../../src/components/glean-embeds/loaders/implementations.tsx";
+
+<EmbedProvider />
+
+<Tag slot="tag">
+
+<TagTitle slot="title">
+
+# Client Activity Endpoints
+
+</TagTitle>
+
+</Tag>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/activity \{#operation-activity\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Report document activity_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Report user activity that occurs on indexed documents such as viewing or editing. This signal improves search quality.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-activity+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-activity+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.client.activity.report({&NewLine;    events: [&NewLine;      {&NewLine;        action: &quot;HISTORICAL_VIEW&quot;,&NewLine;        timestamp: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        url: &quot;https://example.com/&quot;,&NewLine;      },&NewLine;      {&NewLine;        action: &quot;SEARCH&quot;,&NewLine;        params: {&NewLine;          query: &quot;query&quot;,&NewLine;        },&NewLine;        timestamp: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        url: &quot;https://example.com/search?q=query&quot;,&NewLine;      },&NewLine;      {&NewLine;        action: &quot;VIEW&quot;,&NewLine;        params: {&NewLine;          duration: 20,&NewLine;          referrer: &quot;https://example.com/document&quot;,&NewLine;        },&NewLine;        timestamp: new Date(&quot;2000-01-23T04:56:07.000Z&quot;),&NewLine;        url: &quot;https://example.com/&quot;,&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-activity+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-activity+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/activity \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "events": [
+    {
+      "action": "VIEW",
+      "timestamp": "2025-10-07T20:56:01.974Z",
+      "url": "ipsum eiusmod"
+    }
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-activity+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "events": [
+    {
+      "action": "VIEW",
+      "timestamp": "2025-10-07T20:56:01.974Z",
+      "url": "ipsum eiusmod"
+    }
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-activity+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="events"
+  headingId="operation-activity+request+events"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-activity+request+events+activityevent\">ActivityEvent</a>","children":[{"label":"ActivityEvent","linkedLabel":"<a href=\"#operation-activity+request+events+activityevent\">ActivityEvent</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### events \{#operation-activity+request+events\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="events_ActivityEvent"
+  headingId="operation-activity+request+events+activityevent"
+  parentId="events"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ActivityEvent \{#operation-activity+request+events+activityevent\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="events_ActivityEvent_action"
+  headingId="operation-activity+request+events+activityevent+action"
+  parentId="events_ActivityEvent"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"VIEW\"","linkedLabel":"\"VIEW\"","children":[],"breakoutSubTypes":{}},{"label":"\"EDIT\"","linkedLabel":"\"EDIT\"","children":[],"breakoutSubTypes":{}},{"label":"\"SEARCH\"","linkedLabel":"\"SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"COMMENT\"","linkedLabel":"\"COMMENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"CRAWL\"","linkedLabel":"\"CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"HISTORICAL_SEARCH\"","linkedLabel":"\"HISTORICAL_SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"HISTORICAL_VIEW\"","linkedLabel":"\"HISTORICAL_VIEW\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### action \{#operation-activity+request+events+activityevent+action\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The type of activity this represents.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="events_ActivityEvent_id"
+  headingId="operation-activity+request+events+activityevent+id"
+  parentId="events_ActivityEvent"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-activity+request+events+activityevent+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Universally unique identifier of the event. To allow for reliable retransmission, only the earliest received event of a given UUID is considered valid by the server and subsequent are ignored.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="events_ActivityEvent_params"
+  headingId="operation-activity+request+events+activityevent+params"
+  parentId="events_ActivityEvent"
+  typeInfo={{"label":"ActivityEventParams","linkedLabel":"<a href=\"#operation-activity+request+events+activityevent+params+activityeventparams\">ActivityEventParams</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### params \{#operation-activity+request+events+activityevent+params\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="params" triggerText="View params details">
+
+<Embedparams />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="events_ActivityEvent_timestamp"
+  headingId="operation-activity+request+events+activityevent+timestamp"
+  parentId="events_ActivityEvent"
+  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timestamp \{#operation-activity+request+events+activityevent+timestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The ISO 8601 timestamp when the activity began.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="events_ActivityEvent_url"
+  headingId="operation-activity+request+events+activityevent+url"
+  parentId="events_ActivityEvent"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-activity+request+events+activityevent+url\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The URL of the activity.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/feedback \{#operation-feedback\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Report client activity_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Report events that happen to results within a Glean client UI, such as search result views and clicks.  This signal improves search quality.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-feedback+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-feedback+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.client.activity.feedback({&NewLine;    trackingTokens: [&NewLine;      &quot;trackingTokens&quot;,&NewLine;    ],&NewLine;    event: &quot;VIEW&quot;,&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-feedback+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-feedback+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/feedback \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "event": "CLICK",
+  "trackingTokens": [
+    "ipsum eiusmod"
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-feedback+parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="feedbackQueryParameter"
+  headingId="operation-feedback+parameters+feedbackqueryparameter"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### feedbackQueryParameter \{#operation-feedback+parameters+feedbackqueryparameter\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A URL encoded versions of Feedback. This is useful for requests.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-feedback+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "event": "CLICK",
+  "trackingTokens": [
+    "ipsum eiusmod"
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-feedback+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="agentId"
+  headingId="operation-feedback+request+agentid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agentId \{#operation-feedback+request+agentid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The agent ID of the client that sent the feedback event.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="applicationId"
+  headingId="operation-feedback+request+applicationid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### applicationId \{#operation-feedback+request+applicationid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The application ID of the client that sent the feedback event.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="category"
+  headingId="operation-feedback+request+category"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ANNOUNCEMENT\"","linkedLabel":"\"ANNOUNCEMENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTOCOMPLETE\"","linkedLabel":"\"AUTOCOMPLETE\"","children":[],"breakoutSubTypes":{}},{"label":"\"COLLECTIONS\"","linkedLabel":"\"COLLECTIONS\"","children":[],"breakoutSubTypes":{}},{"label":"\"FEED\"","linkedLabel":"\"FEED\"","children":[],"breakoutSubTypes":{}},{"label":"\"SEARCH\"","linkedLabel":"\"SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"CHAT\"","linkedLabel":"\"CHAT\"","children":[],"breakoutSubTypes":{}},{"label":"\"NTP\"","linkedLabel":"\"NTP\"","children":[],"breakoutSubTypes":{}},{"label":"\"WORKFLOWS\"","linkedLabel":"\"WORKFLOWS\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUMMARY\"","linkedLabel":"\"SUMMARY\"","children":[],"breakoutSubTypes":{}},{"label":"\"GENERAL\"","linkedLabel":"\"GENERAL\"","children":[],"breakoutSubTypes":{}},{"label":"\"PROMPTS\"","linkedLabel":"\"PROMPTS\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### category \{#operation-feedback+request+category\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The feature category to which the feedback applies. These should be broad product areas such as Announcements, Answers, Search, etc. rather than specific components or UI treatments within those areas.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="channels"
+  headingId="operation-feedback+request+channels"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"COMPANY\"","linkedLabel":"\"COMPANY\"","children":[],"breakoutSubTypes":{}},{"label":"\"GLEAN\"","linkedLabel":"\"GLEAN\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### channels \{#operation-feedback+request+channels\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Where the feedback will be sent, e.g. to Glean, the user's company, or both. If no channels are specified, feedback will go only to Glean.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="event"
+  headingId="operation-feedback+request+event"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"CLICK\"","linkedLabel":"\"CLICK\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTAINER_CLICK\"","linkedLabel":"\"CONTAINER_CLICK\"","children":[],"breakoutSubTypes":{}},{"label":"\"COPY_LINK\"","linkedLabel":"\"COPY_LINK\"","children":[],"breakoutSubTypes":{}},{"label":"\"CREATE\"","linkedLabel":"\"CREATE\"","children":[],"breakoutSubTypes":{}},{"label":"\"DISMISS\"","linkedLabel":"\"DISMISS\"","children":[],"breakoutSubTypes":{}},{"label":"\"DOWNVOTE\"","linkedLabel":"\"DOWNVOTE\"","children":[],"breakoutSubTypes":{}},{"label":"\"EMAIL\"","linkedLabel":"\"EMAIL\"","children":[],"breakoutSubTypes":{}},{"label":"\"EXECUTE\"","linkedLabel":"\"EXECUTE\"","children":[],"breakoutSubTypes":{}},{"label":"\"FILTER\"","linkedLabel":"\"FILTER\"","children":[],"breakoutSubTypes":{}},{"label":"\"FIRST_TOKEN\"","linkedLabel":"\"FIRST_TOKEN\"","children":[],"breakoutSubTypes":{}},{"label":"\"FOCUS_IN\"","linkedLabel":"\"FOCUS_IN\"","children":[],"breakoutSubTypes":{}},{"label":"\"LAST_TOKEN\"","linkedLabel":"\"LAST_TOKEN\"","children":[],"breakoutSubTypes":{}},{"label":"\"MANUAL_FEEDBACK\"","linkedLabel":"\"MANUAL_FEEDBACK\"","children":[],"breakoutSubTypes":{}},{"label":"\"MANUAL_FEEDBACK_SIDE_BY_SIDE\"","linkedLabel":"\"MANUAL_FEEDBACK_SIDE_BY_SIDE\"","children":[],"breakoutSubTypes":{}},{"label":"\"MARK_AS_READ\"","linkedLabel":"\"MARK_AS_READ\"","children":[],"breakoutSubTypes":{}},{"label":"\"MESSAGE\"","linkedLabel":"\"MESSAGE\"","children":[],"breakoutSubTypes":{}},{"label":"\"MIDDLE_CLICK\"","linkedLabel":"\"MIDDLE_CLICK\"","children":[],"breakoutSubTypes":{}},{"label":"\"PAGE_BLUR\"","linkedLabel":"\"PAGE_BLUR\"","children":[],"breakoutSubTypes":{}},{"label":"\"PAGE_FOCUS\"","linkedLabel":"\"PAGE_FOCUS\"","children":[],"breakoutSubTypes":{}},{"label":"\"PAGE_LEAVE\"","linkedLabel":"\"PAGE_LEAVE\"","children":[],"breakoutSubTypes":{}},{"label":"\"PREVIEW\"","linkedLabel":"\"PREVIEW\"","children":[],"breakoutSubTypes":{}},{"label":"\"RELATED_CLICK\"","linkedLabel":"\"RELATED_CLICK\"","children":[],"breakoutSubTypes":{}},{"label":"\"RIGHT_CLICK\"","linkedLabel":"\"RIGHT_CLICK\"","children":[],"breakoutSubTypes":{}},{"label":"\"SECTION_CLICK\"","linkedLabel":"\"SECTION_CLICK\"","children":[],"breakoutSubTypes":{}},{"label":"\"SEEN\"","linkedLabel":"\"SEEN\"","children":[],"breakoutSubTypes":{}},{"label":"\"SHARE\"","linkedLabel":"\"SHARE\"","children":[],"breakoutSubTypes":{}},{"label":"\"SHOW_MORE\"","linkedLabel":"\"SHOW_MORE\"","children":[],"breakoutSubTypes":{}},{"label":"\"UPVOTE\"","linkedLabel":"\"UPVOTE\"","children":[],"breakoutSubTypes":{}},{"label":"\"VIEW\"","linkedLabel":"\"VIEW\"","children":[],"breakoutSubTypes":{}},{"label":"\"VISIBLE\"","linkedLabel":"\"VISIBLE\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### event \{#operation-feedback+request+event\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The action the user took within a Glean client with respect to the object referred to by the given `trackingToken`.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="id"
+  headingId="operation-feedback+request+id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-feedback+request+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Universally unique identifier of the event. To allow for reliable retransmission, only the earliest received event of a given UUID is considered valid by the server and subsequent are ignored.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo"
+  headingId="operation-feedback+request+manualfeedbackinfo"
+  typeInfo={{"label":"ManualFeedbackInfo","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo\">ManualFeedbackInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### manualFeedbackInfo \{#operation-feedback+request+manualfeedbackinfo\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo"
+  parentId="manualFeedbackInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ManualFeedbackInfo \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_activeTab"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+activetab"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### activeTab \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+activetab\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Which tabs the user had chosen at the time of the Feedback.event.MANUAL_FEEDBACK event. For search feedback events only.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_chatTranscript"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+chattranscript"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+chattranscript+feedbackchatexchange\">FeedbackChatExchange</a>","children":[{"label":"FeedbackChatExchange","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+chattranscript+feedbackchatexchange\">FeedbackChatExchange</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### chatTranscript \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+chattranscript\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Array of previous request/response exchanges, ordered by oldest to newest.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="chatTranscript"
+  triggerText="View chatTranscript details"
+>
+
+<Embedchattranscript />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_comments"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+comments"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### comments \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+comments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The comments users can optionally add to the Feedback.event.MANUAL_FEEDBACK events.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_email"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+email"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### email \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+email\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The email address of the user who submitted the Feedback.event.MANUAL_FEEDBACK event.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_imageUrls"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+imageurls"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### imageUrls \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+imageurls\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+URLs of images uploaded by user when providing feedback
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_issue"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+issue"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### issue \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+issue\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The issue the user indicated in the feedback.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_issues"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+issues"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"INACCURATE_RESPONSE\"","linkedLabel":"\"INACCURATE_RESPONSE\"","children":[],"breakoutSubTypes":{}},{"label":"\"INCOMPLETE_OR_NO_ANSWER\"","linkedLabel":"\"INCOMPLETE_OR_NO_ANSWER\"","children":[],"breakoutSubTypes":{}},{"label":"\"INCORRECT_CITATION\"","linkedLabel":"\"INCORRECT_CITATION\"","children":[],"breakoutSubTypes":{}},{"label":"\"MISSING_CITATION\"","linkedLabel":"\"MISSING_CITATION\"","children":[],"breakoutSubTypes":{}},{"label":"\"OTHER\"","linkedLabel":"\"OTHER\"","children":[],"breakoutSubTypes":{}},{"label":"\"OUTDATED_RESPONSE\"","linkedLabel":"\"OUTDATED_RESPONSE\"","children":[],"breakoutSubTypes":{}},{"label":"\"RESULT_MISSING\"","linkedLabel":"\"RESULT_MISSING\"","children":[],"breakoutSubTypes":{}},{"label":"\"RESULT_SHOULD_NOT_APPEAR\"","linkedLabel":"\"RESULT_SHOULD_NOT_APPEAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"RESULTS_HELPFUL\"","linkedLabel":"\"RESULTS_HELPFUL\"","children":[],"breakoutSubTypes":{}},{"label":"\"RESULTS_POOR_ORDER\"","linkedLabel":"\"RESULTS_POOR_ORDER\"","children":[],"breakoutSubTypes":{}},{"label":"\"TOO_MUCH_ONE_KIND\"","linkedLabel":"\"TOO_MUCH_ONE_KIND\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### issues \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+issues\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The issue(s) the user indicated in the feedback.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_numQueriesFromFirstRun"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+numqueriesfromfirstrun"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### numQueriesFromFirstRun \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+numqueriesfromfirstrun\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+How many times this query has been run in the past.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_obscuredQuery"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+obscuredquery"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### obscuredQuery \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+obscuredquery\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The query associated with the Feedback.event.MANUAL_FEEDBACK event, but obscured such that the vowels are replaced with special characters. For search feedback events only.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_previousMessages"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+previousmessages"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### previousMessages \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+previousmessages\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The array of previous messages in a chat session, ordered by oldest to newest.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_query"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+query"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### query \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+query\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The query associated with the Feedback.event.MANUAL_FEEDBACK event.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_rating"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+rating"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### rating \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+rating\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A rating associated with the user feedback. The value will be between one and the maximum given by ratingScale, inclusive.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_ratingKey"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+ratingkey"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### ratingKey \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+ratingkey\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A description of the rating that contextualizes how it appeared to the user, e.g. "satisfied".
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_ratingScale"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+ratingscale"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### ratingScale \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+ratingscale\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The scale of comparison for a rating associated with the feedback. Rating values start from one and go up to the maximum specified by ratingScale. For example, a five-option satisfaction rating will have a ratingScale of 5 and a thumbs-up/thumbs-down rating will have a ratingScale of 2.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_searchResults"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+searchresults"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### searchResults \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+searchresults\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The array of search result Glean Document IDs, ordered by top to bottom result.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_source"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+source"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"AUTOCOMPLETE\"","linkedLabel":"\"AUTOCOMPLETE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CALENDAR\"","linkedLabel":"\"CALENDAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"CHAT\"","linkedLabel":"\"CHAT\"","children":[],"breakoutSubTypes":{}},{"label":"\"CHAT_GENERAL\"","linkedLabel":"\"CHAT_GENERAL\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONCEPT_CARD\"","linkedLabel":"\"CONCEPT_CARD\"","children":[],"breakoutSubTypes":{}},{"label":"\"DESKTOP_APP\"","linkedLabel":"\"DESKTOP_APP\"","children":[],"breakoutSubTypes":{}},{"label":"\"DISAMBIGUATION_CARD\"","linkedLabel":"\"DISAMBIGUATION_CARD\"","children":[],"breakoutSubTypes":{}},{"label":"\"EXPERT_DETECTION\"","linkedLabel":"\"EXPERT_DETECTION\"","children":[],"breakoutSubTypes":{}},{"label":"\"FEED\"","linkedLabel":"\"FEED\"","children":[],"breakoutSubTypes":{}},{"label":"\"GENERATED_Q_AND_A\"","linkedLabel":"\"GENERATED_Q_AND_A\"","children":[],"breakoutSubTypes":{}},{"label":"\"INLINE_MENU\"","linkedLabel":"\"INLINE_MENU\"","children":[],"breakoutSubTypes":{}},{"label":"\"NATIVE_RESULT\"","linkedLabel":"\"NATIVE_RESULT\"","children":[],"breakoutSubTypes":{}},{"label":"\"Q_AND_A\"","linkedLabel":"\"Q_AND_A\"","children":[],"breakoutSubTypes":{}},{"label":"\"RELATED_QUESTIONS\"","linkedLabel":"\"RELATED_QUESTIONS\"","children":[],"breakoutSubTypes":{}},{"label":"\"REPORT_ISSUE\"","linkedLabel":"\"REPORT_ISSUE\"","children":[],"breakoutSubTypes":{}},{"label":"\"SCIOBOT\"","linkedLabel":"\"SCIOBOT\"","children":[],"breakoutSubTypes":{}},{"label":"\"SEARCH\"","linkedLabel":"\"SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"SIDEBAR\"","linkedLabel":"\"SIDEBAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUMMARY\"","linkedLabel":"\"SUMMARY\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### source \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+source\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The source associated with the Feedback.event.MANUAL_FEEDBACK event.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackInfo_ManualFeedbackInfo_vote"
+  headingId="operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+vote"
+  parentId="manualFeedbackInfo_ManualFeedbackInfo"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UPVOTE\"","linkedLabel":"\"UPVOTE\"","children":[],"breakoutSubTypes":{}},{"label":"\"DOWNVOTE\"","linkedLabel":"\"DOWNVOTE\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### vote \{#operation-feedback+request+manualfeedbackinfo+manualfeedbackinfo+vote\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The vote associated with the Feedback.event.MANUAL_FEEDBACK event.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackSideBySideInfo"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo"
+  typeInfo={{"label":"ManualFeedbackSideBySideInfo","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo\">ManualFeedbackSideBySideInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### manualFeedbackSideBySideInfo \{#operation-feedback+request+manualfeedbacksidebysideinfo\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo"
+  parentId="manualFeedbackSideBySideInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ManualFeedbackSideBySideInfo \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_comments"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+comments"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### comments \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+comments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Specific feedback comments for this implementation.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_email"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+email"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### email \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+email\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The email address of the user who submitted the side-by-side feedback.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_evaluationSessionId"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+evaluationsessionid"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### evaluationSessionId \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+evaluationsessionid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unique identifier for this evaluation session to group related feedback events.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_implementationId"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+implementationid"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### implementationId \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+implementationid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The ID of the implementation this specific feedback event is for.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_implementations"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+implementations"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+implementations+sidebysideimplementation\">SideBySideImplementation</a>","children":[{"label":"SideBySideImplementation","linkedLabel":"<a href=\"#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+implementations+sidebysideimplementation\">SideBySideImplementation</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### implementations \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+implementations\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Array of implementations that were compared side-by-side.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="implementations"
+  triggerText="View implementations details"
+>
+
+<Embedimplementations />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_query"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+query"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### query \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+query\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The query or prompt that was evaluated across multiple implementations.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_source"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+source"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"LIVE_EVAL\"","linkedLabel":"\"LIVE_EVAL\"","children":[],"breakoutSubTypes":{}},{"label":"\"CHAT\"","linkedLabel":"\"CHAT\"","children":[],"breakoutSubTypes":{}},{"label":"\"SEARCH\"","linkedLabel":"\"SEARCH\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### source \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+source\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The source associated with the side-by-side feedback event.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo_vote"
+  headingId="operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+vote"
+  parentId="manualFeedbackSideBySideInfo_ManualFeedbackSideBySideInfo"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"UPVOTE\"","linkedLabel":"\"UPVOTE\"","children":[],"breakoutSubTypes":{}},{"label":"\"DOWNVOTE\"","linkedLabel":"\"DOWNVOTE\"","children":[],"breakoutSubTypes":{}},{"label":"\"NEUTRAL\"","linkedLabel":"\"NEUTRAL\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### vote \{#operation-feedback+request+manualfeedbacksidebysideinfo+manualfeedbacksidebysideinfo+vote\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The vote for this specific implementation.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pathname"
+  headingId="operation-feedback+request+pathname"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### pathname \{#operation-feedback+request+pathname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The path the client was at when the feedback event triggered.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="payload"
+  headingId="operation-feedback+request+payload"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### payload \{#operation-feedback+request+payload\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+For type MANUAL_FEEDBACK, contains string of user feedback. For autocomplete, partial query string. For feed, string of user feedback in addition to manual feedback signals extracted from all suggested content.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="position"
+  headingId="operation-feedback+request+position"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### position \{#operation-feedback+request+position\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Position of the element in the case that the client controls order (such as feed and autocomplete).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="seenFeedbackInfo"
+  headingId="operation-feedback+request+seenfeedbackinfo"
+  typeInfo={{"label":"SeenFeedbackInfo","linkedLabel":"<a href=\"#operation-feedback+request+seenfeedbackinfo+seenfeedbackinfo\">SeenFeedbackInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### seenFeedbackInfo \{#operation-feedback+request+seenfeedbackinfo\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="seenFeedbackInfo_SeenFeedbackInfo"
+  headingId="operation-feedback+request+seenfeedbackinfo+seenfeedbackinfo"
+  parentId="seenFeedbackInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### SeenFeedbackInfo \{#operation-feedback+request+seenfeedbackinfo+seenfeedbackinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="seenFeedbackInfo_SeenFeedbackInfo_isExplicit"
+  headingId="operation-feedback+request+seenfeedbackinfo+seenfeedbackinfo+isexplicit"
+  parentId="seenFeedbackInfo_SeenFeedbackInfo"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### isExplicit \{#operation-feedback+request+seenfeedbackinfo+seenfeedbackinfo+isexplicit\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The confidence of the user seeing the object is high because they explicitly interacted with it e.g. answer impression in SERP with additional user interaction.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo"
+  headingId="operation-feedback+request+sessioninfo"
+  typeInfo={{"label":"SessionInfo","linkedLabel":"<a href=\"#operation-feedback+request+sessioninfo+sessioninfo\">SessionInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sessionInfo \{#operation-feedback+request+sessioninfo\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="sessionInfo_SessionInfo"
+  headingId="operation-feedback+request+sessioninfo+sessioninfo"
+  parentId="sessionInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### SessionInfo \{#operation-feedback+request+sessioninfo+sessioninfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo_SessionInfo_lastQuery"
+  headingId="operation-feedback+request+sessioninfo+sessioninfo+lastquery"
+  parentId="sessionInfo_SessionInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastQuery \{#operation-feedback+request+sessioninfo+sessioninfo+lastquery\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The last query seen by the server.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo_SessionInfo_lastSeen"
+  headingId="operation-feedback+request+sessioninfo+sessioninfo+lastseen"
+  parentId="sessionInfo_SessionInfo"
+  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastSeen \{#operation-feedback+request+sessioninfo+sessioninfo+lastseen\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The last time the server saw this token.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo_SessionInfo_sessionTrackingToken"
+  headingId="operation-feedback+request+sessioninfo+sessioninfo+sessiontrackingtoken"
+  parentId="sessionInfo_SessionInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sessionTrackingToken \{#operation-feedback+request+sessioninfo+sessioninfo+sessiontrackingtoken\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A unique token for this session. A new session (and token) is created when the user issues a request from a new tab or when our server hasn't seen activity for more than 10 minutes from a tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="sessionInfo_SessionInfo_tabId"
+  headingId="operation-feedback+request+sessioninfo+sessioninfo+tabid"
+  parentId="sessionInfo_SessionInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### tabId \{#operation-feedback+request+sessioninfo+sessioninfo+tabid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A unique id for all requests a user makes from a given tab, no matter how far apart. A new tab id is only generated when a user issues a request from a new tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="timestamp"
+  headingId="operation-feedback+request+timestamp"
+  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timestamp \{#operation-feedback+request+timestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The ISO 8601 timestamp when the event occured.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="trackingTokens"
+  headingId="operation-feedback+request+trackingtokens"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### trackingTokens \{#operation-feedback+request+trackingtokens\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of server-generated trackingTokens to which this event applies.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="uiElement"
+  headingId="operation-feedback+request+uielement"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### uiElement \{#operation-feedback+request+uielement\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The UI element associated with the event, if any.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="uiTree"
+  headingId="operation-feedback+request+uitree"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### uiTree \{#operation-feedback+request+uitree\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The UI element tree associated with the event, if any.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="url"
+  headingId="operation-feedback+request+url"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-feedback+request+url\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The URL the client was at when the feedback event triggered.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="user"
+  headingId="operation-feedback+request+user"
+  typeInfo={{"label":"User","linkedLabel":"<a href=\"#operation-feedback+request+user+user\">User</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### user \{#operation-feedback+request+user\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="user_User"
+  headingId="operation-feedback+request+user+user"
+  parentId="user"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### User \{#operation-feedback+request+user+user\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="user_User_origID"
+  headingId="operation-feedback+request+user+user+origid"
+  parentId="user_User"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### origID \{#operation-feedback+request+user+user+origid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque user ID for the authenticated user (ignores actas).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="user_User_userID"
+  headingId="operation-feedback+request+user+user+userid"
+  parentId="user_User"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### userID \{#operation-feedback+request+user+user+userid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque user ID for the claimed authority (i.e., the actas param, or the origid if actas is not specified).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="userViewInfo"
+  headingId="operation-feedback+request+userviewinfo"
+  typeInfo={{"label":"UserViewInfo","linkedLabel":"<a href=\"#operation-feedback+request+userviewinfo+userviewinfo\">UserViewInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### userViewInfo \{#operation-feedback+request+userviewinfo\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="userViewInfo_UserViewInfo"
+  headingId="operation-feedback+request+userviewinfo+userviewinfo"
+  parentId="userViewInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### UserViewInfo \{#operation-feedback+request+userviewinfo+userviewinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="userViewInfo_UserViewInfo_docId"
+  headingId="operation-feedback+request+userviewinfo+userviewinfo+docid"
+  parentId="userViewInfo_UserViewInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### docId \{#operation-feedback+request+userviewinfo+userviewinfo+docid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unique Glean Document ID of the associated document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="userViewInfo_UserViewInfo_docTitle"
+  headingId="operation-feedback+request+userviewinfo+userviewinfo+doctitle"
+  parentId="userViewInfo_UserViewInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### docTitle \{#operation-feedback+request+userviewinfo+userviewinfo+doctitle\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Title of associated document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="userViewInfo_UserViewInfo_docUrl"
+  headingId="operation-feedback+request+userviewinfo+userviewinfo+docurl"
+  parentId="userViewInfo_UserViewInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### docUrl \{#operation-feedback+request+userviewinfo+userviewinfo+docurl\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+URL of associated document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="workflowFeedbackInfo"
+  headingId="operation-feedback+request+workflowfeedbackinfo"
+  typeInfo={{"label":"WorkflowFeedbackInfo","linkedLabel":"<a href=\"#operation-feedback+request+workflowfeedbackinfo+workflowfeedbackinfo\">WorkflowFeedbackInfo</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### workflowFeedbackInfo \{#operation-feedback+request+workflowfeedbackinfo\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="workflowFeedbackInfo_WorkflowFeedbackInfo"
+  headingId="operation-feedback+request+workflowfeedbackinfo+workflowfeedbackinfo"
+  parentId="workflowFeedbackInfo"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### WorkflowFeedbackInfo \{#operation-feedback+request+workflowfeedbackinfo+workflowfeedbackinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="workflowFeedbackInfo_WorkflowFeedbackInfo_source"
+  headingId="operation-feedback+request+workflowfeedbackinfo+workflowfeedbackinfo+source"
+  parentId="workflowFeedbackInfo_WorkflowFeedbackInfo"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"ZERO_STATE\"","linkedLabel":"\"ZERO_STATE\"","children":[],"breakoutSubTypes":{}},{"label":"\"LIBRARY\"","linkedLabel":"\"LIBRARY\"","children":[],"breakoutSubTypes":{}},{"label":"\"HOMEPAGE\"","linkedLabel":"\"HOMEPAGE\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### source \{#operation-feedback+request+workflowfeedbackinfo+workflowfeedbackinfo+source\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Where the feedback of the workflow originated from
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>

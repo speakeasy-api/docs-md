@@ -1,0 +1,3007 @@
+---
+sidebar_position: 3.11
+sidebar_label: Client Insights
+---
+
+import "@speakeasy-api/docs-md-react/docusaurus.css";
+
+import {
+  CodeSample,
+  CodeSampleTab,
+  CodeSampleTabbedSection,
+  Embed,
+  EmbedProvider,
+  EmbedTrigger,
+  ExpandableBreakout,
+  ExpandableBreakoutProperties,
+  ExpandableBreakoutTitle,
+  ExpandableProperty,
+  ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
+  ExpandablePropertyTitle,
+  ExpandableSection,
+  Operation,
+  OperationCodeSamplesSection,
+  OperationDescriptionSection,
+  OperationRequestBodyDescriptionSection,
+  OperationRequestBodyExamplesSection,
+  OperationRequestBodySection,
+  OperationResponseBodyDescriptionSection,
+  OperationResponseBodyExamplesSection,
+  OperationResponseBodySection,
+  OperationSummarySection,
+  OperationTitleSection,
+  Pill,
+  ResponseExamplesTab,
+  ResponseExamplesTabbedSection,
+  ResponseTab,
+  ResponseTabbedSection,
+  Section,
+  SectionContent,
+  SectionTitle,
+  Tag,
+  TagTitle,
+  TryItNow
+} from "@speakeasy-api/docs-md-react";
+import Embedend from "../../../../../src/components/glean-embeds/loaders/end.tsx";
+import Embedstart from "../../../../../src/components/glean-embeds/loaders/start.tsx";
+import Embedassistantinsights from "../../../../../src/components/glean-embeds/loaders/assistantinsights.tsx";
+import Embedactioncounts from "../../../../../src/components/glean-embeds/loaders/actioncounts.tsx";
+import Embedaiappinsights from "../../../../../src/components/glean-embeds/loaders/aiappinsights.tsx";
+import Embeddocumentinsights from "../../../../../src/components/glean-embeds/loaders/documentinsights.tsx";
+import Embedactivityinsights from "../../../../../src/components/glean-embeds/loaders/activityinsights.tsx";
+import Embedlowperformingqueryinsights from "../../../../../src/components/glean-embeds/loaders/lowperformingqueryinsights.tsx";
+import Embedqueryinsights from "../../../../../src/components/glean-embeds/loaders/queryinsights.tsx";
+import Embedshortcutinsights from "../../../../../src/components/glean-embeds/loaders/shortcutinsights.tsx";
+import Embedcountinfo from "../../../../../src/components/glean-embeds/loaders/countinfo.tsx";
+import Embedinactiveinsights from "../../../../../src/components/glean-embeds/loaders/inactiveinsights.tsx";
+
+<EmbedProvider />
+
+<Tag slot="tag">
+
+<TagTitle slot="title">
+
+# Client Insights Endpoints
+
+</TagTitle>
+
+</Tag>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/insights \{#operation-insights\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Read insights_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Reads the aggregate information for each user, query, and content.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-insights+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-insights+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.insights.retrieve({});&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-insights+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-insights+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/insights \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "categories": [
+    "AGENTS"
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-insights+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "categories": [
+    "AGENTS"
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-insights+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Includes request params for insights dashboard data.
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="agentsRequestOptions"
+  headingId="operation-insights+request+agentsrequestoptions"
+  typeInfo={{"label":"InsightsAgentsRequestOptions","linkedLabel":"<a href=\"#operation-insights+request+agentsrequestoptions+insightsagentsrequestoptions\">InsightsAgentsRequestOptions</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agentsRequestOptions \{#operation-insights+request+agentsrequestoptions\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="agentsRequestOptions_InsightsAgentsRequestOptions"
+  headingId="operation-insights+request+agentsrequestoptions+insightsagentsrequestoptions"
+  parentId="agentsRequestOptions"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### InsightsAgentsRequestOptions \{#operation-insights+request+agentsrequestoptions+insightsagentsrequestoptions\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="agentsRequestOptions_InsightsAgentsRequestOptions_agentIds"
+  headingId="operation-insights+request+agentsrequestoptions+insightsagentsrequestoptions+agentids"
+  parentId="agentsRequestOptions_InsightsAgentsRequestOptions"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### agentIds \{#operation-insights+request+agentsrequestoptions+insightsagentsrequestoptions+agentids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+IDs of the Agents for which Insights should be returned. An empty array signifies all.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="aiAppRequestOptions"
+  headingId="operation-insights+request+aiapprequestoptions"
+  typeInfo={{"label":"InsightsAiAppRequestOptions","linkedLabel":"<a href=\"#operation-insights+request+aiapprequestoptions+insightsaiapprequestoptions\">InsightsAiAppRequestOptions</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### aiAppRequestOptions \{#operation-insights+request+aiapprequestoptions\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="aiAppRequestOptions_InsightsAiAppRequestOptions"
+  headingId="operation-insights+request+aiapprequestoptions+insightsaiapprequestoptions"
+  parentId="aiAppRequestOptions"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### InsightsAiAppRequestOptions \{#operation-insights+request+aiapprequestoptions+insightsaiapprequestoptions\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="aiAppRequestOptions_InsightsAiAppRequestOptions_aiAppIds"
+  headingId="operation-insights+request+aiapprequestoptions+insightsaiapprequestoptions+aiappids"
+  parentId="aiAppRequestOptions_InsightsAiAppRequestOptions"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### aiAppIds \{#operation-insights+request+aiapprequestoptions+insightsaiapprequestoptions+aiappids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+IDs of the AI Apps for which Insights should be returned. An empty array signifies all.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="assistantActivityTypes"
+  headingId="operation-insights+request+assistantactivitytypes"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"GLEAN_CHAT\"","linkedLabel":"\"GLEAN_CHAT\"","children":[],"breakoutSubTypes":{}},{"label":"\"AI_SUMMARY\"","linkedLabel":"\"AI_SUMMARY\"","children":[],"breakoutSubTypes":{}},{"label":"\"AI_ANSWER\"","linkedLabel":"\"AI_ANSWER\"","children":[],"breakoutSubTypes":{}},{"label":"\"GLEANBOT_RESPONSE\"","linkedLabel":"\"GLEANBOT_RESPONSE\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### assistantActivityTypes \{#operation-insights+request+assistantactivitytypes\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Types of activity that should count in the definition of an Assistant Active User. Affects only insights for AI category.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="categories"
+  headingId="operation-insights+request+categories"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"AGENTS\"","linkedLabel":"\"AGENTS\"","children":[],"breakoutSubTypes":{}},{"label":"\"AI\"","linkedLabel":"\"AI\"","children":[],"breakoutSubTypes":{}},{"label":"\"AI_APPS\"","linkedLabel":"\"AI_APPS\"","children":[],"breakoutSubTypes":{}},{"label":"\"ANNOUNCEMENTS\"","linkedLabel":"\"ANNOUNCEMENTS\"","children":[],"breakoutSubTypes":{}},{"label":"\"ANSWERS\"","linkedLabel":"\"ANSWERS\"","children":[],"breakoutSubTypes":{}},{"label":"\"COLLECTIONS\"","linkedLabel":"\"COLLECTIONS\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"GLEAN_ASSIST\"","linkedLabel":"\"GLEAN_ASSIST\"","children":[],"breakoutSubTypes":{}},{"label":"\"QUERIES\"","linkedLabel":"\"QUERIES\"","children":[],"breakoutSubTypes":{}},{"label":"\"SHORTCUTS\"","linkedLabel":"\"SHORTCUTS\"","children":[],"breakoutSubTypes":{}},{"label":"\"USERS\"","linkedLabel":"\"USERS\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### categories \{#operation-insights+request+categories\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Categories of data requested. Request can include single or multiple types.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="dayRange"
+  headingId="operation-insights+request+dayrange"
+  typeInfo={{"label":"Period","linkedLabel":"<a href=\"#operation-insights+request+dayrange+period\">Period</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### dayRange \{#operation-insights+request+dayrange\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="dayRange_Period"
+  headingId="operation-insights+request+dayrange+period"
+  parentId="dayRange"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Period \{#operation-insights+request+dayrange+period\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="dayRange_Period_end"
+  headingId="operation-insights+request+dayrange+period+end"
+  parentId="dayRange_Period"
+  typeInfo={{"label":"TimePoint","linkedLabel":"<a href=\"#operation-insights+request+dayrange+period+end+timepoint\">TimePoint</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### end \{#operation-insights+request+dayrange+period+end\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="end" triggerText="View end details">
+
+<Embedend />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="dayRange_Period_maxDaysFromNow"
+  headingId="operation-insights+request+dayrange+period+maxdaysfromnow"
+  parentId="dayRange_Period"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### maxDaysFromNow \{#operation-insights+request+dayrange+period+maxdaysfromnow\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+DEPRECATED - The number of days from now in the past to define lower boundary of time period.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="dayRange_Period_minDaysFromNow"
+  headingId="operation-insights+request+dayrange+period+mindaysfromnow"
+  parentId="dayRange_Period"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minDaysFromNow \{#operation-insights+request+dayrange+period+mindaysfromnow\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+DEPRECATED - The number of days from now in the past to define upper boundary of time period.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="dayRange_Period_start"
+  headingId="operation-insights+request+dayrange+period+start"
+  parentId="dayRange_Period"
+  typeInfo={{"label":"TimePoint","linkedLabel":"<a href=\"#operation-insights+request+dayrange+period+start+timepoint\">TimePoint</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### start \{#operation-insights+request+dayrange+period+start\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="start" triggerText="View start details">
+
+<Embedstart />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="departments"
+  headingId="operation-insights+request+departments"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+request+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Departments that the data is requested for. If this is empty, corresponds to whole company.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="disablePerUserInsights"
+  headingId="operation-insights+request+disableperuserinsights"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### disablePerUserInsights \{#operation-insights+request+disableperuserinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+If true, suppresses the generation of per-user Insights in the response. Default is false.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-insights+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-insights+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-insights+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-insights+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-insights+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-insights+responses+200+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="ai"
+  headingId="operation-insights+responses+200+application-json+ai"
+  typeInfo={{"label":"AiInsightsResponse","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+ai+aiinsightsresponse\">AiInsightsResponse</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### ai \{#operation-insights+responses+200+application-json+ai\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="ai_AiInsightsResponse"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse"
+  parentId="ai"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### AiInsightsResponse \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="ai_AiInsightsResponse_assistantInsights"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse+assistantinsights"
+  parentId="ai_AiInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+ai+aiinsightsresponse+assistantinsights+useractivityinsight\">UserActivityInsight</a>","children":[{"label":"UserActivityInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+ai+aiinsightsresponse+assistantinsights+useractivityinsight\">UserActivityInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### assistantInsights \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse+assistantinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for all active users with respect to set of actions.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="assistantInsights"
+  triggerText="View assistantInsights details"
+>
+
+<Embedassistantinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="ai_AiInsightsResponse_departments"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse+departments"
+  parentId="ai_AiInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of departments applicable for users tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="ai_AiInsightsResponse_lastLogTimestamp"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse+lastlogtimestamp"
+  parentId="ai_AiInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastLogTimestamp \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse+lastlogtimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp of the last activity processed to make the response (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="ai_AiInsightsResponse_totalActiveAssistantUsers"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalactiveassistantusers"
+  parentId="ai_AiInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalActiveAssistantUsers \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalactiveassistantusers\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of Active Assistant users (chat, summary, AIA) in requested period.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="ai_AiInsightsResponse_totalAiAnswers"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalaianswers"
+  parentId="ai_AiInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalAiAnswers \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalaianswers\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of AI Answers generated in the requested period.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="ai_AiInsightsResponse_totalAiSummarizations"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalaisummarizations"
+  parentId="ai_AiInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalAiSummarizations \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalaisummarizations\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of AI Document Summarizations invoked in the requested period.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="ai_AiInsightsResponse_totalChatMessages"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalchatmessages"
+  parentId="ai_AiInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalChatMessages \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalchatmessages\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of Chat messages sent in requested period.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="ai_AiInsightsResponse_totalDownvotes"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse+totaldownvotes"
+  parentId="ai_AiInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalDownvotes \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse+totaldownvotes\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of Chat messages which received downvotes by the user.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="ai_AiInsightsResponse_totalGleanbotResponses"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalgleanbotresponses"
+  parentId="ai_AiInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalGleanbotResponses \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalgleanbotresponses\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of Gleanbot responses, both proactive and reactive.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="ai_AiInsightsResponse_totalGleanbotResponsesNotHelpful"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalgleanbotresponsesnothelpful"
+  parentId="ai_AiInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalGleanbotResponsesNotHelpful \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalgleanbotresponsesnothelpful\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of Glean responses rejected as not helpful (downvoted).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="ai_AiInsightsResponse_totalGleanbotResponsesShared"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalgleanbotresponsesshared"
+  parentId="ai_AiInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalGleanbotResponsesShared \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalgleanbotresponsesshared\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of Gleanbot responses shared publicly (upvoted).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="ai_AiInsightsResponse_totalUpvotes"
+  headingId="operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalupvotes"
+  parentId="ai_AiInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalUpvotes \{#operation-insights+responses+200+application-json+ai+aiinsightsresponse+totalupvotes\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of Chat messages which received upvotes by the user.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="aiApps"
+  headingId="operation-insights+responses+200+application-json+aiapps"
+  typeInfo={{"label":"AiAppsInsightsResponse","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse\">AiAppsInsightsResponse</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### aiApps \{#operation-insights+responses+200+application-json+aiapps\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="aiApps_AiAppsInsightsResponse"
+  headingId="operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse"
+  parentId="aiApps"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### AiAppsInsightsResponse \{#operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="aiApps_AiAppsInsightsResponse_actionCounts"
+  headingId="operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+actioncounts"
+  parentId="aiApps_AiAppsInsightsResponse"
+  typeInfo={{"label":"AiAppActionCounts","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+actioncounts+aiappactioncounts\">AiAppActionCounts</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### actionCounts \{#operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+actioncounts\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Map from action to frequency.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="actionCounts"
+  triggerText="View actionCounts details"
+>
+
+<Embedactioncounts />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="aiApps_AiAppsInsightsResponse_aiAppInsights"
+  headingId="operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+aiappinsights"
+  parentId="aiApps_AiAppsInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+aiappinsights+useractivityinsight\">UserActivityInsight</a>","children":[{"label":"UserActivityInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+aiappinsights+useractivityinsight\">UserActivityInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### aiAppInsights \{#operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+aiappinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for all active users with respect to set of actions.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="aiAppInsights"
+  triggerText="View aiAppInsights details"
+>
+
+<Embedaiappinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="aiApps_AiAppsInsightsResponse_departments"
+  headingId="operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+departments"
+  parentId="aiApps_AiAppsInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of departments applicable for users tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="aiApps_AiAppsInsightsResponse_lastLogTimestamp"
+  headingId="operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+lastlogtimestamp"
+  parentId="aiApps_AiAppsInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastLogTimestamp \{#operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+lastlogtimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp of the last activity processed to make the response (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="aiApps_AiAppsInsightsResponse_totalActiveUsers"
+  headingId="operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+totalactiveusers"
+  parentId="aiApps_AiAppsInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalActiveUsers \{#operation-insights+responses+200+application-json+aiapps+aiappsinsightsresponse+totalactiveusers\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of active users on the Ai App in the requested period.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="announcements"
+  headingId="operation-insights+responses+200+application-json+announcements"
+  typeInfo={{"label":"ContentInsightsResponse","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+announcements+contentinsightsresponse\">ContentInsightsResponse</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### announcements \{#operation-insights+responses+200+application-json+announcements\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="announcements_ContentInsightsResponse"
+  headingId="operation-insights+responses+200+application-json+announcements+contentinsightsresponse"
+  parentId="announcements"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ContentInsightsResponse \{#operation-insights+responses+200+application-json+announcements+contentinsightsresponse\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="announcements_ContentInsightsResponse_departments"
+  headingId="operation-insights+responses+200+application-json+announcements+contentinsightsresponse+departments"
+  parentId="announcements_ContentInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+responses+200+application-json+announcements+contentinsightsresponse+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of departments applicable for contents tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="announcements_ContentInsightsResponse_documentInsights"
+  headingId="operation-insights+responses+200+application-json+announcements+contentinsightsresponse+documentinsights"
+  parentId="announcements_ContentInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+announcements+contentinsightsresponse+documentinsights+documentinsight\">DocumentInsight</a>","children":[{"label":"DocumentInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+announcements+contentinsightsresponse+documentinsights+documentinsight\">DocumentInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentInsights \{#operation-insights+responses+200+application-json+announcements+contentinsightsresponse+documentinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for documents.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="documentInsights"
+  triggerText="View documentInsights details"
+>
+
+<Embeddocumentinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="announcements_ContentInsightsResponse_lastLogTimestamp"
+  headingId="operation-insights+responses+200+application-json+announcements+contentinsightsresponse+lastlogtimestamp"
+  parentId="announcements_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastLogTimestamp \{#operation-insights+responses+200+application-json+announcements+contentinsightsresponse+lastlogtimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp of the last activity processed to make the response (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="announcements_ContentInsightsResponse_minDepartmentSizeThreshold"
+  headingId="operation-insights+responses+200+application-json+announcements+contentinsightsresponse+mindepartmentsizethreshold"
+  parentId="announcements_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minDepartmentSizeThreshold \{#operation-insights+responses+200+application-json+announcements+contentinsightsresponse+mindepartmentsizethreshold\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Min threshold in size of departments while populating results, otherwise 0.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="announcements_ContentInsightsResponse_minVisitorThreshold"
+  headingId="operation-insights+responses+200+application-json+announcements+contentinsightsresponse+minvisitorthreshold"
+  parentId="announcements_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minVisitorThreshold \{#operation-insights+responses+200+application-json+announcements+contentinsightsresponse+minvisitorthreshold\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Minimum number of visitors to a document required to be included in insights.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="answers"
+  headingId="operation-insights+responses+200+application-json+answers"
+  typeInfo={{"label":"ContentInsightsResponse","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+answers+contentinsightsresponse\">ContentInsightsResponse</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### answers \{#operation-insights+responses+200+application-json+answers\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="answers_ContentInsightsResponse"
+  headingId="operation-insights+responses+200+application-json+answers+contentinsightsresponse"
+  parentId="answers"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ContentInsightsResponse \{#operation-insights+responses+200+application-json+answers+contentinsightsresponse\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="answers_ContentInsightsResponse_departments"
+  headingId="operation-insights+responses+200+application-json+answers+contentinsightsresponse+departments"
+  parentId="answers_ContentInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+responses+200+application-json+answers+contentinsightsresponse+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of departments applicable for contents tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="answers_ContentInsightsResponse_documentInsights"
+  headingId="operation-insights+responses+200+application-json+answers+contentinsightsresponse+documentinsights"
+  parentId="answers_ContentInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+answers+contentinsightsresponse+documentinsights+documentinsight\">DocumentInsight</a>","children":[{"label":"DocumentInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+answers+contentinsightsresponse+documentinsights+documentinsight\">DocumentInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentInsights \{#operation-insights+responses+200+application-json+answers+contentinsightsresponse+documentinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for documents.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="documentInsights"
+  triggerText="View documentInsights details"
+>
+
+<Embeddocumentinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="answers_ContentInsightsResponse_lastLogTimestamp"
+  headingId="operation-insights+responses+200+application-json+answers+contentinsightsresponse+lastlogtimestamp"
+  parentId="answers_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastLogTimestamp \{#operation-insights+responses+200+application-json+answers+contentinsightsresponse+lastlogtimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp of the last activity processed to make the response (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="answers_ContentInsightsResponse_minDepartmentSizeThreshold"
+  headingId="operation-insights+responses+200+application-json+answers+contentinsightsresponse+mindepartmentsizethreshold"
+  parentId="answers_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minDepartmentSizeThreshold \{#operation-insights+responses+200+application-json+answers+contentinsightsresponse+mindepartmentsizethreshold\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Min threshold in size of departments while populating results, otherwise 0.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="answers_ContentInsightsResponse_minVisitorThreshold"
+  headingId="operation-insights+responses+200+application-json+answers+contentinsightsresponse+minvisitorthreshold"
+  parentId="answers_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minVisitorThreshold \{#operation-insights+responses+200+application-json+answers+contentinsightsresponse+minvisitorthreshold\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Minimum number of visitors to a document required to be included in insights.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="collections"
+  headingId="operation-insights+responses+200+application-json+collections"
+  typeInfo={{"label":"ContentInsightsResponse","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+collections+contentinsightsresponse\">ContentInsightsResponse</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### collections \{#operation-insights+responses+200+application-json+collections\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="collections_ContentInsightsResponse"
+  headingId="operation-insights+responses+200+application-json+collections+contentinsightsresponse"
+  parentId="collections"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ContentInsightsResponse \{#operation-insights+responses+200+application-json+collections+contentinsightsresponse\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="collections_ContentInsightsResponse_departments"
+  headingId="operation-insights+responses+200+application-json+collections+contentinsightsresponse+departments"
+  parentId="collections_ContentInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+responses+200+application-json+collections+contentinsightsresponse+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of departments applicable for contents tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="collections_ContentInsightsResponse_documentInsights"
+  headingId="operation-insights+responses+200+application-json+collections+contentinsightsresponse+documentinsights"
+  parentId="collections_ContentInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+collections+contentinsightsresponse+documentinsights+documentinsight\">DocumentInsight</a>","children":[{"label":"DocumentInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+collections+contentinsightsresponse+documentinsights+documentinsight\">DocumentInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentInsights \{#operation-insights+responses+200+application-json+collections+contentinsightsresponse+documentinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for documents.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="documentInsights"
+  triggerText="View documentInsights details"
+>
+
+<Embeddocumentinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="collections_ContentInsightsResponse_lastLogTimestamp"
+  headingId="operation-insights+responses+200+application-json+collections+contentinsightsresponse+lastlogtimestamp"
+  parentId="collections_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastLogTimestamp \{#operation-insights+responses+200+application-json+collections+contentinsightsresponse+lastlogtimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp of the last activity processed to make the response (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="collections_ContentInsightsResponse_minDepartmentSizeThreshold"
+  headingId="operation-insights+responses+200+application-json+collections+contentinsightsresponse+mindepartmentsizethreshold"
+  parentId="collections_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minDepartmentSizeThreshold \{#operation-insights+responses+200+application-json+collections+contentinsightsresponse+mindepartmentsizethreshold\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Min threshold in size of departments while populating results, otherwise 0.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="collections_ContentInsightsResponse_minVisitorThreshold"
+  headingId="operation-insights+responses+200+application-json+collections+contentinsightsresponse+minvisitorthreshold"
+  parentId="collections_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minVisitorThreshold \{#operation-insights+responses+200+application-json+collections+contentinsightsresponse+minvisitorthreshold\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Minimum number of visitors to a document required to be included in insights.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="collectionsV2"
+  headingId="operation-insights+responses+200+application-json+collectionsv2"
+  typeInfo={{"label":"ContentInsightsResponse","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse\">ContentInsightsResponse</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### collectionsV2 \{#operation-insights+responses+200+application-json+collectionsv2\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="collectionsV2_ContentInsightsResponse"
+  headingId="operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse"
+  parentId="collectionsV2"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ContentInsightsResponse \{#operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="collectionsV2_ContentInsightsResponse_departments"
+  headingId="operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse+departments"
+  parentId="collectionsV2_ContentInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of departments applicable for contents tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="collectionsV2_ContentInsightsResponse_documentInsights"
+  headingId="operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse+documentinsights"
+  parentId="collectionsV2_ContentInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse+documentinsights+documentinsight\">DocumentInsight</a>","children":[{"label":"DocumentInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse+documentinsights+documentinsight\">DocumentInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentInsights \{#operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse+documentinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for documents.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="documentInsights"
+  triggerText="View documentInsights details"
+>
+
+<Embeddocumentinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="collectionsV2_ContentInsightsResponse_lastLogTimestamp"
+  headingId="operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse+lastlogtimestamp"
+  parentId="collectionsV2_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastLogTimestamp \{#operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse+lastlogtimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp of the last activity processed to make the response (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="collectionsV2_ContentInsightsResponse_minDepartmentSizeThreshold"
+  headingId="operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse+mindepartmentsizethreshold"
+  parentId="collectionsV2_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minDepartmentSizeThreshold \{#operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse+mindepartmentsizethreshold\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Min threshold in size of departments while populating results, otherwise 0.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="collectionsV2_ContentInsightsResponse_minVisitorThreshold"
+  headingId="operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse+minvisitorthreshold"
+  parentId="collectionsV2_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minVisitorThreshold \{#operation-insights+responses+200+application-json+collectionsv2+contentinsightsresponse+minvisitorthreshold\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Minimum number of visitors to a document required to be included in insights.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="content"
+  headingId="operation-insights+responses+200+application-json+content"
+  typeInfo={{"label":"ContentInsightsResponse","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+content+contentinsightsresponse\">ContentInsightsResponse</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### content \{#operation-insights+responses+200+application-json+content\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="content_ContentInsightsResponse"
+  headingId="operation-insights+responses+200+application-json+content+contentinsightsresponse"
+  parentId="content"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ContentInsightsResponse \{#operation-insights+responses+200+application-json+content+contentinsightsresponse\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="content_ContentInsightsResponse_departments"
+  headingId="operation-insights+responses+200+application-json+content+contentinsightsresponse+departments"
+  parentId="content_ContentInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+responses+200+application-json+content+contentinsightsresponse+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of departments applicable for contents tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="content_ContentInsightsResponse_documentInsights"
+  headingId="operation-insights+responses+200+application-json+content+contentinsightsresponse+documentinsights"
+  parentId="content_ContentInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+content+contentinsightsresponse+documentinsights+documentinsight\">DocumentInsight</a>","children":[{"label":"DocumentInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+content+contentinsightsresponse+documentinsights+documentinsight\">DocumentInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentInsights \{#operation-insights+responses+200+application-json+content+contentinsightsresponse+documentinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for documents.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="documentInsights"
+  triggerText="View documentInsights details"
+>
+
+<Embeddocumentinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="content_ContentInsightsResponse_lastLogTimestamp"
+  headingId="operation-insights+responses+200+application-json+content+contentinsightsresponse+lastlogtimestamp"
+  parentId="content_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastLogTimestamp \{#operation-insights+responses+200+application-json+content+contentinsightsresponse+lastlogtimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp of the last activity processed to make the response (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="content_ContentInsightsResponse_minDepartmentSizeThreshold"
+  headingId="operation-insights+responses+200+application-json+content+contentinsightsresponse+mindepartmentsizethreshold"
+  parentId="content_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minDepartmentSizeThreshold \{#operation-insights+responses+200+application-json+content+contentinsightsresponse+mindepartmentsizethreshold\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Min threshold in size of departments while populating results, otherwise 0.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="content_ContentInsightsResponse_minVisitorThreshold"
+  headingId="operation-insights+responses+200+application-json+content+contentinsightsresponse+minvisitorthreshold"
+  parentId="content_ContentInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minVisitorThreshold \{#operation-insights+responses+200+application-json+content+contentinsightsresponse+minvisitorthreshold\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Minimum number of visitors to a document required to be included in insights.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="departments"
+  headingId="operation-insights+responses+200+application-json+departments"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+responses+200+application-json+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of all departments.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="gleanAssist"
+  headingId="operation-insights+responses+200+application-json+gleanassist"
+  typeInfo={{"label":"GleanAssistInsightsResponse","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse\">GleanAssistInsightsResponse</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### gleanAssist \{#operation-insights+responses+200+application-json+gleanassist\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="gleanAssist_GleanAssistInsightsResponse"
+  headingId="operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse"
+  parentId="gleanAssist"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### GleanAssistInsightsResponse \{#operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="gleanAssist_GleanAssistInsightsResponse_activityInsights"
+  headingId="operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse+activityinsights"
+  parentId="gleanAssist_GleanAssistInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse+activityinsights+useractivityinsight\">UserActivityInsight</a>","children":[{"label":"UserActivityInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse+activityinsights+useractivityinsight\">UserActivityInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### activityInsights \{#operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse+activityinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for all active users with respect to set of actions.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="activityInsights"
+  triggerText="View activityInsights details"
+>
+
+<Embedactivityinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="gleanAssist_GleanAssistInsightsResponse_datasourceInstances"
+  headingId="operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse+datasourceinstances"
+  parentId="gleanAssist_GleanAssistInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasourceInstances \{#operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse+datasourceinstances\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of datasource instances for which glean assist is enabled.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="gleanAssist_GleanAssistInsightsResponse_departments"
+  headingId="operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse+departments"
+  parentId="gleanAssist_GleanAssistInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of departments applicable for users tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="gleanAssist_GleanAssistInsightsResponse_lastLogTimestamp"
+  headingId="operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse+lastlogtimestamp"
+  parentId="gleanAssist_GleanAssistInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastLogTimestamp \{#operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse+lastlogtimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp of the last activity processed to make the response (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="gleanAssist_GleanAssistInsightsResponse_totalActiveUsers"
+  headingId="operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse+totalactiveusers"
+  parentId="gleanAssist_GleanAssistInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalActiveUsers \{#operation-insights+responses+200+application-json+gleanassist+gleanassistinsightsresponse+totalactiveusers\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of active users in the requested period.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="queries"
+  headingId="operation-insights+responses+200+application-json+queries"
+  typeInfo={{"label":"QueryInsightsResponse","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+queries+queryinsightsresponse\">QueryInsightsResponse</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### queries \{#operation-insights+responses+200+application-json+queries\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="queries_QueryInsightsResponse"
+  headingId="operation-insights+responses+200+application-json+queries+queryinsightsresponse"
+  parentId="queries"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### QueryInsightsResponse \{#operation-insights+responses+200+application-json+queries+queryinsightsresponse\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="queries_QueryInsightsResponse_departments"
+  headingId="operation-insights+responses+200+application-json+queries+queryinsightsresponse+departments"
+  parentId="queries_QueryInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+responses+200+application-json+queries+queryinsightsresponse+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of departments applicable for queries tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="queries_QueryInsightsResponse_lastLogTimestamp"
+  headingId="operation-insights+responses+200+application-json+queries+queryinsightsresponse+lastlogtimestamp"
+  parentId="queries_QueryInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastLogTimestamp \{#operation-insights+responses+200+application-json+queries+queryinsightsresponse+lastlogtimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp of the last activity processed to make the response (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="queries_QueryInsightsResponse_lowPerformingQueryInsights"
+  headingId="operation-insights+responses+200+application-json+queries+queryinsightsresponse+lowperformingqueryinsights"
+  parentId="queries_QueryInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+queries+queryinsightsresponse+lowperformingqueryinsights+queryinsight\">QueryInsight</a>","children":[{"label":"QueryInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+queries+queryinsightsresponse+lowperformingqueryinsights+queryinsight\">QueryInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lowPerformingQueryInsights \{#operation-insights+responses+200+application-json+queries+queryinsightsresponse+lowperformingqueryinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for queries.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="lowPerformingQueryInsights"
+  triggerText="View lowPerformingQueryInsights details"
+>
+
+<Embedlowperformingqueryinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="queries_QueryInsightsResponse_minVisitorThreshold"
+  headingId="operation-insights+responses+200+application-json+queries+queryinsightsresponse+minvisitorthreshold"
+  parentId="queries_QueryInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minVisitorThreshold \{#operation-insights+responses+200+application-json+queries+queryinsightsresponse+minvisitorthreshold\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Min threshold in number of visitors while populating results, otherwise 0.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="queries_QueryInsightsResponse_queryInsights"
+  headingId="operation-insights+responses+200+application-json+queries+queryinsightsresponse+queryinsights"
+  parentId="queries_QueryInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+queries+queryinsightsresponse+queryinsights+queryinsight\">QueryInsight</a>","children":[{"label":"QueryInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+queries+queryinsightsresponse+queryinsights+queryinsight\">QueryInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### queryInsights \{#operation-insights+responses+200+application-json+queries+queryinsightsresponse+queryinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for queries.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="queryInsights"
+  triggerText="View queryInsights details"
+>
+
+<Embedqueryinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="shortcuts"
+  headingId="operation-insights+responses+200+application-json+shortcuts"
+  typeInfo={{"label":"ShortcutInsightsResponse","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse\">ShortcutInsightsResponse</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### shortcuts \{#operation-insights+responses+200+application-json+shortcuts\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="shortcuts_ShortcutInsightsResponse"
+  headingId="operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse"
+  parentId="shortcuts"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ShortcutInsightsResponse \{#operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="shortcuts_ShortcutInsightsResponse_departments"
+  headingId="operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse+departments"
+  parentId="shortcuts_ShortcutInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of departments applicable for shortcuts tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="shortcuts_ShortcutInsightsResponse_lastLogTimestamp"
+  headingId="operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse+lastlogtimestamp"
+  parentId="shortcuts_ShortcutInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastLogTimestamp \{#operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse+lastlogtimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp of the last activity processed to make the response (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="shortcuts_ShortcutInsightsResponse_minVisitorThreshold"
+  headingId="operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse+minvisitorthreshold"
+  parentId="shortcuts_ShortcutInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### minVisitorThreshold \{#operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse+minvisitorthreshold\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Min threshold in number of visitors while populating results, otherwise 0.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="shortcuts_ShortcutInsightsResponse_shortcutInsights"
+  headingId="operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse+shortcutinsights"
+  parentId="shortcuts_ShortcutInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse+shortcutinsights+shortcutinsight\">ShortcutInsight</a>","children":[{"label":"ShortcutInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse+shortcutinsights+shortcutinsight\">ShortcutInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### shortcutInsights \{#operation-insights+responses+200+application-json+shortcuts+shortcutinsightsresponse+shortcutinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for shortcuts.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="shortcutInsights"
+  triggerText="View shortcutInsights details"
+>
+
+<Embedshortcutinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="timeseries"
+  headingId="operation-insights+responses+200+application-json+timeseries"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+timeseries+labeledcountinfo\">LabeledCountInfo</a>","children":[{"label":"LabeledCountInfo","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+timeseries+labeledcountinfo\">LabeledCountInfo</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timeseries \{#operation-insights+responses+200+application-json+timeseries\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of timeseries to make charts (if applicable).
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="timeseries_LabeledCountInfo"
+  headingId="operation-insights+responses+200+application-json+timeseries+labeledcountinfo"
+  parentId="timeseries"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### LabeledCountInfo \{#operation-insights+responses+200+application-json+timeseries+labeledcountinfo\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="timeseries_LabeledCountInfo_countInfo"
+  headingId="operation-insights+responses+200+application-json+timeseries+labeledcountinfo+countinfo"
+  parentId="timeseries_LabeledCountInfo"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+timeseries+labeledcountinfo+countinfo+countinfo\">CountInfo</a>","children":[{"label":"CountInfo","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+timeseries+labeledcountinfo+countinfo+countinfo\">CountInfo</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### countInfo \{#operation-insights+responses+200+application-json+timeseries+labeledcountinfo+countinfo\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Number of visitors to the document during included time periods.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="countInfo" triggerText="View countInfo details">
+
+<Embedcountinfo />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="timeseries_LabeledCountInfo_label"
+  headingId="operation-insights+responses+200+application-json+timeseries+labeledcountinfo+label"
+  parentId="timeseries_LabeledCountInfo"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### label \{#operation-insights+responses+200+application-json+timeseries+labeledcountinfo+label\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Label for the included count information.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="users"
+  headingId="operation-insights+responses+200+application-json+users"
+  typeInfo={{"label":"UserInsightsResponse","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+users+userinsightsresponse\">UserInsightsResponse</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### users \{#operation-insights+responses+200+application-json+users\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="users_UserInsightsResponse"
+  headingId="operation-insights+responses+200+application-json+users+userinsightsresponse"
+  parentId="users"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### UserInsightsResponse \{#operation-insights+responses+200+application-json+users+userinsightsresponse\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="users_UserInsightsResponse_activityInsights"
+  headingId="operation-insights+responses+200+application-json+users+userinsightsresponse+activityinsights"
+  parentId="users_UserInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+users+userinsightsresponse+activityinsights+useractivityinsight\">UserActivityInsight</a>","children":[{"label":"UserActivityInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+users+userinsightsresponse+activityinsights+useractivityinsight\">UserActivityInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### activityInsights \{#operation-insights+responses+200+application-json+users+userinsightsresponse+activityinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for all active users with respect to set of actions.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="activityInsights"
+  triggerText="View activityInsights details"
+>
+
+<Embedactivityinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="users_UserInsightsResponse_departments"
+  headingId="operation-insights+responses+200+application-json+users+userinsightsresponse+departments"
+  parentId="users_UserInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### departments \{#operation-insights+responses+200+application-json+users+userinsightsresponse+departments\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+list of departments applicable for users tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="users_UserInsightsResponse_inactiveInsights"
+  headingId="operation-insights+responses+200+application-json+users+userinsightsresponse+inactiveinsights"
+  parentId="users_UserInsightsResponse"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+users+userinsightsresponse+inactiveinsights+useractivityinsight\">UserActivityInsight</a>","children":[{"label":"UserActivityInsight","linkedLabel":"<a href=\"#operation-insights+responses+200+application-json+users+userinsightsresponse+inactiveinsights+useractivityinsight\">UserActivityInsight</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### inactiveInsights \{#operation-insights+responses+200+application-json+users+userinsightsresponse+inactiveinsights\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Insights for all active users with respect to set of actions.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="inactiveInsights"
+  triggerText="View inactiveInsights details"
+>
+
+<Embedinactiveinsights />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="users_UserInsightsResponse_lastLogTimestamp"
+  headingId="operation-insights+responses+200+application-json+users+userinsightsresponse+lastlogtimestamp"
+  parentId="users_UserInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### lastLogTimestamp \{#operation-insights+responses+200+application-json+users+userinsightsresponse+lastlogtimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unix timestamp of the last activity processed to make the response (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="users_UserInsightsResponse_totalActiveUsers"
+  headingId="operation-insights+responses+200+application-json+users+userinsightsresponse+totalactiveusers"
+  parentId="users_UserInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalActiveUsers \{#operation-insights+responses+200+application-json+users+userinsightsresponse+totalactiveusers\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of active users in the requested period.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="users_UserInsightsResponse_totalTeammates"
+  headingId="operation-insights+responses+200+application-json+users+userinsightsresponse+totalteammates"
+  parentId="users_UserInsightsResponse"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### totalTeammates \{#operation-insights+responses+200+application-json+users+userinsightsresponse+totalteammates\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Total number of teammates that have logged in to the product, that are still valid teammates.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>

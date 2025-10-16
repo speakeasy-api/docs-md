@@ -1,0 +1,3677 @@
+---
+sidebar_position: 3.23
+sidebar_label: Indexing Permissions
+---
+
+import "@speakeasy-api/docs-md-react/docusaurus.css";
+
+import {
+  CodeSample,
+  CodeSampleTab,
+  CodeSampleTabbedSection,
+  Embed,
+  EmbedProvider,
+  EmbedTrigger,
+  ExpandableBreakout,
+  ExpandableBreakoutDescription,
+  ExpandableBreakoutProperties,
+  ExpandableBreakoutTitle,
+  ExpandableProperty,
+  ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
+  ExpandablePropertyTitle,
+  ExpandableSection,
+  Operation,
+  OperationCodeSamplesSection,
+  OperationDescriptionSection,
+  OperationRequestBodyDescriptionSection,
+  OperationRequestBodyExamplesSection,
+  OperationRequestBodySection,
+  OperationSummarySection,
+  OperationTitleSection,
+  Pill,
+  Section,
+  SectionContent,
+  SectionTitle,
+  Tag,
+  TagTitle,
+  TryItNow
+} from "@speakeasy-api/docs-md-react";
+import Embedallowedgroupintersections from "../../../../../src/components/glean-embeds/loaders/allowedgroupintersections.tsx";
+import Embedallowedusers from "../../../../../src/components/glean-embeds/loaders/allowedusers.tsx";
+
+<EmbedProvider />
+
+<Tag slot="tag">
+
+<TagTitle slot="title">
+
+# Indexing Permissions Endpoints
+
+</TagTitle>
+
+</Tag>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /api/index/v1/updatepermissions \{#operation-post_api_index_v1_updatepermissions\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Update document permissions_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Updates the permissions for a given document without modifying document content.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_updatepermissions+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_updatepermissions+code-samples+typescript"
+>
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.permissions.updatePermissions({&NewLine;    datasource: &quot;&lt;value&gt;&quot;,&NewLine;    permissions: {},&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_updatepermissions+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_updatepermissions+code-samples+curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/updatepermissions \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "datasource": "ipsum eiusmod",
+  "permissions": {}
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-post_api_index_v1_updatepermissions+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "datasource": "ipsum eiusmod",
+  "permissions": {}
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-post_api_index_v1_updatepermissions+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Describes the request body of the /updatepermissions API call
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-post_api_index_v1_updatepermissions+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-post_api_index_v1_updatepermissions+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="id"
+  headingId="operation-post_api_index_v1_updatepermissions+request+id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-post_api_index_v1_updatepermissions+request+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource specific id for the document. This field is case insensitive and should not be more than 200 characters in length.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="objectType"
+  headingId="operation-post_api_index_v1_updatepermissions+request+objecttype"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### objectType \{#operation-post_api_index_v1_updatepermissions+request+objecttype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The type of the document (Case, KnowledgeArticle for Salesforce for example). It cannot have spaces or _
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="permissions"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions"
+  typeInfo={{"label":"DocumentPermissionsDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition\">DocumentPermissionsDefinition</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### permissions \{#operation-post_api_index_v1_updatepermissions+request+permissions\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+describes the access control details of the document
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="permissions_DocumentPermissionsDefinition"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition"
+  parentId="permissions"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DocumentPermissionsDefinition \{#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes the access control details of the document
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="permissions_DocumentPermissionsDefinition_allowAllDatasourceUsersAccess"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowalldatasourceusersaccess"
+  parentId="permissions_DocumentPermissionsDefinition"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### allowAllDatasourceUsersAccess \{#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowalldatasourceusersaccess\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+If true, then any user who has an account in the datasource can view the document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="permissions_DocumentPermissionsDefinition_allowAnonymousAccess"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowanonymousaccess"
+  parentId="permissions_DocumentPermissionsDefinition"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### allowAnonymousAccess \{#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowanonymousaccess\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+If true, then any Glean user can view the document
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="permissions_DocumentPermissionsDefinition_allowedGroupIntersections"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedgroupintersections"
+  parentId="permissions_DocumentPermissionsDefinition"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedgroupintersections+permissionsgroupintersectiondefinition\">PermissionsGroupIntersectionDefinition</a>","children":[{"label":"PermissionsGroupIntersectionDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedgroupintersections+permissionsgroupintersectiondefinition\">PermissionsGroupIntersectionDefinition</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### allowedGroupIntersections \{#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedgroupintersections\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of allowed group intersections. This describes a permissions constraint of the form ((GroupA AND GroupB AND GroupC) OR (GroupX AND GroupY) OR ...
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="allowedGroupIntersections"
+  triggerText="View allowedGroupIntersections details"
+>
+
+<Embedallowedgroupintersections />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="permissions_DocumentPermissionsDefinition_allowedGroups"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedgroups"
+  parentId="permissions_DocumentPermissionsDefinition"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### allowedGroups \{#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedgroups\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of groups that can view the document
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="permissions_DocumentPermissionsDefinition_allowedUsers"
+  headingId="operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedusers"
+  parentId="permissions_DocumentPermissionsDefinition"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedusers+userreferencedefinition\">UserReferenceDefinition</a>","children":[{"label":"UserReferenceDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedusers+userreferencedefinition\">UserReferenceDefinition</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### allowedUsers \{#operation-post_api_index_v1_updatepermissions+request+permissions+documentpermissionsdefinition+allowedusers\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of users who can view the document
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="allowedUsers"
+  triggerText="View allowedUsers details"
+>
+
+<Embedallowedusers />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="viewURL"
+  headingId="operation-post_api_index_v1_updatepermissions+request+viewurl"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### viewURL \{#operation-post_api_index_v1_updatepermissions+request+viewurl\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The permalink for viewing the document. **Note: viewURL is a required field if id was not set when uploading the document.**'
+
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /api/index/v1/indexuser \{#operation-post_api_index_v1_indexuser\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Index user_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Adds a datasource user or updates an existing user.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_indexuser+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_indexuser+code-samples+typescript"
+>
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.permissions.indexUser({&NewLine;    datasource: &quot;&lt;value&gt;&quot;,&NewLine;    user: {&NewLine;      email: &quot;Art.Schaden@hotmail.com&quot;,&NewLine;      name: &quot;&lt;value&gt;&quot;,&NewLine;    },&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_indexuser+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-post_api_index_v1_indexuser+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/indexuser \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "datasource": "ipsum eiusmod",
+  "user": {
+    "email": "consequat do",
+    "name": "reprehenderit ut dolore"
+  }
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-post_api_index_v1_indexuser+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "datasource": "ipsum eiusmod",
+  "user": {
+    "email": "consequat do",
+    "name": "reprehenderit ut dolore"
+  }
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-post_api_index_v1_indexuser+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Describes the request body of the /indexuser API call
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-post_api_index_v1_indexuser+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-post_api_index_v1_indexuser+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource for which the user is added
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="user"
+  headingId="operation-post_api_index_v1_indexuser+request+user"
+  typeInfo={{"label":"DatasourceUserDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition\">DatasourceUserDefinition</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### user \{#operation-post_api_index_v1_indexuser+request+user\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+describes a user in the datasource
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="user_DatasourceUserDefinition"
+  headingId="operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition"
+  parentId="user"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DatasourceUserDefinition \{#operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes a user in the datasource
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="user_DatasourceUserDefinition_email"
+  headingId="operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+email"
+  parentId="user_DatasourceUserDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### email \{#operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+email\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="user_DatasourceUserDefinition_isActive"
+  headingId="operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+isactive"
+  parentId="user_DatasourceUserDefinition"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### isActive \{#operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+isactive\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+set to false if the user is a former employee or a bot
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="user_DatasourceUserDefinition_name"
+  headingId="operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+name"
+  parentId="user_DatasourceUserDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+name\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="user_DatasourceUserDefinition_userId"
+  headingId="operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+userid"
+  parentId="user_DatasourceUserDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### userId \{#operation-post_api_index_v1_indexuser+request+user+datasourceuserdefinition+userid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+To be supplied if the user id in the datasource is not the email
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="version"
+  headingId="operation-post_api_index_v1_indexuser+request+version"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### version \{#operation-post_api_index_v1_indexuser+request+version\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Version number for document for optimistic concurrency control. If absent or 0 then no version checks are done.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /api/index/v1/bulkindexusers \{#operation-post_api_index_v1_bulkindexusers\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Bulk index users_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Replaces the users in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexusers+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexusers+code-samples+typescript"
+>
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.permissions.bulkIndexUsers({&NewLine;    uploadId: &quot;&lt;id&gt;&quot;,&NewLine;    datasource: &quot;&lt;value&gt;&quot;,&NewLine;    users: [&NewLine;      {&NewLine;        email: &quot;Ivory_Cummerata@hotmail.com&quot;,&NewLine;        name: &quot;&lt;value&gt;&quot;,&NewLine;      },&NewLine;      {&NewLine;        email: &quot;Ivory_Cummerata@hotmail.com&quot;,&NewLine;        name: &quot;&lt;value&gt;&quot;,&NewLine;      },&NewLine;      {&NewLine;        email: &quot;Ivory_Cummerata@hotmail.com&quot;,&NewLine;        name: &quot;&lt;value&gt;&quot;,&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexusers+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexusers+code-samples+curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/bulkindexusers \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "datasource": "ipsum eiusmod",
+  "uploadId": "consequat do",
+  "users": [
+    {
+      "email": "reprehenderit ut dolore",
+      "name": "occaecat dolor sit"
+    }
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-post_api_index_v1_bulkindexusers+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "datasource": "ipsum eiusmod",
+  "uploadId": "consequat do",
+  "users": [
+    {
+      "email": "reprehenderit ut dolore",
+      "name": "occaecat dolor sit"
+    }
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-post_api_index_v1_bulkindexusers+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Describes the request body for the /bulkindexusers API call
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-post_api_index_v1_bulkindexusers+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-post_api_index_v1_bulkindexusers+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+datasource of the users
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="disableStaleDataDeletionCheck"
+  headingId="operation-post_api_index_v1_bulkindexusers+request+disablestaledatadeletioncheck"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### disableStaleDataDeletionCheck \{#operation-post_api_index_v1_bulkindexusers+request+disablestaledatadeletioncheck\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+True if older user data needs to be force deleted after the upload completes. Defaults to older data being deleted only if the percentage of data being deleted is less than a reasonable threshold. This must only be set when `isLastPage = true`
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="forceRestartUpload"
+  headingId="operation-post_api_index_v1_bulkindexusers+request+forcerestartupload"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### forceRestartUpload \{#operation-post_api_index_v1_bulkindexusers+request+forcerestartupload\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Flag to discard previous upload attempts and start from scratch. Must be specified with isFirstPage=true
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="isFirstPage"
+  headingId="operation-post_api_index_v1_bulkindexusers+request+isfirstpage"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### isFirstPage \{#operation-post_api_index_v1_bulkindexusers+request+isfirstpage\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+true if this is the first page of the upload. Defaults to false
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="isLastPage"
+  headingId="operation-post_api_index_v1_bulkindexusers+request+islastpage"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### isLastPage \{#operation-post_api_index_v1_bulkindexusers+request+islastpage\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+true if this is the last page of the upload. Defaults to false
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="uploadId"
+  headingId="operation-post_api_index_v1_bulkindexusers+request+uploadid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### uploadId \{#operation-post_api_index_v1_bulkindexusers+request+uploadid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unique id that must be used for this instance of datasource users upload
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="users"
+  headingId="operation-post_api_index_v1_bulkindexusers+request+users"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition\">DatasourceUserDefinition</a>","children":[{"label":"DatasourceUserDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition\">DatasourceUserDefinition</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### users \{#operation-post_api_index_v1_bulkindexusers+request+users\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+batch of users for the datasource
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="users_DatasourceUserDefinition"
+  headingId="operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition"
+  parentId="users"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DatasourceUserDefinition \{#operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes a user in the datasource
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="users_DatasourceUserDefinition_email"
+  headingId="operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition+email"
+  parentId="users_DatasourceUserDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### email \{#operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition+email\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="users_DatasourceUserDefinition_isActive"
+  headingId="operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition+isactive"
+  parentId="users_DatasourceUserDefinition"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### isActive \{#operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition+isactive\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+set to false if the user is a former employee or a bot
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="users_DatasourceUserDefinition_name"
+  headingId="operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition+name"
+  parentId="users_DatasourceUserDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition+name\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="users_DatasourceUserDefinition_userId"
+  headingId="operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition+userid"
+  parentId="users_DatasourceUserDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### userId \{#operation-post_api_index_v1_bulkindexusers+request+users+datasourceuserdefinition+userid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+To be supplied if the user id in the datasource is not the email
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /api/index/v1/indexgroup \{#operation-post_api_index_v1_indexgroup\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Index group_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Add or update a group in the datasource.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_indexgroup+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_indexgroup+code-samples+typescript"
+>
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.permissions.indexGroup({&NewLine;    datasource: &quot;&lt;value&gt;&quot;,&NewLine;    group: {&NewLine;      name: &quot;&lt;value&gt;&quot;,&NewLine;    },&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_indexgroup+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-post_api_index_v1_indexgroup+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/indexgroup \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "datasource": "ipsum eiusmod",
+  "group": {
+    "name": "consequat do"
+  }
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-post_api_index_v1_indexgroup+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "datasource": "ipsum eiusmod",
+  "group": {
+    "name": "consequat do"
+  }
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-post_api_index_v1_indexgroup+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Describes the request body of the /indexgroup API call
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-post_api_index_v1_indexgroup+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-post_api_index_v1_indexgroup+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource for which the group is added
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="group"
+  headingId="operation-post_api_index_v1_indexgroup+request+group"
+  typeInfo={{"label":"DatasourceGroupDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_indexgroup+request+group+datasourcegroupdefinition\">DatasourceGroupDefinition</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### group \{#operation-post_api_index_v1_indexgroup+request+group\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+describes a group in the datasource
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="group_DatasourceGroupDefinition"
+  headingId="operation-post_api_index_v1_indexgroup+request+group+datasourcegroupdefinition"
+  parentId="group"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DatasourceGroupDefinition \{#operation-post_api_index_v1_indexgroup+request+group+datasourcegroupdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes a group in the datasource
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="group_DatasourceGroupDefinition_name"
+  headingId="operation-post_api_index_v1_indexgroup+request+group+datasourcegroupdefinition+name"
+  parentId="group_DatasourceGroupDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-post_api_index_v1_indexgroup+request+group+datasourcegroupdefinition+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+name of the group. Should be unique among all groups for the datasource, and cannot have spaces.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="version"
+  headingId="operation-post_api_index_v1_indexgroup+request+version"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### version \{#operation-post_api_index_v1_indexgroup+request+version\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Version number for document for optimistic concurrency control. If absent or 0 then no version checks are done.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /api/index/v1/bulkindexgroups \{#operation-post_api_index_v1_bulkindexgroups\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Bulk index groups_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Replaces the groups in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexgroups+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexgroups+code-samples+typescript"
+>
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.permissions.bulkIndexGroups({&NewLine;    uploadId: &quot;&lt;id&gt;&quot;,&NewLine;    datasource: &quot;&lt;value&gt;&quot;,&NewLine;    groups: [&NewLine;      {&NewLine;        name: &quot;&lt;value&gt;&quot;,&NewLine;      },&NewLine;      {&NewLine;        name: &quot;&lt;value&gt;&quot;,&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexgroups+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexgroups+code-samples+curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/bulkindexgroups \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "datasource": "ipsum eiusmod",
+  "groups": [
+    {
+      "name": "consequat do"
+    }
+  ],
+  "uploadId": "reprehenderit ut dolore"
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-post_api_index_v1_bulkindexgroups+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "datasource": "ipsum eiusmod",
+  "groups": [
+    {
+      "name": "consequat do"
+    }
+  ],
+  "uploadId": "reprehenderit ut dolore"
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-post_api_index_v1_bulkindexgroups+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Describes the request body for the /bulkindexgroups API call
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-post_api_index_v1_bulkindexgroups+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-post_api_index_v1_bulkindexgroups+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+datasource of the groups
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="disableStaleDataDeletionCheck"
+  headingId="operation-post_api_index_v1_bulkindexgroups+request+disablestaledatadeletioncheck"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### disableStaleDataDeletionCheck \{#operation-post_api_index_v1_bulkindexgroups+request+disablestaledatadeletioncheck\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+True if older group data needs to be force deleted after the upload completes. Defaults to older data being deleted only if the percentage of data being deleted is less than a reasonable threshold. This must only be set when `isLastPage = true`
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="forceRestartUpload"
+  headingId="operation-post_api_index_v1_bulkindexgroups+request+forcerestartupload"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### forceRestartUpload \{#operation-post_api_index_v1_bulkindexgroups+request+forcerestartupload\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Flag to discard previous upload attempts and start from scratch. Must be specified with isFirstPage=true
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="groups"
+  headingId="operation-post_api_index_v1_bulkindexgroups+request+groups"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-post_api_index_v1_bulkindexgroups+request+groups+datasourcegroupdefinition\">DatasourceGroupDefinition</a>","children":[{"label":"DatasourceGroupDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_bulkindexgroups+request+groups+datasourcegroupdefinition\">DatasourceGroupDefinition</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### groups \{#operation-post_api_index_v1_bulkindexgroups+request+groups\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+batch of groups for the datasource
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="groups_DatasourceGroupDefinition"
+  headingId="operation-post_api_index_v1_bulkindexgroups+request+groups+datasourcegroupdefinition"
+  parentId="groups"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DatasourceGroupDefinition \{#operation-post_api_index_v1_bulkindexgroups+request+groups+datasourcegroupdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes a group in the datasource
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="groups_DatasourceGroupDefinition_name"
+  headingId="operation-post_api_index_v1_bulkindexgroups+request+groups+datasourcegroupdefinition+name"
+  parentId="groups_DatasourceGroupDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-post_api_index_v1_bulkindexgroups+request+groups+datasourcegroupdefinition+name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+name of the group. Should be unique among all groups for the datasource, and cannot have spaces.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="isFirstPage"
+  headingId="operation-post_api_index_v1_bulkindexgroups+request+isfirstpage"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### isFirstPage \{#operation-post_api_index_v1_bulkindexgroups+request+isfirstpage\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+true if this is the first page of the upload. Defaults to false
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="isLastPage"
+  headingId="operation-post_api_index_v1_bulkindexgroups+request+islastpage"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### isLastPage \{#operation-post_api_index_v1_bulkindexgroups+request+islastpage\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+true if this is the last page of the upload. Defaults to false
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="uploadId"
+  headingId="operation-post_api_index_v1_bulkindexgroups+request+uploadid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### uploadId \{#operation-post_api_index_v1_bulkindexgroups+request+uploadid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unique id that must be used for this instance of datasource groups upload
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /api/index/v1/indexmembership \{#operation-post_api_index_v1_indexmembership\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Index membership_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Add the memberships of a group in the datasource.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_indexmembership+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_indexmembership+code-samples+typescript"
+>
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.permissions.indexMembership({&NewLine;    datasource: &quot;&lt;value&gt;&quot;,&NewLine;    membership: {&NewLine;      groupName: &quot;&lt;value&gt;&quot;,&NewLine;    },&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_indexmembership+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_indexmembership+code-samples+curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/indexmembership \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "datasource": "ipsum eiusmod",
+  "membership": {
+    "groupName": "consequat do"
+  }
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-post_api_index_v1_indexmembership+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "datasource": "ipsum eiusmod",
+  "membership": {
+    "groupName": "consequat do"
+  }
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-post_api_index_v1_indexmembership+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Describes the request body of the /indexmembership API call
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-post_api_index_v1_indexmembership+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-post_api_index_v1_indexmembership+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource for which the membership is added
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="membership"
+  headingId="operation-post_api_index_v1_indexmembership+request+membership"
+  typeInfo={{"label":"DatasourceMembershipDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition\">DatasourceMembershipDefinition</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### membership \{#operation-post_api_index_v1_indexmembership+request+membership\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+describes the membership row of a group. Only one of memberUserId and memberGroupName can be specified.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="membership_DatasourceMembershipDefinition"
+  headingId="operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition"
+  parentId="membership"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DatasourceMembershipDefinition \{#operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes the membership row of a group. Only one of memberUserId and memberGroupName can be specified.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="membership_DatasourceMembershipDefinition_groupName"
+  headingId="operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition+groupname"
+  parentId="membership_DatasourceMembershipDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### groupName \{#operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition+groupname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The group for which the membership is specified
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="membership_DatasourceMembershipDefinition_memberGroupName"
+  headingId="operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition+membergroupname"
+  parentId="membership_DatasourceMembershipDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### memberGroupName \{#operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition+membergroupname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+If the member is a group, then the name of the member group
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="membership_DatasourceMembershipDefinition_memberUserId"
+  headingId="operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition+memberuserid"
+  parentId="membership_DatasourceMembershipDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### memberUserId \{#operation-post_api_index_v1_indexmembership+request+membership+datasourcemembershipdefinition+memberuserid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+If the member is a user, then the email or datasource id for the user
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="version"
+  headingId="operation-post_api_index_v1_indexmembership+request+version"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### version \{#operation-post_api_index_v1_indexmembership+request+version\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Version number for document for optimistic concurrency control. If absent or 0 then no version checks are done.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /api/index/v1/bulkindexmemberships \{#operation-post_api_index_v1_bulkindexmemberships\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Bulk index memberships for a group_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Replaces the memberships for a group in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexmemberships+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexmemberships+code-samples+typescript"
+>
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.permissions.bulkIndexMemberships({&NewLine;    uploadId: &quot;&lt;id&gt;&quot;,&NewLine;    datasource: &quot;&lt;value&gt;&quot;,&NewLine;    memberships: [&NewLine;      {},&NewLine;      {},&NewLine;      {},&NewLine;    ],&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_bulkindexmemberships+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_bulkindexmemberships+code-samples+curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/bulkindexmemberships \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "datasource": "ipsum eiusmod",
+  "memberships": [
+    {}
+  ],
+  "uploadId": "consequat do"
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-post_api_index_v1_bulkindexmemberships+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "datasource": "ipsum eiusmod",
+  "memberships": [
+    {}
+  ],
+  "uploadId": "consequat do"
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-post_api_index_v1_bulkindexmemberships+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Describes the request body for the /bulkindexmemberships API call
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-post_api_index_v1_bulkindexmemberships+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-post_api_index_v1_bulkindexmemberships+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+datasource of the memberships
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="forceRestartUpload"
+  headingId="operation-post_api_index_v1_bulkindexmemberships+request+forcerestartupload"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### forceRestartUpload \{#operation-post_api_index_v1_bulkindexmemberships+request+forcerestartupload\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Flag to discard previous upload attempts and start from scratch. Must be specified with isFirstPage=true
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="group"
+  headingId="operation-post_api_index_v1_bulkindexmemberships+request+group"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### group \{#operation-post_api_index_v1_bulkindexmemberships+request+group\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+group who's memberships are specified
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="isFirstPage"
+  headingId="operation-post_api_index_v1_bulkindexmemberships+request+isfirstpage"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### isFirstPage \{#operation-post_api_index_v1_bulkindexmemberships+request+isfirstpage\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+true if this is the first page of the upload. Defaults to false
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="isLastPage"
+  headingId="operation-post_api_index_v1_bulkindexmemberships+request+islastpage"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### isLastPage \{#operation-post_api_index_v1_bulkindexmemberships+request+islastpage\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+true if this is the last page of the upload. Defaults to false
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="memberships"
+  headingId="operation-post_api_index_v1_bulkindexmemberships+request+memberships"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-post_api_index_v1_bulkindexmemberships+request+memberships+datasourcebulkmembershipdefinition\">DatasourceBulkMembershipDefinition</a>","children":[{"label":"DatasourceBulkMembershipDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_bulkindexmemberships+request+memberships+datasourcebulkmembershipdefinition\">DatasourceBulkMembershipDefinition</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### memberships \{#operation-post_api_index_v1_bulkindexmemberships+request+memberships\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+batch of memberships for the group
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="memberships_DatasourceBulkMembershipDefinition"
+  headingId="operation-post_api_index_v1_bulkindexmemberships+request+memberships+datasourcebulkmembershipdefinition"
+  parentId="memberships"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DatasourceBulkMembershipDefinition \{#operation-post_api_index_v1_bulkindexmemberships+request+memberships+datasourcebulkmembershipdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes the membership row of a group in the bulk uploaded. Only one of memberUserId and memberGroupName can be specified.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="memberships_DatasourceBulkMembershipDefinition_memberGroupName"
+  headingId="operation-post_api_index_v1_bulkindexmemberships+request+memberships+datasourcebulkmembershipdefinition+membergroupname"
+  parentId="memberships_DatasourceBulkMembershipDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### memberGroupName \{#operation-post_api_index_v1_bulkindexmemberships+request+memberships+datasourcebulkmembershipdefinition+membergroupname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+If the member is a group, then the name of the member group
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="memberships_DatasourceBulkMembershipDefinition_memberUserId"
+  headingId="operation-post_api_index_v1_bulkindexmemberships+request+memberships+datasourcebulkmembershipdefinition+memberuserid"
+  parentId="memberships_DatasourceBulkMembershipDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### memberUserId \{#operation-post_api_index_v1_bulkindexmemberships+request+memberships+datasourcebulkmembershipdefinition+memberuserid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+If the member is a user, then the email or datasource id for the user
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="uploadId"
+  headingId="operation-post_api_index_v1_bulkindexmemberships+request+uploadid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### uploadId \{#operation-post_api_index_v1_bulkindexmemberships+request+uploadid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Unique id that must be used for this instance of datasource group memberships upload
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /api/index/v1/processallmemberships \{#operation-post_api_index_v1_processallmemberships\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Schedules the processing of group memberships_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Schedules the immediate processing of all group memberships uploaded through the indexing API. By default the uploaded group memberships will be processed asynchronously but this API can be used to schedule processing of all memberships on demand.
+
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_processallmemberships+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_processallmemberships+code-samples+typescript"
+>
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.permissions.processMemberships();&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_processallmemberships+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_processallmemberships+code-samples+curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/processallmemberships \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-post_api_index_v1_processallmemberships+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-post_api_index_v1_processallmemberships+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Describes the request body of the /processallmemberships API call
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-post_api_index_v1_processallmemberships+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-post_api_index_v1_processallmemberships+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+If provided, process group memberships only for this custom datasource. Otherwise all uploaded memberships are processed.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /api/index/v1/deleteuser \{#operation-post_api_index_v1_deleteuser\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Delete user_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Delete the user from the datasource. Silently succeeds if user is not present.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_deleteuser+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_deleteuser+code-samples+typescript"
+>
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.permissions.deleteUser({&NewLine;    datasource: &quot;&lt;value&gt;&quot;,&NewLine;    email: &quot;Ed.Johnston@gmail.com&quot;,&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_deleteuser+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-post_api_index_v1_deleteuser+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/deleteuser \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "datasource": "ipsum eiusmod",
+  "email": "consequat do"
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-post_api_index_v1_deleteuser+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "datasource": "ipsum eiusmod",
+  "email": "consequat do"
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-post_api_index_v1_deleteuser+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Describes the request body of the /deleteuser API call
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-post_api_index_v1_deleteuser+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-post_api_index_v1_deleteuser+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource for which the user is removed
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="email"
+  headingId="operation-post_api_index_v1_deleteuser+request+email"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### email \{#operation-post_api_index_v1_deleteuser+request+email\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The email of the user to be deleted
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="version"
+  headingId="operation-post_api_index_v1_deleteuser+request+version"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### version \{#operation-post_api_index_v1_deleteuser+request+version\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Version number for document for optimistic concurrency control. If absent or 0 then no version checks are done.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /api/index/v1/deletegroup \{#operation-post_api_index_v1_deletegroup\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Delete group_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Delete group from the datasource. Silently succeeds if group is not present.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_deletegroup+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_deletegroup+code-samples+typescript"
+>
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.permissions.deleteGroup({&NewLine;    datasource: &quot;&lt;value&gt;&quot;,&NewLine;    groupName: &quot;&lt;value&gt;&quot;,&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_deletegroup+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-post_api_index_v1_deletegroup+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/deletegroup \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "datasource": "ipsum eiusmod",
+  "groupName": "consequat do"
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-post_api_index_v1_deletegroup+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "datasource": "ipsum eiusmod",
+  "groupName": "consequat do"
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-post_api_index_v1_deletegroup+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Describes the request body of the /deletegroup API call
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-post_api_index_v1_deletegroup+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-post_api_index_v1_deletegroup+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource for which the group is removed
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="groupName"
+  headingId="operation-post_api_index_v1_deletegroup+request+groupname"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### groupName \{#operation-post_api_index_v1_deletegroup+request+groupname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+the name of the group to be deleted
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="version"
+  headingId="operation-post_api_index_v1_deletegroup+request+version"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### version \{#operation-post_api_index_v1_deletegroup+request+version\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Version number for document for optimistic concurrency control. If absent or 0 then no version checks are done.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /api/index/v1/deletemembership \{#operation-post_api_index_v1_deletemembership\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Delete membership_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Delete membership to a group in the specified datasource. Silently succeeds if membership is not present.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_deletemembership+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_deletemembership+code-samples+typescript"
+>
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.permissions.deleteMembership({&NewLine;    datasource: &quot;&lt;value&gt;&quot;,&NewLine;    membership: {&NewLine;      groupName: &quot;&lt;value&gt;&quot;,&NewLine;    },&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_deletemembership+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_deletemembership+code-samples+curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/deletemembership \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "datasource": "ipsum eiusmod",
+  "membership": {
+    "groupName": "consequat do"
+  }
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-post_api_index_v1_deletemembership+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "datasource": "ipsum eiusmod",
+  "membership": {
+    "groupName": "consequat do"
+  }
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-post_api_index_v1_deletemembership+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Describes the request body of the /deletemembership API call
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-post_api_index_v1_deletemembership+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-post_api_index_v1_deletemembership+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource for which the membership is removed
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="membership"
+  headingId="operation-post_api_index_v1_deletemembership+request+membership"
+  typeInfo={{"label":"DatasourceMembershipDefinition","linkedLabel":"<a href=\"#operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition\">DatasourceMembershipDefinition</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### membership \{#operation-post_api_index_v1_deletemembership+request+membership\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+describes the membership row of a group. Only one of memberUserId and memberGroupName can be specified.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="membership_DatasourceMembershipDefinition"
+  headingId="operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition"
+  parentId="membership"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### DatasourceMembershipDefinition \{#operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+describes the membership row of a group. Only one of memberUserId and memberGroupName can be specified.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="membership_DatasourceMembershipDefinition_groupName"
+  headingId="operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition+groupname"
+  parentId="membership_DatasourceMembershipDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### groupName \{#operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition+groupname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The group for which the membership is specified
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="membership_DatasourceMembershipDefinition_memberGroupName"
+  headingId="operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition+membergroupname"
+  parentId="membership_DatasourceMembershipDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### memberGroupName \{#operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition+membergroupname\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+If the member is a group, then the name of the member group
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="membership_DatasourceMembershipDefinition_memberUserId"
+  headingId="operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition+memberuserid"
+  parentId="membership_DatasourceMembershipDefinition"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### memberUserId \{#operation-post_api_index_v1_deletemembership+request+membership+datasourcemembershipdefinition+memberuserid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+If the member is a user, then the email or datasource id for the user
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="version"
+  headingId="operation-post_api_index_v1_deletemembership+request+version"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### version \{#operation-post_api_index_v1_deletemembership+request+version\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Version number for document for optimistic concurrency control. If absent or 0 then no version checks are done.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /api/index/v1/betausers \{#operation-post_api_index_v1_betausers\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Beta users_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Allow the datasource be visible to the specified beta users. The default behaviour is datasource being visible to all users if it is enabled and not visible to any user if it is not enabled.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_betausers+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-post_api_index_v1_betausers+code-samples+typescript"
+>
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  await glean.indexing.permissions.authorizeBetaUsers({&NewLine;    datasource: &quot;&lt;value&gt;&quot;,&NewLine;    emails: [&NewLine;      &quot;Neil92@gmail.com&quot;,&NewLine;      &quot;Alejandrin_Boyer4@hotmail.com&quot;,&NewLine;      &quot;Shyanne_McLaughlin95@hotmail.com&quot;,&NewLine;    ],&NewLine;  });&NewLine;&NewLine;&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-post_api_index_v1_betausers+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-post_api_index_v1_betausers+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/api/index/v1/betausers \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "datasource": "ipsum eiusmod",
+  "emails": [
+    "consequat do"
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-post_api_index_v1_betausers+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "datasource": "ipsum eiusmod",
+  "emails": [
+    "consequat do"
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-post_api_index_v1_betausers+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Describes the request body of the /betausers API call
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasource"
+  headingId="operation-post_api_index_v1_betausers+request+datasource"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-post_api_index_v1_betausers+request+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Datasource which needs to be made visible to users specified in the `emails` field.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="emails"
+  headingId="operation-post_api_index_v1_betausers+request+emails"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### emails \{#operation-post_api_index_v1_betausers+request+emails\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The emails of the beta users
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+</Operation>

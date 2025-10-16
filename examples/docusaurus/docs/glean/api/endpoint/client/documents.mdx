@@ -1,0 +1,2133 @@
+---
+sidebar_position: 3.7
+sidebar_label: Client Documents
+---
+
+import "@speakeasy-api/docs-md-react/docusaurus.css";
+
+import {
+  CodeSample,
+  CodeSampleTab,
+  CodeSampleTabbedSection,
+  Embed,
+  EmbedProvider,
+  EmbedTrigger,
+  ExpandableBreakout,
+  ExpandableBreakoutDescription,
+  ExpandableBreakoutProperties,
+  ExpandableBreakoutTitle,
+  ExpandableProperty,
+  ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
+  ExpandablePropertyTitle,
+  ExpandableSection,
+  Operation,
+  OperationCodeSamplesSection,
+  OperationDescriptionSection,
+  OperationRequestBodyDescriptionSection,
+  OperationRequestBodyExamplesSection,
+  OperationRequestBodySection,
+  OperationResponseBodyDescriptionSection,
+  OperationResponseBodyExamplesSection,
+  OperationResponseBodySection,
+  OperationSummarySection,
+  OperationTitleSection,
+  Pill,
+  ResponseExamplesTab,
+  ResponseExamplesTabbedSection,
+  ResponseTab,
+  ResponseTabbedSection,
+  Section,
+  SectionContent,
+  SectionTitle,
+  Tag,
+  TagTitle,
+  TryItNow
+} from "@speakeasy-api/docs-md-react";
+import Embedcontainerdocument from "../../../../../src/components/glean-embeds/loaders/containerdocument.tsx";
+import Embedcontent from "../../../../../src/components/glean-embeds/loaders/content.tsx";
+import Embedmetadata from "../../../../../src/components/glean-embeds/loaders/metadata.tsx";
+import Embedparentdocument from "../../../../../src/components/glean-embeds/loaders/parentdocument.tsx";
+import Embedsections from "../../../../../src/components/glean-embeds/loaders/sections.tsx";
+import Embedfilters from "../../../../../src/components/glean-embeds/loaders/filters.tsx";
+
+<EmbedProvider />
+
+<Tag slot="tag">
+
+<TagTitle slot="title">
+
+# Client Documents Endpoints
+
+</TagTitle>
+
+</Tag>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/getdocpermissions \{#operation-getdocpermissions\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Read document permissions_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Read the emails of all users who have access to the given document.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-getdocpermissions+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-getdocpermissions+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.documents.retrievePermissions({});&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-getdocpermissions+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-getdocpermissions+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/getdocpermissions \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-getdocpermissions+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-getdocpermissions+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Document permissions request
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="documentId"
+  headingId="operation-getdocpermissions+request+documentid"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentId \{#operation-getdocpermissions+request+documentid\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The Glean Document ID to retrieve permissions for.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-getdocpermissions+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-getdocpermissions+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-getdocpermissions+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-getdocpermissions+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-getdocpermissions+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-getdocpermissions+responses+200+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="allowedUserEmails"
+  headingId="operation-getdocpermissions+responses+200+application-json+alloweduseremails"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### allowedUserEmails \{#operation-getdocpermissions+responses+200+application-json+alloweduseremails\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of emails of users who have access to the document. If the document is visible to all Glean users, a list with only a single value of 'VISIBLE_TO_ALL'.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/getdocuments \{#operation-getdocuments\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Read documents_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Read the documents including metadata (does not include enhanced metadata via `/documentmetadata`) for the given list of Glean Document IDs or URLs specified in the request.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-getdocuments+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-getdocuments+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.documents.retrieve();&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-getdocuments+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-getdocuments+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/getdocuments \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "documentSpecs": [
+    {
+      "url": "ipsum eiusmod"
+    }
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-getdocuments+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "documentSpecs": [
+    {
+      "url": "ipsum eiusmod"
+    }
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-getdocuments+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Information about documents requested.
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="documentSpecs"
+  headingId="operation-getdocuments+request+documentspecs"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentSpecs \{#operation-getdocuments+request+documentspecs\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Specifications for containers that should be used as part of the restriction (include/exclude). Memberships are recursively defined for a subset of datasources (currently: SharePoint, OneDrive, Google Drive, and Confluence). Please contact the Glean team to enable this for more datasources. Recursive memberships do not apply for Collections.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="includeFields"
+  headingId="operation-getdocuments+request+includefields"
+  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"LAST_VIEWED_AT\"","linkedLabel":"\"LAST_VIEWED_AT\"","children":[],"breakoutSubTypes":{}},{"label":"\"VISITORS_COUNT\"","linkedLabel":"\"VISITORS_COUNT\"","children":[],"breakoutSubTypes":{}},{"label":"\"RECENT_SHARES\"","linkedLabel":"\"RECENT_SHARES\"","children":[],"breakoutSubTypes":{}},{"label":"\"DOCUMENT_CONTENT\"","linkedLabel":"\"DOCUMENT_CONTENT\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### includeFields \{#operation-getdocuments+request+includefields\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of Document fields to return (that aren't returned by default)
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-getdocuments+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-getdocuments+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-getdocuments+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-getdocuments+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-getdocuments+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-getdocuments+responses+200+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents"
+  headingId="operation-getdocuments+responses+200+application-json+documents"
+  typeInfo={{"label":"map","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"Document","linkedLabel":"<a href=\"#operation-getdocuments+responses+200+application-json+documents+document\">Document</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documents \{#operation-getdocuments+responses+200+application-json+documents\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The document details or the error if document is not found.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="documents_Document"
+  headingId="operation-getdocuments+responses+200+application-json+documents+document"
+  parentId="documents"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Document \{#operation-getdocuments+responses+200+application-json+documents+document\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_connectorType"
+  headingId="operation-getdocuments+responses+200+application-json+documents+document+connectortype"
+  parentId="documents_Document"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"API_CRAWL\"","linkedLabel":"\"API_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"BROWSER_CRAWL\"","linkedLabel":"\"BROWSER_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"BROWSER_HISTORY\"","linkedLabel":"\"BROWSER_HISTORY\"","children":[],"breakoutSubTypes":{}},{"label":"\"BUILTIN\"","linkedLabel":"\"BUILTIN\"","children":[],"breakoutSubTypes":{}},{"label":"\"FEDERATED_SEARCH\"","linkedLabel":"\"FEDERATED_SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"PUSH_API\"","linkedLabel":"\"PUSH_API\"","children":[],"breakoutSubTypes":{}},{"label":"\"WEB_CRAWL\"","linkedLabel":"\"WEB_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"NATIVE_HISTORY\"","linkedLabel":"\"NATIVE_HISTORY\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### connectorType \{#operation-getdocuments+responses+200+application-json+documents+document+connectortype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The source from which document content was pulled, e.g. an API crawl or browser history
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_containerDocument"
+  headingId="operation-getdocuments+responses+200+application-json+documents+document+containerdocument"
+  parentId="documents_Document"
+  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-getdocuments+responses+200+application-json+documents+document+containerdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### containerDocument \{#operation-getdocuments+responses+200+application-json+documents+document+containerdocument\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="containerDocument"
+  triggerText="View containerDocument details"
+>
+
+<Embedcontainerdocument />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_content"
+  headingId="operation-getdocuments+responses+200+application-json+documents+document+content"
+  parentId="documents_Document"
+  typeInfo={{"label":"DocumentContent","linkedLabel":"<a href=\"#operation-getdocuments+responses+200+application-json+documents+document+content+documentcontent\">DocumentContent</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### content \{#operation-getdocuments+responses+200+application-json+documents+document+content\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="content" triggerText="View content details">
+
+<Embedcontent />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_datasource"
+  headingId="operation-getdocuments+responses+200+application-json+documents+document+datasource"
+  parentId="documents_Document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-getdocuments+responses+200+application-json+documents+document+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The app or other repository type from which the document was extracted
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_docType"
+  headingId="operation-getdocuments+responses+200+application-json+documents+document+doctype"
+  parentId="documents_Document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### docType \{#operation-getdocuments+responses+200+application-json+documents+document+doctype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource-specific type of the document (e.g. for Jira issues, this is the issue type such as Bug or Feature Request).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_id"
+  headingId="operation-getdocuments+responses+200+application-json+documents+document+id"
+  parentId="documents_Document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-getdocuments+responses+200+application-json+documents+document+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The Glean Document ID.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_metadata"
+  headingId="operation-getdocuments+responses+200+application-json+documents+document+metadata"
+  parentId="documents_Document"
+  typeInfo={{"label":"DocumentMetadata","linkedLabel":"<a href=\"#operation-getdocuments+responses+200+application-json+documents+document+metadata+documentmetadata\">DocumentMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#operation-getdocuments+responses+200+application-json+documents+document+metadata\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
+
+<Embedmetadata />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_parentDocument"
+  headingId="operation-getdocuments+responses+200+application-json+documents+document+parentdocument"
+  parentId="documents_Document"
+  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-getdocuments+responses+200+application-json+documents+document+parentdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### parentDocument \{#operation-getdocuments+responses+200+application-json+documents+document+parentdocument\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="parentDocument"
+  triggerText="View parentDocument details"
+>
+
+<Embedparentdocument />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_sections"
+  headingId="operation-getdocuments+responses+200+application-json+documents+document+sections"
+  parentId="documents_Document"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-getdocuments+responses+200+application-json+documents+document+sections+documentsection\">DocumentSection</a>","children":[{"label":"DocumentSection","linkedLabel":"<a href=\"#operation-getdocuments+responses+200+application-json+documents+document+sections+documentsection\">DocumentSection</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sections \{#operation-getdocuments+responses+200+application-json+documents+document+sections\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of content sub-sections in the document, e.g. text blocks with different headings in a Drive doc or Confluence page.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="sections" triggerText="View sections details">
+
+<Embedsections />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_title"
+  headingId="operation-getdocuments+responses+200+application-json+documents+document+title"
+  parentId="documents_Document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### title \{#operation-getdocuments+responses+200+application-json+documents+document+title\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The title of the document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_url"
+  headingId="operation-getdocuments+responses+200+application-json+documents+document+url"
+  parentId="documents_Document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-getdocuments+responses+200+application-json+documents+document+url\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A permalink for the document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/getdocumentsbyfacets \{#operation-getdocumentsbyfacets\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Read documents by facets_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Read the documents including metadata (does not include enhanced metadata via `/documentmetadata`) macthing the given facet conditions.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-getdocumentsbyfacets+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-getdocumentsbyfacets+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.documents.retrieveByFacets({&NewLine;    filterSets: [&NewLine;      {&NewLine;        filters: [&NewLine;          {&NewLine;            fieldName: &quot;type&quot;,&NewLine;            values: [&NewLine;              {&NewLine;                value: &quot;Spreadsheet&quot;,&NewLine;                relationType: &quot;EQUALS&quot;,&NewLine;              },&NewLine;              {&NewLine;                value: &quot;Presentation&quot;,&NewLine;                relationType: &quot;EQUALS&quot;,&NewLine;              },&NewLine;            ],&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;      {&NewLine;        filters: [&NewLine;          {&NewLine;            fieldName: &quot;type&quot;,&NewLine;            values: [&NewLine;              {&NewLine;                value: &quot;Spreadsheet&quot;,&NewLine;                relationType: &quot;EQUALS&quot;,&NewLine;              },&NewLine;              {&NewLine;                value: &quot;Presentation&quot;,&NewLine;                relationType: &quot;EQUALS&quot;,&NewLine;              },&NewLine;            ],&NewLine;          },&NewLine;        ],&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-getdocumentsbyfacets+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-getdocumentsbyfacets+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/getdocumentsbyfacets \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "filterSets": [
+    {}
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-getdocumentsbyfacets+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "filterSets": [
+    {}
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-getdocumentsbyfacets+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Information about facet conditions for documents to be retrieved.
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="cursor"
+  headingId="operation-getdocumentsbyfacets+request+cursor"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### cursor \{#operation-getdocumentsbyfacets+request+cursor\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Pagination cursor. A previously received opaque token representing the position in the overall results at which to start.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="datasourcesFilter"
+  headingId="operation-getdocumentsbyfacets+request+datasourcesfilter"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasourcesFilter \{#operation-getdocumentsbyfacets+request+datasourcesfilter\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Filter results to one or more datasources (e.g. gmail, slack). All results are returned if missing.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="filterSets"
+  headingId="operation-getdocumentsbyfacets+request+filtersets"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-getdocumentsbyfacets+request+filtersets+facetfilterset\">FacetFilterSet</a>","children":[{"label":"FacetFilterSet","linkedLabel":"<a href=\"#operation-getdocumentsbyfacets+request+filtersets+facetfilterset\">FacetFilterSet</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### filterSets \{#operation-getdocumentsbyfacets+request+filtersets\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of facet filter sets that will be OR'ed together. SearchRequestOptions where both facetFilterSets and facetFilters set are considered as bad request. Callers should set only one of these fields.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="filterSets_FacetFilterSet"
+  headingId="operation-getdocumentsbyfacets+request+filtersets+facetfilterset"
+  parentId="filterSets"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### FacetFilterSet \{#operation-getdocumentsbyfacets+request+filtersets+facetfilterset\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutDescription slot="description">
+
+Within a single FacetFilterSet, the filters are treated as AND. For example, owner Sumeet and type Spreadsheet shows documents that are by Sumeet AND are Spreadsheets.
+
+</ExpandableBreakoutDescription>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="filterSets_FacetFilterSet_filters"
+  headingId="operation-getdocumentsbyfacets+request+filtersets+facetfilterset+filters"
+  parentId="filterSets_FacetFilterSet"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-getdocumentsbyfacets+request+filtersets+facetfilterset+filters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-getdocumentsbyfacets+request+filtersets+facetfilterset+filters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### filters \{#operation-getdocumentsbyfacets+request+filtersets+facetfilterset+filters\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of filters for the query. An AND is assumed between different facetFilters. For example, owner Sumeet and type Spreadsheet shows documents that are by Sumeet AND are Spreadsheets.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="filters" triggerText="View filters details">
+
+<Embedfilters />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-getdocumentsbyfacets+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-getdocumentsbyfacets+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent
+  slot="content"
+  id="operation-getdocumentsbyfacets+responses+200+application-json"
+>
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-getdocumentsbyfacets+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-getdocumentsbyfacets+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-getdocumentsbyfacets+responses+200+application-json"
+>
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="cursor"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+cursor"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### cursor \{#operation-getdocumentsbyfacets+responses+200+application-json+cursor\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Cursor that indicates the start of the next page of results. To be passed in "more" requests for this query.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-getdocumentsbyfacets+responses+200+application-json+documents+document\">Document</a>","children":[{"label":"Document","linkedLabel":"<a href=\"#operation-getdocumentsbyfacets+responses+200+application-json+documents+document\">Document</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documents \{#operation-getdocumentsbyfacets+responses+200+application-json+documents\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A truncated list of documents with this relation. TO BE DEPRECATED.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="documents_Document"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents+document"
+  parentId="documents"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Document \{#operation-getdocumentsbyfacets+responses+200+application-json+documents+document\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_connectorType"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents+document+connectortype"
+  parentId="documents_Document"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"API_CRAWL\"","linkedLabel":"\"API_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"BROWSER_CRAWL\"","linkedLabel":"\"BROWSER_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"BROWSER_HISTORY\"","linkedLabel":"\"BROWSER_HISTORY\"","children":[],"breakoutSubTypes":{}},{"label":"\"BUILTIN\"","linkedLabel":"\"BUILTIN\"","children":[],"breakoutSubTypes":{}},{"label":"\"FEDERATED_SEARCH\"","linkedLabel":"\"FEDERATED_SEARCH\"","children":[],"breakoutSubTypes":{}},{"label":"\"PUSH_API\"","linkedLabel":"\"PUSH_API\"","children":[],"breakoutSubTypes":{}},{"label":"\"WEB_CRAWL\"","linkedLabel":"\"WEB_CRAWL\"","children":[],"breakoutSubTypes":{}},{"label":"\"NATIVE_HISTORY\"","linkedLabel":"\"NATIVE_HISTORY\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### connectorType \{#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+connectortype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The source from which document content was pulled, e.g. an API crawl or browser history
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_containerDocument"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents+document+containerdocument"
+  parentId="documents_Document"
+  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+containerdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### containerDocument \{#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+containerdocument\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="containerDocument"
+  triggerText="View containerDocument details"
+>
+
+<Embedcontainerdocument />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_content"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents+document+content"
+  parentId="documents_Document"
+  typeInfo={{"label":"DocumentContent","linkedLabel":"<a href=\"#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+content+documentcontent\">DocumentContent</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### content \{#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+content\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="content" triggerText="View content details">
+
+<Embedcontent />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_datasource"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents+document+datasource"
+  parentId="documents_Document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The app or other repository type from which the document was extracted
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_docType"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents+document+doctype"
+  parentId="documents_Document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### docType \{#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+doctype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource-specific type of the document (e.g. for Jira issues, this is the issue type such as Bug or Feature Request).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_id"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents+document+id"
+  parentId="documents_Document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The Glean Document ID.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_metadata"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents+document+metadata"
+  parentId="documents_Document"
+  typeInfo={{"label":"DocumentMetadata","linkedLabel":"<a href=\"#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+metadata+documentmetadata\">DocumentMetadata</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### metadata \{#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+metadata\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="metadata" triggerText="View metadata details">
+
+<Embedmetadata />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_parentDocument"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents+document+parentdocument"
+  parentId="documents_Document"
+  typeInfo={{"label":"Document","linkedLabel":"<a href=\"#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+parentdocument+document\">Document</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### parentDocument \{#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+parentdocument\}
+
+</ExpandablePropertyTitle>
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="parentDocument"
+  triggerText="View parentDocument details"
+>
+
+<Embedparentdocument />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_sections"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents+document+sections"
+  parentId="documents_Document"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+sections+documentsection\">DocumentSection</a>","children":[{"label":"DocumentSection","linkedLabel":"<a href=\"#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+sections+documentsection\">DocumentSection</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### sections \{#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+sections\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A list of content sub-sections in the document, e.g. text blocks with different headings in a Drive doc or Confluence page.
+
+</ExpandablePropertyDescription>
+
+<Embed slot="embed">
+
+<EmbedTrigger slot="trigger" embedTitle="sections" triggerText="View sections details">
+
+<Embedsections />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_title"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents+document+title"
+  parentId="documents_Document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### title \{#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+title\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The title of the document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="documents_Document_url"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+documents+document+url"
+  parentId="documents_Document"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-getdocumentsbyfacets+responses+200+application-json+documents+document+url\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+A permalink for the document.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="hasMoreResults"
+  headingId="operation-getdocumentsbyfacets+responses+200+application-json+hasmoreresults"
+  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### hasMoreResults \{#operation-getdocumentsbyfacets+responses+200+application-json+hasmoreresults\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Whether more results are available. Use cursor to retrieve them.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>POST</b></Pill> /rest/api/v1/summarize \{#operation-summarize\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Summarize documents_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Generate an AI summary of the requested documents.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-summarize+code-samples+typescript"
+  tags={{"codeSample":"typescript"}}
+>
+
+TypeScript
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-summarize+code-samples+typescript">
+
+<TryItNow
+  dependencyUrlPrefix="/glean-try-it-now"
+  defaultValue="import { Glean } from &quot;@gleanwork/api-client&quot;;&NewLine;&NewLine;const glean = new Glean({&NewLine;  apiToken: &quot;GLEAN_API_TOKEN&quot;,&NewLine;});&NewLine;&NewLine;async function run() {&NewLine;  const result = await glean.client.documents.summarize({&NewLine;    documentSpecs: [&NewLine;      {&NewLine;        ugcType: &quot;CHATS&quot;,&NewLine;        ugcId: &quot;&lt;id&gt;&quot;,&NewLine;      },&NewLine;      {&NewLine;        ugcType: &quot;CHATS&quot;,&NewLine;        ugcId: &quot;&lt;id&gt;&quot;,&NewLine;      },&NewLine;      {&NewLine;        id: &quot;&lt;id&gt;&quot;,&NewLine;      },&NewLine;    ],&NewLine;  });&NewLine;&NewLine;  console.log(result);&NewLine;}&NewLine;&NewLine;run();&NewLine;"
+  packageName="@gleanwork/api-client"
+/>
+
+</SectionContent>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-summarize+code-samples+curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-summarize+code-samples+curl">
+
+<CodeSample>
+
+```curl
+curl https://{instance}-be.glean.com/rest/api/v1/summarize \
+ -X POST \
+ -H 'Authorization: Bearer YOUR_APITOKEN_HERE' \
+ -d '{
+  "documentSpecs": [
+    {
+      "url": "ipsum eiusmod"
+    }
+  ]
+}'
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationRequestBodyExamplesSection slot="request-body-examples">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Example \{#operation-summarize+request-examples\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+```json
+{
+  "documentSpecs": [
+    {
+      "url": "ipsum eiusmod"
+    }
+  ]
+}
+```
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodyExamplesSection>
+
+<OperationRequestBodySection slot="request-body">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Request Body \{#operation-summarize+request\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<OperationRequestBodyDescriptionSection slot="request-body-description">
+
+Includes request params such as the query and specs of the documents to summarize.
+
+</OperationRequestBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="documentSpecs"
+  headingId="operation-summarize+request+documentspecs"
+  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### documentSpecs \{#operation-summarize+request+documentspecs\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Specifications for containers that should be used as part of the restriction (include/exclude). Memberships are recursively defined for a subset of datasources (currently: SharePoint, OneDrive, Google Drive, and Confluence). Please contact the Glean team to enable this for more datasources. Recursive memberships do not apply for Collections.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="preferredSummaryLength"
+  headingId="operation-summarize+request+preferredsummarylength"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### preferredSummaryLength \{#operation-summarize+request+preferredsummarylength\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Optional length of summary output. If not given, defaults to 500 chars.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="query"
+  headingId="operation-summarize+request+query"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### query \{#operation-summarize+request+query\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Optional query that the summary should be about
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="timestamp"
+  headingId="operation-summarize+request+timestamp"
+  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### timestamp \{#operation-summarize+request+timestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The ISO 8601 timestamp associated with the client request.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="trackingToken"
+  headingId="operation-summarize+request+trackingtoken"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### trackingToken \{#operation-summarize+request+trackingtoken\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque token that represents this particular result. To be used for /feedback reporting.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationRequestBodySection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-summarize+responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-summarize+responses+200+application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent slot="content" id="operation-summarize+responses+200+application-json">
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-summarize+responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-summarize+responses+200+application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent slot="content" id="operation-summarize+responses+200+application-json">
+
+<OperationResponseBodyDescriptionSection slot="response-body-description">
+
+OK
+
+</OperationResponseBodyDescriptionSection>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="error"
+  headingId="operation-summarize+responses+200+application-json+error"
+  typeInfo={{"label":"error","linkedLabel":"<a href=\"#operation-summarize+responses+200+application-json+error+error\">error</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### error \{#operation-summarize+responses+200+application-json+error\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="summary"
+  headingId="operation-summarize+responses+200+application-json+summary"
+  typeInfo={{"label":"Summary","linkedLabel":"<a href=\"#operation-summarize+responses+200+application-json+summary+summary\">Summary</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### summary \{#operation-summarize+responses+200+application-json+summary\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="summary_Summary"
+  headingId="operation-summarize+responses+200+application-json+summary+summary"
+  parentId="summary"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### Summary \{#operation-summarize+responses+200+application-json+summary+summary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="summary_Summary_followUpPrompts"
+  headingId="operation-summarize+responses+200+application-json+summary+summary+followupprompts"
+  parentId="summary_Summary"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### followUpPrompts \{#operation-summarize+responses+200+application-json+summary+summary+followupprompts\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Follow-up prompts based on the summarized doc
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="summary_Summary_text"
+  headingId="operation-summarize+responses+200+application-json+summary+summary+text"
+  parentId="summary_Summary"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### text \{#operation-summarize+responses+200+application-json+summary+summary+text\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="trackingToken"
+  headingId="operation-summarize+responses+200+application-json+trackingtoken"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### trackingToken \{#operation-summarize+responses+200+application-json+trackingtoken\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+An opaque token that represents this summary in this particular query. To be used for /feedback reporting.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
