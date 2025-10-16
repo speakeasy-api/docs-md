@@ -18,6 +18,12 @@ function HomepageHeader() {
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to="/pokeapi/api"
+          >
+            PokeAPI
+          </Link>
           <Link className="button button--secondary button--lg" to="/glean/api">
             Glean
           </Link>
@@ -26,12 +32,6 @@ function HomepageHeader() {
             to="/mistral/api"
           >
             Mistral
-          </Link>
-          <Link
-            className="button button--secondary button--lg"
-            to="/pokeapi/api"
-          >
-            PokeAPI
           </Link>
         </div>
       </div>

@@ -37,9 +37,8 @@ const config: Config = {
       "classic",
       {
         docs: {
-          id: "default",
-          path: "docs/glean",
-          routeBasePath: "glean",
+          path: "docs/pokeapi",
+          routeBasePath: "pokeapi",
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -71,9 +70,9 @@ const config: Config = {
     [
       "@docusaurus/plugin-content-docs",
       {
-        id: "pokeapi",
-        path: "docs/pokeapi",
-        routeBasePath: "pokeapi",
+        id: "glean",
+        path: "docs/glean",
+        routeBasePath: "glean",
         sidebarPath: "./sidebars.ts",
         // ... other options
       },
@@ -104,16 +103,16 @@ const config: Config = {
       },
       items: [
         {
+          label: "PokeAPI",
+          to: "/pokeapi/api",
+        },
+        {
           label: "Glean",
           to: "/glean/api",
         },
         {
           label: "Mistral",
           to: "/mistral/api",
-        },
-        {
-          label: "PokeAPI",
-          to: "/pokeapi/api",
         },
       ],
     },
