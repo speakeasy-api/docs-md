@@ -97,10 +97,6 @@ const config: Config = {
     },
     navbar: {
       title: "My Site",
-      logo: {
-        alt: "My Site Logo",
-        src: "img/logo.svg",
-      },
       items: [
         {
           label: "PokeAPI",
