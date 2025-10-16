@@ -1,0 +1,1833 @@
+import "@/app/speakeasy.css";
+import {
+  CodeSample,
+  CodeSampleTab,
+  CodeSampleTabbedSection,
+  ExpandableBreakout,
+  ExpandableBreakoutProperties,
+  ExpandableBreakoutTitle,
+  ExpandableProperty,
+  ExpandablePropertyBreakouts,
+  ExpandablePropertyDescription,
+  ExpandablePropertyExamples,
+  ExpandablePropertyTitle,
+  ExpandableSection,
+  Operation,
+  OperationCodeSamplesSection,
+  OperationDescriptionSection,
+  OperationParametersSection,
+  OperationResponseBodyExamplesSection,
+  OperationResponseBodySection,
+  OperationSecuritySection,
+  OperationSummarySection,
+  OperationTitleSection,
+  Pill,
+  ResponseExamplesTab,
+  ResponseExamplesTabbedSection,
+  ResponseTab,
+  ResponseTabbedSection,
+  Section,
+  SectionContent,
+  SectionTitle,
+  Tag,
+  TagDescription,
+  TagTitle
+} from "@/components/speakeasy-custom";
+
+<Tag slot="tag">
+
+<TagTitle slot="title">
+
+# Evolution Endpoints
+
+</TagTitle>
+
+<TagDescription slot="description">
+
+Evolution is a process in which a Pokémon changes into a different species of Pokémon.
+
+</TagDescription>
+
+</Tag>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>GET</b></Pill> /api/v2/evolution-chain/ \{#operation-api_v2_evolution_chain_list\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_List evolution chains_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Evolution chains are essentially family trees. They start with the lowest stage within a family and detail evolution conditions for each as well as Pokémon they can evolve into up through the hierarchy.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-api_v2_evolution_chain_list_code-samples_curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-api_v2_evolution_chain_list_code-samples_curl">
+
+<CodeSample>
+
+```curl
+curl https://pokeapi.co/api/v2/evolution-chain/ \
+ -X GET
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationSecuritySection slot="security">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Security \{#operation-api_v2_evolution_chain_list_security\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="cookieAuth"
+  headingId="operation-api_v2_evolution_chain_list_security_cookieauth"
+  typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### cookieAuth \{#operation-api_v2_evolution_chain_list_security_cookieauth\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="basicAuth"
+  headingId="operation-api_v2_evolution_chain_list_security_basicauth"
+  typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### basicAuth \{#operation-api_v2_evolution_chain_list_security_basicauth\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationSecuritySection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-api_v2_evolution_chain_list_parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="limit"
+  headingId="operation-api_v2_evolution_chain_list_parameters_limit"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### limit \{#operation-api_v2_evolution_chain_list_parameters_limit\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Number of results to return per page.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="offset"
+  headingId="operation-api_v2_evolution_chain_list_parameters_offset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### offset \{#operation-api_v2_evolution_chain_list_parameters_offset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The initial index from which to return the results.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="q"
+  headingId="operation-api_v2_evolution_chain_list_parameters_q"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### q \{#operation-api_v2_evolution_chain_list_parameters_q\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+> Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
+Case-insensitive query applied on the `name` property. 
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-api_v2_evolution_chain_list_responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-api_v2_evolution_chain_list_responses_200_application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent
+  slot="content"
+  id="operation-api_v2_evolution_chain_list_responses_200_application-json"
+>
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-api_v2_evolution_chain_list_responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-api_v2_evolution_chain_list_responses_200_application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-api_v2_evolution_chain_list_responses_200_application-json"
+>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="count"
+  headingId="operation-api_v2_evolution_chain_list_responses_200_application-json_count"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### count \{#operation-api_v2_evolution_chain_list_responses_200_application-json_count\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+123
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="next"
+  headingId="operation-api_v2_evolution_chain_list_responses_200_application-json_next"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### next \{#operation-api_v2_evolution_chain_list_responses_200_application-json_next\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+http://api.example.org/accounts/?offset=400&limit=100
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="previous"
+  headingId="operation-api_v2_evolution_chain_list_responses_200_application-json_previous"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### previous \{#operation-api_v2_evolution_chain_list_responses_200_application-json_previous\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+http://api.example.org/accounts/?offset=200&limit=100
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results"
+  headingId="operation-api_v2_evolution_chain_list_responses_200_application-json_results"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_evolution_chain_list_responses_200_application-json_results_evolutionchainsummary\">EvolutionChainSummary</a>","children":[{"label":"EvolutionChainSummary","linkedLabel":"<a href=\"#operation-api_v2_evolution_chain_list_responses_200_application-json_results_evolutionchainsummary\">EvolutionChainSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### results \{#operation-api_v2_evolution_chain_list_responses_200_application-json_results\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="results_EvolutionChainSummary"
+  headingId="operation-api_v2_evolution_chain_list_responses_200_application-json_results_evolutionchainsummary"
+  parentId="results"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### EvolutionChainSummary \{#operation-api_v2_evolution_chain_list_responses_200_application-json_results_evolutionchainsummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="results_EvolutionChainSummary_url"
+  headingId="operation-api_v2_evolution_chain_list_responses_200_application-json_results_evolutionchainsummary_url"
+  parentId="results_EvolutionChainSummary"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-api_v2_evolution_chain_list_responses_200_application-json_results_evolutionchainsummary_url\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>GET</b></Pill> /api/v2/evolution-chain/\{id\}/ \{#operation-api_v2_evolution_chain_retrieve\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Get evolution chain_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Evolution chains are essentially family trees. They start with the lowest stage within a family and detail evolution conditions for each as well as Pokémon they can evolve into up through the hierarchy.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-api_v2_evolution_chain_retrieve_code-samples_curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-api_v2_evolution_chain_retrieve_code-samples_curl">
+
+<CodeSample>
+
+```curl
+curl https://pokeapi.co/api/v2/evolution-chain/{id}/ \
+ -X GET
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationSecuritySection slot="security">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Security \{#operation-api_v2_evolution_chain_retrieve_security\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="cookieAuth"
+  headingId="operation-api_v2_evolution_chain_retrieve_security_cookieauth"
+  typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### cookieAuth \{#operation-api_v2_evolution_chain_retrieve_security_cookieauth\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="basicAuth"
+  headingId="operation-api_v2_evolution_chain_retrieve_security_basicauth"
+  typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### basicAuth \{#operation-api_v2_evolution_chain_retrieve_security_basicauth\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationSecuritySection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-api_v2_evolution_chain_retrieve_parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="id"
+  headingId="operation-api_v2_evolution_chain_retrieve_parameters_id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-api_v2_evolution_chain_retrieve_parameters_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+This parameter can be a string or an integer.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-api_v2_evolution_chain_retrieve_responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-api_v2_evolution_chain_retrieve_responses_200_application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent
+  slot="content"
+  id="operation-api_v2_evolution_chain_retrieve_responses_200_application-json"
+>
+
+```json
+{
+  "baby_trigger_item": {
+    "name": "ipsum eiusmod",
+    "url": "consequat do"
+  },
+  "chain": {
+    "evolution_details": [
+      null
+    ],
+    "evolves_to": [
+      {
+        "evolution_details": [
+          {
+            "gender": null,
+            "held_item": null,
+            "item": null,
+            "known_move": null,
+            "known_move_type": null,
+            "location": null,
+            "min_affection": null,
+            "min_beauty": null,
+            "min_happiness": null,
+            "min_level": null,
+            "needs_overworld_rain": null,
+            "party_species": null,
+            "party_type": null,
+            "relative_physical_stats": null,
+            "time_of_day": "reprehenderit ut dolore",
+            "trade_species": null,
+            "trigger": {
+              "name": "occaecat dolor sit",
+              "url": "nostrud"
+            },
+            "turn_upside_down": false
+          }
+        ],
+        "is_baby": false,
+        "species": {
+          "name": "happiny",
+          "url": "https://pokeapi.co/api/v2/pokemon-species/440/"
+        }
+      }
+    ],
+    "is_baby": false,
+    "species": {
+      "name": "happiny",
+      "url": "https://pokeapi.co/api/v2/pokemon-species/440/"
+    }
+  },
+  "id": 87
+}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-api_v2_evolution_chain_retrieve_responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-api_v2_evolution_chain_retrieve_responses_200_application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-api_v2_evolution_chain_retrieve_responses_200_application-json"
+>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="baby_trigger_item"
+  headingId="operation-api_v2_evolution_chain_retrieve_responses_200_application-json_baby_trigger_item"
+  typeInfo={{"label":"ItemSummary","linkedLabel":"<a href=\"#operation-api_v2_evolution_chain_retrieve_responses_200_application-json_baby_trigger_item_itemsummary\">ItemSummary</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### baby_trigger_item \{#operation-api_v2_evolution_chain_retrieve_responses_200_application-json_baby_trigger_item\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="baby_trigger_item_ItemSummary"
+  headingId="operation-api_v2_evolution_chain_retrieve_responses_200_application-json_baby_trigger_item_itemsummary"
+  parentId="baby_trigger_item"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ItemSummary \{#operation-api_v2_evolution_chain_retrieve_responses_200_application-json_baby_trigger_item_itemsummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="baby_trigger_item_ItemSummary_name"
+  headingId="operation-api_v2_evolution_chain_retrieve_responses_200_application-json_baby_trigger_item_itemsummary_name"
+  parentId="baby_trigger_item_ItemSummary"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-api_v2_evolution_chain_retrieve_responses_200_application-json_baby_trigger_item_itemsummary_name\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="baby_trigger_item_ItemSummary_url"
+  headingId="operation-api_v2_evolution_chain_retrieve_responses_200_application-json_baby_trigger_item_itemsummary_url"
+  parentId="baby_trigger_item_ItemSummary"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-api_v2_evolution_chain_retrieve_responses_200_application-json_baby_trigger_item_itemsummary_url\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="chain"
+  headingId="operation-api_v2_evolution_chain_retrieve_responses_200_application-json_chain"
+  typeInfo={{"label":"chain","linkedLabel":"<a href=\"#operation-api_v2_evolution_chain_retrieve_responses_200_application-json_chain_chain\">chain</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### chain \{#operation-api_v2_evolution_chain_retrieve_responses_200_application-json_chain\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="id"
+  headingId="operation-api_v2_evolution_chain_retrieve_responses_200_application-json_id"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-api_v2_evolution_chain_retrieve_responses_200_application-json_id\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>GET</b></Pill> /api/v2/evolution-trigger/ \{#operation-api_v2_evolution_trigger_list\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_List evolution triggers_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Evolution triggers are the events and conditions that cause a Pokémon to evolve. Check out [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Methods_of_evolution) for greater detail.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-api_v2_evolution_trigger_list_code-samples_curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent slot="content" id="operation-api_v2_evolution_trigger_list_code-samples_curl">
+
+<CodeSample>
+
+```curl
+curl https://pokeapi.co/api/v2/evolution-trigger/ \
+ -X GET
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationSecuritySection slot="security">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Security \{#operation-api_v2_evolution_trigger_list_security\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="cookieAuth"
+  headingId="operation-api_v2_evolution_trigger_list_security_cookieauth"
+  typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### cookieAuth \{#operation-api_v2_evolution_trigger_list_security_cookieauth\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="basicAuth"
+  headingId="operation-api_v2_evolution_trigger_list_security_basicauth"
+  typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### basicAuth \{#operation-api_v2_evolution_trigger_list_security_basicauth\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationSecuritySection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-api_v2_evolution_trigger_list_parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="limit"
+  headingId="operation-api_v2_evolution_trigger_list_parameters_limit"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### limit \{#operation-api_v2_evolution_trigger_list_parameters_limit\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Number of results to return per page.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="offset"
+  headingId="operation-api_v2_evolution_trigger_list_parameters_offset"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### offset \{#operation-api_v2_evolution_trigger_list_parameters_offset\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The initial index from which to return the results.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="q"
+  headingId="operation-api_v2_evolution_trigger_list_parameters_q"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"query","variant":"info"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### q \{#operation-api_v2_evolution_trigger_list_parameters_q\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+> Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
+Case-insensitive query applied on the `name` property. 
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-api_v2_evolution_trigger_list_responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-api_v2_evolution_trigger_list_responses_200_application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent
+  slot="content"
+  id="operation-api_v2_evolution_trigger_list_responses_200_application-json"
+>
+
+```json
+{}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-api_v2_evolution_trigger_list_responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-api_v2_evolution_trigger_list_responses_200_application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-api_v2_evolution_trigger_list_responses_200_application-json"
+>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="count"
+  headingId="operation-api_v2_evolution_trigger_list_responses_200_application-json_count"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### count \{#operation-api_v2_evolution_trigger_list_responses_200_application-json_count\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+123
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="next"
+  headingId="operation-api_v2_evolution_trigger_list_responses_200_application-json_next"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### next \{#operation-api_v2_evolution_trigger_list_responses_200_application-json_next\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+http://api.example.org/accounts/?offset=400&limit=100
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="previous"
+  headingId="operation-api_v2_evolution_trigger_list_responses_200_application-json_previous"
+  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### previous \{#operation-api_v2_evolution_trigger_list_responses_200_application-json_previous\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+http://api.example.org/accounts/?offset=200&limit=100
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results"
+  headingId="operation-api_v2_evolution_trigger_list_responses_200_application-json_results"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_evolution_trigger_list_responses_200_application-json_results_evolutiontriggersummary\">EvolutionTriggerSummary</a>","children":[{"label":"EvolutionTriggerSummary","linkedLabel":"<a href=\"#operation-api_v2_evolution_trigger_list_responses_200_application-json_results_evolutiontriggersummary\">EvolutionTriggerSummary</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### results \{#operation-api_v2_evolution_trigger_list_responses_200_application-json_results\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="results_EvolutionTriggerSummary"
+  headingId="operation-api_v2_evolution_trigger_list_responses_200_application-json_results_evolutiontriggersummary"
+  parentId="results"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### EvolutionTriggerSummary \{#operation-api_v2_evolution_trigger_list_responses_200_application-json_results_evolutiontriggersummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="results_EvolutionTriggerSummary_name"
+  headingId="operation-api_v2_evolution_trigger_list_responses_200_application-json_results_evolutiontriggersummary_name"
+  parentId="results_EvolutionTriggerSummary"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-api_v2_evolution_trigger_list_responses_200_application-json_results_evolutiontriggersummary_name\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results_EvolutionTriggerSummary_url"
+  headingId="operation-api_v2_evolution_trigger_list_responses_200_application-json_results_evolutiontriggersummary_url"
+  parentId="results_EvolutionTriggerSummary"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-api_v2_evolution_trigger_list_responses_200_application-json_results_evolutiontriggersummary_url\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
+
+<Operation>
+
+<OperationTitleSection slot="title">
+
+## <Pill variant="primary"><b>GET</b></Pill> /api/v2/evolution-trigger/\{id\}/ \{#operation-api_v2_evolution_trigger_retrieve\}
+
+</OperationTitleSection>
+
+<OperationSummarySection slot="summary">
+
+_Get evolution trigger_
+
+</OperationSummarySection>
+
+<OperationDescriptionSection slot="description">
+
+Evolution triggers are the events and conditions that cause a Pokémon to evolve. Check out [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Methods_of_evolution) for greater detail.
+
+</OperationDescriptionSection>
+
+<OperationCodeSamplesSection slot="code-samples">
+
+<CodeSampleTabbedSection>
+
+<CodeSampleTab
+  slot="tab"
+  id="operation-api_v2_evolution_trigger_retrieve_code-samples_curl"
+  tags={{"codeSample":"curl"}}
+>
+
+cURL
+
+</CodeSampleTab>
+
+<SectionContent
+  slot="content"
+  id="operation-api_v2_evolution_trigger_retrieve_code-samples_curl"
+>
+
+<CodeSample>
+
+```curl
+curl https://pokeapi.co/api/v2/evolution-trigger/{id}/ \
+ -X GET
+```
+
+</CodeSample>
+
+</SectionContent>
+
+</CodeSampleTabbedSection>
+
+</OperationCodeSamplesSection>
+
+<OperationSecuritySection slot="security">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Security \{#operation-api_v2_evolution_trigger_retrieve_security\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="cookieAuth"
+  headingId="operation-api_v2_evolution_trigger_retrieve_security_cookieauth"
+  typeAnnotations={[{"title":"cookie","variant":"info"},{"title":"apiKey","variant":"info"}]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### cookieAuth \{#operation-api_v2_evolution_trigger_retrieve_security_cookieauth\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="basicAuth"
+  headingId="operation-api_v2_evolution_trigger_retrieve_security_basicauth"
+  typeAnnotations={[{"title":"basic","variant":"info"},{"title":"http","variant":"info"}]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### basicAuth \{#operation-api_v2_evolution_trigger_retrieve_security_basicauth\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationSecuritySection>
+
+<OperationParametersSection slot="parameters">
+
+<Section>
+
+<SectionTitle slot="title">
+
+### Parameters \{#operation-api_v2_evolution_trigger_retrieve_parameters\}
+
+</SectionTitle>
+
+<SectionContent slot="content">
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="id"
+  headingId="operation-api_v2_evolution_trigger_retrieve_parameters_id"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-api_v2_evolution_trigger_retrieve_parameters_id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+This parameter can be a string or an integer.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</Section>
+
+</OperationParametersSection>
+
+<OperationResponseBodyExamplesSection slot="response-body-examples">
+
+<ResponseExamplesTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses Examples \{#operation-api_v2_evolution_trigger_retrieve_responses\}
+
+</SectionTitle>
+
+<ResponseExamplesTab
+  slot="tab"
+  id="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json"
+  tags={{"responseExample":"200:application/json"}}
+>
+
+200
+
+</ResponseExamplesTab>
+
+<SectionContent
+  slot="content"
+  id="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json"
+>
+
+```json
+{
+  "id": 87,
+  "name": "ipsum eiusmod",
+  "names": [
+    {
+      "language": {
+        "name": "consequat do",
+        "url": "reprehenderit ut dolore"
+      },
+      "name": "occaecat dolor sit"
+    }
+  ],
+  "pokemon_species": [
+    {
+      "name": "ivysaur",
+      "url": "https://pokeapi.co/api/v2/pokemon-species/2/"
+    }
+  ]
+}
+```
+
+</SectionContent>
+
+</ResponseExamplesTabbedSection>
+
+</OperationResponseBodyExamplesSection>
+
+<OperationResponseBodySection slot="response-body">
+
+<ResponseTabbedSection>
+
+<SectionTitle slot="title">
+
+### Responses \{#operation-api_v2_evolution_trigger_retrieve_responses\}
+
+</SectionTitle>
+
+<ResponseTab
+  slot="tab"
+  id="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json"
+  tags={{"response":"200:application/json"}}
+>
+
+200
+
+</ResponseTab>
+
+<SectionContent
+  slot="content"
+  id="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json"
+>
+
+<ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="id"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_id"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_id\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="name"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_name"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_name\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="names"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername\">EvolutionTriggerName</a>","children":[{"label":"EvolutionTriggerName","linkedLabel":"<a href=\"#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername\">EvolutionTriggerName</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### names \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="names_EvolutionTriggerName"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername"
+  parentId="names"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### EvolutionTriggerName \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="names_EvolutionTriggerName_language"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername_language"
+  parentId="names_EvolutionTriggerName"
+  typeInfo={{"label":"LanguageSummary","linkedLabel":"<a href=\"#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername_language_languagesummary\">LanguageSummary</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### language \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername_language\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="names_EvolutionTriggerName_language_LanguageSummary"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername_language_languagesummary"
+  parentId="names_EvolutionTriggerName_language"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### LanguageSummary \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername_language_languagesummary\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="names_EvolutionTriggerName_language_LanguageSummary_name"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername_language_languagesummary_name"
+  parentId="names_EvolutionTriggerName_language_LanguageSummary"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername_language_languagesummary_name\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="names_EvolutionTriggerName_language_LanguageSummary_url"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername_language_languagesummary_url"
+  parentId="names_EvolutionTriggerName_language_LanguageSummary"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername_language_languagesummary_url\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="names_EvolutionTriggerName_name"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername_name"
+  parentId="names_EvolutionTriggerName"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Max Length: 200","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_names_evolutiontriggername_name\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pokemon_species"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_pokemon_species"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_pokemon_species_pokemon_specie\">pokemon_specie</a>","children":[{"label":"pokemon_specie","linkedLabel":"<a href=\"#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_pokemon_species_pokemon_specie\">pokemon_specie</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### pokemon_species \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_pokemon_species\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="pokemon_species_pokemon_specie"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_pokemon_species_pokemon_specie"
+  parentId="pokemon_species"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### pokemon\_specie \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_pokemon_species_pokemon_specie\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="pokemon_species_pokemon_specie_name"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_pokemon_species_pokemon_specie_name"
+  parentId="pokemon_species_pokemon_specie"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### name \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_pokemon_species_pokemon_specie_name\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+ivysaur
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="pokemon_species_pokemon_specie_url"
+  headingId="operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_pokemon_species_pokemon_specie_url"
+  parentId="pokemon_species_pokemon_specie"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-api_v2_evolution_trigger_retrieve_responses_200_application-json_pokemon_species_pokemon_specie_url\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+https://pokeapi.co/api/v2/pokemon-species/2/
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+</ExpandableSection>
+
+</SectionContent>
+
+</ResponseTabbedSection>
+
+</OperationResponseBodySection>
+
+</Operation>
