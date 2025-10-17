@@ -80,9 +80,9 @@ jobs:
         run: tar -xzf build-artifacts.tar.gz
       # Re-run install to link local binaries after build
       - name: Link local packages
-        run: npm install
+        run: npm install --workspace ${{ matrix.workspace }}
       - name: Build example docs
-        run: npm run build-api-docs --workspace ${{ matrix.workspace }} -- --clean
+        run: npm run build-api-docs --workspace ${{ matrix.workspace }}
       - name: Validate repository is clean
         run: |
           if ! git diff --exit-code --quiet ${{ matrix.diff-path }}; then
