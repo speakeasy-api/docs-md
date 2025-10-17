@@ -24,9 +24,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build Packages
-        run: make build-packages
+        run: make -j build-packages
       # We have to run npm install again to link the newly built compiler binary
       - name: Link workspace binaries
         run: npm install --workspaces
       - name: Verify example builds
-        run: make verify-api-docs
+        run: make -j verify-api-docs
