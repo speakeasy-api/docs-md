@@ -364,6 +364,7 @@ Multiline: ${displayInfo?.multiline ?? "N/A"}`}
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             variant="property"
+            headingId={headingId}
           />
         ) : (
           <NonExpandableCell />

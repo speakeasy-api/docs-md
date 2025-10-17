@@ -11,7 +11,7 @@ test.describe('Sidebar', () => {
     await expect(sidebar).toBeVisible();
 
     const sidebarList = sidebar.getByRole('list');
-    // Assert the correct number of side 
+    // Assert the correct number of items 
     await expect(sidebarList).toHaveCount(3);
   });
 });
