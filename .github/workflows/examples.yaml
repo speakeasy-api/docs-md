@@ -80,7 +80,7 @@ jobs:
         with:
           name: build-artifacts
       - name: Build example docs
-        run: npm run build-api-docs --workspace ${{ matrix.workspace }} -- --clean
+        run: npm run build-api-docs --workspace ${{ matrix.workspace }}
       - name: Validate repository is clean
         run: |
           if ! git diff --exit-code --quiet ${{ matrix.diff-path }}; then
