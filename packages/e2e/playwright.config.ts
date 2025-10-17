@@ -48,14 +48,14 @@ export default defineConfig({
   webServer: [
     {
       command: 'npm run build && npm run start -- --port 3003',
-      cwd: '../../examples/docusaurus/mistral',
+      cwd: '../../examples/docusaurus/',
       url: 'http://localhost:3003',
       reuseExistingServer: !process.env.CI,
       stdout: 'pipe',
     },
     {
       command: 'npm run build && npm run start -- --port 3004',
-      cwd: '../../examples/nextra/mistral',
+      cwd: '../../examples/nextra/',
       url: 'http://localhost:3004',
       reuseExistingServer: !process.env.CI,
       stdout: 'pipe',
