@@ -32,14 +32,14 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Build Packages
         run: make build-packages
+      - name: Archive build artifacts
+        run: |
+          tar -czf build-artifacts.tar.gz packages/compiler/dist packages/react/dist packages/shared/dist
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
-          path: |
-            packages/compiler/dist
-            packages/react/dist
-            packages/shared/dist
+          path: build-artifacts.tar.gz
 
   verify-examples:
     name: Verify ${{ matrix.display }}
@@ -76,11 +76,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
+      - name: Restore build artifacts
+        run: tar -xzf build-artifacts.tar.gz
       # Re-run install to link local binaries after build
       - name: Link local packages
         run: npm install
       - name: Build example docs
-        run: npm run build-api-docs --workspace ${{ matrix.workspace }}
+        run: npm run build-api-docs --workspace ${{ matrix.workspace }} -- --clean
       - name: Validate repository is clean
         run: |
           if ! git diff --exit-code --quiet ${{ matrix.diff-path }}; then
