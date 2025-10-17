@@ -78,7 +78,7 @@ jobs:
           name: build-artifacts
       # Re-run install to link local binaries after build
       - name: Link local packages
-        run: npm install
+        run: npm install --workspace ${{ matrix.workspace }}
       - name: Build example docs
         run: npm run build-api-docs --workspace ${{ matrix.workspace }}
       - name: Validate repository is clean
