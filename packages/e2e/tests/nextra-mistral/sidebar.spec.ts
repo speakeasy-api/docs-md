@@ -12,7 +12,7 @@ function getPath(path: string): string {
 
 test.describe('Sidebar', () => {
   test('should render the sidebar', async ({ page }) => {
-    await page.goto(getPath('/api/endpoint/agents'));
+    await page.goto(getPath('mistral/api/endpoint/agents'));
 
     // Wait for page to be loaded
     await page.waitForLoadState('networkidle');
