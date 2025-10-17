@@ -54,10 +54,7 @@ build-package-react:
 build-package-compiler:
 	npm run build --workspace packages/compiler
 
-build-packages: 
-	build-package-shared 
-	build-package-react 
-	build-package-compiler
+build-packages: build-package-shared build-package-react build-package-compiler
 
 build-examples: $(addprefix build-example-,$(EXAMPLE_WORKSPACES_LIST))
 
