@@ -17,7 +17,7 @@ export function Layout({ children, status }: LayoutProps) {
   const resetButtonChild = useChildren(children, "resetButton");
   const copyButtonChild = useChildren(children, "copyButton");
   return (
-    <div className={styles.layout}>
+    <div data-testid="try-it-now" className={styles.layout}>
       <div className={styles.editorContainer}>
         {editorChild}
         <Controls status={status}>
