@@ -88,3 +88,13 @@ jobs:
             echo "Example build out of date for ${{ matrix.workspace }}. Please run make build-api-docs and commit the results."
             exit 1
           fi
+
+  verify-examples-success:
+    name: Example Build Verification
+    runs-on: ubuntu-latest
+    needs: verify-examples
+    if: always()
+    steps:
+      - name: Check if example docs builds successful
+        if: needs.verify-examples.result != 'success'
+        run: exit 1
