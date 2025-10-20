@@ -62,11 +62,3 @@ test('my test', async ({ page }) => {
   await expect(page).toHaveTitle(/My App/);
 });
 ```
-
-## Testing Example Apps
-
-To test the example applications (Docusaurus, Nextra, Custom), you'll need to:
-
-1. Start the dev server in `global-setup.ts`
-2. Configure the base URL in `playwright.config.ts` or per-test
-3. Write tests that verify the functionality
