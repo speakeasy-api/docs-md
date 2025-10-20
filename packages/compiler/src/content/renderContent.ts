@@ -181,7 +181,7 @@ function renderPages(
           break;
         }
         case "operation": {
-          if (!contextChunk || contextChunk.chunkType !== "tag") {
+          if (contextChunk?.chunkType !== "tag") {
             throw new InternalError("Context chunk not found");
           }
           renderOperation({

@@ -35,9 +35,8 @@ export async function generateTryItNowBundle(
     (codeSample) => codeSample.language === "typescript" && codeSample.tryItNow
   );
 
-  // Note: the second check here isn't possible due to the find above, but it's
-  // here for to make TypeScript happy
-  if (!codeSample || codeSample.language !== "typescript") {
+  // Note: check if codeSample exists and has the correct language
+  if (codeSample?.language !== "typescript") {
     debug(
       "No Try It Now enabled TypeScript code sample config found, skipping Try It Now bundle generation"
     );
