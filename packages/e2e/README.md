@@ -47,7 +47,7 @@ packages/e2e/
 │   ├── global-teardown.ts    # Global teardown (runs once after all tests)
 │   ├── .gitignore            # Ignore test artifacts
 │   └── e2e/
-│       └── smoke.spec.ts     # Example test file
+│       └── home-page.spec.ts     # Example test file
 ```
 
 ## Writing Tests
@@ -70,5 +70,3 @@ To test the example applications (Docusaurus, Nextra, Custom), you'll need to:
 1. Start the dev server in `global-setup.ts`
 2. Configure the base URL in `playwright.config.ts` or per-test
 3. Write tests that verify the functionality
-
-See `tests/e2e/smoke.spec.ts` for examples.

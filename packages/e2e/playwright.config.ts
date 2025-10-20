@@ -61,8 +61,4 @@ export default defineConfig({
       stdout: 'pipe',
     },
   ],
-
-  /* Global setup and teardown */
-  globalSetup: './tests/global-setup.ts',
-  globalTeardown: './tests/global-teardown.ts',
 });
