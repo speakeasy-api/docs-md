@@ -10,5 +10,5 @@ import type { CodeSampleProps } from "./types.ts";
  * Instead, it wraps a triple backtick code block in a properly sized container.
  */
 export function CodeSample({ children }: CodeSampleProps) {
-  return <div className={styles.codeSampleContainer}>{children}</div>;
+  return <div className={styles.codeSampleContainer}  data-testid="speakeasy-code-sample">{children}</div>;
 }
