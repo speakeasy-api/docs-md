@@ -15,5 +15,5 @@ export default [
     },
     ignores: ["test-results/**", "playwright-report/**"],
     restrictedImports: [],
-  })
+  }),
 ];

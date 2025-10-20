@@ -59,13 +59,15 @@ test.describe("TryItNow", () => {
 
     const monacoEditor = page.locator(".monaco-editor").nth(0);
     await monacoEditor.click();
-  
+
     await page.keyboard.press("Control+A"); // Select all content
     await page.keyboard.type(editorContent);
 
     // Get button within TryItNow component
     const tryItNow = page.getByTestId("try-it-now");
-    const copyButton = tryItNow.getByRole("button", { name: "Copy Code" }).first();
+    const copyButton = tryItNow
+      .getByRole("button", { name: "Copy Code" })
+      .first();
     await expect(copyButton).toBeVisible();
     await copyButton.click();
 

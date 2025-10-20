@@ -1,4 +1,4 @@
-import { test as base } from '@playwright/test';
+import { test as base } from "@playwright/test";
 
 /**
  * Extend base test with custom fixtures.
@@ -24,4 +24,4 @@ import { test as base } from '@playwright/test';
 export const test = base;
 
 // eslint-disable-next-line fast-import/no-unused-exports
-export { expect } from '@playwright/test';
+export { expect } from "@playwright/test";
