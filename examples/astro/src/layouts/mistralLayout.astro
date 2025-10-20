@@ -1,0 +1,30 @@
+---
+import "@/styles/globals.css";
+import { Sidebar } from "@/components/Sidebar";
+import  sidebarMetadata from "@/data/mistral/sidebarMetadata.json";
+---
+<html lang="en">
+    <body
+    style={{
+        display: "flex",
+        flexDirection: "row",
+        margin: 0,
+        padding: 0,
+        position: "absolute",
+        inset: 0,
+    }}
+    >
+        <div
+        style={{
+            flex: "0 1 400px",
+            borderRight: "1px solid var(--speakeasy-border-color)",
+            marginRight: "1rem",
+            padding: "1rem",
+            overflow: "auto",
+        }}
+        >
+        <Sidebar sidebarMetadata={sidebarMetadata} pathPrefix="mistral" />
+        </div>
+        <div style={{ flex: "1 1 100%", overflow: "auto" }}><slot /></div>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+import { join, resolve } from "node:path";
+import { writeFileSync } from "node:fs";
+
+import { getSettings } from "@speakeasy-api/docs-md";
+
+/**
+ * @type {import("@speakeasy-api/docs-md").FrameworkConfig}
+ */
+const framework = {
+  rendererType: "mdx",
+  componentPackageName: "@/components/speakeasy-custom",
+  stringAttributeEscapeStyle: "react-value",
+  elementIdSeparator: "_",
+
+  buildPagePath(slug) {
+    const settings = getSettings();
+    return resolve(join(settings.output.pageOutDir, `${slug}/page.mdx`));
+  },
+
+  buildPagePreamble() {
+    return `import "@/app/speakeasy.css";`;
+  },
+
+  postProcess(metadata) {
+    // Note: the format for this data is very much a quick and dirty
+    // implementation. It's shape will almost certainly change and become easier
+    // to work with in the future.
+    writeFileSync(
+      "./src/app/pokeapi/sidebarMetadata.json",
+      JSON.stringify(metadata, null, "  ")
+    );
+  },
+};
+
+export default {
+  spec: "../specs/pokeapi.yml",
+  output: {
+    pageOutDir: "./src/app/pokeapi/api",
+    framework,
+  },
+  codeSamples: [
+    {
+      language: "curl",
+    },
+  ],
+};
