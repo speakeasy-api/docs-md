@@ -34,7 +34,7 @@ export default defineConfig({
       ],
       use: {
         ...devices["Desktop Chrome"],
-        baseURL: "http://localhost:3003",
+        baseURL: "http://localhost:3001",
       },
     },
     {
@@ -42,7 +42,7 @@ export default defineConfig({
       testMatch: ["**/shared/**/*.spec.ts", "**/nextra-mistral/**/*.spec.ts"],
       use: {
         ...devices["Desktop Chrome"],
-        baseURL: "http://localhost:3004",
+        baseURL: "http://localhost:3002",
       },
     },
   ],
@@ -50,20 +50,20 @@ export default defineConfig({
   /* Run dev servers for both example sites before starting tests */
   webServer: [
     {
-      command: "npm run build && npm run start -- --port 3003",
+      command: "npm run build && npm run start",
       cwd: "../../examples/docusaurus/",
-      url: "http://localhost:3003",
+      url: "http://localhost:3001",
       reuseExistingServer: !process.env.CI,
       stdout: "pipe",
-      timeout: 5 * 60 * 1000, // 5 minutes
+      timeout: 60 * 1000, // 1 minute
     },
     {
-      command: "npm run build && npm run start -- --port 3004",
+      command: "npm run build && npm run start",
       cwd: "../../examples/nextra/",
-      url: "http://localhost:3004",
+      url: "http://localhost:3002",
       reuseExistingServer: !process.env.CI,
       stdout: "pipe",
-      timeout: 5 * 60 * 1000, // 5 minutes
+      timeout: 60 * 1000, // 1 minute
     },
   ],
 });
