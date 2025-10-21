@@ -1,3 +1,14 @@
 export default function Home() {
-  return <div>Hi</div>;
+  return (
+    <div>
+      <ul>
+        <li>
+          <a href="/mistral">Mistral</a>
+        </li>
+        <li>
+          <a href="/pokeapi">PokeAPI</a>
+        </li>
+      </ul>
+    </div>
+  );
 }
