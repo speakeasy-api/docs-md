@@ -5,7 +5,6 @@ test.describe("SectionContent", () => {
     page,
   }) => {
     await page.goto("mistral/api/endpoint/agents");
-    await page.waitForLoadState("networkidle");
     const expandSystemMessage = page.getByTestId('operation-agents_completion_v1_agents_completions_post_request_messages_systemmessage')
 
     await expect(expandSystemMessage).toBeVisible();
@@ -22,7 +21,6 @@ test.describe("SectionContent", () => {
     page,
   }) => {
     await page.goto("mistral/api/endpoint/agents");
-    await page.waitForLoadState("networkidle");
     const link = page.getByRole("link", { name: "UsageInfo" }).first();
     await expect(link).toBeVisible();
     await link.click();

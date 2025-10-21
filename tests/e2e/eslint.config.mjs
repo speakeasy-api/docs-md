@@ -1,12 +1,12 @@
 import { resolve } from "node:path";
 
-import { getNodeESLintConfig } from "@speakeasy-api/docs-md-shared/config";
+import { getPlaywrightESLintConfig } from "@speakeasy-api/docs-md-shared/config";
 import { getDirname } from "cross-dirname";
 
 const gitignorePath = resolve(getDirname(), "..", "..", ".gitignore");
 
 export default [
-  ...getNodeESLintConfig({
+  ...getPlaywrightESLintConfig({
     gitignorePaths: gitignorePath,
     rootDir: getDirname(),
     entryPoints: {

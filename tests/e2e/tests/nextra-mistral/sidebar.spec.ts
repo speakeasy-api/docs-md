@@ -6,8 +6,6 @@ test.describe("Sidebar", () => {
   }) => {
     await page.goto("mistral/api/endpoint/agents");
 
-    // Wait for page to be loaded
-    await page.waitForLoadState("networkidle");
     const sidebar = page.getByRole("complementary");
     await expect(sidebar).toBeVisible();
 

@@ -1,3 +1,5 @@
+/* eslint-disable playwright/no-networkidle */
+// We need to check for network idle to ensure the TryItNow runtime has loaded
 import { expect, test } from "../fixtures.ts";
 
 test.describe("TryItNow", () => {
@@ -46,7 +48,7 @@ test.describe("TryItNow", () => {
     await expect(resetButton).toBeVisible();
     await resetButton.click();
 
-    await expect(errorText).not.toBeVisible();
+    await expect(errorText).toBeHidden();
   });
   test("should copy editor contents to clipboard when hitting copy button", async ({
     page,
