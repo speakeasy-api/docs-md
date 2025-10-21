@@ -29,12 +29,13 @@
   "homepage": "https://www.speakeasy.com/product/api-docs",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "lit-analyzer --strict \"src/**/*.{js,ts}\" && tsc && cpx \"src/**/*.css\" dist/",
+    "build": "tsc && cpx \"src/**/*.css\" dist/",
     "build:watch": "tsc --watch & cpx \"src/**/*.css\" dist/ --watch",
     "prettier": "prettier --config ../../prettier.config.mjs --ignore-path ../../.gitignore \"**/*.{js,jsx,mjs,ts,tsx,mts}\"",
     "format": "npm run prettier -- --write",
     "check-formatting": "npm run prettier -- --check",
-    "lint": "eslint \"**/*.{js,jsx,mjs,ts,tsx,mts}\"",
+    "lit-analyze": "lit-analyzer --strict --rules.no-unknown-tag-name error --rules.no-unknown-event error --rules.no-unknown-slot error --rules.no-unknown-attribute error \"src/**/*.{js,ts}\"",
+    "lint": "eslint \"**/*.{js,jsx,mjs,ts,tsx,mts}\" && npm run lit-analyze",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
