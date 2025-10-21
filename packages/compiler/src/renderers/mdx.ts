@@ -317,12 +317,7 @@ class MdxRenderer extends MarkdownRenderer {
   #createComponent<Props extends Record<string, unknown>>(
     symbol: string,
     props: Props,
-    cb: () => void,
-    {
-      noImport,
-    }: {
-      noImport?: boolean;
-    }
+    cb: () => void
   ) {
     if (cb) {
       return (
@@ -330,7 +325,6 @@ class MdxRenderer extends MarkdownRenderer {
           symbol,
           props,
           selfClosing: false,
-          noImport,
         }) +
         cb() +
         this.#createComponentClosingTag(symbol)
@@ -340,7 +334,6 @@ class MdxRenderer extends MarkdownRenderer {
         symbol,
         props,
         selfClosing: true,
-        noImport,
       });
     }
   }
@@ -503,9 +496,7 @@ class MdxRenderer extends MarkdownRenderer {
   public override createPill(
     ...[variant, cb, { append = false } = {}]: RendererCreatePillArgs
   ) {
-    const pill = this.#createComponent("spk-pill", { variant }, cb, {
-      noImport: true,
-    });
+    const pill = this.#createComponent("Pill", { variant }, cb);
     if (append) {
       this.appendLine(pill);
     }
