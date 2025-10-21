@@ -14,6 +14,5 @@ const withLitSSR = lit({
 export default withNextra(
   withLitSSR({
     output: "export",
-    webpackModuleRulesTest: /.*\.(js|jsx|ts|tsx|mdx)$/,
   })
 );

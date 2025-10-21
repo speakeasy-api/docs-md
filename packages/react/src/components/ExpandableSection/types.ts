@@ -8,7 +8,7 @@ import type { ConnectingCellProps } from "../ConnectingCell/types.ts";
 import type { ExpandableCellProps } from "../ExpandableCell/types.ts";
 import type { ExpandableTreeTopperProps } from "../ExpandableTreeTopper/types.ts";
 import type { NonExpandableCellProps } from "../NonExpandableCell/types.ts";
-import type { PillProps } from "../Pill/Pill.tsx";
+import type { PillProps } from "../Pill.tsx";
 
 // TODO: cleanup id vs headingId
 /**

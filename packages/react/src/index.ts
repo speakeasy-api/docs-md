@@ -1,8 +1,3 @@
-// Web Component registration
-import "./components/Pill/Pill.tsx";
-// Set up ambient types
-import "./types/components.ts";
-
 // Components
 
 export { Code } from "./components/Code/Code.tsx";
@@ -93,7 +88,8 @@ export type {
   OperationResponseBodyExamplesSectionProps,
   OperationSecuritySectionProps,
 } from "./components/Operation/types.ts";
-export type { PillProps } from "./components/Pill/Pill.tsx";
+export { Pill } from "./components/Pill.tsx";
+export type { PillProps } from "./components/Pill.tsx";
 export { Section } from "./components/Section/Section.tsx";
 export type { SectionProps } from "./components/Section/types.ts";
 export { SectionContent } from "./components/SectionContent/SectionContent.tsx";

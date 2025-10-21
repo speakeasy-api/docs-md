@@ -1,0 +1,29 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "rewriteRelativeImportExtensions": true,
+    "outDir": "./dist",
+    "jsx": "react-jsx",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+
+    // Unfortunately hono+zod has a compile error on newer versions of TypeScript,
+    // so we have to disable checking/loosen checking on our usage of third party
+    // dependencies
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "allowJs": true,
+    "plugins": [
+      {
+        "name": "ts-lit-plugin",
+        "strict": true
+      }
+    ]
+  },
+  "include": ["src/**/*"]
+}

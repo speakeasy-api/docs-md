@@ -16,6 +16,8 @@ import { ConnectingCell as DefaultConnectingCell } from "../../ConnectingCell/Co
 import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
 // eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
+// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
+import { Pill as DefaultPill } from "../../Pill.tsx";
 import { useHashManager } from "../hashManager.ts";
 import styles from "../styles.module.css";
 import type { ExpandablePropertyProps } from "../types.ts";
@@ -93,6 +95,7 @@ export function PropertyContents({
   expandByDefault,
   ExpandableCell = DefaultExpandableCell,
   NonExpandableCell = DefaultNonExpandableCell,
+  Pill = DefaultPill,
   ConnectingCell = DefaultConnectingCell,
 }: ExpandablePropertyProps) {
   const [isOpen, setIsOpen] = useState(expandByDefault);
@@ -212,9 +215,9 @@ export function PropertyContents({
     <TitlePrefixContainer ref={titlePrefixContainerRef}>
       {titleChild}
       {typeAnnotations?.map((annotation) => (
-        <spk-pill key={annotation.title} variant={annotation.variant}>
-          <div slot="content">{annotation.title}</div>
-        </spk-pill>
+        <Pill key={annotation.title} variant={annotation.variant}>
+          {annotation.title}
+        </Pill>
       ))}
     </TitlePrefixContainer>
   );
