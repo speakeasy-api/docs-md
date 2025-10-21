@@ -72,8 +72,5 @@ verify-package-versions:
 publish:
 	@set -e; trap 'exit 130' INT TERM; exec node --experimental-strip-types scripts/publish.mts
 
-publish-skip-examples:
-	@set -e; trap 'exit 130' INT TERM; exec node --experimental-strip-types scripts/publish.mts -- --skip-example-builds
-
 sync-public:
 	@set -e; trap 'exit 130' INT TERM; exec node --experimental-strip-types scripts/remoteSync.mts

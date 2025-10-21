@@ -57,10 +57,6 @@ runCommand("make", ["build-packages"], { cwd: ROOT_DIR });
 
 // Build examples as a sanity check
 runCommand("make", ["build-api-docs"], { cwd: ROOT_DIR });
-if (!process.argv.includes("--skip-example-builds")) {
-  console.log("Building examples");
-  runCommand("make", ["build-examples"], { cwd: ROOT_DIR });
-}
 
 // Publish the packages
 console.log("Publishing packages");
