@@ -357,14 +357,13 @@ Multiline: ${displayInfo?.multiline ?? "N/A"}`}
   }
 
   return (
-    <div slot={slot} className={styles.entryContainer}>
+    <div slot={slot} data-testid={headingId} className={styles.entryContainer}>
       <div className={styles.entryHeaderContainer}>
         {hasExpandableContent ? (
           <ExpandableCell
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             variant="property"
-            headingId={headingId}
           />
         ) : (
           <NonExpandableCell />

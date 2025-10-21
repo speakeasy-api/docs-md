@@ -26,7 +26,6 @@ export function ExpandableCell({
   setIsOpen,
   variant,
   ExpandableCellIcon = DefaultExpandableCellIcon,
-  headingId,
 }: ExpandableCellProps) {
   return (
     <div className={styles.expandableCellContainer}>
@@ -38,7 +37,6 @@ export function ExpandableCell({
           )}
           aria-expanded={isOpen}
           type="button"
-          data-testid={`expandable-cell-button-${headingId}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           <ExpandableCellIcon

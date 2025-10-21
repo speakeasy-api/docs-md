@@ -19,9 +19,4 @@ export type ExpandableCellProps = {
    * The component to use for rendering the expandable cell icon
    */
   ExpandableCellIcon?: FC<ExpandableCellIconProps>;
-  /**
-   * The heading ID for this expandable section, used to create a descriptive
-   * test id.
-   */
-  headingId?: string;
 };

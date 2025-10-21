@@ -7,11 +7,10 @@ test.describe("SectionContent", () => {
     await page.goto("mistral/api/endpoint/agents");
     await page.waitForLoadState("networkidle");
 
-    const expandSystemMessage = page.getByTestId(
-      "expandable-cell-button-operation-agents_completion_v1_agents_completions_post+request+messages+systemmessage"
-    );
+    const expandSystemMessage = page.getByTestId('operation-agents_completion_v1_agents_completions_post+request+messages+systemmessage');
     await expect(expandSystemMessage).toBeVisible();
-    await expandSystemMessage.click();
+    const expandButton = expandSystemMessage.getByRole('button');
+    await expandButton.click();
 
     const fileIdHeading = page.getByRole("heading", {
       name: "content",
