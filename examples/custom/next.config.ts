@@ -24,7 +24,6 @@ export default withLit(
       "@speakeasy-api/docs-md-components",
       "@speakeasy-api/docs-md-react",
     ],
-    // Optionally, add any other Next.js config below
     output: "export",
   })
 );
