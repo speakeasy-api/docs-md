@@ -3,20 +3,13 @@
 import { atom, useAtom } from "jotai";
 import { useEffect, useState } from "react";
 
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { CheckIcon as DefaultCheckIcon } from "../../CheckIcon/CheckIcon.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { CopyIcon as DefaultCopyIcon } from "../../CopyIcon/CopyIcon.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { ResetIcon as DefaultResetIcon } from "../../ResetIcon/ResetIcon.tsx";
-import { useRuntime } from "../state.ts";
-import type {
-  ButtonProps,
-  CopyButtonProps,
-  ResetButtonProps,
-  TryItNowProps,
-} from "../types.ts";
-import { Button } from "./Button.tsx";
+import { useTypeScriptRuntime } from "../runtime/typescript.ts";
+import type { TypeScriptTryItNowProps } from "../types.ts";
+import {
+  DefaultCopyButton,
+  DefaultResetButton,
+  DefaultRunButton,
+} from "./Button.tsx";
 import { Editor as DefaultEditor } from "./Editor.tsx";
 import { Layout as DefaultLayout } from "./Layout.tsx";
 import { Results as DefaultResults } from "./Results.tsx";
@@ -54,73 +47,23 @@ const fetchTypesAtom = atom(
   }
 );
 
-function DefaultRunButton({ onClick }: Pick<ButtonProps, "onClick">) {
-  return (
-    <Button onClick={onClick} ariaLabel="Run code">
-      Run
-    </Button>
-  );
-}
-
-function DefaultResetButton({
-  onClick,
-  ResetIcon = DefaultResetIcon,
-}: ResetButtonProps) {
-  return (
-    <Button
-      className={styles.iconButton}
-      onClick={onClick}
-      ariaLabel="Reset code"
-    >
-      <ResetIcon />
-    </Button>
-  );
-}
-
-function DefaultCopyButton({
-  copyValue,
-  CheckIcon = DefaultCheckIcon,
-  CopyIcon = DefaultCopyIcon,
-}: CopyButtonProps) {
-  const [copied, setCopied] = useState(false);
-
-  function handleClick() {
-    if (copyValue) {
-      void navigator.clipboard.writeText(copyValue);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  }
-
-  return (
-    <Button
-      className={styles.iconButton}
-      onClick={handleClick}
-      ariaLabel={copied ? "Copied!" : "Copy code"}
-    >
-      {copied ? <CheckIcon /> : <CopyIcon />}
-    </Button>
-  );
-}
-
-export function TryItNowContents({
+export function TypeScriptTryItNow({
   defaultValue,
-  dependencyUrlPrefix,
-  packageName,
   Layout = DefaultLayout,
   Editor = DefaultEditor,
   RunButton = DefaultRunButton,
   ResetButton = DefaultResetButton,
   Results = DefaultResults,
   CopyButton = DefaultCopyButton,
-  editorProps = {},
   theme = "dark",
-}: TryItNowProps) {
+  dependencyUrlPrefix,
+  packageName,
+}: TypeScriptTryItNowProps) {
   const [types] = useAtom(typesAtom);
   const [error] = useAtom(errorAtom);
   const [, fetchTypes] = useAtom(fetchTypesAtom);
   const [value, setValue] = useState(defaultValue);
-  const { status, execute, reset } = useRuntime({
+  const { status, execute, reset } = useTypeScriptRuntime({
     dependencyUrlPrefix,
     defaultValue,
   });
@@ -154,7 +97,6 @@ export function TryItNowContents({
             onValueChange={setValue}
             types={types}
             packageName={packageName}
-            {...editorProps}
           />
         </div>
         <div slot="runButton" className={styles.runButtonContainer}>

@@ -1,5 +1,5 @@
 /* eslint-disable fast-import/no-restricted-imports */
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta } from "@storybook/react";
 
 import { CodeSample } from "../components/CodeSample/CodeSample.tsx";
 import {
@@ -61,10 +61,10 @@ const meta: Meta<typeof TryItNow> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = {
   args: {
+    language: "typescript",
     defaultValue: `// Welcome to the Try It Now editor!
 console.log("Hello, world!");
 
@@ -73,8 +73,9 @@ console.log("2 + 2 =", sum(2, 2));`,
   },
 };
 
-export const APIExample: Story = {
+export const APIExample = {
   args: {
+    language: "typescript",
     defaultValue: `// Example API call
 async function fetchUser(id: number) {
   const response = await fetch(\`https://jsonplaceholder.typicode.com/users/\${id}\`);
@@ -89,8 +90,9 @@ fetchUser(1).then(user => {
   },
 };
 
-export const TypeScriptExample: Story = {
+export const TypeScriptExample = {
   args: {
+    language: "typescript",
     defaultValue: `interface User {
   id: number;
   name: string;
@@ -127,14 +129,16 @@ console.log("All users:", service.getAllUsers());`,
   },
 };
 
-export const EmptyEditor: Story = {
+export const EmptyEditor = {
   args: {
+    language: "typescript",
     defaultValue: "",
   },
 };
 
-export const SimpleCalculation: Story = {
+export const SimpleCalculation = {
   args: {
+    language: "typescript",
     defaultValue: `// Simple calculator example
 const calculator = {
   add: (a: number, b: number) => a + b,

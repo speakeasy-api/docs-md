@@ -1,37 +1,45 @@
-import type { RuntimeEvents } from "@speakeasy-api/docs-md-shared";
-import { Runtime } from "@speakeasy-api/docs-md-shared";
+import type { TypeScriptRuntimeEvents } from "@speakeasy-api/docs-md-shared";
+import { TypeScriptRuntime } from "@speakeasy-api/docs-md-shared";
 import { useCallback, useRef, useState } from "react";
 
-import { InternalError } from "../../util/internalError.ts";
-import type { ExtendedRuntimeEvent, Status } from "./types.ts";
+import { InternalError } from "../../../util/internalError.ts";
+import type {
+  ExtendedTypeScriptRuntimeEvent,
+  TypeScriptStatus,
+} from "../types.ts";
 
 type Options = {
   dependencyUrlPrefix: string;
   defaultValue: string;
 };
 
-export function useRuntime({ dependencyUrlPrefix, defaultValue }: Options) {
-  const [status, setStatus] = useState<Status>({
+export function useTypeScriptRuntime({
+  dependencyUrlPrefix,
+  defaultValue,
+}: Options) {
+  const [status, setStatus] = useState<TypeScriptStatus>({
     state: "idle",
+    language: "typescript",
   });
-  const previousEvents = useRef<ExtendedRuntimeEvent[]>([]);
-  const events = useRef<ExtendedRuntimeEvent[]>([]);
-  const runtimeRef = useRef<Runtime | null>(null);
+  const previousEvents = useRef<ExtendedTypeScriptRuntimeEvent[]>([]);
+  const events = useRef<ExtendedTypeScriptRuntimeEvent[]>([]);
+  const runtimeRef = useRef<TypeScriptRuntime | null>(null);
   const eventIdCounter = useRef<number>(0);
   const initialValue = useRef<string>(defaultValue);
 
   const addEventId = useCallback(
-    (event: RuntimeEvents): ExtendedRuntimeEvent => {
+    (event: TypeScriptRuntimeEvents): ExtendedTypeScriptRuntimeEvent => {
       return { ...event, id: `event-${++eventIdCounter.current}` };
     },
     []
   );
 
   const handleExecutionEvent = useCallback(
-    (event: RuntimeEvents) => {
+    (event: TypeScriptRuntimeEvents) => {
       events.current.push(addEventId(event));
       setStatus({
         state: "executing",
+        language: "typescript",
         events: events.current,
       });
     },
@@ -39,7 +47,7 @@ export function useRuntime({ dependencyUrlPrefix, defaultValue }: Options) {
   );
 
   if (!runtimeRef.current) {
-    runtimeRef.current = new Runtime({ dependencyUrlPrefix });
+    runtimeRef.current = new TypeScriptRuntime({ dependencyUrlPrefix });
     runtimeRef.current.on("compilation:started", () => {
       previousEvents.current = events.current;
       // We don't store started and finished events to keep event history clean
@@ -48,12 +56,14 @@ export function useRuntime({ dependencyUrlPrefix, defaultValue }: Options) {
       events.current = [];
       setStatus({
         state: "compiling",
+        language: "typescript",
         previousEvents: previousEvents.current,
       });
     });
     runtimeRef.current.on("compilation:finished", () => {
       setStatus({
         state: "executing",
+        language: "typescript",
         events: events.current,
       });
     });
@@ -64,6 +74,7 @@ export function useRuntime({ dependencyUrlPrefix, defaultValue }: Options) {
       events.current = previousEvents.current;
       setStatus({
         state: "compile-error",
+        language: "typescript",
         previousEvents: previousEvents.current,
         // We still want to send the compilation error event thoughs, so that
         // the UI can show a compilation error.
@@ -89,6 +100,7 @@ export function useRuntime({ dependencyUrlPrefix, defaultValue }: Options) {
     eventIdCounter.current = 0;
     setStatus({
       state: "idle",
+      language: "typescript",
     });
     onReset?.(initialValue.current);
   }, []);

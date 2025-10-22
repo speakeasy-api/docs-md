@@ -3,7 +3,8 @@
 // with "use client", for some reason, but it's perfectly happy to import a
 // non-async server component (this file) that then imports a client component.
 
-import { TryItNowContents } from "./components/TryItNowContents.tsx";
+import { CurlTryItNow } from "./components/CurlTryItNow.tsx";
+import { TypeScriptTryItNow } from "./components/TypeScriptTryItNow.tsx";
 import type { TryItNowProps } from "./types.ts";
 
 /**
@@ -12,5 +13,12 @@ import type { TryItNowProps } from "./types.ts";
  * Currently, Try It Now is based on Sandpack.
  */
 export function TryItNow(props: TryItNowProps) {
-  return <TryItNowContents {...props} />;
+  switch (props.language) {
+    case "curl": {
+      return <CurlTryItNow {...props} />;
+    }
+    case "typescript": {
+      return <TypeScriptTryItNow {...props} />;
+    }
+  }
 }

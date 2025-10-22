@@ -1,27 +1,57 @@
-import type { RuntimeEvents } from "@speakeasy-api/docs-md-shared";
+import type {
+  CurlRuntimeEvents,
+  TypeScriptRuntimeEvents,
+} from "@speakeasy-api/docs-md-shared";
 import type { ComponentType, CSSProperties, FC } from "react";
 
-export type ExtendedRuntimeEvent = RuntimeEvents & { id: string };
+export type ExtendedTypeScriptRuntimeEvent = TypeScriptRuntimeEvents & {
+  id: string;
+};
 
-export type Status =
+export type ExtendedCurlRuntimeEvent = CurlRuntimeEvents & {
+  id: string;
+};
+
+export type ExtendedRuntimeEvent =
+  | ExtendedTypeScriptRuntimeEvent
+  | ExtendedCurlRuntimeEvent;
+
+export type TypeScriptStatus =
   | {
       state: "idle";
+      language: "typescript";
     }
   | {
       state: "compiling";
-      previousEvents: ExtendedRuntimeEvent[];
+      language: "typescript";
+      previousEvents: ExtendedTypeScriptRuntimeEvent[];
     }
   | {
       state: "compile-error";
-      previousEvents: ExtendedRuntimeEvent[];
-      events: ExtendedRuntimeEvent[];
+      language: "typescript";
+      previousEvents: ExtendedTypeScriptRuntimeEvent[];
+      events: ExtendedTypeScriptRuntimeEvent[];
     }
   | {
       state: "executing";
-      events: ExtendedRuntimeEvent[];
+      language: "typescript";
+      events: ExtendedTypeScriptRuntimeEvent[];
     };
 
-export type TryItNowProps = {
+export type CurlStatus =
+  | {
+      state: "idle";
+      language: "curl";
+    }
+  | {
+      state: "executing";
+      language: "curl";
+      events: ExtendedCurlRuntimeEvent[];
+    };
+
+type Status = TypeScriptStatus | CurlStatus;
+
+type BaseTryItNowProps = {
   /**
    * The code sample for the editor to initially load
    */
@@ -63,11 +93,32 @@ export type TryItNowProps = {
    * The theme of the editor
    */
   theme?: "light" | "dark";
-  /**
-   * Editor props to pass to the editor component
-   */
-  editorProps?: Partial<EditorProps>;
 };
+
+export type TypeScriptTryItNowProps = BaseTryItNowProps & {
+  /**
+   * The language of the code sample.
+   */
+  language: "typescript";
+  /**
+   * URL prefix to the prebuilt dependency bundle and types, as specified by
+   * `codeSample.tryItNow.urlPrefix` in the Speakeasy docs config
+   */
+  dependencyUrlPrefix: string;
+  /**
+   * The name of the npm package that the bundle and types represent
+   */
+  packageName: string;
+};
+
+export type CurlTryItNowProps = BaseTryItNowProps & {
+  /**
+   * The language of the code sample.
+   */
+  language: "curl";
+};
+
+export type TryItNowProps = TypeScriptTryItNowProps | CurlTryItNowProps;
 
 export type EditorProps = {
   /**
@@ -77,7 +128,7 @@ export type EditorProps = {
   /**
    * The name of the npm package that the bundle and types represent
    */
-  packageName: string;
+  packageName: string | null;
   /**
    * Callback to invoke when the value changes
    */
