@@ -122,6 +122,10 @@ export type TryItNowProps = TypeScriptTryItNowProps | CurlTryItNowProps;
 
 export type EditorProps = {
   /**
+   * The language of the code sample.
+   */
+  language: "typescript" | "curl";
+  /**
    * The current code value in the editor
    */
   value: string;
@@ -136,7 +140,9 @@ export type EditorProps = {
   /**
    * Contents of a bundled TypeScript Definition File (`.d.ts`) that contains
    * type information for the SDK. The value is `null` if they haven't loaded
-   * yet, or errored while loading
+   * yet, or errored while loading.
+   *
+   * Will always be `null` for non-TypeScript SDKs
    */
   types: string | null;
   /**

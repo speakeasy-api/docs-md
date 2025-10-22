@@ -44,6 +44,7 @@ export function CurlTryItNow({
             onValueChange={setValue}
             packageName={null}
             types={null}
+            language="curl"
           />
         </div>
         <div slot="runButton" className={styles.runButtonContainer}>

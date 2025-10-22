@@ -97,6 +97,7 @@ export function TypeScriptTryItNow({
             onValueChange={setValue}
             types={types}
             packageName={packageName}
+            language="typescript"
           />
         </div>
         <div slot="runButton" className={styles.runButtonContainer}>

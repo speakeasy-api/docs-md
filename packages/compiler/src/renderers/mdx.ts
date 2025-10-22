@@ -601,11 +601,17 @@ class MdxRenderer extends MarkdownRenderer {
               );
               this.createSectionContent(
                 () => {
+                  if (language !== "typescript" && language !== "curl") {
+                    throw new InternalError(
+                      `Unsupported language: ${language}`
+                    );
+                  }
                   this.#appendComponent<TryItNowProps>({
                     symbol: "TryItNow",
                     props: {
                       dependencyUrlPrefix,
                       defaultValue,
+                      language,
                       packageName: getInternalSetting("typeScriptPackageName"),
                     },
                   });

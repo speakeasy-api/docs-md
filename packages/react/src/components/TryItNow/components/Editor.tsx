@@ -50,6 +50,7 @@ const editorOptions: editor.IStandaloneEditorConstructionOptions = {
 };
 
 export function Editor({
+  language,
   value,
   onValueChange,
   theme,
@@ -74,7 +75,7 @@ export function Editor({
 
   // Wait till both Monaco and types are loaded before adding the extra lib
   useEffect(() => {
-    if (!monaco || !types) {
+    if (!monaco || !types || language !== "typescript") {
       return;
     }
 
@@ -98,7 +99,7 @@ export function Editor({
       noSemanticValidation: false,
       noSyntaxValidation: false,
     });
-  }, [types, monaco, packageName]);
+  }, [types, monaco, packageName, language]);
 
   return (
     <MonacoEditor
@@ -108,7 +109,7 @@ export function Editor({
         padding: editorPadding,
       }}
       className={styles.editor}
-      language="typescript"
+      language={language}
       theme={theme === "dark" ? "vs-dark" : "light"}
       value={value}
       onChange={handleValueChange}
