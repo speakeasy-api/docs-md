@@ -45,8 +45,13 @@ function renderCodeSamples(
           }
           if (codeSample.language === "typescript" && codeSample.tryItNow) {
             createTryItNowEntry({
-              language,
+              language: "typescript",
               dependencyUrlPrefix: codeSample.tryItNow.urlPrefix,
+              defaultValue: snippet.code,
+            });
+          } else if (codeSample.language === "curl" && codeSample.tryItNow) {
+            createTryItNowEntry({
+              language: "curl",
               defaultValue: snippet.code,
             });
           } else {

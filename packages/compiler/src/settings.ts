@@ -43,6 +43,7 @@ export function setInternalSetting<Key extends keyof InternalSettings>(
 
 const curl = z.object({
   language: z.literal("curl"),
+  tryItNow: z.boolean().optional().default(false),
 });
 
 const sdkCommonProperties = {

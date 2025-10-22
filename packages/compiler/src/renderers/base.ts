@@ -97,11 +97,18 @@ export type RendererCreateOperationArgs = [
 ];
 export type RendererCreateCodeSamplesSectionArgs = [
   cb: (options: {
-    createTryItNowEntry: (options: {
-      language: string;
-      dependencyUrlPrefix: string;
-      defaultValue: string;
-    }) => void;
+    createTryItNowEntry: (
+      options:
+        | {
+            language: "typescript";
+            dependencyUrlPrefix: string;
+            defaultValue: string;
+          }
+        | {
+            language: "curl";
+            defaultValue: string;
+          }
+    ) => void;
     createCodeSampleEntry: (options: {
       language: string;
       value: string;

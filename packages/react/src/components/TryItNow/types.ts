@@ -57,15 +57,6 @@ type BaseTryItNowProps = {
    */
   defaultValue: string;
   /**
-   * URL prefix to the prebuilt dependency bundle and types, as specified by
-   * `codeSample.tryItNow.urlPrefix` in the Speakeasy docs config
-   */
-  dependencyUrlPrefix: string;
-  /**
-   * The name of the npm package that the bundle and types represent
-   */
-  packageName: string;
-  /**
    * Editor component to use. Defaults to `Editor`.
    */
   Editor?: FC<EditorProps>;
