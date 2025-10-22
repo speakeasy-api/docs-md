@@ -20,5 +20,5 @@ export type {
   PageMetadata,
 } from "./types/index.ts";
 
-export { Runtime } from "./codeRuntime/runtime.ts";
-export type { RuntimeEvents } from "./codeRuntime/events.ts";
+export { TypeScriptRuntime } from "./typescriptRuntime/runtime.ts";
+export type { TypeScriptRuntimeEvents } from "./typescriptRuntime/events.ts";

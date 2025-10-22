@@ -33,7 +33,7 @@ type ExecutionUncaughtRejectionEvent = {
   error: unknown;
 };
 
-export type RuntimeEvents =
+export type TypeScriptRuntimeEvents =
   | CompilationStartedEvent
   | CompilationFinishedEvent
   | CompilationErrorEvent
