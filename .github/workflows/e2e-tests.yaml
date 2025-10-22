@@ -44,10 +44,7 @@ jobs:
       - name: Link workspace binaries
         run: npm install --workspaces
       - name: Build examples
-        run: |
-          npm run build --workspace examples/docusaurus --ignore-scripts &
-          npm run build --workspace examples/nextra --ignore-scripts &
-          wait
+        run: npm run build --workspace examples/docusaurus & npm run build --workspace examples/nextra
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
         working-directory: tests/integration
