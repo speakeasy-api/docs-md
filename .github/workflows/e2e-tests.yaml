@@ -28,6 +28,8 @@ jobs:
       # We have to run npm install again to link the newly built compiler binary
       - name: Link workspace binaries
         run: npm install --workspaces
+      - name: Build examples
+        run: npm run build --workspace examples/docusaurus & npm run build --workspace examples/nextra
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
         working-directory: tests/e2e
