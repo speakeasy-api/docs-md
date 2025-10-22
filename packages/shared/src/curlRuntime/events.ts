@@ -5,6 +5,7 @@ type FetchStartedEvent = {
 type FetchFinishedEvent = {
   type: "fetch:finished";
   response: Response;
+  body: unknown;
 };
 
 type FetchErrorEvent = {

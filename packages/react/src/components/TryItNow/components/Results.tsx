@@ -77,18 +77,13 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
 
         // Curl events
         case "fetch:started": {
-          return {
-            prefix: undefined,
-            id: event.id,
-            value: "Fetch value",
-            level: "info",
-          };
+          return undefined;
         }
         case "fetch:finished": {
           return {
             prefix: undefined,
             id: event.id,
-            value: "Fetch value",
+            value: event.body,
             level: "info",
           };
         }

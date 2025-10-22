@@ -175,7 +175,15 @@ export class CurlRuntime {
           error: new Error(response.statusText),
         });
       } else {
-        this.#emit({ type: "fetch:finished", response });
+        if (response.headers.get("content-type") === "application/json") {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          const body = await response.json();
+          this.#emit({ type: "fetch:finished", response, body });
+        } else {
+          // TODO: handle binary responses, or maybe just don't show them?
+          const body = await response.text();
+          this.#emit({ type: "fetch:finished", response, body });
+        }
       }
     } catch (error) {
       this.#emit({ type: "fetch:error", error });
