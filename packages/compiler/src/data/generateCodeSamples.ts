@@ -382,6 +382,8 @@ function generateCurlCodeSamples(
       .join("&");
 
     // Generate the cURL sample
+    // If anything new is added to this command, make sure to update the parser
+    // at packages/shared/src/curlRuntime/runtime.ts
     const request = CurlGenerator({
       url:
         server.url +
