@@ -55,7 +55,7 @@ export default defineConfig({
       url: "http://localhost:3001",
       reuseExistingServer: !process.env.CI,
       stdout: "pipe",
-      timeout: 2 * 60 * 1000, // 2 minutes
+      timeout: 5 * 60 * 1000, // 5 minutes
     },
     {
       command: "npm run build && npm run start",
@@ -63,7 +63,7 @@ export default defineConfig({
       url: "http://localhost:3002",
       reuseExistingServer: !process.env.CI,
       stdout: "pipe",
-      timeout: 2 * 60 * 1000, // 2 minutes
+      timeout: 5 * 60 * 1000, // 5 minutes
     },
   ],
 });
