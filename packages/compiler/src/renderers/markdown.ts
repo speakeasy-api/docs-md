@@ -388,7 +388,7 @@ export abstract class MarkdownRenderer extends Renderer {
   public override createResponsesExamplesSection(
     ...[createExample, { title }]: RendererCreateResponsesExamplesSectionArgs
   ): void {
-    this.enterContext({ id: "responses", type: "section" });
+    this.enterContext({ id: "responses-examples", type: "section" });
     if (this.#currentOperation) {
       this.#currentOperation.responses = {};
     }
