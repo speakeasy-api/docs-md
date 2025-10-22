@@ -1,14 +1,10 @@
 "use client";
 
 import { useTabbedChildren } from "../../util/clientHooks.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { Section as DefaultSection } from "../Section/Section.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { SectionContent as DefaultSectionContent } from "../SectionContent/SectionContent.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { SectionTitle as DefaultSectionTitle } from "../SectionTitle/SectionTitle.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { TabButton as DefaultTabButton } from "../TabButton/TabButton.tsx";
+import { Section } from "../Section/Section.tsx";
+import { SectionContent } from "../SectionContent/SectionContent.tsx";
+import { SectionTitle } from "../SectionTitle/SectionTitle.tsx";
+import { TabButton } from "../TabButton/TabButton.tsx";
 import styles from "./styles.module.css";
 import type { ResponseExamplesTabbedSectionProps } from "./types.ts";
 
@@ -24,10 +20,6 @@ import type { ResponseExamplesTabbedSectionProps } from "./types.ts";
  */
 export function ResponseExamplesTabbedSection({
   children,
-  Section = DefaultSection,
-  SectionContent = DefaultSectionContent,
-  SectionTitle = DefaultSectionTitle,
-  TabButton = DefaultTabButton,
 }: ResponseExamplesTabbedSectionProps) {
   const { titleChild, tabChildren, activeChild } = useTabbedChildren({
     children,

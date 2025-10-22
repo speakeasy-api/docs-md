@@ -3,12 +3,9 @@
 import { useState } from "react";
 
 import { useChildren, useUniqueChild } from "../../../util/hooks.ts";
-// eslint-disable-next-line fast-import/no-restricted-imports
-import { ConnectingCell as DefaultConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports
-import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports
-import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
+import { ConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
+import { ExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
+import { NonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
 import { useHashManager } from "../hashManager.ts";
 import styles from "../styles.module.css";
 import type { ExpandableBreakoutProps } from "../types.ts";
@@ -19,9 +16,6 @@ export function BreakoutContents({
   hasExpandableContent,
   expandByDefault,
   children,
-  ExpandableCell = DefaultExpandableCell,
-  NonExpandableCell = DefaultNonExpandableCell,
-  ConnectingCell = DefaultConnectingCell,
 }: ExpandableBreakoutProps) {
   const titleChild = useUniqueChild(children, "title");
   const descriptionChildren = useChildren(children, "description");

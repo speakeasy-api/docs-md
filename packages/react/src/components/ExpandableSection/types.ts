@@ -2,13 +2,7 @@ import type {
   DisplayTypeInfo,
   PropertyAnnotations,
 } from "@speakeasy-api/docs-md-shared";
-import type { FC, PropsWithChildren } from "react";
-
-import type { ConnectingCellProps } from "../ConnectingCell/types.ts";
-import type { ExpandableCellProps } from "../ExpandableCell/types.ts";
-import type { ExpandableTreeTopperProps } from "../ExpandableTreeTopper/types.ts";
-import type { NonExpandableCellProps } from "../NonExpandableCell/types.ts";
-import type { PillProps } from "../Pill.tsx";
+import type { PropsWithChildren } from "react";
 
 // TODO: cleanup id vs headingId
 /**
@@ -50,18 +44,7 @@ type RowProps = PropsWithChildren<{
   expandByDefault: boolean;
 }>;
 
-export type ExpandableSectionProps = PropsWithChildren<{
-  /**
-   * The component to use for rendering the tree top decoration, and defaults to
-   * ExpandableTreeTopper. Override this property to use a custom version.
-   */
-  ExpandableTreeTopper?: FC<ExpandableTreeTopperProps>;
-  /**
-   * The component to use for rendering connecting cells, and defaults to
-   * ConnectingCell. Override this property to use a custom version.
-   */
-  ConnectingCell?: FC<ConnectingCellProps>;
-}>;
+export type ExpandableSectionProps = PropsWithChildren;
 
 export type ExpandablePropertyProps = RowProps & {
   /**
@@ -72,28 +55,6 @@ export type ExpandablePropertyProps = RowProps & {
    * The annotations for the property (e.g. "required")
    */
   typeAnnotations: PropertyAnnotations[];
-  /**
-   * The component to use for rendering annotations, and defaults to Pill. If
-   * you override the default Pill implementation, then pass your custom
-   * implementation in here too. Otherwise, the default Pill implementation will
-   * be used internally.
-   */
-  Pill?: FC<PillProps>;
-  /**
-   * The component to use for rendering expandable cells, and defaults to
-   * ExpandableCell. Override this property to use a custom version.
-   */
-  ExpandableCell?: FC<ExpandableCellProps>;
-  /**
-   * The component to use for rendering non-expandable cells, and defaults to
-   * NonExpandableCell. Override this property to use a custom version.
-   */
-  NonExpandableCell?: FC<NonExpandableCellProps>;
-  /**
-   * The component to use for rendering connecting cells, and defaults to
-   * ConnectingCell. Override this property to use a custom version.
-   */
-  ConnectingCell?: FC<ConnectingCellProps>;
 };
 
 export type ExpandablePropertyTitleProps = PropsWithChildren<{
@@ -129,30 +90,9 @@ export type ExpandablePropertyBreakoutsProps = PropsWithChildren<{
    * The slot for the breakouts, always "breakouts"
    */
   slot: "breakouts";
-  /**
-   * The component to use for rendering connecting cells, and defaults to
-   * ConnectingCell. Override this property to use a custom version.
-   */
-  ConnectingCell?: FC<ConnectingCellProps>;
 }>;
 
-export type ExpandableBreakoutProps = RowProps & {
-  /**
-   * The component to use for rendering expandable cells, and defaults to
-   * ExpandableCell. Override this property to use a custom version.
-   */
-  ExpandableCell?: FC<ExpandableCellProps>;
-  /**
-   * The component to use for rendering non-expandable cells, and defaults to
-   * NonExpandableCell. Override this property to use a custom version.
-   */
-  NonExpandableCell?: FC<NonExpandableCellProps>;
-  /**
-   * The component to use for rendering connecting cells, and defaults to
-   * ConnectingCell. Override this property to use a custom version.
-   */
-  ConnectingCell?: FC<ConnectingCellProps>;
-};
+export type ExpandableBreakoutProps = RowProps;
 
 export type ExpandableBreakoutTitleProps = PropsWithChildren<{ slot: "title" }>;
 export type ExpandableBreakoutDescriptionProps = PropsWithChildren<{
@@ -178,9 +118,4 @@ export type ExpandableBreakoutPropertiesProps = PropsWithChildren<{
    * The slot for the properties, always "properties"
    */
   slot: "properties";
-  /**
-   * The component to use for rendering connecting cells, and defaults to
-   * ConnectingCell. Override this property to use a custom version.
-   */
-  ConnectingCell?: FC<ConnectingCellProps>;
 }>;

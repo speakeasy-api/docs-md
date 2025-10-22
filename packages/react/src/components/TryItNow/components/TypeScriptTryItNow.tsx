@@ -5,14 +5,10 @@ import { useEffect, useState } from "react";
 
 import { useTypeScriptRuntime } from "../runtime/typescript.ts";
 import type { TypeScriptTryItNowProps } from "../types.ts";
-import {
-  DefaultCopyButton,
-  DefaultResetButton,
-  DefaultRunButton,
-} from "./Button.tsx";
-import { Editor as DefaultEditor } from "./Editor.tsx";
-import { Layout as DefaultLayout } from "./Layout.tsx";
-import { Results as DefaultResults } from "./Results.tsx";
+import { CopyButton, ResetButton, RunButton } from "./Button.tsx";
+import { Editor } from "./Editor.tsx";
+import { Layout } from "./Layout.tsx";
+import { Results } from "./Results.tsx";
 import styles from "./styles.module.css";
 
 const typesAtom = atom<string | null>(null);
@@ -49,12 +45,6 @@ const fetchTypesAtom = atom(
 
 export function TypeScriptTryItNow({
   defaultValue,
-  Layout = DefaultLayout,
-  Editor = DefaultEditor,
-  RunButton = DefaultRunButton,
-  ResetButton = DefaultResetButton,
-  Results = DefaultResults,
-  CopyButton = DefaultCopyButton,
   theme = "dark",
   dependencyUrlPrefix,
   packageName,
@@ -75,7 +65,6 @@ export function TypeScriptTryItNow({
 
   useEffect(() => {
     if (error) {
-      // eslint-disable-next-line no-console
       console.error(
         "Failed to load types, type checking disabled in editor:",
         error

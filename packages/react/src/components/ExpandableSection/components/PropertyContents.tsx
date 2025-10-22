@@ -10,14 +10,10 @@ import {
   computeSingleLineDisplayType,
 } from "../../../util/displayType.ts";
 import { useChildren, useUniqueChild } from "../../../util/hooks.ts";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { ConnectingCell as DefaultConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { ExpandableCell as DefaultExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { NonExpandableCell as DefaultNonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { Pill as DefaultPill } from "../../Pill.tsx";
+import { ConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
+import { ExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
+import { NonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
+import { Pill } from "../../Pill.tsx";
 import { useHashManager } from "../hashManager.ts";
 import styles from "../styles.module.css";
 import type { ExpandablePropertyProps } from "../types.ts";
@@ -93,10 +89,6 @@ export function PropertyContents({
   typeAnnotations,
   hasExpandableContent,
   expandByDefault,
-  ExpandableCell = DefaultExpandableCell,
-  NonExpandableCell = DefaultNonExpandableCell,
-  Pill = DefaultPill,
-  ConnectingCell = DefaultConnectingCell,
 }: ExpandablePropertyProps) {
   const [isOpen, setIsOpen] = useState(expandByDefault);
   // Ref for the debug overlay element

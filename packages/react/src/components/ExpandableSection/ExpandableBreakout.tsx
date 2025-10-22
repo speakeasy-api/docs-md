@@ -6,8 +6,7 @@
 import { Children, isValidElement } from "react";
 
 import { InternalError } from "../../util/internalError.ts";
-// eslint-disable-next-line fast-import/no-restricted-imports
-import { ConnectingCell as DefaultConnectingCell } from "../ConnectingCell/ConnectingCell.tsx";
+import { ConnectingCell } from "../ConnectingCell/ConnectingCell.tsx";
 import { BreakoutContents } from "./components/BreakoutContents.tsx";
 import styles from "./styles.module.css";
 import type {
@@ -86,7 +85,6 @@ export function ExpandableBreakoutDefaultValue({
 export function ExpandableBreakoutProperties({
   children,
   slot,
-  ConnectingCell = DefaultConnectingCell,
 }: ExpandableBreakoutPropertiesProps) {
   return (
     <div slot={slot} className={styles.childContainer}>

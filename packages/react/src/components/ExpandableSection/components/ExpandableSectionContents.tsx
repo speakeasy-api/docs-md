@@ -3,16 +3,12 @@
 import { Children, isValidElement } from "react";
 
 import { InternalError } from "../../../util/internalError.ts";
-// eslint-disable-next-line fast-import/no-restricted-imports
-import { ConnectingCell as DefaultConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports
-import { ExpandableTreeTopper as DefaultExpandableTreeTopper } from "../../ExpandableTreeTopper/ExpandableTreeTopper.tsx";
+import { ConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
+import { ExpandableTreeTopper } from "../../ExpandableTreeTopper/ExpandableTreeTopper.tsx";
 import type { ExpandableSectionProps } from "../types.ts";
 
 export function ExpandableSectionContents({
   children,
-  ExpandableTreeTopper = DefaultExpandableTreeTopper,
-  ConnectingCell = DefaultConnectingCell,
 }: ExpandableSectionProps) {
   return (
     <>

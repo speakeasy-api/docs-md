@@ -3,11 +3,8 @@
 import clsx from "clsx";
 import { useState } from "react";
 
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { CheckIcon as DefaultCheckIcon } from "../../CheckIcon/CheckIcon.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { CopyIcon as DefaultCopyIcon } from "../../CopyIcon/CopyIcon.tsx";
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
 import { ResetIcon as DefaultResetIcon } from "../../ResetIcon/ResetIcon.tsx";
 import type {
   ButtonProps,
@@ -29,7 +26,7 @@ function Button({ onClick, ariaLabel, children, className }: ButtonProps) {
   );
 }
 
-export function DefaultRunButton({ onClick }: Pick<ButtonProps, "onClick">) {
+export function RunButton({ onClick }: Pick<ButtonProps, "onClick">) {
   return (
     <Button onClick={onClick} ariaLabel="Run code">
       Run
@@ -37,7 +34,7 @@ export function DefaultRunButton({ onClick }: Pick<ButtonProps, "onClick">) {
   );
 }
 
-export function DefaultResetButton({
+export function ResetButton({
   onClick,
   ResetIcon = DefaultResetIcon,
 }: ResetButtonProps) {
@@ -52,7 +49,7 @@ export function DefaultResetButton({
   );
 }
 
-export function DefaultCopyButton({
+export function CopyButton({
   copyValue,
   CheckIcon = DefaultCheckIcon,
   CopyIcon = DefaultCopyIcon,

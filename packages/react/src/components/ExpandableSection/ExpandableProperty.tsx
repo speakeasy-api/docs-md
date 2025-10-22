@@ -3,8 +3,7 @@
 import { Children, isValidElement } from "react";
 
 import { InternalError } from "../../util/internalError.ts";
-// eslint-disable-next-line fast-import/no-restricted-imports
-import { ConnectingCell as DefaultConnectingCell } from "../ConnectingCell/ConnectingCell.tsx";
+import { ConnectingCell } from "../ConnectingCell/ConnectingCell.tsx";
 import { PropertyContents } from "./components/PropertyContents.tsx";
 import styles from "./styles.module.css";
 import type {
@@ -75,7 +74,6 @@ export function ExpandablePropertyDefaultValue({
 export function ExpandablePropertyBreakouts({
   children,
   slot,
-  ConnectingCell = DefaultConnectingCell,
 }: ExpandablePropertyBreakoutsProps) {
   return (
     <div slot={slot} className={styles.childContainer}>

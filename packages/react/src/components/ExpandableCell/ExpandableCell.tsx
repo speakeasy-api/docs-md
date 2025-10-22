@@ -2,8 +2,7 @@
 
 import clsx from "clsx";
 
-// eslint-disable-next-line fast-import/no-restricted-imports -- Confirmed we're using the component as a default only
-import { ExpandableCellIcon as DefaultExpandableCellIcon } from "../ExpandableCellIcon/ExpandableCellIcon.tsx";
+import { ExpandableCellIcon } from "../ExpandableCellIcon/ExpandableCellIcon.tsx";
 import styles from "./styles.module.css";
 import type { ExpandableCellProps } from "./types.ts";
 
@@ -25,7 +24,6 @@ export function ExpandableCell({
   isOpen,
   setIsOpen,
   variant,
-  ExpandableCellIcon = DefaultExpandableCellIcon,
 }: ExpandableCellProps) {
   return (
     <div className={styles.expandableCellContainer}>

@@ -2,7 +2,7 @@ import type {
   CurlRuntimeEvent,
   TypeScriptRuntimeEvent,
 } from "@speakeasy-api/docs-md-shared";
-import type { ComponentType, CSSProperties, FC } from "react";
+import type { ComponentType, CSSProperties } from "react";
 
 export type ExtendedTypeScriptRuntimeEvent = TypeScriptRuntimeEvent & {
   id: string;
@@ -76,30 +76,6 @@ type BaseTryItNowProps = {
    * The code sample for the editor to initially load
    */
   defaultValue: string;
-  /**
-   * Editor component to use. Defaults to `Editor`.
-   */
-  Editor?: FC<EditorProps>;
-  /**
-   * Copy button component to use. Defaults to `CopyButton`.
-   */
-  CopyButton?: FC<CopyButtonProps>;
-  /**
-   * Run button component to use. Defaults to `RunButton`.
-   */
-  RunButton?: FC<ButtonProps>;
-  /**
-   * Reset button component to use. Defaults to `ResetButton`.
-   */
-  ResetButton?: FC<ResetButtonProps>;
-  /**
-   * Results component to use. Defaults to `Results`.
-   */
-  Results?: FC<ResultsProps>;
-  /**
-   * Layout component to use. Defaults to `Layout`.
-   */
-  Layout?: FC<LayoutProps>;
   /**
    * The theme of the editor
    */

@@ -4,24 +4,14 @@ import { useState } from "react";
 
 import { useCurlRuntime } from "../runtime/curl.ts";
 import type { CurlTryItNowProps } from "../types.ts";
-import {
-  DefaultCopyButton,
-  DefaultResetButton,
-  DefaultRunButton,
-} from "./Button.tsx";
-import { Editor as DefaultEditor } from "./Editor.tsx";
-import { Layout as DefaultLayout } from "./Layout.tsx";
-import { Results as DefaultResults } from "./Results.tsx";
+import { CopyButton, ResetButton, RunButton } from "./Button.tsx";
+import { Editor } from "./Editor.tsx";
+import { Layout } from "./Layout.tsx";
+import { Results } from "./Results.tsx";
 import styles from "./styles.module.css";
 
 export function CurlTryItNow({
   defaultValue,
-  Layout = DefaultLayout,
-  Editor = DefaultEditor,
-  RunButton = DefaultRunButton,
-  ResetButton = DefaultResetButton,
-  Results = DefaultResults,
-  CopyButton = DefaultCopyButton,
   theme = "dark",
 }: CurlTryItNowProps) {
   const [value, setValue] = useState(defaultValue);
