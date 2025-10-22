@@ -1,6 +1,6 @@
 import { InternalError } from "../util/internalError.ts";
 import { bundleCode } from "./build.ts";
-import type { TypeScriptRuntimeEvents } from "./events.ts";
+import type { TypeScriptRuntimeEvent } from "./events.ts";
 import type { WorkerMessage } from "./messages.ts";
 
 // Store the shared dependency bundle globally, since it will never change
@@ -11,8 +11,8 @@ let workerCode: string | undefined;
 export class TypeScriptRuntime {
   #dependencyUrlPrefix: string;
   #listeners: Record<
-    TypeScriptRuntimeEvents["type"],
-    ((event: TypeScriptRuntimeEvents) => void)[]
+    TypeScriptRuntimeEvent["type"],
+    ((event: TypeScriptRuntimeEvent) => void)[]
   > = {
     "compilation:started": [],
     "compilation:finished": [],
@@ -166,13 +166,13 @@ export class TypeScriptRuntime {
   }
 
   public on(
-    event: TypeScriptRuntimeEvents["type"],
-    callback: (event: TypeScriptRuntimeEvents) => void
+    event: TypeScriptRuntimeEvent["type"],
+    callback: (event: TypeScriptRuntimeEvent) => void
   ) {
     this.#listeners[event].push(callback);
   }
 
-  #emit(event: TypeScriptRuntimeEvents) {
+  #emit(event: TypeScriptRuntimeEvent) {
     for (const callback of this.#listeners[event.type]) {
       callback(event);
     }

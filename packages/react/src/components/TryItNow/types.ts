@@ -1,14 +1,14 @@
 import type {
-  CurlRuntimeEvents,
-  TypeScriptRuntimeEvents,
+  CurlRuntimeEvent,
+  TypeScriptRuntimeEvent,
 } from "@speakeasy-api/docs-md-shared";
 import type { ComponentType, CSSProperties, FC } from "react";
 
-export type ExtendedTypeScriptRuntimeEvent = TypeScriptRuntimeEvents & {
+export type ExtendedTypeScriptRuntimeEvent = TypeScriptRuntimeEvent & {
   id: string;
 };
 
-export type ExtendedCurlRuntimeEvent = CurlRuntimeEvents & {
+export type ExtendedCurlRuntimeEvent = CurlRuntimeEvent & {
   id: string;
 };
 
@@ -44,7 +44,17 @@ export type CurlStatus =
       language: "curl";
     }
   | {
-      state: "executing";
+      state: "fetching";
+      language: "curl";
+      events: ExtendedCurlRuntimeEvent[];
+    }
+  | {
+      state: "finished";
+      language: "curl";
+      events: ExtendedCurlRuntimeEvent[];
+    }
+  | {
+      state: "error";
       language: "curl";
       events: ExtendedCurlRuntimeEvent[];
     };

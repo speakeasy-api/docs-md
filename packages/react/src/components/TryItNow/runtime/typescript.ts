@@ -1,4 +1,4 @@
-import type { TypeScriptRuntimeEvents } from "@speakeasy-api/docs-md-shared";
+import type { TypeScriptRuntimeEvent } from "@speakeasy-api/docs-md-shared";
 import { TypeScriptRuntime } from "@speakeasy-api/docs-md-shared";
 import { useCallback, useRef, useState } from "react";
 
@@ -7,6 +7,7 @@ import type {
   ExtendedTypeScriptRuntimeEvent,
   TypeScriptStatus,
 } from "../types.ts";
+import { addEventId } from "./eventId.ts";
 
 type Options = {
   dependencyUrlPrefix: string;
@@ -24,27 +25,16 @@ export function useTypeScriptRuntime({
   const previousEvents = useRef<ExtendedTypeScriptRuntimeEvent[]>([]);
   const events = useRef<ExtendedTypeScriptRuntimeEvent[]>([]);
   const runtimeRef = useRef<TypeScriptRuntime | null>(null);
-  const eventIdCounter = useRef<number>(0);
   const initialValue = useRef<string>(defaultValue);
 
-  const addEventId = useCallback(
-    (event: TypeScriptRuntimeEvents): ExtendedTypeScriptRuntimeEvent => {
-      return { ...event, id: `event-${++eventIdCounter.current}` };
-    },
-    []
-  );
-
-  const handleExecutionEvent = useCallback(
-    (event: TypeScriptRuntimeEvents) => {
-      events.current.push(addEventId(event));
-      setStatus({
-        state: "executing",
-        language: "typescript",
-        events: events.current,
-      });
-    },
-    [addEventId]
-  );
+  const handleExecutionEvent = useCallback((event: TypeScriptRuntimeEvent) => {
+    events.current.push(addEventId(event));
+    setStatus({
+      state: "executing",
+      language: "typescript",
+      events: events.current,
+    });
+  }, []);
 
   if (!runtimeRef.current) {
     runtimeRef.current = new TypeScriptRuntime({ dependencyUrlPrefix });
@@ -97,7 +87,6 @@ export function useTypeScriptRuntime({
   const reset = useCallback((onReset?: (initialValue: string) => void) => {
     previousEvents.current = [];
     events.current = [];
-    eventIdCounter.current = 0;
     setStatus({
       state: "idle",
       language: "typescript",

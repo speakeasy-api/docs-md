@@ -11,7 +11,7 @@ type FetchErrorEvent = {
   error: unknown;
 };
 
-export type CurlRuntimeEvents =
+export type CurlRuntimeEvent =
   | FetchStartedEvent
   | FetchFinishedEvent
   | FetchErrorEvent;
