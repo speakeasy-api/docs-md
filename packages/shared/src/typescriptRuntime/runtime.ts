@@ -109,25 +109,28 @@ export class TypeScriptRuntime {
     // Set up message handler
     this.#worker.onmessage = (event: MessageEvent<WorkerMessage>) => {
       switch (event.data.type) {
-        case "log":
+        case "log": {
           this.#emit({
             type: "execution:log",
             level: event.data.level,
             message: event.data.message,
           });
           break;
-        case "uncaught-exception":
+        }
+        case "uncaught-exception": {
           this.#emit({
             type: "execution:uncaught-exception",
             error: event.data.error,
           });
           break;
-        case "uncaught-reject":
+        }
+        case "uncaught-reject": {
           this.#emit({
             type: "execution:uncaught-rejection",
             error: event.data.error,
           });
           break;
+        }
       }
     };
 

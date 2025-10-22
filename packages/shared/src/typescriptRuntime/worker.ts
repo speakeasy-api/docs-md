@@ -2,7 +2,7 @@
 // context to prevent interference with the main thread, and to prevent console
 // logs from the main thread from mixing with the logs from the worker.
 
-import type { LogLevel } from "./events.ts";
+import type { LogLevel } from "../types/logging.ts";
 import type { WorkerMessage } from "./messages.ts";
 
 // Browser-compatible string formatter (replacement for Node.js util.format)

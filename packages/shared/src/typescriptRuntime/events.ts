@@ -1,3 +1,5 @@
+import type { LogLevel } from "../types/logging.ts";
+
 type CompilationStartedEvent = {
   type: "compilation:started";
 };
@@ -14,8 +16,6 @@ type CompilationErrorEvent = {
 type ExecutionStartedEvent = {
   type: "execution:started";
 };
-
-export type LogLevel = "log" | "info" | "warn" | "error" | "debug";
 
 type ExecutionLogEvent = {
   type: "execution:log";
