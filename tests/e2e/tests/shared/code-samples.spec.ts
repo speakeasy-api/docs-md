@@ -22,16 +22,12 @@ test.describe("Code Samples", () => {
         },
     ], agent_id="<id>", stream=False)`);
   });
-  test("should show code sample for Curl", async ({ page }) => {
+  test("should show TryItNow component for Curl", async ({ page }) => {
     await page.goto("mistral/api/endpoint/agents");
 
     await page.getByRole("button", { name: "cURL" }).first().click();
-    const codeSample = await page
-      .getByTestId("speakeasy-code-sample")
-      .first()
-      .innerText();
-    expect(codeSample).toContain(
-      `curl https://api.mistral.ai/v1/agents/completions`
-    );
+
+    const monacoEditor = page.locator(".monaco-editor").nth(0);
+    await expect(monacoEditor).toBeVisible();
   });
 });

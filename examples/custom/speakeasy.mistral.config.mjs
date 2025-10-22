@@ -53,6 +53,7 @@ export default {
     },
     {
       language: "curl",
+      tryItNow: true,
     },
   ],
 };
