@@ -51,7 +51,41 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+
   plugins: [
+    // Process source maps from workspace packages and embed source content
+    function webpackSourceMapsPlugin() {
+      return {
+        name: "webpack-source-maps-plugin",
+        configureWebpack(config, isServer, utils) {
+          if (isServer) {
+            return {};
+          }
+
+          const path = require("path");
+          const packagesDir = path.resolve(__dirname, "../../packages");
+
+          return {
+            devtool: "eval-source-map",
+            module: {
+              rules: [
+                {
+                  test: /\.(js|mjs|jsx|ts|tsx)$/,
+                  // Process files from workspace packages
+                  include: packagesDir,
+                  enforce: "pre",
+                  use: [
+                    {
+                      loader: require.resolve("source-map-loader"),
+                    },
+                  ],
+                },
+              ],
+            },
+          };
+        },
+      };
+    },
     [
       "@docusaurus/plugin-content-docs",
       {
