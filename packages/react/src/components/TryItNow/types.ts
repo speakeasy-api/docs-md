@@ -44,6 +44,16 @@ export type CurlStatus =
       language: "curl";
     }
   | {
+      state: "parsing";
+      language: "curl";
+      events: ExtendedCurlRuntimeEvent[];
+    }
+  | {
+      state: "parse-error";
+      language: "curl";
+      events: ExtendedCurlRuntimeEvent[];
+    }
+  | {
       state: "fetching";
       language: "curl";
       events: ExtendedCurlRuntimeEvent[];

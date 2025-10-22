@@ -5,6 +5,9 @@ export class CurlRuntime {
     CurlRuntimeEvent["type"],
     ((event: CurlRuntimeEvent) => void)[]
   > = {
+    "parse:started": [],
+    "parse:finished": [],
+    "parse:error": [],
     "fetch:started": [],
     "fetch:finished": [],
     "fetch:error": [],
@@ -120,11 +123,19 @@ export class CurlRuntime {
           case "-H": {
             const header = tokens[i + 1];
             if (!header || header.startsWith("-")) {
-              throw new Error("Missing header value");
+              this.#emit({
+                type: "parse:error",
+                error: { message: "Missing header value" },
+              });
+              return;
             }
             const [key, value] = header.split(":");
             if (!key || !value) {
-              throw new Error("Invalid header");
+              this.#emit({
+                type: "parse:error",
+                error: { message: `Could not parse header value "${header}"` },
+              });
+              return;
             }
             headers[key] = value;
             i += 2;
@@ -141,7 +152,11 @@ export class CurlRuntime {
           // --form-string, --json, --oauth2-bearer, -u, --user
           // All other options aren't applicable to browser requests
           default: {
-            throw new Error(`Unsupported option ${token}`);
+            this.#emit({
+              type: "parse:error",
+              error: { message: `Unsupported option "${token}"` },
+            });
+            return;
           }
         }
       } else {
@@ -151,7 +166,11 @@ export class CurlRuntime {
     }
 
     if (!url) {
-      throw new Error("No URL provided");
+      this.#emit({
+        type: "parse:error",
+        error: { message: "No URL provided" },
+      });
+      return;
     }
 
     method ??= "get";
@@ -160,8 +179,12 @@ export class CurlRuntime {
   }
 
   async #run(code: string) {
+    this.#emit({ type: "parse:started" });
     const tokens = this.#tokenize(code);
     const data = this.#parse(tokens);
+    if (!data) {
+      return;
+    }
     this.#emit({ type: "fetch:started" });
     try {
       const response = await fetch(data.url, {
@@ -182,7 +205,9 @@ export class CurlRuntime {
         const body = bodyText ? `. Body: ${bodyText}` : "";
         this.#emit({
           type: "fetch:error",
-          error: `API error occurred: ${status}${statusText}${contentType}${body}`,
+          error: {
+            message: `API error occurred: ${status}${statusText}${contentType}${body}`,
+          },
         });
       } else {
         if (response.headers.get("content-type") === "application/json") {

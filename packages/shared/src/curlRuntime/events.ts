@@ -1,3 +1,16 @@
+type ParseStartedEvent = {
+  type: "parse:started";
+};
+
+type ParseFinishedEvent = {
+  type: "parse:finished";
+};
+
+type ParseErrorEvent = {
+  type: "parse:error";
+  error: unknown;
+};
+
 type FetchStartedEvent = {
   type: "fetch:started";
 };
@@ -14,6 +27,9 @@ type FetchErrorEvent = {
 };
 
 export type CurlRuntimeEvent =
+  | ParseStartedEvent
+  | ParseFinishedEvent
+  | ParseErrorEvent
   | FetchStartedEvent
   | FetchFinishedEvent
   | FetchErrorEvent;

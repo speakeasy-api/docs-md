@@ -16,6 +16,25 @@ export function useCurlRuntime({ defaultValue }: { defaultValue: string }) {
 
   if (!runtimeRef.current) {
     runtimeRef.current = new CurlRuntime();
+    runtimeRef.current.on("parse:started", () => {
+      // We don't store started and finished events to keep event history clean
+      // for the UI. They can be inferred from the state, and don't contain
+      // any useful information for the UI.
+      events.current = [];
+      setStatus({
+        state: "parsing",
+        language: "curl",
+        events: events.current,
+      });
+    });
+    runtimeRef.current.on("parse:error", (event) => {
+      events.current.push(addEventId(event));
+      setStatus({
+        state: "error",
+        language: "curl",
+        events: events.current,
+      });
+    });
     runtimeRef.current.on("fetch:started", () => {
       // We don't store started and finished events to keep event history clean
       // for the UI. They can be inferred from the state, and don't contain
