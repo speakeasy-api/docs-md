@@ -341,6 +341,8 @@ function generateCurlCodeSamples(
                   "Bearer YOUR_" + security.name.toUpperCase() + "_HERE";
                 break;
               }
+              // TODO: when we add more support for these types of security,
+              // we should update the cURL runtime parser to support them too
               default: {
                 warn(
                   `cURL sample generation does not currently support http/apikey security location ${security.in} and will be ignored`
