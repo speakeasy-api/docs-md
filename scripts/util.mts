@@ -64,6 +64,12 @@ type PackagesDetails = {
     dependencies: Record<string, string>;
     devDependencies: Record<string, string>;
   };
+  webComponents: {
+    name: string;
+    version: string;
+    dependencies: Record<string, string>;
+    devDependencies: Record<string, string>;
+  };
 };
 
 let packagesDetails: PackagesDetails | undefined;
@@ -76,6 +82,12 @@ export function getPackagesDetails() {
   );
   const reactPackageJson = JSON.parse(
     readFileSync(join(ROOT_DIR, "packages", "react", "package.json"), "utf-8")
+  );
+  const webComponentsPackageJson = JSON.parse(
+    readFileSync(
+      join(ROOT_DIR, "packages", "web-components", "package.json"),
+      "utf-8"
+    )
   );
   const compilerPackageJson = JSON.parse(
     readFileSync(
@@ -107,6 +119,18 @@ export function getPackagesDetails() {
       version: compilerPackageJson.version as string,
       dependencies: compilerPackageJson.dependencies as Record<string, string>,
       devDependencies: compilerPackageJson.devDependencies as Record<
+        string,
+        string
+      >,
+    },
+    webComponents: {
+      name: webComponentsPackageJson.name as string,
+      version: webComponentsPackageJson.version as string,
+      dependencies: webComponentsPackageJson.dependencies as Record<
+        string,
+        string
+      >,
+      devDependencies: webComponentsPackageJson.devDependencies as Record<
         string,
         string
       >,

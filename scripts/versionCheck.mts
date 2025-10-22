@@ -5,11 +5,19 @@ const {
   shared: { version: sharedVersion, dependencies: sharedDependencies },
   react: { version: reactVersion, dependencies: reactDependencies },
   compiler: { version: compilerVersion, dependencies: compilerDependencies },
+  webComponents: {
+    version: webComponentsVersion,
+    dependencies: webComponentsDependencies,
+  },
 } = getPackagesDetails();
 
-if (sharedVersion !== reactVersion || sharedVersion !== compilerVersion) {
+if (
+  sharedVersion !== reactVersion ||
+  sharedVersion !== compilerVersion ||
+  sharedVersion !== webComponentsVersion
+) {
   throw new Error(
-    `Versions do not match: shared=${sharedVersion}, react=${reactVersion}, compiler=${compilerVersion}`
+    `Versions do not match: shared=${sharedVersion}, react=${reactVersion}, compiler=${compilerVersion}, web-components=${webComponentsVersion}`
   );
 }
 
