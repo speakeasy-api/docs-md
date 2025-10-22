@@ -84,12 +84,12 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
             prefix: undefined,
             id: event.id,
             value: event.body,
-            level: "info",
+            level: "log",
           };
         }
         case "fetch:error": {
           return {
-            prefix: undefined,
+            prefix: "Fetch failed: ",
             id: event.id,
             value: event.error,
             level: "error",

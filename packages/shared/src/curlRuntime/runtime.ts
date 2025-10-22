@@ -170,9 +170,19 @@ export class CurlRuntime {
         body: data.body,
       });
       if (response.status >= 400) {
+        // API error occurred: Status 401 Content-Type "application/json; charset=utf-8". Body: {"detail":"Unauthorized"}"
+        const status = `Status ${response.status}`;
+        const statusText = response.statusText
+          ? `: ${response.statusText}`
+          : "";
+        const contentType = response.headers.has("content-type")
+          ? ` Content-Type "${response.headers.get("content-type")}"`
+          : "";
+        const bodyText = await response.text();
+        const body = bodyText ? `. Body: ${bodyText}` : "";
         this.#emit({
           type: "fetch:error",
-          error: new Error(response.statusText),
+          error: `API error occurred: ${status}${statusText}${contentType}${body}`,
         });
       } else {
         if (response.headers.get("content-type") === "application/json") {
