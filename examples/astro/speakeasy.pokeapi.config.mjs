@@ -14,11 +14,17 @@ const framework = {
 
   buildPagePath(slug) {
     const settings = getSettings();
-    return resolve(join(settings.output.pageOutDir, `${slug}/page.mdx`));
+    const slugName = slug && slug !== "" ? slug : "index";
+    return resolve(join(settings.output.pageOutDir, `${slugName}.mdx`));
   },
 
   buildPagePreamble() {
-    return `import "@/app/speakeasy.css";`;
+    const preamble = `
+---
+layout: "@/layouts/pokeApi.astro"
+---
+`;
+    return preamble;
   },
 
   postProcess(metadata) {
@@ -26,7 +32,7 @@ const framework = {
     // implementation. It's shape will almost certainly change and become easier
     // to work with in the future.
     writeFileSync(
-      "./src/app/pokeapi/sidebarMetadata.json",
+      "./src/data/pokeapi/sidebarMetadata.json",
       JSON.stringify(metadata, null, "  ")
     );
   },
@@ -35,12 +41,7 @@ const framework = {
 export default {
   spec: "../specs/pokeapi.yml",
   output: {
-    pageOutDir: "./src/app/pokeapi/api",
+    pageOutDir: "./src/pages/pokeapi/api",
     framework,
   },
-  codeSamples: [
-    {
-      language: "curl",
-    },
-  ],
 };

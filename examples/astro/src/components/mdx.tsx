@@ -1,6 +1,6 @@
 "use client";
 
-import { ComponentProps } from "react";
+import type { ComponentProps } from "react";
 import styles from "./styles.module.css";
 
 type HeadingProps = ComponentProps<"h1"> & {

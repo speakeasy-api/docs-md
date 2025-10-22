@@ -15,7 +15,7 @@ const framework = {
   buildPagePath(slug) {
     const settings = getSettings();
     const slugName = slug && slug !== "" ? slug : "index";
-    return resolve(join(settings.output.pageOutDir, `${slug}.mdx`));
+    return resolve(join(settings.output.pageOutDir, `${slugName}.mdx`));
   },
 
   buildPagePreamble() {
@@ -23,7 +23,6 @@ const framework = {
 ---
 layout: "@/layouts/mistralLayout.astro"
 ---
-import "@/styles/speakeasy.css";
     `;
     return preamble;
   },
@@ -45,21 +44,4 @@ export default {
     pageOutDir: "./src/pages/mistral/api",
     framework,
   },
-  codeSamples: [
-    {
-      language: "typescript",
-      sdkTarballPath: "../sdks/mistral-typescript.tar.gz",
-      tryItNow: {
-        outDir: "./public/mistral-try-it-now",
-        urlPrefix: "/mistral-try-it-now",
-      },
-    },
-    {
-      language: "python",
-      sdkTarballPath: "../sdks/mistral-python.tar.gz",
-    },
-    {
-      language: "curl",
-    },
-  ],
 };
