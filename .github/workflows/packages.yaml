@@ -85,7 +85,7 @@ jobs:
           wait
       - name: Get Playwright version
         id: playwright-version
-        run: echo "version=$(node -p "require('./package.json').dependencies['@playwright/test']")" >> $GITHUB_OUTPUT
+        run: echo "version=$(npx playwright --version | sed 's/Version //')" >> $GITHUB_OUTPUT
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         id: playwright-cache
