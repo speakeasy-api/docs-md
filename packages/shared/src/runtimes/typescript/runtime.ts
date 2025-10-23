@@ -16,13 +16,13 @@ export class TypeScriptRuntime extends Runtime<TypeScriptRuntimeEvent> {
 
   constructor({ dependencyUrlPrefix }: { dependencyUrlPrefix: string }) {
     super({
-      "compilation:started": [],
-      "compilation:finished": [],
-      "compilation:error": [],
-      "execution:started": [],
-      "execution:log": [],
-      "execution:uncaught-exception": [],
-      "execution:uncaught-rejection": [],
+      "typescript:compilation:started": [],
+      "typescript:compilation:finished": [],
+      "typescript:compilation:error": [],
+      "typescript:execution:started": [],
+      "typescript:execution:log": [],
+      "typescript:execution:uncaught-exception": [],
+      "typescript:execution:uncaught-rejection": [],
     });
     this.#dependencyUrlPrefix = dependencyUrlPrefix;
   }
@@ -60,7 +60,7 @@ export class TypeScriptRuntime extends Runtime<TypeScriptRuntimeEvent> {
     // Bundle the results
     let bundledCode: string;
     try {
-      this.emit({ type: "compilation:started" });
+      this.emit({ type: "typescript:compilation:started" });
 
       // Bundle the code
       const bundleResults = await bundleCode(code, dependencyBundle);
@@ -68,7 +68,7 @@ export class TypeScriptRuntime extends Runtime<TypeScriptRuntimeEvent> {
       // Check the results of compilation
       if (bundleResults.errors.length > 0) {
         for (const error of bundleResults.errors) {
-          this.emit({ type: "compilation:error", error });
+          this.emit({ type: "typescript:compilation:error", error });
         }
         return;
       }
@@ -88,15 +88,15 @@ export class TypeScriptRuntime extends Runtime<TypeScriptRuntimeEvent> {
       );
 
       // Signal that compilation finished
-      this.emit({ type: "compilation:finished" });
+      this.emit({ type: "typescript:compilation:finished" });
     } catch (error) {
       // Catch bundle errors, and stop running
-      this.emit({ type: "compilation:error", error });
+      this.emit({ type: "typescript:compilation:error", error });
       return;
     }
 
     // Run the bundle
-    this.emit({ type: "execution:started" });
+    this.emit({ type: "typescript:execution:started" });
     const blob = new Blob([workerCode], { type: "application/javascript" });
     const url = URL.createObjectURL(blob);
     this.#workerBlobUrl = url.toString();
@@ -109,7 +109,7 @@ export class TypeScriptRuntime extends Runtime<TypeScriptRuntimeEvent> {
       switch (event.data.type) {
         case "log": {
           this.emit({
-            type: "execution:log",
+            type: "typescript:execution:log",
             level: event.data.level,
             message: event.data.message,
           });
@@ -117,14 +117,14 @@ export class TypeScriptRuntime extends Runtime<TypeScriptRuntimeEvent> {
         }
         case "uncaught-exception": {
           this.emit({
-            type: "execution:uncaught-exception",
+            type: "typescript:execution:uncaught-exception",
             error: event.data.error,
           });
           break;
         }
         case "uncaught-reject": {
           this.emit({
-            type: "execution:uncaught-rejection",
+            type: "typescript:execution:uncaught-rejection",
             error: event.data.error,
           });
           break;
@@ -135,7 +135,7 @@ export class TypeScriptRuntime extends Runtime<TypeScriptRuntimeEvent> {
     // Handle worker errors
     this.#worker.onerror = (error) => {
       this.emit({
-        type: "execution:uncaught-exception",
+        type: "typescript:execution:uncaught-exception",
         error,
       });
       this.#worker?.terminate();

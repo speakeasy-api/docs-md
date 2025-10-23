@@ -7,8 +7,7 @@ import { addEventId } from "./eventId.ts";
 
 export function useCurlRuntime({ defaultValue }: { defaultValue: string }) {
   const [status, setStatus] = useState<CurlStatus>({
-    state: "idle",
-    language: "curl",
+    state: "curl:idle",
   });
 
   const runtimeRef = useRef<CurlRuntime | null>(null);
@@ -16,54 +15,47 @@ export function useCurlRuntime({ defaultValue }: { defaultValue: string }) {
 
   if (!runtimeRef.current) {
     runtimeRef.current = new CurlRuntime();
-    runtimeRef.current.on("parse:started", () => {
+    runtimeRef.current.on("curl:parse:started", () => {
       // We don't store started and finished events to keep event history clean
       // for the UI. They can be inferred from the state, and don't contain
       // any useful information for the UI.
       events.current = [];
       setStatus({
-        state: "parsing",
-        language: "curl",
+        state: "curl:parsing",
         events: events.current,
       });
     });
-    runtimeRef.current.on("parse:error", (event) => {
+    runtimeRef.current.on("curl:parse:error", (event) => {
       events.current.push(addEventId(event));
       setStatus({
-        state: "error",
-        language: "curl",
+        state: "curl:parse-error",
         events: events.current,
       });
     });
-    runtimeRef.current.on("fetch:started", () => {
+    runtimeRef.current.on("curl:fetch:started", () => {
       // We don't store started and finished events to keep event history clean
       // for the UI. They can be inferred from the state, and don't contain
       // any useful information for the UI.
       events.current = [];
       setStatus({
-        state: "fetching",
-        language: "curl",
+        state: "curl:fetching",
         events: events.current,
       });
     });
-    runtimeRef.current.on("fetch:finished", (event) => {
+    runtimeRef.current.on("curl:fetch:finished", (event) => {
       events.current.push(addEventId(event));
       setStatus({
-        state: "finished",
-        language: "curl",
+        state: "curl:finished",
         events: events.current,
       });
     });
-    runtimeRef.current.on("fetch:error", (event) => {
+    runtimeRef.current.on("curl:fetch:error", (event) => {
       // Save previous events to events, so that next time we try to run code,
       // they will again become previous events. This way, we always show the
       // last _successfully_ compiled events
       events.current = [];
       setStatus({
-        state: "error",
-        language: "curl",
-        // We still want to send the compilation error event thoughs, so that
-        // the UI can show a compilation error.
+        state: "curl:error",
         events: [addEventId(event)],
       });
     });
@@ -80,8 +72,7 @@ export function useCurlRuntime({ defaultValue }: { defaultValue: string }) {
     (onReset?: (initialValue: string) => void) => {
       events.current = [];
       setStatus({
-        state: "idle",
-        language: "curl",
+        state: "curl:idle",
       });
       onReset?.(defaultValue);
     },

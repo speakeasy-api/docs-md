@@ -1,8 +1,10 @@
+import type { PythonRuntimeEvent } from "@speakeasy-api/docs-md-shared";
 import { PythonRuntime } from "@speakeasy-api/docs-md-shared";
 import { useCallback, useRef, useState } from "react";
 
 import { InternalError } from "../../../util/internalError.ts";
 import type { ExtendedPythonRuntimeEvent, PythonStatus } from "../types.ts";
+import { addEventId } from "./eventId.ts";
 
 type Options = {
   dependencyUrl: string;
@@ -16,12 +18,20 @@ export function usePythonRuntime({
   defaultValue,
 }: Options) {
   const [status, setStatus] = useState<PythonStatus>({
-    state: "idle",
-    language: "python",
+    state: "python:idle",
   });
 
   const runtimeRef = useRef<PythonRuntime | null>(null);
   const events = useRef<ExtendedPythonRuntimeEvent[]>([]);
+  const previousEvents = useRef<ExtendedPythonRuntimeEvent[]>([]);
+
+  const handleExecutionEvent = useCallback((event: PythonRuntimeEvent) => {
+    events.current.push(addEventId(event));
+    setStatus({
+      state: "python:executing",
+      events: events.current,
+    });
+  }, []);
 
   if (!runtimeRef.current) {
     runtimeRef.current = new PythonRuntime({
@@ -29,29 +39,35 @@ export function usePythonRuntime({
       dependencyUrlPrefix,
     });
     // TODO: Add event listeners
-    runtimeRef.current.on("initialization:started", () => {
-      console.log("initialization:started");
+    runtimeRef.current.on("python:initialization:started", () => {
+      setStatus({
+        state: "python:initializing",
+        previousEvents: previousEvents.current,
+      });
     });
-    runtimeRef.current.on("initialization:finished", () => {
-      console.log("initialization:finished");
+    runtimeRef.current.on("python:initialization:finished", () => {
+      setStatus({
+        state: "python:executing",
+        events: events.current,
+      });
     });
-    runtimeRef.current.on("initialization:error", () => {
-      console.log("initialization:error");
+    runtimeRef.current.on("python:initialization:error", () => {
+      setStatus({
+        state: "python:initialization-error",
+        previousEvents: previousEvents.current,
+        events: events.current,
+      });
     });
-    runtimeRef.current.on("execution:log", () => {
-      console.log("execution:log");
-    });
-    runtimeRef.current.on("execution:log", (event) => {
-      console.log("execution:log", event);
-    });
-    runtimeRef.current.on("execution:uncaught-exception", (event) => {
-      console.log("execution:uncaught-exception");
-      console.log(event);
-    });
-    runtimeRef.current.on("execution:uncaught-rejection", (event) => {
-      console.log("execution:uncaught-rejection");
-      console.log(event);
-    });
+    runtimeRef.current.on("python:execution:started", handleExecutionEvent);
+    runtimeRef.current.on("python:execution:log", handleExecutionEvent);
+    runtimeRef.current.on(
+      "python:execution:uncaught-exception",
+      handleExecutionEvent
+    );
+    runtimeRef.current.on(
+      "python:execution:uncaught-rejection",
+      handleExecutionEvent
+    );
   }
 
   const execute = useCallback((code: string) => {
@@ -65,8 +81,7 @@ export function usePythonRuntime({
     (onReset?: (initialValue: string) => void) => {
       events.current = [];
       setStatus({
-        state: "idle",
-        language: "python",
+        state: "python:idle",
       });
       onReset?.(defaultValue);
     },

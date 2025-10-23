@@ -22,7 +22,7 @@ export function PythonTryItNow({
     dependencyUrlPrefix,
     defaultValue,
   });
-  const showResults = status.state !== "idle";
+  const showResults = status.state !== "python:idle";
 
   return (
     <>

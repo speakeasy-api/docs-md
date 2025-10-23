@@ -1,28 +1,28 @@
 type ParseStartedEvent = {
-  type: "parse:started";
+  type: "curl:parse:started";
 };
 
 type ParseFinishedEvent = {
-  type: "parse:finished";
+  type: "curl:parse:finished";
 };
 
 type ParseErrorEvent = {
-  type: "parse:error";
+  type: "curl:parse:error";
   error: unknown;
 };
 
 type FetchStartedEvent = {
-  type: "fetch:started";
+  type: "curl:fetch:started";
 };
 
 type FetchFinishedEvent = {
-  type: "fetch:finished";
+  type: "curl:fetch:finished";
   response: Response;
   body: unknown;
 };
 
 type FetchErrorEvent = {
-  type: "fetch:error";
+  type: "curl:fetch:error";
   error: unknown;
 };
 

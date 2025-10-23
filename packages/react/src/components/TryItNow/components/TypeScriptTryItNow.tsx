@@ -57,7 +57,7 @@ export function TypeScriptTryItNow({
     dependencyUrlPrefix,
     defaultValue,
   });
-  const showResults = status.state !== "idle";
+  const showResults = status.state !== "typescript:idle";
 
   useEffect(() => {
     void fetchTypes(dependencyUrlPrefix);
@@ -86,11 +86,7 @@ export function TypeScriptTryItNow({
           />
         </div>
         <div slot="runButton" className={styles.runButtonContainer}>
-          <RunButton
-            onClick={() => {
-              execute(value);
-            }}
-          />
+          <RunButton onClick={() => execute(value)} />
         </div>
         <div slot="copyButton">
           <CopyButton copyValue={value} />

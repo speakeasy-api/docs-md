@@ -19,13 +19,13 @@ export class PythonRuntime extends Runtime<PythonRuntimeEvent> {
     dependencyUrlPrefix: string;
   }) {
     super({
-      "initialization:started": [],
-      "initialization:finished": [],
-      "initialization:error": [],
-      "execution:started": [],
-      "execution:log": [],
-      "execution:uncaught-exception": [],
-      "execution:uncaught-rejection": [],
+      "python:initialization:started": [],
+      "python:initialization:finished": [],
+      "python:initialization:error": [],
+      "python:execution:started": [],
+      "python:execution:log": [],
+      "python:execution:uncaught-exception": [],
+      "python:execution:uncaught-rejection": [],
     });
     this.#dependencyUrl = dependencyUrl;
     this.#dependencyUrlPrefix = dependencyUrlPrefix;
@@ -53,7 +53,7 @@ export class PythonRuntime extends Runtime<PythonRuntimeEvent> {
     }
 
     // Run the bundle
-    this.emit({ type: "initialization:started" });
+    this.emit({ type: "python:initialization:started" });
     const blob = new Blob([workerCode], { type: "application/javascript" });
     const url = URL.createObjectURL(blob);
     this.#workerBlobUrl = url.toString();
@@ -66,20 +66,20 @@ export class PythonRuntime extends Runtime<PythonRuntimeEvent> {
       switch (event.data.type) {
         case "initialization:error": {
           this.emit({
-            type: "initialization:error",
+            type: "python:initialization:error",
             error: event.data.error,
           });
           break;
         }
         case "initialization:finished": {
           this.emit({
-            type: "initialization:finished",
+            type: "python:initialization:finished",
           });
           break;
         }
         case "log": {
           this.emit({
-            type: "execution:log",
+            type: "python:execution:log",
             level: event.data.level,
             message: event.data.message,
           });
@@ -87,14 +87,14 @@ export class PythonRuntime extends Runtime<PythonRuntimeEvent> {
         }
         case "uncaught-exception": {
           this.emit({
-            type: "execution:uncaught-exception",
+            type: "python:execution:uncaught-exception",
             error: event.data.error,
           });
           break;
         }
         case "uncaught-reject": {
           this.emit({
-            type: "execution:uncaught-rejection",
+            type: "python:execution:uncaught-rejection",
             error: event.data.error,
           });
           break;
@@ -105,7 +105,7 @@ export class PythonRuntime extends Runtime<PythonRuntimeEvent> {
     // Handle worker errors
     this.#worker.onerror = (error) => {
       this.emit({
-        type: "execution:uncaught-exception",
+        type: "python:execution:uncaught-exception",
         error,
       });
       this.#worker?.terminate();

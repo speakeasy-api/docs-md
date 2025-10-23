@@ -1,35 +1,35 @@
 import type { LogLevel } from "../../types/logging.ts";
 
 type InitializationStartedEvent = {
-  type: "initialization:started";
+  type: "python:initialization:started";
 };
 
 type InitializationFinishedEvent = {
-  type: "initialization:finished";
+  type: "python:initialization:finished";
 };
 
 type InitializationErrorEvent = {
-  type: "initialization:error";
+  type: "python:initialization:error";
   error: unknown;
 };
 
 type ExecutionStartedEvent = {
-  type: "execution:started";
+  type: "python:execution:started";
 };
 
 type ExecutionLogEvent = {
-  type: "execution:log";
+  type: "python:execution:log";
   level: LogLevel;
   message: unknown;
 };
 
 type ExecutionUncaughtExceptionEvent = {
-  type: "execution:uncaught-exception";
+  type: "python:execution:uncaught-exception";
   error: unknown;
 };
 
 type ExecutionUncaughtRejectionEvent = {
-  type: "execution:uncaught-rejection";
+  type: "python:execution:uncaught-rejection";
   error: unknown;
 };
 

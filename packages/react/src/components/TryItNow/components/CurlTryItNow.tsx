@@ -18,7 +18,7 @@ export function CurlTryItNow({
   const { status, execute, reset } = useCurlRuntime({
     defaultValue,
   });
-  const showResults = status.state !== "idle";
+  const showResults = status.state !== "curl:idle";
 
   return (
     <>

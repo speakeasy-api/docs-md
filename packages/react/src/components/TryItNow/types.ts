@@ -19,69 +19,67 @@ export type ExtendedPythonRuntimeEvent = PythonRuntimeEvent & {
 
 export type ExtendedRuntimeEvent =
   | ExtendedTypeScriptRuntimeEvent
-  | ExtendedCurlRuntimeEvent;
+  | ExtendedCurlRuntimeEvent
+  | ExtendedPythonRuntimeEvent;
 
 export type TypeScriptStatus =
   | {
-      state: "idle";
-      language: "typescript";
+      state: "typescript:idle";
     }
   | {
-      state: "compiling";
-      language: "typescript";
+      state: "typescript:compiling";
       previousEvents: ExtendedTypeScriptRuntimeEvent[];
     }
   | {
-      state: "compile-error";
-      language: "typescript";
+      state: "typescript:compile-error";
       previousEvents: ExtendedTypeScriptRuntimeEvent[];
       events: ExtendedTypeScriptRuntimeEvent[];
     }
   | {
-      state: "executing";
-      language: "typescript";
+      state: "typescript:executing";
       events: ExtendedTypeScriptRuntimeEvent[];
     };
 
 export type PythonStatus =
   | {
-      state: "idle";
-      language: "python";
+      state: "python:idle";
     }
   | {
-      state: "executing";
-      language: "python";
-      events: ExtendedTypeScriptRuntimeEvent[];
+      state: "python:initializing";
+      previousEvents: ExtendedPythonRuntimeEvent[];
+    }
+  | {
+      state: "python:initialization-error";
+      previousEvents: ExtendedPythonRuntimeEvent[];
+      events: ExtendedPythonRuntimeEvent[];
+    }
+  | {
+      state: "python:executing";
+      events: ExtendedPythonRuntimeEvent[];
     };
 
 export type CurlStatus =
   | {
-      state: "idle";
-      language: "curl";
+      state: "curl:idle";
     }
   | {
-      state: "parsing";
-      language: "curl";
+      state: "curl:parsing";
       events: ExtendedCurlRuntimeEvent[];
     }
   | {
-      state: "parse-error";
-      language: "curl";
+      state: "curl:parse-error";
       events: ExtendedCurlRuntimeEvent[];
     }
   | {
-      state: "fetching";
-      language: "curl";
+      state: "curl:fetching";
       events: ExtendedCurlRuntimeEvent[];
     }
   | {
-      state: "finished";
-      language: "curl";
+      state: "curl:finished";
       events: ExtendedCurlRuntimeEvent[];
     }
   | {
-      state: "error";
-      language: "curl";
+      state: "curl:error";
       events: ExtendedCurlRuntimeEvent[];
     };
 

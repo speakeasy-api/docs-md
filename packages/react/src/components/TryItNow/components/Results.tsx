@@ -37,7 +37,7 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
     .map((event): FormattedEvent | undefined => {
       switch (event.type) {
         // TypeScript events
-        case "compilation:error": {
+        case "typescript:compilation:error": {
           return {
             prefix: undefined,
             id: event.id,
@@ -45,7 +45,7 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
             level: "error",
           };
         }
-        case "execution:log": {
+        case "typescript:execution:log": {
           return {
             prefix: undefined,
             id: event.id,
@@ -53,7 +53,7 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
             level: event.level === "debug" ? "log" : event.level,
           };
         }
-        case "execution:uncaught-exception": {
+        case "typescript:execution:uncaught-exception": {
           return {
             prefix: "Uncaught Exception: ",
             id: event.id,
@@ -61,7 +61,7 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
             level: "error",
           };
         }
-        case "execution:uncaught-rejection": {
+        case "typescript:execution:uncaught-rejection": {
           return {
             prefix: "Uncaught Rejection: ",
             id: event.id,
@@ -69,20 +69,59 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
             level: "error",
           };
         }
-        case "compilation:started":
-        case "compilation:finished":
-        case "execution:started": {
+        case "typescript:compilation:started":
+        case "typescript:compilation:finished":
+        case "typescript:execution:started": {
+          return undefined;
+        }
+
+        // Python events
+        case "python:initialization:error": {
+          return {
+            prefix: "Initialization failed: ",
+            id: event.id,
+            value: event.error,
+            level: "error",
+          };
+        }
+        case "python:execution:log": {
+          return {
+            prefix: undefined,
+            id: event.id,
+            value: event.message,
+            level: event.level === "debug" ? "log" : event.level,
+          };
+        }
+        case "python:execution:uncaught-exception": {
+          return {
+            prefix: "Uncaught Exception: ",
+            id: event.id,
+            value: event.error,
+            level: "error",
+          };
+        }
+        case "python:execution:uncaught-rejection": {
+          return {
+            prefix: "Uncaught Rejection: ",
+            id: event.id,
+            value: event.error,
+            level: "error",
+          };
+        }
+        case "python:initialization:started":
+        case "python:initialization:finished":
+        case "python:execution:started": {
           return undefined;
         }
 
         // Curl events
-        case "parse:started": {
+        case "curl:parse:started": {
           return undefined;
         }
-        case "parse:finished": {
+        case "curl:parse:finished": {
           return undefined;
         }
-        case "parse:error": {
+        case "curl:parse:error": {
           return {
             prefix: "Parse failed: ",
             id: event.id,
@@ -90,10 +129,10 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
             level: "error",
           };
         }
-        case "fetch:started": {
+        case "curl:fetch:started": {
           return undefined;
         }
-        case "fetch:finished": {
+        case "curl:fetch:finished": {
           return {
             prefix: undefined,
             id: event.id,
@@ -101,7 +140,7 @@ function formatEvents(events: ExtendedRuntimeEvent[]): FormattedEvent[] {
             level: "log",
           };
         }
-        case "fetch:error": {
+        case "curl:fetch:error": {
           return {
             prefix: "Fetch failed: ",
             id: event.id,
@@ -153,17 +192,32 @@ function formatResultsOutput(events: FormattedEvent[]) {
 
 export function Results({ status }: ResultsProps) {
   // First, check if we don't have anything to show
-  if (status.state === "idle") {
+  if (
+    status.state === "typescript:idle" ||
+    status.state === "python:idle" ||
+    status.state === "curl:idle"
+  ) {
     return null;
   }
 
   let displayOutput: FormattedEvent[] = [];
   switch (status.state) {
-    case "compiling": {
+    case "typescript:compiling": {
       displayOutput = formatEvents(status.previousEvents);
       break;
     }
-    case "compile-error": {
+    case "typescript:compile-error": {
+      displayOutput = [
+        ...formatEvents(status.events),
+        ...formatEvents(status.previousEvents),
+      ];
+      break;
+    }
+    case "python:initializing": {
+      displayOutput = formatEvents(status.previousEvents);
+      break;
+    }
+    case "python:initialization-error": {
       displayOutput = [
         ...formatEvents(status.events),
         ...formatEvents(status.previousEvents),
