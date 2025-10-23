@@ -1,6 +1,6 @@
 // Web Worker for safely executing bundled code This runs in its own isolated
-// context to prevent interference with the main thread, and to prevent console
-// logs from the main thread from mixing with the logs from the worker.
+// context to prevent interference with the main thread, since the Python
+// runtime blocks the main thread even when idling.
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -67,7 +67,16 @@ self.onmessage = async function (event: MessageEvent<WorkerMessage>) {
     }
 
     try {
-      // Run the code
+      // Set stdio
+      pyodide.setStdout({
+        batched: (msg) =>
+          sendMessage({ type: "log", message: msg, level: "info" }),
+      });
+      pyodide.setStderr({
+        batched: (msg) =>
+          sendMessage({ type: "log", message: msg, level: "error" }),
+      });
+
       pyodide.runPython(event.data.code);
     } catch (error) {
       // Send back the error
