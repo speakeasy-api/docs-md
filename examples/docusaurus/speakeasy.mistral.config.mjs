@@ -19,6 +19,10 @@ export default {
     {
       language: "python",
       sdkTarballPath: "../sdks/mistral-python.tar.gz",
+      tryItNow: {
+        outDir: "./public/mistral-try-it-now",
+        urlPrefix: "/mistral-try-it-now",
+      },
     },
     {
       language: "curl",

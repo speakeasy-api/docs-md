@@ -11,7 +11,8 @@ import {
   generateRequestResponseExamples,
 } from "./generateCodeSamples.ts";
 import { generateDocsData } from "./generateDocsData.ts";
-import { generateTryItNowBundle } from "./generateTryItNowBundle.ts";
+import { generatePythonTryItNow } from "./generatePythonTryItNow.ts";
+import { generateTypeScriptTryItNow } from "./generateTypeScriptTryItNow.ts";
 import { prepareSdks } from "./prepareSdks.ts";
 
 export async function generateData({
@@ -40,8 +41,11 @@ export async function generateData({
       // Generate the code samples
       docsCodeSamples = generateCodeSamples(data, sdkFolders);
 
-      // Generate the Try It Now bundle
-      await generateTryItNowBundle(sdkFolders);
+      // Generate the TypeScript Try It Now data
+      await generateTypeScriptTryItNow(sdkFolders);
+
+      // Generate the Python Try It Now data
+      generatePythonTryItNow(sdkFolders);
     } finally {
       rmSync(extractionTempDirBase, {
         recursive: true,

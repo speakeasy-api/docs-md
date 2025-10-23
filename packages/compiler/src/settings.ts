@@ -105,6 +105,44 @@ const typescript = z.object({
   ...sdkCommonProperties,
 });
 
+const python = z.object({
+  /**
+   * The language to use for the code sample.
+   */
+  language: z.literal("python"),
+
+  /**
+   * Configuration for Try It Now, if supplied. If this object is not supplied,
+   * then Try It Now will be disabled.
+   */
+  tryItNow: z
+    .strictObject({
+      /**
+       * The output directory to place generated artifacts in.
+       *
+       * When docs are build, the SDK is prebundled into a browser friendly
+       * format, and then placed in this directory.
+       *
+       * This directory should be a publicly accessible static asset directory.
+       *
+       * For example, if you are using Next.js, this directory should be a
+       * directory that is a sub folder of `public`.
+       */
+      outDir: z.string(),
+
+      /**
+       * The URL prefix to use for the Try It Now endpoint. This should be a URL
+       * that points to the `outDir` directory.
+       *
+       * For example, In Next.js, if `outDir` is `./public/try-it-now/ts`, then
+       * `urlPrefix` should be `/try-it-now/ts`.
+       */
+      urlPrefix: z.string(),
+    })
+    .optional(),
+  ...sdkCommonProperties,
+});
+
 const otherSdkLanguages = z.object({
   /**
    * The language to use for the code sample.
@@ -112,7 +150,6 @@ const otherSdkLanguages = z.object({
   language: z.enum([
     "go",
     "java",
-    "python",
     "csharp",
     "terraform",
     "unity",
@@ -124,7 +161,7 @@ const otherSdkLanguages = z.object({
   ...sdkCommonProperties,
 });
 
-const codeSample = z.union([curl, typescript, otherSdkLanguages]);
+const codeSample = z.union([curl, typescript, python, otherSdkLanguages]);
 
 export const settingsSchema = z.strictObject({
   /**
