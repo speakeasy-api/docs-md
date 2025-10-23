@@ -43,3 +43,10 @@ jobs:
         run: make check-formatting-packages
       - name: Verify package versions
         run: make verify-package-versions
+
+  e2e-tests:
+    name: E2E Tests
+    needs: build-and-test
+    uses: ./.github/workflows/e2e-tests.yaml
+    with:
+      use-artifacts: true

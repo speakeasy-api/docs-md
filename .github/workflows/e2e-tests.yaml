@@ -1,31 +1,25 @@
 name: E2E Tests
 
 on:
-  workflow_run:
-    workflows: ["Packages"]
-    types:
-      - completed
-    branches: [main]
-  pull_request:
-    branches: [main, new-try-it-now]
-  merge_group:
+  workflow_call:
+    inputs:
+      use-artifacts:
+        description: 'Whether to use artifacts from the packages workflow'
+        required: false
+        type: boolean
+        default: true
+  workflow_dispatch:
 
 jobs:
   e2e-tests:
     name: Playwright E2E Tests
     runs-on: ubuntu-latest
-    # Only run if packages workflow succeeded (or if triggered by PR/merge_group)
-    if: |
-      github.event_name != 'workflow_run' ||
-      github.event.workflow_run.conclusion == 'success'
 
     steps:
       - uses: actions/checkout@v4
         with:
           # Needed to copy the WASM file during build
           lfs: true
-          # Use the ref from the workflow_run event if triggered that way
-          ref: ${{ github.event.workflow_run.head_sha || github.ref }}
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -33,20 +27,18 @@ jobs:
           cache: "npm"
       - name: Install dependencies
         run: npm ci
-      - name: Download build artifacts from Packages workflow
+      - name: Download build artifacts
         id: download-artifacts
-        uses: dawidd6/action-download-artifact@v6
+        if: inputs.use-artifacts
+        uses: actions/download-artifact@v4
         continue-on-error: true
         with:
-          workflow: packages.yaml
           name: package-build-artifacts
-          # Use the commit SHA from the workflow_run event if available, otherwise use current SHA
-          commit: ${{ github.event.workflow_run.head_sha || github.sha }}
       - name: Restore build artifacts
         if: steps.download-artifacts.outcome == 'success'
         run: tar -xzf build-artifacts.tar.gz
       - name: Build packages (if artifacts not available)
-        if: steps.download-artifacts.outcome != 'success'
+        if: ${{ !inputs.use-artifacts || steps.download-artifacts.outcome != 'success' }}
         run: make build-packages
       # We have to run npm install again to link the newly built compiler binary
       - name: Link workspace binaries
