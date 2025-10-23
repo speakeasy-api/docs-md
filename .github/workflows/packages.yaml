@@ -44,8 +44,8 @@ jobs:
       - name: Verify package versions
         run: make verify-package-versions
 
-  integration-tests:
-    name: Playwright Integration Tests
+  e2e-tests:
+    name: Playwright E2E Tests
     runs-on: ubuntu-latest
     needs: build-and-test
 
@@ -69,40 +69,20 @@ jobs:
         run: tar -xzf build-artifacts.tar.gz
       - name: Link workspace binaries
         run: npm install --workspaces
-      - name: Cache example builds
-        uses: actions/cache@v4
-        with:
-          path: |
-            examples/nextra/.next/cache
-            examples/docusaurus/node_modules/.cache
-          key: ${{ runner.os }}-examples-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('examples/**/*.js', 'examples/**/*.jsx', 'examples/**/*.ts', 'examples/**/*.tsx') }}
-          restore-keys: |
-            ${{ runner.os }}-examples-${{ hashFiles('**/package-lock.json') }}-
       - name: Build examples
         run: |
           npm run build --workspace examples/docusaurus --ignore-scripts &
           npm run build --workspace examples/nextra --ignore-scripts &
           wait
-      - name: Get Playwright version
-        id: playwright-version
-        run: echo "version=$(node -p "require('./package.json').dependencies['@playwright/test']")" >> $GITHUB_OUTPUT
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
-        id: playwright-cache
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ steps.playwright-version.outputs.version }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-
       - name: Install Playwright browsers
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
+        working-directory: tests/e2e
       - name: Run Playwright tests
-        run: make test-integration
+        run: make test-e2e
       - name: Upload test results
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
-          path: tests/integration/playwright-report/
+          path: tests/e2e/playwright-report/
           retention-days: 30
