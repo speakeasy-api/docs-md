@@ -7,6 +7,8 @@ import type {
   SchemaValue,
 } from "@speakeasy-api/docs-md-shared";
 import { CurlGenerator } from "curl-generator";
+import { load } from "js-yaml";
+import { lt } from "semver";
 
 import { getSchemaFromId, getSecurityFromId } from "../content/util.ts";
 import { error, info, warn } from "../logging.ts";
@@ -459,6 +461,31 @@ export function generateRequestResponseExamples(docsData: Map<string, Chunk>) {
   }
 }
 
+const MINIMUM_SPEAKEASY_VERSION_FOR_CODE_SAMPLES = "1.590.0";
+function verifySpeakeasyVersionFromSDK(
+  sdkDirectoryPath: string,
+  sdkLanguage: string
+) {
+  const workflowYaml = readFileSync(
+    join(sdkDirectoryPath, ".speakeasy/workflow.lock"),
+    "utf8"
+  );
+  const workflow = load(workflowYaml);
+  if (
+    workflow &&
+    typeof workflow === "object" &&
+    "speakeasyVersion" in workflow
+  ) {
+    const speakeasyVersion = workflow.speakeasyVersion as string;
+    if (lt(speakeasyVersion, MINIMUM_SPEAKEASY_VERSION_FOR_CODE_SAMPLES)) {
+      error(
+        `Unsupported SDK: ${sdkLanguage} SDK was compiled with speakeasy-cli version ${speakeasyVersion}. Please update your speakeasy-cli to version 1.590.0 or higher and re-generate the SDK to generate code samples.`
+      );
+      process.exit(1);
+    }
+  }
+}
+
 export function generateCodeSamples(
   docsData: Map<string, Chunk>,
   sdkFolders: Map<string, SdkFolder>
@@ -491,6 +518,8 @@ export function generateCodeSamples(
     if (!extractionDir) {
       throw new InternalError(`No SDK folder found for ${codeSample.language}`);
     }
+
+    verifySpeakeasyVersionFromSDK(extractionDir.path, codeSample.language);
 
     // Read in the examples
     const examples = readdirSync(join(extractionDir.path, "docs", "sdks"));
