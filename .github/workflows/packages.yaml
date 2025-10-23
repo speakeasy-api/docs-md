@@ -97,7 +97,8 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: make test-integration
+        run: npx playwright test --project=${{ matrix.example }}-mistral
+        working-directory: tests/integration
       - name: Upload test results
         if: failure()
         uses: actions/upload-artifact@v4
