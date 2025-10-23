@@ -1,4 +1,4 @@
-import type { LogLevel } from "../types/logging.ts";
+import type { LogLevel } from "../../types/logging.ts";
 
 type CompilationStartedEvent = {
   type: "compilation:started";
@@ -33,7 +33,7 @@ type ExecutionUncaughtRejectionEvent = {
   error: unknown;
 };
 
-export type TypeScriptRuntimeEvent =
+export type PythonRuntimeEvent =
   | CompilationStartedEvent
   | CompilationFinishedEvent
   | CompilationErrorEvent

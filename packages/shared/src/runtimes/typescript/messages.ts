@@ -1,4 +1,4 @@
-import type { LogLevel } from "../types/logging.ts";
+import type { LogLevel } from "../../types/logging.ts";
 
 type WorkerExecuteMessage = {
   type: "execute";

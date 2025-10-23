@@ -1,6 +1,6 @@
 import type { BuildOptions, BuildResult, SameShape } from "esbuild-wasm";
 
-import { InternalError } from "../util/internalError.ts";
+import { InternalError } from "../../util/internalError.ts";
 
 let build:
   | (<T extends BuildOptions>(
