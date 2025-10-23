@@ -29,8 +29,28 @@ export function usePythonRuntime({
       dependencyUrlPrefix,
     });
     // TODO: Add event listeners
-    runtimeRef.current.on("compilation:started", () => {
-      // TODO
+    runtimeRef.current.on("initialization:started", () => {
+      console.log("initialization:started");
+    });
+    runtimeRef.current.on("initialization:finished", () => {
+      console.log("initialization:finished");
+    });
+    runtimeRef.current.on("initialization:error", () => {
+      console.log("initialization:error");
+    });
+    runtimeRef.current.on("execution:log", () => {
+      console.log("execution:log");
+    });
+    runtimeRef.current.on("execution:log", (event) => {
+      console.log("execution:log", event);
+    });
+    runtimeRef.current.on("execution:uncaught-exception", (event) => {
+      console.log("execution:uncaught-exception");
+      console.log(event);
+    });
+    runtimeRef.current.on("execution:uncaught-rejection", (event) => {
+      console.log("execution:uncaught-rejection");
+      console.log(event);
     });
   }
 

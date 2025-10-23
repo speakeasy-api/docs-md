@@ -19,9 +19,9 @@ export class PythonRuntime extends Runtime<PythonRuntimeEvent> {
     dependencyUrlPrefix: string;
   }) {
     super({
-      "compilation:started": [],
-      "compilation:finished": [],
-      "compilation:error": [],
+      "initialization:started": [],
+      "initialization:finished": [],
+      "initialization:error": [],
       "execution:started": [],
       "execution:log": [],
       "execution:uncaught-exception": [],
@@ -53,7 +53,7 @@ export class PythonRuntime extends Runtime<PythonRuntimeEvent> {
     }
 
     // Run the bundle
-    this.emit({ type: "execution:started" });
+    this.emit({ type: "initialization:started" });
     const blob = new Blob([workerCode], { type: "application/javascript" });
     const url = URL.createObjectURL(blob);
     this.#workerBlobUrl = url.toString();
@@ -64,6 +64,19 @@ export class PythonRuntime extends Runtime<PythonRuntimeEvent> {
     // Set up message handler
     this.#worker.onmessage = (event: MessageEvent<WorkerMessage>) => {
       switch (event.data.type) {
+        case "initialization:error": {
+          this.emit({
+            type: "initialization:error",
+            error: event.data.error,
+          });
+          break;
+        }
+        case "initialization:finished": {
+          this.emit({
+            type: "initialization:finished",
+          });
+          break;
+        }
         case "log": {
           this.emit({
             type: "execution:log",

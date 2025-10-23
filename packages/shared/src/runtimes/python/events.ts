@@ -1,15 +1,15 @@
 import type { LogLevel } from "../../types/logging.ts";
 
-type CompilationStartedEvent = {
-  type: "compilation:started";
+type InitializationStartedEvent = {
+  type: "initialization:started";
 };
 
-type CompilationFinishedEvent = {
-  type: "compilation:finished";
+type InitializationFinishedEvent = {
+  type: "initialization:finished";
 };
 
-type CompilationErrorEvent = {
-  type: "compilation:error";
+type InitializationErrorEvent = {
+  type: "initialization:error";
   error: unknown;
 };
 
@@ -34,9 +34,9 @@ type ExecutionUncaughtRejectionEvent = {
 };
 
 export type PythonRuntimeEvent =
-  | CompilationStartedEvent
-  | CompilationFinishedEvent
-  | CompilationErrorEvent
+  | InitializationStartedEvent
+  | InitializationFinishedEvent
+  | InitializationErrorEvent
   | ExecutionStartedEvent
   | ExecutionLogEvent
   | ExecutionUncaughtExceptionEvent

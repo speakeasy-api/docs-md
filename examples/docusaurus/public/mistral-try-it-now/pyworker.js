@@ -1,8 +1,11 @@
 // Web Worker for safely executing bundled code This runs in its own isolated
 // context to prevent interference with the main thread, and to prevent console
 // logs from the main thread from mixing with the logs from the worker.
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-import { loadPyodide } from "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/pyodide.mjs";
+// eslint-disable-next-line fast-import/no-unresolved-imports
+import { loadPyodide as loadPyodideUntyped } from "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/pyodide.mjs";
+const loadPyodide = loadPyodideUntyped;
 // Helper to enforce strict typing
 function sendMessage(message) {
     self.postMessage(message);
@@ -24,16 +27,33 @@ self.onmessage = async function (event) {
                     : { message: String(event.reason) },
             });
         });
-        // Execute the wrapped code using an indirect eval call for safety. See
-        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#never_use_direct_eval!
+        // Initialize the runtime
+        let pyodide;
         try {
-            // Load the SDK
-            const pyodide = await loadPyodide();
+            // Load the SDK via micropip
+            pyodide = await loadPyodide();
             await pyodide.loadPackage("micropip");
             const micropip = pyodide.pyimport("micropip");
-            const url = window.location.origin + event.data.dependencyUrl;
-            debugger;
+            const url = globalThis.location.origin + event.data.dependencyUrl;
             await micropip.install(url);
+            sendMessage({ type: "initialization:finished" });
+        }
+        catch (error) {
+            // Send back the error
+            sendMessage({
+                type: "initialization:error",
+                error: error instanceof Error
+                    ? {
+                        message: error.message,
+                        stack: error.stack,
+                        name: error.name,
+                    }
+                    : { message: String(error) },
+            });
+            return;
+        }
+        try {
+            // Run the code
             pyodide.runPython(event.data.code);
         }
         catch (error) {

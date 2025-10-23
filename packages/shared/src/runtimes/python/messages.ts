@@ -6,6 +6,15 @@ type WorkerExecuteMessage = {
   code: string;
 };
 
+type WorkerInitializationFinishedMessage = {
+  type: "initialization:finished";
+};
+
+type WorkerInitializationErrorMessage = {
+  type: "initialization:error";
+  error: unknown;
+};
+
 type WorkerLogMessage = {
   type: "log";
   level: LogLevel;
@@ -24,6 +33,8 @@ type WorkerUncaughtRejectMessage = {
 
 export type WorkerMessage =
   | WorkerExecuteMessage
+  | WorkerInitializationFinishedMessage
+  | WorkerInitializationErrorMessage
   | WorkerLogMessage
   | WorkerUncaughtExceptionMessage
   | WorkerUncaughtRejectMessage;
