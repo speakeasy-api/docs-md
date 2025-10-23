@@ -120,6 +120,11 @@ export type PythonTryItNowProps = BaseTryItNowProps & {
    */
   language: "python";
   /**
+   * URL prefix to the prebuilt dependency bundle and types, as specified by
+   * `codeSample.tryItNow.urlPrefix` in the Speakeasy docs config
+   */
+  dependencyUrlPrefix: string;
+  /**
    * URL to the prebuilt Wheel bundle, as specified by
    * `codeSample.tryItNow.urlPrefix` in the Speakeasy docs config combined with
    * the name of the wheel file, e.g. /try-it-now/sdk-1.1.0-py3-none-any.whl

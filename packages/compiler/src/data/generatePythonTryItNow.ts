@@ -1,6 +1,12 @@
 import { execSync } from "node:child_process";
-import { copyFileSync, readdirSync } from "node:fs";
+import {
+  copyFileSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
 import { basename, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { debug, info } from "../logging.ts";
 import { getSettings, setInternalSetting } from "../settings.ts";
@@ -84,4 +90,14 @@ export function generatePythonTryItNow(sdkFolders: Map<string, SdkFolder>) {
   // Python tooling stores semantic information in the filename that micropop
   // needs in order to function
   setInternalSetting("pythonWheelName", wheelName);
+
+  // "Bundle" the worker by moving it to a spot where the browser can fetch it
+  const workerUrl = import.meta.resolve(
+    "@speakeasy-api/docs-md-shared/pyworker"
+  );
+  const workerPath = fileURLToPath(workerUrl);
+  const workerCode = readFileSync(workerPath, "utf-8");
+  writeFileSync(join(codeSample.tryItNow.outDir, "pyworker.js"), workerCode, {
+    encoding: "utf-8",
+  });
 }

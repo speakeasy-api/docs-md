@@ -41,7 +41,7 @@ export class TypeScriptRuntime extends Runtime<TypeScriptRuntimeEvent> {
           : fetch(this.#dependencyUrlPrefix + "/deps.js").then((r) => r.text()),
         workerCode
           ? Promise.resolve(workerCode)
-          : fetch(this.#dependencyUrlPrefix + "/worker.js").then((r) =>
+          : fetch(this.#dependencyUrlPrefix + "/tsworker.js").then((r) =>
               r.text()
             ),
       ]);

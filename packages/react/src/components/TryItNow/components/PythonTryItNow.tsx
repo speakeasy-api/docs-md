@@ -14,10 +14,12 @@ export function PythonTryItNow({
   defaultValue,
   theme = "dark",
   dependencyUrl,
+  dependencyUrlPrefix,
 }: PythonTryItNowProps) {
   const [value, setValue] = useState(defaultValue);
   const { status, execute, reset } = usePythonRuntime({
     dependencyUrl,
+    dependencyUrlPrefix,
     defaultValue,
   });
   const showResults = status.state !== "idle";

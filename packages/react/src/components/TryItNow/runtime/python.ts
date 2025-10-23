@@ -6,10 +6,15 @@ import type { ExtendedPythonRuntimeEvent, PythonStatus } from "../types.ts";
 
 type Options = {
   dependencyUrl: string;
+  dependencyUrlPrefix: string;
   defaultValue: string;
 };
 
-export function usePythonRuntime({ dependencyUrl, defaultValue }: Options) {
+export function usePythonRuntime({
+  dependencyUrl,
+  dependencyUrlPrefix,
+  defaultValue,
+}: Options) {
   const [status, setStatus] = useState<PythonStatus>({
     state: "idle",
     language: "python",
@@ -19,7 +24,10 @@ export function usePythonRuntime({ dependencyUrl, defaultValue }: Options) {
   const events = useRef<ExtendedPythonRuntimeEvent[]>([]);
 
   if (!runtimeRef.current) {
-    runtimeRef.current = new PythonRuntime({ dependencyUrl });
+    runtimeRef.current = new PythonRuntime({
+      dependencyUrl,
+      dependencyUrlPrefix,
+    });
     // TODO: Add event listeners
     runtimeRef.current.on("compilation:started", () => {
       // TODO

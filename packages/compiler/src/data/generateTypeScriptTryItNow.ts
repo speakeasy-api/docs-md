@@ -71,8 +71,13 @@ export async function generateTypeScriptTryItNow(
     encoding: "utf-8",
   });
 
-  const workerCode = bundleTryItNowWorker();
-  writeFileSync(join(codeSample.tryItNow.outDir, "worker.js"), workerCode, {
+  // "Bundle" the worker by moving it to a spot where the browser can fetch it
+  const workerUrl = import.meta.resolve(
+    "@speakeasy-api/docs-md-shared/tsworker"
+  );
+  const workerPath = fileURLToPath(workerUrl);
+  const workerCode = readFileSync(workerPath, "utf-8");
+  writeFileSync(join(codeSample.tryItNow.outDir, "tsworker.js"), workerCode, {
     encoding: "utf-8",
   });
 
@@ -223,11 +228,4 @@ async function bundleTryItNowDeps(sdkFolder: SdkFolder): Promise<string> {
       force: true,
     });
   }
-}
-
-function bundleTryItNowWorker(): string {
-  const workerUrl = import.meta.resolve("@speakeasy-api/docs-md-shared/worker");
-  const workerPath = fileURLToPath(workerUrl);
-  const workerCode = readFileSync(workerPath, "utf-8");
-  return workerCode;
 }

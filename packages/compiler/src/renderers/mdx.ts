@@ -623,6 +623,7 @@ class MdxRenderer extends MarkdownRenderer {
                       props = {
                         language: "python",
                         defaultValue: options.defaultValue,
+                        dependencyUrlPrefix: options.dependencyUrlPrefix,
                         dependencyUrl:
                           options.dependencyUrlPrefix +
                           "/" +
