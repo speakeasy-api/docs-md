@@ -52,8 +52,8 @@ clean-packages:
 clean-examples:
 	npm run clean --workspace examples
 
-test-e2e:
-	npm run test --workspace tests/e2e
+test-integration:
+	npm run test --workspace tests/integration
 
 build-api-docs:
 	npm run build-api-docs --workspace examples -- --clean
