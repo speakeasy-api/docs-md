@@ -69,6 +69,15 @@ jobs:
         run: tar -xzf build-artifacts.tar.gz
       - name: Link workspace binaries
         run: npm install --workspaces
+      - name: Cache example builds
+        uses: actions/cache@v4
+        with:
+          path: |
+            examples/nextra/.next/cache
+            examples/docusaurus/node_modules/.cache
+          key: ${{ runner.os }}-examples-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('examples/**/*.js', 'examples/**/*.jsx', 'examples/**/*.ts', 'examples/**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-examples-${{ hashFiles('**/package-lock.json') }}-
       - name: Build examples
         run: |
           npm run build --workspace examples/docusaurus --ignore-scripts &
