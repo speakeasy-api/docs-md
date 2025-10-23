@@ -1,4 +1,4 @@
-import type { CheckIconProps } from "../TryItNow/types.ts";
+import type { CheckIconProps } from "./types.ts";
 
 export function CheckIcon({ className, style }: CheckIconProps) {
   return (

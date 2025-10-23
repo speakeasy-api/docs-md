@@ -1,4 +1,4 @@
-import type { ResetIconProps } from "../TryItNow/types.ts";
+import type { ResetIconProps } from "./types.ts";
 
 export function ResetIcon({ className, style }: ResetIconProps) {
   return (

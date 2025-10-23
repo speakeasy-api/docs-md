@@ -2,7 +2,7 @@ import type {
   CurlRuntimeEvent,
   TypeScriptRuntimeEvent,
 } from "@speakeasy-api/docs-md-shared";
-import type { ComponentType, CSSProperties } from "react";
+import type { PropsWithChildren } from "react";
 
 export type ExtendedTypeScriptRuntimeEvent = TypeScriptRuntimeEvent & {
   id: string;
@@ -136,57 +136,59 @@ export type EditorProps = {
    * The theme of the editor
    */
   theme?: "light" | "dark";
+  /**
+   * Padding to apply to the editor. This padding shows up inside of the editor
+   * boundary around the code being displayed.
+   *
+   * Note: We set this via JavaScript because Monaco requires it.
+   */
   editorPadding?: {
     top?: number;
     bottom?: number;
   };
 };
 
-export type ButtonProps = {
+export type ButtonProps = PropsWithChildren<{
   /**
    * Callback to invoke when the run button is clicked
    */
   onClick?: () => void;
+  /**
+   * The aria label for the button
+   */
   ariaLabel?: string;
-  children?: React.ReactNode;
+  /**
+   * Extra classes to apply to the button
+   */
   className?: string;
-};
+}>;
 
-export type ResetButtonProps = Pick<ButtonProps, "onClick"> & {
-  ResetIcon?: ComponentType<ResetIconProps>;
-};
+export type ResetButtonProps = Pick<ButtonProps, "onClick">;
 
 export type CopyButtonProps = {
+  /**
+   * The value to copy to the clipboard when the button is clicked
+   */
   copyValue?: string;
-  CheckIcon?: ComponentType<CheckIconProps>;
-  CopyIcon?: ComponentType<CopyIconProps>;
 };
 
 export type ResultsProps = {
+  /**
+   * The current status of the try it now component, from the runtime hook
+   */
   status: Status;
 };
 
-export type LayoutProps = {
-  children: React.ReactNode;
+export type LayoutProps = PropsWithChildren<{
+  /**
+   * The current status of the try it now component, from the runtime hook
+   */
   status: Status;
-};
+}>;
 
-export type ControlsProps = {
-  children: React.ReactNode;
+export type ControlsProps = PropsWithChildren<{
+  /**
+   * The current status of the try it now component, from the runtime hook
+   */
   status: Status;
-};
-
-export type ResetIconProps = {
-  className?: string;
-  style?: CSSProperties;
-};
-
-export type CheckIconProps = {
-  className?: string;
-  style?: CSSProperties;
-};
-
-export type CopyIconProps = {
-  className?: string;
-  style?: CSSProperties;
-};
+}>;

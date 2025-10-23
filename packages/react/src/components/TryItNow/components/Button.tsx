@@ -3,9 +3,9 @@
 import clsx from "clsx";
 import { useState } from "react";
 
-import { CheckIcon as DefaultCheckIcon } from "../../CheckIcon/CheckIcon.tsx";
-import { CopyIcon as DefaultCopyIcon } from "../../CopyIcon/CopyIcon.tsx";
-import { ResetIcon as DefaultResetIcon } from "../../ResetIcon/ResetIcon.tsx";
+import { CheckIcon } from "../../CheckIcon/CheckIcon.tsx";
+import { CopyIcon } from "../../CopyIcon/CopyIcon.tsx";
+import { ResetIcon } from "../../ResetIcon/ResetIcon.tsx";
 import type {
   ButtonProps,
   CopyButtonProps,
@@ -34,10 +34,7 @@ export function RunButton({ onClick }: Pick<ButtonProps, "onClick">) {
   );
 }
 
-export function ResetButton({
-  onClick,
-  ResetIcon = DefaultResetIcon,
-}: ResetButtonProps) {
+export function ResetButton({ onClick }: ResetButtonProps) {
   return (
     <Button
       className={styles.iconButton}
@@ -49,11 +46,7 @@ export function ResetButton({
   );
 }
 
-export function CopyButton({
-  copyValue,
-  CheckIcon = DefaultCheckIcon,
-  CopyIcon = DefaultCopyIcon,
-}: CopyButtonProps) {
+export function CopyButton({ copyValue }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
 
   function handleClick() {

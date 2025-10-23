@@ -7,8 +7,9 @@ import { useCallback, useEffect, useState } from "react";
 import { CloseEmbedIcon } from "../CloseEmbedIcon/CloseEmbedIcon.tsx";
 import { embedContentAtom } from "./state.ts";
 import styles from "./styles.module.css";
+import type { EmbedProviderProps } from "./types.ts";
 
-export function EmbedProvider() {
+export function EmbedProvider(_: EmbedProviderProps) {
   // We keep separate track of the open state vs content because we want to
   // start animating the closing of the sidebar before the content is cleared,
   // so that we see it slide off screen. This means we can't use content as an

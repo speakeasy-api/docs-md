@@ -1,4 +1,4 @@
-import type { CopyIconProps } from "../TryItNow/types.ts";
+import type { CopyIconProps } from "./types.ts";
 
 export function CopyIcon({ className, style }: CopyIconProps) {
   return (
