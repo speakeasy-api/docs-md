@@ -40,6 +40,11 @@ export function usePythonRuntime({
     });
     // TODO: Add event listeners
     runtimeRef.current.on("python:initialization:started", () => {
+      previousEvents.current = events.current;
+      // We don't store started and finished events to keep event history clean
+      // for the UI. They can be inferred from the state, and don't contain
+      // any useful information for the UI.
+      events.current = [];
       setStatus({
         state: "python:initializing",
         previousEvents: previousEvents.current,
@@ -51,11 +56,17 @@ export function usePythonRuntime({
         events: events.current,
       });
     });
-    runtimeRef.current.on("python:initialization:error", () => {
+    runtimeRef.current.on("python:initialization:error", (event) => {
+      // Save previous events to events, so that next time we try to run code,
+      // they will again become previous events. This way, we always show the
+      // last _successfully_ initialized events
+      events.current = previousEvents.current;
       setStatus({
         state: "python:initialization-error",
         previousEvents: previousEvents.current,
-        events: events.current,
+        // We still want to send the initialization error event thoughs, so that
+        // the UI can show a initialization error.
+        events: [addEventId(event)],
       });
     });
     runtimeRef.current.on("python:execution:started", handleExecutionEvent);
