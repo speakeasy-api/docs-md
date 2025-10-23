@@ -612,19 +612,24 @@ class MdxRenderer extends MarkdownRenderer {
                         ),
                       };
                       break;
-                    case "curl":
+                    case "curl": {
                       props = {
                         language: "curl",
                         defaultValue: options.defaultValue,
                       };
                       break;
-                    case "python":
+                    }
+                    case "python": {
                       props = {
                         language: "python",
                         defaultValue: options.defaultValue,
-                        dependencyUrlPrefix: options.dependencyUrlPrefix,
+                        dependencyUrl:
+                          options.dependencyUrlPrefix +
+                          "/" +
+                          getInternalSetting("pythonWheelName"),
                       };
                       break;
+                    }
                   }
                   this.#appendComponent<TryItNowProps>({
                     symbol: "TryItNow",

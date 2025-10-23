@@ -19,6 +19,7 @@ export function getSettings() {
 
 type InternalSettings = {
   typeScriptPackageName?: string;
+  pythonWheelName?: string;
   onPageComplete?: OnPageComplete;
 };
 

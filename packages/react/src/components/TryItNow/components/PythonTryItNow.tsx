@@ -13,16 +13,14 @@ import styles from "./styles.module.css";
 export function PythonTryItNow({
   defaultValue,
   theme = "dark",
+  dependencyUrl,
 }: PythonTryItNowProps) {
   const [value, setValue] = useState(defaultValue);
   const { status, execute, reset } = usePythonRuntime({
+    dependencyUrl,
     defaultValue,
   });
   const showResults = status.state !== "idle";
-
-  function handleReset() {
-    reset(setValue);
-  }
 
   return (
     <>
@@ -38,17 +36,13 @@ export function PythonTryItNow({
           />
         </div>
         <div slot="runButton" className={styles.runButtonContainer}>
-          <RunButton
-            onClick={() => {
-              execute(value);
-            }}
-          />
+          <RunButton onClick={() => execute(value)} />
         </div>
         <div slot="copyButton">
           <CopyButton copyValue={value} />
         </div>
         <div slot="resetButton">
-          <ResetButton onClick={handleReset} />
+          <ResetButton onClick={() => reset(setValue)} />
         </div>
         {showResults && (
           <div slot="results" className={styles.results}>

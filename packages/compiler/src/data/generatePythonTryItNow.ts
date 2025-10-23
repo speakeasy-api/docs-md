@@ -1,9 +1,9 @@
 import { execSync } from "node:child_process";
 import { copyFileSync, readdirSync } from "node:fs";
-import { join } from "node:path";
+import { basename, join } from "node:path";
 
 import { debug, info } from "../logging.ts";
-import { getSettings } from "../settings.ts";
+import { getSettings, setInternalSetting } from "../settings.ts";
 import { InternalError } from "../util/internalError.ts";
 import type { SdkFolder } from "./types.ts";
 
@@ -66,7 +66,7 @@ export function generatePythonTryItNow(sdkFolders: Map<string, SdkFolder>) {
     cwd: sdkFolder.path,
   });
 
-  // Find the wheel file
+  // Find the wheel file and save it to the Try It Now directory
   const contents = readdirSync(join(sdkFolder.path, "dist")).filter((file) =>
     file.endsWith(".whl")
   );
@@ -77,5 +77,11 @@ export function generatePythonTryItNow(sdkFolders: Map<string, SdkFolder>) {
   }
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const wheelPath = join(sdkFolder.path, "dist", contents[0]!);
-  copyFileSync(wheelPath, join(codeSample.tryItNow.outDir, "sdk.whl"));
+  const wheelName = basename(wheelPath);
+  copyFileSync(wheelPath, join(codeSample.tryItNow.outDir, wheelName));
+
+  // Store the filename for later use. We have to preserve the filename because
+  // Python tooling stores semantic information in the filename that micropop
+  // needs in order to function
+  setInternalSetting("pythonWheelName", wheelName);
 }

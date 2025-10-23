@@ -20,10 +20,6 @@ export function CurlTryItNow({
   });
   const showResults = status.state !== "idle";
 
-  function handleReset() {
-    reset(setValue);
-  }
-
   return (
     <>
       <Layout status={status}>
@@ -38,17 +34,13 @@ export function CurlTryItNow({
           />
         </div>
         <div slot="runButton" className={styles.runButtonContainer}>
-          <RunButton
-            onClick={() => {
-              execute(value);
-            }}
-          />
+          <RunButton onClick={() => execute(value)} />
         </div>
         <div slot="copyButton">
           <CopyButton copyValue={value} />
         </div>
         <div slot="resetButton">
-          <ResetButton onClick={handleReset} />
+          <ResetButton onClick={() => reset(setValue)} />
         </div>
         {showResults && (
           <div slot="results" className={styles.results}>

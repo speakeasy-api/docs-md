@@ -72,10 +72,6 @@ export function TypeScriptTryItNow({
     }
   }, [error]);
 
-  function handleReset() {
-    reset(setValue);
-  }
-
   return (
     <>
       <Layout status={status}>
@@ -100,7 +96,7 @@ export function TypeScriptTryItNow({
           <CopyButton copyValue={value} />
         </div>
         <div slot="resetButton">
-          <ResetButton onClick={handleReset} />
+          <ResetButton onClick={() => reset(setValue)} />
         </div>
         {showResults && (
           <div slot="results" className={styles.results}>

@@ -4,7 +4,12 @@ import { useCallback, useRef, useState } from "react";
 import { InternalError } from "../../../util/internalError.ts";
 import type { ExtendedPythonRuntimeEvent, PythonStatus } from "../types.ts";
 
-export function usePythonRuntime({ defaultValue }: { defaultValue: string }) {
+type Options = {
+  dependencyUrl: string;
+  defaultValue: string;
+};
+
+export function usePythonRuntime({ dependencyUrl, defaultValue }: Options) {
   const [status, setStatus] = useState<PythonStatus>({
     state: "idle",
     language: "python",
@@ -14,7 +19,7 @@ export function usePythonRuntime({ defaultValue }: { defaultValue: string }) {
   const events = useRef<ExtendedPythonRuntimeEvent[]>([]);
 
   if (!runtimeRef.current) {
-    runtimeRef.current = new PythonRuntime();
+    runtimeRef.current = new PythonRuntime({ dependencyUrl });
     // TODO: Add event listeners
     runtimeRef.current.on("compilation:started", () => {
       // TODO
