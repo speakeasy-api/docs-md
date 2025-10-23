@@ -1,5 +1,6 @@
 import type {
   CurlRuntimeEvent,
+  PythonRuntimeEvent,
   TypeScriptRuntimeEvent,
 } from "@speakeasy-api/docs-md-shared";
 import type { PropsWithChildren } from "react";
@@ -9,6 +10,10 @@ export type ExtendedTypeScriptRuntimeEvent = TypeScriptRuntimeEvent & {
 };
 
 export type ExtendedCurlRuntimeEvent = CurlRuntimeEvent & {
+  id: string;
+};
+
+export type ExtendedPythonRuntimeEvent = PythonRuntimeEvent & {
   id: string;
 };
 
@@ -35,6 +40,17 @@ export type TypeScriptStatus =
   | {
       state: "executing";
       language: "typescript";
+      events: ExtendedTypeScriptRuntimeEvent[];
+    };
+
+export type PythonStatus =
+  | {
+      state: "idle";
+      language: "python";
+    }
+  | {
+      state: "executing";
+      language: "python";
       events: ExtendedTypeScriptRuntimeEvent[];
     };
 
@@ -69,7 +85,7 @@ export type CurlStatus =
       events: ExtendedCurlRuntimeEvent[];
     };
 
-type Status = TypeScriptStatus | CurlStatus;
+type Status = TypeScriptStatus | PythonStatus | CurlStatus;
 
 type BaseTryItNowProps = {
   /**
@@ -98,6 +114,18 @@ export type TypeScriptTryItNowProps = BaseTryItNowProps & {
   packageName: string;
 };
 
+export type PythonTryItNowProps = BaseTryItNowProps & {
+  /**
+   * The language of the code sample.
+   */
+  language: "python";
+  /**
+   * URL prefix to the prebuilt dependency bundle and types, as specified by
+   * `codeSample.tryItNow.urlPrefix` in the Speakeasy docs config
+   */
+  dependencyUrlPrefix: string;
+};
+
 export type CurlTryItNowProps = BaseTryItNowProps & {
   /**
    * The language of the code sample.
@@ -105,13 +133,16 @@ export type CurlTryItNowProps = BaseTryItNowProps & {
   language: "curl";
 };
 
-export type TryItNowProps = TypeScriptTryItNowProps | CurlTryItNowProps;
+export type TryItNowProps =
+  | TypeScriptTryItNowProps
+  | PythonTryItNowProps
+  | CurlTryItNowProps;
 
 export type EditorProps = {
   /**
    * The language of the code sample.
    */
-  language: "typescript" | "curl";
+  language: "typescript" | "curl" | "python";
   /**
    * The current code value in the editor
    */

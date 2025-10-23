@@ -105,6 +105,11 @@ export type RendererCreateCodeSamplesSectionArgs = [
             defaultValue: string;
           }
         | {
+            language: "python";
+            dependencyUrlPrefix: string;
+            defaultValue: string;
+          }
+        | {
             language: "curl";
             defaultValue: string;
           }

@@ -1,9 +1,5 @@
-// Nextra/Next.js requires us to jump through some hoops to use client
-// components in MDX files. This is because MDX files cannot import files marked
-// with "use client", for some reason, but it's perfectly happy to import a
-// non-async server component (this file) that then imports a client component.
-
 import { CurlTryItNow } from "./components/CurlTryItNow.tsx";
+import { PythonTryItNow } from "./components/PythonTryItNow.tsx";
 import { TypeScriptTryItNow } from "./components/TypeScriptTryItNow.tsx";
 import type { TryItNowProps } from "./types.ts";
 
@@ -19,6 +15,9 @@ export function TryItNow(props: TryItNowProps) {
     }
     case "typescript": {
       return <TypeScriptTryItNow {...props} />;
+    }
+    case "python": {
+      return <PythonTryItNow {...props} />;
     }
   }
 }

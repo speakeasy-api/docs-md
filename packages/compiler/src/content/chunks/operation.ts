@@ -54,6 +54,12 @@ function renderCodeSamples(
               language: "curl",
               defaultValue: snippet.code,
             });
+          } else if (codeSample.language === "python" && codeSample.tryItNow) {
+            createTryItNowEntry({
+              language: "python",
+              dependencyUrlPrefix: codeSample.tryItNow.urlPrefix,
+              defaultValue: snippet.code,
+            });
           } else {
             createCodeSampleEntry({
               language: language,
