@@ -26,6 +26,15 @@ jobs:
         run: npm ci
       - name: Build packages
         run: make build-packages
+      - name: Archive build artifacts
+        run: |
+          tar -czf build-artifacts.tar.gz packages/compiler/dist packages/react/dist packages/shared/dist packages/web-components/dist
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-build-artifacts
+          path: build-artifacts.tar.gz
+          retention-days: 1
       - name: Type check
         run: make type-check-packages
       - name: Lint
