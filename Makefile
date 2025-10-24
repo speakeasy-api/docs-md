@@ -1,5 +1,6 @@
 install:
 	npm install
+	pip install -r requirements.txt
 
 type-check: type-check-packages type-check-examples
 
