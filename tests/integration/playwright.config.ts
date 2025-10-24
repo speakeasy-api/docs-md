@@ -1,6 +1,13 @@
 import { defineConfig, devices } from "@playwright/test";
 
 /**
+ * Helper function to determine if a server should be started.
+ */
+function shouldStartServer(serverName: string) {
+  return !process.env.TEST_EXAMPLE || process.env.TEST_EXAMPLE === serverName;
+}
+
+/**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
@@ -46,9 +53,8 @@ export default defineConfig({
     },
   ],
 
-  /* Run dev servers for both example sites before starting tests */
   webServer: [
-    ...(!process.env.TEST_EXAMPLE as unknown as string === 'docusaurus' ? [{
+    ...(shouldStartServer('docusaurus') ? [{
       command: process.env.CI
         ? "npm run start"
         : "npm run build && npm run start",
@@ -58,7 +64,7 @@ export default defineConfig({
       stdout: "pipe" as const,
       timeout: 30000 
     }] : []),
-    ...(!process.env.TEST_EXAMPLE as unknown as string === 'nextra' ? [{
+    ...(shouldStartServer('nextra') ? [{
       command: process.env.CI
         ? "npm run start"
         : "npm run build && npm run start",
