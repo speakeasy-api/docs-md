@@ -53,7 +53,7 @@ clean-examples:
 	npm run clean --workspace examples
 
 test-integration:
-	npm run test --workspace tests/integration
+	npm run test --workspace tests/integration/docusaurus --workspace tests/integration/nextra
 
 build-api-docs:
 	npm run build-api-docs --workspace examples -- --clean

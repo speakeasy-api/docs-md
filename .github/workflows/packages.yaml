@@ -86,21 +86,20 @@ jobs:
         with:
           node-version: "24"
           cache: "npm"
-      - name: Install dependencies
-        run: npm ci
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
           name: package-build-artifacts
       - name: Restore build artifacts
         run: tar -xzf build-artifacts.tar.gz
-      - name: Link workspace binaries
-        run: npm install --workspaces
+      - name: Install dependencies
+        run: npm ci
       - name: Build example
         run: npm run build --workspace examples/${{ matrix.example }} --ignore-scripts
       - name: Get Playwright version
         id: playwright-version
-        run: echo "version=$(npx playwright --version | sed 's/Version //')" >> $GITHUB_OUTPUT
+        run: echo "version=$(npm list @playwright/test --json | jq -r '.dependencies["@playwright/test"].version')" >> $GITHUB_OUTPUT
+        working-directory: tests/integration/${{ matrix.example }}
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         id: playwright-cache
@@ -110,17 +109,16 @@ jobs:
       - name: Install Playwright browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
+        working-directory: tests/integration/${{ matrix.example }}
       - name: Run Playwright tests
-        run: npx playwright test --project=${{ matrix.example }}-mistral
-        working-directory: tests/integration
-        env:
-          TEST_EXAMPLE: ${{ matrix.example }}
+        run: npm test
+        working-directory: tests/integration/${{ matrix.example }}
       - name: Upload test results
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report-${{ matrix.example }}
-          path: tests/integration/playwright-report/
+          path: tests/integration/${{ matrix.example }}/playwright-report/
           retention-days: 30
 
   # Summary job for branch protection
