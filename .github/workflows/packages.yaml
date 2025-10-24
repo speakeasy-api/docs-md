@@ -80,7 +80,7 @@ jobs:
             ~/.npm
             examples/${{ matrix.example }}/.next/cache
             examples/${{ matrix.example }}/node_modules/.cache
-          key: ${{ runner.os }}-${{ matrix.example }}-${{ hashFiles('package-lock.json', 'examples/${{ matrix.example }}/package.json') }}-${{ hashFiles('examples/${{ matrix.example }}/**/*.{js,jsx,ts,tsx,mdx,md,json,mjs}') }}-${{ hashFiles('packages/**/dist/**') }}
+          key: ${{ runner.os }}-${{ matrix.example }}-${{ hashFiles('package-lock.json', 'examples/${{ matrix.example }}/package.json') }}-${{ hashFiles('examples/${{ matrix.example }}/**/*.{js,jsx,ts,tsx,mdx,md,json,mjs}') }}-${{ hashFiles('packages/**/src/**/*.{ts,tsx,css}', 'packages/*/package.json') }}
           restore-keys: |
             ${{ runner.os }}-${{ matrix.example }}-${{ hashFiles('package-lock.json', 'examples/${{ matrix.example }}/package.json') }}-
       - name: Build example
