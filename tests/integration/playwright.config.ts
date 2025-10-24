@@ -48,25 +48,25 @@ export default defineConfig({
 
   /* Run dev servers for both example sites before starting tests */
   webServer: [
-    {
+    ...(process.env.TEST_EXAMPLE !== 'nextra' ? [{
       command: process.env.CI
         ? "npm run start"
         : "npm run build && npm run start",
       cwd: "../../examples/docusaurus/",
       reuseExistingServer: !process.env.CI,
       url: "http://localhost:3001",
-      stdout: "pipe",
+      stdout: "pipe" as const,
       timeout: 30000 
-    },
-    {
+    }] : []),
+    ...(process.env.TEST_EXAMPLE !== 'docusaurus' ? [{
       command: process.env.CI
         ? "npm run start"
         : "npm run build && npm run start",
       cwd: "../../examples/nextra/",
       reuseExistingServer: !process.env.CI,
       url: "http://localhost:3002",
-      stdout: "pipe",
+      stdout: "pipe" as const,
       timeout: 30000 
-    },
+    }] : []),
   ],
 });
