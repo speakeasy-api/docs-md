@@ -29,6 +29,8 @@
   "homepage": "https://www.speakeasy.com/product/api-docs",
   "scripts": {
     "clean": "rm -rf dist",
+    "generate-ambient": "node --experimental-strip-types scripts/generate-ambient.mts",
+    "prebuild": "npm run generate-ambient",
     "build": "tsc && cpx \"src/**/*.css\" dist/",
     "build:watch": "tsc --watch & cpx \"src/**/*.css\" dist/ --watch",
     "prettier": "prettier --config ../../prettier.config.mjs --ignore-path ../../.gitignore \"**/*.{js,jsx,mjs,ts,tsx,mts}\"",
@@ -47,6 +49,7 @@
     "cpx2": "^8.0.0",
     "globals": "^16.3.0",
     "lit-analyzer": "^2.0.3",
+    "oxc-parser": "^0.73.2",
     "ts-lit-plugin": "^2.0.2",
     "typescript": "^5.8.3"
   }

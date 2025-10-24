@@ -4,25 +4,8 @@ import type { PillVariant } from "@speakeasy-api/docs-md-shared";
 import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-import type { LitProps, ReactCustomElement } from "../../types/components.ts";
+import type { LitProps } from "../../types/components.ts";
 import { styles as litStyles } from "./styles.ts";
-
-declare global {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-  interface HTMLElementTagNameMap {
-    "spk-pill": Pill;
-  }
-}
-
-declare module "react" {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace JSX {
-    // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-    interface IntrinsicElements {
-      ["spk-pill"]: ReactCustomElement<Pill>;
-    }
-  }
-}
 
 export type PillProps = LitProps<Pill>;
 
