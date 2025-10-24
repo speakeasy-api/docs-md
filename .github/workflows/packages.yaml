@@ -132,3 +132,14 @@ jobs:
           name: playwright-report-${{ matrix.example }}
           path: tests/integration/playwright-report/
           retention-days: 30
+
+  # Summary job for branch protection
+  packages-success:
+    name: Packages Build and Lint
+    runs-on: ubuntu-latest
+    needs: [build, lint-and-check, integration-tests]
+    if: always()
+    steps:
+      - name: Check if all jobs succeeded
+        if: needs.build.result != 'success' || needs.lint-and-check.result != 'success' || needs.integration-tests.result != 'success'
+        run: exit 1
