@@ -6,7 +6,7 @@
 import { Children, isValidElement } from "react";
 
 import { InternalError } from "../../util/internalError.ts";
-import { ConnectingCell } from "../ConnectingCell/ConnectingCell.tsx";
+import { ConnectingCell } from "../ConnectingCell.tsx";
 import { BreakoutContents } from "./components/BreakoutContents.tsx";
 import styles from "./styles.module.css";
 import type {

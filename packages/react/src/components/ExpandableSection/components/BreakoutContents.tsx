@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { useChildren, useUniqueChild } from "../../../util/hooks.ts";
-import { ConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
+import { ConnectingCell } from "../../ConnectingCell.tsx";
 import { ExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
 import { NonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
 import { useHashManager } from "../hashManager.ts";

@@ -8,6 +8,15 @@ import { parseSync } from "oxc-parser";
 
 const SRC_DIR = join(dirname(fileURLToPath(import.meta.url)), "../src");
 
+type BaseComponentEntry = {
+  symbol: string;
+  filePath: string;
+};
+
+type ExtendedComponentEntry = BaseComponentEntry & {
+  componentName: string;
+};
+
 function getComponentList() {
   // Read and parse the file
   const entryPoint = join(SRC_DIR, "index.ts");
@@ -49,15 +58,19 @@ function getComponentList() {
     }
   }
 
-  return components;
+  // Convert to array and sort by filename alphabetically
+  return Array.from(components.entries())
+    .map(([filePath, symbol]) => ({
+      filePath,
+      symbol,
+    }))
+    .sort((a, b) => a.filePath.localeCompare(b.filePath));
 }
 
-type ComponentEntry = { symbol: string; componentName: string };
+function getComponentData(components: BaseComponentEntry[]) {
+  const componentData: ExtendedComponentEntry[] = [];
 
-function getComponentData(components: Map<string, string>) {
-  const componentData = new Map<string, ComponentEntry>();
-
-  for (const [filePath, symbol] of components) {
+  for (const { filePath, symbol } of components) {
     // Read in and parse the file
     const componentFileContents = readFileSync(filePath, "utf-8");
     const parsedFile = parseSync(filePath, componentFileContents, {
@@ -139,8 +152,9 @@ function getComponentData(components: Map<string, string>) {
     }
 
     // Store the data
-    componentData.set(filePath, {
+    componentData.push({
       symbol,
+      filePath,
       componentName,
     });
   }
@@ -148,9 +162,9 @@ function getComponentData(components: Map<string, string>) {
   return componentData;
 }
 
-function generateAmbientDeclarations(components: Map<string, ComponentEntry>) {
-  const imports = Array.from(components.entries())
-    .map(([filePath, { symbol }]) => {
+function generateAmbientDeclarations(components: ExtendedComponentEntry[]) {
+  const imports = components
+    .map(({ filePath, symbol }) => {
       const relativePath = filePath.replace(SRC_DIR, "");
       return `import type { ${symbol} } from "..${relativePath}";`;
     })

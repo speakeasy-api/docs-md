@@ -10,7 +10,7 @@ import {
   computeSingleLineDisplayType,
 } from "../../../util/displayType.ts";
 import { useChildren, useUniqueChild } from "../../../util/hooks.ts";
-import { ConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
+import { ConnectingCell } from "../../ConnectingCell.tsx";
 import { ExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
 import { NonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
 import { Pill } from "../../Pill.tsx";

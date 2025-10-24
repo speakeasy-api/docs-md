@@ -3,7 +3,7 @@
 import { Children, isValidElement } from "react";
 
 import { InternalError } from "../../../util/internalError.ts";
-import { ConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
+import { ConnectingCell } from "../../ConnectingCell.tsx";
 import { ExpandableTreeTopper } from "../../ExpandableTreeTopper/ExpandableTreeTopper.tsx";
 import type { ExpandableSectionProps } from "../types.ts";
 
