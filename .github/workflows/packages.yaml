@@ -8,14 +8,13 @@ on:
   merge_group:
 
 jobs:
-  build:
-    name: Build Packages
+  lint-and-check:
+    name: Lint and Type Check
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
         with:
-          # Needed to copy the WASM file during build
           lfs: true
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -26,38 +25,6 @@ jobs:
         run: npm ci
       - name: Build packages
         run: make build-packages
-      - name: Archive build artifacts
-        run: |
-          tar -czf build-artifacts.tar.gz packages/compiler/dist packages/react/dist packages/shared/dist packages/web-components/dist
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: package-build-artifacts
-          path: build-artifacts.tar.gz
-          retention-days: 1
-
-  lint-and-check:
-    name: Lint and Type Check
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          lfs: true
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-          cache: "npm"
-      - name: Install dependencies
-        run: npm ci
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: package-build-artifacts
-      - name: Restore build artifacts
-        run: tar -xzf build-artifacts.tar.gz
       - name: Type check
         run: make type-check-packages
       - name: Lint
@@ -70,7 +37,6 @@ jobs:
   integration-tests:
     name: Integration Tests - ${{ matrix.example }}
     runs-on: ubuntu-latest
-    needs: build
     strategy:
       fail-fast: false
       matrix:
@@ -86,19 +52,15 @@ jobs:
         with:
           node-version: "24"
           cache: "npm"
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: package-build-artifacts
-      - name: Restore build artifacts
-        run: tar -xzf build-artifacts.tar.gz
       - name: Install dependencies
         run: npm ci
+      - name: Build packages
+        run: make build-packages
       - name: Build example
         run: npm run build --workspace examples/${{ matrix.example }} --ignore-scripts
       - name: Get Playwright version
         id: playwright-version
-        run: echo "version=$(npm list @playwright/test --json | jq -r '.dependencies["@playwright/test"].version')" >> $GITHUB_OUTPUT
+        run: echo "version=$(npx playwright --version | sed 's/Version //')" >> $GITHUB_OUTPUT
         working-directory: tests/integration/${{ matrix.example }}
       - name: Cache Playwright browsers
         uses: actions/cache@v4
@@ -123,11 +85,11 @@ jobs:
 
   # Summary job for branch protection
   packages-success:
-    name: All Package Checks
+    name: Packages Build and Lint
     runs-on: ubuntu-latest
-    needs: [build, lint-and-check, integration-tests]
+    needs: [lint-and-check, integration-tests]
     if: always()
     steps:
       - name: Check if all jobs succeeded
-        if: needs.build.result != 'success' || needs.lint-and-check.result != 'success' || needs.integration-tests.result != 'success'
+        if: needs.lint-and-check.result != 'success' || needs.integration-tests.result != 'success'
         run: exit 1
