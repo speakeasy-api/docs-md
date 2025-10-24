@@ -16,8 +16,8 @@ export { EmbedTrigger } from "./components/EmbedTrigger/EmbedTrigger.tsx";
 export type { EmbedTriggerProps } from "./components/EmbedTrigger/types.ts";
 export { ExpandableCellIcon } from "./components/ExpandableCellIcon/ExpandableCellIcon.tsx";
 export type { ExpandableCellIconProps } from "./components/ExpandableCellIcon/type.ts";
-export { ExpandableCell } from "./components/ExpandableCell/ExpandableCell.tsx";
-export type { ExpandableCellProps } from "./components/ExpandableCell/types.ts";
+export { ExpandableCell } from "./components/ExpandableCell.tsx";
+export type { ExpandableCellProps } from "./components/ExpandableCell.tsx";
 export {
   ExpandableBreakout,
   ExpandableBreakoutTitle,

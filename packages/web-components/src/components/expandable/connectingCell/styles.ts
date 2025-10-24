@@ -21,21 +21,25 @@ export const styles = css`
   .upperLeftConnectingCell {
     min-width: var(--speakeasy-expandable-cell-size);
     height: calc(5px + var(--speakeasy-expandable-cell-size));
+    box-sizing: border-box;
   }
 
   .upperRightConnectingCell {
     min-width: calc(0.5rem + var(--speakeasy-expandable-cell-size));
     height: calc(5px + var(--speakeasy-expandable-cell-size));
+    box-sizing: border-box;
   }
 
   .lowerLeftConnectingCell {
     min-width: var(--speakeasy-expandable-cell-size);
     min-height: var(--speakeasy-expandable-cell-size);
+    box-sizing: border-box;
   }
 
   .lowerRightConnectingCell {
     min-width: calc(0.5rem + var(--speakeasy-expandable-cell-size));
     min-height: var(--speakeasy-expandable-cell-size);
+    box-sizing: border-box;
   }
 
   .verticalConnected {

@@ -8,3 +8,11 @@ export {
   ConnectingCell,
   type ConnectingCellProps,
 } from "./components/expandable/connectingCell/connectingCell.ts";
+export {
+  ExpandableCellIcon,
+  type ExpandableCellIconProps,
+} from "./components/expandable/expandableCellIcon/expandableCellIcon.ts";
+export {
+  ExpandableCell,
+  type ExpandableCellProps,
+} from "./components/expandable/expandableCell/expandableCell.ts";
