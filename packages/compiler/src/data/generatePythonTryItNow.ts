@@ -66,7 +66,7 @@ export function generatePythonTryItNow(sdkFolders: Map<string, SdkFolder>) {
   } catch (e) {
     error(String(e));
     throw new Error(
-      "Poetry is not installed. Please install Python requirements with `pip install -r requirements.txt`"
+      "Poetry is not installed. Please install poetry with `pip install poetry` and try again."
     );
   }
   execSync(`${pythonExecutable} -m poetry build`, {
