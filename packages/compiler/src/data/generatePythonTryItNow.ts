@@ -8,7 +8,7 @@ import {
 import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { debug, info } from "../logging.ts";
+import { debug, error, info } from "../logging.ts";
 import { getSettings, setInternalSetting } from "../settings.ts";
 import { InternalError } from "../util/internalError.ts";
 import type { SdkFolder } from "./types.ts";
@@ -63,9 +63,10 @@ export function generatePythonTryItNow(sdkFolders: Map<string, SdkFolder>) {
   // Build wheel
   try {
     execSync(`${pythonExecutable} -m poetry --version`);
-  } catch {
+  } catch (e) {
+    error(String(e));
     throw new Error(
-      "Poetry is not installed or not available in PATH. Please install Poetry and ensure it's available as 'poetry'."
+      "Poetry is not installed. Please install Python requirements with `pip install -r requirements.txt`"
     );
   }
   execSync(`${pythonExecutable} -m poetry build`, {
