@@ -48,7 +48,7 @@ export default defineConfig({
 
   /* Run dev servers for both example sites before starting tests */
   webServer: [
-    ...(process.env.TEST_EXAMPLE !== 'nextra' ? [{
+    ...(!process.env.TEST_EXAMPLE as unknown as string === 'docusaurus' ? [{
       command: process.env.CI
         ? "npm run start"
         : "npm run build && npm run start",
@@ -58,7 +58,7 @@ export default defineConfig({
       stdout: "pipe" as const,
       timeout: 30000 
     }] : []),
-    ...(process.env.TEST_EXAMPLE !== 'docusaurus' ? [{
+    ...(!process.env.TEST_EXAMPLE as unknown as string === 'nextra' ? [{
       command: process.env.CI
         ? "npm run start"
         : "npm run build && npm run start",
