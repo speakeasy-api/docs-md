@@ -62,13 +62,13 @@ export function generatePythonTryItNow(sdkFolders: Map<string, SdkFolder>) {
 
   // Build wheel
   try {
-    execSync(`poetry --version`);
+    execSync(`${pythonExecutable} -m poetry --version`);
   } catch {
     throw new Error(
       "Poetry is not installed or not available in PATH. Please install Poetry and ensure it's available as 'poetry'."
     );
   }
-  execSync(`poetry build`, {
+  execSync(`${pythonExecutable} -m poetry build`, {
     cwd: sdkFolder.path,
   });
 
