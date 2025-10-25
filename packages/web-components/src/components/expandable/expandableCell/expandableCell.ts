@@ -5,9 +5,15 @@ import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 import type { LitProps } from "../../../types/components.ts";
+import type { EventDispatcher } from "../../../util/decorators.ts";
+import { event } from "../../../util/decorators.ts";
 import { styles as litStyles } from "./styles.ts";
 
 export type ExpandableCellProps = LitProps<ExpandableCell>;
+
+export type ToggleEvent = {
+  isOpen: boolean;
+};
 
 /**
  * An Expandable cell is part of a schema row. It is responsible for rendering
@@ -40,10 +46,11 @@ export class ExpandableCell extends LitElement {
   public variant: "breakout" | "property" = "property";
 
   /**
-   * A callback to set the open state of the cell
+   * Dispatches the 'spk-toggle' event when the cell is toggled
+   * @fires spk-toggle - Contains the new open state in event.detail
    */
-  @property({ type: Function })
-  public setIsOpen?: (isOpen: boolean) => void;
+  @event({ type: "spk-toggle", bubbles: false, composed: true })
+  private dispatchToggle!: EventDispatcher<ToggleEvent>;
 
   public override render() {
     return html`<div class="expandableCellContainer">
@@ -55,7 +62,7 @@ export class ExpandableCell extends LitElement {
           )}
           aria-expanded=${this.isOpen}
           type="button"
-          @click="${() => this.setIsOpen?.(!this.isOpen)}"
+          @click="${() => this.dispatchToggle({ isOpen: !this.isOpen })}"
         >
           <spk-expandable-cell-icon
             class="expandableChevron"

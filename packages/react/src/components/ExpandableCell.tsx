@@ -1,9 +1,18 @@
 "use client";
 
-import type { ExpandableCellProps as ExpandableCellElementProps } from "@speakeasy-api/docs-md-components";
-import type { PropsWithChildren } from "react";
+import type {
+  ExpandableCell as ExpandableCellElement,
+  ExpandableCellProps as ExpandableCellElementProps,
+} from "@speakeasy-api/docs-md-components";
+import { type PropsWithChildren } from "react";
 
-export type ExpandableCellProps = PropsWithChildren<ExpandableCellElementProps>;
+import { useEventListeners } from "../util/events.ts";
+
+export type ExpandableCellProps = PropsWithChildren<
+  ExpandableCellElementProps & {
+    setIsOpen: (isOpen: boolean) => void;
+  }
+>;
 
 /**
  * An Expandable cell is part of a schema row. It is responsible for rendering
@@ -19,6 +28,9 @@ export type ExpandableCellProps = PropsWithChildren<ExpandableCellElementProps>;
  * the compiled MDX code, and its state is managed by
  * src/components/ExpandableSection/components/PrefixCells.tsx
  */
-export function ExpandableCell(props: ExpandableCellProps) {
-  return <spk-expandable-cell {...props} />;
+export function ExpandableCell({ setIsOpen, ...props }: ExpandableCellProps) {
+  const ref = useEventListeners<ExpandableCellElement>({
+    "spk-toggle": (event) => setIsOpen(event.detail.isOpen),
+  });
+  return <spk-expandable-cell ref={ref} {...props} />;
 }
