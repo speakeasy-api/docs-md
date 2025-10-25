@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Children, useState } from "react";
 
 import { useChildren, useUniqueChild } from "../../../util/hooks.ts";
 import { ConnectingCell } from "../../ConnectingCell.tsx";
@@ -45,34 +45,42 @@ export function BreakoutContents({
       </div>
       {isOpen && (
         <>
-          <ConnectingCell
-            bottom={hasChildrenConnection}
-            top={hasChildrenConnection}
-            right="none"
-          >
-            {descriptionChildren}
-          </ConnectingCell>
-          <ConnectingCell
-            bottom={hasChildrenConnection}
-            top={hasChildrenConnection}
-            right="none"
-          >
-            {examplesChildren}
-          </ConnectingCell>
-          <ConnectingCell
-            bottom={hasChildrenConnection}
-            top={hasChildrenConnection}
-            right="none"
-          >
-            {defaultValueChildren}
-          </ConnectingCell>
-          <ConnectingCell
-            bottom={hasChildrenConnection}
-            top={hasChildrenConnection}
-            right="connected"
-          >
-            {embedChildren}
-          </ConnectingCell>
+          {Children.count(descriptionChildren) > 0 && (
+            <ConnectingCell
+              bottom={hasChildrenConnection}
+              top={hasChildrenConnection}
+              right="none"
+            >
+              {descriptionChildren}
+            </ConnectingCell>
+          )}
+          {Children.count(examplesChildren) > 0 && (
+            <ConnectingCell
+              bottom={hasChildrenConnection}
+              top={hasChildrenConnection}
+              right="none"
+            >
+              {examplesChildren}
+            </ConnectingCell>
+          )}
+          {Children.count(defaultValueChildren) > 0 && (
+            <ConnectingCell
+              bottom={hasChildrenConnection}
+              top={hasChildrenConnection}
+              right="none"
+            >
+              {defaultValueChildren}
+            </ConnectingCell>
+          )}
+          {Children.count(embedChildren) > 0 && (
+            <ConnectingCell
+              bottom={hasChildrenConnection}
+              top={hasChildrenConnection}
+              right="connected"
+            >
+              {embedChildren}
+            </ConnectingCell>
+          )}
           {propertiesChildren}
         </>
       )}

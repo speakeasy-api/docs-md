@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import type { JSX, PropsWithChildren } from "react";
-import { forwardRef, useMemo, useRef, useState } from "react";
+import { Children, forwardRef, useMemo, useRef, useState } from "react";
 import useMeasure from "react-use-measure";
 
 import {
@@ -248,34 +248,42 @@ Multiline: ${displayInfo?.multiline ?? "N/A"}`}
     breakoutsChildren.length > 0 ? "connected" : "none";
   const frontmatter = (
     <>
-      <ConnectingCell
-        bottom={hasChildrenConnection}
-        top={hasChildrenConnection}
-        right="none"
-      >
-        {descriptionChildren}
-      </ConnectingCell>
-      <ConnectingCell
-        bottom={hasChildrenConnection}
-        top={hasChildrenConnection}
-        right="none"
-      >
-        {examplesChildren}
-      </ConnectingCell>
-      <ConnectingCell
-        bottom={hasChildrenConnection}
-        top={hasChildrenConnection}
-        right="none"
-      >
-        {defaultValueChildren}
-      </ConnectingCell>
-      <ConnectingCell
-        bottom={hasChildrenConnection}
-        top={hasChildrenConnection}
-        right="connected"
-      >
-        {embedChildren}
-      </ConnectingCell>
+      {Children.count(descriptionChildren) > 0 && (
+        <ConnectingCell
+          bottom={hasChildrenConnection}
+          top={hasChildrenConnection}
+          right="none"
+        >
+          {descriptionChildren}
+        </ConnectingCell>
+      )}
+      {Children.count(examplesChildren) > 0 && (
+        <ConnectingCell
+          bottom={hasChildrenConnection}
+          top={hasChildrenConnection}
+          right="none"
+        >
+          {examplesChildren}
+        </ConnectingCell>
+      )}
+      {Children.count(defaultValueChildren) > 0 && (
+        <ConnectingCell
+          bottom={hasChildrenConnection}
+          top={hasChildrenConnection}
+          right="none"
+        >
+          {defaultValueChildren}
+        </ConnectingCell>
+      )}
+      {Children.count(embedChildren) > 0 && (
+        <ConnectingCell
+          bottom={hasChildrenConnection}
+          top={hasChildrenConnection}
+          right="connected"
+        >
+          {embedChildren}
+        </ConnectingCell>
+      )}
       {breakoutsChildren}
     </>
   );

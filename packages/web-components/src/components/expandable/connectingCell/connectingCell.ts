@@ -76,11 +76,6 @@ export class ConnectingCell extends LitElement {
   public right: ConnectionType = "none";
 
   public override render() {
-    // If there are no children, then we don't have any connectings to show
-    if (!this.hasChildNodes()) {
-      return html`<div class="emptyConnectingCell"></div>`;
-    }
-
     return html`<div class="connectingCellRow">
       <div class="connectingCellContainer">
         <!-- Upper left cell, responsible for the top connection -->
