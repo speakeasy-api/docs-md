@@ -93,6 +93,7 @@ function getComponentList() {
 
 function getComponentData(components: BaseComponentEntry[]) {
   const componentData: ExtendedComponentEntry[] = [];
+  const globalEventTypes = new Set<string>();
 
   for (const { filePath, symbol } of components) {
     // Read in and parse the file
@@ -234,6 +235,14 @@ function getComponentData(components: BaseComponentEntry[]) {
           `Event decorator for ${symbol} at ${filePath}:${startLine} is missing a type property`
         );
       }
+
+      // Make sure we don't have an event name collision
+      if (globalEventTypes.has(eventType)) {
+        throw new Error(
+          `Event "${eventType}" is declared in multiple components. Event types must be globally unique`
+        );
+      }
+      globalEventTypes.add(eventType);
 
       // Get the type parameter from EventDispatcher<T>
       const typeAnnotation = member.typeAnnotation?.typeAnnotation;
