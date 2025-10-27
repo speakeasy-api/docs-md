@@ -162,7 +162,8 @@ const otherSdkLanguages = z.object({
   ...sdkCommonProperties,
 });
 
-const codeSample = z.union([curl, typescript, python, otherSdkLanguages]);
+const codeSample = z.union([curl, typescript, otherSdkLanguages]);
+export type CodeSample = z.infer<typeof codeSample>;
 
 export const settingsSchema = z.strictObject({
   /**
