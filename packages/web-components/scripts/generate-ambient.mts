@@ -178,15 +178,21 @@ function getComponentDetailsForFile({
           `Event decorator at ${filePath}:${decoratorLoc.line}:${decoratorLoc.column} is missing a type parameter`
         );
       }
-      if (
-        typeParam.type !== "TSTypeReference" ||
-        typeParam.typeName?.type !== "Identifier"
-      ) {
-        throw new Error(
-          `Event decorator at ${filePath}:${decoratorLoc.line}:${decoratorLoc.column} is not a type reference`
-        );
+      if (typeParam.type === "TSNullKeyword") {
+        events[eventType] = "null";
+      } else if (typeParam.type === "TSUndefinedKeyword") {
+        events[eventType] = "undefined";
+      } else {
+        if (
+          typeParam.type !== "TSTypeReference" ||
+          typeParam.typeName?.type !== "Identifier"
+        ) {
+          throw new Error(
+            `Event decorator at ${filePath}:${decoratorLoc.line}:${decoratorLoc.column} is not a type reference`
+          );
+        }
+        events[eventType] = typeParam.typeName.name;
       }
-      events[eventType] = typeParam.typeName.name;
     }
 
     // Store the data
@@ -289,18 +295,12 @@ function getComponentDetails() {
 }
 
 async function generateAmbientDeclarations(components: ComponentEntry[]) {
-  // Collect all event types to import
-  const eventTypes = new Set<string>();
-  for (const { events } of components) {
-    for (const eventTypeName of Object.values(events)) {
-      eventTypes.add(eventTypeName);
-    }
-  }
-
   const imports = components
     .map(({ filePath, exportName, events }) => {
       const relativePath = filePath.replace(SRC_DIR, "");
-      const eventTypeNames = Object.values(events);
+      const eventTypeNames = Object.values(events).filter(
+        (eventType) => eventType !== "null" && eventType !== "undefined"
+      );
       const allImports = [exportName, ...eventTypeNames];
       return `import type { ${allImports.join(", ")} } from "..${relativePath}";`;
     })

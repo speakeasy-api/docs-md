@@ -27,7 +27,7 @@ export type ExpandableCellProps = PropsWithChildren<
  */
 export function ExpandableCell({ setIsOpen, ...props }: ExpandableCellProps) {
   const ref = useEventListeners({
-    "spk-toggle": (event) => setIsOpen(event.detail.isOpen),
+    "spk-toggle": () => setIsOpen(false),
   });
   return <spk-expandable-cell ref={ref} {...props} />;
 }

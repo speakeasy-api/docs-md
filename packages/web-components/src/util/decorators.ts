@@ -25,6 +25,17 @@ type EventOptions = {
 export type EventDispatcher<Detail = never> = (detail: Detail) => boolean;
 
 /**
+ * Creates a type-safe event handler with automatic event type inference. This
+ * handler doesn't actually do anything at runtime, and is just for ergonomics.
+ */
+export function eventHandler<K extends keyof HTMLElementEventMap>(
+  _eventName: K,
+  handler: (event: HTMLElementEventMap[K]) => void
+) {
+  return handler;
+}
+
+/**
  * Decorator that creates a declarative event dispatcher on a Lit element.
  *
  * Usage:

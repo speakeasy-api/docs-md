@@ -11,10 +11,6 @@ import { styles as litStyles } from "./styles.ts";
 
 export type ExpandableCellProps = LitProps<ExpandableCell>;
 
-export type ToggleEvent = {
-  isOpen: boolean;
-};
-
 /**
  * An Expandable cell is part of a schema row. It is responsible for rendering
  * the expandable button used in the tree-view of the schema. Each row always
@@ -37,20 +33,19 @@ export class ExpandableCell extends LitElement {
    * Whether the cell is currently open or not.
    */
   @property({ type: Boolean })
-  public isOpen = false;
+  public isOpen!: boolean;
 
   /**
    * The variant of the cell
    */
   @property({ type: String })
-  public variant: "breakout" | "property" = "property";
+  public variant!: "breakout" | "property";
 
   /**
    * Dispatches the 'spk-toggle' event when the cell is toggled
-   * @fires spk-toggle - Contains the new open state in event.detail
    */
   @event({ type: "spk-toggle", bubbles: false, composed: true })
-  private dispatchToggle!: EventDispatcher<ToggleEvent>;
+  private dispatchToggle!: EventDispatcher<null>;
 
   public override render() {
     return html`<div class="expandableCellContainer">
@@ -62,7 +57,7 @@ export class ExpandableCell extends LitElement {
           )}
           aria-expanded=${this.isOpen}
           type="button"
-          @click="${() => this.dispatchToggle({ isOpen: !this.isOpen })}"
+          @click="${() => this.dispatchToggle(null)}"
         >
           <spk-expandable-cell-icon
             class="expandableChevron"
