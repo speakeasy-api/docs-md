@@ -1,1 +1,1 @@
-export { prettierConfig as default } from '@speakeasy-api/docs-md-shared/config'
+export { prettierConfig as default } from "@speakeasy-api/docs-md-shared/config";

@@ -2,7 +2,10 @@
 /* eslint-disable @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-namespace */
 
 import type { ConnectingCell } from "../components/expandable/connectingCell/connectingCell.ts";
-import type { ExpandableCell, ToggleEvent } from "../components/expandable/expandableCell/expandableCell.ts";
+import type {
+  ExpandableCell,
+  ToggleEvent,
+} from "../components/expandable/expandableCell/expandableCell.ts";
 import type { ExpandableCellIcon } from "../components/expandable/expandableCellIcon/expandableCellIcon.ts";
 import type { Pill } from "../components/pill/pill.ts";
 import type { ReactCustomElement } from "./components.ts";

@@ -1,9 +1,6 @@
 "use client";
 
-import type {
-  ExpandableCell as ExpandableCellElement,
-  ExpandableCellProps as ExpandableCellElementProps,
-} from "@speakeasy-api/docs-md-components";
+import type { ExpandableCellProps as ExpandableCellElementProps } from "@speakeasy-api/docs-md-components";
 import { type PropsWithChildren } from "react";
 
 import { useEventListeners } from "../util/events.ts";
@@ -29,7 +26,7 @@ export type ExpandableCellProps = PropsWithChildren<
  * src/components/ExpandableSection/components/PrefixCells.tsx
  */
 export function ExpandableCell({ setIsOpen, ...props }: ExpandableCellProps) {
-  const ref = useEventListeners<ExpandableCellElement>({
+  const ref = useEventListeners({
     "spk-toggle": (event) => setIsOpen(event.detail.isOpen),
   });
   return <spk-expandable-cell ref={ref} {...props} />;

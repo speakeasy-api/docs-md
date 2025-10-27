@@ -1,23 +1,16 @@
-import { readFileSync, writeFileSync } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import type { ExportNamedDeclaration } from "oxc-parser";
 import { parseSync } from "oxc-parser";
+import { format } from "prettier";
 
 const SRC_DIR = join(dirname(fileURLToPath(import.meta.url)), "../src");
 
-/**
- * Convert a character offset to line and column numbers
- */
-function offsetToLineColumn(
-  source: string,
-  offset: number
-): { line: number; column: number } {
+function convertIndexToLoc(source: string, offset: number) {
   let line = 1;
   let column = 1;
-
   for (let i = 0; i < offset && i < source.length; i++) {
     if (source[i] === "\n") {
       line++;
@@ -26,118 +19,48 @@ function offsetToLineColumn(
       column++;
     }
   }
-
   return { line, column };
 }
 
-type BaseComponentEntry = {
-  symbol: string;
+type ComponentEntry = {
+  exportName: string;
   filePath: string;
-};
-
-type ExtendedComponentEntry = BaseComponentEntry & {
   componentName: string;
-  // Map from event name to type name
+  // Map from event name to type name, e.g. "click" -> "ClickEvent"
   events: Record<string, string>;
 };
 
-function getComponentList() {
-  // Read and parse the file
-  const entryPoint = join(SRC_DIR, "index.ts");
-  const parsedEntryPoint = parseSync(
-    entryPoint,
-    readFileSync(entryPoint, "utf-8"),
-    {
-      sourceType: "module",
-    }
-  );
+function getComponentDetailsForFile({
+  filePath,
+  fileContents,
+}: {
+  filePath: string;
+  fileContents: string;
+}): ComponentEntry[] {
+  const componentEntries: ComponentEntry[] = [];
 
-  // Go through the list of exports and find the ones that are components
-  const components = new Map<string, string>(); // Map from filepath to symbol
-  for (const exportStatement of parsedEntryPoint.module.staticExports) {
-    for (const exportEntry of exportStatement.entries) {
-      const moduleSpecifier = exportEntry.moduleRequest?.value;
+  // Now, parse into an AST so we can introspect more
+  const parsedFile = parseSync(filePath, fileContents, {
+    sourceType: "module",
+  });
 
-      // Make sure this is an export from the components directory and not a
-      // type export
-      if (!moduleSpecifier?.startsWith("./components") || exportEntry.isType) {
-        continue;
-      }
-
-      // Get and validate the symbol. If we don't have a symbol, then that means
-      // this was `import "foo";`
-      const symbol = exportEntry.exportName.name;
-      if (!symbol) {
-        continue;
-      }
-
-      // Store the component info
-      const componentPath = join(SRC_DIR, moduleSpecifier);
-      if (components.has(componentPath)) {
-        throw new Error(
-          `Multiple components found for ${componentPath}: ${components.get(componentPath)} and ${symbol}`
-        );
-      }
-      components.set(componentPath, symbol);
-    }
-  }
-
-  // Convert to array and sort by filename alphabetically
-  return Array.from(components.entries())
-    .map(([filePath, symbol]) => ({
-      filePath,
-      symbol,
-    }))
-    .sort((a, b) => a.filePath.localeCompare(b.filePath));
-}
-
-function getComponentData(components: BaseComponentEntry[]) {
-  const componentData: ExtendedComponentEntry[] = [];
-  const globalEventTypes = new Set<string>();
-
-  for (const { filePath, symbol } of components) {
-    // Read in and parse the file
-    const componentFileContents = readFileSync(filePath, "utf-8");
-    const parsedFile = parseSync(filePath, componentFileContents, {
-      sourceType: "module",
-    });
-
-    // Find the component export
-    const componentExport = parsedFile.module.staticExports.find(
-      (exportStatement) =>
-        exportStatement.entries.some(
-          (entry) => entry.exportName.name === symbol
-        )
-    );
-    if (!componentExport) {
-      throw new Error(`Could not find export for ${symbol} in ${filePath}`);
+  // Iterate through each statement and analyze each node for components
+  for (const exportNode of parsedFile.program.body) {
+    if (
+      exportNode.type !== "ExportNamedDeclaration" ||
+      exportNode.declaration?.type !== "ClassDeclaration"
+    ) {
+      continue;
     }
 
-    // Look up the original AST node
-    let exportNode: ExportNamedDeclaration | undefined;
-    for (const node of parsedFile.program.body) {
-      if (node.type === "ExportNamedDeclaration") {
-        if (
-          node.start === componentExport.start &&
-          node.end === componentExport.end
-        ) {
-          exportNode = node;
-          break;
-        }
-      }
-    }
-    if (!exportNode) {
-      throw new Error(
-        `Could not find export node for ${symbol} in ${filePath}`
-      );
-    }
-    if (exportNode.declaration?.type !== "ClassDeclaration") {
-      throw new Error(
-        `Export node for ${symbol} in ${filePath} is not a class declaration`
-      );
+    // Get and validate the class name. If we don't have a class name, then this
+    // is an anonymous class, which we don't support.
+    const exportName = exportNode.declaration.id?.name;
+    if (!exportName) {
+      continue;
     }
 
-    // Get the customElement decorator
+    // Get the customElement decorator, if it exists
     const customElementDecorator = exportNode.declaration.decorators?.find(
       (decorator) =>
         decorator.type === "Decorator" &&
@@ -146,42 +69,43 @@ function getComponentData(components: BaseComponentEntry[]) {
         decorator.expression.callee.name === "customElement"
     );
     if (!customElementDecorator) {
-      throw new Error(
-        `Could not find customElement decorator for ${symbol} in ${filePath}`
-      );
+      continue;
     }
+
+    // If we got to this point, then that means we definitely have a component
+    // to analyze. From this point on, any deviation from expected AST format
+    // is an error.
+    const exportLoc = convertIndexToLoc(fileContents, exportNode.start);
 
     // Get the component name from the first argument of the decorator
     if (customElementDecorator.expression.type !== "CallExpression") {
       throw new Error(
-        `CustomElement decorator for ${symbol} in ${filePath} is not a call expression`
+        `CustomElement decorator at ${filePath}:${exportLoc.line}:${exportLoc.column} is not a call expression`
       );
     }
     const componentNameArgument =
       customElementDecorator.expression.arguments[0];
     if (!componentNameArgument) {
       throw new Error(
-        `CustomElement decorator for ${symbol} in ${filePath} is missing an argument`
+        `CustomElement decorator at ${filePath}:${exportLoc.line}:${exportLoc.column} is missing an argument`
       );
     }
     if (componentNameArgument.type !== "Literal") {
       throw new Error(
-        `CustomElement decorator for ${symbol} in ${filePath} is not a literal`
+        `CustomElement decorator at ${filePath}:${exportLoc.line}:${exportLoc.column} is not a literal`
       );
     }
     const componentName = componentNameArgument.value;
     if (typeof componentName !== "string") {
       throw new Error(
-        `CustomElement decorator for ${symbol} in ${filePath} is not a string`
+        `CustomElement decorator at ${filePath}:${exportLoc.line}:${exportLoc.column} is not a string`
       );
     }
 
     // Get the list of events and types
     const events: Record<string, string> = {};
     const classBody = exportNode.declaration.body.body;
-
     for (const member of classBody) {
-      // Look for property definitions with @event decorator
       if (member.type !== "PropertyDefinition") {
         continue;
       }
@@ -199,20 +123,16 @@ function getComponentData(components: BaseComponentEntry[]) {
       }
 
       // Used for error reporting
-      const startLine = offsetToLineColumn(
-        componentFileContents,
+      const decoratorLoc = convertIndexToLoc(
+        fileContents,
         eventDecorator.start
-      ).line;
+      );
 
       // Get the event type from decorator options
       const decoratorArg = eventDecorator.expression.arguments[0];
       if (decoratorArg?.type !== "ObjectExpression") {
-        const pos = offsetToLineColumn(
-          componentFileContents,
-          eventDecorator.start
-        );
         throw new Error(
-          `Event decorator for ${symbol} at ${filePath}:${pos.line}:${pos.column} is not an object expression`
+          `Event decorator at ${filePath}:${decoratorLoc.line}:${decoratorLoc.column} is not an object expression`
         );
       }
 
@@ -232,23 +152,15 @@ function getComponentData(components: BaseComponentEntry[]) {
       }
       if (!eventType) {
         throw new Error(
-          `Event decorator for ${symbol} at ${filePath}:${startLine} is missing a type property`
+          `Event decorator at ${filePath}:${decoratorLoc.line}:${decoratorLoc.column} is missing a type property`
         );
       }
-
-      // Make sure we don't have an event name collision
-      if (globalEventTypes.has(eventType)) {
-        throw new Error(
-          `Event "${eventType}" is declared in multiple components. Event types must be globally unique`
-        );
-      }
-      globalEventTypes.add(eventType);
 
       // Get the type parameter from EventDispatcher<T>
       const typeAnnotation = member.typeAnnotation?.typeAnnotation;
       if (!typeAnnotation?.type || typeAnnotation.type !== "TSTypeReference") {
         throw new Error(
-          `Event decorator for ${symbol} at ${filePath}:${startLine} is not a type reference`
+          `Event decorator at ${filePath}:${decoratorLoc.line}:${decoratorLoc.column} is not a type reference`
         );
       }
       if (
@@ -257,13 +169,13 @@ function getComponentData(components: BaseComponentEntry[]) {
         !typeAnnotation.typeArguments
       ) {
         throw new Error(
-          `Event decorator for ${symbol} at ${filePath}:${startLine} is not a type reference`
+          `Event decorator at ${filePath}:${decoratorLoc.line}:${decoratorLoc.column} is not a type reference`
         );
       }
       const typeParam = typeAnnotation.typeArguments.params[0];
       if (!typeParam) {
         throw new Error(
-          `Event decorator for ${symbol} at ${filePath}:${startLine} is missing a type parameter`
+          `Event decorator at ${filePath}:${decoratorLoc.line}:${decoratorLoc.column} is missing a type parameter`
         );
       }
       if (
@@ -271,25 +183,112 @@ function getComponentData(components: BaseComponentEntry[]) {
         typeParam.typeName?.type !== "Identifier"
       ) {
         throw new Error(
-          `Event decorator for ${symbol} at ${filePath}:${startLine} is not a type reference`
+          `Event decorator at ${filePath}:${decoratorLoc.line}:${decoratorLoc.column} is not a type reference`
         );
       }
       events[eventType] = typeParam.typeName.name;
     }
 
     // Store the data
-    componentData.push({
-      symbol,
+    componentEntries.push({
+      exportName,
       filePath,
       componentName,
       events,
     });
   }
 
-  return componentData;
+  return componentEntries;
 }
 
-function generateAmbientDeclarations(components: ExtendedComponentEntry[]) {
+function getComponentDetails() {
+  const components: ComponentEntry[] = [];
+  const componentsDir = join(SRC_DIR, "components");
+  const files = readdirSync(componentsDir, {
+    recursive: true,
+    encoding: "utf-8",
+  }).sort();
+  const globalEventTypes = new Set<string>();
+  for (const filePathSegment of files) {
+    const filePath = join(componentsDir, filePathSegment);
+    if (!filePath.endsWith(".ts")) {
+      continue;
+    }
+
+    // Do a quick check to determine the components in this file. We'll later
+    // use this data to short-circuit and validate our AST crawling
+    const fileContents = readFileSync(filePath, "utf-8");
+    const componentNames = Array.from(
+      fileContents.matchAll(/@customElement\("(.*?)"\)/g)
+    ).map(
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      (match) => match[1]!
+    );
+
+    // If we don't define any components, then we can skip this file
+    if (!componentNames.length) {
+      continue;
+    }
+
+    // Get the component details
+    const fileComponents = getComponentDetailsForFile({
+      filePath,
+      fileContents,
+    });
+
+    // Sanity check that we found everything. If we didn't, then someone likely
+    // forgot to export the class (which is needed for typing)
+    for (const componentName of componentNames) {
+      if (!fileComponents.find((c) => c.componentName === componentName)) {
+        throw new Error(
+          `Component ${componentName} not found in ${filePath}. Did you forget to export it?`
+        );
+      }
+    }
+
+    // Add the events to the global set and ensure uniqueness
+    for (const fileComponent of fileComponents) {
+      for (const eventName of Object.keys(fileComponent.events)) {
+        if (globalEventTypes.has(eventName)) {
+          throw new Error(
+            `Event type ${eventName} is defined multiple times in the codebase. Each event must be globally unique`
+          );
+        }
+        globalEventTypes.add(eventName);
+      }
+    }
+
+    // Add the components to the list
+    components.push(...fileComponents);
+  }
+
+  // Validate that each file is imported in index.ts
+  const indexPath = join(SRC_DIR, "index.ts");
+  const parsedIndex = parseSync(indexPath, readFileSync(indexPath, "utf-8"), {
+    sourceType: "module",
+  });
+  const importedFiles = new Set<string>();
+  for (const importStatement of parsedIndex.module.staticImports) {
+    if (!importStatement.moduleRequest.value.startsWith("./components")) {
+      continue;
+    }
+    importedFiles.add(importStatement.moduleRequest.value);
+  }
+  const componentFiles = new Set(
+    components.map((c) => "." + c.filePath.replace(SRC_DIR, ""))
+  );
+  for (const componentFile of componentFiles) {
+    if (!importedFiles.has(componentFile)) {
+      throw new Error(
+        `Component file ${componentFile} is not imported in ${indexPath}`
+      );
+    }
+  }
+
+  return components;
+}
+
+async function generateAmbientDeclarations(components: ComponentEntry[]) {
   // Collect all event types to import
   const eventTypes = new Set<string>();
   for (const { events } of components) {
@@ -299,10 +298,10 @@ function generateAmbientDeclarations(components: ExtendedComponentEntry[]) {
   }
 
   const imports = components
-    .map(({ filePath, symbol, events }) => {
+    .map(({ filePath, exportName, events }) => {
       const relativePath = filePath.replace(SRC_DIR, "");
       const eventTypeNames = Object.values(events);
-      const allImports = [symbol, ...eventTypeNames];
+      const allImports = [exportName, ...eventTypeNames];
       return `import type { ${allImports.join(", ")} } from "..${relativePath}";`;
     })
     .join("\n");
@@ -323,8 +322,8 @@ function generateAmbientDeclarations(components: ExtendedComponentEntry[]) {
   const nameMap = `declare global {
   interface HTMLElementTagNameMap {
 ${Array.from(components.entries())
-  .map(([, { symbol, componentName }]) => {
-    return `    "${componentName}": ${symbol};`;
+  .map(([, { exportName, componentName }]) => {
+    return `    "${componentName}": ${exportName};`;
   })
   .join("\n")}
   }${eventMapEntries}
@@ -334,8 +333,8 @@ ${Array.from(components.entries())
   namespace JSX {
     interface IntrinsicElements {
 ${Array.from(components.entries())
-  .map(([, { symbol, componentName }]) => {
-    return `      "${componentName}": ReactCustomElement<${symbol}>;`;
+  .map(([, { exportName, componentName }]) => {
+    return `      "${componentName}": ReactCustomElement<${exportName}>;`;
   })
   .join("\n")}
     }
@@ -353,7 +352,13 @@ ${nameMap}
 ${reactCustomElement}
 `;
 
-  writeFileSync(join(SRC_DIR, "types/ambient.ts"), ambientSource);
+  // Format the source using Prettier
+  const formattedSource = await format(ambientSource, {
+    parser: "typescript",
+    filepath: join(SRC_DIR, "types/ambient.ts"),
+  });
+
+  writeFileSync(join(SRC_DIR, "types/ambient.ts"), formattedSource);
 }
 
-generateAmbientDeclarations(getComponentData(getComponentList()));
+await generateAmbientDeclarations(getComponentDetails());
