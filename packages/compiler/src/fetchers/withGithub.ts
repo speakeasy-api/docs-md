@@ -17,10 +17,13 @@ type GithubSdkConfig = {
   version: string;
 } & CodeSample;
 
-export async function withGithubSdks(
-  sdks: GithubSdkConfig[],
-  token: string
-): Promise<Pick<Settings, "codeSamples">> {
+export async function withGithubSdks({
+  sdks,
+  token,
+}: {
+  sdks: GithubSdkConfig[];
+  token: string;
+}): Promise<Pick<Settings, "codeSamples">> {
   const octokit = new Octokit({
     auth: token,
   });

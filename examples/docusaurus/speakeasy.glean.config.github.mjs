@@ -1,7 +1,7 @@
 import { withGithubSdks } from "@speakeasy-api/docs-md";
 
-const sdkConfigs = await withGithubSdks(
-  [
+const sdkConfigs = await withGithubSdks({
+  sdks: [
     {
       language: "typescript",
       owner: "gleanwork",
@@ -16,8 +16,8 @@ const sdkConfigs = await withGithubSdks(
       language: "curl",
     },
   ],
-  process.env.GITHUB_TOKEN
-);
+  token: process.env.GITHUB_TOKEN,
+});
 
 export default {
   spec: "../specs/glean.yaml",
