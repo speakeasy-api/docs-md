@@ -1,0 +1,17 @@
+import { css } from "lit";
+
+export const styles = css`
+  .treeTopper {
+    display: flex;
+    justify-content: center;
+    width: calc(2 * var(--speakeasy-expandable-cell-size));
+    height: var(--speakeasy-expandable-treetoper-diameter);
+  }
+
+  .treeTopperDot {
+    border: var(--speakeasy-border-width) solid
+      var(--speakeasy-expandable-line-color);
+    border-radius: 25%;
+    width: var(--speakeasy-expandable-treetoper-diameter);
+  }
+`;

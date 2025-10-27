@@ -8,6 +8,7 @@ import type {
 } from "../components/expandable/expandableCell/expandableCell.ts";
 import type { ExpandableCellIcon } from "../components/expandable/expandableCellIcon/expandableCellIcon.ts";
 import type { NonExpandableCell } from "../components/expandable/nonExpandableCell/nonExpandableCell.ts";
+import type { TreeTopper } from "../components/expandable/treeTopper/treeTopper.ts";
 import type { Pill } from "../components/pill/pill.ts";
 import type { ReactCustomElement } from "./components.ts";
 
@@ -17,6 +18,7 @@ declare global {
     "spk-expandable-cell": ExpandableCell;
     "spk-expandable-cell-icon": ExpandableCellIcon;
     "spk-non-expandable-cell": NonExpandableCell;
+    "spk-tree-topper": TreeTopper;
     "spk-pill": Pill;
   }
 
@@ -32,6 +34,7 @@ declare module "react" {
       "spk-expandable-cell": ReactCustomElement<ExpandableCell>;
       "spk-expandable-cell-icon": ReactCustomElement<ExpandableCellIcon>;
       "spk-non-expandable-cell": ReactCustomElement<NonExpandableCell>;
+      "spk-tree-topper": ReactCustomElement<TreeTopper>;
       "spk-pill": ReactCustomElement<Pill>;
     }
   }

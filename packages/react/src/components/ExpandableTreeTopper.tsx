@@ -1,5 +1,7 @@
-import styles from "./styles.module.css";
-import type { ExpandableTreeTopperProps } from "./types.ts";
+import type { TreeTopperProps } from "@speakeasy-api/docs-md-components";
+import type { PropsWithChildren } from "react";
+
+type ExpandableTreeTopperProps = PropsWithChildren<TreeTopperProps>;
 
 /**
  * A component that renders a tree topper, which is a small dot that indicates
@@ -7,9 +9,5 @@ import type { ExpandableTreeTopperProps } from "./types.ts";
  * section.
  */
 export function ExpandableTreeTopper(_: ExpandableTreeTopperProps) {
-  return (
-    <div className={styles.treeTopper}>
-      <div className={styles.treeTopperDot}></div>
-    </div>
-  );
+  return <spk-tree-topper></spk-tree-topper>;
 }

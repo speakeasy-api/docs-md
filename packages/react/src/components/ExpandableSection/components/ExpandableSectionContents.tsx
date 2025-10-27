@@ -4,7 +4,7 @@ import { Children, isValidElement } from "react";
 
 import { InternalError } from "../../../util/internalError.ts";
 import { ConnectingCell } from "../../ConnectingCell.tsx";
-import { ExpandableTreeTopper } from "../../ExpandableTreeTopper/ExpandableTreeTopper.tsx";
+import { ExpandableTreeTopper } from "../../ExpandableTreeTopper.tsx";
 import type { ExpandableSectionProps } from "../types.ts";
 
 export function ExpandableSectionContents({
