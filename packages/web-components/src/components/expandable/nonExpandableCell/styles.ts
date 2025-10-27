@@ -1,0 +1,17 @@
+import { css } from "lit";
+
+export const styles = css`
+  .nonExpandableCell {
+    min-width: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
+    min-height: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
+    max-height: calc(2 * var(--speakeasy-expandable-cell-size) - 6px);
+    margin: 3px;
+    border: var(--speakeasy-border-width) solid
+      var(--speakeasy-expandable-line-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+`;

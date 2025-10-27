@@ -7,6 +7,7 @@ import type {
   ToggleEvent,
 } from "../components/expandable/expandableCell/expandableCell.ts";
 import type { ExpandableCellIcon } from "../components/expandable/expandableCellIcon/expandableCellIcon.ts";
+import type { NonExpandableCell } from "../components/expandable/nonExpandableCell/nonExpandableCell.ts";
 import type { Pill } from "../components/pill/pill.ts";
 import type { ReactCustomElement } from "./components.ts";
 
@@ -15,6 +16,7 @@ declare global {
     "spk-connecting-cell": ConnectingCell;
     "spk-expandable-cell": ExpandableCell;
     "spk-expandable-cell-icon": ExpandableCellIcon;
+    "spk-non-expandable-cell": NonExpandableCell;
     "spk-pill": Pill;
   }
 
@@ -29,6 +31,7 @@ declare module "react" {
       "spk-connecting-cell": ReactCustomElement<ConnectingCell>;
       "spk-expandable-cell": ReactCustomElement<ExpandableCell>;
       "spk-expandable-cell-icon": ReactCustomElement<ExpandableCellIcon>;
+      "spk-non-expandable-cell": ReactCustomElement<NonExpandableCell>;
       "spk-pill": ReactCustomElement<Pill>;
     }
   }

@@ -9,6 +9,7 @@ import "./components/pill/pill.ts";
 import "./components/expandable/expandableCell/expandableCell.ts";
 import "./components/expandable/expandableCellIcon/expandableCellIcon.ts";
 import "./components/expandable/connectingCell/connectingCell.ts";
+import "./components/expandable/nonExpandableCell/nonExpandableCell.ts";
 
 // TODO: these components are only referenced by other components. We're
 // temporarily exporting them while we're in the process of migrating React to
@@ -16,3 +17,4 @@ import "./components/expandable/connectingCell/connectingCell.ts";
 export type { ConnectingCellProps } from "./components/expandable/connectingCell/connectingCell.ts";
 export type { ExpandableCellIconProps } from "./components/expandable/expandableCellIcon/expandableCellIcon.ts";
 export type { ExpandableCellProps } from "./components/expandable/expandableCell/expandableCell.ts";
+export type { NonExpandableCellProps } from "./components/expandable/nonExpandableCell/nonExpandableCell.ts";

@@ -50,8 +50,8 @@ export type {
 } from "./components/ExpandableSection/types.ts";
 export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/FrontMatterDisplayType.tsx";
 export type { FrontMatterDisplayTypeProps } from "./components/FrontMatterDisplayType/types.ts";
-export { NonExpandableCell } from "./components/NonExpandableCell/NonExpandableCell.tsx";
-export type { NonExpandableCellProps } from "./components/NonExpandableCell/types.ts";
+export { NonExpandableCell } from "./components/NonExpandableCell.tsx";
+export type { NonExpandableCellProps } from "./components/NonExpandableCell.tsx";
 export {
   Operation,
   OperationTitleSection,

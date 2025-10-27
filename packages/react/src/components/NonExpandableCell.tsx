@@ -1,5 +1,12 @@
-import styles from "./styles.module.css";
-import type { NonExpandableCellProps } from "./types.ts";
+"use client";
+
+import "@speakeasy-api/docs-md-components";
+
+import type { NonExpandableCellProps as NonExpandableCellElementProps } from "@speakeasy-api/docs-md-components";
+import type { PropsWithChildren } from "react";
+
+export type NonExpandableCellProps =
+  PropsWithChildren<NonExpandableCellElementProps>;
 
 /**
  * A non expandable cell is part of a schema row. It is responsible for
@@ -11,5 +18,5 @@ import type { NonExpandableCellProps } from "./types.ts";
  * are always to the right of the connecting cells.
  */
 export function NonExpandableCell(_: NonExpandableCellProps) {
-  return <div className={styles.nonExpandableCell}></div>;
+  return <spk-non-expandable-cell />;
 }
