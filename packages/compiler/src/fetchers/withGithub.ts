@@ -78,6 +78,43 @@ export async function withGithubSdks({
   return { codeSamples };
 }
 
+export async function withGithubSpec({
+  owner,
+  repo,
+  ref = "main",
+  specPath,
+  token,
+}: {
+  owner: string;
+  repo: string;
+  ref?: string;
+  specPath: string;
+  token: string;
+}): Promise<Pick<Settings, "spec">> {
+  info(`Fetching OpenAPI spec from ${specPath}`);
+
+  const octokit = new Octokit({
+    auth: token,
+  });
+
+  const { data } = await octokit.repos.getContent({
+    owner,
+    repo,
+    path: specPath,
+    ref,
+    mediaType: { format: "raw" },
+  });
+
+  const tempDir = join(tmpdir(), `speakeasy-github-${randomUUID()}`);
+  mkdirSync(tempDir, { recursive: true });
+  const tempPath = join(tempDir, getSpecFileName(specPath));
+
+  const fileStream = createWriteStream(tempPath);
+  await pipeline(data as unknown as NodeJS.ReadableStream, fileStream);
+
+  return { spec: tempPath };
+}
+
 async function getTarballUrl(
   octokit: Octokit,
   owner: string,
@@ -115,4 +152,18 @@ async function getTarballUrl(
       `Failed to fetch artifact from Github: ${(e as Error).message}`
     );
   }
+}
+
+function getSpecFileName(specUrl: string): string {
+  const segments = specUrl.split("/");
+  const fileName = segments.at(-1);
+
+  if (!fileName || fileName === "") {
+    error(
+      "Invalid path to spec provided. Please provide a path to a valid OpenAPI spec file."
+    );
+    process.exit(1);
+  }
+
+  return fileName;
 }

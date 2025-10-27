@@ -1,4 +1,12 @@
-import { withGithubSdks } from "@speakeasy-api/docs-md";
+import { withGithubSdks, withGithubSpec } from "@speakeasy-api/docs-md";
+
+const spec = await withGithubSpec({
+  owner: "gleanwork",
+  repo: "open-api",
+  ref: "main",
+  specPath: "final_specs/client_rest.yaml",
+  token: process.env.GITHUB_TOKEN,
+});
 
 const sdkConfigs = await withGithubSdks({
   sdks: [
@@ -20,7 +28,7 @@ const sdkConfigs = await withGithubSdks({
 });
 
 export default {
-  spec: "../specs/glean.yaml",
+  ...spec,
   output: {
     pageOutDir: "./docs/glean/api",
     embedOutDir: "./src/components/glean-embeds",
