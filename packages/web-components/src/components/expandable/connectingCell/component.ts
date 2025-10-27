@@ -1,10 +1,11 @@
 "use client";
 
 import clsx from "clsx";
-import { html, LitElement } from "lit";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 import type { LitProps } from "../../../types/components.ts";
+import { SpeakeasyComponent } from "../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
 /**
@@ -27,7 +28,7 @@ export type ConnectingCellProps = LitProps<ConnectingCell>;
  * on the content/padding on the parent to create the same effect.
  */
 @customElement("spk-connecting-cell")
-export class ConnectingCell extends LitElement {
+export class ConnectingCell extends SpeakeasyComponent {
   static override styles = litStyles;
 
   /**

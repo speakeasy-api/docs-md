@@ -4,10 +4,10 @@ import type { ExpandableBreakoutProps } from "../types.ts";
 
 export function BreakoutContents(props: ExpandableBreakoutProps) {
   return (
-    <spk-breakout
+    <spk-expandable-breakout
       {...props}
       entryId={props.id}
       id={props.headingId}
-    ></spk-breakout>
+    ></spk-expandable-breakout>
   );
 }

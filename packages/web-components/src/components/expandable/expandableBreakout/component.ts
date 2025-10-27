@@ -5,19 +5,19 @@ import { customElement, property, state } from "lit/decorators.js";
 
 import type { LitProps } from "../../../types/components.ts";
 import { eventHandler } from "../../../util/decorators.ts";
+import { hashManager } from "../../../util/hashManager.ts";
 import { SpeakeasyComponent } from "../../../util/SpeakeasyComponent.ts";
-import { hashManager } from "../util/hashManager.ts";
 import { styles as litStyles } from "./styles.ts";
 
-export type BreakoutProps = LitProps<Breakout>;
+export type ExpandableBreakoutProps = LitProps<ExpandableBreakout>;
 
 /**
  * A component that renders a tree topper, which is a small dot that indicates
  * the start of a new tree. This component lives at the top of an expandable
  * section.
  */
-@customElement("spk-breakout")
-export class Breakout extends SpeakeasyComponent {
+@customElement("spk-expandable-breakout")
+export class ExpandableBreakout extends SpeakeasyComponent {
   static override styles = litStyles;
 
   /**
@@ -73,7 +73,7 @@ export class Breakout extends SpeakeasyComponent {
             >
               <slot name="description"></slot>
             </spk-connecting-cell>`
-          : ""}
+          : null}
         ${this.hasSlot("examples")
           ? html`<spk-connecting-cell
               bottom="${this.hasSlot("properties")}"
@@ -82,7 +82,7 @@ export class Breakout extends SpeakeasyComponent {
             >
               <slot name="examples"></slot>
             </spk-connecting-cell>`
-          : ""}
+          : null}
         ${this.hasSlot("defaultValue")
           ? html`<spk-connecting-cell
               bottom="${this.hasSlot("properties")}"
@@ -91,7 +91,7 @@ export class Breakout extends SpeakeasyComponent {
             >
               <slot name="defaultValue"></slot>
             </spk-connecting-cell>`
-          : ""}
+          : null}
         ${this.hasSlot("embed")
           ? html`<spk-connecting-cell
               bottom="${this.hasSlot("properties")}"
@@ -100,7 +100,7 @@ export class Breakout extends SpeakeasyComponent {
             >
               <slot name="embed"></slot>
             </spk-connecting-cell>`
-          : ""} <slot name="properties"></slot>`;
+          : null} <slot name="properties"></slot>`;
     }
 
     return html`

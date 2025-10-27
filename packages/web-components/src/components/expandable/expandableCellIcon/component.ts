@@ -1,9 +1,10 @@
 "use client";
 
-import { html, LitElement } from "lit";
+import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 
 import type { LitProps } from "../../../types/components.ts";
+import { SpeakeasyComponent } from "../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
 export type ExpandableCellIconProps = LitProps<ExpandableCellIcon>;
@@ -14,7 +15,7 @@ export type ExpandableCellIconProps = LitProps<ExpandableCellIcon>;
  * the color scheme, such as "primary" or "error".
  */
 @customElement("spk-expandable-cell-icon")
-export class ExpandableCellIcon extends LitElement {
+export class ExpandableCellIcon extends SpeakeasyComponent {
   static override styles = litStyles;
 
   public override render() {

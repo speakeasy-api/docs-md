@@ -1,10 +1,11 @@
 "use client";
 
 import type { PillVariant } from "@speakeasy-api/docs-md-shared";
-import { html, LitElement } from "lit";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 import type { LitProps } from "../../types/components.ts";
+import { SpeakeasyComponent } from "../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
 export type PillProps = LitProps<Pill>;
@@ -15,7 +16,7 @@ export type PillProps = LitProps<Pill>;
  * the color scheme, such as "primary" or "error".
  */
 @customElement("spk-pill")
-export class Pill extends LitElement {
+export class Pill extends SpeakeasyComponent {
   static override styles = litStyles;
 
   /**

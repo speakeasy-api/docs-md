@@ -6,19 +6,21 @@ export type { PillProps } from "./components/pill/pill.ts";
 
 // Import web component files to initialize them
 import "./components/pill/pill.ts";
-import "./components/expandable/expandableCell/expandableCell.ts";
-import "./components/expandable/expandableCellIcon/expandableCellIcon.ts";
-import "./components/expandable/connectingCell/connectingCell.ts";
-import "./components/expandable/nonExpandableCell/nonExpandableCell.ts";
-import "./components/expandable/treeTopper/treeTopper.ts";
-import "./components/expandable/breakout/breakout.ts";
+import "./components/expandable/expandableCell/component.ts";
+import "./components/expandable/expandableCellIcon/component.ts";
+import "./components/expandable/connectingCell/component.ts";
+import "./components/expandable/nonExpandableCell/component.ts";
+import "./components/expandable/treeTopper/component.ts";
+import "./components/expandable/expandableBreakout/component.ts";
+import "./components/expandable/expandableProperty/component.ts";
 
 // TODO: these components are only referenced by other components. We're
 // temporarily exporting them while we're in the process of migrating React to
 // Web Components. Once the migration is complete, we should remove them.
-export type { ConnectingCellProps } from "./components/expandable/connectingCell/connectingCell.ts";
-export type { ExpandableCellIconProps } from "./components/expandable/expandableCellIcon/expandableCellIcon.ts";
-export type { ExpandableCellProps } from "./components/expandable/expandableCell/expandableCell.ts";
-export type { NonExpandableCellProps } from "./components/expandable/nonExpandableCell/nonExpandableCell.ts";
-export type { TreeTopperProps } from "./components/expandable/treeTopper/treeTopper.ts";
-export type { BreakoutProps } from "./components/expandable/breakout/breakout.ts";
+export type { ConnectingCellProps } from "./components/expandable/connectingCell/component.ts";
+export type { ExpandableCellIconProps } from "./components/expandable/expandableCellIcon/component.ts";
+export type { ExpandableCellProps } from "./components/expandable/expandableCell/component.ts";
+export type { NonExpandableCellProps } from "./components/expandable/nonExpandableCell/component.ts";
+export type { TreeTopperProps } from "./components/expandable/treeTopper/component.ts";
+export type { ExpandableBreakoutProps } from "./components/expandable/expandableBreakout/component.ts";
+export type { ExpandablePropertyProps } from "./components/expandable/expandableProperty/component.ts";
