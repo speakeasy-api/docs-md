@@ -27,8 +27,6 @@ export async function generatePages({
   setSettings(settings);
   setInternalSetting("onPageComplete", onPageComplete);
 
-  // Get the docs data from the spec
-  info("Parsing OpenAPI spec (ignore gen.yaml file errors printed below)");
   const { data, docsCodeSamples } = await generateData({
     site,
     specContents,
