@@ -65,10 +65,11 @@ export class ExpandableBreakout extends SpeakeasyComponent {
   public override render() {
     let details = html``;
     if (this.isOpen) {
+      const connection = this.hasSlot("properties") ? "connected" : "none";
       details = html`${this.hasSlot("description")
           ? html`<spk-connecting-cell
-              bottom="${this.hasSlot("properties")}"
-              top="${this.hasSlot("properties")}"
+              bottom="${connection}"
+              top="${connection}"
               right="none"
             >
               <slot name="description"></slot>
@@ -76,8 +77,8 @@ export class ExpandableBreakout extends SpeakeasyComponent {
           : null}
         ${this.hasSlot("examples")
           ? html`<spk-connecting-cell
-              bottom="${this.hasSlot("properties")}"
-              top="${this.hasSlot("properties")}"
+              bottom="${connection}"
+              top="${connection}"
               right="none"
             >
               <slot name="examples"></slot>
@@ -85,8 +86,8 @@ export class ExpandableBreakout extends SpeakeasyComponent {
           : null}
         ${this.hasSlot("defaultValue")
           ? html`<spk-connecting-cell
-              bottom="${this.hasSlot("properties")}"
-              top="${this.hasSlot("properties")}"
+              bottom="${connection}"
+              top="${connection}"
               right="none"
             >
               <slot name="defaultValue"></slot>
@@ -94,8 +95,8 @@ export class ExpandableBreakout extends SpeakeasyComponent {
           : null}
         ${this.hasSlot("embed")
           ? html`<spk-connecting-cell
-              bottom="${this.hasSlot("properties")}"
-              top="${this.hasSlot("properties")}"
+              bottom="${connection}"
+              top="${connection}"
               right="connected"
             >
               <slot name="embed"></slot>
