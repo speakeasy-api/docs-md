@@ -49,7 +49,25 @@ export async function withGithubSdks({
 
     const tarballPath = join(tempDir, `${repo}-${sdk.version}.tar.gz`);
 
-    await downloadTarball(tarballUrl, tarballPath, token);
+    const response = await fetch(tarballUrl, {
+      headers: {
+        Authorization: `token ${token}`,
+        Accept: "application/vnd.github.v3+json",
+      },
+    });
+
+    if (!response.ok || !response.body) {
+      error(
+        `Failed to download archive for repo ${repo}}: ${response.status} ${response.statusText}`
+      );
+      process.exit(1);
+    }
+
+    const fileStream = createWriteStream(tarballPath);
+    await pipeline(
+      response.body as unknown as NodeJS.ReadableStream,
+      fileStream
+    );
 
     codeSamples.push({
       ...sdk,
@@ -97,27 +115,4 @@ async function getTarballUrl(
       `Failed to fetch artifact from Github: ${(e as Error).message}`
     );
   }
-}
-
-async function downloadTarball(
-  url: string,
-  destPath: string,
-  token: string
-): Promise<void> {
-  const response = await fetch(url, {
-    headers: {
-      Authorization: `token ${token}`,
-      Accept: "application/vnd.github.v3+json",
-    },
-  });
-
-  if (!response.ok) {
-    error(
-      `Failed to download tarball: ${response.status} ${response.statusText}`
-    );
-    process.exit(1);
-  }
-
-  const fileStream = createWriteStream(destPath);
-  await pipeline(response.body as unknown as NodeJS.ReadableStream, fileStream);
 }
