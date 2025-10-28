@@ -3,8 +3,8 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 
-import type { LitProps } from "../../../types/components.ts";
-import { SpeakeasyComponent } from "../../../util/SpeakeasyComponent.ts";
+import type { LitProps } from "../../../../types/components.ts";
+import { SpeakeasyComponent } from "../../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
 export type NonExpandableCellProps = LitProps<NonExpandableCell>;
@@ -18,7 +18,7 @@ export type NonExpandableCellProps = LitProps<NonExpandableCell>;
  * Each row always has either one ExpandableCell or one NonExpandableCell, and
  * are always to the right of the connecting cells.
  */
-@customElement("spk-non-expandable-cell")
+@customElement("spk-internal-non-expandable-cell")
 export class NonExpandableCell extends SpeakeasyComponent {
   static override styles = litStyles;
 

@@ -68,40 +68,40 @@ export class ExpandableBreakout extends SpeakeasyComponent {
     if (this.isOpen) {
       const connection = this.hasSlot("properties") ? "connected" : "none";
       details = html`${this.hasSlot("description")
-          ? html`<spk-connecting-cell
+          ? html`<spk-internal-connecting-cell
               bottom="${connection}"
               top="${connection}"
               right="none"
             >
               <slot name="description"></slot>
-            </spk-connecting-cell>`
+            </spk-internal-connecting-cell>`
           : nothing}
         ${this.hasSlot("examples")
-          ? html`<spk-connecting-cell
+          ? html`<spk-internal-connecting-cell
               bottom="${connection}"
               top="${connection}"
               right="none"
             >
               <slot name="examples"></slot>
-            </spk-connecting-cell>`
+            </spk-internal-connecting-cell>`
           : nothing}
         ${this.hasSlot("defaultValue")
-          ? html`<spk-connecting-cell
+          ? html`<spk-internal-connecting-cell
               bottom="${connection}"
               top="${connection}"
               right="none"
             >
               <slot name="defaultValue"></slot>
-            </spk-connecting-cell>`
+            </spk-internal-connecting-cell>`
           : nothing}
         ${this.hasSlot("embed")
-          ? html`<spk-connecting-cell
+          ? html`<spk-internal-connecting-cell
               bottom="${connection}"
               top="${connection}"
               right="connected"
             >
               <slot name="embed"></slot>
-            </spk-connecting-cell>`
+            </spk-internal-connecting-cell>`
           : nothing} <slot name="properties"></slot>`;
     }
 
@@ -109,12 +109,12 @@ export class ExpandableBreakout extends SpeakeasyComponent {
       <div class="entryContainer">
         <div data-testid="${this.id}" class="entryHeaderContainer">
           ${this.hasExpandableContent
-            ? html`<spk-expandable-cell
+            ? html`<spk-internal-expandable-cell
                 .isOpen="${this.isOpen}"
                 .onExpandToggle="${this.handleExpandToggle}"
                 variant="breakout"
-              ></spk-expandable-cell>`
-            : html`<spk-non-expandable-cell></spk-non-expandable-cell>`}
+              ></spk-internal-expandable-cell>`
+            : html`<spk-internal-non-expandable-cell></spk-internal-non-expandable-cell>`}
           <div class="breakoutCellTitle">
             <slot name="title"></slot>
           </div>

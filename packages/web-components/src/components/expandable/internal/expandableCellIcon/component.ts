@@ -3,8 +3,8 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 
-import type { LitProps } from "../../../types/components.ts";
-import { SpeakeasyComponent } from "../../../util/SpeakeasyComponent.ts";
+import type { LitProps } from "../../../../types/components.ts";
+import { SpeakeasyComponent } from "../../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
 export type ExpandableCellIconProps = LitProps<ExpandableCellIcon>;
@@ -14,7 +14,7 @@ export type ExpandableCellIconProps = LitProps<ExpandableCellIcon>;
  * and optional background color. The pill takes in a "variant" that controls
  * the color scheme, such as "primary" or "error".
  */
-@customElement("spk-expandable-cell-icon")
+@customElement("spk-internal-expandable-cell-icon")
 export class ExpandableCellIcon extends SpeakeasyComponent {
   static override styles = litStyles;
 

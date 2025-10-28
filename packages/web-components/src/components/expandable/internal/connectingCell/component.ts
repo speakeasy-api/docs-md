@@ -4,8 +4,8 @@ import clsx from "clsx";
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-import type { LitProps } from "../../../types/components.ts";
-import { SpeakeasyComponent } from "../../../util/SpeakeasyComponent.ts";
+import type { LitProps } from "../../../../types/components.ts";
+import { SpeakeasyComponent } from "../../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
 /**
@@ -27,7 +27,7 @@ export type ConnectingCellProps = LitProps<ConnectingCell>;
  * `div` with a fixed width, or you can have it return `null` and set a margin
  * on the content/padding on the parent to create the same effect.
  */
-@customElement("spk-connecting-cell")
+@customElement("spk-internal-connecting-cell")
 export class ConnectingCell extends SpeakeasyComponent {
   static override styles = litStyles;
 

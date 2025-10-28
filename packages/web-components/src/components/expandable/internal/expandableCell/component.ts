@@ -4,8 +4,8 @@ import clsx from "clsx";
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-import type { LitProps } from "../../../types/components.ts";
-import { SpeakeasyComponent } from "../../../util/SpeakeasyComponent.ts";
+import type { LitProps } from "../../../../types/components.ts";
+import { SpeakeasyComponent } from "../../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
 export type ExpandableCellProps = LitProps<ExpandableCell>;
@@ -24,7 +24,7 @@ export type ExpandableCellProps = LitProps<ExpandableCell>;
  * the compiled MDX code, and its state is managed by
  * src/components/ExpandableSection/components/PrefixCells.tsx
  */
-@customElement("spk-expandable-cell")
+@customElement("spk-internal-expandable-cell")
 export class ExpandableCell extends SpeakeasyComponent {
   static override styles = litStyles;
 
@@ -58,12 +58,12 @@ export class ExpandableCell extends SpeakeasyComponent {
           type="button"
           @click="${() => this.onExpandToggle()}"
         >
-          <spk-expandable-cell-icon
+          <spk-internal-expandable-cell-icon
             class="expandableChevron"
             style="transform: ${this.isOpen
               ? "rotate(0deg)"
               : "rotate(-90deg)"};"
-          ></spk-expandable-cell-icon>
+          ></spk-internal-expandable-cell-icon>
         </button>
       </div>
       <div class="expandableConnectionContainer">

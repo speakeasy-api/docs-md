@@ -73,46 +73,46 @@ export class ExpandableProperty extends SpeakeasyComponent {
     const frontmatter = html`
       ${this.hasSlot("description")
         ? html`
-            <spk-connecting-cell
+            <spk-internal-connecting-cell
               bottom="${frontmatterConnection}"
               top="${frontmatterConnection}"
               right="none"
             >
               <slot name="description"></slot>
-            </spk-connecting-cell>
+            </spk-internal-connecting-cell>
           `
         : null}
       ${this.hasSlot("examples")
         ? html`
-            <spk-connecting-cell
+            <spk-internal-connecting-cell
               bottom="${frontmatterConnection}"
               top="${frontmatterConnection}"
               right="none"
             >
               <slot name="examples"></slot>
-            </spk-connecting-cell>
+            </spk-internal-connecting-cell>
           `
         : null}
       ${this.hasSlot("default-value")
         ? html`
-            <spk-connecting-cell
+            <spk-internal-connecting-cell
               bottom="${frontmatterConnection}"
               top="${frontmatterConnection}"
               right="none"
             >
               <slot name="default-value"></slot>
-            </spk-connecting-cell>
+            </spk-internal-connecting-cell>
           `
         : null}
       ${this.hasSlot("embed")
         ? html`
-            <spk-connecting-cell
+            <spk-internal-connecting-cell
               bottom="${frontmatterConnection}"
               top="${frontmatterConnection}"
               right="connected"
             >
               <slot name="embed"></slot>
-            </spk-connecting-cell>
+            </spk-internal-connecting-cell>
           `
         : null}
       ${this.hasSlot("breakouts")
@@ -126,12 +126,12 @@ export class ExpandableProperty extends SpeakeasyComponent {
     return html`<div data-testid=${this.id} class="entryContainer">
       <div class="entryHeaderContainer">
         ${this.hasExpandableContent
-          ? html`<spk-expandable-cell
+          ? html`<spk-internal-expandable-cell
               .isOpen="${this.isOpen}"
               .onExpandToggle="${this.handleExpandToggle}"
               variant="property"
-            ></spk-expandable-cell>`
-          : html`<spk-non-expandable-cell></spk-non-expandable-cell>`}
+            ></spk-internal-expandable-cell>`
+          : html`<spk-internal-non-expandable-cell></spk-internal-non-expandable-cell>`}
         <slot name="title"></slot>
       </div>
       ${this.isOpen ? propertyCell : null} ${measureContainer}
