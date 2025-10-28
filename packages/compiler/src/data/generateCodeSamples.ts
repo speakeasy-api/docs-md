@@ -204,6 +204,45 @@ function getExplicitValue(schema: SchemaValue, fallback: unknown) {
   return schema.examples[0] ?? schema.defaultValue ?? fallback;
 }
 
+type ExampleContext = {
+  type: "request" | "response";
+  strategy: "minimal" | "simple" | "maximal";
+};
+
+function determineNextStrategy(
+  context: ExampleContext,
+  currentType: SchemaValue["type"]
+): "minimal" | "simple" | "maximal" {
+  if (context.type === "request") {
+    // Request: start simple, switch to minimal after hitting object/primitive/null
+    if (
+      context.strategy === "simple" &&
+      (currentType === "object" ||
+        currentType === "null" ||
+        PRIMITIVE_TYPES.has(currentType))
+    ) {
+      return "minimal";
+    }
+    return context.strategy;
+  } else {
+    // Response: start maximal, switch to simple after hitting object boundary
+    if (context.strategy === "maximal") {
+      return currentType === "object" ? "simple" : "maximal";
+    }
+    return "simple";
+  }
+}
+
+function createChildContext(
+  context: ExampleContext,
+  currentType: SchemaValue["type"]
+): ExampleContext {
+  return {
+    type: context.type,
+    strategy: determineNextStrategy(context, currentType),
+  };
+}
+
 function getSchemaUnionValue(
   values: SchemaValue[],
   displayStrategy: "minimal" | "simple" | "maximal"
@@ -244,38 +283,41 @@ function getSchemaUnionValue(
 
 function generateSchemaExample(
   schema: SchemaValue,
-  docsData: Map<string, Chunk>
+  docsData: Map<string, Chunk>,
+  context: ExampleContext
 ): unknown {
   switch (schema.type) {
     case "object": {
       const obj: Record<string, unknown> = {};
+      const childContext = createChildContext(context, "object");
       for (const [name, property] of Object.entries(schema.properties)) {
         if (!schema.required.includes(name)) {
           continue;
         }
-        obj[name] = generateSchemaExample(property, docsData);
+        obj[name] = generateSchemaExample(property, docsData, childContext);
       }
       return obj;
     }
     case "array":
     case "map":
     case "set": {
-      return [generateSchemaExample(schema.items, docsData)];
+      const childContext = createChildContext(context, schema.type);
+      return [generateSchemaExample(schema.items, docsData, childContext)];
     }
     case "union": {
-      // If we include null, which is common, default to that
-      if (schema.values.find((v) => v.type === "null")) {
-        return null;
-      }
-      const firstValue = schema.values[0];
-      if (!firstValue) {
+      const selectedUnionValue = getSchemaUnionValue(
+        schema.values,
+        context.strategy
+      );
+      if (!selectedUnionValue) {
         throw new InternalError("Union has no values");
       }
-      return generateSchemaExample(firstValue, docsData);
+      const childContext = createChildContext(context, selectedUnionValue.type);
+      return generateSchemaExample(selectedUnionValue, docsData, childContext);
     }
     case "chunk": {
       const chunk = getSchemaFromId(schema.chunkId, docsData);
-      return generateSchemaExample(chunk.chunkData.value, docsData);
+      return generateSchemaExample(chunk.chunkData.value, docsData, context);
     }
     case "enum": {
       return getExplicitValue(schema, schema.values[0]);
@@ -437,7 +479,10 @@ function generateCurlCodeSamples(
       // Reset the sample word index for each request body
       initRandomSamples();
       body = JSON.stringify(
-        generateSchemaExample(requestBodyChunk.chunkData.value, docsData),
+        generateSchemaExample(requestBodyChunk.chunkData.value, docsData, {
+          type: "request",
+          strategy: "simple",
+        }),
         null,
         "  "
       );
@@ -494,7 +539,11 @@ export function generateRequestResponseExamples(docsData: Map<string, Chunk>) {
               chunk.chunkData.requestBody.contentChunkId,
               docsData
             ).chunkData.value,
-            docsData
+            docsData,
+            {
+              type: "request",
+              strategy: "simple",
+            }
           ),
           null,
           "  "
@@ -514,7 +563,11 @@ export function generateRequestResponseExamples(docsData: Map<string, Chunk>) {
         value: JSON.stringify(
           generateSchemaExample(
             getSchemaFromId(response.contentChunkId, docsData).chunkData.value,
-            docsData
+            docsData,
+            {
+              type: "response",
+              strategy: "maximal",
+            }
           ),
           null,
           "  "
