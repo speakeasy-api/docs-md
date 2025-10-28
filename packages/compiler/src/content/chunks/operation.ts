@@ -167,7 +167,21 @@ export function renderParameters(
     return;
   }
   debug(`Rendering parameters`);
-  const { showDebugPlaceholders } = getSettings().display;
+  const { showDebugPlaceholders, sortRequiredProperties } =
+    getSettings().display;
+  if (sortRequiredProperties) {
+    debug("Sorting required parameters to top.");
+    parameters.sort((a, b) => {
+      if (a.required && !b.required) {
+        return -1;
+      }
+      if (!a.required && b.required) {
+        return 1;
+      }
+      return a.name.localeCompare(b.name);
+    });
+  }
+
   renderer.createParametersSection(() => {
     for (const parameter of parameters) {
       debug(`Rendering parameter: name=${parameter.name}`);

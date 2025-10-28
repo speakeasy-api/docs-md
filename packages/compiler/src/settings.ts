@@ -375,11 +375,20 @@ export const settingsSchema = z.strictObject({
        * When this setting is enabled, you must also set `output.embedOutDir`
        */
       maxNestingLevel: z.number().optional(),
+
+      /***
+       * Whether or not to sort required properties and parameters first.
+       *
+       * When enabled, properties will still be sorted alphabetically but required
+       * properties will be shown first.
+       */
+      sortRequiredProperties: z.boolean().default(true),
     })
     .default({
       visibleResponses: "explicit",
       showDebugPlaceholders: false,
       expandTopLevelPropertiesOnPageLoad: true,
+      sortRequiredProperties: true,
     }),
 
   /**

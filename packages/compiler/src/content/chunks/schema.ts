@@ -4,6 +4,7 @@ import type {
   PropertyAnnotations,
 } from "@speakeasy-api/docs-md-shared";
 
+import { debug } from "../../logging.ts";
 import type { Renderer } from "../../renderers/base.ts";
 import { getSettings } from "../../settings.ts";
 import { assertNever } from "../../util/assertNever.ts";
@@ -518,6 +519,21 @@ export function renderObjectProperties({
       };
     }
   );
+
+  const { sortRequiredProperties } = getSettings().display;
+  if (sortRequiredProperties) {
+    debug("Sorting required parameters to top.");
+    properties.sort((a, b) => {
+      if (a.isRequired && !b.isRequired) {
+        return -1;
+      }
+      if (!a.isRequired && b.isRequired) {
+        return 1;
+      }
+      return a.name.localeCompare(b.name);
+    });
+  }
+
   for (const property of properties) {
     createExpandableProperty({
       renderer,
