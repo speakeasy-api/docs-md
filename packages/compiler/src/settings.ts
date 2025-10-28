@@ -345,6 +345,7 @@ export const settingsSchema = z.strictObject({
        */
       visibleResponses: z
         .enum(["success", "explicit", "all"])
+        .optional()
         .default("explicit"),
 
       /**
@@ -357,12 +358,12 @@ export const settingsSchema = z.strictObject({
        *
        * This should not be enabled in production.
        */
-      showDebugPlaceholders: z.boolean().default(false),
+      showDebugPlaceholders: z.boolean().optional().default(false),
 
       /**
        * Whether or not to expand top-level properties by default on page load.
        */
-      expandTopLevelPropertiesOnPageLoad: z.boolean().default(true),
+      expandTopLevelPropertiesOnPageLoad: z.boolean().optional().default(true),
 
       /**
        * The maximum nesting level to show. If this is set, then any properties
