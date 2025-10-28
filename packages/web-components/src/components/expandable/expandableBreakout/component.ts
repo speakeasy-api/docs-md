@@ -1,6 +1,6 @@
 "use client";
 
-import { html } from "lit";
+import { html, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 
 import type { LitProps } from "../../../types/components.ts";
@@ -52,9 +52,11 @@ export class ExpandableBreakout extends SpeakeasyComponent {
 
   @state()
   private isOpen = false;
-  #setIsOpen = eventHandler("spk-toggle", () => (this.isOpen = !this.isOpen));
+  private handleToggle = eventHandler("spk-toggle", () => {
+    this.isOpen = !this.isOpen;
+  });
 
-  override connectedCallback() {
+  public override connectedCallback() {
     super.connectedCallback();
     this.isOpen = !!this.expandByDefault;
     hashManager(this.id, (open: boolean) => {
@@ -74,7 +76,7 @@ export class ExpandableBreakout extends SpeakeasyComponent {
             >
               <slot name="description"></slot>
             </spk-connecting-cell>`
-          : null}
+          : nothing}
         ${this.hasSlot("examples")
           ? html`<spk-connecting-cell
               bottom="${connection}"
@@ -83,7 +85,7 @@ export class ExpandableBreakout extends SpeakeasyComponent {
             >
               <slot name="examples"></slot>
             </spk-connecting-cell>`
-          : null}
+          : nothing}
         ${this.hasSlot("defaultValue")
           ? html`<spk-connecting-cell
               bottom="${connection}"
@@ -92,7 +94,7 @@ export class ExpandableBreakout extends SpeakeasyComponent {
             >
               <slot name="defaultValue"></slot>
             </spk-connecting-cell>`
-          : null}
+          : nothing}
         ${this.hasSlot("embed")
           ? html`<spk-connecting-cell
               bottom="${connection}"
@@ -101,7 +103,7 @@ export class ExpandableBreakout extends SpeakeasyComponent {
             >
               <slot name="embed"></slot>
             </spk-connecting-cell>`
-          : null} <slot name="properties"></slot>`;
+          : nothing} <slot name="properties"></slot>`;
     }
 
     return html`
@@ -110,7 +112,7 @@ export class ExpandableBreakout extends SpeakeasyComponent {
           ${this.hasExpandableContent
             ? html`<spk-expandable-cell
                 .isOpen="${this.isOpen}"
-                @spk-toggle="${this.#setIsOpen}"
+                @spk-toggle="${this.handleToggle}"
                 variant="breakout"
               ></spk-expandable-cell>`
             : html`<spk-non-expandable-cell></spk-non-expandable-cell>`}
