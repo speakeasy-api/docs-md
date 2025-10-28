@@ -15,6 +15,7 @@ lit-analyzer --strict\
   --rules.no-unknown-event error\
   --rules.no-unknown-slot error\
   --rules.no-unknown-attribute error\
+  --rules.no-unknown-property error\
   --rules.no-missing-import off\
   --rules.no-incompatible-property-type off\
   "src/**/*.{js,ts}"

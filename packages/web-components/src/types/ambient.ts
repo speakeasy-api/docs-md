@@ -22,10 +22,6 @@ declare global {
     "spk-tree-topper": TreeTopper;
     "spk-pill": Pill;
   }
-
-  interface HTMLElementEventMap {
-    "spk-toggle": CustomEvent<null>;
-  }
 }
 
 declare module "react" {

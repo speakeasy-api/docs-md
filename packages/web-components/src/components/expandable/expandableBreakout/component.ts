@@ -4,7 +4,6 @@ import { html, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 
 import type { LitProps } from "../../../types/components.ts";
-import { eventHandler } from "../../../util/decorators.ts";
 import { hashManager } from "../../../util/hashManager.ts";
 import { SpeakeasyComponent } from "../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
@@ -52,9 +51,9 @@ export class ExpandableBreakout extends SpeakeasyComponent {
 
   @state()
   private isOpen = false;
-  private handleToggle = eventHandler("spk-toggle", () => {
+  private handleToggle = () => {
     this.isOpen = !this.isOpen;
-  });
+  };
 
   public override connectedCallback() {
     super.connectedCallback();
@@ -112,7 +111,7 @@ export class ExpandableBreakout extends SpeakeasyComponent {
           ${this.hasExpandableContent
             ? html`<spk-expandable-cell
                 .isOpen="${this.isOpen}"
-                @spk-toggle="${this.handleToggle}"
+                .onExpandToggle="${this.handleToggle}"
                 variant="breakout"
               ></spk-expandable-cell>`
             : html`<spk-non-expandable-cell></spk-non-expandable-cell>`}

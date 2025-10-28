@@ -3,13 +3,7 @@
 import type { ExpandableCellProps as ExpandableCellElementProps } from "@speakeasy-api/docs-md-components";
 import { type PropsWithChildren } from "react";
 
-import { useEventListeners } from "../util/events.ts";
-
-export type ExpandableCellProps = PropsWithChildren<
-  ExpandableCellElementProps & {
-    setIsOpen: (isOpen: boolean) => void;
-  }
->;
+type ExpandableCellProps = PropsWithChildren<ExpandableCellElementProps>;
 
 /**
  * An Expandable cell is part of a schema row. It is responsible for rendering
@@ -25,9 +19,6 @@ export type ExpandableCellProps = PropsWithChildren<
  * the compiled MDX code, and its state is managed by
  * src/components/ExpandableSection/components/PrefixCells.tsx
  */
-export function ExpandableCell({ setIsOpen, ...props }: ExpandableCellProps) {
-  const ref = useEventListeners({
-    "spk-toggle": () => setIsOpen(false),
-  });
-  return <spk-expandable-cell ref={ref} {...props} />;
+export function ExpandableCell({ ...props }: ExpandableCellProps) {
+  return <spk-expandable-cell {...props} />;
 }

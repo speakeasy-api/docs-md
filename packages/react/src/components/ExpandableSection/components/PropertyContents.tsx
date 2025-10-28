@@ -362,7 +362,7 @@ Multiline: ${displayInfo?.multiline ?? "N/A"}`}
         {hasExpandableContent ? (
           <ExpandableCell
             isOpen={isOpen}
-            setIsOpen={setIsOpen}
+            onExpandToggle={() => setIsOpen(!isOpen)}
             variant="property"
           />
         ) : (

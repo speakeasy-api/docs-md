@@ -5,8 +5,6 @@ import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 import type { LitProps } from "../../../types/components.ts";
-import type { EventDispatcher } from "../../../util/decorators.ts";
-import { event } from "../../../util/decorators.ts";
 import { SpeakeasyComponent } from "../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
@@ -43,10 +41,10 @@ export class ExpandableCell extends SpeakeasyComponent {
   public variant!: "breakout" | "property";
 
   /**
-   * Dispatches the 'spk-toggle' event when the cell is toggled
+   * The callback to invoke when the cell expanded state is toggled
    */
-  @event({ type: "spk-toggle", bubbles: false, composed: true })
-  private dispatchToggle!: EventDispatcher<null>;
+  @property()
+  public onExpandToggle!: () => void;
 
   public override render() {
     return html`<div class="expandableCellContainer">
@@ -58,7 +56,7 @@ export class ExpandableCell extends SpeakeasyComponent {
           )}
           aria-expanded=${this.isOpen}
           type="button"
-          @click="${() => this.dispatchToggle(null)}"
+          @click="${() => this.onExpandToggle()}"
         >
           <spk-expandable-cell-icon
             class="expandableChevron"

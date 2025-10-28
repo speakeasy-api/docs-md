@@ -4,6 +4,7 @@ import { Children, isValidElement } from "react";
 
 import { InternalError } from "../../util/internalError.ts";
 import { ConnectingCell } from "../ConnectingCell.tsx";
+import { PropertyContents } from "./components/PropertyContents.tsx";
 import styles from "./styles.module.css";
 import type {
   ExpandablePropertyBreakoutsProps,
@@ -20,13 +21,7 @@ import type {
  * and front-matter, children, etc. in the body.
  */
 export function ExpandableProperty(props: ExpandablePropertyProps) {
-  return (
-    <spk-expandable-property
-      {...props}
-      entryId={props.id}
-      id={props.headingId}
-    ></spk-expandable-property>
-  );
+  return <PropertyContents {...props}></PropertyContents>;
 }
 
 /**
