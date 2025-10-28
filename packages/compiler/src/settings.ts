@@ -375,11 +375,15 @@ export const settingsSchema = z.strictObject({
        * When this setting is enabled, you must also set `output.embedOutDir`
        */
       maxNestingLevel: z.number().optional(),
+
+
+      examplesDisplay: z.enum(['minimal', 'simple', 'maximal'])
     })
     .default({
       visibleResponses: "explicit",
       showDebugPlaceholders: false,
       expandTopLevelPropertiesOnPageLoad: true,
+      examplesDisplay: "minimal",
     }),
 
   /**
