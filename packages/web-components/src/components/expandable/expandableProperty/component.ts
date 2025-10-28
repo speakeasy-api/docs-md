@@ -165,7 +165,7 @@ export class ExpandableProperty extends LitElement {
   @state()
   private contents?: string;
 
-  override connectedCallback() {
+  public override connectedCallback() {
     super.connectedCallback();
 
     // Initialize properties
