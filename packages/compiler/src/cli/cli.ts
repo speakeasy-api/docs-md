@@ -132,7 +132,8 @@ async function getSettings(): Promise<Settings> {
   configFileImport.output ??= {};
 
   // Parse the settings using Zod to ensure accuracy
-  const configFileContents = settingsSchema.safeParse(configFileImport);
+  const configFileContents =
+    await settingsSchema.safeParseAsync(configFileImport);
   if (!configFileContents.success) {
     reportError(
       `Error parsing config file "${configFilePath}": ${z.prettifyError(configFileContents.error)}`

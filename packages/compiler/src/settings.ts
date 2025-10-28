@@ -42,6 +42,11 @@ export function setInternalSetting<Key extends keyof InternalSettings>(
   internalSettings[key] = value;
 }
 
+// helper function for use with z.preprocess to unwrap promises for settings values
+async function valueOrPromise(value: unknown) {
+  return await Promise.resolve(value);
+}
+
 const sdkCommonProperties = {
   /**
    * The path to a tarball file of the SDK. Use this option if, for example,
@@ -162,7 +167,12 @@ const otherSdkLanguages = z.object({
   ...sdkCommonProperties,
 });
 
-const codeSample = z.union([curl, typescript, python, otherSdkLanguages]);
+const codeSampleWithSdk = z.preprocess(
+  valueOrPromise,
+  z.union([typescript, python, otherSdkLanguages])
+);
+const codeSample = z.union([curl, codeSampleWithSdk]);
+export type CodeSampleWithSDK = z.infer<typeof codeSampleWithSdk>;
 
 export const settingsSchema = z.strictObject({
   /**
