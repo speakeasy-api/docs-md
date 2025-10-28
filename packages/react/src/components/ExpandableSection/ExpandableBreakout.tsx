@@ -7,7 +7,6 @@ import { Children, isValidElement } from "react";
 
 import { InternalError } from "../../util/internalError.ts";
 import { ConnectingCell } from "../ConnectingCell.tsx";
-import { BreakoutContents } from "./components/BreakoutContents.tsx";
 import styles from "./styles.module.css";
 import type {
   ExpandableBreakoutDefaultValueProps,
@@ -28,7 +27,13 @@ import type {
  * implementations that may want to lay out children more specifically.
  */
 export function ExpandableBreakout(props: ExpandableBreakoutProps) {
-  return <BreakoutContents {...props} />;
+  return (
+    <spk-expandable-breakout
+      {...props}
+      entryId={props.id}
+      id={props.headingId}
+    ></spk-expandable-breakout>
+  );
 }
 
 /**

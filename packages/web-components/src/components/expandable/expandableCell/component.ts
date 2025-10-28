@@ -43,7 +43,7 @@ export class ExpandableCell extends SpeakeasyComponent {
   /**
    * The callback to invoke when the cell expanded state is toggled
    */
-  @property()
+  @property({ type: Function })
   public onExpandToggle!: () => void;
 
   public override render() {

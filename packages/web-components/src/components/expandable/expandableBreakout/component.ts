@@ -51,7 +51,7 @@ export class ExpandableBreakout extends SpeakeasyComponent {
 
   @state()
   private isOpen = false;
-  private handleToggle = () => {
+  private handleExpandToggle = () => {
     this.isOpen = !this.isOpen;
   };
 
@@ -111,7 +111,7 @@ export class ExpandableBreakout extends SpeakeasyComponent {
           ${this.hasExpandableContent
             ? html`<spk-expandable-cell
                 .isOpen="${this.isOpen}"
-                .onExpandToggle="${this.handleToggle}"
+                .onExpandToggle="${this.handleExpandToggle}"
                 variant="breakout"
               ></spk-expandable-cell>`
             : html`<spk-non-expandable-cell></spk-non-expandable-cell>`}
