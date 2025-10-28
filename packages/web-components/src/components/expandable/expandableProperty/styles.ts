@@ -30,6 +30,47 @@ export const styles = css`
     padding: 0;
   }
 
+  .offscreenMeasureContainer {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .typeInnerContainer,
+  .offscreenMeasureContainer {
+    font-family: var(--speakeasy-font-mono);
+    font-size: var(--speakeasy-property-type-font-size);
+    text-wrap: nowrap;
+  }
+
+  .typeInnerContainer {
+    padding: var(--speakeasy-pill-padding);
+    background-color: var(--speakeasy-property-type-background-color);
+    border-radius: var(--speakeasy-property-type-border-radius);
+    border: 1px solid var(--speakeasy-property-type-border-color);
+  }
+
+  .typeInnerContainer a {
+    scroll-behavior: smooth;
+  }
+
+  .typeInnerContainerInline {
+    width: fit-content;
+  }
+
+  .typeInnerContainerMultiline {
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* For some reason, anchor tag styles are horribly butchered by something
+   in Nextra, so we reset them to what they should be here */
+  .typeInnerContainer a {
+    color: var(--speakeasy-anchor-color);
+    text-decoration-line: underline;
+  }
+
   .propertyTitlePrefixContainer {
     display: inline-flex;
     align-items: center;

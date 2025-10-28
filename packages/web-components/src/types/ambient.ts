@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-namespace */
 
 import type { ExpandableBreakout } from "../components/expandable/expandableBreakout/component.ts";
+import type { ExpandablePropertyTitleContainer } from "../components/expandable/expandableProperty/component.ts";
 import type { ExpandableProperty } from "../components/expandable/expandableProperty/component.ts";
 import type { ConnectingCell } from "../components/expandable/internal/connectingCell/component.ts";
 import type { ExpandableCell } from "../components/expandable/internal/expandableCell/component.ts";
@@ -14,6 +15,7 @@ import type { ReactCustomElement } from "./components.ts";
 declare global {
   interface HTMLElementTagNameMap {
     "spk-expandable-breakout": ExpandableBreakout;
+    "spk-internal-expandable-property-title-container": ExpandablePropertyTitleContainer;
     "spk-expandable-property": ExpandableProperty;
     "spk-internal-connecting-cell": ConnectingCell;
     "spk-internal-expandable-cell": ExpandableCell;
@@ -28,6 +30,7 @@ declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
       "spk-expandable-breakout": ReactCustomElement<ExpandableBreakout>;
+      "spk-internal-expandable-property-title-container": ReactCustomElement<ExpandablePropertyTitleContainer>;
       "spk-expandable-property": ReactCustomElement<ExpandableProperty>;
       "spk-internal-connecting-cell": ReactCustomElement<ConnectingCell>;
       "spk-internal-expandable-cell": ReactCustomElement<ExpandableCell>;

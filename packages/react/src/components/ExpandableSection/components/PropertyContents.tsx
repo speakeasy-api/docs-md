@@ -155,13 +155,15 @@ export function PropertyContents({
   const embedChildren = useChildren(children, "embed");
   const breakoutsChildren = useChildren(children, "breakouts");
 
+  const { display: singleLineDisplay, measure: singleLineMeasure } = useMemo(
+    () => computeSingleLineDisplayType(typeInfo),
+    [typeInfo]
+  );
+
   const displayInfo = useMemo(() => {
     if (!typeInfo) {
       return;
     }
-
-    const { display: singleLineDisplay, measure: singleLineMeasure } =
-      computeSingleLineDisplayType(typeInfo);
 
     // If the value is 0, that means we haven't rendered yet and don't know the
     // width. In this case, we just don't render the type at all.
@@ -205,6 +207,8 @@ export function PropertyContents({
   }, [
     offscreenTextSizeMeasureContainerWidth,
     offscreenTypeMeasureContainerWidth,
+    singleLineDisplay,
+    singleLineMeasure,
     titleContainerWidth,
     titlePrefixContainerWidth,
     typeInfo,

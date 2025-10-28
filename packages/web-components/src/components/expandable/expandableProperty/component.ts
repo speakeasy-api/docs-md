@@ -5,14 +5,63 @@ import type {
   PropertyAnnotations,
 } from "@speakeasy-api/docs-md-shared";
 import { InternalError } from "@speakeasy-api/docs-md-shared";
-import { html, LitElement, nothing } from "lit";
+import clsx from "clsx";
+import type { TemplateResult } from "lit";
+import { css, html, LitElement, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import type { Ref } from "lit/directives/ref.js";
 import { createRef, ref } from "lit/directives/ref.js";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 import type { LitProps } from "../../../types/components.ts";
+import {
+  computeMultilineTypeLabel,
+  computeSingleLineDisplayType,
+} from "../../../util/displayType.ts";
 import { hashManager } from "../../../util/hashManager.ts";
 import { styles as litStyles } from "./styles.ts";
+
+@customElement("spk-internal-expandable-property-title-container")
+export class ExpandablePropertyTitleContainer extends LitElement {
+  static override styles = css`
+    :host {
+      display: block;
+      width: 100%;
+    }
+  `;
+
+  @property({ type: Function })
+  public onSizeChanged!: (containerWidth: number) => void;
+
+  private resizeObserver?: ResizeObserver;
+
+  public override connectedCallback(): void {
+    super.connectedCallback();
+
+    // Set up ResizeObserver first
+    this.resizeObserver = new ResizeObserver(() => this.measureAndNotify());
+    this.resizeObserver.observe(this);
+
+    // Initial measurement after first render
+    this.measureAndNotify();
+  }
+
+  public override disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.resizeObserver?.disconnect();
+  }
+
+  private measureAndNotify(): void {
+    const containerWidth = this.offsetWidth;
+    if (containerWidth > 0) {
+      this.onSizeChanged(containerWidth);
+    }
+  }
+
+  public override render() {
+    return html`<slot></slot>`;
+  }
+}
 
 export type ExpandablePropertyProps = LitProps<ExpandableProperty> & {
   // We need to include `id` to make typing happy in the compiler, even though
@@ -100,30 +149,109 @@ export class ExpandableProperty extends LitElement {
     this.isOpen = !this.isOpen;
   };
 
-  private titleContainerRef: Ref<HTMLInputElement> = createRef();
-  private titlePrefixContainerRef: Ref<HTMLInputElement> = createRef();
+  // Refs for DOM elements used to measure the size of type information, and to
+  // make it responsive and formatted
+  private titlePrefixContainerRef: Ref<HTMLElement> = createRef();
+  private offscreenTextSizeMeasureContainerRef: Ref<HTMLElement> = createRef();
+  private offscreenTypeMeasureContainerRef: Ref<HTMLElement> = createRef();
+
+  // The computed single line display type and measure
+  private singleLineDisplay?: string;
+  private singleLineMeasure?: string;
+
+  // The computed display info (multiline flag and contents)
+  @state()
+  private multiline?: boolean;
+  @state()
+  private contents?: string;
 
   override connectedCallback() {
     super.connectedCallback();
+
+    // Initialize properties
     this.isOpen = !!this.expandByDefault;
     this.parsedTypeInfo = JSON.parse(this.typeInfo) as DisplayTypeInfo;
     this.parsedTypeAnnotations = JSON.parse(
       this.typeAnnotations
     ) as PropertyAnnotations[];
-    hashManager(this.id, (open: boolean) => {
+
+    // Watch for hash changes so we can toggle the open state
+    hashManager(this.id, (open) => {
       this.isOpen = open;
     });
+
+    const { display: singleLineDisplay, measure: singleLineMeasure } =
+      computeSingleLineDisplayType(this.parsedTypeInfo);
+    this.singleLineDisplay = singleLineDisplay;
+    this.singleLineMeasure = singleLineMeasure;
   }
 
-  public override render() {
-    if (!this.parsedTypeInfo || !this.parsedTypeAnnotations) {
-      throw new InternalError(
-        "parsedTypeInfo and parsedTypeAnnotations are unexpectedly undefined"
-      );
+  private handleTitleContainerSizeChanged = (titleContainerWidth: number) => {
+    if (
+      !this.parsedTypeInfo ||
+      !this.singleLineDisplay ||
+      !this.singleLineMeasure
+    ) {
+      return;
     }
 
-    // TODO:
-    const measureContainer = nothing;
+    // Get widths from refs
+    const offscreenTextSizeMeasureContainerWidth =
+      this.offscreenTextSizeMeasureContainerRef.value?.offsetWidth ?? 0;
+    const offscreenTypeMeasureContainerWidth =
+      this.offscreenTypeMeasureContainerRef.value?.offsetWidth ?? 0;
+    const titlePrefixContainerWidth =
+      this.titlePrefixContainerRef.value?.offsetWidth ?? 0;
+
+    // If the value is 0, that means we haven't rendered yet and don't know the
+    // width. In this case, we just don't render the type at all.
+    if (offscreenTextSizeMeasureContainerWidth === 0) {
+      this.multiline = false;
+      this.contents = "";
+      return;
+    }
+
+    // Determine if we need to show this in two lines, based on the width of the
+    // the measured single line type
+    const multiline =
+      offscreenTypeMeasureContainerWidth >
+      titleContainerWidth - titlePrefixContainerWidth;
+
+    // If the measured width is 0, that means we're running on the server in which
+    // case we want to render content on a single line. We only need maxCharacters
+    // in the multiline case, so we don't need to consider the title width when
+    // computing max characters.
+    const maxMultilineCharacters =
+      titleContainerWidth === 0 || offscreenTextSizeMeasureContainerWidth === 0
+        ? Infinity
+        : // We subtract 4 here to account for the padding on the left and right
+          Math.floor(
+            titleContainerWidth / offscreenTextSizeMeasureContainerWidth
+          ) - 4;
+
+    // Finally, if we are multiline, compute the multiline type label, otherwise
+    // we can reuse the single line version we already computed
+    const contents = multiline
+      ? computeMultilineTypeLabel(
+          this.parsedTypeInfo,
+          0,
+          maxMultilineCharacters
+        ).contents
+      : this.singleLineDisplay;
+
+    this.multiline = multiline;
+    this.contents = contents;
+  };
+
+  public override render() {
+    if (
+      !this.parsedTypeInfo ||
+      !this.parsedTypeAnnotations ||
+      !this.singleLineDisplay ||
+      !this.singleLineMeasure
+    ) {
+      throw new InternalError("Computed properties are unexpectedly undefined");
+    }
 
     const titlePrefix = html`
       <span
@@ -140,14 +268,6 @@ export class ExpandableProperty extends LitElement {
         )}
       </span>
     `;
-
-    const titleContainer = html`<div
-      ref=${this.titleContainerRef}
-      style="position: relative"
-      class="propertyTitleContainer"
-    >
-      ${titlePrefix}
-    </div>`;
 
     const frontmatterConnection = this.hasBreakouts ? "connected" : "none";
     const frontmatter = html`
@@ -198,8 +318,81 @@ export class ExpandableProperty extends LitElement {
       ${this.hasBreakouts ? html` <slot name="breakouts"></slot> ` : nothing}
     `;
 
-    // TODO:
-    const propertyCell = frontmatter;
+    let titleContainer: TemplateResult;
+    let propertyCell: TemplateResult;
+    if (this.multiline === undefined) {
+      titleContainer = html`<spk-internal-expandable-property-title-container
+        .onSizeChanged=${this.handleTitleContainerSizeChanged}
+      >
+        <div class="propertyTitleContainer">${titlePrefix}</div>
+      </spk-internal-expandable-property-title-container>`;
+
+      propertyCell = frontmatter;
+    } else {
+      const typeContainer = html` <div>
+        <div
+          class="${clsx(
+            "typeInnerContainer",
+            this.multiline
+              ? "typeInnerContainerMultiline"
+              : "typeInnerContainerInline"
+          )}"
+        >
+          ${unsafeHTML(this.contents ?? "")}
+        </div>
+      </div>`;
+
+      titleContainer = html`<spk-internal-expandable-property-title-container
+        .onSizeChanged=${this.handleTitleContainerSizeChanged}
+      >
+        <div class="propertyTitleContainer">
+          ${titlePrefix}
+          ${this.multiline
+            ? html`
+                <div class="typeInnerContainer typeInnerContainerInline">
+                  ${this.parsedTypeInfo.label}
+                </div>
+              `
+            : typeContainer}
+        </div>
+      </spk-internal-expandable-property-title-container>`;
+
+      propertyCell = propertyCell = html`
+        ${this.multiline
+          ? html`
+              <spk-internal-connecting-cell
+                bottom="${frontmatterConnection}"
+                top="${frontmatterConnection}"
+                right="none"
+              >
+                ${typeContainer}
+              </spk-internal-connecting-cell>
+            `
+          : nothing}
+        ${frontmatter}
+      `;
+    }
+
+    const measureContainer = html`
+      <!-- This offscreen measure is used to determine the width of a character,
+      for use in multiline type computation -->
+      <div
+        class="offscreenMeasureContainer"
+        ref="${ref(this.offscreenTextSizeMeasureContainerRef)}"
+      >
+        A
+      </div>
+
+      <!-- This offscreen measure is used to determine the width of the single
+      line type, for use in determining if we need to split the type into
+      multiple lines -->
+      <div
+        class="offscreenMeasureContainer"
+        ref="${ref(this.offscreenTypeMeasureContainerRef)}"
+      >
+        ${this.singleLineMeasure}
+      </div>
+    `;
 
     const hasExpandableContent =
       !!this.hasDescription ||
