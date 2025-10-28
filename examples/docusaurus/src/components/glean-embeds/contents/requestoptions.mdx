@@ -16,8 +16,8 @@ import {
 import Embedauthtokens from "../loaders/authtokens.tsx";
 import Embedexclusions from "../loaders/exclusions.tsx";
 import Embedfacetbucketfilter from "../loaders/facetbucketfilter.tsx";
-import Embedfacetfiltersets from "../loaders/facetfiltersets.tsx";
 import Embedfacetfilters from "../loaders/facetfilters.tsx";
+import Embedfacetfiltersets from "../loaders/facetfiltersets.tsx";
 import Embedinclusions from "../loaders/inclusions.tsx";
 
 <ExpandableSection>
@@ -56,6 +56,31 @@ import Embedinclusions from "../loaders/inclusions.tsx";
 </ExpandableBreakoutTitle>
 
 <ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="requestOptions_SearchRequestOptions_facetBucketSize"
+  headingId="embed-requestoptions+requestoptions+searchrequestoptions+facetbucketsize"
+  parentId="requestOptions_SearchRequestOptions"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### facetBucketSize \{#embed-requestoptions+requestoptions+searchrequestoptions+facetbucketsize\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The maximum number of FacetBuckets to return in each FacetResult.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -293,26 +318,44 @@ Whether or not to disable spellcheck.
 
 <ExpandableProperty
   slot="entry"
-  id="requestOptions_SearchRequestOptions_facetBucketSize"
-  headingId="embed-requestoptions+requestoptions+searchrequestoptions+facetbucketsize"
+  id="requestOptions_SearchRequestOptions_facetFilters"
+  headingId="embed-requestoptions+requestoptions+searchrequestoptions+facetfilters"
   parentId="requestOptions_SearchRequestOptions"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-requestoptions+requestoptions+searchrequestoptions+facetfilters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#embed-requestoptions+requestoptions+searchrequestoptions+facetfilters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### facetBucketSize \{#embed-requestoptions+requestoptions+searchrequestoptions+facetbucketsize\}
+##### facetFilters \{#embed-requestoptions+requestoptions+searchrequestoptions+facetfilters\}
 
 </ExpandablePropertyTitle>
 
 <ExpandablePropertyDescription slot="description">
 
-The maximum number of FacetBuckets to return in each FacetResult.
+A list of filters for the query. An AND is assumed between different facetFilters. For example, owner Sumeet and type Spreadsheet shows documents that are by Sumeet AND are Spreadsheets.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="facetFilters"
+  triggerText="View facetFilters details"
+>
+
+<Embedfacetfilters />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -350,49 +393,6 @@ A list of facet filter sets that will be OR'ed together. SearchRequestOptions wh
 >
 
 <Embedfacetfiltersets />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="requestOptions_SearchRequestOptions_facetFilters"
-  headingId="embed-requestoptions+requestoptions+searchrequestoptions+facetfilters"
-  parentId="requestOptions_SearchRequestOptions"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#embed-requestoptions+requestoptions+searchrequestoptions+facetfilters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#embed-requestoptions+requestoptions+searchrequestoptions+facetfilters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### facetFilters \{#embed-requestoptions+requestoptions+searchrequestoptions+facetfilters\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A list of filters for the query. An AND is assumed between different facetFilters. For example, owner Sumeet and type Spreadsheet shows documents that are by Sumeet AND are Spreadsheets.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyBreakouts slot="breakouts">
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="facetFilters"
-  triggerText="View facetFilters details"
->
-
-<Embedfacetfilters />
 
 </EmbedTrigger>
 

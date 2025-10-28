@@ -48,8 +48,8 @@ import {
 import Embedauthtokens from "../../../../../src/components/glean-embeds/loaders/authtokens.tsx";
 import Embedexclusions from "../../../../../src/components/glean-embeds/loaders/exclusions.tsx";
 import Embedfacetbucketfilter from "../../../../../src/components/glean-embeds/loaders/facetbucketfilter.tsx";
-import Embedfacetfiltersets from "../../../../../src/components/glean-embeds/loaders/facetfiltersets.tsx";
 import Embedfacetfilters from "../../../../../src/components/glean-embeds/loaders/facetfilters.tsx";
+import Embedfacetfiltersets from "../../../../../src/components/glean-embeds/loaders/facetfiltersets.tsx";
 import Embedinclusions from "../../../../../src/components/glean-embeds/loaders/inclusions.tsx";
 import Embedcontainerdocument from "../../../../../src/components/glean-embeds/loaders/containerdocument.tsx";
 import Embedcontent from "../../../../../src/components/glean-embeds/loaders/content.tsx";
@@ -61,8 +61,8 @@ import Embedfollowupactions from "../../../../../src/components/glean-embeds/loa
 import Embedranges from "../../../../../src/components/glean-embeds/loaders/ranges.tsx";
 import Embedadditionalquerysuggestions from "../../../../../src/components/glean-embeds/loaders/additionalquerysuggestions.tsx";
 import Embedquerysuggestion from "../../../../../src/components/glean-embeds/loaders/querysuggestion.tsx";
-import Embedsearchwarning from "../../../../../src/components/glean-embeds/loaders/searchwarning.tsx";
 import Embedsearchedqueryranges from "../../../../../src/components/glean-embeds/loaders/searchedqueryranges.tsx";
+import Embedsearchwarning from "../../../../../src/components/glean-embeds/loaders/searchwarning.tsx";
 import Embedallclusteredresults from "../../../../../src/components/glean-embeds/loaders/allclusteredresults.tsx";
 import Embedattachments from "../../../../../src/components/glean-embeds/loaders/attachments.tsx";
 import Embedbacklinkresults from "../../../../../src/components/glean-embeds/loaders/backlinkresults.tsx";
@@ -232,6 +232,40 @@ Admin search request
 </OperationRequestBodyDescriptionSection>
 
 <ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="query"
+  headingId="operation-adminsearch+request+query"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### query \{#operation-adminsearch+request+query\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The search terms.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+vacation policy
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -419,40 +453,6 @@ _Example:_
 
 <ExpandableProperty
   slot="entry"
-  id="query"
-  headingId="operation-adminsearch+request+query"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### query \{#operation-adminsearch+request+query\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The search terms.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-vacation policy
-```
-
-</ExpandablePropertyExamples>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="requestOptions"
   headingId="operation-adminsearch+request+requestoptions"
   typeInfo={{"label":"SearchRequestOptions","linkedLabel":"<a href=\"#operation-adminsearch+request+requestoptions+searchrequestoptions\">SearchRequestOptions</a>","children":[],"breakoutSubTypes":{}}}
@@ -485,6 +485,31 @@ vacation policy
 </ExpandableBreakoutTitle>
 
 <ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="requestOptions_SearchRequestOptions_facetBucketSize"
+  headingId="operation-adminsearch+request+requestoptions+searchrequestoptions+facetbucketsize"
+  parentId="requestOptions_SearchRequestOptions"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### facetBucketSize \{#operation-adminsearch+request+requestoptions+searchrequestoptions+facetbucketsize\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The maximum number of FacetBuckets to return in each FacetResult.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -722,26 +747,44 @@ Whether or not to disable spellcheck.
 
 <ExpandableProperty
   slot="entry"
-  id="requestOptions_SearchRequestOptions_facetBucketSize"
-  headingId="operation-adminsearch+request+requestoptions+searchrequestoptions+facetbucketsize"
+  id="requestOptions_SearchRequestOptions_facetFilters"
+  headingId="operation-adminsearch+request+requestoptions+searchrequestoptions+facetfilters"
   parentId="requestOptions_SearchRequestOptions"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-adminsearch+request+requestoptions+searchrequestoptions+facetfilters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-adminsearch+request+requestoptions+searchrequestoptions+facetfilters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### facetBucketSize \{#operation-adminsearch+request+requestoptions+searchrequestoptions+facetbucketsize\}
+##### facetFilters \{#operation-adminsearch+request+requestoptions+searchrequestoptions+facetfilters\}
 
 </ExpandablePropertyTitle>
 
 <ExpandablePropertyDescription slot="description">
 
-The maximum number of FacetBuckets to return in each FacetResult.
+A list of filters for the query. An AND is assumed between different facetFilters. For example, owner Sumeet and type Spreadsheet shows documents that are by Sumeet AND are Spreadsheets.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="facetFilters"
+  triggerText="View facetFilters details"
+>
+
+<Embedfacetfilters />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -779,49 +822,6 @@ A list of facet filter sets that will be OR'ed together. SearchRequestOptions wh
 >
 
 <Embedfacetfiltersets />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="requestOptions_SearchRequestOptions_facetFilters"
-  headingId="operation-adminsearch+request+requestoptions+searchrequestoptions+facetfilters"
-  parentId="requestOptions_SearchRequestOptions"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-adminsearch+request+requestoptions+searchrequestoptions+facetfilters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-adminsearch+request+requestoptions+searchrequestoptions+facetfilters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### facetFilters \{#operation-adminsearch+request+requestoptions+searchrequestoptions+facetfilters\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A list of filters for the query. An AND is assumed between different facetFilters. For example, owner Sumeet and type Spreadsheet shows documents that are by Sumeet AND are Spreadsheets.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyBreakouts slot="breakouts">
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="facetFilters"
-  triggerText="View facetFilters details"
->
-
-<Embedfacetfilters />
 
 </EmbedTrigger>
 
@@ -1719,28 +1719,6 @@ OK
 
 <ExpandableProperty
   slot="entry"
-  id="GleanDataError"
-  headingId="operation-adminsearch+responses+200+application-json+gleandataerror"
-  typeInfo={{"label":"GleanDataError","linkedLabel":"<a href=\"#operation-adminsearch+responses+200+application-json+gleandataerror+gleandataerror\">GleanDataError</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### GleanDataError \{#operation-adminsearch+responses+200+application-json+gleandataerror\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyBreakouts slot="breakouts">
-
-</ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="backendTimeMillis"
   headingId="operation-adminsearch+responses+200+application-json+backendtimemillis"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
@@ -2130,31 +2108,6 @@ An opaque cursor representing the search request
 
 <ExpandableProperty
   slot="entry"
-  id="generatedQnaResult_GeneratedQna_followUpPrompts"
-  headingId="operation-adminsearch+responses+200+application-json+generatedqnaresult+generatedqna+followupprompts"
-  parentId="generatedQnaResult_GeneratedQna"
-  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### followUpPrompts \{#operation-adminsearch+responses+200+application-json+generatedqnaresult+generatedqna+followupprompts\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-List of all follow-up prompts generated for the given query or the generated question.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="generatedQnaResult_GeneratedQna_followupActions"
   headingId="operation-adminsearch+responses+200+application-json+generatedqnaresult+generatedqna+followupactions"
   parentId="generatedQnaResult_GeneratedQna"
@@ -2193,6 +2146,31 @@ List of follow-up actions generated for the given query or the generated questio
 </Embed>
 
 </ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="generatedQnaResult_GeneratedQna_followUpPrompts"
+  headingId="operation-adminsearch+responses+200+application-json+generatedqnaresult+generatedqna+followupprompts"
+  parentId="generatedQnaResult_GeneratedQna"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### followUpPrompts \{#operation-adminsearch+responses+200+application-json+generatedqnaresult+generatedqna+followupprompts\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of all follow-up prompts generated for the given query or the generated question.
+
+</ExpandablePropertyDescription>
 
 </ExpandableProperty>
 
@@ -2313,6 +2291,28 @@ An opaque token that represents this particular result in this particular query.
 </ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="GleanDataError"
+  headingId="operation-adminsearch+responses+200+application-json+gleandataerror"
+  typeInfo={{"label":"GleanDataError","linkedLabel":"<a href=\"#operation-adminsearch+responses+200+application-json+gleandataerror+gleandataerror\">GleanDataError</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### GleanDataError \{#operation-adminsearch+responses+200+application-json+gleandataerror\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
 
 </ExpandablePropertyBreakouts>
 
@@ -2603,43 +2603,6 @@ A cleaned up or updated version of the query to be displayed in the query box. U
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_SearchResponseMetadata_searchWarning"
-  headingId="operation-adminsearch+responses+200+application-json+metadata+searchresponsemetadata+searchwarning"
-  parentId="metadata_SearchResponseMetadata"
-  typeInfo={{"label":"SearchWarning","linkedLabel":"<a href=\"#operation-adminsearch+responses+200+application-json+metadata+searchresponsemetadata+searchwarning+searchwarning\">SearchWarning</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### searchWarning \{#operation-adminsearch+responses+200+application-json+metadata+searchresponsemetadata+searchwarning\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyBreakouts slot="breakouts">
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="searchWarning"
-  triggerText="View searchWarning details"
->
-
-<Embedsearchwarning />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="metadata_SearchResponseMetadata_searchedQuery"
   headingId="operation-adminsearch+responses+200+application-json+metadata+searchresponsemetadata+searchedquery"
   parentId="metadata_SearchResponseMetadata"
@@ -2733,6 +2696,43 @@ The query used to perform search and return results, with negated terms and face
 
 <ExpandableProperty
   slot="entry"
+  id="metadata_SearchResponseMetadata_searchWarning"
+  headingId="operation-adminsearch+responses+200+application-json+metadata+searchresponsemetadata+searchwarning"
+  parentId="metadata_SearchResponseMetadata"
+  typeInfo={{"label":"SearchWarning","linkedLabel":"<a href=\"#operation-adminsearch+responses+200+application-json+metadata+searchresponsemetadata+searchwarning+searchwarning\">SearchWarning</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### searchWarning \{#operation-adminsearch+responses+200+application-json+metadata+searchresponsemetadata+searchwarning\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="searchWarning"
+  triggerText="View searchWarning details"
+>
+
+<Embedsearchwarning />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
   id="metadata_SearchResponseMetadata_triggeredExpertDetection"
   headingId="operation-adminsearch+responses+200+application-json+metadata+searchresponsemetadata+triggeredexpertdetection"
   parentId="metadata_SearchResponseMetadata"
@@ -2790,179 +2790,6 @@ A platform-generated request ID to correlate backend logs.
 
 <ExpandableProperty
   slot="entry"
-  id="resultTabIds"
-  headingId="operation-adminsearch+responses+200+application-json+resulttabids"
-  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### resultTabIds \{#operation-adminsearch+responses+200+application-json+resulttabids\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The unique IDs of the result tabs to which this response belongs.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="resultTabs"
-  headingId="operation-adminsearch+responses+200+application-json+resulttabs"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-adminsearch+responses+200+application-json+resulttabs+resulttab\">ResultTab</a>","children":[{"label":"ResultTab","linkedLabel":"<a href=\"#operation-adminsearch+responses+200+application-json+resulttabs+resulttab\">ResultTab</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### resultTabs \{#operation-adminsearch+responses+200+application-json+resulttabs\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-All result tabs available for the current query. Populated if QUERY_METADATA is specified in the request.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyBreakouts slot="breakouts">
-
-<ExpandableBreakout
-  slot="entry"
-  id="resultTabs_ResultTab"
-  headingId="operation-adminsearch+responses+200+application-json+resulttabs+resulttab"
-  parentId="resultTabs"
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### ResultTab \{#operation-adminsearch+responses+200+application-json+resulttabs+resulttab\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutProperties slot="properties">
-
-<ExpandableProperty
-  slot="entry"
-  id="resultTabs_ResultTab_count"
-  headingId="operation-adminsearch+responses+200+application-json+resulttabs+resulttab+count"
-  parentId="resultTabs_ResultTab"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### count \{#operation-adminsearch+responses+200+application-json+resulttabs+resulttab+count\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The number of results in this tab for the current query.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="resultTabs_ResultTab_datasource"
-  headingId="operation-adminsearch+responses+200+application-json+resulttabs+resulttab+datasource"
-  parentId="resultTabs_ResultTab"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### datasource \{#operation-adminsearch+responses+200+application-json+resulttabs+resulttab+datasource\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The datasource associated with the tab, if any.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="resultTabs_ResultTab_datasourceInstance"
-  headingId="operation-adminsearch+responses+200+application-json+resulttabs+resulttab+datasourceinstance"
-  parentId="resultTabs_ResultTab"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### datasourceInstance \{#operation-adminsearch+responses+200+application-json+resulttabs+resulttab+datasourceinstance\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The datasource instance associated with the tab, if any.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="resultTabs_ResultTab_id"
-  headingId="operation-adminsearch+responses+200+application-json+resulttabs+resulttab+id"
-  parentId="resultTabs_ResultTab"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### id \{#operation-adminsearch+responses+200+application-json+resulttabs+resulttab+id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The unique ID of the tab. Can be passed in a search request to get results for that tab.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-</ExpandableBreakoutProperties>
-
-</ExpandableBreakout>
-
-</ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="results"
   headingId="operation-adminsearch+responses+200+application-json+results"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-adminsearch+responses+200+application-json+results+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#operation-adminsearch+responses+200+application-json+results+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
@@ -3001,6 +2828,25 @@ A truncated list of documents associated with this relation. To be used in favor
 </ExpandableBreakoutTitle>
 
 <ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="results_SearchResult_url"
+  headingId="operation-adminsearch+responses+200+application-json+results+searchresult+url"
+  parentId="results_SearchResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-adminsearch+responses+200+application-json+results+searchresult+url\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -3179,31 +3025,6 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <ExpandableProperty
   slot="entry"
-  id="results_SearchResult_clusterType"
-  headingId="operation-adminsearch+responses+200+application-json+results+searchresult+clustertype"
-  parentId="results_SearchResult"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"SIMILAR\"","linkedLabel":"\"SIMILAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"FRESHNESS\"","linkedLabel":"\"FRESHNESS\"","children":[],"breakoutSubTypes":{}},{"label":"\"TITLE\"","linkedLabel":"\"TITLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"NONE\"","linkedLabel":"\"NONE\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_REPLY\"","linkedLabel":"\"THREAD_REPLY\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_ROOT\"","linkedLabel":"\"THREAD_ROOT\"","children":[],"breakoutSubTypes":{}},{"label":"\"PREFIX\"","linkedLabel":"\"PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUFFIX\"","linkedLabel":"\"SUFFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_PREFIX\"","linkedLabel":"\"AUTHOR_PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_SUFFIX\"","linkedLabel":"\"AUTHOR_SUFFIX\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### clusterType \{#operation-adminsearch+responses+200+application-json+results+searchresult+clustertype\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The reason for inclusion of clusteredResults.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="results_SearchResult_clusteredResults"
   headingId="operation-adminsearch+responses+200+application-json+results+searchresult+clusteredresults"
   parentId="results_SearchResult"
@@ -3242,6 +3063,31 @@ A truncated list of documents associated with this relation. To be used in favor
 </Embed>
 
 </ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results_SearchResult_clusterType"
+  headingId="operation-adminsearch+responses+200+application-json+results+searchresult+clustertype"
+  parentId="results_SearchResult"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"SIMILAR\"","linkedLabel":"\"SIMILAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"FRESHNESS\"","linkedLabel":"\"FRESHNESS\"","children":[],"breakoutSubTypes":{}},{"label":"\"TITLE\"","linkedLabel":"\"TITLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"NONE\"","linkedLabel":"\"NONE\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_REPLY\"","linkedLabel":"\"THREAD_REPLY\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_ROOT\"","linkedLabel":"\"THREAD_ROOT\"","children":[],"breakoutSubTypes":{}},{"label":"\"PREFIX\"","linkedLabel":"\"PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUFFIX\"","linkedLabel":"\"SUFFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_PREFIX\"","linkedLabel":"\"AUTHOR_PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_SUFFIX\"","linkedLabel":"\"AUTHOR_SUFFIX\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### clusterType \{#operation-adminsearch+responses+200+application-json+results+searchresult+clustertype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The reason for inclusion of clusteredResults.
+
+</ExpandablePropertyDescription>
 
 </ExpandableProperty>
 
@@ -3661,25 +3507,6 @@ An opaque token that represents this particular result in this particular query.
 
 </ExpandableProperty>
 
-<ExpandableProperty
-  slot="entry"
-  id="results_SearchResult_url"
-  headingId="operation-adminsearch+responses+200+application-json+results+searchresult+url"
-  parentId="results_SearchResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### url \{#operation-adminsearch+responses+200+application-json+results+searchresult+url\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
 </ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
@@ -3782,6 +3609,179 @@ Defines how to render an icon
 <ExpandablePropertyDescription slot="description">
 
 Textual description of the results. Can be shown at the top of SERP, e.g. 'People who write about this topic' for experts in people tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="resultTabIds"
+  headingId="operation-adminsearch+responses+200+application-json+resulttabids"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### resultTabIds \{#operation-adminsearch+responses+200+application-json+resulttabids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The unique IDs of the result tabs to which this response belongs.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="resultTabs"
+  headingId="operation-adminsearch+responses+200+application-json+resulttabs"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-adminsearch+responses+200+application-json+resulttabs+resulttab\">ResultTab</a>","children":[{"label":"ResultTab","linkedLabel":"<a href=\"#operation-adminsearch+responses+200+application-json+resulttabs+resulttab\">ResultTab</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### resultTabs \{#operation-adminsearch+responses+200+application-json+resulttabs\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+All result tabs available for the current query. Populated if QUERY_METADATA is specified in the request.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="resultTabs_ResultTab"
+  headingId="operation-adminsearch+responses+200+application-json+resulttabs+resulttab"
+  parentId="resultTabs"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ResultTab \{#operation-adminsearch+responses+200+application-json+resulttabs+resulttab\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="resultTabs_ResultTab_count"
+  headingId="operation-adminsearch+responses+200+application-json+resulttabs+resulttab+count"
+  parentId="resultTabs_ResultTab"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### count \{#operation-adminsearch+responses+200+application-json+resulttabs+resulttab+count\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The number of results in this tab for the current query.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="resultTabs_ResultTab_datasource"
+  headingId="operation-adminsearch+responses+200+application-json+resulttabs+resulttab+datasource"
+  parentId="resultTabs_ResultTab"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-adminsearch+responses+200+application-json+resulttabs+resulttab+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource associated with the tab, if any.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="resultTabs_ResultTab_datasourceInstance"
+  headingId="operation-adminsearch+responses+200+application-json+resulttabs+resulttab+datasourceinstance"
+  parentId="resultTabs_ResultTab"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasourceInstance \{#operation-adminsearch+responses+200+application-json+resulttabs+resulttab+datasourceinstance\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource instance associated with the tab, if any.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="resultTabs_ResultTab_id"
+  headingId="operation-adminsearch+responses+200+application-json+resulttabs+resulttab+id"
+  parentId="resultTabs_ResultTab"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-adminsearch+responses+200+application-json+resulttabs+resulttab+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The unique ID of the tab. Can be passed in a search request to get results for that tab.
 
 </ExpandablePropertyDescription>
 
@@ -5456,6 +5456,25 @@ Auth tokens which may be used for non-indexed, federated results (e.g. Gmail).
 
 <ExpandableProperty
   slot="entry"
+  id="authTokens_AuthToken_datasource"
+  headingId="operation-autocomplete+request+authtokens+authtoken+datasource"
+  parentId="authTokens_AuthToken"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-autocomplete+request+authtokens+authtoken+datasource\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
   id="authTokens_AuthToken_authUser"
   headingId="operation-autocomplete+request+authtokens+authtoken+authuser"
   parentId="authTokens_AuthToken"
@@ -5476,25 +5495,6 @@ Auth tokens which may be used for non-indexed, federated results (e.g. Gmail).
 Used by Google to indicate the index of the logged in user. Useful for generating hyperlinks that support multilogin.
 
 </ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="authTokens_AuthToken_datasource"
-  headingId="operation-autocomplete+request+authtokens+authtoken+datasource"
-  parentId="authTokens_AuthToken"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### datasource \{#operation-autocomplete+request+authtokens+authtoken+datasource\}
-
-</ExpandablePropertyTitle>
 
 </ExpandableProperty>
 
@@ -5946,28 +5946,6 @@ OK
 
 <ExpandableProperty
   slot="entry"
-  id="GleanDataError"
-  headingId="operation-autocomplete+responses+200+application-json+gleandataerror"
-  typeInfo={{"label":"GleanDataError","linkedLabel":"<a href=\"#operation-autocomplete+responses+200+application-json+gleandataerror+gleandataerror\">GleanDataError</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### GleanDataError \{#operation-autocomplete+responses+200+application-json+gleandataerror\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyBreakouts slot="breakouts">
-
-</ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="backendTimeMillis"
   headingId="operation-autocomplete+responses+200+application-json+backendtimemillis"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
@@ -6021,6 +5999,28 @@ _Example:_
 List of experiment ids for the corresponding request.
 
 </ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="GleanDataError"
+  headingId="operation-autocomplete+responses+200+application-json+gleandataerror"
+  typeInfo={{"label":"GleanDataError","linkedLabel":"<a href=\"#operation-autocomplete+responses+200+application-json+gleandataerror+gleandataerror\">GleanDataError</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### GleanDataError \{#operation-autocomplete+responses+200+application-json+gleandataerror\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -6188,6 +6188,25 @@ The title of the result group to be displayed. Empty means no title.
 </ExpandableBreakoutTitle>
 
 <ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="results_AutocompleteResult_result"
+  headingId="operation-autocomplete+responses+200+application-json+results+autocompleteresult+result"
+  parentId="results_AutocompleteResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### result \{#operation-autocomplete+responses+200+application-json+results+autocompleteresult+result\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -6359,25 +6378,6 @@ The bolded ranges within the query of the QuerySuggestion.
 </Embed>
 
 </ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="results_AutocompleteResult_result"
-  headingId="operation-autocomplete+responses+200+application-json+results+autocompleteresult+result"
-  parentId="results_AutocompleteResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### result \{#operation-autocomplete+responses+200+application-json+results+autocompleteresult+result\}
-
-</ExpandablePropertyTitle>
 
 </ExpandableProperty>
 
@@ -6870,6 +6870,31 @@ Categories of content requested. An allowlist gives flexibility to request conte
 
 <ExpandableProperty
   slot="entry"
+  id="requestOptions_FeedRequestOptions_resultSize"
+  headingId="operation-feed+request+requestoptions+feedrequestoptions+resultsize"
+  parentId="requestOptions_FeedRequestOptions"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### resultSize \{#operation-feed+request+requestoptions+feedrequestoptions+resultsize\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Number of results asked in response. If a result is a collection, counts as one.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
   id="requestOptions_FeedRequestOptions_categoryToResultSize"
   headingId="operation-feed+request+requestoptions+feedrequestoptions+categorytoresultsize"
   parentId="requestOptions_FeedRequestOptions"
@@ -6968,31 +6993,6 @@ Mapping from category to number of results asked for the category.
 <ExpandablePropertyDescription slot="description">
 
 Datasources for which content should be included. Empty is for all.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="requestOptions_FeedRequestOptions_resultSize"
-  headingId="operation-feed+request+requestoptions+feedrequestoptions+resultsize"
-  parentId="requestOptions_FeedRequestOptions"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### resultSize \{#operation-feed+request+requestoptions+feedrequestoptions+resultsize\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Number of results asked in response. If a result is a collection, counts as one.
 
 </ExpandablePropertyDescription>
 
@@ -7279,6 +7279,30 @@ OK
 </OperationResponseBodyDescriptionSection>
 
 <ExpandableSection>
+
+<ExpandableProperty
+  slot="entry"
+  id="serverTimestamp"
+  headingId="operation-feed+responses+200+application-json+servertimestamp"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### serverTimestamp \{#operation-feed+responses+200+application-json+servertimestamp\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+Server unix timestamp (in seconds since epoch UTC).
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -7726,30 +7750,6 @@ Secondary entries for the result e.g. suggested docs for the calendar, carousel.
 </ExpandableBreakout>
 
 </ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="serverTimestamp"
-  headingId="operation-feed+responses+200+application-json+servertimestamp"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### serverTimestamp \{#operation-feed+responses+200+application-json+servertimestamp\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-Server unix timestamp (in seconds since epoch UTC).
-
-</ExpandablePropertyDescription>
 
 </ExpandableProperty>
 
@@ -8821,28 +8821,6 @@ OK
 
 <ExpandableProperty
   slot="entry"
-  id="GleanDataError"
-  headingId="operation-recommendations+responses+200+application-json+gleandataerror"
-  typeInfo={{"label":"GleanDataError","linkedLabel":"<a href=\"#operation-recommendations+responses+200+application-json+gleandataerror+gleandataerror\">GleanDataError</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### GleanDataError \{#operation-recommendations+responses+200+application-json+gleandataerror\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyBreakouts slot="breakouts">
-
-</ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="backendTimeMillis"
   headingId="operation-recommendations+responses+200+application-json+backendtimemillis"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
@@ -8962,31 +8940,6 @@ An opaque cursor representing the search request
 
 <ExpandableProperty
   slot="entry"
-  id="generatedQnaResult_GeneratedQna_followUpPrompts"
-  headingId="operation-recommendations+responses+200+application-json+generatedqnaresult+generatedqna+followupprompts"
-  parentId="generatedQnaResult_GeneratedQna"
-  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### followUpPrompts \{#operation-recommendations+responses+200+application-json+generatedqnaresult+generatedqna+followupprompts\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-List of all follow-up prompts generated for the given query or the generated question.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="generatedQnaResult_GeneratedQna_followupActions"
   headingId="operation-recommendations+responses+200+application-json+generatedqnaresult+generatedqna+followupactions"
   parentId="generatedQnaResult_GeneratedQna"
@@ -9025,6 +8978,31 @@ List of follow-up actions generated for the given query or the generated questio
 </Embed>
 
 </ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="generatedQnaResult_GeneratedQna_followUpPrompts"
+  headingId="operation-recommendations+responses+200+application-json+generatedqnaresult+generatedqna+followupprompts"
+  parentId="generatedQnaResult_GeneratedQna"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### followUpPrompts \{#operation-recommendations+responses+200+application-json+generatedqnaresult+generatedqna+followupprompts\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of all follow-up prompts generated for the given query or the generated question.
+
+</ExpandablePropertyDescription>
 
 </ExpandableProperty>
 
@@ -9152,6 +9130,28 @@ An opaque token that represents this particular result in this particular query.
 
 <ExpandableProperty
   slot="entry"
+  id="GleanDataError"
+  headingId="operation-recommendations+responses+200+application-json+gleandataerror"
+  typeInfo={{"label":"GleanDataError","linkedLabel":"<a href=\"#operation-recommendations+responses+200+application-json+gleandataerror+gleandataerror\">GleanDataError</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### GleanDataError \{#operation-recommendations+responses+200+application-json+gleandataerror\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
   id="requestID"
   headingId="operation-recommendations+responses+200+application-json+requestid"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
@@ -9214,6 +9214,25 @@ A truncated list of documents associated with this relation. To be used in favor
 </ExpandableBreakoutTitle>
 
 <ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="results_SearchResult_url"
+  headingId="operation-recommendations+responses+200+application-json+results+searchresult+url"
+  parentId="results_SearchResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-recommendations+responses+200+application-json+results+searchresult+url\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -9392,31 +9411,6 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <ExpandableProperty
   slot="entry"
-  id="results_SearchResult_clusterType"
-  headingId="operation-recommendations+responses+200+application-json+results+searchresult+clustertype"
-  parentId="results_SearchResult"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"SIMILAR\"","linkedLabel":"\"SIMILAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"FRESHNESS\"","linkedLabel":"\"FRESHNESS\"","children":[],"breakoutSubTypes":{}},{"label":"\"TITLE\"","linkedLabel":"\"TITLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"NONE\"","linkedLabel":"\"NONE\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_REPLY\"","linkedLabel":"\"THREAD_REPLY\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_ROOT\"","linkedLabel":"\"THREAD_ROOT\"","children":[],"breakoutSubTypes":{}},{"label":"\"PREFIX\"","linkedLabel":"\"PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUFFIX\"","linkedLabel":"\"SUFFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_PREFIX\"","linkedLabel":"\"AUTHOR_PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_SUFFIX\"","linkedLabel":"\"AUTHOR_SUFFIX\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### clusterType \{#operation-recommendations+responses+200+application-json+results+searchresult+clustertype\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The reason for inclusion of clusteredResults.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="results_SearchResult_clusteredResults"
   headingId="operation-recommendations+responses+200+application-json+results+searchresult+clusteredresults"
   parentId="results_SearchResult"
@@ -9455,6 +9449,31 @@ A truncated list of documents associated with this relation. To be used in favor
 </Embed>
 
 </ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results_SearchResult_clusterType"
+  headingId="operation-recommendations+responses+200+application-json+results+searchresult+clustertype"
+  parentId="results_SearchResult"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"SIMILAR\"","linkedLabel":"\"SIMILAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"FRESHNESS\"","linkedLabel":"\"FRESHNESS\"","children":[],"breakoutSubTypes":{}},{"label":"\"TITLE\"","linkedLabel":"\"TITLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"NONE\"","linkedLabel":"\"NONE\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_REPLY\"","linkedLabel":"\"THREAD_REPLY\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_ROOT\"","linkedLabel":"\"THREAD_ROOT\"","children":[],"breakoutSubTypes":{}},{"label":"\"PREFIX\"","linkedLabel":"\"PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUFFIX\"","linkedLabel":"\"SUFFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_PREFIX\"","linkedLabel":"\"AUTHOR_PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_SUFFIX\"","linkedLabel":"\"AUTHOR_SUFFIX\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### clusterType \{#operation-recommendations+responses+200+application-json+results+searchresult+clustertype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The reason for inclusion of clusteredResults.
+
+</ExpandablePropertyDescription>
 
 </ExpandableProperty>
 
@@ -9871,25 +9890,6 @@ An array of entities in the work graph retrieved via a data request.
 An opaque token that represents this particular result in this particular query. To be used for /feedback reporting.
 
 </ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="results_SearchResult_url"
-  headingId="operation-recommendations+responses+200+application-json+results+searchresult+url"
-  parentId="results_SearchResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### url \{#operation-recommendations+responses+200+application-json+results+searchresult+url\}
-
-</ExpandablePropertyTitle>
 
 </ExpandableProperty>
 
@@ -10999,6 +10999,40 @@ Search request
 
 <ExpandableProperty
   slot="entry"
+  id="query"
+  headingId="operation-search+request+query"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### query \{#operation-search+request+query\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The search terms.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyExamples slot="examples">
+
+_Example:_
+
+```
+vacation policy
+```
+
+</ExpandablePropertyExamples>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
   id="cursor"
   headingId="operation-search+request+cursor"
   typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
@@ -11183,40 +11217,6 @@ _Example:_
 
 <ExpandableProperty
   slot="entry"
-  id="query"
-  headingId="operation-search+request+query"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### query \{#operation-search+request+query\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The search terms.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyExamples slot="examples">
-
-_Example:_
-
-```
-vacation policy
-```
-
-</ExpandablePropertyExamples>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="requestOptions"
   headingId="operation-search+request+requestoptions"
   typeInfo={{"label":"SearchRequestOptions","linkedLabel":"<a href=\"#operation-search+request+requestoptions+searchrequestoptions\">SearchRequestOptions</a>","children":[],"breakoutSubTypes":{}}}
@@ -11249,6 +11249,31 @@ vacation policy
 </ExpandableBreakoutTitle>
 
 <ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="requestOptions_SearchRequestOptions_facetBucketSize"
+  headingId="operation-search+request+requestoptions+searchrequestoptions+facetbucketsize"
+  parentId="requestOptions_SearchRequestOptions"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### facetBucketSize \{#operation-search+request+requestoptions+searchrequestoptions+facetbucketsize\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The maximum number of FacetBuckets to return in each FacetResult.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -11486,26 +11511,44 @@ Whether or not to disable spellcheck.
 
 <ExpandableProperty
   slot="entry"
-  id="requestOptions_SearchRequestOptions_facetBucketSize"
-  headingId="operation-search+request+requestoptions+searchrequestoptions+facetbucketsize"
+  id="requestOptions_SearchRequestOptions_facetFilters"
+  headingId="operation-search+request+requestoptions+searchrequestoptions+facetfilters"
   parentId="requestOptions_SearchRequestOptions"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-search+request+requestoptions+searchrequestoptions+facetfilters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-search+request+requestoptions+searchrequestoptions+facetfilters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
   hasExpandableContent={true}
   expandByDefault={false}
 >
 
 <ExpandablePropertyTitle slot="title">
 
-##### facetBucketSize \{#operation-search+request+requestoptions+searchrequestoptions+facetbucketsize\}
+##### facetFilters \{#operation-search+request+requestoptions+searchrequestoptions+facetfilters\}
 
 </ExpandablePropertyTitle>
 
 <ExpandablePropertyDescription slot="description">
 
-The maximum number of FacetBuckets to return in each FacetResult.
+A list of filters for the query. An AND is assumed between different facetFilters. For example, owner Sumeet and type Spreadsheet shows documents that are by Sumeet AND are Spreadsheets.
 
 </ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="facetFilters"
+  triggerText="View facetFilters details"
+>
+
+<Embedfacetfilters />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandablePropertyBreakouts>
 
 </ExpandableProperty>
 
@@ -11543,49 +11586,6 @@ A list of facet filter sets that will be OR'ed together. SearchRequestOptions wh
 >
 
 <Embedfacetfiltersets />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="requestOptions_SearchRequestOptions_facetFilters"
-  headingId="operation-search+request+requestoptions+searchrequestoptions+facetfilters"
-  parentId="requestOptions_SearchRequestOptions"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-search+request+requestoptions+searchrequestoptions+facetfilters+facetfilter\">FacetFilter</a>","children":[{"label":"FacetFilter","linkedLabel":"<a href=\"#operation-search+request+requestoptions+searchrequestoptions+facetfilters+facetfilter\">FacetFilter</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### facetFilters \{#operation-search+request+requestoptions+searchrequestoptions+facetfilters\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-A list of filters for the query. An AND is assumed between different facetFilters. For example, owner Sumeet and type Spreadsheet shows documents that are by Sumeet AND are Spreadsheets.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyBreakouts slot="breakouts">
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="facetFilters"
-  triggerText="View facetFilters details"
->
-
-<Embedfacetfilters />
 
 </EmbedTrigger>
 
@@ -12477,28 +12477,6 @@ OK
 
 <ExpandableProperty
   slot="entry"
-  id="GleanDataError"
-  headingId="operation-search+responses+200+application-json+gleandataerror"
-  typeInfo={{"label":"GleanDataError","linkedLabel":"<a href=\"#operation-search+responses+200+application-json+gleandataerror+gleandataerror\">GleanDataError</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### GleanDataError \{#operation-search+responses+200+application-json+gleandataerror\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyBreakouts slot="breakouts">
-
-</ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="backendTimeMillis"
   headingId="operation-search+responses+200+application-json+backendtimemillis"
   typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
@@ -12888,31 +12866,6 @@ An opaque cursor representing the search request
 
 <ExpandableProperty
   slot="entry"
-  id="generatedQnaResult_GeneratedQna_followUpPrompts"
-  headingId="operation-search+responses+200+application-json+generatedqnaresult+generatedqna+followupprompts"
-  parentId="generatedQnaResult_GeneratedQna"
-  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### followUpPrompts \{#operation-search+responses+200+application-json+generatedqnaresult+generatedqna+followupprompts\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-List of all follow-up prompts generated for the given query or the generated question.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="generatedQnaResult_GeneratedQna_followupActions"
   headingId="operation-search+responses+200+application-json+generatedqnaresult+generatedqna+followupactions"
   parentId="generatedQnaResult_GeneratedQna"
@@ -12951,6 +12904,31 @@ List of follow-up actions generated for the given query or the generated questio
 </Embed>
 
 </ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="generatedQnaResult_GeneratedQna_followUpPrompts"
+  headingId="operation-search+responses+200+application-json+generatedqnaresult+generatedqna+followupprompts"
+  parentId="generatedQnaResult_GeneratedQna"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### followUpPrompts \{#operation-search+responses+200+application-json+generatedqnaresult+generatedqna+followupprompts\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+List of all follow-up prompts generated for the given query or the generated question.
+
+</ExpandablePropertyDescription>
 
 </ExpandableProperty>
 
@@ -13071,6 +13049,28 @@ An opaque token that represents this particular result in this particular query.
 </ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="GleanDataError"
+  headingId="operation-search+responses+200+application-json+gleandataerror"
+  typeInfo={{"label":"GleanDataError","linkedLabel":"<a href=\"#operation-search+responses+200+application-json+gleandataerror+gleandataerror\">GleanDataError</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### GleanDataError \{#operation-search+responses+200+application-json+gleandataerror\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
 
 </ExpandablePropertyBreakouts>
 
@@ -13361,43 +13361,6 @@ A cleaned up or updated version of the query to be displayed in the query box. U
 
 <ExpandableProperty
   slot="entry"
-  id="metadata_SearchResponseMetadata_searchWarning"
-  headingId="operation-search+responses+200+application-json+metadata+searchresponsemetadata+searchwarning"
-  parentId="metadata_SearchResponseMetadata"
-  typeInfo={{"label":"SearchWarning","linkedLabel":"<a href=\"#operation-search+responses+200+application-json+metadata+searchresponsemetadata+searchwarning+searchwarning\">SearchWarning</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### searchWarning \{#operation-search+responses+200+application-json+metadata+searchresponsemetadata+searchwarning\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyBreakouts slot="breakouts">
-
-<Embed slot="embed">
-
-<EmbedTrigger
-  slot="trigger"
-  embedTitle="searchWarning"
-  triggerText="View searchWarning details"
->
-
-<Embedsearchwarning />
-
-</EmbedTrigger>
-
-</Embed>
-
-</ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="metadata_SearchResponseMetadata_searchedQuery"
   headingId="operation-search+responses+200+application-json+metadata+searchresponsemetadata+searchedquery"
   parentId="metadata_SearchResponseMetadata"
@@ -13491,6 +13454,43 @@ The query used to perform search and return results, with negated terms and face
 
 <ExpandableProperty
   slot="entry"
+  id="metadata_SearchResponseMetadata_searchWarning"
+  headingId="operation-search+responses+200+application-json+metadata+searchresponsemetadata+searchwarning"
+  parentId="metadata_SearchResponseMetadata"
+  typeInfo={{"label":"SearchWarning","linkedLabel":"<a href=\"#operation-search+responses+200+application-json+metadata+searchresponsemetadata+searchwarning+searchwarning\">SearchWarning</a>","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### searchWarning \{#operation-search+responses+200+application-json+metadata+searchresponsemetadata+searchwarning\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<Embed slot="embed">
+
+<EmbedTrigger
+  slot="trigger"
+  embedTitle="searchWarning"
+  triggerText="View searchWarning details"
+>
+
+<Embedsearchwarning />
+
+</EmbedTrigger>
+
+</Embed>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
   id="metadata_SearchResponseMetadata_triggeredExpertDetection"
   headingId="operation-search+responses+200+application-json+metadata+searchresponsemetadata+triggeredexpertdetection"
   parentId="metadata_SearchResponseMetadata"
@@ -13548,179 +13548,6 @@ A platform-generated request ID to correlate backend logs.
 
 <ExpandableProperty
   slot="entry"
-  id="resultTabIds"
-  headingId="operation-search+responses+200+application-json+resulttabids"
-  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### resultTabIds \{#operation-search+responses+200+application-json+resulttabids\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The unique IDs of the result tabs to which this response belongs.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="resultTabs"
-  headingId="operation-search+responses+200+application-json+resulttabs"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-search+responses+200+application-json+resulttabs+resulttab\">ResultTab</a>","children":[{"label":"ResultTab","linkedLabel":"<a href=\"#operation-search+responses+200+application-json+resulttabs+resulttab\">ResultTab</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### resultTabs \{#operation-search+responses+200+application-json+resulttabs\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-All result tabs available for the current query. Populated if QUERY_METADATA is specified in the request.
-
-</ExpandablePropertyDescription>
-
-<ExpandablePropertyBreakouts slot="breakouts">
-
-<ExpandableBreakout
-  slot="entry"
-  id="resultTabs_ResultTab"
-  headingId="operation-search+responses+200+application-json+resulttabs+resulttab"
-  parentId="resultTabs"
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandableBreakoutTitle slot="title">
-
-#### ResultTab \{#operation-search+responses+200+application-json+resulttabs+resulttab\}
-
-</ExpandableBreakoutTitle>
-
-<ExpandableBreakoutProperties slot="properties">
-
-<ExpandableProperty
-  slot="entry"
-  id="resultTabs_ResultTab_count"
-  headingId="operation-search+responses+200+application-json+resulttabs+resulttab+count"
-  parentId="resultTabs_ResultTab"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### count \{#operation-search+responses+200+application-json+resulttabs+resulttab+count\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The number of results in this tab for the current query.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="resultTabs_ResultTab_datasource"
-  headingId="operation-search+responses+200+application-json+resulttabs+resulttab+datasource"
-  parentId="resultTabs_ResultTab"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### datasource \{#operation-search+responses+200+application-json+resulttabs+resulttab+datasource\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The datasource associated with the tab, if any.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="resultTabs_ResultTab_datasourceInstance"
-  headingId="operation-search+responses+200+application-json+resulttabs+resulttab+datasourceinstance"
-  parentId="resultTabs_ResultTab"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### datasourceInstance \{#operation-search+responses+200+application-json+resulttabs+resulttab+datasourceinstance\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The datasource instance associated with the tab, if any.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
-  id="resultTabs_ResultTab_id"
-  headingId="operation-search+responses+200+application-json+resulttabs+resulttab+id"
-  parentId="resultTabs_ResultTab"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### id \{#operation-search+responses+200+application-json+resulttabs+resulttab+id\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The unique ID of the tab. Can be passed in a search request to get results for that tab.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-</ExpandableBreakoutProperties>
-
-</ExpandableBreakout>
-
-</ExpandablePropertyBreakouts>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="results"
   headingId="operation-search+responses+200+application-json+results"
   typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-search+responses+200+application-json+results+searchresult\">SearchResult</a>","children":[{"label":"SearchResult","linkedLabel":"<a href=\"#operation-search+responses+200+application-json+results+searchresult\">SearchResult</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
@@ -13759,6 +13586,25 @@ A truncated list of documents associated with this relation. To be used in favor
 </ExpandableBreakoutTitle>
 
 <ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="results_SearchResult_url"
+  headingId="operation-search+responses+200+application-json+results+searchresult+url"
+  parentId="results_SearchResult"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[{"title":"required","variant":"warning"}]}
+  hasExpandableContent={false}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### url \{#operation-search+responses+200+application-json+results+searchresult+url\}
+
+</ExpandablePropertyTitle>
+
+</ExpandableProperty>
 
 <ExpandableProperty
   slot="entry"
@@ -13937,31 +13783,6 @@ A truncated list of documents associated with this relation. To be used in favor
 
 <ExpandableProperty
   slot="entry"
-  id="results_SearchResult_clusterType"
-  headingId="operation-search+responses+200+application-json+results+searchresult+clustertype"
-  parentId="results_SearchResult"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"SIMILAR\"","linkedLabel":"\"SIMILAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"FRESHNESS\"","linkedLabel":"\"FRESHNESS\"","children":[],"breakoutSubTypes":{}},{"label":"\"TITLE\"","linkedLabel":"\"TITLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"NONE\"","linkedLabel":"\"NONE\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_REPLY\"","linkedLabel":"\"THREAD_REPLY\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_ROOT\"","linkedLabel":"\"THREAD_ROOT\"","children":[],"breakoutSubTypes":{}},{"label":"\"PREFIX\"","linkedLabel":"\"PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUFFIX\"","linkedLabel":"\"SUFFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_PREFIX\"","linkedLabel":"\"AUTHOR_PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_SUFFIX\"","linkedLabel":"\"AUTHOR_SUFFIX\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### clusterType \{#operation-search+responses+200+application-json+results+searchresult+clustertype\}
-
-</ExpandablePropertyTitle>
-
-<ExpandablePropertyDescription slot="description">
-
-The reason for inclusion of clusteredResults.
-
-</ExpandablePropertyDescription>
-
-</ExpandableProperty>
-
-<ExpandableProperty
-  slot="entry"
   id="results_SearchResult_clusteredResults"
   headingId="operation-search+responses+200+application-json+results+searchresult+clusteredresults"
   parentId="results_SearchResult"
@@ -14000,6 +13821,31 @@ A truncated list of documents associated with this relation. To be used in favor
 </Embed>
 
 </ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="results_SearchResult_clusterType"
+  headingId="operation-search+responses+200+application-json+results+searchresult+clustertype"
+  parentId="results_SearchResult"
+  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"SIMILAR\"","linkedLabel":"\"SIMILAR\"","children":[],"breakoutSubTypes":{}},{"label":"\"FRESHNESS\"","linkedLabel":"\"FRESHNESS\"","children":[],"breakoutSubTypes":{}},{"label":"\"TITLE\"","linkedLabel":"\"TITLE\"","children":[],"breakoutSubTypes":{}},{"label":"\"CONTENT\"","linkedLabel":"\"CONTENT\"","children":[],"breakoutSubTypes":{}},{"label":"\"NONE\"","linkedLabel":"\"NONE\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_REPLY\"","linkedLabel":"\"THREAD_REPLY\"","children":[],"breakoutSubTypes":{}},{"label":"\"THREAD_ROOT\"","linkedLabel":"\"THREAD_ROOT\"","children":[],"breakoutSubTypes":{}},{"label":"\"PREFIX\"","linkedLabel":"\"PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"SUFFIX\"","linkedLabel":"\"SUFFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_PREFIX\"","linkedLabel":"\"AUTHOR_PREFIX\"","children":[],"breakoutSubTypes":{}},{"label":"\"AUTHOR_SUFFIX\"","linkedLabel":"\"AUTHOR_SUFFIX\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### clusterType \{#operation-search+responses+200+application-json+results+searchresult+clustertype\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The reason for inclusion of clusteredResults.
+
+</ExpandablePropertyDescription>
 
 </ExpandableProperty>
 
@@ -14419,25 +14265,6 @@ An opaque token that represents this particular result in this particular query.
 
 </ExpandableProperty>
 
-<ExpandableProperty
-  slot="entry"
-  id="results_SearchResult_url"
-  headingId="operation-search+responses+200+application-json+results+searchresult+url"
-  parentId="results_SearchResult"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
->
-
-<ExpandablePropertyTitle slot="title">
-
-##### url \{#operation-search+responses+200+application-json+results+searchresult+url\}
-
-</ExpandablePropertyTitle>
-
-</ExpandableProperty>
-
 </ExpandableBreakoutProperties>
 
 </ExpandableBreakout>
@@ -14540,6 +14367,179 @@ Defines how to render an icon
 <ExpandablePropertyDescription slot="description">
 
 Textual description of the results. Can be shown at the top of SERP, e.g. 'People who write about this topic' for experts in people tab.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+</ExpandableBreakoutProperties>
+
+</ExpandableBreakout>
+
+</ExpandablePropertyBreakouts>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="resultTabIds"
+  headingId="operation-search+responses+200+application-json+resulttabids"
+  typeInfo={{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### resultTabIds \{#operation-search+responses+200+application-json+resulttabids\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The unique IDs of the result tabs to which this response belongs.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="resultTabs"
+  headingId="operation-search+responses+200+application-json+resulttabs"
+  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-search+responses+200+application-json+resulttabs+resulttab\">ResultTab</a>","children":[{"label":"ResultTab","linkedLabel":"<a href=\"#operation-search+responses+200+application-json+resulttabs+resulttab\">ResultTab</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={true}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### resultTabs \{#operation-search+responses+200+application-json+resulttabs\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+All result tabs available for the current query. Populated if QUERY_METADATA is specified in the request.
+
+</ExpandablePropertyDescription>
+
+<ExpandablePropertyBreakouts slot="breakouts">
+
+<ExpandableBreakout
+  slot="entry"
+  id="resultTabs_ResultTab"
+  headingId="operation-search+responses+200+application-json+resulttabs+resulttab"
+  parentId="resultTabs"
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandableBreakoutTitle slot="title">
+
+#### ResultTab \{#operation-search+responses+200+application-json+resulttabs+resulttab\}
+
+</ExpandableBreakoutTitle>
+
+<ExpandableBreakoutProperties slot="properties">
+
+<ExpandableProperty
+  slot="entry"
+  id="resultTabs_ResultTab_count"
+  headingId="operation-search+responses+200+application-json+resulttabs+resulttab+count"
+  parentId="resultTabs_ResultTab"
+  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### count \{#operation-search+responses+200+application-json+resulttabs+resulttab+count\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The number of results in this tab for the current query.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="resultTabs_ResultTab_datasource"
+  headingId="operation-search+responses+200+application-json+resulttabs+resulttab+datasource"
+  parentId="resultTabs_ResultTab"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasource \{#operation-search+responses+200+application-json+resulttabs+resulttab+datasource\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource associated with the tab, if any.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="resultTabs_ResultTab_datasourceInstance"
+  headingId="operation-search+responses+200+application-json+resulttabs+resulttab+datasourceinstance"
+  parentId="resultTabs_ResultTab"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### datasourceInstance \{#operation-search+responses+200+application-json+resulttabs+resulttab+datasourceinstance\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The datasource instance associated with the tab, if any.
+
+</ExpandablePropertyDescription>
+
+</ExpandableProperty>
+
+<ExpandableProperty
+  slot="entry"
+  id="resultTabs_ResultTab_id"
+  headingId="operation-search+responses+200+application-json+resulttabs+resulttab+id"
+  parentId="resultTabs_ResultTab"
+  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
+  typeAnnotations={[]}
+  hasExpandableContent={true}
+  expandByDefault={false}
+>
+
+<ExpandablePropertyTitle slot="title">
+
+##### id \{#operation-search+responses+200+application-json+resulttabs+resulttab+id\}
+
+</ExpandablePropertyTitle>
+
+<ExpandablePropertyDescription slot="description">
+
+The unique ID of the tab. Can be passed in a search request to get results for that tab.
 
 </ExpandablePropertyDescription>
 
