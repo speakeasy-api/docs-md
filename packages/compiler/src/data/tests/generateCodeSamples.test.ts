@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import type { SchemaValue } from "@speakeasy-api/docs-md-shared";
 import { describe, expect, it } from "vitest";
 

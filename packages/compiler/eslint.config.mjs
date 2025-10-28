@@ -14,7 +14,7 @@ export default [
       "src/compiler.ts": /.*/,
       "src/editor/editor.ts": /.*/,
     },
-    ignores: ["src/data/wasm_exec.js"],
+    ignores: ["src/data/wasm_exec.js", "vitest.config.ts"],
     restrictedImports: [],
   }),
   // Disallow console calls in compiler code (use logging.ts functions instead)
