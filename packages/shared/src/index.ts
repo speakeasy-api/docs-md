@@ -28,3 +28,5 @@ export type { TypeScriptRuntimeEvent } from "./runtimes/typescript/events.ts";
 
 export { PythonRuntime } from "./runtimes/python/runtime.ts";
 export type { PythonRuntimeEvent } from "./runtimes/python/events.ts";
+
+export { InternalError } from "./util/internalError.ts";

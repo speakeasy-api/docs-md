@@ -8,7 +8,11 @@ import { hashManager } from "../../../util/hashManager.ts";
 import { SpeakeasyComponent } from "../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
-export type ExpandableBreakoutProps = LitProps<ExpandableBreakout>;
+export type ExpandableBreakoutProps = LitProps<ExpandableBreakout> & {
+  // We need to include `id` to make typing happy in the compiler, even though
+  // it's already present on all DOM elements.
+  id: string;
+};
 
 /**
  * A component that renders a tree topper, which is a small dot that indicates

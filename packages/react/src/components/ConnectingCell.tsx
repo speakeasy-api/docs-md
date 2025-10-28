@@ -18,10 +18,10 @@ export type ConnectingCellProps = PropsWithChildren<ConnectingCellElementProps>;
 export function ConnectingCell({ children, ...props }: ConnectingCellProps) {
   const hasChildren = Children.count(children) > 0;
   return (
-    <spk-connecting-cell {...props}>
+    <spk-internal-connecting-cell {...props}>
       {/* We get children that are assigned to parent slots with all sorts of
           names, so we wrap them in a div to force the default name */}
       {hasChildren ? <div>{children}</div> : null}
-    </spk-connecting-cell>
+    </spk-internal-connecting-cell>
   );
 }

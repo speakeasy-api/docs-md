@@ -20,13 +20,7 @@ import type {
  * and front-matter, children, etc. in the body.
  */
 export function ExpandableProperty(props: ExpandablePropertyProps) {
-  return (
-    <spk-expandable-property
-      {...props}
-      entryId={props.id}
-      id={props.headingId}
-    ></spk-expandable-property>
-  );
+  return <spk-expandable-property {...props}></spk-expandable-property>;
 }
 
 /**

@@ -20,5 +20,5 @@ type ExpandableCellProps = PropsWithChildren<ExpandableCellElementProps>;
  * src/components/ExpandableSection/components/PrefixCells.tsx
  */
 export function ExpandableCell({ ...props }: ExpandableCellProps) {
-  return <spk-expandable-cell {...props} />;
+  return <spk-internal-expandable-cell {...props} />;
 }

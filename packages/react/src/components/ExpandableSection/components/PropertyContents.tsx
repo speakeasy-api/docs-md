@@ -1,5 +1,9 @@
 "use client";
 
+import type {
+  DisplayTypeInfo,
+  PropertyAnnotations,
+} from "@speakeasy-api/docs-md-shared";
 import clsx from "clsx";
 import type { JSX, PropsWithChildren } from "react";
 import { Children, forwardRef, useMemo, useRef, useState } from "react";
@@ -82,17 +86,20 @@ const OffscreenMeasureContainer = forwardRef<HTMLDivElement, PropsWithChildren>(
 );
 
 export function PropertyContents({
-  headingId,
-  slot,
+  id: headingId,
   children,
-  typeInfo,
-  typeAnnotations,
+  typeInfo: rawTypeInfo,
+  typeAnnotations: rawTypeAnnotations,
   hasExpandableContent,
   expandByDefault,
 }: ExpandablePropertyProps) {
   const [isOpen, setIsOpen] = useState(expandByDefault);
   // Ref for the debug overlay element
   const debugOverlayRef = useRef<HTMLDivElement>(null);
+  const typeInfo = JSON.parse(rawTypeInfo) as DisplayTypeInfo;
+  const typeAnnotations = JSON.parse(
+    rawTypeAnnotations
+  ) as PropertyAnnotations[];
 
   const handleMouseEnter = ENABLE_DEBUG_VIEW
     ? () => {
@@ -357,7 +364,7 @@ Multiline: ${displayInfo?.multiline ?? "N/A"}`}
   }
 
   return (
-    <div slot={slot} data-testid={headingId} className={styles.entryContainer}>
+    <div slot="entry" data-testid={headingId} className={styles.entryContainer}>
       <div className={styles.entryHeaderContainer}>
         {hasExpandableContent ? (
           <ExpandableCell

@@ -1,14 +1,25 @@
 "use client";
 
+import type {
+  DisplayTypeInfo,
+  PropertyAnnotations,
+} from "@speakeasy-api/docs-md-shared";
+import { InternalError } from "@speakeasy-api/docs-md-shared";
 import { html, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
+import type { Ref } from "lit/directives/ref.js";
+import { createRef, ref } from "lit/directives/ref.js";
 
 import type { LitProps } from "../../../types/components.ts";
 import { hashManager } from "../../../util/hashManager.ts";
 import { SpeakeasyComponent } from "../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
-export type ExpandablePropertyProps = LitProps<ExpandableProperty>;
+export type ExpandablePropertyProps = LitProps<ExpandableProperty> & {
+  // We need to include `id` to make typing happy in the compiler, even though
+  // it's already present on all DOM elements.
+  id: string;
+};
 
 /**
  * A component that renders a tree topper, which is a small dot that indicates
@@ -43,6 +54,20 @@ export class ExpandableProperty extends SpeakeasyComponent {
   public hasExpandableContent!: boolean;
 
   /**
+   * The display type information for the property, as computed by the compiler
+   */
+  @property({ type: String })
+  public typeInfo!: string;
+  private parsedTypeInfo?: DisplayTypeInfo;
+
+  /**
+   * The annotations for the property (e.g. "required")
+   */
+  @property({ type: String })
+  public typeAnnotations!: string;
+  private parsedTypeAnnotations?: PropertyAnnotations[];
+
+  /**
    * Whether the row should be expanded by default or not on page load, if it
    * has children and/or front matter.
    */
@@ -55,18 +80,47 @@ export class ExpandableProperty extends SpeakeasyComponent {
     this.isOpen = !this.isOpen;
   };
 
+  private titlePrefixContainerRef: Ref<HTMLInputElement> = createRef();
+
   override connectedCallback() {
     super.connectedCallback();
     this.isOpen = !!this.expandByDefault;
+    this.parsedTypeInfo = JSON.parse(this.typeInfo) as DisplayTypeInfo;
+    this.parsedTypeAnnotations = JSON.parse(
+      this.typeAnnotations
+    ) as PropertyAnnotations[];
     hashManager(this.id, (open: boolean) => {
       this.isOpen = open;
     });
   }
 
   public override render() {
+    if (!this.parsedTypeInfo || !this.parsedTypeAnnotations) {
+      throw new InternalError(
+        "parsedTypeInfo and parsedTypeAnnotations are unexpectedly undefined"
+      );
+    }
+
     // TODO:
     const measureContainer = nothing;
     const titleContainer = nothing;
+
+    const titlePrefix = html`
+      <span
+        class="propertyTitlePrefixContainer"
+        ${ref(this.titlePrefixContainerRef)}
+      >
+        <slot name="title"></slot>
+        ${this.parsedTypeAnnotations?.map(
+          (annotation) => html`
+            <spk-pill variant="${annotation.variant}">
+              ${annotation.title}
+            </spk-pill>
+          `
+        )}
+      </span>
+    `;
+    console.log(titlePrefix);
 
     const frontmatterConnection = this.hasSlot("properties")
       ? "connected"

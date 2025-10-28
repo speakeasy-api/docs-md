@@ -1,61 +1,13 @@
 import type {
-  DisplayTypeInfo,
-  PropertyAnnotations,
-} from "@speakeasy-api/docs-md-shared";
+  ExpandableBreakoutProps as ExpandableBreakoutElementProps,
+  ExpandablePropertyProps as ExpandablePropertyElementProps,
+} from "@speakeasy-api/docs-md-components";
 import type { PropsWithChildren } from "react";
-
-// TODO: cleanup id vs headingId
-/**
- * Properties for a row. Each row represents a node in the tree, but in the
- * "flatted" representation that we actually render nodes in. Each node always
- * occupies exactly one row, with each node stacked one after the other. We use
- * prefix cells to represent their location in the tree.
- */
-type RowProps = PropsWithChildren<{
-  /**
-   * The identifier for the row. This id is unique within the tree, but is _not_
-   * unique in the DOM, and is not used to set the `id` attribute on the DOM
-   * element.
-   */
-  id: string;
-  /**
-   * The slot for the row, always "entry"
-   */
-  slot: "entry";
-  /**
-   * The heading ID for the row. This is the ID that is used in the DOM.
-   */
-  headingId: string;
-  /**
-   * The parent ID for the row (not the parent's heading ID)
-   */
-  parentId?: string;
-  /**
-   * Whether the row has expandable content or not. This is used to know whether
-   * or not to render an expandable header cell in the event when there are no
-   * children. In the case of no children, we do render an expandable header
-   * cell if the row has expandable content, otherwise we do not.
-   */
-  hasExpandableContent: boolean;
-  /**
-   * Whether the row should be expanded by default or not on page load, if it
-   * has children and/or front matter.
-   */
-  expandByDefault: boolean;
-}>;
 
 export type ExpandableSectionProps = PropsWithChildren;
 
-export type ExpandablePropertyProps = RowProps & {
-  /**
-   * The display type information for the property, as computed by the compiler
-   */
-  typeInfo?: DisplayTypeInfo;
-  /**
-   * The annotations for the property (e.g. "required")
-   */
-  typeAnnotations: PropertyAnnotations[];
-};
+export type ExpandablePropertyProps =
+  PropsWithChildren<ExpandablePropertyElementProps>;
 
 export type ExpandablePropertyTitleProps = PropsWithChildren<{
   /**
@@ -92,7 +44,8 @@ export type ExpandablePropertyBreakoutsProps = PropsWithChildren<{
   slot: "breakouts";
 }>;
 
-export type ExpandableBreakoutProps = RowProps;
+export type ExpandableBreakoutProps =
+  PropsWithChildren<ExpandableBreakoutElementProps>;
 
 export type ExpandableBreakoutTitleProps = PropsWithChildren<{ slot: "title" }>;
 export type ExpandableBreakoutDescriptionProps = PropsWithChildren<{

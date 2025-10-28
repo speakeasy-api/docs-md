@@ -50,6 +50,7 @@ import type {
 } from "@speakeasy-api/docs-md-react";
 
 import { HEADINGS } from "../content/constants.ts";
+import { warn } from "../logging.ts";
 import { getInternalSetting, getSettings } from "../settings.ts";
 import { InternalError } from "../util/internalError.ts";
 import type {
@@ -268,6 +269,9 @@ class MdxRenderer extends MarkdownRenderer {
               return `${separator}${key}="${value}"`;
             }
           } else if (value !== undefined) {
+            warn(
+              `Property ${key} of type ${typeof value} in component ${symbol} is not supported.`
+            );
             return `${separator}${key}={${JSON.stringify(value)}}`;
           } else {
             return "";
@@ -847,9 +851,8 @@ class MdxRenderer extends MarkdownRenderer {
       {
         symbol: "ExpandableBreakout",
         props: {
-          slot: "entry",
-          id,
-          headingId: this.getCurrentId(),
+          id: this.getCurrentId(),
+          entryId: id,
           parentId,
           hasExpandableContent,
           expandByDefault,
@@ -942,12 +945,11 @@ class MdxRenderer extends MarkdownRenderer {
       {
         symbol: "ExpandableProperty",
         props: {
-          slot: "entry",
-          id,
-          headingId: this.getCurrentId(),
+          id: this.getCurrentId(),
+          entryId: id,
           parentId,
-          typeInfo,
-          typeAnnotations: annotations,
+          typeInfo: JSON.stringify(typeInfo),
+          typeAnnotations: JSON.stringify(annotations),
           hasExpandableContent,
           expandByDefault,
         },

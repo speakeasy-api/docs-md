@@ -18,5 +18,5 @@ export type NonExpandableCellProps =
  * are always to the right of the connecting cells.
  */
 export function NonExpandableCell(_: NonExpandableCellProps) {
-  return <spk-non-expandable-cell />;
+  return <spk-internal-non-expandable-cell />;
 }

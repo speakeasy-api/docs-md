@@ -9,5 +9,5 @@ type ExpandableTreeTopperProps = PropsWithChildren<TreeTopperProps>;
  * section.
  */
 export function ExpandableTreeTopper(_: ExpandableTreeTopperProps) {
-  return <spk-tree-topper></spk-tree-topper>;
+  return <spk-internal-tree-topper></spk-internal-tree-topper>;
 }

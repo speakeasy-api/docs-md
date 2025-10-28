@@ -27,13 +27,7 @@ import type {
  * implementations that may want to lay out children more specifically.
  */
 export function ExpandableBreakout(props: ExpandableBreakoutProps) {
-  return (
-    <spk-expandable-breakout
-      {...props}
-      entryId={props.id}
-      id={props.headingId}
-    ></spk-expandable-breakout>
-  );
+  return <spk-expandable-breakout {...props}></spk-expandable-breakout>;
 }
 
 /**
