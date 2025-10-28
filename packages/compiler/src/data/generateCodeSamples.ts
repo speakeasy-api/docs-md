@@ -16,36 +16,16 @@ import { getSettings } from "../settings.ts";
 import { assertNever } from "../util/assertNever.ts";
 import { InternalError } from "../util/internalError.ts";
 import type { SdkFolder } from "./types.ts";
+import {
+  createChildContext,
+  type ExampleContext,
+  getSchemaUnionValue,
+} from "./unionExampleStrategies.ts";
 
 const CODE_SAMPLE_HEADER =
   /^<!-- UsageSnippet language="(.+)" operationID="(.+)" method="(.+)" path="(.+)" -->$/;
 const CODE_SAMPLE_START = /^```(.*)$/;
 const CODE_SAMPLE_END = /^```$/;
-
-const PRIMITIVE_TYPES = new Set<SchemaValue["type"]>([
-  "string",
-  "number",
-  "boolean",
-  "bigint",
-  "date",
-  "date-time",
-  "integer",
-  "int32",
-  "float32",
-  "decimal",
-  "binary",
-]);
-
-const COMPLEX_TYPES = new Set<SchemaValue["type"]>([
-  "array",
-  "map",
-  "set",
-  "union",
-  "chunk",
-  "enum",
-  "jsonl",
-  "event-stream",
-]);
 
 // We use a fixed list of sample strings we iterate through deterministically
 // so that docs builds remain idempotent
@@ -202,83 +182,6 @@ function getExplicitValue(schema: SchemaValue, fallback: unknown) {
     throw new InternalError("Cannot get explicit value for chunk");
   }
   return schema.examples[0] ?? schema.defaultValue ?? fallback;
-}
-
-type ExampleContext = {
-  type: "request" | "response";
-  strategy: "minimal" | "simple" | "maximal";
-};
-
-function determineNextStrategy(
-  context: ExampleContext,
-  currentType: SchemaValue["type"]
-): "minimal" | "simple" | "maximal" {
-  if (context.type === "request") {
-    // Request: start simple, switch to minimal after hitting object/primitive/null
-    if (
-      context.strategy === "simple" &&
-      (currentType === "object" ||
-        currentType === "null" ||
-        PRIMITIVE_TYPES.has(currentType))
-    ) {
-      return "minimal";
-    }
-    return context.strategy;
-  } else {
-    // Response: start maximal, switch to simple after hitting object boundary
-    if (context.strategy === "maximal") {
-      return currentType === "object" ? "simple" : "maximal";
-    }
-    return "simple";
-  }
-}
-
-function createChildContext(
-  context: ExampleContext,
-  currentType: SchemaValue["type"]
-): ExampleContext {
-  return {
-    type: context.type,
-    strategy: determineNextStrategy(context, currentType),
-  };
-}
-
-function getSchemaUnionValue(
-  values: SchemaValue[],
-  displayStrategy: "minimal" | "simple" | "maximal"
-) {
-  if (!values.length) throw new InternalError("Union has no values");
-
-  const hasNull = values.some((v) => v.type === "null");
-  const primitives = values.filter((v) => PRIMITIVE_TYPES.has(v.type));
-  const objects = values.filter((v) => v.type === "object");
-  const complex = values.filter((v) => COMPLEX_TYPES.has(v.type));
-
-  switch (displayStrategy) {
-    case "minimal":
-      if (hasNull) return values.find((v) => v.type === "null");
-      if (primitives.length) return primitives[0];
-      if (objects.length) return objects[0];
-      return values[0];
-
-    case "simple":
-      if (primitives.length) return primitives[0];
-      if (objects.length) return objects[0];
-      if (complex.length) return complex[0];
-      if (hasNull) return values.find((v) => v.type === "null");
-      return values[0];
-
-    case "maximal":
-      // Reverse of minimal
-      if (complex.length) return complex[0];
-      if (objects.length) return objects[0];
-      if (primitives.length) return primitives[0];
-      if (hasNull) return values.find((v) => v.type === "null");
-      return values[0];
-
-    default:
-      assertNever(displayStrategy);
-  }
 }
 
 function generateSchemaExample(
