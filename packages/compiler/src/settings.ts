@@ -376,14 +376,11 @@ export const settingsSchema = z.strictObject({
        */
       maxNestingLevel: z.number().optional(),
 
-
-      examplesDisplay: z.enum(['minimal', 'simple', 'maximal'])
     })
     .default({
       visibleResponses: "explicit",
       showDebugPlaceholders: false,
       expandTopLevelPropertiesOnPageLoad: true,
-      examplesDisplay: "minimal",
     }),
 
   /**
