@@ -382,7 +382,7 @@ export const settingsSchema = z.strictObject({
        * When enabled, properties will still be sorted alphabetically but required
        * properties will be shown first.
        */
-      sortRequiredProperties: z.boolean().default(true),
+      sortRequiredProperties: z.boolean().optional().default(true),
     })
     .default({
       visibleResponses: "explicit",
