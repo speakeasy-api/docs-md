@@ -202,7 +202,6 @@ export type RendererCreateExpandableBreakoutArgs = [
   options: {
     rawTitle: string;
     isTopLevel: boolean;
-    hasExpandableContent: boolean;
     createTitle: () => void;
     createDescription?: () => void;
     createExamples?: () => void;
@@ -215,7 +214,6 @@ export type RendererCreateExpandablePropertyArgs = [
   options: {
     rawTitle: string;
     isTopLevel: boolean;
-    hasExpandableContent: boolean;
     typeInfo?: DisplayTypeInfo;
     annotations: PropertyAnnotations[];
     createDescription?: () => void;

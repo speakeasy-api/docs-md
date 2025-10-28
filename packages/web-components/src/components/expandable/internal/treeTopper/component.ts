@@ -1,10 +1,9 @@
 "use client";
 
-import { html } from "lit";
+import { html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 
 import type { LitProps } from "../../../../types/components.ts";
-import { SpeakeasyComponent } from "../../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
 export type TreeTopperProps = LitProps<TreeTopper>;
@@ -15,7 +14,7 @@ export type TreeTopperProps = LitProps<TreeTopper>;
  * section.
  */
 @customElement("spk-internal-tree-topper")
-export class TreeTopper extends SpeakeasyComponent {
+export class TreeTopper extends LitElement {
   static override styles = litStyles;
 
   public override render() {

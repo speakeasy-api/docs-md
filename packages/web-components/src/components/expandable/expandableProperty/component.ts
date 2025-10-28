@@ -5,14 +5,13 @@ import type {
   PropertyAnnotations,
 } from "@speakeasy-api/docs-md-shared";
 import { InternalError } from "@speakeasy-api/docs-md-shared";
-import { html, nothing } from "lit";
+import { html, LitElement, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import type { Ref } from "lit/directives/ref.js";
 import { createRef, ref } from "lit/directives/ref.js";
 
 import type { LitProps } from "../../../types/components.ts";
 import { hashManager } from "../../../util/hashManager.ts";
-import { SpeakeasyComponent } from "../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
 export type ExpandablePropertyProps = LitProps<ExpandableProperty> & {
@@ -27,8 +26,38 @@ export type ExpandablePropertyProps = LitProps<ExpandableProperty> & {
  * section.
  */
 @customElement("spk-expandable-property")
-export class ExpandableProperty extends SpeakeasyComponent {
+export class ExpandableProperty extends LitElement {
   static override styles = litStyles;
+
+  /**
+   * Whether or not this property has a description
+   */
+  @property({ type: Boolean })
+  public hasDescription!: true | undefined;
+
+  /**
+   * Whether or not this property has examples
+   */
+  @property({ type: Boolean })
+  public hasExamples!: true | undefined;
+
+  /**
+   * Whether or not this property has a default value
+   */
+  @property({ type: Boolean })
+  public hasDefaultValue!: true | undefined;
+
+  /**
+   * Whether or not this property has an embed
+   */
+  @property({ type: Boolean })
+  public hasEmbed!: true | undefined;
+
+  /**
+   * Whether or not this property has breakouts
+   */
+  @property({ type: Boolean })
+  public hasBreakouts!: true | undefined;
 
   /**
    * The identifier for the row. This id is unique within the tree, but is _not_
@@ -43,15 +72,6 @@ export class ExpandableProperty extends SpeakeasyComponent {
    */
   @property({ type: String })
   public parentId?: string;
-
-  /**
-   * Whether the row has expandable content or not. This is used to know whether
-   * or not to render an expandable header cell in the event when there are no
-   * children. In the case of no children, we do render an expandable header
-   * cell if the row has expandable content, otherwise we do not.
-   */
-  @property({ type: Boolean })
-  public hasExpandableContent!: boolean;
 
   /**
    * The display type information for the property, as computed by the compiler
@@ -80,6 +100,7 @@ export class ExpandableProperty extends SpeakeasyComponent {
     this.isOpen = !this.isOpen;
   };
 
+  private titleContainerRef: Ref<HTMLInputElement> = createRef();
   private titlePrefixContainerRef: Ref<HTMLInputElement> = createRef();
 
   override connectedCallback() {
@@ -103,7 +124,6 @@ export class ExpandableProperty extends SpeakeasyComponent {
 
     // TODO:
     const measureContainer = nothing;
-    const titleContainer = nothing;
 
     const titlePrefix = html`
       <span
@@ -120,13 +140,18 @@ export class ExpandableProperty extends SpeakeasyComponent {
         )}
       </span>
     `;
-    console.log(titlePrefix);
 
-    const frontmatterConnection = this.hasSlot("properties")
-      ? "connected"
-      : "none";
+    const titleContainer = html`<div
+      ref=${this.titleContainerRef}
+      style="position: relative"
+      class="propertyTitleContainer"
+    >
+      ${titlePrefix}
+    </div>`;
+
+    const frontmatterConnection = this.hasBreakouts ? "connected" : "none";
     const frontmatter = html`
-      ${this.hasSlot("description")
+      ${this.hasDescription
         ? html`
             <spk-internal-connecting-cell
               bottom="${frontmatterConnection}"
@@ -137,7 +162,7 @@ export class ExpandableProperty extends SpeakeasyComponent {
             </spk-internal-connecting-cell>
           `
         : nothing}
-      ${this.hasSlot("examples")
+      ${this.hasExamples
         ? html`
             <spk-internal-connecting-cell
               bottom="${frontmatterConnection}"
@@ -148,18 +173,18 @@ export class ExpandableProperty extends SpeakeasyComponent {
             </spk-internal-connecting-cell>
           `
         : nothing}
-      ${this.hasSlot("default-value")
+      ${this.hasDefaultValue
         ? html`
             <spk-internal-connecting-cell
               bottom="${frontmatterConnection}"
               top="${frontmatterConnection}"
               right="none"
             >
-              <slot name="default-value"></slot>
+              <slot name="defaultValue"></slot>
             </spk-internal-connecting-cell>
           `
         : nothing}
-      ${this.hasSlot("embed")
+      ${this.hasEmbed
         ? html`
             <spk-internal-connecting-cell
               bottom="${frontmatterConnection}"
@@ -170,17 +195,21 @@ export class ExpandableProperty extends SpeakeasyComponent {
             </spk-internal-connecting-cell>
           `
         : nothing}
-      ${this.hasSlot("breakouts")
-        ? html` <slot name="breakouts"></slot> `
-        : nothing}
+      ${this.hasBreakouts ? html` <slot name="breakouts"></slot> ` : nothing}
     `;
 
     // TODO:
     const propertyCell = frontmatter;
 
+    const hasExpandableContent =
+      !!this.hasDescription ||
+      !!this.hasExamples ||
+      !!this.hasDefaultValue ||
+      !!this.hasEmbed ||
+      !!this.hasBreakouts;
     return html`<div data-testid=${this.id} class="entryContainer">
       <div class="entryHeaderContainer">
-        ${this.hasExpandableContent
+        ${hasExpandableContent
           ? html`<spk-internal-expandable-cell
               .isOpen="${this.isOpen}"
               .onExpandToggle="${this.handleExpandToggle}"

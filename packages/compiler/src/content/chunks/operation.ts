@@ -129,7 +129,6 @@ export function renderSecurity(
             variant: "info",
           },
         ],
-        hasExpandableContent: !!entry.description || showDebugPlaceholders,
         createDescription:
           entry.description || showDebugPlaceholders
             ? () => {
@@ -204,7 +203,6 @@ export function renderParameters(
         annotations,
         rawTitle: parameter.name,
         isTopLevel: true,
-        hasExpandableContent: !!parameter.description || showDebugPlaceholders,
         createDescription:
           parameter.description || showDebugPlaceholders
             ? () => {

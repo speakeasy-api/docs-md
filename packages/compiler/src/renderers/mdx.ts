@@ -268,6 +268,8 @@ class MdxRenderer extends MarkdownRenderer {
               }
               return `${separator}${key}="${value}"`;
             }
+          } else if (value === true) {
+            return `${separator}${key}`;
           } else if (value !== undefined) {
             warn(
               `Property ${key} of type ${typeof value} in component ${symbol} is not supported.`
@@ -833,7 +835,6 @@ class MdxRenderer extends MarkdownRenderer {
   protected override handleCreateExpandableBreakout(
     ...[
       {
-        hasExpandableContent,
         createTitle,
         createDescription,
         createExamples,
@@ -854,8 +855,12 @@ class MdxRenderer extends MarkdownRenderer {
           id: this.getCurrentId(),
           entryId: id,
           parentId,
-          hasExpandableContent,
           expandByDefault,
+          hasDescription: createDescription ? true : undefined,
+          hasExamples: createExamples ? true : undefined,
+          hasDefaultValue: createDefaultValue ? true : undefined,
+          hasEmbed: createEmbed ? true : undefined,
+          hasProperties: createProperties ? true : undefined,
         },
       },
       () => {
@@ -928,7 +933,6 @@ class MdxRenderer extends MarkdownRenderer {
         annotations,
         rawTitle,
         isTopLevel,
-        hasExpandableContent,
         createDescription,
         createExamples,
         createDefaultValue,
@@ -950,8 +954,12 @@ class MdxRenderer extends MarkdownRenderer {
           parentId,
           typeInfo: JSON.stringify(typeInfo),
           typeAnnotations: JSON.stringify(annotations),
-          hasExpandableContent,
           expandByDefault,
+          hasDescription: createDescription ? true : undefined,
+          hasExamples: createExamples ? true : undefined,
+          hasDefaultValue: createDefaultValue ? true : undefined,
+          hasEmbed: createEmbed ? true : undefined,
+          hasBreakouts: createBreakouts ? true : undefined,
         },
       },
       () => {

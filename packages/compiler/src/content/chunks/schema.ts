@@ -231,19 +231,6 @@ export function getDisplayTypeInfo(
   }
 }
 
-function hasSchemaFrontmatter(schema: SchemaValue) {
-  const description = "description" in schema ? schema.description : null;
-  const examples = "examples" in schema ? schema.examples : [];
-  const defaultValue = "defaultValue" in schema ? schema.defaultValue : null;
-  const { showDebugPlaceholders } = getSettings().display;
-  return (
-    !!description ||
-    examples.length > 0 ||
-    !!defaultValue ||
-    showDebugPlaceholders
-  );
-}
-
 function hasSchemaProperties(schema: SchemaValue) {
   // TODO: this seems to occasionally return a false positive. It doesn't
   // necessarily hurt anything, just bloats output size, but would be a nice fix
@@ -457,8 +444,6 @@ function createExpandableProperty({
     annotations,
     rawTitle: property.name,
     isTopLevel,
-    hasExpandableContent:
-      hasEmbed || hasBreakouts || hasSchemaFrontmatter(property.schema),
     createDescription: createDescription(property.schema, renderer),
     createExamples: createExamples(property.schema, renderer),
     createDefaultValue: createDefaultValue(property.schema, renderer),
@@ -566,10 +551,6 @@ function createExpandableBreakout({
         }
       );
     },
-    hasExpandableContent:
-      hasEmbed ||
-      hasSchemaFrontmatter(breakout.schema) ||
-      hasSchemaProperties(breakout.schema),
     createDescription: createDescription(breakout.schema, renderer),
     createExamples: createExamples(breakout.schema, renderer),
     createDefaultValue: createDefaultValue(breakout.schema, renderer),

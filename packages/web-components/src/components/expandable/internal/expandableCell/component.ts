@@ -1,11 +1,10 @@
 "use client";
 
 import clsx from "clsx";
-import { html } from "lit";
+import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 import type { LitProps } from "../../../../types/components.ts";
-import { SpeakeasyComponent } from "../../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
 export type ExpandableCellProps = LitProps<ExpandableCell>;
@@ -25,7 +24,7 @@ export type ExpandableCellProps = LitProps<ExpandableCell>;
  * src/components/ExpandableSection/components/PrefixCells.tsx
  */
 @customElement("spk-internal-expandable-cell")
-export class ExpandableCell extends SpeakeasyComponent {
+export class ExpandableCell extends LitElement {
   static override styles = litStyles;
 
   /**

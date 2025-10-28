@@ -1,10 +1,9 @@
 "use client";
 
-import { html } from "lit";
+import { html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 
 import type { LitProps } from "../../../../types/components.ts";
-import { SpeakeasyComponent } from "../../../../util/SpeakeasyComponent.ts";
 import { styles as litStyles } from "./styles.ts";
 
 export type NonExpandableCellProps = LitProps<NonExpandableCell>;
@@ -19,7 +18,7 @@ export type NonExpandableCellProps = LitProps<NonExpandableCell>;
  * are always to the right of the connecting cells.
  */
 @customElement("spk-internal-non-expandable-cell")
-export class NonExpandableCell extends SpeakeasyComponent {
+export class NonExpandableCell extends LitElement {
   static override styles = litStyles;
 
   public override render() {
