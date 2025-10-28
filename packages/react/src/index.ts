@@ -4,18 +4,13 @@ export { Code } from "./components/Code/Code.tsx";
 export type { CodeProps } from "./components/Code/types.ts";
 export { CodeSample } from "./components/CodeSample/CodeSample.tsx";
 export type { CodeSampleProps } from "./components/CodeSample/types.ts";
-export { ConnectingCell } from "./components/ConnectingCell.tsx";
-export type { ConnectingCellProps } from "./components/ConnectingCell.tsx";
 export { DebugPlaceholder } from "./components/DebugPlaceholder/DebugPlaceholder.tsx";
 export type { DebugPlaceholderProps } from "./components/DebugPlaceholder/types.ts";
 export { Embed } from "./components/Embed/Embed.tsx";
 export type { EmbedProps } from "./components/Embed/types.ts";
 export { EmbedProvider } from "./components/EmbedProvider/EmbedProvider.tsx";
-export { CloseEmbedIcon } from "./components/CloseEmbedIcon/CloseEmbedIcon.tsx";
 export { EmbedTrigger } from "./components/EmbedTrigger/EmbedTrigger.tsx";
 export type { EmbedTriggerProps } from "./components/EmbedTrigger/types.ts";
-export { ExpandableCell } from "./components/ExpandableCell.tsx";
-export type { ExpandableCellProps } from "./components/ExpandableCell.tsx";
 export {
   ExpandableBreakout,
   ExpandableBreakoutTitle,
@@ -50,8 +45,6 @@ export type {
 } from "./components/ExpandableSection/types.ts";
 export { FrontMatterDisplayType } from "./components/FrontMatterDisplayType/FrontMatterDisplayType.tsx";
 export type { FrontMatterDisplayTypeProps } from "./components/FrontMatterDisplayType/types.ts";
-export { NonExpandableCell } from "./components/NonExpandableCell.tsx";
-export type { NonExpandableCellProps } from "./components/NonExpandableCell.tsx";
 export {
   Operation,
   OperationTitleSection,
