@@ -375,7 +375,6 @@ export const settingsSchema = z.strictObject({
        * When this setting is enabled, you must also set `output.embedOutDir`
        */
       maxNestingLevel: z.number().optional(),
-
     })
     .default({
       visibleResponses: "explicit",

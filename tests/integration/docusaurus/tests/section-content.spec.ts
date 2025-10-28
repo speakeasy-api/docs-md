@@ -6,9 +6,11 @@ test.describe("SectionContent", () => {
   }) => {
     await page.goto("mistral/api/endpoint/agents");
 
-    const expandSystemMessage = page.getByTestId('operation-agents_completion_v1_agents_completions_post+request+messages+systemmessage');
+    const expandSystemMessage = page.getByTestId(
+      "operation-agents_completion_v1_agents_completions_post+request+messages+systemmessage"
+    );
     await expect(expandSystemMessage).toBeVisible();
-    const expandButton = expandSystemMessage.getByRole('button');
+    const expandButton = expandSystemMessage.getByRole("button");
     await expandButton.click();
 
     const fileIdHeading = page.getByRole("heading", {
