@@ -1,6 +1,6 @@
 "use client";
 
-import { html } from "lit";
+import { html, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 
 import type { LitProps } from "../../../types/components.ts";
@@ -65,7 +65,8 @@ export class ExpandableProperty extends SpeakeasyComponent {
 
   public override render() {
     // TODO:
-    const measureContainer = null;
+    const measureContainer = nothing;
+    const titleContainer = nothing;
 
     const frontmatterConnection = this.hasSlot("properties")
       ? "connected"
@@ -81,7 +82,7 @@ export class ExpandableProperty extends SpeakeasyComponent {
               <slot name="description"></slot>
             </spk-internal-connecting-cell>
           `
-        : null}
+        : nothing}
       ${this.hasSlot("examples")
         ? html`
             <spk-internal-connecting-cell
@@ -92,7 +93,7 @@ export class ExpandableProperty extends SpeakeasyComponent {
               <slot name="examples"></slot>
             </spk-internal-connecting-cell>
           `
-        : null}
+        : nothing}
       ${this.hasSlot("default-value")
         ? html`
             <spk-internal-connecting-cell
@@ -103,7 +104,7 @@ export class ExpandableProperty extends SpeakeasyComponent {
               <slot name="default-value"></slot>
             </spk-internal-connecting-cell>
           `
-        : null}
+        : nothing}
       ${this.hasSlot("embed")
         ? html`
             <spk-internal-connecting-cell
@@ -114,10 +115,10 @@ export class ExpandableProperty extends SpeakeasyComponent {
               <slot name="embed"></slot>
             </spk-internal-connecting-cell>
           `
-        : null}
+        : nothing}
       ${this.hasSlot("breakouts")
         ? html` <slot name="breakouts"></slot> `
-        : null}
+        : nothing}
     `;
 
     // TODO:
@@ -132,9 +133,9 @@ export class ExpandableProperty extends SpeakeasyComponent {
               variant="property"
             ></spk-internal-expandable-cell>`
           : html`<spk-internal-non-expandable-cell></spk-internal-non-expandable-cell>`}
-        <slot name="title"></slot>
+        ${titleContainer}
       </div>
-      ${this.isOpen ? propertyCell : null} ${measureContainer}
+      ${this.isOpen ? propertyCell : nothing} ${measureContainer}
     </div>`;
   }
 }
