@@ -125,16 +125,48 @@ export class ExpandableProperty extends LitElement {
   /**
    * The display type information for the property, as computed by the compiler
    */
-  @property({ type: String })
-  public typeInfo!: string;
-  private parsedTypeInfo?: DisplayTypeInfo;
+  @property({
+    converter: (value) => {
+      if (!value) {
+        throw new InternalError("Missing typeInfo");
+      }
+      try {
+        return JSON.parse(value) as DisplayTypeInfo;
+      } catch (e) {
+        let message = "";
+        if (e instanceof Error) {
+          message = `message: ${e.message}`;
+        }
+        throw new InternalError(
+          `Invalid typeInfo: type=${typeof value}, value=${value}. ${message}`
+        );
+      }
+    },
+  })
+  public typeInfo!: DisplayTypeInfo;
 
   /**
    * The annotations for the property (e.g. "required")
    */
-  @property({ type: String })
-  public typeAnnotations!: string;
-  private parsedTypeAnnotations?: PropertyAnnotations[];
+  @property({
+    converter: (value) => {
+      if (!value) {
+        throw new InternalError("Missing typeAnnotations");
+      }
+      try {
+        return JSON.parse(value) as PropertyAnnotations[];
+      } catch (e) {
+        let message = "";
+        if (e instanceof Error) {
+          message = `message: ${e.message}`;
+        }
+        throw new InternalError(
+          `Invalid typeAnnotations: type=${typeof value}, value=${value}. ${message}`
+        );
+      }
+    },
+  })
+  public typeAnnotations!: PropertyAnnotations[];
 
   /**
    * Whether the row should be expanded by default or not on page load, if it
@@ -156,8 +188,10 @@ export class ExpandableProperty extends LitElement {
   private offscreenTypeMeasureContainerRef: Ref<HTMLElement> = createRef();
 
   // The computed single line display type and measure
-  private singleLineDisplay?: string;
-  private singleLineMeasure?: string;
+  private singleLineDisplayType?: {
+    measure: string;
+    display: string;
+  };
 
   // The computed display info (multiline flag and contents)
   @state()
@@ -170,28 +204,15 @@ export class ExpandableProperty extends LitElement {
 
     // Initialize properties
     this.isOpen = !!this.expandByDefault;
-    this.parsedTypeInfo = JSON.parse(this.typeInfo) as DisplayTypeInfo;
-    this.parsedTypeAnnotations = JSON.parse(
-      this.typeAnnotations
-    ) as PropertyAnnotations[];
 
     // Watch for hash changes so we can toggle the open state
     hashManager(this.id, (open) => {
       this.isOpen = open;
     });
-
-    const { display: singleLineDisplay, measure: singleLineMeasure } =
-      computeSingleLineDisplayType(this.parsedTypeInfo);
-    this.singleLineDisplay = singleLineDisplay;
-    this.singleLineMeasure = singleLineMeasure;
   }
 
   private handleTitleContainerSizeChanged = (titleContainerWidth: number) => {
-    if (
-      !this.parsedTypeInfo ||
-      !this.singleLineDisplay ||
-      !this.singleLineMeasure
-    ) {
+    if (!this.singleLineDisplayType) {
       return;
     }
 
@@ -232,26 +253,22 @@ export class ExpandableProperty extends LitElement {
     // Finally, if we are multiline, compute the multiline type label, otherwise
     // we can reuse the single line version we already computed
     const contents = multiline
-      ? computeMultilineTypeLabel(
-          this.parsedTypeInfo,
-          0,
-          maxMultilineCharacters
-        ).contents
-      : this.singleLineDisplay;
+      ? computeMultilineTypeLabel(this.typeInfo, 0, maxMultilineCharacters)
+          .contents
+      : this.singleLineDisplayType.display;
 
     this.multiline = multiline;
     this.contents = contents;
   };
 
   public override render() {
-    if (
-      !this.parsedTypeInfo ||
-      !this.parsedTypeAnnotations ||
-      !this.singleLineDisplay ||
-      !this.singleLineMeasure
-    ) {
-      throw new InternalError("Computed properties are unexpectedly undefined");
+    if (!this.typeInfo) {
+      throw new InternalError("typeInfo is unexpectedly undefined");
     }
+    if (!this.typeAnnotations) {
+      throw new InternalError("typeAnnotations is unexpectedly undefined");
+    }
+    this.singleLineDisplayType ??= computeSingleLineDisplayType(this.typeInfo);
 
     const titlePrefix = html`
       <span
@@ -259,7 +276,7 @@ export class ExpandableProperty extends LitElement {
         ${ref(this.titlePrefixContainerRef)}
       >
         <slot name="title"></slot>
-        ${this.parsedTypeAnnotations?.map(
+        ${this.typeAnnotations?.map(
           (annotation) => html`
             <spk-pill variant="${annotation.variant}">
               ${annotation.title}
@@ -350,7 +367,7 @@ export class ExpandableProperty extends LitElement {
           ${this.multiline
             ? html`
                 <div class="typeInnerContainer typeInnerContainerInline">
-                  ${this.parsedTypeInfo.label}
+                  ${this.typeInfo.label}
                 </div>
               `
             : typeContainer}
@@ -390,7 +407,7 @@ export class ExpandableProperty extends LitElement {
         class="offscreenMeasureContainer"
         ref="${ref(this.offscreenTypeMeasureContainerRef)}"
       >
-        ${this.singleLineMeasure}
+        ${this.singleLineDisplayType.measure}
       </div>
     `;
 

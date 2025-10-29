@@ -88,7 +88,7 @@ FIM completion.
 <CodeSampleTab
   slot="tab"
   id="operation-fim_completion_v1_fim_completions_post_code-samples_typescript"
-  tags={{"codeSample":"typescript"}}
+  tags={`{"codeSample":"typescript"}`}
 >
 
 TypeScript
@@ -102,7 +102,24 @@ TypeScript
 
 <TryItNow
   language="typescript"
-  defaultValue={`import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.fim.complete({\n    model: \"codestral-2405\",\n    prompt: \"def\",\n    suffix: \"return a+b\",\n  });\n\n  console.log(result);\n}\n\nrun();\n`}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.fim.complete({
+    model: "codestral-2405",
+    prompt: "def",
+    suffix: "return a+b",
+  });
+
+  console.log(result);
+}
+
+run();
+`}
   dependencyUrlPrefix="/mistral-try-it-now"
   packageName="@mistralai/mistralai"
 />
@@ -112,7 +129,7 @@ TypeScript
 <CodeSampleTab
   slot="tab"
   id="operation-fim_completion_v1_fim_completions_post_code-samples_python"
-  tags={{"codeSample":"python"}}
+  tags={`{"codeSample":"python"}`}
 >
 
 Python
@@ -150,7 +167,7 @@ with Mistral(
 <CodeSampleTab
   slot="tab"
   id="operation-fim_completion_v1_fim_completions_post_code-samples_curl"
-  tags={{"codeSample":"curl"}}
+  tags={`{"codeSample":"curl"}`}
 >
 
 cURL
@@ -164,7 +181,12 @@ cURL
 
 <TryItNow
   language="curl"
-  defaultValue={`curl https://api.mistral.ai/v1/fim/completions \\\n -X POST \\\n -H 'Authorization: Bearer YOUR_APIKEY_HERE' \\\n -d '{\n  \"prompt\": \"def\"\n}'`}
+  defaultValue={`curl https://api.mistral.ai/v1/fim/completions \\
+ -X POST \\
+ -H 'Authorization: Bearer YOUR_APIKEY_HERE' \\
+ -d '{
+  "prompt": "def"
+}'`}
 />
 
 </SectionContent>
@@ -214,8 +236,8 @@ cURL
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_request_max_tokens"
   entryId="max_tokens"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
   expandByDefault
   hasDescription
 >
@@ -237,8 +259,8 @@ The maximum number of tokens to generate in the completion. The token count of y
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_request_min_tokens"
   entryId="min_tokens"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
   expandByDefault
   hasDescription
 >
@@ -260,8 +282,8 @@ The minimum number of tokens to generate in the completion.
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_request_model"
   entryId="model"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
   expandByDefault
   hasDescription
   hasExamples
@@ -303,8 +325,8 @@ _Default Value:_ `"codestral-2405"`
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_request_prompt"
   entryId="prompt"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
   expandByDefault
   hasDescription
   hasExamples
@@ -337,8 +359,8 @@ def
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_request_random_seed"
   entryId="random_seed"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
   expandByDefault
   hasDescription
 >
@@ -360,8 +382,8 @@ The seed to use for random sampling. If set, different calls will generate deter
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_request_stop"
   entryId="stop"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"array\",\"linkedLabel\":\"string\",\"children\":[{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
   expandByDefault
   hasDescription
 >
@@ -383,8 +405,8 @@ Stop generation if this token is detected. Or if one of these tokens is detected
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_request_stream"
   entryId="stream"
-  typeInfo={`{\"label\":\"boolean\",\"linkedLabel\":\"boolean\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
+  typeInfo={`{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
   expandByDefault
   hasDescription
   hasDefaultValue
@@ -413,8 +435,8 @@ _Default Value:_ `false`
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_request_suffix"
   entryId="suffix"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
   expandByDefault
   hasDescription
   hasExamples
@@ -447,8 +469,8 @@ return a+b
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_request_temperature"
   entryId="temperature"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"number\",\"linkedLabel\":\"number\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
   expandByDefault
   hasDescription
 >
@@ -470,8 +492,8 @@ What sampling temperature to use, we recommend between 0.0 and 0.7. Higher value
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_request_top_p"
   entryId="top_p"
-  typeInfo={`{\"label\":\"number\",\"linkedLabel\":\"number\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"Min: 0\",\"variant\":\"warning\"},{\"title\":\"Max: 1\",\"variant\":\"warning\"}]`}
+  typeInfo={`{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"Min: 0","variant":"warning"},{"title":"Max: 1","variant":"warning"}]`}
   expandByDefault
   hasDescription
   hasDefaultValue
@@ -518,7 +540,7 @@ _Default Value:_ `1`
 <ResponseExamplesTab
   slot="tab"
   id="operation-fim_completion_v1_fim_completions_post_responses-examples_200_application-json"
-  tags={{"responseExample":"200:application/json"}}
+  tags={`{"responseExample":"200:application/json"}`}
 >
 
 200 (application/json)
@@ -552,7 +574,7 @@ _Default Value:_ `1`
 <ResponseExamplesTab
   slot="tab"
   id="operation-fim_completion_v1_fim_completions_post_responses-examples_200_text-event-stream"
-  tags={{"responseExample":"200:text/event-stream"}}
+  tags={`{"responseExample":"200:text/event-stream"}`}
 >
 
 200 (text/event-stream)
@@ -573,7 +595,7 @@ null
 <ResponseExamplesTab
   slot="tab"
   id="operation-fim_completion_v1_fim_completions_post_responses-examples_422_application-json"
-  tags={{"responseExample":"422:application/json"}}
+  tags={`{"responseExample":"422:application/json"}`}
 >
 
 422
@@ -613,7 +635,7 @@ null
 <ResponseTab
   slot="tab"
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json"
-  tags={{"response":"200:application/json"}}
+  tags={`{"response":"200:application/json"}`}
 >
 
 200 (application/json)
@@ -636,8 +658,8 @@ Successful Response
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices"
   entryId="choices"
-  typeInfo={`{\"label\":\"array\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice\\\">ChatCompletionChoice</a>\",\"children\":[{\"label\":\"ChatCompletionChoice\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice\\\">ChatCompletionChoice</a>\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
+  typeInfo={`{"label":"array","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice\\">ChatCompletionChoice</a>","children":[{"label":"ChatCompletionChoice","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice\\">ChatCompletionChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
   expandByDefault
   hasBreakouts
 >
@@ -654,7 +676,7 @@ Successful Response
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice"
   entryId="choices_ChatCompletionChoice"
   parentId="choices"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -670,9 +692,9 @@ Successful Response
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_finish_reason"
   entryId="choices_ChatCompletionChoice_finish_reason"
   parentId="choices_ChatCompletionChoice"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"stop\\\"\",\"linkedLabel\":\"\\\"stop\\\"\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"\\\"length\\\"\",\"linkedLabel\":\"\\\"length\\\"\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"\\\"model_length\\\"\",\"linkedLabel\":\"\\\"model_length\\\"\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"\\\"error\\\"\",\"linkedLabel\":\"\\\"error\\\"\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"\\\"tool_calls\\\"\",\"linkedLabel\":\"\\\"tool_calls\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"stop\\"","linkedLabel":"\\"stop\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"length\\"","linkedLabel":"\\"length\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"model_length\\"","linkedLabel":"\\"model_length\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"error\\"","linkedLabel":"\\"error\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"tool_calls\\"","linkedLabel":"\\"tool_calls\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasExamples
 >
 
@@ -698,9 +720,9 @@ stop
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_index"
   entryId="choices_ChatCompletionChoice_index"
   parentId="choices_ChatCompletionChoice"
-  typeInfo={`{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasExamples
 >
 
@@ -726,9 +748,9 @@ _Example:_
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message"
   entryId="choices_ChatCompletionChoice_message"
   parentId="choices_ChatCompletionChoice"
-  typeInfo={`{\"label\":\"AssistantMessage\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage\\\">AssistantMessage</a>\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"AssistantMessage","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage\\">AssistantMessage</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -744,7 +766,7 @@ _Example:_
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage"
   parentId="choices_ChatCompletionChoice_message"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -760,9 +782,9 @@ _Example:_
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"array\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"TextChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_textchunk\\\">TextChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"ImageURLChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_imageurlchunk\\\">ImageURLChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"DocumentURLChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_documenturlchunk\\\">DocumentURLChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"ReferenceChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_referencechunk\\\">ReferenceChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"FileChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_filechunk\\\">FileChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"ThinkChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk\\\">ThinkChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"AudioChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_audiochunk\\\">AudioChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_textchunk\\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_imageurlchunk\\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_documenturlchunk\\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_referencechunk\\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"FileChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_filechunk\\">FileChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ThinkChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk\\">ThinkChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"AudioChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_audiochunk\\">AudioChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -778,7 +800,7 @@ _Example:_
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_textchunk"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_TextChunk"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -794,9 +816,9 @@ _Example:_
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_textchunk_text"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_TextChunk_text"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_TextChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -811,9 +833,9 @@ _Example:_
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_textchunk_type"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_TextChunk_type"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_TextChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"text\\\"\",\"linkedLabel\":\"\\\"text\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"text\\"","linkedLabel":"\\"text\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -839,7 +861,7 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_imageurlchunk"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ImageURLChunk"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasDescription
   hasProperties
 >
@@ -862,9 +884,9 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_imageurlchunk_image_url"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ImageURLChunk_image_url"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ImageURLChunk"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"ImageURL\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_imageurlchunk_image_url_imageurl\\\">ImageURL</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_imageurlchunk_image_url_imageurl\\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -880,7 +902,7 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_imageurlchunk_image_url_imageurl"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ImageURLChunk_image_url_ImageURL"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ImageURLChunk_image_url"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -896,9 +918,9 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_imageurlchunk_image_url_imageurl_detail"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ImageURLChunk_image_url_ImageURL_detail"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ImageURLChunk_image_url_ImageURL"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -913,9 +935,9 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_imageurlchunk_image_url_imageurl_url"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ImageURLChunk_image_url_ImageURL_url"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ImageURLChunk_image_url_ImageURL"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -938,9 +960,9 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_imageurlchunk_type"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ImageURLChunk_type"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ImageURLChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"image_url\\\"\",\"linkedLabel\":\"\\\"image_url\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"image_url\\"","linkedLabel":"\\"image_url\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -966,7 +988,7 @@ _Default Value:_ `"image_url"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_documenturlchunk"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_DocumentURLChunk"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -982,9 +1004,9 @@ _Default Value:_ `"image_url"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_documenturlchunk_document_name"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_DocumentURLChunk_document_name"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_DocumentURLChunk"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDescription
 >
 
@@ -1006,9 +1028,9 @@ The filename of the document
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_documenturlchunk_document_url"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_DocumentURLChunk_document_url"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_DocumentURLChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1023,9 +1045,9 @@ The filename of the document
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_documenturlchunk_type"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_DocumentURLChunk_type"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_DocumentURLChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"document_url\\\"\",\"linkedLabel\":\"\\\"document_url\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"document_url\\"","linkedLabel":"\\"document_url\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1051,7 +1073,7 @@ _Default Value:_ `"document_url"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_referencechunk"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ReferenceChunk"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -1067,9 +1089,9 @@ _Default Value:_ `"document_url"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_referencechunk_reference_ids"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ReferenceChunk_reference_ids"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ReferenceChunk"
-  typeInfo={`{\"label\":\"array\",\"linkedLabel\":\"integer\",\"children\":[{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1084,9 +1106,9 @@ _Default Value:_ `"document_url"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_referencechunk_type"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ReferenceChunk_type"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ReferenceChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"reference\\\"\",\"linkedLabel\":\"\\\"reference\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"reference\\"","linkedLabel":"\\"reference\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1112,7 +1134,7 @@ _Default Value:_ `"reference"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_filechunk"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -1128,9 +1150,9 @@ _Default Value:_ `"reference"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_filechunk_file_id"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk_file_id"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1145,9 +1167,9 @@ _Default Value:_ `"reference"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_filechunk_type"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk_type"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_FileChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1173,7 +1195,7 @@ _Default Value:_ `"file"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -1189,9 +1211,9 @@ _Default Value:_ `"file"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_closed"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_closed"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk"
-  typeInfo={`{\"label\":\"boolean\",\"linkedLabel\":\"boolean\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDescription
   hasDefaultValue
 >
@@ -1220,9 +1242,9 @@ _Default Value:_ `true`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk"
-  typeInfo={`{\"label\":\"array\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"ReferenceChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_referencechunk\\\">ReferenceChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"TextChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_textchunk\\\">TextChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"ReferenceChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_referencechunk\\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"TextChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_textchunk\\">TextChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -1238,7 +1260,7 @@ _Default Value:_ `true`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_referencechunk"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -1254,9 +1276,9 @@ _Default Value:_ `true`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_referencechunk_reference_ids"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk_reference_ids"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk"
-  typeInfo={`{\"label\":\"array\",\"linkedLabel\":\"integer\",\"children\":[{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1271,9 +1293,9 @@ _Default Value:_ `true`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_referencechunk_type"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk_type"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_ReferenceChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"reference\\\"\",\"linkedLabel\":\"\\\"reference\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"reference\\"","linkedLabel":"\\"reference\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1299,7 +1321,7 @@ _Default Value:_ `"reference"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_textchunk"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -1315,9 +1337,9 @@ _Default Value:_ `"reference"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_textchunk_text"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk_text"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1332,9 +1354,9 @@ _Default Value:_ `"reference"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_thinking_textchunk_type"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk_type"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_thinking_TextChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"text\\\"\",\"linkedLabel\":\"\\\"text\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"text\\"","linkedLabel":"\\"text\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1364,9 +1386,9 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_thinkchunk_type"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk_type"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_ThinkChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"thinking\\\"\",\"linkedLabel\":\"\\\"thinking\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"thinking\\"","linkedLabel":"\\"thinking\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1392,7 +1414,7 @@ _Default Value:_ `"thinking"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_audiochunk"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -1408,9 +1430,9 @@ _Default Value:_ `"thinking"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_audiochunk_input_audio"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk_input_audio"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1425,9 +1447,9 @@ _Default Value:_ `"thinking"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_content_audiochunk_type"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk_type"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_content_AudioChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"input_audio\\\"\",\"linkedLabel\":\"\\\"input_audio\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"input_audio\\"","linkedLabel":"\\"input_audio\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1457,9 +1479,9 @@ _Default Value:_ `"input_audio"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_prefix"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_prefix"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage"
-  typeInfo={`{\"label\":\"boolean\",\"linkedLabel\":\"boolean\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDescription
   hasDefaultValue
 >
@@ -1488,9 +1510,9 @@ _Default Value:_ `false`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_role"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_role"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"assistant\\\"\",\"linkedLabel\":\"\\\"assistant\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"assistant\\"","linkedLabel":"\\"assistant\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1512,9 +1534,9 @@ _Default Value:_ `"assistant"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"array\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall\\\">ToolCall</a>\",\"children\":[{\"label\":\"ToolCall\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall\\\">ToolCall</a>\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall\\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall\\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -1530,7 +1552,7 @@ _Default Value:_ `"assistant"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -1546,9 +1568,9 @@ _Default Value:_ `"assistant"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall_function"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall_function"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall"
-  typeInfo={`{\"label\":\"FunctionCall\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall_function_functioncall\\\">FunctionCall</a>\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"FunctionCall","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall_function_functioncall\\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -1564,7 +1586,7 @@ _Default Value:_ `"assistant"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall_function_functioncall"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall_function_FunctionCall"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall_function"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -1580,9 +1602,9 @@ _Default Value:_ `"assistant"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall_function_functioncall_arguments"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall_function_FunctionCall_arguments"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall_function_FunctionCall"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"map\",\"linkedLabel\":\"any\",\"children\":[{\"label\":\"any\",\"linkedLabel\":\"any\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}},{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1597,9 +1619,9 @@ _Default Value:_ `"assistant"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall_function_functioncall_name"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall_function_FunctionCall_name"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall_function_FunctionCall"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1622,9 +1644,9 @@ _Default Value:_ `"assistant"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall_id"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall_id"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1646,9 +1668,9 @@ _Default Value:_ `"null"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall_index"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall_index"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall"
-  typeInfo={`{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1670,9 +1692,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_choices_chatcompletionchoice_message_assistantmessage_tool_calls_toolcall_type"
   entryId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall_type"
   parentId="choices_ChatCompletionChoice_message_AssistantMessage_tool_calls_ToolCall"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"function\\\"\",\"linkedLabel\":\"\\\"function\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"function\\"","linkedLabel":"\\"function\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1710,8 +1732,8 @@ _Default Value:_ `0`
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_created"
   entryId="created"
-  typeInfo={`{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
   expandByDefault
   hasExamples
 >
@@ -1737,8 +1759,8 @@ _Example:_
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_id"
   entryId="id"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
   expandByDefault
   hasExamples
 >
@@ -1764,8 +1786,8 @@ cmpl-e5cc70bb28c444948073e77776eb30ef
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_model"
   entryId="model"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
   expandByDefault
   hasExamples
 >
@@ -1791,8 +1813,8 @@ codestral-latest
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_object"
   entryId="object"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
   expandByDefault
   hasExamples
 >
@@ -1818,8 +1840,8 @@ chat.completion
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage"
   entryId="usage"
-  typeInfo={`{\"label\":\"UsageInfo\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo\\\">UsageInfo</a>\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
+  typeInfo={`{"label":"UsageInfo","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo\\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
   expandByDefault
   hasBreakouts
 >
@@ -1836,7 +1858,7 @@ chat.completion
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo"
   entryId="usage_UsageInfo"
   parentId="usage"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -1852,9 +1874,9 @@ chat.completion
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo_completion_tokens"
   entryId="usage_UsageInfo_completion_tokens"
   parentId="usage_UsageInfo"
-  typeInfo={`{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1876,9 +1898,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo_prompt_audio_seconds"
   entryId="usage_UsageInfo_prompt_audio_seconds"
   parentId="usage_UsageInfo"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1893,9 +1915,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo_prompt_tokens"
   entryId="usage_UsageInfo_prompt_tokens"
   parentId="usage_UsageInfo"
-  typeInfo={`{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1917,9 +1939,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_application-json_usage_usageinfo_total_tokens"
   entryId="usage_UsageInfo_total_tokens"
   parentId="usage_UsageInfo"
-  typeInfo={`{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -1952,7 +1974,7 @@ _Default Value:_ `0`
 <ResponseTab
   slot="tab"
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream"
-  tags={{"response":"200:text/event-stream"}}
+  tags={`{"response":"200:text/event-stream"}`}
 >
 
 200 (text/event-stream)
@@ -1967,7 +1989,7 @@ _Default Value:_ `0`
 <OperationResponseBodyDisplayTypeSection slot="response-body-display-type">
 
 <FrontMatterDisplayType
-  typeInfo={{"label":"event-stream","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_completionevent\">CompletionEvent</a>","children":[{"label":"CompletionEvent","linkedLabel":"<a href=\"#operation-fim_completion_v1_fim_completions_post_responses_completionevent\">CompletionEvent</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={`{"label":"event-stream","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_completionevent\\">CompletionEvent</a>","children":[{"label":"CompletionEvent","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_completionevent\\">CompletionEvent</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
 />
 
 </OperationResponseBodyDisplayTypeSection>
@@ -1999,9 +2021,9 @@ Successful Response
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data"
   entryId="CompletionEvent_data"
   parentId="CompletionEvent"
-  typeInfo={`{\"label\":\"CompletionChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk\\\">CompletionChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"CompletionChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk\\">CompletionChunk</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -2017,7 +2039,7 @@ Successful Response
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk"
   entryId="CompletionEvent_data_CompletionChunk"
   parentId="CompletionEvent_data"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2033,9 +2055,9 @@ Successful Response
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices"
   entryId="CompletionEvent_data_CompletionChunk_choices"
   parentId="CompletionEvent_data_CompletionChunk"
-  typeInfo={`{\"label\":\"array\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice\\\">CompletionResponseStreamChoice</a>\",\"children\":[{\"label\":\"CompletionResponseStreamChoice\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice\\\">CompletionResponseStreamChoice</a>\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice\\">CompletionResponseStreamChoice</a>","children":[{"label":"CompletionResponseStreamChoice","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice\\">CompletionResponseStreamChoice</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -2051,7 +2073,7 @@ Successful Response
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice"
   parentId="CompletionEvent_data_CompletionChunk_choices"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2067,9 +2089,9 @@ Successful Response
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice"
-  typeInfo={`{\"label\":\"DeltaMessage\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage\\\">DeltaMessage</a>\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"DeltaMessage","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage\\">DeltaMessage</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -2085,7 +2107,7 @@ Successful Response
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2101,9 +2123,9 @@ Successful Response
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"array\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"TextChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk\\\">TextChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"ImageURLChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk\\\">ImageURLChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"DocumentURLChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk\\\">DocumentURLChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"ReferenceChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk\\\">ReferenceChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"FileChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_filechunk\\\">FileChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"ThinkChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk\\\">ThinkChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"AudioChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_audiochunk\\\">AudioChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"TextChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk\\">TextChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ImageURLChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk\\">ImageURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"DocumentURLChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk\\">DocumentURLChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ReferenceChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk\\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"FileChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_filechunk\\">FileChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"ThinkChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk\\">ThinkChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"AudioChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_audiochunk\\">AudioChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -2119,7 +2141,7 @@ Successful Response
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2135,9 +2157,9 @@ Successful Response
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk_text"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk_text"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2152,9 +2174,9 @@ Successful Response
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_textchunk_type"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_TextChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"text\\\"\",\"linkedLabel\":\"\\\"text\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"text\\"","linkedLabel":"\\"text\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -2180,7 +2202,7 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasDescription
   hasProperties
 >
@@ -2203,9 +2225,9 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"ImageURL\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl\\\">ImageURL</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"ImageURL","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl\\">ImageURL</a>","children":[],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -2221,7 +2243,7 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2237,9 +2259,9 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl_detail"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL_detail"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2254,9 +2276,9 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_image_url_imageurl_url"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL_url"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_image_url_ImageURL"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2279,9 +2301,9 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_imageurlchunk_type"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ImageURLChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"image_url\\\"\",\"linkedLabel\":\"\\\"image_url\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"image_url\\"","linkedLabel":"\\"image_url\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -2307,7 +2329,7 @@ _Default Value:_ `"image_url"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2323,9 +2345,9 @@ _Default Value:_ `"image_url"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_document_name"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk_document_name"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDescription
 >
 
@@ -2347,9 +2369,9 @@ The filename of the document
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_document_url"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk_document_url"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2364,9 +2386,9 @@ The filename of the document
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_documenturlchunk_type"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_DocumentURLChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"document_url\\\"\",\"linkedLabel\":\"\\\"document_url\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"document_url\\"","linkedLabel":"\\"document_url\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -2392,7 +2414,7 @@ _Default Value:_ `"document_url"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2408,9 +2430,9 @@ _Default Value:_ `"document_url"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk_reference_ids"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk_reference_ids"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk"
-  typeInfo={`{\"label\":\"array\",\"linkedLabel\":\"integer\",\"children\":[{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2425,9 +2447,9 @@ _Default Value:_ `"document_url"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_referencechunk_type"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ReferenceChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"reference\\\"\",\"linkedLabel\":\"\\\"reference\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"reference\\"","linkedLabel":"\\"reference\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -2453,7 +2475,7 @@ _Default Value:_ `"reference"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_filechunk"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2469,9 +2491,9 @@ _Default Value:_ `"reference"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_filechunk_file_id"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk_file_id"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2486,9 +2508,9 @@ _Default Value:_ `"reference"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_filechunk_type"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_FileChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -2514,7 +2536,7 @@ _Default Value:_ `"file"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2530,9 +2552,9 @@ _Default Value:_ `"file"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_closed"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_closed"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk"
-  typeInfo={`{\"label\":\"boolean\",\"linkedLabel\":\"boolean\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDescription
   hasDefaultValue
 >
@@ -2561,9 +2583,9 @@ _Default Value:_ `true`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk"
-  typeInfo={`{\"label\":\"array\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"ReferenceChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_referencechunk\\\">ReferenceChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"TextChunk\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_textchunk\\\">TextChunk</a>\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"ReferenceChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_referencechunk\\">ReferenceChunk</a>","children":[],"breakoutSubTypes":{}},{"label":"TextChunk","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_textchunk\\">TextChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -2579,7 +2601,7 @@ _Default Value:_ `true`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_referencechunk"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2595,9 +2617,9 @@ _Default Value:_ `true`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_referencechunk_reference_ids"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk_reference_ids"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk"
-  typeInfo={`{\"label\":\"array\",\"linkedLabel\":\"integer\",\"children\":[{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"integer","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2612,9 +2634,9 @@ _Default Value:_ `true`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_referencechunk_type"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_ReferenceChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"reference\\\"\",\"linkedLabel\":\"\\\"reference\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"reference\\"","linkedLabel":"\\"reference\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -2640,7 +2662,7 @@ _Default Value:_ `"reference"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_textchunk"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2656,9 +2678,9 @@ _Default Value:_ `"reference"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_textchunk_text"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk_text"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2673,9 +2695,9 @@ _Default Value:_ `"reference"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_thinking_textchunk_type"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_thinking_TextChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"text\\\"\",\"linkedLabel\":\"\\\"text\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"text\\"","linkedLabel":"\\"text\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -2705,9 +2727,9 @@ _Default Value:_ `"text"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_thinkchunk_type"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_ThinkChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"thinking\\\"\",\"linkedLabel\":\"\\\"thinking\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"thinking\\"","linkedLabel":"\\"thinking\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -2733,7 +2755,7 @@ _Default Value:_ `"thinking"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_audiochunk"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2749,9 +2771,9 @@ _Default Value:_ `"thinking"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_audiochunk_input_audio"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk_input_audio"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2766,9 +2788,9 @@ _Default Value:_ `"thinking"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_content_audiochunk_type"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_content_AudioChunk"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"input_audio\\\"\",\"linkedLabel\":\"\\\"input_audio\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"input_audio\\"","linkedLabel":"\\"input_audio\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -2798,9 +2820,9 @@ _Default Value:_ `"input_audio"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_role"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_role"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2815,9 +2837,9 @@ _Default Value:_ `"input_audio"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"array\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall\\\">ToolCall</a>\",\"children\":[{\"label\":\"ToolCall\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall\\\">ToolCall</a>\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"array","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall\\">ToolCall</a>","children":[{"label":"ToolCall","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall\\">ToolCall</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -2833,7 +2855,7 @@ _Default Value:_ `"input_audio"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2849,9 +2871,9 @@ _Default Value:_ `"input_audio"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
-  typeInfo={`{\"label\":\"FunctionCall\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall\\\">FunctionCall</a>\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"FunctionCall","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall\\">FunctionCall</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -2867,7 +2889,7 @@ _Default Value:_ `"input_audio"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -2883,9 +2905,9 @@ _Default Value:_ `"input_audio"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall_arguments"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall_arguments"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"map\",\"linkedLabel\":\"any\",\"children\":[{\"label\":\"any\",\"linkedLabel\":\"any\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}},{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"map","linkedLabel":"any","children":[{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}},{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2900,9 +2922,9 @@ _Default Value:_ `"input_audio"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_function_functioncall_name"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall_name"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_function_FunctionCall"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2925,9 +2947,9 @@ _Default Value:_ `"input_audio"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_id"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_id"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -2949,9 +2971,9 @@ _Default Value:_ `"null"`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_index"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_index"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
-  typeInfo={`{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -2973,9 +2995,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_delta_deltamessage_tool_calls_toolcall_type"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall_type"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_delta_DeltaMessage_tool_calls_ToolCall"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"function\\\"\",\"linkedLabel\":\"\\\"function\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"function\\"","linkedLabel":"\\"function\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3006,9 +3028,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_finish_reason"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_finish_reason"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice"
-  typeInfo={`{\"label\":\"enum\",\"linkedLabel\":\"enum\",\"children\":[{\"label\":\"\\\"stop\\\"\",\"linkedLabel\":\"\\\"stop\\\"\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"\\\"length\\\"\",\"linkedLabel\":\"\\\"length\\\"\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"\\\"error\\\"\",\"linkedLabel\":\"\\\"error\\\"\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"\\\"tool_calls\\\"\",\"linkedLabel\":\"\\\"tool_calls\\\"\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"stop\\"","linkedLabel":"\\"stop\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"length\\"","linkedLabel":"\\"length\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"error\\"","linkedLabel":"\\"error\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"tool_calls\\"","linkedLabel":"\\"tool_calls\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3023,9 +3045,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_choices_completionresponsestreamchoice_index"
   entryId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice_index"
   parentId="CompletionEvent_data_CompletionChunk_choices_CompletionResponseStreamChoice"
-  typeInfo={`{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3048,9 +3070,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_created"
   entryId="CompletionEvent_data_CompletionChunk_created"
   parentId="CompletionEvent_data_CompletionChunk"
-  typeInfo={`{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3065,9 +3087,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_id"
   entryId="CompletionEvent_data_CompletionChunk_id"
   parentId="CompletionEvent_data_CompletionChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3082,9 +3104,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_model"
   entryId="CompletionEvent_data_CompletionChunk_model"
   parentId="CompletionEvent_data_CompletionChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3099,9 +3121,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_object"
   entryId="CompletionEvent_data_CompletionChunk_object"
   parentId="CompletionEvent_data_CompletionChunk"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3116,9 +3138,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage"
   entryId="CompletionEvent_data_CompletionChunk_usage"
   parentId="CompletionEvent_data_CompletionChunk"
-  typeInfo={`{\"label\":\"UsageInfo\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo\\\">UsageInfo</a>\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"UsageInfo","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo\\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasBreakouts
 >
 
@@ -3134,7 +3156,7 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo"
   entryId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
   parentId="CompletionEvent_data_CompletionChunk_usage"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -3150,9 +3172,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_completion_tokens"
   entryId="CompletionEvent_data_CompletionChunk_usage_UsageInfo_completion_tokens"
   parentId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
-  typeInfo={`{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -3174,9 +3196,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_prompt_audio_seconds"
   entryId="CompletionEvent_data_CompletionChunk_usage_UsageInfo_prompt_audio_seconds"
   parentId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
-  typeInfo={`{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"null\",\"linkedLabel\":\"null\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3191,9 +3213,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_prompt_tokens"
   entryId="CompletionEvent_data_CompletionChunk_usage_UsageInfo_prompt_tokens"
   parentId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
-  typeInfo={`{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -3215,9 +3237,9 @@ _Default Value:_ `0`
   id="operation-fim_completion_v1_fim_completions_post_responses_200_text-event-stream_completionevent_data_completionchunk_usage_usageinfo_total_tokens"
   entryId="CompletionEvent_data_CompletionChunk_usage_UsageInfo_total_tokens"
   parentId="CompletionEvent_data_CompletionChunk_usage_UsageInfo"
-  typeInfo={`{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault={`false`}
   hasDefaultValue
 >
 
@@ -3262,7 +3284,7 @@ _Default Value:_ `0`
 <ResponseTab
   slot="tab"
   id="operation-fim_completion_v1_fim_completions_post_responses_422_application-json"
-  tags={{"response":"422:application/json"}}
+  tags={`{"response":"422:application/json"}`}
 >
 
 422
@@ -3285,8 +3307,8 @@ Validation Error
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta"
   entryId="HttpMeta"
-  typeInfo={`{\"label\":\"HTTPMetadata\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta_httpmetadata\\\">HTTPMetadata</a>\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
+  typeInfo={`{"label":"HTTPMetadata","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta_httpmetadata\\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
   expandByDefault
   hasBreakouts
 >
@@ -3303,7 +3325,7 @@ Validation Error
   id="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta_httpmetadata"
   entryId="HttpMeta_HTTPMetadata"
   parentId="HttpMeta"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -3319,9 +3341,9 @@ Validation Error
   id="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta_httpmetadata_request"
   entryId="HttpMeta_HTTPMetadata_Request"
   parentId="HttpMeta_HTTPMetadata"
-  typeInfo={`{\"label\":\"any\",\"linkedLabel\":\"any\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasDescription
 >
 
@@ -3343,9 +3365,9 @@ Raw HTTP request; suitable for debugging
   id="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_httpmeta_httpmetadata_response"
   entryId="HttpMeta_HTTPMetadata_Response"
   parentId="HttpMeta_HTTPMetadata"
-  typeInfo={`{\"label\":\"any\",\"linkedLabel\":\"any\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
   hasDescription
 >
 
@@ -3374,8 +3396,8 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableProperty
   id="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail"
   entryId="detail"
-  typeInfo={`{\"label\":\"array\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror\\\">ValidationError</a>\",\"children\":[{\"label\":\"ValidationError\",\"linkedLabel\":\"<a href=\\\"#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror\\\">ValidationError</a>\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations="[]"
+  typeInfo={`{"label":"array","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror\\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\\"#operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror\\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
   expandByDefault
   hasBreakouts
 >
@@ -3392,7 +3414,7 @@ Raw HTTP response; suitable for custom response parsing
   id="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror"
   entryId="detail_ValidationError"
   parentId="detail"
-  expandByDefault={false}
+  expandByDefault={`false`}
   hasProperties
 >
 
@@ -3408,9 +3430,9 @@ Raw HTTP response; suitable for custom response parsing
   id="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror_loc"
   entryId="detail_ValidationError_loc"
   parentId="detail_ValidationError"
-  typeInfo={`{\"label\":\"array\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"union\",\"linkedLabel\":\"union\",\"children\":[{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}},{\"label\":\"integer\",\"linkedLabel\":\"integer\",\"children\":[],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3425,9 +3447,9 @@ Raw HTTP response; suitable for custom response parsing
   id="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror_msg"
   entryId="detail_ValidationError_msg"
   parentId="detail_ValidationError"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3442,9 +3464,9 @@ Raw HTTP response; suitable for custom response parsing
   id="operation-fim_completion_v1_fim_completions_post_responses_422_application-json_detail_validationerror_type"
   entryId="detail_ValidationError_type"
   parentId="detail_ValidationError"
-  typeInfo={`{\"label\":\"string\",\"linkedLabel\":\"string\",\"children\":[],\"breakoutSubTypes\":{}}`}
-  typeAnnotations={`[{\"title\":\"required\",\"variant\":\"warning\"}]`}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault={`false`}
 >
 
 <ExpandablePropertyTitle slot="title">

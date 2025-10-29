@@ -119,6 +119,12 @@ export function renderSecurity(
       renderer.createExpandableProperty({
         rawTitle: entry.name,
         isTopLevel: true,
+        typeInfo: {
+          label: entry.type,
+          linkedLabel: entry.type,
+          children: [],
+          breakoutSubTypes: new Map(),
+        },
         annotations: [
           {
             title: entry.in,

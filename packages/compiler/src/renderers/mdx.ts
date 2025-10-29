@@ -264,7 +264,7 @@ class MdxRenderer extends MarkdownRenderer {
                 value.includes("\r") ||
                 value.includes("\t")
               ) {
-                return `${separator}${key}={\`${JSON.stringify(value).slice(1, -1)}\`}`;
+                return `${separator}${key}={\`${value.replace(/\\/g, "\\\\")}\`}`;
               }
               return `${separator}${key}="${value}"`;
             }
@@ -274,7 +274,7 @@ class MdxRenderer extends MarkdownRenderer {
             warn(
               `Property ${key} of type ${typeof value} in component ${symbol} is not supported.`
             );
-            return `${separator}${key}={${JSON.stringify(value)}}`;
+            return `${separator}${key}={\`${JSON.stringify(value).replace(/\\/g, "\\\\")}\`}`;
           } else {
             return "";
           }
@@ -952,8 +952,8 @@ class MdxRenderer extends MarkdownRenderer {
           id: this.getCurrentId(),
           entryId: id,
           parentId,
-          typeInfo: JSON.stringify(typeInfo),
-          typeAnnotations: JSON.stringify(annotations),
+          typeInfo,
+          typeAnnotations: annotations,
           expandByDefault,
           hasDescription: createDescription ? true : undefined,
           hasExamples: createExamples ? true : undefined,

@@ -1,3 +1,5 @@
+import "@speakeasy-api/docs-md-components";
+
 // Components
 
 export { Code } from "./components/Code/Code.tsx";

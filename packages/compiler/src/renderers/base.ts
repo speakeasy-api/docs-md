@@ -214,7 +214,7 @@ export type RendererCreateExpandablePropertyArgs = [
   options: {
     rawTitle: string;
     isTopLevel: boolean;
-    typeInfo?: DisplayTypeInfo;
+    typeInfo: DisplayTypeInfo;
     annotations: PropertyAnnotations[];
     createDescription?: () => void;
     createExamples?: () => void;
