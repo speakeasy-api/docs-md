@@ -75,7 +75,7 @@ Create Transcription
 <CodeSampleTab
   slot="tab"
   id="operation-audio_api_v1_transcriptions_post_code-samples_typescript"
-  tags={{"codeSample":"typescript"}}
+  tags={`{"codeSample":"typescript"}`}
 >
 
 TypeScript
@@ -89,7 +89,22 @@ TypeScript
 
 <TryItNow
   language="typescript"
-  defaultValue={`import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.audio.transcriptions.complete({\n    model: \"Model X\",\n  });\n\n  console.log(result);\n}\n\nrun();\n`}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.audio.transcriptions.complete({
+    model: "Model X",
+  });
+
+  console.log(result);
+}
+
+run();
+`}
   dependencyUrlPrefix="/mistral-try-it-now"
   packageName="@mistralai/mistralai"
 />
@@ -99,7 +114,7 @@ TypeScript
 <CodeSampleTab
   slot="tab"
   id="operation-audio_api_v1_transcriptions_post_code-samples_python"
-  tags={{"codeSample":"python"}}
+  tags={`{"codeSample":"python"}`}
 >
 
 Python
@@ -137,7 +152,7 @@ with Mistral(
 <CodeSampleTab
   slot="tab"
   id="operation-audio_api_v1_transcriptions_post_code-samples_curl"
-  tags={{"codeSample":"curl"}}
+  tags={`{"codeSample":"curl"}`}
 >
 
 cURL
@@ -151,7 +166,12 @@ cURL
 
 <TryItNow
   language="curl"
-  defaultValue={`curl https://api.mistral.ai/v1/audio/transcriptions \\\n -X POST \\\n -H 'Authorization: Bearer YOUR_APIKEY_HERE' \\\n -d '{\n  \"model\": \"ipsum eiusmod\"\n}'`}
+  defaultValue={`curl https://api.mistral.ai/v1/audio/transcriptions \\
+ -X POST \\
+ -H 'Authorization: Bearer YOUR_APIKEY_HERE' \\
+ -d '{
+  "model": "ipsum eiusmod"
+}'`}
 />
 
 </SectionContent>
@@ -199,13 +219,13 @@ cURL
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="file"
-  headingId="operation-audio_api_v1_transcriptions_post_request_file"
-  typeInfo={{"label":"File","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_request_file_file\">File</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_request_file"
+  entryId="file"
+  typeInfo={`{"label":"File","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_request_file_file\\">File</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDescription
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -231,12 +251,11 @@ The File object (not file name) to be uploaded.
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="file_File"
-  headingId="operation-audio_api_v1_transcriptions_post_request_file_file"
+  id="operation-audio_api_v1_transcriptions_post_request_file_file"
+  entryId="file_File"
   parentId="file"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasDescription
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -262,14 +281,11 @@ The File object (not file name) to be uploaded.
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="file_File_content"
-  headingId="operation-audio_api_v1_transcriptions_post_request_file_file_content"
+  id="operation-audio_api_v1_transcriptions_post_request_file_file_content"
+  entryId="file_File_content"
   parentId="file_File"
-  typeInfo={{"label":"binary","linkedLabel":"binary","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"binary","linkedLabel":"binary","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -281,14 +297,11 @@ The File object (not file name) to be uploaded.
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="file_File_fileName"
-  headingId="operation-audio_api_v1_transcriptions_post_request_file_file_filename"
+  id="operation-audio_api_v1_transcriptions_post_request_file_file_filename"
+  entryId="file_File_fileName"
   parentId="file_File"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -308,13 +321,12 @@ The File object (not file name) to be uploaded.
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="file_id"
-  headingId="operation-audio_api_v1_transcriptions_post_request_file_id"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_request_file_id"
+  entryId="file_id"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -332,13 +344,12 @@ ID of a file uploaded to /v1/files
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="file_url"
-  headingId="operation-audio_api_v1_transcriptions_post_request_file_url"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_request_file_url"
+  entryId="file_url"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -356,13 +367,12 @@ Url of a file to be transcribed
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="language"
-  headingId="operation-audio_api_v1_transcriptions_post_request_language"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_request_language"
+  entryId="language"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -380,13 +390,11 @@ Language of the audio, e.g. 'en'. Providing the language can boost accuracy.
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="model"
-  headingId="operation-audio_api_v1_transcriptions_post_request_model"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_request_model"
+  entryId="model"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -398,13 +406,12 @@ Language of the audio, e.g. 'en'. Providing the language can boost accuracy.
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="stream"
-  headingId="operation-audio_api_v1_transcriptions_post_request_stream"
-  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_request_stream"
+  entryId="stream"
+  typeInfo={`{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -422,13 +429,11 @@ _Default Value:_ `false`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="temperature"
-  headingId="operation-audio_api_v1_transcriptions_post_request_temperature"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_request_temperature"
+  entryId="temperature"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -440,13 +445,12 @@ _Default Value:_ `false`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="timestamp_granularities"
-  headingId="operation-audio_api_v1_transcriptions_post_request_timestamp_granularities"
-  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"segment\"","linkedLabel":"\"segment\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_request_timestamp_granularities"
+  entryId="timestamp_granularities"
+  typeInfo={`{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"segment\\"","linkedLabel":"\\"segment\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -484,7 +488,7 @@ Granularities of timestamps to include in the response.
 <ResponseExamplesTab
   slot="tab"
   id="operation-audio_api_v1_transcriptions_post_responses-examples_200_application-json"
-  tags={{"responseExample":"200:application/json"}}
+  tags={`{"responseExample":"200:application/json"}`}
 >
 
 200
@@ -524,7 +528,7 @@ Granularities of timestamps to include in the response.
 <ResponseTab
   slot="tab"
   id="operation-audio_api_v1_transcriptions_post_responses_200_application-json"
-  tags={{"response":"200:application/json"}}
+  tags={`{"response":"200:application/json"}`}
 >
 
 200
@@ -545,13 +549,11 @@ Successful Response
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="language"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_language"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_language"
+  entryId="language"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -563,13 +565,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="model"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_model"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_model"
+  entryId="model"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -581,13 +581,12 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="segments"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk\">TranscriptionSegmentChunk</a>","children":[{"label":"TranscriptionSegmentChunk","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk\">TranscriptionSegmentChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments"
+  entryId="segments"
+  typeInfo={`{"label":"array","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk\\">TranscriptionSegmentChunk</a>","children":[{"label":"TranscriptionSegmentChunk","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk\\">TranscriptionSegmentChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -599,12 +598,10 @@ Successful Response
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="segments_TranscriptionSegmentChunk"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk"
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk"
+  entryId="segments_TranscriptionSegmentChunk"
   parentId="segments"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -616,14 +613,11 @@ Successful Response
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="segments_TranscriptionSegmentChunk_end"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk_end"
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk_end"
+  entryId="segments_TranscriptionSegmentChunk_end"
   parentId="segments_TranscriptionSegmentChunk"
-  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -635,14 +629,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="segments_TranscriptionSegmentChunk_start"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk_start"
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk_start"
+  entryId="segments_TranscriptionSegmentChunk_start"
   parentId="segments_TranscriptionSegmentChunk"
-  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -654,14 +645,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="segments_TranscriptionSegmentChunk_text"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk_text"
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk_text"
+  entryId="segments_TranscriptionSegmentChunk_text"
   parentId="segments_TranscriptionSegmentChunk"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -673,14 +661,12 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="segments_TranscriptionSegmentChunk_type"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk_type"
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_segments_transcriptionsegmentchunk_type"
+  entryId="segments_TranscriptionSegmentChunk_type"
   parentId="segments_TranscriptionSegmentChunk"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription_segment\"","linkedLabel":"\"transcription_segment\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"transcription_segment\\"","linkedLabel":"\\"transcription_segment\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -706,13 +692,11 @@ _Default Value:_ `"transcription_segment"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="text"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_text"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_text"
+  entryId="text"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -724,13 +708,12 @@ _Default Value:_ `"transcription_segment"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="usage"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage"
-  typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage_usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage"
+  entryId="usage"
+  typeInfo={`{"label":"UsageInfo","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage_usageinfo\\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -742,12 +725,10 @@ _Default Value:_ `"transcription_segment"`
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="usage_UsageInfo"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage_usageinfo"
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage_usageinfo"
+  entryId="usage_UsageInfo"
   parentId="usage"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -759,14 +740,12 @@ _Default Value:_ `"transcription_segment"`
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="usage_UsageInfo_completion_tokens"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage_usageinfo_completion_tokens"
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage_usageinfo_completion_tokens"
+  entryId="usage_UsageInfo_completion_tokens"
   parentId="usage_UsageInfo"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -784,14 +763,11 @@ _Default Value:_ `0`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="usage_UsageInfo_prompt_audio_seconds"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage_usageinfo_prompt_audio_seconds"
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage_usageinfo_prompt_audio_seconds"
+  entryId="usage_UsageInfo_prompt_audio_seconds"
   parentId="usage_UsageInfo"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -803,14 +779,12 @@ _Default Value:_ `0`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="usage_UsageInfo_prompt_tokens"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage_usageinfo_prompt_tokens"
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage_usageinfo_prompt_tokens"
+  entryId="usage_UsageInfo_prompt_tokens"
   parentId="usage_UsageInfo"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -828,14 +802,12 @@ _Default Value:_ `0`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="usage_UsageInfo_total_tokens"
-  headingId="operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage_usageinfo_total_tokens"
+  id="operation-audio_api_v1_transcriptions_post_responses_200_application-json_usage_usageinfo_total_tokens"
+  entryId="usage_UsageInfo_total_tokens"
   parentId="usage_UsageInfo"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -891,7 +863,7 @@ Create streaming transcription (SSE)
 <CodeSampleTab
   slot="tab"
   id="operation-audio_api_v1_transcriptions_post_stream_code-samples_typescript"
-  tags={{"codeSample":"typescript"}}
+  tags={`{"codeSample":"typescript"}`}
 >
 
 TypeScript
@@ -905,7 +877,25 @@ TypeScript
 
 <TryItNow
   language="typescript"
-  defaultValue={`import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.audio.transcriptions.stream({\n    model: \"Camry\",\n  });\n\n  for await (const event of result) {\n    // Handle the event\n    console.log(event);\n  }\n}\n\nrun();\n`}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.audio.transcriptions.stream({
+    model: "Camry",
+  });
+
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
+}
+
+run();
+`}
   dependencyUrlPrefix="/mistral-try-it-now"
   packageName="@mistralai/mistralai"
 />
@@ -915,7 +905,7 @@ TypeScript
 <CodeSampleTab
   slot="tab"
   id="operation-audio_api_v1_transcriptions_post_stream_code-samples_python"
-  tags={{"codeSample":"python"}}
+  tags={`{"codeSample":"python"}`}
 >
 
 Python
@@ -955,7 +945,7 @@ with Mistral(
 <CodeSampleTab
   slot="tab"
   id="operation-audio_api_v1_transcriptions_post_stream_code-samples_curl"
-  tags={{"codeSample":"curl"}}
+  tags={`{"codeSample":"curl"}`}
 >
 
 cURL
@@ -969,7 +959,12 @@ cURL
 
 <TryItNow
   language="curl"
-  defaultValue={`curl https://api.mistral.ai/v1/audio/transcriptions#stream \\\n -X POST \\\n -H 'Authorization: Bearer YOUR_APIKEY_HERE' \\\n -d '{\n  \"model\": \"ipsum eiusmod\"\n}'`}
+  defaultValue={`curl https://api.mistral.ai/v1/audio/transcriptions#stream \\
+ -X POST \\
+ -H 'Authorization: Bearer YOUR_APIKEY_HERE' \\
+ -d '{
+  "model": "ipsum eiusmod"
+}'`}
 />
 
 </SectionContent>
@@ -1017,13 +1012,13 @@ cURL
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="file"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_request_file"
-  typeInfo={{"label":"File","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream_request_file_file\">File</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_stream_request_file"
+  entryId="file"
+  typeInfo={`{"label":"File","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_stream_request_file_file\\">File</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDescription
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1049,12 +1044,11 @@ The File object (not file name) to be uploaded.
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="file_File"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_request_file_file"
+  id="operation-audio_api_v1_transcriptions_post_stream_request_file_file"
+  entryId="file_File"
   parentId="file"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasDescription
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1080,14 +1074,11 @@ The File object (not file name) to be uploaded.
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="file_File_content"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_request_file_file_content"
+  id="operation-audio_api_v1_transcriptions_post_stream_request_file_file_content"
+  entryId="file_File_content"
   parentId="file_File"
-  typeInfo={{"label":"binary","linkedLabel":"binary","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"binary","linkedLabel":"binary","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1099,14 +1090,11 @@ The File object (not file name) to be uploaded.
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="file_File_fileName"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_request_file_file_filename"
+  id="operation-audio_api_v1_transcriptions_post_stream_request_file_file_filename"
+  entryId="file_File_fileName"
   parentId="file_File"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1126,13 +1114,12 @@ The File object (not file name) to be uploaded.
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="file_id"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_request_file_id"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_stream_request_file_id"
+  entryId="file_id"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1150,13 +1137,12 @@ ID of a file uploaded to /v1/files
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="file_url"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_request_file_url"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_stream_request_file_url"
+  entryId="file_url"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1174,13 +1160,12 @@ Url of a file to be transcribed
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="language"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_request_language"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_stream_request_language"
+  entryId="language"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1198,13 +1183,11 @@ Language of the audio, e.g. 'en'. Providing the language can boost accuracy.
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="model"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_request_model"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_stream_request_model"
+  entryId="model"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1216,13 +1199,12 @@ Language of the audio, e.g. 'en'. Providing the language can boost accuracy.
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="stream"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_request_stream"
-  typeInfo={{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_stream_request_stream"
+  entryId="stream"
+  typeInfo={`{"label":"boolean","linkedLabel":"boolean","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1240,13 +1222,11 @@ _Default Value:_ `true`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="temperature"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_request_temperature"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_stream_request_temperature"
+  entryId="temperature"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1258,13 +1238,12 @@ _Default Value:_ `true`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="timestamp_granularities"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_request_timestamp_granularities"
-  typeInfo={{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\"segment\"","linkedLabel":"\"segment\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_stream_request_timestamp_granularities"
+  entryId="timestamp_granularities"
+  typeInfo={`{"label":"array","linkedLabel":"enum","children":[{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"segment\\"","linkedLabel":"\\"segment\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1302,7 +1281,7 @@ Granularities of timestamps to include in the response.
 <ResponseExamplesTab
   slot="tab"
   id="operation-audio_api_v1_transcriptions_post_stream_responses-examples_200_text-event-stream"
-  tags={{"responseExample":"200:text/event-stream"}}
+  tags={`{"responseExample":"200:text/event-stream"}`}
 >
 
 200
@@ -1337,7 +1316,7 @@ null
 <ResponseTab
   slot="tab"
   id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream"
-  tags={{"response":"200:text/event-stream"}}
+  tags={`{"response":"200:text/event-stream"}`}
 >
 
 200
@@ -1352,7 +1331,7 @@ null
 <OperationResponseBodyDisplayTypeSection slot="response-body-display-type">
 
 <FrontMatterDisplayType
-  typeInfo={{"label":"event-stream","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream_responses_transcriptionstreamevents\">TranscriptionStreamEvents</a>","children":[{"label":"TranscriptionStreamEvents","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream_responses_transcriptionstreamevents\">TranscriptionStreamEvents</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
+  typeInfo={`{"label":"event-stream","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_stream_responses_transcriptionstreamevents\\">TranscriptionStreamEvents</a>","children":[{"label":"TranscriptionStreamEvents","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_stream_responses_transcriptionstreamevents\\">TranscriptionStreamEvents</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
 />
 
 </OperationResponseBodyDisplayTypeSection>
@@ -1366,11 +1345,10 @@ Stream of transcription events
 <ExpandableSection>
 
 <ExpandableBreakout
-  slot="entry"
-  id="TranscriptionStreamEvents"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents"
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents"
+  entryId="TranscriptionStreamEvents"
+  expandByDefault
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1382,14 +1360,12 @@ Stream of transcription events
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data"
+  entryId="TranscriptionStreamEvents_data"
   parentId="TranscriptionStreamEvents"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"TranscriptionStreamTextDelta","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamtextdelta\">TranscriptionStreamTextDelta</a>","children":[],"breakoutSubTypes":{}},{"label":"TranscriptionStreamLanguage","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamlanguage\">TranscriptionStreamLanguage</a>","children":[],"breakoutSubTypes":{}},{"label":"TranscriptionStreamSegmentDelta","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamsegmentdelta\">TranscriptionStreamSegmentDelta</a>","children":[],"breakoutSubTypes":{}},{"label":"TranscriptionStreamDone","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone\">TranscriptionStreamDone</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"TranscriptionStreamTextDelta","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamtextdelta\\">TranscriptionStreamTextDelta</a>","children":[],"breakoutSubTypes":{}},{"label":"TranscriptionStreamLanguage","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamlanguage\\">TranscriptionStreamLanguage</a>","children":[],"breakoutSubTypes":{}},{"label":"TranscriptionStreamSegmentDelta","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamsegmentdelta\\">TranscriptionStreamSegmentDelta</a>","children":[],"breakoutSubTypes":{}},{"label":"TranscriptionStreamDone","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone\\">TranscriptionStreamDone</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1401,12 +1377,10 @@ Stream of transcription events
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamtextdelta"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamtextdelta"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta"
   parentId="TranscriptionStreamEvents_data"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1418,14 +1392,11 @@ Stream of transcription events
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta_text"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamtextdelta_text"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamtextdelta_text"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta_text"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1437,14 +1408,12 @@ Stream of transcription events
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta_type"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamtextdelta_type"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamtextdelta_type"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta_type"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamTextDelta"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription.text.delta\"","linkedLabel":"\"transcription.text.delta\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"transcription.text.delta\\"","linkedLabel":"\\"transcription.text.delta\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1466,12 +1435,10 @@ _Default Value:_ `"transcription.text.delta"`
 </ExpandableBreakout>
 
 <ExpandableBreakout
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamLanguage"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamlanguage"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamlanguage"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamLanguage"
   parentId="TranscriptionStreamEvents_data"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1483,14 +1450,11 @@ _Default Value:_ `"transcription.text.delta"`
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamLanguage_audio_language"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamlanguage_audio_language"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamlanguage_audio_language"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamLanguage_audio_language"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamLanguage"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"},{"title":"Pattern: ^\\w{2}$","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"},{"title":"Pattern: ^\\\\w{2}$","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1502,14 +1466,12 @@ _Default Value:_ `"transcription.text.delta"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamLanguage_type"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamlanguage_type"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamlanguage_type"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamLanguage_type"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamLanguage"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription.language\"","linkedLabel":"\"transcription.language\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"transcription.language\\"","linkedLabel":"\\"transcription.language\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1531,12 +1493,10 @@ _Default Value:_ `"transcription.language"`
 </ExpandableBreakout>
 
 <ExpandableBreakout
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamsegmentdelta"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamsegmentdelta"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta"
   parentId="TranscriptionStreamEvents_data"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1548,14 +1508,11 @@ _Default Value:_ `"transcription.language"`
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta_end"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamsegmentdelta_end"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamsegmentdelta_end"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta_end"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta"
-  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1567,14 +1524,11 @@ _Default Value:_ `"transcription.language"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta_start"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamsegmentdelta_start"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamsegmentdelta_start"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta_start"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta"
-  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1586,14 +1540,11 @@ _Default Value:_ `"transcription.language"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta_text"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamsegmentdelta_text"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamsegmentdelta_text"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta_text"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1605,14 +1556,12 @@ _Default Value:_ `"transcription.language"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta_type"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamsegmentdelta_type"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamsegmentdelta_type"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta_type"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamSegmentDelta"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription.segment\"","linkedLabel":"\"transcription.segment\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"transcription.segment\\"","linkedLabel":"\\"transcription.segment\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1634,12 +1583,10 @@ _Default Value:_ `"transcription.segment"`
 </ExpandableBreakout>
 
 <ExpandableBreakout
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
   parentId="TranscriptionStreamEvents_data"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1651,14 +1598,11 @@ _Default Value:_ `"transcription.segment"`
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_language"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_language"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_language"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_language"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1670,14 +1614,11 @@ _Default Value:_ `"transcription.segment"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_model"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_model"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_model"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_model"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1689,14 +1630,12 @@ _Default Value:_ `"transcription.segment"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk\">TranscriptionSegmentChunk</a>","children":[{"label":"TranscriptionSegmentChunk","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk\">TranscriptionSegmentChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk\\">TranscriptionSegmentChunk</a>","children":[{"label":"TranscriptionSegmentChunk","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk\\">TranscriptionSegmentChunk</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1708,12 +1647,10 @@ _Default Value:_ `"transcription.segment"`
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1725,14 +1662,11 @@ _Default Value:_ `"transcription.segment"`
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk_end"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk_end"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk_end"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk_end"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk"
-  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1744,14 +1678,11 @@ _Default Value:_ `"transcription.segment"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk_start"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk_start"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk_start"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk_start"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk"
-  typeInfo={{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1763,14 +1694,11 @@ _Default Value:_ `"transcription.segment"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk_text"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk_text"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk_text"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk_text"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1782,14 +1710,12 @@ _Default Value:_ `"transcription.segment"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk_type"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk_type"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_segments_transcriptionsegmentchunk_type"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk_type"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_segments_TranscriptionSegmentChunk"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription_segment\"","linkedLabel":"\"transcription_segment\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"transcription_segment\\"","linkedLabel":"\\"transcription_segment\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1815,14 +1741,11 @@ _Default Value:_ `"transcription_segment"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_text"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_text"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_text"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_text"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1834,14 +1757,12 @@ _Default Value:_ `"transcription_segment"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_type"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_type"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_type"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_type"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription.done\"","linkedLabel":"\"transcription.done\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"transcription.done\\"","linkedLabel":"\\"transcription.done\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1859,14 +1780,12 @@ _Default Value:_ `"transcription.done"`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone"
-  typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage_usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"UsageInfo","linkedLabel":"<a href=\\"#operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage_usageinfo\\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1878,12 +1797,10 @@ _Default Value:_ `"transcription.done"`
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage_usageinfo"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage_usageinfo"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1895,14 +1812,12 @@ _Default Value:_ `"transcription.done"`
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo_completion_tokens"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage_usageinfo_completion_tokens"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage_usageinfo_completion_tokens"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo_completion_tokens"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1920,14 +1835,11 @@ _Default Value:_ `0`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo_prompt_audio_seconds"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage_usageinfo_prompt_audio_seconds"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage_usageinfo_prompt_audio_seconds"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo_prompt_audio_seconds"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1939,14 +1851,12 @@ _Default Value:_ `0`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo_prompt_tokens"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage_usageinfo_prompt_tokens"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage_usageinfo_prompt_tokens"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo_prompt_tokens"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1964,14 +1874,12 @@ _Default Value:_ `0`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo_total_tokens"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage_usageinfo_total_tokens"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_data_transcriptionstreamdone_usage_usageinfo_total_tokens"
+  entryId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo_total_tokens"
   parentId="TranscriptionStreamEvents_data_TranscriptionStreamDone_usage_UsageInfo"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2005,14 +1913,11 @@ _Default Value:_ `0`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="TranscriptionStreamEvents_event"
-  headingId="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_event"
+  id="operation-audio_api_v1_transcriptions_post_stream_responses_200_text-event-stream_transcriptionstreamevents_event"
+  entryId="TranscriptionStreamEvents_event"
   parentId="TranscriptionStreamEvents"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"transcription.language\"","linkedLabel":"\"transcription.language\"","children":[],"breakoutSubTypes":{}},{"label":"\"transcription.segment\"","linkedLabel":"\"transcription.segment\"","children":[],"breakoutSubTypes":{}},{"label":"\"transcription.text.delta\"","linkedLabel":"\"transcription.text.delta\"","children":[],"breakoutSubTypes":{}},{"label":"\"transcription.done\"","linkedLabel":"\"transcription.done\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"transcription.language\\"","linkedLabel":"\\"transcription.language\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"transcription.segment\\"","linkedLabel":"\\"transcription.segment\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"transcription.text.delta\\"","linkedLabel":"\\"transcription.text.delta\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"transcription.done\\"","linkedLabel":"\\"transcription.done\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">

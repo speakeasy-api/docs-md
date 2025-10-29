@@ -80,7 +80,7 @@ Embeddings
 <CodeSampleTab
   slot="tab"
   id="operation-embeddings_v1_embeddings_post_code-samples_typescript"
-  tags={{"codeSample":"typescript"}}
+  tags={`{"codeSample":"typescript"}`}
 >
 
 TypeScript
@@ -94,7 +94,26 @@ TypeScript
 
 <TryItNow
   language="typescript"
-  defaultValue={`import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.embeddings.create({\n    model: \"mistral-embed\",\n    inputs: [\n      \"Embed this sentence.\",\n      \"As well as this one.\",\n    ],\n  });\n\n  console.log(result);\n}\n\nrun();\n`}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.embeddings.create({
+    model: "mistral-embed",
+    inputs: [
+      "Embed this sentence.",
+      "As well as this one.",
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+`}
   dependencyUrlPrefix="/mistral-try-it-now"
   packageName="@mistralai/mistralai"
 />
@@ -104,7 +123,7 @@ TypeScript
 <CodeSampleTab
   slot="tab"
   id="operation-embeddings_v1_embeddings_post_code-samples_python"
-  tags={{"codeSample":"python"}}
+  tags={`{"codeSample":"python"}`}
 >
 
 Python
@@ -142,7 +161,7 @@ with Mistral(
 <CodeSampleTab
   slot="tab"
   id="operation-embeddings_v1_embeddings_post_code-samples_curl"
-  tags={{"codeSample":"curl"}}
+  tags={`{"codeSample":"curl"}`}
 >
 
 cURL
@@ -153,7 +172,13 @@ cURL
 
 <TryItNow
   language="curl"
-  defaultValue={`curl https://api.mistral.ai/v1/embeddings \\\n -X POST \\\n -H 'Authorization: Bearer YOUR_APIKEY_HERE' \\\n -d '{\n  \"input\": \"ipsum eiusmod\",\n  \"model\": \"mistral-embed\"\n}'`}
+  defaultValue={`curl https://api.mistral.ai/v1/embeddings \\
+ -X POST \\
+ -H 'Authorization: Bearer YOUR_APIKEY_HERE' \\
+ -d '{
+  "input": "ipsum eiusmod",
+  "model": "mistral-embed"
+}'`}
 />
 
 </SectionContent>
@@ -202,13 +227,12 @@ cURL
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="input"
-  headingId="operation-embeddings_v1_embeddings_post_request_input"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-embeddings_v1_embeddings_post_request_input"
+  entryId="input"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"array","linkedLabel":"string","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -226,13 +250,13 @@ Text to embed.
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="model"
-  headingId="operation-embeddings_v1_embeddings_post_request_model"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-embeddings_v1_embeddings_post_request_model"
+  entryId="model"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasDescription
+  hasExamples
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -260,13 +284,12 @@ mistral-embed
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="output_dimension"
-  headingId="operation-embeddings_v1_embeddings_post_request_output_dimension"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-embeddings_v1_embeddings_post_request_output_dimension"
+  entryId="output_dimension"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -284,13 +307,11 @@ The dimension of the output embeddings.
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="output_dtype"
-  headingId="operation-embeddings_v1_embeddings_post_request_output_dtype"
-  typeInfo={{"label":"enum","linkedLabel":"enum","children":[{"label":"\"float\"","linkedLabel":"\"float\"","children":[],"breakoutSubTypes":{}},{"label":"\"int8\"","linkedLabel":"\"int8\"","children":[],"breakoutSubTypes":{}},{"label":"\"uint8\"","linkedLabel":"\"uint8\"","children":[],"breakoutSubTypes":{}},{"label":"\"binary\"","linkedLabel":"\"binary\"","children":[],"breakoutSubTypes":{}},{"label":"\"ubinary\"","linkedLabel":"\"ubinary\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-embeddings_v1_embeddings_post_request_output_dtype"
+  entryId="output_dtype"
+  typeInfo={`{"label":"enum","linkedLabel":"enum","children":[{"label":"\\"float\\"","linkedLabel":"\\"float\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"int8\\"","linkedLabel":"\\"int8\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"uint8\\"","linkedLabel":"\\"uint8\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"binary\\"","linkedLabel":"\\"binary\\"","children":[],"breakoutSubTypes":{}},{"label":"\\"ubinary\\"","linkedLabel":"\\"ubinary\\"","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -322,7 +343,7 @@ The dimension of the output embeddings.
 <ResponseExamplesTab
   slot="tab"
   id="operation-embeddings_v1_embeddings_post_responses-examples_200_application-json"
-  tags={{"responseExample":"200:application/json"}}
+  tags={`{"responseExample":"200:application/json"}`}
 >
 
 200
@@ -351,7 +372,7 @@ The dimension of the output embeddings.
 <ResponseExamplesTab
   slot="tab"
   id="operation-embeddings_v1_embeddings_post_responses-examples_422_application-json"
-  tags={{"responseExample":"422:application/json"}}
+  tags={`{"responseExample":"422:application/json"}`}
 >
 
 422
@@ -391,7 +412,7 @@ The dimension of the output embeddings.
 <ResponseTab
   slot="tab"
   id="operation-embeddings_v1_embeddings_post_responses_200_application-json"
-  tags={{"response":"200:application/json"}}
+  tags={`{"response":"200:application/json"}`}
 >
 
 200
@@ -412,13 +433,12 @@ Successful Response
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="data"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_data"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata\">EmbeddingResponseData</a>","children":[{"label":"EmbeddingResponseData","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata\">EmbeddingResponseData</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_data"
+  entryId="data"
+  typeInfo={`{"label":"array","linkedLabel":"<a href=\\"#operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata\\">EmbeddingResponseData</a>","children":[{"label":"EmbeddingResponseData","linkedLabel":"<a href=\\"#operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata\\">EmbeddingResponseData</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -430,12 +450,10 @@ Successful Response
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="data_EmbeddingResponseData"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata"
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata"
+  entryId="data_EmbeddingResponseData"
   parentId="data"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -447,14 +465,11 @@ Successful Response
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="data_EmbeddingResponseData_embedding"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata_embedding"
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata_embedding"
+  entryId="data_EmbeddingResponseData_embedding"
   parentId="data_EmbeddingResponseData"
-  typeInfo={{"label":"array","linkedLabel":"number","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"number","children":[{"label":"number","linkedLabel":"number","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -466,14 +481,12 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_EmbeddingResponseData_index"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata_index"
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata_index"
+  entryId="data_EmbeddingResponseData_index"
   parentId="data_EmbeddingResponseData"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasExamples
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -495,14 +508,12 @@ _Example:_
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_EmbeddingResponseData_object"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata_object"
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_data_embeddingresponsedata_object"
+  entryId="data_EmbeddingResponseData_object"
   parentId="data_EmbeddingResponseData"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasExamples
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -532,13 +543,12 @@ embedding
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="id"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_id"
+  entryId="id"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasExamples
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -560,13 +570,12 @@ cmpl-e5cc70bb28c444948073e77776eb30ef
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="model"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_model"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_model"
+  entryId="model"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasExamples
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -588,13 +597,12 @@ mistral-small-latest
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="object"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_object"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_object"
+  entryId="object"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasExamples
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -616,13 +624,12 @@ chat.completion
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="usage"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage"
-  typeInfo={{"label":"UsageInfo","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage"
+  entryId="usage"
+  typeInfo={`{"label":"UsageInfo","linkedLabel":"<a href=\\"#operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo\\">UsageInfo</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -634,12 +641,10 @@ chat.completion
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="usage_UsageInfo"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo"
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo"
+  entryId="usage_UsageInfo"
   parentId="usage"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -651,14 +656,12 @@ chat.completion
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="usage_UsageInfo_completion_tokens"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_completion_tokens"
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_completion_tokens"
+  entryId="usage_UsageInfo_completion_tokens"
   parentId="usage_UsageInfo"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -676,14 +679,11 @@ _Default Value:_ `0`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="usage_UsageInfo_prompt_audio_seconds"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_prompt_audio_seconds"
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_prompt_audio_seconds"
+  entryId="usage_UsageInfo_prompt_audio_seconds"
   parentId="usage_UsageInfo"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -695,14 +695,12 @@ _Default Value:_ `0`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="usage_UsageInfo_prompt_tokens"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_prompt_tokens"
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_prompt_tokens"
+  entryId="usage_UsageInfo_prompt_tokens"
   parentId="usage_UsageInfo"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -720,14 +718,12 @@ _Default Value:_ `0`
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="usage_UsageInfo_total_tokens"
-  headingId="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_total_tokens"
+  id="operation-embeddings_v1_embeddings_post_responses_200_application-json_usage_usageinfo_total_tokens"
+  entryId="usage_UsageInfo_total_tokens"
   parentId="usage_UsageInfo"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  hasDefaultValue
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -759,7 +755,7 @@ _Default Value:_ `0`
 <ResponseTab
   slot="tab"
   id="operation-embeddings_v1_embeddings_post_responses_422_application-json"
-  tags={{"response":"422:application/json"}}
+  tags={`{"response":"422:application/json"}`}
 >
 
 422
@@ -780,13 +776,12 @@ Validation Error
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta"
-  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta"
-  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta"
+  entryId="HttpMeta"
+  typeInfo={`{"label":"HTTPMetadata","linkedLabel":"<a href=\\"#operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_httpmetadata\\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -798,12 +793,10 @@ Validation Error
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="HttpMeta_HTTPMetadata"
-  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_httpmetadata"
+  id="operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_httpmetadata"
+  entryId="HttpMeta_HTTPMetadata"
   parentId="HttpMeta"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -815,14 +808,12 @@ Validation Error
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta_HTTPMetadata_Request"
-  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_httpmetadata_request"
+  id="operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_httpmetadata_request"
+  entryId="HttpMeta_HTTPMetadata_Request"
   parentId="HttpMeta_HTTPMetadata"
-  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -840,14 +831,12 @@ Raw HTTP request; suitable for debugging
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta_HTTPMetadata_Response"
-  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_httpmetadata_response"
+  id="operation-embeddings_v1_embeddings_post_responses_422_application-json_httpmeta_httpmetadata_response"
+  entryId="HttpMeta_HTTPMetadata_Response"
   parentId="HttpMeta_HTTPMetadata"
-  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -873,13 +862,12 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail"
-  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail"
+  entryId="detail"
+  typeInfo={`{"label":"array","linkedLabel":"<a href=\\"#operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror\\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\\"#operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror\\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -891,12 +879,10 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="detail_ValidationError"
-  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror"
+  id="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror"
+  entryId="detail_ValidationError"
   parentId="detail"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -908,14 +894,11 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_loc"
-  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror_loc"
+  id="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror_loc"
+  entryId="detail_ValidationError_loc"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -927,14 +910,11 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_msg"
-  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror_msg"
+  id="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror_msg"
+  entryId="detail_ValidationError_msg"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -946,14 +926,11 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_type"
-  headingId="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror_type"
+  id="operation-embeddings_v1_embeddings_post_responses_422_application-json_detail_validationerror_type"
+  entryId="detail_ValidationError_type"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">

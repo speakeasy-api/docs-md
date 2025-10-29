@@ -79,7 +79,7 @@ List all libraries that you have created or have been shared with you.
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_list_v1_code-samples_typescript"
-  tags={{"codeSample":"typescript"}}
+  tags={`{"codeSample":"typescript"}`}
 >
 
 TypeScript
@@ -90,7 +90,20 @@ TypeScript
 
 <TryItNow
   language="typescript"
-  defaultValue={`import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.beta.libraries.list();\n\n  console.log(result);\n}\n\nrun();\n`}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.beta.libraries.list();
+
+  console.log(result);
+}
+
+run();
+`}
   dependencyUrlPrefix="/mistral-try-it-now"
   packageName="@mistralai/mistralai"
 />
@@ -100,7 +113,7 @@ TypeScript
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_list_v1_code-samples_python"
-  tags={{"codeSample":"python"}}
+  tags={`{"codeSample":"python"}`}
 >
 
 Python
@@ -135,7 +148,7 @@ with Mistral(
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_list_v1_code-samples_curl"
-  tags={{"codeSample":"curl"}}
+  tags={`{"codeSample":"curl"}`}
 >
 
 cURL
@@ -146,7 +159,9 @@ cURL
 
 <TryItNow
   language="curl"
-  defaultValue={`curl https://api.mistral.ai/v1/libraries \\\n -X GET \\\n -H 'Authorization: Bearer YOUR_APIKEY_HERE'`}
+  defaultValue={`curl https://api.mistral.ai/v1/libraries \\
+ -X GET \\
+ -H 'Authorization: Bearer YOUR_APIKEY_HERE'`}
 />
 
 </SectionContent>
@@ -168,7 +183,7 @@ cURL
 <ResponseExamplesTab
   slot="tab"
   id="operation-libraries_list_v1_responses-examples_200_application-json"
-  tags={{"responseExample":"200:application/json"}}
+  tags={`{"responseExample":"200:application/json"}`}
 >
 
 200
@@ -217,7 +232,7 @@ cURL
 <ResponseTab
   slot="tab"
   id="operation-libraries_list_v1_responses_200_application-json"
-  tags={{"response":"200:application/json"}}
+  tags={`{"response":"200:application/json"}`}
 >
 
 200
@@ -235,13 +250,12 @@ Successful Response
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="data"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_list_v1_responses_200_application-json_data_libraryout\">LibraryOut</a>","children":[{"label":"LibraryOut","linkedLabel":"<a href=\"#operation-libraries_list_v1_responses_200_application-json_data_libraryout\">LibraryOut</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-libraries_list_v1_responses_200_application-json_data"
+  entryId="data"
+  typeInfo={`{"label":"array","linkedLabel":"<a href=\\"#operation-libraries_list_v1_responses_200_application-json_data_libraryout\\">LibraryOut</a>","children":[{"label":"LibraryOut","linkedLabel":"<a href=\\"#operation-libraries_list_v1_responses_200_application-json_data_libraryout\\">LibraryOut</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -253,12 +267,10 @@ Successful Response
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="data_LibraryOut"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout"
+  entryId="data_LibraryOut"
   parentId="data"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -270,14 +282,11 @@ Successful Response
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_chunk_size"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_chunk_size"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_chunk_size"
+  entryId="data_LibraryOut_chunk_size"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -289,14 +298,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_created_at"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_created_at"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_created_at"
+  entryId="data_LibraryOut_created_at"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -308,14 +314,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_description"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_description"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_description"
+  entryId="data_LibraryOut_description"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -327,14 +330,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_emoji"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_emoji"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_emoji"
+  entryId="data_LibraryOut_emoji"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -346,14 +346,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_explicit_user_members_count"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_explicit_user_members_count"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_explicit_user_members_count"
+  entryId="data_LibraryOut_explicit_user_members_count"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -365,14 +362,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_explicit_workspace_members_count"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_explicit_workspace_members_count"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_explicit_workspace_members_count"
+  entryId="data_LibraryOut_explicit_workspace_members_count"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -384,14 +378,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_generated_description"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_generated_description"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_generated_description"
+  entryId="data_LibraryOut_generated_description"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -403,14 +394,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_generated_name"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_generated_name"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_generated_name"
+  entryId="data_LibraryOut_generated_name"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -422,14 +410,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_id"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_id"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_id"
+  entryId="data_LibraryOut_id"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -441,14 +426,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_name"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_name"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_name"
+  entryId="data_LibraryOut_name"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -460,14 +442,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_nb_documents"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_nb_documents"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_nb_documents"
+  entryId="data_LibraryOut_nb_documents"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -479,14 +458,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_org_sharing_role"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_org_sharing_role"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_org_sharing_role"
+  entryId="data_LibraryOut_org_sharing_role"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -498,14 +474,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_owner_id"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_owner_id"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_owner_id"
+  entryId="data_LibraryOut_owner_id"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -517,14 +490,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_owner_type"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_owner_type"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_owner_type"
+  entryId="data_LibraryOut_owner_type"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -536,14 +506,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_total_size"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_total_size"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_total_size"
+  entryId="data_LibraryOut_total_size"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -555,14 +522,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="data_LibraryOut_updated_at"
-  headingId="operation-libraries_list_v1_responses_200_application-json_data_libraryout_updated_at"
+  id="operation-libraries_list_v1_responses_200_application-json_data_libraryout_updated_at"
+  entryId="data_LibraryOut_updated_at"
   parentId="data_LibraryOut"
-  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -618,7 +582,7 @@ Create a new Library, you will be marked as the owner and only you will have the
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_create_v1_code-samples_typescript"
-  tags={{"codeSample":"typescript"}}
+  tags={`{"codeSample":"typescript"}`}
 >
 
 TypeScript
@@ -629,7 +593,22 @@ TypeScript
 
 <TryItNow
   language="typescript"
-  defaultValue={`import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.beta.libraries.create({\n    name: \"<value>\",\n  });\n\n  console.log(result);\n}\n\nrun();\n`}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.beta.libraries.create({
+    name: "<value>",
+  });
+
+  console.log(result);
+}
+
+run();
+`}
   dependencyUrlPrefix="/mistral-try-it-now"
   packageName="@mistralai/mistralai"
 />
@@ -639,7 +618,7 @@ TypeScript
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_create_v1_code-samples_python"
-  tags={{"codeSample":"python"}}
+  tags={`{"codeSample":"python"}`}
 >
 
 Python
@@ -674,7 +653,7 @@ with Mistral(
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_create_v1_code-samples_curl"
-  tags={{"codeSample":"curl"}}
+  tags={`{"codeSample":"curl"}`}
 >
 
 cURL
@@ -685,7 +664,12 @@ cURL
 
 <TryItNow
   language="curl"
-  defaultValue={`curl https://api.mistral.ai/v1/libraries \\\n -X POST \\\n -H 'Authorization: Bearer YOUR_APIKEY_HERE' \\\n -d '{\n  \"name\": \"ipsum eiusmod\"\n}'`}
+  defaultValue={`curl https://api.mistral.ai/v1/libraries \\
+ -X POST \\
+ -H 'Authorization: Bearer YOUR_APIKEY_HERE' \\
+ -d '{
+  "name": "ipsum eiusmod"
+}'`}
 />
 
 </SectionContent>
@@ -733,13 +717,11 @@ cURL
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="chunk_size"
-  headingId="operation-libraries_create_v1_request_chunk_size"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_request_chunk_size"
+  entryId="chunk_size"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -751,13 +733,11 @@ cURL
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="description"
-  headingId="operation-libraries_create_v1_request_description"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_request_description"
+  entryId="description"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -769,13 +749,11 @@ cURL
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="name"
-  headingId="operation-libraries_create_v1_request_name"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_request_name"
+  entryId="name"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -807,7 +785,7 @@ cURL
 <ResponseExamplesTab
   slot="tab"
   id="operation-libraries_create_v1_responses-examples_201_application-json"
-  tags={{"responseExample":"201:application/json"}}
+  tags={`{"responseExample":"201:application/json"}`}
 >
 
 201
@@ -838,7 +816,7 @@ cURL
 <ResponseExamplesTab
   slot="tab"
   id="operation-libraries_create_v1_responses-examples_422_application-json"
-  tags={{"responseExample":"422:application/json"}}
+  tags={`{"responseExample":"422:application/json"}`}
 >
 
 422
@@ -878,7 +856,7 @@ cURL
 <ResponseTab
   slot="tab"
   id="operation-libraries_create_v1_responses_201_application-json"
-  tags={{"response":"201:application/json"}}
+  tags={`{"response":"201:application/json"}`}
 >
 
 201
@@ -899,13 +877,11 @@ Successful Response
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="chunk_size"
-  headingId="operation-libraries_create_v1_responses_201_application-json_chunk_size"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_chunk_size"
+  entryId="chunk_size"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -917,13 +893,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="created_at"
-  headingId="operation-libraries_create_v1_responses_201_application-json_created_at"
-  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_created_at"
+  entryId="created_at"
+  typeInfo={`{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -935,13 +909,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="description"
-  headingId="operation-libraries_create_v1_responses_201_application-json_description"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_description"
+  entryId="description"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -953,13 +925,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="emoji"
-  headingId="operation-libraries_create_v1_responses_201_application-json_emoji"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_emoji"
+  entryId="emoji"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -971,13 +941,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="explicit_user_members_count"
-  headingId="operation-libraries_create_v1_responses_201_application-json_explicit_user_members_count"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_explicit_user_members_count"
+  entryId="explicit_user_members_count"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -989,13 +957,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="explicit_workspace_members_count"
-  headingId="operation-libraries_create_v1_responses_201_application-json_explicit_workspace_members_count"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_explicit_workspace_members_count"
+  entryId="explicit_workspace_members_count"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1007,13 +973,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="generated_description"
-  headingId="operation-libraries_create_v1_responses_201_application-json_generated_description"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_generated_description"
+  entryId="generated_description"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1025,13 +989,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="generated_name"
-  headingId="operation-libraries_create_v1_responses_201_application-json_generated_name"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_generated_name"
+  entryId="generated_name"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1043,13 +1005,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="id"
-  headingId="operation-libraries_create_v1_responses_201_application-json_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_id"
+  entryId="id"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1061,13 +1021,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="name"
-  headingId="operation-libraries_create_v1_responses_201_application-json_name"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_name"
+  entryId="name"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1079,13 +1037,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="nb_documents"
-  headingId="operation-libraries_create_v1_responses_201_application-json_nb_documents"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_nb_documents"
+  entryId="nb_documents"
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1097,13 +1053,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="org_sharing_role"
-  headingId="operation-libraries_create_v1_responses_201_application-json_org_sharing_role"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_org_sharing_role"
+  entryId="org_sharing_role"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1115,13 +1069,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="owner_id"
-  headingId="operation-libraries_create_v1_responses_201_application-json_owner_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_owner_id"
+  entryId="owner_id"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1133,13 +1085,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="owner_type"
-  headingId="operation-libraries_create_v1_responses_201_application-json_owner_type"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_owner_type"
+  entryId="owner_type"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1151,13 +1101,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="total_size"
-  headingId="operation-libraries_create_v1_responses_201_application-json_total_size"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_total_size"
+  entryId="total_size"
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1169,13 +1117,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="updated_at"
-  headingId="operation-libraries_create_v1_responses_201_application-json_updated_at"
-  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_201_application-json_updated_at"
+  entryId="updated_at"
+  typeInfo={`{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1193,7 +1139,7 @@ Successful Response
 <ResponseTab
   slot="tab"
   id="operation-libraries_create_v1_responses_422_application-json"
-  tags={{"response":"422:application/json"}}
+  tags={`{"response":"422:application/json"}`}
 >
 
 422
@@ -1214,13 +1160,12 @@ Validation Error
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta"
-  headingId="operation-libraries_create_v1_responses_422_application-json_httpmeta"
-  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_create_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_422_application-json_httpmeta"
+  entryId="HttpMeta"
+  typeInfo={`{"label":"HTTPMetadata","linkedLabel":"<a href=\\"#operation-libraries_create_v1_responses_422_application-json_httpmeta_httpmetadata\\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1232,12 +1177,10 @@ Validation Error
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="HttpMeta_HTTPMetadata"
-  headingId="operation-libraries_create_v1_responses_422_application-json_httpmeta_httpmetadata"
+  id="operation-libraries_create_v1_responses_422_application-json_httpmeta_httpmetadata"
+  entryId="HttpMeta_HTTPMetadata"
   parentId="HttpMeta"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1249,14 +1192,12 @@ Validation Error
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta_HTTPMetadata_Request"
-  headingId="operation-libraries_create_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  id="operation-libraries_create_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  entryId="HttpMeta_HTTPMetadata_Request"
   parentId="HttpMeta_HTTPMetadata"
-  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1274,14 +1215,12 @@ Raw HTTP request; suitable for debugging
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta_HTTPMetadata_Response"
-  headingId="operation-libraries_create_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  id="operation-libraries_create_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  entryId="HttpMeta_HTTPMetadata_Response"
   parentId="HttpMeta_HTTPMetadata"
-  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1307,13 +1246,12 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail"
-  headingId="operation-libraries_create_v1_responses_422_application-json_detail"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_create_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_create_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-libraries_create_v1_responses_422_application-json_detail"
+  entryId="detail"
+  typeInfo={`{"label":"array","linkedLabel":"<a href=\\"#operation-libraries_create_v1_responses_422_application-json_detail_validationerror\\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\\"#operation-libraries_create_v1_responses_422_application-json_detail_validationerror\\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1325,12 +1263,10 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="detail_ValidationError"
-  headingId="operation-libraries_create_v1_responses_422_application-json_detail_validationerror"
+  id="operation-libraries_create_v1_responses_422_application-json_detail_validationerror"
+  entryId="detail_ValidationError"
   parentId="detail"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -1342,14 +1278,11 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_loc"
-  headingId="operation-libraries_create_v1_responses_422_application-json_detail_validationerror_loc"
+  id="operation-libraries_create_v1_responses_422_application-json_detail_validationerror_loc"
+  entryId="detail_ValidationError_loc"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1361,14 +1294,11 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_msg"
-  headingId="operation-libraries_create_v1_responses_422_application-json_detail_validationerror_msg"
+  id="operation-libraries_create_v1_responses_422_application-json_detail_validationerror_msg"
+  entryId="detail_ValidationError_msg"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1380,14 +1310,11 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_type"
-  headingId="operation-libraries_create_v1_responses_422_application-json_detail_validationerror_type"
+  id="operation-libraries_create_v1_responses_422_application-json_detail_validationerror_type"
+  entryId="detail_ValidationError_type"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1443,7 +1370,7 @@ Given a library id, details information about that Library.
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_get_v1_code-samples_typescript"
-  tags={{"codeSample":"typescript"}}
+  tags={`{"codeSample":"typescript"}`}
 >
 
 TypeScript
@@ -1454,7 +1381,22 @@ TypeScript
 
 <TryItNow
   language="typescript"
-  defaultValue={`import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.beta.libraries.get({\n    libraryId: \"d0d23a1e-bfe5-45e7-b7bb-22a4ea78d47f\",\n  });\n\n  console.log(result);\n}\n\nrun();\n`}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.beta.libraries.get({
+    libraryId: "d0d23a1e-bfe5-45e7-b7bb-22a4ea78d47f",
+  });
+
+  console.log(result);
+}
+
+run();
+`}
   dependencyUrlPrefix="/mistral-try-it-now"
   packageName="@mistralai/mistralai"
 />
@@ -1464,7 +1406,7 @@ TypeScript
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_get_v1_code-samples_python"
-  tags={{"codeSample":"python"}}
+  tags={`{"codeSample":"python"}`}
 >
 
 Python
@@ -1499,7 +1441,7 @@ with Mistral(
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_get_v1_code-samples_curl"
-  tags={{"codeSample":"curl"}}
+  tags={`{"codeSample":"curl"}`}
 >
 
 cURL
@@ -1510,7 +1452,9 @@ cURL
 
 <TryItNow
   language="curl"
-  defaultValue={`curl https://api.mistral.ai/v1/libraries/{library_id} \\\n -X GET \\\n -H 'Authorization: Bearer YOUR_APIKEY_HERE'`}
+  defaultValue={`curl https://api.mistral.ai/v1/libraries/{library_id} \\
+ -X GET \\
+ -H 'Authorization: Bearer YOUR_APIKEY_HERE'`}
 />
 
 </SectionContent>
@@ -1534,13 +1478,11 @@ cURL
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="library_id"
-  headingId="operation-libraries_get_v1_parameters_library_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_parameters_library_id"
+  entryId="library_id"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1572,7 +1514,7 @@ cURL
 <ResponseExamplesTab
   slot="tab"
   id="operation-libraries_get_v1_responses-examples_200_application-json"
-  tags={{"responseExample":"200:application/json"}}
+  tags={`{"responseExample":"200:application/json"}`}
 >
 
 200
@@ -1603,7 +1545,7 @@ cURL
 <ResponseExamplesTab
   slot="tab"
   id="operation-libraries_get_v1_responses-examples_422_application-json"
-  tags={{"responseExample":"422:application/json"}}
+  tags={`{"responseExample":"422:application/json"}`}
 >
 
 422
@@ -1643,7 +1585,7 @@ cURL
 <ResponseTab
   slot="tab"
   id="operation-libraries_get_v1_responses_200_application-json"
-  tags={{"response":"200:application/json"}}
+  tags={`{"response":"200:application/json"}`}
 >
 
 200
@@ -1661,13 +1603,11 @@ Successful Response
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="chunk_size"
-  headingId="operation-libraries_get_v1_responses_200_application-json_chunk_size"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_chunk_size"
+  entryId="chunk_size"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1679,13 +1619,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="created_at"
-  headingId="operation-libraries_get_v1_responses_200_application-json_created_at"
-  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_created_at"
+  entryId="created_at"
+  typeInfo={`{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1697,13 +1635,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="description"
-  headingId="operation-libraries_get_v1_responses_200_application-json_description"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_description"
+  entryId="description"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1715,13 +1651,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="emoji"
-  headingId="operation-libraries_get_v1_responses_200_application-json_emoji"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_emoji"
+  entryId="emoji"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1733,13 +1667,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="explicit_user_members_count"
-  headingId="operation-libraries_get_v1_responses_200_application-json_explicit_user_members_count"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_explicit_user_members_count"
+  entryId="explicit_user_members_count"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1751,13 +1683,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="explicit_workspace_members_count"
-  headingId="operation-libraries_get_v1_responses_200_application-json_explicit_workspace_members_count"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_explicit_workspace_members_count"
+  entryId="explicit_workspace_members_count"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1769,13 +1699,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="generated_description"
-  headingId="operation-libraries_get_v1_responses_200_application-json_generated_description"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_generated_description"
+  entryId="generated_description"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1787,13 +1715,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="generated_name"
-  headingId="operation-libraries_get_v1_responses_200_application-json_generated_name"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_generated_name"
+  entryId="generated_name"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1805,13 +1731,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="id"
-  headingId="operation-libraries_get_v1_responses_200_application-json_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_id"
+  entryId="id"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1823,13 +1747,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="name"
-  headingId="operation-libraries_get_v1_responses_200_application-json_name"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_name"
+  entryId="name"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1841,13 +1763,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="nb_documents"
-  headingId="operation-libraries_get_v1_responses_200_application-json_nb_documents"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_nb_documents"
+  entryId="nb_documents"
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1859,13 +1779,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="org_sharing_role"
-  headingId="operation-libraries_get_v1_responses_200_application-json_org_sharing_role"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_org_sharing_role"
+  entryId="org_sharing_role"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1877,13 +1795,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="owner_id"
-  headingId="operation-libraries_get_v1_responses_200_application-json_owner_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_owner_id"
+  entryId="owner_id"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1895,13 +1811,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="owner_type"
-  headingId="operation-libraries_get_v1_responses_200_application-json_owner_type"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_owner_type"
+  entryId="owner_type"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1913,13 +1827,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="total_size"
-  headingId="operation-libraries_get_v1_responses_200_application-json_total_size"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_total_size"
+  entryId="total_size"
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1931,13 +1843,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="updated_at"
-  headingId="operation-libraries_get_v1_responses_200_application-json_updated_at"
-  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_200_application-json_updated_at"
+  entryId="updated_at"
+  typeInfo={`{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1955,7 +1865,7 @@ Successful Response
 <ResponseTab
   slot="tab"
   id="operation-libraries_get_v1_responses_422_application-json"
-  tags={{"response":"422:application/json"}}
+  tags={`{"response":"422:application/json"}`}
 >
 
 422
@@ -1973,13 +1883,12 @@ Validation Error
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta"
-  headingId="operation-libraries_get_v1_responses_422_application-json_httpmeta"
-  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_get_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_422_application-json_httpmeta"
+  entryId="HttpMeta"
+  typeInfo={`{"label":"HTTPMetadata","linkedLabel":"<a href=\\"#operation-libraries_get_v1_responses_422_application-json_httpmeta_httpmetadata\\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -1991,12 +1900,10 @@ Validation Error
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="HttpMeta_HTTPMetadata"
-  headingId="operation-libraries_get_v1_responses_422_application-json_httpmeta_httpmetadata"
+  id="operation-libraries_get_v1_responses_422_application-json_httpmeta_httpmetadata"
+  entryId="HttpMeta_HTTPMetadata"
   parentId="HttpMeta"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2008,14 +1915,12 @@ Validation Error
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta_HTTPMetadata_Request"
-  headingId="operation-libraries_get_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  id="operation-libraries_get_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  entryId="HttpMeta_HTTPMetadata_Request"
   parentId="HttpMeta_HTTPMetadata"
-  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2033,14 +1938,12 @@ Raw HTTP request; suitable for debugging
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta_HTTPMetadata_Response"
-  headingId="operation-libraries_get_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  id="operation-libraries_get_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  entryId="HttpMeta_HTTPMetadata_Response"
   parentId="HttpMeta_HTTPMetadata"
-  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2066,13 +1969,12 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail"
-  headingId="operation-libraries_get_v1_responses_422_application-json_detail"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_get_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_get_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-libraries_get_v1_responses_422_application-json_detail"
+  entryId="detail"
+  typeInfo={`{"label":"array","linkedLabel":"<a href=\\"#operation-libraries_get_v1_responses_422_application-json_detail_validationerror\\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\\"#operation-libraries_get_v1_responses_422_application-json_detail_validationerror\\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2084,12 +1986,10 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="detail_ValidationError"
-  headingId="operation-libraries_get_v1_responses_422_application-json_detail_validationerror"
+  id="operation-libraries_get_v1_responses_422_application-json_detail_validationerror"
+  entryId="detail_ValidationError"
   parentId="detail"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2101,14 +2001,11 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_loc"
-  headingId="operation-libraries_get_v1_responses_422_application-json_detail_validationerror_loc"
+  id="operation-libraries_get_v1_responses_422_application-json_detail_validationerror_loc"
+  entryId="detail_ValidationError_loc"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2120,14 +2017,11 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_msg"
-  headingId="operation-libraries_get_v1_responses_422_application-json_detail_validationerror_msg"
+  id="operation-libraries_get_v1_responses_422_application-json_detail_validationerror_msg"
+  entryId="detail_ValidationError_msg"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2139,14 +2033,11 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_type"
-  headingId="operation-libraries_get_v1_responses_422_application-json_detail_validationerror_type"
+  id="operation-libraries_get_v1_responses_422_application-json_detail_validationerror_type"
+  entryId="detail_ValidationError_type"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2202,7 +2093,7 @@ Given a library id, you can update the name and description.
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_update_v1_code-samples_typescript"
-  tags={{"codeSample":"typescript"}}
+  tags={`{"codeSample":"typescript"}`}
 >
 
 TypeScript
@@ -2213,7 +2104,23 @@ TypeScript
 
 <TryItNow
   language="typescript"
-  defaultValue={`import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.beta.libraries.update({\n    libraryId: \"e01880c3-d0b5-4a29-8b1b-abdb8ce917e4\",\n    libraryInUpdate: {},\n  });\n\n  console.log(result);\n}\n\nrun();\n`}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.beta.libraries.update({
+    libraryId: "e01880c3-d0b5-4a29-8b1b-abdb8ce917e4",
+    libraryInUpdate: {},
+  });
+
+  console.log(result);
+}
+
+run();
+`}
   dependencyUrlPrefix="/mistral-try-it-now"
   packageName="@mistralai/mistralai"
 />
@@ -2223,7 +2130,7 @@ TypeScript
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_update_v1_code-samples_python"
-  tags={{"codeSample":"python"}}
+  tags={`{"codeSample":"python"}`}
 >
 
 Python
@@ -2258,7 +2165,7 @@ with Mistral(
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_update_v1_code-samples_curl"
-  tags={{"codeSample":"curl"}}
+  tags={`{"codeSample":"curl"}`}
 >
 
 cURL
@@ -2269,7 +2176,10 @@ cURL
 
 <TryItNow
   language="curl"
-  defaultValue={`curl https://api.mistral.ai/v1/libraries/{library_id} \\\n -X PUT \\\n -H 'Authorization: Bearer YOUR_APIKEY_HERE' \\\n -d '{}'`}
+  defaultValue={`curl https://api.mistral.ai/v1/libraries/{library_id} \\
+ -X PUT \\
+ -H 'Authorization: Bearer YOUR_APIKEY_HERE' \\
+ -d '{}'`}
 />
 
 </SectionContent>
@@ -2293,13 +2203,11 @@ cURL
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="library_id"
-  headingId="operation-libraries_update_v1_parameters_library_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_parameters_library_id"
+  entryId="library_id"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2355,13 +2263,11 @@ cURL
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="description"
-  headingId="operation-libraries_update_v1_request_description"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_request_description"
+  entryId="description"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2373,13 +2279,11 @@ cURL
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="name"
-  headingId="operation-libraries_update_v1_request_name"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_request_name"
+  entryId="name"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2411,7 +2315,7 @@ cURL
 <ResponseExamplesTab
   slot="tab"
   id="operation-libraries_update_v1_responses-examples_200_application-json"
-  tags={{"responseExample":"200:application/json"}}
+  tags={`{"responseExample":"200:application/json"}`}
 >
 
 200
@@ -2442,7 +2346,7 @@ cURL
 <ResponseExamplesTab
   slot="tab"
   id="operation-libraries_update_v1_responses-examples_422_application-json"
-  tags={{"responseExample":"422:application/json"}}
+  tags={`{"responseExample":"422:application/json"}`}
 >
 
 422
@@ -2482,7 +2386,7 @@ cURL
 <ResponseTab
   slot="tab"
   id="operation-libraries_update_v1_responses_200_application-json"
-  tags={{"response":"200:application/json"}}
+  tags={`{"response":"200:application/json"}`}
 >
 
 200
@@ -2503,13 +2407,11 @@ Successful Response
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="chunk_size"
-  headingId="operation-libraries_update_v1_responses_200_application-json_chunk_size"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_chunk_size"
+  entryId="chunk_size"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2521,13 +2423,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="created_at"
-  headingId="operation-libraries_update_v1_responses_200_application-json_created_at"
-  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_created_at"
+  entryId="created_at"
+  typeInfo={`{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2539,13 +2439,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="description"
-  headingId="operation-libraries_update_v1_responses_200_application-json_description"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_description"
+  entryId="description"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2557,13 +2455,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="emoji"
-  headingId="operation-libraries_update_v1_responses_200_application-json_emoji"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_emoji"
+  entryId="emoji"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2575,13 +2471,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="explicit_user_members_count"
-  headingId="operation-libraries_update_v1_responses_200_application-json_explicit_user_members_count"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_explicit_user_members_count"
+  entryId="explicit_user_members_count"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2593,13 +2487,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="explicit_workspace_members_count"
-  headingId="operation-libraries_update_v1_responses_200_application-json_explicit_workspace_members_count"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_explicit_workspace_members_count"
+  entryId="explicit_workspace_members_count"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2611,13 +2503,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="generated_description"
-  headingId="operation-libraries_update_v1_responses_200_application-json_generated_description"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_generated_description"
+  entryId="generated_description"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2629,13 +2519,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="generated_name"
-  headingId="operation-libraries_update_v1_responses_200_application-json_generated_name"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_generated_name"
+  entryId="generated_name"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2647,13 +2535,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="id"
-  headingId="operation-libraries_update_v1_responses_200_application-json_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_id"
+  entryId="id"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2665,13 +2551,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="name"
-  headingId="operation-libraries_update_v1_responses_200_application-json_name"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_name"
+  entryId="name"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2683,13 +2567,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="nb_documents"
-  headingId="operation-libraries_update_v1_responses_200_application-json_nb_documents"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_nb_documents"
+  entryId="nb_documents"
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2701,13 +2583,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="org_sharing_role"
-  headingId="operation-libraries_update_v1_responses_200_application-json_org_sharing_role"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_org_sharing_role"
+  entryId="org_sharing_role"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2719,13 +2599,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="owner_id"
-  headingId="operation-libraries_update_v1_responses_200_application-json_owner_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_owner_id"
+  entryId="owner_id"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2737,13 +2615,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="owner_type"
-  headingId="operation-libraries_update_v1_responses_200_application-json_owner_type"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_owner_type"
+  entryId="owner_type"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2755,13 +2631,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="total_size"
-  headingId="operation-libraries_update_v1_responses_200_application-json_total_size"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_total_size"
+  entryId="total_size"
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2773,13 +2647,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="updated_at"
-  headingId="operation-libraries_update_v1_responses_200_application-json_updated_at"
-  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_200_application-json_updated_at"
+  entryId="updated_at"
+  typeInfo={`{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2797,7 +2669,7 @@ Successful Response
 <ResponseTab
   slot="tab"
   id="operation-libraries_update_v1_responses_422_application-json"
-  tags={{"response":"422:application/json"}}
+  tags={`{"response":"422:application/json"}`}
 >
 
 422
@@ -2818,13 +2690,12 @@ Validation Error
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta"
-  headingId="operation-libraries_update_v1_responses_422_application-json_httpmeta"
-  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_update_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_422_application-json_httpmeta"
+  entryId="HttpMeta"
+  typeInfo={`{"label":"HTTPMetadata","linkedLabel":"<a href=\\"#operation-libraries_update_v1_responses_422_application-json_httpmeta_httpmetadata\\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2836,12 +2707,10 @@ Validation Error
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="HttpMeta_HTTPMetadata"
-  headingId="operation-libraries_update_v1_responses_422_application-json_httpmeta_httpmetadata"
+  id="operation-libraries_update_v1_responses_422_application-json_httpmeta_httpmetadata"
+  entryId="HttpMeta_HTTPMetadata"
   parentId="HttpMeta"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2853,14 +2722,12 @@ Validation Error
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta_HTTPMetadata_Request"
-  headingId="operation-libraries_update_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  id="operation-libraries_update_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  entryId="HttpMeta_HTTPMetadata_Request"
   parentId="HttpMeta_HTTPMetadata"
-  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2878,14 +2745,12 @@ Raw HTTP request; suitable for debugging
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta_HTTPMetadata_Response"
-  headingId="operation-libraries_update_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  id="operation-libraries_update_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  entryId="HttpMeta_HTTPMetadata_Response"
   parentId="HttpMeta_HTTPMetadata"
-  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2911,13 +2776,12 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail"
-  headingId="operation-libraries_update_v1_responses_422_application-json_detail"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_update_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_update_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-libraries_update_v1_responses_422_application-json_detail"
+  entryId="detail"
+  typeInfo={`{"label":"array","linkedLabel":"<a href=\\"#operation-libraries_update_v1_responses_422_application-json_detail_validationerror\\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\\"#operation-libraries_update_v1_responses_422_application-json_detail_validationerror\\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2929,12 +2793,10 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="detail_ValidationError"
-  headingId="operation-libraries_update_v1_responses_422_application-json_detail_validationerror"
+  id="operation-libraries_update_v1_responses_422_application-json_detail_validationerror"
+  entryId="detail_ValidationError"
   parentId="detail"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -2946,14 +2808,11 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_loc"
-  headingId="operation-libraries_update_v1_responses_422_application-json_detail_validationerror_loc"
+  id="operation-libraries_update_v1_responses_422_application-json_detail_validationerror_loc"
+  entryId="detail_ValidationError_loc"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2965,14 +2824,11 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_msg"
-  headingId="operation-libraries_update_v1_responses_422_application-json_detail_validationerror_msg"
+  id="operation-libraries_update_v1_responses_422_application-json_detail_validationerror_msg"
+  entryId="detail_ValidationError_msg"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -2984,14 +2840,11 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_type"
-  headingId="operation-libraries_update_v1_responses_422_application-json_detail_validationerror_type"
+  id="operation-libraries_update_v1_responses_422_application-json_detail_validationerror_type"
+  entryId="detail_ValidationError_type"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3047,7 +2900,7 @@ Given a library id, deletes it together with all documents that have been upload
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_delete_v1_code-samples_typescript"
-  tags={{"codeSample":"typescript"}}
+  tags={`{"codeSample":"typescript"}`}
 >
 
 TypeScript
@@ -3058,7 +2911,22 @@ TypeScript
 
 <TryItNow
   language="typescript"
-  defaultValue={`import { Mistral } from \"@mistralai/mistralai\";\n\nconst mistral = new Mistral({\n  apiKey: \"MISTRAL_API_KEY\",\n});\n\nasync function run() {\n  const result = await mistral.beta.libraries.delete({\n    libraryId: \"6cad0b6e-fd2e-4d11-a48b-21d30fb7c17a\",\n  });\n\n  console.log(result);\n}\n\nrun();\n`}
+  defaultValue={`import { Mistral } from "@mistralai/mistralai";
+
+const mistral = new Mistral({
+  apiKey: "MISTRAL_API_KEY",
+});
+
+async function run() {
+  const result = await mistral.beta.libraries.delete({
+    libraryId: "6cad0b6e-fd2e-4d11-a48b-21d30fb7c17a",
+  });
+
+  console.log(result);
+}
+
+run();
+`}
   dependencyUrlPrefix="/mistral-try-it-now"
   packageName="@mistralai/mistralai"
 />
@@ -3068,7 +2936,7 @@ TypeScript
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_delete_v1_code-samples_python"
-  tags={{"codeSample":"python"}}
+  tags={`{"codeSample":"python"}`}
 >
 
 Python
@@ -3103,7 +2971,7 @@ with Mistral(
 <CodeSampleTab
   slot="tab"
   id="operation-libraries_delete_v1_code-samples_curl"
-  tags={{"codeSample":"curl"}}
+  tags={`{"codeSample":"curl"}`}
 >
 
 cURL
@@ -3114,7 +2982,9 @@ cURL
 
 <TryItNow
   language="curl"
-  defaultValue={`curl https://api.mistral.ai/v1/libraries/{library_id} \\\n -X DELETE \\\n -H 'Authorization: Bearer YOUR_APIKEY_HERE'`}
+  defaultValue={`curl https://api.mistral.ai/v1/libraries/{library_id} \\
+ -X DELETE \\
+ -H 'Authorization: Bearer YOUR_APIKEY_HERE'`}
 />
 
 </SectionContent>
@@ -3138,13 +3008,11 @@ cURL
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="library_id"
-  headingId="operation-libraries_delete_v1_parameters_library_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_parameters_library_id"
+  entryId="library_id"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"path","variant":"info"},{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3176,7 +3044,7 @@ cURL
 <ResponseExamplesTab
   slot="tab"
   id="operation-libraries_delete_v1_responses-examples_200_application-json"
-  tags={{"responseExample":"200:application/json"}}
+  tags={`{"responseExample":"200:application/json"}`}
 >
 
 200
@@ -3207,7 +3075,7 @@ cURL
 <ResponseExamplesTab
   slot="tab"
   id="operation-libraries_delete_v1_responses-examples_422_application-json"
-  tags={{"responseExample":"422:application/json"}}
+  tags={`{"responseExample":"422:application/json"}`}
 >
 
 422
@@ -3247,7 +3115,7 @@ cURL
 <ResponseTab
   slot="tab"
   id="operation-libraries_delete_v1_responses_200_application-json"
-  tags={{"response":"200:application/json"}}
+  tags={`{"response":"200:application/json"}`}
 >
 
 200
@@ -3268,13 +3136,11 @@ Successful Response
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="chunk_size"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_chunk_size"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_chunk_size"
+  entryId="chunk_size"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3286,13 +3152,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="created_at"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_created_at"
-  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_created_at"
+  entryId="created_at"
+  typeInfo={`{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3304,13 +3168,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="description"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_description"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_description"
+  entryId="description"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3322,13 +3184,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="emoji"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_emoji"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_emoji"
+  entryId="emoji"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3340,13 +3200,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="explicit_user_members_count"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_explicit_user_members_count"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_explicit_user_members_count"
+  entryId="explicit_user_members_count"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3358,13 +3216,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="explicit_workspace_members_count"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_explicit_workspace_members_count"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_explicit_workspace_members_count"
+  entryId="explicit_workspace_members_count"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3376,13 +3232,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="generated_description"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_generated_description"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_generated_description"
+  entryId="generated_description"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3394,13 +3248,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="generated_name"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_generated_name"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_generated_name"
+  entryId="generated_name"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3412,13 +3264,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="id"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_id"
+  entryId="id"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3430,13 +3280,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="name"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_name"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_name"
+  entryId="name"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3448,13 +3296,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="nb_documents"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_nb_documents"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_nb_documents"
+  entryId="nb_documents"
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3466,13 +3312,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="org_sharing_role"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_org_sharing_role"
-  typeInfo={{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_org_sharing_role"
+  entryId="org_sharing_role"
+  typeInfo={`{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"null","linkedLabel":"null","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3484,13 +3328,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="owner_id"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_owner_id"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_owner_id"
+  entryId="owner_id"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3502,13 +3344,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="owner_type"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_owner_type"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_owner_type"
+  entryId="owner_type"
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3520,13 +3360,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="total_size"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_total_size"
-  typeInfo={{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_total_size"
+  entryId="total_size"
+  typeInfo={`{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3538,13 +3376,11 @@ Successful Response
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="updated_at"
-  headingId="operation-libraries_delete_v1_responses_200_application-json_updated_at"
-  typeInfo={{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_200_application-json_updated_at"
+  entryId="updated_at"
+  typeInfo={`{"label":"date-time","linkedLabel":"date-time","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3562,7 +3398,7 @@ Successful Response
 <ResponseTab
   slot="tab"
   id="operation-libraries_delete_v1_responses_422_application-json"
-  tags={{"response":"422:application/json"}}
+  tags={`{"response":"422:application/json"}`}
 >
 
 422
@@ -3583,13 +3419,12 @@ Validation Error
 <ExpandableSection>
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta"
-  headingId="operation-libraries_delete_v1_responses_422_application-json_httpmeta"
-  typeInfo={{"label":"HTTPMetadata","linkedLabel":"<a href=\"#operation-libraries_delete_v1_responses_422_application-json_httpmeta_httpmetadata\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_422_application-json_httpmeta"
+  entryId="HttpMeta"
+  typeInfo={`{"label":"HTTPMetadata","linkedLabel":"<a href=\\"#operation-libraries_delete_v1_responses_422_application-json_httpmeta_httpmetadata\\">HTTPMetadata</a>","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3601,12 +3436,10 @@ Validation Error
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="HttpMeta_HTTPMetadata"
-  headingId="operation-libraries_delete_v1_responses_422_application-json_httpmeta_httpmetadata"
+  id="operation-libraries_delete_v1_responses_422_application-json_httpmeta_httpmetadata"
+  entryId="HttpMeta_HTTPMetadata"
   parentId="HttpMeta"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -3618,14 +3451,12 @@ Validation Error
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta_HTTPMetadata_Request"
-  headingId="operation-libraries_delete_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  id="operation-libraries_delete_v1_responses_422_application-json_httpmeta_httpmetadata_request"
+  entryId="HttpMeta_HTTPMetadata_Request"
   parentId="HttpMeta_HTTPMetadata"
-  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3643,14 +3474,12 @@ Raw HTTP request; suitable for debugging
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="HttpMeta_HTTPMetadata_Response"
-  headingId="operation-libraries_delete_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  id="operation-libraries_delete_v1_responses_422_application-json_httpmeta_httpmetadata_response"
+  entryId="HttpMeta_HTTPMetadata_Response"
   parentId="HttpMeta_HTTPMetadata"
-  typeInfo={{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={true}
-  expandByDefault={false}
+  typeInfo={`{"label":"any","linkedLabel":"any","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
+  hasDescription
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3676,13 +3505,12 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail"
-  headingId="operation-libraries_delete_v1_responses_422_application-json_detail"
-  typeInfo={{"label":"array","linkedLabel":"<a href=\"#operation-libraries_delete_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\"#operation-libraries_delete_v1_responses_422_application-json_detail_validationerror\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[]}
-  hasExpandableContent={true}
-  expandByDefault={true}
+  id="operation-libraries_delete_v1_responses_422_application-json_detail"
+  entryId="detail"
+  typeInfo={`{"label":"array","linkedLabel":"<a href=\\"#operation-libraries_delete_v1_responses_422_application-json_detail_validationerror\\">ValidationError</a>","children":[{"label":"ValidationError","linkedLabel":"<a href=\\"#operation-libraries_delete_v1_responses_422_application-json_detail_validationerror\\">ValidationError</a>","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[]`}
+  expandByDefault
+  hasBreakouts
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3694,12 +3522,10 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandablePropertyBreakouts slot="breakouts">
 
 <ExpandableBreakout
-  slot="entry"
-  id="detail_ValidationError"
-  headingId="operation-libraries_delete_v1_responses_422_application-json_detail_validationerror"
+  id="operation-libraries_delete_v1_responses_422_application-json_detail_validationerror"
+  entryId="detail_ValidationError"
   parentId="detail"
-  hasExpandableContent={true}
-  expandByDefault={false}
+  hasProperties
 >
 
 <ExpandableBreakoutTitle slot="title">
@@ -3711,14 +3537,11 @@ Raw HTTP response; suitable for custom response parsing
 <ExpandableBreakoutProperties slot="properties">
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_loc"
-  headingId="operation-libraries_delete_v1_responses_422_application-json_detail_validationerror_loc"
+  id="operation-libraries_delete_v1_responses_422_application-json_detail_validationerror_loc"
+  entryId="detail_ValidationError_loc"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"array","linkedLabel":"union","children":[{"label":"union","linkedLabel":"union","children":[{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}},{"label":"integer","linkedLabel":"integer","children":[],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3730,14 +3553,11 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_msg"
-  headingId="operation-libraries_delete_v1_responses_422_application-json_detail_validationerror_msg"
+  id="operation-libraries_delete_v1_responses_422_application-json_detail_validationerror_msg"
+  entryId="detail_ValidationError_msg"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
@@ -3749,14 +3569,11 @@ Raw HTTP response; suitable for custom response parsing
 </ExpandableProperty>
 
 <ExpandableProperty
-  slot="entry"
-  id="detail_ValidationError_type"
-  headingId="operation-libraries_delete_v1_responses_422_application-json_detail_validationerror_type"
+  id="operation-libraries_delete_v1_responses_422_application-json_detail_validationerror_type"
+  entryId="detail_ValidationError_type"
   parentId="detail_ValidationError"
-  typeInfo={{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}}
-  typeAnnotations={[{"title":"required","variant":"warning"}]}
-  hasExpandableContent={false}
-  expandByDefault={false}
+  typeInfo={`{"label":"string","linkedLabel":"string","children":[],"breakoutSubTypes":{}}`}
+  typeAnnotations={`[{"title":"required","variant":"warning"}]`}
 >
 
 <ExpandablePropertyTitle slot="title">
