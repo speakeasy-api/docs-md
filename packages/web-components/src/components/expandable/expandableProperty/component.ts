@@ -130,17 +130,7 @@ export class ExpandableProperty extends LitElement {
       if (!value) {
         throw new InternalError("Missing typeInfo");
       }
-      try {
-        return JSON.parse(value) as DisplayTypeInfo;
-      } catch (e) {
-        let message = "";
-        if (e instanceof Error) {
-          message = `message: ${e.message}`;
-        }
-        throw new InternalError(
-          `Invalid typeInfo: type=${typeof value}, value=${value}. ${message}`
-        );
-      }
+      return JSON.parse(value) as DisplayTypeInfo;
     },
   })
   public typeInfo!: DisplayTypeInfo;
@@ -153,17 +143,7 @@ export class ExpandableProperty extends LitElement {
       if (!value) {
         throw new InternalError("Missing typeAnnotations");
       }
-      try {
-        return JSON.parse(value) as PropertyAnnotations[];
-      } catch (e) {
-        let message = "";
-        if (e instanceof Error) {
-          message = `message: ${e.message}`;
-        }
-        throw new InternalError(
-          `Invalid typeAnnotations: type=${typeof value}, value=${value}. ${message}`
-        );
-      }
+      return JSON.parse(value) as PropertyAnnotations[];
     },
   })
   public typeAnnotations!: PropertyAnnotations[];
