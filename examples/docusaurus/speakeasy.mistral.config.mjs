@@ -6,6 +6,7 @@ export default {
   },
   display: {
     showDebugPlaceholders: true,
+    sortRequiredProperties: false,
   },
   codeSamples: [
     {
