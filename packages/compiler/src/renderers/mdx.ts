@@ -50,7 +50,6 @@ import type {
 } from "@speakeasy-api/docs-md-react";
 
 import { HEADINGS } from "../content/constants.ts";
-import { warn } from "../logging.ts";
 import { getInternalSetting, getSettings } from "../settings.ts";
 import { InternalError } from "../util/internalError.ts";
 import type {
@@ -268,12 +267,9 @@ class MdxRenderer extends MarkdownRenderer {
               }
               return `${separator}${key}="${value}"`;
             }
-          } else if (value === true) {
-            return `${separator}${key}`;
+          } else if (typeof value === "boolean") {
+            return value ? `${separator}${key}` : "";
           } else if (value !== undefined) {
-            warn(
-              `Property ${key} of type ${typeof value} in component ${symbol} is not supported.`
-            );
             return `${separator}${key}={\`${JSON.stringify(value).replace(/\\/g, "\\\\")}\`}`;
           } else {
             return "";
