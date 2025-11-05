@@ -70,32 +70,6 @@ There are two hooks that are used to get components assigned to slots:
 It's a little convoluted, and slightly hacky in the React world, but has proven
 powerful so far.
 
-### Internal vs External Components
-
-Components are informally divided into two categories:
-
-- External components: These components are directly referenced by compiled MDX
-  code.
-- Internal components: These components are used by other components in the
-  library, and not directly referenced in compiled MDX code.
-
-Both types of components are designed such that they can be overridden. To
-support overriding internal components, any other component that references
-internal components takes a prop with a component implementation, that defaults
-to the internal component implementation.
-
-For example, the
-[`ExpandableCell`](src/components/ExpandableCell/ExpandableCell.tsx) component
-takes an
-[`ExpandableCellIcon`](src/components/ExpandableCell/types.ts)
-prop that defaults to the
-[`ExpandableCellIcon`](src/components/ExpandableCellIcon/ExpandableCellIcon.tsx)
-component. If you wish to provide a custom icon, you can pass in a custom
-component to this prop.
-
-Most components are external components, a few are internal components, and
-[`Pill`](src/components/Pill/Pill.tsx) is used both internally and externally.
-
 ### Component-Specific Documentation
 
 See the source code for each component in the [src/components](src/components)
