@@ -1,9 +1,9 @@
 # DocsMD
 
-> **⚠️ PROJECT SUNSET NOTICE**
+> **⚠️ This project is under development**
 > 
-> This project has been sunset and will not receive any additional development, maintenance, or support. It is provided as-is under the Elastic License 2.0 and may be extended or inherited according to the license constraints. Users are encouraged to fork and continue development if needed.
-
+> It is provided as-is under the Elastic License 2.0 and may be extended or inherited according to the license constraints
+> 
 ## What is DocsMD?
 
 DocsMD is a powerful documentation compiler that transforms OpenAPI specifications into interactive API documentation for popular documentation frameworks. It bridges the gap between your API specification and production-ready documentation sites with minimal configuration.
@@ -416,11 +416,5 @@ This allows content to be authored in Markdown while maintaining structure.
 ## License
 
 This project is licensed under the **Elastic License 2.0**. See the [LICENSE](./LICENSE) file for full terms.
-
-## Contributing
-
-As this project is sunset, we are not actively accepting contributions. However, you are welcome to fork the repository and continue development independently according to the license terms.
-
-## Support
 
 This project is provided as-is without warranty or support. For historical documentation or questions, please refer to the codebase and existing documentation.
