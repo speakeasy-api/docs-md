@@ -72,9 +72,8 @@ export async function generateTypeScriptTryItNow(
   });
 
   // "Bundle" the worker by moving it to a spot where the browser can fetch it
-  const workerUrl = import.meta.resolve(
-    "@speakeasy-api/docs-md-shared/tsworker"
-  );
+  const workerUrl = import.meta
+    .resolve("@speakeasy-api/docs-md-shared/tsworker");
   const workerPath = fileURLToPath(workerUrl);
   const workerCode = readFileSync(workerPath, "utf-8");
   writeFileSync(join(codeSample.tryItNow.outDir, "tsworker.js"), workerCode, {
