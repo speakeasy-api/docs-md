@@ -13,7 +13,7 @@ import { useChildren, useUniqueChild } from "../../../util/hooks.ts";
 import { ConnectingCell } from "../../ConnectingCell/ConnectingCell.tsx";
 import { ExpandableCell } from "../../ExpandableCell/ExpandableCell.tsx";
 import { NonExpandableCell } from "../../NonExpandableCell/NonExpandableCell.tsx";
-import { Pill } from "../../Pill.tsx";
+import { Pill } from "../../Pill/Pill.tsx";
 import { useHashManager } from "../hashManager.ts";
 import styles from "../styles.module.css";
 import type { ExpandablePropertyProps } from "../types.ts";

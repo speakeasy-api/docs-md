@@ -1,9 +1,9 @@
 # DocsMD
 
 > **⚠️ This project is under development**
-> 
+>
 > It is provided as-is under the Elastic License 2.0 and may be extended or inherited according to the license constraints
-> 
+>
 ## What is DocsMD?
 
 DocsMD is a powerful documentation compiler that transforms OpenAPI specifications into interactive API documentation for popular documentation frameworks. It bridges the gap between your API specification and production-ready documentation sites with minimal configuration.
@@ -75,18 +75,6 @@ Shared utilities, types, and runtime code used across packages.
 - ESLint and Prettier configurations
 
 **Location**: `packages/shared/`
-
-### 🌐 `@speakeasy-api/docs-md-components` (Web Components)
-
-Web Components implementation (Lit-based) for framework-agnostic usage.
-
-**Purpose**: Provide framework-independent components using Web Components standard.
-
-**Key Exports**:
-- `<pill-component>` - Web component version of Pill
-- CSS files for Docusaurus and Nextra themes
-
-**Location**: `packages/web-components/`
 
 ## Compiler Architecture
 
@@ -203,11 +191,11 @@ Create a `speakeasy.config.mjs` (or `.js`, `.ts`, etc.) file in your project roo
 export default {
   // Path to your OpenAPI specification
   spec: "./openapi.yaml",
-  
+
   output: {
     // Where to generate documentation files
     pageOutDir: "./docs/api",
-    
+
     // Framework: "docusaurus", "nextra", or custom config
     framework: "docusaurus",
   },
@@ -381,15 +369,15 @@ DocsMD uses CSS custom properties (variables) for theming:
   --speakeasy-code-background-color: #1e1e1e;
   --speakeasy-anchor-color: #0066cc;
   --speakeasy-pill-primary-background-color: #0066cc;
-  
+
   /* Add your custom variables */
   --my-custom-spacing: 1.5rem;
 }
 ```
 
 For a complete list of available CSS variables, see:
-- `packages/web-components/src/docusaurus.css`
-- `packages/web-components/src/nextra.css`
+- `packages/react/src/docusaurus.css`
+- `packages/react/src/nextra.css`
 
 #### Component Architecture
 
@@ -400,11 +388,11 @@ DocsMD components follow a "slots" pattern for flexibility:
   <SectionTitle slot="title">
     ### Responses
   </SectionTitle>
-  
+
   <SectionTab slot="tab" id="200">
     200 OK
   </SectionTab>
-  
+
   <SectionContent slot="section" id="200">
     Success response content
   </SectionContent>

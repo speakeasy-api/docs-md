@@ -36,10 +36,9 @@ const {
   shared: { version: sharedVersion, name: sharedName },
   react: { name: reactName },
   compiler: { name: compilerName },
-  webComponents: { name: webComponentsName },
 } = getPackagesDetails();
 const response = await userPrompt(
-  `Publish version ${sharedVersion} of:\n - ${sharedName}\n - ${reactName}\n - ${compilerName}\n - ${webComponentsName}\n? (y/N)`
+  `Publish version ${sharedVersion} of:\n - ${sharedName}\n - ${reactName}\n - ${compilerName}\n? (y/N)`
 );
 if (response !== "y" && response !== "Y") {
   console.log("Aborting publish");
@@ -63,9 +62,6 @@ runCommand("make", ["build-api-docs"], { cwd: ROOT_DIR });
 console.log("Publishing packages");
 runCommand("npm", ["publish", "--access=public"], {
   cwd: join(ROOT_DIR, "packages", "shared"),
-});
-runCommand("npm", ["publish", "--access=public"], {
-  cwd: join(ROOT_DIR, "packages", "web-components"),
 });
 runCommand("npm", ["publish", "--access=public"], {
   cwd: join(ROOT_DIR, "packages", "react"),
