@@ -364,6 +364,13 @@ function generateCurlCodeSamples(
       }
     }
 
+    // Add request content type to headers, if this isn't a GET request
+    if (method !== "GET") {
+      // TODO: we don't store the request body content type in docs data, so we
+      // just hardcode it for now to the most common type
+      headers["Content-Type"] = "application/json";
+    }
+
     // Generate the body
     let body: string | undefined = undefined;
     if (chunk.chunkData.requestBody) {
