@@ -37,7 +37,6 @@ build: build-packages build-examples
 
 build-packages:
 	npm run build --workspace packages/shared
-	npm run build --workspace packages/web-components
 	npm run build --workspace packages/react
 	npm run build --workspace packages/compiler
 
