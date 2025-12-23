@@ -14,7 +14,7 @@ export default [
       "eslint.config.mjs": ["default"],
       "src/index.ts": /.*/,
     },
-    ignores: ["src/compiler/data/wasm_exec.js", "src/.storybook/**/*"],
+    ignores: ["src/compiler/data/wasm_exec.js"],
     restrictedImports: [
       {
         type: "third-party",
@@ -30,13 +30,6 @@ export default [
   {
     languageOptions: {
       globals: { ...globals.browser, ...globals.node },
-    },
-  },
-  // Disable unused exports rule for Storybook files
-  {
-    files: ["**/*.stories.{ts,tsx}", ".storybook/*.{ts,tsx}"],
-    rules: {
-      "fast-import/no-unused-exports": "off",
     },
   },
   // Disallow console calls in compiler code (use logging.ts functions instead)
